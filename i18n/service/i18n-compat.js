@@ -6,6 +6,10 @@
 
     let _isReady = false;
     const _pendingCalls = [];
+    let _resolveReady;
+    const _readyPromise = new Promise((resolve) => {
+        _resolveReady = resolve;
+    });
 
     // I18nService 준비될 때까지 대기
     const waitForService = (callback, maxWait = 10000) => {
@@ -30,6 +34,10 @@
             } catch (e) {
                 console.warn('[I18NUtils] Deferred translateDOM failed:', e);
             }
+        }
+        if (_resolveReady) {
+            _resolveReady(true);
+            _resolveReady = null;
         }
     };
 
@@ -64,6 +72,18 @@
                 // 아직 준비 안됨 - 보류 큐에 추가
                 _pendingCalls.push({ root });
             }
+        },
+
+        isReady() {
+            return _isReady;
+        },
+
+        whenReady(callback) {
+            const promise = _isReady ? Promise.resolve(true) : _readyPromise;
+            if (typeof callback === 'function') {
+                promise.then(() => callback()).catch(() => {});
+            }
+            return promise;
         },
 
         replaceMindText(text) {
@@ -106,6 +126,10 @@
         } catch (e) {
             console.warn('[I18NUtils] Failed to preload translations:', e);
             _isReady = true; // 에러 발생해도 계속 진행
+            if (_resolveReady) {
+                _resolveReady(false);
+                _resolveReady = null;
+            }
         }
     });
 })();

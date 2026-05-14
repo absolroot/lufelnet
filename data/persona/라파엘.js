@@ -46,26 +46,6 @@ window.personaFiles["라파엘"] = {
       "desc_jp": "攻撃力が29.1%上昇する。\n戦闘開始時、味方全体の攻撃力が永続的に20%上昇する。\n自身がフィールドにいる時、味方がいずれかの欲望の共鳴効果を発動すると、味方全体のクリティカルダメージが25%上昇する。\n自身が味方を対象にペルソナスキルを使用した後、3ターンの間、スキルのメイン対象の総ダメージ増幅が4.2%上昇する。",
       "name_cn": "生命之树的指引Ⅰ",
       "desc_cn": "攻击力提升29.1%。\n战斗开始时，使所有同伴攻击力永久提升20%。\n自身在场时，若友方触发了任意属性奏鸣效果，则使所有同伴暴击效果提升25%。\n以同伴为目标释放人格面具技能后，技能主目标的总伤害增幅提升4.2%，持续3回合。"
-    },
-    {
-      "name": "생명의 나무의 인도Ⅱ",
-      "name_en": "Overclock: Tree of Life's Guidance II",
-      "name_jp": "生命の樹の導きⅡ",
-      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시 모든 동료의 공격력이 영구적으로 20% 증가한다.\n자신이 필드에 있을 때, 아군이 임의의 욕망 소나타 효과를 발동하면 모든 동료의 크리티컬 효과가 25% 증가한다.\n자신이 동료를 대상으로 페르소나 스킬을 시전한 후, 3턴 동안 스킬 메인 목표의 총 대미지 증폭이 4.2% 증가한다.",
-      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, permanently increase all allies' Attack by 20%.\nWhen user is present, if allies have activated any Attribute Harmony, increase all allies' critical damage by 25%.\nAfter using a Persona skill on allies, increase the main target's Total Damage Amplification by 4.2%. Lasts for 3 turns.",
-      "desc_jp": "攻撃力が29.1%上昇する。\n戦闘開始時、味方全体の攻撃力が永続的に20%上昇する。\n自身がフィールドにいる時、味方がいずれかの欲望の共鳴効果を発動すると、味方全体のクリティカルダメージが25%上昇する。\n自身が味方を対象にペルソナスキルを使用した後、3ターンの間、スキルのメイン対象の総ダメージ増幅が4.2%上昇する。",
-      "name_cn": "生命之树的指引Ⅱ",
-      "desc_cn": "攻击力提升29.1%。\n战斗开始时，使所有同伴攻击力永久提升20%。\n自身在场时，若友方触发了任意属性奏鸣效果，则使所有同伴暴击效果提升25%。\n以同伴为目标释放人格面具技能后，技能主目标的总伤害增幅提升4.2%，持续3回合。"
-    },
-    {
-      "name": "생명의 나무의 인도Ⅲ",
-      "name_en": "Overclock: Tree of Life's Guidance III",
-      "name_jp": "生命の樹の導きⅢ",
-      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시 모든 동료의 공격력이 영구적으로 20% 증가한다.\n자신이 필드에 있을 때, 아군이 임의의 욕망 소나타 효과를 발동하면 모든 동료의 크리티컬 효과가 25% 증가한다.\n자신이 동료를 대상으로 페르소나 스킬을 시전한 후, 3턴 동안 스킬 메인 목표의 총 대미지 증폭이 4.2% 증가한다.",
-      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, permanently increase all allies' Attack by 20%.\nWhen user is present, if allies have activated any Attribute Harmony, increase all allies' critical damage by 25%.\nAfter using a Persona skill on allies, increase the main target's Total Damage Amplification by 4.2%. Lasts for 3 turns.",
-      "desc_jp": "攻撃力が29.1%上昇する。\n戦闘開始時、味方全体の攻撃力が永続的に20%上昇する。\n自身がフィールドにいる時、味方がいずれかの欲望の共鳴効果を発動すると、味方全体のクリティカルダメージが25%上昇する。\n自身が味方を対象にペルソナスキルを使用した後、3ターンの間、スキルのメイン対象の総ダメージ増幅が4.2%上昇する。",
-      "name_cn": "生命之树的指引Ⅲ",
-      "desc_cn": "攻击力提升29.1%。\n战斗开始时，使所有同伴攻击力永久提升20%。\n自身在场时，若友方触发了任意属性奏鸣效果，则使所有同伴暴击效果提升25%。\n以同伴为目标释放人格面具技能后，技能主目标的总伤害增幅提升4.2%，持续3回合。"
     }
   ],
   "uniqueSkill": {

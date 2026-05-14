@@ -60,6 +60,7 @@ class DefenseCalc {
         this.selectedItems = new Set(); // 초기 선택 항목 설정
         this.selectedPenetrateItems = new Set(); // 관통 선택 항목
         this.mutuallyExclusiveRules = this.getMutuallyExclusiveRules();
+        this.syncI18nServiceLanguage();
         this.buildDatasets();
         // CSV 기반 이름 매핑 프리로드
         this._csvNameMap = null; // { krName: { en, jp } }
@@ -76,6 +77,7 @@ class DefenseCalc {
         try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch (_) { }
         // 사전 매핑 단어 번역(원더/계시 등)
         try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch (_) { }
+        this.scheduleI18nReadyRefresh();
 
         // 스포일러 토글 이벤트: 목록 재렌더링
         try {
@@ -143,6 +145,52 @@ class DefenseCalc {
         } catch (_) {}
         const lang = this.normalizeCalcLang(rawLang);
         return lang === 'kr' || lang === 'cn';
+    }
+
+    syncI18nServiceLanguage() {
+        const lang = this.getCurrentLang();
+        try {
+            if (window.I18nService && window.I18nService.currentLang !== lang) {
+                window.I18nService.currentLang = lang;
+                if (typeof window.I18nService.loadCommonTranslations === 'function') {
+                    window.I18nService.loadCommonTranslations(lang).catch(() => {});
+                }
+            }
+        } catch (_) {}
+        return lang;
+    }
+
+    scheduleI18nReadyRefresh() {
+        const lang = this.getCurrentLang();
+        if (lang === 'kr') return;
+
+        const refresh = () => {
+            if (this._i18nReadyRefreshed) return;
+            this._i18nReadyRefreshed = true;
+            this.syncI18nServiceLanguage();
+            this.initializeTable();
+            this.initializePenetrateTable();
+            try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch (_) { }
+            try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(document); } } catch (_) { }
+            this.scheduleTranslateCharacterNames();
+            this.renderBossList();
+            this.applyOrderUI();
+        };
+
+        try {
+            if (typeof I18NUtils !== 'undefined' && typeof I18NUtils.whenReady === 'function') {
+                I18NUtils.whenReady(() => {
+                    if (typeof requestAnimationFrame === 'function') {
+                        requestAnimationFrame(refresh);
+                    } else {
+                        setTimeout(refresh, 0);
+                    }
+                });
+                return;
+            }
+        } catch (_) {}
+
+        setTimeout(refresh, 250);
     }
 
     getCurrentLang() {

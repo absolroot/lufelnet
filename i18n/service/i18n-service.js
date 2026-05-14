@@ -93,18 +93,19 @@
          */
         _detectLanguageFromURL() {
             try {
-                // 1. URL 쿼리 파라미터 확인 (?lang=en)
+                // 1. Canonical path language wins over stored/query state.
+                const path = window.location.pathname;
+                const pathMatch = String(path || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+                if (pathMatch) {
+                    return pathMatch[1].toLowerCase();
+                }
+
+                // 2. URL 쿼리 파라미터 확인 (?lang=en)
                 const urlParams = new URLSearchParams(window.location.search);
                 const langParam = urlParams.get('lang');
                 if (langParam && ['kr', 'en', 'jp', 'cn'].includes(langParam)) {
                     return langParam;
                 }
-
-                // 2. 경로 확인 (/en/, /jp/)
-                const path = window.location.pathname;
-                if (path.includes('/en/')) return 'en';
-                if (path.includes('/jp/')) return 'jp';
-                if (path.includes('/cn/')) return 'cn';
 
                 // 3. localStorage 확인
                 const savedLang = localStorage.getItem('preferredLanguage');
@@ -156,17 +157,17 @@
          * @private
          */
         _detectLanguage() {
-            // 1. URL 파라미터 확인
+            // 1. Canonical path language wins over stored/query state.
+            const pathLang = window.location.pathname.split('/')[1];
+            if (this.supportedLanguages.includes(pathLang)) {
+                return pathLang;
+            }
+
+            // 2. URL 파라미터 확인
             const urlParams = new URLSearchParams(window.location.search);
             const urlLang = urlParams.get('lang');
             if (urlLang && this.supportedLanguages.includes(urlLang)) {
                 return urlLang;
-            }
-
-            // 2. URL 경로 확인 (레거시 지원)
-            const pathLang = window.location.pathname.split('/')[1];
-            if (this.supportedLanguages.includes(pathLang)) {
-                return pathLang;
             }
 
             // 3. 로컬 스토리지 확인

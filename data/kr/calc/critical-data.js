@@ -823,50 +823,6 @@ const criticalSelfData = {
       "duration_cn": "-",
       "options_cn": []
     },
-    // KR/CN patch only: EN/JP official calculator text pending.
-    {
-      "id": "자유-개선",
-      "type": "계시",
-      "type_en": "Revelation",
-      "type_jp": "啓示",
-      "target": "자신",
-      "target_en": "Self",
-      "target_jp": "自分",
-      "skillIcon": "/assets/img/revelation/자유.webp",
-      "skillName": "자유 + 개선",
-      "skillName_en": "Freedom + Triumph",
-      "skillName_jp": "自由 + 改善",
-      "options": [
-        "1중첩",
-        "2중첩",
-        "빙결/질풍 1중첩",
-        "빙결/질풍 2중첩"
-      ],
-      "values": {
-        "1중첩": 10,
-        "2중첩": 20,
-        "빙결/질풍 1중첩": 20,
-        "빙결/질풍 2중첩": 40
-      },
-      "defaultOption": "2중첩",
-      "value": 20,
-      "skillEffectAmpAffected": false,
-      "duration": "2턴",
-      "note": "영광 중첩",
-      "note_en": "",
-      "note_jp": "",
-      "skillName_cn": "自由 + 凯旋",
-      "note_cn": "荣耀层数",
-      "type_cn": "启示",
-      "target_cn": "自身",
-      "duration_cn": "2回合",
-      "options_cn": [
-        "1层",
-        "2层",
-        "冰冻/疾风 1层",
-        "冰冻/疾风 2层"
-      ]
-    },
     {
       "id": "희망",
       "type": "계시",

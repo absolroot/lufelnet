@@ -27,12 +27,12 @@ window.WeaponData["렌·스타 나이트"] = {
 window.enCharacterWeaponData["렌·스타 나이트"] = {
   "name": "Ren Amamiya·Starlight",
   "weapon4-1": {
-    "name": "Baselard Dagger",
+    "name": "Baselard",
     "health": 1807.87,
     "attack": 592.3,
     "defense": 317.1,
     "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen consuming [Rhapsody Beat], increase own damage dealt by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 2 turns."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen spending [Rhapsodic Beat], increase user's damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%. Lasts for 2 turns."
   },
   "weapon5-1": {
     "name": "Jazz Blade",
@@ -41,7 +41,7 @@ window.enCharacterWeaponData["렌·스타 나이트"] = {
     "defense": 396.41,
     "skill_name": "",
     "highlight": true,
-    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nWhen in [Phantom Form], increase All-Out Attack damage by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8%.\nWhen exiting [Phantom Form], increase all allies' critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns."
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nWhen [Phantom Form] is active, increase [All-Out Attack Damage] by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8%.\nWhen exiting [Phantom Form], increase all allies' critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%. Lasts for 2 turns."
   }
 };
 

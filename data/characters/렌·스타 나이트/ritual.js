@@ -23,20 +23,20 @@ window.ritualData["렌·스타 나이트"] = {
 
 window.enCharacterRitualData["렌·스타 나이트"] = {
   "name": "Ren Amamiya·Starlight",
-  "r0": "Dance Fever Banquet",
-  "r0_detail": "After obtaining Ren Amamiya·Starlight, the party's All-Out Attacks deal an additional 10000/20000/40000 fixed damage (changes at Lv. 1/50/70). Each Awareness level of Ren Amamiya·Starlight increases this damage by 15000/30000/60000. If there are fewer than 3 foes, this fixed damage increases by 30% for each foe fewer. This applies whether or not Ren Amamiya·Starlight is on the field.\nRen Amamiya·Starlight can consume [Rhapsody Beat] to enhance [Phantom Ball].\nAfter Ren Amamiya·Starlight joins battle, he gains the special skill [Fever Time], which immediately restores 1 [Rhapsody Beat] and enhances the next [Opening Movement] or [Syncopated Note] he uses. [Fever Time] does not consume a turn and has a 1-turn cooldown.",
-  "r1": "Gentleman Thief",
-  "r1_detail": "[Fever Time] restores 1 additional [Rhapsody Beat]. After use, increase his own critical rate by 20% and all allies' critical damage by 50% for 2 turns.",
-  "r2": "Sleepless Starry Night",
-  "r2_detail": "Each time the team gains 1 [Rhapsody Beat], Ren Amamiya·Starlight increases all allies' Attack by 20%. Stacks up to 4 times.\nWhen this effect reaches the stack limit, Ren Amamiya·Starlight gains 30% All-Out Attack damage.",
-  "r3": "Starlight Amusement Park",
-  "r3_detail": "Increase the skill levels of [Phantom Ball] and Thief Tactics by 3, up to a maximum of 15.",
+  "r0": "Dance Fever Gala",
+  "r0_detail": "After obtaining Starlight Ren, allies' All-Out Attack will deal an additional 10000/20000/40000 fixed damage, for each of Ren's Awareness level, increase this damage by 15000/30000/60000 (effect changes at Lv. 1/50/70, respectively). Increase this fixed damage by 30% for each foe that decreases from 3 (takes effect even when Ren is not in battle).\nRen can spend [Rhapsodic Beat] to boost skill [Phantom Gala].\nRen has a special skill [Fever Time]: Immediately restore 1 [Rhapsodic Beat], boost the next [First Movement] or [Syncopated Notes] (cooldown: 1 turn). After using [Fever Time], Ren can use other skills.\n[Rhapsodic Beat]: Combat resource shared by all [Starlight] characters, [Starlight] characters can spend this resource to boost their skills. At the start of [Starlight] characters' turn, restore 1 [Rhapsodic Beat]. Stacks up to 8 times.",
+  "r1": "Picaro",
+  "r1_detail": "[Fever Time] additionally restores 1 [Rhapsodic Beat].\nAfter using [Fever Time], increase Ren's critcal rate by 20% and all allies' critical damage by 50%. Lasts for 2 turns.",
+  "r2": "Restless Starry Night",
+  "r2_detail": "When the party gains 1 [Rhapsodic Beat], Ren will increase all allies' Attack by 20%. Stacks up to 4 times.\nAt the maximum stack, increase Ren's [All-Out Attack Damage] by 30%.",
+  "r3": "Starlight Park",
+  "r3_detail": "Increase the skill levels of [Phantom Gala] and [Thief Tactics] by 3.",
   "r4": "Phantom Dance",
-  "r4_detail": "After using HIGHLIGHT, additionally increase all allies' damage dealt by 25% for 3 turns.",
+  "r4_detail": "After using HIGHLIGHT, additonally increase all allies' damage by 25%. Lasts for 3 turns.",
   "r5": "Free Will in Rhythm",
-  "r5_detail": "Increase the skill levels of [Opening Movement] and [Syncopated Note] by 3, up to a maximum of 15.",
-  "r6": "Dance of the Heart's Desire",
-  "r6_detail": "Enhanced [Opening Movement] additionally grants all allies 20% Final Damage Mult. for 2 turns.\nEnhanced [Syncopated Note] additionally inflicts all foes with 20% Downed Damage Taken for 2 turns.\nWhen using [Phantom Ball], additionally trigger one coordinated attack at the highest enhancement state. This attack does not consume [Rhapsody Beat] and increases Skill Damage by 50%."
+  "r5_detail": "Increase the skill levels of [First Movement] and [Syncopated Notes] by 3.",
+  "r6": "Dance of Heart's Desire",
+  "r6_detail": "Boosted [First Movement] additionally increase all allies' Total Damage Amplification Amp by 20%. Lasts for 2 turns.\nBoosted [Syncopated Notes] additionally increase all foes' Downed Damage Taken by 20%. Lasts for 2 turns.\nWhen using [Phantom Gala], activate a bonus [Coordinated Strike] with the highest boost state. This [Coordinated Strike] does not spend [Rhapsodic Beat] and increases Skill Damage by 50%."
 };
 
 window.jpCharacterRitualData["렌·스타 나이트"] = {

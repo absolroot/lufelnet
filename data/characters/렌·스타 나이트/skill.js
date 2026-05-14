@@ -53,46 +53,46 @@ window.characterSkillsData["렌·스타 나이트"] = {
 window.enCharacterSkillsData["렌·스타 나이트"] = {
   "name": "Ren Amamiya·Starlight",
   "skill1": {
-    "name": "Opening Movement",
+    "name": "First Movement",
     "element": "버프",
     "type": "보조",
     "sp": 20,
     "cool": 0,
-    "description": "Increase all allies' critical damage by 7.8%/8.6%/8.3%/9.1% (this critical damage increase is based on Ren Amamiya·Starlight's own critical damage; up to 197.6%/207.6%/203.6%/213.6% critical damage is counted, increasing critical damage by an additional 31.2%/34.4%/33.2%/36.4%). Lasts for 2 turns, and Ren Amamiya·Starlight enters [Phantom Form].\nEnhanced: Also increase all allies' critical rate by 15.6%/17.2%/16.6%/18.2%, and raise the critical damage increase to 19.5%/21.5%/20.7%/22.7% (this critical damage increase is based on Ren Amamiya·Starlight's own critical damage; up to 197.6%/207.6%/203.6%/213.6% critical damage is counted, increasing critical damage by an additional 78.1%/86.1%/82.9%/90.9%). Also causes the ally with the highest Attack other than himself to enter [Phantom Form]."
+    "description": "Increase all allies' critical damage by 7.8%/8.6%/8.3%/9.1% (based on Ren's critical damage, up to 31.2%/34.4%/33.2%/36.4% bonus critical damage at 197.6%/207.6%/203.6%/213.6% critical damage). Lasts for 2 turns. Ren enters [Phantom Form].\nAfter boost, additionally increase all allies' critical rate by 15.6%/17.2%/16.6%/18.2%. Increase the critical damage buff effect to 19.5%/21.5%/20.7%/22.7% (based on Ren's critical damage, up to 78.1%/86.1%/82.9%/90.9% bonus critical damage at 197.6%/207.6%/203.6%/213.6% critical damage).\nGrant the ally with the highest Attack [Phantom Form] (excluding Ren)."
   },
   "skill2": {
-    "name": "Syncopated Note",
+    "name": "Syncopated Notes",
     "element": "주원광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Curse damage to all foes equal to 124.6%/137.4%/132.3%/145.1% of Attack, and decrease all foes' Defense by 9.8%/10.8%/10.4%/11.4% (this Defense decrease is based on Ren Amamiya·Starlight's Attack; up to 3904/4304/4144/4544 Attack is counted, increasing the Defense decrease by an additional 39.0%/43.0%/41.4%/45.4%). Lasts for 2 turns, and Ren Amamiya·Starlight enters [Phantom Form].\nEnhanced: Also increase foes' damage taken by 48.8%/53.8%/51.8%/56.8%, and raise the Defense decrease to 19.5%/21.5%/20.7%/22.7% (this Defense decrease is based on Ren Amamiya·Starlight's Attack; up to 3904/4304/4144/4544 Attack is counted, increasing the Defense decrease by an additional 78.1%/86.1%/82.9%/90.9%). Before they are next attacked by [Phantom Ball], ignore affinity and reduce their Down Points by 4. Also causes the ally with the highest Attack other than himself to enter [Phantom Form]."
+    "description": "Deal Curse damage to all foes equal to 124.6%/137.4%/132.3%/145.1% of Attack. Decrease all foes' Defense by 9.8%/10.8%/10.4%/11.4% (based on Ren's Attack, up to 39.0%/43.0%/41.4%/45.4% bonus Defense Down at 3904/4304/4144/4544 Attack). Ren enters [Phantom Form].\nAfter boost, additionally increase foes' damage taken by 48.8%/53.8%/51.8%/56.8%. Increase the Defense Down debuff to 19.5%/21.5%/20.7%/22.7% (based on Ren's Attack, up to 78.1%/86.1%/82.9%/90.9% bonus Defense Down at 3904/4304/4144/4544 Attack). The next [Phantom Gala] will ignore all affinites and decrease target's Down Points by 4.\nGrant the ally with the highest Attack [Phantom Form] (excluding Ren)."
   },
   "skill3": {
-    "name": "Phantom Ball",
+    "name": "Phantom Gala",
     "element": "만능광역",
     "type": "광역피해",
     "sp": 24,
     "cool": 0,
-    "description": "Use condition: Ren Amamiya·Starlight is in [Phantom Form].\nRen Amamiya·Starlight invites all allies to launch a coordinated attack, dealing Almighty damage to all foes equal to 162.7%/179.4%/172.7%/189.4% of Attack and Almighty [Co-op Damage] equal to 180.8%/199.3%/191.9%/210.4% of Attack. Then all allies exit [Phantom Form].\nThis skill can be enhanced by consuming [Rhapsody Beat], up to 2 times. Each enhancement consumes 2 [Rhapsody Beat]. The first enhancement raises the base damage and [Co-op Damage] multipliers to 271.1%/298.9%/287.8%/315.6% and 301.3%/332.2%/319.8%/350.7%, respectively. The second enhancement raises them to 298.2%/328.7%/316.5%/347.0% and 331.4%/365.4%/351.8%/385.8%, respectively.\n\n[Co-op Damage]: This damage is triggered by Ren Amamiya·Starlight, but its Attack, damage bonus, critical rate, and critical damage are calculated using the highest corresponding values among allies other than the user.\n[Coordinated Attack]: Treated as All-Out Attack damage and benefits from the user's All-Out Attack damage bonus. All damage under this effect cannot critically hit, but converts critical rate and critical damage into final damage bonus. When there are fewer than 5 foes, this damage increases by 25% for each foe fewer."
+    "description": "Use condition: When Ren is in [Phantom Form].\nInvite all allies to do a [Coordinated Strike], dealing Almighty damage to all foes equal to 162.7%/179.4%/172.7%/189.4% of Attack and Almighty [Coordinated Damage] to all foes equal to 180.8%/199.3%/191.9%/210.4% of Attack. All allies exit [Phantom Form].\nThis skill can be boosted by spending 2 [Rhapsodic Beat], up to 2 times.\nThe first boost will increase this damage's base damage multiplier to 271.1%/298.9%/287.8%/315.6% and [Coordinated Damage]'s multiplier to 301.3%/332.2%/319.8%/350.7%. The second boost will increase this damage's base damage multiplier to 298.2%/328.7%/316.5%/347.0% and [Coordinated Damage]'s multiplier to 331.4%/365.4%/351.8%/385.8%.\n[Coordinated Strike]: This counts as an All-Out Attack and counts the activator's All-Out Attack damage increase stats. This damage cannot deal critical hits, but will convert critical rate and critical damage into Final Damage Bonus. Increase damage by 25% for each foe that decreases from 5.\n[Coordinated Damage]: This damage will calculate using the highest Attack, highest damage, highest critcal rate, and highest critical damage from other allies besides the activator.\n[Phantom Form]: Gain Null Mental/Control Ailment and Null Down. Lasts for 2 turns. When Ren is present, Ren will only exit [Phantom Form] when he is able to act."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "버프",
     "type": "보조",
     "cool": 4,
-    "description": "Increase all allies' Attack by 24.4%/26.9%/25.9%/28.4% and critical damage by 19.5%/21.5%/20.7%/22.7% for 3 turns, and restore 1 [Rhapsody Beat]."
+    "description": "Increase all allies' Attack by 24.4%/26.9%/25.9%/28.4% and critical damage by 19.5%/21.5%/20.7%/22.7%. Lasts for 3 turns. Restore 1 [Rhapsodic Beat]."
   },
   "passive1": {
-    "name": "Quick Beat",
+    "name": "Upbeat",
     "element": "패시브",
-    "description": "When Ren Amamiya·Starlight enters [Phantom Form], increase his own Attack by 42.0% and other allies' Attack by 30.0% for 2 turns.",
+    "description": "When Ren enters [Phantom Form], increase Ren's Attack by 42.0%, increase other allies' Attack by 30.0%. Lasts for 2 turns.",
     "cool": 0
   },
   "passive2": {
     "name": "Rhythm",
     "element": "패시브",
-    "description": "After Ren Amamiya·Starlight uses [Fever Time], increase all allies' damage dealt by 24.0%; [Starlight] characters receive 36.0% instead. Lasts for 2 turns.",
+    "description": "After Ren uses [Fever Time], increase all allies' damage by 24.0%, increase [Starlight] characters' damage by 36.0% instead. Lasts for 2 turns.",
     "cool": 0
   }
 };

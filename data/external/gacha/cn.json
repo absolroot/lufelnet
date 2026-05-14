@@ -52,6 +52,162 @@
         "name": "反阴影特别镇压武器",
         "startTime": "2026-04-23 07:00:00",
         "type": "角色活动契约·随机"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "雨宫莲·星舞",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "路菲尔",
+            "type": "thief"
+          },
+          {
+            "name": "神山岭央",
+            "type": "thief"
+          },
+          {
+            "name": "须见俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "反叛爵士",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "角色活动契约·精准"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "雨宫莲·星舞",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "路菲尔",
+            "type": "thief"
+          },
+          {
+            "name": "神山岭央",
+            "type": "thief"
+          },
+          {
+            "name": "须见俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "反叛爵士",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "角色活动契约·随机"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "琴音 蒙塔涅·漫舞",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "路菲尔",
+            "type": "thief"
+          },
+          {
+            "name": "神山岭央",
+            "type": "thief"
+          },
+          {
+            "name": "须见俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "零度华尔兹",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "角色活动契约·精准"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "琴音 蒙塔涅·漫舞",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "路菲尔",
+            "type": "thief"
+          },
+          {
+            "name": "神山岭央",
+            "type": "thief"
+          },
+          {
+            "name": "须见俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "零度华尔兹",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "角色活动契约·随机"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "岳羽由加莉",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "路菲尔",
+            "type": "thief"
+          },
+          {
+            "name": "神山岭央",
+            "type": "thief"
+          },
+          {
+            "name": "须见俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "复苏的弓矢",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "角色活动契约·精准"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "岳羽由加莉",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "路菲尔",
+            "type": "thief"
+          },
+          {
+            "name": "神山岭央",
+            "type": "thief"
+          },
+          {
+            "name": "须见俊也",
+            "type": "thief"
+          }
+        ],
+        "name": "复苏的弓矢",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "角色活动契约·随机"
       }
     ],
     "weapon": [
@@ -123,6 +279,96 @@
         ],
         "name": "无声硝烟·随机",
         "startTime": "2026-04-23 07:00:00",
+        "type": "武器活动补给·随机"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "爵士锋刃",
+            "type": "weapon",
+            "user": "雨宫莲·星舞"
+          },
+          {
+            "name": "天鹅梦乡",
+            "type": "weapon",
+            "user": "琴音·蒙塔涅"
+          },
+          {
+            "name": "萨伦伽",
+            "type": "weapon",
+            "user": "岳羽由加莉"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "熔岩之火",
+            "type": "weapon",
+            "user": "路菲尔"
+          },
+          {
+            "name": "最强战戟X",
+            "type": "weapon",
+            "user": "神山岭央"
+          },
+          {
+            "name": "猩红仪杖",
+            "type": "weapon",
+            "user": "须见俊也"
+          },
+          {
+            "name": "巴塞拉德短剑",
+            "type": "weapon",
+            "user": "雨宫莲·星舞"
+          }
+        ],
+        "name": "无声硝烟·精准",
+        "startTime": "2026-05-14 07:00:00",
+        "type": "武器活动补给·精准"
+      },
+      {
+        "endTime": "2026-06-04 07:00:00",
+        "fiveStar": [
+          {
+            "name": "爵士锋刃",
+            "type": "weapon",
+            "user": "雨宫莲·星舞"
+          },
+          {
+            "name": "天鹅梦乡",
+            "type": "weapon",
+            "user": "琴音·蒙塔涅"
+          },
+          {
+            "name": "萨伦伽",
+            "type": "weapon",
+            "user": "岳羽由加莉"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "熔岩之火",
+            "type": "weapon",
+            "user": "路菲尔"
+          },
+          {
+            "name": "最强战戟X",
+            "type": "weapon",
+            "user": "神山岭央"
+          },
+          {
+            "name": "猩红仪杖",
+            "type": "weapon",
+            "user": "须见俊也"
+          },
+          {
+            "name": "巴塞拉德短剑",
+            "type": "weapon",
+            "user": "雨宫莲·星舞"
+          }
+        ],
+        "name": "无声硝烟·随机",
+        "startTime": "2026-05-14 07:00:00",
         "type": "武器活动补给·随机"
       }
     ]

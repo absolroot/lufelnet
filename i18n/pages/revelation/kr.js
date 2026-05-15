@@ -34,6 +34,9 @@ window.I18N_PAGE_REVELATION_KR = {
 
     // 계시 스탯
     stats_title: '계시 스탯',
+    stats_hint: '주/일/월/성/진 메인 스탯과 부 스탯 범위를 확인할 수 있습니다.',
+    stats_action_open: '펼쳐보기',
+    stats_action_close: '접기',
     main_title: '메인 스탯',
     sub_title: '부 스탯',
     col_option: '옵션',

@@ -203,12 +203,18 @@
 
     <!-- Revelation Stats (Accordion) -->
     <div id="revelation-stats" class="rev-stats-section">
-        <button class="rev-accordion" id="rev-accordion-btn">
-            <span id="rev-stats-title" data-i18n="stats_title">계시 스탯</span>
-            <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                    stroke-linejoin="round" />
-            </svg>
+        <button class="rev-accordion" id="rev-accordion-btn" type="button" aria-expanded="false" aria-controls="rev-panel">
+            <span class="rev-accordion-copy">
+                <span id="rev-stats-title" class="rev-stats-title" data-i18n="stats_title">계시 스탯</span>
+                <span class="rev-stats-helper" data-i18n="stats_hint">주/일/월/성/진 메인 스탯과 부 스탯 범위를 확인할 수 있습니다.</span>
+            </span>
+            <span class="rev-accordion-indicator">
+                <span class="rev-accordion-action" data-i18n="stats_action_open">펼쳐보기</span>
+                <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </span>
         </button>
         <div class="rev-panel" id="rev-panel" style="display:none;">
             <!-- Tabs -->
@@ -611,13 +617,25 @@
         // Events
         const accBtn = document.getElementById('rev-accordion-btn');
         const panel = document.getElementById('rev-panel');
-        if (accBtn && panel && !accBtn.dataset.bound) {
-            accBtn.addEventListener('click', () => {
-                const open = panel.style.display !== 'none';
-                panel.style.display = open ? 'none' : 'block';
-                accBtn.classList.toggle('open', !open);
-            });
-            accBtn.dataset.bound = '1';
+        if (accBtn && panel) {
+            const action = accBtn.querySelector('.rev-accordion-action');
+            const syncAccordionState = (isOpen) => {
+                panel.style.display = isOpen ? 'block' : 'none';
+                accBtn.classList.toggle('open', isOpen);
+                accBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                if (action) {
+                    const key = isOpen ? 'stats_action_close' : 'stats_action_open';
+                    action.setAttribute('data-i18n', key);
+                    action.textContent = I18nService.t(key);
+                }
+            };
+            syncAccordionState(panel.style.display !== 'none');
+            if (!accBtn.dataset.bound) {
+                accBtn.addEventListener('click', () => {
+                    syncAccordionState(panel.style.display === 'none');
+                });
+                accBtn.dataset.bound = '1';
+            }
         }
         document.querySelectorAll('.rev-tab').forEach(btn => {
             if (btn.dataset.bound) return;

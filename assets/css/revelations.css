@@ -649,15 +649,65 @@
 
 .rev-accordion {
     width: 100%;
-    background: #3c3c3c;
+    background: rgba(58, 58, 58, 0.95);
     color: #fff;
-    border: 0px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
     padding: 12px 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 14px;
     cursor: pointer;
+    text-align: left;
+    transition: background-color .18s ease, border-color .18s ease;
+}
+
+.rev-accordion:hover,
+.rev-accordion:focus-visible {
+    background: rgba(68, 68, 68, 0.98);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.rev-accordion:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.35);
+    outline-offset: 2px;
+}
+
+.rev-accordion-copy {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.rev-stats-title {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.rev-stats-helper {
+    color: rgba(255, 255, 255, 0.66);
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.rev-accordion-indicator {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.rev-accordion-action {
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    padding: 4px 9px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .rev-accordion .chev {
@@ -673,11 +723,26 @@
 }
 
 .rev-panel {
-    border: 0px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-top: none;
     border-radius: 0 0 8px 8px;
     padding: 16px 12px 20px 12px;
     background: var(--card-background);
+}
+
+@media (max-width: 640px) {
+    .rev-accordion {
+        align-items: flex-start;
+        padding: 12px;
+    }
+
+    .rev-accordion-indicator {
+        padding-top: 1px;
+    }
+
+    .rev-stats-helper {
+        font-size: 11px;
+    }
 }
 
 .rev-tabs {

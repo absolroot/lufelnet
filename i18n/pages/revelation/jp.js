@@ -34,6 +34,9 @@ window.I18N_PAGE_REVELATION_JP = {
 
     // Revelation Stats
     stats_title: '啓示ステータス',
+    stats_hint: '宙・旭・月・星・天のメインステータスとサブステータス範囲を確認できます。',
+    stats_action_open: '開く',
+    stats_action_close: '閉じる',
     main_title: 'メインステータス',
     sub_title: 'サブステータス',
     col_option: 'オプション',

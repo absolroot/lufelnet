@@ -34,6 +34,9 @@ window.I18N_PAGE_REVELATION_EN = {
 
     // Revelation Stats
     stats_title: 'Revelation Stats',
+    stats_hint: 'Check main stat and sub stat ranges for Universe, Sun, Moon, Star, and Sky slots.',
+    stats_action_open: 'Expand',
+    stats_action_close: 'Collapse',
     main_title: 'Main Stats',
     sub_title: 'Sub Stats',
     col_option: 'Option',

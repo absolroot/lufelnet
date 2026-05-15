@@ -499,11 +499,63 @@
         'Ailment Accuracy': 'sub_ailment_accuracy',
         'SP Recovery': 'sub_sp_recovery',
         'Speed': 'sub_speed',
-        'Healing Effect': 'sub_healing_effect'
+        'Healing Effect': 'sub_healing_effect',
+        '치료효과': 'sub_healing_effect',
+        '치료 효과': 'sub_healing_effect',
+        'HP回復量': 'sub_healing_effect',
+        '治疗效果': 'sub_healing_effect'
     };
 
+    const statIconFileMap = {
+        sub_crit_rate: '크리티컬 확률',
+        sub_crit_mult: '크리티컬 효과',
+        sub_pierce_rate: '관통',
+        sub_attack_mult: '대미지 보너스',
+        sub_attack_percent: '공격력',
+        sub_attack: '공격력',
+        sub_hp_percent: '생명',
+        sub_hp: '생명',
+        sub_defense_percent: '방어력',
+        sub_defense: '방어력',
+        sub_ailment_accuracy: '효과 명중',
+        sub_sp_recovery: 'SP회복',
+        sub_speed: '속도',
+        sub_healing_effect: '치료 효과'
+    };
+
+    const statIconAliasMap = {
+        sub_healing_effect: '치료효과'
+    };
+
+    function normalizeRevStatLabel(label) {
+        return String(label || '')
+            .replace(/\s+/g, '')
+            .replace(/[.。]/g, '')
+            .replace(/[+＋]/g, '')
+            .toLowerCase();
+    }
+
     function resolveSubStatI18nKey(label) {
-        return subStatKeyMap[String(label || '').trim()] || '';
+        const rawLabel = String(label || '').trim();
+        const direct = subStatKeyMap[rawLabel];
+        if (direct) return direct;
+
+        const normalizedLabel = normalizeRevStatLabel(rawLabel);
+        return Object.keys(statIconFileMap).find(key => {
+            return normalizeRevStatLabel(I18nService.t(key)) === normalizedLabel;
+        }) || '';
+    }
+
+    function renderRevStatLabel(label, i18nKey, pink) {
+        const textClass = pink ? 'rev-label-text rev-label-pink' : 'rev-label-text';
+        const iconFile = statIconFileMap[i18nKey];
+        if (!iconFile) {
+            return `<span class="${textClass}">${label}</span>`;
+        }
+
+        const aliasFile = statIconAliasMap[i18nKey] || '';
+        const fallbackAttr = aliasFile ? ` data-icon-fallback="{{ site.baseurl }}/assets/img/stat-icon/${aliasFile}.png" onerror="if(this.dataset.iconFallback&&!this.dataset.iconFallbackTried){this.dataset.iconFallbackTried='1';this.src=this.dataset.iconFallback;}else{this.style.display='none';}"` : ` onerror="this.style.display='none';"`;
+        return `<span class="rev-stat-label"><img class="rev-stat-icon" src="{{ site.baseurl }}/assets/img/stat-icon/${iconFile}.png" alt="" loading="lazy" decoding="async"${fallbackAttr}><span class="${textClass}">${label}</span></span>`;
     }
 
     // Placeholder main stats ranges (fill exact values later from image)
@@ -549,7 +601,7 @@
             const i18nKey = resolveSubStatI18nKey(r[0]);
             const translatedLabel = i18nKey ? I18nService.t(i18nKey) : r[0];
             const pink = isRevPinkLabel(lang, slotKey, r[0], i18nKey);
-            const label = pink ? `<span class="rev-label-pink">${translatedLabel}</span>` : translatedLabel;
+            const label = renderRevStatLabel(translatedLabel, i18nKey, pink);
             return `<tr><td>${label}</td><td>${r[2]}</td><td>${r[1]}</td></tr>`;
         }),
             `</tbody></table></div>`].join('');
@@ -586,7 +638,8 @@
         const body = data.map(row => {
             // Map English key to I18n key, then translate
             const i18nKey = resolveSubStatI18nKey(row[0]);
-            const label = i18nKey ? I18nService.t(i18nKey) : row[0];
+            const translatedLabel = i18nKey ? I18nService.t(i18nKey) : row[0];
+            const label = renderRevStatLabel(translatedLabel, i18nKey, false);
 
             return `<tr><td>${label}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td>${row[4]}</td><td>${row[5]}</td></tr>`;
         }).join('');

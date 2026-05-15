@@ -878,6 +878,28 @@ table.rev-table-main td:nth-child(2) {
     color: #ffcc33;
 }
 
+.rev-stat-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    min-width: 0;
+    vertical-align: middle;
+}
+
+.rev-stat-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 16px;
+    object-fit: contain;
+}
+
+.rev-label-text {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /* Pink-highlight for specific option labels (moon/star/sky main stats) */
 .rev-label-pink {
     color: #ffd1d1;

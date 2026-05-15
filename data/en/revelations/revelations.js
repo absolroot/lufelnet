@@ -340,8 +340,7 @@ const enRevelationData = {
         "Hope": {
             "Labor": "When equipped by an Elucidator Phantom Thief: When granting buffs to allies with a skill, increase the main target's pierce rate by 5% for 1 turn.",
             "Ruin": "Each time damage is dealt with a skill, increase the user's Fire damage by 3%. This effect lasts 3 turns and stacks up to 8 times. When at 8 stacks, also increase user's critical rate by 6%.",
-            "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack.",
-            "type": ["미출시"]
+            "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack."
         },
         "Departure": {
             "Control": "Decrease main target's DEF by 23% for 2 turns after attacking them with a skill.",

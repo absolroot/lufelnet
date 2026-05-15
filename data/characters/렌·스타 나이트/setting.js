@@ -34,8 +34,8 @@ window.characterSetting["렌·스타 나이트"] = {
     "skill3_lv": "MAX!",
     "skill4_lv": "MAX",
     "skill_priority": "3>1>4>2",
-    "mind_stats1": "크리티컬 확률 12%!",
-    "mind_stats2": "대미지 보너스 16%!",
+    "mind_stats1": "대미지 보너스 16%!",
+    "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/S2!",
     "mind_skill2": "S3/HL!"
 };

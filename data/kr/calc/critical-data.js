@@ -919,32 +919,6 @@ const criticalSelfData = {
         "改造3&4",
         "改造5&6"
       ]
-    },
-    {
-      "id": "ren-starlight-mind-crit-rate",
-      "type": "심상",
-      "type_en": "Mindscape",
-      "type_jp": "イメジャリー",
-      "target": "자신",
-      "target_en": "Self",
-      "target_jp": "自分",
-      "skillIcon": "/assets/img/character-detail/item-mind_stat2.png",
-      "skillName": "진급강화",
-      "skillName_en": "",
-      "skillName_jp": "",
-      "options": [],
-      "value": 12,
-      "skillEffectAmpAffected": false,
-      "duration": "-",
-      "note": "",
-      "note_en": "",
-      "note_jp": "",
-      "skillName_cn": "进阶强化",
-      "note_cn": "",
-      "type_cn": "心象",
-      "target_cn": "自身",
-      "duration_cn": "-",
-      "options_cn": []
     }
   ],
   "아이기스": [

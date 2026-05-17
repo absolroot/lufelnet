@@ -60,6 +60,8 @@ class DefenseCalc {
         this.selectedItems = new Set(); // 초기 선택 항목 설정
         this.selectedPenetrateItems = new Set(); // 관통 선택 항목
         this.mutuallyExclusiveRules = this.getMutuallyExclusiveRules();
+        this._reduceAccordionRenderSeq = 0;
+        this._penetrateAccordionRenderSeq = 0;
         this.syncI18nServiceLanguage();
         this.buildDatasets();
         // CSV 기반 이름 매핑 프리로드
@@ -748,11 +750,11 @@ class DefenseCalc {
 
     // 아코디언 렌더링 (그룹 헤더 + 각 row)
     async renderAccordion(tbody, isPenetrate) {
-        // 기존 내용 비움
-        while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
-
         const order = isPenetrate ? this.penetrateOrder : this.reduceOrder;
         const groupsObj = isPenetrate ? this.penetrateGroups : this.reduceGroups;
+        const renderSeqKey = isPenetrate ? '_penetrateAccordionRenderSeq' : '_reduceAccordionRenderSeq';
+        const renderSeq = (this[renderSeqKey] || 0) + 1;
+        this[renderSeqKey] = renderSeq;
 
         // 스포일러 토글에 따른 표시 캐릭터 목록 계산
         const showSpoiler = (window.SpoilerState && typeof window.SpoilerState.get === 'function')
@@ -764,6 +766,11 @@ class DefenseCalc {
                 visibleNames = await CharacterListLoader.getVisibleNames(showSpoiler);
             }
         } catch (_) { }
+
+        if (this[renderSeqKey] !== renderSeq) return;
+
+        // Clear only after async visibility loading finishes, so overlapping renders cannot append twice.
+        while (tbody.firstChild) tbody.removeChild(tbody.firstChild);
 
         order.forEach(groupName => {
             const items = groupsObj[groupName] || [];

@@ -3,8 +3,8 @@ window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
 window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
-window.WeaponData["렌·스타 나이트"] = {
-  "name": "아마미야 렌·스타 나이트",
+window.WeaponData["렌·댄싱 스타"] = {
+  "name": "아마미야 렌·댄싱 스타",
   "weapon4-1": {
     "name": "바젤라드 단검",
     "health": 1807.87,
@@ -24,7 +24,7 @@ window.WeaponData["렌·스타 나이트"] = {
   }
 };
 
-window.enCharacterWeaponData["렌·스타 나이트"] = {
+window.enCharacterWeaponData["렌·댄싱 스타"] = {
   "name": "Ren Amamiya·Starlight",
   "weapon4-1": {
     "name": "Baselard",
@@ -45,7 +45,7 @@ window.enCharacterWeaponData["렌·스타 나이트"] = {
   }
 };
 
-window.jpCharacterWeaponData["렌·스타 나이트"] = {
+window.jpCharacterWeaponData["렌·댄싱 스타"] = {
   "name": "雨宮 蓮・スターナイト",
   "weapon4-1": {
     "name": "バゼラードダガー",
@@ -66,7 +66,7 @@ window.jpCharacterWeaponData["렌·스타 나이트"] = {
   }
 };
 
-window.cnCharacterWeaponData["렌·스타 나이트"] = {
+window.cnCharacterWeaponData["렌·댄싱 스타"] = {
   "name": "雨宫莲·星舞",
   "weapon4-1": {
     "name": "巴塞拉德短剑",

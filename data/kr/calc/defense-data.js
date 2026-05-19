@@ -1417,7 +1417,7 @@ const defenseCalcData = {
       "options_cn": []
     }
   ],
-  "렌·스타 나이트": [
+  "렌·댄싱 스타": [
     {
       "id": "ren-starlight-s2-defense",
       "type": "스킬2",

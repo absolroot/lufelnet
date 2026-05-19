@@ -1,10 +1,10 @@
 window.characterSetting = window.characterSetting || {};
-window.characterSetting["렌·스타 나이트"] = {
-    "role": "리더의 힘",
+window.characterSetting["렌·댄싱 스타"] = {
+    "role": "협력 공격",
     "role_en": "",
     "role_jp": "",
     "role_cn": "",
-    "video": [],
+    "video": ["DXXqpdPuyPQ"],
     "video_en": [],
     "video_jp": [],
     "main_revelation": ["예리", "자유"],

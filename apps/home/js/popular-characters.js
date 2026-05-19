@@ -8,7 +8,7 @@
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
-            { name: '렌·스타 나이트', badge: 'NEW' },
+            { name: '렌·댄싱 스타', badge: 'NEW' },
             { name: '유카리', badge: 'NEW' },
             { name: '몽타뉴·백조', badge: 'NEW' },
             { name: '마나카', badge: 'HOT' },

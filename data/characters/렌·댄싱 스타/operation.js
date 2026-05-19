@@ -1,5 +1,5 @@
 window.operationData = window.operationData || {};
-window.operationData["렌·스타 나이트"] = {
+window.operationData["렌·댄싱 스타"] = {
     "basic": [
         {
             "label": "의식 0",

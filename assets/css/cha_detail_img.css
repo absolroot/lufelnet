@@ -9,11 +9,11 @@
     z-index: 0;
 }
 
-.character-images .thief-image[data-character="렌·스타 나이트"][data-image-file="렌·스타 나이트.webp"] {
+.character-images .thief-image[data-character="렌·댄싱 스타"][data-image-file="렌·댄싱 스타.webp"] {
     --char-scale: 1.12;
 }
 
-.character-images .persona-image[data-character="렌·스타 나이트"][data-persona="라울"][data-image-file="렌·스타 나이트 - 라울.webp"] {
+.character-images .persona-image[data-character="렌·댄싱 스타"][data-persona="라울"][data-image-file="렌·댄싱 스타 - 라울.webp"] {
     --char-scale: 1.3;
 }
 

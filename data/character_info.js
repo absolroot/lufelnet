@@ -2,7 +2,7 @@
 // 캐릭터 목록 데이터
 window.characterList = window.characterList || {
     mainParty: [
-        "나루미", "렌", "렌·스타 나이트", "루우나", "루페르", "레오", "류지",
+        "나루미", "렌", "렌·댄싱 스타", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나",
         "모토하", "모토하·여름", "모토하·청광", "아란", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다", "쇼키", "쇼키·암야", "슌", "슌·프론티어",
         "세이지", "안", "아야카", "아이기스", "아케치", "야오링", "야오링·사자무",
@@ -30,7 +30,7 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
-    "모르가나·스타 나이트": {
+    "모르가나·댄싱 스타": {
         "limit": true,
         "tag": "",
         "tag_en": "",
@@ -43,7 +43,7 @@ Object.assign(window.characterData, {
         "persona": "조로",
         "persona_en": "Zorro",
         "persona_jp": "ゾロ",
-        "name": "모르가나·스타 나이트",
+        "name": "모르가나·댄싱 스타",
         "name_en": "Morgana·Starlight",
         "name_jp": "モルガナ・スターナイト",
         "name_cn": "摩尔加纳星舞",
@@ -51,7 +51,7 @@ Object.assign(window.characterData, {
         "codename": "MONA·Starlight",
         "skill_item": 6
     },
-    "렌·스타 나이트": {
+    "렌·댄싱 스타": {
         "limit": true,
         "tag": "총공격, 크리티컬 효과, 공격력, 방어력 감소, 다운 허약",
         "tag_en": "All-Out Attack, Critical Effect, Attack, Defense Down, Downed Damage Taken",
@@ -65,7 +65,7 @@ Object.assign(window.characterData, {
         "persona_en": "Raoul",
         "persona_jp": "ラウール",
         "persona_cn": "拉乌尔",
-        "name": "아마미야 렌·스타 나이트",
+        "name": "아마미야 렌·댄싱 스타",
         "name_en": "Ren Amamiya·Starlight",
         "name_jp": "雨宮 蓮・スターナイト",
         "name_cn": "雨宫莲·星舞",

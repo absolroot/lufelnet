@@ -94,8 +94,8 @@ window.ReleaseScheduleData = {
         { version: "4.8.2", characters: ["코로마루"], days: 21  },
         { version: "5.0.1", characters: ["모토하·청광","아란"], mindscape_core: ["유스케", "아야카"], weapon_stamp: ["마그네틱 스톰"], weapon: ["혼돈의 해커스"], limitTransitions: [{ from: true, to: false, characters: ["렌", "유스케", "YUI"] }], days: 21 },
         { version: "5.0.2", characters: ["아이기스"], days: 21},
-        { version: "5.1.1", characters: ["렌·스타 나이트"], mindscape_core: ["몽타뉴·백조", "유카리"], weapon_stamp: ["태고의 역장"], revelation: ["번영", "결단"],  days: 21},
-        { version: "5.1.2", characters: ["모르가나·스타 나이트"], days: 21}
+        { version: "5.1.1", characters: ["렌·댄싱 스타"], mindscape_core: ["몽타뉴·백조", "유카리"], weapon_stamp: ["태고의 역장"], revelation: ["번영", "결단"],  days: 21},
+        { version: "5.1.2", characters: ["모르가나·댄싱 스타"], days: 21}
 
         // 이후 캐릭터들은 release_order 기반으로 자동 추가됨
     ]

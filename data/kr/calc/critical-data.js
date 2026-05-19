@@ -360,7 +360,7 @@ const criticalBuffData = {
       ]
     }
   ],
-  "렌·스타 나이트": [
+  "렌·댄싱 스타": [
     {
       "id": "ren-starlight-s1-enhanced-crit-rate",
       "type": "스킬1",
@@ -850,7 +850,7 @@ const criticalSelfData = {
       "options_cn": []
     }
   ],
-  "렌·스타 나이트": [
+  "렌·댄싱 스타": [
     {
       "id": "ren-starlight-r1-crit-rate",
       "type": "의식1",
@@ -885,7 +885,7 @@ const criticalSelfData = {
       "target": "자신",
       "target_en": "Self",
       "target_jp": "自分",
-      "skillIcon": "/assets/img/character-weapon/렌·스타 나이트-5-01.png",
+      "skillIcon": "/assets/img/character-weapon/렌·댄싱 스타-5-01.png",
       "skillName": "재즈 블레이드",
       "skillName_en": "",
       "skillName_jp": "",

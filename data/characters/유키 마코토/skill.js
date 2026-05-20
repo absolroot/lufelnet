@@ -100,7 +100,7 @@ window.enCharacterSkillsData["유키 마코토"] = {
     "name": "Theurgy - Cadenza",
     "element": "버프",
     "type": "버프",
-    "description": "Use condition: When Makoto has 100 Theurgy Energy. \nIncrease party's Attack by 25.0%/26.9%/26.5%/28.4% and damage by 20.0%/21.5%/21.2%/22.7% for 2 turns. Grant Makoto 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
+    "description": "Use condition: When Makoto has 100 Theurgy Energy. \nIncrease party's Attack by 24.4%/26.9%/25.9%/28.4% and damage by 19.5%/21.5%/20.7%/22.7% for 2 turns. Grant Makoto 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
   },
   "skill_support": {
     "name": "Assist Skill",
@@ -156,7 +156,7 @@ window.jpCharacterSkillsData["유키 마코토"] = {
     "name": "テウルギア - カデンツァ",
     "element": "버프",
     "type": "버프",
-    "description": "発動条件：テウルギアエネルギー100\n味方全体の攻撃力が25.0%/26.9%/26.5%/28.4%上昇し、与ダメージが20.0%/21.5%/21.2%/22.7%上昇、2ターン持続。『特殊月相』を1スタック獲得し2ターン持続（最大4スタック）。"
+    "description": "発動条件：テウルギアエネルギー100\n味方全体の攻撃力が24.4%/26.9%/25.9%/28.4%上昇し、与ダメージが19.5%/21.5%/20.7%/22.7%上昇、2ターン持続。『特殊月相』を1スタック獲得し2ターン持続（最大4スタック）。"
   },
   "skill_support": {
     "name": "サポートスキル",

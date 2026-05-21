@@ -833,7 +833,7 @@ const criticalSelfData = {
       "target_jp": "自分",
       "skillIcon": "/assets/img/revelation/희망.webp",
       "skillName": "희망-고집",
-      "skillName_en": "Hope-Fixation",
+      "skillName_en": "Hope-Ruin",
       "skillName_jp": "希望-固執",
       "options": [],
       "value": 6,

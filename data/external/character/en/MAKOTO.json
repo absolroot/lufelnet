@@ -6,11 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When attacking a foe with a skill, gain 1 Tenacity stack. If Crash Out is not active, at the end of the action, gain more Tenacity stacks based on the number of elemental ailments inflicted on foes (including foes defeated during the turn).\nIf Makoto has 5 Tenacity stacks at the start of her turn, she can activate Crash Out, increasing Attack by 40% and Defense by 20%, and evolving Nuclear Fury to Thermonuclear Fury for 2 turns. When Crash Out ends, lose all Tenacity stacks.",
-        "name": "Enraged Usurper",
+        "desc": "Makoto has 2 Theurgy: Cadenza and Ardhanari. At the start of battle, if Makoto's Theurgy Gauge is below 35, fill up to 35.\nWhen receiving buff, healing, or shield skill effects from an ally (excluding effects that also target foes), gain 1 Moon Phase stack (up to 1 stack per turn). This effect lasts for 2 turns, and stacks up to 4 times.\nWith Moon Phase, increase pierce rate by 4%/8%/12% (effect changes at Lv. 1/50/70, respectively).",
+        "name": "Pathfinder",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120140,
+        "sn": 139140,
         "tags": [
           null
         ],
@@ -22,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, gain 5 Tenacity stacks, allowing Makoto to activate Crash Out.\nWhen Crash Out is active, increase Attack by 50% more and damage by 35%.",
-        "name": "Execution of Justice",
+        "desc": "Additional effects are added to the following skills.\nMelody of Flames: This skill deals 1 more hit of Fire damage.\nNocturne of Battle: Increase party's pierce rate by 10% for 2 turns.\nScarlet Hades: When this skill is activated with 4 Moon Phase stacks, increase Makoto's critical rate by 16%.",
+        "name": "Result of Coincidence",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120141,
+        "sn": 139141,
         "tags": [
           null
         ],
@@ -38,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When Crash Out is active, inflict random elemental ailments on foes, and for each different type of elemental ailment, increase Makoto's pierce rate by 6%.",
-        "name": "Hot and Cold",
+        "desc": "When Makoto has 4 Moon Phase stacks on his action, automatically activate Nocturne of Battle 1 time.\nCooldown time: 1 turn.",
+        "name": "Immovable Soul",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120142,
+        "sn": 139142,
         "tags": [
           null
         ],
@@ -54,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of Sanctioned Drift and Nuclear Fury by 3.",
-        "name": "Full Throttle",
+        "desc": "Increase the skill levels of Scarlet Hades and Combat Tactics by 3.",
+        "name": "Under the Full Moon",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120143,
+        "sn": 139143,
         "tags": [
           null
         ],
@@ -70,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Highlight Enhanced: Increase maximum Frenzied Voltage stacks to 4. Inflict up to 4 elemental ailments on foes, and increase skill damage up to 4 times.",
-        "name": "Fist of the Phantom Star",
+        "desc": "Additional effects are added to the following Theurgy.\nCadenza: Increase party's damage by 10% more for 2 turns.\nArdhanari: This skill deals 2 more hits of Fire damage.",
+        "name": "Thorny Path",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120144,
+        "sn": 139144,
         "tags": [
           null
         ],
@@ -86,11 +86,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase the skill levels of President's Prowess and Thief Tactics by 3.",
-        "name": "Feel My Wrath",
+        "desc": "Increase the skill levels of Melody of Flames and Nocturne of Battle by 3.",
+        "name": "Soul Flames",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120145,
+        "sn": 139145,
         "tags": [
           null
         ],
@@ -102,11 +102,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "When Crash Out is active, Makoto can gain an extra action. (These extra actions do not affect the duration of effects with turn limits.)\nAlso decrease the SP cost of Thermonuclear Fury by 33%.",
-        "name": "Fist of Justice!",
+        "desc": "When Makoto activates a Theurgy, the effects of the other Theurgy are activated at the same time.\nIncrease skill damage dealt by spending Full Moon stacks with Scarlet Hades by 35%.\nThe first time that Makoto takes fatal damage, he enters a special near-death state and survives with 1 HP, and will be KO'd at the end of the turn. If Makoto's HP is restored above 25%, this state is removed.",
+        "name": "Burn My Dread",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120146,
+        "sn": 139146,
         "tags": [
           null
         ],
@@ -114,77 +114,79 @@
         "target_count": 1
       }
     ],
-    "assist_skill": [],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase 1 ally's Attack by 20% for 1 turn.",
+        "name": "Assist",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 139171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
     "final_innate": [],
-    "highlight_skill": {
-      "ascend": "0/5/0/5",
-      "auto_select": "Weak",
-      "cooldown": 4,
-      "cost": "",
-      "desc": "Deal Nuclear damage to 1 foe equal to 468.5%/516.5%/497.3%/545.3% of Attack, gain 2 Frenzied Voltage stacks, and activate the following effects.\nSpend 1 Frenzied Voltage stack to inflict 1 random elemental ailment on foes, continuing until foes have 2 elemental ailments. Spend all remaining Frenzied Voltage stacks to increase the damage of this skill by 20% per stack.",
-      "name": "Highlight",
-      "nature": "Nuclear",
-      "skill_lv": "10/10/13/13",
-      "sn": 120152,
-      "tags": [
-        null
-      ],
-      "target": "Alive Enemy",
-      "target_count": 1
-    },
+    "highlight_skill": null,
     "innate": {
-      "Attack": "0.2",
+      "Damage Mult.": "0.16",
       "Pierce Rate": "0.075"
     },
     "innate_awake_skill": [],
     "innate_skill_type": [
-      "S1/HL",
-      "S2/S3"
+      "S1/S2",
+      "S3/HL/HL"
     ],
-    "name": "Makoto Niijima",
+    "name": "Makoto Yuki",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 20",
-        "desc": "Deal Nuclear damage to foes equal to 83.0%/91.5%/88.1%/96.6% of Attack (5 hits). From the second hit, prioritize new targets and change damage to 20% for hits on the same target. Also inflict a random elemental ailment on the target of each hit, prioritizing ones the target does not have.\nIf the target has an elemental ailment, activate a Technical and deal bonus Nuclear damage equal to 29.3%/29.3%/31.1%/31.1% of Attack.\nInflict Radiation on the main target for 2 turns.",
-        "name": "Sanctioned Drift",
-        "nature": "Nuclear",
+        "desc": "Deal Fire damage to 1 foe equal to 59.8%/66.0%/63.5%/69.6% of Attack (3 hits). Also, gain 2 Moon Phase stacks. This effect lasts for 2 turns, and stacks up to 4 times.\nAlso, when spending Moon Phase to use Scarlet Hades, increase skill multiplier by 32.5%/35.8%/34.5%/37.8% for 2 turns.",
+        "name": "Melody of Flames",
+        "nature": "Fire",
         "skill_lv": "10/10/13/13",
-        "sn": 120111,
+        "sn": 139111,
         "tags": [
-          "Multi-Target"
+          "Single-Target"
         ],
         "target": "Alive Enemy",
-        "target_count": "All"
-      },
-      {
-        "ascend": "0/5/0/5",
-        "auto_select": "AICondition (Based on HPcur/HP)",
-        "cooldown": 0,
-        "cost": "SP 22",
-        "desc": "Restore 1 ally's HP equal to 52.7%/52.7%/55.9%/55.9% of Makoto's Attack + 1500/1824/1844/2168. Increase Makoto's Attack by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nAlso gain 3 Tenacity stacks, and gain more Tenacity stacks for each different elemental ailment on foes.",
-        "name": "President's Prowess",
-        "nature": null,
-        "skill_lv": "10/10/13/13",
-        "sn": 120112,
-        "tags": [
-          "Single-Heal"
-        ],
-        "target": "Alive Ally",
         "target_count": 1
       },
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "SP 21",
-        "desc": "Deal Nuclear damage to 1 foe equal to 210.6%/232.2%/223.6%/245.1% of Attack, and gain 2 Tenacity stacks.\nIf the main target has an elemental ailment, activate a Technical and deal bonus Nuclear damage equal to 39.0%/43.0%/41.4%/45.4% of Attack.\nWhen Crash Out is active, evolve this skill to Thermonuclear Fury.\nThermonuclear Fury: Deal Nuclear damage to 1 foe equal to 243.6%/268.6%/258.6%/283.5% of Attack. For each different elemental ailment the target has, activate a Technical and deal bonus Nuclear damage equal to 34.2%/37.7%/36.3%/39.8% of Attack (up to 3 hits).",
-        "name": "Nuclear Fury",
-        "nature": "Nuclear",
+        "cost": "SP 20",
+        "desc": "Increase party's critical damage by 23.4%/25.8%/24.9%/27.3%, and increase Makoto's Attack by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nAlso, gain 2 Moon Phase stacks. This effect lasts for 2 turns, and stacks up to 4 times.",
+        "name": "Nocturne of Battle",
+        "nature": "Heal",
         "skill_lv": "10/10/13/13",
-        "sn": 120113,
+        "sn": 139112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "Can be activated with 2 or more Moon Phase stacks. Spend all Moon Phase stacks, and deal Fire damage to 1 foe equal to 91.5%/100.8%/97.1%/106.5% of Makoto's Attack (1 hit per stack spent). Afterwards, spend all Full Moon stacks, and deal Fire damage to 1 foe equal to 150.7%/166.2%/160.0%/175.5% of Makoto's Attack (1 hit per stack spent).\nWhen this skill is activated with 4 Moon Phase stacks, increase Makoto's pierce rate by 11.7%/12.9%/12.4%/13.6%, and increase damage by 24.4%/26.9%/25.9%/28.4%.",
+        "name": "Scarlet Hades",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 139113,
         "tags": [
           "Single-Target"
         ],
@@ -198,27 +200,27 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "During battle, for each different type of elemental ailment on foes, increase Attack by 15.0%.",
-        "name": "Chief Strategist",
+        "desc": "After activating a Theurgy, increase party's Attack by 40.0% for 2 turns. Increase Attack of SEES members by 30.0% more.",
+        "name": "On-Site Leader",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120131,
+        "sn": 139131,
         "tags": [
           "Talent"
         ],
-        "target": "Myself",
-        "target_count": 1
+        "target": "Alive Ally",
+        "target_count": "All"
       },
       {
         "ascend": "0",
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "At the start of battle, increase damage reduction rate by 6.0%, and whenever Crash Out is active, increase damage reduction rate by 6.0% more (up to 18.0%).",
-        "name": "Unshakable Will",
+        "desc": "When receiving buff, healing, or shield skill effects from an ally (excluding effects that also target foes), increase critical damage by 7.2% for 2 turns. Stacks up to 3 times.",
+        "name": "Entrusted Hope",
         "nature": null,
         "skill_lv": "3",
-        "sn": 120132,
+        "sn": 139132,
         "tags": [
           "Talent"
         ],
@@ -227,10 +229,10 @@
       }
     ],
     "rating": {
-      "Attack": 2920.0,
-      "Crit Mult.": 1.77,
+      "Attack": 2970.0,
+      "Crit Mult.": 2.15,
       "Crit Rate": 0.37,
-      "Damage Mult.": 0.67
+      "Damage Mult.": 0.18
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -238,7 +240,7 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1159.98 / 1180.78 / 1201.58 / 1222.38 / 1243.18 / 1264.78 / 1285.58",
+      "Attack": "1190.0 / 1211.6 / 1233.2 / 1254.0 / 1275.6 / 1297.2 / 1318.8",
       "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -249,7 +251,7 @@
       "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "680.01 / 692.01 / 704.81 / 716.81 / 728.81 / 741.61 / 753.61",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -258,7 +260,7 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3119.98 / 3175.98 / 3231.98 / 3288.78 / 3344.78 / 3400.78 / 3456.78",
+      "HP": "3270.01 / 3329.21 / 3387.61 / 3446.81 / 3505.21 / 3564.41 / 3622.81",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -271,12 +273,77 @@
       "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
       "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Speed": "98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0 / 98.0",
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
     "stat_100": null,
-    "theurgia_skill": []
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy Gauge is at 100. Deal Fire damage to 1 foe equal to 147.5%/162.6%/156.5%/171.6% of Makoto's Attack (4 hits).\nAlso, gain 1 Full Moon stack. This effect lasts 2 turns, and stacks up to 4 times.",
+        "name": "Ardhanari",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 139152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy Gauge is at 100. Increase party's Attack by 24.4%/26.9%/25.9%/28.4%, and increase damage by 19.5%/21.5%/20.7%/22.7% for 2 turns. Also, gain 1 Full Moon stack. This effect lasts 2 turns, and stacks up to 4 times.",
+        "name": "Cadenza",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 139153,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy Gauge is at 100. Deal Fire damage to 1 foe equal to 147.5%/162.6%/156.5%/171.6% of Makoto's Attack (4 hits).\nAlso, gain 1 Full Moon stack. This effect lasts 2 turns, and stacks up to 4 times.",
+        "name": "Ardhanari",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 139154,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy Gauge is at 100. Increase party's Attack by 24.4%/26.9%/25.9%/28.4%, and increase damage by 19.5%/21.5%/20.7%/22.7% for 2 turns. Also, gain 1 Full Moon stack. This effect lasts 2 turns, and stacks up to 4 times.",
+        "name": "Cadenza",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 139155,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ]
   },
   "msg": "OK",
   "status": 0

@@ -1303,7 +1303,7 @@ class PullSimulator {
             });
 
             // Update lastDate after adding the release
-            const version = parseFloat(release.version);
+            const version = parseFloat(release.incomeVersion || release.version);
             const interval = version >= 4.0 && isTwoWeeksScenario ? scheduleData.intervalRules.beforeV4 : release.days;
             if (releaseDate) {
                 const parts = releaseDate.split('-');

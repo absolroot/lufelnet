@@ -3,7 +3,7 @@ window.characterSetting["쇼키"] = {
     "role": "범용 서포터",
     "video": ["a22KxjFDxbo"],
     "video_en": [""],
-    "video_jp": [""],
+    "video_jp": ["wRcKHrQgyyk"],
     "main_revelation": ["신뢰", "창조"],
     "sub_revelation": ["풍요", "화해"],
     "sub_revel2": ["공격력, 생명"],

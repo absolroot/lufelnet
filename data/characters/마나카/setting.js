@@ -3,7 +3,7 @@ window.characterSetting["마나카"] = {
     "role": "턴 회귀 해명",
     "video": ["vaCx1adEqQc", "TzQUocwd2Fo"],
     "video_en": [""],
-    "video_jp": [""],
+    "video_jp": ["kAB57z7BBAo","n4vYACV5fUw"],
     "main_revelation": ["희망", "진정성"],
     "sub_revelation": ["직책", "직책"],
     "sub_revel2": ["공격력"],

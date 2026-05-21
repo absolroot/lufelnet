@@ -1,9 +1,9 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["유키 마코토"] = {
     "role": "아군 버프 화염 단일 딜러",
-    "video": ["etterGepdkQ", "NNXAdUF8lxY", "r9_USx-h-_I", "dBUktg0nRuw"],
-    "video_en": ["dBUktg0nRuw"],
-    "video_jp": ["dBUktg0nRuw"],
+    "video": ["etterGepdkQ", "NNXAdUF8lxY", "r9_USx-h-_I"],
+    "video_en": ["76-BOcMklO0","nLIniuzcdG4"],
+    "video_jp": ["76-BOcMklO0","BkAXmnjloX4","DrlZCEJgJvk"],
     "main_revelation": ["희망"],
     "sub_revelation": ["고집"],
     "sub_revel2": ["공격력", "대미지 보너스"],

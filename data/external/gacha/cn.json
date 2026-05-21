@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-05-21 07:00:00",
-        "fiveStar": [
-          {
-            "name": "埃癸斯",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "多祢村理子",
-            "type": "thief"
-          },
-          {
-            "name": "藤川雪实",
-            "type": "thief"
-          },
-          {
-            "name": "池波星辉",
-            "type": "thief"
-          }
-        ],
-        "name": "反阴影特别镇压武器",
-        "startTime": "2026-04-23 07:00:00",
-        "type": "角色活动契约·精准"
-      },
-      {
-        "endTime": "2026-05-21 07:00:00",
-        "fiveStar": [
-          {
-            "name": "埃癸斯",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "多祢村理子",
-            "type": "thief"
-          },
-          {
-            "name": "藤川雪实",
-            "type": "thief"
-          },
-          {
-            "name": "池波星辉",
-            "type": "thief"
-          }
-        ],
-        "name": "反阴影特别镇压武器",
-        "startTime": "2026-04-23 07:00:00",
-        "type": "角色活动契约·随机"
-      },
-      {
         "endTime": "2026-06-04 07:00:00",
         "fiveStar": [
           {
@@ -211,76 +159,6 @@
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-05-21 07:00:00",
-        "fiveStar": [
-          {
-            "name": "万魔枪",
-            "type": "weapon",
-            "user": "埃癸斯"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "霁月银勾",
-            "type": "weapon",
-            "user": "多祢村理子"
-          },
-          {
-            "name": "万宝重击",
-            "type": "weapon",
-            "user": "藤川雪实"
-          },
-          {
-            "name": "圣誓加冕",
-            "type": "weapon",
-            "user": "池波星辉"
-          },
-          {
-            "name": "自由基步枪",
-            "type": "weapon",
-            "user": "埃癸斯"
-          }
-        ],
-        "name": "无声硝烟·精准",
-        "startTime": "2026-04-23 07:00:00",
-        "type": "武器活动补给·精准"
-      },
-      {
-        "endTime": "2026-05-21 07:00:00",
-        "fiveStar": [
-          {
-            "name": "万魔枪",
-            "type": "weapon",
-            "user": "埃癸斯"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "霁月银勾",
-            "type": "weapon",
-            "user": "多祢村理子"
-          },
-          {
-            "name": "万宝重击",
-            "type": "weapon",
-            "user": "藤川雪实"
-          },
-          {
-            "name": "圣誓加冕",
-            "type": "weapon",
-            "user": "池波星辉"
-          },
-          {
-            "name": "自由基步枪",
-            "type": "weapon",
-            "user": "埃癸斯"
-          }
-        ],
-        "name": "无声硝烟·随机",
-        "startTime": "2026-04-23 07:00:00",
-        "type": "武器活动补给·随机"
-      },
       {
         "endTime": "2026-06-04 07:00:00",
         "fiveStar": [

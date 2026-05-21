@@ -2,26 +2,26 @@
   "data": {
     "fiveStar": [
       {
-        "name": "Nuclear Finisher",
+        "name": "Deus Xiphos",
         "quality": 5,
-        "skill": "Increase Nuclear damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When attacking a foe with an elemental ailment, increase Attack by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%. When an ally inflicts an elemental ailment, gain 1 Heat stack. When Crash Out is active, spend all Heat stacks to increase next Nuclear skill damage by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for each Heat stack, up to 60.0%/78.0%/78.0%/96.0%/96.0%/114.0%/114.0%.",
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nFor every 3 Moon Phase or Full Moon stacks gained, increase critical rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns.\nWhen Makoto deals 4 or more hits of damage with 1 skill or Theurgy, increase that skill or Theurgy's damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%.",
         "stat": {
-          "attack": 766.41,
-          "defense": 449.24,
-          "hp": 2061.29
+          "attack": 786.22,
+          "defense": 391.98,
+          "hp": 2160.41
         },
         "user": "Makoto"
       }
     ],
     "fourStar": [
       {
-        "name": "Omega Knuckle",
+        "name": "Translucent Blade",
         "quality": 4,
-        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When dealing Nuclear damage, increase damage by 4.4%/5.6%/5.6%/6.8%/6.8%/8.0%/8.0% for each Tenacity stack gained.",
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Makoto grants a buff to an ally, increase party's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%, and also increase Makoto's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% more for 2 turns.",
         "stat": {
-          "attack": 613.28,
-          "defense": 359.07,
-          "hp": 1649.32
+          "attack": 628.77,
+          "defense": 313.75,
+          "hp": 1728.63
         },
         "user": "Makoto"
       }

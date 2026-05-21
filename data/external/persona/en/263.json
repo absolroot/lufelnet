@@ -4,78 +4,76 @@
     "Nullify": [],
     "Reflect": [],
     "Resistant": [
-      "Ice",
-      "Electric",
-      "Psychokinesis",
+      "Fire",
       "Bless",
       "Curse"
     ],
     "Weak": [
-      "Nuclear"
+      "Electric"
     ]
   },
   "fixed_skill": {
     "cost": "SP 24",
-    "desc": "Deal Psychokinesis damage to all foes equal to 100.0%/105.0%/110.0% of Attack. Spend all Wisdom stacks to activate Karmic Alteration effects.",
+    "desc": "Deal Fire damage to 1 foe equal to 48.0%/50.4%/52.8% of Attack (4 hits), and inflict Ascetic Ordeals for 3 turns.\nAscetic Ordeals: Each time 1 hit of Fire damage is taken, increase critical damage taken by 3%. Stacks up to 8 times.",
     "level": "6/7/8",
-    "name": "Dance of Destruction"
+    "name": "Exorcising Flames"
   },
   "innate_skill": [
     {
-      "cost": "",
-      "desc": "Increase Psychokinesis damage by 8.7%.",
+      "cost": "SP 21",
+      "desc": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
       "learn_level": "10",
       "level": "6/7/8",
-      "name": "Psy Boost III"
+      "name": "Maragidyne"
     },
     {
-      "cost": "SP 21",
-      "desc": "Deal Psy damage to 1 foe equal to 130.5/136.4/142.3% of Attack. Deal a Technical and increase damage by 45% for foes with a spiritual ailment.",
+      "cost": "",
+      "desc": "Increase Gun damage by 8.7%.",
       "learn_level": "20",
       "level": "6/7/8",
-      "name": "Psiodyne"
+      "name": "Gun Boost III"
     },
     {
-      "cost": "SP 22",
-      "desc": "Increase party's Attack by 10.9%/11.4%/12.0%. For every 500 of the user's Attack, increase party's Attack by 0.9%/0.9%/1.0% more, up to 7.2%/7.6%/7.9%. Lasts for 3 turns.",
+      "cost": "",
+      "desc": "Increase Fire damage by 10.8%.",
       "learn_level": "30",
       "level": "6/7/8",
-      "name": "Matarukaja"
+      "name": "Fire Boost IV"
     },
     {
-      "cost": "SP 22",
-      "desc": "Deal Psy damage to all foes equal to 77.1/80.6/84.1% of Attack. Deal a Technical and increase damage by 50% for foes with a spiritual ailment.",
+      "cost": "",
+      "desc": "Increase damage by 8.7%.",
       "learn_level": "40",
       "level": "6/7/8",
-      "name": "Psycho Blast"
+      "name": "Battle Acumen III"
     }
   ],
   "max_level": 80,
   "max_level_after_awake": 99,
   "name": "Zaou-Gongen",
-  "nature": "Psychokinesis",
+  "nature": "Fire",
   "passive_skill": [
     {
-      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 22%.\n2: Decrease foe's Defense by 30% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
-      "name": "Karmic Alteration"
+      "desc": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 2 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 8%, and damage by 7%.",
+      "name": "Threefold Blessings"
     },
     {
-      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 30% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
-      "name": "Karmic Alteration I"
+      "desc": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 3 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 8%, and damage by 7%.",
+      "name": "Threefold Blessings I"
     },
     {
-      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 12% for 1 turn.",
-      "name": "Karmic Alteration II"
+      "desc": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 3 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 12%, and damage by 7%.",
+      "name": "Threefold Blessings II"
     },
     {
-      "desc": "Increase Attack by 29.1%. At the start of each turn, gain Wisdom. Activate even in reserve. Stacks up to 3 times. When a unique skill spends Wisdom, apply the following effects based on the number of stacks spent:\n1: Increase this skill's Psychokinesis damage by 33%.\n2: Decrease foe's Defense by 45% for 1 turn.\n3. Increase target's Psychokinesis critical taken rate by 18% for 1 turn.",
-      "name": "Karmic Alteration III"
+      "desc": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 3 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 12%, and damage by 10%.",
+      "name": "Threefold Blessings III"
     }
   ],
   "rank": 8,
   "showtime_skill": {
     "cost": "",
-    "desc": "Deal Psychokinesis damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "desc": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
     "level": "6/7/8",
     "name": "Highlight"
   }

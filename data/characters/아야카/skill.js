@@ -73,7 +73,7 @@ window.enCharacterSkillsData["아야카"] = {
     "type": "버프",
     "sp": 25,
     "cool": 1,
-    "description": "Immediately activate the selected ally's Highlight and increase its damage by 78.1%/86.1%/82.9%/90.9%.\nThis skill does not affect the target's Highlight cooldown time, even if it activates a Highlight."
+    "description": "Immediately activate the selected ally's Highlight and increase its damage by 78.1%/86.1%/82.9%/90.9%. This skill does not affect the target's Highlight cooldown time, even if it activates a Highlight.\nIf the selected character has a Theurgy, the next time they activate a Theurgy, increase final damage amplification by 19.5%/19.5%/20.7%/20.7%."
   },
   "skill_highlight": {
     "element": "버프광역",
@@ -84,13 +84,13 @@ window.enCharacterSkillsData["아야카"] = {
   "passive1": {
     "name": "Backing Track",
     "element": "패시브",
-    "description": "When an ally uses a Highlight, increase target's Attack by 24.0% for 1 turn.\nWhen the target has Costar, increase effect by 1.5 times.",
+    "description": "When an ally uses a Highlight or Theurgy, increase target's Attack by 24.0% for 1 turn.\nWhen the target has Costar, increase effect by 1.5 times.",
     "cool": 0
   },
   "passive2": {
     "name": "Chorus Effect",
     "element": "패시브",
-    "description": "After an ally uses a Highlight, the ally with the lowest HP recovers HP equal to 15.0% of Ayaka's Attack + 1350.",
+    "description": "After an ally uses a Highlight or Theurgy, the ally with the lowest HP recovers HP equal to 15.0% of Ayaka's Attack + 1350.",
     "cool": 0
   }
 };
@@ -119,7 +119,7 @@ window.jpCharacterSkillsData["아야카"] = {
     "type": "버프",
     "sp": 25,
     "cool": 1,
-    "description": "選択した味方のハイライトを即座に発動させ、その与ダメージを78.1%/86.1%/82.9%/90.9%上昇させる。\nこのスキルによってハイライトを発動しても、対象のハイライト発動クールタイムには影響しない。"
+    "description": "選択した味方のハイライトを即座に発動させ、その与ダメージを78.1%/86.1%/82.9%/90.9%上昇させる。このスキルによってハイライトを発動しても、対象のハイライト発動クールタイムには影響しない。\n選択した味方がテウルギアを持つ場合、次にテウルギアを発動する時、19.5%/19.5%/20.7%/20.7%の最終ダメージ増幅を獲得する。"
   },
   "skill_highlight": {
     "element": "버프광역",
@@ -130,13 +130,13 @@ window.jpCharacterSkillsData["아야카"] = {
   "passive1": {
     "name": "バッキング",
     "element": "패시브",
-    "description": "味方がハイライトを使用する時、１ターンの間、対象の攻撃力を24.0%上昇させる。\nこの効果は、対象が『共演』状態の時、１.５倍になる。",
+    "description": "味方がハイライト／テウルギアを使用する時、１ターンの間、対象の攻撃力を24.0%上昇させる。\nこの効果は、対象が『共演』状態の時、１.５倍になる。",
     "cool": 0
   },
   "passive2": {
     "name": "コーラスエフェクト",
     "element": "패시브",
-    "description": "味方がハイライトを使用した時、残りＨＰ割合が最も低い味方のＨＰを綾香の攻撃力15.0%＋1350分回復する。",
+    "description": "味方がハイライト／テウルギアを使用した時、残りＨＰ割合が最も低い味方のＨＰを綾香の攻撃力15.0%＋1350分回復する。",
     "cool": 0
   }
 };

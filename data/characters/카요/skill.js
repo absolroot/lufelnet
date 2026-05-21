@@ -52,21 +52,21 @@ window.enCharacterSkillsData["카요"] = {
     "name": "Club Okyann",
     "element": "버프광역",
     "type": "버프",
-    "cool": 4,
+    "cool": 0,
     "description": "Increase party's Attack by 12% of Tomiyama's Attack for 1 turn (up to 4500/4950/5400/5850 of Attack), increase ailment accuracy by 35.0%/38.5%/37.8%/41.3%, and gain 1 Beat stack.\nCooldown Time: 4 ally actions."
   },
   "skill2": {
     "name": "Intermission",
     "element": "버프광역",
     "type": "버프",
-    "cool": 8,
+    "cool": 0,
     "description": "Restore party's SP by 22/27/26/31, and grant 3 Beat stacks.\nCooldown Time: 8 ally actions."
   },
   "skill3": {
     "name": "Retro Dance Number",
     "element": "버프광역",
     "type": "버프",
-    "cool": 8,
+    "cool": 0,
     "description": "Increase party's damage by 10.0%/11.0%/10.8%/11.8% for 3 turns. Increase damage by 1% for every 225 of Tomiyama's Attack (up to 4500/4950/5400/5850 of Attack).\nAlso increase damage dealt to foes with an elemental ailment by 1.5 times and gain 2 Beat stacks.\nCooldown Time: 8 ally actions."
   },
   "skill_highlight": {
@@ -95,21 +95,21 @@ window.jpCharacterSkillsData["카요"] = {
     "name": "クラブ・オキャン",
     "element": "버프광역",
     "type": "버프광역",
-    "cool": 4,
+    "cool": 0,
     "description": "１ターンの間、味方全体の攻撃力を富山の攻撃力１２%分（最大で攻撃力4500/4950/5400/5850分まで）、状態異常命中を35.0%/38.5%/37.8%/41.3%上昇させ、『ビートＢＯＸ』を１つ獲得する。\nクールタイム：味方の行動４回"
   },
   "skill2": {
     "name": "インターミッション",
     "element": "버프광역",
     "type": "버프",
-    "cool": 8,
+    "cool": 0,
     "description": "味方全体のＳＰを22/27/26/31回復し、『ビートＢＯＸ』を３つ獲得する。\nクールタイム：味方の行動８回"
   },
   "skill3": {
     "name": "レトロダンスナンバー",
     "element": "버프광역",
     "type": "버프광역",
-    "cool": 8,
+    "cool": 0,
     "description": "３ターンの間、味方全体の与ダメージを10.0%/11.0%/10.8%/11.8%上昇させる。さらに、与ダメージ上昇効果は、富山の攻撃力２２５ごとに１%ずつ（最大で攻撃力4500/4950/5400/5850分まで）得られる。\nまた、属性異常の敵に攻撃する時、この与ダメージ上昇効果が１．５倍になり、『ビートＢＯＸ』を２つ獲得する。\nクールタイム：味方の行動８回"
   },
   "skill_highlight": {

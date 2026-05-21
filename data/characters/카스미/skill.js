@@ -91,7 +91,7 @@ window.enCharacterSkillsData["카스미"] = {
   "passive2": {
     "name": "Steps of Faith",
     "element": "패시브",
-    "description": "When an ally other than Kasumi uses a Highlight, increase Kasumi's Attack by 45.0% for 2 turns. Stacks up to 2 times.",
+    "description": "When an ally except Kasumi uses a Highlight or Theurgy, increase Kasumi's Attack by 45.0% for 2 turns. Stacks up to 2 times.",
     "cool": 0
   }
 };
@@ -138,7 +138,7 @@ window.jpCharacterSkillsData["카스미"] = {
   "passive2": {
     "name": "信念の足跡",
     "element": "패시브",
-    "description": "自身以外の味方がハイライトを発動した時、２ターンの間、自身の攻撃力が45.0%上昇する。最大２つまで累積できる。",
+    "description": "自身以外の味方がハイライト／テウルギアを発動した時、２ターンの間、自身の攻撃力が45.0%上昇する。最大２つまで累積できる。",
     "cool": 0
   }
 };

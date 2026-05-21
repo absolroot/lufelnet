@@ -60,7 +60,7 @@ window.enCharacterSkillsData["후타바"] = {
     "element": "버프",
     "type": "버프",
     "cool": 0,
-    "description": "For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, or Highlight to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."
+    "description": "For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, Highlight, or Theurgy to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."
   },
   "skill3": {
     "name": "Data Link Established!",
@@ -103,7 +103,7 @@ window.jpCharacterSkillsData["후타바"] = {
     "element": "버프",
     "type": "디버프",
     "cool": 0,
-    "description": "３ターンの間、敵単体の被ダメージを６%上昇させ、さらに双葉の攻撃力１００ごとに追加で被ダメージを０.５７%上昇させる（最大で攻撃力4600/5060/5980/6440分まで）。\nこの効果中の敵に、味方がスキル／意識奏功／ハイライトでダメージを与えた時、『解析進捗』を２０%獲得する。\nまた双葉の『解析進捗』が１００%の場合、２ターンの間、味方全体に『データ掌握』を付与する。"
+    "description": "３ターンの間、敵単体の被ダメージを６%上昇させ、さらに双葉の攻撃力１００ごとに追加で被ダメージを０.５７%上昇させる（最大で攻撃力4600/5060/5980/6440分まで）。\nこの効果中の敵に、味方がスキル／意識奏功／ハイライト／テウルギアでダメージを与えた時、『解析進捗』を２０%獲得する。\nまた双葉の『解析進捗』が１００%の場合、２ターンの間、味方全体に『データ掌握』を付与する。"
   },
   "skill3": {
     "name": "データリンク開始！",

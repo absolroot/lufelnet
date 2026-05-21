@@ -6,7 +6,7 @@ window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 window.ritualData["아케치"] = {
   "name": "아케치 고로",
   "r0": "안개 속을 걸어서",
-  "r0_detail": "전투 시작 시 공격력이 가장 높은 동료가 『탐정 동료』가 되며(지배 또는 반항 괴도 우선), 턴 시작 시 『탐정 동료』를 다시 선택할 수 있다(『탐정 동료』는 동시에 1명만 존재 가능, 다시 선택 후 쿨타임 1턴). 자신이 『탐정 동료』 25%의 공격력을 획득한다(상한 500/750/1,000, 1/50/70레벨 시 레벨업). 『탐정 동료』가 광역 페르소나 스킬/HIGHLIGHT/테우르기아/추가 효과를 발동하여 대미지를 줄 때 적에게 준 평균 대미지를 기록한다(단일 스킬인 경우 메인 목표에게 준 대미지의 40%를 기록). 아케치 고로가 턴 시작 시 기록한 총 대미지에 따라 『정확한 화살』을 1중첩 획득하며, 기록한 대미지가 리셋된다. 『정확한 화살』은 2턴 동안 지속된다.",
+  "r0_detail": "전투 시작 시 공격력이 가장 높은 동료가 『탐정 동료』가 되며(지배 또는 반항 괴도 우선 선택 시, 필드에 지배 또는 반항 괴도가 없으면 자신을 선택), 턴 시작 시 『탐정 동료』를 다시 선택할 수 있다(『탐정 동료』는 동시에 1명만 존재 가능, 다시 선택 후 쿨타임 1턴 적용). 자신이 『탐정 동료』 25%의 공격력을 획득한다(상한 500/750/1,000, 1/50/70레벨 시 레벨업). 『탐정 동료』를 자신 이외의 동료로 선택한 경우, 『탐정 동료』는 광역 페르소나 스킬/HIGHLIGHT/테우르기아/추가 효과를 발동하여 대미지를 줄 시 적에게 준 평균 대미지를 기록한다(단일 스킬일 시 메인 목표에게 준 대미지의 40%를 기록). 아케치 고로는 턴 시작 시, 기록한 총대미지에 따라 『명확 화살』을 1중첩 획득하고, 기록된 모든 대미지가 제거되며, 『명확 화살』이 2턴 동안 지속된다. 『탐정 동료』를 자신으로 선택했을 시, 『황금 화살비·파멸』의 스킬 효과가 변화하며, 『명확 화살』은 『혼돈 화살』의 스킬 배율에 따라 만능 대미지를 준다.",
   "r1": "혐의 조사",
   "r1_detail": "전투 시작 시 『정확』 상태를 획득하며, 『정확』 상태와 『혼돈』 상태의 지속 시간이 4턴까지 연장된다. 『정확』 상태와 『혼돈』 상태가 공존하는 경우 자신의 크리티컬 확률이 16% 증가하고, 자신과 『탐정 동료』의 대미지가 25% 증가한다.",
   "r2": "실마리",
@@ -14,8 +14,8 @@ window.ritualData["아케치"] = {
   "r3": "그림자 추적",
   "r3_detail": "『황금 화살비·파멸』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r4": "진실과 거짓",
-  "r4_detail": "HIGHLIGHT 효과 증가: 4턴 동안 자신의 『혼돈의 화살』 대미지가 추가로 10% 증가한다.",
-  "r5": "타지의 동행자",
+  "r4_detail": "HIGHLIGHT 효과 증가: 4턴 동안 자신의 『혼돈 화살』 대미지가 추가로 30% 증가한다.",
+  "r5": "타지의 동화자",
   "r5_detail": "『정의의 약속』, 『기울어진 사냥터』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r6": "일단락",
   "r6_detail": "『황금 화살비·파멸』을 시전할 때 『정확한 화살』의 기록 대미지가 50% 증가한다. 아케치 고로가 모든 동료를 『탐정 동료』로 여긴다. 전투 중 아케치 고로가 추가로 크리티컬 확률, 크리티컬 효과 증가를 획득하고, 증가값은 모든 『탐정 동료』의 크리티컬 확률, 크리티컬 효과(100%를 초과하는 부분) 최곳값의 40%다(상한 20%, 40%)."
@@ -24,7 +24,7 @@ window.ritualData["아케치"] = {
 window.enCharacterRitualData["아케치"] = {
   "name": "Goro Akechi",
   "r0": "High School Detective",
-  "r0_detail": "At the start of battle, grant Mastermind to the ally with the highest Attack (prioritizing Sweepers or Assassins, select Akechi if no target found). At the start of each turn, can manually reselect a target to grant Mastermind. Only 1 ally can have Mastermind at one time (reselecting has a cooldown of 1 turn).\nAlso, increase Akechi's Attack by 25% of the Mastermind ally's Attack (up to a maximum of 500/750/1000, at level 1/50/70, respectively).\nWhen an ally besides Akechi has Mastermind and deals damage to all foes with an attack skill, Highlight, or Resonance, record the average damage dealt to all foes (if targeting 1 foe, record 40% of the damage dealt). At the start of Akechi's turn, gain 1 Arrow of Truth stack based on the amount of damage recorded, and reset the recorded damage. Arrow of Truth can be held for 2 turns.\nWhen Akechi has Mastermind, the effect of Rain of Justice changes, and Arrow of Truth deals Almighty damage based on the skill multiplier or Arrow of Perjury.",
+  "r0_detail": "At the start of battle, grant Mastermind to the ally with the highest Attack (prioritizing Sweepers or Assassins, select Akechi if no target found). At the start of each turn, can manually reselect a target to grant Mastermind. Only 1 ally can have Mastermind at one time (reselecting has a cooldown of 1 turn).\nAlso, increase Akechi's Attack by 25% of the Mastermind ally's Attack (up to a maximum of 500/750/1000, at level 1/50/70, respectively).\nWhen an ally besides Akechi has Mastermind and deals damage to all foes with an attack skill, Highlight, Theurgy, or Resonance, record the average damage dealt to all foes (if targeting 1 foe, record 40% of the damage dealt). At the start of Akechi's turn, gain 1 Arrow of Truth stack based on the amount of damage recorded, and reset the recorded damage. Arrow of Truth can be held for 2 turns.\nWhen Akechi has Mastermind, the effect of Rain of Justice changes, and Arrow of Truth deals Almighty damage based on the skill multiplier or Arrow of Perjury.",
   "r1": "Detective Profile",
   "r1_detail": "At the start of battle, gain Deduction, and the durations of Deduction and Stratagem are extended to 4 turns.\nAlso, when Deduction and Stratagem are both active, increase Akechi's critical rate by 16%, and increase the damage dealt by Akechi and allies with Mastermind by 25%.",
   "r2": "Detective Advice",
@@ -42,7 +42,7 @@ window.enCharacterRitualData["아케치"] = {
 window.jpCharacterRitualData["아케치"] = {
   "name": "明智 吾郎",
   "r0": "現役高校生探偵",
-  "r0_detail": "戦闘開始時、攻撃力が最も高い味方を『狂言回し』状態にする（支配／反抗ロールを優先し、対象がいない場合は自身を選択する）。ターン開始時、『狂言回し』の対象を再選択できる。複数の味方を同時に『狂言回し』状態に選択することはできない（再選択のクールタイムは１ターン）。\nさらに『狂言回し』状態の味方の攻撃力の２５%分、自身の攻撃力が上昇する（最大５００／７５０／１０００まで、レベル１／５０／７０で変化）。\n自身以外の『狂言回し』状態の味方は、全体対象の攻撃スキル／ハイライト／意識奏功でダメージを与えた時、敵全体に与えた平均ダメージを蓄積する（単体対象の場合、与ダメージの４０%を蓄積）。自身のターン開始時、蓄積したダメージに応じた効果量の『真実の矢』を１つ獲得し、蓄積したダメージをリセットする。『真実の矢』は２ターン持続する。\n自身が『狂言回し』状態の場合、『正義の矢の雨』の効果が変化し、『真実の矢』は『偽証の矢』のスキル倍率に基づいた追加の万能属性ダメージを与える。",
+  "r0_detail": "戦闘開始時、攻撃力が最も高い味方を『狂言回し』状態にする（支配／反抗ロールを優先し、対象がいない場合は自身を選択する）。ターン開始時、『狂言回し』の対象を再選択できる。複数の味方を同時に『狂言回し』状態に選択することはできない（再選択のクールタイムは１ターン）。\nさらに『狂言回し』状態の味方の攻撃力の２５%分、自身の攻撃力が上昇する（最大５００／７５０／１０００まで、レベル１／５０／７０で変化）。\n自身以外の『狂言回し』状態の味方は、全体対象の攻撃スキル／ハイライト／テウルギア／意識奏功でダメージを与えた時、敵全体に与えた平均ダメージを蓄積する（単体対象の場合、与ダメージの４０%を蓄積）。自身のターン開始時、蓄積したダメージに応じた効果量の『真実の矢』を１つ獲得し、蓄積したダメージをリセットする。『真実の矢』は２ターン持続する。\n自身が『狂言回し』状態の場合、『正義の矢の雨』の効果が変化し、『真実の矢』は『偽証の矢』のスキル倍率に基づいた追加の万能属性ダメージを与える。",
   "r1": "探偵のプロファイル",
   "r1_detail": "戦闘開始時に『推理』状態となり、『推理』と『謀略』状態の持続時間が４ターンに延長される。\nさらに『推理』かつ『謀略』状態の時、自身のクリティカル率が１６%上昇し、自身と『狂言回し』状態の味方の与ダメージが２５%上昇する。",
   "r2": "探偵のアドバイス",

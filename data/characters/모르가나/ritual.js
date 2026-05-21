@@ -24,7 +24,7 @@ window.ritualData["모르가나"] = {
 window.enCharacterRitualData["모르가나"] = {
   "name": "Morgana",
   "r0": "Morgana's Favor",
-  "r0_detail": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill or Highlight, activate a Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
+  "r0_detail": "When using a different skill than the previous skill, gain 1 Chivalry stack. This can stack up to 3 times.\nWhen an ally with less than 70% HP remaining attacks with a skill, Highlight, or Theurgy, activate a Resonance, spending 1 Chivalry stack to heal the party by 10% of Morgana's Attack + 150/225/300 (effect changes at Lv. 1/50/70, respectively).",
   "r1": "Marvelous Pride",
   "r1_detail": "Add the following effect to Chivalry: Restore HP of allies with less than 50% HP remaining by 30% of Morgana's Attack.",
   "r2": "Black Cat Charm",
@@ -42,7 +42,7 @@ window.enCharacterRitualData["모르가나"] = {
 window.jpCharacterRitualData["모르가나"] = {
   "name": "モルガナ",
   "r0": "モルガナサポート",
-  "r0_detail": "前に使用したスキルと異なるスキルを使用した時、『義賊魂』を１つ獲得し、最大３つまで累積できる。\n残りのＨＰが７０%未満の味方がいる状態で、味方がスキル／ハイライトで敵を攻撃すると、意識奏功の効果により『義賊魂』を１つ消費して、味方全体のＨＰをモルガナの攻撃力１０%＋１５０／２２５／３００（自身のレベルが１／５０／７０以上の時）回復する。",
+  "r0_detail": "前に使用したスキルと異なるスキルを使用した時、『義賊魂』を１つ獲得し、最大３つまで累積できる。\n残りのＨＰが７０%未満の味方がいる状態で、味方がスキル／ハイライト／テウルギアで敵を攻撃すると、意識奏功の効果により『義賊魂』を１つ消費して、味方全体のＨＰをモルガナの攻撃力１０%＋１５０／２２５／３００（自身のレベルが１／５０／７０以上の時）回復する。",
   "r1": "怪傑の矜持",
   "r1_detail": "『義賊魂』に、残りのＨＰが５０%未満の味方に対して、ＨＰをモルガナの攻撃力３０%分回復する効果を追加する。",
   "r2": "黒猫の魅力",

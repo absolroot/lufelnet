@@ -52,21 +52,21 @@ window.enCharacterSkillsData["미유"] = {
     "name": "Little Mermaid's Song",
     "element": "버프광역",
     "type": "실드",
-    "cool": 8,
+    "cool": 0,
     "description": "Grant a shield to party equal to 29.3%/29.3%/31.6%/31.6% of Miyu's Defense + 1110/1330/1437/1657 for 2 turns, and restore 4 SP.\nWhen an ally's shield is broken, decrease cooldown by 1 action.\nCooldown Time: 8 ally actions"
   },
   "skill2": {
     "name": "Poseidon's Blessing",
     "element": "버프",
     "type": "실드",
-    "cool": 8,
+    "cool": 0,
     "description": "For 2 turns, grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 and decrease weakness damage taken by 20%/20%/20%/20%. Grant 2 Down Points and 2 Seashell stacks.\nCooldown Time: 8 ally actions."
   },
   "skill3": {
     "name": "Tide of Dreams",
     "element": "버프광역",
     "type": "버프",
-    "cool": 12,
+    "cool": 0,
     "description": "Grant a shield to all allies equal to 33.2%/33.2%/35.9%/35.9% of Miyu's Defense + 1259/1509/1629/1879 + number of Seashell stacks on party x (6.9%/6.9%/7.5%/7.5% of Miyu's Defense + 260/260/336/336) for 3 turns.\nAlso, if an ally has 4 or more Seashell stacks, increase damage by 2.0%/2.0%/2.2%/2.2% for each stack.\nThe damage increase effect lasts for 3 turns or until shield is broken, and then lose 2 Seashell stacks.\nCooldown Time: 12 ally actions"
   },
   "skill_highlight": {
@@ -95,21 +95,21 @@ window.jpCharacterSkillsData["미유"] = {
     "name": "人魚姫の歌",
     "element": "버프광역",
     "type": "실드",
-    "cool": 8,
+    "cool": 0,
     "description": "味方全体に２ターンの間、海夕の防御力29.3%/29.3%/31.6%/31.6%＋1110/1330/1437/1657のシールドを付与する。さらに、ＳＰを４回復する。\n味方のシールドが破壊された時、クールタイムが１行動分減少する。\nクールタイム：味方の行動８回"
   },
   "skill2": {
     "name": "ドルフィンヘルプ",
     "element": "버프",
     "type": "실드",
-    "cool": 8,
+    "cool": 0,
     "description": "味方単体に２ターンの間、海夕の防御力67.2%/67.2%/72.6%/72.6%＋2542/3042/3290/3790のシールドを付与し、弱点属性の被ダメージを20%/20%/20%/20%減少、さらにダウン値を２つ、『ネレイスガード』を２つ獲得する。\nクールタイム：味方の行動８回"
   },
   "skill3": {
     "name": "夢追いビッグウェーブ",
     "element": "버프광역",
     "type": "버프",
-    "cool": 12,
+    "cool": 0,
     "description": "味方全体に３ターンの間、海夕の防御力33.2%/33.2%/35.9%/35.9%＋1259/1509/1629/1879＋対象の『ネレイスガード』累積数×（海夕の防御力6.9%/6.9%/7.5%/7.5%＋260/260/336/336）のシールドを付与する。\nまた、『ネレイスガード』の累積が４つ以上の時、その累積数に応じて与ダメージが2.0%/2.0%/2.2%/2.2%ずつ上昇する。\nダメージ上昇効果は、３ターン経過またはシールドが破壊された時に終了し、『ネレイスガード』が２つ減少する。\nクールタイム：味方の行動１２回"
   },
   "skill_highlight": {

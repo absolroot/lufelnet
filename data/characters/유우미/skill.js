@@ -52,21 +52,21 @@ window.enCharacterSkillsData["유우미"] = {
     "name": "Tempting Build",
     "element": "버프광역",
     "type": "버프",
-    "cool": 6,
+    "cool": 0,
     "description": "Increase party's Attack by 8.7% of Yumi's Attack for 3 turns (up to 4600/5060/5980/6440 of Attack).\nWhen an ally uses a skill, spend 1 Cocktail to strengthen that skill's effects.\nHigher quality Cocktails will be used first. Tailor-Made, Standard, and Basic Cocktails will increase skill effects by 120%, 100%, and 50% respectively.\nCooldown Time: 6 ally actions."
   },
   "skill2": {
     "name": "Enchanting Stir",
     "element": "버프",
     "type": "버프",
-    "cool": 4,
+    "cool": 0,
     "description": "Increase 1 ally's damage by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440 of Attack) and their max HP by 13.0%/13.0%/14.6%/14.6% for 2 turns. When the target deals damage to a foe, restore the target's HP by 2% of damage dealt for 1 turn.\nWhen activating a skill, spend 1 Basic or Standard Cocktail to gain 1 Tailor-Made Cocktail.\nCooldown Time: 4 ally actions."
   },
   "skill3": {
     "name": "Invigorating Blend",
     "element": "버프광역",
     "type": "버프",
-    "cool": 8,
+    "cool": 0,
     "unlock": "This skill requires Cocktails.",
     "description": "Spend all Cocktails to increase the party's attribute damage based on the targeted ally's attribute for 2 turns.\nAttribute damage will increase by 1% for every 230 of Yumi's Attack (up to 4600/5060/5980/6440 of Attack). Each Tailor-Made, Standard, and Basic Cocktail spent will change this effect by 120%, 100%, and 50% respectively.\nIncrease these effects for the targeted ally by 1.2 times. If 2+ Standard or better Cocktails are spent, also increase the targeted ally's critical damage by 20.0%/22.0%/22.4%/24.4%.\nCooldown Time: 8 ally actions. (This skill requires Cocktails.)"
   },
@@ -96,21 +96,21 @@ window.jpCharacterSkillsData["유우미"] = {
     "name": "誘惑のビルド",
     "element": "버프광역",
     "type": "버프",
-    "cool": 6,
+    "cool": 0,
     "description": "３ターンの間、味方全体の攻撃力を悠美の攻撃力の８.７%分（最大で攻撃力4600/5060/5980/6440分まで）上昇させる。\nさらに、スキル発動時に『カクテル』を１つ消費して、スキル効果を強化する。\n『カクテル』は高品質なものから優先して消費され、『オーダーメイド』、『スタンダード』、『ベーシック』で、それぞれスキル効果が１２０%／１００%／５０%上昇する。\nクールタイム：味方の行動６回"
   },
   "skill2": {
     "name": "魅了のステア",
     "element": "버프",
     "type": "버프",
-    "cool": 4,
+    "cool": 0,
     "description": "２ターンの間、味方単体の与ダメージを悠美の攻撃力２３０ごとに１%（最大で攻撃力4600/5060/5980/6440分まで）上昇させ、最大ＨＰを13.0%/13.0%/14.6%/14.6%上昇させる。さらに１ターンの間、対象が敵にダメージを与えると、そのダメージの２%分のＨＰを回復させる。\nスキル発動時、悠美は『ベーシック』もしくは『スタンダード』の『カクテル』を１つ消費し、『オーダーメイド』の『カクテル』を１つ獲得する。\nクールタイム：味方の行動４回"
   },
   "skill3": {
     "name": "活力のシェイク",
     "element": "버프광역",
     "type": "버프",
-    "cool": 8,
+    "cool": 0,
     "unlock": "『カクテル』を獲得していない場合、このスキルは使用できない",
     "description": "『カクテル』を全て消費し、２ターンの間、選択した味方の属性に対応した属性ダメージを上昇させる。\nこの効果は味方全体に適用され、悠美の攻撃力２３０ごとに１%（最大で攻撃力4600/5060/5980/6440分まで）上昇し、さらに『カクテル』の質に応じて、『オーダーメイド』、『スタンダード』、『ベーシック』を１つ消費するごとに効果が１２０%／１００%／５０%に変動する。\n加えて、選択した味方はこの効果量が１.２倍になる。また『スタンダード』以上のカクテルを２つ以上消費した場合、選択した味方のクリティカルダメージを20.0%/22.0%/22.4%/24.4%上昇する。\nクールタイム：味方の行動８回（『カクテル』を獲得していない場合、このスキルは使用できない）"
   },

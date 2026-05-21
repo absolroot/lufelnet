@@ -64,7 +64,7 @@ window.enCharacterSkillsData["리코·매화"] = {
     "element": "버프광역",
     "type": "버프",
     "cool": 0,
-    "description": "Increase party's Attack for 2 turns. The increase is equal to 12.8% of the portion of Tempest Riko's critical multiplier that exceeds 100% (up to 388.0%/418.0%/418.0%/448.0% of critical multiplier). Also, restore party's SP by 4.\nFor one time only while this effect is active, when an ally deals damage with a skill, Resonance, or Highlight, restore Tempest Riko's SP by 12.",
+    "description": "Increase party's Attack for 2 turns. The increase is equal to 12.8% of the portion of Tempest Riko's critical multiplier that exceeds 100% (up to 388.0%/418.0%/418.0%/448.0% of critical multiplier). Also, restore party's SP by 4.\nFor one time only while this effect is active, when an ally deals damage with a skill, Resonance, Highlight, or Theurgy, restore Tempest Riko's SP by 12.",
     "sp": 0
   },
   "skill3": {
@@ -110,7 +110,7 @@ window.jpCharacterSkillsData["리코·매화"] = {
     "element": "버프광역",
     "type": "バフ",
     "cool": 0,
-    "description": "２ターンの間、味方全体の攻撃力が上昇する。上昇値は自身のＣＲＴ倍率の１００%超過分の１２.８%に相当する（最大でＣＲＴ倍率388.0%/418.0%/418.0%/448.0%分まで）。さらにＳＰが４回復する。\nこの効果の持続中に１度だけ、味方がスキル／意識奏功／ハイライトでダメージを与える時、自身のＳＰが１２回復する。",
+    "description": "２ターンの間、味方全体の攻撃力が上昇する。上昇値は自身のＣＲＴ倍率の１００%超過分の１２.８%に相当する（最大でＣＲＴ倍率388.0%/418.0%/418.0%/448.0%分まで）。さらにＳＰが４回復する。\nこの効果の持続中に１度だけ、味方がスキル／意識奏功／ハイライト／テウルギアでダメージを与える時、自身のＳＰが１２回復する。",
     "sp": 0
   },
   "skill3": {

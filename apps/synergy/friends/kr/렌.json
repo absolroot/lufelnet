@@ -1,0 +1,484 @@
+{
+  "data": {
+    "item": [
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303204.png",
+        "name": "노이즈 캔슬링 헤드폰",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 52000,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 260
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303211.png",
+        "name": "밀크봉 패키지",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 24000,
+            "resetType": "없음",
+            "shopName": "밀리언 디저트"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 120
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303219.png",
+        "name": "블랙 머그컵",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 18000,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 90
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303207.png",
+        "name": "실버 뱅글",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303242.png",
+        "name": "길거리 음식 가이드",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 6400,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 32
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303253.png",
+        "name": "웨이트 리스트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 11600,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 58
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303222.png",
+        "name": "테마 화분",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303277.png",
+        "name": "사격 게임 공략집",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 10400,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303256.png",
+        "name": "만능 비타민제",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 10400,
+            "resetType": "없음",
+            "shopName": "드러그 스토어"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 52
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303236.png",
+        "name": "일본풍 북 커버",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 8000,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 40
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606311.png",
+        "name": "검은 테 안경",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 16000,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 80
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606312.png",
+        "name": "개인용 다트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 10000,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606313.png",
+        "name": "공구 세트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      }
+    ],
+    "name": "아마미야 렌",
+    "special_award": [
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30303,
+        "rank": 1,
+        "skill": {
+          "affix": "206",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「아마미야 렌·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「왜곡된 모험」에서 아군 전체의 대미지가 5% 증가합니다.",
+          "effect": "2",
+          "icon": "PC001_03_12_19_03.png",
+          "name": "공명의 리듬"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 2,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30307,
+        "rank": 3,
+        "skill": {
+          "affix": "207",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「아마미야 렌·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「교차하는 모험의 땅」에서 아군 전체의 대미지가 5% 증가합니다.",
+          "effect": "1",
+          "icon": "PC001_03_12_19_01.png",
+          "name": "자유로운 발걸음"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 4,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30311,
+        "rank": 5,
+        "skill": {
+          "affix": "208",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「아마미야 렌·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「왜곡된 모험」에서 아군 전체의 대미지가 10% 증가합니다.",
+          "effect": "2",
+          "icon": "PC001_03_12_19_03.png",
+          "name": "군무의 환희"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 6,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30315,
+        "rank": 7,
+        "skill": {
+          "affix": "209",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「아마미야 렌·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「교차하는 모험의 땅」에서 아군 전체의 대미지가 10% 증가합니다.",
+          "effect": "1",
+          "icon": "PC001_03_12_19_01.png",
+          "name": "영혼의 즉흥"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 8,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30320,
+        "rank": 9,
+        "skill": {
+          "affix": "210",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「아마미야 렌·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n임의 콘텐츠에서 아군 전체의 대미지가 2% 증가합니다.",
+          "effect": "-1",
+          "icon": "PC001_03_12_19_02.png",
+          "name": "비범한 여운"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 10,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 11,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 12,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      }
+    ],
+    "unlock_quest": [
+      {
+        "details": "뜻밖의 곳에서 익숙한 모습을 발견했다... 가서 말을 걸어보자.",
+        "name": "춤추는 별밤"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

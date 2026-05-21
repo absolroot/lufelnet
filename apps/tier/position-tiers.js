@@ -379,8 +379,7 @@ const positions = [
   { id: '굴복', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_굴복.png` },
   { id: '방위', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_방위.png` },
   { id: '구원', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_구원.png` },
-  { id: '해명', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_해명.png` },
-  { id: '자율', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_자율.png` }
+  { id: '해명', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_해명.png` }
 ];
 const elementsPerTierRow = positions.length + 2; // tier label + position cells + settings cell
 

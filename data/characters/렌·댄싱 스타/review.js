@@ -110,13 +110,13 @@ His Awareness 1 and Awareness 2 gains are also far higher than those of previous
 『协力伤害』：以队伍中除发动者外其他同伴的最高攻击力、最高伤害加成、最高暴击率和最高暴击效果为基准进行计算。
 
 『幻影形态』：免疫精神异常、控制效果和倒地值伤害。但当只有雨宫莲·星舞处于可行动状态时，『幻影形态』会被解除。`,
-        pros: [],
-        pros_en: [],
-        pros_jp: [],
-        pros_cn: [],
-        cons: [],
-        cons_en: [],
-        cons_jp: [],
-        cons_cn: []
+        pros: ["아군 전체의 크리티컬 확률과 효과를 올려준다.", "아군 최고의 스탯을 활용한 대미지를 부여하는 뛰어난 서브딜러다.", "상황에 맞게 유동적으로 우월과 굴복 모드를 선택해 활용할 수 있다.", "적의 수에 따른 보정이 있고 만능 속성으로 공격해 적의 유형에 제약받지 않는다."],
+        pros_en: ["Increases all allies' critical rate and critical damage.", "An excellent sub-DPS who deals damage using allies' highest stats.", "Can flexibly choose between Strategist and Saboteur modes depending on the situation.", "Has enemy-count-based scaling and attacks with the Almighty attribute, so he is not restricted by enemy type."],
+        pros_jp: ["味方全体のCRT発生率とCRT倍率を上昇させる。", "味方の最高ステータスを活用したダメージを与えられる優秀なサブアタッカー。", "状況に応じて優越モードと屈服モードを柔軟に選択して運用できる。", "敵の数に応じた補正があり、万能属性で攻撃するため敵のタイプに左右されない。"],
+        pros_cn: ["提升所有同伴的暴击率和暴击效果。", "能够利用同伴最高属性造成伤害，是优秀的副输出。", "可根据情况灵活选择优越或屈从模式进行运用。", "拥有基于敌人数量的补正，并以万能属性攻击，因此不受敌人类型限制。"],
+        cons: ["-"],
+        cons_en: ["-"],
+        cons_jp: ["-"],
+        cons_cn: ["-"]
     };
 })();

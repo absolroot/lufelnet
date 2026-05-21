@@ -20,7 +20,7 @@ window.personaFiles["자오우곤겐"] = {
   "comment": "고유 스킬로 부여된 디버프는 3턴간 지속되며 트리거로서 작용하고, 3턴에 화염 대미지를 주었을 경우 생긴 크리티컬 효과 증가 디버프는 별개로서 다음 턴(4턴)까지 지속된다.",
   "comment_en": "The debuff applied by the unique skill lasts 3 turns and serves as the trigger. If Fire damage is dealt on turn 3, the resulting critical damage taken increase is treated as a separate debuff and lasts until the following turn (turn 4).",
   "comment_jp": "固有スキルで付与されるデバフは3ターン持続し、トリガーとして機能する。3ターン目に火炎ダメージを与えた場合に発生する被クリティカルダメージ増加デバフは別扱いとなり、次のターン（4ターン目）まで持続する。",
-    "comment_cn": "固有技能施加的减益会持续3回合，并作为触发条件存在。若在第3回合造成火焰伤害，则由此产生的受暴击效果提升减益会作为独立效果，持续到下一回合（第4回合）。",
+  "comment_cn": "固有技能施加的减益会持续3回合，并作为触发条件存在。若在第3回合造成火焰伤害，则由此产生的受暴击效果提升减益会作为独立效果，持续到下一回合（第4回合）。",
   "added": "KR v4.1.1",
   "cost": null,
   "combination": null,
@@ -54,52 +54,52 @@ window.personaFiles["자오우곤겐"] = {
   "passive_skill": [
     {
       "name": "삼세 제도",
-      "name_en": "Three Ages' Salvation",
-      "name_jp": "三世済度",
+      "name_en": "Threefold Blessings",
+      "name_jp": "三世の功徳",
       "desc": "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 2턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 「불멸의 진리」를 획득한다. 「불멸의 진리」: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 8%, 대미지가 7% 증가한다.",
-      "desc_en": "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 2 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 8% and damage by 7%.",
-      "desc_jp": "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、2ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が8%、ダメージが7%増加する。",
+      "desc_en": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 2 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 8%, and damage by 7%.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\nスキルでダメージを与えた後、２ターンの間、自身と攻撃力が最も高い支配／反抗ロールの味方を『三世の悟り』状態にする。\n『三世の悟り』：一度のスキルで４回以上ダメージを与える時、自身の攻撃力が８%上昇し、与ダメージが７%上昇する。",
       "name_cn": "三世救度",
       "desc_cn": "攻击力提升29.1%。释放人格面具技能造成伤害后，使自身以及攻击力最高的反抗/支配同伴获得「不灭真理」，持续2回合。「不灭真理」：释放技能造成4次及以上伤害时，自身攻击力提升8%、伤害提升7%。"
     },
     {
       "name": "삼세 제도 Ⅰ",
-      "name_en": "Three Ages' Salvation I",
-      "name_jp": "三世済度 I",
+      "name_en": "Threefold Blessings I",
+      "name_jp": "三世の功徳Ⅰ",
       "desc": "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 3턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 「불멸의 진리」를 획득한다. 「불멸의 진리」: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 8%, 대미지가 7% 증가한다.",
-      "desc_en": "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 8% and damage by 7%.",
-      "desc_jp": "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、3ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が8%、ダメージが7%増加する。",
+      "desc_en": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 3 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 8%, and damage by 7%.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\nスキルでダメージを与えた後、３ターンの間、自身と攻撃力が最も高い支配／反抗ロールの味方を『三世の悟り』状態にする。\n『三世の悟り』：一度のスキルで４回以上ダメージを与える時、自身の攻撃力が８%上昇し、与ダメージが７%上昇する。",
       "name_cn": "三世救度Ⅰ",
       "desc_cn": "攻击力提升29.1%。释放人格面具技能造成伤害后，使自身以及攻击力最高的反抗/支配同伴获得「不灭真理」，持续3回合。「不灭真理」：释放技能造成4次及以上伤害时，自身攻击力提升8%、伤害提升7%。"
     },
     {
       "name": "삼세 제도 Ⅱ",
-      "name_en": "Three Ages' Salvation II",
-      "name_jp": "三世済度 II",
+      "name_en": "Threefold Blessings II",
+      "name_jp": "三世の功徳Ⅱ",
       "desc": "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 3턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 「불멸의 진리」를 획득한다. 「불멸의 진리」: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 12%, 대미지가 7% 증가한다.",
-      "desc_en": "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 12% and damage by 7%.",
-      "desc_jp": "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、3ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が12%、ダメージが7%増加する。",
+      "desc_en": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 3 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 12%, and damage by 7%.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\nスキルでダメージを与えた後、３ターンの間、自身と攻撃力が最も高い支配／反抗ロールの味方を『三世の悟り』状態にする。\n『三世の悟り』：一度のスキルで４回以上ダメージを与える時、自身の攻撃力が１２%上昇し、与ダメージが７%上昇する。",
       "name_cn": "三世救度Ⅱ",
       "desc_cn": "攻击力提升29.1%。释放人格面具技能造成伤害后，使自身以及攻击力最高的反抗/支配同伴获得「不灭真理」，持续3回合。「不灭真理」：释放技能造成4次及以上伤害时，自身攻击力提升12%、伤害提升7%。"
     },
     {
       "name": "삼세 제도 Ⅲ",
-      "name_en": "Three Ages' Salvation III",
-      "name_jp": "三世済度 III",
+      "name_en": "Threefold Blessings III",
+      "name_jp": "三世の功徳Ⅲ",
       "desc": "공격력이 29.1% 증가한다. 페르소나 스킬을 시전해 대미지를 준 후 3턴 동안 자신과 공격력이 가장 높은 반항/지배 동료가 「불멸의 진리」를 획득한다. 「불멸의 진리」: 스킬을 시전해 4회 이상 대미지를 줄 때 자신의 공격력이 12%, 대미지가 10% 증가한다.",
-      "desc_en": "Increases ATK by 29.1%. After dealing damage with a Persona skill, gives self and the highest ATK Single-target/Multi-target ally [Undying Truth] for 3 turns. [Undying Truth]: When dealing 4 hits of damage with skills, increases own ATK by 12% and damage by 10%.",
-      "desc_jp": "攻撃力が29.1%増加する。ペルソナスキルでダメージを与えた後、3ターンの間自分と攻撃力が最も高い反逆/支配味方が『不滅の真理』を獲得する。『不滅の真理』：スキルで4回以上ダメージを与える時、自分の攻撃力が12%、ダメージが10%増加する。",
+      "desc_en": "Increase Attack by 29.1%.\nAfter dealing damage with a skill, grant Threefold Transcendence to the user and the Sweeper or Assassin with the highest Attack for 3 turns.\nThreefold Transcendence: When dealing 4 or more hits of damage with a single skill, increase user's Attack by 12%, and damage by 10%.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\nスキルでダメージを与えた後、３ターンの間、自身と攻撃力が最も高い支配／反抗ロールの味方を『三世の悟り』状態にする。\n『三世の悟り』：一度のスキルで４回以上ダメージを与える時、自身の攻撃力が１２%上昇し、与ダメージが１０%上昇する。",
       "name_cn": "三世救度Ⅲ",
       "desc_cn": "攻击力提升29.1%。释放人格面具技能造成伤害后，使自身以及攻击力最高的反抗/支配同伴获得「不灭真理」，持续3回合。「不灭真理」：释放技能造成4次及以上伤害时，自身攻击力提升12%、伤害提升10%。"
     }
   ],
   "uniqueSkill": {
     "name": "분노한 진신",
-    "name_en": "Fury Incarnate",
-    "name_jp": "怒りの真神",
+    "name_en": "Exorcising Flames",
+    "name_jp": "降魔の火焔",
     "desc": "1명의 적에게 공격력 48.0%/50.4%/52.8%의 화염 속성 대미지를 4회 준다. 적군에게 「외상」을 주며 3턴 동안 지속된다. 「외상」 기간 동안 목표가 화염 속성 대미지를 1회 받을 때마다 2턴 동안 받는 크리티컬 효과가 3% 증가한다(8회 중첩 가능).",
-    "desc_en": "Deals 48.0%/50.4%/52.8% ATK Fire dmg to 1 foe 4 times. Inflicts the foe with [Trauma] for 3 turns. During [Trauma], each time the target takes 1 hit of Fire dmg, increases their CRIT dmg taken by 3% for 2 turns, up to 8 stacks.",
-    "desc_jp": "1体の敵に48.0%/50.4%/52.8% ATKの火炎属性ダメージを4回与える。敵軍に『外傷』を与え、3ターンの間持続する。『外傷』期間中、ターゲットが火炎属性ダメージを1回受けるたびに2ターンの間受けるCRT倍率が3%増加する（8回重複可能）。",
+    "desc_en": "Deal Fire damage to 1 foe equal to 48.0%/50.4%/52.8% of Attack (4 hits), and inflict Ascetic Ordeals for 3 turns.\nAscetic Ordeals: Each time 1 hit of Fire damage is taken, increase critical damage taken by 3%. Stacks up to 8 times.",
+    "desc_jp": "敵単体に攻撃力48.0%/50.4%/52.8%の火炎属性ダメージを４回与え、３ターンの間、『修験の焦痕』状態にする。\n『修験の焦痕』：火炎属性ダメージを１回受けるごとに、２ターンの間、被クリティカルダメージが３%上昇する。最大８つまで累積できる。",
     "priority": 3,
     "icon": "화염",
     "icon_gl": "",
@@ -111,8 +111,8 @@ window.personaFiles["자오우곤겐"] = {
     "name_en": "Highlight",
     "name_jp": "ハイライト",
     "desc": "1명의 적에게 공격력 360.0%/385.2%/410.4%의 화염 속성 대미지를 준다.",
-    "desc_en": "Deal 360.0%/385.2%/410.4% ATK as Fire dmg to 1 foe.",
-    "desc_jp": "1体の敵に360.0%/385.2%/410.4% ATKの火炎属性ダメージを与える。",
+    "desc_en": "Deal Fire damage to 1 foe equal to 360.0%/385.2%/410.4% of Attack.",
+    "desc_jp": "敵単体に攻撃力360.0%/385.2%/410.4%の火炎属性ダメージを与える。",
     "priority": 0,
     "name_cn": "HIGHLIGHT",
     "desc_cn": "对1名敌人造成360.0%/385.2%/410.4%攻击力的火焰属性伤害。"
@@ -125,7 +125,11 @@ window.personaFiles["자오우곤겐"] = {
       "level": "6/7/8",
       "learn_level": "10",
       "name_cn": "玛哈亚基达因",
-      "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的火焰属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入燃烧状态，效果持续2回合。"
+      "desc_cn": "对所有敌人造成60.8/63.8/66.9%攻击力的火焰属性伤害，有33.8/35.5/37.2%基础概率使敌人陷入燃烧状态，效果持续2回合。",
+      "name_en": "Maragidyne",
+      "desc_en": "Deal Fire damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Burn for 2 turns.",
+      "name_jp": "マハラギダイン",
+      "desc_jp": "敵全体に攻撃力60.8/63.8/66.9%の火炎属性ダメージを与える。33.8/35.5/37.2%の確率で敵を２ターンの間、炎上状態にする。"
     },
     {
       "name": "정밀한 사격Ⅲ",
@@ -134,7 +138,11 @@ window.personaFiles["자오우곤겐"] = {
       "level": "6/7/8",
       "learn_level": "20",
       "name_cn": "精密射击Ⅲ",
-      "desc_cn": "枪械伤害提升8.7%。"
+      "desc_cn": "枪械伤害提升8.7%。",
+      "name_en": "Gun Boost III",
+      "desc_en": "Increase Gun damage by 8.7%.",
+      "name_jp": "銃撃ブースタⅢ",
+      "desc_jp": "銃撃属性の与ダメージが８.７%上昇する。"
     },
     {
       "name": "화염 강화Ⅳ",
@@ -143,7 +151,11 @@ window.personaFiles["자오우곤겐"] = {
       "level": "6/7/8",
       "learn_level": "30",
       "name_cn": "火焰强化Ⅳ",
-      "desc_cn": "火焰属性伤害提升10.8%。"
+      "desc_cn": "火焰属性伤害提升10.8%。",
+      "name_en": "Fire Boost IV",
+      "desc_en": "Increase Fire damage by 10.8%.",
+      "name_jp": "火炎ブースタⅣ",
+      "desc_jp": "火炎属性の与ダメージが１０.８%上昇する。"
     },
     {
       "name": "마도의 재능Ⅲ",
@@ -152,7 +164,11 @@ window.personaFiles["자오우곤겐"] = {
       "level": "6/7/8",
       "learn_level": "40",
       "name_cn": "魔导的才能Ⅲ",
-      "desc_cn": "造成的伤害提升8.7%。"
+      "desc_cn": "造成的伤害提升8.7%。",
+      "name_en": "Battle Acumen III",
+      "desc_en": "Increase damage by 8.7%.",
+      "name_jp": "戦闘の才覚Ⅲ",
+      "desc_jp": "与ダメージが８.７%上昇する。"
     }
   ],
   "name_cn": "藏王权现"

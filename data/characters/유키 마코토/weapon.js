@@ -28,39 +28,39 @@ window.enCharacterWeaponData["유키 마코토"] = {
   "name": "Makoto Yuki",
   "weapon4-1": {
     "name": "Translucent Blade",
-    "health": 1728,
-    "attack": 628,
-    "defense": 313,
+    "health": 1728.63,
+    "attack": 628.77,
+    "defense": 313.75,
     "skill_name": "Silent Resolve",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. \nWhen user buffs allies, increase party's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% and increase user's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%. Lasts for 2 turns."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Makoto grants a buff to an ally, increase party's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%, and also increase Makoto's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% more for 2 turns."
   },
   "weapon5-1": {
     "name": "Deus Xiphos",
-    "health": 2160,
-    "attack": 786,
-    "defense": 391,
+    "health": 2160.41,
+    "attack": 786.22,
+    "defense": 391.98,
     "skill_name": "Hour of Reversal",
-    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. \nWhen user gains 3 [Moon Phase] stacks or [Special Moon Phase], increase critical rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns. When user deals 4 or more hits of damage with a Persona skill/Theurgy, increase damage 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nFor every 3 Moon Phase or Full Moon stacks gained, increase critical rate by 16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0% for 2 turns.\nWhen Makoto deals 4 or more hits of damage with 1 skill or Theurgy, increase that skill or Theurgy's damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
   }
 };
 
 window.jpCharacterWeaponData["유키 마코토"] = {
   "name": "結城 理",
   "weapon4-1": {
-    "name": "明度トテツ",
-    "health": 1728,
-    "attack": 628,
-    "defense": 313,
+    "name": "名刀透徹",
+    "health": 1728.63,
+    "attack": 628.77,
+    "defense": 313.75,
     "skill_name": "精粋の意志",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。味方にバフ効果を付与した時、味方全体の与えるダメージが8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%増加し、自身の与えるダメージも8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%増加する。効果は2ターン持続。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n自身が味方に強化効果を付与した時、２ターンの間、味方全体の与ダメージが8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%上昇し、さらに自身の与ダメージが追加で8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%上昇する。"
   },
   "weapon5-1": {
-    "name": "デオスサイフォス",
-    "health": 2160,
-    "attack": 786,
-    "defense": 391,
+    "name": "デオスクシポス",
+    "health": 2160.41,
+    "attack": 786.22,
+    "defense": 391.98,
     "skill_name": "逆転の瞬間",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。『月相』または『特殊月相』が3スタックに達すると、2ターンの間クリティカル率が16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0%増加する。ペルソナスキル/テウルギアで4回以上ダメージを与えると、与えるダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%増加する。"
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n『ムーンフェイズ』または『フルムーン』を累計で３つ獲得するごとに、２ターンの間、クリティカル率が16.3%/21.2%/21.2%/26.1%/26.1%/31.0%/31.0%上昇する。\n一度のスキル／テウルギア発動で４回以上のダメージを与える時、そのスキル／テウルギアの与ダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%上昇する。"
   }
 };
 

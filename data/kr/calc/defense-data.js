@@ -1427,7 +1427,7 @@ const defenseCalcData = {
       "target_en": "Multi",
       "target_jp": "複数対象",
       "skillIcon": "/assets/img/skill-element/디버프광역.png",
-      "skillName": "싱코페이션 노트",
+      "skillName": "당김음",
       "skillName_en": "",
       "skillName_jp": "",
       "options": [
@@ -1470,7 +1470,7 @@ const defenseCalcData = {
       "target_en": "Multi",
       "target_jp": "複数対象",
       "skillIcon": "/assets/img/skill-element/디버프광역.png",
-      "skillName": "싱코페이션 노트 (강화)",
+      "skillName": "당김음 (강화)",
       "skillName_en": "",
       "skillName_jp": "",
       "options": [

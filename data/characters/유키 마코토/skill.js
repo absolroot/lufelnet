@@ -67,56 +67,61 @@ window.characterSkillsData["유키 마코토"] = {
 window.enCharacterSkillsData["유키 마코토"] = {
   "name": "Makoto Yuki",
   "skill1": {
-    "name": "Melodic Blaze",
+    "name": "Melody of Flames",
     "element": "화염",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Fire damage to 1 foe equal to 59.8%/66.0%/63.2%/69.6% of Attack (3 hits), and gain 2 [Moon Phase] stacks for 2 turns. Stacks up to 4 times. When spending [Moon Phase] to deal damage with [Scarlet: Devouring Blaze], increase the skill multiplier by 32.5%/35.8%/34.5%/37.8% for 2 turns."
+    "description": "Deal Fire damage to 1 foe equal to 59.8%/66.0%/63.5%/69.6% of Attack (3 hits). Also, gain 2 Moon Phase stacks. This effect lasts for 2 turns, and stacks up to 4 times.\nAlso, when spending Moon Phase to use Scarlet Hades, increase skill multiplier by 32.5%/35.8%/34.5%/37.8% for 2 turns."
   },
   "skill2": {
-    "name": "Moonlit Hymn",
+    "name": "Nocturne of Battle",
     "element": "버프광역",
     "type": "버프",
     "sp": 20,
     "cool": 0,
-    "description": "Increase party's critical damage by 23.4%/25.8%/24.9%/27.3% and Makoto's Attack by 19.5%/21.5%/20.7%/22.7% for 2 turns. Grant Makoto 2 [Moon Phase] stacks for 2 turns. Stacks up to 4 times."
+    "description": "Increase party's critical damage by 23.4%/25.8%/24.9%/27.3%, and increase Makoto's Attack by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nAlso, gain 2 Moon Phase stacks. This effect lasts for 2 turns, and stacks up to 4 times."
   },
   "skill3": {
-    "name": "Scarlet: Devouring Blaze",
+    "name": "Scarlet Hades",
     "element": "화염",
     "type": "단일피해",
     "sp": 24,
     "cool": 0,
-    "description": "Use condition: When Makoto has at least 2 [Moon Phase] stacks. \nSpend all [Moon Phase], for each [Moon Phase] stack spent, deal Fire damage to 1 foe equal to 76.2%/84.0%/80.9%/88.7% of Attack. \nAlso spend all [Special Moon Phase], for each [Special Moon Phase] stack spent, deal Fire damage to 1 foe equal to 134.6%/148.4%/142.9%/156.7% of Attack. When this skill is used at 4 [Moon Phase] stacks, increase Makoto's pierce rate by 11.7%/12.9%/12.4%/13.6% and damage by 24.4%/26.9%/25.9%/28.4%."
+    "description": "Can be activated with 2 or more Moon Phase stacks. Spend all Moon Phase stacks, and deal Fire damage to 1 foe equal to 91.5%/100.8%/97.1%/106.5% of Makoto's Attack (1 hit per stack spent). Afterwards, spend all Full Moon stacks, and deal Fire damage to 1 foe equal to 150.7%/166.2%/160.0%/175.5% of Makoto's Attack (1 hit per stack spent).\nWhen this skill is activated with 4 Moon Phase stacks, increase Makoto's pierce rate by 11.7%/12.9%/12.4%/13.6%, and increase damage by 24.4%/26.9%/25.9%/28.4%."
   },
   "skill_highlight": {
-    "name": "Theurgy - Ardhanari",
+    "name": "Ardhanari",
     "element": "화염",
     "type": "",
-    "description": "Use condition: When Makoto has 100 Theurgy Energy. \nDeal Fire damage to 1 foe equal to 147.5%/162.6%/156.5%/171.6% of Attack (4 hits), and gain 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
+    "description": "Can be activated when Theurgy Gauge is at 100. Deal Fire damage to 1 foe equal to 147.5%/162.6%/156.5%/171.6% of Makoto's Attack (4 hits).\nAlso, gain 1 Full Moon stack. This effect lasts 2 turns, and stacks up to 4 times.",
+    "cool": 0
   },
   "skill_highlight2": {
-    "name": "Theurgy - Cadenza",
+    "name": "Cadenza",
     "element": "버프",
     "type": "버프",
-    "description": "Use condition: When Makoto has 100 Theurgy Energy. \nIncrease party's Attack by 24.4%/26.9%/25.9%/28.4% and damage by 19.5%/21.5%/20.7%/22.7% for 2 turns. Grant Makoto 1 [Special Moon Phase] stack for 2 turns. Stacks up to 4 times."
+    "description": "Can be activated when Theurgy Gauge is at 100. Increase party's Attack by 24.4%/26.9%/25.9%/28.4%, and increase damage by 19.5%/21.5%/20.7%/22.7% for 2 turns. Also, gain 1 Full Moon stack. This effect lasts 2 turns, and stacks up to 4 times.",
+    "cool": 0
   },
   "skill_support": {
-    "name": "Assist Skill",
+    "name": "Assist",
     "element": "버프",
     "type": "버프",
-    "description": "Increase 1 ally's Attack by 20% for 1 turn."
+    "description": "Increase 1 ally's Attack by 20% for 1 turn.",
+    "cool": 0
   },
   "passive1": {
-    "name": "Lead",
+    "name": "On-Site Leader",
     "element": "패시브",
-    "description": "After using Theurgy, increase party's Attack by 40%, also increase S.E.E.S. allies' Attack by 20% Lasts for 2 turns."
+    "description": "After activating a Theurgy, increase party's Attack by 40.0% for 2 turns. Increase Attack of SEES members by 30.0% more.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Trust",
+    "name": "Entrusted Hope",
     "element": "패시브",
-    "description": "When Makoto receives a buff/healing/shielding from allies, increase critical damage by 7.2% for 2 turns. Stacks up to 3 times."
+    "description": "When receiving buff, healing, or shield skill effects from an ally (excluding effects that also target foes), increase critical damage by 7.2% for 2 turns. Stacks up to 3 times.",
+    "cool": 0
   }
 };
 
@@ -128,51 +133,56 @@ window.jpCharacterSkillsData["유키 마코토"] = {
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵1体に攻撃力59.8%/66.0%/63.2%/69.6%の火炎属性ダメージを3回与え、『月相』を2スタック獲得し2ターン持続（最大4スタック）。結城 理が『紅蓮・猛火の貪食』を使用して『月相』を消費しダメージを与えると、スキル倍率が32.5%/35.8%/34.5%/37.8%増加し2ターン持続する。"
+    "description": "敵単体に攻撃力59.8%/66.0%/63.5%/69.6%の火炎属性ダメージを３回与える。さらに『ムーンフェイズ』を２つ獲得する。この効果は２ターン持続し、最大４つまで累積できる。\nまた２ターンの間、『紅蓮・豪炎滅却』の『ムーンフェイズ』を消費して与えるダメージのスキル倍率が32.5%/35.8%/34.5%/37.8%上昇する。"
   },
   "skill2": {
-    "name": "月下の戦闘曲",
+    "name": "月下の戦曲",
     "element": "버프광역",
     "type": "버프",
     "sp": 20,
     "cool": 0,
-    "description": "味方全体のCRT倍率が23.4%/25.8%/24.9%/27.3%上昇し、結城 理の攻撃力が19.5%/21.5%/20.7%/22.7%上昇、2ターン持続。さらに『月相』を2スタック獲得し2ターン持続（最大4スタック）。"
+    "description": "２ターンの間、味方全体のクリティカルダメージが23.4%/25.8%/24.9%/27.3%上昇し、自身の攻撃力が19.5%/21.5%/20.7%/22.7%上昇する。\nさらに『ムーンフェイズ』を２つ獲得する。この効果は２ターン持続し、最大４つまで累積できる。"
   },
   "skill3": {
-    "name": "紅蓮・猛火の貪食",
+    "name": "紅蓮・豪炎滅却",
     "element": "화염",
     "type": "단일피해",
     "sp": 24,
     "cool": 0,
-    "description": "発動条件：『月相』を最低2スタック所持\n全ての『月相』を消費し、スタックごとに敵1体に攻撃力76.2%/84.0%/80.9%/88.7%の火炎属性ダメージを与える。\nその後、全ての『特殊月相』を消費し、スタックごとに敵1体に攻撃力134.6%/148.4%/142.9%/156.7%の火炎属性ダメージを与える。『月相』が4スタックに達すると、このスキル発動時に結城 理の貫通が11.7%/12.9%/12.4%/13.6%上昇し、与ダメージが24.4%/26.9%/25.9%/28.4%増加する。"
+    "description": "『ムーンフェイズ』を２つ以上獲得している時に発動可能となり、『ムーンフェイズ』をすべて消費し、１つごとに敵単体に攻撃力91.5%/100.8%/97.1%/106.5%の火炎属性ダメージを与える。その後、『フルムーン』をすべて消費し、１つごとに敵単体に攻撃力150.7%/166.2%/160.0%/175.5%の火炎属性ダメージを与える。\n『ムーンフェイズ』を４つ獲得している場合、このスキル発動時の自身の貫通が11.7%/12.9%/12.4%/13.6%上昇し、与ダメージが24.4%/26.9%/25.9%/28.4%上昇する。"
   },
   "skill_highlight": {
-    "name": "テウルギア - アルダナ",
+    "name": "アルダナ",
     "element": "화염",
     "type": "",
-    "description": "発動条件：テウルギアエネルギー100\n敵1体に攻撃力147.5%/162.6%/156.5%/171.6%の火炎属性ダメージを4回与える。『特殊月相』を1スタック獲得し2ターン持続（最大4スタック）。"
+    "description": "テウルギアゲージが１００の時に発動可能となり、敵単体に攻撃力147.5%/162.6%/156.5%/171.6%の火炎属性ダメージを４回与える。\nさらに『フルムーン』を１つ獲得する。この効果は２ターン持続し、最大４つまで累積できる。",
+    "cool": 0
   },
   "skill_highlight2": {
-    "name": "テウルギア - カデンツァ",
+    "name": "カデンツァ",
     "element": "버프",
     "type": "버프",
-    "description": "発動条件：テウルギアエネルギー100\n味方全体の攻撃力が24.4%/26.9%/25.9%/28.4%上昇し、与ダメージが19.5%/21.5%/20.7%/22.7%上昇、2ターン持続。『特殊月相』を1スタック獲得し2ターン持続（最大4スタック）。"
+    "description": "テウルギアゲージが１００の時に発動可能となり、２ターンの間、味方全体の攻撃力が24.4%/26.9%/25.9%/28.4%上昇し、与ダメージが19.5%/21.5%/20.7%/22.7%上昇する。さらに『フルムーン』を１つ獲得する。この効果は２ターン持続し、最大４つまで累積できる。",
+    "cool": 0
   },
   "skill_support": {
-    "name": "サポートスキル",
+    "name": "アシスト",
     "element": "버프",
     "type": "버프",
-    "description": "味方1体の攻撃力を1ターンの間20%上昇させる。"
+    "description": "１ターンの間、味方単体の攻撃力が２０%上昇する。",
+    "cool": 0
   },
   "passive1": {
-    "name": "リード",
+    "name": "現場リーダー",
     "element": "패시브",
-    "description": "テウルギア発動後、味方全体の攻撃力が40.0%上昇し、S.E.E.S.メンバーの攻撃力がさらに20.0%上昇する。効果は2ターン持続する。"
+    "description": "テウルギアを発動した時、２ターンの間、味方全体の攻撃力が40.0%上昇する。Ｓ．Ｅ．Ｅ．Ｓ．の味方はさらに攻撃力が追加で30.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "信頼",
+    "name": "託される希望",
     "element": "패시브",
-    "description": "味方スキルによるバフ/回復/シールド効果を受けた場合、2ターンの間CRT倍率が7.2%上昇する（最大3スタック）。"
+    "description": "味方から強化／回復／シールドのスキル効果（同時に敵を対象とする効果は除く）を受けた時、２ターンの間、クリティカルダメージが7.2%上昇する。最大３つまで累積できる。",
+    "cool": 0
   }
 };
 

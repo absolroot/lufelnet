@@ -886,7 +886,7 @@ const criticalSelfData = {
       "target_en": "Self",
       "target_jp": "自分",
       "skillIcon": "/assets/img/character-weapon/렌·댄싱 스타-5-01.png",
-      "skillName": "재즈 블레이드",
+      "skillName": "나이트 엣지",
       "skillName_en": "",
       "skillName_jp": "",
       "options": [

@@ -23,38 +23,38 @@ window.ritualData["유키 마코토"] = {
 
 window.enCharacterRitualData["유키 마코토"] = {
   "name": "Makoto Yuki",
-  "r0": "Great Guide",
-  "r0_detail": "Makoto has [Cadenza] and [Ardhanari] two Theurgy skills. At the start of battle, if Makoto's Theurgy Energy is below 35, restore to 35 Theurgy Energy. \nWhen Makoto receives a buff/healing/shielding from allies, gain 1 [Moon Phase] stack for 2 turns. Makoto can only gain 1 [Moon Phase] stack from this effect before the start of next turn. Stacks up to 4 times. \nWhen Makoto has [Moon Phase], increase pierce rate by 4%/8%/12% (effect increases at level 1/50/70).",
-  "r1": "Born from Coincidence",
-  "r1_detail": "When using [Melodic Blaze], deal bonus damage (1 hit). \nWhen using [Moonlit Hymn], increase party's pierce rate by 10% for 2 turns. \nWhen using [Scarlet: Devouring Blaze] at 4 [Moon Phase] stacks, increase Makoto's critical rate by 16%.",
-  "r2": "Unwavering Heart",
-  "r2_detail": "At the start of Makoto's turn, if [Moon Phase] reached 4 stacks, automatically use [Moonlit Hymn]. This effect has a 1 turn cooldown.",
+  "r0": "Pathfinder",
+  "r0_detail": "Makoto has 2 Theurgy: Cadenza and Ardhanari. At the start of battle, if Makoto's Theurgy Gauge is below 35, fill up to 35.\nWhen receiving buff, healing, or shield skill effects from an ally (excluding effects that also target foes), gain 1 Moon Phase stack (up to 1 stack per turn). This effect lasts for 2 turns, and stacks up to 4 times.\nWith Moon Phase, increase pierce rate by 4%/8%/12% (effect changes at Lv. 1/50/70, respectively).",
+  "r1": "Result of Coincidence",
+  "r1_detail": "Additional effects are added to the following skills.\nMelody of Flames: This skill deals 1 more hit of Fire damage.\nNocturne of Battle: Increase party's pierce rate by 10% for 2 turns.\nScarlet Hades: When this skill is activated with 4 Moon Phase stacks, increase Makoto's critical rate by 16%.",
+  "r2": "Immovable Soul",
+  "r2_detail": "When Makoto has 4 Moon Phase stacks on his action, automatically activate Nocturne of Battle 1 time.\nCooldown time: 1 turn.",
   "r3": "Under the Full Moon",
-  "r3_detail": "Increase the skill levels of Scarlet: Devouring Blaze and Thief Tactics by 3.",
+  "r3_detail": "Increase the skill levels of Scarlet Hades and Combat Tactics by 3.",
   "r4": "Thorny Path",
-  "r4_detail": "[Cadenza] increase party's damage by 10%, [Ardhanari] deal bonus damage (1 hit).",
-  "r5": "Blazing Soul",
-  "r5_detail": "Increase the skill levels of Melodic Blaze and Moonlit Hymn by 3.",
-  "r6": "The Promise",
-  "r6_detail": "When Makoto uses any Theurgy, activate the other Theurgy. When spending [Special Moon Phase] to deal damage with [Scarlet: Devouring Blaze], increase the skill damage by 20%. \nWhen Makoto first receives fatal damage, his HP cannot drop below 1 until the end of his next turn, then enter near death, Makoto will faint when his next turn ends. If Makoto's HP is restored above 25% max HP during near death, remove near death."
+  "r4_detail": "Additional effects are added to the following Theurgy.\nCadenza: Increase party's damage by 10% more for 2 turns.\nArdhanari: This skill deals 2 more hits of Fire damage.",
+  "r5": "Soul Flames",
+  "r5_detail": "Increase the skill levels of Melody of Flames and Nocturne of Battle by 3.",
+  "r6": "Burn My Dread",
+  "r6_detail": "When Makoto activates a Theurgy, the effects of the other Theurgy are activated at the same time.\nIncrease skill damage dealt by spending Full Moon stacks with Scarlet Hades by 35%.\nThe first time that Makoto takes fatal damage, he enters a special near-death state and survives with 1 HP, and will be KO'd at the end of the turn. If Makoto's HP is restored above 25%, this state is removed."
 };
 
 window.jpCharacterRitualData["유키 마코토"] = {
   "name": "結城 理",
-  "r0": "偉大なる決断",
-  "r0_detail": "結城理は『カデンツァ』と『アルダナ』、2つのテウルギアスキルを所持している。戦闘開始時、テウルギアエネルギーが35ポイント未満なら35ポイントまで補充される。\n味方のバフ／回復／シールドスキル効果を受けると、『月相』を1スタック獲得する。結城理は1ターンにつき次のターン開始前までこの方法で最大1スタックの『月相』を獲得でき、効果は2ターン持続する（最大4スタック）。\n『月相』効果を保有している間、貫通が12%上昇する。",
-  "r1": "偶然の縁",
-  "r1_detail": "『旋律の炎』発動時、追加で1回ダメージを与える。\n『月下の戦闘曲』発動時、2ターンの間味方全体の貫通がさらに10%上昇する。\n『紅蓮・猛火の貪食』発動時、『月相』が4スタックに達すると、自身のクリティカル率がさらに16%上昇する。",
-  "r2": "揺るがぬ信念",
-  "r2_detail": "自身のターン開始時、『月相』が4スタックに達すると、『月下の戦闘曲』を1回自動発動する。この効果には1ターンのクールタイムがある。",
+  "r0": "大いなる導き",
+  "r0_detail": "理は『カデンツァ』と『アルダナ』の２つのテウルギアを持つ。戦闘開始時、自身のテウルギアゲージが３５未満の場合は、３５まで上昇する。\n味方から強化／回復／シールドのスキル効果（同時に敵を対象とする効果は除く）を受ける時、『ムーンフェイズ』を１つ獲得する（１ターンに最大１つまで）。この効果は２ターン持続し、最大４つまで累積できる。\n『ムーンフェイズ』を獲得している時、貫通が４%／８%／１２%（自身のレベルが１／５０／７０以上の時）上昇する。",
+  "r1": "偶然の産物",
+  "r1_detail": "それぞれのスキルに以下の効果を追加する。\n『旋律の炎』：このスキルの火炎属性ダメージを追加で１回与える。\n『月下の戦曲』：２ターンの間、味方全体の貫通が１０%上昇する。\n『紅蓮・豪炎滅却』：『ムーンフェイズ』を４つ獲得している場合、スキル発動時の自身のクリティカル率が１６%上昇する。",
+  "r2": "動じない心",
+  "r2_detail": "自身の行動時、『ムーンフェイズ』を４つ獲得している場合、自動で『月下の戦曲』を１回発動する。\nクールタイム：１ターン",
   "r3": "満月の下で",
-  "r3_detail": "『紅蓮・猛火の貪食』、『戦闘技術』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "茨の道",
-  "r4_detail": "『カデンツァ』は味方全体のダメージをさらに10%上昇させ、『アルダナ』は追加で1回ダメージを与える。",
+  "r3_detail": "『紅蓮・豪炎滅却』『戦術技能』のスキルレベルが３上昇する。",
+  "r4": "いばらの道にて",
+  "r4_detail": "それぞれのテウルギアに以下の効果を追加する。\n『カデンツァ』：２ターンの間、味方全体の与ダメージが追加で１０%上昇する。\n『アルダナ』：このテウルギアの火炎属性ダメージを追加で２回与える。",
   "r5": "魂の炎",
-  "r5_detail": "『旋律の炎』、『月下の戦闘曲』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "誓いの盟約",
-  "r6_detail": "結城理が任意のテウルギアを発動すると、もう一方のテウルギア効果も同時に発動する。『紅蓮・猛火の貪食』で『特別な月相』を消費してダメージを与える場合、スキルダメージが20%上昇する。\n結城理が初めて致命的ダメージを受けると、次のターン終了前までHPが1未満にならず、瀕死状態に入るが、次のターン終了時に死亡する。瀕死状態中にHPが最大HPの25%以上回復すると、瀕死状態が解除される。"
+  "r5_detail": "『旋律の炎』『月下の戦曲』のスキルレベルが３上昇する。",
+  "r6": "恐怖を燃やせ",
+  "r6_detail": "自身がテウルギアを発動した時、もう一方のテウルギアの効果も同時に発動する。\n『紅蓮・豪炎滅却』の『フルムーン』を消費して与えるスキルダメージが３５%上昇する。\n自身が初めて致死ダメージを受ける時、次の自身のターン終了時までＨＰが１未満にならない特殊な瀕死状態になり、ターン終了時に戦闘不能になる。この瀕死状態中に最大ＨＰの２５%以上まで回復した場合、状態は解除される。"
 };
 
 window.cnCharacterRitualData["유키 마코토"] = {

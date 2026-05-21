@@ -20,7 +20,7 @@ window.personaFiles["토르"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
-    "comment_cn": "",
+  "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -57,8 +57,8 @@ window.personaFiles["토르"] = {
       "name_en": "Thunder Lord's Majesty",
       "name_jp": "雷神の威厳",
       "desc": "크리티컬 효과가 34.9% 증가한다. 아군 괴도가 전격 속성의 페르소나 스킬/추가 효과/HIGHLIGHT/테우르기아 시전 시 2턴 동안 자신이 『뇌신의 위세』를 1중첩 획득한다(3회 중첩 가능). 자신이 페르소나 스킬을 시전해 전격 속성 대미지를 주었을 때, 만약 자신의 『뇌신의 위세』가 3중첩이면 2턴 동안 전체 적이 받는 전격 속성 대미지가 8% 증가하고, 받는 전격 속성 크리티컬 효과가 12% 증가한다.",
-      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, or Highlight, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 1 turn. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
-      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル/意識奏功/ハイライトを使用した時、１ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが８%上昇し、電撃属性の被クリティカルダメージが１２%上昇する。",
+      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 1 turn. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
+      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル／意識奏功／ハイライト／テウルギアを使用した時、１ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが８%上昇し、電撃属性の被クリティカルダメージが１２%上昇する。",
       "name_cn": "雷神的威严",
       "desc_cn": "暴击效果提升34.9%。友方怪盗释放电击属性的人格面具技能/追加效果/HIGHLIGHT/神通法时，自身获得1层『雷神威势』，持续2回合，上限3层。自身释放人格面具技能造成电击属性伤害时，若自身『雷神威势』为3层，使全体敌人受到电击属性伤害提升8%、受到电击属性暴击效果提升12%，持续2回合。"
     },
@@ -67,8 +67,8 @@ window.personaFiles["토르"] = {
       "name_en": "Thunder Lord's Majesty I",
       "name_jp": "雷神の威厳Ⅰ",
       "desc": "크리티컬 효과가 34.9% 증가한다. 아군 괴도가 전격 속성의 페르소나 스킬/추가 효과/HIGHLIGHT/테우르기아 시전 시 3턴 동안 자신이 『뇌신의 위세』를 1중첩 획득한다(3회 중첩 가능). 자신이 페르소나 스킬을 시전해 전격 속성 대미지를 주었을 때, 만약 자신의 『뇌신의 위세』가 3중첩이면 2턴 동안 전체 적이 받는 전격 속성 대미지가 8% 증가하고, 받는 전격 속성 크리티컬 효과가 12% 증가한다.",
-      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, or Highlight, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
-      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル/意識奏功/ハイライトを使用した時、２ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが８%上昇し、電撃属性の被クリティカルダメージが１２%上昇する。",
+      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
+      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル／意識奏功／ハイライト／テウルギアを使用した時、２ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが８%上昇し、電撃属性の被クリティカルダメージが１２%上昇する。",
       "name_cn": "雷神的威严Ⅰ",
       "desc_cn": "暴击效果提升34.9%。友方怪盗释放电击属性的人格面具技能/追加效果/HIGHLIGHT/神通法时，自身获得1层『雷神威势』，持续3回合，上限3层。自身释放人格面具技能造成电击属性伤害时，若自身『雷神威势』为3层，使全体敌人受到电击属性伤害提升8%、受到电击属性暴击效果提升12%，持续2回合。"
     },
@@ -77,8 +77,8 @@ window.personaFiles["토르"] = {
       "name_en": "Thunder Lord's Majesty II",
       "name_jp": "雷神の威厳Ⅱ",
       "desc": "크리티컬 효과가 34.9% 증가한다. 아군 괴도가 전격 속성의 페르소나 스킬/추가 효과/HIGHLIGHT/테우르기아 시전 시 3턴 동안 자신이 『뇌신의 위세』를 1중첩 획득한다(3회 중첩 가능). 자신이 페르소나 스킬을 시전해 전격 속성 대미지를 주었을 때, 만약 자신의 『뇌신의 위세』가 3중첩이면 2턴 동안 전체 적이 받는 전격 속성 대미지가 12% 증가하고, 받는 전격 속성 크리티컬 효과가 12% 증가한다.",
-      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, or Highlight, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
-      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル/意識奏功/ハイライトを使用した時、２ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが１２%上昇し、電撃属性の被クリティカルダメージが１２%上昇する。",
+      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
+      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル／意識奏功／ハイライト／テウルギアを使用した時、２ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが１２%上昇し、電撃属性の被クリティカルダメージが１２%上昇する。",
       "name_cn": "雷神的威严Ⅱ",
       "desc_cn": "暴击效果提升34.9%。友方怪盗释放电击属性的人格面具技能/追加效果/HIGHLIGHT/神通法时，自身获得1层『雷神威势』，持续3回合，上限3层。自身释放人格面具技能造成电击属性伤害时，若自身『雷神威势』为3层，使全体敌人受到电击属性伤害提升12%、受到电击属性暴击效果提升12%，持续2回合。"
     },
@@ -87,8 +87,8 @@ window.personaFiles["토르"] = {
       "name_en": "Thunder Lord's Majesty III",
       "name_jp": "雷神の威厳Ⅲ",
       "desc": "크리티컬 효과가 34.9% 증가한다. 아군 괴도가 전격 속성의 페르소나 스킬/추가 효과/HIGHLIGHT/테우르기아 시전 시 3턴 동안 자신이 『뇌신의 위세』를 1중첩 획득한다(3회 중첩 가능). 자신이 페르소나 스킬을 시전해 전격 속성 대미지를 주었을 때, 만약 자신의 『뇌신의 위세』가 3중첩이면 2턴 동안 전체 적이 받는 전격 속성 대미지가 12% 증가하고, 받는 전격 속성 크리티컬 효과가 20% 증가한다.",
-      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, or Highlight, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 20%. Lasts for 2 turns.",
-      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル/意識奏功/ハイライトを使用した時、２ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが１２%上昇し、電撃属性の被クリティカルダメージが２０%上昇する。",
+      "desc_en": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 20%. Lasts for 2 turns.",
+      "desc_jp": "クリティカルダメージが３４.９%上昇する。味方が電撃属性のスキル／意識奏功／ハイライト／テウルギアを使用した時、２ターンの間、自身が『雷神の威厳』を１つ獲得する。この効果は最大３つまで累積できる。自身がスキルで電撃属性ダメージを与えた時、自身の『雷神の威厳』が３つの場合、２ターンの間、敵全体の電撃属性の被ダメージが１２%上昇し、電撃属性の被クリティカルダメージが２０%上昇する。",
       "name_cn": "雷神的威严Ⅲ",
       "desc_cn": "暴击效果提升34.9%。友方怪盗释放电击属性的人格面具技能/追加效果/HIGHLIGHT/神通法时，自身获得1层『雷神威势』，持续3回合，上限3层。自身释放人格面具技能造成电击属性伤害时，若自身『雷神威势』为3层，使全体敌人受到电击属性伤害提升12%、受到电击属性暴击效果提升20%，持续2回合。"
     }

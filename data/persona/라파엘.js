@@ -28,20 +28,20 @@ window.personaFiles["라파엘"] = {
   "passive_priority": "",
   "passive_skill": [
     {
-      "name": "생명의 나무의 인도",
+      "name": "생명 나무의 인도",
       "name_en": "Overclock: Tree of Life's Guidance",
       "name_jp": "生命の樹の導き",
-      "desc": "공격력이 29.1% 증가한다.\n자신이 필드에 있을 때, 아군이 임의의 욕망 소나타 효과를 발동하면 모든 동료의 크리티컬 효과가 25% 증가한다.\n자신이 동료를 대상으로 페르소나 스킬을 시전한 후, 3턴 동안 스킬 메인 목표의 총 대미지 증폭이 2.1% 증가한다.",
+      "desc": "공격력이 29.1% 증가한다.\n자신이 필드에 있을 시, 아군이 임의 속성 소나타 효과를 발동한 경우, 아군 전체의 크리티컬 효과가 25% 증가한다.\n동료를 목표로 페르소나 스킬 시전 시, 3턴 동안 스킬 메인 목표의 총대미지 증폭이 2.1% 증가한다.",
       "desc_en": "Increase Attack by 29.1%.\nWhen user is present, if allies have activated any Attribute Harmony, increase all allies' critical damage by 25%.\nAfter using a Persona skill on allies, increase the main target's Total Damage Amplification by 2.1%. Lasts for 3 turns.",
       "desc_jp": "攻撃力が29.1%上昇する。\n自身がフィールドにいる時、味方がいずれかの欲望の共鳴効果を発動すると、味方全体のクリティカルダメージが25%上昇する。\n自身が味方を対象にペルソナスキルを使用した後、3ターンの間、スキルのメイン対象の総ダメージ増幅が2.1%上昇する。",
       "name_cn": "生命之树的指引",
       "desc_cn": "攻击力提升29.1%。\n自身在场时，若友方触发了任意属性奏鸣效果，则使所有同伴暴击效果提升25%。\n以同伴为目标释放人格面具技能后，技能主目标的总伤害增幅提升2.1%，持续3回合。"
     },
     {
-      "name": "생명의 나무의 인도Ⅰ",
+      "name": "생명 나무의 인도 I",
       "name_en": "Overclock: Tree of Life's Guidance I",
       "name_jp": "生命の樹の導きⅠ",
-      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시 모든 동료의 공격력이 영구적으로 20% 증가한다.\n자신이 필드에 있을 때, 아군이 임의의 욕망 소나타 효과를 발동하면 모든 동료의 크리티컬 효과가 25% 증가한다.\n자신이 동료를 대상으로 페르소나 스킬을 시전한 후, 3턴 동안 스킬 메인 목표의 총 대미지 증폭이 4.2% 증가한다.",
+      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시 아군 전체 공격력이 20% 영구 증가한다.\n자신이 필드에 있을 시, 아군이 임의 속성 소나타 효과를 발동한 경우, 아군 전체의 크리티컬 효과가 25% 증가한다.\n동료를 목표로 페르소나 스킬 시전 시, 3턴 동안 스킬 메인 목표의 총대미지 증폭이 4.2% 증가한다.",
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, permanently increase all allies' Attack by 20%.\nWhen user is present, if allies have activated any Attribute Harmony, increase all allies' critical damage by 25%.\nAfter using a Persona skill on allies, increase the main target's Total Damage Amplification by 4.2%. Lasts for 3 turns.",
       "desc_jp": "攻撃力が29.1%上昇する。\n戦闘開始時、味方全体の攻撃力が永続的に20%上昇する。\n自身がフィールドにいる時、味方がいずれかの欲望の共鳴効果を発動すると、味方全体のクリティカルダメージが25%上昇する。\n自身が味方を対象にペルソナスキルを使用した後、3ターンの間、スキルのメイン対象の総ダメージ増幅が4.2%上昇する。",
       "name_cn": "生命之树的指引Ⅰ",
@@ -52,7 +52,7 @@ window.personaFiles["라파엘"] = {
     "name": "만령 촉매",
     "name_en": "Soul Catalysis",
     "name_jp": "万霊触媒",
-    "desc": "3턴 동안 동료 1명의 공격력이 25.0%/26.2%/27.5% 증가한다. 아군이 임의의 욕망 소나타 효과를 발동한 경우, 메인 목표의 크리티컬 확률이 추가로 12.0%/12.6%/13.2% 증가한다.",
+    "desc": "3턴 동안 동료 1명의 공격력이 25.0%/26.2%/27.5% 증가하고, 아군이 임의 속성 소나타 효과를 발동한 경우, 메인 목표의 크리티컬 확률이 추가로 12.0%/12.6%/13.2% 증가한다.",
     "desc_en": "Increase 1 ally's Attack by 25.0%/26.2%/27.5%. If allies have activated any Attribute Harmony, additionally increase the main target's critical rate by 12.0%/12.6%/13.2%. Lasts for 3 turns.",
     "desc_jp": "3ターンの間、味方単体の攻撃力が25.0%/26.2%/27.5%上昇する。味方がいずれかの欲望の共鳴効果を発動している場合、さらにメイン対象のクリティカル率が12.0%/12.6%/13.2%上昇する。",
     "priority": "",
@@ -65,7 +65,7 @@ window.personaFiles["라파엘"] = {
     "name": "HIGHLIGHT",
     "name_en": "Highlight",
     "name_jp": "ハイライト",
-    "desc": "4턴 동안 모든 동료의 공격력이 19.2%/20.5%/21.9%, 크리티컬 효과가 12.0%/12.8%/13.7% 증가한다.",
+    "desc": "4턴 동안 아군 전체의 공격력을 19.2%/20.5%/21.9%, 크리티컬 효과를 12.0%/12.8%/13.7% 증가시킨다.",
     "desc_en": "Increase all allies' Attack by 19.2%/20.5%/21.9% and critical damage by 12.0%/12.8%/13.7%. Lasts for 4 turns.",
     "desc_jp": "4ターンの間、味方全体の攻撃力が19.2%/20.5%/21.9%、クリティカルダメージが12.0%/12.8%/13.7%上昇する。",
     "priority": "",
@@ -87,7 +87,7 @@ window.personaFiles["라파엘"] = {
       "desc_cn": "驱散所有敌人的1个属性提升效果。"
     },
     {
-      "name": "생명 강화 IV",
+      "name": "생명 강화Ⅳ",
       "name_en": "HP Boost IV",
       "name_jp": "ＨＰブースタⅣ",
       "desc": "생명이 13.5% 증가한다.",

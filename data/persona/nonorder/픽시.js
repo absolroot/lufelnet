@@ -23,8 +23,8 @@ window.personaFiles["픽시"] = {
   "passive_skill": [
     {
       "name": "길 잃은 충고",
-      "name_en": "Guide the Lost",
-      "name_jp": "迷い人への助言",
+      "name_en": "Advising Missing Persons",
+      "name_jp": "失踪者への助言",
       "desc": "공격력이 2.9% 증가한다. 적 다운 시 모든 동료의 공격력이 2턴 동안 14.3% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. After knocking down a foe, increase party's Attack by 14.3% for 2 turns.",
       "desc_jp": "攻撃力が２.９%上昇する。敵をダウンさせた時、２ターンの間、味方全体の攻撃力が１４.３%上昇する。",
@@ -33,8 +33,8 @@ window.personaFiles["픽시"] = {
     },
     {
       "name": "길 잃은 충고Ⅰ",
-      "name_en": "Guide the Lost I",
-      "name_jp": "迷い人への助言Ⅰ",
+      "name_en": "Advising Missing Persons I",
+      "name_jp": "失踪者への助言Ⅰ",
       "desc": "공격력이 2.9% 증가한다. 적 다운 시 모든 동료의 공격력이 2턴 동안 16.5% 증가한다.",
       "desc_en": "Increase Attack by 2.9%. After knocking down a foe, increase party's Attack by 16.5% for 2 turns.",
       "desc_jp": "攻撃力が２.９%上昇する。敵をダウンさせた時、２ターンの間、味方全体の攻撃力が１６.５%上昇する。",

@@ -170,8 +170,7 @@ const enRevelationData = {
     "sub_effects": {
         "Flourishing": { // 번영
             "set2": "Increase Attack by 12%.",
-            // KR/CN patched: triggers once per battle and can stack up to 2 times. EN/JP runtime text pending.
-            "set4": "Increase DMG Dealt by 16%. After the user gains 2 [Rhapsody Beat], grants half of this buff effect to other allies.",
+            "set4": "Increase DMG Dealt by 16%. After the user gains 2 [Rhapsody Beat], grants 50% of this partial buff effect to other allies. This can trigger once per battle and stack up to 2 times.",
             "type": ["버프", "미출시"]
         },
         "Determination": { // 결단
@@ -397,8 +396,7 @@ const enRevelationData = {
         },
         "Freedom": { // 자유
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
-            // KR/CN patched: Freedom + Triumph now grants Glory-based Critical Effect instead of Follow Up PEN. EN/JP runtime text pending.
-            "Triumph": "Gain 1 [Glory] when using a persona skill, up to 2 stacks. When triggering a Follow Up, consumes all [Glory] to increase that Follow Up's PEN by 8% per stack.",
+            "Triumph": "When using a Persona skill, gain 1 [Glory] stack. If the skill is Ice or Wind, gain 1 additional stack, up to 2 stacks. Glory: For 2 turns, increases Critical Effect by 10%. If the wearer is Ice or Wind, increases it by an additional 10%.",
             "Disappointment": "When dealing Almighty damage, increase Attack by 35% and critical rate by 12%.",
             //"type": ["미출시"]
         },

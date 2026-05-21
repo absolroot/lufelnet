@@ -50,11 +50,7 @@ const IANT_SERVER_TO_LOCAL_LANG = {
   tw: 'cn',
   sea: 'en'
 };
-const CHARACTER_PATCH_LANG_EXCEPTIONS = new Map([
-  // "makoto" points to different characters across server groups.
-  // Skip GLB-localized compare/patch for Yuki Makoto until a stable GLB mapping exists.
-  ['MAKOTO', new Set(['en', 'jp'])]
-]);
+const CHARACTER_PATCH_LANG_EXCEPTIONS = new Map();
 
 const WINDOW_NAME_MAP = {
   ritual: {

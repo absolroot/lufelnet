@@ -22,7 +22,7 @@ window.ReleaseScheduleData = {
         // Global Server Events (UTC)
         { type: "debut", date: "2025-06-26", name: "Global Debut", server: "global" },
         { type: "half", date: "2025-12-26", name: "Global Half-Anniversary", server: "global" },
-        { type: "first", date: "2026-06-26", name: "Global 1st Anniversary", server: "global" },
+        { type: "first", date: "2026-06-25", name: "Global 1st Anniversary", server: "global" },
         { type: "onehalf", date: "2026-12-26", name: "Global 1.5 Anniversary", server: "global" },
 
         // CN Server Events (UTC)
@@ -77,8 +77,8 @@ window.ReleaseScheduleData = {
         // 4.0 이후 (3주 간격) - isThreeWeekStart 표시
         { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"], days: 21 },
         { version: "4.1.1", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 14 },
-        { version: "4.1.2", characters: ["유카리"], weapon: ["마그네틱 스톰"], days: 21 },
-        { version: "???", incomeVersion: "4.1", fixedDate: "2026-06-26", fixedDateSeaShift: false, characters: ["???"], days: 21, plannerPlaceholder: true, placeholderId: "global-first-anniversary-unit", placeholderLabelKey: "plannerPlaceholderGlobalFirstAnniversaryUnit", placeholderNoteKey: "plannerPlaceholderUnconfirmed" },
+        { version: "4.1.2", characters: ["유카리"], weapon: ["마그네틱 스톰"], goldTicketUnlocks: ["CHERISH"], days: 21 },
+        { version: "???", incomeVersion: "4.1", fixedDate: "2026-06-25", fixedDateSeaShift: false, characters: ["???"], days: 21, plannerPlaceholder: true, placeholderId: "global-first-anniversary-unit", placeholderLabelKey: "plannerPlaceholderGlobalFirstAnniversaryUnit", placeholderNoteKey: "plannerPlaceholderUnconfirmed" },
         { version: "4.1.3", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"], days: 21 },
         { version: "4.2", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days: 21 },
         { version: "4.3.1", characters: ["미나미·여름"], "summer": true, days: 21 },

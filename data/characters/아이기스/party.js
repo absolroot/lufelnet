@@ -20,15 +20,26 @@ window.recommendParty["아이기스"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "아이기스",
+                "미나미·여름",
+                "카타야마",
+                "마나카"
             ],
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
-        }
+        },
+        {
+            "members": [
+                "아이기스",
+                "카타야마",
+                "유카리",
+                "마나카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
     ],
     "friends": [
         {

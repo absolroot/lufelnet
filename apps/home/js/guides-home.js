@@ -4,6 +4,8 @@
  */
 
 const HOME_GUIDE_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
+const HOME_GUIDE_GLOBAL_REGIONS = new Set(['en', 'jp', 'sea']);
+const HOME_GUIDE_PINNED_GLOBAL_ARTICLE_ID = 'theurgy';
 
 function shouldShowHomeGuides(rawLang) {
     return String(rawLang || '').toLowerCase() !== 'cn';
@@ -57,6 +59,46 @@ function resolveGuidePathLang(rawLang) {
     return 'kr';
 }
 
+function detectHomeGuideCarouselRegion(rawLang) {
+    try {
+        const saved = String(localStorage.getItem('carousel_region') || '').toLowerCase();
+        if (HOME_GUIDE_RAW_LANGS.includes(saved)) return saved;
+    } catch (_) { }
+
+    const normalized = String(rawLang || '').toLowerCase();
+    return HOME_GUIDE_RAW_LANGS.includes(normalized) ? normalized : 'kr';
+}
+
+function shouldPinHomeGuideArticle(rawLang) {
+    return HOME_GUIDE_GLOBAL_REGIONS.has(detectHomeGuideCarouselRegion(rawLang));
+}
+
+function sortHomeGuides(guides, rawLang) {
+    const sortedGuides = [...guides];
+
+    // Keep the same ordering rule as the article list page:
+    // notice first, then newest first within each group.
+    sortedGuides.sort((a, b) => {
+        const aNotice = a.category === 'notice' ? 0 : 1;
+        const bNotice = b.category === 'notice' ? 0 : 1;
+        if (aNotice !== bNotice) return aNotice - bNotice;
+        return new Date(b.date) - new Date(a.date);
+    });
+
+    if (!shouldPinHomeGuideArticle(rawLang)) {
+        return sortedGuides;
+    }
+
+    const pinnedIndex = sortedGuides.findIndex(guide => guide.id === HOME_GUIDE_PINNED_GLOBAL_ARTICLE_ID);
+    if (pinnedIndex === -1) return sortedGuides;
+
+    const [pinnedGuide] = sortedGuides.splice(pinnedIndex, 1);
+    const firstNonNoticeIndex = sortedGuides.findIndex(guide => guide.category !== 'notice');
+    const insertIndex = firstNonNoticeIndex === -1 ? sortedGuides.length : firstNonNoticeIndex;
+    sortedGuides.splice(insertIndex, 0, pinnedGuide);
+    return sortedGuides;
+}
+
 async function waitHomeGuideI18nReady() {
     if (!window.__HOME_I18N_READY__) return;
     try {
@@ -89,15 +131,7 @@ window.loadHomeGuides = async function (currentLang) {
         if (!response.ok) throw new Error('Failed to load guides list');
 
         let guides = await response.json();
-
-        // Keep the same ordering rule as the article list page:
-        // notice first, then newest first within each group.
-        guides.sort((a, b) => {
-            const aNotice = a.category === 'notice' ? 0 : 1;
-            const bNotice = b.category === 'notice' ? 0 : 1;
-            if (aNotice !== bNotice) return aNotice - bNotice;
-            return new Date(b.date) - new Date(a.date);
-        });
+        guides = sortHomeGuides(guides, rawLang);
 
         // Take top 5
         const recentGuides = guides.slice(0, 5);

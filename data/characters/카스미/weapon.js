@@ -40,7 +40,7 @@ window.enCharacterWeaponData["카스미"] = {
     "attack": 766.41,
     "defense": 370,
     "skill_name": "Sunrise",
-    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen gaining a Step stack, increase Attack by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns. This effect does not stack.\nWhen an ally activates a Highlight, gain 1 Glass Slipper stack, and increase Kasumi's damage by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns. Stacks up to 2 times.\nWhen Glass Slipper is at 2 stacks, increase Kasumi's Highlight damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0% more."
+    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen gaining a Step stack, increase Attack by 21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0% for 2 turns. This effect does not stack.\nWhen an ally activates a Highlight or Theurgy, gain 1 Glass Slipper stack, and increase Kasumi's damage by 8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5% for 3 turns. Stacks up to 2 times.\nWhen Glass Slipper is at 2 stacks, increase Kasumi's Highlight damage by 30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0% more."
   }
 };
 
@@ -60,7 +60,7 @@ window.jpCharacterWeaponData["카스미"] = {
     "attack": 766.41,
     "defense": 370,
     "skill_name": "朝日",
-    "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。\n『ステップ』を獲得した時、２ターンの間、攻撃力が21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0%上昇する。この効果は累積しない。\n味方がハイライトを発動した時、『ガラスのくつ』を１つ獲得し、３ターンの間、自身の与ダメージが8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5%上昇する。この効果は最大２つまで累積できる。\n『ガラスのくつ』を２つ獲得している時、自身のハイライトダメージが追加で30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%上昇する。"
+    "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。\n『ステップ』を獲得した時、２ターンの間、攻撃力が21.0%/27.0%/27.0%/33.0%/33.0%/39.0%/39.0%上昇する。この効果は累積しない。\n味方がハイライト／テウルギアを発動した時、『ガラスのくつ』を１つ獲得し、３ターンの間、自身の与ダメージが8.4%/11.1%/11.1%/13.8%/13.8%/16.5%/16.5%上昇する。この効果は最大２つまで累積できる。\n『ガラスのくつ』を２つ獲得している時、自身のハイライトダメージが追加で30.0%/39.0%/39.0%/48.0%/48.0%/57.0%/57.0%上昇する。"
   }
 };
 

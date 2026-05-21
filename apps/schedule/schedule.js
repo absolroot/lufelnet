@@ -75,8 +75,14 @@
                 });
             }
 
-            // Note: autoGenerateCharacters don't have dates - they're calculated from manualReleases
-            // So we don't need to shift them directly
+            // Shift explicitly fixed auto-generated dates such as anniversary planning slots
+            if (window.ReleaseScheduleData.autoGenerateCharacters) {
+                window.ReleaseScheduleData.autoGenerateCharacters.forEach(release => {
+                    if (release.fixedDate && release.fixedDateSeaShift !== false) {
+                        release.fixedDate = addDaysToDateString(release.fixedDate, shiftDays);
+                    }
+                });
+            }
         }
     }
 
@@ -774,9 +780,10 @@
         // 1. First add autoGenerateCharacters (user-defined order)
         if (window.ReleaseScheduleData.autoGenerateCharacters && window.ReleaseScheduleData.autoGenerateCharacters.length > 0) {
             window.ReleaseScheduleData.autoGenerateCharacters.forEach((item) => {
+                const releaseDate = item.fixedDate ? parseDate(item.fixedDate) : lastDate;
                 releases.push({
                     version: item.version,
-                    date: formatDateStr(lastDate),
+                    date: formatDateStr(releaseDate),
                     characters: item.characters,
                     note: item.note,
                     'main-story': item['main-story'],
@@ -793,7 +800,7 @@
 
                 // Calculate next date after pushing
                 interval = item.days ?? data.intervalRules.beforeV4;
-                lastDate = new Date(lastDate.getTime() + interval * 24 * 60 * 60 * 1000);
+                lastDate = new Date(releaseDate.getTime() + interval * 24 * 60 * 60 * 1000);
 
                 // Add to already scheduled and track max release_order
                 item.characters.forEach(c => {

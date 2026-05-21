@@ -53,16 +53,15 @@ The buff effects from Skill 1, Skill 2, and Theurgy are indicated as lasting 2 t
           ]
           ,
         pros_cn: ["0意识起点就有很高的伤害表现。", "没有必须绑定的队友。", "几乎所有内容都能投入使用。"],
-        cons: ["의식6이 아닌 경우 2개의 테우르기아 중 1개만 사용하게 된다."],
+        cons: ["의식6이 아닌 경우 2개의 테우르기아를 모두 쓸 수는 있지만 실전 운용은 한쪽 테우르기아 중심으로 굳어진다."],
         cons_en: [
-            "If not at Awareness 6 (A6), he can use only one of his two Theurgies."
+            "Before Awareness 6 (A6), he can still use both Theurgies, but his practical rotation settles around one of them."
           ]
           ,
         cons_jp: [
-            "凸6でなければ、2種類のテウルギアのうち1つしか使用できない。"
+            "凸6前でも2種類のテウルギア自体は使用できるが、実戦ではどちらか一方を中心にした運用に固定される。"
           ]
           ,
-        cons_cn: ["若未达到意识6，两种神通法里实际只能使用其中一种。"],
+        cons_cn: ["未达到意识6前，两种神通法本身仍然都可以使用，但实战循环会固定为以其中一种为主。"],
     };
 })();
-

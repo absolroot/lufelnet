@@ -159,12 +159,14 @@ window.cnCharacterSkillsData["아란"] = {
   "passive1": {
     "name": "逆刃",
     "element": "패시브",
-    "description": "平野亚兰在场时，我方全体对带有『罪』的敌人造成伤害提升24.0%。"
+    "description": "平野亚兰在场时，我方全体对带有『罪』的敌人造成伤害提升24.0%。",
+    "cool": 0
   },
   "passive2": {
     "name": "祭炎",
     "element": "패시브",
-    "description": "平野亚兰在场时，场上每存在1个带有『罪』的敌人，我方全队就获得18.0%攻击力加成。"
+    "description": "平野亚兰在场时，场上每存在1个带有『罪』的敌人，我方全队就获得18.0%攻击力加成。",
+    "cool": 0
   }
 };
 

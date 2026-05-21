@@ -290,10 +290,7 @@
             if (releaseDate > lastTargetDate) return;
 
             // Filter out 4-star characters
-            const fiveStarChars = (release.characters || []).filter(charName => {
-                const charData = window.characterData?.[charName];
-                return charData && charData.rarity !== 4;
-            });
+            const fiveStarChars = this.getRenderableScheduleCharacters(release);
             const firstCharName = fiveStarChars.length > 0 ? fiveStarChars[0] : null;
             if (!firstCharName) return;
 

@@ -328,8 +328,14 @@ function applyServerDelayToData(isSea) {
             });
         }
 
-        // Note: autoGenerateCharacters don't have dates - they're calculated from manualReleases
-        // So we don't need to shift them directly
+        // Shift explicitly fixed auto-generated dates such as anniversary planning slots
+        if (window.ReleaseScheduleData.autoGenerateCharacters) {
+            window.ReleaseScheduleData.autoGenerateCharacters.forEach(release => {
+                if (release.fixedDate && release.fixedDateSeaShift !== false) {
+                    release.fixedDate = addDaysToDateString(release.fixedDate, shiftDays);
+                }
+            });
+        }
     }
 }
 
@@ -1091,6 +1097,7 @@ class PullSimulator {
 
         const releases = this.parseScheduleData(scheduleData);
         this.scheduleReleases = releases;
+        this.reconcilePlannerPlaceholderTargets(releases);
 
         const today = this.getKSTToday();
         const thirtyDaysAgo = this.addDays(today, -30);
@@ -1164,10 +1171,7 @@ class PullSimulator {
         let prevFutureDate = null;
         relevantReleases.forEach(release => {
             // Filter out 4-star characters
-            const fiveStarChars = release.characters.filter(charName => {
-                const charData = window.characterData?.[charName];
-                return charData && charData.rarity !== 4;
-            });
+            const fiveStarChars = this.getRenderableScheduleCharacters(release);
 
             if (fiveStarChars.length > 0) {
                 const releaseDateObj = this.parseGameDate(release.date);
@@ -1259,10 +1263,15 @@ class PullSimulator {
         (scheduleData.manualReleases || []).forEach(release => {
             releases.push({
                 version: release.version,
+                incomeVersion: release.incomeVersion,
                 date: release.date,
                 characters: release.characters || [],
                 note: release.note,
                 days: release.days ?? scheduleData.intervalRules.beforeV4,
+                plannerPlaceholder: !!release.plannerPlaceholder,
+                placeholderId: release.placeholderId,
+                placeholderLabelKey: release.placeholderLabelKey,
+                placeholderNoteKey: release.placeholderNoteKey,
             });
         });
 
@@ -1277,22 +1286,93 @@ class PullSimulator {
         }
 
         (scheduleData.autoGenerateCharacters || []).forEach(release => {
+            const computedDate = lastDate ? lastDate.toISOString().split('T')[0] : null;
+            const releaseDate = release.fixedDate || computedDate;
             releases.push({
                 version: release.version,
-                date: lastDate ? lastDate.toISOString().split('T')[0] : null,
+                incomeVersion: release.incomeVersion,
+                fixedDate: release.fixedDate,
+                fixedDateSeaShift: release.fixedDateSeaShift,
+                date: releaseDate,
                 characters: release.characters || [],
-                note: release.note
+                note: release.note,
+                plannerPlaceholder: !!release.plannerPlaceholder,
+                placeholderId: release.placeholderId,
+                placeholderLabelKey: release.placeholderLabelKey,
+                placeholderNoteKey: release.placeholderNoteKey,
             });
 
             // Update lastDate after adding the release
             const version = parseFloat(release.version);
             const interval = version >= 4.0 && isTwoWeeksScenario ? scheduleData.intervalRules.beforeV4 : release.days;
-            if (lastDate) {
+            if (releaseDate) {
+                const parts = releaseDate.split('-');
+                lastDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));
                 lastDate.setUTCDate(lastDate.getUTCDate() + interval);
             }
         });
 
         return releases.filter(r => r.date && r.characters.length > 0);
+    }
+
+    isPlannerPlaceholderCharacter(charName, release = null) {
+        if (!charName || window.characterData?.[charName]) return false;
+
+        const releases = release
+            ? [release]
+            : (Array.isArray(this.scheduleReleases) ? this.scheduleReleases : []);
+
+        return releases.some(item => {
+            return !!item?.plannerPlaceholder
+                && Array.isArray(item.characters)
+                && item.characters.includes(charName);
+        });
+    }
+
+    getRenderableScheduleCharacters(release) {
+        return (release.characters || []).filter(charName => {
+            const charData = window.characterData?.[charName];
+            if (charData) return charData.rarity !== 4;
+            return this.isPlannerPlaceholderCharacter(charName, release);
+        });
+    }
+
+    getPlannerPlaceholderLabel(release = null) {
+        const key = release?.placeholderLabelKey || 'plannerPlaceholderGlobalFirstAnniversaryUnit';
+        return this.t(key, 'Global 1st Anniversary Unit');
+    }
+
+    getPlannerPlaceholderNote(release = null) {
+        const key = release?.placeholderNoteKey || 'plannerPlaceholderUnconfirmed';
+        return this.t(key, 'Unconfirmed planning slot');
+    }
+
+    reconcilePlannerPlaceholderTargets(releases = []) {
+        if (!Array.isArray(this.targets) || this.targets.length === 0) return;
+
+        let changed = false;
+        this.targets.forEach(target => {
+            if (!target || !target.placeholderId) return;
+
+            const release = releases.find(item => item?.placeholderId === target.placeholderId);
+            if (!release || !Array.isArray(release.characters)) return;
+
+            const resolvedName = release.characters.find(charName => !!window.characterData?.[charName]);
+            if (resolvedName && target.name !== resolvedName) {
+                target.name = resolvedName;
+                target.placeholderLabelKey = undefined;
+                target.placeholderNoteKey = undefined;
+                changed = true;
+            }
+
+            if (target.date !== release.date || String(target.version) !== String(release.version)) {
+                target.date = release.date;
+                target.version = release.version;
+                changed = true;
+            }
+        });
+
+        if (changed) this.saveData();
     }
 
     /**
@@ -1322,7 +1402,7 @@ class PullSimulator {
 
         let cardsHtml = '';
         release.characters.forEach(charName => {
-            cardsHtml += this.renderCharCard(charName, release.version, release.date, diffDays, prevDate);
+            cardsHtml += this.renderCharCard(charName, release.version, release.date, diffDays, prevDate, release);
         });
 
         return `
@@ -1339,9 +1419,10 @@ class PullSimulator {
         `;
     }
 
-    renderCharCard(charName, version, date, diffDays, prevDate = null) {
+    renderCharCard(charName, version, date, diffDays, prevDate = null, release = null) {
         const charData = window.characterData?.[charName] || {};
-        const displayName = this.getCharacterName(charName);
+        const isPlaceholder = this.isPlannerPlaceholderCharacter(charName, release);
+        const displayName = isPlaceholder ? this.getPlannerPlaceholderLabel(release) : this.getCharacterName(charName);
         const position = charData.position || '';
         const element = charData.element || '';
         const isReleased = diffDays <= 0;
@@ -1462,17 +1543,24 @@ class PullSimulator {
                 </div>
             `;
         }
-        const detailHref = this.getCharacterDetailHref(charName);
-
-        return `
-            <div class="char-card ${isSelected ? 'selected' : ''} ${isReleased ? 'released' : ''}"
-                 data-character="${charName}" data-version="${version}" data-date="${date}">
-                <a class="character-detail-anchor char-avatar-link" data-character="${charName}" href="${detailHref}">
+        const detailHref = isPlaceholder ? '#' : this.getCharacterDetailHref(charName);
+        const avatarHtml = isPlaceholder
+            ? `<div class="char-avatar char-avatar-placeholder" aria-hidden="true">?</div>`
+            : `<a class="character-detail-anchor char-avatar-link" data-character="${charName}" href="${detailHref}">
                     <img class="char-avatar" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}"
                          onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
-                </a>
+                </a>`;
+        const placeholderNoteHtml = isPlaceholder
+            ? `<div class="char-placeholder-note">${this.getPlannerPlaceholderNote(release)}</div>`
+            : '';
+
+        return `
+            <div class="char-card ${isSelected ? 'selected' : ''} ${isReleased ? 'released' : ''} ${isPlaceholder ? 'planner-placeholder' : ''}"
+                 data-character="${charName}" data-version="${version}" data-date="${date}">
+                ${avatarHtml}
                 <div class="char-info">
                     <div class="char-name">${displayName}</div>
+                    ${placeholderNoteHtml}
                     <div class="char-meta">${metaHtml}</div>
                     <div class="char-days ${isReleased ? 'released' : ''}">${daysText}</div>
                 </div>
@@ -1483,7 +1571,14 @@ class PullSimulator {
 
     getCharacterName(charName) {
         const charData = window.characterData?.[charName];
-        if (!charData) return charName;
+        if (!charData) {
+            if (this.isPlannerPlaceholderCharacter(charName)) {
+                const release = (Array.isArray(this.scheduleReleases) ? this.scheduleReleases : [])
+                    .find(item => item?.plannerPlaceholder && Array.isArray(item.characters) && item.characters.includes(charName));
+                return this.getPlannerPlaceholderLabel(release);
+            }
+            return charName;
+        }
         const lang = this.getLang();
         if (lang === 'en' && charData.name_en) return charData.name_en;
         if (lang === 'jp' && charData.name_jp) return charData.name_jp;
@@ -1491,6 +1586,7 @@ class PullSimulator {
     }
 
     getCharacterDetailHref(charName) {
+        if (this.isPlannerPlaceholderCharacter(charName)) return '#';
         const lang = getCurrentPullCalcLanguage();
         return buildPullCalcCharacterDetailHref(charName, lang);
     }
@@ -1533,10 +1629,16 @@ class PullSimulator {
         if (index >= 0) {
             this.targets.splice(index, 1);
         } else {
+            const release = (Array.isArray(this.scheduleReleases) ? this.scheduleReleases : [])
+                .find(item => item?.date === date && String(item.version) === String(version) && Array.isArray(item.characters) && item.characters.includes(charName));
+            const isPlaceholder = this.isPlannerPlaceholderCharacter(charName, release);
             this.targets.push({
                 name: charName,
                 date: date,
                 version: version,
+                placeholderId: isPlaceholder ? release?.placeholderId : undefined,
+                placeholderLabelKey: isPlaceholder ? release?.placeholderLabelKey : undefined,
+                placeholderNoteKey: isPlaceholder ? release?.placeholderNoteKey : undefined,
                 characterTarget: 'A0',
                 weaponTarget: 'None',  // Default to not pulling weapon
                 extraEmber: 0,

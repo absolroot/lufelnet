@@ -70,6 +70,8 @@ window.I18N_PAGE_PULL_CALC_EN = {
     scheduleScenario2Weeks: '2-week interval (1x reward)',
     labelSeaServer: 'SEA Server (+8 Days)',
     confirmServerChangeReset: 'Changing server settings will reset your current plan/targets. Continue?',
+    plannerPlaceholderGlobalFirstAnniversaryUnit: 'Global 1st Anniversary Unit',
+    plannerPlaceholderUnconfirmed: 'Unconfirmed planning slot',
 
     // Plan related
     planDescription: 'Click characters from the timeline to add to your plan. If a character that has already been released remains in the data, the graph will not be drawn.',

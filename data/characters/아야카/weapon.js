@@ -38,7 +38,7 @@ window.enCharacterWeaponData["아야카"] = {
     "health": 2279.27,
     "attack": 713.51,
     "defense": 387.56,
-    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. At the start of battle, fill Highlight Gauge by 40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%.\nIncrease Costar's Attack by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%. Each time an ally uses a Highlight, increase Costar's Attack by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%. Stacks up to 3 times."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. At the start of battle, fill Highlight gauge by 40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%.\nIncrease Costar's Attack by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%. Each time an ally uses a Highlight or Theurgy, increase Costar's Attack by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%. Stacks up to 3 times."
   }
 };
 
@@ -56,7 +56,7 @@ window.jpCharacterWeaponData["아야카"] = {
     "health": 2279.27,
     "attack": 713.51,
     "defense": 387.56,
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。戦闘開始時、ハイライトゲージが40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%増加する。\n『共演』状態の味方の攻撃力が15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%上昇する。さらに味方がハイライトを使用するごとに、この効果が5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%上昇し、３つまで累積できる。"
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。戦闘開始時、ハイライトゲージが40.0%/52.0%/52.0%/64.0%/64.0%/76.0%/76.0%増加する。\n『共演』状態の味方の攻撃力が15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%上昇する。さらに味方がハイライト／テウルギアを使用するごとに、この効果が5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%上昇し、３つまで累積できる。"
   }
 };
 

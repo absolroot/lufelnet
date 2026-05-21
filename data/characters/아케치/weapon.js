@@ -39,7 +39,7 @@ window.enCharacterWeaponData["아케치"] = {
     "attack": 739.92,
     "defense": 409.62,
     "skill_name": "Divine Blessing",
-    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Deduction or Stratagem are active, increase party's Attack by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns.\nAlso, when an ally with Mastermind activates a skill, Highlight, or Resonance, increase Akechi's critical damage by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns. Stacks up to 2 times."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Deduction or Stratagem are active, increase party's Attack by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns.\nAlso, when an ally with Mastermind activates a skill, Highlight, Theurgy, or Resonance, increase Akechi's critical damage by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns. Stacks up to 2 times."
   }
 };
 
@@ -59,7 +59,7 @@ window.jpCharacterWeaponData["아케치"] = {
     "attack": 739.92,
     "defense": 409.62,
     "skill_name": "神の祝福",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n自身が『推理』または『謀略』状態になった時、２ターンの間、味方全体の攻撃力が21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0%上昇する。\nさらに『狂言回し』状態の味方がスキル／ハイライト／意識奏功を発動した時、２ターンの間、自身のクリティカルダメージが15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%上昇する。最大２つまで累積できる。"
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n自身が『推理』または『謀略』状態になった時、２ターンの間、味方全体の攻撃力が21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0%上昇する。\nさらに『狂言回し』状態の味方がスキル／ハイライト／テウルギア／意識奏功を発動した時、２ターンの間、自身のクリティカルダメージが15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5%上昇する。最大２つまで累積できる。"
   }
 };
 

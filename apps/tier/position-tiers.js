@@ -371,7 +371,7 @@ const syncCharacterDetailAnchorForMode = (element) => {
   anchor.appendChild(targetImage);
 };
 
-// 7개의 직업 포지션 정의
+// 직업 포지션 정의
 const positions = [
   { id: '지배', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_지배.png` },
   { id: '반항', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_반항.png` },
@@ -379,8 +379,10 @@ const positions = [
   { id: '굴복', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_굴복.png` },
   { id: '방위', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_방위.png` },
   { id: '구원', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_구원.png` },
-  { id: '해명', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_해명.png` }
+  { id: '해명', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_해명.png` },
+  { id: '자율', name: '', icon: `${BASE_URL}/assets/img/character-cards/직업_자율.png` }
 ];
+const elementsPerTierRow = positions.length + 2; // tier label + position cells + settings cell
 
 const resetTierImages = (tierRow) => {
   tierRow.querySelectorAll(".position-cell").forEach((positionCell) => {
@@ -410,7 +412,7 @@ const handleDeleteTier = () => {
 
       if (currentTierIndex >= 0) {
         // Calculate the positions of all elements in this tier row
-        const elementsPerRow = 9; // 1 label + 7 positions + 1 settings
+        const elementsPerRow = elementsPerTierRow;
         const startPosition = (currentTierIndex + 1) * elementsPerRow; // +1 to account for header row
         const endPosition = startPosition + elementsPerRow;
 
@@ -465,8 +467,7 @@ const handlePrependTier = () => {
     const currentTierIndex = allTierLabels.indexOf(activeTier);
 
     if (currentTierIndex >= 0) {
-      // Calculate the grid position (each tier row has 9 elements: 1 label + 7 positions + 1 settings)
-      const elementsPerRow = 9;
+      const elementsPerRow = elementsPerTierRow;
       const insertPosition = (currentTierIndex + 1) * elementsPerRow; // +1 to account for header row
 
       // Get all current elements
@@ -552,8 +553,7 @@ const handleAppendTier = () => {
     const currentTierIndex = allTierLabels.indexOf(activeTier);
 
     if (currentTierIndex >= 0) {
-      // Calculate the grid position (each tier row has 9 elements: 1 label + 7 positions + 1 settings)
-      const elementsPerRow = 9;
+      const elementsPerRow = elementsPerTierRow;
       const insertPosition = (currentTierIndex + 2) * elementsPerRow; // +2 to insert after current row (+1 for header, +1 for after current)
 
       // Get all current elements

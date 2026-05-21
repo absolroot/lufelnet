@@ -129,7 +129,7 @@ button {
   margin-top: 24px;
   border: 2px solid var(--border-color);
   display: grid;
-  grid-template-columns: 60px repeat(7, 1fr) 45px;
+  grid-template-columns: 60px repeat(8, 1fr) 45px;
   gap: 2px;
   background: var(--border-color);
 }
@@ -523,8 +523,8 @@ button {
   .position-tiers-container {
     width: 100%;
     margin: 20px 0;
-    /* Keep all 7 position columns on tablet */
-    grid-template-columns: 50px repeat(7, minmax(80px, 1fr)) 40px;
+    /* Keep all position columns on tablet */
+    grid-template-columns: 50px repeat(8, minmax(80px, 1fr)) 40px;
     gap: 1px;
   }
 
@@ -687,6 +687,10 @@ button {
 
   .position-cell[data-position="해명"]::before {
     background-image: url('/assets/img/character-cards/직업_해명.png');
+  }
+
+  .position-cell[data-position="자율"]::before {
+    background-image: url('/assets/img/character-cards/직업_자율.png');
   }
 
   .settings-cell {

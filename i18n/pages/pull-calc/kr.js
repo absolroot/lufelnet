@@ -70,6 +70,8 @@ window.I18N_PAGE_PULL_CALC_KR = {
     scheduleScenario2Weeks: '2주 간격 (보상 1배)',
     labelSeaServer: 'SEA 서버 (일정 +8일)',
     confirmServerChangeReset: '서버 설정을 변경하면 현재 계획/목표가 초기화됩니다. 계속하시겠습니까?',
+    plannerPlaceholderGlobalFirstAnniversaryUnit: '글로벌 1주년 캐릭터',
+    plannerPlaceholderUnconfirmed: '미확정 계획 슬롯',
 
     // 계획 관련
     planDescription: '타임라인에서 캐릭터를 클릭하여 계획에 추가하세요.',

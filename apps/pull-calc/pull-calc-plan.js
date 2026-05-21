@@ -112,7 +112,8 @@
         const dailyIncomeTotal = Math.max(0, dayCount) * dailyIncome;
 
         // Calculate version income and battle pass for this character's version
-        const versionNum = parseFloat(charVersion);
+        const incomeVersion = idx >= 0 && sorted[idx].incomeVersion ? sorted[idx].incomeVersion : charVersion;
+        const versionNum = parseFloat(incomeVersion);
         // scheduleScenario에 따라 4.0부터(4.0, 4.1, 4.2 등) 보상 배율 결정
         // this.scheduleScenario가 없으면 드롭다운에서 직접 가져오기
         let scheduleScenario = this.scheduleScenario;
@@ -322,10 +323,7 @@
             .filter(r => r && r.date)
             .sort((a, b) => new Date(a.date) - new Date(b.date));
         sortedReleases.forEach(release => {
-            const fiveStarChars = (release.characters || []).filter(n => {
-                const cd = window.characterData?.[n];
-                return cd && cd.rarity !== 4;
-            });
+            const fiveStarChars = this.getRenderableScheduleCharacters(release);
 
             // Income is per-banner-interval. Avoid double counting when a banner has multiple 5-stars.
             const firstCharName = fiveStarChars.length > 0 ? fiveStarChars[0] : null;
@@ -561,16 +559,20 @@
             if (element) {
                 metaHtml += `<img src="${BASE_URL}/assets/img/character-cards/속성_${element}.png" alt="${element}" onerror="this.style.display='none'">`;
             }
-            const detailHref = this.getCharacterDetailHref(target.name);
-
-            html += `
-                <div class="plan-item ${isSafe ? '' : 'warning'}" data-index="${index}">
-                    <div class="plan-item-header">
-                        <span class="plan-item-number">${index + 1}</span>
-                        <a class="character-detail-anchor plan-item-avatar-link" data-character="${target.name}" href="${detailHref}">
+            const isPlaceholder = this.isPlannerPlaceholderCharacter(target.name);
+            const detailHref = isPlaceholder ? '#' : this.getCharacterDetailHref(target.name);
+            const avatarHtml = isPlaceholder
+                ? `<div class="plan-item-avatar plan-item-avatar-placeholder" aria-hidden="true">?</div>`
+                : `<a class="character-detail-anchor plan-item-avatar-link" data-character="${target.name}" href="${detailHref}">
                             <img class="plan-item-avatar" src="${BASE_URL}/assets/img/tier/${target.name}.webp" alt="${displayName}"
                                  onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
-                        </a>
+                        </a>`;
+
+            html += `
+                <div class="plan-item ${isSafe ? '' : 'warning'} ${isPlaceholder ? 'planner-placeholder' : ''}" data-index="${index}">
+                    <div class="plan-item-header">
+                        <span class="plan-item-number">${index + 1}</span>
+                        ${avatarHtml}
                         <div class="plan-item-info">
                             <div class="plan-item-info-col1">
                                 <div class="plan-item-subtitle">

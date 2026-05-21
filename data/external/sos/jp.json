@@ -1,5 +1,68 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Wind attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Psychokinesis",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "89",
+            "name": "メルキセデク",
+            "skill": "706,1004",
+            "sn": "527101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "298401"
+      },
+      {
+        "bonusRule": "All ally Fire, Almighty attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "リリス",
+            "skill": "207,607,603",
+            "sn": "527111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "298402"
+      }
+    ],
+    "buff": "伏流湧出: 戦闘中、『安定領域』を獲得する。弱点ダメージを与えた時、味方全体に『追撃の渦』を付与する。",
+    "endTime": "2026-06-04 10:30:00",
+    "startTime": "2026-05-21 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

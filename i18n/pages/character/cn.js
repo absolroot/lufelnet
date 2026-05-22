@@ -52,6 +52,7 @@ window.I18N_PAGE_CHARACTER_CN = {
     "characterDetailUnreleasedNote": "提示：部分推荐的人格面具与武器可能尚未在当前服务器上线。",
     "characterDetailRecommendedCombination": "推荐装配",
     "characterDetailRecommendedPartyExample": "推荐队伍示例",
+    "characterDetailRecommendedPartyNotice": "多数队伍示例以 KR/CN 服务器上线当时为基准编写，可能未反映之后上线的怪盗或心象核心。请仅作为参考。",
     "characterDetailLineup": "阵容",
     "characterDetailParties": "派对",
     "characterDetailLinkLabel": "查看详情 →",

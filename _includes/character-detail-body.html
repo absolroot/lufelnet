@@ -588,6 +588,7 @@
         <!-- 추천 파티 -->
         <div class="recommended-party-card card-style">
             <h2>{% if page.language == 'cn' %}推荐队伍示例{% else %}추천 파티{% endif %}</h2>
+            <p id="recommended-party-note" class="recommended-party-note" style="display:none;"></p>
             <div id="recommended-party-content" class="recommended-party-content">
                 <!-- 파티 내용이 여기에 동적으로 추가됨 -->
             </div>
@@ -2710,6 +2711,9 @@
         try { loadFriendsLineup(data.friends, partyCardEl, hasFriends); } catch (e) { console.warn('[SAFE:loadFriendsLineup]', e); }
 
         // 추천 파티 로드 (실제 파티 데이터가 있을 때만)
+        const partyNoteEl = document.getElementById('recommended-party-note');
+        if (partyNoteEl) partyNoteEl.style.display = hasParty ? '' : 'none';
+
         if (hasParty) {
             loadRecommendedParty(data.party, hasFriends);
         } else {
@@ -2724,6 +2728,8 @@
         const partyTitle = document.querySelector('.recommended-party-card h2');
         if (personaTitle) personaTitle.textContent = getCharacterI18nText('characterDetailRecommendedCombination', '추천 조합');
         if (partyTitle) partyTitle.textContent = getCharacterI18nText('characterDetailRecommendedPartyExample', '추천 파티 예시');
+        const partyNote = document.getElementById('recommended-party-note');
+        if (partyNote) partyNote.textContent = getCharacterI18nText('characterDetailRecommendedPartyNotice', '대부분의 파티 예시는 KR/CN 서버 출시 당시 기준으로 작성되어, 이후 출시된 괴도나 심상 코어가 반영되지 않았을 수 있습니다. 참고용으로만 확인해 주세요.');
     }
 
     // 페르소나 이름 다국어 지원 (data/persona 기반)

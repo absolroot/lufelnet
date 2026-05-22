@@ -50,6 +50,7 @@ window.I18N_PAGE_CHARACTER_JP = {
     characterDetailUnreleasedNote: '※推奨されているペルソナとウェポンの一部は、現在の地域ではリリースされていない可能性があります。',
     characterDetailRecommendedCombination: '推奨コンビネーション',
     characterDetailRecommendedPartyExample: '推奨パーティ例',
+    characterDetailRecommendedPartyNotice: '多くのパーティ例はKR/CNサーバーでの実装当時を基準に作成されているため、その後に追加された怪盗やイメジャリー・コアを反映していない場合があります。参考用としてご覧ください。',
     characterDetailLineup: 'ラインナップ',
     characterDetailParties: 'パーティー',
     characterDetailLinkLabel: '詳細 →',

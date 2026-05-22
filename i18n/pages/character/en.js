@@ -50,6 +50,7 @@ window.I18N_PAGE_CHARACTER_EN = {
     characterDetailUnreleasedNote: 'Note: Some recommended personas & weapons may not be released yet in your region.',
     characterDetailRecommendedCombination: 'Recommended Combination',
     characterDetailRecommendedPartyExample: 'Recommended Parties Example',
+    characterDetailRecommendedPartyNotice: 'Most party examples were written around the character\'s KR/CN release, so later Thieves or Mindscape Cores may not be reflected. Please treat them as reference only.',
     characterDetailLineup: 'Lineup',
     characterDetailParties: 'Parties',
     characterDetailLinkLabel: 'Detail →',

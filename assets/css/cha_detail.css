@@ -2413,6 +2413,14 @@ h2 {
     color: rgba(255, 255, 255, 0.8);
 }
 
+.recommended-party-note {
+    margin: -4px 0 14px;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 12px;
+    line-height: 1.55;
+    font-weight: 400;
+}
+
 @media (min-width: 1201px) {
     .friends-list {
         grid-template-columns: repeat(2, minmax(0, 1fr));

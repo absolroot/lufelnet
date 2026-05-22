@@ -50,6 +50,7 @@ window.I18N_PAGE_CHARACTER_KR = {
     characterDetailUnreleasedNote: '안내: 일부 추천 페르소나 및 무기는 현재 지역에서 아직 출시되지 않았을 수 있습니다.',
     characterDetailRecommendedCombination: '추천 조합',
     characterDetailRecommendedPartyExample: '추천 파티 예시',
+    characterDetailRecommendedPartyNotice: '대부분의 파티 예시는 KR/CN 서버 출시 당시 기준으로 작성되어, 이후 출시된 괴도나 심상 코어가 반영되지 않았을 수 있습니다. 참고용으로만 확인해 주세요.',
     characterDetailLineup: '라인업',
     characterDetailParties: '파티',
     characterDetailLinkLabel: '상세 보기 →',

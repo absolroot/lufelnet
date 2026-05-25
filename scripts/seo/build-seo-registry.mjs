@@ -30,6 +30,7 @@ const DOMAIN_PARAM_POLICY = {
   'defense-calc': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   gallery: { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   guides: { remove: ['lang', 'v', 'id'], modeParam: null, detailParam: 'id' },
+  inflation: { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   maps: { remove: ['lang', 'v', 'map', 'category'], modeParam: null, detailParam: 'map' },
   'material-calc': { remove: ['lang', 'v'], modeParam: null, detailParam: null },
   'pay-calc': { remove: ['lang', 'v'], modeParam: null, detailParam: null },

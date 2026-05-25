@@ -1,0 +1,1330 @@
+.inflation-page {
+  --inflation-accent: #ff5d5d;
+  --inflation-accent-soft: rgba(255, 93, 93, 0.16);
+  --inflation-border: rgba(255, 255, 255, 0.1);
+  --inflation-muted: rgba(255, 255, 255, 0.58);
+  --inflation-strong: rgba(255, 255, 255, 0.92);
+}
+
+.main-wrapper.inflation-page {
+  transform: none !important;
+}
+
+.inflation-page .header-container,
+.inflation-page .navigation-path {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.inflation-page .page-description {
+  margin: 8px 0 0;
+  color: var(--inflation-muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.inflation-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 18px 0 14px;
+}
+
+.inflation-metric {
+  min-width: 0;
+  padding: 14px 16px;
+  background: var(--card-background, #232323);
+  border: 1px solid var(--inflation-border);
+  border-radius: 8px;
+}
+
+.inflation-metric span {
+  display: block;
+  color: var(--inflation-muted);
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.inflation-metric strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--inflation-strong);
+  font-size: 22px;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.inflation-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 14px;
+}
+
+.inflation-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.24);
+  border: 1px solid var(--inflation-border);
+  border-radius: 8px;
+}
+
+.inflation-filter button {
+  border: 0;
+  border-radius: 6px;
+  padding: 7px 12px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.inflation-filter button:hover {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.inflation-filter button.is-active {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.inflation-chart-section,
+.inflation-list-section {
+  margin: 0 0 20px;
+  background: var(--card-background, #232323);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.inflation-page .section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.inflation-page .section-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.inflation-chart-container {
+  position: relative;
+  height: 280px;
+}
+
+.inflation-chart-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.inflation-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 14px;
+}
+
+.inflation-empty[hidden],
+.inflation-list-empty[hidden] {
+  display: none;
+}
+
+.inflation-entries {
+  display: grid;
+  gap: 12px;
+}
+
+.inflation-release {
+  border: 1px solid var(--inflation-border);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.inflation-release-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.inflation-release-meta {
+  min-width: 0;
+}
+
+.inflation-version {
+  color: var(--inflation-accent);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.inflation-release h3 {
+  margin: 4px 0;
+  color: var(--inflation-strong);
+  font-size: 18px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.inflation-release-date {
+  color: var(--inflation-muted);
+  font-size: 12px;
+}
+
+.inflation-release-best {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.inflation-release-best span {
+  display: block;
+  color: var(--inflation-muted);
+  font-size: 12px;
+}
+
+.inflation-release-best strong {
+  display: block;
+  margin-top: 4px;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.inflation-release-breakdown {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.inflation-release-breakdown span {
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.inflation-phase-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+  padding: 12px;
+}
+
+.inflation-phase-column {
+  min-width: 0;
+  display: grid;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.075);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.inflation-phase-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.inflation-phase-head strong {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.inflation-phase-head span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.inflation-phase-empty {
+  display: grid;
+  place-items: center;
+  min-height: 92px;
+  padding: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 13px;
+  text-align: center;
+}
+
+.inflation-team-list {
+  display: grid;
+  gap: 8px;
+}
+
+.inflation-team-row {
+  display: grid;
+  grid-template-columns: minmax(74px, 88px) minmax(0, 1fr);
+  gap: 12px;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.inflation-team-score {
+  align-self: start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--inflation-accent-soft);
+  color: #fff;
+  font-weight: 800;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.inflation-team-body {
+  min-width: 0;
+  display: grid;
+  gap: 9px;
+}
+
+.inflation-team-main {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 12px;
+}
+
+.inflation-team-main strong {
+  color: #fff;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inflation-team-main em {
+  flex-shrink: 0;
+  font-style: normal;
+  color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+.inflation-position-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.inflation-party-line {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.inflation-battle-slots {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.inflation-character-chip {
+  position: relative;
+  width: 66px;
+  min-width: 66px;
+  display: grid;
+  grid-template-rows: 58px minmax(28px, auto);
+  justify-items: center;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 5px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.inflation-character-chip.is-main {
+  border-color: rgba(255, 93, 93, 0.42);
+  background: rgba(255, 93, 93, 0.12);
+}
+
+.inflation-character-chip.is-compact {
+  width: 62px;
+  min-width: 62px;
+  grid-template-rows: 54px minmax(28px, auto);
+}
+
+.inflation-character-chip img {
+  width: 52px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.inflation-character-chip span {
+  min-width: 0;
+  width: 100%;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 10.5px;
+  line-height: 1.15;
+  text-align: center;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+
+.inflation-list-empty {
+  padding: 30px 12px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 14px;
+}
+
+.inflation-edit-panel {
+  margin: 18px 0 14px;
+  padding: 16px;
+  border: 1px solid rgba(255, 93, 93, 0.22);
+  border-radius: 8px;
+  background: rgba(18, 18, 22, 0.94);
+}
+
+.inflation-edit-head,
+.inflation-edit-entry-head,
+.inflation-edit-team-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inflation-edit-head h2 {
+  margin: 2px 0 4px;
+  color: var(--inflation-strong);
+  font-size: 17px;
+}
+
+.inflation-edit-head p {
+  margin: 0;
+  color: var(--inflation-muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.inflation-edit-kicker {
+  color: var(--inflation-accent) !important;
+  font-size: 11px !important;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.inflation-edit-help {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 13px;
+}
+
+.inflation-edit-help code {
+  padding: 5px 7px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.32);
+  color: #fff;
+}
+
+.inflation-edit-error {
+  margin-top: 6px !important;
+  color: #ffb3b3 !important;
+}
+
+.inflation-edit-actions,
+.inflation-edit-row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.inflation-edit-btn,
+.inflation-edit-row-actions button,
+.inflation-edit-add-team {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.inflation-edit-action-icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.inflation-edit-btn span,
+.inflation-edit-row-actions button span,
+.inflation-edit-add-team span,
+.inflation-edit-main-toggle span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inflation-edit-btn {
+  padding: 0 12px;
+}
+
+.inflation-edit-btn.is-primary {
+  border-color: rgba(255, 93, 93, 0.55);
+  background: rgba(255, 93, 93, 0.22);
+  color: #fff;
+}
+
+.inflation-edit-btn:disabled,
+.inflation-edit-row-actions button:disabled,
+.inflation-edit-add-team:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.inflation-edit-status {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 12px;
+}
+
+.inflation-edit-status.is-dirty {
+  color: #ffd2d2;
+}
+
+.inflation-edit-validation {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 190, 110, 0.26);
+  background: rgba(255, 190, 110, 0.08);
+  color: rgba(255, 235, 210, 0.92);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.inflation-edit-validation.is-ok {
+  border-color: rgba(120, 220, 150, 0.24);
+  background: rgba(120, 220, 150, 0.08);
+  color: rgba(220, 255, 228, 0.9);
+}
+
+.inflation-edit-validation.is-pending {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.055);
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.inflation-edit-validation ul {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.inflation-edit-entry-nav {
+  position: sticky;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  gap: 7px;
+  margin: 12px 0;
+  padding: 8px;
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(10, 10, 13, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+.inflation-edit-entry-nav button {
+  flex: 0 0 auto;
+  max-width: 190px;
+  min-height: 30px;
+  padding: 0 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inflation-edit-entry-nav button:hover {
+  border-color: rgba(255, 93, 93, 0.38);
+  color: #fff;
+}
+
+.inflation-edit-entry-nav button.is-active {
+  border-color: rgba(255, 93, 93, 0.48);
+  background: rgba(255, 93, 93, 0.16);
+  color: #fff;
+}
+
+.inflation-edit-entry-list {
+  display: grid;
+  gap: 12px;
+}
+
+.inflation-edit-empty-state {
+  display: grid;
+  justify-items: start;
+  gap: 10px;
+  padding: 22px;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.inflation-edit-empty-state p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.56);
+  font-size: 13px;
+}
+
+.inflation-edit-entry {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+}
+
+.inflation-edit-team {
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.035);
+  padding: 10px;
+}
+
+.inflation-edit-entry.is-focused {
+  outline: 2px solid rgba(255, 93, 93, 0.5);
+  outline-offset: 2px;
+}
+
+.inflation-edit-entry.has-error,
+.inflation-edit-team.has-error {
+  border-color: rgba(255, 190, 110, 0.38);
+}
+
+.inflation-edit-entry h3 {
+  margin: 3px 0 0;
+  color: #fff;
+  font-size: 15px;
+}
+
+.inflation-edit-entry-head p {
+  margin: 5px 0 0;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+}
+
+.inflation-edit-row-actions button {
+  padding: 0 8px;
+}
+
+.inflation-edit-grid {
+  display: grid;
+  grid-template-columns: 220px minmax(220px, 320px) 220px;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.inflation-edit-field {
+  min-width: 0;
+  display: grid;
+  gap: 5px;
+}
+
+.inflation-edit-field span {
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 11px;
+}
+
+.inflation-edit-field input,
+.inflation-edit-field select,
+.inflation-edit-field textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.inflation-edit-field input,
+.inflation-edit-field select {
+  height: 34px;
+  padding: 0 9px;
+}
+
+.inflation-edit-field select option {
+  background: #17171d;
+  color: #f4f4f6;
+}
+
+.inflation-edit-field select option:checked {
+  background: #3a2024;
+  color: #fff;
+}
+
+.inflation-edit-segmented {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.inflation-edit-segmented button {
+  min-width: 0;
+  min-height: 26px;
+  padding: 0 8px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.64);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inflation-edit-segmented button:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.inflation-edit-segmented button.is-active {
+  background: rgba(255, 93, 93, 0.2);
+  color: #fff;
+}
+
+.inflation-edit-field textarea {
+  min-height: 34px;
+  resize: vertical;
+  padding: 8px 9px;
+}
+
+.inflation-edit-field select:disabled {
+  opacity: 0.48;
+}
+
+.inflation-edit-advanced {
+  margin-top: 10px;
+}
+
+.inflation-edit-advanced summary {
+  width: fit-content;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.inflation-edit-advanced[open] {
+  padding-top: 4px;
+}
+
+.inflation-edit-advanced .inflation-edit-field {
+  max-width: 520px;
+  margin-top: 8px;
+}
+
+.inflation-edit-phase-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.inflation-edit-phase-column {
+  min-width: 0;
+  align-self: start;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.inflation-edit-phase-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
+}
+
+.inflation-edit-phase-head strong {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+}
+
+.inflation-edit-phase-head span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+}
+
+.inflation-edit-phase-empty {
+  padding: 24px 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 7px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 13px;
+  text-align: center;
+}
+
+.inflation-edit-team-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin-top: 10px;
+  align-items: start;
+}
+
+.inflation-edit-team-controls,
+.inflation-edit-team-extra {
+  display: grid;
+  gap: 9px;
+}
+
+.inflation-edit-team-controls {
+  grid-template-columns: minmax(170px, 1fr) 120px minmax(130px, 1fr);
+}
+
+.inflation-edit-score-control {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(72px, 1fr) 78px;
+  gap: 6px;
+}
+
+.inflation-edit-score-units {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.inflation-edit-score-units button {
+  min-width: 0;
+  height: 26px;
+  padding: 0 5px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+  line-height: 1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.inflation-edit-score-units button.is-active {
+  background: rgba(255, 93, 93, 0.22);
+  color: #fff;
+}
+
+.inflation-edit-team-extra {
+  grid-template-columns: minmax(0, 1fr) minmax(160px, 220px);
+  align-items: start;
+}
+
+.inflation-edit-party-board {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(58px, 1fr));
+  gap: 8px;
+}
+
+.inflation-edit-party-slot {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 7px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.inflation-edit-party-slot.is-main {
+  border-color: rgba(255, 93, 93, 0.42);
+  background: rgba(255, 93, 93, 0.1);
+}
+
+.inflation-edit-party-slot.is-disabled {
+  opacity: 0.52;
+}
+
+.inflation-edit-party-slot-label {
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.inflation-edit-character-picker {
+  position: relative;
+  min-width: 0;
+}
+
+.inflation-edit-character-trigger {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 86px;
+  display: grid;
+  grid-template-rows: 48px minmax(24px, auto);
+  justify-items: center;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.055);
+  color: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+}
+
+.inflation-edit-character-trigger:hover {
+  border-color: rgba(255, 93, 93, 0.36);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.inflation-edit-character-trigger:disabled {
+  cursor: not-allowed;
+}
+
+.inflation-edit-character-trigger img {
+  width: 43px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.inflation-edit-character-trigger span:last-child {
+  width: 100%;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 10.5px;
+  line-height: 1.15;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+
+.inflation-edit-character-empty {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 20px !important;
+  line-height: 1;
+}
+
+.inflation-edit-character-clear {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.58);
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.inflation-edit-main-toggle {
+  min-height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgba(255, 93, 93, 0.25);
+  border-radius: 5px;
+  background: rgba(255, 93, 93, 0.1);
+  color: rgba(255, 230, 230, 0.9);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.inflation-edit-party-slot.is-main .inflation-edit-main-toggle {
+  background: rgba(255, 93, 93, 0.24);
+  color: #fff;
+}
+
+.inflation-edit-team-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.inflation-edit-team-head strong {
+  display: block;
+  color: #fff;
+  font-size: 14px;
+}
+
+.inflation-edit-team-head span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.54);
+  font-size: 12px;
+}
+
+.inflation-edit-add-team {
+  padding: 0 12px;
+}
+
+.inflation-edit-picker-modal {
+  box-sizing: border-box;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.inflation-edit-picker-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.62);
+  cursor: default;
+}
+
+.inflation-edit-picker-dialog {
+  box-sizing: border-box;
+  position: relative;
+  width: min(860px, 100%);
+  max-height: min(720px, calc(100vh - 36px));
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(21, 21, 26, 0.98);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
+}
+
+.inflation-edit-picker-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.inflation-edit-picker-head strong {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+}
+
+.inflation-edit-picker-head span {
+  display: block;
+  margin-top: 3px;
+  color: rgba(255, 255, 255, 0.52);
+  font-size: 12px;
+}
+
+.inflation-edit-picker-close {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.inflation-edit-picker-search {
+  box-sizing: border-box;
+  width: 100%;
+  height: 36px;
+  padding: 0 11px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.28);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 13px;
+}
+
+.inflation-edit-picker-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+  gap: 8px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.inflation-edit-picker-card {
+  min-width: 0;
+  display: grid;
+  grid-template-rows: 58px minmax(28px, auto);
+  justify-items: center;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.86);
+  cursor: pointer;
+}
+
+.inflation-edit-picker-card[hidden],
+.inflation-edit-picker-empty[hidden] {
+  display: none;
+}
+
+.inflation-edit-picker-card:hover,
+.inflation-edit-picker-card.is-selected {
+  border-color: rgba(255, 93, 93, 0.46);
+  background: rgba(255, 93, 93, 0.12);
+}
+
+.inflation-edit-picker-card img {
+  width: 52px;
+  height: 58px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.inflation-edit-picker-card span {
+  width: 100%;
+  overflow: hidden;
+  font-size: 10.5px;
+  line-height: 1.15;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow-wrap: anywhere;
+}
+
+.inflation-edit-picker-empty {
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.52);
+  text-align: center;
+  font-size: 12px;
+}
+
+@media (max-width: 1120px) {
+  .inflation-phase-board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inflation-edit-phase-board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .inflation-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inflation-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inflation-filter {
+    width: 100%;
+  }
+
+  .inflation-filter button {
+    flex: 1 1 0;
+  }
+
+  .inflation-edit-head,
+  .inflation-edit-entry-head,
+  .inflation-edit-team-head {
+    flex-direction: column;
+  }
+
+  .inflation-edit-actions,
+  .inflation-edit-row-actions {
+    justify-content: flex-start;
+  }
+
+  .inflation-edit-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inflation-edit-team-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inflation-edit-team-controls,
+  .inflation-edit-team-extra {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .inflation-summary {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inflation-metric {
+    padding: 12px 14px;
+  }
+
+  .inflation-release-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inflation-release-best {
+    text-align: left;
+  }
+
+  .inflation-release-breakdown {
+    justify-content: flex-start;
+  }
+
+  .inflation-team-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+  }
+
+  .inflation-team-score {
+    justify-content: flex-start;
+    width: fit-content;
+  }
+
+  .inflation-team-main {
+    flex-wrap: wrap;
+  }
+
+  .inflation-character-chip {
+    max-width: 100%;
+  }
+
+  .inflation-edit-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inflation-edit-panel {
+    padding: 12px;
+  }
+
+  .inflation-edit-entry,
+  .inflation-edit-team {
+    padding: 10px;
+  }
+
+  .inflation-edit-phase-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .inflation-edit-team-controls,
+  .inflation-edit-team-extra {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .inflation-edit-party-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .inflation-edit-picker-modal {
+    padding: 10px;
+  }
+
+  .inflation-edit-picker-dialog {
+    max-height: calc(100vh - 20px);
+  }
+
+  .inflation-edit-btn,
+  .inflation-edit-row-actions button,
+  .inflation-edit-add-team {
+    width: 100%;
+  }
+}

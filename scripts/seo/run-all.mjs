@@ -19,6 +19,7 @@ const SCRIPT_TARGETS = [
   'critical-calc',
   'defense-calc',
   'gallery',
+  'inflation',
   'maps',
   'material-calc',
   'persona',

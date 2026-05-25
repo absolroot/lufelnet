@@ -1,0 +1,131 @@
+<script>
+(function () {
+    window.__SEO_CONTEXT_HINT__ = Object.assign({}, window.__SEO_CONTEXT_HINT__ || {}, {
+        domain: 'inflation',
+        mode: 'list'
+    });
+    if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
+        window.SeoEngine.setContextHint({ domain: 'inflation', mode: 'list' });
+    }
+
+    var params = new URLSearchParams(window.location.search || '');
+    var path = String(window.location.pathname || '/');
+    var lowerPath = path.toLowerCase();
+
+    var pathLangMatch = lowerPath.match(/^\/(kr|en|jp|cn)(\/|$)/);
+    var pathLang = pathLangMatch ? pathLangMatch[1] : '';
+    var queryLang = String(params.get('lang') || '').toLowerCase();
+    var effectiveLang = pathLang || (['kr', 'en', 'jp', 'cn'].indexOf(queryLang) !== -1 ? queryLang : '');
+
+    var isLegacyRoot = /^\/inflation\/?$/.test(lowerPath);
+    var isCanonicalPath = /^\/(kr|en|jp|cn)\/inflation\/?$/.test(lowerPath);
+
+    if (isLegacyRoot && effectiveLang) {
+        window.__SEO_PATH_LANG__ = effectiveLang;
+        params.delete('lang');
+        params.delete('v');
+        var remainingLegacy = params.toString();
+        history.replaceState(null, '', '/' + effectiveLang + '/inflation/' + (remainingLegacy ? '?' + remainingLegacy : ''));
+        return;
+    }
+
+    if (isCanonicalPath) {
+        window.__SEO_PATH_LANG__ = pathLang;
+        var before = params.toString();
+        params.delete('lang');
+        params.delete('v');
+        var remainingCanonical = params.toString();
+        if (before !== remainingCanonical) {
+            history.replaceState(null, '', path + (remainingCanonical ? '?' + remainingCanonical : ''));
+        }
+        return;
+    }
+
+    if (isLegacyRoot && params.has('v')) {
+        params.delete('v');
+        var remainingRoot = params.toString();
+        history.replaceState(null, '', '/inflation/' + (remainingRoot ? '?' + remainingRoot : ''));
+    }
+})();
+</script>
+
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
+{% endif %}
+
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/inflation/inflation.css?v={{ site.time | date: '%s' }}">
+
+<script src="{{ site.baseurl }}/apps/schedule/data.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/inflation/inflation-data.js?v={{ site.time | date: '%s' }}"></script>
+
+<div class="main-wrapper inflation-page">
+    <div class="navigation-path">
+        <script>document.write(`<a href="../../" data-i18n="nav.home">-</a>`);</script>
+        <span class="separator">/</span>
+        <span class="current-page" data-i18n="navCurrent">인플레이션</span>
+    </div>
+
+    <div class="header-container">
+        <h1 data-i18n="pageTitle">점수 인플레이션</h1>
+        <p class="page-description" data-i18n="pageDescription">캐릭터 출시 시점의 최고 파티 점수를 버전별로 비교합니다.</p>
+    </div>
+
+    <section class="inflation-summary" aria-label="summary">
+        <div class="inflation-metric">
+            <span data-i18n="metricVersions">기록 버전</span>
+            <strong id="metricVersionsValue">-</strong>
+        </div>
+        <div class="inflation-metric">
+            <span data-i18n="metricBest">최고 점수</span>
+            <strong id="metricBestValue">-</strong>
+        </div>
+        <div class="inflation-metric">
+            <span data-i18n="metricLatest">최신 최고점</span>
+            <strong id="metricLatestValue">-</strong>
+        </div>
+        <div class="inflation-metric">
+            <span data-i18n="metricGrowth">증가율</span>
+            <strong id="metricGrowthValue">-</strong>
+        </div>
+    </section>
+
+    <div class="inflation-toolbar">
+        <div class="inflation-filter" role="group" aria-label="Dealer type filter">
+            <button type="button" class="is-active" data-inflation-filter="all" aria-pressed="true">
+                <span data-i18n="filterAll">전체</span>
+            </button>
+            <button type="button" data-inflation-filter="domination" aria-pressed="false">
+                <span data-i18n="filterDomination">지배</span>
+            </button>
+            <button type="button" data-inflation-filter="rebellion" aria-pressed="false">
+                <span data-i18n="filterRebellion">반항</span>
+            </button>
+        </div>
+    </div>
+
+    <section class="inflation-chart-section">
+        <div class="section-header">
+            <h2 data-i18n="chartTitle">버전별 최고 점수</h2>
+        </div>
+        <div class="inflation-chart-container">
+            <canvas id="inflationChart"></canvas>
+            <div class="inflation-empty" id="chartEmpty" hidden>
+                <span data-i18n="chartEmpty">표시할 데이터가 없습니다.</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="inflation-list-section">
+        <div class="section-header">
+            <h2 data-i18n="entriesTitle">출시 버전별 기록</h2>
+        </div>
+        <div class="inflation-entries" id="inflationEntries"></div>
+        <div class="inflation-list-empty" id="entriesEmpty" hidden data-i18n="noEntries">조건에 맞는 기록이 없습니다.</div>
+    </section>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="{{ site.baseurl }}/apps/inflation/inflation.js?v={{ site.time | date: '%s' }}"></script>

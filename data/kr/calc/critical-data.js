@@ -370,7 +370,7 @@ const criticalBuffData = {
       "target_en": "Multi",
       "target_jp": "複数対象",
       "skillIcon": "/assets/img/skill-element/버프광역.png",
-      "skillName": "시작의 악장",
+      "skillName": "오프닝 넘버",
       "skillName_en": "",
       "skillName_jp": "",
       "options": [

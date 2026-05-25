@@ -28,7 +28,7 @@ P5D 콜라보 캐릭터로, 스킬 사이클에 따라 **우월 형태나 굴복
 
 『협동 대미지』: 발동자를 제외한 팀 내 동료들의 최고 공격력, 최고 대미지 보너스, 최고 크리티컬 확률, 최고 크리티컬 효과를 기준으로 계산된다.
 
-『환영 형태』: 정신 이상, 제어 효과, 다운 수치 피해에 면역된다. 단, 아마미야 렌·댄싱 스타만 행동 가능한 상태가 되면 『환영 형태』가 해제된다.`,
+『팬텀 형태』: 정신 이상, 제어 효과, 다운 수치 피해에 면역된다. 단, 아마미야 렌·댄싱 스타만 행동 가능한 상태가 되면 『팬텀 형태』가 해제된다.`,
         review_en: `A P5D collab character who can be **cycled between Strategist and Saboteur roles depending on the skill loop**.
 
 Skill 1 is an excellent buff that increases all allies' critical rate and critical damage, while Skill 2 applies a debuff that lowers enemy Defense and reduces Down Points.

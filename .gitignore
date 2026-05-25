@@ -107,3 +107,35 @@ scripts/reports/
 apps/patch-console/state/
 .playwright-mcp/
 /inflation-*.png
+
+# Unreleased local character data
+/data/characters/시오미 코토네/
+/data/external/character/*/KOTONE.json
+/pages/character/kr/kotone.html
+/pages/character/en/kotone.html
+/pages/character/jp/kotone.html
+/pages/character/cn/kotone.html
+/pages/character/redirects/character--kotone.html
+/pages/character/redirects/character--shiomi-kotone.html
+/data/characters/엘리자베스/
+/data/external/character/*/ELIZABETH.json
+/pages/character/kr/elizabeth.html
+/pages/character/en/elizabeth.html
+/pages/character/jp/elizabeth.html
+/pages/character/cn/elizabeth.html
+/pages/character/redirects/character--elizabeth.html
+/data/characters/하츠네 미쿠/
+/data/external/character/*/MIKU.json
+/pages/character/kr/miku.html
+/pages/character/en/miku.html
+/pages/character/jp/miku.html
+/pages/character/cn/miku.html
+/pages/character/redirects/character--miku.html
+/data/characters/모르가나·댄싱 스타/
+/data/external/character/*/MONA·Starlight.json
+/pages/character/kr/mona-starlight.html
+/pages/character/en/mona-starlight.html
+/pages/character/jp/mona-starlight.html
+/pages/character/cn/mona-starlight.html
+/pages/character/redirects/character--mona-starlight.html
+/pages/character/redirects/character--mona-star-night.html

@@ -219,6 +219,23 @@
     return wrap;
   }
 
+  function buildIconForPaymentEvent(labelText) {
+    const label = labelText || tx('paymentEventBadge', '결제 이벤트');
+    const wrap = document.createElement('span');
+    wrap.className = 'acq-item';
+    const img = document.createElement('img');
+    img.className = 'acq-icon';
+    img.src = `${BASE()}/apps/persona/persona_icon/event.png`;
+    img.alt = label;
+    img.loading = 'lazy';
+    const span = document.createElement('span');
+    span.className = 'acq-text';
+    span.textContent = label;
+    wrap.appendChild(img);
+    wrap.appendChild(span);
+    return wrap;
+  }
+
   function getLocalizedName(krName) {
     const lang = getCurrentLang();
     if (lang === 'kr') return krName;
@@ -319,19 +336,11 @@
       }
     }
     if (/^event$/i.test(v)) {
-      const wrap = document.createElement('span');
-      wrap.className = 'acq-item';
-      const img = document.createElement('img');
-      img.className = 'acq-icon';
-      img.src = `${BASE()}/apps/persona/persona_icon/event.png`;
-      img.alt = tx('acqEventLabel', 'EVENT');
-      img.loading = 'lazy';
-      const span = document.createElement('span');
-      span.className = 'acq-text';
-      span.textContent = tx('acqEventLabel', 'EVENT');
-      wrap.appendChild(img);
-      wrap.appendChild(span);
-      container.appendChild(wrap);
+      container.appendChild(buildIconForPaymentEvent(tx('acqEventLabel', 'EVENT')));
+      return container;
+    }
+    if (/^payment$/i.test(v)) {
+      container.appendChild(buildIconForPaymentEvent());
       return container;
     }
 
@@ -373,6 +382,20 @@
         // Separator handling below still applies
         const hasMoreValid = parts.slice(idx + 1).some(p => p && !/^\d+$/.test(p));
         if (hasMoreValid) {
+          const sep = document.createElement('span');
+          sep.className = 'acq-plus';
+          sep.textContent = '+';
+          container.appendChild(sep);
+        }
+        return;
+      }
+      if (/^event$/i.test(name) || /^payment$/i.test(name)) {
+        const eventItem = buildIconForPaymentEvent(/^event$/i.test(name) ? tx('acqEventLabel', 'EVENT') : '');
+        container.appendChild(eventItem);
+        appended++;
+        const nextValid = parts.slice(idx + 1).find(p => p && !/^\d+$/.test(p));
+        const shouldShowSeparator = nextValid && !isGachaToken(nextValid);
+        if (shouldShowSeparator) {
           const sep = document.createElement('span');
           sep.className = 'acq-plus';
           sep.textContent = '+';
@@ -431,7 +454,7 @@
       }
       return out;
     })(raw);
-    return parts.some(p => p && !/^\d+$/.test(p) && !parseEmblemToken(p) && !isMeropeToken(p) && !isEventToken(p) && !isGachaToken(p));
+    return parts.some(p => p && !/^\d+$/.test(p) && !parseEmblemToken(p) && !isMeropeToken(p) && !isEventToken(p) && !isPaymentEventToken(p) && !isGachaToken(p));
   }
 
   // Persona label with icon + localized name
@@ -583,6 +606,7 @@
 
   function isMeropeToken(token) { return /^merope\+\d+$/i.test(token.trim()); }
   function isEventToken(token) { return /^event$/i.test(token.trim()); }
+  function isPaymentEventToken(token) { return /^payment$/i.test(token.trim()); }
   function isGachaToken(token) { return /^gacha\+\d+$/i.test(token.trim()); }
 
   function splitTokens(combo) {
@@ -642,7 +666,7 @@
         node.totals[em.color] = (node.totals[em.color] || 0) + em.amount;
         continue;
       }
-      if (isMeropeToken(tk) || isEventToken(tk) || isGachaToken(tk)) {
+      if (isMeropeToken(tk) || isEventToken(tk) || isPaymentEventToken(tk) || isGachaToken(tk)) {
         // leaf stop (no emblem accumulation)
         continue;
       }
@@ -718,6 +742,7 @@
         if (em) return `${em.color.charAt(0).toUpperCase() + em.color.slice(1)}+${em.amount}`;
         if (isMeropeToken(n)) return tx('acqMeropeName', 'Merope');
         if (isEventToken(n)) return tx('acqEventLabel', 'EVENT');
+        if (isPaymentEventToken(n)) return tx('paymentEventBadge', '결제 이벤트');
         if (isGachaToken(n)) return tx('acqGachaLabel', 'GACHA');
         return getLocalizedName(n);
       }).join(' + ');
@@ -808,7 +833,7 @@
         }
         return out;
       })(raw);
-      const isPersona = (tk) => tk && !/^\d+$/.test(tk) && !parseEmblemToken(tk) && !isMeropeToken(tk) && !isEventToken(tk);
+      const isPersona = (tk) => tk && !/^\d+$/.test(tk) && !parseEmblemToken(tk) && !isMeropeToken(tk) && !isEventToken(tk) && !isPaymentEventToken(tk) && !isGachaToken(tk);
       const personaTokens = tokens.filter(isPersona);
       const others = tokens.filter(tk => !isPersona(tk));
       const childrenArr = orderedChildren || node.children || [];
@@ -927,23 +952,27 @@
     });
   }
 
-  function findAddedText(personaKrName) {
+  function findPersonaData(personaKrName) {
     try {
       const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
         ? window.personaFiles
         : (typeof personaData === 'object' && personaData ? personaData : null);
-      if (!store) return '';
+      if (!store) return null;
       // Direct key
-      if (store[personaKrName] && store[personaKrName].added) {
-        return String(store[personaKrName].added);
+      if (store[personaKrName]) {
+        return store[personaKrName];
       }
       // Normalized lookup
       const norm = normalizeName(personaKrName);
       const key = Object.keys(store).find(k => normalizeName(k) === norm);
-      if (key && store[key] && store[key].added) {
-        return String(store[key].added);
-      }
+      if (key && store[key]) return store[key];
     } catch (_) { /* ignore */ }
+    return null;
+  }
+
+  function findAddedText(personaKrName) {
+    const data = findPersonaData(personaKrName);
+    if (data && data.added) return String(data.added);
     return '';
   }
 
@@ -1010,17 +1039,20 @@
 })();
 
 // Helper: normalization function (kept outside IIFE scope is fine for readability)
+const ACQ_ZERO_WIDTH_PATTERN = new RegExp(`[${String.fromCharCode(0x200B, 0x200C, 0x200D, 0xFEFF)}]`, 'g');
+const ACQ_FULL_WIDTH_SPACE = String.fromCharCode(0x3000);
+
 function normalizeName(s) {
   if (typeof s !== 'string') return '';
   try {
     return s
-      .replace(/[\u200B\u200C\u200D\uFEFF]/g, '') // zero-width + BOM
-      .replace(/\u3000/g, ' ') // full-width space to half-width
+      .replace(ACQ_ZERO_WIDTH_PATTERN, '') // zero-width + BOM
+      .replaceAll(ACQ_FULL_WIDTH_SPACE, ' ') // full-width space to half-width
       .normalize('NFC')
       .trim()
       .replace(/\s+/g, ' ');
   } catch (_) {
     // In environments without String.prototype.normalize
-    return s.replace(/[\u200B\u200C\u200D\uFEFF]/g, '').replace(/\u3000/g, ' ').trim().replace(/\s+/g, ' ');
+    return s.replace(ACQ_ZERO_WIDTH_PATTERN, '').split(ACQ_FULL_WIDTH_SPACE).join(' ').trim().replace(/\s+/g, ' ');
   }
 }

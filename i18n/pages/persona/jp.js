@@ -30,6 +30,7 @@ window.I18N_PAGE_PERSONA_JP = {
     skillSourcesTitle: "スキル入手先",
     noSourcesFound: "入手先が見つかりません。",
     sourcesLabel: "入手先",
+    paymentEventBadge: "決済イベント",
     acquisitionLabel: "入手先",
     acquisitionDetail: "詳細",
     acqCombinationDetail: "組み合わせ詳細",

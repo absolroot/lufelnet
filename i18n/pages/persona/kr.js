@@ -30,6 +30,7 @@ window.I18N_PAGE_PERSONA_KR = {
     skillSourcesTitle: "스킬 획득처",
     noSourcesFound: "출처를 찾을 수 없습니다.",
     sourcesLabel: "획득처",
+    paymentEventBadge: "결제 이벤트",
     acquisitionLabel: "획득처",
     acquisitionDetail: "자세히",
     acqCombinationDetail: "조합 상세",

@@ -1050,6 +1050,34 @@ textarea {
     font-size: 12px;
 }
 
+.skill-name-wrap {
+    display: inline-flex;
+    align-items: center;
+    min-width: 95px;
+    min-height: 20px;
+    position: relative;
+}
+
+.skill-payment-event-badge {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    display: inline-block;
+    align-items: center;
+    max-width: 100%;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 9px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.persona-recommended-skills li.has-payment-event-badge {
+    margin-bottom: 18px;
+}
+
 .skill-description {
     margin-top: 3px;
     color: rgba(255, 255, 255, 0.8);

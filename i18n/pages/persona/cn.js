@@ -25,6 +25,7 @@ window.I18N_PAGE_PERSONA_CN = {
     "skillSourcesTitle": "技能获取途径",
     "noSourcesFound": "找不到获取途径。",
     "sourcesLabel": "获取途径",
+    "paymentEventBadge": "付费活动",
     "acquisitionLabel": "获取途径",
     "acquisitionDetail": "详情",
     "acqCombinationDetail": "合成详情",

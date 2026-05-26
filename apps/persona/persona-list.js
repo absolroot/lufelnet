@@ -754,7 +754,9 @@ async function initializePageContent() {
                             return `<span class="priority-label" style="display:inline-block; font-size: 9px !important; min-width: 24px; margin-right: 0px !important; box-sizing: border-box; background: #222; padding: 1px 3px; border-radius: 4px; text-align: center; color: ${pColor};">${pLabel}</span>`;
                         })()}
                                         <img src="${window.SITE_BASEURL}/assets/img/persona/속성_${iconName}.png" alt="${iconName}" class="skill-icon">
-                                        <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
+                                        <span class="skill-name-wrap">
+                                            <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
+                                        </span>
                                     </div>
                     <span class="skill-description" ${isPassive ? 'data-passive="true"' : ''}>${skillDescription}</span>
                 </div>

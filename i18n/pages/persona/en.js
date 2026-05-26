@@ -30,6 +30,7 @@ window.I18N_PAGE_PERSONA_EN = {
     skillSourcesTitle: "Skill Sources",
     noSourcesFound: "No sources found.",
     sourcesLabel: "Sources",
+    paymentEventBadge: "Payment Event",
     acquisitionLabel: "Acquisition",
     acquisitionDetail: "Detail",
     acqCombinationDetail: "Combination Detail",

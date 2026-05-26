@@ -29,6 +29,22 @@
     return rawKr.endsWith(' KR') || rawEn.endsWith(' KR');
   }
 
+  function isPaymentEventSource(source) {
+    const sourceKr = normalizeSourceDisplayName(String((source && source.kr) || '').trim());
+    const sourceEn = normalizeSourceDisplayName(String((source && source.en) || '').trim());
+    return sourceKr === '결제 이벤트' || /^payment event$/i.test(sourceEn);
+  }
+
+  function hasPaymentEventSource(entry) {
+    if (!entry) return false;
+    const sources = [];
+    if (entry.plain && entry.plain.length) sources.push(...entry.plain);
+    Object.keys(entry.ranks || {}).forEach((rank) => {
+      if (entry.ranks[rank] && entry.ranks[rank].length) sources.push(...entry.ranks[rank]);
+    });
+    return sources.some(isPaymentEventSource);
+  }
+
   // Cache
   let skillSourceMap = null;
   let skillSourceMapLoading = null;
@@ -184,6 +200,44 @@
       }
     }
     return map;
+  }
+
+  function getPaymentEventBadgeText() {
+    return (window.t && window.t('paymentEventBadge', '결제 이벤트')) || '결제 이벤트';
+  }
+
+  function decoratePaymentEventSkillBadges(root) {
+    const scope = root && root.querySelectorAll ? root : document;
+    const names = scope.querySelectorAll('.persona-recommended-skills .skill-name[data-skill-kor-full]');
+    if (!names.length) return;
+
+    loadSkillSourceMap().then((map) => {
+      names.forEach((nameEl) => {
+        const korFull = (nameEl.getAttribute('data-skill-kor-full') || '').trim();
+        const baseKor = stripRankSuffix(korFull);
+        const entry = map[baseKor] || map[korFull];
+        const wrap = nameEl.closest('.skill-name-wrap') || nameEl.parentElement;
+        if (!wrap) return;
+        const item = nameEl.closest('li');
+
+        let badge = wrap.querySelector('.skill-payment-event-badge');
+        if (!hasPaymentEventSource(entry)) {
+          if (badge) badge.remove();
+          wrap.classList.remove('has-payment-event-badge');
+          if (item) item.classList.remove('has-payment-event-badge');
+          return;
+        }
+
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'skill-payment-event-badge';
+          wrap.appendChild(badge);
+        }
+        wrap.classList.add('has-payment-event-badge');
+        if (item) item.classList.add('has-payment-event-badge');
+        badge.textContent = getPaymentEventBadgeText();
+      });
+    }).catch(() => { /* no badge when source data is unavailable */ });
   }
 
   // Modal
@@ -362,6 +416,17 @@
       const cards = document.getElementById('personaCards');
       if (cards) {
         addRecommendedSkillClickHandler();
+        decoratePaymentEventSkillBadges(document);
+        const detail = document.getElementById('personaDetailContent') || cards;
+        if (detail && !detail.dataset.paymentEventBadgeObserver) {
+          detail.dataset.paymentEventBadgeObserver = '1';
+          const observer = new MutationObserver((mutations) => {
+            if (mutations.some(m => Array.from(m.addedNodes || []).some(n => n.nodeType === 1))) {
+              decoratePaymentEventSkillBadges(detail);
+            }
+          });
+          observer.observe(detail, { childList: true, subtree: true });
+        }
         return true;
       }
       return false;

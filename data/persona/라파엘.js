@@ -13,18 +13,31 @@ window.personaFiles["라파엘"] = {
   "wild_emblem_rainbow": false,
   "best_persona": false,
   "tier": "S",
-  "tier_desc": "",
-  "tier_desc_en": "",
-  "tier_desc_jp": "",
-  "tier_desc_cn": "",
-  "comment": "",
-  "comment_en": "",
-  "comment_jp": "",
-  "comment_cn": "",
+  "tier_desc": "결제 이벤트 한정 페르소나. 첫 획득에는 페르소나 가챠 티켓 70장, 2번째 획득에는 10장이 필요하며, 2번째 획득까지 진행해야 최대 강화가 가능하다.\nHIGHLIGHT가 4턴이 지속된다는 점에서 택틱 활용도가 높아 다른 페르소나와 차별점을 지닌다. 버프에 추가되는 총 대미지 증폭은 물론, 필드에 존재 시에 추가되는 크리티컬 효과 때문에 마지막 턴에는 교체돼 버프 스킬을 사용하며 필드에 남아있는 것이 좋다.",
+  "tier_desc_en": "Payment Event-limited Persona. The first copy required 70 Persona Gacha Tickets, and the second copy required 10. The second copy was needed to reach maximum enhancement.\nBecause HIGHLIGHT lasts 4 turns, Raphael has high tactic utility and stands apart from other Personas. In addition to the Total Damage Amplification added to its buff, the critical damage effect it provides while present on the field makes it best to swap in on the final turn, use a buff skill, and remain on the field.",
+  "tier_desc_jp": "決済イベント限定ペルソナ。初回入手にはペルソナ ガチャチケット70枚、2回目の入手には10枚が必要で、最大強化には2回目の入手まで進める必要がある。\nHIGHLIGHTが4ターン持続するため、タクティックでの活用度が高く、他のペルソナとは違う強みを持つ。バフに付与される総ダメージ増幅に加えて、フィールドにいる時に付与されるクリティカルダメージ効果があるため、最終ターンには交代で出してバフスキルを使い、そのままフィールドに残すのがよい。",
+  "tier_desc_cn": "付费活动限定人格面具。首次获取需要70张人格面具抽卡券，第2次获取需要10张；需要获取到第2次才能完成最大强化。\n由于 HIGHLIGHT 持续4回合，拉斐尔在战术中的使用价值很高，也因此和其他人格面具有明显区别。除了增益中附带的总伤害增幅外，自身在场时还会提供暴击效果，因此最后一回合最好将其切换上场，使用增益技能并留在场上。",
+  "comment": "'소나타 효과 발동'은 라파엘이 필드에 있을 때 2개 이상의 아군 속성이 동일할 때 발동하므로 라파엘을 포함해 파티에 1명 이상 만능 속성이 존재하거나, 또는 2명 이상의 같은 속성이 존재할 경우에만 발동된다.",
+  "comment_en": "'Attribute Harmony activation' triggers when Raphael is on the field and two or more allied attributes match. This means it only activates if the party has at least one Almighty attribute unit to match Raphael, or if two or more party members share the same attribute.",
+  "comment_jp": "『欲望の共鳴発動』は、ラファエルがフィールドにいる時、味方の属性が2つ以上一致している場合に発動する。そのため、ラファエルと一致する万能属性の味方がパーティーに1体以上いる、または同じ属性の味方が2体以上いる場合にのみ発動する。",
+  "comment_cn": "“触发奏鸣效果”会在拉斐尔在场，且友方有2个以上相同属性时触发。因此，只有队伍中存在至少1名能与拉斐尔对应的万能属性成员，或存在2名以上相同属性成员时才会触发。",
   "added": "KR v5.1.1",
   "cost": null,
   "combination": null,
-  "recommendSkill": [],
+  "recommendSkill": [
+    {
+      "name": "세계수의 진화",
+      "priority": 3
+    },
+    {
+      "name": "응집",
+      "priority": 3
+    },
+    {
+      "name": "타루카쟈",
+      "priority": 3
+    }
+  ],
   "passive_priority": "",
   "passive_skill": [
     {

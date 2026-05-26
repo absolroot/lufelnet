@@ -3,7 +3,7 @@
  * Renders the character release timeline
  * 
  * - manualReleases + autoGenerateCharacters 이후,
- * - characterData의 release_order 기반으로 나머지 캐릭터 자동 추가
+ * - characterList에 노출된 characterData의 release_order 기반으로 나머지 캐릭터 자동 추가
  */
 
 (function () {
@@ -741,15 +741,28 @@
         return `${Math.abs(diffDays)} ${t('daysAgo')}`;
     }
 
+    // Character data may contain local/unreleased entries. Only auto-schedule
+    // characters that are intentionally exposed through characterList.
+    function getScheduleVisibleCharacterNames() {
+        const characterList = window.characterList || {};
+        return new Set([
+            ...(Array.isArray(characterList.mainParty) ? characterList.mainParty : []),
+            ...(Array.isArray(characterList.supportParty) ? characterList.supportParty : [])
+        ]);
+    }
+
     // Get remaining characters by release_order (only characters after the last autoGenerate character)
     function getRemainingCharactersByOrder(alreadyScheduled, minReleaseOrder) {
         const charData = window.characterData || {};
         const excludeList = new Set([...alreadyScheduled, "원더", "J&C"]); // 원더, J&C 제외
+        const visibleCharacters = getScheduleVisibleCharacterNames();
 
         // Get characters with release_order > minReleaseOrder (after the last scheduled one)
         const chars = Object.entries(charData)
             .filter(([name, info]) => {
-                return info.release_order > minReleaseOrder && !excludeList.has(name);
+                return visibleCharacters.has(name)
+                    && info.release_order > minReleaseOrder
+                    && !excludeList.has(name);
             })
             .sort((a, b) => a[1].release_order - b[1].release_order)
             .map(([name]) => name);

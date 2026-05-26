@@ -30,7 +30,6 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
-
     "모르가나·댄싱 스타": {
         "limit": true,
         "tag": "대미지 증가, 질풍 대미지 증가, 공격력, 크리티컬 효과, 다운 허약, 버프 해제, 회복",

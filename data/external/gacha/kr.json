@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-05-28 08:00:00",
-        "fiveStar": [
-          {
-            "name": "아이기스",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "타네무라 리코",
-            "type": "thief"
-          },
-          {
-            "name": "후지카와 유키미",
-            "type": "thief"
-          },
-          {
-            "name": "이케나미 쇼키",
-            "type": "thief"
-          }
-        ],
-        "name": "대 섀도 특별 제압 병기",
-        "startTime": "2026-04-30 08:00:00",
-        "type": "이벤트 계약·확정"
-      },
-      {
-        "endTime": "2026-05-28 08:00:00",
-        "fiveStar": [
-          {
-            "name": "아이기스",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "타네무라 리코",
-            "type": "thief"
-          },
-          {
-            "name": "후지카와 유키미",
-            "type": "thief"
-          },
-          {
-            "name": "이케나미 쇼키",
-            "type": "thief"
-          }
-        ],
-        "name": "대 섀도 특별 제압 병기",
-        "startTime": "2026-04-30 08:00:00",
-        "type": "이벤트 계약·운명"
-      },
-      {
         "endTime": "2026-06-11 08:00:00",
         "fiveStar": [
           {
@@ -211,76 +159,6 @@
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-05-28 08:00:00",
-        "fiveStar": [
-          {
-            "name": "만마의 총",
-            "type": "weapon",
-            "user": "아이기스"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "제월의 은고리",
-            "type": "weapon",
-            "user": "타네무라 리코"
-          },
-          {
-            "name": "메가 카운터",
-            "type": "weapon",
-            "user": "후지카와 유키미"
-          },
-          {
-            "name": "맹세의 성검",
-            "type": "weapon",
-            "user": "이케나미 쇼키"
-          },
-          {
-            "name": "라디칼 라이플",
-            "type": "weapon",
-            "user": "아이기스"
-          }
-        ],
-        "name": "소리 없는 전쟁·확정",
-        "startTime": "2026-04-30 08:00:00",
-        "type": "무기 이벤트 보급·확정"
-      },
-      {
-        "endTime": "2026-05-28 08:00:00",
-        "fiveStar": [
-          {
-            "name": "만마의 총",
-            "type": "weapon",
-            "user": "아이기스"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "제월의 은고리",
-            "type": "weapon",
-            "user": "타네무라 리코"
-          },
-          {
-            "name": "메가 카운터",
-            "type": "weapon",
-            "user": "후지카와 유키미"
-          },
-          {
-            "name": "맹세의 성검",
-            "type": "weapon",
-            "user": "이케나미 쇼키"
-          },
-          {
-            "name": "라디칼 라이플",
-            "type": "weapon",
-            "user": "아이기스"
-          }
-        ],
-        "name": "소리 없는 전쟁·운명",
-        "startTime": "2026-04-30 08:00:00",
-        "type": "무기 이벤트 보급·운명"
-      },
       {
         "endTime": "2026-06-11 08:00:00",
         "fiveStar": [

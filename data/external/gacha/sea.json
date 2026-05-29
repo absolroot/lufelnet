@@ -54,107 +54,107 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-05-29 09:59:59",
+        "endTime": "2026-06-12 09:59:59",
         "fiveStar": [
           {
-            "name": "Goro Akechi",
+            "name": "Manaka Nagao",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Leo Kamiyama",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Seiji Shiratori",
+            "name": "Shoki Ikenami",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Chizuko Nagao",
             "type": "thief"
           }
         ],
-        "name": "The Detective Prince",
-        "startTime": "2026-04-24 10:30:00",
+        "name": "Wings of a Love Song",
+        "startTime": "2026-05-08 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-05-29 09:59:59",
+        "endTime": "2026-06-12 09:59:59",
         "fiveStar": [
           {
-            "name": "Goro Akechi",
+            "name": "Manaka Nagao",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Leo Kamiyama",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Seiji Shiratori",
+            "name": "Shoki Ikenami",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Chizuko Nagao",
             "type": "thief"
           }
         ],
-        "name": "The Detective Prince",
-        "startTime": "2026-04-24 10:30:00",
+        "name": "Wings of a Love Song",
+        "startTime": "2026-05-08 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-06-12 09:59:59",
+        "endTime": "2026-07-03 09:59:59",
         "fiveStar": [
           {
-            "name": "Manaka Nagao",
+            "name": "Makoto Yuki",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Lufel",
+            "name": "Shun Kano",
             "type": "thief"
           },
           {
-            "name": "Shoki Ikenami",
+            "name": "Kiyoshi Kurotani",
             "type": "thief"
           },
           {
-            "name": "Chizuko Nagao",
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Wings of a Love Song",
-        "startTime": "2026-05-08 10:30:00",
+        "name": "When Moon Reaches Stars",
+        "startTime": "2026-05-29 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-06-12 09:59:59",
+        "endTime": "2026-07-03 09:59:59",
         "fiveStar": [
           {
-            "name": "Manaka Nagao",
+            "name": "Makoto Yuki",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Lufel",
+            "name": "Shun Kano",
             "type": "thief"
           },
           {
-            "name": "Shoki Ikenami",
+            "name": "Kiyoshi Kurotani",
             "type": "thief"
           },
           {
-            "name": "Chizuko Nagao",
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Wings of a Love Song",
-        "startTime": "2026-05-08 10:30:00",
+        "name": "When Moon Reaches Stars",
+        "startTime": "2026-05-29 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -247,41 +247,6 @@
         "type": "Arms Deals"
       },
       {
-        "endTime": "2026-05-29 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Gordian Kopis",
-            "type": "weapon",
-            "user": "Akechi"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Knight's Reward",
-            "type": "weapon",
-            "user": "Shiratori"
-          },
-          {
-            "name": "Victory Beam",
-            "type": "weapon",
-            "user": "Akechi"
-          },
-          {
-            "name": "Submarine Sonar",
-            "type": "weapon",
-            "user": "Miyu"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-04-24 10:30:00",
-        "type": "Arms Deals"
-      },
-      {
         "endTime": "2026-06-12 09:59:59",
         "fiveStar": [
           {
@@ -314,6 +279,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-05-08 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-07-03 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Deus Xiphos",
+            "type": "weapon",
+            "user": "Makoto"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Translucent Blade",
+            "type": "weapon",
+            "user": "Makoto"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-05-29 10:30:00",
         "type": "Arms Deals"
       },
       {

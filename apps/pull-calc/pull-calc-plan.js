@@ -50,11 +50,17 @@
         })();
 
         const idx = sorted.findIndex(r => r && r.date === charDate && isSameReleaseVersion(r.version, charVersion));
+        const currentScheduleRelease = idx >= 0 ? sorted[idx] : null;
         const nextRelease = idx >= 0 ? sorted[idx + 1] : null;
         const prevRelease = idx >= 0 ? sorted[idx - 1] : null;
 
         let endDate = null;
-        if (nextRelease && nextRelease.date) {
+        const fixedRewardDays = currentScheduleRelease && currentScheduleRelease.fixedDate && currentScheduleRelease.days != null
+            ? Number(currentScheduleRelease.days)
+            : null;
+        if (Number.isFinite(fixedRewardDays) && fixedRewardDays >= 0) {
+            endDate = this.addDays(startDate, fixedRewardDays);
+        } else if (nextRelease && nextRelease.date) {
             endDate = this.parseGameDate(nextRelease.date);
         } else {
             // Last card edge case: estimate duration using previous interval
@@ -125,8 +131,12 @@
                 this.scheduleScenario = scheduleScenario;
             }
         }
+        const baseVersionDays = Number(window.ReleaseScheduleData?.intervalRules?.beforeV4 || 14);
+        const fixedVersionMultiplier = Number.isFinite(fixedRewardDays) && fixedRewardDays >= 0 && baseVersionDays > 0
+            ? fixedRewardDays / baseVersionDays
+            : null;
         const versionMultiplier = versionNum >= 4.0
-            ? (scheduleScenario === '2weeks' ? 1.0 : 1.5)
+            ? (fixedVersionMultiplier != null ? fixedVersionMultiplier : (scheduleScenario === '2weeks' ? 1.0 : 1.5))
             : 1.0;
         // Version income should not be attributed to the current (already-started) version card.
         // Apply it only when the version actually starts (future cards).

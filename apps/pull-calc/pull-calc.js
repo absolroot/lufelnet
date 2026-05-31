@@ -1259,6 +1259,17 @@ class PullSimulator {
     parseScheduleData(scheduleData) {
         const releases = [];
         const isTwoWeeksScenario = this.scheduleScenario === '2weeks';
+        const intervalRules = scheduleData.intervalRules || {};
+        const getScenarioInterval = (release) => {
+            const version = parseFloat(release.incomeVersion || release.version);
+            if (version >= 4.0) {
+                return isTwoWeeksScenario
+                    ? intervalRules.beforeV4
+                    : intervalRules.afterV4;
+            }
+
+            return release.days ?? intervalRules.beforeV4;
+        };
 
         (scheduleData.manualReleases || []).forEach(release => {
             releases.push({
@@ -1296,6 +1307,7 @@ class PullSimulator {
                 date: releaseDate,
                 characters: release.characters || [],
                 note: release.note,
+                days: release.days,
                 plannerPlaceholder: !!release.plannerPlaceholder,
                 placeholderId: release.placeholderId,
                 placeholderLabelKey: release.placeholderLabelKey,
@@ -1303,8 +1315,7 @@ class PullSimulator {
             });
 
             // Update lastDate after adding the release
-            const version = parseFloat(release.incomeVersion || release.version);
-            const interval = version >= 4.0 && isTwoWeeksScenario ? scheduleData.intervalRules.beforeV4 : release.days;
+            const interval = getScenarioInterval(release);
             if (releaseDate) {
                 const parts = releaseDate.split('-');
                 lastDate = new Date(Date.UTC(parts[0], parts[1] - 1, parts[2]));

@@ -807,7 +807,7 @@ const criticalSelfData = {
       "target_jp": "自分",
       "skillIcon": "/assets/img/revelation/자유.webp",
       "skillName": "자유-실망",
-      "skillName_en": "Freedom-Despair",
+      "skillName_en": "Freedom-Disappointment",
       "skillName_jp": "自由-失望",
       "options": [],
       "value": 12,

@@ -99,8 +99,8 @@ window.personaFiles["마카브르"] = {
     "name_en": "Highlight",
     "name_jp": "ハイライト",
     "desc": "적 전체에 공격력 180.0%/192.6%/205.2%의 주원 속성 대미지를 주고, 3턴 동안 적 전체가 받는 대미지가 19.6%/21.0%/22.3% 증가하며, 받는 크리티컬 효과가 14.7%/15.7%/16.8% 증가한다.",
-    "desc_en": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack. Increase all foes' damage taken by 19.6%/21.0%/22.3% and critical damage taken by 14.7%/15.7%/16.8% for 2 turns.",
-    "desc_jp": "全ての敵に攻撃力180.0%/192.6%/205.2%の呪怨属性ダメージを与え、敵が受けるダメージが19.6%/21.0%/22.3%増加し、クリティカルダメージが14.7%/15.7%/16.8%増加する。効果は2ターンの間持続する。",
+    "desc_en": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack. Increase all foes' damage taken by 19.6%/21.0%/22.3% and critical damage taken by 14.7%/15.7%/16.8% for 3 turns.",
+    "desc_jp": "全ての敵に攻撃力180.0%/192.6%/205.2%の呪怨属性ダメージを与え、敵が受けるダメージが19.6%/21.0%/22.3%増加し、クリティカルダメージが14.7%/15.7%/16.8%増加する。効果は3ターンの間持続する。",
     "priority": 3,
     "name_cn": "HIGHLIGHT",
     "desc_cn": "对所有敌人造成180.0%/192.6%/205.2%攻击力的诅咒属性攻击力，使所有敌人受到伤害提升19.6%/21.0%/22.3%、受到暴击效果提升14.7%/15.7%/16.8%，持续3回合。"

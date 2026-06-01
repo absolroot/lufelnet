@@ -933,6 +933,27 @@
         return charData.name || charName;
     }
 
+    function getLocalizedCharacterTerm(term, displayTerm) {
+        if (displayTerm) return displayTerm;
+        if (!term) return term;
+
+        try {
+            if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+                return window.I18nService.translateTerm(term) || term;
+            }
+        } catch (_) { }
+
+        return term;
+    }
+
+    function escapeAttribute(value) {
+        return String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
     // Get position icon path
     function getPositionIcon(position) {
         return `${BASE_URL}/assets/img/character-cards/직업_${position}.png`;
@@ -1012,7 +1033,10 @@
         const isLimit = charData.limit || false;
         const position = charData.position;
         const element = charData.element;
-        const lang = getCurrentLang();
+        const positionLabel = getLocalizedCharacterTerm(position, charData.position_display);
+        const elementLabel = getLocalizedCharacterTerm(element, charData.element_display);
+        const positionLabelAttr = escapeAttribute(positionLabel);
+        const elementLabelAttr = escapeAttribute(elementLabel);
 
         // Build rarity stars HTML
         const starHtml = rarity == 5 && isLimit
@@ -1039,8 +1063,8 @@
                     <span class="character-name">${displayName}</span>
                     ${codenameHtml}
                     <div class="character-meta">
-                        ${position ? `<img class="position-icon" src="${getPositionIcon(position)}" alt="${position}" title="${position}">` : ''}
-                        ${element ? `<img class="element-icon" src="${getElementIcon(element)}" alt="${element}" title="${element}">` : ''}
+                        ${position ? `<img class="position-icon" src="${getPositionIcon(position)}" alt="${positionLabelAttr}" title="${positionLabelAttr}">` : ''}
+                        ${element ? `<img class="element-icon" src="${getElementIcon(element)}" alt="${elementLabelAttr}" title="${elementLabelAttr}">` : ''}
                         ${starHtml}
                     </div>
                 </div>

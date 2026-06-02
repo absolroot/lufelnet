@@ -382,6 +382,7 @@
 }
 
 .filter-group h3 {
+    flex: 0 0 60px;
     width: 60px;
     color: rgb(255, 255, 255, 0.8);
     margin-bottom: 12px;
@@ -393,6 +394,8 @@
 .filter-options {
     display: flex;
     flex-wrap: wrap;
+    flex: 1 1 0;
+    min-width: 0;
     gap: .6rem;
     margin-right: 0px;
     padding-right: 0px;
@@ -403,6 +406,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     color: #fff;
     cursor: pointer;
     border-radius: 32px;
@@ -416,6 +420,51 @@
 .filter-options label:hover {
     filter: brightness(1.1);
     background-color: rgb(255, 255, 255, 0.4);
+}
+
+.filter-options label[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 6px);
+    transform: translateX(-50%);
+    z-index: 30;
+    width: max-content;
+    max-width: 160px;
+    padding: 4px 7px;
+    border-radius: 4px;
+    background: rgba(8, 10, 14, 0.95);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
+    word-break: keep-all;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.filter-options label[data-tooltip]::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 1px);
+    transform: translateX(-50%);
+    z-index: 31;
+    border: 5px solid transparent;
+    border-top-color: rgba(8, 10, 14, 0.95);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.filter-options label[data-tooltip]:hover::after,
+.filter-options label[data-tooltip]:hover::before {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* 체크박스가 체크되었을 때 라벨 스타일 변경 */
@@ -433,8 +482,8 @@
 }
 
 .filter-options img {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
 }
 
@@ -484,6 +533,25 @@
     color: rgb(255, 255, 255, 0.9);
 }
 
+.tag-options .tag-icon {
+    width: 22px;
+    height: 22px;
+    margin-left: 0;
+    flex: 0 0 auto;
+}
+
+.tag-options .tag-icon + span {
+    padding-left: 1px;
+}
+
+.tag-options .icon-only-tag span {
+    display: none;
+}
+
+.tag-options .mindscape-core-filter .tag-icon {
+    transform: translateX(-1px);
+}
+
 @media (max-width: 1440px) {
     .main-wrapper {
         padding-top: 60px;
@@ -507,6 +575,8 @@
     }
 
     .filter-group h3 {
+        flex: 0 0 auto;
+        width: auto;
         margin-bottom: 4px;
     }
 
@@ -533,6 +603,19 @@
         height: 20px;
     }
 
+}
+
+@media (min-width: 721px) and (max-width: 1440px) {
+    .filter-group:last-child {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .filter-group:last-child h3 {
+        flex: 0 0 60px;
+        width: 60px;
+        margin-bottom: 12px;
+    }
 }
 
 body {

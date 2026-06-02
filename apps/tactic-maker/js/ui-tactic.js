@@ -880,6 +880,11 @@ export class TacticUI {
                 const item = document.createElement('div');
                 item.className = 'custom-option';
                 if (opt.value === currentValue) item.classList.add('selected');
+                item.dataset.value = opt.value || '';
+                if (opt.wonderPersona) item.dataset.wonderPersona = opt.wonderPersona;
+                if (typeof opt.wonderPersonaIndex === 'number') {
+                    item.dataset.wonderPersonaIndex = String(opt.wonderPersonaIndex);
+                }
 
                 if (opt.image) {
                     const icon = document.createElement('img');
@@ -898,7 +903,7 @@ export class TacticUI {
                     currentValue = opt.value;
                     updateTrigger();
                     menu.classList.remove('show');
-                    onChange(opt.value);
+                    onChange(opt.value, opt);
                 });
                 menu.appendChild(item);
             });
@@ -1317,7 +1322,13 @@ export class TacticUI {
                         }
                         skillIcon = skillIcon || this.getPersonaSkillIcon(skill);
 
-                        options.push({ label: dispSkill, value: skill, image: skillIcon });
+                        options.push({
+                            label: dispSkill,
+                            value: skill,
+                            image: skillIcon,
+                            wonderPersona: pName,
+                            wonderPersonaIndex: idx
+                        });
                     });
                 }
             });
@@ -1673,7 +1684,7 @@ export class TacticUI {
             let actionDD = null;
 
             // 3. Define Commit Function
-            const commitStore = (a, p, act) => {
+            const commitStore = (a, p, act, explicitPersonaIndex = null) => {
                 // Keep local closure state in sync
                 currentActor = a;
                 currentPersona = p;
@@ -1682,7 +1693,11 @@ export class TacticUI {
                 let pIndex = -1;
                 if (a === '원더' && p) {
                     const personas = this.store.state?.wonder?.personas || [];
-                    pIndex = personas.findIndex(x => x && x.name === p);
+                    if (Number.isInteger(explicitPersonaIndex) && explicitPersonaIndex >= 0) {
+                        pIndex = explicitPersonaIndex;
+                    } else {
+                        pIndex = personas.findIndex(x => x && x.name === p);
+                    }
                 }
 
                 this.store.updateAction(turnIdx, colKey, actionIdx, {
@@ -1745,10 +1760,24 @@ export class TacticUI {
                 commitStore(currentActor, newP, nextAction);
             };
 
-            const handleActionChange = (newA) => {
+            const handleActionChange = (newA, selectedOpt = null) => {
                 // If Wonder: auto-switch persona based on selected persona skill
                 if (currentActor === '원더' && newA) {
                     const personas = this.store.state?.wonder?.personas || [];
+                    const selectedPersona = selectedOpt?.wonderPersona || '';
+                    const selectedPersonaIndex = selectedOpt && Number.isInteger(selectedOpt.wonderPersonaIndex)
+                        ? selectedOpt.wonderPersonaIndex
+                        : -1;
+
+                    if (selectedPersona) {
+                        const previousPersona = currentPersona;
+                        commitStore(currentActor, selectedPersona, newA, selectedPersonaIndex);
+                        if (selectedPersona !== previousPersona && personaDD && typeof personaDD.setValue === 'function') {
+                            personaDD.setValue(selectedPersona);
+                        }
+                        return;
+                    }
+
                     const matches = [];
                     personas.forEach((p, idx) => {
                         if (!p || !p.name) return;
@@ -2120,6 +2149,12 @@ export class TacticUI {
             // Update display
             this.updateDropdownDisplay(modal, val);
 
+            const actionSelect = modal.querySelector('.action-select');
+            if (actionSelect) {
+                delete actionSelect.dataset.wonderPersonaOverride;
+                delete actionSelect.dataset.wonderPersonaIndexOverride;
+            }
+
             // Close menu
             menu.classList.remove('active');
         });
@@ -2211,6 +2246,8 @@ export class TacticUI {
                 this.updateDropdownDisplay(modal, '', '');
             }
             if (actionSelect) {
+                delete actionSelect.dataset.wonderPersonaOverride;
+                delete actionSelect.dataset.wonderPersonaIndexOverride;
                 this.populateActionSelect(actionSelect, getCharByName(name));
             }
         };
@@ -2245,6 +2282,27 @@ export class TacticUI {
 
             characterSelect.onchange = () => {
                 applyCharacterUI(characterSelect.value);
+            };
+        }
+
+        if (actionSelect) {
+            actionSelect.onchange = () => {
+                delete actionSelect.dataset.wonderPersonaOverride;
+                delete actionSelect.dataset.wonderPersonaIndexOverride;
+
+                if (!characterSelect || characterSelect.value !== '원더') return;
+
+                const selectedOption = actionSelect.selectedOptions?.[0] || null;
+                const selectedPersona = selectedOption?.dataset?.wonderPersona || '';
+                if (!selectedPersona) return;
+
+                actionSelect.dataset.wonderPersonaOverride = selectedPersona;
+                if (selectedOption.dataset.wonderPersonaIndex) {
+                    actionSelect.dataset.wonderPersonaIndexOverride = selectedOption.dataset.wonderPersonaIndex;
+                }
+
+                if (personaValueInput) personaValueInput.value = selectedPersona;
+                this.updateDropdownDisplay(modal, selectedPersona);
             };
         }
 
@@ -2289,15 +2347,29 @@ export class TacticUI {
             const selectedCharacterName = characterSelect ? String(characterSelect.value || '') : '';
             const isWonderSelected = selectedCharacterName === '원더';
             const isNoteSelected = selectedCharacterName === '__NOTE__';
-            const personaValue = isWonderSelected ? personaValueInput.value : '';
+            let personaValue = isWonderSelected ? personaValueInput.value : '';
             const actionValue = (actionSelect && !isNoteSelected) ? actionSelect.value : '';
             const memoValue = memoInput.value;
+
+            const actionPersonaOverride = isWonderSelected && actionSelect
+                ? (actionSelect.dataset.wonderPersonaOverride || '')
+                : '';
+            if (actionPersonaOverride) {
+                personaValue = actionPersonaOverride;
+            }
 
             // Get persona index
             let personaIndex = -1;
             if (isWonderSelected && personaValue) {
-                const personas = this.store.state.wonder.personas;
-                personaIndex = personas.findIndex(p => p.name === personaValue);
+                const overrideIndex = actionSelect
+                    ? Number.parseInt(actionSelect.dataset.wonderPersonaIndexOverride || '', 10)
+                    : NaN;
+                if (Number.isInteger(overrideIndex) && overrideIndex >= 0) {
+                    personaIndex = overrideIndex;
+                } else {
+                    const personas = this.store.state.wonder.personas;
+                    personaIndex = personas.findIndex(p => p.name === personaValue);
+                }
             }
 
             const actionData = {
@@ -2439,6 +2511,8 @@ export class TacticUI {
                     (p.skills || []).filter(s => s).forEach((skill, sIdx) => {
                         const opt = document.createElement('option');
                         opt.value = skill;
+                        opt.dataset.wonderPersona = pName;
+                        opt.dataset.wonderPersonaIndex = String(idx);
 
                         let dispSkill = (window.DataLoader && window.DataLoader.getSkillDisplayName)
                             ? window.DataLoader.getSkillDisplayName(skill)

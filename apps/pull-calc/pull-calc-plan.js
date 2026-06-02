@@ -55,7 +55,7 @@
         const prevRelease = idx >= 0 ? sorted[idx - 1] : null;
 
         let endDate = null;
-        const fixedRewardDays = currentScheduleRelease && currentScheduleRelease.fixedDate && currentScheduleRelease.days != null
+        const fixedRewardDays = currentScheduleRelease && currentScheduleRelease.explicitDate && currentScheduleRelease.days != null
             ? Number(currentScheduleRelease.days)
             : null;
         if (Number.isFinite(fixedRewardDays) && fixedRewardDays >= 0) {

@@ -75,10 +75,14 @@
                 });
             }
 
-            // Shift explicitly fixed auto-generated dates such as anniversary planning slots
+            // Shift explicitly dated auto-generated releases such as anniversary planning slots
             if (window.ReleaseScheduleData.autoGenerateCharacters) {
                 window.ReleaseScheduleData.autoGenerateCharacters.forEach(release => {
-                    if (release.fixedDate && release.fixedDateSeaShift !== false) {
+                    const shouldShiftDate = (release.dateSeaShift ?? release.fixedDateSeaShift) !== false;
+                    if (release.date && shouldShiftDate) {
+                        release.date = addDaysToDateString(release.date, shiftDays);
+                    }
+                    if (release.fixedDate && shouldShiftDate) {
                         release.fixedDate = addDaysToDateString(release.fixedDate, shiftDays);
                     }
                 });
@@ -793,7 +797,8 @@
         // 1. First add autoGenerateCharacters (user-defined order)
         if (window.ReleaseScheduleData.autoGenerateCharacters && window.ReleaseScheduleData.autoGenerateCharacters.length > 0) {
             window.ReleaseScheduleData.autoGenerateCharacters.forEach((item) => {
-                const releaseDate = item.fixedDate ? parseDate(item.fixedDate) : lastDate;
+                const explicitDate = item.date || item.fixedDate;
+                const releaseDate = explicitDate ? parseDate(explicitDate) : lastDate;
                 releases.push({
                     version: item.version,
                     date: formatDateStr(releaseDate),

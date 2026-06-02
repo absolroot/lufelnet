@@ -339,14 +339,16 @@
         return tagsRaw.includes('원소 이상') && !tagsRaw.includes('원소 이상 제거');
     }
 
-    function hasTag(characterTags, wantedTag, isPersona3, isPersona5, isLimited, hasMindscapeCore) {
+    function hasTag(characterTags, wantedTag, isPersona3, isPersona5, isP5D, isLimited, isAsiaLimited, hasMindscapeCore) {
         const wantedNorm = normalizeToken(wantedTag);
         const tagsRaw = String(characterTags || '');
 
         if (wantedNorm === 'persona5' || wantedNorm === '페르소나5') return isPersona5;
         if (wantedNorm === 'persona3' || wantedNorm === '페르소나3') return isPersona3;
+        if (wantedNorm === 'p5d') return isP5D;
         if (wantedNorm === '한정' || wantedNorm === 'limited') return isLimited;
         if (wantedNorm === '통상' || wantedNorm === 'normal') return !isLimited;
+        if (wantedNorm === 'normalasia') return !isAsiaLimited;
         if (wantedNorm === 'mindscapecore' || wantedNorm === '심상코어') return hasMindscapeCore;
 
         switch (wantedNorm) {
@@ -370,6 +372,8 @@
                 return tagsRaw.includes('실드');
             case '효과명중':
                 return tagsRaw.includes('효과 명중') || tagsRaw.includes('효과명중');
+            case '크리티컬확률':
+                return tagsRaw.includes('크리티컬 확률') || tagsRaw.includes('크리티컬확률');
             case '방어력감소':
                 return tagsRaw.includes('방어력 감소') || tagsRaw.includes('방어력감소');
             case '관통':
@@ -400,7 +404,9 @@
             const rarity = Number(card.dataset.rarity);
             const isPersona5 = card.dataset.persona5 === 'true';
             const isPersona3 = card.dataset.persona3 === 'true';
+            const isP5D = card.dataset.p5d === 'true';
             const isLimited = card.dataset.limit === 'true';
+            const isAsiaLimited = card.dataset.limitAsia === 'true';
             const hasMindscapeCore = card.dataset.mindscapeCore === 'true';
             const characterTags = card.dataset.tags || '';
 
@@ -409,7 +415,7 @@
                 || (element === '질풍빙결' && (selectedElements.includes('질풍') || selectedElements.includes('빙결')));
             const positionMatch = noPositionFilter || selectedPositions.includes(position);
             const rarityMatch = noRarityFilter || selectedRarities.includes(rarity);
-            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isLimited, hasMindscapeCore));
+            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isP5D, isLimited, isAsiaLimited, hasMindscapeCore));
 
             const shouldHide = !(elementMatch && positionMatch && rarityMatch && tagMatch) || card.classList.contains('hidden-by-search');
             card.classList.toggle('hidden-by-filter', shouldHide);

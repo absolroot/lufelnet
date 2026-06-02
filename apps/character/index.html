@@ -184,8 +184,12 @@ redirect_from: []
                             src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
                     <label><input type="checkbox" name="tag" value="통상"><img
                             src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
-                    <label><input type="checkbox" name="tag" value="페르소나3"><span>P3</span></label>
-                    <label><input type="checkbox" name="tag" value="페르소나5"><span>P5</span></label>
+                    <label class="normal-asia-filter"><input type="checkbox" name="tag" value="normalAsia"><img
+                            src="{{ site.baseurl }}/assets/img/pay/미래의 운명 ASIA.png" alt="Standard ASIA"></label>
+                    <label class="icon-only-tag mindscape-core-filter"><input type="checkbox" name="tag" value="mindscapeCore"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/character-detail/innate/core.png" alt="" aria-hidden="true"><span data-i18n="characterFilterMindscapeCore">심상 코어</span></label>
+                    <label><input type="checkbox" name="tag" value="페르소나5"><img src="{{ site.baseurl }}/assets/img/etc/p5r.png" alt="P5R"></label>
+                    <label><input type="checkbox" name="tag" value="페르소나3"><img src="{{ site.baseurl }}/assets/img/etc/p3r.png" alt="P3R"></label>
+                    <label><input type="checkbox" name="tag" value="p5d"><img src="{{ site.baseurl }}/assets/img/etc/p5d.png" alt="P5D"></label>
                 </div>
             </div>
 
@@ -193,19 +197,19 @@ redirect_from: []
             <div class="filter-group">
                 <h3>태그</h3>
                 <div class="filter-options tag-options">
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="크리티컬확률"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/크리티컬 확률.png" alt="" aria-hidden="true"><span>크리티컬 확률</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="방어력감소"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/방어력 감소.png" alt="" aria-hidden="true"><span>방어력 감소</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="관통"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/관통.png" alt="" aria-hidden="true"><span>관통</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="효과명중"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/효과 명중.png" alt="" aria-hidden="true"><span>효과 명중</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="실드"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/실드.png" alt="" aria-hidden="true"><span>실드</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="화상"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/화상.png" alt="" aria-hidden="true"><span>화상</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="풍습"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/풍습.png" alt="" aria-hidden="true"><span>풍습</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="감전"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/감전.png" alt="" aria-hidden="true"><span>감전</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="동결"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/동결.png" alt="" aria-hidden="true"><span>동결</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="HP 소모"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/생명.png" alt="" aria-hidden="true"><span>HP 소모</span></label>
                     <label><input type="checkbox" name="tag" value="TECHNICAL"><span>TECHNICAL</span></label>
                     <label><input type="checkbox" name="tag" value="추가효과"><span>추가 효과</span></label>
                     <label><input type="checkbox" name="tag" value="지속대미지"><span>지속 대미지</span></label>
-                    <label><input type="checkbox" name="tag" value="방어력감소"><span>방어력 감소</span></label>
-                    <label><input type="checkbox" name="tag" value="관통"><span>관통</span></label>
-                    <label><input type="checkbox" name="tag" value="효과명중"><span>효과 명중</span></label>
-                    <label><input type="checkbox" name="tag" value="실드"><span>실드</span></label>
-                    <label><input type="checkbox" name="tag" value="화상"><span>화상</span></label>
-                    <label><input type="checkbox" name="tag" value="풍습"><span>풍습</span></label>
-                    <label><input type="checkbox" name="tag" value="감전"><span>감전</span></label>
-                    <label><input type="checkbox" name="tag" value="동결"><span>동결</span></label>
-                    <label><input type="checkbox" name="tag" value="HP 소모"><span>HP 소모</span></label>
-                    <label><input type="checkbox" name="tag" value="mindscapeCore"><span data-i18n="characterFilterMindscapeCore">심상 코어</span></label>
                 </div>
             </div>
         </div>
@@ -558,7 +562,7 @@ redirect_from: []
                         window.characterData = mergedData;
                         window.characterList = langCharacterList;
                     } else {
-                        window.characterData = krCharacterData;
+                        window.characterData = applyGlobalLimitFields(krCharacterData, langCharacterData);
                         window.characterList = krCharacterList;
                     }
                 } else {
@@ -594,6 +598,22 @@ redirect_from: []
     }
 
     // 캐릭터 데이터 병합 함수 (하이브리드 방식)
+    function applyGlobalLimitFields(baseData, langData) {
+        const nextData = {};
+        const sourceData = langData || {};
+
+        for (const characterKey in baseData) {
+            const baseChar = baseData[characterKey];
+            const langChar = sourceData[characterKey];
+            nextData[characterKey] = { ...baseChar };
+            nextData[characterKey].limit_asia = baseChar.limit;
+            nextData[characterKey].limit_glb = (langChar && langChar.limit !== undefined) ? langChar.limit : baseChar.limit;
+            nextData[characterKey].limit = nextData[characterKey].limit_glb;
+        }
+
+        return nextData;
+    }
+
     function mergeCharacterData(krData, langData) {
         const mergedData = {};
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
@@ -614,6 +634,13 @@ redirect_from: []
 
                 const langChar = langData[characterKey];
                 const krChar = krData[characterKey];
+                const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
+
+                if (isGlobalLang) {
+                    mergedData[characterKey].limit_asia = krChar.limit;
+                    mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : krChar.limit;
+                    mergedData[characterKey].limit = mergedData[characterKey].limit_glb;
+                }
 
                 // name 처리: 현재 언어에 따라 적절한 이름 사용
                 if (currentLang === 'en') {
@@ -705,7 +732,7 @@ redirect_from: []
         return mergedData;
     }
 
-    // P3 필터 표시 여부 확인
+    // Type filters 표시 여부 확인
     function shouldShowP3Filter() {
         if (!characterData) return false;
 
@@ -713,8 +740,18 @@ redirect_from: []
         return Object.values(characterData).some(char => char.persona3 === true);
     }
 
-    // P3 필터 표시/숨김 처리
-    function toggleP3Filter() {
+    function shouldShowP5DFilter() {
+        if (!characterData) return false;
+        return Object.values(characterData).some(char => char.p5d === true);
+    }
+
+    function shouldShowNormalAsiaFilter() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        return currentLang === 'en' || currentLang === 'jp';
+    }
+
+    // P3/P5D 필터 표시/숨김 처리
+    function toggleTypeFilters() {
         const p3Filter = document.querySelector('label input[value="페르소나3"]');
         if (p3Filter) {
             const p3Label = p3Filter.closest('label');
@@ -722,6 +759,27 @@ redirect_from: []
                 p3Label.style.display = 'flex';
             } else {
                 p3Label.style.display = 'none';
+            }
+        }
+
+        const p5dFilter = document.querySelector('label input[value="p5d"]');
+        if (p5dFilter) {
+            const p5dLabel = p5dFilter.closest('label');
+            if (shouldShowP5DFilter()) {
+                p5dLabel.style.display = 'flex';
+            } else {
+                p5dLabel.style.display = 'none';
+            }
+        }
+
+        const normalAsiaFilter = document.querySelector('label input[value="normalAsia"]');
+        if (normalAsiaFilter) {
+            const normalAsiaLabel = normalAsiaFilter.closest('label');
+            if (shouldShowNormalAsiaFilter()) {
+                normalAsiaLabel.style.display = 'flex';
+            } else {
+                normalAsiaFilter.checked = false;
+                normalAsiaLabel.style.display = 'none';
             }
         }
     }
@@ -754,8 +812,8 @@ redirect_from: []
         const characterData = window.characterData;
         const characterList = window.characterList;
 
-        // P3 필터 표시 여부 처리
-        toggleP3Filter();
+        // Type 필터 표시 여부 처리
+        toggleTypeFilters();
 
         const cardsContainer = document.getElementById('characterCards');
         const searchCount = document.querySelector('.search-count');
@@ -848,7 +906,12 @@ redirect_from: []
             card.dataset.rarity = rarity || 'undefined';
             card.dataset.persona5 = charData.persona5 ? 'true' : 'false';
             card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
-            card.dataset.limit = charData.limit ? 'true' : 'false';
+            card.dataset.p5d = charData.p5d ? 'true' : 'false';
+            const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
+            const glbLimit = (isGlobalLang && charData.limit_glb !== undefined) ? charData.limit_glb : charData.limit;
+            const asiaLimit = charData.limit_asia !== undefined ? charData.limit_asia : charData.limit;
+            card.dataset.limit = glbLimit ? 'true' : 'false';
+            card.dataset.limitAsia = asiaLimit ? 'true' : 'false';
             card.dataset.tags = charData.tag || '';
             card.dataset.mindscapeCore = charData.has_innate === true ? 'true' : 'false';
 
@@ -907,6 +970,7 @@ redirect_from: []
             nameText.dataset.persona3 = charData.persona3;
             nameText.dataset.persona4 = charData.persona4;
             nameText.dataset.persona5 = charData.persona5;
+            nameText.dataset.p5d = charData.p5d;
 
             // 스포일러 모드에서 미출시 캐릭터 태그 추가
             if (originalCharacterList) {
@@ -967,6 +1031,7 @@ redirect_from: []
     // 번역 시스템 적용
     async function applyI18nTranslations() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        applyCharacterFilterTooltips(currentLang);
         if (currentLang === 'kr') return;
 
         const cards = document.querySelectorAll('.card');
@@ -996,7 +1061,6 @@ redirect_from: []
             if (!img || !source) return;
             const translated = translateTermSafe(source);
             img.alt = translated;
-            img.title = translated;
         });
 
         const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
@@ -1007,14 +1071,16 @@ redirect_from: []
             if (!img || !source) return;
             const translated = translateTermSafe(source);
             img.alt = translated;
-            img.title = translated;
         });
 
         const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
         tagLabels.forEach(span => {
             const text = span.textContent;
             if (!text) return;
-            span.textContent = translateTermSafe(text);
+            const label = span.closest('label');
+            const input = label ? label.querySelector('input[name="tag"]') : null;
+            const source = (input && input.value) || text;
+            span.textContent = getCharacterFilterTagLabel(source, translateTermSafe(text), currentLang);
         });
 
         const searchInput = document.getElementById('characterSearch');
@@ -1025,7 +1091,96 @@ redirect_from: []
         const filterSection = document.querySelector('.filter-section');
         if (filterSection && window.I18nService && typeof window.I18nService.translateDOM === 'function') {
             window.I18nService.translateDOM(filterSection);
+            applyCharacterFilterShortLabels(currentLang);
+            applyCharacterFilterTooltips(currentLang);
         }
+    }
+
+    function setCharacterFilterTooltip(label, text) {
+        if (!label || !text) return;
+        label.dataset.tooltip = text;
+        label.setAttribute('aria-label', text);
+        label.removeAttribute('title');
+
+        const img = label.querySelector('img');
+        if (img) {
+            img.removeAttribute('title');
+        }
+    }
+
+    function getCharacterTypeFilterTooltip(input, label, currentLang) {
+        if (!input) return '';
+        if (input.name === 'rarity') return `${input.value}★`;
+
+        const value = input.value;
+        const text = label.querySelector('span')?.textContent?.trim();
+        if (text) return text;
+
+        if (value === 'p5d') return 'P5D';
+        if (value === 'normalAsia') return 'Standard ASIA';
+        if (value === '페르소나5') return 'P5R';
+        if (value === '페르소나3') return 'P3R';
+        if (currentLang === 'en') {
+            const englishTypeLabels = {
+                '한정': 'Limited',
+                '통상': 'Standard'
+            };
+            if (englishTypeLabels[value]) return englishTypeLabels[value];
+        }
+
+        return translateTermSafe(value);
+    }
+
+    function applyCharacterFilterTooltips(currentLang) {
+        const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label');
+        elementLabels.forEach(label => {
+            const input = label.querySelector('input[name="element"]');
+            if (!input) return;
+            setCharacterFilterTooltip(label, translateTermSafe(input.value));
+        });
+
+        const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
+        positionLabels.forEach(label => {
+            const input = label.querySelector('input[name="position"]');
+            if (!input) return;
+            setCharacterFilterTooltip(label, translateTermSafe(input.value));
+        });
+
+        const typeLabels = document.querySelectorAll('.filter-group:nth-child(3) .filter-options label');
+        typeLabels.forEach(label => {
+            const input = label.querySelector('input[name="rarity"], input[name="tag"]');
+            const tooltip = getCharacterTypeFilterTooltip(input, label, currentLang);
+            setCharacterFilterTooltip(label, tooltip);
+        });
+
+        const iconTagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label.icon-only-tag');
+        iconTagLabels.forEach(label => {
+            const input = label.querySelector('input[name="tag"]');
+            const span = label.querySelector('span');
+            const source = input ? input.value : '';
+            const labelText = span?.textContent?.trim() || translateTermSafe(source);
+            setCharacterFilterTooltip(label, getCharacterFilterTagLabel(source, labelText, currentLang));
+        });
+    }
+
+    function getCharacterFilterTagLabel(source, translated, currentLang) {
+        if (currentLang !== 'en') return translated;
+        const englishFilterLabels = {
+            '방어력감소': 'Def. Reduction',
+            '효과명중': 'Ailment Acc.'
+        };
+        return englishFilterLabels[source] || translated;
+    }
+
+    function applyCharacterFilterShortLabels(currentLang) {
+        if (currentLang !== 'en') return;
+        const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
+        tagLabels.forEach(span => {
+            const label = span.closest('label');
+            const input = label ? label.querySelector('input[name="tag"]') : null;
+            if (!input) return;
+            span.textContent = getCharacterFilterTagLabel(input.value, span.textContent, currentLang);
+        });
     }
 
     function refreshForSpoilerChange() {
@@ -1117,4 +1272,4 @@ redirect_from: []
     });
 
 </script>
-<script src="{{ site.baseurl }}/apps/character/character-search.js?v=20240726"></script>
+<script src="{{ site.baseurl }}/apps/character/character-search.js?v=20260602b"></script>

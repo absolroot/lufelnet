@@ -328,10 +328,14 @@ function applyServerDelayToData(isSea) {
             });
         }
 
-        // Shift explicitly fixed auto-generated dates such as anniversary planning slots
+        // Shift explicitly dated auto-generated releases such as anniversary planning slots
         if (window.ReleaseScheduleData.autoGenerateCharacters) {
             window.ReleaseScheduleData.autoGenerateCharacters.forEach(release => {
-                if (release.fixedDate && release.fixedDateSeaShift !== false) {
+                const shouldShiftDate = (release.dateSeaShift ?? release.fixedDateSeaShift) !== false;
+                if (release.date && shouldShiftDate) {
+                    release.date = addDaysToDateString(release.date, shiftDays);
+                }
+                if (release.fixedDate && shouldShiftDate) {
                     release.fixedDate = addDaysToDateString(release.fixedDate, shiftDays);
                 }
             });
@@ -1298,11 +1302,14 @@ class PullSimulator {
 
         (scheduleData.autoGenerateCharacters || []).forEach(release => {
             const computedDate = lastDate ? lastDate.toISOString().split('T')[0] : null;
-            const releaseDate = release.fixedDate || computedDate;
+            const explicitDate = release.date || release.fixedDate;
+            const releaseDate = explicitDate || computedDate;
             releases.push({
                 version: release.version,
                 incomeVersion: release.incomeVersion,
+                explicitDate: !!explicitDate,
                 fixedDate: release.fixedDate,
+                dateSeaShift: release.dateSeaShift,
                 fixedDateSeaShift: release.fixedDateSeaShift,
                 date: releaseDate,
                 characters: release.characters || [],

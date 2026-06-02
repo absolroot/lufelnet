@@ -45,9 +45,15 @@ class VersionChecker {
             // 최초 실행시
             localStorage.setItem('appVersion', APP_VERSION);
         } else if (lastVersion !== APP_VERSION) {
-            // 버전이 다를 경우 업데이트 알림
-            this.showUpdateNotification(lastVersion, APP_VERSION);
-            localStorage.setItem('appVersion', APP_VERSION);
+            const comparison = this.compareVersions(lastVersion, APP_VERSION);
+            if (comparison < 0) {
+                // 저장된 버전보다 현재 앱 버전이 높을 때만 업데이트 알림 표시
+                this.showUpdateNotification(lastVersion, APP_VERSION);
+                localStorage.setItem('appVersion', APP_VERSION);
+            } else if (comparison > 0) {
+                // 오래된 캐시 HTML/manifest가 낮은 APP_VERSION을 로드한 경우 localStorage를 되돌리지 않음
+                console.warn('[VersionChecker] Ignored stale app version:', APP_VERSION, 'stored:', lastVersion);
+            }
         }
     }
 

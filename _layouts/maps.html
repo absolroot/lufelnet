@@ -46,8 +46,9 @@
       var appVersion = (typeof window.APP_VERSION === 'string' && window.APP_VERSION.trim())
         ? window.APP_VERSION.trim()
         : '0';
-      document.write('<script src="{{ site.baseurl }}/assets/js/version-runtime.js?v=' + encodeURIComponent(appVersion) + '"><\/script>');
-      document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + encodeURIComponent(appVersion) + '"><\/script>');
+      var versionScriptBuild = '{{ site.time | date: '%s' }}';
+      document.write('<script src="{{ site.baseurl }}/assets/js/version-runtime.js?v=' + encodeURIComponent(versionScriptBuild) + '"><\/script>');
+      document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + encodeURIComponent(versionScriptBuild) + '"><\/script>');
     })();
   </script>
 

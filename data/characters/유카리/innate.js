@@ -50,7 +50,7 @@ window.innateData["유카리"] = {
       "name_en": "Heroic Bearing",
       "name_jp": "英姿",
       "desc_cn": "友方同伴释放神通法或HIGHLIGHT后，使其暴击效果提升30.0%/45.0%/60.0%，持续2回合。\n『复苏之矢』额外使友方S.E.E.S成员及疾风属性角色伤害提升20.0%/30.0%/40.0%、攻击力提升20.0%/30.0%/40.0%，持续2回合。",
-      "desc": "아군 동료가 테우르기아 또는 HIGHLIGHT 발동 시 2턴 동안 아군 동료의 크리티컬 효과가 30.0%/45.0%/60.0% 증가한다.\n『회생의 화살』은 2턴 동안 아군 S.E.E.S 멤버 및 질풍 속성 캐릭터의 대미지를 20.0%/30.0%/40.0% 증가시키고, 공격력을 20.0%/30.0%/40.0% 증가시킨다.",
+      "desc": "아군 동료가 테우르기아 또는 HIGHLIGHT 발동 시 2턴 동안 아군 동료의 크리티컬 효과가 30.0%/45.0%/60.0% 증가한다.\n『리바이브 애로』은 2턴 동안 아군 S.E.E.S 멤버 및 질풍 속성 캐릭터의 대미지를 20.0%/30.0%/40.0% 증가시키고, 공격력을 20.0%/30.0%/40.0% 증가시킨다.",
       "desc_en": "After an ally uses Theurgy or HIGHLIGHT, increase that ally's Critical Effect by 30.0%/45.0%/60.0% for 2 turns.\n[Arrow of Rejuvenation] additionally increases S.E.E.S. members' and Wind attribute characters' damage by 20.0%/30.0%/40.0% and Attack by 20.0%/30.0%/40.0% for 2 turns.",
       "desc_jp": "味方がテウルギアまたはHIGHLIGHTを使用した後、2ターンの間、その味方のクリティカル効果が30.0%/45.0%/60.0%上昇する。\n『リバイブアロー』はさらに、2ターンの間、味方のS.E.E.S.メンバーおよび疾風属性キャラクターの与ダメージを20.0%/30.0%/40.0%、攻撃力を20.0%/30.0%/40.0%上昇させる。"
     },

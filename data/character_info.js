@@ -122,7 +122,7 @@ Object.assign(window.characterData, {
     },
     "모토하·청광": {
         "limit": true,
-        "tag": "HIGHLIGHT, 실드",
+        "tag": "HIGHLIGHT, 실드, 관통",
         "tag_en": "",
         "tag_jp": "",
         "color": "#f6e27a",
@@ -144,7 +144,7 @@ Object.assign(window.characterData, {
     },
     "코로마루": {
         "limit": true,
-        "tag": "약점 강화, 화상, 감전, 동결, 방어력 감소, 지속 대미지",
+        "tag": "적합성 저하, 화상, 감전, 동결, 방어력 감소, 지속 대미지",
         "tag_en": "",
         "tag_jp": "",
         "persona3": true,
@@ -753,7 +753,7 @@ Object.assign(window.characterData, {
     "후타바": {
         "limit": true,
         "persona5": true,
-        "tag": "약점 변경, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬 확률, 실드",
+        "tag": "적합성 저하, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬 확률, 실드",
         "color": "#32cd32",
         "element": "버프",
         "rarity": 5,

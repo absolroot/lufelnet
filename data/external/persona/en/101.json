@@ -57,15 +57,15 @@
       "name": "Hunting"
     },
     {
-      "desc": "Increase Attack by 12.5%. At the start of battle, Mark a foe. When any ally attacks a Marked foe, increase Attack by 20%.",
+      "desc": "Increase Attack by 12.5%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%.",
       "name": "Hunting I"
     },
     {
-      "desc": "Increase Attack by 20.8%. At the start of battle, Mark a foe. When any ally attacks a Marked foe, increase Attack by 20%. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+      "desc": "Increase Attack by 20.8%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
       "name": "Hunting II"
     },
     {
-      "desc": "Increase Attack by 29.1%. At the start of battle, Mark a foe. When all allies attack a Marked foe, increase Attack by 20%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+      "desc": "Increase Attack by 29.1%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
       "name": "Hunting III"
     }
   ],

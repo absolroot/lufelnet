@@ -1,5 +1,271 @@
 {
-  "data": null,
-  "msg": "Gacha not found.",
-  "status": 100
+  "data": {
+    "thief": [
+      {
+        "endTime": "2026-06-11 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Tempest Riko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Winds of Change",
+        "startTime": "2026-05-28 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-11 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Tempest Riko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Winds of Change",
+        "startTime": "2026-05-28 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Makoto Yuki",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "When Moon Reaches Stars",
+        "startTime": "2026-05-21 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Makoto Yuki",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "When Moon Reaches Stars",
+        "startTime": "2026-05-21 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yukari Takeba",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Shot Through the Heart",
+        "startTime": "2026-06-04 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yukari Takeba",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Shot Through the Heart",
+        "startTime": "2026-06-04 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2026-06-11 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Windplum Dance",
+            "type": "weapon",
+            "user": "Riko"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Sparrow's Leap",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-05-28 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Deus Xiphos",
+            "type": "weapon",
+            "user": "Makoto"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Translucent Blade",
+            "type": "weapon",
+            "user": "Makoto"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-05-21 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Sarnga",
+            "type": "weapon",
+            "user": "Yukari"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Kishin Bow",
+            "type": "weapon",
+            "user": "Yukari"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-06-04 11:30:00",
+        "type": "Arms Deals"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
 }

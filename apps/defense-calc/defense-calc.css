@@ -757,6 +757,10 @@ input[type="checkbox"]:hover {
     font-weight: bold;
 }
 
+.value-column.total-defense-reduction-value {
+    color: #d6a94d !important;
+}
+
 .check-column {
     width: 30px;
 }
@@ -1003,6 +1007,10 @@ select:-moz-focusring {
 
 .defense-table-container .defense-table tr.selected .value-column {
     color: rgba(221, 132, 132) !important;
+}
+
+.defense-table-container .defense-table tr.selected .value-column.total-defense-reduction-value {
+    color: #d6a94d !important;
 }
 
 

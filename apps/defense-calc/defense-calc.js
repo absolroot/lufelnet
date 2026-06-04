@@ -55,6 +55,7 @@ class DefenseCalc {
         // order-switch 제거됨
         this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소 (계산용으로만 사용)
         this.reduceTotal = 0;
+        this.totalDefenseReductionTotal = 0;
         this.penetrateTotal = 0;
         this.finalDefenseCoefValue = document.getElementById('finalDefenseCoefValue');
         this.selectedItems = new Set(); // 초기 선택 항목 설정
@@ -294,6 +295,10 @@ class DefenseCalc {
         return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
     }
 
+    isTotalDefenseReductionItem(item) {
+        return item && item.calcMode === 'totalDefenseReduction';
+    }
+
     formatDisplayValue(value) {
         const safeValue = isFinite(Number(value)) ? Number(value) : 0;
         return `${safeValue.toFixed(2).replace(/\.00$/, '').replace(/(\.\d)0$/, '$1')}%`;
@@ -303,6 +308,7 @@ class DefenseCalc {
         if (!item || !valueCell) return;
         item.__valueCell = valueCell;
         valueCell.textContent = this.formatDisplayValue(this.getEffectiveItemValue(item));
+        valueCell.classList.toggle('total-defense-reduction-value', this.isTotalDefenseReductionItem(item));
     }
 
     refreshDisplayedValues() {
@@ -1306,12 +1312,18 @@ class DefenseCalc {
     }
 
     updateTotal() {
-        const total = Array.from(this.selectedItems)
+        const selectedReduceItems = Array.from(this.selectedItems)
             .map(id => this.idToReduceItem.get(id))
-            .filter(Boolean)
+            .filter(Boolean);
+        const total = selectedReduceItems
+            .filter(item => !this.isTotalDefenseReductionItem(item))
+            .reduce((sum, item) => sum + this.getEffectiveItemValue(item), 0);
+        const totalDefenseReduction = selectedReduceItems
+            .filter(item => this.isTotalDefenseReductionItem(item))
             .reduce((sum, item) => sum + this.getEffectiveItemValue(item), 0);
         const extra = parseFloat(this.otherReduceInput && this.otherReduceInput.value) || 0;
         this.reduceTotal = Math.max(0, total + Math.max(0, extra));
+        this.totalDefenseReductionTotal = Math.min(100, Math.max(0, totalDefenseReduction));
         this.updateDamageCalculation();
     }
 
@@ -1605,6 +1617,7 @@ class DefenseCalc {
 
         const penetrateTotal = Math.max(0, this.penetrateTotal || 0);
         const reduceTotalRaw = Math.max(0, this.reduceTotal || 0);
+        const totalDefenseReductionRaw = Math.min(100, Math.max(0, this.totalDefenseReductionTotal || 0));
 
         /**
          * DEFENSE CALCULATION FORMULA EXPLANATION
@@ -1631,7 +1644,12 @@ class DefenseCalc {
          * - The result cannot go below 0 (floor at 0)
          * - Example: If afterPierceCoef = 100% and reduceTotalRaw = 30%, then finalCoef = 70%
          * 
-         * STEP 3: Apply Windswept (Optional)
+         * STEP 3: Apply Total Defense Reduction (Optional)
+         * -------------------------------------------------
+         * Some effects reduce total Defense after penetration and standard Defense reduction.
+         * Formula: finalCoef = finalCoef × (100 - totalDefenseReductionRaw) / 100
+         *
+         * STEP 4: Apply Windswept (Optional)
          * -----------------------------------
          * Windswept is a special debuff that further reduces defense by 12%.
          * Formula: displayFinalCoef = finalCoef × 0.88 (if Windswept is active)
@@ -1639,7 +1657,7 @@ class DefenseCalc {
          * - This is applied multiplicatively after all other calculations
          * - Example: If finalCoef = 70% and Windswept is active, then displayFinalCoef = 70% × 0.88 = 61.6%
          * 
-         * STEP 4: Calculate Damage Multiplier
+         * STEP 5: Calculate Damage Multiplier
          * -------------------------------------
          * The damage multiplier is calculated using the following formula:
          * Formula: damageMultiplier = 1 - (baseDefense × defenseCoef / 100) / (baseDefense × defenseCoef / 100 + 1400)
@@ -1658,7 +1676,9 @@ class DefenseCalc {
         // 1) 관통 적용
         const afterPierceCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
         // 2) 방어력 감소 적용 (0 하한)
-        const finalCoef = Math.max(0, afterPierceCoef - reduceTotalRaw);
+        const afterReduceCoef = Math.max(0, afterPierceCoef - reduceTotalRaw);
+        // 3) 총 방어력 감소 적용 (풍갈 등, 0 하한)
+        const finalCoef = Math.max(0, afterReduceCoef * (100 - totalDefenseReductionRaw) / 100);
 
         // 항상 목표치 표시 (order-switch 없이)
         // 관통 목표: 방어력 감소를 고려한 관통 필요치

@@ -17,6 +17,10 @@
     --char-scale: 1.3;
 }
 
+.character-images .persona-image[data-character="모르가나·댄싱 스타"][data-persona="메리크리우스"][data-image-file="모르가나·댄싱 스타 - 메리크리우스.webp"] {
+    --char-scale: 1.2;
+}
+
 /* specific attribute icons are displayed larger */
 .character-images img[data-image-file*="키라 - 하르피이아.webp"],
 .character-images img[data-image-file*="리코·매화 - 치요메.webp"],

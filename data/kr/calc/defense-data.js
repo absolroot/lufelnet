@@ -1417,6 +1417,96 @@ const defenseCalcData = {
       "options_cn": []
     }
   ],
+  "모르가나·댄싱 스타": [
+    {
+      "id": "morgana-starlight-wind-exhaustion-total-defense",
+      "type": "원소 이상",
+      "type_en": "Elemental Ailment",
+      "type_jp": "元素異常",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/디버프광역.png",
+      "skillName": "풍갈",
+      "skillName_en": "Wind Exhaustion",
+      "skillName_jp": "風竭",
+      "options": [
+        "10스택",
+        "9스택",
+        "8스택",
+        "7스택",
+        "6스택",
+        "5스택",
+        "4스택",
+        "3스택",
+        "2스택",
+        "1스택"
+      ],
+      "options_en": [
+        "10 Stacks",
+        "9 Stacks",
+        "8 Stacks",
+        "7 Stacks",
+        "6 Stacks",
+        "5 Stacks",
+        "4 Stacks",
+        "3 Stacks",
+        "2 Stacks",
+        "1 Stack"
+      ],
+      "options_jp": [
+        "10スタック",
+        "9スタック",
+        "8スタック",
+        "7スタック",
+        "6スタック",
+        "5スタック",
+        "4スタック",
+        "3スタック",
+        "2スタック",
+        "1スタック"
+      ],
+      "values": {
+        "10스택": 100,
+        "9스택": 90,
+        "8스택": 80,
+        "7스택": 70,
+        "6스택": 60,
+        "5스택": 50,
+        "4스택": 40,
+        "3스택": 30,
+        "2스택": 20,
+        "1스택": 10
+      },
+      "defaultOption": "10스택",
+      "defaultOption_en": "10 Stacks",
+      "defaultOption_jp": "10スタック",
+      "value": 100,
+      "calcMode": "totalDefenseReduction",
+      "skillEffectAmpAffected": false,
+      "duration": "1턴",
+      "note": "총 방어력 감소",
+      "note_en": "Total Defense reduction",
+      "note_jp": "総防御力低下",
+      "skillName_cn": "风竭",
+      "note_cn": "总防御力降低",
+      "type_cn": "元素异常",
+      "target_cn": "群体",
+      "duration_cn": "1回合",
+      "options_cn": [
+        "10层",
+        "9层",
+        "8层",
+        "7层",
+        "6层",
+        "5层",
+        "4层",
+        "3层",
+        "2层",
+        "1层"
+      ]
+    }
+  ],
   "렌·댄싱 스타": [
     {
       "id": "ren-starlight-s2-defense",

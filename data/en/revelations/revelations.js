@@ -114,7 +114,7 @@ const enRevelationData = {
         "강인": "Tenacity",
     },
     "main": {
-        "Purity": ["Depravity", "Transformation"], // 순수
+        "Purity": ["Depravity", "Transformation", "Flourishing"], // 순수
         "Nativity": ["Power"], // 탄생
         "Agility": ["Flourishing", "Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
@@ -134,7 +134,7 @@ const enRevelationData = {
         "Freedom": ["Triumph", "Defeat", "Disappointment"], // 자유
     },
     "sub": {
-        "Flourishing": ["Agility"], // 번영
+        "Flourishing": ["Agility", "Purity"], // 번영
         "Determination": [], // 결단
         "Depravity": ["Purity"], // 타락
         "Tenacity": ["Creation"], // 강인
@@ -423,6 +423,7 @@ const enRevelationData = {
         "Purity": { // 순수
             "Depravity": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
             "Transformation": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
+            "Flourishing": "During battle, increase ATK by 20%. After landing a Crit, grant all allies a 12% DMG Bonus for 1 turn.",
             "type": ["미출시"]
         }
     },

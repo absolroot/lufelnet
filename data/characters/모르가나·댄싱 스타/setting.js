@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["모르가나·댄싱 스타"] = {
+    "role": "질풍 대미지/다운 허약 디버퍼",
+    "video": [""],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["순수", "창조", "여정"],
+    "sub_revelation": ["번영", "화해", "풍요"],
+    "sub_revel2": ["공격력"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["공격력"],
+    "sub_option2": ["크리티컬 확률", "크리티컬 효과"],
+    "sub_option3": ["대미지 보너스", "관통"],
+    "minimum_stats": {
+        "LV10": "공격력 3904, 크리티컬 확률 50%",
+        "LV10+5": "공격력 4304, 크리티컬 확률 50%",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 4144, 크리티컬 확률 50%",
+        "LV13+5": "공격력 4544, 크리티컬 확률 50%"
+    },
+    "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점 <b>크리티컬 확률</b>/ 해명의 힘 / 마이팰리스: 1% (이상)",
+    "battle_plus_stats_en": "<b>Attack</b>/ Thieves Den 50LV 65 / Thieves Den 70LV 110 (or higher) / Thieves Den Rating <b>Crit Rate</b>/ Eludi. Stat Buff / Thieves Den: 1% (or higher)",
+    "battle_plus_stats_jp": "<b>攻撃力</b>/ マイパレス 50LV 65 / マイパレス 70LV 110 （以上） / マイパレス評価 <b>CRT発生率</b>/ 解明の力 / マイパレス: 1% （以上）",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "MAX",
+    "skill_priority": "3>2>1>4",
+    "mind_stats1": "공격력 20%",
+    "mind_stats2": "크리티컬 효과 24%",
+    "mind_skill1": "S1/S2",
+    "mind_skill2": "S3/HL"
+};

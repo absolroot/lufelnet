@@ -77,9 +77,9 @@ window.ReleaseScheduleData = {
         // 4.0 이후 (3주 간격) - isThreeWeekStart 표시
         { version: "4.0", characters: ["마나카", "쇼키"], "main-story": "5-1", weapon: ["하이브 가드"], revelation: ["희망", "신중", "고집"], days: 21 },
         { version: "4.1", date: "2026-05-21", characters: ["유키 마코토"], persona: ["자오우곤겐"], days: 14 },
-        { version: "4.2", date: "2026-06-04" , characters: ["유카리"], weapon: ["마그네틱 스톰"], goldTicketUnlocks: ["CHERISH"], days: 7 },
+        { version: "4.2", date: "2026-06-04" , characters: ["유카리"], weapon: ["마그네틱 스톰"], days: 7 },
         { version: "4.3", date: "2026-06-11", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"], days: 14 },
-        { version: "???", incomeVersion: "4.1", date: "2026-06-25", dateSeaShift: false, characters: ["???"], days: 14, plannerPlaceholder: true, placeholderId: "global-first-anniversary-unit", placeholderLabelKey: "plannerPlaceholderGlobalFirstAnniversaryUnit", placeholderNoteKey: "plannerPlaceholderUnconfirmed" },
+        { version: "???", incomeVersion: "4.1", date: "2026-06-25", dateSeaShift: false, characters: ["???"], days: 14, goldTicketUnlocks: ["CHERISH"], plannerPlaceholder: true, placeholderId: "global-first-anniversary-unit", placeholderLabelKey: "plannerPlaceholderGlobalFirstAnniversaryUnit", placeholderNoteKey: "plannerPlaceholderUnconfirmed" },
         { version: "4.2", date: "2026-07-09", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days:14 },
         { version: "4.3.1", date: "2026-07-23", characters: ["미나미·여름"], "summer": true, days: 14 },
         { version: "4.3.2", date: "2026-08-06", characters: ["미유·여름"], "summer": true, persona: ["사히모치노카미"], weapon: ["설원의 침묵"], days: 14 },

@@ -114,7 +114,7 @@ window.enCharacterSkillsData["유키 마코토"] = {
   "passive1": {
     "name": "On-Site Leader",
     "element": "패시브",
-    "description": "After activating a Theurgy, increase party's Attack by 40.0% for 2 turns. Increase Attack of SEES members by 30.0% more.",
+    "description": "After activating a Theurgy, increase party's Attack by 40.0% for 2 turns, and increase Attack of SEES members by 30.0% more.",
     "cool": 0
   },
   "passive2": {
@@ -175,7 +175,7 @@ window.jpCharacterSkillsData["유키 마코토"] = {
   "passive1": {
     "name": "現場リーダー",
     "element": "패시브",
-    "description": "テウルギアを発動した時、２ターンの間、味方全体の攻撃力が40.0%上昇する。Ｓ．Ｅ．Ｅ．Ｓ．の味方はさらに攻撃力が追加で30.0%上昇する。",
+    "description": "テウルギアを発動した時、２ターンの間、味方全体の攻撃力が40.0%上昇し、Ｓ．Ｅ．Ｅ．Ｓ．の味方はさらに攻撃力が追加で30.0%上昇する。",
     "cool": 0
   },
   "passive2": {

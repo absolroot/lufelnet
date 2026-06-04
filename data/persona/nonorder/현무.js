@@ -27,7 +27,7 @@ window.personaFiles["현무"] = {
       "name_jp": "極北の氷塊",
       "desc": "방어력이 6.2% 증가한다. 동결 상태인 적에게 받는 대미지가 22% 감소한다. 동결 상태인 적에 대한 공격력이 20% 증가한다.",
       "desc_en": "Increase Defense by 6.2%. Decrease damage taken from Frozen foes by 22%. Increase damage dealt to Frozen foes by 20%.",
-      "desc_jp": "防御力が６.２%上昇する。凍結状態の敵からの与ダメージが２２%低下させる。凍結状態の敵への与ダメージが２０%上昇する。",
+      "desc_jp": "防御力が６.２%上昇する。凍結状態の敵からの与ダメージが２２%低下する。凍結状態の敵への与ダメージが２０%上昇する。",
       "name_cn": "极北地的寒冰",
       "desc_cn": "防御力提升6.2%。受到来自冻结状态下的敌人的伤害降低22%。对处于冻结状态的敌人攻击力提升20%。"
     },
@@ -37,7 +37,7 @@ window.personaFiles["현무"] = {
       "name_jp": "極北の氷塊Ⅰ",
       "desc": "방어력이 6.2% 증가한다. 동결 상태인 적에게 받는 대미지가 26% 감소한다. 동결 상태인 적에 대한 공격력이 22% 증가한다.",
       "desc_en": "Increase Defense by 6.2%. Decrease damage taken from Frozen foes by 26%. Increase damage dealt to Frozen foes by 22%.",
-      "desc_jp": "防御力が６.２%上昇する。凍結状態の敵からの与ダメージが２６%低下させる。凍結状態の敵への与ダメージが２２%上昇する。",
+      "desc_jp": "防御力が６.２%上昇する。凍結状態の敵からの与ダメージが２６%低下する。凍結状態の敵への与ダメージが２２%上昇する。",
       "name_cn": "极北地的寒冰Ⅰ",
       "desc_cn": "防御力提升6.2%。受到来自冻结状态下的敌人的伤害降低26%。对处于冻结状态的敌人攻击力提升22%。"
     }

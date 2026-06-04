@@ -23,38 +23,38 @@ window.ritualData["유카리"] = {
 
 window.enCharacterRitualData["유카리"] = {
   "name": "Yukari Takeba",
-  "r0": "Etched in Memory",
-  "r0_detail": "Yukari can inflict foes with [Wind Erosion], when other allies attack foes with [Wind Erosion], restore party's HP by 24.5% of Yukari's Attack + 800/1600/2400 (effect increases at level 1/50/70), then grant Yukari 1 [Wind Whisper] stack. Stacks up to 2 times. Yukari can activate this healing up to 1 time before the start of next turn.",
+  "r0": "Unforgettable Feeling",
+  "r0_detail": "Yukari can inflict Erosion on foes.\nWhen other allies deal skill damage to a foe inflicted with Erosion, restore HP to all allies equal to 24.5% of Yukari's Attack + 800/1600/2400 (effect changes at Lv. 1/50/70, respectively), and gain 1 Whisperwind stack (stacks up to 2 times). This effect can only activate once between the start of Yukari's turn and the start of her next turn.",
   "r1": "Pull the Trigger",
-  "r1_detail": "At the start of battle, Yukari gains max stacks of [Wind Whisper] then restores 70 Theurgy Energy, if Theurgy Energy overflow on turn 1, Yukari can save up to 35 overflow Energy.\nWhen using skills on allies, increase the main target's pierce rate by 20% for 2 turns.",
-  "r2": "Proof of Being Loved",
-  "r2_detail": "After using Theurgy, Yukari gains immunity to spiritual ailments, then increase party's critical damage by 30%. Lasts for $2 turns.",
-  "r3": "Girl in Peach Scandals",
-  "r3_detail": "Increase the skill levels of Wind Burst and Arrow of Rejuvenation by 3.",
-  "r4": "Healing Apex",
-  "r4_detail": "When using Theurgy, restore HP to the ally with the lowest HP by 5% of Yukari's Attack + 500 more, then increase party's damage by 10% more.",
-  "r5": "Questioning the Truth",
-  "r5_detail": "Increase the skill levels of Windchaser's Breath and Thief Tactics by 3.",
-  "r6": "Spring Encounter",
-  "r6_detail": "Double the Theurgy Energy restored by [Arrow of Rejuvenation].\n*When restoring Theurgy Energy, save the overflow Theurgy Energy then return it after the target used Theurgy, up to their Theurgy Energy cap. Lasts for 2 turns."
+  "r1_detail": "At the start of battle, gain up to the maximum number of Whisperwind stacks, and fill Theurgy gauge by 70. If the Theurgy gauge is increased above the maximum on the first turn, up to 35 above the maximum can be reserved.\nAlso, when using a skill on an ally, increase the main target's pierce rate by 20% more for 2 turns. If using Tailwind's Breath, restore 1200 more HP to all allies, and restore 30% more HP to the main target.",
+  "r2": "Sign of the Lovers",
+  "r2_detail": "When activating a Theurgy, nullify spiritual ailments on Yukari, and also increase party's critical damage by 30%. Lasts for 2 turns.",
+  "r3": "Girl Clad in Pink",
+  "r3_detail": "Increase the skill levels of Gale Burst and Arrow of Life by 3.",
+  "r4": "Healing Mastery",
+  "r4_detail": "When using a Theurgy, also restore HP to the ally with the lowest HP by 5% of Yukari's Attack + 500, and also increase party's damage by 10% for 2 turns.",
+  "r5": "Pursuit of Doubt",
+  "r5_detail": "Increase the skill levels of Tailwind's Breath and Combat Tactics by 3.",
+  "r6": "Spring Day's Meeting",
+  "r6_detail": "Double the Theurgy gauge increase from Arrow of Life.\nAlso, when an ally uses a Theurgy, increase critical damage by 30% for 2 turns."
 };
 
 window.jpCharacterRitualData["유카리"] = {
   "name": "岳羽 ゆかり",
-  "r0": "心に刻んだ約束",
-  "r0_detail": "岳羽ゆかりは敵に『風の痕跡』を付与できる。ほかの味方が『風の痕跡』を持つ敵にスキルでダメージを与えると、味方全体のHPが岳羽ゆかりの攻撃力24.5%＋800/1,600/2,400（Lv1/50/70）回復する。また、岳羽ゆかりは『風の言葉』を1スタック獲得する（最大2スタック）。この回復効果は1ターンにつき次のターン開始前まで最大1回発動可能。",
-  "r1": "引き絞られた弓弦",
-  "r1_detail": "戦闘開始時に『風の言葉』を最大スタックまで獲得し、テウルギアエネルギーを70ポイント回復する。初ターンでテウルギアエネルギー回復量が上限を超える場合、岳羽ゆかりは最大35ポイントまで超過分を蓄積できる。\n味方にスキルを使用すると、メインターゲットの貫通が2ターンの間20%上昇する。",
-  "r2": "愛の証",
-  "r2_detail": "テウルギア発動後、自身が精神異常無効を得て、味方全体のCRT倍率が30%上昇する。効果は2ターン持続する。",
-  "r3": "桃色の少女",
-  "r3_detail": "『ウィンドストーム』、『リバイブアロー』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "究極の癒し",
-  "r4_detail": "テウルギア発動時、HPが最も低い味方のHPを岳羽ゆかりの攻撃力5%＋500分追加回復し、味方全体のダメージが10%上昇する。",
-  "r5": "真実への追跡",
-  "r5_detail": "『風の追跡者』、『戦闘技術』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "春の日の出会い",
-  "r6_detail": "『リバイブアロー』で回復するテウルギアエネルギーが2倍になる。\n※回復が上限を超える場合、超過分を一時的に蓄積し、対象がテウルギアを発動した後に返還される。テウルギアエネルギー上限まで蓄積可能で、超過分は最大2ターンまで保持される。"
+  "r0": "忘れない想い",
+  "r0_detail": "ゆかりは敵を『ゲイルトラック』状態にすることができる。\n自身以外の味方が『ゲイルトラック』状態の敵にスキルでダメージを与えた時、味方全体のＨＰをゆかりの攻撃力２４.５%＋８００／１６００／２４００（ゆかりのレベルが１／５０／７０以上の時）回復し、さらに『風の囁き』を１つ獲得する（最大２つまで累積できる）。この効果は自身のターン開始から次のターン開始までの間に１回まで発動する。",
+  "r1": "引き金を引く時",
+  "r1_detail": "戦闘開始時、『風の囁き』を上限まで獲得し、テウルギアゲージが７０増加する。初回ターンでテウルギアゲージの上限を超過した場合、増加分のうち最大３５まで蓄積できる。\nまた味方にスキルを使用した時、２ターンの間、選択した対象の貫通が追加で２０%上昇する。『追風の息吹』を使用した場合は、追加で味方全体のＨＰを１２００回復し、選択した対象はさらに３０%多く回復する。",
+  "r2": "愛された証",
+  "r2_detail": "テウルギアを発動した時、２ターンの間、自身は行動異常を無効化し、さらに味方全体のクリティカルダメージが３０%上昇する。",
+  "r3": "桃色纏う少女",
+  "r3_detail": "『ゲイルバースト』／『リゲインアロー』のスキルレベルが３上昇する。",
+  "r4": "癒しの極み",
+  "r4_detail": "テウルギアを発動した時、追加でＨＰが最も低い味方のＨＰを自身の攻撃力５%＋５００回復し、さらに２ターンの間、味方全体の与ダメージが１０%上昇する。",
+  "r5": "疑念の探求",
+  "r5_detail": "『追風の息吹』／『戦術技能』のスキルレベルが３上昇する。",
+  "r6": "春日の出会い",
+  "r6_detail": "『リゲインアロー』によるテウルギアゲージの増加量が２倍になる。\nまた味方がテウルギアを発動する時、２ターンの間、クリティカルダメージが３０%上昇する。"
 };
 
 window.cnCharacterRitualData["유카리"] = {

@@ -60,100 +60,108 @@ window.characterSkillsData["유카리"] = {
 window.enCharacterSkillsData["유카리"] = {
   "name": "Yukari Takeba",
   "skill1": {
-    "name": "Wind Burst",
+    "name": "Gale Burst",
     "element": "질풍",
     "type": "단일 피해",
     "sp": 23,
     "cool": 0,
-    "description": "Deal Wind damage to 1 foe equal to 200.1%/220.6%/212.4%/232.9% of Attack, with a 100% base chance to inflict Windswept, then inflict the target with [Wind Erosion] for 2 turns, there can only be 1 [Wind Erosion]. When foe with [Wind Erosion] is defeated, transfer their [Wind Erosion] to the foe with the highest HP.\nPassive: When allies use skills, if any skill target has [Wind Erosion], increase skill Attack by 8.8%/9.7%/9.3%/10.2% + 0.72% for every 100 Attack, up to 29.3%/32.3%/31.1%/34.1%."
+    "description": "Deal Wind damage to 1 foe equal to 200.1%/220.6%/212.4%/232.9% of Attack. Also, inflict Windswept and Erosion for 2 turns. Multiple foes cannot be inflicted with Erosion at the same time. If a foe with Erosion is defeated, Erosion is transferred to the foe with the highest HP.\nPassive: When an ally attacks a foe with a skill, if any target is inflicted with Erosion, increase that skill's Attack by 8.8%/9.7%/9.3%/10.2% + 0.72% for every 100 points of Yukari's Attack (up to a maximum of 29.3%/32.3%/31.1%/34.1%)."
   },
   "skill2": {
-    "name": "Windchaser’s Breath",
+    "name": "Tailwind's Breath",
     "element": "버프광역",
     "type": "",
     "sp": 25,
     "cool": 0,
-    "description": "Decrease party's damage taken by 29.3%/32.3%/31.1%/34.1% for 3 turns; Then increase the main target's Attack by 7.8%/8.6%/8.3%/9.1% + 0.78% for every 100 Attack, up to 31.2%, and damage by 0.24% for every 100 Attack, up to 9.8%/10.8%/10.4%/11.4%. Lasts for 2 turns."
+    "description": "Decrease party's damage taken by 29.3%/32.3%/31.1%/34.1% for 3 turns.\nAlso, increase the main target's Attack by 7.8%/8.6%/8.3%/9.1% + 0.78% for every 100 points of Yukari's Attack (up to a maximum of 31.2%/34.4%/33.2%/36.4%), and increase damage by 0.24% for every 100 points of Yukari's Attack (up to a maximum of 9.8%/10.8%/10.4%/11.4%) for 2 turns."
   },
   "skill3": {
-    "name": "Arrow of Rejuvenation",
+    "name": "Arrow of Life",
     "element": "치료광역",
     "type": "",
     "sp": 27,
     "cool": 0,
-    "description": "Restore party's HP by 39.1%/43.1%/41.5%/45.6% of Yukari's Attack + 2507/3158/3081/3773. Spend all [Wind Whisper], for every stack of [Wind Whisper] spent, restore 17.5 Theurgy Energy to the main target, then increase the target's Attack after using Theurgy by 29.3%/32.3%/31.1%/34.1% for 2 turns. Stacks up to 2 times. (When restoring Theurgy Energy, save the overflow Theurgy Energy then return it after the target used Theurgy, up to their Theurgy Energy cap. Lasts for 2 turns.) If the main target is not a S.E.E.S. member, then for every stack of [Wind Whisper] spent, increase their next Highlight total damage by Total DMG Amp by 9.8%/10.8%/10.4%/11.4%."
+    "description": "Restore HP to all allies equal to 39.1%/43.1%/41.5%/45.6% of Yukari's Attack + 2507/3158/3081/3773.\nSpend all Whisperwind stacks, and for each stack spent, increase the main target's Theurgy gauge by 17.5, and after the next time the target activates a Theurgy, increase Attack by 29.3%/32.3%/31.1%/34.1% for 2 turns. This effect stacks up to 2 times. If the Theurgy gauge is increased above the maximum, the amount above the maximum is temporarily reserved for up to 2 turns, and returned after the Theurgy is activated.\nIf the main target has a Highlight, the next time they activate a Highlight, increase final damage amplification by 9.8%/10.8%/10.4%/11.4% for every Whisperwind stack spent."
   },
   "skill_highlight": {
-    "name": "Theurgy - Cyclone Arrow",
+    "name": "Cyclone Arrow",
     "element": "질풍",
     "type": "",
-    "description": "Use condition: When Yukari has 70 Theurgy Energy\nDeal Wind damage to 1 foe equal to 406.0%/447.6%/431.0%/472.6% of Attack. Increase party's damage by 0.48% for every 100 Attack, up to 19.5%/21.5%/20.7%/22.7%; Remove 2 buffs on the target, with a 100% base chance to inflict Windswept, then inflict the target with [Wind Erosion] for 2 turns."
+    "description": "Can be activated when Theurgy gauge is at 70. Deal Wind damage to 1 foe equal to 406.0%/447.6%/431.0%/472.6% of Attack. Also, remove 2 buffs from the target, and inflict Windswept and Erosion.\nAlso, increase party's damage by 0.48% for every 100 points of Yukari's Attack (up to a maximum of 19.5%/21.5%/20.7%/22.7%) for 2 turns.",
+    "cool": 0
   },
   "skill_support": {
-    "name": "Assist Skill",
+    "name": "Assist",
     "element": "버프",
     "type": "",
-    "description": "Cure 1 debuff from 1 ally."
+    "description": "Remove 1 debuff from 1 ally.",
+    "cool": 0
   },
   "passive1": {
-    "name": "Chemistry",
+    "name": "Tailwind's Air",
     "element": "패시브",
-    "description": "When Yukari is on the field, increase party's Highlight/Theurgy damage by 45%."
+    "description": "When Yukari is present, increase party's Highlight and Theurgy damage by 45.0%. When an ally activates a Highlight or Theurgy, increase that ally's damage by 20.0% for 2 turns.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Competitiveness",
+    "name": "Archer's Courage",
     "element": "패시브",
-    "description": "During battle, increase Yukari's max HP by 100 for every 60 Attack, up to 2700."
+    "description": "During battle, increase max HP by 60 for every 100 points of Yukari's Attack (up to a maximum of 2700).",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["유카리"] = {
   "name": "岳羽 ゆかり",
   "skill1": {
-    "name": "ウィンドストーム",
+    "name": "ゲイルバースト",
     "element": "질풍",
     "type": "단일 피해",
     "sp": 23,
     "cool": 0,
-    "description": "敵1体に攻撃力200.1%/220.6%/212.4%/232.9%の疾風属性ダメージを与え、100%の基本確率で風纏い状態にし、『風の痕跡』を付与する。持続時間は2ターンで、フィールドには同時に1つの『風の痕跡』しか存在できない。『風の痕跡』状態の敵が倒れると、最もHPが高い敵に転移する。\n\nパッシブ：味方がスキルを使用した際、対象が『風の痕跡』を持っている場合、そのスキルのダメージが8.8%/9.7%/9.3%/10.2%増加し、岳羽 ゆかりの攻撃力100ごとにさらに0.72%増加する（上限29.3%/32.3%/31.1%/34.1%）。"
+    "description": "敵単体に攻撃力200.1%/220.6%/212.4%/232.9%の疾風属性ダメージを与える。さらに２ターンの間、風襲と『ゲイルトラック』状態にする。複数の敵を同時に『ゲイルトラック』状態にすることはできない。『ゲイルトラック』状態の敵が戦闘不能になると、ＨＰが最も高い敵に『ゲイルトラック』状態が転移する。\n自動効果：味方がスキルで敵を攻撃する時、いずれかの対象が『ゲイルトラック』状態の場合、スキルの攻撃力が8.8%/9.7%/9.3%/10.2%＋ゆかりの攻撃力１００ごとに０.７２%上昇する（最大29.3%/32.3%/31.1%/34.1%まで）。"
   },
   "skill2": {
-    "name": "風の追跡者",
+    "name": "追風の息吹",
     "element": "버프광역",
     "type": "",
     "sp": 25,
     "cool": 0,
-    "description": "味方全体の被ダメージを29.3%/32.3%/31.1%/34.1%減少させ、3ターン持続する。さらにメイン対象の攻撃力を7.8%/8.6%/8.3%/9.1%上昇させ、岳羽 ゆかりの攻撃力100ごとに0.78%上昇する（上限31.2%/34.4%/33.2%/36.4%）。加えて、攻撃力100ごとにダメージが0.24%増加し（上限9.8%/10.8%/10.4%/11.4%）、2ターン持続する。"
+    "description": "３ターンの間、味方全体の被ダメージが29.3%/32.3%/31.1%/34.1%低下する。\nさらに２ターンの間、選択した対象の攻撃力が7.8%/8.6%/8.3%/9.1%＋自身の攻撃力１００ごとに０.７８%上昇（最大31.2%/34.4%/33.2%/36.4%まで）し、与ダメージが自身の攻撃力１００ごとに０.２４%になるように上昇する（最大9.8%/10.8%/10.4%/11.4%まで）。"
   },
   "skill3": {
-    "name": "リバイブアロー",
+    "name": "リゲインアロー",
     "element": "치료광역",
     "type": "",
     "sp": 27,
     "cool": 0,
-    "description": "味方全体のHPを岳羽 ゆかりの攻撃力39.1%/43.1%/41.5%/45.6% + 2507/3158/3081/3773回復する。全ての『風の言葉』を消費し、消費したスタックごとにメイン対象のテウルギアエネルギーを17.5回復し、対象が次にテウルギアを使用した後、2ターンの間攻撃力が29.3%/32.3%/31.1%/34.1%上昇する（最大2回まで重複）。（超過したテウルギアエネルギーは一時的に保存され、対象がテウルギアを発動後に返還される。保存上限は対象の最大テウルギアエネルギーで、最大2ターン持続。）メイン対象がS.E.E.S.メンバーでない場合、消費した『風の言葉』1スタックごとに次のHIGHLIGHTダメージが9.8%/10.8%/10.4%/11.4%増加する。"
+    "description": "味方全体のＨＰをゆかりの攻撃力39.1%/43.1%/41.5%/45.6%＋2507/3158/3081/3773回復する。\n『風の囁き』を全て消費して、消費した『風の囁き』１つごとに選択した対象のテウルギアゲージが１７.５増加し、その対象が次にテウルギアを発動した後、２ターンの間、攻撃力が29.3%/32.3%/31.1%/34.1%上昇する。この効果は最大２つまで累積できる。テウルギアゲージの上限を超過した増加分は、最大２ターンの間、対象のテウルギアゲージ上限値に相当する分まで一時的に蓄積され、テウルギアを発動した後に返還される。\n選択した対象がハイライトを持つ場合、その対象が次にハイライトを発動する時、消費した『風の囁き』１つごとに最終ダメージ増幅が9.8%/10.8%/10.4%/11.4%上昇する。"
   },
   "skill_highlight": {
-    "name": "テウルギア - サイクロンアロー",
+    "name": "サイクロンアロー",
     "element": "질풍",
     "type": "",
-    "description": "発動条件：テウルギアエネルギー70\n敵1体に攻撃力406.0%/447.6%/431.0%/472.6%の疾風属性ダメージを与え、岳羽 ゆかりの攻撃力100ごとに味方全体の与ダメージが0.48%増加する（上限19.5%/21.5%/20.7%/22.7%）。対象のバフを2つ解除し、100%の基本確率で風纏い状態にし、『風の痕跡』を付与する。効果は2ターン持続。"
+    "description": "テウルギアゲージが７０の時に発動可能となり、敵単体に攻撃力406.0%/447.6%/431.0%/472.6%の疾風属性ダメージを与える。さらに対象の強化効果を２つ打ち消し、２ターンの間、風襲と『ゲイルトラック』状態にする。\nまた２ターンの間、味方全体の与ダメージがゆかりの攻撃力１００ごとに０.４８%になるように上昇する（最大19.5%/21.5%/20.7%/22.7%まで）。",
+    "cool": 0
   },
   "skill_support": {
-    "name": "サポートスキル",
+    "name": "アシスト",
     "element": "버프",
     "type": "",
-    "description": "味方1体の状態異常を1つ解除する。"
+    "description": "味方単体の弱体効果を１つ打ち消す。",
+    "cool": 0
   },
   "passive1": {
-    "name": "共感",
+    "name": "追い風のエール",
     "element": "패시브",
-    "description": "岳羽 ゆかりがフィールドにいる時、味方全体のHIGHLIGHT/テウルギアのダメージが45.0%増加する。"
+    "description": "自身が場にいる時、味方全体のハイライト／テウルギアの与ダメージが45.0%上昇する。味方がハイライト／テウルギアを発動した時、２ターンの間、その味方の与ダメージが20.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "勝負欲",
+    "name": "弓道の胆力",
     "element": "패시브",
-    "description": "戦闘中、岳羽 ゆかりの攻撃力100ごとに最大HPが60上昇し、上限は2700となる。"
+    "description": "戦闘中、最大ＨＰが自身の攻撃力１００ごとに６０になるように上昇する（最大2700まで）。",
+    "cool": 0
   }
 };
 

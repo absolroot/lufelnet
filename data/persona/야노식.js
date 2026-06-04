@@ -79,8 +79,8 @@ window.personaFiles["야노식"] = {
       "name_en": "Hunting I",
       "name_jp": "ハンティングⅠ",
       "desc": "공격력이 12.5% 증가한다. 전투 시작 시 적 1명이 『조준』을 획득하며, 모든 동료가 『조준』을 가진 적 공격 시 공격력이 20% 증가한다.",
-      "desc_en": "Increase Attack by 12.5%. At the start of battle, Mark a foe. When any ally attacks a Marked foe, increase Attack by 20%.",
-      "desc_jp": "攻撃力が１２.５%上昇する。戦闘開始時、敵単体に『標的』を与える。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇する。",
+      "desc_en": "Increase Attack by 12.5%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%.",
+      "desc_jp": "攻撃力が１２.５%上昇する。戦闘開始時、敵単体に『標的』を付与する。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇する。",
       "name_cn": "余孽收割Ⅰ",
       "desc_cn": "攻击力提升12.5%。战斗开始时，使1名敌人获得『瞄准』。所有同伴攻击带有『瞄准』的敌人时，攻击力提升20%。"
     },
@@ -89,8 +89,8 @@ window.personaFiles["야노식"] = {
       "name_en": "Hunting II",
       "name_jp": "ハンティングⅡ",
       "desc": "공격력이 20.8% 증가한다 전투 시작 시 적 1명이 『조준』을 획득하며, 모든 동료가 『조준』을 가진 적 공격 시 공격력이 20% 증가한다. 자신이 『조준』을 가진 적 공격 시 공격력 18%의 총격 속성 대미지를 1회 준다.",
-      "desc_en": "Increase Attack by 20.8%. At the start of battle, Mark a foe. When any ally attacks a Marked foe, increase Attack by 20%. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
-      "desc_jp": "攻撃力が２０.８%上昇する。戦闘開始時、敵単体に『標的』を与える。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇する。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。",
+      "desc_en": "Increase Attack by 20.8%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+      "desc_jp": "攻撃力が２０.８%上昇する。戦闘開始時、敵単体に『標的』を付与する。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇する。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。",
       "name_cn": "余孽收割Ⅱ",
       "desc_cn": "攻击力提升20.8%。战斗开始时，使1名敌人获得『瞄准』。所有同伴攻击带有『瞄准』的敌人时，攻击力提升20%。自身攻击有『瞄准』的敌人时，造成1次18%攻击力的射击属性伤害。"
     },
@@ -99,8 +99,8 @@ window.personaFiles["야노식"] = {
       "name_en": "Hunting III",
       "name_jp": "ハンティングⅢ",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 1명의 적이 『조준』을 획득하며, 모든 동료가 『조준』을 보유한 적 공격 시 공격력이 20% 증가한다. 『조준』을 보유한 적의 방어력이 12% 추가 감소한다. 자신이 『조준』을 가진 적 공격 시 공격력 18%의 총격 속성 대미지를 1회 준다.",
-      "desc_en": "Increase Attack by 29.1%. At the start of battle, Mark a foe. When all allies attack a Marked foe, increase Attack by 20%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
-      "desc_jp": "攻撃力が２９.１%上昇する。戦闘開始時、敵単体に『標的』を与える。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇する。『標的』を付与された敵の防御力がさらに１２%低下させる。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。",
+      "desc_en": "Increase Attack by 29.1%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+      "desc_jp": "攻撃力が２９.１%上昇する。戦闘開始時、敵単体に『標的』を付与する。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇する。『標的』を付与された敵の防御力がさらに１２%低下する。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。",
       "name_cn": "余孽收割Ⅲ",
       "desc_cn": "攻击力提升29.1%。战斗开始时，使1名敌人获得『瞄准』。所有同伴攻击带有『瞄准』的敌人时，攻击力提升20%。带有『瞄准』的敌人防御力额外降低12%。自身攻击有『瞄准』的敌人时，造成1次18%攻击力的射击属性伤害。"
     },

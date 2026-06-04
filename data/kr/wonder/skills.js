@@ -2452,8 +2452,8 @@ const personaSkillList = {
         "name_en": "Sukukaja",
         "name_cn": "斯库卡加",
         "description": "동료 1명의 효과 명중, 효과 저항이 9.3%/9.8%/10.2% 증가하고, 자신의 효과 명중 25%마다 1.6%/1.7%/1.8% 추가 증가한다. 상한은 6.4%/6.7%/7.0%이며, 효과는 3턴 동안 지속된다.",
-        "description_jp": "３ターンの間、味方単体の状態異常命中、状態異常抵抗が9.3%/9.8%/10.2%上昇し、速さが５上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.6%/1.7%/1.8%上昇する（最大6.4%/6.7%/7.0%まで）。",
-        "description_en": "Increase 1 ally's ailment accuracy and ailment resistance by 9.3%/9.8%/10.2%, and Speed by 5. For every 25% of the user's ailment accuracy, increase the target's ailment accuracy by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
+        "description_jp": "３ターンの間、味方単体の状態異常命中、状態異常抵抗が9.3%/9.8%/10.2%上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.6%/1.7%/1.8%上昇する（最大6.4%/6.7%/7.0%まで）。",
+        "description_en": "Increase 1 ally's ailment accuracy and ailment resistance by 9.3%/9.8%/10.2%. For every 25% of the user's ailment accuracy, increase the target's ailment accuracy by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns.",
         "description_cn": "使1名同伴的效果命中、效果抵抗提升9.3%/9.8%/10.2%，自身每25%效果命中额外提升1.6%/1.7%/1.8%，上限6.4%/6.7%/7.0%。效果持续3回合。",
         "type": "지원",
         "target": "단일",
@@ -5480,7 +5480,6 @@ window.skillList = skillList;
 window.skillList_en = skillList_en;
 window.skillList_jp = skillList_jp;
 window.personaSkillList = personaSkillList;
-
 
 
 

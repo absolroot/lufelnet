@@ -1,0 +1,484 @@
+{
+  "data": {
+    "item": [
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303207.png",
+        "name": "白银手环",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "奇境币",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303242.png",
+        "name": "边走边吃美食指南",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "奇境币",
+            "price": 6400,
+            "resetType": "없음",
+            "shopName": "太平堂"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 32
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303222.png",
+        "name": "主题花盆",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "奇境币",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606313.png",
+        "name": "工具套装",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "奇境币",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "777便利店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303206.png",
+        "name": "懒人坐垫",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 27600,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 138
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-317013.png",
+        "name": "软毛毯",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 18400,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 92
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303265.png",
+        "name": "月亮型胸针",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 48400,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 242
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303248.png",
+        "name": "时尚杂志",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "太平堂"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303229.png",
+        "name": "名牌香水",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "药妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303209.png",
+        "name": "48面魔方",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 11200,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 56
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303245.png",
+        "name": "剑玉",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 6800,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 34
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606321.png",
+        "name": "寿司便当 (折盒)",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 15600,
+            "resetType": "없음",
+            "shopName": "777便利店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 78
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606322.png",
+        "name": "A5和牛猫罐头",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 12800,
+            "resetType": "없음",
+            "shopName": "777便利店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 64
+      }
+    ],
+    "name": "摩尔加纳",
+    "special_award": [
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30363,
+        "rank": 1,
+        "skill": {
+          "affix": "211",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「摩尔加纳·星舞」的意识等级提升1级。\n「扭曲的奇遇」中，所有同伴暴击效果提升7.5%。",
+          "effect": "2",
+          "icon": "PC067_03_12_33_02.png",
+          "name": "风舞的节奏"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 2,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30366,
+        "rank": 3,
+        "skill": {
+          "affix": "212",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「摩尔加纳·星舞」的意识等级提升1级。\n「交叠的奇遇之地」中，所有同伴暴击效果提升7.5%。",
+          "effect": "1",
+          "icon": "PC067_03_12_33_01.png",
+          "name": "会心的节拍"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 4,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30369,
+        "rank": 5,
+        "skill": {
+          "affix": "213",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「摩尔加纳·星舞」的意识等级提升1级。\n「扭曲的奇遇」中，所有同伴暴击效果提升15%。",
+          "effect": "2",
+          "icon": "PC067_03_12_33_02.png",
+          "name": "疾风之舞"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 6,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30372,
+        "rank": 7,
+        "skill": {
+          "affix": "214",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「摩尔加纳·星舞」的意识等级提升1级。\n「交叠的奇遇之地」中，所有同伴暴击效果提升15%。",
+          "effect": "1",
+          "icon": "PC067_03_12_33_01.png",
+          "name": "变幻自如的跃动"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 8,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30376,
+        "rank": 9,
+        "skill": {
+          "affix": "215",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「摩尔加纳·星舞」的意识等级提升1级。\n任意玩法中，所有同伴暴击效果提升3%。",
+          "effect": "-1",
+          "icon": "PC067_03_12_33_03.png",
+          "name": "舞台破坏者"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 10,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 11,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 12,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      }
+    ],
+    "unlock_quest": [
+      {
+        "details": "在意想不到的地方见到了熟悉又陌生的迷之生物……去搭话看看吧。",
+        "name": "喵舞星夜"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

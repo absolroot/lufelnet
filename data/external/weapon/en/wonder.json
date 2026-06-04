@@ -121,6 +121,17 @@
           "hp": 1926.8
         },
         "user": "Wonder"
+      },
+      {
+        "name": "Cyclotron",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAt the start of battle, increase critical rate by 9.5%/11.1%/12.7%/14.2%/15.8%/17.4%/19.0%.\nWhen allies deal Electric damage, grant Magnetized Plasma to all allies for 2 turns.\nMagnetized Plasma: Increase damage by 9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%. When dealing Electric damage, also increase critical damage by 9.0%/10.5%/12.0%/13.5%/15.0%/16.5%/18.0%.",
+        "stat": {
+          "attack": 654.08,
+          "defense": 356.79,
+          "hp": 2051.35
+        },
+        "user": "Wonder"
       }
     ],
     "fourStar": [

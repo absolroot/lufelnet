@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Sarnga",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen an ally attacks a foe inflicted with Erosion and has their HP recovered, increase HP Recovery by 15.7%/20.3%/20.3%/24.9%/24.9%/29.5%/29.5% + 600/800/800/1000/1000/1200/1200.\nWhen Arrow of Life is used, for every Whisperwind stack spent, increase all allies' damage by 18.0%/23.5%/23.5%/29.0%/29.0%/34.5%/34.5% for 2 turns. Stacks up to 2 times.",
+        "stat": {
+          "attack": 706.91,
+          "defense": 409.62,
+          "hp": 2279.27
+        },
+        "user": "Yukari"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Kishin Bow",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Arrow of Life is used, increase HP Recovery by 13.0%/16.9%/16.9%/20.9%/20.9%/24.8%/24.8%.",
+        "stat": {
+          "attack": 565.81,
+          "defense": 328.02,
+          "hp": 1823.43
+        },
+        "user": "Yukari"
+      }
+    ],
+    "name": "Yukari"
+  },
+  "msg": "OK",
+  "status": 0
+}

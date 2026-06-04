@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-06-04 10:59:59",
-        "fiveStar": [
-          {
-            "name": "長尾 愛歌",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "池波 星輝",
-            "type": "thief"
-          },
-          {
-            "name": "長尾 チヅ子",
-            "type": "thief"
-          }
-        ],
-        "name": "羽ばたく愛の歌",
-        "startTime": "2026-04-30 07:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2026-06-04 10:59:59",
-        "fiveStar": [
-          {
-            "name": "長尾 愛歌",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "池波 星輝",
-            "type": "thief"
-          },
-          {
-            "name": "長尾 チヅ子",
-            "type": "thief"
-          }
-        ],
-        "name": "羽ばたく愛の歌",
-        "startTime": "2026-04-30 07:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
         "endTime": "2026-06-11 10:59:59",
         "fiveStar": [
           {
@@ -159,41 +107,6 @@
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-06-04 10:59:59",
-        "fiveStar": [
-          {
-            "name": "リヴオンライヴ",
-            "type": "weapon",
-            "user": "愛歌"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "マッタトーレ",
-            "type": "weapon",
-            "user": "星輝"
-          },
-          {
-            "name": "グラビティフォース",
-            "type": "weapon",
-            "user": "チヅ子"
-          },
-          {
-            "name": "ミリオンミューズ",
-            "type": "weapon",
-            "user": "愛歌"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-04-30 07:30:00",
-        "type": "武器補給"
-      },
       {
         "endTime": "2026-06-11 10:59:59",
         "fiveStar": [

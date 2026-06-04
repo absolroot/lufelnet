@@ -10,6 +10,37 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Phys",
+                "Electric",
+                "Psychokinesis",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "89",
+            "name": "默基瑟德",
+            "skill": "706,1004",
+            "sn": 547101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Fire",
                 "Nuclear",
                 "Bless"
@@ -22,68 +53,17 @@
             "level": "89",
             "name": "被操控的尤利尔",
             "skill": "1026,1016,1090",
-            "sn": 546101,
+            "sn": 547111,
             "stat": {}
           }
         ],
         "scoreRatio": 1.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Ice",
-                "Nuclear",
-                "Curse"
-              ],
-              "Weak": [
-                "Electric"
-              ]
-            },
-            "image": "B-guaiwutouxiang-scathach.png",
-            "level": "89",
-            "name": "被操控的斯卡哈",
-            "skill": "1016,1404,257",
-            "sn": 546111,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Phys",
-                "Gun",
-                "Wind",
-                "Nuclear",
-                "Bless"
-              ],
-              "Weak": [
-                "Electric"
-              ]
-            },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
-            "level": "89",
-            "name": "被操控的库夫林",
-            "skill": "1023,1154",
-            "sn": 546112,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
         "sn": 78402
       }
     ],
-    "buff": "诡异暗道: 释放HIGHTLIGHT技能、神通法时，自身获得1层『掠食者印记』；消耗『狂想节拍』释放技能时，使所有友方获得4层『掠食者印记』。『掠食者印记』：造成的最终伤害提升8%，持续3回合，最多可叠加5层。",
-    "endTime": "2026-06-04 06:30:00",
-    "startTime": "2026-05-14 07:30:00"
+    "buff": "青铜矿脉: 每添加1层元素异常，使所有友方获得1层『金属之音』；造成弱点伤害时，自身获得1层『金属之音』。『金属之音』：造成的最终伤害提升5%，持续1回合，最多可叠加8层。",
+    "endTime": "2026-06-25 06:30:00",
+    "startTime": "2026-06-04 07:30:00"
   },
   "msg": "OK",
   "status": 0

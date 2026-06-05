@@ -1,0 +1,300 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Yukari can inflict Erosion on foes.\nWhen other allies deal skill damage to a foe inflicted with Erosion, restore HP to all allies equal to 24.5% of Yukari's Attack + 800/1600/2400 (effect changes at Lv. 1/50/70, respectively), and gain 1 Whisperwind stack (stacks up to 2 times). This effect can only activate once between the start of Yukari's turn and the start of her next turn.",
+        "name": "Unforgettable Feeling",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain up to the maximum number of Whisperwind stacks, and fill Theurgy gauge by 70. If the Theurgy gauge is increased above the maximum on the first turn, up to 35 above the maximum can be reserved.\nAlso, when using a skill on an ally, increase the main target's pierce rate by 20% more for 2 turns. If using Tailwind's Breath, restore 1200 more HP to all allies, and restore 30% more HP to the main target.",
+        "name": "Pull the Trigger",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When activating a Theurgy, nullify spiritual ailments on Yukari, and also increase party's critical damage by 30%. Lasts for 2 turns.",
+        "name": "Sign of the Lovers",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Gale Burst and Arrow of Life by 3.",
+        "name": "Girl Clad in Pink",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When using a Theurgy, also restore HP to the ally with the lowest HP by 5% of Yukari's Attack + 500, and also increase party's damage by 10% for 2 turns.",
+        "name": "Healing Mastery",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Tailwind's Breath and Combat Tactics by 3.",
+        "name": "Pursuit of Doubt",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Double the Theurgy gauge increase from Arrow of Life.\nAlso, when an ally uses a Theurgy, increase critical damage by 30% for 2 turns.",
+        "name": "Spring Day's Meeting",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Remove 1 debuff from 1 ally.",
+        "name": "Assist",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 140171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "SP Recovery": "1.25"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S3",
+      "S2/HL"
+    ],
+    "name": "Yukari Takeba",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "Deal Wind damage to 1 foe equal to 200.1%/220.6%/212.4%/232.9% of Attack. Also, inflict Windswept and Erosion for 2 turns. Multiple foes cannot be inflicted with Erosion at the same time. If a foe with Erosion is defeated, Erosion is transferred to the foe with the highest HP.\nPassive: When an ally attacks a foe with a skill, if any target is inflicted with Erosion, increase that skill's Attack by 8.8%/9.7%/9.3%/10.2% + 0.72% for every 100 points of Yukari's Attack (up to a maximum of 29.3%/32.3%/31.1%/34.1%).",
+        "name": "Gale Burst",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 140111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "Decrease party's damage taken by 29.3%/32.3%/31.1%/34.1% for 3 turns.\nAlso, increase the main target's Attack by 7.8%/8.6%/8.3%/9.1% + 0.78% for every 100 points of Yukari's Attack (up to a maximum of 31.2%/34.4%/33.2%/36.4%), and increase damage by 0.24% for every 100 points of Yukari's Attack (up to a maximum of 9.8%/10.8%/10.4%/11.4%) for 2 turns.",
+        "name": "Tailwind's Breath",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 140112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 27",
+        "desc": "Restore HP to all allies equal to 39.1%/43.1%/41.5%/45.6% of Yukari's Attack + 2507/3158/3081/3773.\nSpend all Whisperwind stacks, and for each stack spent, increase the main target's Theurgy gauge by 17.5, and after the next time the target activates a Theurgy, increase Attack by 29.3%/32.3%/31.1%/34.1% for 2 turns. This effect stacks up to 2 times. If the Theurgy gauge is increased above the maximum, the amount above the maximum is temporarily reserved for up to 2 turns, and returned after the Theurgy is activated.\nIf the main target has a Highlight, the next time they activate a Highlight, increase final damage amplification by 9.8%/10.8%/10.4%/11.4% for every Whisperwind stack spent.",
+        "name": "Arrow of Life",
+        "nature": "Heal",
+        "skill_lv": "10/10/13/13",
+        "sn": 140113,
+        "tags": [
+          "Multi-Heal"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Yukari is present, increase party's Highlight and Theurgy damage by 45.0%. When an ally activates a Highlight or Theurgy, increase that ally's damage by 20.0% for 2 turns.",
+        "name": "Tailwind's Air",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, increase max HP by 60 for every 100 points of Yukari's Attack (up to a maximum of 2700).",
+        "name": "Archer's Courage",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 140132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 4060.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1069.99 / 1089.19 / 1108.39 / 1127.59 / 1146.79 / 1165.99 / 1185.19",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "619.97 / 631.17 / 642.37 / 653.57 / 664.77 / 675.97 / 687.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy gauge is at 70. Deal Wind damage to 1 foe equal to 406.0%/447.6%/431.0%/472.6% of Attack. Also, remove 2 buffs from the target, and inflict Windswept and Erosion.\nAlso, increase party's damage by 0.48% for every 100 points of Yukari's Attack (up to a maximum of 19.5%/21.5%/20.7%/22.7%) for 2 turns.",
+        "name": "Cyclone Arrow",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 140152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

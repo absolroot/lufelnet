@@ -23,21 +23,22 @@ window.ritualData["모르가나·댄싱 스타"] = {
 
 window.enCharacterRitualData["모르가나·댄싱 스타"] = {
   "name": "Morgana·Starlight",
-  "r0": "Dancing Wind Cycle",
-  "r0_detail": "After Morgana·Starlight uses a Persona skill, additionally apply 2 stacks of [Wind Exhaustion] to the skill target. This can trigger up to once per turn. This effect has a 1-turn cooldown at battle start/after triggering; if there is another Wind ally in the party when it triggers, it has no cooldown.",
-  "r1": "Grand Entrance Step",
-  "r1_detail": "At the start of Morgana·Starlight's first turn, automatically use [Whirling Wind Dance] and permanently increase all allies' Critical Effect by 30%.",
-  "r2": "I'll Liven Things Up",
-  "r2_detail": "After Morgana·Starlight knocks down a foe with a Persona skill, increase all allies' Attack by 50% and Critical Effect by 20% for 1 turn.",
-  "r3": "Form of Freedom",
-  "r3_detail": "Increase the skill levels of [Whirlwind Waltz] and [Battle Technique] by 3, up to Lv. 15.",
+  "r0": "Dancing Wind",
+  "r0_detail": "After Morgana uses a Persona skill, additionally inflict 2 [Windworn] on skill targets (once per turn). This effect has a 1 turn cooldown at the start of battle/after activation. If another Wind ally is in the party, this effect won't have a cooldown.\n [Windworn]: Decrease Total Defense by 10% for 1 turn. Stacks up to 10 times. Windworn counts as Windswept.",
+  "r1": "Grand Entrance",
+  "r1_detail": "At the start of Morgana's first turn, automatically activate [Roving Rave], then permanently increase all allies' critical damage by 30%",
+  "r2": "I'll Turn It Up",
+  "r2_detail": "After Morgana uses a Persona skill to knock down foes, increase all allies' Attack by 50% and critical damage by 20%. Lasts for 1 turn.",
+  "r3": "Free Spirit",
+  "r3_detail": "Increase the skill levels of [Whirlwind Waltz] and [Thief Tactics] by 3.",
   "r4": "Not Done Dancing Yet",
-  "r4_detail": "HIGHLIGHT: Additionally increase targets' damage taken by 10% and Wind damage taken by 10%. Change the damage taken effects provided by HIGHLIGHT to permanent duration. HIGHLIGHT's healing effect can critically heal (critical heals double the healing effect).",
-  "r5": "Dance of Flowing Wind",
-  "r5_detail": "Increase the skill levels of [Whirling Wind Dance] and [Gentleman's Stamp] by 3, up to Lv. 15.",
-  "r6": "Freely Shifting Performance",
-  "r6_detail": "At the end of Morgana·Starlight's turn, automatically use [Gentleman's Stamp]. After entering [Cat Car Charge], [Gentleman's Stamp] evolves into [Gentleman's Stamp: Frenzy], and the skill additionally increases targets' Downed Damage Taken by 20% and Wind total damage amplification taken by 20% for 1 turn."
+  "r4_detail": "HIGHLIGHT: Additionally increase targets' damage taken by 10% and Wind damage taken by 10%. The HIGHLIGHT debuffs become permanent. The HIGHLIGHT healing can land a Critical (when landing a Critical, double the healing).",
+  "r5": "Flowing Dance",
+  "r5_detail": "Increase the skill levels of [Roving Rave] and [Gentleman Seal] by 3.",
+  "r6": "Shape-Shifting Performance",
+  "r6_detail": "At the end of Morgana's turn, automatically activate [Gentleman Seal]. After entering [Meowtor Charge], evolve [Gentleman Seal] into [Gentleman Seal·Fever], the skill can additionally increase targets' Downed Damage Taken by 20% and Wind Total Damage Amplification Taken by 20%. Lasts for 1 turn."
 };
+
 
 window.jpCharacterRitualData["모르가나·댄싱 스타"] = {
   "name": "モルガナ・スターナイト",

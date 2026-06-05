@@ -115,6 +115,7 @@ window.I18N_COMMON_EN = {
         critMult: 'Crit Mult',
         pierce: 'Pierce Rate',
         defReduction: 'Defense Reduction',
+        affinityReduction: 'Affinity Reduction',
 
         // Effect related
         ailmentAccuracy: 'Ailment Accuracy',

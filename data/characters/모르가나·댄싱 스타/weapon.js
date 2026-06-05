@@ -23,6 +23,8 @@ window.WeaponData["모르가나·댄싱 스타"] = {
   }
 };
 
+
+
 window.enCharacterWeaponData["모르가나·댄싱 스타"] = {
   "name": "Morgana·Starlight",
   "weapon4-1": {
@@ -30,16 +32,16 @@ window.enCharacterWeaponData["모르가나·댄싱 스타"] = {
     "health": 1776.03,
     "attack": 592.3,
     "defense": 310.39,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nIncrease damage dealt to foes with [Wind Exhaustion] by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%."
+    "skill_name": "Blade Cyclone",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen attacking a foe with [Windworn], increase damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%."
   },
   "weapon5-1": {
     "name": "Candy Reveler",
     "health": 2219.84,
     "attack": 739.92,
     "defense": 387.56,
-    "skill_name": "",
-    "description": "Increase Critical Effect by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen entering [Cat Car Charge], permanently increase all allies' Attack by 22.6%/29.4%/29.4%/36.2%/36.2%/43.0%/43.0%.\nWhen all allies attack foes with [Wind Exhaustion], increase Critical Effect by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%."
+    "skill_name": "Revelrous Variation",
+    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen entering [Meowtor Charge], permanently increase all allies' Attack by 22.6%/29.4%/29.4%/36.2%/36.2%/43.0%/43.0%.\nWhen all allies attack foes with [Windworn], increase critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%."
   }
 };
 

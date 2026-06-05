@@ -368,6 +368,8 @@
                 return tagsRaw.includes('동결') || hasElementalAilment(tagsRaw);
             case 'hp소모':
                 return tagsRaw.includes('HP 소모');
+            case '적합성저하':
+                return tagsRaw.includes('적합성 저하');
             case '실드':
                 return tagsRaw.includes('실드');
             case '효과명중':

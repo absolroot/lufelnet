@@ -53,20 +53,20 @@ window.characterSkillsData["모르가나·댄싱 스타"] = {
 window.enCharacterSkillsData["모르가나·댄싱 스타"] = {
   "name": "Morgana·Starlight",
   "skill1": {
-    "name": "Whirling Wind Dance",
+    "name": "Roving Rave",
     "element": "질풍광역",
     "type": "광역피해",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Wind damage to all foes equal to 128.8%/142.0%/136.8%/150.0% of Attack. All allies permanently gain 17.6%/19.4%/18.6%/20.4% Attack when dealing Wind damage (the Attack increase is based on Morgana·Starlight's Attack, counting up to 3904/4304/4144/4544 Attack to additionally increase the target's Attack by 70.3%/77.5%/74.6%/81.8%). Morgana·Starlight permanently doubles the number of [Wind Exhaustion] stacks he applies."
+    "description": "Deal Wind damage to all foes equal to 128.8%/142.0%/136.8%/150.0% of Attack. Permanently increase all allies' Attack by 17.6%/19.4%/18.6%/20.4% when dealing Wind damage (based on Morgana's Attack, up to 70.3%/77.5%/74.6%/81.8% bonus Attack at 3904/4304/4144/4544 Attack).\nMorgana permanently doubles the number of [Windworn] stacks he inflicts."
   },
   "skill2": {
-    "name": "Gentleman's Stamp",
+    "name": "Gentleman Seal",
     "element": "질풍광역",
     "type": "광역피해",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Wind damage to all foes equal to 130.9%/144.3%/138.9%/152.3% of Attack. On first use, trigger an additional effect: permanently increase targets' damage taken by 13.7%/15.1%/14.5%/15.9% (the damage taken increase is based on Morgana·Starlight's Attack, counting up to 3904/4304/4144/4544 Attack to additionally increase damage taken by 54.7%/60.3%/58.0%/63.6%) and apply 1 permanent stack of [Wind Exhaustion]. Afterwards, while Morgana·Starlight is on the field, immediately trigger this additional effect whenever a new foe appears."
+    "description": "Deal Wind damage to all foes equal to 130.9%/144.3%/138.9%/152.3% of Attack. Activate bonus effects when using this skill for the first time: Permanently increase targets' damage taken by 13.7%/15.1%/14.5%/15.9% (based on Morgana's Attack, up to 54.7%/60.3%/58.0%/63.6% bonus damage taken at 3904/4304/4144/4544 Attack) and inflict 1 permanent [Windworn] stack.\nWhen Morgana is present, after a new foe appears, immediately activate the bonus effects."
   },
   "skill3": {
     "name": "Whirlwind Waltz",
@@ -74,25 +74,25 @@ window.enCharacterSkillsData["모르가나·댄싱 스타"] = {
     "type": "광역피해",
     "sp": 25,
     "cool": 0,
-    "description": "Deal Physical damage to all foes equal to 32.3%/35.6%/34.3%/37.6% of Attack and Wind damage equal to 32.3%/35.6%/34.3%/37.6% of Attack. Apply 2 stacks of [Wind Exhaustion] to targets and enter [Cat Car Charge]. This skill can be boosted by spending [Rhapsodic Beat], up to 2 times. The first boost spends 2 [Rhapsodic Beat], increases the Physical and Wind damage multipliers to 64.7%/71.3%/68.7%/75.3% and 64.7%/71.3%/68.7%/75.3%, respectively, and can dispel 1 buff from targets. The second boost spends 1 [Rhapsodic Beat], increases the multipliers to 97.0%/107.0%/103.0%/112.9% and 97.0%/107.0%/103.0%/112.9%, respectively, and can dispel 2 buffs from targets.\n[Cat Car Charge]: Unlocks the special skill [Bang!]. After using [Bang!], deal 1 additional instance of Wind damage based on the number of boosts, equal to 40.4%/44.5%/42.9%/47.0%/80.9%/89.2%/85.9%/94.2%/121.3%/133.7%/128.8%/141.2% of Attack. [Bang!] is considered a Persona skill. While this state lasts, Morgana·Starlight cannot use other Persona skills.\n[Bang!]: Deal Physical damage to all foes equal to 40.4%/44.5%/42.9%/47.0% of Attack. On critical hit, increase the additional Down Point reduction to 6 and apply 4.9%/5.4%/5.2%/5.7% Downed Damage Taken for 1 turn (the Downed Damage Taken effect doubles when taking Wind damage), then apply 2 stacks of [Wind Exhaustion]. This skill can be boosted by spending [Rhapsodic Beat], up to 2 times. The first boost spends 2 [Rhapsodic Beat], increases the Physical damage multiplier and Downed Damage Taken effect to 80.9%/89.2%/85.9%/94.2% and 9.8%/10.8%/10.4%/11.4%, respectively, and can dispel 1 buff from targets. The second boost spends 1 [Rhapsodic Beat], increases the Physical damage multiplier and Downed Damage Taken effect to 121.3%/133.7%/128.8%/141.2% and 14.6%/16.1%/15.5%/17.0%, respectively, and can dispel 2 buffs from targets."
+    "description": "Deal Physical damage to all foes equal to 32.3%/35.6%/34.3%/37.6% of Attack and Wind damage to all foes equal to 32.3%/35.6%/34.3%/37.6% of Attack. Inflict targets' with 2 [Windworn] stacks. Morgana enters [Meowtor Charge] state. This skill can be boosted by spending [Rhapsodic Beat], up to 2 times. The first boost spends 2 [Rhapsodic Beat] to increase Physical damage multiplier to 64.7%/71.3%/68.7%/75.3% and Wind damage multiplier to 64.7%/71.3%/68.7%/75.3%, then dispel 1 buff on targets. The second boost spends 1 [Rhapsodic Beat] to increase Physical damage multiplier to 97.0%/107.0%/103.0%/112.9% and Wind damage multiplier to 97.0%/107.0%/103.0%/112.9%, then dispel 2 buffs on targets.\n	[Meowtor Charge]: Unlock special skill [Crash!], after using [Crash!], deal bonus Wind damage equal to 40.4%/44.5%/42.9%/47.0%/80.9%/89.2%/85.9%/94.2%/121.3%/133.7%/128.8%/141.2% of Attack based on the number of boosts. [Crash!] counts as a Persona skill. When [Meowtor Charge] is active, Morgana is unable to use other Persona skills.\n[Crash!]: Deal Physical damage to all foes equal to 40.4%/44.5%/42.9%/47.0% of Attack. When landing a Critical, additionally increase Down Points damage to 6 and increase targets' Downed Damage Taken by 4.9%/5.4%/5.2%/5.7% (when taking Wind damage, double this Downed Damage Taken), then inflict 2 [Windworn] stacks. This skill can be boosted by spending [Rhapsodic Beat], up to 2 times. The first boost spends 2 [Rhapsodic Beat] to increase Physical damage multiplier to 80.9%/89.2%/85.9%/94.2% and increase Downed Damage Taken to 9.8%/10.8%/10.4%/11.4%, then dispel 1 buff on targets. The second boost spends 1 [Rhapsodic Beat] to increase Physical damage multiplier to 121.3%/133.7%/128.8%/141.2% and increase Downed Damage Taken to 14.6%/16.1%/15.5%/17.0%, then dispel 2 buffs on targets."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "질풍광역",
     "type": "광역피해",
     "cool": 4,
-    "description": "Deal Wind damage to all foes equal to 207.9%/229.2%/220.7%/242.0% of Attack. Increase their damage taken by 29.3%/32.3%/31.1%/34.1% and additionally increase their Wind damage taken by 29.3%/32.3%/31.1%/34.1% for 3 turns. Also restore HP to all allies equal to 19.5%/21.5%/20.7%/22.7% of Attack + 1250/1648/1537/1955."
+    "description": "Deal Wind damage to all foes equal to 207.9%/229.2%/220.7%/242.0% of Attack. Increase their damage taken by 29.3%/32.3%/31.1%/34.1% and additionally increase their Wind damage taken by 29.3%/32.3%/31.1%/34.1%. Lasts for 3 turns. Restore all allies' HP by 19.5%/21.5%/20.7%/22.7% of Attack + 1250/1648/1537/1955."
   },
   "passive1": {
     "name": "Soaring Wind",
     "element": "패시브",
-    "description": "When attacking a target with [Wind Exhaustion], there is a fixed 100.0% chance to double this attack's Critical Rate.",
+    "description": "When attacking foes with [Windworn], 100.0% fixed chance to double this attack's critical rate.",
     "cool": 0
   },
   "passive2": {
-    "name": "Surging Storm",
+    "name": "Rushing Haze",
     "element": "패시브",
-    "description": "When Morgana·Starlight is on the field, increase all allies' damage to foes whose Defense has been reduced to 1 by 24.0% and additionally increase their Wind damage to those foes (increase equals Morgana·Starlight's Pierce*125.0% + the target's non-Wind Assault Defense Down percentage*50.0%, up to 60.0%).",
+    "description": "When Morgana is present, when all allies deal damage to foes with Defense decreased to 1, increase damage by 24.0% and additionally increase their Wind damage (based on Morgana's pierce*125.0% + targets' Defense Down percentage except Windswept*50.0%, up to 60.0%).",
     "cool": 0
   }
 };

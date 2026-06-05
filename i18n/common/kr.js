@@ -115,6 +115,7 @@ window.I18N_COMMON_KR = {
         critMult: '크리티컬 효과',
         pierce: '관통',
         defReduction: '방어력 감소',
+        affinityReduction: '적합성 저하',
 
         // 효과 관련
         ailmentAccuracy: '효과 명중',

@@ -92,6 +92,7 @@ window.I18N_COMMON_CN = {
         "critMult": "暴击效果",
         "pierce": "穿透",
         "defReduction": "防御力降低",
+        "affinityReduction": "适应性降级",
         "ailmentAccuracy": "效果命中",
         "effectResi": "效果抵抗",
         "healing": "治疗",

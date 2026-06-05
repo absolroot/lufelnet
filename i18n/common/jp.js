@@ -115,6 +115,7 @@ window.I18N_COMMON_JP = {
         critMult: 'CRT倍率',
         pierce: '貫通',
         defReduction: '防御力減少',
+        affinityReduction: '適応性降級',
 
         // 効果関連
         ailmentAccuracy: '状態異常命中',

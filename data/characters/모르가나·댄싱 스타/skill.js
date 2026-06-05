@@ -86,13 +86,13 @@ window.enCharacterSkillsData["모르가나·댄싱 스타"] = {
   "passive1": {
     "name": "Soaring Wind",
     "element": "패시브",
-    "description": "When attacking foes with [Windworn], 100.0% fixed chance to double this attack's critical rate.",
+    "description": "When Morgana attacks foes with [Windworn], 100.0% fixed chance to double the attack's critical rate.",
     "cool": 0
   },
   "passive2": {
     "name": "Rushing Haze",
     "element": "패시브",
-    "description": "When Morgana is present, when all allies deal damage to foes with Defense decreased to 1, increase damage by 24.0% and additionally increase their Wind damage (based on Morgana's pierce*125.0% + targets' Defense Down percentage except Windswept*50.0%, up to 60.0%).",
+    "description": "When Morgana is present, when all allies deal damage to foes with Defense decreased to 1, increase damage by 24.0% and additionally increase their Wind damage (based on that ally's pierce rate*125.0% + targets' Defense Down percentage except Windswept*50.0%, up to 60.0%).",
     "cool": 0
   }
 };

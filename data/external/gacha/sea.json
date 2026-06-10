@@ -156,6 +156,58 @@
         "name": "When Moon Reaches Stars",
         "startTime": "2026-05-29 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-07-01 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Yukari Takeba",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Shot Through the Heart",
+        "startTime": "2026-06-10 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-07-01 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Yukari Takeba",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Shot Through the Heart",
+        "startTime": "2026-06-10 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
@@ -262,6 +314,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-05-29 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-07-01 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Sarnga",
+            "type": "weapon",
+            "user": "Yukari"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Kishin Bow",
+            "type": "weapon",
+            "user": "Yukari"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-06-10 10:30:00",
         "type": "Arms Deals"
       }
     ]

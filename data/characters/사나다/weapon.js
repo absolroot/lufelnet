@@ -28,19 +28,19 @@ window.enCharacterWeaponData["사나다"] = {
   "name": "Akihiko Sanada",
   "weapon4-1": {
     "name": "Wicked Cestus",
-    "health": 1823,
-    "attack": 618,
-    "defense": 313,
+    "health": 1823.43,
+    "attack": 618.71,
+    "defense": 313.75,
     "skill_name": "Explosiveness",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen user has more than 2 or more [Fighting Spirit] stacks, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAlso, when Grit is at 2 or more stacks, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%."
   },
   "weapon5-1": {
     "name": "Sabazios",
-    "health": 2279,
-    "attack": 773,
-    "defense": 391,
+    "health": 2279.27,
+    "attack": 773.01,
+    "defense": 391.98,
     "skill_name": "Lethality",
-    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen user gains [Obsession], increase critical rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7 for 2 turns. Stacks up to 2 times. When dealing critical damage with a Persona skill/Theurgy/Resonance, increase damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
+    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen gaining Mettle stacks, increase critical rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% for 2 turns. This effect stacks up to 2 times.\nWhen Sanada activates a critical with a skill, Theurgy, or Resonance, increase that damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%."
   }
 };
 
@@ -48,19 +48,19 @@ window.jpCharacterWeaponData["사나다"] = {
   "name": "真田 明彦",
   "weapon4-1": {
     "name": "ヘルセスタス",
-    "health": 1823,
-    "attack": 618,
-    "defense": 313,
+    "health": 1823.43,
+    "attack": 618.71,
+    "defense": 313.75,
     "skill_name": "爆発力",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。『闘志』を2スタック所持している場合、攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%増加する。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\nさらに『闘争心』を２つ以上獲得している時、攻撃力が22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する。"
   },
   "weapon5-1": {
     "name": "サバジオス",
-    "health": 2279,
-    "attack": 773,
-    "defense": 391,
+    "health": 2279.27,
+    "attack": 773.01,
+    "defense": 391.98,
     "skill_name": "必殺力",
-    "description": "CRT倍率が36.3%/36.3%/47.2%/47.2%/58.0%/58.0%/68.8%増加する。『執念』を獲得すると2ターンの間、クリティカル率が8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7%増加する（最大2回重複可能）。ペルソナスキル/テウルギア/追加効果でクリティカルを与えると、ダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%追加で増加する。"
+    "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。\n『剛拳』を獲得した時、２ターンの間、クリティカル率が8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7%上昇する。この効果は最大２つまで累積できる。\n自身のスキル／テウルギア／意識奏功でクリティカルが発生した場合、その与ダメージが34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%上昇する。"
   }
 };
 

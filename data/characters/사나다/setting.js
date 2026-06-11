@@ -3,7 +3,7 @@ window.characterSetting["사나다"] = {
     "role": "다운 광역 전격 딜러",
     "video": ["Wd7BYGJUr4U", "mQFpIXh6s-I"],
     "video_en": [""],
-    "video_jp": [""],
+    "video_jp": ["ovfil9aC398"],
     "main_revelation": ["돌파", "결심"],
     "sub_revelation": ["변화", "신중"],
     "sub_revel2": ["공격력", "대미지 보너스"],

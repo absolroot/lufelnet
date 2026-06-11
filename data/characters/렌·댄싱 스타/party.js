@@ -58,9 +58,9 @@ window.recommendParty["렌·댄싱 스타"] = {
             "name": "아케치",
             "A": 6,
             "comment": "아케치의 스탯을 활용한 대미지를 렌이 부여하고, 아케치는 렌이 부여한 대미지를 활용해 강화된다.",
-            "comment_en": "",
-            "comment_jp": "",
-            "comment_cn": ""
+            "comment_en": "Starlight Ren applies damage that scales with Akechi's stats, while Akechi is strengthened by leveraging the damage Ren applies.",
+            "comment_jp": "雨宮 蓮・スターナイトは明智のステータスを参照するダメージを付与し、明智は蓮が付与したダメージを活用して強化される。",
+            "comment_cn": "雨宫莲·星舞会赋予基于明智属性的伤害，明智则可利用莲赋予的伤害获得强化。"
         },
     ]
 };

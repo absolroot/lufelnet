@@ -61,104 +61,110 @@ window.characterSkillsData["사나다"] = {
 window.enCharacterSkillsData["사나다"] = {
   "name": "Akihiko Sanada",
   "skill1": {
-    "name": "Lightning Domain",
+    "name": "Blitzkrieg",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Grant Akihiko 1 [Fighting Spirit] stack. Deal Elec damage to all foes equal to 122.8%/135.4%/130.3%/142.9% of Attack, increase Akihiko's critical damage by 23.4%/25.8%/24.9%/27.3% for 3 turns."
+    "description": "Gain 1 Grit stack. Deal Electric damage to all foes equal to 122.8%/135.4%/130.3%/142.9% of Attack.\nAlso, increase Sanada's critical damage by 23.4%/25.8%/24.9%/27.3% for 3 turns."
   },
   "skill2": {
-    "name": "Lightning Impact",
+    "name": "Spark Impact",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Grant Akihiko 1 [Fighting Spirit] stack. Deal Elec damage to all foes equal to 92.1%/101.6%/97.8%/107.2% of Attack, and grant Akihiko 2 [Obsession] stacks."
+    "description": "Gain 1 Grit stack. Deal Electric damage to all foes equal to 92.1%/101.6%/97.8%/107.2% of Attack. Also, gain 2 Mettle stacks."
   },
   "skill3": {
-    "name": "Electric Flash",
+    "name": "Lightning Fist",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 24,
     "cool": 2,
-    "description": "Deal Elec damage to all foes equal to 136.4%/150.4%/144.8%/158.8% of Attack. If Akihiko has 2 or more [Fighting Spirit] stacks, spend all [Fighting Spirit], for each [Fighting Spirit] stack spent, increase the skill multiplier by 40.9%/45.1%/43.1%/47.6%."
+    "description": "Deal Electric damage to all foes equal to 136.4%/150.4%/144.8%/158.8% of Attack.\nIf Grit is at 2 stacks or higher, spend all Grit stacks, and increase this skill's multiplier by 48.8%/53.8%/51.8%/56.8% for each stack."
   },
   "skill_highlight": {
-    "name": "Theurgy - Lightning Spike",
+    "name": "Lightning Spike",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "Use condition: When Akihiko has 140 Theurgy Energy\nDeal Elec damage to all foes equal to 255.4%/281.6%/271.1%/297.3% of Attack, this skill is guaranteed to be a critical hit, and has 200% critical damage."
+    "description": "Can be activated when Theurgy gauge is at 140. Deal Electric damage to all foes equal to 255.4%/281.6%/271.1%/297.3% of Attack.\nThis Theurgy is guaranteed to activate a critical hit. Also, critical damage will be between a minimum of 250% and maximum of 350%."
   },
   "skill_support": {
-    "name": "Assist Skill",
+    "name": "Assist",
     "element": "버프",
     "type": "버프",
-    "description": "Increases 1 ally's critical damage by 20% for 1 turn."
+    "description": "Increase 1 ally's critical damage by 20% for 1 turn.",
+    "cool": 0
   },
   "passive1": {
-    "name": "Hot-Blooded",
+    "name": "No Rules",
     "element": "패시브",
-    "description": "When Akihiko deals damage to knocked down foes, increase damage by 30%."
+    "description": "When dealing damage to downed foes, increase damage by 30.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Uphold",
+    "name": "Rough Combo",
     "element": "패시브",
-    "description": "After dealing critical damage, increase Attack by 13.5% for 3 turns. Stacks up to 3 times."
+    "description": "When Sanada activates a critical, increase Attack by 13.5% for 3 turns. Stacks up to 3 times.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["사나다"] = {
   "name": "真田 明彦",
   "skill1": {
-    "name": "ライトニングフィールド",
+    "name": "電光陣",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "『闘志』を1スタック獲得し、全ての敵に攻撃力122.8%/135.4%/130.3%/142.9%の電撃属性ダメージを与え、3ターンの間、真田 明彦のCRT倍率が23.4%/25.8%/24.9%/27.3%上昇する。"
+    "description": "『闘争心』を１つ獲得し、敵全体に攻撃力122.8%/135.4%/130.3%/142.9%の電撃属性ダメージを与える。\nさらに３ターンの間、自身のクリティカルダメージが23.4%/25.8%/24.9%/27.3%上昇する。"
   },
   "skill2": {
-    "name": "サンダークラッシュ",
+    "name": "スパークインパクト",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "『闘志』を1スタック獲得し、全ての敵に攻撃力92.1%/101.6%/97.8%/107.2%の電撃属性ダメージを与え、さらに『執念』を2スタック獲得する。"
+    "description": "『闘争心』を１つ獲得し、敵全体に攻撃力92.1%/101.6%/97.8%/107.2%の電撃属性ダメージを与える。さらに『剛拳』を２つ獲得する。"
   },
   "skill3": {
-    "name": "スパークフィスト",
+    "name": "雷拳一閃",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 24,
     "cool": 2,
-    "description": "全ての敵に攻撃力136.4%/150.4%/144.8%/158.8%の電撃属性ダメージを与える。真田 明彦が『闘志』を2スタック以上持っている場合、全ての『闘志』を消費し、消費したスタックごとにこのスキルの倍率が40.9%/45.1%/43.1%/47.6%増加する。"
+    "description": "敵全体に攻撃力136.4%/150.4%/144.8%/158.8%の電撃属性ダメージを与える。\n『闘争心』を２つ以上獲得している場合、すべての『闘争心』を消費し、１つにつきスキル倍率が48.8%/53.8%/51.8%/56.8%上昇する。"
   },
   "skill_highlight": {
-    "name": "テウルギア - ライトニングスピア",
+    "name": "ライトニングスフィア",
     "element": "전격광역",
     "type": "광역피해",
     "sp": 0,
     "cool": 0,
-    "description": "発動条件：テウルギアエネルギー140\n全ての敵に攻撃力255.4%/281.6%/271.1%/297.3%の電撃属性ダメージを与え、このスキルは『必ずクリティカルが発動』する。CRT倍率は200%で固定される。"
+    "description": "テウルギアゲージが１４０の時に発動可能となり、敵全体に攻撃力255.4%/281.6%/271.1%/297.3%の電撃属性ダメージを与える。\nこのテウルギアは必ずクリティカルが発生する。また、クリティカルダメージは最低でも２５０%となり、上昇効果は最大で３５０%まで適用される。"
   },
   "skill_support": {
-    "name": "サポートスキル",
+    "name": "アシスト",
     "element": "버프",
     "type": "버프",
-    "description": "味方1体のCRT倍率を1ターンの間20%上昇させる。"
+    "description": "１ターンの間、味方単体のクリティカルダメージが２０%上昇する。",
+    "cool": 0
   },
   "passive1": {
-    "name": "熱血",
+    "name": "ルール無用",
     "element": "패시브",
-    "description": "ダウン状態の敵にダメージを与えると、真田 明彦の与ダメージが30.0%増加する。"
+    "description": "ダウン状態の敵にダメージを与える時、与ダメージが30.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "貫徹",
+    "name": "ラフコンビネーション",
     "element": "패시브",
-    "description": "真田 明彦がクリティカルを与えるたび、3ターンの間攻撃力が13.5%上昇する（最大3スタック）。"
+    "description": "自身がクリティカルを発生させた時、３ターンの間、自身の攻撃力が13.5%上昇する。最大３つまで累積できる。",
+    "cool": 0
   }
 };
 

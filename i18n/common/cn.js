@@ -102,6 +102,7 @@ window.I18N_COMMON_CN = {
         "spRecovery": "精力回复",
         "resonance": "追加效果",
         "downdamage": "倒地易伤",
+        "downSpecialAttack": "倒地特攻",
         "naviPower": "解明怪盗属性",
         "labor": "职责",
         "myPalace": "我的宫殿",

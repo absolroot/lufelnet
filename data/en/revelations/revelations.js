@@ -21,7 +21,7 @@ const mapping_en = {
     "순수": "Purity",
     // Sub revelations
     "슬픔": "Sorrow",
-    "변화": "Transformation",
+    "변화": "Change",
     "신중": "Prudence",
     "고집": "Ruin",
     "헛수고": "Futility",
@@ -81,7 +81,7 @@ const enRevelationData = {
     },
     "subTranslated": {
         "슬픔": "Sorrow",
-        "변화": "Transformation",
+        "변화": "Change",
         "신중": "Prudence",
         "고집": "Ruin",
         "헛수고": "Futility",
@@ -114,11 +114,11 @@ const enRevelationData = {
         "강인": "Tenacity",
     },
     "main": {
-        "Purity": ["Depravity", "Transformation", "Flourishing"], // 순수
+        "Purity": ["Depravity", "Change", "Flourishing"], // 순수
         "Nativity": ["Power"], // 탄생
         "Agility": ["Flourishing", "Satiety", "Hindrance"], // 예리
-        "Perseverance": ["Sorrow", "Transformation", "Obtain"], //돌파
-        "Hope": ["Labor", "Ruin", "Transformation"], // 희망
+        "Perseverance": ["Sorrow", "Change", "Obtain"], //돌파
+        "Hope": ["Labor", "Ruin", "Change"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조 
         "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
         "Resolve": ["Virtue", "Labor", "Prudence"], // 결심
@@ -141,7 +141,7 @@ const enRevelationData = {
         "Satiety": ["Agility"], // 풍족
         "Obtain": ["Perseverance"], // 획득
         "Sorrow": ["Perseverance"], // 슬픔
-        "Transformation": ["Perseverance", "Hope", "Purity"], // 변화
+        "Change": ["Perseverance", "Hope", "Purity"], // 변화
         "Prudence": ["Resolve"], // 신중
         "Ruin": ["Integrity", "Hope"], // 고집
         "Futility": ["Faith"], // 헛수고
@@ -298,15 +298,15 @@ const enRevelationData = {
             "set4": "Increase Attack by 25% for 3 turns. After using a Theurgy, gain the same effect again.",
             "type": []
         },
-        "Transformation": { // 변화
+        "Change": { // 변화
             "set2": "Electric damage increased by 10%.",
             "set4": "Increase ATK by 25% for 2 turns; Gain this effect again when you cause a critical hit.",
-            "type": ["전격", "미출시"]
+            "type": ["전격"]
         },
         "Sorrow": { // 슬픔
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 3 turns; Gain this effect again when you use HIGHLIGHT.",
-            "type": ["주원", "미출시"]
+            "type": ["주원"]
         },
         "Satiety": { // 풍족
             "set2": "Increase ATK by 12%.",
@@ -331,15 +331,15 @@ const enRevelationData = {
     },
     "set_effects": {
         "Perseverance": {
-            "Transformation": "Each enemy on field increases your electric damage by 8%, up to 32%.",
-            "Sorrow": "Increase damage over time by 16%.",
+            "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
+            "Sorrow": "Increase continuous damage effect by 16%.",
             "Obtain": "Increase ATK based on your HP%, when HP% is 40%, increase ATK by 40%.",
-            "type": ["미출시"]
+            "type": []
         },
         "Hope": {
             "Labor": "When equipped by an Elucidator Phantom Thief: When granting buffs to allies with a skill, increase the main target's pierce rate by 5% for 1 turn.",
             "Ruin": "Each time damage is dealt with a skill, increase the user's Fire damage by 3%. This effect lasts 3 turns and stacks up to 8 times. When at 8 stacks, also increase user's critical rate by 6%.",
-            "Transformation": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack."
+            "Change": "Increase the DMG Dealt to enemies with Down status by 12%, doesn't stack."
         },
         "Departure": {
             "Control": "Decrease main target's DEF by 23% for 2 turns after attacking them with a skill.",
@@ -422,7 +422,7 @@ const enRevelationData = {
         },
         "Purity": { // 순수
             "Depravity": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
-            "Transformation": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
+            "Change": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
             "Flourishing": "During battle, increase ATK by 20%. After landing a Crit, grant all allies a 12% DMG Bonus for 1 turn.",
             "type": ["미출시"]
         }

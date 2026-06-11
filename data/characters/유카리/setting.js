@@ -2,7 +2,7 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["유카리"] = {
     "role": "테우르기아 충전 버퍼",
     "video": ["pi4PpABMZDQ", "KW2Xg1If2iY"],
-    "video_en": [""],
+    "video_en": ["yhloLeFhKOY"],
     "video_jp": ["E0aLpo9AbQI", "bWFxm3g28EA"],
     "main_revelation": ["창조", "진정성"],
     "sub_revelation": ["화해", "고집"],

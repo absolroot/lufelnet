@@ -129,6 +129,7 @@ window.I18N_COMMON_KR = {
         spRecovery: 'SP 회복',
         resonance: '추가 효과',
         downdamage: '다운 허약',
+        downSpecialAttack: '다운 특수 공격',
         naviPower: '해명의힘',
         labor: '직책',
         myPalace: '마이팰리스',

@@ -130,7 +130,7 @@ window.jpCharacterSkillsData["모토하"] = {
   "passive1": {
     "name": "延長戦",
     "element": "패시브",
-    "description": "敵を感電状態にする時、66.0%の確率で効果時間を１ターン延長する。",
+    "description": "敵を感電状態にする時、66.0%の確率で持続ターンを１ターン延長する。",
     "cool": 0
   },
   "passive2": {

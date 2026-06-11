@@ -24,37 +24,37 @@ window.ritualData["사나다"] = {
 window.enCharacterRitualData["사나다"] = {
   "name": "Akihiko Sanada",
   "r0": "Reason to Fight",
-  "r0_detail": "After Akihiko uses a Persona skill/Theurgy to deal Elec damage, gain 1 [Obsession] stack. At the start of battle, gain 2 [Obsession] stacks. Stacks up to 12 times. At the start of Akihiko's turn, he can spend 6 [Obsession] stacks to use [Unstoppable Punch]: Grant Akihiko 1 [Fighting Spirit] stack, and deal Phys damage to all foes equal to 55.9% of Attack. This counts as a Resonance. [Fighting Spirit]: Increase Akihiko's pierce rate by 4%. Stacks up to 3 times.",
-  "r1": "Boxing Club Captain",
-  "r1_detail": "When Akihiko has [Fighting Spirit], increase critical rate by 20%.\nAt the start of battle, gain 70 Theurgy Energy.",
-  "r2": "Awkward Emotions",
-  "r2_detail": "After spending [Obsession] to use [Unstoppable Punch], increase Akihiko's damage by 30% for 3 turns.\nWhen dealing damage to knocked down foes, increase [Down Attack] by 10%.",
-  "r3": "Disciplined Heart",
-  "r3_detail": "Increase the skill levels of Lightning Impact and Electric Flash by 3.",
-  "r4": "Fruits of Training",
-  "r4_detail": "When using Theurgy, increase critical damage by 20%.",
-  "r5": "Buried Feelings",
-  "r5_detail": "Increase the skill levels of Lightning Domain and Thief Tactics by 3.",
-  "r6": "Power Seeker",
-  "r6_detail": "At the start of battle, gain 6 bonus [Obsession] stacks, increase the maximum number of [Obsession] stacks to 18. Increase the maximum number of [Fighting Spirit] stacks to 4, increase damage by 8% based on the number of [Fighting Spirit] stacks.\nActivate the Resonance [Fatal Punch] after Akihiko uses [Electric Flash].\n[Fatal Punch]: Based on the spent [Fighting Spirit] stacks this turn, deal Elec damage to all foes equal to $5 of Attack, this skill is guaranteed to be a critical hit and ignore all Defense. Gain 1 [Fighting Spirit] stack; This counts as a Resonance."
+  "r0_detail": "At the start of battle, gain 2 Mettle stacks. Also, when dealing Electric damage with a skill or Theurgy, gain 1 Mettle stack. Stacks up to 12 times.\nAt the start of Sanada's turn, he can spend 6 Mettle stacks to activate Flash Blow 1 time.\nFlash Blow: Deal Physical damage to all foes equal to 55.9% of Attack, and increase downed foes' damage taken by 8% for 1 turn. This skill is counted as a Resonance. Also, gain 1 Grit stack.\nGrit: Increase pierce rate by 4%. Stacks up to 3 times.",
+  "r1": "Boxing Team Captain",
+  "r1_detail": "At the start of battle, increase the Theurgy gauge by 70.\nWhen gaining Grit stacks, increase critical rate by 20%.",
+  "r2": "Guardian Fist",
+  "r2_detail": "When dealing damage to downed foes, increase Down Bonus by 10%.\nAfter spending Mettle stacks to activate Flash Blow, increase Sanada's damage by 30% for 3 turns.",
+  "r3": "Stoic Heart",
+  "r3_detail": "Increase the skill levels of Spark Impact and Lightning Fist by 3.",
+  "r4": "Results of Training",
+  "r4_detail": "When activating a Theurgy, increase critical damage by 50% (between a minimum of 300% and maximum of 400%).",
+  "r5": "Buried Emotions",
+  "r5_detail": "Increase the skill levels of Blitzkrieg and Combat Tactics by 3.",
+  "r6": "Striving for Power",
+  "r6_detail": "At the start of battle, gain 6 Mettle stacks. The maximum number of Mettle stacks is increased to 18. Also, for each Grit stack gained, increase Sanada's damage by 8%. The maximum number of Grit stacks is increased to 4.\nWhen spending Grit to use Lightning Fist, also activate Finishing Blow 1 time.\nFinishing Blow: Based on the number of Grit stacks spent during Sanada's turn, deal Electric damage to all foes equal to 13.5% of Attack for each stack, with Ignore Defense. This skill is counted as a Resonance, and is guaranteed to activate a critical. Also, gain 1 Grit stack."
 };
 
 window.jpCharacterRitualData["사나다"] = {
   "name": "真田 明彦",
   "r0": "戦う理由",
-  "r0_detail": "真田明彦がペルソナスキル／テウルギアで電撃属性ダメージを与えると、『執念』を1スタック獲得する。戦闘開始時に『執念』を2スタック獲得する（最大12スタック）。自身のターン開始時、『執念』を6スタック消費して『無敵の拳』を1回発動できる。『無敵の拳』：自身が『闘志』を1スタック獲得し、敵全体に攻撃力55.9%の物理属性ダメージを与える。このスキルは追加効果として扱われる。\n\n『闘志』：自身の貫通が4%上昇（最大3スタック）。",
+  "r0_detail": "戦闘開始時、『剛拳』を２つ獲得する。さらにスキル／テウルギアで電撃属性ダメージを与えた時、『剛拳』を１つ獲得する。最大１２個まで累積できる。\n自身のターン開始時、『剛拳』を６つ消費して『フラッシュブロー』を１回発動することができる。\n『フラッシュブロー』：敵全体に攻撃力５５.９%の物理属性ダメージを与え、１ターンの間、この攻撃でダウンさせた対象のダウン状態被ダメージを８%上昇させる。このスキルは意識奏功として扱う。さらに『闘争心』を１つ獲得する\n『闘争心』：貫通が４%上昇する。最大３つまで累積できる。",
   "r1": "ボクシング部主将",
-  "r1_detail": "真田明彦が『闘志』を保有している場合、クリティカル率が20%上昇する。\n戦闘開始時にテウルギアエネルギーを70ポイント獲得する。",
-  "r2": "不器用な感情",
-  "r2_detail": "『執念』を消費して『無敵の拳』を発動すると、3ターンの間、自身のダメージが30%上昇する。\nダウン状態の敵にダメージを与えると、『ダウン特攻』が10%上昇する。",
-  "r3": "自制心",
-  "r3_detail": "『サンダークラッシュ』、『スパークフィスト』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "訓練の成果",
-  "r4_detail": "テウルギア発動時、CRT倍率が20%上昇する。",
-  "r5": "隠された本心",
-  "r5_detail": "『ライトニングフィールド』、『戦闘技術』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "力を追い求める者",
-  "r6_detail": "戦闘開始時、真田明彦は追加で『執念』を6スタック獲得し、『執念』の上限が18スタックに増加する。『闘志』の上限が4スタックに増加し、『闘志』を1スタック保有するごとにダメージが8%上昇する。\n真田明彦が『スパークフィスト』使用後に『極・一撃必殺』を1回追加発動する。\n\n『極・一撃必殺』：このターンに消費した『闘志』スタック数に応じて、スタックごとに敵全体に攻撃力13.5%の『必ずクリティカル発動』および『防御無視』電撃属性ダメージを与え、『闘志』を1スタック獲得する。このスキルは追加効果として扱われる。"
+  "r1_detail": "戦闘開始時、テウルギアゲージを７０獲得する。\n『闘争心』を獲得している時、クリティカル率が２０%上昇する。",
+  "r2": "守るための拳",
+  "r2_detail": "ダウン状態の敵にダメージを与える時、『ダウン特効』が１０%上昇する。\n『剛拳』を消費して『フラッシュブロー』を発動した後、３ターンの間、自身の与ダメージが３０%上昇する。",
+  "r3": "ストイックな心",
+  "r3_detail": "『スパークインパクト』『雷拳一閃』のスキルレベルが３上昇する。",
+  "r4": "鍛錬の賜物",
+  "r4_detail": "テウルギアを発動する時、クリティカルダメージが５０%上昇する（最低３００%となり、上昇効果は最大４００%まで適用される）。",
+  "r5": "秘めた想い",
+  "r5_detail": "『電光陣』『戦術技能』のスキルレベルが３上昇する。",
+  "r6": "力を追求せし者",
+  "r6_detail": "戦闘開始時、『剛拳』を追加で６つ獲得し、『剛拳』が最大１８個まで累積できるようになる。さらに獲得している『闘争心』１つごとに、自身の与ダメージが８%上昇し、『闘争心』が最大４つまで累積できるようになる。\n『闘争心』を消費して『雷拳一閃』を発動した時、追加で１回『フィニッシュブロー』を発動する。\n『フィニッシュブロー』：自身のターン中に消費した『闘争心』の数に応じて、１つにつき敵全体に『防御力無視』の攻撃力１３.５%の電撃属性ダメージを与える。このスキルは意識奏功として扱い、必ずクリティカルが発生する。さらに『闘争心』を１つ獲得する。"
 };
 
 window.cnCharacterRitualData["사나다"] = {

@@ -41,7 +41,7 @@ Object.assign(window.characterData, {
         "position": "굴복",
         "release_order": 48,
         "p5d": true,
-        "persona": "메리크리우스",
+        "persona": "메리쿠리우스",
         "persona_en": "Mercurius",
         "persona_jp": "メリクリウス",
         "name": "모르가나·댄싱 스타",

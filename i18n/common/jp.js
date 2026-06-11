@@ -129,6 +129,7 @@ window.I18N_COMMON_JP = {
         spRecovery: 'SP 回復',
         resonance: '意識奏功',
         downdamage: 'ダウンダメージ',
+        downSpecialAttack: 'ダウン特効',
         naviPower: 'ステータス強化',
         labor: '職責',
         myPalace: 'マイパレス',

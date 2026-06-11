@@ -129,6 +129,7 @@ window.I18N_COMMON_EN = {
         spRecovery: 'SP Recovery',
         resonance: 'Resonance',
         downdamage: 'Downed damage',
+        downSpecialAttack: 'Down Bonus',
         naviPower: 'Eludi. Stat Buff',
         labor: 'Labor',
         myPalace: 'Thieves Den',

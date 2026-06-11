@@ -1,5 +1,67 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Electric",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "Lilith",
+            "skill": "607",
+            "sn": "529101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "318401"
+      },
+      {
+        "bonusRule": "All ally Curse, Almighty attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-sraosha.png",
+            "level": "89",
+            "name": "Sraosha",
+            "skill": "1021,1003,1019",
+            "sn": "529111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "318402"
+      }
+    ],
+    "buff": "Ground Howl: Each time a Theurgy is activated, all allies gain 4 Celestial Fragment stacks. Also, each time an ally defeats a foe, the ally gains 2 Celestial Fragment stacks.\nCelestial Fragment: Increase final damage dealt by 2.5% per stack for 2 turns. Stacks up to 16 times.",
+    "endTime": "2026-06-25 10:30:00",
+    "startTime": "2026-06-11 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -10,6 +10,37 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Phys",
+                "Electric",
+                "Psychokinesis",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "89",
+            "name": "멜키세덱",
+            "skill": "706,1004",
+            "sn": 547101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Fire",
                 "Nuclear",
                 "Bless"
@@ -22,68 +53,17 @@
             "level": "89",
             "name": "조종당하는 우리엘",
             "skill": "1026,1016,1090",
-            "sn": 546101,
+            "sn": 547111,
             "stat": {}
           }
         ],
         "scoreRatio": 1.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Ice",
-                "Nuclear",
-                "Curse"
-              ],
-              "Weak": [
-                "Electric"
-              ]
-            },
-            "image": "B-guaiwutouxiang-scathach.png",
-            "level": "89",
-            "name": "조종당하는 스카아하",
-            "skill": "1016,1404,257",
-            "sn": 546111,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Phys",
-                "Gun",
-                "Wind",
-                "Nuclear",
-                "Bless"
-              ],
-              "Weak": [
-                "Electric"
-              ]
-            },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
-            "level": "89",
-            "name": "조종당하는 쿠 훌린",
-            "skill": "1023,1154",
-            "sn": 546112,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
         "sn": 78402
       }
     ],
-    "buff": "기이한 통로: HIGHTLIGHT 스킬, 테우르기아 시전 시 자신이 『약탈자의 표식』을 1중첩 획득한다. 『랩소디 비트』를 소모해 스킬 시전 시 아군 전체가 『약탈자의 표식』을 4중첩 획득한다. 『약탈자의 표식』: 3턴 동안 주는 최종 대미지 8% 증가(5회 중첩 가능)",
-    "endTime": "2026-06-11 07:30:00",
-    "startTime": "2026-05-21 08:30:00"
+    "buff": "청동 광맥: 원소 이상을 1중첩 부여할 때마다 아군 전체가 『금속의 소리』 1중첩을 획득한다. 약점 대미지를 줄 때, 자신이 『금속의 소리』 1중첩을 획득한다. 『금속의 소리』: 1턴 동안 주는 최종 대미지가 5% 증가한다(8회 중첩 가능).",
+    "endTime": "2026-06-25 06:30:00",
+    "startTime": "2026-06-11 08:30:00"
   },
   "msg": "OK",
   "status": 0

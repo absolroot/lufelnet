@@ -104,6 +104,58 @@
         "name": "Shot Through the Heart",
         "startTime": "2026-06-04 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Akihiko Sanada",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Fists of Thunder",
+        "startTime": "2026-06-11 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Akihiko Sanada",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Fists of Thunder",
+        "startTime": "2026-06-11 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
@@ -175,6 +227,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-06-04 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-06-25 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Sabazios",
+            "type": "weapon",
+            "user": "Sanada"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          },
+          {
+            "name": "Wicked Cestus",
+            "type": "weapon",
+            "user": "Sanada"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-06-11 11:30:00",
         "type": "Arms Deals"
       }
     ]

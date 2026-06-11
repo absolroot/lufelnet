@@ -1,5 +1,67 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Electric",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "リリス",
+            "skill": "607",
+            "sn": "529101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "318401"
+      },
+      {
+        "bonusRule": "All ally Curse, Almighty attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-sraosha.png",
+            "level": "89",
+            "name": "スラオシャ",
+            "skill": "1021,1003,1019",
+            "sn": "529111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "318402"
+      }
+    ],
+    "buff": "地殻の咆哮: テウルギアを発動するごとに、味方全体に『天墜の破片』を４つ付与する。また、敵を１体撃破するごとに、自身は『天墜の破片』を２つ獲得する。\n『天墜の破片』：２ターンの間、１つごとに与える最終ダメージが２.５%上昇する。最大１６個まで累積できる。",
+    "endTime": "2026-06-25 10:30:00",
+    "startTime": "2026-06-11 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

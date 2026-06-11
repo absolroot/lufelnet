@@ -1,9 +1,483 @@
 {
   "data": {
-    "item": [],
+    "item": [
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303207.png",
+        "name": "실버 뱅글",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "비경 코인",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303242.png",
+        "name": "길거리 음식 가이드",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "비경 코인",
+            "price": 6400,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 32
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303222.png",
+        "name": "테마 화분",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "비경 코인",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606313.png",
+        "name": "공구 세트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "비경 코인",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303206.png",
+        "name": "좌식 쿠션",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 27600,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 138
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-317013.png",
+        "name": "부드러운 담요",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 18400,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 92
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303265.png",
+        "name": "달 모양 브로치",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 48400,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 242
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303248.png",
+        "name": "패션 잡지",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303229.png",
+        "name": "명품 향수",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "드러그 스토어"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303209.png",
+        "name": "48면 큐브",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 11200,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 56
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303245.png",
+        "name": "검옥",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 6800,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 34
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606321.png",
+        "name": "초밥 도시락(포장 용기)",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 15600,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 78
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606322.png",
+        "name": "A5 와규 고양이 통조림",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 12800,
+            "resetType": "없음",
+            "shopName": "777 편의점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 64
+      }
+    ],
     "name": "모르가나",
-    "special_award": [],
-    "unlock_quest": null
+    "special_award": [
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30363,
+        "rank": 1,
+        "skill": {
+          "affix": "211",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「모르가나·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「왜곡된 모험」에서 아군 전체의 크리티컬 효과가 7.5% 증가합니다.",
+          "effect": "2",
+          "icon": "PC067_03_12_33_02.png",
+          "name": "바람춤의 리듬"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 2,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30366,
+        "rank": 3,
+        "skill": {
+          "affix": "212",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「모르가나·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「교차하는 모험의 땅」에서 아군 전체의 크리티컬 효과가 7.5% 증가합니다.",
+          "effect": "1",
+          "icon": "PC067_03_12_33_01.png",
+          "name": "회심의 박자"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 4,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30369,
+        "rank": 5,
+        "skill": {
+          "affix": "213",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「모르가나·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「왜곡된 모험」에서 아군 전체의 크리티컬 효과가 15% 증가합니다.",
+          "effect": "2",
+          "icon": "PC067_03_12_33_02.png",
+          "name": "질풍의 춤"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 6,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30372,
+        "rank": 7,
+        "skill": {
+          "affix": "214",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「모르가나·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「교차하는 모험의 땅」에서 아군 전체의 크리티컬 효과가 15% 증가합니다.",
+          "effect": "1",
+          "icon": "PC067_03_12_33_01.png",
+          "name": "자유자재의 도약"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 8,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30376,
+        "rank": 9,
+        "skill": {
+          "affix": "215",
+          "description": "「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「모르가나·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n임의 콘텐츠에서 아군 전체의 크리티컬 효과가 3% 증가합니다.",
+          "effect": "-1",
+          "icon": "PC067_03_12_33_03.png",
+          "name": "무대 파괴자"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 10,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 11,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 12,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      }
+    ],
+    "unlock_quest": [
+      {
+        "details": "뜻밖의 곳에서 익숙하면서도 낯선 수수께끼의 생물을 만났다... 가서 말을 걸어보자.",
+        "name": "댄싱 캣 나이트"
+      }
+    ]
   },
   "msg": "OK",
   "status": 0

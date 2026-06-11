@@ -1,0 +1,301 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、『剛拳』を２つ獲得する。さらにスキル／テウルギアで電撃属性ダメージを与えた時、『剛拳』を１つ獲得する。最大１２個まで累積できる。\n自身のターン開始時、『剛拳』を６つ消費して『フラッシュブロー』を１回発動することができる。\n『フラッシュブロー』：敵全体に攻撃力５５.９%の物理属性ダメージを与え、１ターンの間、この攻撃でダウンさせた対象のダウン状態被ダメージを８%上昇させる。このスキルは意識奏功として扱う。さらに『闘争心』を１つ獲得する\n『闘争心』：貫通が４%上昇する。最大３つまで累積できる。",
+        "name": "戦う理由",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、テウルギアゲージを７０獲得する。\n『闘争心』を獲得している時、クリティカル率が２０%上昇する。",
+        "name": "ボクシング部主将",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ダウン状態の敵にダメージを与える時、『ダウン特効』が１０%上昇する。\n『剛拳』を消費して『フラッシュブロー』を発動した後、３ターンの間、自身の与ダメージが３０%上昇する。",
+        "name": "守るための拳",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『スパークインパクト』『雷拳一閃』のスキルレベルが３上昇する。",
+        "name": "ストイックな心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "テウルギアを発動する時、クリティカルダメージが５０%上昇する（最低３００%となり、上昇効果は最大４００%まで適用される）。",
+        "name": "鍛錬の賜物",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『電光陣』『戦術技能』のスキルレベルが３上昇する。",
+        "name": "秘めた想い",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、『剛拳』を追加で６つ獲得し、『剛拳』が最大１８個まで累積できるようになる。さらに獲得している『闘争心』１つごとに、自身の与ダメージが８%上昇し、『闘争心』が最大４つまで累積できるようになる。\n『闘争心』を消費して『雷拳一閃』を発動した時、追加で１回『フィニッシュブロー』を発動する。\n『フィニッシュブロー』：自身のターン中に消費した『闘争心』の数に応じて、１つにつき敵全体に『防御力無視』の攻撃力１３.５%の電撃属性ダメージを与える。このスキルは意識奏功として扱い、必ずクリティカルが発生する。さらに『闘争心』を１つ獲得する。",
+        "name": "力を追求せし者",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "１ターンの間、味方単体のクリティカルダメージが２０%上昇する。",
+        "name": "アシスト",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 141171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S3",
+      "S2/HL"
+    ],
+    "name": "真田 明彦",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "『闘争心』を１つ獲得し、敵全体に攻撃力122.8%/135.4%/130.3%/142.9%の電撃属性ダメージを与える。\nさらに３ターンの間、自身のクリティカルダメージが23.4%/25.8%/24.9%/27.3%上昇する。",
+        "name": "電光陣",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "『闘争心』を１つ獲得し、敵全体に攻撃力92.1%/101.6%/97.8%/107.2%の電撃属性ダメージを与える。さらに『剛拳』を２つ獲得する。",
+        "name": "スパークインパクト",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141112,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "敵全体に攻撃力136.4%/150.4%/144.8%/158.8%の電撃属性ダメージを与える。\n『闘争心』を２つ以上獲得している場合、すべての『闘争心』を消費し、１つにつきスキル倍率が48.8%/53.8%/51.8%/56.8%上昇する。",
+        "name": "雷拳一閃",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141113,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ダウン状態の敵にダメージを与える時、与ダメージが30.0%上昇する。",
+        "name": "ルール無用",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身がクリティカルを発生させた時、３ターンの間、自身の攻撃力が13.5%上昇する。最大３つまで累積できる。",
+        "name": "ラフコンビネーション",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.45,
+      "Crit Rate": 0.5,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "テウルギアゲージが１４０の時に発動可能となり、敵全体に攻撃力255.4%/281.6%/271.1%/297.3%の電撃属性ダメージを与える。\nこのテウルギアは必ずクリティカルが発生する。また、クリティカルダメージは最低でも２５０%となり、上昇効果は最大で３５０%まで適用される。",
+        "name": "ライトニングスフィア",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

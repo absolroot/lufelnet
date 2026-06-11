@@ -1,0 +1,301 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain 2 Mettle stacks. Also, when dealing Electric damage with a skill or Theurgy, gain 1 Mettle stack. Stacks up to 12 times.\nAt the start of Sanada's turn, he can spend 6 Mettle stacks to activate Flash Blow 1 time.\nFlash Blow: Deal Physical damage to all foes equal to 55.9% of Attack, and increase downed foes' damage taken by 8% for 1 turn. This skill is counted as a Resonance. Also, gain 1 Grit stack.\nGrit: Increase pierce rate by 4%. Stacks up to 3 times.",
+        "name": "Reason to Fight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, increase the Theurgy gauge by 70.\nWhen gaining Grit stacks, increase critical rate by 20%.",
+        "name": "Boxing Team Captain",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When dealing damage to downed foes, increase Down Bonus by 10%.\nAfter spending Mettle stacks to activate Flash Blow, increase Sanada's damage by 30% for 3 turns.",
+        "name": "Guardian Fist",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Spark Impact and Lightning Fist by 3.",
+        "name": "Stoic Heart",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When activating a Theurgy, increase critical damage by 50% (between a minimum of 300% and maximum of 400%).",
+        "name": "Results of Training",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Blitzkrieg and Combat Tactics by 3.",
+        "name": "Buried Emotions",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain 6 Mettle stacks. The maximum number of Mettle stacks is increased to 18. Also, for each Grit stack gained, increase Sanada's damage by 8%. The maximum number of Grit stacks is increased to 4.\nWhen spending Grit to use Lightning Fist, also activate Finishing Blow 1 time.\nFinishing Blow: Based on the number of Grit stacks spent during Sanada's turn, deal Electric damage to all foes equal to 13.5% of Attack for each stack, with Ignore Defense. This skill is counted as a Resonance, and is guaranteed to activate a critical. Also, gain 1 Grit stack.",
+        "name": "Striving for Power",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase 1 ally's critical damage by 20% for 1 turn.",
+        "name": "Assist",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 141171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S3",
+      "S2/HL"
+    ],
+    "name": "Akihiko Sanada",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Gain 1 Grit stack. Deal Electric damage to all foes equal to 122.8%/135.4%/130.3%/142.9% of Attack.\nAlso, increase Sanada's critical damage by 23.4%/25.8%/24.9%/27.3% for 3 turns.",
+        "name": "Blitzkrieg",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Gain 1 Grit stack. Deal Electric damage to all foes equal to 92.1%/101.6%/97.8%/107.2% of Attack. Also, gain 2 Mettle stacks.",
+        "name": "Spark Impact",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141112,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 24",
+        "desc": "Deal Electric damage to all foes equal to 136.4%/150.4%/144.8%/158.8% of Attack.\nIf Grit is at 2 stacks or higher, spend all Grit stacks, and increase this skill's multiplier by 48.8%/53.8%/51.8%/56.8% for each stack.",
+        "name": "Lightning Fist",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141113,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When dealing damage to downed foes, increase damage by 30.0%.",
+        "name": "No Rules",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Sanada activates a critical, increase Attack by 13.5% for 3 turns. Stacks up to 3 times.",
+        "name": "Rough Combo",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 141132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.45,
+      "Crit Rate": 0.5,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0% / 22.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy gauge is at 140. Deal Electric damage to all foes equal to 255.4%/281.6%/271.1%/297.3% of Attack.\nThis Theurgy is guaranteed to activate a critical hit. Also, critical damage will be between a minimum of 250% and maximum of 350%.",
+        "name": "Lightning Spike",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 141152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

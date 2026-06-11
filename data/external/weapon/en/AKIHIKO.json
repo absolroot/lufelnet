@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Sabazios",
+        "quality": 5,
+        "skill": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.\nWhen gaining Mettle stacks, increase critical rate by 8.2%/10.7%/10.7%/13.2%/13.2%/15.7%/15.7% for 2 turns. This effect stacks up to 2 times.\nWhen Sanada activates a critical with a skill, Theurgy, or Resonance, increase that damage by 34.0%/44.0%/44.0%/54.0%/54.0%/64.0%/64.0%.",
+        "stat": {
+          "attack": 773.01,
+          "defense": 391.98,
+          "hp": 2279.27
+        },
+        "user": "Sanada"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Wicked Cestus",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAlso, when Grit is at 2 or more stacks, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%.",
+        "stat": {
+          "attack": 618.71,
+          "defense": 313.75,
+          "hp": 1823.43
+        },
+        "user": "Sanada"
+      }
+    ],
+    "name": "Sanada"
+  },
+  "msg": "OK",
+  "status": 0
+}

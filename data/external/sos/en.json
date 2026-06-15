@@ -2,6 +2,35 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "Cu Chulainn",
+            "skill": "1023,1154",
+            "sn": "530101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "328401"
+      },
+      {
         "bonusRule": "All ally Fire attack Score x 3",
         "enemy": [
           {
@@ -22,43 +51,16 @@
             "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
             "name": "Lilith",
-            "skill": "607",
-            "sn": "529101",
+            "skill": "607,603",
+            "sn": "530111",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "318401"
-      },
-      {
-        "bonusRule": "All ally Curse, Almighty attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Electric",
-                "Bless"
-              ],
-              "Weak": [
-                "Curse"
-              ]
-            },
-            "image": "B-guaiwutouxiang-sraosha.png",
-            "level": "89",
-            "name": "Sraosha",
-            "skill": "1021,1003,1019",
-            "sn": "529111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "318402"
+        "sn": "328402"
       }
     ],
-    "buff": "Ground Howl: Each time a Theurgy is activated, all allies gain 4 Celestial Fragment stacks. Also, each time an ally defeats a foe, the ally gains 2 Celestial Fragment stacks.\nCelestial Fragment: Increase final damage dealt by 2.5% per stack for 2 turns. Stacks up to 16 times.",
+    "buff": "Imbalance Mastery: Each time foes' Down Points are reduced, gain 1 Rhythm of Imbalance stack.\nRhythm of Imbalance: Increase final damage by 2% per stack for 2 turns. Stacks up to 20 times.",
     "endTime": "2026-06-25 10:30:00",
     "startTime": "2026-06-11 11:30:00"
   },

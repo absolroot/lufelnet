@@ -2,6 +2,35 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "クー・フーリン",
+            "skill": "1023,1154",
+            "sn": "530101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "328401"
+      },
+      {
         "bonusRule": "All ally Fire attack Score x 3",
         "enemy": [
           {
@@ -22,43 +51,16 @@
             "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
             "name": "リリス",
-            "skill": "607",
-            "sn": "529101",
+            "skill": "607,603",
+            "sn": "530111",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "318401"
-      },
-      {
-        "bonusRule": "All ally Curse, Almighty attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Electric",
-                "Bless"
-              ],
-              "Weak": [
-                "Curse"
-              ]
-            },
-            "image": "B-guaiwutouxiang-sraosha.png",
-            "level": "89",
-            "name": "スラオシャ",
-            "skill": "1021,1003,1019",
-            "sn": "529111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "318402"
+        "sn": "328402"
       }
     ],
-    "buff": "地殻の咆哮: テウルギアを発動するごとに、味方全体に『天墜の破片』を４つ付与する。また、敵を１体撃破するごとに、自身は『天墜の破片』を２つ獲得する。\n『天墜の破片』：２ターンの間、１つごとに与える最終ダメージが２.５%上昇する。最大１６個まで累積できる。",
+    "buff": "崩しの極意: 敵のダウン値を減少させるごとに、『崩しの律動』を１つ獲得する。\n『崩しの律動』：２ターンの間、１つごとに最終ダメージが２%上昇する。最大２０個まで累積できる。",
     "endTime": "2026-06-25 10:30:00",
     "startTime": "2026-06-11 11:30:00"
   },

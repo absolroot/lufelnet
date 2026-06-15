@@ -55,19 +55,19 @@
   "nature": "Electric",
   "passive_skill": [
     {
-      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 1 turn. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
+      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
       "name": "Thunder Lord's Majesty"
     },
     {
-      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
+      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 3 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 8%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
       "name": "Thunder Lord's Majesty I"
     },
     {
-      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
+      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 3 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 12%. Lasts for 2 turns.",
       "name": "Thunder Lord's Majesty II"
     },
     {
-      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 2 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 20%. Lasts for 2 turns.",
+      "desc": "Increase critical damage by 34.9%. Each time an ally uses an Electric skill, Resonance, Highlight, or Theurgy, gain 1 Thunder Lord's Majesty stack. Stacks up to 3 times. Lasts for 3 turns. When user deals Electric damage, and Thunder Lord's Majesty is at 3 stacks, increase all foes' Electric damage taken by 12%, and Electric critical damage taken by 20%. Lasts for 2 turns.",
       "name": "Thunder Lord's Majesty III"
     }
   ],

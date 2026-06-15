@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["모르가나·댄싱 스타"] = {
     "role": "질풍 대미지/다운 허약 디버퍼",
-    "video": [""],
+    "video": ["T1sV_u9jFZQ"],
     "video_en": [""],
     "video_jp": [""],
     "main_revelation": ["순수", "창조", "여정"],
@@ -23,8 +23,8 @@ window.characterSetting["모르가나·댄싱 스타"] = {
     "battle_plus_stats": "<b>공격력</b>/ 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점 <b>크리티컬 확률</b>/ 해명의 힘 / 마이팰리스: 1% (이상)",
     "battle_plus_stats_en": "<b>Attack</b>/ Thieves Den 50LV 65 / Thieves Den 70LV 110 (or higher) / Thieves Den Rating <b>Crit Rate</b>/ Eludi. Stat Buff / Thieves Den: 1% (or higher)",
     "battle_plus_stats_jp": "<b>攻撃力</b>/ マイパレス 50LV 65 / マイパレス 70LV 110 （以上） / マイパレス評価 <b>CRT発生率</b>/ 解明の力 / マイパレス: 1% （以上）",
-    "element_weakness": "",
-    "element_resistance": "",
+    "element_weakness": "전격",
+    "element_resistance": "질풍",
     "skill1_lv": "MAX!",
     "skill2_lv": "MAX!",
     "skill3_lv": "MAX!",

@@ -1427,7 +1427,7 @@ const defenseCalcData = {
       "target_en": "Multi",
       "target_jp": "複数対象",
       "skillIcon": "/assets/img/skill-element/디버프광역.png",
-      "skillName": "풍갈",
+      "skillName": "멎은 바람",
       "skillName_en": "Wind Exhaustion",
       "skillName_jp": "風竭",
       "options": [

@@ -1677,7 +1677,7 @@ class DefenseCalc {
         const afterPierceCoef = penetrateTotal >= 100 ? 0 : defenseCoef * (100 - penetrateTotal) / 100;
         // 2) 방어력 감소 적용 (0 하한)
         const afterReduceCoef = Math.max(0, afterPierceCoef - reduceTotalRaw);
-        // 3) 총 방어력 감소 적용 (풍갈 등, 0 하한)
+        // 3) 총 방어력 감소 적용 (멎은 바람 등, 0 하한)
         const finalCoef = Math.max(0, afterReduceCoef * (100 - totalDefenseReductionRaw) / 100);
 
         // 항상 목표치 표시 (order-switch 없이)

@@ -1,13 +1,13 @@
 {
   "data": {
-    "endTime": "2026-06-22 05:00:00",
+    "endTime": "2026-07-23 05:00:00",
     "nodes": {
-      "1901": {
+      "2001": {
         "affix": [
           {
-            "desc": "물리/총격/만능 속성 팀원이 주는 최종 대미지가 60% 증가한다.",
-            "name": "속성 자기장Ⅲ",
-            "sn": 4513
+            "desc": "지배 괴도가 주는 최종 대미지가 60% 증가한다.",
+            "name": "자기장 지배",
+            "sn": 4502
           }
         ],
         "award": [
@@ -37,11 +37,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-ganesha.png",
+            "image": "B-guaiwutouxiang-nagaraja.png",
             "level": "66",
-            "name": "요란한 가네샤",
-            "skill": "604,603,1019",
-            "sn": 640411,
+            "name": "요란한 나가라자",
+            "skill": "303,307,1317",
+            "sn": 640511,
             "stat": {}
           },
           {
@@ -52,25 +52,55 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-girimekara.png",
+            "image": "B-guaiwutouxiang-quetzalcoatl.png",
             "level": "66",
-            "name": "요란한 기리메칼라",
-            "skill": "1026,103",
-            "sn": 640412,
+            "name": "요란한 케찰코아틀",
+            "skill": "406,403,1084",
+            "sn": 640512,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-yurung.png",
+            "level": "66",
+            "name": "요란한 유룽",
+            "skill": "306,902,1317",
+            "sn": 640513,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-yurung.png",
+            "level": "66",
+            "name": "요란한 유룽",
+            "skill": "306,902,1317",
+            "sn": 640514,
             "stat": {}
           }
         ],
-        "id": 1901,
+        "id": 2001,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·ε",
+        "name": "체크 포인트·ι",
         "pos": [
-          150.0,
-          -360.0
+          114.39999999999999,
+          -400.0
         ],
         "unlockCond": null
       },
-      "1902": {
+      "2002": {
         "affix": [
           {
             "desc": "화염/빙결/전격/질풍 속성 팀원이 주는 최종 대미지가 60% 증가한다.",
@@ -101,7 +131,7 @@
           }
         ],
         "connected": [
-          1901
+          2001
         ],
         "enemy": [
           {
@@ -112,11 +142,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-queenMab.png",
+            "image": "B-guaiwutouxiang-jatayu.png",
             "level": "72",
-            "name": "요란한 퀸 메이브",
-            "skill": "103,306",
-            "sn": 640711,
+            "name": "요란한 자타유",
+            "skill": "403,407",
+            "sn": 640721,
             "stat": {}
           },
           {
@@ -127,30 +157,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-queenMab.png",
+            "image": "B-guaiwutouxiang-garuda.png",
             "level": "72",
-            "name": "요란한 퀸 메이브",
-            "skill": "103,306",
-            "sn": 640712,
+            "name": "요란한 가루다",
+            "skill": "403,406,1085",
+            "sn": 640722,
             "stat": {}
           }
         ],
-        "id": 1902,
+        "id": 2002,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·τ",
+        "name": "체크 포인트·γ",
         "pos": [
-          165.2,
-          20.0
+          102.8,
+          -11.600000000000023
         ],
         "unlockCond": null
       },
-      "1903": {
+      "2003": {
         "affix": [
           {
-            "desc": "모든 팀원이 추가 효과를 줄 때, 최종 대미지가 100% 증가한다.",
-            "name": "추가 자기장",
-            "sn": 4531
+            "desc": "모든 괴도의 TECHNICAL로 주는 최종 대미지가 100% 증가한다.",
+            "name": "기술 자기장",
+            "sn": 4535
           }
         ],
         "award": [
@@ -176,7 +206,8 @@
           }
         ],
         "connected": [
-          1902
+          2002,
+          2004
         ],
         "enemy": [
           {
@@ -187,11 +218,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-asura.png",
+            "image": "B-guaiwutouxiang-dominion.png",
             "level": "76",
-            "name": "흉악한 아수라왕",
-            "skill": "607,1023,603,604",
-            "sn": 643021,
+            "name": "흉악한 도미니온",
+            "skill": "905,902",
+            "sn": 643011,
             "stat": {}
           },
           {
@@ -202,30 +233,60 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-lakshmi.png",
+            "image": "B-guaiwutouxiang-power.png",
             "level": "76",
-            "name": "흉악한 락슈미",
-            "skill": "203,1503,1507",
-            "sn": 643022,
+            "name": "흉악한 파워",
+            "skill": "707,1008,1406",
+            "sn": 643012,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-principality.png",
+            "level": "76",
+            "name": "흉악한 프린시펄리티",
+            "skill": "1025,456,452",
+            "sn": 643013,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-archangel.png",
+            "level": "76",
+            "name": "흉악한 아크엔젤",
+            "skill": "1003,1019,1010",
+            "sn": 643014,
             "stat": {}
           }
         ],
-        "id": 1903,
+        "id": 2003,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "체크 포인트·α",
+        "name": "체크 포인트·η",
         "pos": [
-          100.0,
-          306.79999999999995
+          -68.4,
+          22.799999999999955
         ],
         "unlockCond": null
       },
-      "1904": {
+      "2004": {
         "affix": [
           {
-            "desc": "파티에 같은 속성의 괴도가 2/3/4명 있을 시, 전체 괴도의 최종 대미지가 20%/40%/60% 증가한다.",
-            "name": "같은 색 자기장",
-            "sn": 4514
+            "desc": "모든 괴도가 실드를 받을 때마다 3턴 동안 최종 대미지가 8% 증가한다(8회 중첩 가능).",
+            "name": "실드 자기장",
+            "sn": 4541
           }
         ],
         "award": [
@@ -251,7 +312,8 @@
           }
         ],
         "connected": [
-          1902
+          2003,
+          2006
         ],
         "enemy": [
           {
@@ -262,11 +324,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-melchizedek.png",
+            "image": "B-guaiwutouxiang-oberon.png",
             "level": "78",
-            "name": "비뚤어진 멜키세덱",
-            "skill": "712,1009,1006,1404",
-            "sn": 641211,
+            "name": "비뚤어진 오베론",
+            "skill": "303,1404,1021,1016",
+            "sn": 641231,
             "stat": {}
           },
           {
@@ -277,35 +339,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-melchizedek.png",
+            "image": "B-guaiwutouxiang-titania.png",
             "level": "78",
-            "name": "비뚤어진 멜키세덱",
-            "skill": "712,1009,1006,1404",
-            "sn": 641212,
+            "name": "비뚤어진 티타니아",
+            "skill": "303,603,1507",
+            "sn": 641232,
             "stat": {}
           }
         ],
-        "id": 1904,
+        "id": 2004,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·υ",
+        "name": "체크 포인트·θ",
         "pos": [
           -80.0,
-          126.79999999999995
+          205.60000000000002
         ],
-        "unlockCond": [
-          {
-            "type": "clearNodesCount",
-            "value": 3
-          }
-        ]
+        "unlockCond": null
       },
-      "1905": {
+      "2005": {
         "affix": [
           {
-            "desc": "모든 괴도 총공격 시전 시 최종 대미지 100% 증가",
-            "name": "총공격 자기장",
-            "sn": 4537
+            "desc": "적 전체가 다운 상태이면 받는 최종 대미지가 100% 증가한다.",
+            "name": "다운 자기장",
+            "sn": 4601
           }
         ],
         "award": [
@@ -331,7 +388,7 @@
           }
         ],
         "connected": [
-          1904
+          2004
         ],
         "enemy": [
           {
@@ -342,30 +399,35 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-koryu.png",
+            "image": "B-guaiwutouxiang-atabaku.png",
             "level": "82",
-            "name": "흉악한 황룡",
-            "skill": "504,507,1423",
-            "sn": 645111,
+            "name": "흉악한 아타바크",
+            "skill": "2444,107,1008",
+            "sn": 645011,
             "stat": {}
           }
         ],
-        "id": 1905,
+        "id": 2005,
         "img": "tianerong-xingpan-point02.png",
         "isActive": true,
-        "name": "체크 포인트·β",
+        "name": "체크 포인트·α",
         "pos": [
-          -90.0,
-          306.79999999999995
+          -251.6,
+          742.8000000000002
         ],
-        "unlockCond": null
+        "unlockCond": [
+          {
+            "type": "clearNodesCount",
+            "value": 4
+          }
+        ]
       },
-      "1906": {
+      "2006": {
         "affix": [
           {
-            "desc": "모든 괴도의 TECHNICAL로 주는 최종 대미지가 100% 증가한다.",
-            "name": "기술 자기장",
-            "sn": 4535
+            "desc": "모든 괴도 총공격 시전 시 최종 대미지 100% 증가",
+            "name": "총공격 자기장",
+            "sn": 4537
           }
         ],
         "award": [
@@ -391,7 +453,8 @@
           }
         ],
         "connected": [
-          1904
+          2002,
+          2004
         ],
         "enemy": [
           {
@@ -402,11 +465,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-kingfrost.png",
+            "image": "B-guaiwutouxiang-cuchulainn.png",
             "level": "80",
-            "name": "비뚤어진 킹 프로스트",
-            "skill": "203,207,1006",
-            "sn": 641911,
+            "name": "비뚤어진 쿠 훌린",
+            "skill": "1008,1102",
+            "sn": 641711,
             "stat": {}
           },
           {
@@ -417,45 +480,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-jaakufrost.png",
+            "image": "B-guaiwutouxiang-scathach.png",
             "level": "80",
-            "name": "비뚤어진 사악한 프로스트",
-            "skill": "207,204,1013,1102",
-            "sn": 641912,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-jaakufrost.png",
-            "level": "80",
-            "name": "비뚤어진 사악한 프로스트",
-            "skill": "207,204,1013,1102",
-            "sn": 641913,
+            "name": "비뚤어진 스카아하",
+            "skill": "1016,1404,207",
+            "sn": 641712,
             "stat": {}
           }
         ],
-        "id": 1906,
+        "id": 2006,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
         "name": "체크 포인트·δ",
         "pos": [
-          -160.0,
-          -146.8
+          125.6,
+          182.80000000000007
         ],
         "unlockCond": null
       },
-      "1907": {
+      "2007": {
         "affix": [
           {
-            "desc": "모든 적이 원소 이상 상태를 1개 보유할 때마다 받는 최종 대미지가 5% 증가한다. 또한, 동시에 4종 원소 이상 상태를 보유하면 받는 최종 대미지가 추가로 40% 증가한다.",
-            "name": "원소 자기장",
-            "sn": 4521
+            "desc": "모든 괴도는 추가 턴에서 최종 대미지가 120% 증가한다.",
+            "name": "재가동 자기장",
+            "sn": 4551
           }
         ],
         "award": [
@@ -481,7 +529,7 @@
           }
         ],
         "connected": [
-          1906
+          2006
         ],
         "enemy": [
           {
@@ -492,77 +540,76 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-futunusi.png",
+            "image": "B-guaiwutouxiang-anubis.png",
             "level": "82",
-            "name": "흉악한 후츠누시",
-            "skill": "1016,1008,1403",
-            "sn": 644021,
+            "name": "흉악한 아누비스",
+            "skill": "706,806",
+            "sn": 644421,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-set.png",
+            "level": "82",
+            "name": "흉악한 세트",
+            "skill": "103,1102",
+            "sn": 644422,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-tooto.png",
+            "level": "82",
+            "name": "흉악한 토트",
+            "skill": "901,602",
+            "sn": 644423,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-horus.png",
+            "level": "82",
+            "name": "흉악한 호루스",
+            "skill": "905,1082",
+            "sn": 644424,
             "stat": {}
           }
         ],
-        "id": 1907,
+        "id": 2007,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "체크 포인트·λ",
+        "name": "체크 포인트·β",
         "pos": [
-          -300.0,
-          -326.8
+          297.2,
+          582.8
         ],
-        "unlockCond": null
-      },
-      "1908": {
-        "affix": [],
-        "award": [],
-        "connected": [
-          1902
-        ],
-        "enemy": [],
-        "id": 1908,
-        "img": "tianerong-xingpan-point03.png",
-        "isActive": false,
-        "name": "체크 포인트·θ",
-        "pos": [
-          385.2,
-          -40.0
-        ],
-        "unlockCond": null
-      },
-      "1909": {
-        "affix": [],
-        "award": [],
-        "connected": [
-          1904
-        ],
-        "enemy": [],
-        "id": 1909,
-        "img": "tianerong-xingpan-point03.png",
-        "isActive": false,
-        "name": "체크 포인트·κ",
-        "pos": [
-          -220.00000000000003,
-          160.0
-        ],
-        "unlockCond": null
-      },
-      "1910": {
-        "affix": [],
-        "award": [],
-        "connected": [
-          1906
-        ],
-        "enemy": [],
-        "id": 1910,
-        "img": "tianerong-xingpan-point03.png",
-        "isActive": false,
-        "name": "체크 포인트·ζ",
-        "pos": [
-          -115.19999999999999,
-          -313.2
-        ],
-        "unlockCond": null
+        "unlockCond": [
+          {
+            "type": "clearNodesCount",
+            "value": 6
+          }
+        ]
       }
     },
-    "startTime": "2026-05-21 08:00:00"
+    "startTime": "2026-06-22 05:00:00"
   },
   "msg": "OK",
   "status": 0

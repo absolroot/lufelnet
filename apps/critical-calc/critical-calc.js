@@ -10,6 +10,7 @@ class CriticalCalc {
         this.selectedBuffItems = new Set();
         this.selectedSelfItems = new Set();
         this.skillEffectAmpState = this.loadSkillEffectAmpState();
+        this.mikuSkillEffectAmpValue = this.loadMikuSkillEffectAmpValue();
         this.syncI18nServiceLanguage();
 
         this.buildDatasets();
@@ -290,6 +291,22 @@ class CriticalCalc {
         } catch (_) {}
     }
 
+    loadMikuSkillEffectAmpValue() {
+        try {
+            const saved = localStorage.getItem('calcMikuSkillEffectAmpValueV1');
+            const parsed = parseFloat(saved);
+            return isFinite(parsed) ? Math.max(0, parsed) : 0;
+        } catch (_) {
+            return 0;
+        }
+    }
+
+    saveMikuSkillEffectAmpValue() {
+        try {
+            localStorage.setItem('calcMikuSkillEffectAmpValueV1', String(this.mikuSkillEffectAmpValue));
+        } catch (_) {}
+    }
+
     setItemBaseValue(item, value) {
         if (!item) return 0;
         const safeValue = isFinite(Number(value)) ? Number(value) : 0;
@@ -309,9 +326,15 @@ class CriticalCalc {
     }
 
     getSkillEffectAmpMultiplier(item) {
-        if (!this.skillEffectAmpState || !this.skillEffectAmpState.enabled) return 1;
         if (!item || item.skillEffectAmpAffected !== true) return 1;
-        return 1 + (this.skillEffectAmpState.value / 100);
+        const globalValue = this.skillEffectAmpState && this.skillEffectAmpState.enabled
+            ? this.skillEffectAmpState.value
+            : 0;
+        const mikuValue = item.mikuSkillEffectAmpAffected === true
+            ? this.mikuSkillEffectAmpValue
+            : 0;
+        const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue);
+        return 1 + (totalValue / 100);
     }
 
     getEffectiveItemValue(item) {
@@ -494,6 +517,56 @@ class CriticalCalc {
             if (tries < 20) setTimeout(tryTranslate, 100);
         };
         tryTranslate();
+    }
+
+    getMikuSkillEffectAmpLabel() {
+        const lang = this.getCurrentLang();
+        if (lang === 'en') return 'Skill Amplification';
+        if (lang === 'jp') return 'スキル成長効果';
+        if (lang === 'cn') return '技能效果增幅';
+        return '스킬 효과 증폭';
+    }
+
+    attachMikuSkillEffectAmpControl(headerTr) {
+        if (!headerTr) return;
+        try {
+            const infoWrap = headerTr.querySelector('.group-info');
+            if (!infoWrap || headerTr.querySelector('.miku-skill-effect-amp-container')) return;
+
+            const container = document.createElement('span');
+            container.className = 'jc-desire-container miku-skill-effect-amp-container';
+            container.addEventListener('click', (e) => e.stopPropagation());
+
+            const label = document.createElement('span');
+            label.className = 'jc-desire-label';
+            label.textContent = this.getMikuSkillEffectAmpLabel();
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'jc-desire-input miku-skill-effect-amp-input';
+            input.min = '0';
+            input.step = '0.1';
+            input.value = String(this.mikuSkillEffectAmpValue);
+            input.addEventListener('click', (e) => e.stopPropagation());
+            input.addEventListener('input', () => {
+                const rawValue = input.value;
+                const parsed = parseFloat(rawValue);
+                this.mikuSkillEffectAmpValue = isFinite(parsed) ? Math.max(0, parsed) : 0;
+                this.saveMikuSkillEffectAmpValue();
+                document.querySelectorAll('.miku-skill-effect-amp-input').forEach(el => {
+                    if (el !== input) el.value = rawValue;
+                });
+                this.refreshDisplayedValues();
+                this.updateTotal();
+            });
+            input.addEventListener('blur', () => {
+                input.value = String(this.mikuSkillEffectAmpValue);
+            });
+
+            container.appendChild(label);
+            container.appendChild(input);
+            infoWrap.appendChild(container);
+        } catch (_) {}
     }
 
     ensureJCCalcLoadedAndAttach() {
@@ -719,6 +792,10 @@ class CriticalCalc {
             // J&C 전용 Desire 레벨 컨트롤 추가 (renderAccordion 실행 시점에 JCCalc가 있으면 자동 부착)
             if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.attachDesireControl) {
                 JCCalc.attachDesireControl(headerTr, this, 'crit');
+            }
+
+            if (groupName === '미쿠') {
+                this.attachMikuSkillEffectAmpControl(headerTr);
             }
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
@@ -972,9 +1049,14 @@ class CriticalCalc {
             const select = document.createElement('select');
             select.setAttribute('data-id', data.id);
             const baseOptions = data.options;
-            const labelOptions = (currentLang === 'cn' && Array.isArray(data.options_cn) && data.options_cn.length === baseOptions.length)
-                ? data.options_cn
-                : baseOptions;
+            let labelOptions = baseOptions;
+            if (currentLang === 'en' && Array.isArray(data.options_en) && data.options_en.length === baseOptions.length) {
+                labelOptions = data.options_en;
+            } else if (currentLang === 'jp' && Array.isArray(data.options_jp) && data.options_jp.length === baseOptions.length) {
+                labelOptions = data.options_jp;
+            } else if (currentLang === 'cn' && Array.isArray(data.options_cn) && data.options_cn.length === baseOptions.length) {
+                labelOptions = data.options_cn;
+            }
 
             // 저장된 옵션 로드
             const savedOption = this.loadOptionSelection(data.id, isSelf);

@@ -46,7 +46,7 @@ window.characterSkillsData["유카리"] = {
   "passive1": {
     "name": "교감",
     "element": "패시브",
-    "description": "타케바 유카리가 필드에 있을 시, 아군 전체의 HIGHLIGHT/테우르기아의 대미지가 45.0% 증가한다.",
+    "description": "타케바 유카리가 필드에 있을 때, 아군 전체의 HIGHLIGHT/테우르기아 대미지가 45.0% 증가한다. 임의의 동료가 HIGHLIGHT/테우르기아를 시전한 후, 2턴 동안 해당 동료의 대미지가 20.0% 증가한다.",
     "cool": 0
   },
   "passive2": {
@@ -208,7 +208,7 @@ window.cnCharacterSkillsData["유카리"] = {
   "passive1": {
     "name": "默契",
     "element": "패시브",
-    "description": "岳羽由加莉在场时，所有同伴HIGHLIGHT/神通法伤害提升45.0%。",
+    "description": "岳羽由加莉在场时，所有同伴HIGHLIGHT/神通法伤害提升45.0%；任意同伴释放HIGHLIGHT/神通法后，该同伴伤害提升20.0%，持续2回合。",
     "cool": 0
   },
   "passive2": {

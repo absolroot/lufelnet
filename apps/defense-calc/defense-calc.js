@@ -52,6 +52,7 @@ class DefenseCalc {
         this.pierceSecondSum = document.getElementById('pierceSecondSum');
         this.pierceSecondTarget = document.getElementById('pierceSecondTarget');
         this.skillEffectAmpState = this.loadSkillEffectAmpState();
+        this.mikuSkillEffectAmpValue = this.loadMikuSkillEffectAmpValue();
         // order-switch 제거됨
         this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소 (계산용으로만 사용)
         this.reduceTotal = 0;
@@ -267,6 +268,22 @@ class DefenseCalc {
         } catch (_) { }
     }
 
+    loadMikuSkillEffectAmpValue() {
+        try {
+            const saved = localStorage.getItem('calcMikuSkillEffectAmpValueV1');
+            const parsed = parseFloat(saved);
+            return isFinite(parsed) ? Math.max(0, parsed) : 0;
+        } catch (_) {
+            return 0;
+        }
+    }
+
+    saveMikuSkillEffectAmpValue() {
+        try {
+            localStorage.setItem('calcMikuSkillEffectAmpValueV1', String(this.mikuSkillEffectAmpValue));
+        } catch (_) { }
+    }
+
     setItemBaseValue(item, value) {
         if (!item) return 0;
         const safeValue = isFinite(Number(value)) ? Number(value) : 0;
@@ -286,9 +303,15 @@ class DefenseCalc {
     }
 
     getSkillEffectAmpMultiplier(item) {
-        if (!this.skillEffectAmpState || !this.skillEffectAmpState.enabled) return 1;
         if (!item || item.skillEffectAmpAffected !== true) return 1;
-        return 1 + (this.skillEffectAmpState.value / 100);
+        const globalValue = this.skillEffectAmpState && this.skillEffectAmpState.enabled
+            ? this.skillEffectAmpState.value
+            : 0;
+        const mikuValue = item.mikuSkillEffectAmpAffected === true
+            ? this.mikuSkillEffectAmpValue
+            : 0;
+        const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue);
+        return 1 + (totalValue / 100);
     }
 
     getEffectiveItemValue(item) {
@@ -655,6 +678,57 @@ class DefenseCalc {
         tryTranslate();
     }
 
+    getMikuSkillEffectAmpLabel() {
+        const lang = this.getCurrentLang();
+        if (lang === 'en') return 'Skill Amplification';
+        if (lang === 'jp') return 'スキル成長効果';
+        if (lang === 'cn') return '技能效果增幅';
+        return '스킬 효과 증폭';
+    }
+
+    attachMikuSkillEffectAmpControl(headerTr) {
+        if (!headerTr) return;
+        try {
+            const infoWrap = headerTr.querySelector('.group-info');
+            if (!infoWrap || headerTr.querySelector('.miku-skill-effect-amp-container')) return;
+
+            const container = document.createElement('span');
+            container.className = 'jc-desire-container miku-skill-effect-amp-container';
+            container.addEventListener('click', (e) => e.stopPropagation());
+
+            const label = document.createElement('span');
+            label.className = 'jc-desire-label';
+            label.textContent = this.getMikuSkillEffectAmpLabel();
+
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.className = 'jc-desire-input miku-skill-effect-amp-input';
+            input.min = '0';
+            input.step = '0.1';
+            input.value = String(this.mikuSkillEffectAmpValue);
+            input.addEventListener('click', (e) => e.stopPropagation());
+            input.addEventListener('input', () => {
+                const rawValue = input.value;
+                const parsed = parseFloat(rawValue);
+                this.mikuSkillEffectAmpValue = isFinite(parsed) ? Math.max(0, parsed) : 0;
+                this.saveMikuSkillEffectAmpValue();
+                document.querySelectorAll('.miku-skill-effect-amp-input').forEach(el => {
+                    if (el !== input) el.value = rawValue;
+                });
+                this.refreshDisplayedValues();
+                this.updatePenetrateTotal();
+                this.updateTotal();
+            });
+            input.addEventListener('blur', () => {
+                input.value = String(this.mikuSkillEffectAmpValue);
+            });
+
+            container.appendChild(label);
+            container.appendChild(input);
+            infoWrap.appendChild(container);
+        } catch (_) { }
+    }
+
     ensureJCCalcLoadedAndAttach() {
         // 이미 로드된 경우 바로 부착
         if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
@@ -863,6 +937,10 @@ class DefenseCalc {
                     }
                 }
             } catch (_) { }
+
+            if (groupName === '미쿠') {
+                this.attachMikuSkillEffectAmpControl(headerTr);
+            }
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {

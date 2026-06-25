@@ -21,6 +21,110 @@ const penetrateData = {
       "options_cn": []
     },
   ],
+  "미쿠": [
+    {
+      "id": "miku-penetrate",
+      "type": "스킬1",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/버프.png",
+      "skillName": "비트 사운드",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 9.0,
+        "LV10+심상5": 9.9,
+        "LV13": 10.1,
+        "LV13+심상5": 11.0
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 11.0,
+      "skillEffectAmpAffected": true,
+      "mikuSkillEffectAmpAffected": true,
+      "duration": "3턴",
+      "note": "『HEAVEN』 재생 / 폭발의 멜로디 획득 시",
+      "note_en": "Heaven / Break Track",
+      "note_jp": "HEAVEN / ブレイクトラック",
+      "options_en": [
+        "LV10",
+        "LV10+Mindscape5",
+        "LV13",
+        "LV13+Mindscape5"
+      ],
+      "options_jp": [
+        "LV10",
+        "LV10+イメジャリー5",
+        "LV13",
+        "LV13+イメジャリー5"
+      ],
+      "skillName_cn": "节奏之音",
+      "note_cn": "播放『Heaven』 / 获得『音爆旋律』",
+      "type_cn": "技能1",
+      "target_cn": "群体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
+    },
+    {
+      "id": "miku-sync-penetrate",
+      "type": "스킬1",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/버프.png",
+      "skillName": "비트 사운드(싱크로 심상)",
+      "skillName_en": "Feel the Beat (Sync Mindscape)",
+      "skillName_jp": "ビートサウンド（シンクロイメジャリー）",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 15.0,
+        "LV10+심상5": 16.5,
+        "LV13": 16.8,
+        "LV13+심상5": 18.3
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 18.3,
+      "skillEffectAmpAffected": true,
+      "mikuSkillEffectAmpAffected": true,
+      "duration": "3턴",
+      "note": "『HEAVEN』 재생 / 폭발의 멜로디 획득 시",
+      "note_en": "Heaven / Break Track",
+      "note_jp": "HEAVEN / ブレイクトラック",
+      "options_en": [
+        "LV10",
+        "LV10+Mindscape5",
+        "LV13",
+        "LV13+Mindscape5"
+      ],
+      "options_jp": [
+        "LV10",
+        "LV10+イメジャリー5",
+        "LV13",
+        "LV13+イメジャリー5"
+      ],
+      "skillName_cn": "节奏之音（同步心象）",
+      "note_cn": "播放『Heaven』 / 获得『音爆旋律』",
+      "type_cn": "技能1",
+      "target_cn": "群体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
+    }
+  ],
   "J&C": [
     {
       "id": "jc1",

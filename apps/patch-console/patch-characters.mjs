@@ -959,6 +959,38 @@ function transformSkillItem(item, options = {}) {
   return out;
 }
 
+function extractSyncHighlightValues(normalDesc, syncDesc) {
+  const numberPattern = /\d+(?:\.\d+)?%?(?:\/\d+(?:\.\d+)?%?){0,6}/g;
+  const normalValues = String(normalDesc || '').match(numberPattern) || [];
+  const syncValues = String(syncDesc || '').match(numberPattern) || [];
+  const changed = [];
+  const seen = new Set();
+
+  for (let i = 0; i < syncValues.length; i += 1) {
+    const value = syncValues[i];
+    if (value !== normalValues[i] && !seen.has(value)) {
+      changed.push(value);
+      seen.add(value);
+    }
+  }
+
+  return changed;
+}
+
+function applySyncNormalSkill(transformed, normalItem, syncItem) {
+  if (!transformed || !normalItem || !syncItem) return transformed;
+  if (String(normalItem.sn || '') !== String(syncItem.sn || '')) return transformed;
+  if (!hasText(syncItem.desc)) return transformed;
+
+  transformed.sync_description = syncItem.desc;
+  const highlightValues = extractSyncHighlightValues(normalItem.desc, syncItem.desc);
+  if (highlightValues.length > 0) {
+    transformed.sync_highlight_values = highlightValues;
+  }
+
+  return transformed;
+}
+
 function getSkillRoot(data) {
   if (!data || typeof data !== 'object') return {};
   if (data.skill && typeof data.skill === 'object') return data.skill;
@@ -975,9 +1007,11 @@ function buildSkillPayload(external) {
   }
 
   const normal = Array.isArray(skillRoot.normal_skill) ? skillRoot.normal_skill : [];
+  const syncNormal = Array.isArray(skillRoot.sync_normal_skill) ? skillRoot.sync_normal_skill : [];
   for (let i = 0; i < normal.length; i += 1) {
     const transformed = transformSkillItem(normal[i], { group: 'normal' });
     if (!transformed) continue;
+    applySyncNormalSkill(transformed, normal[i], syncNormal[i]);
     payload[`skill${i + 1}`] = transformed;
   }
 

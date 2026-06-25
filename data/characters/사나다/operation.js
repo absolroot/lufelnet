@@ -4,18 +4,30 @@ window.operationData["사나다"] = {
         {
             "label": "의식 0",
             "value": "1 › 2 › 펀치+3 › 1 › 2 › 펀치+3"
+        },
+        {
+            "label": "의식 0",
+            "value": "2 › 1 › 펀치+3 › 2 › 1 › 펀치+3"
         }
     ],
     "basic_en": [
         {
             "label": "A0",
             "value": "1 › 2 › Punch+3 › 1 › 2 › Punch+3"
+        },
+        {
+            "label": "A0",
+            "value": "2 › 1 › Punch+3 › 2 › 1 › Punch+3"
         }
     ],
     "basic_jp": [
         {
             "label": "意識 0",
             "value": "1 › 2 › パンチ+3 › 1 › 2 › パンチ+3"
+        },
+        {
+            "label": "意識 0",
+            "value": "2 › 1 › パンチ+3 › 2 › 1 › パンチ+3"
         }
     ],
     "note": []

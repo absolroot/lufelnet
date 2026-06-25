@@ -20,7 +20,7 @@ window.personaFiles["비슈누"] = {
   "comment": "마하갈다인을 통해 풍습 부여 시 광역 방어력 감소 효과를 적용할 수 있다.",
   "comment_en": "Through Magarudyne, you can apply area-wide defense reduction effects when inflicting Windswept.",
   "comment_jp": "マハガルダインを通じて風襲付与時に広域防御力減少効果を適用できる。",
-    "comment_cn": "通过玛哈加尔达因附加风袭时，也可以同时施加群体防御力降低效果。",
+  "comment_cn": "通过玛哈加尔达因附加风袭时，也可以同时施加群体防御力降低效果。",
   "added": "KR v2.3.2",
   "cost": {
     "blue": 0,
@@ -111,7 +111,7 @@ window.personaFiles["비슈누"] = {
     "name_jp": "寂滅の風",
     "desc": "1명의 적에게 공격력 192.0%/201.6%/211.2%의 질풍 속성 대미지를 주고, 75%의 기본 확률로 적을 풍습 상태에 빠뜨린다.\n적이 풍습 상태인 경우 지속 시간을 초기화하고, 이번 스킬이 주는 대미지가 27.0%/28.4%/29.7% 증가하며 적이 받는 질풍 대미지가 27.0%/28.4%/29.7% 심화된다. 효과는 2턴 동안 지속된다.",
     "desc_en": "Deal Wind damage to 1 foe equal to 192.0%/201.6%/211.2% of Attack with a 75% chance to inflict Windswept.\nIf the target already has Windswept, reset effect duration and increase this skill's damage by 27.0%/28.4%/29.7%. Also, increase foes' Wind damage taken by 27.0%/28.4%/29.7% for 2 turns.",
-    "desc_jp": "敵単体に攻撃力192.0%/201.6%/211.2%の疾風属性ダメージを与え、７５%の確率で風襲状態にする。\n対象がすでに風襲状態の場合、効果時間をリセットし、このスキルの与ダメージが27.0%/28.4%/29.7%上昇する。さらに２ターンの間、敵の疾風属性の被ダメージが27.0%/28.4%/29.7%上昇する。",
+    "desc_jp": "敵単体に攻撃力192.0%/201.6%/211.2%の疾風属性ダメージを与え、７５%の確率で風襲状態にする。\n対象がすでに風襲状態の場合、持続ターンをリセットし、このスキルの与ダメージが27.0%/28.4%/29.7%上昇する。さらに２ターンの間、敵の疾風属性の被ダメージが27.0%/28.4%/29.7%上昇する。",
     "priority": 3,
     "icon": "질풍",
     "icon_gl": "",

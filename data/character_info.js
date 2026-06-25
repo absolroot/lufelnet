@@ -12,7 +12,7 @@ window.characterList = window.characterList || {
         "하루", "하루나", "치즈코", "J&C"
     ],
     supportParty: [
-        "리코", "미유", "마나카", "유우미", "카요", "후타바", "후카"
+        "리코", "미유", "마나카", "유우미", "카요", "후타바", "후카", "미쿠"
     ]
 };
 
@@ -30,6 +30,74 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
+    "아야카·여름": {
+        "limit": true,
+        "tag": "",
+        "tag_en": "",
+        "tag_jp": "",
+        "tag_cn": "",
+        "color": "#b0ff6f",
+        "element": "질풍",
+        "rarity": 5,
+        "position": "",
+        "release_order": 51,
+        "persona": "칼리오페",
+        "persona_en": "Calliope",
+        "persona_jp": "カリオペ",
+        "name": "아야카·여름",
+        "name_en": "Ayaka·Summer",
+        "name_jp": "坂井 綾香 夏",
+        "name_cn": "坂井绫香·夏日",
+        "codename": "CHORD·Summer",
+        "skill_item": 6
+    },
+    "안·댄싱 스타": {
+        "limit": true,
+        "tag": "",
+        "tag_en": "",
+        "tag_jp": "",
+        "tag_cn": "",
+        "color": "#ff2c2cff",
+        "element": "화염",
+        "rarity": 5,
+        "position": "",
+        "release_order": 50,
+        "codename": "PANTHER·Starlight",
+        "persona": "",
+        "persona_en": "",
+        "persona_jp": "",
+        "persona_cn": "",
+        "persona_cn": "卡门",
+        "name": "타카마키 안",
+        "name_en": "Ann Takamaki·Starlight",
+        "name_jp": "高巻 杏・スターナイト",
+        "name_cn": "高卷杏·星舞",
+        "skill_item": 6
+    },
+    "미쿠": {
+        "limit": true,
+        "tag": "버추얼 라이브, 공격력, 대미지 보너스, 크리티컬 확률, 크리티컬 효과, 관통, 회복",
+        "tag_en": "Virtual Concert, Attack, DMG Bonus, Critical Rate, Critical Damage, Pierce, Healing",
+        "tag_jp": "バーチャルライブ、攻撃力、与ダメージ、CRT発生率、CRT倍率、貫通、回復",
+        "tag_cn": "虚拟演唱会、攻击力、伤害提升、暴击率、暴击效果、穿透、治疗",
+        "color": "#39c5bb",
+        "element": "버프",
+        "rarity": 5,
+        "position": "해명",
+        "release_order": 49,
+        "hidePersonaName": true,
+        "persona": "페르소나",
+        "persona_en": "Persona",
+        "persona_jp": "ペルソナ",
+        "persona_cn": "佩尔索纳",
+        "name": "하츠네 미쿠",
+        "name_en": "Hatsune Miku",
+        "name_jp": "初音ミク",
+        "name_cn": "初音未来",
+        "name_tw": "初音未來",
+        "codename": "MIKU",
+        "skill_item": 4
+    },
     "모르가나·댄싱 스타": {
         "limit": true,
         "tag": "풍습, 방어력 감소, 공격력, 크리티컬 효과, 다운 허약, 버프 해제, 회복, 대미지 보너스",
@@ -277,6 +345,7 @@ Object.assign(window.characterData, {
         "skill_item": 6,
         "persona_cn": "金诺"
     },
+
     "후카": {
         "limit": true,
         "persona3": true,

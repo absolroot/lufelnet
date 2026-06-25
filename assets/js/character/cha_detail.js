@@ -52,6 +52,81 @@ document.addEventListener('DOMContentLoaded', () => {
         return fallback;
     }
 
+    let syncMindscapeActive = false;
+    let syncMindscapeUserToggled = false;
+
+    function hasSyncMindscapeSkills(character) {
+        if (!character) return false;
+        return ['skill1', 'skill2', 'skill3'].some((skillType) => {
+            const skill = character[skillType];
+            return skill && skill.sync_description;
+        });
+    }
+
+    function isSyncMindscapeDefaultLang(lang) {
+        return lang === 'kr' || lang === 'cn';
+    }
+
+    function createSyncMindscapeHelpIcon() {
+        let helpIcon = null;
+
+        if (window.CharI18N && typeof window.CharI18N.createHelpIcon === 'function') {
+            const template = document.createElement('template');
+            template.innerHTML = window.CharI18N.createHelpIcon('sync-mindscape').trim();
+            helpIcon = template.content.firstElementChild;
+        }
+
+        if (!helpIcon) {
+            helpIcon = document.createElement('span');
+            helpIcon.className = 'help-icon tooltip-text';
+            helpIcon.setAttribute('data-help-type', 'sync-mindscape');
+            helpIcon.setAttribute('tabindex', '0');
+            helpIcon.textContent = '?';
+        }
+
+        helpIcon.classList.add('sync-mindscape-help');
+        return helpIcon;
+    }
+
+    function escapeRegExp(value) {
+        return String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function formatSkillDescription(description, levelIndex, syncHighlightValues) {
+        const syncValues = Array.isArray(syncHighlightValues) ? syncHighlightValues : [];
+        const syncValueSet = new Set(syncValues);
+        let formatted = String(description || '').replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
+            const values = match.split('/');
+            const isSyncValue = syncValueSet.has(match);
+
+            if (levelIndex === '-1') {
+                return values.map(value => {
+                    if (value === '[제보]') {
+                        return `<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" class="report-link" target="_blank">[제보]</a>`;
+                    }
+                    const className = isSyncValue ? 'skill-level-values sync-mindscape-value' : 'skill-level-values';
+                    return `<span class="${className}">${value}</span>`;
+                }).join('/');
+            }
+
+            const selectedValue = values[levelIndex] || values[values.length - 1];
+            if (selectedValue === '[제보]') {
+                return `<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" class="report-link" target="_blank">[제보]</a>`;
+            }
+            const className = isSyncValue ? 'skill-level-values sync-mindscape-value' : 'skill-level-values';
+            return `<span class="${className}">${selectedValue}</span>`;
+        });
+
+        syncValues
+            .filter(value => !String(value).includes('/'))
+            .forEach((value) => {
+                const pattern = new RegExp(escapeRegExp(value), 'g');
+                formatted = formatted.replace(pattern, `<span class="sync-mindscape-value">${value}</span>`);
+            });
+
+        return formatted;
+    }
+
     function containsHangul(text) {
         return /[가-힣]/.test(String(text || ''));
     }
@@ -1671,7 +1746,23 @@ document.addEventListener('DOMContentLoaded', () => {
             skillSection.style.display = ''; // 스킬이 있으면 보이게
         }
 
+        const hasSyncMindscape = hasSyncMindscapeSkills(character);
+        if (!hasSyncMindscape) {
+            syncMindscapeActive = false;
+            syncMindscapeUserToggled = false;
+        } else if (!syncMindscapeUserToggled) {
+            syncMindscapeActive = isSyncMindscapeDefaultLang(currentLang);
+        } else {
+            syncMindscapeActive = syncMindscapeActive && hasSyncMindscape;
+        }
+
+        const existingToolbar = skillsGrid.parentElement.querySelector('.skill-level-toolbar');
+        if (existingToolbar) existingToolbar.remove();
+
         // 스킬 레벨 버튼 추가
+        const toolbar = document.createElement('div');
+        toolbar.className = 'skill-level-toolbar';
+
         const buttonContainer = document.createElement('div');
         buttonContainer.className = 'skill-level-buttons';
 
@@ -1709,7 +1800,35 @@ document.addEventListener('DOMContentLoaded', () => {
             buttonContainer.appendChild(button);
         });
 
-        skillsGrid.parentElement.insertBefore(buttonContainer, skillsGrid);
+        toolbar.appendChild(buttonContainer);
+
+        if (hasSyncMindscape) {
+            const syncControls = document.createElement('div');
+            syncControls.className = 'sync-mindscape-controls';
+
+            const syncButton = document.createElement('button');
+            syncButton.type = 'button';
+            syncButton.className = 'sync-mindscape-btn' + (syncMindscapeActive ? ' active' : '');
+            syncButton.textContent = t('characterSyncMindscapeButton', '싱크로 심상');
+            syncButton.setAttribute('aria-pressed', syncMindscapeActive ? 'true' : 'false');
+            syncButton.onclick = (event) => {
+                event.preventDefault();
+                syncMindscapeUserToggled = true;
+                syncMindscapeActive = syncButton.getAttribute('aria-pressed') !== 'true';
+                syncButton.classList.toggle('active', syncMindscapeActive);
+                syncButton.setAttribute('aria-pressed', syncMindscapeActive ? 'true' : 'false');
+                const activeLevel = document.querySelector('.skill-level-btn.active')?.dataset.level || '0';
+                window.updateSkillDescriptions(activeLevel, characterName);
+            };
+
+            const helpIcon = createSyncMindscapeHelpIcon();
+
+            syncControls.appendChild(syncButton);
+            syncControls.appendChild(helpIcon);
+            toolbar.appendChild(syncControls);
+        }
+
+        skillsGrid.parentElement.insertBefore(toolbar, skillsGrid);
 
         // 스킬 순서 정의
         let skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'passive1', 'passive2'];
@@ -1766,18 +1885,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // console.log(skill);
             // 각 스킬의 고유한 description 사용
-            let description = skill.description || '';
-
-            // 초기 설명에도 숫자 패턴에 skill-level-values 클래스 적용
-            description = description.replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
-                const values = match.split('/');
-                return values.map(value => {
-                    if (value === '[제보]') {
-                        return `<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" class="report-link" target="_blank">[제보]</a>`;
-                    }
-                    return `<span class="skill-level-values">${value}</span>`;
-                }).join('/');
-            });
+            let description = formatSkillDescription(skill.description || '', '-1', []);
 
 
             skillCard.innerHTML = `
@@ -1810,6 +1918,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     addTooltips();
                 }
             }, 100);
+        }
+        if (typeof window.setupHelpTooltips === 'function') {
+            window.setupHelpTooltips();
         }
     };
 
@@ -2002,6 +2113,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const character = getCharacterSkillDatasetByLang(currentLang, characterName);
 
         if (!character) return;
+        syncMindscapeActive = syncMindscapeActive && hasSyncMindscapeSkills(character);
+        document.querySelectorAll('.sync-mindscape-btn').forEach(btn => {
+            btn.classList.toggle('active', syncMindscapeActive);
+            btn.setAttribute('aria-pressed', syncMindscapeActive ? 'true' : 'false');
+        });
 
         // characterData에서 캐릭터 정보 가져오기
         const characterInfo = characterData[characterName];
@@ -2031,30 +2147,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const skill = character[skillTypes[index]];
 
             if (skill && skill.description) {
-                let description = skill.description;
-
-                if (levelIndex === '-1') { // '전체' 선택 시
-                    // 슬래시로 구분된 수치를 모두 표시 (4개 수치 지원)
-                    description = description.replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
-                        const values = match.split('/');
-                        return values.map(value => {
-                            if (value === '[제보]') {
-                                return `<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" class="report-link" target="_blank">[제보]</a>`;
-                            }
-                            return `<span class="skill-level-values">${value}</span>`;
-                        }).join('/');
-                    });
-                } else {
-                    // 특정 레벨의 수치만 표시
-                    description = description.replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, match => {
-                        const values = match.split('/');
-                        const selectedValue = values[levelIndex] || values[values.length - 1];
-                        if (selectedValue === '[제보]') {
-                            return `<a href="https://forms.gle/Z5SgtSNpSvnprJxAA" class="report-link" target="_blank">[제보]</a>`;
-                        }
-                        return `<span class="skill-level-values">${selectedValue}</span>`;
-                    });
-                }
+                const useSync = syncMindscapeActive && skill.sync_description;
+                const sourceDescription = useSync ? skill.sync_description : skill.description;
+                const syncHighlightValues = useSync ? skill.sync_highlight_values : [];
+                const description = formatSkillDescription(sourceDescription, levelIndex, syncHighlightValues);
 
                 descElement.innerHTML = description;
             }

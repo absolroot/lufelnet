@@ -13,6 +13,10 @@
     --char-scale: 1.12;
 }
 
+.character-images .thief-image[data-character="미쿠"][data-image-file="미쿠.webp"] {
+    --char-scale: 1.12;
+}
+
 .character-images .persona-image[data-character="렌·댄싱 스타"][data-persona="라울"][data-image-file="렌·댄싱 스타 - 라울.webp"] {
     --char-scale: 1.3;
 }

@@ -1312,6 +1312,26 @@ h2 {
     row-gap: 1rem;
 }
 
+.skill-level-toolbar {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.skill-level-toolbar .skill-level-buttons {
+    margin: 0;
+}
+
+.sync-mindscape-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: auto;
+}
+
 .enhancement-stages {
     display: flex;
     flex-wrap: wrap;
@@ -1319,7 +1339,8 @@ h2 {
 }
 
 .enhancement-btn,
-.skill-level-btn {
+.skill-level-btn,
+.sync-mindscape-btn {
     padding: 0.5rem 1rem;
     background: rgba(255, 255, 255, 0.1);
     border: 0px;
@@ -1329,7 +1350,8 @@ h2 {
 }
 
 .enhancement-btn:hover,
-.skill-level-btn:hover {
+.skill-level-btn:hover,
+.sync-mindscape-btn:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
@@ -1338,6 +1360,34 @@ h2 {
     box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5) inset;
     background: rgba(0, 0, 0, 0.1);
     color: #ffffff;
+}
+
+.sync-mindscape-btn.active {
+    box-shadow: 0 0 0 1px rgba(80, 210, 255, 0.7) inset;
+    background: rgba(80, 210, 255, 0.12);
+    color: #d8f6ff;
+}
+
+.skill-description .sync-mindscape-value,
+.skill-description .skill-level-values.sync-mindscape-value,
+.skill-description .sync-mindscape-value .number-value,
+.skill-description .skill-level-values.sync-mindscape-value .number-value {
+    color: #50d2ff !important;
+    font-weight: 600;
+}
+
+.sync-mindscape-help {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0;
+}
+
+.sync-mindscape-help svg {
+    width: 18px;
+    height: 18px;
+    display: block;
 }
 
 
@@ -1361,6 +1411,50 @@ h2 {
 @media(max-width: 768px) {
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skill-level-toolbar {
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        overflow: visible;
+        padding-bottom: 0;
+        margin: 1rem 0 1.25rem;
+    }
+
+    .skill-level-toolbar .skill-level-buttons {
+        width: 100%;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        row-gap: 0;
+        order: 2;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+    }
+
+    .skill-level-toolbar .skill-level-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .sync-mindscape-controls {
+        width: 100%;
+        order: 1;
+        margin-left: 0;
+        gap: 0.35rem;
+    }
+
+    .skill-level-btn,
+    .sync-mindscape-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .sync-mindscape-btn {
+        padding: 0.5rem 0.9rem;
     }
 }
 

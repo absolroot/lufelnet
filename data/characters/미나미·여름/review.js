@@ -37,7 +37,7 @@ After using Skill 3, the user can consume a buff during their own turn to use an
 - Increases 1 ally's DEF by 45% for 1 turn (unlimited)
 - Increases 1 ally's damage dealt by 25% for 1 turn (unlimited)
 - Increases 1 ally's DoT effect by 10% for 1 turn
-- Increases 1 ally's Additional Effect DMG by 10% for 1 turn
+- Increases 1 ally's Resonance DMG by 10% for 1 turn
 - Increases 1 ally's ONE MORE / All-Out Attack DMG by 10% for 1 turn
 - Increases 1 ally's HIGHLIGHT / Theurgy DMG by 10% for 1 turn
 - Increases 1 ally's Technical Precision by 600 for 1 turn

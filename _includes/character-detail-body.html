@@ -18,12 +18,26 @@
   var params = new URLSearchParams(window.location.search);
   var name = params.get('name');
   if (!name) return;
+  var canonicalName = name;
   var entry = map[name];
+  if (!entry || !entry.slug) {
+    var keys = Object.keys(map);
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+      var candidate = map[key];
+      if (!candidate || !Array.isArray(candidate.aliases)) continue;
+      if (candidate.aliases.indexOf(name) !== -1) {
+        canonicalName = key;
+        entry = candidate;
+        break;
+      }
+    }
+  }
   if (!entry || !entry.slug) return;
   var lang = params.get('lang') || 'kr';
   if (['kr','en','jp','cn'].indexOf(lang) === -1) lang = 'kr';
   // Set __CHARACTER_DEFAULT so get('name') fallbacks work after replaceState
-  window.__CHARACTER_DEFAULT = name;
+  window.__CHARACTER_DEFAULT = canonicalName;
   // Set SEO flag so LanguageRouter skips redirect logic after replaceState
   window.__SEO_PATH_LANG__ = lang;
   var newPath = '/' + lang + '/character/' + entry.slug + '/';
@@ -1104,6 +1118,8 @@
             window.MayumiCalc = window.MayumiCalc || {};
             // 카타야마 전용 계산기 전역 스텁
             window.KatayamaCalc = window.KatayamaCalc || {};
+            // 미쿠 전용 페이지 보정 전역 스텁
+            window.MikuCalc = window.MikuCalc || {};
         } catch (e) { console.warn('[SAFE:init-globals]', e); }
 
         async function loadCharacterDataAll(name) {
@@ -1153,6 +1169,11 @@
             // 카타야마 전용 속도 계산기 로드
             if (name === '카타야마') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'katayama_calc', globalVarName: 'KatayamaCalc' }));
+            }
+
+            // 미쿠 전용 페이지 보정 로드
+            if (name === '미쿠') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'miku_calc', globalVarName: 'MikuCalc' }));
             }
 
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
@@ -1545,11 +1566,16 @@
                     character.persona || '';
             const personaEl = document.querySelector('.persona-name');
             if (personaEl) {
-                personaEl.innerHTML = `
-                    <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
-                `;
-                if (currentLang === 'cn' && !personaValue) {
+                if (character.hidePersonaName) {
+                    personaEl.innerHTML = '';
                     personaEl.style.display = 'none';
+                } else {
+                    personaEl.innerHTML = `
+                        <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
+                    `;
+                    if (currentLang === 'cn' && !personaValue) {
+                        personaEl.style.display = 'none';
+                    }
                 }
             }
         } catch (e) { console.warn('[SAFE:code-persona]', e); }

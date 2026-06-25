@@ -743,6 +743,14 @@ a.mindscape-core-item {
     background: rgba(255, 255, 255, 0.1);
 }
 
+.character-item.click-disabled {
+    cursor: default;
+}
+
+.character-item.click-disabled:hover {
+    background: rgba(255, 255, 255, 0.04);
+}
+
 /* Character Avatar */
 .character-avatar {
     width: 48px;

@@ -197,10 +197,12 @@ function addTooltips() {
             
             // enhancement-values나 skill-level-values 클래스를 가진 span 내부인지 확인
             const isInSpecialValues = (
-                (/<span class="enhancement-values">.*?$/.test(beforeText) && 
-                !/<\/span>/.test(beforeText.split('<span class="enhancement-values">').pop())) ||
-                (/<span class="skill-level-values">.*?$/.test(beforeText) && 
-                !/<\/span>/.test(beforeText.split('<span class="skill-level-values">').pop()))
+                (/<span class="[^"]*\benhancement-values\b[^"]*">.*?$/.test(beforeText) &&
+                !/<\/span>/.test(beforeText.split(/\<span class="[^"]*\benhancement-values\b[^"]*">/).pop())) ||
+                (/<span class="[^"]*\bskill-level-values\b[^"]*">.*?$/.test(beforeText) &&
+                !/<\/span>/.test(beforeText.split(/\<span class="[^"]*\bskill-level-values\b[^"]*">/).pop())) ||
+                (/<span class="[^"]*\bsync-mindscape-value\b[^"]*">.*?$/.test(beforeText) &&
+                !/<\/span>/.test(beforeText.split(/\<span class="[^"]*\bsync-mindscape-value\b[^"]*">/).pop()))
             );
             if (isInSpecialValues) {
                 return match;

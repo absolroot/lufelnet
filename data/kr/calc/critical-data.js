@@ -360,6 +360,110 @@ const criticalBuffData = {
       ]
     }
   ],
+  "미쿠": [
+    {
+      "id": "miku-crit-rate",
+      "type": "스킬2",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/버프.png",
+      "skillName": "클리어 사운드",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 9.0,
+        "LV10+심상5": 9.9,
+        "LV13": 10.1,
+        "LV13+심상5": 11.0
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 11.0,
+      "skillEffectAmpAffected": true,
+      "mikuSkillEffectAmpAffected": true,
+      "duration": "3턴",
+      "note": "『불장난(ヒアソビ)』 재생 / 전념의 멜로디 획득 시",
+      "note_en": "Play-With-Fire / Expert Track",
+      "note_jp": "ヒアソビ / エキスパートトラック",
+      "options_en": [
+        "LV10",
+        "LV10+Mindscape5",
+        "LV13",
+        "LV13+Mindscape5"
+      ],
+      "options_jp": [
+        "LV10",
+        "LV10+イメジャリー5",
+        "LV13",
+        "LV13+イメジャリー5"
+      ],
+      "skillName_cn": "清亮之音",
+      "note_cn": "播放『ヒアソビ』",
+      "type_cn": "技能2",
+      "target_cn": "群体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
+    },
+    {
+      "id": "miku-sync-crit-rate",
+      "type": "스킬2",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/버프.png",
+      "skillName": "클리어 사운드(싱크로 심상)",
+      "skillName_en": "Clear Sound (Sync Mindscape)",
+      "skillName_jp": "クリアサウンド（シンクロイメジャリー）",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 15.0,
+        "LV10+심상5": 16.5,
+        "LV13": 16.8,
+        "LV13+심상5": 18.3
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 18.3,
+      "skillEffectAmpAffected": true,
+      "mikuSkillEffectAmpAffected": true,
+      "duration": "3턴",
+      "note": "『불장난(ヒアソビ)』 재생 / 전념의 멜로디 획득 시",
+      "note_en": "Play-With-Fire / Expert Track",
+      "note_jp": "ヒアソビ / エキスパートトラック",
+      "options_en": [
+        "LV10",
+        "LV10+Mindscape5",
+        "LV13",
+        "LV13+Mindscape5"
+      ],
+      "options_jp": [
+        "LV10",
+        "LV10+イメジャリー5",
+        "LV13",
+        "LV13+イメジャリー5"
+      ],
+      "skillName_cn": "清亮之音（同步心象）",
+      "note_cn": "播放『ヒアソビ』",
+      "type_cn": "技能2",
+      "target_cn": "群体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "LV10",
+        "LV10+心象5",
+        "LV13",
+        "LV13+心象5"
+      ]
+    }
+  ],
   "렌·댄싱 스타": [
     {
       "id": "ren-starlight-s1-enhanced-crit-rate",

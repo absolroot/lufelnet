@@ -1,0 +1,37 @@
+window.characterSetting = window.characterSetting || {};
+window.characterSetting["미쿠"] = {
+    "role": "가상 콘서트 해명",
+    "video": ["Wei_GLHARR4"],
+    "video_en": [""],
+    "video_jp": [""],
+    "main_revelation": ["희망", "진정성"],
+    "sub_revelation": ["직책", "직책"],
+    "sub_revel2": ["공격력"],
+    "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
+    "sub_revel4": ["공격력"],
+    "sub_option1": ["공격력"],
+    "sub_option2": ["크리티컬 효과", "크리티컬 확률",],
+    "sub_option3": ["관통", "대미지 보너스"],
+    "minimum_stats": {
+        "LV10": "공격력 4400",
+        "LV10+5": "공격력 4840",
+        "LV12": false,
+        "LV12+5": false,
+        "LV13": "공격력 4928",
+        "LV13+5": "공격력 5368"
+    },
+    "battle_plus_stats": "· 마이팰리스 50LV 65 / 마이팰리스 70LV 110 (이상) / 마이팰리스 평점",
+    "battle_plus_stats_en": "· Thieves Den 50LV 65 / Thieves Den 70LV 110 (or higher) / Thieves Den Rating",
+    "battle_plus_stats_jp": "・マイパレス 50LV 65 / マイパレス 70LV 110 （以上） / マイパレス評価",
+    "element_weakness": "",
+    "element_resistance": "",
+    "skill1_lv": "MAX!",
+    "skill2_lv": "MAX!",
+    "skill3_lv": "MAX!",
+    "skill4_lv": "-",
+    "skill_priority": "3>1>2",
+    "mind_stats1": "생명 20%!",
+    "mind_stats2": "크리티컬 확률 12%!",
+    "mind_skill1": "S2/S3!",
+    "mind_skill2": "S1!"
+};

@@ -890,12 +890,12 @@ const ritualPatterns = {
         {
         level: "0-6",  
         pattern: [
+            [],
             [{ type: "스킬1" }],
             [{ type: "스킬3" }],
             [{ type: "스킬1" }],
             [{ type: "스킬3" }],
-            [{ type: "스킬1" }],
-            [{ type: "스킬3" }]
+            [{ type: "스킬1" }]
         ]
         }
     ]

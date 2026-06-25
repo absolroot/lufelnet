@@ -647,6 +647,38 @@ function transformSkill(item, { group, removeName = false, keepName = true } = {
   return out;
 }
 
+function extractSyncHighlightValues(normalDesc, syncDesc) {
+  const numberPattern = /\d+(?:\.\d+)?%?(?:\/\d+(?:\.\d+)?%?){0,6}/g;
+  const normalValues = String(normalDesc || '').match(numberPattern) || [];
+  const syncValues = String(syncDesc || '').match(numberPattern) || [];
+  const changed = [];
+  const seen = new Set();
+
+  for (let i = 0; i < syncValues.length; i += 1) {
+    const value = syncValues[i];
+    if (value !== normalValues[i] && !seen.has(value)) {
+      changed.push(value);
+      seen.add(value);
+    }
+  }
+
+  return changed;
+}
+
+function applySyncNormalSkill(transformed, normalItem, syncItem) {
+  if (!transformed || !normalItem || !syncItem) return transformed;
+  if (String(normalItem.sn || '') !== String(syncItem.sn || '')) return transformed;
+  if (typeof syncItem.desc !== 'string' || !syncItem.desc.trim()) return transformed;
+
+  transformed.sync_description = syncItem.desc;
+  const highlightValues = extractSyncHighlightValues(normalItem.desc, syncItem.desc);
+  if (highlightValues.length > 0) {
+    transformed.sync_highlight_values = highlightValues;
+  }
+
+  return transformed;
+}
+
 function updateSkills(lang, charKey, external) {
   const skillsPath = path.join('data', lang, 'characters', 'character_skills.js');
   if (!fs.existsSync(skillsPath)) return;
@@ -665,6 +697,7 @@ function updateSkills(lang, charKey, external) {
   // 외부 스키마가 data.skill.* 또는 data.* 형태 둘 다 올 수 있으므로 통합 처리
   const skills = data.skill || data;
   const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
+  const syncNormal = Array.isArray(skills.sync_normal_skill) ? skills.sync_normal_skill : [];
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
@@ -674,9 +707,9 @@ function updateSkills(lang, charKey, external) {
     : (highlightRaw && typeof highlightRaw === 'object' ? [highlightRaw] : null);
 
   // normal_skill -> skill1/2/3
-  if (normal[0]) setMergedObjectProp(charObj, 'skill1', transformSkill(normal[0], { group: 'normal' }));
-  if (normal[1]) setMergedObjectProp(charObj, 'skill2', transformSkill(normal[1], { group: 'normal' }));
-  if (normal[2]) setMergedObjectProp(charObj, 'skill3', transformSkill(normal[2], { group: 'normal' }));
+  if (normal[0]) setMergedObjectProp(charObj, 'skill1', applySyncNormalSkill(transformSkill(normal[0], { group: 'normal' }), normal[0], syncNormal[0]));
+  if (normal[1]) setMergedObjectProp(charObj, 'skill2', applySyncNormalSkill(transformSkill(normal[1], { group: 'normal' }), normal[1], syncNormal[1]));
+  if (normal[2]) setMergedObjectProp(charObj, 'skill3', applySyncNormalSkill(transformSkill(normal[2], { group: 'normal' }), normal[2], syncNormal[2]));
 
   // assist_skill -> skill_support (element = 버프)
   if (assist[0]) setMergedObjectProp(charObj, 'skill_support', transformSkill(assist[0], { group: 'assist' }));
@@ -921,6 +954,7 @@ function buildSkillsObjectFromExternal(external) {
   // 외부 스키마가 data.skill.* 또는 data.* 형태 둘 다 올 수 있으므로 통합 처리
   const skills = data.skill || data;
   const normal = Array.isArray(skills.normal_skill) ? skills.normal_skill : [];
+  const syncNormal = Array.isArray(skills.sync_normal_skill) ? skills.sync_normal_skill : [];
   const assist = Array.isArray(skills.assist_skill) ? skills.assist_skill : [];
   const passive = Array.isArray(skills.passive_skill) ? skills.passive_skill : [];
   const theurgia = Array.isArray(skills.theurgia_skill) ? skills.theurgia_skill : [];
@@ -929,9 +963,9 @@ function buildSkillsObjectFromExternal(external) {
     ? highlightRaw
     : (highlightRaw && typeof highlightRaw === 'object' ? [highlightRaw] : null);
 
-  if (normal[0]) res.skill1 = transformSkill(normal[0], { group: 'normal' });
-  if (normal[1]) res.skill2 = transformSkill(normal[1], { group: 'normal' });
-  if (normal[2]) res.skill3 = transformSkill(normal[2], { group: 'normal' });
+  if (normal[0]) res.skill1 = applySyncNormalSkill(transformSkill(normal[0], { group: 'normal' }), normal[0], syncNormal[0]);
+  if (normal[1]) res.skill2 = applySyncNormalSkill(transformSkill(normal[1], { group: 'normal' }), normal[1], syncNormal[1]);
+  if (normal[2]) res.skill3 = applySyncNormalSkill(transformSkill(normal[2], { group: 'normal' }), normal[2], syncNormal[2]);
 
   if (assist[0]) res.skill_support = transformSkill(assist[0], { group: 'assist' });
 

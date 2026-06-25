@@ -843,6 +843,7 @@ Object.assign(window.characterData, {
     },
     "키라": {
         "limit": true,
+        "has_innate": true,
         "tag": "변신, 지속 대미지, 관통, HP 소모",
         "color": "#ff69b4",
         "element": "물리",
@@ -972,6 +973,7 @@ Object.assign(window.characterData, {
     "마코토": {
         "limit": true,
         "persona5": true,
+        "has_innate": true,
         "tag": "원소 이상, TECHNICAL, 추가 턴, 관통",
         "color": "#000080",
         "element": "핵열",

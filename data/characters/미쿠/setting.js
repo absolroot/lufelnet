@@ -6,7 +6,7 @@ window.characterSetting["미쿠"] = {
     "video_jp": [""],
     "main_revelation": ["희망", "진정성"],
     "sub_revelation": ["직책", "직책"],
-    "sub_revel2": ["공격력"],
+    "sub_revel2": ["공격력","대미지 보너스"],
     "sub_revel3": ["크리티컬 효과", "크리티컬 확률"],
     "sub_revel4": ["공격력"],
     "sub_option1": ["공격력"],
@@ -30,7 +30,7 @@ window.characterSetting["미쿠"] = {
     "skill3_lv": "MAX!",
     "skill4_lv": "-",
     "skill_priority": "3>1>2",
-    "mind_stats1": "생명 20%!",
+    "mind_stats1": "공격력 20%!",
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S2/S3!",
     "mind_skill2": "S1!"

@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Light Up Your World",
+        "quality": 5,
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Track is gained, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 3 turns.\nWhen Virtual Concert is active, gain Skill Amplification equal to 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%.",
+        "stat": {
+          "attack": 726.72,
+          "defense": 396.41,
+          "hp": 2338.77
+        },
+        "user": "Miku"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Trendsetter",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen gaining a Track, increase Miku's Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%.",
+        "stat": {
+          "attack": 581.37,
+          "defense": 317.1,
+          "hp": 1870.83
+        },
+        "user": "Miku"
+      }
+    ],
+    "name": "Miku"
+  },
+  "msg": "OK",
+  "status": 0
+}

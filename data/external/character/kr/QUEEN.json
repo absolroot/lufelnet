@@ -115,7 +115,27 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Nuclear",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Nuclear Boost",
+          "nature": "Nuclear",
+          "value": "0.08"
+        },
+        {
+          "attr": "Nuclear Damage Taken",
+          "nature": "Nuclear",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on AAAAAA==)",
@@ -136,7 +156,40 @@
       "Attack": "0.2",
       "Crit Rate": "0.12"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신이 『철의 의지』 상태에 진입할 때, 모든 적의 원소 이상 효과 지속 시간을 1턴 연장한다.\n『철의 의지』 상태에서 자신의 대미지가 30.0%/45.0%/60.0% 증가하고, 크리티컬 효과가 40.0%/60.0%/80.0% 증가한다.",
+        "name": "철칙",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 120171,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "자신이 『핵열 치명타』 또는 『핵융합 과부하』를 사용할 때, 적에게 부여된 원소 이상 1종마다 스킬 대미지가 5.0%/7.5%/10.0%+의식 레벨*2% 증가한다.\n자신이 『강인』을 1중첩 획득할 때마다, 3턴 동안 아군 전체 핵열 속성 동료의 공격력이 1.0%/1.5%/2.0%+의식 레벨*1%, 총 대미지 증폭이 1.0%/1.5%/2.0%+의식 레벨*1%, 크리티컬 효과가 1.0%/1.5%/2.0%+의식 레벨*1% 증가한다(최대 5중첩).",
+        "name": "기폭",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 120172,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "innate_skill_type": [
       "S1/HL",
       "S2/S3"
@@ -278,7 +331,50 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1435.06 / 1461.06 / 1487.06 / 1513.06 / 1539.06 / 1566.06 / 1592.06",
+      "Attack Increase": "37.3% / 37.3% / 37.3% / 37.3% / 37.3% / 37.3% / 37.3%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "841.27 / 856.27 / 872.27 / 887.27 / 902.27 / 918.27 / 933.27",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3859.86 / 3929.86 / 3999.86 / 4070.86 / 4140.86 / 4210.86 / 4280.86",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "sync_normal_skill": [],
     "theurgia_skill": []
   },
   "msg": "OK",

@@ -20,7 +20,7 @@ window.personaFiles["황룡"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
-    "comment_cn": "",
+  "comment_cn": "",
   "added": "",
   "cost": null,
   "combination": null,
@@ -31,41 +31,41 @@ window.personaFiles["황룡"] = {
       "name": "길조의 주인",
       "name_en": "Auspicious Sign",
       "name_jp": "瑞兆の主",
-      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 1턴 동안 자신의 공격력이 20% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
-      "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 1 turn. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：１ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
+      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 아군 전체가 각기 다른 속성의 스킬을 1종류 사용할 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 1턴 동안 자신의 공격력이 20% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
+      "desc_en": "Increase Attack by 29.1%.\nActivate even in reserve: Each time allies activate a skill of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might.\nFour Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 1 turn. Change Kohryu's skills.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n次の効果は控えの場合でも発動する：味方が異なる属性のスキルを使用するごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。\n『四神の力』：１ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
       "name_cn": "祥瑞之主",
-      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升20%，所有友方同伴攻击力提升10%，并进化自身技能，持续1回合。"
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每使用1种不同属性的技能，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升20%，所有友方同伴攻击力提升10%，并进化自身技能，持续1回合。"
     },
     {
       "name": "길조의 주인Ⅰ",
       "name_en": "Auspicious Sign I",
       "name_jp": "瑞兆の主Ⅰ",
-      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 20% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
-      "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
+      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 아군 전체가 각기 다른 속성의 스킬을 1종류 사용할 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 20% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
+      "desc_en": "Increase Attack by 29.1%.\nActivate even in reserve: Each time allies activate a skill of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might.\nFour Gods' Might: Increase user's Attack by 20%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n次の効果は控えの場合でも発動する：味方が異なる属性のスキルを使用するごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。\n『四神の力』：２ターンの間、自身の攻撃力が２０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
       "name_cn": "祥瑞之主Ⅰ",
-      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升20%，所有友方同伴攻击力提升10%，并进化自身技能，持续2回合。"
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每使用1种不同属性的技能，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升20%，所有友方同伴攻击力提升10%，并进化自身技能，持续2回合。"
     },
     {
       "name": "길조의 주인Ⅱ",
       "name_en": "Auspicious Sign II",
       "name_jp": "瑞兆の主Ⅱ",
-      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
-      "desc_en": "Increase Attack by 29.1%. Activates even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
+      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 아군 전체가 각기 다른 속성의 스킬을 1종류 사용할 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 10% 증가하며, 자신의 스킬이 진화한다.",
+      "desc_en": "Increase Attack by 29.1%.\nActivate even in reserve: Each time allies activate a skill of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks of Four Gods at the start of their turn, spend all stacks to gain Four Gods' Might.\nFour Gods' Might: Increase user's Attack by 30%, and increase party's Attack by 10% for 2 turns. Change Kohryu's skills.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n次の効果は控えの場合でも発動する：味方が異なる属性のスキルを使用するごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。\n『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１０%上昇する。また、コウリュウのスキルが進化する。",
       "name_cn": "祥瑞之主Ⅱ",
-      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升30%，所有友方同伴攻击力提升10%，并进化自身技能，持续2回合。"
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每使用1种不同属性的技能，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升30%，所有友方同伴攻击力提升10%，并进化自身技能，持续2回合。"
     },
     {
       "name": "길조의 주인Ⅲ",
       "name_en": "Auspicious Sign III",
       "name_jp": "瑞兆の主Ⅲ",
-      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 모든 동료가 각 속성의 대미지를 줄 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 15% 증가하며, 자신의 스킬이 진화한다.",
-      "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally deals damage of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase other allies' Attack by 15% for 2 turns. Change Kohryu's skills.",
-      "desc_jp": "攻撃力が２９.１%上昇する。次の効果は控えの場合でも発動する：味方全体が異なる属性でダメージを与えるごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１５%上昇する。また、コウリュウのスキルが進化する。",
+      "desc": "공격력이 29.1% 증가한다. 백업 출전 시에도 유효: 아군 전체가 각기 다른 속성의 스킬을 1종류 사용할 때마다 황룡이 『사상』을 1중첩 획득한다(4회 중첩 가능). 자신의 턴 시작 시 만약 『사상』을 최소 4중첩 보유하면 모든 『사상』이 제거되고 『사상의 힘』을 획득한다. 『사상의 힘』: 2턴 동안 자신의 공격력이 30% 증가하고, 모든 아군 동료의 공격력이 15% 증가하며, 자신의 스킬이 진화한다.",
+      "desc_en": "Increase Attack by 29.1%. Activate even in reserve: Each time an ally uses a skill of a different attribute, grant Kohryu 1 stack of Four Gods. Stacks up to 4 times. When user has 4 stacks at the start of their turn, spend all stacks to gain Four Gods' Might. Four Gods' Might: Increase user's Attack by 30%, and increase other allies' Attack by 15% for 2 turns. Change Kohryu's skills.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n次の効果は控えの場合でも発動する：味方が異なる属性のスキルを使用するごとに、コウリュウは『四神』を１つ付与する。この効果は最大４つまで累積できる。自身のターン開始時に『四神』が４つの時、すべての『四神』を消費して『四神の力』を獲得する。\n『四神の力』：２ターンの間、自身の攻撃力が３０%上昇し、味方全体の攻撃力が１５%上昇する。また、コウリュウのスキルが進化する。",
       "name_cn": "祥瑞之主Ⅲ",
-      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每造成1种不同属性的伤害，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升30%，所有友方同伴攻击力提升15%，并进化自身技能，持续2回合。"
+      "desc_cn": "攻击力提升29.1%。处于后台时也能生效：所有同伴每使用1种不同属性的技能，使黄龙获得1层『四象』，上限4层。自身回合开始时，若拥有至少4层『四象』，则清空所有『四象』获得『四象之力』：使自身攻击力提升30%，所有友方同伴攻击力提升15%，并进化自身技能，持续2回合。"
     }
   ],
   "uniqueSkill": {

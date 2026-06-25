@@ -156,6 +156,58 @@
         "name": "Fists of Thunder",
         "startTime": "2026-06-17 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-07-16 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Hatsune Miku",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "The First Sound from the Future",
+        "startTime": "2026-06-25 07:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-07-16 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Hatsune Miku",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          }
+        ],
+        "name": "The First Sound from the Future",
+        "startTime": "2026-06-25 07:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
@@ -262,6 +314,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-06-17 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-07-16 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Light Up Your World",
+            "type": "weapon",
+            "user": "Miku"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Trendsetter",
+            "type": "weapon",
+            "user": "Miku"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-06-25 07:30:00",
         "type": "Arms Deals"
       }
     ]

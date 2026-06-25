@@ -4,19 +4,15 @@
       {
         "affixs": [
           {
-            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
+            "detail": "Allies' Theurgy damage is increased by 30%. After using a Theurgy, user's final damage is increased by 30% more for 3 turns.",
             "name": "Special Effect"
           },
           {
-            "detail": "When a foe is knocked down, increase final damage by 80%.",
+            "detail": "Whenever an ally deals damage, that ally's damage is increased by 4%. Lasts for 3 turns. Stacks up to 10 times.",
             "name": "Special Effect"
           },
           {
-            "detail": "Party's Electric damage is increased by 20%.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "detail": "Party's Fire damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
@@ -30,17 +26,20 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
-              "Wind"
+              "Ice",
+              "Electric",
+              "Wind",
+              "Curse"
             ],
             "Weak": [
-              "Electric"
+              "Fire"
             ]
           },
-          "image": "B-guaiwutouxiang-slaughterDrive.png",
-          "level": "82",
-          "name": "Slaughter Drive",
-          "skill": "1025,1008,1038,1082,1404",
-          "sn": "744611",
+          "image": "B-guaiwutouxiang-BaalZebul.png",
+          "level": "78",
+          "name": "Baal Zebul",
+          "skill": "905,404,353,1404,803",
+          "sn": "743111",
           "stat": {}
         }
       },
@@ -51,15 +50,11 @@
             "name": "Special Effect"
           },
           {
+            "detail": "Party's Bless damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
             "detail": "Assassin allies' damage is increased by 20%.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
             "name": "Special Effect"
           },
           {
@@ -84,20 +79,20 @@
             ]
           },
           "image": "B-guaiwutouxiang-fafnir.png",
-          "level": "82",
+          "level": "78",
           "name": "Fafnir",
           "skill": "1023,608,604,1403,2456",
-          "sn": "742611",
+          "sn": "742111",
           "stat": {}
         }
       }
     ],
-    "endTime": "2026-06-25 06:30:00",
+    "endTime": "2026-07-02 09:30:00",
     "mode": {
-      "detail": "Each turn, the boss's attacks grow stronger, and you get more points!",
-      "name": "Multidimensional Dreamscape"
+      "detail": "Deal damage to make the boss Weakened and gain more points!",
+      "name": "Devourer of Dreams"
     },
-    "startTime": "2026-06-17 10:30:00"
+    "startTime": "2026-06-25 07:30:00"
   },
   "msg": "OK",
   "status": 0

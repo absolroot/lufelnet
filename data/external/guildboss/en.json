@@ -4,46 +4,7 @@
       {
         "affixs": [
           {
-            "detail": "When a foe is knocked down, increase final damage by 80%.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "Party's Electric damage is increased by 20%.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "Sweeper allies' damage is increased by 20%.",
-            "name": "Special Effect"
-          },
-          {
-            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
-            "name": "Special Effect"
-          }
-        ],
-        "enemy": {
-          "adapt": {
-            "Absorb": [],
-            "Nullify": [],
-            "Reflect": [],
-            "Resistant": [
-              "Wind"
-            ],
-            "Weak": [
-              "Electric"
-            ]
-          },
-          "image": "B-guaiwutouxiang-slaughterDrive.png",
-          "level": "78",
-          "name": "Slaughter Drive",
-          "skill": "1025,1008,1038,1082,1404",
-          "sn": "744111",
-          "stat": {}
-        }
-      },
-      {
-        "affixs": [
-          {
-            "detail": "Allies' Theurgy damage is increased by 30%. After using a Theurgy, user's damage is increased by 30% more for 3 turns.",
+            "detail": "Allies' Theurgy damage is increased by 30%. After using a Theurgy, user's final damage is increased by 30% more for 3 turns.",
             "name": "Special Effect"
           },
           {
@@ -81,14 +42,57 @@
           "sn": "743111",
           "stat": {}
         }
+      },
+      {
+        "affixs": [
+          {
+            "detail": "Party's Highlight damage is increased by 50%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Party's Bless damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Assassin allies' damage is increased by 20%.",
+            "name": "Special Effect"
+          },
+          {
+            "detail": "Allies are unable to deal critical hits, but deal increased final damage from skills and Resonances. This increase is equal to critical hit rate x (critical damage - 100%). (Max critical hit rate in this calculation is 100%).",
+            "name": "Special Effect"
+          }
+        ],
+        "enemy": {
+          "adapt": {
+            "Absorb": [],
+            "Nullify": [],
+            "Reflect": [],
+            "Resistant": [
+              "Phys",
+              "Gun",
+              "Fire",
+              "Electric",
+              "Nuclear"
+            ],
+            "Weak": [
+              "Bless"
+            ]
+          },
+          "image": "B-guaiwutouxiang-fafnir.png",
+          "level": "78",
+          "name": "Fafnir",
+          "skill": "1023,608,604,1403,2456",
+          "sn": "742111",
+          "stat": {}
+        }
       }
     ],
-    "endTime": "2026-06-25 06:30:00",
+    "endTime": "2026-07-02 10:30:00",
     "mode": {
       "detail": "Deal damage to make the boss Weakened and gain more points!",
       "name": "Devourer of Dreams"
     },
-    "startTime": "2026-06-18 11:30:00"
+    "startTime": "2026-06-25 08:30:00"
   },
   "msg": "OK",
   "status": 0

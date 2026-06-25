@@ -106,6 +106,58 @@
         "type": "이벤트 계약·운명"
       },
       {
+        "endTime": "2026-07-16 11:00:00",
+        "fiveStar": [
+          {
+            "name": "하츠네 미쿠",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "아라이 모토하",
+            "type": "thief"
+          },
+          {
+            "name": "카노 슌",
+            "type": "thief"
+          },
+          {
+            "name": "쿠로타니 키요시",
+            "type": "thief"
+          }
+        ],
+        "name": "시작의 소리",
+        "startTime": "2026-06-25 07:00:00",
+        "type": "이벤트 계약·확정"
+      },
+      {
+        "endTime": "2026-07-16 11:00:00",
+        "fiveStar": [
+          {
+            "name": "하츠네 미쿠",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "아라이 모토하",
+            "type": "thief"
+          },
+          {
+            "name": "카노 슌",
+            "type": "thief"
+          },
+          {
+            "name": "쿠로타니 키요시",
+            "type": "thief"
+          }
+        ],
+        "name": "시작의 소리",
+        "startTime": "2026-06-25 07:00:00",
+        "type": "이벤트 계약·운명"
+      },
+      {
         "endTime": "2026-07-02 08:00:00",
         "fiveStar": [
           {
@@ -159,6 +211,76 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-07-16 11:00:00",
+        "fiveStar": [
+          {
+            "name": "서라운드 더 월드",
+            "type": "weapon",
+            "user": "하츠네 미쿠"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "죄와 벌",
+            "type": "weapon",
+            "user": "아라이 모토하"
+          },
+          {
+            "name": "마의 습격",
+            "type": "weapon",
+            "user": "카노 슌"
+          },
+          {
+            "name": "불꽃 성정",
+            "type": "weapon",
+            "user": "쿠로타니 키요시"
+          },
+          {
+            "name": "트렌드 월드",
+            "type": "weapon",
+            "user": "하츠네 미쿠"
+          }
+        ],
+        "name": "소리 없는 전쟁·확정",
+        "startTime": "2026-06-25 07:00:00",
+        "type": "무기 이벤트 보급·확정"
+      },
+      {
+        "endTime": "2026-07-16 11:00:00",
+        "fiveStar": [
+          {
+            "name": "서라운드 더 월드",
+            "type": "weapon",
+            "user": "하츠네 미쿠"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "죄와 벌",
+            "type": "weapon",
+            "user": "아라이 모토하"
+          },
+          {
+            "name": "마의 습격",
+            "type": "weapon",
+            "user": "카노 슌"
+          },
+          {
+            "name": "불꽃 성정",
+            "type": "weapon",
+            "user": "쿠로타니 키요시"
+          },
+          {
+            "name": "트렌드 월드",
+            "type": "weapon",
+            "user": "하츠네 미쿠"
+          }
+        ],
+        "name": "소리 없는 전쟁·운명",
+        "startTime": "2026-06-25 07:00:00",
+        "type": "무기 이벤트 보급·운명"
+      },
       {
         "endTime": "2026-07-02 08:00:00",
         "fiveStar": [

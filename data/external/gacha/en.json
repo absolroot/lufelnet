@@ -2,114 +2,10 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-06-25 06:59:59",
+        "endTime": "2026-07-16 10:59:59",
         "fiveStar": [
           {
-            "name": "Makoto Yuki",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          }
-        ],
-        "name": "When Moon Reaches Stars",
-        "startTime": "2026-05-21 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-06-25 06:59:59",
-        "fiveStar": [
-          {
-            "name": "Makoto Yuki",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          }
-        ],
-        "name": "When Moon Reaches Stars",
-        "startTime": "2026-05-21 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-06-25 06:59:59",
-        "fiveStar": [
-          {
-            "name": "Yukari Takeba",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Tomoko Noge",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Shot Through the Heart",
-        "startTime": "2026-06-04 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-06-25 06:59:59",
-        "fiveStar": [
-          {
-            "name": "Yukari Takeba",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Riko Tanemura",
-            "type": "thief"
-          },
-          {
-            "name": "Tomoko Noge",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Shot Through the Heart",
-        "startTime": "2026-06-04 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-06-25 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Akihiko Sanada",
+            "name": "Hatsune Miku",
             "type": "thief"
           }
         ],
@@ -119,23 +15,23 @@
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Shun Kano",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Kiyoshi Kurotani",
             "type": "thief"
           }
         ],
-        "name": "Fists of Thunder",
-        "startTime": "2026-06-11 11:30:00",
+        "name": "The First Sound from the Future",
+        "startTime": "2026-06-25 08:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-06-25 10:59:59",
+        "endTime": "2026-07-16 10:59:59",
         "fiveStar": [
           {
-            "name": "Akihiko Sanada",
+            "name": "Hatsune Miku",
             "type": "thief"
           }
         ],
@@ -145,30 +41,35 @@
             "type": "thief"
           },
           {
-            "name": "Leo Kamiyama",
+            "name": "Shun Kano",
             "type": "thief"
           },
           {
-            "name": "Miyu Sahara",
+            "name": "Kiyoshi Kurotani",
             "type": "thief"
           }
         ],
-        "name": "Fists of Thunder",
-        "startTime": "2026-06-11 11:30:00",
+        "name": "The First Sound from the Future",
+        "startTime": "2026-06-25 08:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
       {
-        "endTime": "2026-06-25 06:59:59",
+        "endTime": "2026-07-16 10:59:59",
         "fiveStar": [
           {
-            "name": "Deus Xiphos",
+            "name": "Light Up Your World",
             "type": "weapon",
-            "user": "Makoto"
+            "user": "Miku"
           }
         ],
         "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
           {
             "name": "Demon's Bite",
             "type": "weapon",
@@ -180,88 +81,13 @@
             "user": "Kurotani"
           },
           {
-            "name": "Scarlet Scepter",
+            "name": "Trendsetter",
             "type": "weapon",
-            "user": "Sumi"
-          },
-          {
-            "name": "Translucent Blade",
-            "type": "weapon",
-            "user": "Makoto"
+            "user": "Miku"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2026-05-21 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-06-25 06:59:59",
-        "fiveStar": [
-          {
-            "name": "Sarnga",
-            "type": "weapon",
-            "user": "Yukari"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Moonlight Needle",
-            "type": "weapon",
-            "user": "Riko"
-          },
-          {
-            "name": "Shadow Crowns",
-            "type": "weapon",
-            "user": "Tomoko"
-          },
-          {
-            "name": "Knight's Reward",
-            "type": "weapon",
-            "user": "Shiratori"
-          },
-          {
-            "name": "Kishin Bow",
-            "type": "weapon",
-            "user": "Yukari"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-06-04 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-06-25 06:59:59",
-        "fiveStar": [
-          {
-            "name": "Sabazios",
-            "type": "weapon",
-            "user": "Sanada"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Crime and Punishment",
-            "type": "weapon",
-            "user": "Motoha"
-          },
-          {
-            "name": "Justice Lance",
-            "type": "weapon",
-            "user": "Kamiyama"
-          },
-          {
-            "name": "Submarine Sonar",
-            "type": "weapon",
-            "user": "Miyu"
-          },
-          {
-            "name": "Wicked Cestus",
-            "type": "weapon",
-            "user": "Sanada"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-06-11 11:30:00",
+        "startTime": "2026-06-25 08:30:00",
         "type": "Arms Deals"
       }
     ]

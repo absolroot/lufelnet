@@ -23,6 +23,7 @@ wheels/
 .codex/
 /.codex-temp/
 .tmp/
+.tmp/**/*
 .bundle/
 _config/
 config_db/
@@ -46,6 +47,7 @@ nul
 
 # Jekyll
 _site/
+_site/**/*
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
@@ -126,10 +128,3 @@ apps/patch-console/state/
 /pages/character/jp/elizabeth.html
 /pages/character/cn/elizabeth.html
 /pages/character/redirects/character--elizabeth.html
-/data/characters/하츠네 미쿠/
-/data/external/character/*/MIKU.json
-/pages/character/kr/miku.html
-/pages/character/en/miku.html
-/pages/character/jp/miku.html
-/pages/character/cn/miku.html
-/pages/character/redirects/character--miku.html

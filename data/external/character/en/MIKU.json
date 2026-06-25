@@ -1,0 +1,269 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, Miku can change the battle scenery and song playing during her allies' turns, and her skill effects are enhanced based on the current song playing. When Miku's skills become available, the current song will automatically switch.\nWhen using Feel the Beat or Clear Sound on songs where Miku has already gained the corresponding Track, reapply the same additional effect.",
+        "name": "Virtual Stage",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151140,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Gain Skill Amplification equal to 15%.\nWhen Virtual Concert is activated, reset all allies' Highlight cooldowns.\nWhen Virtual Concert is active, increase Highlight and Theurgy Final Damage Amplification by 10%, and double the rate at which the Highlight and Theurgy gauges are filled.",
+        "name": "Hologram Screen",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151141,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Virtual Concert is activated, grant all effects of Feel the Beat and Clear Sound for 2 turns.\nWhen Virtual Concert is active, increase party's Final Damage Amplification by 8%.",
+        "name": "Blue-Green Sea",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151142,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Feel the Beat and Showstopper by 3.",
+        "name": "Echoing in your Heart",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151143,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When an ally activates a Highlight or Theurgy, increase that ally's Attack by 25% for 2 turns.",
+        "name": "Let's Sing Together",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151144,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill level of Clear Sound by 3.",
+        "name": "Reaching your Heart",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151145,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Virtual Concert ends, all foes take a fixed amount of Almighty damage equal to 100% of each target's total damage taken during Virtual Concert.",
+        "name": "Neverending Song",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151146,
+        "tags": [
+          null
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Rate": "0.12"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S2/S3",
+      "S1"
+    ],
+    "name": "Hatsune Miku",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase party's Attack by 0.57% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 25.0%/27.5%/28.0%/30.5%). Lasts 3 turns. Also grant effects to party based on the current song playing.\nHeaven: If Miku does not have Break Track, increase party's pierce rate by 0.2% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 9.0%/9.9%/10.1%/11.0%). Lasts 3 turns. Also, gain Break Track.\nSpring Storm: If Miku does not have Critical Track, increase party's damage by 0.34% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 15.0%/16.5%/16.8%/18.3%). Lasts 3 turns. Also, gain Critical Track.\nPlay-With-Fire: If Miku does not have Expert Track, increase party's critical damage by 0.41% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 18.0%/19.8%/20.2%/22.0%). Lasts 3 turns. Also, gain Expert Track.\nCooldown Time: 4 ally actions",
+        "name": "Feel the Beat",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 151111,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase party's damage by 0.34% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 15.0%/16.5%/16.8%/18.3%). Lasts for 3 turns. Also grant effects to party based on the current song playing.\nHeaven: If Miku does not have Break Track, restore HP to party based on 30% of their max HP. Also, gain Break Track.\nSpring Storm: If Miku does not have Critical Track, increase party's weakness damage by 0.11% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 4.8%/5.3%/5.4%/5.9%). Lasts 3 turns. Also, gain Critical Track.\nPlay-With-Fire: If Miku does not have Expert Track, increase party's critical rate by 0.2% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 9.0%/9.9%/10.1%/11.0%). Lasts 3 turns. Also, gain Expert Track.\nCooldown Time: 4 ally actions",
+        "name": "Clear Sound",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 151112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Requires 3 different types of Track.\nSpend all Tracks to activate Virtual Concert, and change the current song playing to Ghost Rule. At this time, stop foes' turn, and grant allies extra turns for 2 turns (these turns are not counted as extra actions and do not count towards the total number of actions taken, but reduce the countdowns of buffs, debuffs, and continuous damage effects).\nWhen Virtual Concert is activated, all buff effects on allies granted by Miku's skills, weapon or Talents are extended by 2 turns. Effects granted when Tracks were gained are reactivated and last for 2 turns. Increase party's critical damage by 0.34% for every 100 points of Miku's Attack (counts up to 4400/4840/4928/5368 of Miku's Attack, up to a maximum of 15.0%/16.5%/16.8%/18.3%). Lasts for 2 turns. Also, restore 35 SP to all allies.\nDuring Virtual Concert, support skills cannot be used, and their cooldown time does not decrease.\nAt the end of allies' extra turns, Virtual Concert is removed.\nCooldown Time: 6 Wonder actions (does not count extra actions)",
+        "name": "Showstopper",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 151113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When gaining a Track, increase party's Attack by 12.0% for 3 turns. Stacks up to 3 times.",
+        "name": "Setlist",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Virtual Concert is active, increase party's damage by 24.0%.",
+        "name": "Fan Favorite",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 151132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 4400.0,
+      "Crit Mult.": 0.26,
+      "Crit Rate": 0.13,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Crit Rate": "0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0% / 0.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

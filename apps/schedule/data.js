@@ -82,9 +82,9 @@ window.ReleaseScheduleData = {
         
         { version: "4.4", date: "2026-06-25", characters: ["미쿠"], goldTicketUnlocks: ["CHERISH"], note: "Worldwide Simultaneous Release", days: 14 },
         // { version: "???", incomeVersion: "4.1", date: "2026-06-25", dateSeaShift: false, characters: ["???"], days: 14, , plannerPlaceholder: true, placeholderId: "global-first-anniversary-unit", placeholderLabelKey: "plannerPlaceholderGlobalFirstAnniversaryUnit", placeholderNoteKey: "plannerPlaceholderUnconfirmed" },
-        { version: "4.3.1", date: "2026-07-30", characters: ["미나미·여름"], "summer": true, days: 21 },
-        { version: "4.3.2", date: "2026-08-13", characters: ["미유·여름"], "summer": true, persona: ["사히모치노카미"], weapon: ["설원의 침묵"], days: 14 },
-        { version: "4.2", date: "2026-07-09", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days:14 },
+        { version: "4.3.1", characters: ["미나미·여름"], "summer": true, days: 21 },
+        { version: "4.3.2", characters: ["미유·여름"], "summer": true, persona: ["사히모치노카미"], weapon: ["설원의 침묵"], days: 14 },
+        { version: "4.2", characters: ["이치고"], "main-story": "5-2", persona: ["트럼페터", "바스키"], weapon: ["망령의 저주"], days:14 },
         { version: "4.4", characters: ["카타야마"], days: 14 },
         { version: "4.5", characters: ["YUI·스텔라"], "main-story": "5-3", weapon: ["엔트로피·제로"], revelation: ["예리", "풍족", "획득"], days: 14 },
         { version: "4.6.1", characters: ["미츠루"], days: 14 },

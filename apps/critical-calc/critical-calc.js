@@ -327,10 +327,11 @@ class CriticalCalc {
 
     getSkillEffectAmpMultiplier(item) {
         if (!item || item.skillEffectAmpAffected !== true) return 1;
-        const globalValue = this.skillEffectAmpState && this.skillEffectAmpState.enabled
+        const isMikuSkillEffect = item.mikuSkillEffectAmpAffected === true;
+        const globalValue = !isMikuSkillEffect && this.skillEffectAmpState && this.skillEffectAmpState.enabled
             ? this.skillEffectAmpState.value
             : 0;
-        const mikuValue = item.mikuSkillEffectAmpAffected === true
+        const mikuValue = isMikuSkillEffect
             ? this.mikuSkillEffectAmpValue
             : 0;
         const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue);

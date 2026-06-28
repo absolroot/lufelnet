@@ -262,9 +262,11 @@ export class NeedStatCardUI {
 
         // Collect persona performance values from current container
         const personaPerformanceValues = {};
+        let mikuSkillEffectAmpValue = this.getSharedMikuSkillEffectAmpValue();
         const container = document.querySelector('.need-stat-container');
         if (container) {
             container.querySelectorAll('.need-stat-persona-input').forEach(input => {
+                if (input.classList.contains('need-stat-miku-skill-effect-amp-input')) return;
                 const itemId = input.dataset.itemId;
                 const category = input.dataset.category;
                 if (itemId) {
@@ -272,6 +274,10 @@ export class NeedStatCardUI {
                     personaPerformanceValues[key] = parseFloat(input.value) || 100;
                 }
             });
+            const mikuInput = container.querySelector('.need-stat-miku-skill-effect-amp-input');
+            if (mikuInput) {
+                mikuSkillEffectAmpValue = this.normalizeMikuSkillEffectAmpValue(mikuInput.value);
+            }
         }
 
         this.store.state.needStatSelections[slotIndex] = {
@@ -283,7 +289,8 @@ export class NeedStatCardUI {
             extraSumCritical: this.extraSumCritical,
             extraSumPierce: this.extraSumPierce,
             extraDefenseReduce: this.extraDefenseReduce,
-            personaPerformance: personaPerformanceValues
+            personaPerformance: personaPerformanceValues,
+            mikuSkillEffectAmp: mikuSkillEffectAmpValue
         };
 
         // Save global item options (shared across all slots)
@@ -340,6 +347,7 @@ export class NeedStatCardUI {
         this.extraSumPierce = saved.extraSumPierce || 0;
         this.extraDefenseReduce = saved.extraDefenseReduce || 0;
         this.savedPersonaPerformance = saved.personaPerformance || {};
+        this.savedMikuSkillEffectAmp = this.normalizeMikuSkillEffectAmpValue(saved.mikuSkillEffectAmp);
 
         // Resolve mutually exclusive conflicts
         this.resolveMutuallyExclusiveOnLoad();
@@ -460,15 +468,58 @@ export class NeedStatCardUI {
     }
 
     getSkillEffectAmpMultiplier(item) {
+        if (!item || item.skillEffectAmpAffected !== true) return 1;
+        if (item.mikuSkillEffectAmpAffected === true) {
+            const mikuValue = this.normalizeMikuSkillEffectAmpValue(item.__mikuSkillEffectAmpValue);
+            if (!isFinite(mikuValue) || mikuValue <= 0) return 1;
+            return 1 + (mikuValue / 100);
+        }
         if (!this.hasJandCInParty()) return 1;
         const state = getGlobalSkillEffectAmpState();
         if (!state.enabled) return 1;
-        if (!item || item.skillEffectAmpAffected !== true) return 1;
         return 1 + (state.value / 100);
     }
 
     getEffectiveItemValue(item) {
         return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+    }
+
+    normalizeMikuSkillEffectAmpValue(value) {
+        if (value && typeof value === 'object') {
+            const firstSavedValue = Object.values(value).find(v => isFinite(Number(v)));
+            return firstSavedValue !== undefined ? Math.max(0, Number(firstSavedValue)) : 0;
+        }
+
+        const numericValue = Number(value);
+        return isFinite(numericValue) ? Math.max(0, numericValue) : 0;
+    }
+
+    getSharedMikuSkillEffectAmpValue() {
+        return this.normalizeMikuSkillEffectAmpValue(this.savedMikuSkillEffectAmp);
+    }
+
+    setSharedMikuSkillEffectAmpValue(value) {
+        const safeValue = this.normalizeMikuSkillEffectAmpValue(value);
+        this.savedMikuSkillEffectAmp = safeValue;
+        return safeValue;
+    }
+
+    applyMikuSkillEffectAmpToItem(item, value = this.getSharedMikuSkillEffectAmpValue()) {
+        if (item && item.mikuSkillEffectAmpAffected === true) {
+            item.__mikuSkillEffectAmpValue = this.normalizeMikuSkillEffectAmpValue(value);
+        }
+    }
+
+    applyMikuSkillEffectAmpToItems(items, value = this.getSharedMikuSkillEffectAmpValue()) {
+        (items || []).forEach(item => this.applyMikuSkillEffectAmpToItem(item, value));
+    }
+
+    syncMikuSkillEffectAmpInputs(container = this.currentPanelContainer, value = this.getSharedMikuSkillEffectAmpValue()) {
+        if (!container) return;
+        const safeValue = this.normalizeMikuSkillEffectAmpValue(value);
+        container.querySelectorAll('.need-stat-miku-skill-effect-amp-input').forEach(input => {
+            input.value = safeValue;
+        });
     }
 
     formatDisplayValue(value) {
@@ -508,6 +559,28 @@ export class NeedStatCardUI {
                 }
             });
         });
+    }
+
+    applyOptionValueToItem(item, category = null) {
+        if (!item || !Array.isArray(item.options) || item.options.length === 0) return;
+
+        const itemId = String(item.id || `${item.source}_${item.skillName}`);
+        const optionKey = category ? `${category}_${itemId}` : itemId;
+        const optionData = this.getLocalizedOptionData(item);
+        const baseOptions = optionData.options || [];
+        const savedOption = getGlobalItemOption(optionKey);
+        const selectedOpt = (savedOption && optionData.values && optionData.values[savedOption] !== undefined)
+            ? savedOption
+            : (item._selectedOption || optionData.defaultOption || baseOptions[0]);
+
+        item._selectedOption = selectedOpt;
+        if (optionData.values && optionData.values[selectedOpt] !== undefined) {
+            this.setItemBaseValue(item, Number(optionData.values[selectedOpt]) || 0);
+        }
+    }
+
+    applyOptionValuesToItems(items, category = null) {
+        (items || []).forEach(item => this.applyOptionValueToItem(item, category));
     }
 
     getItemsByCategory(category) {
@@ -1121,6 +1194,19 @@ export class NeedStatCardUI {
             `;
         }
 
+        let mikuSkillEffectAmpHtml = '';
+        if (item.mikuSkillEffectAmpAffected === true) {
+            const safeValue = this.getSharedMikuSkillEffectAmpValue();
+            const label = this.getLabels().labelSkillEffectAmp;
+            item.__mikuSkillEffectAmpValue = safeValue;
+            mikuSkillEffectAmpHtml = `
+                <span class="need-stat-persona-performance need-stat-miku-skill-effect-amp">
+                    <label class="need-stat-persona-label">${label}</label>
+                    <input type="number" class="need-stat-persona-input need-stat-miku-skill-effect-amp-input" data-item-id="${itemId}" data-category="critical" value="${safeValue}" min="0" step="0.1">
+                </span>
+            `;
+        }
+
         this.setItemBaseValue(item, finalBaseValue);
         const displayValue = this.formatDisplayValue(this.getEffectiveItemValue(item));
 
@@ -1134,6 +1220,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-source">${sourceName}</span>
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
+                ${mikuSkillEffectAmpHtml}
                 ${optionsHtml}
                 <span class="need-stat-value">${displayValue}</span>
             </div>
@@ -1246,6 +1333,19 @@ export class NeedStatCardUI {
             `;
         }
 
+        let mikuSkillEffectAmpHtml = '';
+        if (item.mikuSkillEffectAmpAffected === true) {
+            const safeValue = this.getSharedMikuSkillEffectAmpValue();
+            const label = this.getLabels().labelSkillEffectAmp;
+            item.__mikuSkillEffectAmpValue = safeValue;
+            mikuSkillEffectAmpHtml = `
+                <span class="need-stat-persona-performance need-stat-miku-skill-effect-amp">
+                    <label class="need-stat-persona-label">${label}</label>
+                    <input type="number" class="need-stat-persona-input need-stat-miku-skill-effect-amp-input" data-item-id="${itemId}" data-category="${category}" value="${safeValue}" min="0" step="0.1">
+                </span>
+            `;
+        }
+
         this.setItemBaseValue(item, finalBaseValue);
         const displayValue = this.formatDisplayValue(this.getEffectiveItemValue(item));
 
@@ -1257,6 +1357,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-source">${sourceName}</span>
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
+                ${mikuSkillEffectAmpHtml}
                 ${optionsHtml}
                 <span class="need-stat-value">${displayValue}</span>
             </div>
@@ -1385,6 +1486,8 @@ export class NeedStatCardUI {
                 this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
                 this.ensureDefaultSelected(buffItems);
             }
+            this.applyOptionValuesToItems([...buffItems, ...selfItems], null);
+            this.applyMikuSkillEffectAmpToItems([...buffItems, ...selfItems]);
 
             critTotal = this.calculateTotal(buffItems, selfItems) + this.revelationSumCritical + this.extraSumCritical + getGlobalElucidatorCritical();
 
@@ -1396,7 +1499,11 @@ export class NeedStatCardUI {
             if (!hasStoredSelections) {
                 this.autoSelectPierceBySlotSettings(charData, [...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
                 this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
+                this._syncLocalSelectionsToGlobalShared(buffItems, penetrateBuffItems, defenseReduceItems);
             }
+            this.applyOptionValuesToItems([...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
+            this.applyOptionValuesToItems(defenseReduceItems, 'defense');
+            this.applyMikuSkillEffectAmpToItems([...penetrateSelfItems, ...penetrateBuffItems, ...defenseReduceItems]);
 
             const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
             const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
@@ -1866,6 +1973,7 @@ export class NeedStatCardUI {
         // 저장된 선택이 없을 때만 초기 자동 선택 적용 (최초 1회)
         if (!hasStoredSelections) {
             this._initialAutoSelect(charData, buffItems, selfItems, penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
+            this._syncLocalSelectionsToGlobalShared(buffItems, penetrateBuffItems, defenseReduceItems);
             // 초기 선택 후 즉시 저장
             this.saveSelectionsToStore(slotIndex);
         } else if (!this.store.state.needStatSelections?.globalSharedChecks) {
@@ -1878,6 +1986,15 @@ export class NeedStatCardUI {
         this.currentCriticalItems = [...buffItems, ...selfItems];
         this.currentPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
         this.currentDefenseItems = [...defenseReduceItems];
+
+        this.applyOptionValuesToItems(this.currentCriticalItems, null);
+        this.applyOptionValuesToItems(this.currentPierceItems, 'pierce');
+        this.applyOptionValuesToItems(this.currentDefenseItems, 'defense');
+        this.applyMikuSkillEffectAmpToItems([
+            ...this.currentCriticalItems,
+            ...this.currentPierceItems,
+            ...this.currentDefenseItems
+        ]);
 
         const critTotal = this.getCriticalTotal(buffItems, selfItems);
         const pierceSummary = this.getPierceSummary(penetrateSelfItems, penetrateBuffItems, defenseReduceItems);
@@ -2452,6 +2569,24 @@ export class NeedStatCardUI {
             });
         });
 
+        container.querySelectorAll('.need-stat-miku-skill-effect-amp-input[data-category="critical"]').forEach(input => {
+            input.addEventListener('input', (e) => {
+                e.stopPropagation();
+                const value = this.setSharedMikuSkillEffectAmpValue(input.value);
+                this.syncMikuSkillEffectAmpInputs(container, value);
+                this.applyMikuSkillEffectAmpToItems([
+                    ...this.currentCriticalItems,
+                    ...this.currentPierceItems,
+                    ...this.currentDefenseItems
+                ], value);
+                this.refreshDisplayedValues(container);
+                updateCriticalDisplays();
+                updatePierceDisplays();
+                this.saveSelectionsToStore(slotIndex);
+            });
+            input.addEventListener('click', (e) => e.stopPropagation());
+        });
+
         // Item row click (whole row toggles check) - ONLY for critical items (no data-category)
         container.querySelectorAll('.need-stat-row:not([data-category])').forEach(row => {
             const checkEl = row.querySelector('.need-stat-check');
@@ -2537,6 +2672,7 @@ export class NeedStatCardUI {
 
         // J&C jc1 크리티컬 섹션 페르소나 성능 입력 필드 이벤트
         container.querySelectorAll('.need-stat-persona-input[data-category="critical"]').forEach(personaInput => {
+            if (personaInput.classList.contains('need-stat-miku-skill-effect-amp-input')) return;
             personaInput.addEventListener('click', (e) => e.stopPropagation());
             personaInput.addEventListener('input', (e) => {
                 e.stopPropagation();
@@ -2779,6 +2915,7 @@ export class NeedStatCardUI {
 
         // J&C 페르소나 성능 입력 필드 이벤트 (jc1, jc2)
         container.querySelectorAll('.need-stat-persona-input').forEach(personaInput => {
+            if (personaInput.classList.contains('need-stat-miku-skill-effect-amp-input')) return;
             personaInput.addEventListener('click', (e) => e.stopPropagation());
             personaInput.addEventListener('input', (e) => {
                 e.stopPropagation();
@@ -2849,6 +2986,24 @@ export class NeedStatCardUI {
                     // Save persona performance value to store
                     this.saveSelectionsToStore(this.currentSlotIndex);
                 }
+            });
+        });
+
+        container.querySelectorAll('.need-stat-miku-skill-effect-amp-input:not([data-category="critical"])').forEach(input => {
+            input.addEventListener('click', (e) => e.stopPropagation());
+            input.addEventListener('input', (e) => {
+                e.stopPropagation();
+                const value = this.setSharedMikuSkillEffectAmpValue(input.value);
+                this.syncMikuSkillEffectAmpInputs(container, value);
+                this.applyMikuSkillEffectAmpToItems([
+                    ...this.currentCriticalItems,
+                    ...this.currentPierceItems,
+                    ...this.currentDefenseItems
+                ], value);
+                this.refreshDisplayedValues(container);
+                updateCriticalDisplays();
+                updatePierceDisplays();
+                this.saveSelectionsToStore(this.currentSlotIndex);
             });
         });
     }

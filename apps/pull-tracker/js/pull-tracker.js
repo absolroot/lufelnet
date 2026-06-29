@@ -1740,6 +1740,7 @@
                     triedFallback = true;
                     this.src = fallback;
                 } else {
+                    this.onerror = null;
                     this.style.display = 'none';
                     // if (DEBUG) console.log('[pull-tracker] image not found for', found);
                 }

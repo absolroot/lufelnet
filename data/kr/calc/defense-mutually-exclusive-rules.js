@@ -12,5 +12,6 @@ const defenseMutuallyExclusiveRules = [
     { ids: ['19-1', '19-2', '20'], priority: '20', category: 'defense' }, // 루우나
     { ids: ['mio2', 'mio3'], priority: 'mio3', category: 'defense' }, // 미오
     { ids: ['ren-starlight-s2-defense', 'ren-starlight-s2-enhanced-defense'], priority: 'ren-starlight-s2-enhanced-defense', category: 'defense' }, // 렌·댄싱 스타
+    { ids: ['miku-penetrate', 'miku-sync-penetrate'], priority: 'miku-sync-penetrate', category: 'pierce' }, // 미쿠
     { ids: ['masaki1', 'masaki2'], priority: 'masaki1', category: 'pierce' }, // 마사키
 ];

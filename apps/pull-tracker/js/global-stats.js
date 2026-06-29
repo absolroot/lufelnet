@@ -157,7 +157,7 @@
       const plain=candidates.find(c=>!c.hasVar); return plain? plain.cls : candidates[0].cls;
     } catch(_) { return null; }
   }
-  function characterThumbFor(name){ try { const cls=resolveCharacterClass(name); if(!cls) return null; const img=document.createElement('img'); const base=baseUrl(); const ts=Date.now(); img.src=`${base}/assets/img/tier/${cls}.webp?v=${ts}`; img.alt=cls; img.loading='lazy'; img.onerror=function(){ this.src=`${base}/assets/img/character-half/${cls}.webp?v=${ts}`; }; img.width=32; img.height=32;  return img; } catch(_) { return null; } }
+  function characterThumbFor(name){ try { const cls=resolveCharacterClass(name); if(!cls) return null; const img=document.createElement('img'); const base=baseUrl(); const ts=Date.now(); const fallback=`${base}/assets/img/character-half/${cls}.webp?v=${ts}`; let triedFallback=false; img.src=`${base}/assets/img/tier/${cls}.webp?v=${ts}`; img.alt=cls; img.loading='lazy'; img.onerror=function(){ if(!triedFallback){ triedFallback=true; this.src=fallback; return; } this.onerror=null; this.style.display='none'; }; img.width=32; img.height=32;  return img; } catch(_) { return null; } }
   function resolveWeaponMeta(name){
     try {
       const datasets = [];

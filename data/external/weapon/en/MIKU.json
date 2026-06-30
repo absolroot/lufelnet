@@ -4,7 +4,7 @@
       {
         "name": "Light Up Your World",
         "quality": 5,
-        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Track is gained, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 3 turns.\nWhen Virtual Concert is active, gain Skill Amplification equal to 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%.",
+        "skill": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nIncrease party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%. For each Track gained, increase party's critical damage by 3.0%/3.9%/3.9%/4.8%/4.8%/5.7%/5.7% more for 3 turns. Stacks up to 3 times.\nWhen Virtual Concert is active, gain Skill Amplification equal to 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0%.",
         "stat": {
           "attack": 726.72,
           "defense": 396.41,

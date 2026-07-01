@@ -703,6 +703,7 @@ class DefenseCalc {
 
             const input = document.createElement('input');
             input.type = 'number';
+            input.inputMode = 'decimal';
             input.className = 'jc-desire-input miku-skill-effect-amp-input';
             input.min = '0';
             input.step = '0.1';

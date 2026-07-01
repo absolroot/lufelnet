@@ -514,10 +514,18 @@ export class NeedStatCardUI {
         (items || []).forEach(item => this.applyMikuSkillEffectAmpToItem(item, value));
     }
 
-    syncMikuSkillEffectAmpInputs(container = this.currentPanelContainer, value = this.getSharedMikuSkillEffectAmpValue()) {
+    syncMikuSkillEffectAmpInputs(container = this.currentPanelContainer, value = this.getSharedMikuSkillEffectAmpValue(), options = {}) {
         if (!container) return;
         const safeValue = this.normalizeMikuSkillEffectAmpValue(value);
+        const preserveInput = options && options.preserveInput ? options.preserveInput : null;
+        const rawValue = options && Object.prototype.hasOwnProperty.call(options, 'rawValue')
+            ? String(options.rawValue)
+            : String(safeValue);
         container.querySelectorAll('.need-stat-miku-skill-effect-amp-input').forEach(input => {
+            if (input === preserveInput) {
+                if (input.value !== rawValue) input.value = rawValue;
+                return;
+            }
             input.value = safeValue;
         });
     }
@@ -1202,7 +1210,7 @@ export class NeedStatCardUI {
             mikuSkillEffectAmpHtml = `
                 <span class="need-stat-persona-performance need-stat-miku-skill-effect-amp">
                     <label class="need-stat-persona-label">${label}</label>
-                    <input type="number" class="need-stat-persona-input need-stat-miku-skill-effect-amp-input" data-item-id="${itemId}" data-category="critical" value="${safeValue}" min="0" step="0.1">
+                    <input type="number" inputmode="decimal" class="need-stat-persona-input need-stat-miku-skill-effect-amp-input" data-item-id="${itemId}" data-category="critical" value="${safeValue}" min="0" step="0.1">
                 </span>
             `;
         }
@@ -1341,7 +1349,7 @@ export class NeedStatCardUI {
             mikuSkillEffectAmpHtml = `
                 <span class="need-stat-persona-performance need-stat-miku-skill-effect-amp">
                     <label class="need-stat-persona-label">${label}</label>
-                    <input type="number" class="need-stat-persona-input need-stat-miku-skill-effect-amp-input" data-item-id="${itemId}" data-category="${category}" value="${safeValue}" min="0" step="0.1">
+                    <input type="number" inputmode="decimal" class="need-stat-persona-input need-stat-miku-skill-effect-amp-input" data-item-id="${itemId}" data-category="${category}" value="${safeValue}" min="0" step="0.1">
                 </span>
             `;
         }
@@ -2573,7 +2581,7 @@ export class NeedStatCardUI {
             input.addEventListener('input', (e) => {
                 e.stopPropagation();
                 const value = this.setSharedMikuSkillEffectAmpValue(input.value);
-                this.syncMikuSkillEffectAmpInputs(container, value);
+                this.syncMikuSkillEffectAmpInputs(container, value, { preserveInput: input, rawValue: input.value });
                 this.applyMikuSkillEffectAmpToItems([
                     ...this.currentCriticalItems,
                     ...this.currentPierceItems,
@@ -2585,6 +2593,9 @@ export class NeedStatCardUI {
                 this.saveSelectionsToStore(slotIndex);
             });
             input.addEventListener('click', (e) => e.stopPropagation());
+            input.addEventListener('blur', () => {
+                this.syncMikuSkillEffectAmpInputs(container);
+            });
         });
 
         // Item row click (whole row toggles check) - ONLY for critical items (no data-category)
@@ -2994,7 +3005,7 @@ export class NeedStatCardUI {
             input.addEventListener('input', (e) => {
                 e.stopPropagation();
                 const value = this.setSharedMikuSkillEffectAmpValue(input.value);
-                this.syncMikuSkillEffectAmpInputs(container, value);
+                this.syncMikuSkillEffectAmpInputs(container, value, { preserveInput: input, rawValue: input.value });
                 this.applyMikuSkillEffectAmpToItems([
                     ...this.currentCriticalItems,
                     ...this.currentPierceItems,
@@ -3004,6 +3015,9 @@ export class NeedStatCardUI {
                 updateCriticalDisplays();
                 updatePierceDisplays();
                 this.saveSelectionsToStore(this.currentSlotIndex);
+            });
+            input.addEventListener('blur', () => {
+                this.syncMikuSkillEffectAmpInputs(container);
             });
         });
     }

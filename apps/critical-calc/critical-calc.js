@@ -20,6 +20,8 @@ class CriticalCalc {
         
         // 초기 렌더링
         this.initializeTables();
+        this._lastViewportWidth = window.innerWidth;
+        this._lastIsMobileLayout = window.innerWidth <= 1200;
 
         try {
             const sp = document.getElementById('showSpoilerToggle');
@@ -45,7 +47,7 @@ class CriticalCalc {
         } catch(_) {}
 
         window.addEventListener('resize', () => {
-            this.initializeTables();
+            this.handleViewportResize();
         });
 
         // defense-i18n.js가 revelationSumLabel과 explanationPowerLabel을 처리하므로
@@ -544,6 +546,7 @@ class CriticalCalc {
 
             const input = document.createElement('input');
             input.type = 'number';
+            input.inputMode = 'decimal';
             input.className = 'jc-desire-input miku-skill-effect-amp-input';
             input.min = '0';
             input.step = '0.1';
@@ -696,6 +699,22 @@ class CriticalCalc {
 
         this.autoSelectDefaults();
         this.updateTotal();
+    }
+
+    handleViewportResize() {
+        const width = window.innerWidth;
+        const isMobile = width <= 1200;
+        const active = document.activeElement;
+        const isEditing = active && /^(INPUT|TEXTAREA|SELECT)$/i.test(active.tagName || '');
+
+        // Android soft keyboard fires resize events by changing viewport height.
+        // Re-rendering here removes the focused input and closes the keyboard.
+        if (isEditing) return;
+        if (width === this._lastViewportWidth && isMobile === this._lastIsMobileLayout) return;
+
+        this._lastViewportWidth = width;
+        this._lastIsMobileLayout = isMobile;
+        this.initializeTables();
     }
 
     async renderAccordion(tbody, isSelf) {

@@ -469,10 +469,11 @@
       // DOM 삽입 위치 결정
       const levelButtons = skillsCard.querySelector('.skill-level-buttons');
       const skillsGrid = skillsCard.querySelector('.skills-grid');
-      if (levelButtons) {
-        skillsCard.insertBefore(card, levelButtons);
-      } else if (skillsGrid) {
-        skillsCard.insertBefore(card, skillsGrid);
+      const insertTarget = levelButtons && levelButtons.parentNode && skillsCard.contains(levelButtons.parentNode)
+        ? levelButtons.parentNode
+        : skillsGrid;
+      if (insertTarget && insertTarget.parentNode) {
+        insertTarget.parentNode.insertBefore(card, insertTarget);
       } else {
         skillsCard.appendChild(card);
       }

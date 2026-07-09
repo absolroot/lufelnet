@@ -80,7 +80,7 @@ window.ReleaseScheduleData = {
         { version: "4.2", date: "2026-06-04" , characters: ["유카리"], weapon: ["마그네틱 스톰"], days: 7 },
         { version: "4.3", date: "2026-06-11", characters: ["사나다"], revelation: ["돌파", "슬픔", "변화"], days: 14 },
         
-        { version: "4.4", date: "2026-06-25", characters: ["미쿠"], goldTicketUnlocks: ["CHERISH"], note: "Worldwide Simultaneous Release", days: 14 },
+        { version: "4.4", date: "2026-06-25", characters: ["미쿠"], goldTicketUnlocks: ["CHERISH"], note: "Worldwide Simultaneous Release", days: 21 },
         // { version: "???", incomeVersion: "4.1", date: "2026-06-25", dateSeaShift: false, characters: ["???"], days: 14, , plannerPlaceholder: true, placeholderId: "global-first-anniversary-unit", placeholderLabelKey: "plannerPlaceholderGlobalFirstAnniversaryUnit", placeholderNoteKey: "plannerPlaceholderUnconfirmed" },
         { version: "4.3.1", characters: ["미나미·여름"], "summer": true, days: 21 },
         { version: "4.3.2", characters: ["미유·여름"], "summer": true, persona: ["사히모치노카미"], weapon: ["설원의 침묵"], days: 14 },

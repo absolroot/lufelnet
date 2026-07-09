@@ -115,7 +115,27 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Fire",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Fire Boost",
+          "nature": "Fire",
+          "value": "0.08"
+        },
+        {
+          "attr": "Fire Damage Taken",
+          "nature": "Fire",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on GJ)",
@@ -277,7 +297,48 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1212.4 / 1234.4 / 1256.4 / 1278.4 / 1300.4 / 1322.4 / 1344.4",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "791.81 / 805.81 / 820.81 / 834.81 / 849.81 / 863.81 / 877.81",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4490.79 / 4572.79 / 4653.79 / 4735.79 / 4817.79 / 4898.79 / 4980.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "200.0 / 200.0 / 200.0 / 200.0 / 200.0 / 200.0 / 200.0",
+      "SP Recovery": "242.0% / 242.0% / 242.0% / 242.0% / 242.0% / 242.0% / 242.0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "sync_normal_skill": [],
     "theurgia_skill": []
   },

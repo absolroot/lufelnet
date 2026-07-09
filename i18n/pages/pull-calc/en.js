@@ -69,6 +69,7 @@ window.I18N_PAGE_PULL_CALC_EN = {
     scheduleScenario3Weeks: '3-week interval (1.5x reward)',
     scheduleScenario2Weeks: '2-week interval (1x reward)',
     labelSeaServer: 'SEA Server (+8 Days)',
+    showSpoilers: 'Show Spoilers',
     confirmServerChangeReset: 'Changing server settings will reset your current plan/targets. Continue?',
     plannerPlaceholderGlobalFirstAnniversaryUnit: 'Global 1st Anniversary Unit',
     plannerPlaceholderUnconfirmed: 'Unconfirmed planning slot',

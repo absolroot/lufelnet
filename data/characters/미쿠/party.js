@@ -23,14 +23,11 @@ window.recommendParty["미쿠"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
-            ],
-            "comment": "",
-            "comment_en": "",
-            "comment_jp": ""
+                "렌·댄싱 스타",
+                "모르가나·댄싱 스타",
+                "몽타뉴·백조",
+                "미쿠"
+            ]
         }
     ],
     "friends": [

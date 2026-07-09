@@ -398,6 +398,7 @@ class PullSimulator {
 
         // Chart instance
         this.chart = null;
+        this.disposeSpoilerToggle = null;
 
         // Initialize
         this.loadSavedData();
@@ -572,6 +573,7 @@ class PullSimulator {
             ['labelDailyMission', 'dailyMission'], ['labelMonthlySub', 'monthlySub'],
             ['labelVersionIncome', 'versionIncome'], ['labelBattlePass', 'battlePass'],
             ['labelRecursive', 'recursive'], ['labelSeaServer', 'labelSeaServer'],
+            ['labelShowSpoilers', 'showSpoilers'],
             ['labelCharPity', 'charPity'],
             ['labelWeaponPity', 'weaponPity'], ['labelWeapon5050Failed', 'weapon5050Failed'],
             ['labelWeaponScenario', 'weaponScenario'], ['labelScheduleScenario', 'scheduleScenario']
@@ -1130,6 +1132,7 @@ class PullSimulator {
         const scenarioTooltip = t('tooltipScheduleScenario');
         const seaServerLabel = t('labelSeaServer');
         const seaServerTooltip = t('tooltipSeaServer');
+        const spoilerLabel = t('showSpoilers');
 
         const headerHtml = `
             <div class="schedule-notice schedule-notice--in-timeline">
@@ -1162,6 +1165,12 @@ class PullSimulator {
                                     <path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"></path>
                                 </svg>
                             </span>
+                        </label>
+                    </div>
+                    <div class="pull-spoiler-checkbox-wrapper" id="pullSpoilerToggleWrap">
+                        <label class="checkbox-label spoiler-toggle-label">
+                            <input type="checkbox" id="pullSpoilerToggle" class="spoiler-toggle-checkbox">
+                            <span id="labelShowSpoilers" class="spoiler-toggle-text">${spoilerLabel}</span>
                         </label>
                     </div>
                 </div>
@@ -1206,6 +1215,8 @@ class PullSimulator {
             seaServerEl.addEventListener('change', () => this.handleServerChange());
         }
 
+        this.bindSpoilerToggle(container);
+
         // Timezone selector removed - now using fixed KST timezone
 
         // Bind tooltip for schedule scenario icon
@@ -1230,6 +1241,7 @@ class PullSimulator {
             }
         });
         this.bindCharacterAvatarLinks(container);
+        this.bindSpoilerCardReveals(container);
 
         // Bind tooltips for income tooltip icons
         if (typeof bindTooltipElement !== 'undefined') {
@@ -1355,6 +1367,83 @@ class PullSimulator {
         });
     }
 
+    isKrLikeLang(rawLang) {
+        if (typeof window.isKrLikeLanguage === 'function') {
+            return window.isKrLikeLanguage(rawLang);
+        }
+        const lang = String(rawLang || '').toLowerCase();
+        return lang === 'kr' || lang === 'ko' || lang === 'cn' || lang === 'zh' || lang === 'zh-cn' || lang === 'zh-hans';
+    }
+
+    isSpoilerEnabled() {
+        if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+            return window.SpoilerState.get();
+        }
+
+        try {
+            return localStorage.getItem('spoilerToggle') === 'true';
+        } catch (_) {
+            return false;
+        }
+    }
+
+    shouldHidePlannerSpoiler(diffDays) {
+        if (diffDays <= 0) return false;
+        if (this.isKrLikeLang(this.getLang())) return false;
+        return !this.isSpoilerEnabled();
+    }
+
+    bindSpoilerToggle(container) {
+        const wrap = container.querySelector('#pullSpoilerToggleWrap');
+        const checkbox = container.querySelector('#pullSpoilerToggle');
+        if (!wrap || !checkbox) return;
+
+        if (typeof this.disposeSpoilerToggle === 'function') {
+            this.disposeSpoilerToggle();
+            this.disposeSpoilerToggle = null;
+        }
+
+        const lang = this.getLang();
+        const forceVisible = !this.isKrLikeLang(lang);
+
+        if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+            this.disposeSpoilerToggle = window.SpoilerState.bindCheckbox({
+                checkbox,
+                container: wrap,
+                displayStyle: 'flex',
+                lang,
+                forceVisible,
+                source: 'pull-calc'
+            });
+            checkbox.addEventListener('change', () => {
+                this.buildSchedule();
+            });
+            return;
+        }
+
+        wrap.style.display = forceVisible ? 'flex' : 'none';
+        checkbox.checked = this.isSpoilerEnabled();
+        checkbox.addEventListener('change', () => {
+            try {
+                localStorage.setItem('spoilerToggle', checkbox.checked ? 'true' : 'false');
+            } catch (_) { }
+            this.buildSchedule();
+        });
+    }
+
+    bindSpoilerCardReveals(container) {
+        container.querySelectorAll('.char-card.planner-spoiler').forEach(card => {
+            card.addEventListener('click', (event) => {
+                if (!card.classList.contains('planner-spoiler')) return;
+                event.preventDefault();
+                event.stopPropagation();
+                card.classList.remove('planner-spoiler');
+                card.classList.add('planner-spoiler-revealed');
+                card.setAttribute('aria-label', card.dataset.character || '');
+            }, true);
+        });
+    }
+
     getPlannerPlaceholderLabel(release = null) {
         const key = release?.placeholderLabelKey || 'plannerPlaceholderGlobalFirstAnniversaryUnit';
         return this.t(key, 'Global 1st Anniversary Unit');
@@ -1445,6 +1534,7 @@ class PullSimulator {
         const element = charData.element || '';
         const isReleased = diffDays <= 0;
         const isSelected = this.targets.some(t => t.name === charName && t.date === date);
+        const isSpoilerHidden = this.shouldHidePlannerSpoiler(diffDays);
 
         let metaHtml = '';
         if (position) {
@@ -1573,8 +1663,8 @@ class PullSimulator {
             : '';
 
         return `
-            <div class="char-card ${isSelected ? 'selected' : ''} ${isReleased ? 'released' : ''} ${isPlaceholder ? 'planner-placeholder' : ''}"
-                 data-character="${charName}" data-version="${version}" data-date="${date}">
+            <div class="char-card ${isSelected ? 'selected' : ''} ${isReleased ? 'released' : ''} ${isPlaceholder ? 'planner-placeholder' : ''} ${isSpoilerHidden ? 'planner-spoiler' : ''}"
+                 data-character="${charName}" data-version="${version}" data-date="${date}" ${isSpoilerHidden ? 'aria-label="Spoiler hidden"' : ''}>
                 ${avatarHtml}
                 <div class="char-info">
                     <div class="char-name">${displayName}</div>

@@ -69,6 +69,7 @@ window.I18N_PAGE_PULL_CALC_JP = {
     scheduleScenario3Weeks: '3週間間隔 (報酬1.5倍)',
     scheduleScenario2Weeks: '2週間間隔 (報酬1倍)',
     labelSeaServer: 'SEAサーバー (+8日)',
+    showSpoilers: 'ネタバレ表示',
     confirmServerChangeReset: 'サーバー設定を変更すると、現在の計画/目標がリセットされます。続けますか？',
     plannerPlaceholderGlobalFirstAnniversaryUnit: 'グローバル1周年キャラクター',
     plannerPlaceholderUnconfirmed: '未確定の計画スロット',

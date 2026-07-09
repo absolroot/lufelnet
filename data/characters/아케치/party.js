@@ -44,6 +44,18 @@ window.recommendParty["아케치"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        },
+        {
+            "members": [
+                "아케치",
+                "렌·댄싱스타",
+                "J&C",
+                "후카",
+                "카타야마"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
         }
     ],
     "friends": [

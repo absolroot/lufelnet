@@ -22,12 +22,9 @@ window.operationData["미유·여름"] = {
         "해명 괴도에 따라 택틱 변화"
     ],
     "note_en": [
-        "· New character, still adjusting"
     ],
     "note_jp": [
-        "· 新怪盗で調整中"
     ],
     "note_cn": [
-        "· 会根据解明怪盗不同调整战术"
     ]
 };

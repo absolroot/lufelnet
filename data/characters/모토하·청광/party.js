@@ -67,6 +67,18 @@ window.recommendParty["모토하·청광"] = {
             "comment": "",
             "comment_en": "",
             "comment_jp": ""
+        },
+        {
+            "members": [
+                "모토하·청광",
+                "J&C",
+                "렌·댄싱 스타",
+                "후카",
+                "아야카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
         }
     ],
     "friends": [

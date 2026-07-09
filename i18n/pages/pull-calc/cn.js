@@ -52,6 +52,7 @@ window.I18N_PAGE_PULL_CALC_CN = {
     "scheduleScenario3Weeks": "3 周间隔（奖励 1.5 倍）",
     "scheduleScenario2Weeks": "2 周间隔（奖励 1 倍）",
     "labelSeaServer": "SEA 服务器（时间表 +8 天）",
+    "showSpoilers": "显示剧透",
     "confirmServerChangeReset": "更改服务器设置会重置当前计划与目标。要继续吗？",
     "plannerPlaceholderGlobalFirstAnniversaryUnit": "国际服 1 周年角色",
     "plannerPlaceholderUnconfirmed": "未确认规划占位",

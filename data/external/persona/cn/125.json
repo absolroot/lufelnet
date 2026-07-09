@@ -39,7 +39,7 @@
     }
   ],
   "max_level": 80,
-  "max_level_after_awake": 99,
+  "max_level_after_awake": 120,
   "name": "加百列",
   "nature": "Ice",
   "passive_skill": [
@@ -72,7 +72,7 @@
       "name": "加百列特性6"
     }
   ],
-  "rank": 8,
+  "rank": 9,
   "showtime_skill": {
     "cost": "",
     "desc": "对1名敌人造成360.0%/385.2%/410.4%攻击力的冰冻属性伤害。",

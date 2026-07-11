@@ -4,7 +4,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "我喜欢",
+              "reward": 60
+            },
+            {
+              "content": "有点害羞",
+              "reward": 40
+            },
+            {
+              "content": "想要更高的爵位",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -16,7 +27,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "今后也敞开聊吧",
+              "reward": 60
+            },
+            {
+              "content": "我可以做你的聊天对象",
+              "reward": 40
+            },
+            {
+              "content": "聊天对象是我也行吗？",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -28,7 +50,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "你好像很开心",
+              "reward": 60
+            },
+            {
+              "content": "你在做什么呢？",
+              "reward": 40
+            },
+            {
+              "content": "火箭筒……？",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -40,7 +73,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "YUI？",
+              "reward": 40
+            },
+            {
+              "content": "你喜欢吃炸薯条吗？",
+              "reward": 60
+            },
+            {
+              "content": "我是男爵",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -52,7 +96,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "再多浇点水？",
+              "reward": 50
+            },
+            {
+              "content": "化肥不合适？",
+              "reward": 40
+            },
+            {
+              "content": "有可能是害兽？",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -64,7 +119,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "我会陪你的",
+              "reward": 60
+            },
+            {
+              "content": "每天来的话有点儿……",
+              "reward": 40
+            },
+            {
+              "content": "可能还会出现问题",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -76,7 +142,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "有道理",
+              "reward": 50
+            },
+            {
+              "content": "这是问题所在……？",
+              "reward": 40
+            },
+            {
+              "content": "不愧是YUI",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -88,7 +165,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "选不需要花功夫照料的",
+              "reward": 60
+            },
+            {
+              "content": "光照要素也很重要",
+              "reward": 50
+            },
+            {
+              "content": "灵感很重要",
+              "reward": 40
+            }
           ]
         ],
         "rank_up": {
@@ -100,7 +188,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "是因为YUI你们的努力",
+              "reward": 40
+            },
+            {
+              "content": "我只不过是个引子",
+              "reward": 60
+            },
+            {
+              "content": "我的爵位要上升了？",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -1001,13 +1100,60 @@
       },
       {
         "bonus_synergy": 1000,
-        "compound": [],
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 999
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "风格华丽的包装纸，适用于名贵礼物。",
+              "icon": "item-305932.png",
+              "name": "华丽的包装",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": "涩谷",
+                  "maxBuy": 10,
+                  "moneyName": "现金",
+                  "price": 500,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "일간",
+                  "shopName": "花店"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『山茶花花茶』·『金木樨花茶』·『百合永生花』·『维丽特』·『风物诗』·『真爱永恒』。",
+              "type": "材料"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305966.png",
         "name": "真爱永恒",
         "new_gift_synergy": 0,
         "seed": [],
         "shop": [],
-        "source": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 999
       },
       {
@@ -1027,7 +1173,24 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "一直在种田……",
+              "reward": 60
+            },
+            {
+              "content": "有观赏植物",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "是要一起住了吗？",
+              "reward": 60
+            },
+            {
+              "content": "也听听我的想法吧",
+              "reward": 50
+            }
           ]
         ]
       }
@@ -1065,10 +1228,14 @@
       }
     ],
     "time": "夜晚",
-    "unlock_quest": [
+    "unlock_quest": {
+      "details": "为了作战顺利，小心地探查宫殿内部吧。",
+      "name": "负重之人的对决"
+    },
+    "unlock_notes": [
       {
-        "details": "为了作战顺利，小心地探查宫殿内部吧。",
-        "name": "负重之人的对决"
+        "type": "story",
+        "text": "第1章推进后开放"
       }
     ],
     "visit_dialog": [
@@ -1076,7 +1243,14 @@
         "destination": "田地",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "好大啊",
+              "reward": 60
+            },
+            {
+              "content": "真的是给初学者用的？",
+              "reward": 40
+            }
           ]
         ]
       },
@@ -1084,7 +1258,14 @@
         "destination": "近处的街道",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "勉为其难看看吧……",
+              "reward": 60
+            },
+            {
+              "content": "感觉不适合我",
+              "reward": 40
+            }
           ]
         ]
       },
@@ -1092,7 +1273,14 @@
         "destination": "远处的街道",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "要不要买？",
+              "reward": 60
+            },
+            {
+              "content": "感觉种起来不容易",
+              "reward": 40
+            }
           ]
         ]
       },
@@ -1100,7 +1288,18 @@
         "destination": "雪原",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "想坐动力雪橇",
+              "reward": 60
+            },
+            {
+              "content": "想玩冬季运动",
+              "reward": 50
+            },
+            {
+              "content": "来做雪洞吧",
+              "reward": 40
+            }
           ]
         ]
       },
@@ -1108,15 +1307,16 @@
         "destination": "管理者的田地",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "加油吧！",
+              "reward": 60
+            },
+            {
+              "content": "志愿者没有报酬？",
+              "reward": 50
+            }
           ]
         ]
-      }
-    ],
-    "unlock_notes": [
-      {
-        "type": "story",
-        "text": "第1章推进后开放"
       }
     ]
   },

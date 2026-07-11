@@ -4,7 +4,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "有点道理",
+              "reward": 60
+            },
+            {
+              "content": "……强行解释",
+              "reward": 40
+            },
+            {
+              "content": "不在意别人怎么看？",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -16,7 +27,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "进度也太快了……",
+              "reward": 50
+            },
+            {
+              "content": "实验的目的是？",
+              "reward": 60
+            },
+            {
+              "content": "要是我拒绝呢？",
+              "reward": 40
+            }
           ]
         ],
         "rank_up": {
@@ -28,7 +50,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "是个好姐姐啊",
+              "reward": 60
+            },
+            {
+              "content": "你讨厌她吗？",
+              "reward": 40
+            },
+            {
+              "content": "能介绍给我吗？",
+              "reward": 50
+            }
           ]
         ],
         "rank_up": {
@@ -40,7 +73,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "交给我吧",
+              "reward": 60
+            },
+            {
+              "content": "是不是反过来比较好……",
+              "reward": 50
+            },
+            {
+              "content": "不需要什么作战策略",
+              "reward": 40
+            }
           ]
         ],
         "rank_up": {
@@ -52,7 +96,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "这是患者的自由",
+              "reward": 50
+            },
+            {
+              "content": "我理解",
+              "reward": 60
+            },
+            {
+              "content": "我可以加菜吗？",
+              "reward": 40
+            }
           ]
         ],
         "rank_up": {
@@ -64,7 +119,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "这就要放弃了吗？",
+              "reward": 50
+            },
+            {
+              "content": "你这干劲不够啊",
+              "reward": 40
+            },
+            {
+              "content": "想说的都说出来吧",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -76,7 +142,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "我觉得你想太多了",
+              "reward": 40
+            },
+            {
+              "content": "试着相信一下他吧",
+              "reward": 50
+            },
+            {
+              "content": "就算是陷阱也可以利用",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -88,7 +165,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "要逃跑吗？",
+              "reward": 50
+            },
+            {
+              "content": "先冷静一下",
+              "reward": 60
+            },
+            {
+              "content": "现在说这话晚了",
+              "reward": 40
+            }
           ]
         ],
         "rank_up": {
@@ -100,7 +188,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "真没办法……",
+              "reward": 40
+            },
+            {
+              "content": "我有权利拒绝吗？",
+              "reward": 50
+            },
+            {
+              "content": "「交易」还在生效",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -930,7 +1029,24 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "都是我自己打扫",
+              "reward": 60
+            },
+            {
+              "content": "我的宠物帮我打扫",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "你又在开玩笑了吧？",
+              "reward": 50
+            },
+            {
+              "content": "免费住",
+              "reward": 60
+            }
           ]
         ]
       }
@@ -968,10 +1084,14 @@
       }
     ],
     "time": "夜晚",
-    "unlock_quest": [
+    "unlock_quest": {
+      "details": "发生异常变化的地点就在前方，去调查一下吧。",
+      "name": "往日认知之间"
+    },
+    "unlock_notes": [
       {
-        "details": "发生异常变化的地点就在前方，去调查一下吧。",
-        "name": "往日认知之间"
+        "type": "story",
+        "text": "第2章推进后开放"
       }
     ],
     "visit_dialog": [
@@ -979,7 +1099,14 @@
         "destination": "神田",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "也是有可能的",
+              "reward": 50
+            },
+            {
+              "content": "医生的能力更重要",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -987,7 +1114,14 @@
         "destination": "新宿",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "你期待怎样的书？",
+              "reward": 50
+            },
+            {
+              "content": "其实里面有……",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -995,7 +1129,14 @@
         "destination": "吉祥寺",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "想成为万人迷",
+              "reward": 40
+            },
+            {
+              "content": "基良呢？",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -1003,7 +1144,14 @@
         "destination": "涩谷",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "看价格",
+              "reward": 40
+            },
+            {
+              "content": "没什么规则",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -1011,7 +1159,14 @@
         "destination": "杂司谷",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "就是很平凡",
+              "reward": 40
+            },
+            {
+              "content": "也有一些意外",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -1019,15 +1174,16 @@
         "destination": "秋叶原",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "那必然是捕蝇器",
+              "reward": 60
+            },
+            {
+              "content": "空气净化器比较实用",
+              "reward": 50
+            }
           ]
         ]
-      }
-    ],
-    "unlock_notes": [
-      {
-        "type": "story",
-        "text": "第2章推进后开放"
       }
     ]
   },

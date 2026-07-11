@@ -60,7 +60,7 @@ Object.assign(window.characterData, {
         "color": "#ff2c2cff",
         "element": "화염",
         "rarity": 5,
-        "position": "",
+        "position": "반항",
         "release_order": 50,
         "p5d": true,
         "codename": "PANTHER·Starlight",

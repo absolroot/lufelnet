@@ -4,7 +4,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "升学或者就职…？",
+              "reward": 40
+            },
+            {
+              "content": "没考虑过",
+              "reward": 50
+            },
+            {
+              "content": "过得比较幸福",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -16,7 +27,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "又是偶像？",
+              "reward": 50
+            },
+            {
+              "content": "没这么想过……",
+              "reward": 40
+            },
+            {
+              "content": "你喜欢偶像吗？",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -28,7 +50,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "非做不可吗？",
+              "reward": 40
+            },
+            {
+              "content": "果断拒绝",
+              "reward": 50
+            },
+            {
+              "content": "希望你解释一下……",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -40,7 +73,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "先冷静一下吧",
+              "reward": 50
+            },
+            {
+              "content": "她感到困扰了",
+              "reward": 60
+            },
+            {
+              "content": "这位客人，时间到了",
+              "reward": 40
+            }
           ]
         ],
         "rank_up": {
@@ -52,7 +96,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "好深奥啊……",
+              "reward": 40
+            },
+            {
+              "content": "这真的有意义吗？",
+              "reward": 50
+            },
+            {
+              "content": "只是梅洛普想点单吧？",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -64,7 +119,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "难度相当高啊",
+              "reward": 50
+            },
+            {
+              "content": "加油吧",
+              "reward": 40
+            },
+            {
+              "content": "我期待着你的本领",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -76,7 +142,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "原来有着这样的内情啊",
+              "reward": 50
+            },
+            {
+              "content": "真不容易啊……",
+              "reward": 40
+            },
+            {
+              "content": "你很努力啊",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -88,7 +165,24 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "梅洛普亲和小哥哥，你们一定要来看啊！",
+              "reward": 50
+            }
+          ],
+          [
+            {
+              "content": "要善始善终",
+              "reward": 50
+            },
+            {
+              "content": "真没办法",
+              "reward": 40
+            },
+            {
+              "content": "当然了！",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -100,7 +194,18 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "至今为止经历了很多",
+              "reward": 40
+            },
+            {
+              "content": "没想到会变成这样……",
+              "reward": 50
+            },
+            {
+              "content": "感谢成瑠瑠的存在",
+              "reward": 60
+            }
           ]
         ],
         "rank_up": {
@@ -1120,13 +1225,60 @@
       },
       {
         "bonus_synergy": 1000,
-        "compound": [],
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "一支盛放的红玫瑰花，花语是炽热的感情与真挚的心意，在情人节期间非常受人欢迎。",
+              "icon": "item-305965.png",
+              "name": "红玫瑰",
+              "seed": [],
+              "shop": [],
+              "source": [],
+              "tips": "一种特殊的制作材料。\n可使用工作台制作成协同者礼物『真爱永恒』、『浮游花·小型』、『浮游花·中型』、『浮游花·大型』、『浮游花·豪华』、『浮游花·典藏』。",
+              "type": "材料"
+            },
+            "itemCount": 999
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "风格华丽的包装纸，适用于名贵礼物。",
+              "icon": "item-305932.png",
+              "name": "华丽的包装",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": "涩谷",
+                  "maxBuy": 10,
+                  "moneyName": "现金",
+                  "price": 500,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "일간",
+                  "shopName": "花店"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一种常见的制作材料。\n可使用工作台制作成协同者礼物『山茶花花茶』·『金木樨花茶』·『百合永生花』·『维丽特』·『风物诗』·『真爱永恒』。",
+              "type": "材料"
+            },
+            "itemCount": 1
+          }
+        ],
         "image": "item-305966.png",
         "name": "真爱永恒",
         "new_gift_synergy": 0,
         "seed": [],
         "shop": [],
-        "source": [],
+        "source": [
+          "compound"
+        ],
         "synergy": 999
       },
       {
@@ -1146,7 +1298,14 @@
       {
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "主要是在这里睡觉",
+              "reward": 50
+            },
+            {
+              "content": "不好意思说……",
+              "reward": 60
+            }
           ]
         ]
       }
@@ -1217,7 +1376,14 @@
         "destination": "涩谷",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "说得太夸张了",
+              "reward": 50
+            },
+            {
+              "content": "原来还有这种解释",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -1225,7 +1391,14 @@
         "destination": "下北泽",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "什么意思？",
+              "reward": 50
+            },
+            {
+              "content": "我理解了",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -1233,7 +1406,14 @@
         "destination": "神保町",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "我只看漫画",
+              "reward": 50
+            },
+            {
+              "content": "我的兴趣是阅读",
+              "reward": 60
+            }
           ]
         ]
       },
@@ -1241,7 +1421,14 @@
         "destination": "台场海滨公园",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "开始心跳加速了",
+              "reward": 60
+            },
+            {
+              "content": "要看对象是谁",
+              "reward": 50
+            }
           ]
         ]
       },
@@ -1249,7 +1436,14 @@
         "destination": "池袋",
         "good_answers": [
           [
-            "'NoneType' object is not subscriptable"
+            {
+              "content": "要牵手吗？",
+              "reward": 60
+            },
+            {
+              "content": "对我们来说还太早了",
+              "reward": 50
+            }
           ]
         ]
       }

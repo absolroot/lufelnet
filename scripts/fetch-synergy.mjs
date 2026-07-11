@@ -40,6 +40,11 @@ const REQUEST_TIMEOUT_MS = 15000;
 const REQUEST_RETRIES = 1;
 const REQUEST_DELAY_MS = 600;
 const LOCAL_ONLY_DATA_KEYS = ['unlock_notes'];
+const ALLOW_STRUCTURAL_SHRINK = process.env.SYNERGY_ALLOW_STRUCTURAL_SHRINK === '1';
+const KNOWN_BAD_PAYLOAD_STRINGS = [
+  "'NoneType' object is not subscriptable",
+  'NoneType object is not subscriptable'
+];
 const DATASET_CONFIGS = {
   synergy: {
     label: 'synergy',
@@ -263,6 +268,65 @@ function computeTextVolume(value) {
   return 0;
 }
 
+function findKnownBadPayloadString(value) {
+  if (typeof value === 'string') {
+    return KNOWN_BAD_PAYLOAD_STRINGS.find((badText) => value.includes(badText)) || null;
+  }
+
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const badText = findKnownBadPayloadString(item);
+      if (badText) return badText;
+    }
+    return null;
+  }
+
+  if (value && typeof value === 'object') {
+    for (const item of Object.values(value)) {
+      const badText = findKnownBadPayloadString(item);
+      if (badText) return badText;
+    }
+  }
+
+  return null;
+}
+
+function computeShapeStats(value) {
+  const stats = {
+    arrays: 0,
+    objects: 0,
+    keys: 0
+  };
+
+  function visit(item) {
+    if (Array.isArray(item)) {
+      stats.arrays += 1;
+      for (const child of item) visit(child);
+      return;
+    }
+
+    if (item && typeof item === 'object') {
+      stats.objects += 1;
+      const values = Object.values(item);
+      stats.keys += values.length;
+      for (const child of values) visit(child);
+    }
+  }
+
+  visit(value);
+  return stats;
+}
+
+function findStructuralShrink(previousStats, nextStats) {
+  for (const key of ['objects', 'arrays', 'keys']) {
+    if (nextStats[key] < previousStats[key]) {
+      return `${key} ${previousStats[key]} -> ${nextStats[key]}`;
+    }
+  }
+
+  return null;
+}
+
 function omitLocalOnlyDataKeys(json) {
   if (!json || typeof json !== 'object') return json;
 
@@ -309,6 +373,11 @@ function writeJson(filePath, json) {
 
 function saveIfTextIncreased(filePath, nextJson) {
   const nextComparableJson = omitLocalOnlyDataKeys(nextJson);
+  const badPayloadString = findKnownBadPayloadString(nextComparableJson);
+  if (badPayloadString) {
+    return { saved: false, reason: 'invalid_new_payload', badPayloadString };
+  }
+
   const nextTextVolume = computeTextVolume(nextComparableJson);
   if (nextTextVolume <= 0) {
     return { saved: false, reason: 'empty_new', previousTextVolume: 0, nextTextVolume };
@@ -326,6 +395,19 @@ function saveIfTextIncreased(filePath, nextJson) {
 
   const previousComparableJson = omitLocalOnlyDataKeys(previousJson);
   const previousTextVolume = computeTextVolume(previousComparableJson);
+  const previousShapeStats = computeShapeStats(previousComparableJson);
+  const nextShapeStats = computeShapeStats(nextComparableJson);
+  const structuralShrink = findStructuralShrink(previousShapeStats, nextShapeStats);
+  if (structuralShrink && !ALLOW_STRUCTURAL_SHRINK) {
+    return {
+      saved: false,
+      reason: 'structural_shrink',
+      structuralShrink,
+      previousTextVolume,
+      nextTextVolume
+    };
+  }
+
   if (nextTextVolume > previousTextVolume) {
     const mergedJson = mergeLocalOnlyData(previousJson, nextJson);
     writeJson(filePath, mergedJson);
@@ -361,6 +443,8 @@ async function run() {
     skippedNotLonger: 0,
     skippedNoMapping: 0,
     skippedInvalidExisting: 0,
+    skippedInvalidPayload: 0,
+    skippedStructuralShrink: 0,
     errors: 0
   };
 
@@ -448,6 +532,19 @@ async function run() {
         log(`Skip invalid existing file: ${lang}/${characterName}.json`);
         continue;
       }
+      if (saveResult.reason === 'invalid_new_payload') {
+        totals.skippedInvalidPayload += 1;
+        log(`Skip invalid payload: ${lang}/${characterName}.json (${saveResult.badPayloadString})`);
+        continue;
+      }
+      if (saveResult.reason === 'structural_shrink') {
+        totals.skippedStructuralShrink += 1;
+        log(
+          `Skip structural shrink: ${lang}/${characterName}.json `
+          + `(${saveResult.structuralShrink}, text ${saveResult.previousTextVolume} -> ${saveResult.nextTextVolume})`
+        );
+        continue;
+      }
 
       totals.skippedNotLonger += 1;
       log(
@@ -467,6 +564,8 @@ async function run() {
   log(`- skipped not longer    : ${totals.skippedNotLonger}`);
   log(`- skipped no mapping    : ${totals.skippedNoMapping}`);
   log(`- skipped invalid old   : ${totals.skippedInvalidExisting}`);
+  log(`- skipped invalid new   : ${totals.skippedInvalidPayload}`);
+  log(`- skipped shape shrink  : ${totals.skippedStructuralShrink}`);
   log(`- errors                : ${totals.errors}`);
 }
 

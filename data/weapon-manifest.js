@@ -36,6 +36,7 @@ window.WEAPON_FILE_CHARACTER_NAMES = [
     '아야카',
     '아케치',
     '안',
+    '안·댄싱 스타',
     '야오링',
     '야오링·사자무',
     '원더',

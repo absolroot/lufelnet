@@ -396,7 +396,7 @@ const enRevelationData = {
         },
         "Freedom": { // 자유
             "Defeat": "Increases all allies' DMG Dealt to enemies with debuffs by 8%, doesn't stack.",
-            "Triumph": "When using a Persona skill, gain 1 [Glory] stack. If the skill is Ice or Wind, gain 1 additional stack, up to 2 stacks. Glory: For 2 turns, increases Critical Effect by 10%. If the wearer is Ice or Wind, increases it by an additional 10%.",
+            "Triumph": "After using a skill, gain 1 Glory stack. When a Resonance is activated, spend all Glory stacks and increase pierce rate by 8% for each stack. Stacks up to 2 times.",
             "Disappointment": "When dealing Almighty damage, increase Attack by 35% and critical rate by 12%.",
             //"type": ["미출시"]
         },

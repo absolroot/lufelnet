@@ -260,6 +260,10 @@ export function getLocalizedSkillName(item, groupName = '') {
     const typeStr = String(item.type || '');
     const isWonder = groupName === '원더';
 
+    if (lang === 'kr' && item.displayName && String(item.displayName).trim()) {
+        return String(item.displayName).trim();
+    }
+
     // 1) 데이터에 언어별 필드가 있으면 우선 사용
     if (lang === 'en' && item.skillName_en && String(item.skillName_en).trim()) {
         return String(item.skillName_en).trim();

@@ -1120,12 +1120,15 @@ class DefenseCalc {
         const skillNameCell = document.createElement('td');
         skillNameCell.className = 'skill-name-column';
         let localizedName = '';
+        if (currentLang === 'kr' && data.displayName && String(data.displayName).trim()) {
+            localizedName = String(data.displayName).trim();
+        }
         // 기본: 현지화된 이름 우선
-        if (currentLang === 'en') {
+        if (!localizedName && currentLang === 'en') {
             localizedName = (data.skillName_en && String(data.skillName_en).trim()) ? data.skillName_en : '';
-        } else if (currentLang === 'jp') {
+        } else if (!localizedName && currentLang === 'jp') {
             localizedName = (data.skillName_jp && String(data.skillName_jp).trim()) ? data.skillName_jp : '';
-        } else if (currentLang === 'cn') {
+        } else if (!localizedName && currentLang === 'cn') {
             localizedName = (data.skillName_cn && String(data.skillName_cn).trim()) ? data.skillName_cn : '';
         }
         // 폴백 규칙: EN/JP에서도 원더 그룹의 전용무기/페르소나/스킬만 KR 이름으로 폴백 허용

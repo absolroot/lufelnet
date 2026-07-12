@@ -20,6 +20,40 @@ const penetrateData = {
       "duration_cn": "1回合",
       "options_cn": []
     },
+    {
+      "id": "freedom_triumph_glb_pierce",
+      "type": "계시",
+      "target": "자신",
+      "skillIcon": "/assets/img/revelation/자유.webp",
+      "skillName": "자유 + 개선",
+      "displayName": "자유 + 개선 (GLB 전용)",
+      "skillName_en": "Freedom + Triumph (GLB ONLY)",
+      "skillName_jp": "自由 + 改善 (GLB専用)",
+      "skillName_cn": "自由 + 凯旋 (GLB专用)",
+      "options": [
+        "1중첩",
+        "2중첩"
+      ],
+      "values": {
+        "1중첩": 8,
+        "2중첩": 16
+      },
+      "defaultOption": "2중첩",
+      "value": 16,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "공명 1회",
+      "note_en": "One Resonance",
+      "note_jp": "Resonance 1回",
+      "note_cn": "Resonance 1次",
+      "type_cn": "启示",
+      "target_cn": "自身",
+      "duration_cn": "-",
+      "options_cn": [
+        "1层",
+        "2层"
+      ]
+    },
   ],
   "미쿠": [
     {

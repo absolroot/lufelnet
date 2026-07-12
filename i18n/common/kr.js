@@ -228,6 +228,9 @@ window.I18N_COMMON_KR = {
         // 생명 관련
         hpAlt: '생명력',
 
+        // 방어 관련
+        defenseAlt: '방어',
+
         // 대미지 관련 (띄어쓰기 없는 버전)
         dmgBonusAlt: '대미지보너스',
         critRateAlt: '크리티컬확률',

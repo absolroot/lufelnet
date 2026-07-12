@@ -396,6 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
             '효과 명중': 'Ailment Accuracy',
             '효과명중': 'Ailment Accuracy',
             '방어력': 'Defense',
+            '방어': 'Defense',
             '속도': 'Speed',
             'SP 회복': 'SP Recovery',
             'SP회복': 'SP Recovery'
@@ -419,6 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
             '효과 명중': '状態異常命中',
             '효과명중': '状態異常命中',
             '방어력': '防御力',
+            '방어': '防御力',
             '속도': '速度',
             'SP 회복': 'SP回復',
             'SP회복': 'SP回復'
@@ -442,6 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
             '효과 명중': t('characterStatsAwakeAilmentAccuracy', '效果命中'),
             '효과명중': t('characterStatsAwakeAilmentAccuracy', '效果命中'),
             '방어력': t('characterStatsLabelDef', '防御力'),
+            '방어': t('characterStatsLabelDef', '防御力'),
             '속도': t('gameTerms.speed', '速度'),
             'SP 회복': t('characterStatsAwakeSpRecovery', '精力回复'),
             'SP회복': t('characterStatsAwakeSpRecovery', '精力回复'),

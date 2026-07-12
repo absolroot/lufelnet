@@ -14,6 +14,15 @@ const MUSIC_ICON_MAP = {
     '춘': 'music_춘람.png'
 };
 
+export const MIKU_MELODY_KEYS = ['H', '춘', '불'];
+
+const MELODY_ICON_MAP = {
+    default: 'icon_default.png',
+    H: 'icon_heaven.png',
+    '불': 'icon_불장난.png',
+    '춘': 'icon_춘람.png'
+};
+
 const MUSIC_NAME_MAP = {
     kr: {
         H: 'Heaven',
@@ -86,6 +95,26 @@ export function getMikuMusicIconUrl(musicKey, baseUrl = '') {
     const fileName = MUSIC_ICON_MAP[musicKey];
     if (!fileName) return '';
     return `${baseUrl}/data/characters/${encodeURIComponent(MIKU_CHARACTER)}/${encodeURIComponent(fileName)}`;
+}
+
+export function getMikuMelodyIconUrl(musicKey, active = false, baseUrl = '') {
+    const fileName = active ? MELODY_ICON_MAP[musicKey] : MELODY_ICON_MAP.default;
+    if (!fileName) return '';
+    return `${baseUrl}/data/characters/${encodeURIComponent(MIKU_CHARACTER)}/${encodeURIComponent(fileName)}`;
+}
+
+export function getMikuMelodyItems(activeKeys = [], baseUrl = '') {
+    const activeSet = new Set(Array.isArray(activeKeys) ? activeKeys : []);
+
+    return MIKU_MELODY_KEYS.map(key => {
+        const active = activeSet.has(key);
+        return {
+            key,
+            active,
+            label: getMikuMusicName(key),
+            image: getMikuMelodyIconUrl(key, active, baseUrl)
+        };
+    });
 }
 
 export function getMikuMusicKeyFromLegacyValue(value) {

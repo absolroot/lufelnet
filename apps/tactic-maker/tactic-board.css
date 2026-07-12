@@ -905,6 +905,37 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     pointer-events: none;
 }
 
+.miku-melody-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+    min-height: 13px;
+    margin: 1px 4px 0 18px;
+    padding: 0;
+}
+
+.miku-melody-slot {
+    width: 13px;
+    height: 13px;
+    flex: 0 0 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.48;
+}
+
+.miku-melody-slot.active {
+    opacity: 1;
+}
+
+.miku-melody-icon {
+    width: 13px;
+    height: 13px;
+    object-fit: contain;
+    display: block;
+}
+
 .miku-music-modal-options {
     display: flex;
     flex-wrap: wrap;

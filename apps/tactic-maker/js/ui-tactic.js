@@ -5,9 +5,13 @@
 
 import { AutoActionPrompt } from './auto-action-prompt.js';
 import {
+    MIKU_CHARACTER,
+    MIKU_MELODY_KEYS,
+    getMikuMelodyItems,
     getMikuMusicName,
     getMikuMusicOptions,
     getMikuMusicUILabel,
+    getSkillNumberFromAction,
     isFixedMikuMusicAction,
     isMikuAction,
     normalizeMikuMusic
@@ -458,6 +462,7 @@ export class TacticUI {
             char.color = charData.color || null;
         });
 
+        const mikuMelodyStateMap = this.buildMikuMelodyStateMap(turns, sortedChars);
         const getT = (k, f) => (window.I18nService && window.I18nService.t ? window.I18nService.t(k, f) : (f || k));
 
         turns.forEach((turn, turnIdx) => {
@@ -593,7 +598,15 @@ export class TacticUI {
                 actionList.className = 'action-list';
 
                 actions.forEach((action, actionIdx) => {
-                    const actionItem = this.createActionItem(action, turnIdx, colKey, actionIdx, char);
+                    const melodyStateKey = this.getActionStateKey(turnIdx, colKey, actionIdx);
+                    const actionItem = this.createActionItem(
+                        action,
+                        turnIdx,
+                        colKey,
+                        actionIdx,
+                        char,
+                        mikuMelodyStateMap.get(melodyStateKey) || null
+                    );
                     actionList.appendChild(actionItem);
                 });
 
@@ -618,6 +631,75 @@ export class TacticUI {
 
             this.tableBody.appendChild(tr);
         });
+    }
+
+    getActionStateKey(turnIdx, colKey, actionIdx) {
+        return `${turnIdx}:${colKey}:${actionIdx}`;
+    }
+
+    getActionActorName(action, char) {
+        if (action && action.character) return String(action.character);
+        if (char && char.type === 'party') return String(char.name || '');
+        if (char && char.type === 'wonder') return '원더';
+        return '';
+    }
+
+    buildMikuMelodyStateMap(turns, sortedChars) {
+        const stateMap = new Map();
+        const activeMelodies = new Set();
+
+        (turns || []).forEach((turn, turnIdx) => {
+            (sortedChars || []).forEach(char => {
+                const colKey = char.type === 'wonder' ? 'mystery' : String(char.order);
+                const actions = (turn.columns && turn.columns[colKey]) || [];
+
+                actions.forEach((action, actionIdx) => {
+                    const actorName = this.getActionActorName(action, char);
+                    if (actorName !== MIKU_CHARACTER) return;
+
+                    const skillNumber = getSkillNumberFromAction(action?.action);
+                    if (skillNumber === 1 || skillNumber === 2) {
+                        const musicKey = normalizeMikuMusic(actorName, action.action, action.mikuMusic ?? action.music ?? '');
+                        if (MIKU_MELODY_KEYS.includes(musicKey)) {
+                            activeMelodies.add(musicKey);
+                        }
+                    }
+
+                    stateMap.set(this.getActionStateKey(turnIdx, colKey, actionIdx), Array.from(activeMelodies));
+
+                    if (skillNumber === 3) {
+                        activeMelodies.clear();
+                    }
+                });
+            });
+        });
+
+        return stateMap;
+    }
+
+    createMikuMelodyRow(activeKeys) {
+        const row = document.createElement('div');
+        row.className = 'miku-melody-row';
+
+        getMikuMelodyItems(activeKeys, this.baseUrl).forEach(item => {
+            const slot = document.createElement('span');
+            slot.className = 'miku-melody-slot';
+            if (item.active) slot.classList.add('active');
+            slot.title = item.label;
+
+            const icon = document.createElement('img');
+            icon.className = 'miku-melody-icon';
+            icon.src = item.image;
+            icon.alt = item.label;
+            icon.loading = 'lazy';
+            icon.decoding = 'async';
+            icon.onerror = function () { this.style.display = 'none'; };
+
+            slot.appendChild(icon);
+            row.appendChild(slot);
+        });
+
+        return row;
     }
 
     setupCellDropZone(cell, actionList, turnIdx, colKey) {
@@ -1412,7 +1494,7 @@ export class TacticUI {
         return options;
     }
 
-    createActionItem(action, turnIdx, colKey, actionIdx, char) {
+    createActionItem(action, turnIdx, colKey, actionIdx, char, mikuMelodyState = null) {
         const item = document.createElement('div');
         item.className = 'action-item';
         item.dataset.turnIndex = turnIdx;
@@ -1937,6 +2019,16 @@ export class TacticUI {
             mainRow.appendChild(actorPersonaWrapper);
             mainRow.appendChild(actionDD.container);
             mainRow.appendChild(mikuMusicDD.container);
+
+            if (Array.isArray(mikuMelodyState)) {
+                const actionActions = item.querySelector('.action-actions');
+                const melodyRow = this.createMikuMelodyRow(mikuMelodyState);
+                if (actionActions) {
+                    item.insertBefore(melodyRow, actionActions);
+                } else {
+                    item.appendChild(melodyRow);
+                }
+            }
 
         } else {
             // Non-edit mode: text display

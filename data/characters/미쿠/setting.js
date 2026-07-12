@@ -1,6 +1,6 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["미쿠"] = {
-    "role": "가상 콘서트 해명",
+    "role": "추가 전투 2턴 해명",
     "video": ["Wei_GLHARR4"],
     "video_en": [""],
     "video_jp": [""],

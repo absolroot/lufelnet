@@ -4,6 +4,14 @@
  */
 
 import { AutoActionPrompt } from './auto-action-prompt.js';
+import {
+    getMikuMusicName,
+    getMikuMusicOptions,
+    getMikuMusicUILabel,
+    isFixedMikuMusicAction,
+    isMikuAction,
+    normalizeMikuMusic
+} from './miku-music.js';
 
 export class TacticUI {
     constructor(store, settingsUI) {
@@ -852,14 +860,17 @@ export class TacticUI {
                 || { label: '-', value: '' };
 
             triggerText.textContent = selectedOpt.label;
+            trigger.title = selectedOpt.title || selectedOpt.label || '';
             if (selectedOpt.image) {
                 triggerIcon.src = selectedOpt.image;
                 triggerIcon.style.display = 'block';
             } else {
                 triggerIcon.style.display = 'none';
             }
-            if (currentValue === selectedOpt.value) {
+            if (currentValue && currentValue === selectedOpt.value) {
                 trigger.classList.add('has-value');
+            } else {
+                trigger.classList.remove('has-value');
             }
         };
 
@@ -881,6 +892,7 @@ export class TacticUI {
                 item.className = 'custom-option';
                 if (opt.value === currentValue) item.classList.add('selected');
                 item.dataset.value = opt.value || '';
+                if (opt.title) item.title = opt.title;
                 if (opt.wonderPersona) item.dataset.wonderPersona = opt.wonderPersona;
                 if (typeof opt.wonderPersonaIndex === 'number') {
                     item.dataset.wonderPersonaIndex = String(opt.wonderPersonaIndex);
@@ -1672,23 +1684,44 @@ export class TacticUI {
             const initialActor = action.character || (char?.name || '원더');
             const initialPersona = action.wonderPersona || '';
             const initialActionVal = action.action || '';
+            const initialMikuMusic = normalizeMikuMusic(
+                initialActor,
+                initialActionVal,
+                action.mikuMusic ?? action.music ?? ''
+            );
 
             // 2. Define State Variables for this item closure
             let currentActor = initialActor;
             let currentPersona = initialPersona;
             let currentAction = initialActionVal;
+            let currentMikuMusic = initialMikuMusic;
 
             // Dropdown component refs (set after creation)
             let actorDD = null;
             let personaDD = null;
             let actionDD = null;
+            let mikuMusicDD = null;
+
+            const syncMikuMusicDropdown = () => {
+                if (!mikuMusicDD) return;
+
+                mikuMusicDD.updateOptions(getMikuMusicOptions(currentActor, currentAction, this.baseUrl));
+                mikuMusicDD.setValue(currentMikuMusic);
+
+                const canShowMikuMusic = isMikuAction(currentActor, currentAction) && (this.isEditMode() || !!currentMikuMusic);
+                mikuMusicDD.container.classList.toggle('is-visible', canShowMikuMusic);
+                mikuMusicDD.container.classList.toggle('miku-music-fixed', isFixedMikuMusicAction(currentActor, currentAction));
+                mikuMusicDD.container.title = currentMikuMusic ? getMikuMusicName(currentMikuMusic) : '';
+            };
 
             // 3. Define Commit Function
-            const commitStore = (a, p, act, explicitPersonaIndex = null) => {
+            const commitStore = (a, p, act, explicitPersonaIndex = null, musicValue = currentMikuMusic) => {
+                const nextMikuMusic = normalizeMikuMusic(a, act, musicValue);
                 // Keep local closure state in sync
                 currentActor = a;
                 currentPersona = p;
                 currentAction = act;
+                currentMikuMusic = nextMikuMusic;
 
                 let pIndex = -1;
                 if (a === '원더' && p) {
@@ -1705,8 +1738,10 @@ export class TacticUI {
                     wonderPersona: p,
                     wonderPersonaIndex: pIndex,
                     action: act,
+                    mikuMusic: nextMikuMusic,
                     memo: action.memo // preserve existing memo
                 });
+                syncMikuMusicDropdown();
             };
 
             // 4. Define Handlers
@@ -1719,6 +1754,7 @@ export class TacticUI {
                         wonderPersona: '',
                         wonderPersonaIndex: -1,
                         action: '',
+                        mikuMusic: '',
                         memo: action.memo || ''
                     });
                     return;
@@ -1733,7 +1769,7 @@ export class TacticUI {
                     newAction = '방어';
                 }
 
-                commitStore(newActor, newPersona, newAction);
+                commitStore(newActor, newPersona, newAction, null, '');
             };
 
             const handlePersonaChange = (newP) => {
@@ -1771,7 +1807,7 @@ export class TacticUI {
 
                     if (selectedPersona) {
                         const previousPersona = currentPersona;
-                        commitStore(currentActor, selectedPersona, newA, selectedPersonaIndex);
+                        commitStore(currentActor, selectedPersona, newA, selectedPersonaIndex, currentMikuMusic);
                         if (selectedPersona !== previousPersona && personaDD && typeof personaDD.setValue === 'function') {
                             personaDD.setValue(selectedPersona);
                         }
@@ -1791,7 +1827,7 @@ export class TacticUI {
                         const keep = matches.find(m => m.name === currentPersona);
                         const chosen = keep || matches[0];
                         if (chosen && chosen.name && chosen.name !== currentPersona) {
-                            commitStore(currentActor, chosen.name, newA);
+                            commitStore(currentActor, chosen.name, newA, null, currentMikuMusic);
                             // Sync persona dropdown UI immediately
                             if (personaDD && typeof personaDD.setValue === 'function') {
                                 personaDD.setValue(chosen.name);
@@ -1802,6 +1838,10 @@ export class TacticUI {
                 }
 
                 commitStore(currentActor, currentPersona, newA);
+            };
+
+            const handleMikuMusicChange = (newMusic) => {
+                commitStore(currentActor, currentPersona, currentAction, null, newMusic);
             };
 
             // 5. Create Components
@@ -1843,6 +1883,16 @@ export class TacticUI {
 
             actionDD = this.createCustomDropdown(actionOpts, initialActionVal, handleActionChange);
             actionDD.container.classList.add('action-dropdown');
+
+            const musicOptions = getMikuMusicOptions(initialActor, initialActionVal, this.baseUrl);
+            mikuMusicDD = this.createCustomDropdown(musicOptions, initialMikuMusic, handleMikuMusicChange);
+            mikuMusicDD.container.classList.add('miku-music-dropdown');
+            const canShowMikuMusic = isMikuAction(initialActor, initialActionVal) && (this.isEditMode() || !!initialMikuMusic);
+            mikuMusicDD.container.classList.toggle('is-visible', canShowMikuMusic);
+            mikuMusicDD.container.classList.toggle('miku-music-fixed', isFixedMikuMusicAction(initialActor, initialActionVal));
+            if (initialMikuMusic) {
+                mikuMusicDD.container.title = getMikuMusicName(initialMikuMusic);
+            }
 
             // Non-edit mode: add skill tooltip on action dropdown
             if (!this.isEditMode()) {
@@ -1886,6 +1936,7 @@ export class TacticUI {
             // 6. Append to DOM
             mainRow.appendChild(actorPersonaWrapper);
             mainRow.appendChild(actionDD.container);
+            mainRow.appendChild(mikuMusicDD.container);
 
         } else {
             // Non-edit mode: text display
@@ -2033,14 +2084,14 @@ export class TacticUI {
 
     getDefaultActionForColumn(char) {
         if (!char) {
-            return { character: '', wonderPersona: '', wonderPersonaIndex: -1, action: '스킬1', memo: '' };
+            return { character: '', wonderPersona: '', wonderPersonaIndex: -1, action: '스킬1', mikuMusic: '', memo: '' };
         }
 
         if (char.type === 'wonder') {
             const personas = (this.store.state.wonder?.personas || []).filter(p => p && p.name);
             const p0 = personas[0];
             if (!p0) {
-                return { character: '원더', wonderPersona: '', wonderPersonaIndex: -1, action: '방어', memo: '' };
+                return { character: '원더', wonderPersona: '', wonderPersonaIndex: -1, action: '방어', mikuMusic: '', memo: '' };
             }
             const idx = this.store.state.wonder.personas.findIndex(p => p && p.name === p0.name);
             const firstSkill = (p0.skills || []).find(s => s) || '';
@@ -2049,15 +2100,18 @@ export class TacticUI {
                 wonderPersona: p0.name,
                 wonderPersonaIndex: idx,
                 action: firstSkill || '방어',
+                mikuMusic: '',
                 memo: ''
             };
         }
 
+        const action = '스킬1';
         return {
             character: char.name,
             wonderPersona: '',
             wonderPersonaIndex: -1,
-            action: '스킬1',
+            action,
+            mikuMusic: normalizeMikuMusic(char.name, action, ''),
             memo: ''
         };
     }
@@ -2103,6 +2157,12 @@ export class TacticUI {
                         <select class="input-select action-select">
                             <option value="">-</option>
                         </select>
+                    </div>
+
+                    <div class="form-group miku-music-modal-group" style="display: none;">
+                        <label>${getMikuMusicUILabel('music', '음악')}</label>
+                        <div class="miku-music-modal-options"></div>
+                        <input type="hidden" class="miku-music-select-value">
                     </div>
 
                     <div class="form-group">
@@ -2159,6 +2219,19 @@ export class TacticUI {
             menu.classList.remove('active');
         });
 
+        const musicOptions = modal.querySelector('.miku-music-modal-options');
+        if (musicOptions) {
+            musicOptions.addEventListener('click', (e) => {
+                const item = e.target.closest('.miku-music-modal-option');
+                if (!item || item.disabled) return;
+                e.preventDefault();
+
+                const valueInput = modal.querySelector('.miku-music-select-value');
+                if (valueInput) valueInput.value = item.dataset.value || '';
+                this.updateMikuMusicModalSelection(modal);
+            });
+        }
+
         // Click outside to close
         document.addEventListener('click', (e) => {
             if (!dropdown.contains(e.target)) {
@@ -2181,6 +2254,65 @@ export class TacticUI {
         if (menu) menu.classList.remove('active');
     }
 
+    updateMikuMusicModalSelection(modal) {
+        const selectedValue = modal.querySelector('.miku-music-select-value')?.value || '';
+        modal.querySelectorAll('.miku-music-modal-option').forEach(btn => {
+            btn.classList.toggle('selected', (btn.dataset.value || '') === selectedValue);
+        });
+    }
+
+    renderMikuMusicModalControl(modal, characterName, actionName, value = '') {
+        const group = modal.querySelector('.miku-music-modal-group');
+        const optionsWrap = modal.querySelector('.miku-music-modal-options');
+        const valueInput = modal.querySelector('.miku-music-select-value');
+        if (!group || !optionsWrap || !valueInput) return;
+
+        const normalizedValue = normalizeMikuMusic(characterName, actionName, value);
+        const options = getMikuMusicOptions(characterName, actionName, this.baseUrl);
+        const visible = isMikuAction(characterName, actionName);
+        const fixed = isFixedMikuMusicAction(characterName, actionName);
+
+        group.style.display = visible ? 'block' : 'none';
+        group.classList.toggle('miku-music-fixed', fixed);
+        valueInput.value = normalizedValue;
+
+        if (!visible) {
+            optionsWrap.innerHTML = '';
+            return;
+        }
+
+        optionsWrap.innerHTML = '';
+        options.forEach(option => {
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'miku-music-modal-option';
+            btn.dataset.value = option.value || '';
+            btn.title = option.title || option.label || '';
+            if (fixed) btn.disabled = true;
+
+            if (option.image) {
+                const icon = document.createElement('img');
+                icon.src = option.image;
+                icon.alt = option.title || option.label || option.value;
+                icon.onerror = function () { this.style.display = 'none'; };
+                btn.appendChild(icon);
+            } else {
+                const none = document.createElement('span');
+                none.className = 'miku-music-none-icon';
+                none.textContent = '-';
+                btn.appendChild(none);
+            }
+
+            const label = document.createElement('span');
+            label.className = 'miku-music-modal-label';
+            label.textContent = option.label || option.value || '-';
+            btn.appendChild(label);
+            optionsWrap.appendChild(btn);
+        });
+
+        this.updateMikuMusicModalSelection(modal);
+    }
+
     openActionModal(turnIdx, colKey, char, actionIdx = null, existingAction = null) {
         // Check if modal exists, create if not
         let modal = document.getElementById('actionModal');
@@ -2200,6 +2332,7 @@ export class TacticUI {
         const saveBtn = modal.querySelector('.btn-save-action');
         const titleEl = modal.querySelector('.modal-header h3');
         const personaValueInput = modal.querySelector('.persona-select-value');
+        const mikuMusicValueInput = modal.querySelector('.miku-music-select-value');
 
         // Update title
         titleEl.textContent = isEdit
@@ -2236,6 +2369,7 @@ export class TacticUI {
                     actionSelect.disabled = true;
                     actionSelect.parentElement.style.display = 'none';
                 }
+                this.renderMikuMusicModalControl(modal, '', '', '');
                 return;
             }
 
@@ -2250,6 +2384,7 @@ export class TacticUI {
                 delete actionSelect.dataset.wonderPersonaIndexOverride;
                 this.populateActionSelect(actionSelect, getCharByName(name));
             }
+            this.renderMikuMusicModalControl(modal, name, actionSelect ? actionSelect.value : '', mikuMusicValueInput?.value || '');
         };
 
         // Populate character select (all available characters)
@@ -2290,6 +2425,13 @@ export class TacticUI {
                 delete actionSelect.dataset.wonderPersonaOverride;
                 delete actionSelect.dataset.wonderPersonaIndexOverride;
 
+                this.renderMikuMusicModalControl(
+                    modal,
+                    characterSelect ? characterSelect.value : '',
+                    actionSelect.value,
+                    mikuMusicValueInput?.value || ''
+                );
+
                 if (!characterSelect || characterSelect.value !== '원더') return;
 
                 const selectedOption = actionSelect.selectedOptions?.[0] || null;
@@ -2328,10 +2470,17 @@ export class TacticUI {
             if (actionSelect && !isNote) {
                 actionSelect.value = existingAction.action || '';
             }
+            this.renderMikuMusicModalControl(
+                modal,
+                existingAction.character || initialCharName,
+                existingAction.action || '',
+                existingAction.mikuMusic ?? existingAction.music ?? ''
+            );
             memoInput.value = existingAction.memo || '';
         } else {
             // Default values
             if (actionSelect) actionSelect.value = '';
+            this.renderMikuMusicModalControl(modal, initialCharName, '', '');
             memoInput.value = '';
         }
 
@@ -2349,6 +2498,9 @@ export class TacticUI {
             const isNoteSelected = selectedCharacterName === '__NOTE__';
             let personaValue = isWonderSelected ? personaValueInput.value : '';
             const actionValue = (actionSelect && !isNoteSelected) ? actionSelect.value : '';
+            const mikuMusicValue = isNoteSelected
+                ? ''
+                : normalizeMikuMusic(selectedCharacterName, actionValue, mikuMusicValueInput?.value || '');
             const memoValue = memoInput.value;
 
             const actionPersonaOverride = isWonderSelected && actionSelect
@@ -2378,6 +2530,7 @@ export class TacticUI {
                 wonderPersona: personaValue,
                 wonderPersonaIndex: personaIndex,
                 action: isNoteSelected ? '' : actionValue,
+                mikuMusic: mikuMusicValue,
                 memo: memoValue
             };
 

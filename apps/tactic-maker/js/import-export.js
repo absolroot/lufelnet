@@ -11,6 +11,7 @@ import {
     getDefaultGlobalSkillEffectAmpState,
     setGlobalSkillEffectAmpState
 } from './need-stat-state.js';
+import { normalizeMikuMusic } from './miku-music.js';
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbx6PjXsslrfZTN599BQp69teGi8FCz8bo8O1ZvGu3PK75IY4_P79EJttHbP0893wnv8/exec';
 const GAS_SHARE_TYPE_QUERY_KEY = 'shareType';
@@ -675,6 +676,7 @@ export class ImportExport {
                 wonderPersona: personaName,
                 wonderPersonaIndex: personaIndex,
                 action: actionName,
+                mikuMusic: normalizeMikuMusic(actor, actionName, legacyAction?.mikuMusic ?? legacyAction?.music ?? ''),
                 memo
             };
         };
@@ -790,6 +792,7 @@ export class ImportExport {
                     wonderPersona: personaName,
                     wonderPersonaIndex: personaIndex,
                     action: actionName,
+                    mikuMusic: normalizeMikuMusic(action.c || '', actionName, action.mu ?? action.music ?? action.mikuMusic ?? ''),
                     memo: action.mm || ''
                 });
             });
@@ -965,6 +968,11 @@ export class ImportExport {
                     character: isNote ? '' : (action.character || orderToChar[orderKey] || ''),
                     wonderPersona: '',
                     action: isNote ? '' : (action.action || ''),
+                    mikuMusic: isNote ? '' : normalizeMikuMusic(
+                        action.character || orderToChar[orderKey] || '',
+                        action.action || '',
+                        action.mikuMusic ?? action.music ?? ''
+                    ),
                     memo: action.memo || ''
                 };
 

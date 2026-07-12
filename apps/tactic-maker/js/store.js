@@ -1,3 +1,5 @@
+import { normalizeMikuMusic } from './miku-music.js';
+
 /**
  * Tactic Maker V2 - State Management Store
  */
@@ -368,6 +370,7 @@ export class TacticStore {
                             wonderPersona: '',
                             wonderPersonaIndex: -1,
                             action: actionType,
+                            mikuMusic: normalizeMikuMusic(fullCharData.name, actionType, ''),
                             memo: ''
                         };
                         turn.columns[orderKey].push(newAction);
@@ -812,6 +815,11 @@ export class TacticStore {
             wonderPersona: actionData.wonderPersona || '',
             wonderPersonaIndex: actionData.wonderPersonaIndex ?? -1,
             action: actionData.action || '',
+            mikuMusic: normalizeMikuMusic(
+                actionData.character || '',
+                actionData.action || '',
+                actionData.mikuMusic ?? actionData.music ?? ''
+            ),
             memo: actionData.memo || ''
         };
 
@@ -830,7 +838,16 @@ export class TacticStore {
         if (!turn || !turn.columns[columnKey] || !turn.columns[columnKey][actionIndex]) return;
 
         const action = turn.columns[columnKey][actionIndex];
-        turn.columns[columnKey][actionIndex] = { ...action, ...updates };
+        const nextAction = { ...action, ...updates };
+        nextAction.mikuMusic = normalizeMikuMusic(
+            nextAction.character,
+            nextAction.action,
+            nextAction.mikuMusic ?? nextAction.music ?? ''
+        );
+        if (Object.prototype.hasOwnProperty.call(nextAction, 'music')) {
+            delete nextAction.music;
+        }
+        turn.columns[columnKey][actionIndex] = nextAction;
         this.notify('turnsChange', this.state.turns);
     }
 
@@ -915,6 +932,30 @@ export class TacticStore {
             ]
         };
         const loadedWonder = data.wonder || {};
+        const normalizeTurns = (turns) => {
+            if (!Array.isArray(turns)) return [];
+            return turns.map(turn => {
+                const columns = {};
+                Object.entries(turn.columns || {}).forEach(([columnKey, actions]) => {
+                    columns[columnKey] = Array.isArray(actions)
+                        ? actions.map(action => {
+                            const nextAction = { ...action };
+                            nextAction.mikuMusic = normalizeMikuMusic(
+                                nextAction.character,
+                                nextAction.action,
+                                nextAction.mikuMusic ?? nextAction.music ?? ''
+                            );
+                            if (Object.prototype.hasOwnProperty.call(nextAction, 'music')) {
+                                delete nextAction.music;
+                            }
+                            return nextAction;
+                        })
+                        : [];
+                });
+                return { ...turn, columns };
+            });
+        };
+
         this.state = {
             title: data.title || '',
             memo: data.memo || '',
@@ -927,7 +968,7 @@ export class TacticStore {
                 weaponStamp: loadedWonder.weaponStamp !== undefined ? loadedWonder.weaponStamp : 4,
                 weaponStampIndex: loadedWonder.weaponStampIndex !== undefined ? loadedWonder.weaponStampIndex : 0
             },
-            turns: data.turns || [],
+            turns: normalizeTurns(data.turns || []),
             needStatSelections: data.needStatSelections || {}
         };
         this.notify('fullReload', this.state);

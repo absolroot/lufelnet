@@ -855,6 +855,113 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     min-width: 0;
 }
 
+.action-item .miku-music-dropdown {
+    flex: 0 0 28px;
+    width: 28px;
+    min-width: 28px;
+    display: none;
+}
+
+.action-item .miku-music-dropdown.is-visible {
+    display: flex;
+}
+
+.action-item .miku-music-dropdown .custom-select-trigger {
+    justify-content: center;
+    padding: 0;
+}
+
+.tactic-edit-mode .action-item .miku-music-dropdown .custom-select-trigger:not(.has-value)::before {
+    content: "-";
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 12px;
+}
+
+.action-item .miku-music-dropdown .custom-select-val {
+    flex: 0 0 auto;
+    gap: 0;
+}
+
+.action-item .miku-music-dropdown .custom-select-text {
+    display: none !important;
+}
+
+.action-item .miku-music-dropdown .custom-select-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+.action-item .miku-music-dropdown .custom-option-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    border-radius: 2px;
+}
+
+.action-item .miku-music-dropdown.miku-music-fixed .custom-select-trigger {
+    cursor: default;
+    pointer-events: none;
+}
+
+.miku-music-modal-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.miku-music-modal-option {
+    min-width: 46px;
+    height: 36px;
+    padding: 5px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.82);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.miku-music-modal-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.miku-music-modal-option.selected {
+    background: rgba(209, 31, 31, 0.22);
+    border-color: rgba(209, 31, 31, 0.65);
+    color: #fff;
+}
+
+.miku-music-modal-option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+.miku-music-modal-option img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.miku-music-none-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.miku-music-modal-label {
+    font-size: 12px;
+    white-space: nowrap;
+}
+
 /* Action dropdown skill icons (element icons) */
 .action-item .action-dropdown .custom-select-icon {
     width: 16px;

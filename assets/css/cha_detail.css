@@ -2280,6 +2280,181 @@ h2 {
     background: rgba(255, 255, 255, 0.05);
 }
 
+.review-content .miku-song-diagram {
+    margin: 14px 0 18px;
+    overflow-x: auto;
+}
+
+.review-content .miku-song-diagram img {
+    margin: 0;
+}
+
+.review-content .miku-diagram-grid {
+    display: grid;
+    grid-template-columns: minmax(150px, 1.2fr) minmax(120px, 1fr) minmax(120px, 1fr) minmax(74px, 0.55fr);
+    min-width: 620px;
+}
+
+.review-content .miku-diagram-cell {
+    display: flex;
+    align-items: center;
+    min-height: 64px;
+    padding: 8px 10px;
+    border-right: 1px solid rgba(255, 255, 255, 0.14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.review-content .miku-diagram-grid .miku-diagram-cell:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.review-content .miku-diagram-head .miku-diagram-cell {
+    min-height: 48px;
+    background: rgba(255, 255, 255, 0.09);
+    color: #ffdb70;
+    font-weight: 600;
+}
+
+.review-content .miku-diagram-head .miku-diagram-cell {
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.review-content .miku-skill-head {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2px;
+}
+
+.review-content .miku-skill-head span {
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.review-content .miku-skill-head strong {
+    color: #fbdc7f;
+    font-weight: 600;
+}
+
+.review-content .miku-song-cell {
+    gap: 8px;
+    font-weight: 600;
+}
+
+.review-content .miku-song-cell span {
+    line-height: 1.25;
+}
+
+.review-content .miku-melody-cell {
+    justify-content: center;
+}
+
+.review-content .miku-skill3-flow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 620px;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 219, 112, 0.24);
+    border-top: 0;
+    background: rgba(255, 219, 112, 0.055);
+}
+
+.review-content .miku-flow-melodies {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.review-content .miku-flow-arrow {
+    color: #ffdb70;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.review-content .miku-skill3-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+}
+
+.review-content .miku-skill3-label {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 11px;
+    line-height: 1.2;
+}
+
+.review-content .miku-skill3-card strong {
+    color: #fbdc7f;
+    font-weight: 600;
+}
+
+.review-content .miku-skill3-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.45;
+}
+
+@media (max-width: 520px) {
+    .review-content .miku-song-diagram {
+        overflow-x: visible;
+    }
+
+    .review-content .miku-diagram-grid {
+        grid-template-columns: 1fr;
+        min-width: 0;
+        margin-bottom: 8px;
+    }
+
+    .review-content .miku-diagram-head {
+        display: none;
+    }
+
+    .review-content .miku-diagram-cell,
+    .review-content .miku-diagram-grid .miku-diagram-cell:first-child {
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        border-bottom: 0;
+    }
+
+    .review-content .miku-diagram-row .miku-diagram-cell:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        margin-bottom: 8px;
+    }
+
+    .review-content .miku-diagram-row .miku-diagram-cell:nth-child(2)::before {
+        content: attr(data-mobile-label);
+        color: #ffdb70;
+        font-weight: 600;
+    }
+
+    .review-content .miku-diagram-row .miku-diagram-cell:nth-child(3)::before {
+        content: attr(data-mobile-label);
+        color: #ffdb70;
+        font-weight: 600;
+    }
+
+    .review-content .miku-melody-cell::before {
+        content: attr(data-mobile-label);
+        margin-right: 8px;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 11px;
+    }
+
+    .review-content .miku-melody-cell {
+        justify-content: flex-start;
+    }
+
+    .review-content .miku-skill3-flow {
+        min-width: 0;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 10px;
+    }
+}
+
 
 
 /* Skill Priority Badge Style */

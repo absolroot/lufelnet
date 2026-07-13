@@ -12,6 +12,67 @@
 
 3개의 곡에 대해서 각각 스킬1 또는 스킬2 중 하나의 효과만 활성 가능하기 때문에 크리티컬 확률이 필요한지, 관통이 더 필요한지 등 **파티에 따라 다른 운영**이 필요하다.
 
+<div class="miku-song-diagram" aria-label="곡 선택에 따른 스킬1, 스킬2 효과와 스킬3 버추얼 콘서트 연결">
+    <div class="miku-diagram-grid miku-diagram-head">
+        <div class="miku-diagram-cell miku-song-head">곡</div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>스킬1</span>
+            <strong>공격력 증가</strong>
+        </div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>스킬2</span>
+            <strong>대미지 증가</strong>
+        </div>
+        <div class="miku-diagram-cell miku-song-head">생성 멜로디</div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_HEAVEN.png" width="52" height="52" alt="Heaven">
+            <span>Heaven</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="스킬1: 공격력 증가 + ">관통 증가</div>
+        <div class="miku-diagram-cell" data-mobile-label="스킬2: 대미지 증가 + ">HP 회복</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="생성 멜로디">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="26" height="34" alt="폭발의 멜로디">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_춘람.png" width="52" height="52" alt="춘람">
+            <span>춘람(春嵐)</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="스킬1: 공격력 증가 + ">파티 대미지 증가</div>
+        <div class="miku-diagram-cell" data-mobile-label="스킬2: 대미지 증가 + ">약점 대미지 증가</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="생성 멜로디">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="26" height="34" alt="회심의 멜로디">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_불장난.png" width="52" height="52" alt="불장난">
+            <span>불장난(ヒアソビ)</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="스킬1: 공격력 증가 + ">크리티컬 효과 증가</div>
+        <div class="miku-diagram-cell" data-mobile-label="스킬2: 대미지 증가 + ">크리티컬 확률 증가</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="생성 멜로디">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="26" height="34" alt="전념의 멜로디">
+        </div>
+    </div>
+    <div class="miku-skill3-flow">
+        <div class="miku-flow-melodies">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="24" height="31" alt="폭발의 멜로디">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="24" height="31" alt="회심의 멜로디">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="24" height="31" alt="전념의 멜로디">
+        </div>
+        <span class="miku-flow-arrow">→</span>
+        <div class="miku-skill3-card">
+            <span class="miku-skill3-label">스킬3</span>
+            <strong>버추얼 콘서트</strong>
+            <p>적 행동 정지 · 아군 2턴 행동 · 3종 멜로디 효과 재발동 · 크리티컬 효과 증가 · SP 회복</p>
+        </div>
+    </div>
+</div>
+
 <br>
 
 **버추얼 콘서트**
@@ -47,6 +108,67 @@ Hatsune Miku is an Elucidator Thief released simultaneously on all servers for t
 The additional effects of Feel the Beat (Skill 1) and Clear Sound (Skill 2) change depending on the song currently playing. Each time a song is played, Miku gains the Track that corresponds to that song.
 
 For each of the three songs, only one of Skill 1 or Skill 2 can have its effect active, so her rotation changes depending on the party, such as whether Critical Rate or Pierce is needed more.
+
+<div class="miku-song-diagram" aria-label="Song-based Skill 1, Skill 2, and Skill 3 Virtual Concert flow">
+    <div class="miku-diagram-grid miku-diagram-head">
+        <div class="miku-diagram-cell miku-song-head">Song</div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>Skill 1</span>
+            <strong>Attack Up</strong>
+        </div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>Skill 2</span>
+            <strong>Damage Up</strong>
+        </div>
+        <div class="miku-diagram-cell miku-song-head">Generated Track</div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_HEAVEN.png" width="52" height="52" alt="Heaven">
+            <span>Heaven</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="Skill 1: Attack Up + ">Pierce Rate Up</div>
+        <div class="miku-diagram-cell" data-mobile-label="Skill 2: Damage Up + ">HP Recovery</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="Generated Track">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="26" height="34" alt="Break Track">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_춘람.png" width="52" height="52" alt="Spring Storm">
+            <span>Spring Storm</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="Skill 1: Attack Up + ">Party Damage Up</div>
+        <div class="miku-diagram-cell" data-mobile-label="Skill 2: Damage Up + ">Weakness Damage Up</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="Generated Track">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="26" height="34" alt="Critical Track">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_불장난.png" width="52" height="52" alt="Play-With-Fire">
+            <span>Play-With-Fire</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="Skill 1: Attack Up + ">Critical Damage Up</div>
+        <div class="miku-diagram-cell" data-mobile-label="Skill 2: Damage Up + ">Critical Rate Up</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="Generated Track">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="26" height="34" alt="Expert Track">
+        </div>
+    </div>
+    <div class="miku-skill3-flow">
+        <div class="miku-flow-melodies">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="24" height="31" alt="Break Track">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="24" height="31" alt="Critical Track">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="24" height="31" alt="Expert Track">
+        </div>
+        <span class="miku-flow-arrow">→</span>
+        <div class="miku-skill3-card">
+            <span class="miku-skill3-label">Skill 3</span>
+            <strong>Virtual Concert</strong>
+            <p>Foes unable to act · Allies act for 2 turns · Reactivates all 3 Track effects · Critical Damage Up · SP Recovery</p>
+        </div>
+    </div>
+</div>
 
 <br>
 
@@ -84,6 +206,67 @@ Therefore, on global servers, the rotation structure itself can be referenced as
 
 3つの楽曲それぞれについて、スキル1またはスキル2のどちらか一方の効果しか有効化できないため、クリティカル率が必要か、貫通がより必要かなど、**編成に応じて異なる運用**が必要になる。
 
+<div class="miku-song-diagram" aria-label="楽曲ごとのスキル1、スキル2効果とスキル3バーチャルライブへの流れ">
+    <div class="miku-diagram-grid miku-diagram-head">
+        <div class="miku-diagram-cell miku-song-head">楽曲</div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>スキル1</span>
+            <strong>攻撃力上昇</strong>
+        </div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>スキル2</span>
+            <strong>与ダメージ上昇</strong>
+        </div>
+        <div class="miku-diagram-cell miku-song-head">生成ピース</div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_HEAVEN.png" width="52" height="52" alt="Ｈｅａｖｅｎ">
+            <span>Ｈｅａｖｅｎ</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="スキル1: 攻撃力上昇 + ">貫通上昇</div>
+        <div class="miku-diagram-cell" data-mobile-label="スキル2: 与ダメージ上昇 + ">HP回復</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="生成ピース">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="26" height="34" alt="ブレイク・ピース">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_춘람.png" width="52" height="52" alt="春嵐">
+            <span>春嵐</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="スキル1: 攻撃力上昇 + ">与ダメージ上昇</div>
+        <div class="miku-diagram-cell" data-mobile-label="スキル2: 与ダメージ上昇 + ">弱点与ダメージ上昇</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="生成ピース">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="26" height="34" alt="クリティカル・ピース">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_불장난.png" width="52" height="52" alt="ヒアソビ">
+            <span>ヒアソビ</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="スキル1: 攻撃力上昇 + ">クリティカルダメージ上昇</div>
+        <div class="miku-diagram-cell" data-mobile-label="スキル2: 与ダメージ上昇 + ">クリティカル率上昇</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="生成ピース">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="26" height="34" alt="エキスパート・ピース">
+        </div>
+    </div>
+    <div class="miku-skill3-flow">
+        <div class="miku-flow-melodies">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="24" height="31" alt="ブレイク・ピース">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="24" height="31" alt="クリティカル・ピース">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="24" height="31" alt="エキスパート・ピース">
+        </div>
+        <span class="miku-flow-arrow">→</span>
+        <div class="miku-skill3-card">
+            <span class="miku-skill3-label">スキル3</span>
+            <strong>バーチャルライブ</strong>
+            <p>敵行動停止 · 味方2ターン行動 · 3種ピース効果再発動 · クリティカルダメージ上昇 · SP回復</p>
+        </div>
+    </div>
+</div>
+
 <br>
 
 **バーチャルライブ**
@@ -119,6 +302,67 @@ KR/CN/TWサーバーではシンクロイメジャリーが先行適用されて
 根据当前播放的歌曲，节奏之音（技能1）和清亮之音（技能2）的追加效果会发生变化。每次播放对应歌曲时，都会获得与该歌曲对应的旋律。
 
 对于3首歌曲，每首歌只能激活技能1或技能2其中一种效果，因此需要根据队伍情况采用不同操作，例如更需要暴击率还是更需要穿透。
+
+<div class="miku-song-diagram" aria-label="歌曲对应的技能1、技能2效果与技能3虚拟演唱会流程">
+    <div class="miku-diagram-grid miku-diagram-head">
+        <div class="miku-diagram-cell miku-song-head">歌曲</div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>技能1</span>
+            <strong>攻击力提升</strong>
+        </div>
+        <div class="miku-diagram-cell miku-skill-head">
+            <span>技能2</span>
+            <strong>伤害提升</strong>
+        </div>
+        <div class="miku-diagram-cell miku-song-head">生成旋律</div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_HEAVEN.png" width="52" height="52" alt="Heaven">
+            <span>Heaven</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="技能1: 攻击力提升 + ">穿透提升</div>
+        <div class="miku-diagram-cell" data-mobile-label="技能2: 伤害提升 + ">生命恢复</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="生成旋律">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="26" height="34" alt="音爆旋律">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_춘람.png" width="52" height="52" alt="春岚">
+            <span>春岚</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="技能1: 攻击力提升 + ">伤害提升</div>
+        <div class="miku-diagram-cell" data-mobile-label="技能2: 伤害提升 + ">弱点伤害提升</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="生成旋律">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="26" height="34" alt="会心旋律">
+        </div>
+    </div>
+    <div class="miku-diagram-grid miku-diagram-row">
+        <div class="miku-diagram-cell miku-song-cell">
+            <img src="/data/characters/미쿠/music_불장난.png" width="52" height="52" alt="玩火">
+            <span>玩火</span>
+        </div>
+        <div class="miku-diagram-cell" data-mobile-label="技能1: 攻击力提升 + ">暴击效果提升</div>
+        <div class="miku-diagram-cell" data-mobile-label="技能2: 伤害提升 + ">暴击率提升</div>
+        <div class="miku-diagram-cell miku-melody-cell" data-mobile-label="生成旋律">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="26" height="34" alt="专精旋律">
+        </div>
+    </div>
+    <div class="miku-skill3-flow">
+        <div class="miku-flow-melodies">
+            <img src="/data/characters/미쿠/icon_heaven.png" width="24" height="31" alt="音爆旋律">
+            <img src="/data/characters/미쿠/icon_춘람.png" width="24" height="31" alt="会心旋律">
+            <img src="/data/characters/미쿠/icon_불장난.png" width="24" height="31" alt="专精旋律">
+        </div>
+        <span class="miku-flow-arrow">→</span>
+        <div class="miku-skill3-card">
+            <span class="miku-skill3-label">技能3</span>
+            <strong>虚拟演唱会</strong>
+            <p>敌方停止行动 · 友方行动2回合 · 3种旋律效果重新发动 · 暴击效果提升 · SP恢复</p>
+        </div>
+    </div>
+</div>
 
 <br>
 

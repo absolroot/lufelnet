@@ -2520,8 +2520,8 @@ const personaSkillList = {
         "icon": "버프광역"
     },
     "무한 알고리즘": {
-        "name_jp": "無限アルゴリズム",
-        "name_en": "Infinite Algorithm",
+        "name_jp": "万象のセオリア",
+        "name_en": "Universal Theoria",
         "name_cn": "无限算法",
         "description": "2턴 동안 모든 아군 캐릭터의 공격력이 30.0%/31.5%/33.0% 증가하고, 메인 목표의 대미지가 추가로 20.0%/21.0%/22.0% 증가한다.",
         "description_jp": "2ターンの間、味方全体の攻撃力が30.0%/31.5%/33.0%上昇し、メインターゲットへのダメージがさらに20.0%/21.0%/22.0%増加する。",
@@ -5480,6 +5480,5 @@ window.skillList = skillList;
 window.skillList_en = skillList_en;
 window.skillList_jp = skillList_jp;
 window.personaSkillList = personaSkillList;
-
 
 

@@ -1,10 +1,10 @@
 window.basicStatsData = window.basicStatsData || {};
 window.basicStatsData["미쿠"] = {
     "a0_lv1": {
-        "HP": 0,
+        "HP": 315,
         "SP": 100,
-        "attack": 0,
-        "defense": 0,
+        "attack": 98,
+        "defense": 53,
         "crit_rate": 0,
         "crit_mult": 0,
         "speed": 100

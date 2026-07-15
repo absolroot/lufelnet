@@ -186,6 +186,8 @@ window.I18N_COMMON_KR = {
 
         // 심상
         mindscape: '심상',
+        mindscapeNature: '속성 심상',
+        syncMindscape: '싱크로 심상',
         minds5: '심상5',
 
         // 계시/원더

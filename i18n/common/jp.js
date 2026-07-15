@@ -186,6 +186,8 @@ window.I18N_COMMON_JP = {
 
         // イメジャリー
         mindscape: 'イメジャリー',
+        mindscapeNature: '属性イメジャリー',
+        syncMindscape: 'シンクロイメジャリー',
         minds5: 'イメジャリー5',
 
         // 啓示/ワンダー

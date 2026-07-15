@@ -43,6 +43,7 @@ window.I18N_PAGE_SCHEDULE_CN = {
     "mainStoryTitle": "主线故事更新",
     "summerEventTitle": "夏日活动上线",
     "summerEventDesc": "夏日活动",
+    "revelationSetEffectAdded": "套装效果",
     "limitTransitionTitle": "契约类型变更",
     "limitTransitionLimitedToStandard": "限定 → 常驻",
     "limitStateLimited": "限定",

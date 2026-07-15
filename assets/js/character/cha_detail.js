@@ -1812,7 +1812,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const syncButton = document.createElement('button');
             syncButton.type = 'button';
             syncButton.className = 'sync-mindscape-btn' + (syncMindscapeActive ? ' active' : '');
-            syncButton.textContent = t('characterSyncMindscapeButton', '싱크로 심상');
+            syncButton.textContent = t('gameTerms.syncMindscape', t('characterSyncMindscapeButton', '싱크로 심상'));
             syncButton.setAttribute('aria-pressed', syncMindscapeActive ? 'true' : 'false');
             syncButton.onclick = (event) => {
                 event.preventDefault();

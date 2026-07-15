@@ -145,6 +145,8 @@ window.I18N_COMMON_CN = {
         "mindscapeCore": "心象核心",
         "mindscapeCoreAlt": "心象核心",
         "mindscape": "心象",
+        "mindscapeNature": "属性心象",
+        "syncMindscape": "同步心象",
         "minds5": "心象5",
         "revelation": "启示",
         "wonder": "WONDER",

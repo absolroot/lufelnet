@@ -63,7 +63,7 @@
                 contentFallback: '8은 우선순위가 낮은 스킬, MAX는 가능하면 최대로 올릴 스킬, 별 표시는 핵심 스킬을 의미합니다.'
             },
             'sync-mindscape': {
-                titleKey: 'characterSyncMindscapeButton',
+                titleKey: 'gameTerms.syncMindscape',
                 titleFallback: '싱크로 심상',
                 contentKey: 'helpSyncMindscapeContent',
                 contentFallback: '전 서버 동시 출시 캐릭터에 대해서 중국/한국/대만 서버에 우선 적용되는 별도 기능입니다. 글로벌 버전은 차후에 적용될 수 있습니다.'

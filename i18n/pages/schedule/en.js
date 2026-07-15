@@ -56,6 +56,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     mainStoryTitle: 'Main Story Update',
     summerEventTitle: 'Summer Event Release',
     summerEventDesc: 'Summer Event',
+    revelationSetEffectAdded: 'Set Effect',
     limitTransitionTitle: 'Contract Type Change',
     limitTransitionLimitedToStandard: 'Limited → Standard',
     limitStateLimited: 'Limited',

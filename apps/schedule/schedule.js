@@ -110,6 +110,12 @@
     // Use global getCurrentLang() and t() functions from i18n service
 
     function getScheduleLang() {
+        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
+        if (pathMatch) return String(pathMatch[1]).toLowerCase();
+
+        const queryLang = String(new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
+        if (['kr', 'en', 'jp', 'cn'].includes(queryLang)) return queryLang;
+
         if (typeof LanguageRouter !== 'undefined'
             && LanguageRouter
             && typeof LanguageRouter.getCurrentLanguage === 'function') {
@@ -120,12 +126,6 @@
             const helperLang = String(getCurrentLang() || '').toLowerCase();
             if (['kr', 'en', 'jp', 'cn'].includes(helperLang)) return helperLang;
         }
-
-        const pathMatch = String(window.location.pathname || '').match(/^\/(kr|en|jp|cn)(\/|$)/i);
-        if (pathMatch) return String(pathMatch[1]).toLowerCase();
-
-        const queryLang = String(new URLSearchParams(window.location.search).get('lang') || '').toLowerCase();
-        if (['kr', 'en', 'jp', 'cn'].includes(queryLang)) return queryLang;
 
         return 'kr';
     }
@@ -245,7 +245,13 @@
                         currentLangDataLoaded = true;
                         res();
                         return;
-                    } else if (!isKorean && isKrLikeLang(lang)) {
+                    } else if (!isKorean && lang === 'cn' && typeof cnRevelationData !== 'undefined' && cnRevelationData) {
+                        loadedData.current = cnRevelationData;
+                        window.cnRevelationData = cnRevelationData;
+                        currentLangDataLoaded = true;
+                        res();
+                        return;
+                    } else if (!isKorean && lang === 'kr') {
                         // Korean is already loaded
                         currentLangDataLoaded = true;
                         res();
@@ -266,6 +272,9 @@
                                 loadedData.current = jpRevelationData;
                                 // Set window.jpRevelationData for tooltip access
                                 window.jpRevelationData = jpRevelationData;
+                            } else if (!isKorean && lang === 'cn' && typeof cnRevelationData !== 'undefined') {
+                                loadedData.current = cnRevelationData;
+                                window.cnRevelationData = cnRevelationData;
                             }
                             res();
                         }, 100);
@@ -278,7 +287,7 @@
             // Load Korean data first (for mapping)
             loadScript('/data/kr/revelations/revelations.js', true).then(() => {
                 // Then load current language data if not Korean
-                if (isKrLikeLang(lang)) {
+                if (lang === 'kr') {
                     revelationDataCache = loadedData.kr || {};
                     resolve(revelationDataCache);
                 } else {
@@ -292,6 +301,8 @@
                             window.enRevelationData = loadedData.current;
                         } else if (lang === 'jp' && loadedData.current) {
                             window.jpRevelationData = loadedData.current;
+                        } else if (lang === 'cn' && loadedData.current) {
+                            window.cnRevelationData = loadedData.current;
                         }
 
                         resolve(revelationDataCache);
@@ -306,12 +317,9 @@
     // Get localized revelation name
     // revelationName is always in Korean (from data.js)
     function getLocalizedRevelationName(revelationName) {
-        const lang = getCurrentLang();
+        const lang = getScheduleLang();
 
         // If Korean, return as is
-        if (lang === 'cn' && window.I18nService && typeof window.I18nService.translateTerm === 'function') {
-            return window.I18nService.translateTerm(revelationName);
-        }
         if (lang === 'kr') {
             return revelationName;
         }
@@ -344,6 +352,19 @@
             if (revelationDataCache.mapping_jp && revelationDataCache.mapping_jp[revelationName]) {
                 return revelationDataCache.mapping_jp[revelationName];
             }
+        } else if (lang === 'cn') {
+            if (revelationDataCache.mainTranslated && revelationDataCache.mainTranslated[revelationName]) {
+                return revelationDataCache.mainTranslated[revelationName];
+            }
+            if (revelationDataCache.subTranslated && revelationDataCache.subTranslated[revelationName]) {
+                return revelationDataCache.subTranslated[revelationName];
+            }
+            if (revelationDataCache.mapping_cn && revelationDataCache.mapping_cn[revelationName]) {
+                return revelationDataCache.mapping_cn[revelationName];
+            }
+            if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+                return window.I18nService.translateTerm(revelationName);
+            }
         }
 
         // If not found, return as is
@@ -359,7 +380,7 @@
 
     // Get revelation tooltip data
     function getRevelationTooltipData(revelationName) {
-        const lang = getCurrentLang();
+        const lang = getScheduleLang();
         const koreanName = getKoreanRevelationName(revelationName);
 
         // Check if it's main or sub revelation
@@ -811,7 +832,10 @@
                     weapon_stamp: item.weapon_stamp,
                     goldTicketUnlocks: item.goldTicketUnlocks,
                     revelation: item.revelation,
+                    rev_set: item.rev_set,
                     mindscape_core: item.mindscape_core,
+                    mindscape_sync: item.mindscape_sync,
+                    mindscape_nature: item.mindscape_nature,
                     limitTransitions: item.limitTransitions,
                     click_disable: item.click_disable === true,
                     autoGenerated: true
@@ -1080,6 +1104,21 @@
         `;
     }
 
+    function renderRevelationItem(revelationName, extraClass = '') {
+        const koreanName = getKoreanRevelationName(revelationName);
+        const localizedName = getLocalizedRevelationName(revelationName);
+        const tooltipData = getRevelationTooltipData(revelationName);
+        const tooltipAttr = tooltipData ? `data-tooltip="${tooltipData}"` : '';
+        const tooltipClass = tooltipData ? 'tooltip-text' : '';
+
+        return `
+            <div class="revelation-item ${extraClass} ${tooltipClass}" ${tooltipAttr}>
+                <img class="revelation-icon" src="${BASE_URL}/assets/img/revelation/${koreanName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
+                <span class="revelation-name">${localizedName}</span>
+            </div>
+        `;
+    }
+
     // Render release card
     function renderReleaseCard(release) {
         const status = getStatus(release.date);
@@ -1277,26 +1316,26 @@
         // Revelation 표시 (revelation 필드 사용)
         let revelationHtml = '';
         if (release.revelation && Array.isArray(release.revelation) && release.revelation.length > 0) {
-            const revelationListHtml = release.revelation.map(revelationName => {
-                const koreanName = getKoreanRevelationName(revelationName);
-                const localizedName = getLocalizedRevelationName(revelationName);
-
-                // Get tooltip data for revelation
-                const tooltipData = getRevelationTooltipData(revelationName);
-                const tooltipAttr = tooltipData ? `data-tooltip="${tooltipData}"` : '';
-                const tooltipClass = tooltipData ? 'tooltip-text' : '';
-
-                return `
-                    <div class="revelation-item ${tooltipClass}" ${tooltipAttr}>
-                        <img class="revelation-icon" src="${BASE_URL}/assets/img/revelation/${koreanName}.webp" alt="${localizedName}" title="${localizedName}" onerror="this.src='${BASE_URL}/assets/img/placeholder.png';">
-                        <span class="revelation-name">${localizedName}</span>
-                    </div>
-                `;
-            }).join('');
+            const revelationListHtml = release.revelation.map(revelationName => renderRevelationItem(revelationName)).join('');
 
             revelationHtml = `
                 <div class="revelation-list">
                     ${revelationListHtml}
+                </div>
+            `;
+        }
+
+        // Revelation set effect addition 표시 (rev_set 필드 사용)
+        let revelationSetHtml = '';
+        if (release.rev_set && Array.isArray(release.rev_set) && release.rev_set.length > 0) {
+            const revelationSetListHtml = release.rev_set.map(revelationName => renderRevelationItem(revelationName, 'rev-set-item')).join('');
+
+            revelationSetHtml = `
+                <div class="content-badge rev-set-list" title="${t('revelationSetEffectAdded')}">
+                    <span class="content-label rev-set-label">${t('revelationSetEffectAdded')}</span>
+                    <div class="rev-set-items">
+                        ${revelationSetListHtml}
+                    </div>
                 </div>
             `;
         }
@@ -1322,6 +1361,55 @@
             mindscapeCoreHtml = `
                 <div class="mindscape-core-list">
                     ${mindscapeCoreListHtml}
+                </div>
+            `;
+        }
+
+        // Sync Mindscape 표시 (mindscape_sync 필드 사용)
+        let mindscapeSyncHtml = '';
+        if (release.mindscape_sync && Array.isArray(release.mindscape_sync) && release.mindscape_sync.length > 0) {
+            const syncMindscapeLabel = t('gameTerms.syncMindscape', t('characterSyncMindscapeButton', '싱크로 심상'));
+            const mindscapeSyncListHtml = release.mindscape_sync.map(charName => {
+                const displayName = getCharacterName(charName);
+                const charUrl = buildCharacterDetailUrl(charName);
+
+                return `
+                    <a href="${charUrl}" class="mindscape-sync-character-link" onclick="event.stopPropagation();" title="${displayName}">
+                        <img class="mindscape-sync-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
+                        <span class="mindscape-sync-character-name">${displayName}</span>
+                    </a>
+                `;
+            }).join('');
+
+            mindscapeSyncHtml = `
+                <div class="content-badge mindscape-sync-badge" title="${syncMindscapeLabel}">
+                    <span class="content-label mindscape-sync-label">${syncMindscapeLabel}</span>
+                    <div class="mindscape-sync-characters">
+                        ${mindscapeSyncListHtml}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Attribute Mindscape 표시 (mindscape_nature 필드 사용)
+        let mindscapeNatureHtml = '';
+        if (release.mindscape_nature && Array.isArray(release.mindscape_nature) && release.mindscape_nature.length > 0) {
+            const mindscapeNatureLabel = t('gameTerms.mindscapeNature', '속성 심상');
+            const mindscapeNatureListHtml = release.mindscape_nature.map(charName => {
+                const displayName = getCharacterName(charName);
+                const charUrl = buildCharacterDetailUrl(charName);
+
+                return `
+                    <a href="${charUrl}" class="mindscape-nature-item" style="cursor: pointer;" onclick="event.stopPropagation();" title="${mindscapeNatureLabel}: ${displayName}">
+                        <img class="mindscape-nature-icon" src="${BASE_URL}/assets/img/character-detail/innate/item-302069.png" alt="${mindscapeNatureLabel}" title="${mindscapeNatureLabel}">
+                        <img class="mindscape-nature-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
+                    </a>
+                `;
+            }).join('');
+
+            mindscapeNatureHtml = `
+                <div class="mindscape-nature-list">
+                    ${mindscapeNatureListHtml}
                 </div>
             `;
         }
@@ -1434,7 +1522,10 @@
                             ${goldTicketHtml}
                             ${weaponHtml}
                             ${revelationHtml}
+                            ${revelationSetHtml}
                             ${mindscapeCoreHtml}
+                            ${mindscapeSyncHtml}
+                            ${mindscapeNatureHtml}
                             ${limitTransitionHtml}
                         </div>
                     </div>

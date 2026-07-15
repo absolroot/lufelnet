@@ -186,6 +186,8 @@ window.I18N_COMMON_EN = {
 
         // Mindscape
         mindscape: 'Mindscape',
+        mindscapeNature: 'Attribute Mindscape',
+        syncMindscape: 'Sync Mindscape',
         minds5: 'Mindscape5',
 
         // Revelation/Wonder

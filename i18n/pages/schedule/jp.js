@@ -56,6 +56,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     mainStoryTitle: 'メインストーリー更新',
     summerEventTitle: 'サマーイベント配信',
     summerEventDesc: 'サマーイベント',
+    revelationSetEffectAdded: 'セット効果',
     limitTransitionTitle: '契約種別変更',
     limitTransitionLimitedToStandard: '限定 → 恒常',
     limitStateLimited: '限定',

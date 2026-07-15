@@ -611,6 +611,30 @@ a.weapon-item {
     white-space: nowrap;
 }
 
+.rev-set-list {
+    flex-wrap: wrap;
+}
+
+.rev-set-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.rev-set-label {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.rev-set-item {
+    padding: 2px 6px;
+}
+
+.rev-set-item .revelation-icon {
+    width: 20px;
+    height: 20px;
+}
+
 /* Mindscape Core List - 마인드스케이프 코어 뱃지 */
 .mindscape-core-list {
     display: flex;
@@ -652,6 +676,92 @@ a.mindscape-core-item {
 }
 
 .mindscape-core-label {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: nowrap;
+}
+
+.mindscape-nature-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.mindscape-nature-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    position: relative;
+    text-decoration: none;
+    color: inherit;
+}
+
+a.mindscape-nature-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.mindscape-nature-icon {
+    width: auto;
+    height: 24px;
+    max-width: 36px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.mindscape-nature-character-icon {
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.mindscape-sync-badge {
+    flex-wrap: wrap;
+}
+
+.mindscape-sync-label {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.mindscape-sync-characters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.mindscape-sync-character-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.mindscape-sync-character-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
+}
+
+.mindscape-sync-character-icon {
+    height: 20px;
+    width: 20px;
+    border-radius: 4px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.mindscape-sync-character-name {
     font-size: 11px;
     color: rgba(255, 255, 255, 0.8);
     white-space: nowrap;

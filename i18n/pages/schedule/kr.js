@@ -56,6 +56,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     mainStoryTitle: '메인 스토리 업데이트',
     summerEventTitle: '여름 이벤트 출시',
     summerEventDesc: '여름 이벤트',
+    revelationSetEffectAdded: '세트 효과',
     limitTransitionTitle: '계약 상태 변경',
     limitTransitionLimitedToStandard: '한정 → 통상',
     limitStateLimited: '한정',

@@ -1,7 +1,96 @@
 {
   "data": {
-    "thief": [],
-    "weapon": []
+    "thief": [
+      {
+        "endTime": "2026-08-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "美波・ビーチフラワー",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "潮風に舞う花",
+        "startTime": "2026-07-16 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-08-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "美波・ビーチフラワー",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "潮風に舞う花",
+        "startTime": "2026-07-16 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      }
+    ],
+    "weapon": [
+      {
+        "endTime": "2026-08-13 10:59:59",
+        "fiveStar": [
+          {
+            "name": "ジュエルバスケット",
+            "type": "weapon",
+            "user": "美波・ビーチフラワー"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "エーデルワイス",
+            "type": "weapon",
+            "user": "琴音"
+          },
+          {
+            "name": "エンジョイバスケット",
+            "type": "weapon",
+            "user": "美波・ビーチフラワー"
+          },
+          {
+            "name": "グラビティフォース",
+            "type": "weapon",
+            "user": "チヅ子"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-07-16 11:30:00",
+        "type": "武器補給"
+      }
+    ]
   },
   "msg": "OK",
   "status": 0

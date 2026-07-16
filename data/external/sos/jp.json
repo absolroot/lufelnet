@@ -1,5 +1,68 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Electric",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "リリス",
+            "skill": "607,603",
+            "sn": "532101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "348401"
+      },
+      {
+        "bonusRule": "All ally Bless attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Wind",
+                "Curse"
+              ],
+              "Weak": [
+                "Bless"
+              ]
+            },
+            "image": "B-guaiwutouxiang-set.png",
+            "level": "89",
+            "name": "セト",
+            "skill": "1101,1103",
+            "sn": "532111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "348402"
+      }
+    ],
+    "buff": "源泉の雫: 味方に薬品を使用した時、選択した対象に『昂揚の奔流』を１つ付与する。\n『昂揚の奔流』：３ターンの間、与える最終ダメージが２０%上昇する。最大２つまで累積できる。",
+    "endTime": "2026-07-30 10:30:00",
+    "startTime": "2026-07-16 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

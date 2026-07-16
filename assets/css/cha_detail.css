@@ -1448,7 +1448,7 @@ h2 {
 }
 
 .nature-skill-modal-header h3 {
-    margin: 0 36px 4px 0;
+    margin: 0 36px 16px 0;
     font-size: 20px;
     color: rgba(255, 255, 255, 0.92);
 }
@@ -1526,6 +1526,10 @@ h2 {
         width: 94vw;
         max-height: 74vh;
         padding: 20px 16px;
+    }
+
+    .nature-skill-modal-header h3 {
+        margin: 0 32px 12px 0;
     }
 
     .nature-skill-option-header {

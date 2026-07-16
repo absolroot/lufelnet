@@ -218,6 +218,59 @@ export class NeedStatCardUI {
         return null;
     }
 
+    isNatureSkillItem(item) {
+        return String(item?.type || '') === '속성 심상' || item?.natureSkillSn !== undefined;
+    }
+
+    getNatureSkillSns(member) {
+        const state = member?.natureSkill || {};
+        return [state.synergySn, state.combatSn]
+            .map(sn => Number(sn))
+            .filter(sn => Number.isFinite(sn) && sn > 0);
+    }
+
+    memberHasNatureSkill(member, item) {
+        const itemSn = Number(item?.natureSkillSn);
+        if (!Number.isFinite(itemSn) || itemSn <= 0) return false;
+        return this.getNatureSkillSns(member).includes(itemSn);
+    }
+
+    findPartyMemberWithNatureSkill(item, members) {
+        return (members || []).find(member => member && member.name && this.memberHasNatureSkill(member, item)) || null;
+    }
+
+    addNatureSkillItemsFromGroup(groupItems, members, addItem) {
+        const added = new Set();
+        (groupItems || []).forEach(item => {
+            const sourceMember = this.findPartyMemberWithNatureSkill(item, members);
+            if (!sourceMember) return;
+            const itemId = String(item.id || item.natureSkillSn || item.skillName || '');
+            if (added.has(itemId)) return;
+            added.add(itemId);
+            addItem(item, sourceMember.name);
+        });
+    }
+
+    syncNatureSkillSelections(criticalItems = [], pierceItems = [], defenseItems = []) {
+        const syncSet = (selectedSet, items) => {
+            const currentNatureIds = new Set(
+                items
+                    .filter(item => this.isNatureSkillItem(item))
+                    .map(item => String(item.id || item.natureSkillSn || `${item.source}_${item.skillName}`))
+            );
+            Array.from(selectedSet).forEach(id => {
+                if (String(id).startsWith('nature-skill-') && !currentNatureIds.has(String(id))) {
+                    selectedSet.delete(id);
+                }
+            });
+            currentNatureIds.forEach(id => selectedSet.add(id));
+        };
+
+        syncSet(this.selectedItems, criticalItems);
+        syncSet(this.selectedPierceItems, pierceItems);
+        syncSet(this.selectedDefenseItems, defenseItems);
+    }
+
     /**
      * Sync local slot selections to global shared checks
      * This handles legacy data where shared items were stored per-slot
@@ -786,6 +839,12 @@ export class NeedStatCardUI {
             }
         });
 
+        this.addNatureSkillItemsFromGroup(buffData['속성 심상'], party, (item, source) => {
+            if (item.target !== '자신') {
+                items.push({ ...item, source });
+            }
+        });
+
         return items;
     }
 
@@ -834,6 +893,14 @@ export class NeedStatCardUI {
         if (selfData[charName]) {
             selfData[charName].forEach(item => {
                 items.push({ ...item, source: charName });
+            });
+        }
+
+        if (selfData['속성 심상']) {
+            selfData['속성 심상'].forEach(item => {
+                if (item.target === '자신' && this.memberHasNatureSkill(charData, item)) {
+                    items.push({ ...item, source: charName });
+                }
             });
         }
 
@@ -951,6 +1018,25 @@ export class NeedStatCardUI {
             }
         });
 
+        if (penetrateData['속성 심상']) {
+            const addedBuffIds = new Set();
+            penetrateData['속성 심상'].forEach(item => {
+                if (item.target === '자신') {
+                    if (this.memberHasNatureSkill(charData, item)) {
+                        addItem(item, charName);
+                    }
+                    return;
+                }
+
+                const sourceMember = this.findPartyMemberWithNatureSkill(item, party);
+                if (!sourceMember) return;
+                const itemId = String(item.id || item.natureSkillSn || item.skillName || '');
+                if (addedBuffIds.has(itemId)) return;
+                addedBuffIds.add(itemId);
+                addItem(item, sourceMember.name);
+            });
+        }
+
         // 4-5. 원더: 전용무기 - 현재 선택된 무기와 이름이 같은 경우
         // 4-6. 원더: 스킬 - 페르소나 스킬에 해당 스킬이 있을 때
         // 4-7. 원더: 페르소나 - 이름에 현재 페르소나 이름이 포함될 때
@@ -1038,6 +1124,14 @@ export class NeedStatCardUI {
                 defenseData[memberName].forEach(item => {
                     items.push({ ...item, source: memberName });
                 });
+            }
+        });
+
+        this.addNatureSkillItemsFromGroup(defenseData['속성 심상'], party, (item, source) => {
+            if (item.target !== '자신') {
+                items.push({ ...item, source });
+            } else if (this.memberHasNatureSkill(charData, item)) {
+                items.push({ ...item, source: charName });
             }
         });
 
@@ -1494,6 +1588,7 @@ export class NeedStatCardUI {
                 this.autoSelectBySlotSettings(charData, [...buffItems, ...selfItems]);
                 this.ensureDefaultSelected(buffItems);
             }
+            this.syncNatureSkillSelections([...buffItems, ...selfItems]);
             this.applyOptionValuesToItems([...buffItems, ...selfItems], null);
             this.applyMikuSkillEffectAmpToItems([...buffItems, ...selfItems]);
 
@@ -1509,6 +1604,11 @@ export class NeedStatCardUI {
                 this.autoSelectPierceBySlotSettings(charData, defenseReduceItems, 'defense');
                 this._syncLocalSelectionsToGlobalShared(buffItems, penetrateBuffItems, defenseReduceItems);
             }
+            this.syncNatureSkillSelections(
+                [...buffItems, ...selfItems],
+                [...penetrateSelfItems, ...penetrateBuffItems],
+                defenseReduceItems
+            );
             this.applyOptionValuesToItems([...penetrateSelfItems, ...penetrateBuffItems], 'pierce');
             this.applyOptionValuesToItems(defenseReduceItems, 'defense');
             this.applyMikuSkillEffectAmpToItems([...penetrateSelfItems, ...penetrateBuffItems, ...defenseReduceItems]);
@@ -1641,6 +1741,11 @@ export class NeedStatCardUI {
             const isRitualType = typeStr.match(/의식\d+/);
             const isWeaponType = typeStr === '전용무기';
 
+            if (typeStr === '속성 심상') {
+                selectedSet.add(itemId);
+                return;
+            }
+
             // 방어력 감소: 전부 체크
             if (category === 'defense') {
                 selectedSet.add(itemId);
@@ -1678,6 +1783,11 @@ export class NeedStatCardUI {
         allItems.forEach(item => {
             const itemId = String(item.id || `${item.source}_${item.skillName}`);
             const typeStr = String(item.type || '');
+
+            if (typeStr === '속성 심상') {
+                this.selectedItems.add(itemId);
+                return;
+            }
 
             // 1. 전용무기 타입: 개조 드롭다운 값에 따라 해당 옵션 자동 선택
             // Support for 개조5&6 style options (& grouped)
@@ -1988,6 +2098,11 @@ export class NeedStatCardUI {
             // Merge local selections to global shared checks only once (for legacy data compatibility)
             this._syncLocalSelectionsToGlobalShared(buffItems, penetrateBuffItems, defenseReduceItems);
         }
+        this.syncNatureSkillSelections(
+            [...buffItems, ...selfItems],
+            [...penetrateSelfItems, ...penetrateBuffItems],
+            defenseReduceItems
+        );
 
         const { labelExtraPierce, labelExtraDefenseReduce, labelPenetrateSelf, labelPenetrateBuff, labelDefenseReduce, labelRemainingDefense, labelRequiredPierce } = labels;
         this.currentPanelContainer = container;

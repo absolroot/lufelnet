@@ -48,6 +48,59 @@ function getLocalizedCharacterName(charData, name, lang) {
     return charData.name || name;
 }
 
+function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, (char) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+    })[char]);
+}
+
+function formatNatureSkillDescription(description) {
+    return escapeHtml(description).replace(/(\d+(?:\.\d+)?%?|\[제보\])(\/(\d+(?:\.\d+)?%?|\[제보\])){1,3}/g, (match) => {
+        return match.split('/').map((value) => `<span class="skill-level-values">${value}</span>`).join('/');
+    });
+}
+
+function getNatureSkillUIText(key, fallback = '') {
+    if (key === 'note') {
+        const lang = (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function')
+            ? window.I18nService.getCurrentLanguage()
+            : 'kr';
+        if (lang === 'en') {
+            return getTacticMakerText('tacticNatureSkillGlobalNote', '※ This feature was first released in KR V5.2 and may not be available on global servers yet.');
+        }
+        if (lang === 'jp') {
+            return getTacticMakerText('tacticNatureSkillGlobalNote', '※ この機能はKR版V5.2で先行実装された機能です。グローバル版ではまだ利用できない場合があります。');
+        }
+        return '';
+    }
+
+    const map = {
+        title: ['tacticNatureSkillTitle', 'characterNatureSkillTitle'],
+        synergy: ['tacticNatureSkillSynergy', 'characterNatureSkillSynergy'],
+        combat: ['tacticNatureSkillCombat', 'characterNatureSkillCombat'],
+        select: ['tacticNatureSkillSelect', 'characterNatureSkillSelect'],
+        clear: ['tacticNatureSkillClear', 'notSelected'],
+        empty: ['tacticNatureSkillNoSkills', 'characterNatureSkillNoSkills'],
+        level: ['tacticNatureSkillLevel', 'characterNatureSkillLevel'],
+        close: ['tacticNatureSkillClose', 'characterNatureSkillClose'],
+        note: ['tacticNatureSkillGlobalNote', 'characterNatureSkillGlobalNote']
+    };
+    const keys = map[key] || [key];
+    for (const textKey of keys) {
+        const translated = getTacticMakerText(textKey, '');
+        if (translated && translated !== textKey) return translated;
+    }
+    return fallback || key;
+}
+
+function getNatureSkillCostIconPath() {
+    return `${window.BASE_URL || ''}/assets/img/character-detail/innate/item-302069.png`;
+}
+
 /**
  * Get revelation tooltip text based on current language
  * For main revelation: show set effect with sub revelations
@@ -127,6 +180,47 @@ function getRevelationTooltip(revName, kind = 'sub', currentSubRev = '') {
         
         return `<b>${subName}</b><br>${label2}: ${highlightNumbers(set2)}<br>${label4}: ${highlightNumbers(set4)}`;
     }
+}
+
+function bindCursorTooltip(element, content) {
+    if (!element) return;
+    if (!content) {
+        element.removeAttribute('data-tooltip');
+        return;
+    }
+
+    element.setAttribute('data-tooltip', content);
+    const floating = document.getElementById('cursor-tooltip') || (() => {
+        const el = document.createElement('div');
+        el.id = 'cursor-tooltip';
+        el.className = 'cursor-tooltip';
+        document.body.appendChild(el);
+        return el;
+    })();
+
+    element.addEventListener('mouseenter', function () {
+        const tooltip = this.getAttribute('data-tooltip');
+        if (tooltip) {
+            floating.innerHTML = tooltip;
+            floating.style.display = 'block';
+        }
+    });
+    element.addEventListener('mousemove', function (e) {
+        const offset = 16;
+        let x = e.clientX + offset;
+        let y = e.clientY + offset;
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const ttW = floating.offsetWidth;
+        const ttH = floating.offsetHeight;
+        if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
+        if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
+        floating.style.left = `${x}px`;
+        floating.style.top = `${y}px`;
+    });
+    element.addEventListener('mouseleave', function () {
+        floating.style.display = 'none';
+    });
 }
 
 export class PartyUI {
@@ -834,6 +928,7 @@ export class PartyUI {
                 e.target.closest('select') ||
                 e.target.closest('.revelation-option') ||
                 e.target.closest('.revelation-dropdown') ||
+                e.target.closest('.tactic-nature-skill') ||
                 e.target.closest('.role-selector') ||
                 e.target.closest('.need-stat-trigger')) {
                 return;
@@ -1004,6 +1099,9 @@ export class PartyUI {
                 <div class="slot-option-group special-config-wrapper">
                     <!-- Injected via JS -->
                 </div>
+                <div class="slot-option-group nature-skill-config-wrapper tactic-nature-skill">
+                    <!-- Injected via JS -->
+                </div>
                 `}
             </div>
         `;
@@ -1044,6 +1142,11 @@ export class PartyUI {
         const specialWrapper = slotEl.querySelector('.special-config-wrapper');
         if (specialWrapper && !isWonder) {
             this.renderRevelationConfig(specialWrapper, data, index);
+        }
+
+        const natureWrapper = slotEl.querySelector('.nature-skill-config-wrapper');
+        if (natureWrapper && !isWonder) {
+            this.renderNatureSkillConfig(natureWrapper, data, index, charInfo);
         }
 
         // 4. Bind other slot events
@@ -1253,28 +1356,7 @@ export class PartyUI {
                 if (tooltip) {
                     button.setAttribute('data-tooltip', tooltip);
                     dropdown.dataset.currentValue = selectedValue; // Store for main tooltip lookup
-                    // Bind tooltip hover directly (avoid cloneNode which removes click handlers)
-                    const floating = document.getElementById('cursor-tooltip') || (() => {
-                        const el = document.createElement('div');
-                        el.id = 'cursor-tooltip';
-                        el.className = 'cursor-tooltip';
-                        document.body.appendChild(el);
-                        return el;
-                    })();
-                    button.addEventListener('mouseenter', function(e) {
-                        const content = this.getAttribute('data-tooltip');
-                        if (content) { floating.innerHTML = content; floating.style.display = 'block'; }
-                    });
-                    button.addEventListener('mousemove', function(e) {
-                        const offset = 16;
-                        let x = e.clientX + offset, y = e.clientY + offset;
-                        const vw = window.innerWidth, vh = window.innerHeight;
-                        const ttW = floating.offsetWidth, ttH = floating.offsetHeight;
-                        if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
-                        if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
-                        floating.style.left = x + 'px'; floating.style.top = y + 'px';
-                    });
-                    button.addEventListener('mouseleave', function() { floating.style.display = 'none'; });
+                    bindCursorTooltip(button, tooltip);
                 } else {
                     button.removeAttribute('data-tooltip');
                     dropdown.dataset.currentValue = selectedValue;
@@ -1309,6 +1391,236 @@ export class PartyUI {
 
             menu.appendChild(item);
         });
+    }
+
+    getSlotNatureSkillState(data, charInfo) {
+        const detectedNatures = DataLoader.resolveNatures(charInfo?.element || '');
+        const current = data?.natureSkill || {};
+        const currentNature = detectedNatures.includes(current.nature) ? current.nature : (detectedNatures[0] || '');
+        return {
+            nature: currentNature,
+            synergySn: current.synergySn ? Number(current.synergySn) : '',
+            combatSn: current.combatSn ? Number(current.combatSn) : ''
+        };
+    }
+
+    renderNatureSkillConfig(wrapper, data, index, charInfo) {
+        if (!wrapper) return;
+
+        const detectedNatures = DataLoader.resolveNatures(charInfo?.element || '');
+        if (!detectedNatures.length) {
+            wrapper.innerHTML = '';
+            wrapper.style.display = 'none';
+            return;
+        }
+
+        wrapper.style.display = '';
+        const state = this.getSlotNatureSkillState(data, charInfo);
+
+        wrapper.innerHTML = `
+            <div class="nature-skill-selects"></div>
+        `;
+
+        const container = wrapper.querySelector('.nature-skill-selects');
+        this.renderNatureSkillButton(container, data, index, state, DataLoader.TYPE_NATURE_SYNERGY);
+        this.renderNatureSkillButton(container, data, index, state, DataLoader.TYPE_NATURE_COMBAT);
+
+        DataLoader.loadNatureSkillData().then(() => {
+            const latestData = this.store.state.party[index];
+            if (!latestData || latestData.name !== data.name) return;
+            this.renderNatureSkillButtonsOnly(wrapper, latestData, index, charInfo);
+        });
+    }
+
+    renderNatureSkillButtonsOnly(wrapper, data, index, charInfo) {
+        const container = wrapper.querySelector('.nature-skill-selects');
+        if (!container) return;
+        const state = this.getSlotNatureSkillState(data, charInfo);
+        container.innerHTML = '';
+        this.renderNatureSkillButton(container, data, index, state, DataLoader.TYPE_NATURE_SYNERGY);
+        this.renderNatureSkillButton(container, data, index, state, DataLoader.TYPE_NATURE_COMBAT);
+    }
+
+    renderNatureSkillButton(container, data, index, state, innateType) {
+        if (!container) return;
+        const isSynergy = innateType === DataLoader.TYPE_NATURE_SYNERGY;
+        const selectedSn = isSynergy ? state.synergySn : state.combatSn;
+        const typeLabel = isSynergy
+            ? getNatureSkillUIText('synergy', '심상 시너지')
+            : getNatureSkillUIText('combat', '심상 전투기술');
+        const selected = selectedSn ? DataLoader.getNatureSkillBySn(selectedSn) : null;
+        const skillName = selected?.skill?.name || '-';
+        const isAoe = selected?.skill?.target === 'Alive Ally' || selected?.skill?.target_count === 'All' || selected?.skill?.target_count > 1;
+        const iconPath = DataLoader.getNatureIconPath(state.nature, isAoe);
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = `revelation-button nature-skill-button${selected ? ' selected' : ''}`;
+        button.dataset.natureType = isSynergy ? 'synergy' : 'combat';
+        button.setAttribute('aria-label', `${typeLabel} ${skillName}`);
+        button.innerHTML = `
+            <img class="revelation-icon" src="${iconPath}" alt="${escapeHtml(DataLoader.getNatureLabel(state.nature))}" onerror="this.style.display='none'">
+            <span>${escapeHtml(skillName)}</span>
+        `;
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            if (!document.body.classList.contains('tactic-edit-mode')) return;
+            this.openNatureSkillModal(index, data, state, innateType);
+        });
+
+        const tooltipTitle = selected
+            ? `<b>${escapeHtml(typeLabel)} - ${escapeHtml(skillName)}</b>`
+            : `<b>${escapeHtml(typeLabel)}</b>`;
+        const tooltipBody = selected
+            ? formatNatureSkillDescription(selected.skill?.desc || '')
+            : escapeHtml(getNatureSkillUIText('select', '스킬 선택'));
+        bindCursorTooltip(button, `${tooltipTitle}<br>${tooltipBody}`);
+
+        container.appendChild(button);
+    }
+
+    async openNatureSkillModal(index, data, state, innateType) {
+        await DataLoader.loadNatureSkillData();
+
+        const latestData = this.store.state.party[index];
+        if (!latestData || latestData.name !== data.name) return;
+
+        const isSynergy = innateType === DataLoader.TYPE_NATURE_SYNERGY;
+        const typeLabel = isSynergy
+            ? getNatureSkillUIText('synergy', '심상 시너지')
+            : getNatureSkillUIText('combat', '심상 전투기술');
+        const modal = this.ensureNatureSkillModal();
+        const title = modal.querySelector('#tactic-nature-skill-modal-title');
+        const note = modal.querySelector('.tactic-nature-skill-modal-note');
+        const list = modal.querySelector('.nature-skill-modal-list');
+        const skills = DataLoader.getNatureSkillsFor(state.nature, innateType);
+        const currentSn = isSynergy ? state.synergySn : state.combatSn;
+
+        title.textContent = `${typeLabel} ${getNatureSkillUIText('select', '스킬 선택')}`;
+        const noteText = getNatureSkillUIText('note', '');
+        if (note) {
+            note.textContent = noteText;
+            note.hidden = !noteText;
+        }
+        list.innerHTML = '';
+
+        const clearButton = document.createElement('button');
+        clearButton.type = 'button';
+        clearButton.className = 'nature-skill-modal-option nature-skill-modal-clear';
+        clearButton.innerHTML = `<span class="skill-info"><strong class="skill-name">${escapeHtml(getNatureSkillUIText('clear', '선택 안함'))}</strong></span>`;
+        clearButton.addEventListener('click', () => {
+            this.setNatureSkillSelection(index, state.nature, innateType, '');
+            this.closeNatureSkillModal(modal);
+        });
+        list.appendChild(clearButton);
+
+        if (!skills.length) {
+            const empty = document.createElement('p');
+            empty.className = 'nature-skill-modal-empty';
+            empty.textContent = getNatureSkillUIText('empty', '선택 가능한 스킬이 없습니다.');
+            list.appendChild(empty);
+        } else {
+            skills.forEach((entry) => {
+                list.appendChild(this.createNatureSkillModalOption(index, state.nature, innateType, entry, currentSn, modal));
+            });
+        }
+
+        const close = modal.querySelector('.nature-skill-modal-close');
+        if (close) {
+            close.textContent = '×';
+            close.setAttribute('aria-label', getNatureSkillUIText('close', '닫기'));
+        }
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    ensureNatureSkillModal() {
+        let modal = document.getElementById('tacticNatureSkillModal');
+        if (modal) return modal;
+
+        modal = document.createElement('div');
+        modal.id = 'tacticNatureSkillModal';
+        modal.className = 'nature-skill-modal tactic-nature-skill-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.innerHTML = `
+            <div class="nature-skill-modal-content">
+                <button type="button" class="nature-skill-modal-close" aria-label=""></button>
+                <div class="nature-skill-modal-header">
+                    <h3 id="tactic-nature-skill-modal-title"></h3>
+                </div>
+                <p class="nature-skill-global-note tactic-nature-skill-modal-note" hidden></p>
+                <div class="nature-skill-modal-list"></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal || event.target.closest('.nature-skill-modal-close')) {
+                this.closeNatureSkillModal(modal);
+            }
+        });
+        return modal;
+    }
+
+    closeNatureSkillModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+
+    createNatureSkillModalOption(index, nature, innateType, entry, currentSn, modal) {
+        const skill = entry.skill || {};
+        const option = document.createElement('button');
+        option.type = 'button';
+        option.className = 'nature-skill-modal-option skill-card';
+        option.dataset.sn = String(skill.sn || '');
+        if (Number(currentSn) === Number(skill.sn)) {
+            option.setAttribute('aria-current', 'true');
+        }
+
+        option.innerHTML = `
+            <img class="skill-icon nature-skill-icon" src="${DataLoader.getNatureIconPath(entry.nature)}" alt="${escapeHtml(DataLoader.getNatureLabel(entry.nature))}" onerror="this.style.display='none'">
+            <span class="skill-info">
+                <span class="skill-header nature-skill-option-header">
+                    <strong class="skill-name nature-skill-option-name">${escapeHtml(skill.name || '')}</strong>
+                    <span class="skill-cost nature-skill-option-meta">
+                        <span>${escapeHtml(getNatureSkillUIText('level', 'LV'))} ${escapeHtml(skill.skill_lv || '1/2')}</span>
+                        <span class="nature-skill-option-meta-separator">·</span>
+                        <span class="nature-skill-option-cost">
+                            <img class="nature-skill-cost-icon" src="${getNatureSkillCostIconPath()}" alt="" aria-hidden="true">
+                            <span>${escapeHtml(skill.cost || '75')}</span>
+                        </span>
+                    </span>
+                </span>
+                <span class="skill-description nature-skill-option-desc">${formatNatureSkillDescription(skill.desc || '')}</span>
+            </span>
+        `;
+        option.addEventListener('click', () => {
+            this.setNatureSkillSelection(index, nature, innateType, skill.sn || '');
+            this.closeNatureSkillModal(modal);
+        });
+        return option;
+    }
+
+    setNatureSkillSelection(index, nature, innateType, skillSn) {
+        const current = this.store.state.party[index];
+        if (!current) return;
+        const previous = current.natureSkill || {};
+        const nextNatureSkill = {
+            nature,
+            synergySn: previous.synergySn ? Number(previous.synergySn) : '',
+            combatSn: previous.combatSn ? Number(previous.combatSn) : ''
+        };
+        if (innateType === DataLoader.TYPE_NATURE_SYNERGY) {
+            nextNatureSkill.synergySn = skillSn ? Number(skillSn) : '';
+        } else {
+            nextNatureSkill.combatSn = skillSn ? Number(skillSn) : '';
+        }
+
+        const nextData = { ...current, natureSkill: nextNatureSkill };
+        this.store.setPartySlot(index, nextData);
+        this._refreshNeedStatDisplay(index, nextData);
     }
 
     buildRevelationIcon(name, isWeapon = false) {
@@ -1748,6 +2060,12 @@ export class PartyUI {
         // Default Data Construction, respecting settings
         const defaultRitual = (this.settingsUI && this.settingsUI.getDefaultRitual()) || '0';
         const defaultModification = (this.settingsUI && this.settingsUI.getDefaultModification()) || '-';
+        const detectedNatures = DataLoader.resolveNatures(cData.element || '');
+        const natureSkill = {
+            nature: detectedNatures[0] || '',
+            synergySn: '',
+            combatSn: ''
+        };
 
         // Set slot first with order '-' to avoid order collision, then apply through updateSlotOrder
         this.store.setPartySlot(index, {
@@ -1757,7 +2075,8 @@ export class PartyUI {
             modification: defaultModification,
             role: null,
             mainRev,
-            subRev
+            subRev,
+            natureSkill
         });
 
         if (desiredOrder !== '-') {

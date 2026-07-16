@@ -1,5 +1,30 @@
 import { normalizeMikuMusic } from './miku-music.js';
 
+const EMPTY_NATURE_SKILL = {
+    nature: '',
+    synergySn: '',
+    combatSn: ''
+};
+
+function normalizeNatureSkillState(value) {
+    if (!value || typeof value !== 'object') {
+        return { ...EMPTY_NATURE_SKILL };
+    }
+    return {
+        nature: String(value.nature || ''),
+        synergySn: value.synergySn ? Number(value.synergySn) : '',
+        combatSn: value.combatSn ? Number(value.combatSn) : ''
+    };
+}
+
+function normalizePartySlot(member) {
+    if (!member || typeof member !== 'object') return member || null;
+    return {
+        ...member,
+        natureSkill: normalizeNatureSkillState(member.natureSkill)
+    };
+}
+
 /**
  * Tactic Maker V2 - State Management Store
  */
@@ -11,7 +36,7 @@ export class TacticStore {
             title: "",
             memo: "", // Tactic description memo
             // Party: [Slot1, Slot2, Slot3, Elucidator, Slot4]
-            // Each slot: { name, order, ritual(0-6), modification(0-6), role(J&C only), mainRev, subRev }
+            // Each slot: { name, order, ritual(0-6), modification(0-6), role(J&C only), mainRev, subRev, natureSkill }
             party: [null, null, null, null, null],
 
             // Wonder Configuration
@@ -196,9 +221,9 @@ export class TacticStore {
 
     setPartySlot(slotIndex, characterData) {
         this._saveHistory();
-        // characterData: { name, order, ritual, modification, role, mainRev, subRev } or null
+        // characterData: { name, order, ritual, modification, role, mainRev, subRev, natureSkill } or null
         const previousData = this.state.party[slotIndex];
-        this.state.party[slotIndex] = characterData;
+        this.state.party[slotIndex] = normalizePartySlot(characterData);
 
         // "Just delete the previous character's actions when changing the character."
         // Only if we are validly switching characters in the same slot/order context
@@ -231,7 +256,7 @@ export class TacticStore {
             }
         }
 
-        this.notify('partyChange', { slotIndex, characterData });
+        this.notify('partyChange', { slotIndex, characterData: this.state.party[slotIndex] });
 
         // Check for side-effects (e.g. Fuuka in Elucidator -> Show Slot 4)
         this.checkPartySideEffects();
@@ -959,7 +984,7 @@ export class TacticStore {
         this.state = {
             title: data.title || '',
             memo: data.memo || '',
-            party: data.party || [null, null, null, null, null],
+            party: (data.party || [null, null, null, null, null]).map(normalizePartySlot),
             wonder: {
                 ...defaultWonder,
                 ...loadedWonder,
@@ -1059,7 +1084,8 @@ export class TacticStore {
                     { name: '', skills: ['', '', '', ''], memo: '' }
                 ]
             },
-            turns: initialTurns
+            turns: initialTurns,
+            needStatSelections: {}
         };
         this.clearLocalStorage();
         this.notify('fullReload', this.state);

@@ -7,6 +7,100 @@ export class DataLoader {
     static _dataReady = false;
     static _loadPromise = null;
     static _characterSettingPromises = new Map();
+    static _natureSkillPromises = new Map();
+
+    static TYPE_NATURE_SYNERGY = 501;
+    static TYPE_NATURE_COMBAT = 502;
+
+    static ELEMENT_TO_NATURE = {
+        '물리': 'Phys',
+        '총격': 'Gun',
+        '화염': 'Fire',
+        '빙결': 'Ice',
+        '전격': 'Electric',
+        '질풍': 'Wind',
+        '염동': 'Psychokinesis',
+        '핵열': 'Nuclear',
+        '축복': 'Bless',
+        '주원': 'Curse',
+        '만능': 'Almighty',
+        '버프': 'Support'
+    };
+
+    static NATURE_TO_ICON = {
+        Phys: '물리',
+        Gun: '총격',
+        Fire: '화염',
+        Ice: '빙결',
+        Electric: '전격',
+        Wind: '질풍',
+        Psychokinesis: '염동',
+        Nuclear: '핵열',
+        Bless: '축복',
+        Curse: '주원',
+        Almighty: '만능',
+        Support: '버프'
+    };
+
+    static NATURE_LABELS = {
+        Phys: '물리',
+        Gun: '총격',
+        Fire: '화염',
+        Ice: '빙결',
+        Electric: '전격',
+        Wind: '질풍',
+        Psychokinesis: '염동',
+        Nuclear: '핵열',
+        Bless: '축복',
+        Curse: '주원',
+        Almighty: '만능',
+        Support: '보조'
+    };
+
+    static NATURE_LABELS_BY_LANG = {
+        en: {
+            Phys: 'Physical',
+            Gun: 'Gun',
+            Fire: 'Fire',
+            Ice: 'Ice',
+            Electric: 'Electric',
+            Wind: 'Wind',
+            Psychokinesis: 'Psy',
+            Nuclear: 'Nuclear',
+            Bless: 'Bless',
+            Curse: 'Curse',
+            Almighty: 'Almighty',
+            Support: 'Support'
+        },
+        jp: {
+            Phys: '物理',
+            Gun: '銃撃',
+            Fire: '火炎',
+            Ice: '氷結',
+            Electric: '電撃',
+            Wind: '疾風',
+            Psychokinesis: '念動',
+            Nuclear: '核熱',
+            Bless: '祝福',
+            Curse: '呪怨',
+            Almighty: '万能',
+            Support: '支援'
+        },
+        cn: {
+            Phys: '物理',
+            Gun: '枪击',
+            Fire: '火焰',
+            Ice: '冰冻',
+            Electric: '电击',
+            Wind: '疾风',
+            Psychokinesis: '念动',
+            Nuclear: '核热',
+            Bless: '祝福',
+            Curse: '咒怨',
+            Almighty: '万能',
+            Support: '辅助'
+        }
+    };
 
     /**
      * Ensure all required data is loaded
@@ -200,6 +294,98 @@ export class DataLoader {
      */
     static getRevelationData() {
         return window.revelationData || { main: {}, sub: {}, sub_effects: {} };
+    }
+
+    static getNatureDataLang(lang = this.getCurrentLang()) {
+        return ['kr', 'en', 'jp', 'cn'].includes(lang) ? lang : 'kr';
+    }
+
+    static normalizeNatureSkillPayload(payload) {
+        const skills = Array.isArray(payload)
+            ? (Array.isArray(payload[0]) ? payload[0] : payload)
+            : (Array.isArray(payload?.data) ? payload.data : []);
+        return skills.filter((entry) => entry && entry.skill && (
+            entry.innateType === DataLoader.TYPE_NATURE_SYNERGY ||
+            entry.innateType === DataLoader.TYPE_NATURE_COMBAT
+        ));
+    }
+
+    static async loadNatureSkillData(lang = this.getCurrentLang()) {
+        const dataLang = this.getNatureDataLang(lang);
+        if (window.natureSkillDataByLang && Array.isArray(window.natureSkillDataByLang[dataLang])) {
+            return window.natureSkillDataByLang[dataLang];
+        }
+        if (this._natureSkillPromises.has(dataLang)) {
+            return this._natureSkillPromises.get(dataLang);
+        }
+
+        const baseUrl = window.BASE_URL || '';
+        const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
+            ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
+            : '';
+        const dataPath = `/data/skills/nature_skill_${dataLang}.json`;
+        const url = `${baseUrl}${dataPath}${version}`;
+        const fetcher = typeof window.fetchWithRevalidate === 'function' ? window.fetchWithRevalidate : fetch;
+
+        const promise = fetcher(url, { cache: 'no-cache' })
+            .then(async (response) => {
+                if (!response || !response.ok) {
+                    if (dataLang !== 'kr') return DataLoader.loadNatureSkillData('kr');
+                    throw new Error(`Failed to load ${dataPath}`);
+                }
+                const normalized = DataLoader.normalizeNatureSkillPayload(await response.json());
+                window.natureSkillDataByLang = window.natureSkillDataByLang || {};
+                window.natureSkillDataByLang[dataLang] = normalized;
+                if (!window.natureSkillData) window.natureSkillData = normalized;
+                return normalized;
+            })
+            .catch((error) => {
+                if (dataLang !== 'kr') return DataLoader.loadNatureSkillData('kr');
+                console.error('[DataLoader] Failed to load nature skill data:', error);
+                return [];
+            });
+
+        this._natureSkillPromises.set(dataLang, promise);
+        return promise;
+    }
+
+    static resolveNatures(elementText) {
+        const source = String(elementText || '');
+        return Object.keys(DataLoader.ELEMENT_TO_NATURE)
+            .filter((element) => source.includes(element))
+            .map((element) => DataLoader.ELEMENT_TO_NATURE[element])
+            .filter((nature, index, list) => list.indexOf(nature) === index);
+    }
+
+    static getNatureLabel(nature, lang = this.getCurrentLang()) {
+        return (DataLoader.NATURE_LABELS_BY_LANG[lang] && DataLoader.NATURE_LABELS_BY_LANG[lang][nature])
+            || DataLoader.NATURE_LABELS[nature]
+            || nature
+            || '';
+    }
+
+    static getNatureIconPath(nature, isAoe = false) {
+        const iconName = DataLoader.NATURE_TO_ICON[nature] || DataLoader.NATURE_LABELS[nature] || nature;
+        const suffix = isAoe ? '광역' : '';
+        return `${window.BASE_URL || ''}/assets/img/skill-element/${iconName}${suffix}.png`;
+    }
+
+    static getNatureSkillBySn(sn, lang = this.getCurrentLang()) {
+        const numericSn = Number(sn);
+        if (!numericSn) return null;
+        const dataLang = this.getNatureDataLang(lang);
+        const list = (window.natureSkillDataByLang && window.natureSkillDataByLang[dataLang])
+            || window.natureSkillData
+            || [];
+        return list.find((entry) => Number(entry?.skill?.sn) === numericSn) || null;
+    }
+
+    static getNatureSkillsFor(nature, innateType, lang = this.getCurrentLang()) {
+        const dataLang = this.getNatureDataLang(lang);
+        const list = (window.natureSkillDataByLang && window.natureSkillDataByLang[dataLang])
+            || window.natureSkillData
+            || [];
+        return list.filter((entry) => entry && entry.nature === nature && entry.innateType === innateType);
     }
 
     /**

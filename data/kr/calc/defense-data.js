@@ -58,6 +58,7 @@ const penetrateData = {
   "속성 심상": [
     {
       "id": "nature-skill-wind-pierce-rate",
+      "natureSkillSn": 70604,
       "type": "속성 심상",
       "target": "자신",
       "skillIcon": "/assets/img/skill-element/질풍.png",
@@ -89,6 +90,7 @@ const penetrateData = {
     },
     {
       "id": "nature-skill-wind-gale-break-assault",
+      "natureSkillSn": 70605,
       "type": "속성 심상",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/질풍광역.png",
@@ -122,6 +124,7 @@ const penetrateData = {
     },
     {
       "id": "nature-skill-support-pierce-boost",
+      "natureSkillSn": 71208,
       "type": "속성 심상",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/버프광역.png",
@@ -1311,6 +1314,7 @@ const defenseCalcData = {
   "속성 심상": [
     {
       "id": "nature-skill-psy-mental-plunder-defense",
+      "natureSkillSn": 70708,
       "type": "속성 심상",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/염동광역.png",
@@ -1344,6 +1348,7 @@ const defenseCalcData = {
     },
     {
       "id": "nature-skill-nuclear-elemental-catalyst-defense",
+      "natureSkillSn": 70807,
       "type": "속성 심상",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/핵열광역.png",

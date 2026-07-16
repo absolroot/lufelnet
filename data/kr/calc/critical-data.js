@@ -71,6 +71,7 @@ const criticalBuffData = {
   "속성 심상": [
     {
       "id": "nature-skill-electric-shock-effect-crit-rate",
+      "natureSkillSn": 70505,
       "type": "속성 심상",
       "target": "광역",
       "target_en": "Multi",
@@ -134,6 +135,7 @@ const criticalBuffData = {
     },
     {
       "id": "nature-skill-electric-current-surge-crit-rate",
+      "natureSkillSn": 70508,
       "type": "속성 심상",
       "target": "광역",
       "target_en": "Multi",
@@ -1093,6 +1095,7 @@ const criticalSelfData = {
   "속성 심상": [
     {
       "id": "nature-skill-gun-crit-rate",
+      "natureSkillSn": 70204,
       "type": "속성 심상",
       "target": "자신",
       "target_en": "Self",
@@ -1128,6 +1131,7 @@ const criticalSelfData = {
     },
     {
       "id": "nature-skill-electric-crit-rate",
+      "natureSkillSn": 70503,
       "type": "속성 심상",
       "target": "자신",
       "target_en": "Self",

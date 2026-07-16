@@ -64,7 +64,7 @@ window.personaFiles["트론"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 4 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を４つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。これらの効果は控えにいる場合でも発動する。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１%上昇する。さらに５０%の確率でランダムな敵１体を炎上状態にする。",
       "name_cn": "超越尘世的圣者",
-      "desc_cn": "攻击力提升29.1%。战斗开始时获得4层「火种」，并为随机1名敌人添加燃烧，持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1%，持续2回合，并有50%概率使随机1名敌人陷入燃烧状态。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得4层「火种」，并为随机1名敌人添加燃烧（处于后台时也能生效），持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1%，持续2回合，并有50%概率使随机1名敌人陷入燃烧状态。"
     },
     {
       "name": "세속을 초월한 성인Ⅰ",
@@ -74,7 +74,7 @@ window.personaFiles["트론"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を８つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。これらの効果は控えにいる場合でも発動する。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１%上昇する。さらに５０%の確率でランダムな敵１体を炎上状態にする。",
       "name_cn": "超越尘世的圣者Ⅰ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时获得8层「火种」，并为随机1名敌人添加燃烧，持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1%，持续2回合，并有50%概率使随机1名敌人陷入燃烧状态。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得8层「火种」，并为随机1名敌人添加燃烧（处于后台时也能生效），持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1%，持续2回合，并有50%概率使随机1名敌人陷入燃烧状态。"
     },
     {
       "name": "세속을 초월한 성인Ⅱ",
@@ -84,7 +84,7 @@ window.personaFiles["트론"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1.5% per stack for 2 turns. Also, 50% chance to inflict Burn on 1 random foe.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を８つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。これらの効果は控えにいる場合でも発動する。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１.５%上昇する。さらに５０%の確率でランダムな敵１体を炎上状態にする。",
       "name_cn": "超越尘世的圣者Ⅱ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时获得8层「火种」，并为随机1名敌人添加燃烧，持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1.5%，持续2回合，并有50%概率使随机1名敌人陷入燃烧状态。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得8层「火种」，并为随机1名敌人添加燃烧（处于后台时也能生效），持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1.5%，持续2回合，并有50%概率使随机1名敌人陷入燃烧状态。"
     },
     {
       "name": "세속을 초월한 성인Ⅲ",
@@ -94,7 +94,7 @@ window.personaFiles["트론"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 8 Holy Flame stacks, and every 2 turns, inflict Burn on 1 random foe.\nWhen allies inflict an elemental ailment, gain 1 Holy Flame stack for 3 turns. If the ailment inflicted is Burn, gain 1 more Holy Flame stack. Holy Flame stacks up to 10 times, and up to 2 stacks can be gained from 1 skill.\nWhen an ally uses a skill, if Holy Flame is at 4 or more stacks, spend all Holy Flame stacks to increase the party's damage by 1.5% per stack for 2 turns. Also, 75% chance to inflict Burn on 1 random foe.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時に『聖火』を８つ獲得し、ランダムな敵１体を２ターンの間、炎上状態にする。味方が属性異常を付与した時、３ターンの間、自身は『聖火』を１つ獲得する。付与した属性異常が炎上の場合、追加で『聖火』を１つ獲得する。『聖火』は最大１０個まで累積し、スキル１回で最大２つまで獲得できる。これらの効果は控えにいる場合でも発動する。\n味方にスキルを使用した時、『聖火』が４つ以上累積している場合はすべての『聖火』を消費し、２ターンの間、味方全体のダメージが１つにつき１.５%上昇する。さらに７５%の確率でランダムな敵１体を炎上状態にする。",
       "name_cn": "超越尘世的圣者Ⅲ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时获得8层「火种」，并为随机1名敌人添加燃烧，持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1.5%，持续2回合，并有75%概率使随机1名敌人陷入燃烧状态。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时获得8层「火种」，并为随机1名敌人添加燃烧（处于后台时也能生效），持续2回合。我方角色添加元素异常时，自身获得1层「火种」，若为燃烧则额外获得1层「火种」，持续3回合，上限10层，每次技能最多提供2层「火种」。自身对友方角色释放人格面具技能时，若「火种」在4层以上，则消耗所有「火种」，每层使我方全体伤害提高1.5%，持续2回合，并有75%概率使随机1名敌人陷入燃烧状态。"
     }
   ],
   "uniqueSkill": {

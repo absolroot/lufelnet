@@ -20,7 +20,7 @@ window.personaFiles["스라오샤"] = {
   "comment": "선봉이 아닌 파티에 속해있기만 해도 『신의 귀』중첩을 획득 가능하다.",
   "comment_en": "Can gain [God's Ear] stacks just by being in the party, not necessarily in the front line.",
   "comment_jp": "先鋒でなくてもパーティに属しているだけで『神の耳』重複を獲得可能である。",
-    "comment_cn": "即使不在前锋位，只要编入队伍，也能获得『神之耳』层数。",
+  "comment_cn": "即使不在前锋位，只要编入队伍，也能获得『神之耳』层数。",
   "added": "KR v3.1.0",
   "cost": null,
   "combination": null,
@@ -68,7 +68,7 @@ window.personaFiles["스라오샤"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 1 God's Ear stack. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 4% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 16% more for 2 turns.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『神の耳』を１つ獲得する。味方がハイライトを発動した時、『神の耳』を１つ獲得し、祝福属性の味方がハイライトを発動した場合、さらに追加で１つ獲得する。\n『神の耳』は３ターン持続し、最大３つまで累積できる。また控えの場合でも獲得できる。\n固有スキルを使用した時、『神の耳』をすべて消費し、２ターンの間、対象の祝福属性の被ダメージを消費数×４%上昇させる。『神の耳』を３つ消費した場合は、２ターンの間、対象が祝福属性ダメージを受ける時に防御力が１６%低下する効果を追加で付与する。",
       "name_cn": "罪恶的倾听者",
-      "desc_cn": "攻击力提升29.1%。战斗开始时，获得1层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」。祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升4%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低16%。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时，获得1层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」，祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」（处于后台时也能生效）。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升4%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低16%。"
     },
     {
       "name": "죄악의 경청자Ⅰ",
@@ -78,7 +78,7 @@ window.personaFiles["스라오샤"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 4% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 16% more for 2 turns.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『神の耳』を２つ獲得する。味方がハイライトを発動した時、『神の耳』を１つ獲得し、祝福属性の味方がハイライトを発動した場合、さらに追加で１つ獲得する。\n『神の耳』は３ターン持続し、最大３つまで累積できる。また控えの場合でも獲得できる。\n固有スキルを使用した時、『神の耳』をすべて消費し、２ターンの間、対象の祝福属性の被ダメージを消費数×４%上昇させる。『神の耳』を３つ消費した場合は、２ターンの間、対象が祝福属性ダメージを受ける時に防御力が１６%低下する効果を追加で付与する。",
       "name_cn": "罪恶的倾听者Ⅰ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时，获得2层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」。祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升4%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低16%。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时，获得2层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」，祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」（处于后台时也能生效）。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升4%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低16%。"
     },
     {
       "name": "죄악의 경청자Ⅱ",
@@ -88,7 +88,7 @@ window.personaFiles["스라오샤"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 6% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 16% more for 2 turns.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『神の耳』を２つ獲得する。味方がハイライトを発動した時、『神の耳』を１つ獲得し、祝福属性の味方がハイライトを発動した場合、さらに追加で１つ獲得する。\n『神の耳』は３ターン持続し、最大３つまで累積できる。また控えの場合でも獲得できる。\n固有スキルを使用した時、『神の耳』をすべて消費し、２ターンの間、対象の祝福属性の被ダメージを消費数×６%上昇させる。『神の耳』を３つ消費した場合は、２ターンの間、対象が祝福属性ダメージを受ける時に防御力が１６%低下する効果を追加で付与する。",
       "name_cn": "罪恶的倾听者Ⅱ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时，获得2层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」。祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升6%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低16%。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时，获得2层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」，祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」（处于后台时也能生效）。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升6%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低16%。"
     },
     {
       "name": "죄악의 경청자Ⅲ",
@@ -98,7 +98,7 @@ window.personaFiles["스라오샤"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 2 God's Ear stacks. When an ally uses a Highlight, gain 1 God's Ear stack. When a Bless ally uses a Highlight, gain 1 more God's Ear stack.\nGod's Ear lasts for 3 turns and stacks up to 3 times. Can also gain stacks while in reserve.\nWhen using a unique skill, spend all God's Ear stacks, and increase target's Bless damage taken by 6% for each stack for 2 turns. Also, when spending 3 God's Ear stacks, when the target takes Bless damage, decrease Defense by 25% more for 2 turns.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『神の耳』を２つ獲得する。味方がハイライトを発動した時、『神の耳』を１つ獲得し、祝福属性の味方がハイライトを発動した場合、さらに追加で１つ獲得する。\n『神の耳』は３ターン持続し、最大３つまで累積できる。また控えの場合でも獲得できる。\n固有スキルを使用した時、『神の耳』をすべて消費し、２ターンの間、対象の祝福属性の被ダメージを消費数×６%上昇させる。『神の耳』を３つ消費した場合は、２ターンの間、対象が祝福属性ダメージを受ける時に防御力が２５%低下する効果を追加で付与する。",
       "name_cn": "罪恶的倾听者Ⅲ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时，获得2层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」。祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升6%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低25%。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时，获得2层「神之耳」，持续3回合，上限3层。友方释放HIGHLIGHT时，获得1层「神之耳」，祝福属性怪盗释放HIGHLIGHT时额外获得1层「神之耳」（处于后台时也能生效）。使用固有技能时，消耗所有「神之耳」，每层使敌人受到祝福属性伤害提升6%，持续2回合。若「神之耳」达到3层，额外使敌人受到祝福属性时的防御降低25%。"
     }
   ],
   "uniqueSkill": {

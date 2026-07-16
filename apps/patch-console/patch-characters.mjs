@@ -471,6 +471,19 @@ function normalizeNoSpaceText(value) {
   return String(value || '').replace(/\s+/g, '').trim();
 }
 
+function normalizeWhitespaceForDiff(value) {
+  return String(value || '')
+    .normalize('NFC')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isWhitespaceOnlyStringDiff(before, after) {
+  if (typeof before !== 'string' || typeof after !== 'string') return false;
+  if (before === after) return false;
+  return normalizeWhitespaceForDiff(before) === normalizeWhitespaceForDiff(after);
+}
+
 function isIgnoredSkillElementAoeDiff(part, pathText, beforeValue, afterValue) {
   if (part !== 'skill') return false;
   const path = String(pathText || '').trim();
@@ -1520,7 +1533,12 @@ function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig)
   const hideCooldownDiff = isElucidationPhantomThief(characterKey);
   const paths = diffPaths(current, nextValue)
     .filter(Boolean)
-    .filter((pathText) => !(hideCooldownDiff && isCooldownDiffPath(pathText)));
+    .filter((pathText) => !(hideCooldownDiff && isCooldownDiffPath(pathText)))
+    .filter((pathText) => {
+      const before = getValueAtDiffPath(current, pathText);
+      const after = getValueAtDiffPath(nextValue, pathText);
+      return !isWhitespaceOnlyStringDiff(before, after);
+    });
   if (paths.length === 0) return null;
   const samplePaths = paths;
   const valueDiffs = samplePaths.map((pathText) => {
@@ -1858,6 +1876,7 @@ async function runApplyDiffJson(options) {
           continue;
         }
         if (equals(before, after)) continue;
+        if (isWhitespaceOnlyStringDiff(before, after)) continue;
         selectedValue = setValueAtDiffPath(selectedValue, pathText, after);
         changedPaths += 1;
       }

@@ -743,15 +743,22 @@ function canWriteDataFile(filePath) {
   return DATA_TEXT_EXTS.includes(ext);
 }
 
+function normalizeWhitespaceForDiff(value) {
+  return String(value || '')
+    .normalize('NFC')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function isWhitespaceOnlyStringDiff(before, after) {
+  if (typeof before !== 'string' || typeof after !== 'string') return false;
+  if (before === after) return false;
+  return normalizeWhitespaceForDiff(before) === normalizeWhitespaceForDiff(after);
+}
+
 function applyIgnoredFilter(domain, rows) {
   const ignored = listIgnoredByDomain(domain, { show: 'all' });
   const ignoredSet = new Set(ignored.map((item) => String(item.key)));
-  if (ignored.length === 0) {
-    return {
-      rows,
-      ignoredCount: 0
-    };
-  }
 
   const filteredRows = [];
   for (const row of rows) {
@@ -762,6 +769,7 @@ function applyIgnoredFilter(domain, rows) {
         : (Array.isArray(part.samplePaths) ? part.samplePaths.map((pathText) => ({ path: pathText })) : []);
 
       const remained = diffs.filter((entry) => {
+        if (isWhitespaceOnlyStringDiff(entry?.before, entry?.after)) return false;
         const isIgnored = isIgnoredByStoreItem(domain, row, part.part, entry);
         if (isIgnored) return false;
         return true;

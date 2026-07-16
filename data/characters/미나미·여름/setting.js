@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["미나미·여름"] = {
     "role": "아이템 활용 버퍼",
     "video": ["Cr9dMdtTndg", "6dYWOcbntnI"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["UWfC9QeeTkQ"],
+    "video_jp": ["kW8U_S_npjM","zpDRnTWjQn4"],
     "main_revelation": ["신뢰", "창조", "조화"],
     "sub_revelation": ["풍요", "화해", "힘"],
     "sub_revel2": ["생명", "대미지 보너스"],

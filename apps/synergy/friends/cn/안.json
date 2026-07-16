@@ -1,0 +1,484 @@
+{
+  "data": {
+    "item": [
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303242.png",
+        "name": "边走边吃美食指南",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "奇境币",
+            "price": 6400,
+            "resetType": "없음",
+            "shopName": "太平堂"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 32
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303248.png",
+        "name": "时尚杂志",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "奇境币",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "太平堂"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303229.png",
+        "name": "名牌香水",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "奇境币",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "药妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303246.png",
+        "name": "最新型美颜器",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 31600,
+            "resetType": "없음",
+            "shopName": "药妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 158
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303239.png",
+        "name": "典雅木梳",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 43600,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 218
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "栗子蛋糕",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 18800,
+            "resetType": "없음",
+            "shopName": "百万甜品"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 94
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303214.png",
+        "name": "心型戒指",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 14000,
+            "resetType": "없음",
+            "shopName": "折扣商品店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 70
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303244.png",
+        "name": "传统点心组合",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 9600,
+            "resetType": "없음",
+            "shopName": "百万甜品"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 48
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303228.png",
+        "name": "松露巧克力",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 12400,
+            "resetType": "없음",
+            "shopName": "百万甜品"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 62
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303247.png",
+        "name": "玫瑰浴礼盒",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 8800,
+            "resetType": "없음",
+            "shopName": "药妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 44
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606330.png",
+        "name": "美甲套装",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 8000,
+            "resetType": "없음",
+            "shopName": "药妆店"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 40
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606331.png",
+        "name": "多重奶油可丽饼",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 12000,
+            "resetType": "없음",
+            "shopName": "百万甜品"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 60
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606332.png",
+        "name": "模特拍照姿势辞典",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "奇境币",
+            "price": 15200,
+            "resetType": "없음",
+            "shopName": "太平堂"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 76
+      }
+    ],
+    "name": "高卷杏",
+    "special_award": [
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30443,
+        "rank": 1,
+        "skill": {
+          "affix": "216",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「高卷杏·星舞」的意识等级提升1级。\n「扭曲的奇遇」中，所有同伴火焰、冰冻、电击、疾风属性伤害提升5%。",
+          "effect": "2",
+          "icon": "PC073_03_12_33_02.png",
+          "name": "个性的释放"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 2,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30446,
+        "rank": 3,
+        "skill": {
+          "affix": "217",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「高卷杏·星舞」的意识等级提升1级。\n「交叠的奇遇之地」中，所有同伴火焰、冰冻、电击、疾风属性伤害提升5%。",
+          "effect": "1",
+          "icon": "PC073_03_12_33_01.png",
+          "name": "定格的诱惑"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 4,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30449,
+        "rank": 5,
+        "skill": {
+          "affix": "218",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「高卷杏·星舞」的意识等级提升1级。\n「扭曲的奇遇」中，所有同伴火焰、冰冻、电击、疾风属性伤害提升10%。",
+          "effect": "2",
+          "icon": "PC073_03_12_33_02.png",
+          "name": "魅惑的回旋"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 6,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30452,
+        "rank": 7,
+        "skill": {
+          "affix": "219",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「高卷杏·星舞」的意识等级提升1级。\n「交叠的奇遇之地」中，所有同伴火焰、冰冻、电击、疾风属性伤害提升10%。",
+          "effect": "1",
+          "icon": "PC073_03_12_33_01.png",
+          "name": "危险的美学"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 8,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30456,
+        "rank": 9,
+        "skill": {
+          "affix": "220",
+          "description": "「扭曲的奇遇」的激斗模式中，试用角色「高卷杏·星舞」的意识等级提升1级。\n任意玩法中，所有同伴火焰、冰冻、电击、疾风属性伤害提升2%。",
+          "effect": "-1",
+          "icon": "PC073_03_12_33_03.png",
+          "name": "带刺的玫瑰"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 10,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 11,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 12,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      }
+    ],
+    "unlock_quest": [
+      {
+        "details": "在意想不到的地方见到了熟悉又陌生的身影……去搭话看看吧。",
+        "name": "热舞星夜"
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

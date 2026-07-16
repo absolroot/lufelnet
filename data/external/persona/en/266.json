@@ -1,0 +1,79 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric"
+    ],
+    "Weak": [
+      "Curse"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "btlwip-0724-[Skill_desc_26611]",
+    "level": "6/7/8",
+    "name": "btlwip-0724-[Skill_name_26611]"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 9.0%",
+      "desc": "Decrease this skill's accuracy by 15%, increase critical rate by 16%, and deal Gun damage to all foes equal to 14.9/15.6/16.4% of Attack (3 hits).",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Triple Down"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Mahamaon"
+    },
+    {
+      "cost": "",
+      "desc": "Increase critical rate of ranged attacks by 8.9%.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Trigger Happy IV"
+    },
+    {
+      "cost": "",
+      "desc": "Increase ailment accuracy by 16.2%.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Accuracy Boost IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Vasuki",
+  "nature": "Gun",
+  "passive_skill": [
+    {
+      "desc": "btlwip-0724-[Skill_desc_26641]",
+      "name": "btlwip-0724-[Skill_name_26641]"
+    },
+    {
+      "desc": "btlwip-0724-[Skill_desc_26642]",
+      "name": "btlwip-0724-[Skill_name_26642]"
+    },
+    {
+      "desc": "btlwip-0724-[Skill_desc_26643]",
+      "name": "btlwip-0724-[Skill_name_26643]"
+    },
+    {
+      "desc": "btlwip-0724-[Skill_desc_26644]",
+      "name": "btlwip-0724-[Skill_name_26644]"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Gun damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

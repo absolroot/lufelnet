@@ -6,11 +6,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "回合开始时，根据自身损失的生命值，提升龙司的攻击力，最低提升10%。自身生命值低于20%时，获得最高提升，攻击力提升40%。若自身生命值不高于75%，额外获得『触底反弹』效果：下次人格面具技能造成的技能伤害提升30%、暴击率提升30%。",
-        "name": "五脏爆裂拳",
+        "desc": "Beachflower Minami has 3 kinds of Everyday Medicine.\nWhen using medicine on allies, restore HP to the main target equal to 8% of Beachflower Minami's max HP.\nWhen using Gentle Sea Breeze, grant 1 Midsummer Prescription stack (stacks up to 1 time). At the start of Beachflower Minami's turn, she can spend 1 Midsummer Prescription stack to gain Flower Basket Pharmacy.\nFlower Basket Pharmacy: Use medicine without spending a turn, and extend the duration of Potent Medicine used by 1 turn. After using medicine 1 time, lose this effect.",
+        "name": "Seaside First Aid",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101140,
+        "sn": 123240,
         "tags": [
           null
         ],
@@ -22,11 +22,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "『蓄力一击』技能伤害提升20%，并且蓄力期间使自身受到的伤害降低20%。",
-        "name": "猛虎咆哮",
+        "desc": "When using Gentle Sea Breeze, gain 1 more Midsummer Prescription stack. Midsummer Prescription now stacks up to 2 times (only 1 Midsummer Prescription stack can be used in a turn).\nIncrease the effects of medicine used by Beachflower Minami by 20%.",
+        "name": "Summertime Cure-all",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101141,
+        "sn": 123241,
         "tags": [
           null
         ],
@@ -38,11 +38,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "『蓄力一击』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
-        "name": "螺旋升天爆锤",
+        "desc": "When using Beach Basket, inflict Perplexing Petals on the target.\nPerplexing Petals: Decrease the target's Defense by 30%, and increase critical damage taken by 30% for 3 turns.",
+        "name": "Spellbinding Summer Scents",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101142,
+        "sn": 123242,
         "tags": [
           null
         ],
@@ -54,11 +54,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "释放技能造成暴击时，无视敌人35%防御力。",
-        "name": "快刀斩乱麻",
+        "desc": "Increase the skill levels of Beach Basket and Gentle Sea Breeze by 3.",
+        "name": "Relaxing Breeze",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101143,
+        "sn": 123243,
         "tags": [
           null
         ],
@@ -70,11 +70,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "『爆裂撞击』、『电击惩戒』的技能等级提升3级，至多提升至15级。",
-        "name": "幻影连打",
+        "desc": "Highlight Enhanced: Extend the duration of all buffs granted by Highlight to 3 turns. Also, when using medicine, increase medicine effects by 5%.",
+        "name": "Lingering Ripples of Summer",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101144,
+        "sn": 123244,
         "tags": [
           null
         ],
@@ -86,11 +86,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "HIGHLIGHT效果提升：下一个技能造成的伤害提升30%、暴击效果提升75%。",
-        "name": "无敌破风斩",
+        "desc": "Increase the skill levels of Summer Garden and Thief Tactics by 3.",
+        "name": "White Flowers Swaying",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101145,
+        "sn": 123245,
         "tags": [
           null
         ],
@@ -102,11 +102,11 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "释放『蓄力一击』技能对敌人造成伤害时，使目标获得1个『畏惧』效果：使龙司下一次对其释放的技能总伤害提升60%（此效果为独立加成）。战斗中首次受到致命伤害时，自身血量不会低于1点，并恢复25%最大生命值的血量。",
-        "name": "超神绝杀",
+        "desc": "When using any medicine, items are not spent upon use.\nExtend the duration of Potent Medicine effects by 1 turn. Also, when using medicine on allies with Flower Basket Pharmacy, also grant Summertime Refresh to the main target.\nSummertime Refresh: Increase final damage amplification by 15% for 1 turn.",
+        "name": "Angel in White",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101146,
+        "sn": 123246,
         "tags": [
           null
         ],
@@ -118,61 +118,43 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "AICondition (Based on AAAAAA==)",
+      "auto_select": "AICondition (Based on GJ)",
       "cooldown": 4,
       "cost": "",
-      "desc": "对1名敌方单位造成405.0%/446.5%/429.9%/471.4%攻击力的物理伤害，并使自己下一个技能的伤害提升58.6%/58.6%/62.2%/62.2%。",
-      "name": "HIGHLIGHT",
-      "nature": "Phys",
+      "desc": "Increase 1 other ally's damage by 24.4%/26.9%/25.9%/28.4%, and increase critical damage by 16.66% of the potion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier). Lasts for 2 turns. Also, when Beachflower Minami uses medicine, increase medicine effects by 9.8%/10.8%/10.4%/11.4%.",
+      "name": "Highlight",
+      "nature": "Support",
       "skill_lv": "10/10/13/13",
-      "sn": 101152,
+      "sn": 123252,
       "tags": [
         null
       ],
-      "target": "Alive Enemy",
+      "target": "Ally excluding myself",
       "target_count": 1
     },
     "innate": {
       "Crit Mult.": "0.24",
-      "Damage Mult.": "0.16"
+      "HP": "0.2"
     },
     "innate_awake_skill": [],
     "innate_skill_type": [
-      "S1/HL",
-      "S3/S2"
+      "S2/HL",
+      "S1/S3"
     ],
-    "name": "坂本龙司",
+    "name": "Beachflower Minami",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "체력 8.0%",
-        "desc": "对1名敌人造成3次64.7%/71.3%/68.7%/75.3%攻击力的物理属性伤害，若自身没有『触底反弹』效果，则该技能额外消耗20%最大生命值，并使技能伤害提升30%，暴击率提升30%。",
-        "name": "爆裂撞击",
-        "nature": "Phys",
+        "cost": "SP 20",
+        "desc": "Deal Bless damage to all foes equal to 64.4%/71.0%/68.4%/75.0% of Beachflower Minami's max HP, and inflict Bewitching Blossoms for 3 turns.\nBewitching Blossoms: When taking an attack, increase that damage's Attack by 9.8%/10.8%/10.4%/11.4% + 4% more for every 1200 of Beachflower Minami's max HP (up to 11712/12912/12432/13632 of max HP).",
+        "name": "Beach Basket",
+        "nature": "Bless",
         "skill_lv": "10/10/13/13",
-        "sn": 101111,
+        "sn": 123211,
         "tags": [
-          "主动",
-          "单伤"
-        ],
-        "target": "Alive Enemy",
-        "target_count": 1
-      },
-      {
-        "ascend": "0/5/0/5",
-        "auto_select": "Default",
-        "cooldown": 0,
-        "cost": "SP 26",
-        "desc": "对所有敌人造成67.1%/74.0%/71.3%/78.2%攻击力的电击属性伤害，有29.3%/29.3%/31.1%/31.1%的基础概率使敌人陷入触电状态，若自身有『触底反弹』效果，则概率提升至58.6%/58.6%/62.2%/62.2%。",
-        "name": "电击惩戒",
-        "nature": "Electric",
-        "skill_lv": "10/10/13/13",
-        "sn": 101112,
-        "tags": [
-          "主动",
-          "群伤"
+          "Multi-Target"
         ],
         "target": "Alive Enemy",
         "target_count": "All"
@@ -181,17 +163,32 @@
         "ascend": "0/5/0/5",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "체력 20.0%",
-        "desc": "选择1名敌人进行蓄力，下一回合时自动出手，对目标造成341.6%/376.6%/362.6%/397.6%攻击力的物理属性伤害。若自身有『触底反弹』效果，则该技能必定暴击。若蓄力期间目标死亡，则随机选择另外1名敌人。若龙司处于无法行动的状态，则延后至可以行动时出手。",
-        "name": "蓄力一击",
-        "nature": "Phys",
+        "cost": "SP 22",
+        "desc": "Increase party's damage by 7.8%/8.6%/8.3%/9.1% + 3.2% more for every 1200 of Beachflower Minami's max HP (up to 11712/12912/12432/13632 of max HP) for 3 turns. Also, grant all allies 1 Blessing stack, and remove 1 debuff.",
+        "name": "Summer Garden",
+        "nature": "Support",
         "skill_lv": "10/10/13/13",
-        "sn": 101113,
+        "sn": 123212,
         "tags": [
-          "主动",
-          "单伤"
+          "Buff"
         ],
-        "target": "Alive Enemy",
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 25",
+        "desc": "Increase 1 other ally's critical rate by 15.6%/17.2%/16.6%/18.2%, and increase critical damage by 33.33% of the portion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier). Lasts for 3 turns.\nPassive: When using medicine on an ally, increase the main target's critical damage for 1 turn. This increase is equal to 16.66% of the portion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier).",
+        "name": "Gentle Sea Breeze",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 123213,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Ally excluding myself",
         "target_count": 1
       }
     ],
@@ -201,38 +198,37 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "攻击生命值百分比不低于自己的敌人时，攻击力提升45.0%。",
-        "name": "特攻",
+        "desc": "Each time a skill is used on allies, grant 1 Blessing stack to targets.\nWhen Beachflower Minami is present, for each Blessing stack on allies, increase their damage by 6.0% (up to 36.0%).",
+        "name": "Soothing Sunlight",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101132,
+        "sn": 123231,
         "tags": [
-          "潜能"
+          "Talent"
         ],
-        "target": "Myself",
-        "target_count": 1
+        "target": "Alive Ally",
+        "target_count": "All"
       },
       {
         "ascend": "0",
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "『触底反弹』效果触发后，恢复相当于自身30.0%攻击力的生命值。",
-        "name": "义气",
+        "desc": "When Beachflower Minami is present, increase allies' Attack by 12.0%, and for each type of buff granted by Potent Medicine, increase Attack by 15.0%.",
+        "name": "Blossoms by the Beach",
         "nature": null,
         "skill_lv": "3",
-        "sn": 101131,
+        "sn": 123232,
         "tags": [
-          "潜能"
+          "Talent"
         ],
-        "target": "Myself",
-        "target_count": 1
+        "target": "Alive Ally",
+        "target_count": "All"
       }
     ],
     "rating": {
-      "Attack": 3090.0,
-      "Crit Mult.": 2.92,
-      "Damage Mult.": 0.47,
+      "Crit Mult.": 2.2,
+      "HP": 12000.0,
       "Unknown Attr": 0.0
     },
     "stat": {
@@ -241,17 +237,17 @@
       "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack": "899.97 / 915.97 / 932.77 / 948.77 / 964.77 / 980.77 / 997.57",
       "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Crit Mult.": "185.0% / 185.0% / 185.0% / 185.0% / 185.0% / 185.0% / 185.0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
       "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
       "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Defense": "533.35 / 542.95 / 552.55 / 562.15 / 571.75 / 581.35 / 590.95",
+      "Defense": "606.64 / 617.84 / 628.24 / 639.44 / 650.64 / 661.04 / 672.24",
       "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
       "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -260,7 +256,8 @@
       "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "HP": "3959.98 / 4031.18 / 4102.38 / 4173.58 / 4244.78 / 4316.78 / 4387.98",
+      "HP": "4020.02 / 4092.02 / 4164.82 / 4236.82 / 4309.62 / 4381.62 / 4454.42",
+      "HP Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
       "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
@@ -273,7 +270,7 @@
       "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
       "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
-      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Speed": "104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0 / 104.0",
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },

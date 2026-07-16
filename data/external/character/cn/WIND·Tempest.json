@@ -119,19 +119,19 @@
       [
         {
           "attr": "Final Damage Mult.",
-          "nature": "Fire",
+          "nature": "Wind",
           "value": "0.02"
         }
       ],
       [
         {
-          "attr": "Fire Boost",
-          "nature": "Fire",
+          "attr": "Wind Boost",
+          "nature": "Wind",
           "value": "0.08"
         },
         {
-          "attr": "Fire Damage Taken",
-          "nature": "Fire",
+          "attr": "Wind Damage Taken",
+          "nature": "Wind",
           "value": "-0.1"
         }
       ]
@@ -156,7 +156,40 @@
       "Attack": "0.2",
       "Crit Mult.": "0.24"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "拥有『花开』的角色，每拥有1层『花开』暴击效果额外提升4.0%/6.0%/8.0%，上限20.0%/30.0%/40.0%、攻击力提升4.0%/6.0%/8.0%，上限20.0%/30.0%/40.0%。\n自身使用『伞边摇，安居伞中』后，额外使所有同伴穿透提升7.5%/11.2%/15.0%、暴击率提升7.5%/11.2%/15.0%，持续2回合。",
+        "name": "风华",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 105271,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身使用『梅自香，时过香浓』，根据消耗SP的数量给予我方疾风属性角色增益效果，每消耗100点SP总伤害增幅提升4.0%/6.0%/8.0%+意识等级*1.5%、伤害提升4.0%/6.0%/8.0%+意识等级*1.5%，持续2回合。\n『凋落』额外使敌人受到疾风属性伤害时的暴击效果提升10.0%/15.0%/20.0%+2.5%*意识等级。",
+        "name": "春恩",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 105272,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "innate_skill_type": [
       "S1/HL",
       "S2/S3"

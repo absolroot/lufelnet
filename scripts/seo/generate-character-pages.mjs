@@ -491,6 +491,7 @@ function buildExpectedFiles(allCharacters, characterData, seoMeta, slugMap) {
       addRedirectStub(`/kr/character/${alias}/`, canonicalKoPath);
       addRedirectStub(`/en/character/${alias}/`, `/en/character/${slug}/`);
       addRedirectStub(`/jp/character/${alias}/`, `/jp/character/${slug}/`);
+      addRedirectStub(`/cn/character/${alias}/`, `/cn/character/${slug}/`);
     }
   }
 

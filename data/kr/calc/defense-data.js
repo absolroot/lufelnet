@@ -479,6 +479,44 @@ const penetrateData = {
       ]
     }
   ],
+  "리코·매화": [
+    {
+      "id": "rico-plum-windblossom-penetrate",
+      "type": "심상코어",
+      "target": "광역",
+      "skillIcon": "/assets/img/character-detail/innate/core.png",
+      "skillName": "풍화",
+      "skillName_en": "Mindscape Core",
+      "skillName_jp": "イメジャリー・コア",
+      "options": [
+        "LV1",
+        "LV2",
+        "LV3"
+      ],
+      "values": {
+        "LV1": 7.5,
+        "LV2": 11.2,
+        "LV3": 15.0
+      },
+      "defaultOption": "LV3",
+      "value": 15.0,
+      "skillEffectAmpAffected": false,
+      "duration": "2턴",
+      "note": "『우산 속 매화』 사용 후",
+      "note_en": "After Skill 2",
+      "note_jp": "スキル2使用後",
+      "skillName_cn": "风华",
+      "note_cn": "使用『伞边摇，安居伞中』后",
+      "type_cn": "心象核心",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "LV1",
+        "LV2",
+        "LV3"
+      ]
+    }
+  ],
   "미나미": [
     {
       "id": "minmami1",
@@ -584,6 +622,32 @@ const penetrateData = {
       "target_cn": "群体",
       "duration_cn": "-",
       "options_cn": []
+    }
+  ],
+  "안·댄싱 스타": [
+    {
+      "id": "ann-starlight-s3-penetrate",
+      "type": "스킬3",
+      "target": "자신",
+      "skillIcon": "/assets/img/skill-element/화염.png",
+      "skillName": "플레임 피날레",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 15.0,
+        "LV10+심상5": 16.5,
+        "LV13": 16.8,
+        "LV13+심상5": 18.3
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 18.3,
+      "skillEffectAmpAffected": true,
+      "duration": "-",
+      "note": ""
     }
   ],
   "아이기스": [
@@ -1349,12 +1413,93 @@ const defenseCalcData = {
       ]
     },
     {
+      "id": "gabriel-unique-defense",
+      "type": "페르소나",
+      "target": "단일",
+      "skillIcon": "/assets/img/enemy/B-guaiwutouxiang-gabriel.png",
+      "skillName": "가브리엘 - 고유스킬",
+      "skillName_en": "Gabriel - Unique Skill",
+      "skillName_jp": "ガブリエル - 固有スキル",
+      "options": [
+        "LV6",
+        "LV7",
+        "LV8"
+      ],
+      "values": {
+        "LV6": 20,
+        "LV7": 21,
+        "LV8": 22
+      },
+      "defaultOption": "LV8",
+      "value": 22,
+      "skillEffectAmpAffected": false,
+      "duration": "3턴",
+      "note": "반항 캐릭터 공격 시",
+      "note_en": "When attacked by Assassin role characters",
+      "note_jp": "反抗ロールのキャラから攻撃を受ける時",
+      "skillName_cn": "加百列 - 固有技能",
+      "note_cn": "受到反抗角色攻击时",
+      "type_cn": "人格面具",
+      "target_cn": "单体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "LV6",
+        "LV7",
+        "LV8"
+      ]
+    },
+    {
+      "id": "gabriel-passive-defense",
+      "type": "페르소나",
+      "target": "단일",
+      "skillIcon": "/assets/img/enemy/B-guaiwutouxiang-gabriel.png",
+      "skillName": "가브리엘",
+      "skillName_en": "Gabriel",
+      "skillName_jp": "ガブリエル",
+      "options": [
+        "0",
+        "1"
+      ],
+      "values": {
+        "0": 20,
+        "1": 30
+      },
+      "defaultOption": "1",
+      "value": 30,
+      "skillEffectAmpAffected": false,
+      "duration": "3턴",
+      "note": "적에게 페르소나 스킬 사용 후 기록 효과",
+      "note_en": "Recorded effect after using a Persona skill on foes",
+      "note_jp": "敵にペルソナスキルを使用した後の記録効果",
+      "skillName_cn": "加百列",
+      "note_cn": "对敌人使用人格面具技能后的记录效果",
+      "type_cn": "人格面具",
+      "target_cn": "单体",
+      "duration_cn": "3回合",
+      "options_cn": [
+        "0",
+        "1"
+      ]
+    },
+    {
       "id": 7,
       "type": "페르소나",
       "target": "단일/광역",
       "skillIcon": "/assets/img/tactic-persona/비슈누.webp",
       "skillName": "비슈누",
-      "options": [],
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "values": {
+        "0": 32,
+        "1": 32,
+        "2": 32,
+        "3": 48
+      },
+      "defaultOption": "3",
       "value": 48,
       "skillEffectAmpAffected": false,
       "duration": "2턴",
@@ -1366,7 +1511,12 @@ const defenseCalcData = {
       "type_cn": "人格面具",
       "target_cn": "单体/群体",
       "duration_cn": "2回合",
-      "options_cn": []
+      "options_cn": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 8,
@@ -1374,7 +1524,19 @@ const defenseCalcData = {
       "target": "단일/광역",
       "skillIcon": "/assets/img/tactic-persona/노른.webp",
       "skillName": "노른",
-      "options": [],
+      "options": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ],
+      "values": {
+        "0": 22.8,
+        "1": 25.7,
+        "2": 28.7,
+        "3": 31.5
+      },
+      "defaultOption": "3",
       "value": 31.5,
       "skillEffectAmpAffected": false,
       "duration": "2턴",
@@ -1386,7 +1548,12 @@ const defenseCalcData = {
       "type_cn": "人格面具",
       "target_cn": "单体/群体",
       "duration_cn": "2回合",
-      "options_cn": []
+      "options_cn": [
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
     },
     {
       "id": 9,
@@ -2253,6 +2420,31 @@ const defenseCalcData = {
       "skillEffectAmpAffected": false,
       "duration": "3턴",
       "note": "스킬1",
+      "skillName_cn": "被风吹拂的花",
+      "note_cn": "技能1",
+      "type_cn": "意识2",
+      "target_cn": "群体",
+      "duration_cn": "3回合",
+      "options_cn": []
+    },
+    {
+      "id": "minami_sum1_glb",
+      "type": "의식2",
+      "target": "광역",
+      "skillIcon": "/assets/img/character-detail/ritual2.png",
+      "skillName": "바람에 흔들리는 꽃",
+      "displayName": "바람에 흔들리는 꽃 (GLB ONLY)",
+      "skillName_en": "(GLB ONLY)",
+      "skillName_jp": "(GLB ONLY)",
+      "options": [],
+      "values": {},
+      "defaultOption": "",
+      "value": 30,
+      "skillEffectAmpAffected": false,
+      "duration": "3턴",
+      "note": "스킬1",
+      "note_en": "Skill 1",
+      "note_jp": "スキル1",
       "skillName_cn": "被风吹拂的花",
       "note_cn": "技能1",
       "type_cn": "意识2",

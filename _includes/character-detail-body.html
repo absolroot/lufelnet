@@ -1176,6 +1176,11 @@
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'miku_calc', globalVarName: 'MikuCalc' }));
             }
 
+            // 안·댄싱 스타 전용 운영 시뮬레이터 로드
+            if (name === '안·댄싱 스타') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'ann_calc', globalVarName: 'AnnCalc' }));
+            }
+
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
         }
 

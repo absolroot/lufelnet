@@ -1,6 +1,7 @@
 // Korean → English mapping
 const mapping_en = {
     // Main revelations
+    "자아": "Ego",
     "탄생": "Nativity",
     "돌파": "Perseverance",
     "희망": "Hope",
@@ -60,6 +61,7 @@ const enRevelationData = {
     "mapping_en": mapping_en,
     // Korean -> English translation mapping
     "mainTranslated": {
+        "자아": "Ego",
         "탄생": "Nativity",
         "돌파": "Perseverance",
         "희망": "Hope",
@@ -114,12 +116,13 @@ const enRevelationData = {
         "강인": "Tenacity",
     },
     "main": {
+        "Ego": ["Determination"], // 자아
         "Purity": ["Depravity", "Change", "Flourishing"], // 순수
         "Nativity": ["Power"], // 탄생
         "Agility": ["Flourishing", "Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Change", "Obtain"], //돌파
         "Hope": ["Labor", "Ruin", "Change"], // 희망
-        "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조 
+        "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조
         "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
         "Resolve": ["Virtue", "Labor", "Prudence"], // 결심
         "Awareness": ["Truth", "Control", "Hindrance"], // 깨달음
@@ -330,6 +333,10 @@ const enRevelationData = {
         },
     },
     "set_effects": {
+        "Ego": {
+            "Determination": "After the user consumes SP, increase DMG Dealt by 10% for 2 turns, stacking up to 4 times.",
+            "type": ["미출시"]
+        },
         "Perseverance": {
             "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
             "Sorrow": "Increase continuous damage effect by 16%.",
@@ -378,7 +385,7 @@ const enRevelationData = {
             "Ruin": "After using a Theurgy, increase party's damage by 10% for 3 turns.",
             //"type": ["미출시"]
         },
-        "Resolve": { // 결심 
+        "Resolve": { // 결심
             "Virtue": "Increase DMG Bonus by 10%/20%/30% when you reached 6000/9000/12000 HP.",
             "Labor": "When equipped by Navigator Thieves: Decrease the main target's DEF by 10% for 2 turns when inflicting debuffs.",
             "Prudence": "At the start of battle, if your SPD is at the 3rd/4th slot, then additionally increase own ATK by 24%/30%.",

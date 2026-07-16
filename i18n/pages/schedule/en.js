@@ -21,6 +21,8 @@ window.I18N_PAGE_SCHEDULE_EN = {
     daysAgo: 'days ago',
     daysLeft: 'days left',
     today: 'Today',
+    schedulePendingDate: '[TBA]',
+    schedulePendingGroup: 'TBA',
     nextRelease: 'Next Release',
     currentBanner: 'Current Banner',
     noCharacters: 'No characters in this period',

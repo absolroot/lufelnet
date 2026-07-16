@@ -34,6 +34,8 @@ window.I18N_PAGE_DEFENSE_CALC_KR = {
         "explanation_power": "해명의 힘",
         "skill_effect_amp": "스킬 효과 증폭",
         "other_reduce": "기타 방어력 감소",
+        "expand_all": "모두 펼치기",
+        "collapse_all": "모두 접기",
         "th_select": "선택",
         "th_thief": "괴도",
         "th_type": "분류",

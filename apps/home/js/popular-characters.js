@@ -8,18 +8,17 @@
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
-            { name: '미쿠', badge: 'NEW' },
-            { name: '키라', badge: 'NEW' },
-            { name: '마코토', badge: 'NEW' },
-            { name: 'J&C', badge: 'HOT' },
+            { name: '안·댄싱 스타', badge: 'NEW' },
+            { name: '리코·매화', badge: 'NEW' },
+            { name: '미쿠', badge: 'HOT' },
         ],
         en: [
+            { name: '미쿠', badge: 'HOT' },
             { name: '유키 마코토', badge: 'HOT' },
-            { name: 'J&C', badge: 'HOT' },
         ],
         jp: [
+            { name: '미쿠', badge: 'HOT' },
             { name: '유키 마코토', badge: 'HOT' },
-            { name: 'J&C', badge: 'HOT' },
         ],
     };
 

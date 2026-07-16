@@ -21,6 +21,8 @@ window.I18N_PAGE_SCHEDULE_JP = {
     daysAgo: '日前',
     daysLeft: '日後',
     today: '本日',
+    schedulePendingDate: '[予定]',
+    schedulePendingGroup: '予定',
     nextRelease: '次のリリース',
     currentBanner: '現在のバナー',
     noCharacters: 'この期間にキャラクターはいません',

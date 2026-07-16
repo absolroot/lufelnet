@@ -254,7 +254,7 @@ input[type="checkbox"]:hover {
 
 .skill-name-column .skill-type-label {
     color: rgba(255, 255, 255, 0.4);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .critical-table tr.selected .skill-name-column .skill-type-label {
@@ -984,6 +984,7 @@ img[src*="item-mind_stat2.png"] {
 }
 
 .group-header .group-avatar {
+    width: 28px;
     height: 28px;
     border-radius: 25px;
     object-fit: contain;

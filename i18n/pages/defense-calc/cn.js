@@ -36,6 +36,8 @@ window.I18N_PAGE_DEFENSE_CALC_CN = {
         "explanation_power": "解明怪盗属性",
         "skill_effect_amp": "技能效果增幅",
         "other_reduce": "其他防御力降低",
+        "expand_all": "全部展开",
+        "collapse_all": "全部折叠",
         "th_select": "选择",
         "th_thief": "怪盗",
         "th_type": "分类",

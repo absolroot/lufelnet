@@ -119,18 +119,6 @@ const bossData = [
         img: "B-guaiwutouxiang-theReaper.png"
     },
 
-    {
-        id: 3,
-        isSea: true,
-        name: "케르베로스",
-        icon: "",
-        description: "",
-        resistances: {},
-        baseDefense: "?",
-        defenseCoef: "363.2",
-        comment: "",
-        img: "B-guaiwutouxiang-cerberus.png"
-    },
     /*
     {
         id: 4,

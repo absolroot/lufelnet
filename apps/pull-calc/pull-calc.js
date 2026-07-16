@@ -1313,6 +1313,10 @@ class PullSimulator {
         }
 
         (scheduleData.autoGenerateCharacters || []).forEach(release => {
+            if (release.schedulePending === true || release.version === '???') {
+                return;
+            }
+
             const computedDate = lastDate ? lastDate.toISOString().split('T')[0] : null;
             const explicitDate = release.date || release.fixedDate;
             const releaseDate = explicitDate || computedDate;

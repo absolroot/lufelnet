@@ -778,8 +778,20 @@ class Navigation {
 
     static initSwordAnimation() {
         const isPc = () => window.innerWidth > 1440;
+        const cleanupSwordAnimations = () => {
+            document.querySelectorAll('.sword-animation').forEach(el => el.remove());
+        };
+
+        if (!window.__navSwordCleanupBound) {
+            window.addEventListener('pagehide', cleanupSwordAnimations);
+            window.addEventListener('pageshow', cleanupSwordAnimations);
+            window.addEventListener('beforeunload', cleanupSwordAnimations);
+            window.__navSwordCleanupBound = true;
+        }
 
         const createSwordAnimation = (element, href) => {
+            cleanupSwordAnimations();
+
             const sword = document.createElement('div');
             sword.className = 'sword-animation';
 
@@ -792,6 +804,7 @@ class Navigation {
             document.body.appendChild(sword);
 
             setTimeout(() => {
+                cleanupSwordAnimations();
                 window.location.href = href;
             }, 300);
         };

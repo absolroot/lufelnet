@@ -76,6 +76,7 @@ class DefenseCalc {
         this.initializePenetrateTable(); // 관통 테이블 초기화
         this.initializeMobileHeader();
         this.initializePenetrateInputs();
+        this.initializeAccordionBulkToggles();
 
         // 초기 렌더 후 UI 텍스트 번역 적용 (전용 i18n)
         try { if (typeof DefenseI18N !== 'undefined' && DefenseI18N.updateLanguageContent) { DefenseI18N.updateLanguageContent(document); } } catch (_) { }
@@ -879,8 +880,7 @@ class DefenseCalc {
 
             const caret = document.createElement('span');
             caret.className = 'accordion-caret';
-            const isMobile = window.innerWidth <= 1200;
-            const initiallyOpen = !isMobile || groupName === '계시' || groupName === '원더';
+            const initiallyOpen = groupName === '계시';
             caret.classList.toggle('open', initiallyOpen);
 
             // SVG chevron 생성
@@ -910,13 +910,16 @@ class DefenseCalc {
             const infoWrap = document.createElement('span');
             infoWrap.className = 'group-info';
             const img = document.createElement('img');
-            img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+            img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+            };
             img.className = 'group-avatar';
-            img.loading = 'lazy';
+            img.loading = 'eager';
             img.decoding = 'async';
             img.width = 28;
             img.height = 28;
-            img.setAttribute('fetchpriority', 'low');
             infoWrap.appendChild(img);
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';
@@ -947,50 +950,8 @@ class DefenseCalc {
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
                 const isOpen = caret.classList.contains('open');
-                const newIsOpen = !isOpen;
-                caret.classList.toggle('open', newIsOpen);
-
-                // 그룹 헤더의 열림/닫힘 상태 클래스 업데이트
-                if (newIsOpen) {
-                    headerTr.classList.add('group-open');
-                    headerTr.classList.remove('group-closed');
-                } else {
-                    headerTr.classList.add('group-closed');
-                    headerTr.classList.remove('group-open');
-                }
-
-                // SVG chevron 업데이트
-                const svg = caret.querySelector('svg');
-                if (svg) {
-                    const path = svg.querySelector('path');
-                    if (path) {
-                        if (newIsOpen) {
-                            // 열림: 아래를 보는 chevron
-                            path.setAttribute('d', 'M4 6L8 10L12 6');
-                        } else {
-                            // 닫힘: 오른쪽을 보는 chevron
-                            path.setAttribute('d', 'M6 4L10 8L6 12');
-                        }
-                    }
-                }
-
-                items.forEach(it => {
-                    if (it.__rowEl) {
-                        if (newIsOpen) {
-                            // 모바일에서는 grid, 데스크탑에서는 인라인 스타일 제거하여 CSS 적용
-                            const isMobile = window.innerWidth <= 1200;
-                            if (isMobile) {
-                                it.__rowEl.style.setProperty('display', 'grid', 'important');
-                            } else {
-                                // 데스크탑에서는 인라인 스타일 제거
-                                it.__rowEl.style.removeProperty('display');
-                            }
-                        } else {
-                            // 모바일 CSS의 !important를 덮어쓰기 위해 !important 사용
-                            it.__rowEl.style.setProperty('display', 'none', 'important');
-                        }
-                    }
-                });
+                this.setAccordionGroupOpen(headerTr, !isOpen);
+                this.syncAccordionBulkToggle(tbody);
             });
 
             // 초기 상태 클래스 설정
@@ -1005,7 +966,7 @@ class DefenseCalc {
             // 데이터 행들
             items.forEach((item, index) => {
                 const row = this.createTableRow(item, isPenetrate, groupName);
-                // 초기 표시 상태 (모바일: '계시','원더'만 펼침, 데스크탑: 전체 펼침)
+                // 초기 표시 상태: 계시만 펼치고 나머지는 접힘
                 if (initiallyOpen) {
                     const isMobile = window.innerWidth <= 1200;
                     if (isMobile) {
@@ -1040,7 +1001,89 @@ class DefenseCalc {
 
             // 그룹 헤더 렌더 후 텍스트 번역 보정
             try { if (typeof I18NUtils !== 'undefined' && I18NUtils.translateStatTexts) { I18NUtils.translateStatTexts(tbody); } } catch (_) { }
+            this.syncAccordionBulkToggle(tbody);
         });
+    }
+
+    initializeAccordionBulkToggles() {
+        const buttons = document.querySelectorAll('[data-accordion-bulk-toggle][data-target-body]');
+        buttons.forEach(button => {
+            if (button.dataset.bulkToggleBound === 'true') return;
+            button.dataset.bulkToggleBound = 'true';
+            button.addEventListener('click', () => {
+                const tbody = document.getElementById(button.dataset.targetBody || '');
+                if (!tbody) return;
+                const headers = Array.from(tbody.querySelectorAll('tr.group-header'));
+                if (headers.length === 0) return;
+                const shouldOpen = !headers.every(header => header.classList.contains('group-open'));
+                headers.forEach(header => this.setAccordionGroupOpen(header, shouldOpen));
+                this.syncAccordionBulkToggle(tbody);
+            });
+        });
+        this.syncAllAccordionBulkToggles();
+    }
+
+    setAccordionGroupOpen(headerTr, isOpen) {
+        if (!headerTr) return;
+        const groupName = headerTr.getAttribute('data-group') || '';
+        const tbody = headerTr.closest('tbody');
+        if (!tbody || !groupName) return;
+        const caret = headerTr.querySelector('.accordion-caret');
+        if (caret) caret.classList.toggle('open', isOpen);
+
+        headerTr.classList.toggle('group-open', isOpen);
+        headerTr.classList.toggle('group-closed', !isOpen);
+
+        const path = headerTr.querySelector('.accordion-caret svg path');
+        if (path) {
+            path.setAttribute('d', isOpen ? 'M4 6L8 10L12 6' : 'M6 4L10 8L6 12');
+        }
+
+        const rows = tbody.querySelectorAll(`tr.group-row[data-group="${this.escapeCssIdent(groupName)}"]`);
+        rows.forEach(row => {
+            if (isOpen) {
+                if (window.innerWidth <= 1200) {
+                    row.style.setProperty('display', 'grid', 'important');
+                } else {
+                    row.style.removeProperty('display');
+                }
+            } else {
+                row.style.setProperty('display', 'none', 'important');
+            }
+        });
+    }
+
+    getAccordionBulkText(isAllOpen) {
+        try {
+            if (typeof DefenseI18N !== 'undefined' && DefenseI18N.getDefenseTexts) {
+                const texts = DefenseI18N.getDefenseTexts();
+                const key = isAllOpen ? 'collapse_all' : 'expand_all';
+                if (texts && typeof texts[key] === 'string' && texts[key]) return texts[key];
+            }
+        } catch (_) { }
+        return isAllOpen ? '모두 접기' : '모두 펼치기';
+    }
+
+    syncAccordionBulkToggle(tbody) {
+        if (!tbody || !tbody.id) return;
+        const button = document.querySelector(`[data-accordion-bulk-toggle][data-target-body="${this.escapeCssIdent(tbody.id)}"]`);
+        if (!button) return;
+        const headers = Array.from(tbody.querySelectorAll('tr.group-header'));
+        const isAllOpen = headers.length > 0 && headers.every(header => header.classList.contains('group-open'));
+        button.textContent = this.getAccordionBulkText(isAllOpen);
+        button.setAttribute('aria-pressed', isAllOpen ? 'true' : 'false');
+    }
+
+    syncAllAccordionBulkToggles() {
+        document.querySelectorAll('[data-accordion-bulk-toggle][data-target-body]').forEach(button => {
+            const tbody = document.getElementById(button.dataset.targetBody || '');
+            if (tbody) this.syncAccordionBulkToggle(tbody);
+        });
+    }
+
+    escapeCssIdent(value) {
+        if (typeof CSS !== 'undefined' && CSS.escape) return CSS.escape(String(value));
+        return String(value).replace(/["\\]/g, '\\$&');
     }
 
     createTableRow(data, isPenetrate = false, groupName = '') {
@@ -1161,6 +1204,9 @@ class DefenseCalc {
         const isRevelation = groupName === '계시';
         const hasNameText = localizedName && localizedName.trim();
         const shouldHideTypeLabel = isMobile && (isWonder || isRevelation) && hasNameText;
+        const normalizeDisplayLabel = (text) => String(text || '').replace(/[\s　・]/g, '').toLowerCase();
+        const isDuplicateTypeName = hasNameText && normalizeDisplayLabel(typeSpan.textContent) === normalizeDisplayLabel(localizedName);
+        const isMindscapeCoreType = String(data.type || '').replace(/\s/g, '') === '심상코어';
 
         if (this.isKrLikeLanguage(currentLang)) {
             // KR: 분류 + 이름 모두 표기
@@ -1179,7 +1225,7 @@ class DefenseCalc {
             // EN/JP: 번역된 이름이 존재하면 분류 + 이름, 없으면 분류만 강조
             if (localizedName && localizedName.trim()) {
                 nameSpan.textContent = localizedName;
-                if (!shouldHideTypeLabel) {
+                if (!shouldHideTypeLabel && !isDuplicateTypeName && !isMindscapeCoreType) {
                     skillNameCell.appendChild(typeSpan);
                     const sep = document.createTextNode('　');
                     skillNameCell.appendChild(sep);

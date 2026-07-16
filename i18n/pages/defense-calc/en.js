@@ -34,6 +34,8 @@ window.I18N_PAGE_DEFENSE_CALC_EN = {
         "explanation_power": "Eludi. Stat Buff",
         "skill_effect_amp": "Skill Amplification",
         "other_reduce": "Other Def. Reduction",
+        "expand_all": "Expand All",
+        "collapse_all": "Collapse All",
         "th_select": "Select",
         "th_thief": "Thief",
         "th_type": "Type",

@@ -22,39 +22,39 @@ window.ritualData["미나미·여름"] = {
 };
 
 window.enCharacterRitualData["미나미·여름"] = {
-  "name": "Minami·Summer",
-  "r0": "Stopping Time for You",
-  "r0_detail": "Minami has 3 unlimited Exclusive Buff Items only she can use. When using [Faraway Flower], gain 1 [Flower of Dream] stack. Stacks up to 1 time. At the start of Minami's turn, she can spend 1 [Flower of Dream] to gain [Memory Prescription]. [Memory Prescription]: Can use item without spending an action, extend Buff Item effect by 1 turn, lose this effect after using 1 item.",
-  "r1": "Past Memories",
-  "r1_detail": "When using [Faraway Flower], gain 1 [Flower of Dream] more. Increase the maximum number of [Flower of Dream] stacks to 2. Increase Minami's item effect by 20%.",
-  "r2": "Wind-Blown Flower",
-  "r2_detail": "When using [Summer Gift Basket], inflict targets with [Flower's Embrace]: Decrease Defense by 25% and increase critical damage taken by 30%. Lasts for 3 turns.",
-  "r3": "Blooming Under the Sun",
-  "r3_detail": "Increase the skill levels of Summer Gift Basket and Faraway Flower by 3.",
-  "r4": "The Person Now",
-  "r4_detail": "Extend all buffs from Highlight to 3 turn. When using the next item, increase item effect by 5% more.",
-  "r5": "As Gentle as Ever",
-  "r5_detail": "Increase the skill levels of Midsummer Flower Field and Thief Tactics by 3.",
-  "r6": "Hiding Untold Secrets",
-  "r6_detail": "Minami no longer spends items when using any items. Extend all Buff Item effect by 1 turn. When Minami has [Memory Prescription] and uses an item on allies, grant the main target [Revitalization Boost]: Increase total damage amp by 15% for 1 turn."
+  "name": "Beachflower Minami",
+  "r0": "Seaside First Aid",
+  "r0_detail": "Beachflower Minami has 3 kinds of Everyday Medicine.\nWhen using medicine on allies, restore HP to the main target equal to 8% of Beachflower Minami's max HP.\nWhen using Gentle Sea Breeze, grant 1 Midsummer Prescription stack (stacks up to 1 time). At the start of Beachflower Minami's turn, she can spend 1 Midsummer Prescription stack to gain Flower Basket Pharmacy.\nFlower Basket Pharmacy: Use medicine without spending a turn, and extend the duration of Potent Medicine used by 1 turn. After using medicine 1 time, lose this effect.",
+  "r1": "Summertime Cure-all",
+  "r1_detail": "When using Gentle Sea Breeze, gain 1 more Midsummer Prescription stack. Midsummer Prescription now stacks up to 2 times (only 1 Midsummer Prescription stack can be used in a turn).\nIncrease the effects of medicine used by Beachflower Minami by 20%.",
+  "r2": "Spellbinding Summer Scents",
+  "r2_detail": "When using Beach Basket, inflict Perplexing Petals on the target.\nPerplexing Petals: Decrease the target's Defense by 30%, and increase critical damage taken by 30% for 3 turns.",
+  "r3": "Relaxing Breeze",
+  "r3_detail": "Increase the skill levels of Beach Basket and Gentle Sea Breeze by 3.",
+  "r4": "Lingering Ripples of Summer",
+  "r4_detail": "Highlight Enhanced: Extend the duration of all buffs granted by Highlight to 3 turns. Also, when using medicine, increase medicine effects by 5%.",
+  "r5": "White Flowers Swaying",
+  "r5_detail": "Increase the skill levels of Summer Garden and Thief Tactics by 3.",
+  "r6": "Angel in White",
+  "r6_detail": "When using any medicine, items are not spent upon use.\nExtend the duration of Potent Medicine effects by 1 turn. Also, when using medicine on allies with Flower Basket Pharmacy, also grant Summertime Refresh to the main target.\nSummertime Refresh: Increase final damage amplification by 15% for 1 turn."
 };
 
 window.jpCharacterRitualData["미나미·여름"] = {
-  "name": "宮下 ミナミ・夏",
-  "r0": "君のために止まった時間",
-  "r0_detail": "ミナミ・夏は無限に使用できる3種類の専用強化薬を所持している。\n『地平線の彼方に捧げる花束』を発動すると『記憶の花』を1個獲得し、最大1個まで所持できる。\n自分のターンで『記憶の花』を1個消費すると『思い出の処方』を獲得できる。\n『思い出の処方』：薬品使用時にターンを消費せず、使用した強化薬の持続時間が1ターン延長される。ただし、薬品を1回使用した後、この効果は消える。",
-  "r1": "あの時の記憶",
-  "r1_detail": "『地平線の彼方に捧げる花束』を発動する時、追加で『記憶の花』を1個獲得し、『記憶の花』の所持上限が2個になる。使用する薬品の効果が20%強化される。",
-  "r2": "風に舞う花",
-  "r2_detail": "『夏のギフトバスケット』を使用すると、対象に『花の温もり』を付与する。\n『花の温もり』：防御力が25%減少し、被CRT倍率が30%増加、持続3ターン。",
-  "r3": "暖かい日差しの下で咲く",
-  "r3_detail": "『夏のギフトバスケット』と『地平線の彼方に捧げる花束』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "今この瞬間の人",
-  "r4_detail": "HIGHLIGHTが提供する全ての強化効果の持続時間が3ターンに延長される。また、次に使用する薬品の効果がさらに5%強化される。",
-  "r5": "昔と変わらない温もり",
-  "r5_detail": "『真夏の花畑』と『戦闘技術』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "言えなかった秘密を抱く",
-  "r6_detail": "全ての薬品が消費なしで使用可能となり、全ての強化薬の持続時間が1ターン延長される。\n『思い出の処方』状態で味方に薬品を使用すると、対象に『活力強化』を付与：総ダメージが15%増加、持続1ターン。"
+  "name": "美波・ビーチフラワー",
+  "r0": "夏のお薬バスケット",
+  "r0_detail": "美波・ビーチフラワーは３種類の常備薬を所持している。\n自身が味方に薬品を使用する時、選択した対象のＨＰを回復する。回復量は美波・ビーチフラワーの最大ＨＰの８%に相当する。\n『シーブリーズエール』を使用した時、『真夏の処方箋』を１つ獲得する（最大１つまで所持できる）。自身のターン開始時に『真夏の処方箋』を１つ消費して『花かごファーマシー』を獲得することができる。\n『花かごファーマシー』：薬品を使用してもターンを消費せず、使用した強化特効薬の効果の持続ターンが１ターン延長される。薬品を１回使用した後、この効果を失う。",
+  "r1": "夏に良く効く処方薬",
+  "r1_detail": "『シーブリーズエール』を使用した時、追加で『真夏の処方箋』を１つ獲得する。『真夏の処方箋』を最大２つまで所持できるようになる（ターン中に使用できる『真夏の処方箋』は１つまで）。\n自身が使用する薬品の効果が２０%上昇する。",
+  "r2": "夏に惑わす花の香",
+  "r2_detail": "『ビーチ・バスケット』を使用した時、対象に『戸惑いの花』を付与する。\n『戸惑いの花』：３ターンの間、対象の防御力が３０%低下し、被クリティカルダメージが３０%上昇する。",
+  "r3": "夏の浜辺を撫でる風",
+  "r3_detail": "『ビーチ・バスケット』『シーブリーズエール』のスキルレベルが３上昇する。",
+  "r4": "夏の名残を惜しむ海",
+  "r4_detail": "ハイライト能力追加：ハイライトで付与されるすべての強化効果の持続ターンが３ターンに延長される。さらに、次に薬品を使用する時、薬品効果が５%上昇する。",
+  "r5": "夏に揺れる白い花",
+  "r5_detail": "『夏の花園』『怪盗戦技』のスキルレベルが３上昇する。",
+  "r6": "夏の白衣の大天使",
+  "r6_detail": "いずれかの薬品を使用しても実際の消費が発生しなくなる。\nすべての強化特効薬効果の持続ターンが１ターン延長される。さらに、『花かごファーマシー』状態で味方に薬品を使用した時、追加で選択した対象に『ラストダメエジフＬ』を付与する。\n『ラストダメエジフＬ』：１ターンの間、最終ダメージ増幅が１５%上昇する。"
 };
 
 window.cnCharacterRitualData["미나미·여름"] = {

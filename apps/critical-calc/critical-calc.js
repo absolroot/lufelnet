@@ -755,11 +755,9 @@ class CriticalCalc {
 
             const caret = document.createElement('span');
             caret.className = 'accordion-caret';
-            const isMobile = window.innerWidth <= 1200;
-            // 모바일: 버프 탭은 '공통'만, 자신 탭은 '계시/원더/공통'만 열림
-            // PC: 버프 탭은 모두 열림, 자신 탭은 '계시/원더/공통'만 열림
+            // 버프 탭은 '공통'만, 자신 탭은 '계시/원더/공통'만 열림
             const initiallyOpen = !isSelf 
-                ? (isMobile ? groupName === '공통' : true)
+                ? groupName === '공통'
                 : (groupName === '계시' || groupName === '원더' || groupName === '공통');
             caret.classList.toggle('open', initiallyOpen);
             
@@ -792,13 +790,16 @@ class CriticalCalc {
             // 공통 그룹은 아이콘을 표시하지 않음
             if (groupName !== '공통') {
                 const img = document.createElement('img');
-                img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+                img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
+                img.onerror = function () {
+                    this.onerror = null;
+                    this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+                };
                 img.className = 'group-avatar';
-                img.loading = 'lazy';
+                img.loading = 'eager';
                 img.decoding = 'async';
                 img.width = 28;
                 img.height = 28;
-                img.setAttribute('fetchpriority', 'low');
                 infoWrap.appendChild(img);
             }
             const nameSpan = document.createElement('span');

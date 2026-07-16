@@ -34,6 +34,8 @@ window.I18N_PAGE_DEFENSE_CALC_JP = {
         "explanation_power": "ステータス強化",
         "skill_effect_amp": "スキル効果増幅",
         "other_reduce": "その他 防御力減少",
+        "expand_all": "すべて展開",
+        "collapse_all": "すべて折りたたむ",
         "th_select": "選択",
         "th_thief": "怪盗",
         "th_type": "分類",

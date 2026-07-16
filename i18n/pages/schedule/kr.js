@@ -21,6 +21,8 @@ window.I18N_PAGE_SCHEDULE_KR = {
     daysAgo: '일 전',
     daysLeft: '일 후',
     today: '오늘',
+    schedulePendingDate: '[예정]',
+    schedulePendingGroup: '예정',
     nextRelease: '다음 출시',
     currentBanner: '현재 배너',
     noCharacters: '이 기간에 캐릭터가 없습니다',

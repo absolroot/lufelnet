@@ -740,7 +740,7 @@ input[type="checkbox"]:hover {
 
 .skill-name-column .skill-type-label {
     color: rgba(255, 255, 255, 0.4);
-    font-weight: 600;
+    font-weight: 400;
 }
 
 .defense-table tr.selected .skill-name-column .skill-type-label,
@@ -913,6 +913,7 @@ select:-moz-focusring {
 }
 
 .group-header .group-avatar {
+    width: 28px;
     height: 28px;
     border-radius: 25px;
     object-fit: contain;
@@ -1420,6 +1421,42 @@ select:-moz-focusring {
     margin: 0;
 }
 
+.accordion-bulk-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 0 10px auto;
+    flex: 0 0 auto;
+}
+
+.accordion-bulk-toggle {
+    min-height: 32px;
+    padding: 0 12px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.045);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.accordion-bulk-toggle:hover,
+.accordion-bulk-toggle:focus-visible {
+    outline: none;
+    background: rgba(83, 132, 216, 0.12);
+    border-color: rgba(83, 132, 216, 0.55);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.defense-bulk-actions .accordion-bulk-toggle:hover,
+.defense-bulk-actions .accordion-bulk-toggle:focus-visible {
+    background: rgba(221, 132, 132, 0.12);
+    border-color: rgba(221, 132, 132, 0.55);
+}
+
 /* 모바일 대응 */
 @media (max-width: 1200px) {
     .table-tabs {
@@ -1446,6 +1483,18 @@ select:-moz-focusring {
     .input-label-icon {
         width: 16px;
         height: 16px;
+    }
+
+    .accordion-bulk-actions {
+        margin: 0 0 10px 0;
+        flex: 0 0 100%;
+        justify-content: flex-start;
+    }
+
+    .accordion-bulk-toggle {
+        min-height: 34px;
+        padding: 0 14px;
+        font-size: 12px;
     }
 
     .penetrate-input-group label {

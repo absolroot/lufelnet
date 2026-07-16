@@ -14,6 +14,8 @@ window.I18N_PAGE_SCHEDULE_CN = {
     "daysAgo": "天前",
     "daysLeft": "天后",
     "today": "今日",
+    "schedulePendingDate": "[待定]",
+    "schedulePendingGroup": "待定",
     "nextRelease": "下次上线",
     "currentBanner": "当前卡池",
     "noCharacters": "本期间没有角色",

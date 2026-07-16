@@ -417,8 +417,8 @@ const criticalBuffData = {
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/버프.png",
       "skillName": "클리어 사운드(싱크로 심상)",
-      "skillName_en": "Clear Sound (Sync Mindscape)",
-      "skillName_jp": "クリアサウンド（シンクロイメジャリー）",
+      "skillName_en": "Skill 2 (Sync Mindscape)",
+      "skillName_jp": "スキル 2（シンクロイメジャリー）",
       "options": [
         "LV10",
         "LV10+심상5",
@@ -668,6 +668,42 @@ const criticalBuffData = {
         "LV10+心象5",
         "LV13",
         "LV13+心象5"
+      ]
+    },
+    {
+      "id": "rico-plum-windblossom-crit-rate",
+      "type": "심상코어",
+      "target": "광역",
+      "skillIcon": "/assets/img/character-detail/innate/core.png",
+      "skillName": "풍화",
+      "skillName_en": "Mindscape Core",
+      "skillName_jp": "イメジャリー・コア",
+      "options": [
+        "LV1",
+        "LV2",
+        "LV3"
+      ],
+      "values": {
+        "LV1": 7.5,
+        "LV2": 11.2,
+        "LV3": 15.0
+      },
+      "defaultOption": "LV3",
+      "value": 15.0,
+      "skillEffectAmpAffected": false,
+      "duration": "2턴",
+      "note": "『우산 속 매화』 사용 후",
+      "note_en": "After Skill 2",
+      "note_jp": "スキル2使用後",
+      "skillName_cn": "风华",
+      "note_cn": "使用『伞边摇，安居伞中』后",
+      "type_cn": "心象核心",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "LV1",
+        "LV2",
+        "LV3"
       ]
     }
   ],
@@ -952,6 +988,31 @@ const criticalSelfData = {
       "target_cn": "自身",
       "duration_cn": "3回合",
       "options_cn": []
+    }
+  ],
+  "안·댄싱 스타": [
+    {
+      "id": "ann-starlight-weapon5-crit-rate",
+      "type": "전용무기",
+      "target": "자신",
+      "skillIcon": "/assets/img/character-weapon/안·댄싱 스타-5-01.png",
+      "skillName": "치명적 도장",
+      "options": [
+        "개조0",
+        "개조1&2",
+        "개조3&4",
+        "개조5&6"
+      ],
+      "values": {
+        "개조0": 18.1,
+        "개조1&2": 23.5,
+        "개조3&4": 28.9,
+        "개조5&6": 34.3
+      },
+      "defaultOption": "개조5&6",
+      "value": 34.3,
+      "skillEffectAmpAffected": false,
+      "duration": "-"
     }
   ],
   "렌·댄싱 스타": [

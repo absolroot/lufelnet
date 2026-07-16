@@ -1,0 +1,1734 @@
+{
+  "data": [
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70101,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70102,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70103,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "暴击效果提升12.0%/24.0%",
+        "name": "暴击效果提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70104,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身削弱敌方倒地值时，给予所有敌人1层脆弱，持续2回合，上限4层。脆弱：受到伤害提升2.0%/4.0%。",
+        "name": "重伤易损",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70105,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "友方物理属性同伴攻击拥有脆弱的敌人时，总伤害增幅提升2.5%/5.0%。",
+        "name": "破绽追击",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70106,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "拥有4层脆弱的敌人，受到物理伤害时倒地易伤提升2.0%/4.0%。",
+        "name": "裂伤爆发",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70107,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放HIGHLIGHT/神通法后，无视适应性削弱所有敌人1/2层倒地值。",
+        "name": "失衡打击",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70108,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70201,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70202,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70203,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "暴击率提升6.0%/12.0%",
+        "name": "暴击率提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70204,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身削弱敌方倒地值时，给予所有敌人1层脆弱，持续2回合，上限4层。脆弱：受到伤害提升2.0%/4.0%。",
+        "name": "重伤易损",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70205,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身攻击敌人时，若目标拥有4层脆弱，则自身倒地特攻提升2.5%/5.0%。",
+        "name": "绝地反击",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70206,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身给予敌人脆弱时，使其受到射击属性总伤害增幅提升2.0%/4.0%，持续1回合。",
+        "name": "要害洞悉",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70207,
+        "tags": [null],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放HIGHLIGHT/神通法后，无视适应性削弱所有敌人1/2层倒地值。",
+        "name": "弱点狙击",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70208,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70301,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70302,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "持续伤害效果提升2.0%/4.0%",
+        "name": "持续伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70303,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "技巧精通提升320/640",
+        "name": "技巧精通提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70304,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身释放人格面具技能后，为敌人添加燃烧效果。\n若敌人已有燃烧效果，则使其获得高温燃烧，持续2回合，上限3层。\n高温燃烧：回合结束时受到添加者50.0%/100.0%攻击力的伤害。",
+        "name": "星火焚身",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70305,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "高温燃烧可以发生暴击。\n自身回合结束时，结算1/2次所有敌人的高温燃烧效果。",
+        "name": "烈焰爆破",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70306,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "友方火焰属性角色攻击拥有高温燃烧的敌人时，总伤害增幅提升2.5%/5.0%。",
+        "name": "燃烧殆尽",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70307,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放HIGHLIGHT/神通法后，使敌人受到治疗效果降低25.0%/50.0%，持续2回合。",
+        "name": "烬灭烙印",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70308,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70401,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70402,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "护盾效果提升7.5%/15.0%",
+        "name": "护盾效果提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70403,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "防御力提升15.0%/30.0%",
+        "name": "防御力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70404,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身回合开始时，为友方同伴添加750/1500点护盾，持续2回合。",
+        "name": "寒冰守护",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70405,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身每有1000点护盾，总伤害增幅提升1%，上限2.5%/5.0%。",
+        "name": "霜盾共鸣",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70406,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "处于护盾状态下的友方角色，冰冻属性弱点伤害提升2.0%/4.0%。",
+        "name": "冰霜之环",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70407,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放HIGHLIGHT/神通法后，有50.0%/100.0%基础概率使技能主目标陷入冰封状态，持续1回合。",
+        "name": "凛冬已至",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70408,
+        "tags": [null],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70501,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70502,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "暴击率提升6.0%/12.0%",
+        "name": "暴击率提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70503,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "暴击效果提升12.0%/24.0%",
+        "name": "暴击效果提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70504,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身释放人格面具技能后，为所有敌人添加触电效果。\n若敌人已有触电效果，为敌人添加高压触电效果，持续2回合，上限3层。\n高压触电：受到电击属性伤害时，受到暴击率提升1.5%/3.0%。",
+        "name": "感电效应",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70505,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身暴击率超过100%时，每超过1%暴击率，转化为2.0%/4.0%暴击效果，最多计入20%暴击率。",
+        "name": "超频暴伤",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70506,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "任意敌人拥有3层高压触电时，使其受到电击属性弱点伤害提升2.0%/4.0%。",
+        "name": "磁暴击破",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70507,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对友方释放HIGHLIGHT/神通法后，使友方全体电击属性角色暴击率提升5.0%/10.0%。",
+        "name": "电涌增幅",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70508,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70601,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70602,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70603,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "穿透提升3.8%/7.5%",
+        "name": "穿透提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70604,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "友方疾风属性角色攻击拥有风袭的敌人时，穿透提升5.0%/10.0%。",
+        "name": "破风强袭",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70605,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "敌方角色防御力低于1点时，受到疾风属性弱点伤害额外提升2.0%/4.0%。",
+        "name": "岚之一心",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70606,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身每拥有10%穿透，总伤害增幅提升0.5%/1.0%，上限2.5%/5.0%。",
+        "name": "疾风穿隙",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70607,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放HIGHLIGHT/神通法后，驱散敌人1/2个强化效果。",
+        "name": "净化之风",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70608,
+        "tags": [null],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70701,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70702,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70703,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "效果命中提升12.0%/24.0%",
+        "name": "效果命中提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70704,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放人格面具后使技能目标获得1层思维窃取，持续3回合，上限3层。\n思维窃取：受到伤害提升1.5%/3.0%",
+        "name": "意识截取",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70705,
+        "tags": [null],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身攻击拥有精神异常或思维窃取的敌人时，最终伤害增幅提升2.5%/5.0%。",
+        "name": "异念增幅",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70706,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "任意敌人拥有思维窃取时，受到念动属性弱点伤害提升2.0%/4.0%。",
+        "name": "精神猎手",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70707,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身根据敌人的思维窃取的层数降低敌人的属性效果，自身提升等量的属性（获得的属性有多个敌人时最多生效1次）\n1层思维窃取：偷取敌人10.0%/20.0%防御力加成\n2层思维窃取：偷取敌人10.0%/20.0%攻击力加成\n3层思维窃取：偷取敌人10.0%/20.0%伤害加成",
+        "name": "精神掠夺",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70708,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70801,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70802,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70803,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "技巧精通提升320/640",
+        "name": "技巧精通提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70804,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放人格面具技能后，为所有敌人添加1个随机的元素异常，并使其获得1层辐射。",
+        "name": "混沌反应",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70805,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身攻击敌人时，敌人身上每有1种元素异常，自身总伤害增幅提升0.5%/1.0%，上限0/0。",
+        "name": "无序裂变",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70806,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "强化敌人所有元素异常的效果值。\n燃烧：受到治疗效果降低10.0%/20.0%\n触电：受到核热属性暴击效果提升10.0%/20.0%\n风袭：核热属性防御力降低7.5%/15.0%\n冰冻：攻击力降低20.0%/40.0%\n辐射：受到核热伤害提升10.0%/20.0%",
+        "name": "元素催化",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70807,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "敌人同时拥有燃烧、触电、风袭、冰冻、辐射时，使其受到核热属性弱点伤害提升2.5%/5.0%。",
+        "name": "共鸣核爆",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70808,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70901,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70902,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70903,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "治疗效果提升7.5%/15.0%",
+        "name": "治疗效果提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70904,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身释放人格面具技能后，为友方同伴添加1层祝福。若目标的祝福层数大于等于5层，则使其获得强效祝福，持续2回合。\n强效祝福：每回合恢复1.5%/3.0%最大生命值.",
+        "name": "恩泽满溢",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70905,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "任意同伴拥有强效祝福时，使其祝福属性弱点伤害提升2.0%/4.0%。",
+        "name": "神圣裁决",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70906,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身拥有强效祝福时，总伤害增幅提升2.5%/5.0%。",
+        "name": "祝福审判",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70907,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对友方同伴释放HIGHLIGHT/神通法后，友方全体的最大生命值提升10.0%/20.0%，持续2回合。",
+        "name": "圣光降临",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70908,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71001,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71002,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71003,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "持续伤害效果提升2.0%/4.0%",
+        "name": "持续伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71004,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身释放人格面具技能后，为所有敌人添加1层诅咒。若目标的诅咒层数大于等于5层，则使其获得深渊诅咒，持续2回合。\n深渊诅咒：每回合受到相当于2.5%/5.0%最大生命值的伤害（上限为添加者1.0%/2.0%攻击力的伤害）。",
+        "name": "咒怨缠身",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71005,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "任意敌人拥有深渊诅咒时，使其受到诅咒属性弱点伤害提升2.0%/4.0%。",
+        "name": "暗影侵蚀",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71006,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身攻击拥有深渊诅咒的敌人时，总伤害增幅提升2.5%/5.0%。",
+        "name": "易伤咒印",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71007,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身对敌人释放HIGHLIGHT/神通法后，使其受到持续伤害效果提升3.0%/6.0%，持续2回合。",
+        "name": "深渊低语",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71008,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71101,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71102,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71103,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "防御力提升15.0%/30.0%",
+        "name": "防御力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71104,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "万能属性伤害提升10.0%/20.0%",
+        "name": "万能属性伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71105,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "战斗开始时，友方每有1名不同属性的怪盗，自身攻击力提升7.5%/15.0%。",
+        "name": "属性羁绊",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71106,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "友方每造成1种不同适应性属性伤害时，自身获得1层调和。调和达到6层时，自身最终伤害增幅提升2.5%/5.0%。",
+        "name": "和谐之力",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71107,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "当敌人的适应性有5个以上耐无反吸时，受到最终伤害增幅提升2.0%/4.0%。",
+        "name": "\t铁壁克星",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71108,
+        "tags": [null],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "攻击力提升10.0%/20.0%",
+        "name": "攻击力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71201,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "伤害提升8.0%/16.0%",
+        "name": "伤害提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71202,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "生命值提升10.0%/20.0%",
+        "name": "生命值提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71203,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "防御力提升15.0%/30.0%",
+        "name": "防御力提升",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71204,
+        "tags": [null],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "战斗开始时，永久提升友方全体攻击力提升10.0%/20.0%。",
+        "name": "攻击心得",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71205,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "战斗开始时，永久提升友方全体伤害提升7.5%/15.0%。",
+        "name": "伤害专精",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71206,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "战斗开始时，永久提升友方全体暴击效果5.0%/10.0%。",
+        "name": "暴击效果强化",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71207,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "战斗开始时，永久提升友方全体穿透2.0%/4.0%。",
+        "name": "穿透强化",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71208,
+        "tags": [null],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    }
+  ],
+  "msg": "OK",
+  "status": 0
+}

@@ -1,4 +1,27 @@
 [
+  {
+    "kind": "custom",
+    "order": 0,
+    "title": "V5.2.2 질투와 절망의 론도",
+    "title_en": "V5.2.2 Rondo of Jealousy and Despair",
+    "title_jp": "V5.2.2 嫌悪と絶望のロンド",
+    "title_cn": "V5.2.2 绒鸮绝望的轮舞曲",
+    "body": "메인 스토리 업데이트 (7.23)",
+    "body_en": "Main story update",
+    "body_jp": "メインストーリーの更新",
+    "body_cn": "主线剧情更新",
+    "background_image": "/assets/img/home/banner/YalanPlan-main-ver2-pic1.png",
+    "background_bottom": 0,
+    "background_bottom_mobile": 0,
+    "color": "#e91e63",
+    "link": "",
+    "visible_langs": ["kr","cn","en","jp"],
+    "regions": [
+      "kr",
+      "cn",
+      "tw"
+    ]
+  },
     {
       "kind": "custom",
       "order": 0,

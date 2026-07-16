@@ -90,13 +90,16 @@ class TableRenderer {
             const infoWrap = document.createElement('span');
             infoWrap.className = 'group-info';
             const img = document.createElement('img');
-            img.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+            img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
+            img.onerror = function () {
+                this.onerror = null;
+                this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+            };
             img.className = 'group-avatar';
-            img.loading = 'lazy';
+            img.loading = 'eager';
             img.decoding = 'async';
             img.width = 28;
             img.height = 28;
-            img.setAttribute('fetchpriority', 'low');
             infoWrap.appendChild(img);
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';

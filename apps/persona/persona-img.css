@@ -11,6 +11,13 @@ img[src*="속성_주원.png"] {
 
 /* 특정 카드 이미지 특수 효과 */
 
+img.persona-img[src*="가브리엘.webp"] {
+    --tx: -25%;
+    --ty: 7%;
+    --scale: 1.1;
+}
+
+
 img.persona-img[src*="라파엘.webp"] {
     --tx: -29%;
     --ty: 8%;

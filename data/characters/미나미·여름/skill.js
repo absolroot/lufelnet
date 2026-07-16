@@ -51,92 +51,92 @@ window.characterSkillsData["미나미·여름"] = {
 };
 
 window.enCharacterSkillsData["미나미·여름"] = {
-  "name": "Minami·Summer",
+  "name": "Beachflower Minami",
   "skill1": {
-    "name": "Summer Gift Basket",
+    "name": "Beach Basket",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Bless damage to all foes equal to 64.4%/71.0%/68.4%/75.0% of Minami's max HP. Then inflict [Candied] on them for 3 turns: When any ally attacks a Candied foe, increase Attack by 9.8%/10.8%/10.4%/11.4% (increase Attack by 4% more for every 1200 of Minami's max HP, up to 11712/12912/12432/13632 max HP)."
+    "description": "Deal Bless damage to all foes equal to 64.4%/71.0%/68.4%/75.0% of Beachflower Minami's max HP, and inflict Bewitching Blossoms for 3 turns.\nBewitching Blossoms: When taking an attack, increase that damage's Attack by 9.8%/10.8%/10.4%/11.4% + 4% more for every 1200 of Beachflower Minami's max HP (up to 11712/12912/12432/13632 of max HP)."
   },
   "skill2": {
-    "name": "Midsummer Flower Field",
+    "name": "Summer Garden",
     "element": "버프",
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "Increase party's damage by 7.8%/8.6%/8.3%/9.1% for 3 turns (increase damage by 3.2% more for every 1200 of Minami's Max HP, up to 11712/12912/12432/13632 max HP). Grant party 1 Blessing stack, and cure 1 debuff."
+    "description": "Increase party's damage by 7.8%/8.6%/8.3%/9.1% + 3.2% more for every 1200 of Beachflower Minami's max HP (up to 11712/12912/12432/13632 of max HP) for 3 turns. Also, grant all allies 1 Blessing stack, and remove 1 debuff."
   },
   "skill3": {
-    "name": "Faraway Flower",
+    "name": "Gentle Sea Breeze",
     "element": "버프",
     "type": "버프",
     "sp": 25,
     "cool": 2,
-    "description": "Increase 1 other ally's critical rate by 15.6%/17.2%/16.6%/18.2%, and critical damage by 33.33% of Minami's critical damage that is over by 100%, up to 213.4%/229.9%/229.9%/246.4% critical damage. Lasts for 3 turns. During this effect, when Minami uses an item on that ally, additionally increase their critical damage by 16.66% of Minami's critical damage that is over by 100%, up to 213.4%/229.9%/229.9%/246.4% critical damage. Lasts for 1 turn."
+    "description": "Increase 1 other ally's critical rate by 15.6%/17.2%/16.6%/18.2%, and increase critical damage by 33.33% of the portion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier). Lasts for 3 turns.\nPassive: When using medicine on an ally, increase the main target's critical damage for 1 turn. This increase is equal to 16.66% of the portion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier)."
   },
   "skill_highlight": {
     "element": "버프",
     "type": "버프",
     "sp": 0,
-    "cool": 0,
-    "description": "Increase 1 other ally's damage by 24.4%/26.9%/25.9%/28.4% and critical damage by 16.66% of Minami's critical damage that is over by 100%, up to 213.4%/229.9%/229.9%/246.4% critical damage. Lasts for 2 turns. When Minami uses the next item, increase item effect by 9.8%/10.8%/10.4%/11.4%."
+    "cool": 4,
+    "description": "Increase 1 other ally's damage by 24.4%/26.9%/25.9%/28.4%, and increase critical damage by 16.66% of the portion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier). Lasts for 2 turns. Also, when Beachflower Minami uses medicine, increase medicine effects by 9.8%/10.8%/10.4%/11.4%."
   },
   "passive1": {
-    "name": "Pray",
+    "name": "Soothing Sunlight",
     "element": "패시브",
-    "description": "When using a Persona skill on allies, grant them 1 Blessing stack. When Minami is on the field, increase allies' damage by 6% for each Blessing stack they have, up to 36%."
+    "description": "Each time a skill is used on allies, grant 1 Blessing stack to targets.\nWhen Beachflower Minami is present, for each Blessing stack on allies, increase their damage by 6.0% (up to 36.0%)."
   },
   "passive2": {
-    "name": "Care",
+    "name": "Blossoms by the Beach",
     "element": "패시브",
-    "description": "When Minami is on the field, increase allies' Attack by 12%. Increase Attack by 15% more for each Buff Item effect on allies."
+    "description": "When Beachflower Minami is present, increase allies' Attack by 12.0%, and for each type of buff granted by Potent Medicine, increase Attack by 15.0%."
   }
 };
 
 window.jpCharacterSkillsData["미나미·여름"] = {
-  "name": "宮下 美波 夏",
+  "name": "美波・ビーチフラワー",
   "skill1": {
-    "name": "夏の贈り物バスケット",
+    "name": "ビーチ・バスケット",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "全ての敵に最大HPの64.4%/71.0%/68.4%/75.0%の祝福属性ダメージを与え、『糖漬け』状態にする：攻撃を受けると、そのダメージが9.8%/10.8%/10.4%/11.4%上昇する。（宮下 美波 夏の最大HP1200ごとに追加で4%上昇し、最大11712/12912/12432/13632 HPまで反映）持続時間：3ターン"
+    "description": "敵全体に最大ＨＰ64.4%/71.0%/68.4%/75.0%の祝福属性ダメージを与え、３ターンの間、『魅惑の花』状態にする。\n『魅惑の花』状態：攻撃を受けた時、そのダメージの攻撃力が9.8%/10.8%/10.4%/11.4%上昇し、追加で攻撃力が美波・ビーチフラワーの最大ＨＰ１２００ごとに４%になるように上昇する（最大で最大ＨＰ11712/12912/12432/13632分まで）。"
   },
   "skill2": {
-    "name": "真夏の花野",
+    "name": "夏の花園",
     "element": "버프",
     "type": "버프",
     "sp": 22,
     "cool": 0,
-    "description": "味方全体の与ダメージを7.8%/8.6%/8.3%/9.1%上昇させる。（宮下 美波 夏の最大HP1200ごとに追加で3.2%上昇、最大11712/12912/12432/13632 HPまで反映）持続時間：3ターン。また味方全員に祝福効果を1層付与し、デバフを1つ解除する。"
+    "description": "３ターンの間、味方全体の与ダメージが7.8%/8.6%/8.3%/9.1%上昇し、追加で与ダメージが美波・ビーチフラワーの最大ＨＰ１２００ごとに３.２%になるように上昇する（最大で最大ＨＰ11712/12912/12432/13632分まで）。同時に味方全体に祝印を１つ付与し、弱体状態を１つ治療する。"
   },
   "skill3": {
-    "name": "彼方の花への献花",
+    "name": "シーブリーズエール",
     "element": "버프",
     "type": "버프",
     "sp": 25,
     "cool": 2,
-    "description": "自分以外の味方1体のクリティカル率を15.6%/17.2%/16.6%/18.2%上昇させ、CRT倍率を増加させる。（増加量は宮下 美波 夏のCRT倍率が100%を超えた部分の33.33%、最大213.4%/229.9%/229.9%/246.4%まで反映）持続時間：3ターン。\nこの期間中、宮下 美波 夏が対象に薬品を使用すると、さらにCRT倍率を増加させる。（増加量は超過分の16.66%、最大213.4%/229.9%/229.9%/246.4%まで）持続時間：1ターン"
+    "description": "３ターンの間、自身以外の味方単体のクリティカル率が15.6%/17.2%/16.6%/18.2%上昇し、クリティカルダメージが上昇する。クリティカルダメージの上昇値は美波・ビーチフラワーのＣＲＴ倍率の１００%超過分の３３.３３%に相当する（最大でＣＲＴ倍率213.4%/229.9%/229.9%/246.4%分まで）。\n自動効果：自身が味方に薬品を使用した時、１ターンの間、選択した対象のクリティカルダメージが上昇する。上昇値は美波・ビーチフラワーのＣＲＴ倍率の１００%超過分の１６.６６%に相当する（最大でＣＲＴ倍率213.4%/229.9%/229.9%/246.4%分まで）。"
   },
   "skill_highlight": {
     "element": "버프",
     "type": "버프",
     "sp": 0,
-    "cool": 0,
-    "description": "自分以外の味方1体の与ダメージを24.4%/26.9%/25.9%/28.4%上昇させ、CRT倍率を増加させる。（増加量は宮下 美波 夏のCRT倍率が100%を超えた部分の16.66%、最大213.4%/229.9%/229.9%/246.4%まで反映）持続時間：2ターン。さらに次に使用する薬品の効果が9.8%/10.8%/10.4%/11.4%増加する。"
+    "cool": 4,
+    "description": "２ターンの間、自身以外の味方単体の与ダメージが24.4%/26.9%/25.9%/28.4%上昇し、クリティカルダメージが上昇する。クリティカルダメージの上昇値は美波・ビーチフラワーのＣＲＴ倍率の１００%超過分の１６.６６%に相当する（最大でＣＲＴ倍率213.4%/229.9%/229.9%/246.4%分まで）。さらに次に自身が薬品を使用する時、薬品効果が9.8%/10.8%/10.4%/11.4%上昇する。"
   },
   "passive1": {
-    "name": "祈願",
+    "name": "癒しの陽光",
     "element": "패시브",
-    "description": "味方にペルソナスキルを使用するたび、その味方に祝福効果を1層付与する。宮下 美波 夏が戦闘にいる場合、味方の祝福効果1層ごとに与ダメージが6.0%増加し、最大36.0%まで上昇する。"
+    "description": "味方にスキルを使用するごとに、対象に祝印を１つ付与する。\n美波・ビーチフラワーが場にいる時、祝印を獲得している味方は、１つごとに与ダメージが6.0%上昇する（最大36.0%まで）。"
   },
   "passive2": {
-    "name": "慈しみ",
+    "name": "海辺に咲く花",
     "element": "패시브",
-    "description": "宮下 美波 夏が戦闘にいる場合、味方の攻撃力が12.0%上昇し、強化薬品効果の種類ごとに攻撃力がさらに15.0%上昇する。"
+    "description": "美波・ビーチフラワーが場にいる時、味方の攻撃力が12.0%上昇し、付与されている強化特効薬の効果１種類ごとに、攻撃力が15.0%上昇する。"
   }
 };
 

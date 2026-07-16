@@ -543,6 +543,11 @@
             });
             if (windsweptText && tx('windswept')) windsweptText.textContent = tx('windswept');
             if (windsweptTooltip && tx('windswept_tip')) windsweptTooltip.setAttribute('data-tooltip', tx('windswept_tip'));
+            try {
+                if (window.defenseCalcInstance && typeof window.defenseCalcInstance.syncAllAccordionBulkToggles === 'function') {
+                    window.defenseCalcInstance.syncAllAccordionBulkToggles();
+                }
+            } catch (_) {}
 
             this.setTextAll('.check-column', tx('th_select', '선택'));
             this.setTextAll('.char-img-column', tx('th_thief', '괴도'));

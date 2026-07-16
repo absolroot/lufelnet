@@ -586,6 +586,7 @@
             if (groupName === '원더') return groupMap.wonder || groupName;
             if (groupName === '계시') return groupMap.revelation || groupName;
             if (groupName === '공통') return groupMap.common || groupName;
+            if (groupName === '속성 심상') return groupMap.nature_skill || groupName;
             return groupName;
         },
 

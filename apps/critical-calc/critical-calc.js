@@ -463,6 +463,7 @@ class CriticalCalc {
                 .replace(/(\d+)\s*턴/g, '$1T')
                 .replace(/턴/g, 'T')
                 .replace(/레벨/g, 'Lv')
+                .replace(/속성\s*심상/g, 'Attribute Mindscape')
                 .replace(/심상\s*코어/g, 'Mindscape Core')
                 .replace(/심상/g, 'MS')
                 .replace(/개조/g, 'R')
@@ -479,6 +480,7 @@ class CriticalCalc {
                 .replace(/(\d+)\s*턴/g, '$1ターン')
                 .replace(/턴/g, 'ターン')
                 .replace(/레벨/g, 'Lv')
+                .replace(/속성\s*심상/g, '属性イメジャリー')
                 .replace(/심상\s*코어/g, 'イメジャリーコア')
                 .replace(/심상/g, 'イメジャリー')
                 .replace(/개조/g, '改造')
@@ -738,7 +740,7 @@ class CriticalCalc {
 
         order.forEach(groupName => {
             const items = groupsObj[groupName] || [];
-            if (!['원더','계시','공통'].includes(groupName)) {
+            if (!['원더','계시','공통','속성 심상'].includes(groupName)) {
                 if (Array.isArray(visibleNames) && visibleNames.length > 0 && !visibleNames.includes(groupName)) return;
                 if ((!visibleNames || visibleNames.length === 0) && !showSpoiler) return;
             }
@@ -790,11 +792,15 @@ class CriticalCalc {
             // 공통 그룹은 아이콘을 표시하지 않음
             if (groupName !== '공통') {
                 const img = document.createElement('img');
-                img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
-                img.onerror = function () {
-                    this.onerror = null;
-                    this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
-                };
+                if (groupName === '속성 심상') {
+                    img.src = `${BASE_URL}/assets/img/character-detail/innate/item-302069.png`;
+                } else {
+                    img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
+                    img.onerror = function () {
+                        this.onerror = null;
+                        this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+                    };
+                }
                 img.className = 'group-avatar';
                 img.loading = 'eager';
                 img.decoding = 'async';

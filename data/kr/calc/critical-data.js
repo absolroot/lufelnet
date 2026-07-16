@@ -68,6 +68,106 @@ const criticalBuffData = {
       "options_cn": []
     }
   ],
+  "속성 심상": [
+    {
+      "id": "nature-skill-electric-shock-effect-crit-rate",
+      "type": "속성 심상",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/전격광역.png",
+      "skillName": "감전 효과",
+      "skillName_en": "Shock Effect",
+      "skillName_jp": "感電効果",
+      "options": [
+        "LV1 1중첩",
+        "LV1 2중첩",
+        "LV1 3중첩",
+        "LV2 1중첩",
+        "LV2 2중첩",
+        "LV2 3중첩"
+      ],
+      "values": {
+        "LV1 1중첩": 1.5,
+        "LV1 2중첩": 3,
+        "LV1 3중첩": 4.5,
+        "LV2 1중첩": 3,
+        "LV2 2중첩": 6,
+        "LV2 3중첩": 9
+      },
+      "defaultOption": "LV2 3중첩",
+      "value": 9,
+      "skillEffectAmpAffected": false,
+      "duration": "2턴",
+      "note": "고압 감전 / 전격 대미지 피격 시",
+      "note_en": "High-Voltage Shock / when taking Electric damage",
+      "note_jp": "高圧感電 / 電撃属性ダメージを受けた時",
+      "skillName_cn": "感电效应",
+      "note_cn": "高压触电 / 受到电击属性伤害时",
+      "type_cn": "属性心象",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_en": [
+        "LV1 1 Stack",
+        "LV1 2 Stacks",
+        "LV1 3 Stacks",
+        "LV2 1 Stack",
+        "LV2 2 Stacks",
+        "LV2 3 Stacks"
+      ],
+      "options_jp": [
+        "LV1 1重",
+        "LV1 2重",
+        "LV1 3重",
+        "LV2 1重",
+        "LV2 2重",
+        "LV2 3重"
+      ],
+      "options_cn": [
+        "LV1 1层",
+        "LV1 2层",
+        "LV1 3层",
+        "LV2 1层",
+        "LV2 2层",
+        "LV2 3层"
+      ]
+    },
+    {
+      "id": "nature-skill-electric-current-surge-crit-rate",
+      "type": "속성 심상",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/전격광역.png",
+      "skillName": "전류 증폭",
+      "skillName_en": "Current Surge",
+      "skillName_jp": "電流増幅",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 5,
+        "LV2": 10
+      },
+      "defaultOption": "LV2",
+      "value": 10,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "HIGHLIGHT/테우르기아 후 / 전격 캐릭터",
+      "note_en": "After HIGHLIGHT/Theurgy / Electric characters",
+      "note_jp": "HIGHLIGHT/テウルギア後 / 電撃属性キャラクター",
+      "skillName_cn": "电涌增幅",
+      "note_cn": "HIGHLIGHT/神通法后 / 电击属性角色",
+      "type_cn": "属性心象",
+      "target_cn": "群体",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
+    }
+  ],
   "원더": [
     {
       "id": "wonder1",
@@ -988,6 +1088,78 @@ const criticalSelfData = {
       "target_cn": "自身",
       "duration_cn": "3回合",
       "options_cn": []
+    }
+  ],
+  "속성 심상": [
+    {
+      "id": "nature-skill-gun-crit-rate",
+      "type": "속성 심상",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "skillIcon": "/assets/img/skill-element/총격.png",
+      "skillName": "크리티컬 확률 증가",
+      "skillName_en": "Critical Rate Increase",
+      "skillName_jp": "CRT発生率上昇",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 6,
+        "LV2": 12
+      },
+      "defaultOption": "LV2",
+      "value": 12,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "총격",
+      "note_en": "Gun",
+      "note_jp": "銃撃",
+      "skillName_cn": "暴击率提升",
+      "note_cn": "枪击",
+      "type_cn": "属性心象",
+      "target_cn": "自身",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
+    },
+    {
+      "id": "nature-skill-electric-crit-rate",
+      "type": "속성 심상",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "skillIcon": "/assets/img/skill-element/전격.png",
+      "skillName": "크리티컬 확률 증가",
+      "skillName_en": "Critical Rate Increase",
+      "skillName_jp": "CRT発生率上昇",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 6,
+        "LV2": 12
+      },
+      "defaultOption": "LV2",
+      "value": 12,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "전격",
+      "note_en": "Electric",
+      "note_jp": "電撃",
+      "skillName_cn": "暴击率提升",
+      "note_cn": "电击",
+      "type_cn": "属性心象",
+      "target_cn": "自身",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
     }
   ],
   "안·댄싱 스타": [

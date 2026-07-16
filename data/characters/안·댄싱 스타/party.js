@@ -1,22 +1,22 @@
 window.recommendParty = window.recommendParty || {};
-window.recommendParty["야오링"] = {
+window.recommendParty["안·댄싱 스타"] = {
     "weapon": [
-        ""
+        "작열의 연옥!"
     ],
     "persona": [
         {
             "type": "ATK",
             "list": [
-                "",
-                "",
-                ""
+                "자오우곤겐",
+                "마카브르"
             ]
         },
         {
             "type": "CRITICAL",
             "list": [
-                "",
-                ""
+                "가브리엘",
+                "라파엘",
+                "디오니소스"
             ]
         }
     ],

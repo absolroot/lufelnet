@@ -23,21 +23,22 @@ window.ritualData["안·댄싱 스타"] = {
 
 window.enCharacterRitualData["안·댄싱 스타"] = {
   "name": "Ann Takamaki·Starlight",
-  "r0": "As the Hot Show Begins",
-  "r0_detail": "Increase Ann Takamaki·Starlight's SP cap to 300. At the start of battle, gain 200 SP. At the start of each turn, gain 100 SP. Ann Takamaki·Starlight can only recover SP through her own Awareness effects.\nOn Ann's turn, she can perform [Choreography]: select multiple [Hot Dance Steps], [Blazing Spin], and [Flame Finale] as Dance Step skills, combine them into a [Heat Dance Score], and release it. This [Heat Dance Score] counts as one Persona skill.\nUsing [Hot Dance Steps] and [Blazing Spin] grants [Cheers]. When Ann has 4 or more [Cheers] stacks, she can use [Flame Finale].\n[Cheers] stacks up to 12 times. [Heat Dance Score] can include up to 10 Dance Steps.\nDuring Choreography, Ann can spend [Rhapsodic Beat] to boost [Heat Dance Score], up to 2 times. Each boost spends 2 [Rhapsodic Beat] and increases Skill Damage dealt by [Heat Dance Score] by 25%.",
-  "r1": "The Best Part Comes Later",
-  "r1_detail": "Increase SP gained at the start of each turn to 125, and increase the cap to 400.\nWhen [Heat Dance Score] spends 100 SP, increase this [Heat Dance Score]'s critical damage by 30%.",
-  "r2": "Dance of Swaying Flame",
-  "r2_detail": "Increase [Hot Dance Steps]' damage bonus by 10%.\n[Blazing Spin]'s effect applies to all later Dance Step skills, and its Skill Damage increase is further increased by 20%.",
-  "r3": "Power to Captivate",
-  "r3_detail": "Increase the skill levels of [Flame Finale] and [Thief Tactics] by 3, up to level 15.",
-  "r4": "Heat That Leads the Stage",
-  "r4_detail": "HIGHLIGHT effect increase: After using HIGHLIGHT, increase Ann's critical damage by 20%. Lasts for 4 turns.",
-  "r5": "Sound and Heat to the End",
-  "r5_detail": "Increase the skill levels of [Hot Dance Steps] and [Blazing Spin] by 3, up to level 15.",
-  "r6": "Finale Where Cheers Resound",
-  "r6_detail": "When Ann Takamaki·Starlight releases a [Heat Dance Score] with 3 or more steps, additionally trigger 1 [Flame Finale: Encore] before it ends. [Flame Finale: Encore] does not spend [Cheers] or SP, and deals 180% of [Flame Finale]'s damage."
+  "r0": "Rising Curtain",
+  "r0_detail": "Increase Ann's Max SP to 300. At the start of battle, gain 200 SP. At the start of turn, gain 100 SP. Ann can only restore SP from her Awareness effect.\nOn Ann's turn, she can [Choreograph] to select multiple [Fever Step], [Pyro Vortex], and [Flaming Finale] as [Steps], then combine them into [Heat Score] to activate, [Heat Score] counts as 1 Persona skill.\nWhen activating [Fever Step] and [Pyro Vortex], gain [Cheer]. When Ann has 4 or more [Cheer] stacks, she can activate [Flaming Finale].\n[Cheer] can stacks up to 12 times. [Heat Score] can have up to 10 [Steps].During [Choreograph], Ann can spend 2 [Rhapsodic Beat] to boost [Heat Score], up to 2 times. Each boost will increase [Heat Score]'s Skill Damage by 25%.",
+  "r1": "The Best Is Yet to Come",
+  "r1_detail": "Increase Ann's Max SP to 400. At the start of turn, increase gain to 125 SP.\nWhen [Heat Score] spends 100 SP, increase this [Heat Score]'s critical damage by 30%.",
+  "r2": "Flickering Dance",
+  "r2_detail": "Increase [Fever Step]'s damage buff by 10%.\n[Pyro Vortex] now buffs all subsequent [Steps], additionally increase Skill Damage buff by 20%.",
+  "r3": "Captivating Charm",
+  "r3_detail": "Increase the skill levels of [Flaming Finale] and [Thief Tactics] by 3.",
+  "r4": "Leading the Stage",
+  "r4_detail": "HIGHLIGHT Enhanced: After using a HIGHLIGHT, increase Ann's critical damage by 20% for 4 turns.",
+  "r5": "Music and Fire Till the End",
+  "r5_detail": "Increase the skill levels of [Fever Step] and [Pyro Vortex] by 3.",
+  "r6": "Resounding Finale",
+  "r6_detail": "When activating [Heat Score] with more than 3 [Steps], activate a bonus [Flaming Finale: Encore] at the end. [Flaming Finale: Encore] does not spend [Cheer] and SP, and deal 180% of [Flaming Finale]'s damage."
 };
+
 
 window.jpCharacterRitualData["안·댄싱 스타"] = {
   "name": "高巻 杏・スターナイト",

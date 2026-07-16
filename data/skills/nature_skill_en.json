@@ -1,0 +1,1926 @@
+{
+  "data": [
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70101,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70102,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70103,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase critical damage by 12.0%/24.0%.",
+        "name": "Critical Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70104,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When decreasing a foe's Down Points, inflict 1 stack of \"Vulnerability\" on all foes. Lasts 2 turns and stacks up to 4 times. \"Vulnerability\": Damage taken increases by 2.0%/4.0%.",
+        "name": "Severe Vulnerability",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70105,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a Physical ally attacks a foe with \"Vulnerability\", total damage amplification increases by 2.5%/5.0%.",
+        "name": "Opening Pursuit",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70106,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a foe with 4 stacks of \"Vulnerability\" takes Physical damage, Downed damage taken increases by 2.0%/4.0%.",
+        "name": "Laceration Burst",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70107,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on a foe, ignore affinity and decrease all foes' Down Points by 1/2 stacks.",
+        "name": "Unbalancing Strike",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70108,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70201,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70202,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70203,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase critical rate by 6.0%/12.0%.",
+        "name": "Critical Rate Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70204,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When decreasing a foe's Down Points, inflict 1 stack of \"Vulnerability\" on all foes. Lasts 2 turns and stacks up to 4 times. \"Vulnerability\": Damage taken increases by 2.0%/4.0%.",
+        "name": "Severe Vulnerability",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70205,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When attacking a foe, if the target has 4 stacks of \"Vulnerability\", increase self Down Bonus by 2.5%/5.0%.",
+        "name": "Last-Stand Counter",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70206,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When inflicting \"Vulnerability\" on a foe, increase the Gun attribute total damage amplification they take by 2.0%/4.0%. Lasts 1 turn.",
+        "name": "Vital Insight",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70207,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on a foe, ignore affinity and decrease all foes' Down Points by 1/2 stacks.",
+        "name": "Weakness Snipe",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70208,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70301,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70302,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase DOT effect by 2.0%/4.0%.",
+        "name": "DOT Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70303,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Technical Precision by 320/640.",
+        "name": "Technical Precision Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70304,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using a Persona skill, inflict Burn on foes.\nIf a foe already has Burn, inflict \"Searing Burn\". Lasts 2 turns and stacks up to 3 times.\n\"Searing Burn\": At the end of each turn, take damage equal to 50.0%/100.0% of the inflicter's Attack.",
+        "name": "Sparkfire Immolation",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70305,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "\"Searing Burn\" can trigger critical hits.\nAt the end of self turn, settle all foes' \"Searing Burn\" effects 1/2 times.",
+        "name": "Blazing Detonation",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70306,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a Fire ally attacks a foe with \"Searing Burn\", total damage amplification increases by 2.5%/5.0%.",
+        "name": "Burnout",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70307,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on a foe, decrease that foe's healing received by 25.0%/50.0%. Lasts 2 turns.",
+        "name": "Ashen Brand",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70308,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70401,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70402,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase shield effect by 7.5%/15.0%.",
+        "name": "Shield Effect Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70403,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Defense by 15.0%/30.0%.",
+        "name": "Defense Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70404,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "At the start of self turn, grant 750/1500 Shield to allies. Lasts 2 turns.",
+        "name": "Frostguard",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70405,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "For every 1000 Shield self has, total damage amplification increases by 1%, up to 2.5%/5.0%.",
+        "name": "Frost Shield Resonance",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70406,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Ice weakness damage dealt by shielded allies increases by 2.0%/4.0%.",
+        "name": "Ring of Frost",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70407,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on a foe, has a 50.0%/100.0% base chance to Freeze the skill's main target for 1 turn.",
+        "name": "Winter's Arrival",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70408,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70501,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70502,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase critical rate by 6.0%/12.0%.",
+        "name": "Critical Rate Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70503,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase critical damage by 12.0%/24.0%.",
+        "name": "Critical Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70504,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using a Persona skill, inflict Shock on all foes.\nIf a foe already has Shock, inflict \"High-Voltage Shock\". Lasts 2 turns and stacks up to 3 times.\n\"High-Voltage Shock\": When taking Electric damage, critical rate taken increases by 1.5%/3.0%.",
+        "name": "Shock Effect",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70505,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When self critical rate exceeds 100%, every 1% excess critical rate is converted into 2.0%/4.0% critical damage. Up to 20% critical rate is counted.",
+        "name": "Overclocked Critical",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70506,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When any foe has 3 stacks of \"High-Voltage Shock\", Electric weakness damage taken by that foe increases by 2.0%/4.0%.",
+        "name": "Magnetic Storm Break",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70507,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on an ally, increase the critical rate of all allied Electric characters by 5.0%/10.0%.",
+        "name": "Current Surge",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70508,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70601,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70602,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70603,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Pierce Rate by 3.8%/7.5%.",
+        "name": "Pierce Rate Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70604,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a Wind ally attacks a foe with Windswept, Pierce Rate increases by 5.0%/10.0%.",
+        "name": "Gale Break Assault",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70605,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a foe's Defense is below 1 point, Wind weakness damage taken increases by an additional 2.0%/4.0%.",
+        "name": "Heart of the Storm",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70606,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "For every 10% Pierce Rate self has, total damage amplification increases by 0.5%/1.0%, up to 2.5%/5.0%.",
+        "name": "Gale Pierce",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70607,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on a foe, dispel 1/2 buffs from that foe.",
+        "name": "Purifying Wind",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70608,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70701,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70702,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70703,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Ailment Accuracy by 12.0%/24.0%.",
+        "name": "Ailment Accuracy Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70704,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using a Persona on a foe, inflict 1 stack of \"Thought Theft\" on the skill target. Lasts 3 turns and stacks up to 3 times.\n\"Thought Theft\": Damage taken increases by 1.5%/3.0%.",
+        "name": "Consciousness Intercept",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70705,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When attacking a foe with a mental ailment or \"Thought Theft\", final damage amplification increases by 2.5%/5.0%.",
+        "name": "Ideation Amplification",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70706,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When any foe has \"Thought Theft\", Psychokinesis weakness damage taken by that foe increases by 2.0%/4.0%.",
+        "name": "Mental Hunter",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70707,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Based on a foe's \"Thought Theft\" stacks, decrease that foe's stat effects and increase self stats by the same amount. Stats gained from multiple foes can take effect up to 1 time.\n1 stack of \"Thought Theft\": Steal 10.0%/20.0% of the foe's Defense bonus.\n2 stacks of \"Thought Theft\": Steal 10.0%/20.0% of the foe's Attack bonus.\n3 stacks of \"Thought Theft\": Steal 10.0%/20.0% of the foe's damage bonus.",
+        "name": "Mental Plunder",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70708,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70801,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70802,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70803,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Technical Precision by 320/640.",
+        "name": "Technical Precision Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70804,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using a Persona skill on a foe, inflict 1 random elemental ailment and 1 stack of Radiation on all foes.",
+        "name": "Chaos Reaction",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70805,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When attacking a foe, for each type of elemental ailment on that foe, self total damage amplification increases by 0.5%/1.0%, up to 0/0.",
+        "name": "Chaotic Fission",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70806,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Enhance the effect values of all elemental ailments on foes.\nBurn: Healing received decreases by 10.0%/20.0%.\nShock: Nuclear critical damage taken increases by 10.0%/20.0%.\nWindswept: Nuclear Defense decreases by 7.5%/15.0%.\nFreeze: Attack decreases by 20.0%/40.0%.\nRadiation: Nuclear damage taken increases by 10.0%/20.0%.",
+        "name": "Elemental Catalyst",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70807,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a foe has Burn, Shock, Windswept, Freeze, and Radiation at the same time, Nuclear weakness damage taken by that foe increases by 2.5%/5.0%.",
+        "name": "Resonant Nuclear Burst",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70808,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70901,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70902,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70903,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase healing effect by 7.5%/15.0%.",
+        "name": "Healing Effect Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70904,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using a Persona skill, grant 1 stack of Blessing to allies. If the target has 5 or more Blessing stacks, grant \"Powerful Blessing\". Lasts 2 turns.\n\"Powerful Blessing\": Recover 1.5%/3.0% of Max HP each turn.",
+        "name": "Overflowing Grace",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70905,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When any ally has \"Powerful Blessing\", Bless weakness damage dealt by that ally increases by 2.0%/4.0%.",
+        "name": "Divine Judgment",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70906,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When self has \"Powerful Blessing\", total damage amplification increases by 2.5%/5.0%.",
+        "name": "Blessing Judgment",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70907,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on an ally, increase all allies' Max HP by 10.0%/20.0%. Lasts 2 turns.",
+        "name": "Descent of Holy Light",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70908,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71001,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71002,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71003,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase DOT effect by 2.0%/4.0%.",
+        "name": "DOT Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71004,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using a Persona skill, grant 1 stack of Curse to all foes. If the target has 5 or more Curse stacks, inflict \"Abyssal Curse\". Lasts 2 turns.\n\"Abyssal Curse\": Take damage equal to 2.5%/5.0% of Max HP each turn, capped at damage equal to 1.0%/2.0% of the inflicter's Attack.",
+        "name": "Curse Bind",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71005,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When any foe has \"Abyssal Curse\", Curse weakness damage taken by that foe increases by 2.0%/4.0%.",
+        "name": "Shadow Corrosion",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71006,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When attacking a foe with \"Abyssal Curse\", total damage amplification increases by 2.5%/5.0%.",
+        "name": "Vulnerability Curse Seal",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71007,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "After using HIGHLIGHT/Theurgy on a foe, increase that foe's DOT effect taken by 3.0%/6.0%. Lasts 2 turns.",
+        "name": "Abyssal Whisper",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71008,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71101,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71102,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71103,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Defense by 15.0%/30.0%.",
+        "name": "Defense Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71104,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Almighty damage by 10.0%/20.0%.",
+        "name": "Almighty Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71105,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "At the start of battle, for each allied Phantom Thief with a different attribute, self Attack increases by 7.5%/15.0%.",
+        "name": "Attribute Bond",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71106,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Each time allies deal 1 type of different affinity attribute damage, self gains 1 stack of \"Harmony\". When \"Harmony\" reaches 6 stacks, self final damage amplification increases by 2.5%/5.0%.",
+        "name": "Power of Harmony",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71107,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "When a foe has 5 or more Resist/Null/Repel/Drain affinities, final damage amplification taken increases by 2.0%/4.0%.",
+        "name": "Iron Wall Killer",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71108,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Attack by 10.0%/20.0%.",
+        "name": "Attack Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71201,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase damage by 8.0%/16.0%.",
+        "name": "Damage Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71202,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase HP by 10.0%/20.0%.",
+        "name": "HP Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71203,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "Increase Defense by 15.0%/30.0%.",
+        "name": "Defense Increase",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71204,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "At the start of battle, permanently increase all allies' Attack by 10.0%/20.0%.",
+        "name": "Attack Insight",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71205,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "At the start of battle, permanently increase all allies' damage by 7.5%/15.0%.",
+        "name": "Damage Specialization",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71206,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "At the start of battle, permanently increase all allies' critical damage by 5.0%/10.0%.",
+        "name": "Critical Damage Boost",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71207,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "At the start of battle, permanently increase all allies' Pierce Rate by 2.0%/4.0%.",
+        "name": "Pierce Rate Boost",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71208,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    }
+  ],
+  "msg": "OK",
+  "status": 0
+}

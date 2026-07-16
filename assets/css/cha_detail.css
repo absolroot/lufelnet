@@ -1285,6 +1285,261 @@ h2 {
     overflow-wrap: break-word;
 }
 
+/* nature skill section */
+.nature-skill-card {
+    display: block;
+}
+
+.nature-skill-header {
+    display: block;
+}
+
+.nature-skill-header h2 {
+    margin-bottom: 8px;
+}
+
+.nature-skill-global-note {
+    margin: 0 0 14px 0;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.nature-skill-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 12px 0 18px 0;
+}
+
+.nature-skill-tab {
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.18);
+    color: rgba(255, 255, 255, 0.78);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.nature-skill-tab:hover,
+.nature-skill-tab.active {
+    border-color: rgba(158, 255, 255, 0.58);
+    color: #9effff;
+    background: rgba(158, 255, 255, 0.08);
+}
+
+.nature-skill-slots {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.nature-skill-slot {
+    min-height: 168px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    align-items: flex-start;
+    transition: border-color 0.16s ease, background 0.16s ease, transform 0.16s ease;
+}
+
+.nature-skill-slot.empty {
+    position: relative;
+    border-style: dashed;
+    border-color: rgba(255, 255, 255, 0.25);
+    align-items: stretch;
+}
+
+.nature-skill-slot.empty .nature-skill-slot-info {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.nature-skill-slot:hover,
+.nature-skill-slot:focus-visible {
+    border-color: rgba(158, 255, 255, 0.55);
+    background: rgba(158, 255, 255, 0.06);
+    transform: translateY(-1px);
+    outline: none;
+}
+
+.nature-skill-slot-label {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nature-skill-slot-desc {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.nature-skill-slot-plus {
+    position: absolute;
+    left: 50%;
+    top: 58%;
+    transform: translate(-50%, -50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #9effff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.nature-skill-slot-hint {
+    flex: 0 0 auto;
+}
+
+.nature-skill-icon {
+    flex: 0 0 auto;
+}
+
+.nature-skill-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.78);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.nature-skill-modal.show {
+    display: flex;
+}
+
+.nature-skill-modal-content {
+    position: relative;
+    width: min(820px, 94vw);
+    max-height: 86vh;
+    overflow-y: auto;
+    background: var(--card-background);
+    border-bottom: 3px solid var(--border-red);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.nature-skill-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.nature-skill-modal-close:hover,
+.nature-skill-modal-close:focus-visible {
+    color: #fff;
+    outline: none;
+}
+
+.nature-skill-modal-header h3 {
+    margin: 0 36px 4px 0;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.nature-skill-modal-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.nature-skill-modal-option {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: inherit;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+
+.nature-skill-modal-option:hover,
+.nature-skill-modal-option:focus-visible {
+    border-color: rgba(158, 255, 255, 0.55);
+    background: rgba(158, 255, 255, 0.06);
+    outline: none;
+}
+
+.nature-skill-option-header {
+    justify-content: space-between;
+}
+
+.nature-skill-option-name {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.nature-skill-option-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.nature-skill-option-cost {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    line-height: 1;
+}
+
+.nature-skill-cost-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+}
+
+.nature-skill-option-desc {
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+.nature-skill-modal-empty {
+    color: rgba(255, 255, 255, 0.62);
+    margin: 10px 0 0 0;
+}
+
+@media (max-width: 768px) {
+    .nature-skill-slots {
+        grid-template-columns: 1fr;
+    }
+
+    .nature-skill-slot {
+        min-height: 140px;
+    }
+
+    .nature-skill-modal-content {
+        width: 94vw;
+        max-height: 74vh;
+        padding: 20px 16px;
+    }
+
+    .nature-skill-option-header {
+        display: block;
+    }
+
+    .nature-skill-option-meta {
+        display: inline-flex;
+        margin-top: 0;
+        white-space: normal;
+        vertical-align: middle;
+    }
+}
+
 /* weapon enhancement and skill level style */
 .enhancement-values,
 .skill-level-values {

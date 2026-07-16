@@ -81,6 +81,7 @@ window.I18N_PAGE_DEFENSE_CALC_JP = {
     "defenseGroupNames": {
         "wonder": "ワンダー",
         "revelation": "啓示",
-        "common": "共通"
+        "common": "共通",
+        "nature_skill": "属性イメジャリー"
     }
 };

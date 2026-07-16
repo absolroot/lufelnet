@@ -27,20 +27,20 @@ window.WeaponData["안·댄싱 스타"] = {
 window.enCharacterWeaponData["안·댄싱 스타"] = {
   "name": "Ann Takamaki·Starlight",
   "weapon4-1": {
-    "name": "Dread of Pain",
+    "name": "Fear of Pain",
     "health": 1744.19,
     "attack": 634.27,
     "defense": 313.75,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter gaining [Cheers], increase Ann's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2%. Lasts for 2 turns. Stacks up to 2 times."
+    "skill_name": "Fevered Fury",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter gaining [Cheers], increase user's damage by 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% for 2 turns. Stacks up to 2 times."
   },
   "weapon5-1": {
-    "name": "Fatal Coating",
+    "name": "Fatal Finish",
     "health": 2180.22,
     "attack": 792.82,
     "defense": 391.98,
-    "skill_name": "",
-    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nFor every 100 SP gained, permanently increase Ann's damage bonus by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0%. Stacks up to 4 times.\nFor every 100 SP spent, permanently increase Ann's critical damage by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%. Stacks up to 2 times."
+    "skill_name": "Blazing Rhapsody",
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nFor every 100 SP gained, permanently increase user's damage by 8.5%/11.0%/11.0%/13.5%/13.5%/16.0%/16.0%. Stacks up to 4 times.\nFor every 100 SP spent, permanently increase user's critical damage by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%. Stacks up to 2 times."
   }
 };
 

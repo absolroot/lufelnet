@@ -540,7 +540,7 @@ class DefenseCalc {
                 if (translated && translated !== groupName) return translated;
             }
         } catch (_) { }
-        const excluded = groupName === '원더' || groupName === '계시' || groupName === '공통';
+        const excluded = groupName === '원더' || groupName === '계시' || groupName === '공통' || groupName === '속성 심상';
         if (excluded) return groupName; // 사전에 없으면 원문 유지
         try {
             if (typeof characterData !== 'undefined' && characterData[groupName]) {
@@ -598,6 +598,7 @@ class DefenseCalc {
                 .replace(/(\d+)\s*턴/g, '$1T')
                 .replace(/턴/g, 'T')
                 .replace(/레벨/g, 'Lv')
+                .replace(/속성\s*심상/g, 'Attribute Mindscape')
                 .replace(/심상\s*코어/g, 'Mindscape Core')
                 .replace(/심상/g, 'MS')
                 .replace(/개조/g, 'R')
@@ -617,6 +618,7 @@ class DefenseCalc {
                 .replace(/(\d+)\s*턴/g, '$1ターン')
                 .replace(/턴/g, 'ターン')
                 .replace(/레벨/g, 'Lv')
+                .replace(/속성\s*심상/g, '属性イメジャリー')
                 .replace(/심상\s*코어/g, 'イメジャリーコア')
                 .replace(/심상/g, 'イメジャリー')
                 .replace(/개조/g, '改造')
@@ -859,7 +861,7 @@ class DefenseCalc {
             const items = groupsObj[groupName] || [];
 
             // 그룹 필터링: 원더/계시/공통 제외하고 목록에 없는 캐릭터는 스킵
-            if (!['원더', '계시', '공통'].includes(groupName)) {
+            if (!['원더', '계시', '공통', '속성 심상'].includes(groupName)) {
                 if (Array.isArray(visibleNames) && visibleNames.length > 0 && !visibleNames.includes(groupName)) {
                     return; // skip rendering this group
                 }
@@ -910,11 +912,15 @@ class DefenseCalc {
             const infoWrap = document.createElement('span');
             infoWrap.className = 'group-info';
             const img = document.createElement('img');
-            img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
-            img.onerror = function () {
-                this.onerror = null;
-                this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
-            };
+            if (groupName === '속성 심상') {
+                img.src = `${BASE_URL}/assets/img/character-detail/innate/item-302069.png`;
+            } else {
+                img.src = `${BASE_URL}/assets/img/character-half/thumb/${groupName}.webp`;
+                img.onerror = function () {
+                    this.onerror = null;
+                    this.src = `${BASE_URL}/assets/img/character-half/${groupName}.webp`;
+                };
+            }
             img.className = 'group-avatar';
             img.loading = 'eager';
             img.decoding = 'async';

@@ -78,6 +78,7 @@ window.I18N_PAGE_CRITICAL_CALC_CN = {
     "defenseGroupNames": {
         "wonder": "WONDER",
         "revelation": "启示",
-        "common": "通用"
+        "common": "通用",
+        "nature_skill": "属性心象"
     }
 };

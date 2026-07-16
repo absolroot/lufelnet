@@ -53,46 +53,46 @@ window.characterSkillsData["안·댄싱 스타"] = {
 window.enCharacterSkillsData["안·댄싱 스타"] = {
   "name": "Ann Takamaki·Starlight",
   "skill1": {
-    "name": "Hot Dance Steps",
+    "name": "Fever Step",
     "element": "화염",
     "type": "단일피해",
     "cool": 0,
     "sp": 25,
-    "description": "Deal Fire damage to 1 foe equal to 83.8%/92.2%/93.9%/102.2% of Attack.\nIncrease Ann's damage dealt by 15.0%/16.5%/16.8%/18.3%. Lasts for 3 turns. Stacks up to 6 times.\nGain 1 [Cheers] stack."
+    "description": "Deal Fire damage to 1 foe equal to 83.8%/92.2%/93.9%/102.2% of Attack.\nIncrease Ann's damage by X% for 3 turns. Stacks up to 6 times.\nAnn gains 1 [Cheer] stack."
   },
   "skill2": {
-    "name": "Blazing Spin",
+    "name": "Pyro Vortex",
     "element": "화염",
     "type": "단일피해",
     "cool": 0,
     "sp": 50,
-    "description": "Deal Fire damage to 1 foe equal to 132.3%/145.5%/148.2%/161.4% of Attack.\nWithin this [Heat Dance Score], increase Skill Damage of up to the next 2 [Dance Steps] by 50%. This effect cannot stack.\nGain 2 [Cheers] stacks."
+    "description": "Deal Fire damage to 1 foe equal to 132.3%/145.5%/148.2%/161.4% of Attack.\nIn this [Heat Score], increase the next 2 [Step]'s Skill Damage by 50%. This effect does not stack.\nAnn gains 2 [Cheer] stacks."
   },
   "skill3": {
-    "name": "Flame Finale",
+    "name": "Flaming Finale",
     "element": "화염",
     "type": "단일피해",
     "cool": 0,
     "sp": 50,
-    "description": "Spend 4 [Cheers] stacks to cast [Flame Finale] once. Deal Fire damage to 1 foe equal to 411.1%/452.2%/460.4%/501.5% of Attack.\nIncrease Pierce by 15.0%/16.5%/16.8%/18.3% when [Heat Dance Score] is released."
+    "description": "Spend 4 [Cheer] stacks to activate 1 [Flaming Finale].\nDeal Fire damage to 1 foe equal to 411.1%/452.2%/460.4%/501.5% of Attack.\nWhen activating [Heat Score], increase Pierce Rate by 15.0%/16.5%/16.8%/18.3%."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "화염",
     "type": "단일피해",
     "cool": 4,
-    "description": "Deal Fire damage to 1 foe equal to 545.1%/600.9%/578.6%/634.5% of Attack.\nIncrease the effect of [Charm] by 100%. Lasts for 4 turns."
+    "description": "Deal Fire damage to 1 foe equal to 545.1%/600.9%/578.6%/634.5% of Attack.\nIncrease [Charm]'s effect by 100%. Lasts for 4 turns."
   },
   "passive1": {
-    "name": "Ignition",
+    "name": "Ignite",
     "element": "패시브",
-    "description": "When activating a [Heat Dance Score] with 2 or more steps, inflict Burn on the target and increase Ann's Attack by 42.0%. Lasts for 3 turns.",
+    "description": "When activating [Heat Score] with more than 2 [Steps], inflict target with [Burn]. Then increase Ann's Attack by 42.0% for 3 turns.",
     "cool": 0
   },
   "passive2": {
     "name": "Charm",
     "element": "패시브",
-    "description": "When Ann Takamaki·Starlight is present, Burning foes receive 50.0% less healing and take 24.0% more damage.",
+    "description": "When Ann is present, foes with [Burn] decrease Healing Received by 50.0% and increase damage taken by 24.0%.",
     "cool": 0
   }
 };

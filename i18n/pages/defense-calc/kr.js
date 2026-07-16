@@ -62,6 +62,7 @@ window.I18N_PAGE_DEFENSE_CALC_KR = {
     "defenseGroupNames": {
         "wonder": "원더",
         "revelation": "계시",
-        "common": "공통"
+        "common": "공통",
+        "nature_skill": "속성 심상"
     }
 };

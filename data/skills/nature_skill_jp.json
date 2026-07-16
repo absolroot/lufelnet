@@ -1,0 +1,1926 @@
+{
+  "data": [
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70101,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70102,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70103,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "CRT倍率が12.0%/24.0%上昇する。",
+        "name": "CRT倍率上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70104,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵のダウン値を減少させた時、敵全体に『脆弱』を1スタック付与する。2ターン持続し、最大4スタックまで累積する。『脆弱』：受けるダメージが2.0%/4.0%上昇する。",
+        "name": "重傷脆弱",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70105,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "味方の物理属性キャラクターが『脆弱』状態の敵を攻撃した時、総ダメージ増幅が2.5%/5.0%上昇する。",
+        "name": "破綻追撃",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70106,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "『脆弱』を4スタック持つ敵が物理ダメージを受けた時、ダウンダメージが2.0%/4.0%上昇する。",
+        "name": "裂傷爆発",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70107,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Phys",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にHIGHLIGHT/テウルギアを使用した後、適応性を無視して敵全体のダウン値を1/2スタック減少させる。",
+        "name": "不均衡打撃",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70108,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70201,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70202,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70203,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "CRT発生率が6.0%/12.0%上昇する。",
+        "name": "CRT発生率上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70204,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵のダウン値を減少させた時、敵全体に『脆弱』を1スタック付与する。2ターン持続し、最大4スタックまで累積する。『脆弱』：受けるダメージが2.0%/4.0%上昇する。",
+        "name": "重傷脆弱",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70205,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵を攻撃した時、対象が『脆弱』を4スタック持っている場合、自身のダウン特効が2.5%/5.0%上昇する。",
+        "name": "窮地反撃",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70206,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵に『脆弱』を付与した時、対象が受ける銃撃属性の総ダメージ増幅が2.0%/4.0%上昇する。1ターン持続する。",
+        "name": "急所洞察",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70207,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Gun",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にHIGHLIGHT/テウルギアを使用した後、適応性を無視して敵全体のダウン値を1/2スタック減少させる。",
+        "name": "弱点狙撃",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70208,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70301,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70302,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "持続ダメージ効果が2.0%/4.0%上昇する。",
+        "name": "持続ダメージ効果上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70303,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "テクニカル精度が320/640上昇する。",
+        "name": "テクニカル精度上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70304,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身がペルソナスキルを使用した後、敵に燃焼効果を付与する。\n敵がすでに燃焼効果を持っている場合、『高温燃焼』を付与する。2ターン持続し、最大3スタックまで累積する。\n『高温燃焼』：ターン終了時、付与者の攻撃力50.0%/100.0%分のダメージを受ける。",
+        "name": "星火燃焼",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70305,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "『高温燃焼』はクリティカルが発生する。\n自身のターン終了時、敵全体の『高温燃焼』効果を1/2回精算する。",
+        "name": "烈焔爆破",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70306,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "味方の火炎属性キャラクターが『高温燃焼』状態の敵を攻撃した時、総ダメージ増幅が2.5%/5.0%上昇する。",
+        "name": "燃焼消尽",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70307,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Fire",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にHIGHLIGHT/テウルギアを使用した後、敵が受けるHP回復量を25.0%/50.0%低下させる。2ターン持続する。",
+        "name": "灰燼の烙印",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70308,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70401,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70402,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "シールド効果が7.5%/15.0%上昇する。",
+        "name": "シールド効果上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70403,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "防御力が15.0%/30.0%上昇する。",
+        "name": "防御力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70404,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身のターン開始時、味方に750/1500ポイントのシールドを付与する。2ターン持続する。",
+        "name": "寒氷守護",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70405,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が持つシールド1000ポイントごとに、総ダメージ増幅が1%上昇する。最大2.5%/5.0%まで上昇する。",
+        "name": "霜盾共鳴",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70406,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "シールド状態の味方キャラクターの氷結属性弱点ダメージが2.0%/4.0%上昇する。",
+        "name": "氷結の輪",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70407,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Ice",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にHIGHLIGHT/テウルギアを使用した後、50.0%/100.0%の基礎確率でスキルのメイン対象を凍結状態にする。1ターン持続する。",
+        "name": "酷寒到来",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70408,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70501,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70502,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "CRT発生率が6.0%/12.0%上昇する。",
+        "name": "CRT発生率上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70503,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "CRT倍率が12.0%/24.0%上昇する。",
+        "name": "CRT倍率上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70504,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身がペルソナスキルを使用した後、敵全体に感電効果を付与する。\n敵がすでに感電効果を持っている場合、『高圧感電』効果を付与する。2ターン持続し、最大3スタックまで累積する。\n『高圧感電』：電撃属性ダメージを受けた時、受けるCRT発生率が1.5%/3.0%上昇する。",
+        "name": "感電効果",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70505,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身のCRT発生率が100%を超える時、超過したCRT発生率1%ごとにCRT倍率2.0%/4.0%へ変換される。最大CRT発生率20%まで計算される。",
+        "name": "オーバークロック会心",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70506,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "任意の敵が『高圧感電』を3スタック持っている場合、その敵が受ける電撃属性弱点ダメージが2.0%/4.0%上昇する。",
+        "name": "磁気嵐撃破",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70507,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Electric",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が味方にHIGHLIGHT/テウルギアを使用した後、味方全体の電撃属性キャラクターのCRT発生率が5.0%/10.0%上昇する。",
+        "name": "電流増幅",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70508,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70601,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70602,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70603,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "貫通が3.8%/7.5%上昇する。",
+        "name": "貫通上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70604,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "味方の疾風属性キャラクターが風襲状態の敵を攻撃した時、貫通が5.0%/10.0%上昇する。",
+        "name": "破風強襲",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70605,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "敵キャラクターの防御力が1ポイント未満の時、受ける疾風属性弱点ダメージが追加で2.0%/4.0%上昇する。",
+        "name": "嵐の一心",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70606,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が持つ貫通10%ごとに、総ダメージ増幅が0.5%/1.0%上昇する。最大2.5%/5.0%まで上昇する。",
+        "name": "疾風貫通",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70607,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Wind",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にHIGHLIGHT/テウルギアを使用した後、敵の強化効果を1/2個解除する。",
+        "name": "浄化の風",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70608,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70701,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70702,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70703,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "状態異常命中が12.0%/24.0%上昇する。",
+        "name": "状態異常命中上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70704,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にペルソナを使用した後、スキル対象に『思考窃取』を1スタック付与する。3ターン持続し、最大3スタックまで累積する。\n『思考窃取』：受けるダメージが1.5%/3.0%上昇する。",
+        "name": "意識截取",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70705,
+        "tags": [
+          null
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が精神異常または『思考窃取』状態の敵を攻撃した時、最終ダメージ増幅が2.5%/5.0%上昇する。",
+        "name": "異念増幅",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70706,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "任意の敵が『思考窃取』を持っている場合、その敵が受ける念動属性弱点ダメージが2.0%/4.0%上昇する。",
+        "name": "精神ハンター",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70707,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Psychokinesis",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身は敵の『思考窃取』スタック数に応じて敵のステータス効果を低下させ、自身は同量のステータスを上昇させる。複数の敵から得たステータスは最大1回のみ有効になる。\n『思考窃取』1スタック：敵の防御力ボーナス10.0%/20.0%を奪う。\n『思考窃取』2スタック：敵の攻撃力ボーナス10.0%/20.0%を奪う。\n『思考窃取』3スタック：敵のダメージボーナス10.0%/20.0%を奪う。",
+        "name": "精神略奪",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70708,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70801,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70802,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70803,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "テクニカル精度が320/640上昇する。",
+        "name": "テクニカル精度上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70804,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にペルソナスキルを使用した後、敵全体にランダムな元素異常を1個付与し、放射を1スタック付与する。",
+        "name": "混沌反応",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70805,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵を攻撃した時、敵に元素異常が1種類あるごとに、自身の総ダメージ増幅が0.5%/1.0%上昇する。最大0/0まで上昇する。",
+        "name": "無秩序分裂",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70806,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "敵のすべての元素異常の効果値を強化する。\n燃焼：受けるHP回復量が10.0%/20.0%低下する。\n感電：受ける核熱属性CRT倍率が10.0%/20.0%上昇する。\n風襲：核熱属性防御力が7.5%/15.0%低下する。\n凍結：攻撃力が20.0%/40.0%低下する。\n放射：受ける核熱ダメージが10.0%/20.0%上昇する。",
+        "name": "元素触媒",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70807,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Nuclear",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "敵が燃焼、感電、風襲、凍結、放射を同時に持っている場合、その敵が受ける核熱属性弱点ダメージが2.5%/5.0%上昇する。",
+        "name": "共鳴核爆発",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70808,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70901,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70902,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70903,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HP回復量が7.5%/15.0%上昇する。",
+        "name": "HP回復量上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70904,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身がペルソナスキルを使用した後、味方に祝福を1スタック付与する。対象の祝福スタック数が5スタック以上の場合、『強力な祝福』を付与する。2ターン持続する。\n『強力な祝福』：毎ターン最大HPの1.5%/3.0%を回復する。",
+        "name": "恩恵氾濫",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70905,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "任意の味方が『強力な祝福』を持っている場合、その味方の祝福属性弱点ダメージが2.0%/4.0%上昇する。",
+        "name": "神聖審判",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70906,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が『強力な祝福』を持っている場合、総ダメージ増幅が2.5%/5.0%上昇する。",
+        "name": "祝福審判",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70907,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Bless",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が味方にHIGHLIGHT/テウルギアを使用した後、味方全体の最大HPが10.0%/20.0%上昇する。2ターン持続する。",
+        "name": "聖光降臨",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 70908,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71001,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71002,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71003,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "持続ダメージ効果が2.0%/4.0%上昇する。",
+        "name": "持続ダメージ効果上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71004,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身がペルソナスキルを使用した後、敵全体に呪怨を1スタック付与する。対象の呪怨スタック数が5スタック以上の場合、『深淵の呪怨』を付与する。2ターン持続する。\n『深淵の呪怨』：毎ターン最大HPの2.5%/5.0%に相当するダメージを受ける（付与者の攻撃力1.0%/2.0%分のダメージを上限とする）。",
+        "name": "呪怨縛り",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71005,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "任意の敵が『深淵の呪怨』を持っている場合、その敵が受ける呪怨属性弱点ダメージが2.0%/4.0%上昇する。",
+        "name": "影の侵食",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71006,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が『深淵の呪怨』状態の敵を攻撃した時、総ダメージ増幅が2.5%/5.0%上昇する。",
+        "name": "易傷呪印",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71007,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Curse",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "自身が敵にHIGHLIGHT/テウルギアを使用した後、その敵が受ける持続ダメージ効果が3.0%/6.0%上昇する。2ターン持続する。",
+        "name": "深淵の囁き",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71008,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71101,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71102,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71103,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "防御力が15.0%/30.0%上昇する。",
+        "name": "防御力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71104,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "万能属性ダメージが10.0%/20.0%上昇する。",
+        "name": "万能属性ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71105,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "戦闘開始時、味方に異なる属性の怪盗が1人いるごとに、自身の攻撃力が7.5%/15.0%上昇する。",
+        "name": "属性の絆",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71106,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "味方が異なる適応性属性ダメージを1種類与えるごとに、自身は『調和』を1スタック獲得する。『調和』が6スタックに達すると、自身の最終ダメージ増幅が2.5%/5.0%上昇する。",
+        "name": "調和の力",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71107,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Almighty",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "敵の適応性に耐性/無効/反射/吸収が5個以上ある時、受ける最終ダメージ増幅が2.0%/4.0%上昇する。",
+        "name": "鉄壁キラー",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71108,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "攻撃力が10.0%/20.0%上昇する。",
+        "name": "攻撃力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71201,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "ダメージが8.0%/16.0%上昇する。",
+        "name": "ダメージ上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71202,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "HPが10.0%/20.0%上昇する。",
+        "name": "HP上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71203,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 501,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "防御力が15.0%/30.0%上昇する。",
+        "name": "防御力上昇",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71204,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "戦闘開始時、味方全体の攻撃力が永続的に10.0%/20.0%上昇する。",
+        "name": "攻撃心得",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71205,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "戦闘開始時、味方全体のダメージが永続的に7.5%/15.0%上昇する。",
+        "name": "ダメージ専門化",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71206,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "戦闘開始時、味方全体のCRT倍率が永続的に5.0%/10.0%上昇する。",
+        "name": "CRT倍率強化",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71207,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    },
+    {
+      "innateType": 502,
+      "nature": "Support",
+      "skill": {
+        "ascend": "0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "75",
+        "desc": "戦闘開始時、味方全体の貫通が永続的に2.0%/4.0%上昇する。",
+        "name": "貫通強化",
+        "nature": null,
+        "skill_lv": "1/2",
+        "sn": 71208,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    }
+  ],
+  "msg": "OK",
+  "status": 0
+}

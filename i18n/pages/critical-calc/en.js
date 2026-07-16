@@ -93,6 +93,7 @@ window.I18N_PAGE_CRITICAL_CALC_EN = {
     "defenseGroupNames": {
         "wonder": "Wonder",
         "revelation": "Revelations",
-        "common": "Common"
+        "common": "Common",
+        "nature_skill": "Attribute Mindscape"
     }
 };

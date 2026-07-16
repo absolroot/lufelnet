@@ -580,6 +580,16 @@
         <div style="height: 10px;"></div>-->
     </div>
 
+    <!-- 속성 심상 섹션 (KR 우선 적용, 기본 숨김) -->
+    <div id="nature-skill-card" class="nature-skill-card card-style drag-me" style="display:none;">
+        <div class="nature-skill-header">
+            <h2 data-nature-skill-label="title">속성 심상</h2>
+            <p id="nature-skill-global-note" class="nature-skill-global-note" style="display:none;"></p>
+        </div>
+        <div id="nature-skill-tabs" class="nature-skill-tabs" aria-label="속성 선택"></div>
+        <div id="nature-skill-slots" class="nature-skill-slots"></div>
+    </div>
+
     <!-- 심상 코어 섹션 (innate.js 존재 캐릭터 전용, 기본 숨김) -->
     <div class="innate-card card-style drag-me" style="display:none;">
         <h2>심상 코어</h2>
@@ -3726,3 +3736,5 @@
         <div id="help-modal-description" class="help-description weapon-effect-description"></div>
     </div>
 </div>
+
+<script src="{{ site.baseurl }}/assets/js/character/nature-skill.js?v={{ site.time | date: '%s' }}"></script>

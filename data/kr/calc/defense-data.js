@@ -55,6 +55,105 @@ const penetrateData = {
       ]
     },
   ],
+  "속성 심상": [
+    {
+      "id": "nature-skill-wind-pierce-rate",
+      "type": "속성 심상",
+      "target": "자신",
+      "skillIcon": "/assets/img/skill-element/질풍.png",
+      "skillName": "관통 증가",
+      "skillName_en": "Pierce Rate Increase",
+      "skillName_jp": "貫通上昇",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 3.8,
+        "LV2": 7.5
+      },
+      "defaultOption": "LV2",
+      "value": 7.5,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "",
+      "skillName_cn": "穿透提升",
+      "note_cn": "",
+      "type_cn": "属性心象",
+      "target_cn": "自身",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
+    },
+    {
+      "id": "nature-skill-wind-gale-break-assault",
+      "type": "속성 심상",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/질풍광역.png",
+      "skillName": "파풍 강습",
+      "skillName_en": "Gale Break Assault",
+      "skillName_jp": "破風強襲",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 5,
+        "LV2": 10
+      },
+      "defaultOption": "LV2",
+      "value": 10,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "풍습 상태인 적 공격 시",
+      "note_en": "When attacking a Windswept foe",
+      "note_jp": "風襲状態の敵を攻撃時",
+      "skillName_cn": "破风强袭",
+      "note_cn": "攻击拥有风袭的敌人时",
+      "type_cn": "属性心象",
+      "target_cn": "群体",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
+    },
+    {
+      "id": "nature-skill-support-pierce-boost",
+      "type": "속성 심상",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/버프광역.png",
+      "skillName": "관통 강화",
+      "skillName_en": "Pierce Rate Boost",
+      "skillName_jp": "貫通強化",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 2,
+        "LV2": 4
+      },
+      "defaultOption": "LV2",
+      "value": 4,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "전투 시작 시",
+      "note_en": "At the start of battle",
+      "note_jp": "戦闘開始時",
+      "skillName_cn": "穿透强化",
+      "note_cn": "战斗开始时",
+      "type_cn": "属性心象",
+      "target_cn": "群体",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
+    }
+  ],
   "미쿠": [
     {
       "id": "miku-penetrate",
@@ -1207,6 +1306,74 @@ const defenseCalcData = {
       "target_cn": "单体",
       "duration_cn": "2回合",
       "options_cn": []
+    }
+  ],
+  "속성 심상": [
+    {
+      "id": "nature-skill-psy-mental-plunder-defense",
+      "type": "속성 심상",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/염동광역.png",
+      "skillName": "정신 약탈",
+      "skillName_en": "Mental Plunder",
+      "skillName_jp": "精神略奪",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 10,
+        "LV2": 20
+      },
+      "defaultOption": "LV2",
+      "value": 20,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "사고 절취 1중첩 / 방어력 보너스 탈취",
+      "note_en": "Thought Theft 1 stack / Defense bonus steal",
+      "note_jp": "思考窃取1スタック / 防御力ボーナス奪取",
+      "skillName_cn": "精神掠夺",
+      "note_cn": "1层思维窃取 / 偷取防御力加成",
+      "type_cn": "属性心象",
+      "target_cn": "群体",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
+    },
+    {
+      "id": "nature-skill-nuclear-elemental-catalyst-defense",
+      "type": "속성 심상",
+      "target": "광역",
+      "skillIcon": "/assets/img/skill-element/핵열광역.png",
+      "skillName": "원소 촉매",
+      "skillName_en": "Elemental Catalyst",
+      "skillName_jp": "元素触媒",
+      "options": [
+        "LV1",
+        "LV2"
+      ],
+      "values": {
+        "LV1": 7.5,
+        "LV2": 15
+      },
+      "defaultOption": "LV2",
+      "value": 15,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "note": "풍습 강화 / 핵열 속성 한정",
+      "note_en": "Windswept enhancement / Nuclear only",
+      "note_jp": "風襲強化 / 核熱属性限定",
+      "skillName_cn": "元素催化",
+      "note_cn": "强化风袭 / 仅限核热属性",
+      "type_cn": "属性心象",
+      "target_cn": "群体",
+      "duration_cn": "-",
+      "options_cn": [
+        "LV1",
+        "LV2"
+      ]
     }
   ],
   "원더": [

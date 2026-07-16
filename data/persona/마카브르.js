@@ -30,6 +30,10 @@ window.personaFiles["마카브르"] = {
   "combination": null,
   "recommendSkill": [
     {
+      "name": "해체 역장",
+      "priority": 3
+    },
+    {
       "name": "전의 공명",
       "priority": 3
     },

@@ -1,0 +1,79 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice",
+      "Electric"
+    ],
+    "Weak": [
+      "Curse"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 24",
+    "desc": "btlwip-0724-[Skill_desc_26611]",
+    "level": "6/7/8",
+    "name": "btlwip-0724-[Skill_name_26611]"
+  },
+  "innate_skill": [
+    {
+      "cost": "체력 9.0%",
+      "desc": "このスキルの命中率を１５%下げ、クリティカル率を１６%上昇させ、敵全体に攻撃力14.9/15.6/16.4%の銃撃属性ダメージを３回与える。",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "トリプルダウン"
+    },
+    {
+      "cost": "SP 20",
+      "desc": "敵全体に攻撃力45.0/49.3/53.6%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "マハンマオン"
+    },
+    {
+      "cost": "",
+      "desc": "遠隔攻撃のクリティカル率が８.９%上昇する。",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "トリガーハッピーⅣ"
+    },
+    {
+      "cost": "",
+      "desc": "状態異常命中が１６.２%上昇する。",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "異常命中ブースタⅣ"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "ヴァスキ",
+  "nature": "Gun",
+  "passive_skill": [
+    {
+      "desc": "btlwip-0724-[Skill_desc_26641]",
+      "name": "btlwip-0724-[Skill_name_26641]"
+    },
+    {
+      "desc": "btlwip-0724-[Skill_desc_26642]",
+      "name": "btlwip-0724-[Skill_name_26642]"
+    },
+    {
+      "desc": "btlwip-0724-[Skill_desc_26643]",
+      "name": "btlwip-0724-[Skill_name_26643]"
+    },
+    {
+      "desc": "btlwip-0724-[Skill_desc_26644]",
+      "name": "btlwip-0724-[Skill_name_26644]"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "敵全体に攻撃力90.0%/96.3%/102.6%の銃撃属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
+    "level": "6/7/8",
+    "name": "ハイライト"
+  }
+}

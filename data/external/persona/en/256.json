@@ -12,60 +12,67 @@
     "Weak": []
   },
   "fixed_skill": {
-    "cost": "SP 24",
-    "desc": "Deal X% Curse damage to 1 foe. Decrease Defense by X% for 2 turns.",
+    "cost": "SP 22",
+    "desc": "12.6/13.3/13.9% chance to inflict Despair on all foes for 3 turns.",
     "level": "6/7/8",
-    "name": "Bewitching Sound"
+    "name": "Abysmal Surge"
   },
   "innate_skill": [
     {
-      "cost": "",
-      "desc": "Decrease Speed by 6. Increase HP by 15%.",
-      "learn_level": "4",
+      "cost": "SP 21",
+      "desc": "Deal Nuclear damage to all foes equal to 66.9/69.9/72.9% of Attack. Deal a Technical and increase damage by 20% for foes with an elemental ailment.",
+      "learn_level": "10",
       "level": "6/7/8",
-      "name": "Ironclad Resolve I"
-    },
-    {
-      "cost": "SP 19",
-      "desc": "Deal Ice damage to all foes equal to 53.1/55.8/58.4% of Attack. 29.5/31.0/32.4% chance to inflict Freeze for 2 turns.",
-      "learn_level": "8",
-      "level": "6/7/8",
-      "name": "Mabufu"
+      "name": "Mafreidyne"
     },
     {
       "cost": "",
-      "desc": "Increase Attack by 5.8%.",
-      "learn_level": "12",
+      "desc": "Increase ailment accuracy by 13%.",
+      "learn_level": "20",
       "level": "6/7/8",
-      "name": "Attack Boost I"
+      "name": "Accuracy Boost III"
+    },
+    {
+      "cost": "",
+      "desc": "Restore 6.5% of max HP and SP after winning a battle.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Life Aid IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Decrease 1 foe's Attack, Defense, ailment accuracy, and ailment resistance by 7.8%/8.2%/8.6%, and Speed by 5. Lasts for 3 turns.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Debilitate"
     }
   ],
-  "max_level": 70,
-  "max_level_after_awake": 85,
+  "max_level": 80,
+  "max_level_after_awake": 95,
   "name": "Trumpeter",
   "nature": "Almighty",
   "passive_skill": [
     {
-      "desc": "When any ally attacks a Marked foe, increase Attack by 15%.",
-      "name": "Hunting"
+      "desc": "btlwip-0724-[Skill_desc_25641]",
+      "name": "btlwip-0724-[Skill_name_25641]"
     },
     {
-      "desc": "AAAAAA==",
-      "name": "Hunting I"
+      "desc": "btlwip-0724-[Skill_desc_25642]",
+      "name": "btlwip-0724-[Skill_name_25642]"
     },
     {
-      "desc": "AAAAAA==",
-      "name": "Hunting II"
+      "desc": "btlwip-0724-[Skill_desc_25643]",
+      "name": "btlwip-0724-[Skill_name_25643]"
     },
     {
-      "desc": "AAAAAA==",
-      "name": "Hunting III"
+      "desc": "btlwip-0724-[Skill_desc_25644]",
+      "name": "btlwip-0724-[Skill_name_25644]"
     }
   ],
-  "rank": 6,
+  "rank": 7,
   "showtime_skill": {
     "cost": "",
-    "desc": "Deal Almighty damage to all foes equal to 36.0%/38.5%/41.0% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "desc": "Deal Almighty damage to all foes equal to 45.0%/48.2%/51.3% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
     "level": "6/7/8",
     "name": "Highlight"
   }

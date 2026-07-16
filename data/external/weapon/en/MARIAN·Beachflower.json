@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Everlasting Garden",
+        "quality": 5,
+        "skill": "Increase medicine effects by 20.0%/20.0%/26.0%/26.0%/32.0%/32.0%/38.0%. Also, when using medicine on an ally, also increase the main target's critical damage by 15.3%/19.9%/19.9%/24.5%/24.5%/29.1%/29.1% for 3 turns.\nWhen using a skill on an ally, increase the main target's Attack by 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% for 2 turns.",
+        "stat": {
+          "attack": 594.58,
+          "defense": 400.84,
+          "hp": 2655.87
+        },
+        "user": "Beachflower Minami"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Tea Time Delight",
+        "quality": 4,
+        "skill": "Increase max HP by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When using a skill on an ally, increase Beachflower Minami's critical multiplier by 17.4%/22.6%/22.6%/27.8%/27.8%/33.0%/33.0%.",
+        "stat": {
+          "attack": 475.65,
+          "defense": 320.45,
+          "hp": 2125.04
+        },
+        "user": "Beachflower Minami"
+      }
+    ],
+    "name": "Beachflower Minami"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -10,22 +10,21 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Phys",
+                "Ice",
                 "Electric",
-                "Psychokinesis",
-                "Nuclear",
+                "Wind",
                 "Bless",
                 "Curse"
               ],
               "Weak": [
-                "Wind"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-melchizedek.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "默基瑟德",
-            "skill": "706,1004",
-            "sn": 548101,
+            "name": "被操控的莉莉丝",
+            "skill": "607,603",
+            "sn": 549101,
             "stat": {}
           }
         ],
@@ -53,7 +52,7 @@
             "level": "89",
             "name": "被操控的尤利尔",
             "skill": "1026,1016,1090",
-            "sn": 548111,
+            "sn": 549111,
             "stat": {}
           }
         ],
@@ -61,9 +60,9 @@
         "sn": 78402
       }
     ],
-    "buff": "血岩记忆: 自身回合开始时，为所有敌人添加1层『溶血腐化』。『溶血腐化』：受到的最终伤害提升5%，持续1回合，最多可叠加8层。",
-    "endTime": "2026-07-16 06:30:00",
-    "startTime": "2026-06-25 07:30:00"
+    "buff": "化石刃丛: 怪盗每累计消耗40精力或释放HIGHLIGHT/神通法时，全体同伴获得1层『锋锐骨片』；『锋锐骨片』：每层提供5%的最终伤害加成，持续2回合，最多可叠加8层。",
+    "endTime": "2026-08-13 06:30:00",
+    "startTime": "2026-07-16 07:30:00"
   },
   "msg": "OK",
   "status": 0

@@ -2,32 +2,49 @@ window.operationData = window.operationData || {};
 window.operationData["안·댄싱 스타"] = {
     "basic": [
         {
-            "label": "의식 0(4T/6T)",
+            "label": "의식 0(2T)",
             "value": "1111 › 211 › 211 › 113 › 1111 › 323233"
         },
         {
-            "label": "의식 0(3T/6T)",
+            "label": "의식 0(3T)",
             "value": "1111 › 211 › 23 › 1111 › 211 › 323233"
         },
         {
-            "label": "의식 1",
-            "value": "1111 › 211 › 1111 › 233 › 1111 › 211323233"
+            "label": "의식 1(2T)",
+            "value": "1111 › 213 › 1111 › 213 › 1111 › 211323233"
         },
         {
-            "label": "의식 2",
-            "value": "1111 › 211 › 1111 › 233 › 1111 › 2113211333"
+            "label": "의식 1(3T)",
+            "value": "1111 › 211 › 233 › 1111 › 211 › 211323233"
+        },
+        {
+            "label": "의식 2(2T)",
+            "value": "1111 › 213 › 1111 › 213 › 1111 › 2113211333"
+        },
+        {
+            "label": "의식 2(3T)",
+            "value": "1111 › 211 › 233 › 1111 › 211 › 2113211333"
         }
     ],
     "note": [
-        "· 출시 초기로 언제든지 변경될 수 있습니다"
+        "· 출시 초기로 언제든지 변경될 수 있습니다",
+        "· 2T는 짝수턴에 강한 형태, 3T는 3턴마다 강하게 때리는 형식입니다.",
+        "· 2T의 경우 2턴과 4턴에 사용할 스킬3을 한 턴에 몰아주는 형태로 변경할 수 있습니다."
+
     ],
     "note_en": [
-        "· Initial release, can be changed at any time"
+        "· Initial release; this may change at any time.",
+        "· 2T is strong on even-numbered turns, while 3T hits hard every 3 turns.",
+        "· For 2T, you can switch to a pattern that concentrates the Skill 3 uses from turns 2 and 4 into a single turn."
     ],
     "note_jp": [
-        "· 初期リリースであり、いつでも変更される可能性があります"
+        "· リリース初期のため、いつでも変更される可能性があります",
+        "· 2Tは偶数ターンに強い形で、3Tは3ターンごとに強く攻撃する形です。",
+        "· 2Tの場合、2ターン目と4ターン目に使うスキル3を1ターンに集中させる形に変更できます。"
     ],
     "note_cn": [
-        "· 初期发布，随时可能更改"
+        "· 版本初期，随时可能调整",
+        "· 2T是在偶数回合较强的形式，3T是每3回合打出高爆发的形式。",
+        "· 2T的情况下，可以改成把第2回合和第4回合要用的技能3集中到同一回合使用的形式。"
     ]
 };

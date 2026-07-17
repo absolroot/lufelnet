@@ -260,6 +260,8 @@
       '.ann-turn-main{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 180px}',
       '.ann-turn-title{font-weight:700;font-size:14px;flex:0 0 auto}',
       '.ann-turn-selected{display:flex;align-items:center;gap:0;min-width:0;flex-wrap:wrap}',
+      '.ann-empty-slot{display:inline-flex;align-items:center;justify-content:center;width:18px;height:22px;flex:0 0 18px;pointer-events:none}',
+      '.ann-empty-slot::before{content:"";width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.32)}',
       '.ann-turn-summary{font-size:12px;color:rgba(255,255,255,.68);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;margin-left:auto}',
       '.ann-turn-sp-gain{color:rgba(255,255,255,.38);font-size:10px;font-weight:400}',
       '.ann-selected-skill{padding:0}',
@@ -636,6 +638,11 @@
       if (!entry.valid) chip.classList.add('ann-invalid');
       selected.appendChild(chip);
     });
+    for (var slotIndex = turn.entries.length; slotIndex < MAX_ACTIONS_PER_TURN; slotIndex += 1) {
+      var emptySlot = el('span', 'ann-empty-slot');
+      emptySlot.setAttribute('aria-hidden', 'true');
+      selected.appendChild(emptySlot);
+    }
     turnMain.appendChild(selected);
     headerBtn.appendChild(turnMain);
 

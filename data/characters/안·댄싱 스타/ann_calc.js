@@ -302,11 +302,12 @@
     return wrap;
   }
 
-  function makeIconChip(skillNo, label, asButton) {
+  function makeIconChip(skillNo, label, asButton, mobileTooltipBehavior) {
     var el = document.createElement(asButton ? 'button' : 'span');
     el.className = 'ann-icon-chip tooltip-text';
     if (asButton) el.type = 'button';
     el.setAttribute('data-tooltip', label || getSkillName(skillNo));
+    if (mobileTooltipBehavior) el.setAttribute('data-tooltip-mobile', mobileTooltipBehavior);
     el.setAttribute('aria-label', label || getSkillName(skillNo));
     el.setAttribute('tabindex', '0');
     el.appendChild(createSkillIconBadge(skillNo));
@@ -618,7 +619,7 @@
     turn.entries.forEach(function (entry, index) {
       var label = getSkillName(entry.skill) + ' - ' + t('remove');
       if (!entry.valid) label = label + ' (' + entry.reason + ')';
-      var chip = makeIconChip(entry.skill, label, false);
+      var chip = makeIconChip(entry.skill, label, false, 'longpress');
       chip.classList.add('ann-selected-skill');
       chip.setAttribute('role', 'button');
       chip.setAttribute('data-ann-remove-turn', String(turn.index));
@@ -657,6 +658,7 @@
       btn.appendChild(createSkillIconBadge(skillNo));
       btn.appendChild(document.createTextNode(getSkillButtonLabel(skillNo)));
       btn.setAttribute('data-tooltip', availability.ok ? getSkillName(skillNo) : availability.reason);
+      btn.setAttribute('data-tooltip-mobile', 'longpress');
       btn.classList.add('tooltip-text');
       bindTooltip(btn);
       buttons.appendChild(btn);

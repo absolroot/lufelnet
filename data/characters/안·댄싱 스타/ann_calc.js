@@ -419,6 +419,14 @@
     return result;
   }
 
+  function hasAnyPlannedSkill() {
+    return Object.keys(state.modes).some(function (mode) {
+      return (state.modes[mode] || []).some(function (turn) {
+        return Array.isArray(turn) && turn.length > 0;
+      });
+    });
+  }
+
   function loadState() {
     try {
       var raw = localStorage.getItem(STORAGE_KEY);
@@ -431,6 +439,7 @@
         state.modes.r1 = normalizeTurns(saved.modes.r1);
       }
       clampOpenTurn();
+      if (!hasAnyPlannedSkill()) state.openTurn = 0;
     } catch (_) {}
   }
 

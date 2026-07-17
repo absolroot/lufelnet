@@ -2,11 +2,11 @@ window.operationData = window.operationData || {};
 window.operationData["안·댄싱 스타"] = {
     "basic": [
         {
-            "label": "의식 0",
+            "label": "의식 0(4T/6T)",
             "value": "1111 › 211 › 211 › 113 › 1111 › 323233"
         },
         {
-            "label": "의식 0",
+            "label": "의식 0(3T/6T)",
             "value": "1111 › 211 › 23 › 1111 › 211 › 323233"
         },
         {
@@ -15,7 +15,7 @@ window.operationData["안·댄싱 스타"] = {
         },
         {
             "label": "의식 2",
-            "value": "1111 › 213 › 1111 › 213 › 211 › 2113211333"
+            "value": "1111 › 213 › 1111 › 213 › 1111 › 2113211333"
         }
     ],
     "note": [

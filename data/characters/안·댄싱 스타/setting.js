@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["안·댄싱 스타"] = {
-    "role": "",
-    "video": [""],
+    "role": "유동적 스킬 조합 화염 딜러",
+    "video": ["g6d744ghb9E"],
     "video_en": [""],
     "video_jp": [""],
     "main_revelation": ["자아"],

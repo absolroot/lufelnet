@@ -28,7 +28,7 @@ window.recommendParty["안·댄싱 스타"] = {
                 "",
                 ""
             ],
-            "comment": "",
+        "comment": "",
             "comment_en": "",
             "comment_jp": ""
         }

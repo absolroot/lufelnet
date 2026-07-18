@@ -59,8 +59,8 @@ window.recommendParty["카타야마"] = {
                 "카타야마",
                 "나루미",
                 "J&C",
-                "미츠루",
-                "후카"
+                "후카",
+                "미츠루"
             ],
             "comment": "",
             "comment_en": "",
@@ -69,7 +69,7 @@ window.recommendParty["카타야마"] = {
         {
             "members": [
                 "아케치",
-                "렌·댄싱스타",
+                "렌·댄싱 스타",
                 "J&C",
                 "후카",
                 "카타야마"

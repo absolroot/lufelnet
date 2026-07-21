@@ -1399,6 +1399,7 @@ export class PartyUI {
         const currentNature = detectedNatures.includes(current.nature) ? current.nature : (detectedNatures[0] || '');
         return {
             nature: currentNature,
+            availableNatures: detectedNatures,
             synergySn: current.synergySn ? Number(current.synergySn) : '',
             combatSn: current.combatSn ? Number(current.combatSn) : ''
         };
@@ -1446,12 +1447,18 @@ export class PartyUI {
         const isSynergy = innateType === DataLoader.TYPE_NATURE_SYNERGY;
         const selectedSn = isSynergy ? state.synergySn : state.combatSn;
         const typeLabel = isSynergy
-            ? getNatureSkillUIText('synergy', '심상 시너지')
-            : getNatureSkillUIText('combat', '심상 전투기술');
-        const selected = selectedSn ? DataLoader.getNatureSkillBySn(selectedSn) : null;
+            ? getNatureSkillUIText('synergy', '속성 공명')
+            : getNatureSkillUIText('combat', '속성 전투 스킬');
+        const selectedEntry = selectedSn ? DataLoader.getNatureSkillBySn(selectedSn) : null;
+        const selected = selectedEntry
+            && selectedEntry.innateType === innateType
+            && (state.availableNatures || []).includes(selectedEntry.nature)
+            ? selectedEntry
+            : null;
         const skillName = selected?.skill?.name || '-';
         const isAoe = selected?.skill?.target === 'Alive Ally' || selected?.skill?.target_count === 'All' || selected?.skill?.target_count > 1;
-        const iconPath = DataLoader.getNatureIconPath(state.nature, isAoe);
+        const iconNature = selected?.nature || state.nature;
+        const iconPath = DataLoader.getNatureIconPath(iconNature, isAoe);
 
         const button = document.createElement('button');
         button.type = 'button';
@@ -1459,7 +1466,7 @@ export class PartyUI {
         button.dataset.natureType = isSynergy ? 'synergy' : 'combat';
         button.setAttribute('aria-label', `${typeLabel} ${skillName}`);
         button.innerHTML = `
-            <img class="revelation-icon" src="${iconPath}" alt="${escapeHtml(DataLoader.getNatureLabel(state.nature))}" onerror="this.style.display='none'">
+            <img class="revelation-icon" src="${iconPath}" alt="${escapeHtml(DataLoader.getNatureLabel(iconNature))}" onerror="this.style.display='none'">
             <span>${escapeHtml(skillName)}</span>
         `;
         button.addEventListener('click', (event) => {
@@ -1487,13 +1494,13 @@ export class PartyUI {
 
         const isSynergy = innateType === DataLoader.TYPE_NATURE_SYNERGY;
         const typeLabel = isSynergy
-            ? getNatureSkillUIText('synergy', '심상 시너지')
-            : getNatureSkillUIText('combat', '심상 전투기술');
+            ? getNatureSkillUIText('synergy', '속성 공명')
+            : getNatureSkillUIText('combat', '속성 전투 스킬');
         const modal = this.ensureNatureSkillModal();
         const title = modal.querySelector('#tactic-nature-skill-modal-title');
         const note = modal.querySelector('.tactic-nature-skill-modal-note');
         const list = modal.querySelector('.nature-skill-modal-list');
-        const skills = DataLoader.getNatureSkillsFor(state.nature, innateType);
+        const skills = DataLoader.getNatureSkillsForNatures(state.availableNatures || [state.nature], innateType);
         const currentSn = isSynergy ? state.synergySn : state.combatSn;
 
         title.textContent = `${typeLabel} ${getNatureSkillUIText('select', '스킬 선택')}`;
@@ -1521,7 +1528,7 @@ export class PartyUI {
             list.appendChild(empty);
         } else {
             skills.forEach((entry) => {
-                list.appendChild(this.createNatureSkillModalOption(index, state.nature, innateType, entry, currentSn, modal));
+                list.appendChild(this.createNatureSkillModalOption(index, entry.nature || state.nature, innateType, entry, currentSn, modal));
             });
         }
 

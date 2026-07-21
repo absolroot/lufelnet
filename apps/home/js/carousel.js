@@ -492,7 +492,7 @@
     const base = REGION_BASE_UTC[region] ?? 9;
     // Build a Date as if in UTC of that base offset: create in UTC then subtract base offset to get real UTC
     // Example: '2025-09-29 08:00:00' at UTC+9 => UTC is 23:00 prev day
-    const m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})\s+([0-9]{2}):([0-9]{2}):([0-9]{2})$/.exec(tsStr.trim());
+    const m = /^([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})\s+([0-9]{1,2}):([0-9]{1,2}):([0-9]{1,2})$/.exec(tsStr.trim());
     if (!m) return null;
     const y = parseInt(m[1], 10), mo = parseInt(m[2], 10) - 1, d = parseInt(m[3], 10);
     const hh = parseInt(m[4], 10), mm = parseInt(m[5], 10), ss = parseInt(m[6], 10);

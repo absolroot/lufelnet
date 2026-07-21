@@ -19,12 +19,15 @@ window.operationData["미유·여름"] = {
         }
     ],
     "note": [
-        "해명 괴도에 따라 택틱 변화"
+        "· 미유는 파티에 따라 사이클이 정말 다채롭게 변화한다. 각 상황은 택틱 라이브러리를 참고할 것을 추천한다."
     ],
     "note_en": [
+        "· Miyu's rotation can vary widely depending on the party. Check the Tactic Library for each situation."
     ],
     "note_jp": [
+        "· 海夕のサイクルは編成によって大きく変化します。状況ごとにタクティック一覧を参考にすることをおすすめします。"
     ],
     "note_cn": [
+        "· 海夕的循环会根据队伍产生很多变化。建议根据具体情况参考战术库。"
     ]
 };

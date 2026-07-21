@@ -381,11 +381,22 @@ export class DataLoader {
     }
 
     static getNatureSkillsFor(nature, innateType, lang = this.getCurrentLang()) {
+        return DataLoader.getNatureSkillsForNatures([nature], innateType, lang);
+    }
+
+    static getNatureSkillsForNatures(natures, innateType, lang = this.getCurrentLang()) {
         const dataLang = this.getNatureDataLang(lang);
         const list = (window.natureSkillDataByLang && window.natureSkillDataByLang[dataLang])
             || window.natureSkillData
             || [];
-        return list.filter((entry) => entry && entry.nature === nature && entry.innateType === innateType);
+        const orderedNatures = (Array.isArray(natures) ? natures : [natures])
+            .map((nature) => String(nature || ''))
+            .filter(Boolean)
+            .filter((nature, index, source) => source.indexOf(nature) === index);
+
+        return orderedNatures.flatMap((nature) => (
+            list.filter((entry) => entry && entry.nature === nature && entry.innateType === innateType)
+        ));
     }
 
     /**

@@ -25,8 +25,8 @@ window.personaFiles["가브리엘"] = {
     "Weak": []
   },
   "event": false,
-  "wild_emblem_rainbow": false,
-  "best_persona": false,
+  "wild_emblem_rainbow": true,
+  "best_persona": true,
   "tier": "S",
   "tier_desc": "",
   "tier_desc_en": "",
@@ -36,8 +36,12 @@ window.personaFiles["가브리엘"] = {
   "comment_en": "",
   "comment_jp": "",
   "comment_cn": "",
-  "added": "",
-  "cost": null,
+  "added": "KR v5.2.2",
+  "cost": {
+    "blue": 0,
+    "purple": 0,
+    "rainbow": 4000
+  },
   "combination": null,
   "recommendSkill": [
     {
@@ -58,7 +62,7 @@ window.personaFiles["가브리엘"] = {
     },
     {
       "name": "마하타루카 오토",
-      "priority": 3
+      "priority": 2
     },
     {
       "name": "전의 공명",

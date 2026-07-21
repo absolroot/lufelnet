@@ -2231,6 +2231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             basicContent.innerHTML = basicArray
                 .filter(item => item.label && item.value && item.label.trim() !== '' && item.value.trim() !== '')
                 .map(item => {
+                    const operationGroupAttr = item.group ? ` data-operation-group="${String(item.group).replace(/"/g, '&quot;')}"` : '';
                     const skills = item.value.split(' › ');
                     const skillSteps = skills.map(skill =>
                         `<div class="skill-step">${skill}</div>`
@@ -2250,7 +2251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     return `
-                        <div class="operation-row">
+                        <div class="operation-row"${operationGroupAttr}>
                             <div class="operation-label">${translatedLabel}</div>
                             <div class="operation-value">
                                 <div class="skill-sequence">

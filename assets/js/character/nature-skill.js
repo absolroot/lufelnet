@@ -99,8 +99,8 @@
 
     const TEXT_FALLBACK = {
         title: '속성 심상',
-        synergy: '심상 시너지',
-        combat: '심상 전투기술',
+        synergy: '속성 공명',
+        combat: '속성 전투 스킬',
         selectSkill: '스킬 선택',
         clickSelect: '클릭해서 선택',
         clickChange: '클릭해서 변경',

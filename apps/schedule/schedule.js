@@ -1426,23 +1426,12 @@
 
         // Attribute Mindscape 표시 (mindscape_nature 필드 사용)
         let mindscapeNatureHtml = '';
-        if (release.mindscape_nature && Array.isArray(release.mindscape_nature) && release.mindscape_nature.length > 0) {
+        if (release.mindscape_nature) {
             const mindscapeNatureLabel = t('gameTerms.mindscapeNature', '속성 심상');
-            const mindscapeNatureListHtml = release.mindscape_nature.map(charName => {
-                const displayName = getCharacterName(charName);
-                const charUrl = buildCharacterDetailUrl(charName);
-
-                return `
-                    <a href="${charUrl}" class="mindscape-nature-item" style="cursor: pointer;" onclick="event.stopPropagation();" title="${mindscapeNatureLabel}: ${displayName}">
-                        <img class="mindscape-nature-icon" src="${BASE_URL}/assets/img/character-detail/innate/item-302069.png" alt="${mindscapeNatureLabel}" title="${mindscapeNatureLabel}">
-                        <img class="mindscape-nature-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
-                    </a>
-                `;
-            }).join('');
-
             mindscapeNatureHtml = `
-                <div class="mindscape-nature-list">
-                    ${mindscapeNatureListHtml}
+                <div class="content-badge mindscape-nature-badge" title="${mindscapeNatureLabel}">
+                    <img class="content-icon mindscape-nature-icon" src="${BASE_URL}/assets/img/character-detail/innate/item-302069.png" alt="${mindscapeNatureLabel}" title="${mindscapeNatureLabel}">
+                    <span class="content-label mindscape-nature-label">${mindscapeNatureLabel}</span>
                 </div>
             `;
         }

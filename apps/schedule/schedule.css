@@ -681,43 +681,11 @@ a.mindscape-core-item {
     white-space: nowrap;
 }
 
-.mindscape-nature-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-}
-
-.mindscape-nature-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 8px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
-    position: relative;
-    text-decoration: none;
-    color: inherit;
-}
-
-a.mindscape-nature-item {
-    text-decoration: none;
-    color: inherit;
-}
-
 .mindscape-nature-icon {
     width: auto;
     height: 24px;
     max-width: 36px;
     object-fit: contain;
-    flex-shrink: 0;
-}
-
-.mindscape-nature-character-icon {
-    height: 20px;
-    width: 20px;
-    border-radius: 4px;
-    object-fit: cover;
     flex-shrink: 0;
 }
 

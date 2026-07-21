@@ -6,10 +6,17 @@
   var DEFAULT_TURN_COUNT = 6;
   var MAX_ACTIONS_PER_TURN = 10;
   var CHEER_MAX = 12;
+  var MODE_IDS = ['r0', 'r1', 'r2'];
   var MODE_RULES = {
     r0: { cap: 300, regen: 100, start: 200 },
-    r1: { cap: 400, regen: 125, start: 200 }
+    r1: { cap: 400, regen: 125, start: 200 },
+    r2: { cap: 400, regen: 125, start: 200 }
   };
+  var MODE_TABS = [
+    { id: 'r0', labelKey: 'mode0' },
+    { id: 'r1', labelKey: 'mode1' },
+    { id: 'r2', labelKey: 'mode2' }
+  ];
   var SKILLS = {
     1: { cost: 25, cheer: 1, icon: 'PC073_01_12_30_07.png' },
     2: { cost: 50, cheer: 2, icon: 'PC073_01_12_30_08.png' },
@@ -20,7 +27,8 @@
     kr: {
       title: '운영 시뮬레이터',
       mode0: '의식 0',
-      mode1: '의식 1+',
+      mode1: '의식 1',
+      mode2: '의식 2+',
       turn: '턴',
       startSp: '시작 SP',
       usedSp: '소모 SP',
@@ -44,7 +52,8 @@
     en: {
       title: 'Operation Simulator',
       mode0: 'Awareness 0',
-      mode1: 'Awareness 1+',
+      mode1: 'Awareness 1',
+      mode2: 'Awareness 2+',
       turn: 'Turn',
       startSp: 'Start SP',
       usedSp: 'SP Used',
@@ -68,7 +77,8 @@
     jp: {
       title: '運用シミュレーター',
       mode0: '意識 0',
-      mode1: '意識 1+',
+      mode1: '意識 1',
+      mode2: '意識 2+',
       turn: 'ターン',
       startSp: '開始SP',
       usedSp: '消費SP',
@@ -92,7 +102,8 @@
     cn: {
       title: '操作模拟器',
       mode0: '意识 0',
-      mode1: '意识 1+',
+      mode1: '意识 1',
+      mode2: '意识 2+',
       turn: '回合',
       startSp: '开始精力',
       usedSp: '消耗精力',
@@ -120,7 +131,8 @@
     openTurn: 0,
     modes: {
       r0: createEmptyTurns(),
-      r1: createEmptyTurns()
+      r1: createEmptyTurns(),
+      r2: createEmptyTurns()
     }
   };
 
@@ -137,11 +149,13 @@
   }
 
   function getTurnCount() {
-    return Math.max(
-      DEFAULT_TURN_COUNT,
-      state.modes.r0.length,
-      state.modes.r1.length
-    );
+    return MODE_IDS.reduce(function (max, mode) {
+      return Math.max(max, (state.modes[mode] || []).length);
+    }, DEFAULT_TURN_COUNT);
+  }
+
+  function isValidMode(mode) {
+    return MODE_IDS.indexOf(mode) !== -1;
   }
 
   function clampOpenTurn() {
@@ -226,6 +240,9 @@
       '.operation-settings.ann-operation-settings{display:flex!important;flex-direction:column!important;gap:20px!important;grid-template-columns:1fr!important}',
       '.operation-settings.ann-operation-settings>.setting-section{width:100%;min-width:0}',
       '.operation-settings.ann-operation-settings .operation-row{align-items:flex-start}',
+      '.ann-operation-tabs{display:flex;flex-wrap:wrap;gap:.5rem;row-gap:1rem;margin:0 0 1.5rem 0}',
+      '.ann-operation-tabs .ann-tab{min-width:0}',
+      '.operation-settings.ann-operation-settings .operation-row.ann-operation-hidden{display:none!important}',
       '.operation-settings.ann-operation-settings .operation-label{margin-top:4px}',
       '.ann-turn-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px 18px;width:100%}',
       '.ann-turn-cell{position:relative;display:flex;align-items:center;gap:8px;min-width:0;padding:4px 10px;border:0;border-radius:8px;background:rgba(0,0,0,.18)}',
@@ -250,9 +267,9 @@
       '.ann-header-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto}',
       '.ann-reset-btn,.ann-add-turn-btn,.ann-tab,.ann-skill-btn{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.2);color:rgba(255,255,255,.78);border-radius:8px;cursor:pointer;transition:all .16s ease-out}',
       '.ann-reset-btn,.ann-add-turn-btn{padding:7px 12px;font-size:12px;white-space:nowrap}',
-      '.ann-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}',
-      '.ann-tab{padding:10px 8px;font-size:13px;font-weight:600}',
-      '.ann-tab.active{background:rgba(209,31,31,.18);border-color:rgba(209,31,31,.5);color:#fff;box-shadow:0 0 0 .5px rgba(209,31,31,.5) inset}',
+      '.ann-tabs{display:flex;flex-wrap:wrap;gap:.5rem;row-gap:1rem;margin:0 0 12px}',
+      '.ann-tab{flex:0 0 auto;padding:.5rem 1rem;border:0;border-radius:36px;background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:13px;font-weight:600}',
+      '.ann-tab.active{background:rgba(0,0,0,.1);color:#fff;box-shadow:0 0 0 1px rgba(255,0,0,.5) inset}',
       '.ann-turn-list{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:20px}',
       '.ann-sim-turn{border:1px solid rgba(255,255,255,.1);background:rgba(0,0,0,.16);border-radius:10px;padding:10px;min-width:0}',
       '.ann-sim-turn.active{border-color:rgba(209,31,31,.45);box-shadow:0 0 0 .5px rgba(209,31,31,.35) inset}',
@@ -260,7 +277,7 @@
       '.ann-turn-main{display:flex;align-items:center;gap:8px;min-width:0;flex:1 1 180px}',
       '.ann-turn-title{font-weight:700;font-size:14px;flex:0 0 auto}',
       '.ann-turn-selected{display:flex;align-items:center;gap:0;min-width:0;flex-wrap:wrap}',
-      '.ann-empty-slot{display:inline-flex;align-items:center;justify-content:center;width:18px;height:22px;flex:0 0 18px;pointer-events:none}',
+      '.ann-empty-slot{display:inline-flex;align-items:center;justify-content:center;width:30px;height:22px;flex:0 0 30px;pointer-events:none}',
       '.ann-empty-slot::before{content:"";width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.32)}',
       '.ann-turn-summary{font-size:12px;color:rgba(255,255,255,.68);font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap;margin-left:auto}',
       '.ann-turn-sp-gain{color:rgba(255,255,255,.38);font-size:10px;font-weight:400}',
@@ -317,12 +334,86 @@
     return el;
   }
 
+  function setActiveMode(mode, card) {
+    if (!isValidMode(mode) || state.activeMode === mode) {
+      applyOperationFilter();
+      refreshOperationGroupControls();
+      return;
+    }
+    hideActiveTooltips();
+    state.activeMode = mode;
+    clampOpenTurn();
+    saveState();
+    applyOperationFilter();
+    refreshOperationGroupControls();
+    if (card) renderCard(card);
+    var simCard = card || document.querySelector('.ann-sim-card');
+    if (simCard && simCard !== card) renderCard(simCard);
+  }
+
+  function getModeLabel(mode) {
+    var tab = MODE_TABS.find(function (item) { return item.id === mode; });
+    return tab ? t(tab.labelKey) : mode;
+  }
+
+  function renderModeButtons(className, attrName) {
+    var tabs = el('div', className);
+    MODE_TABS.forEach(function (tab) {
+      var btn = el('button', 'ann-tab' + (state.activeMode === tab.id ? ' active' : ''), t(tab.labelKey));
+      btn.type = 'button';
+      btn.setAttribute(attrName, tab.id);
+      tabs.appendChild(btn);
+    });
+    return tabs;
+  }
+
+  function refreshOperationGroupControls() {
+    document.querySelectorAll('.ann-operation-tabs [data-ann-operation-mode], .ann-tabs [data-ann-mode]').forEach(function (btn) {
+      var mode = btn.getAttribute('data-ann-operation-mode') || btn.getAttribute('data-ann-mode');
+      btn.classList.toggle('active', mode === state.activeMode);
+      btn.setAttribute('aria-pressed', mode === state.activeMode ? 'true' : 'false');
+    });
+  }
+
+  function applyOperationFilter() {
+    document.querySelectorAll('.operation-settings .operation-row').forEach(function (row) {
+      var group = row.getAttribute('data-operation-group');
+      row.classList.toggle('ann-operation-hidden', !!group && group !== state.activeMode);
+    });
+  }
+
+  function ensureOperationGroupControls(operationSettings) {
+    if (!operationSettings) return;
+    var basicContent = operationSettings.querySelector('.operation-levels');
+    if (!basicContent) return;
+    if (!operationSettings.querySelector('.operation-row[data-operation-group]')) return;
+
+    var tabs = operationSettings.querySelector('.ann-operation-tabs');
+    if (!tabs) {
+      tabs = renderModeButtons('ann-operation-tabs', 'data-ann-operation-mode');
+      basicContent.parentNode.insertBefore(tabs, basicContent);
+    }
+
+    if (!operationSettings.__annOperationEventsBound) {
+      operationSettings.__annOperationEventsBound = true;
+      operationSettings.addEventListener('click', function (event) {
+        var target = event.target;
+        if (!target || typeof target.closest !== 'function') return;
+        var btn = target.closest('[data-ann-operation-mode]');
+        if (!btn || !operationSettings.contains(btn)) return;
+        event.preventDefault();
+        setActiveMode(btn.getAttribute('data-ann-operation-mode'));
+      });
+    }
+  }
+
   function applyOperationIcons() {
     if (!isAnnPage()) return;
     ensureStyles();
 
     var operationSettings = document.querySelector('.operation-settings');
     if (operationSettings) operationSettings.classList.add('ann-operation-settings');
+    ensureOperationGroupControls(operationSettings);
 
     document.querySelectorAll('.operation-settings .operation-row').forEach(function (row) {
       var sequence = row.querySelector('.skill-sequence');
@@ -376,6 +467,8 @@
         sequence.appendChild(cell);
       });
     });
+    applyOperationFilter();
+    refreshOperationGroupControls();
   }
 
   function applySkillCardBadges() {
@@ -434,11 +527,12 @@
       var raw = localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
       var saved = JSON.parse(raw);
-      if (saved && (saved.activeMode === 'r0' || saved.activeMode === 'r1')) state.activeMode = saved.activeMode;
+      if (saved && isValidMode(saved.activeMode)) state.activeMode = saved.activeMode;
       if (saved && typeof saved.openTurn === 'number') state.openTurn = saved.openTurn;
       if (saved && saved.modes) {
-        state.modes.r0 = normalizeTurns(saved.modes.r0);
-        state.modes.r1 = normalizeTurns(saved.modes.r1);
+        MODE_IDS.forEach(function (mode) {
+          state.modes[mode] = normalizeTurns(saved.modes[mode]);
+        });
       }
       clampOpenTurn();
       if (!hasAnyPlannedSkill()) state.openTurn = 0;
@@ -452,15 +546,17 @@
   }
 
   function resetState() {
-    state.modes.r0 = createEmptyTurns();
-    state.modes.r1 = createEmptyTurns();
+    MODE_IDS.forEach(function (mode) {
+      state.modes[mode] = createEmptyTurns();
+    });
     state.openTurn = 0;
     saveState();
   }
 
   function addTurn() {
-    state.modes.r0.push([]);
-    state.modes.r1.push([]);
+    MODE_IDS.forEach(function (mode) {
+      state.modes[mode].push([]);
+    });
     saveState();
   }
 
@@ -504,12 +600,12 @@
         filtered.push(skillNo);
         if (currentSp < skill.cost) return;
         currentSp -= skill.cost;
-        currentCheer = Math.max(0, Math.min(CHEER_MAX, currentCheer + skill.cheer));
+        currentCheer = Math.max(0, currentCheer + skill.cheer);
       });
 
       if (filtered.length !== turns[i].length) turns[i] = filtered;
       sp = currentSp;
-      cheer = currentCheer;
+      cheer = Math.min(CHEER_MAX, currentCheer);
     }
 
     return changed;
@@ -542,9 +638,12 @@
         }
         currentSp -= skill.cost;
         usedSp += skill.cost;
-        currentCheer = Math.max(0, Math.min(CHEER_MAX, currentCheer + skill.cheer));
+        currentCheer = Math.max(0, currentCheer + skill.cheer);
         entries.push({ skill: skillNo, valid: true, reason: '' });
       });
+
+      var queueCheer = currentCheer;
+      var endCheer = Math.min(CHEER_MAX, currentCheer);
 
       results.push({
         index: i,
@@ -553,12 +652,13 @@
         usedSp: usedSp,
         endSp: currentSp,
         startCheer: startCheer,
-        endCheer: currentCheer,
+        queueCheer: queueCheer,
+        endCheer: endCheer,
         entries: entries
       });
 
       sp = currentSp;
-      cheer = currentCheer;
+      cheer = endCheer;
     }
 
     return results;
@@ -569,7 +669,7 @@
     if (!skill) return { ok: false, reason: '' };
     if (turnResult.entries.length >= MAX_ACTIONS_PER_TURN) return { ok: false, reason: t('actionLimit') };
     if (turnResult.endSp < skill.cost) return { ok: false, reason: t('spShort') };
-    if (skillNo === '3' && turnResult.endCheer < 4) return { ok: false, reason: t('cheerShort') };
+    if (skillNo === '3' && turnResult.queueCheer < 4) return { ok: false, reason: t('cheerShort') };
     return { ok: true, reason: '' };
   }
 
@@ -599,17 +699,7 @@
     header.appendChild(actions);
     card.appendChild(header);
 
-    var tabs = el('div', 'ann-tabs');
-    [
-      { id: 'r0', label: t('mode0') },
-      { id: 'r1', label: t('mode1') }
-    ].forEach(function (tab) {
-      var btn = el('button', 'ann-tab' + (state.activeMode === tab.id ? ' active' : ''), tab.label);
-      btn.type = 'button';
-      btn.setAttribute('data-ann-mode', tab.id);
-      tabs.appendChild(btn);
-    });
-    card.appendChild(tabs);
+    card.appendChild(renderModeButtons('ann-tabs', 'data-ann-mode'));
 
     var list = el('div', 'ann-turn-list');
     results.forEach(function (turn) {
@@ -712,14 +802,7 @@
       var tabBtn = target.closest('[data-ann-mode]');
       if (tabBtn && card.contains(tabBtn)) {
         event.preventDefault();
-        hideActiveTooltips();
-        var mode = tabBtn.getAttribute('data-ann-mode');
-        if (mode === 'r0' || mode === 'r1') {
-          state.activeMode = mode;
-          clampOpenTurn();
-          saveState();
-          renderCard(card);
-        }
+        setActiveMode(tabBtn.getAttribute('data-ann-mode'), card);
         return;
       }
 

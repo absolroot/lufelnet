@@ -1360,11 +1360,11 @@ const defenseCalcData = {
         "LV2"
       ],
       "values": {
-        "LV1": 7.5,
-        "LV2": 15
+        "LV1": 9,
+        "LV2": 18
       },
       "defaultOption": "LV2",
-      "value": 15,
+      "value": 18,
       "skillEffectAmpAffected": false,
       "duration": "-",
       "note": "풍습 강화 / 핵열 속성 한정",

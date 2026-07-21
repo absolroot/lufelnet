@@ -128,9 +128,9 @@ Object.assign(window.characterData, {
         "tag_en": "",
         "tag_jp": "",
         "tag_cn": "",
-        "color": "",
+        "color": "#2e1dd0",
         "element": "",
-        "rarity": "",
+        "rarity": 5,
         "position": "",
         "release_order": 52,
         "persona": "텔크시에페이아",
@@ -141,7 +141,7 @@ Object.assign(window.characterData, {
         "name_en": "Ichigo Shikano·Summer",
         "name_jp": "鹿野 莓 夏",
         "name_cn": "鹿野莓·夏日",
-        "codename": "",
+        "codename": "BERRY·Summer",
         "skill_item": ""
     },
     "아야카·여름": {

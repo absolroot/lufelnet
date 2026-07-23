@@ -1,0 +1,287 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "타카마키 안·댄싱 스타의 SP 상한이 300포인트로 증가한다. 전투 시작 시 SP를 200포인트 획득한다. 턴 시작 시 SP를 100포인트 획득한다. 타카마키 안·댄싱 스타의 의식 효과 이외의 SP 회복 효과는 무효화되며, SP 회복 속성의 영향을 받지 않는다.\n타카마키 안·댄싱 스타의 턴에 『안무』를 진행할 수 있다: 여러 개의 『열정의 스텝』, 『눈부신 회전』, 『흔들리는 불꽃의 피날레』를 스텝 스킬로 선택하여, 『열정의 안무 노트』로 조합해 시전한다. 스킬 조합 중 『열정의 안무 노트』만 페르소나 스킬로 간주한다.\n『열정의 스텝』과 『눈부신 회전』을 시전하면 『환호』를 획득할 수 있다. 『환호』를 4중첩 이상 보유 시, 『흔들리는 불꽃의 피날레』를 시전할 수 있다.\n턴 종료 시 『환호』는 최대 12회 중첩까지 유지된다. 『열정의 안무 노트』에는 최대 10단계의 스텝을 조합할 수 있다.\n안무 시 『랩소디 비트』를 소모하여 『열정의 안무 노트』를 최대 2회 강화할 수 있다. 『랩소디 비트』 2포인트 소모 시마다 『열정의 안무 노트』가 주는 스킬 대미지가 25% 증가한다.",
+        "name": "열연 개막의 순간",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "타카마키 안·댄싱 스타의 SP 최대치가 400포인트로 증가하고, 턴 시작 시 획득하는 SP가 125로 증가한다.\n『열정의 안무 노트』가 SP 100포인트를 소모할 때마다 이번 『열정의 안무 노트』의 크리티컬 효과가 30% 증가한다.",
+        "name": "진짜 재미는 지금부터야",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『열정의 스텝』의 대미지 보너스가 10% 증가한다.\n『눈부신 회전』 효과가 후속 모든 스텝 스킬에 적용되며, 스킬 대미지 증가 효과가 추가로 20% 증가한다.",
+        "name": "흔들리는 불꽃의 춤사위",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『흔들리는 불꽃의 피날레』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "사람을 매혹하는 힘",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 스킬 시전 시 4턴 동안 자신의 크리티컬 효과가 20% 증가한다.",
+        "name": "스테이지의 열기",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『열정의 스텝』, 『눈부신 회전』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "소리와 열기는 마지막까지",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "타카마키 안·댄싱 스타가 3단계 이상의 『열정의 안무 노트』를 발동하면 종료 전에 『흔들리는 불꽃의 피날레·재연』을 1회 추가로 발동한다. 『흔들리는 불꽃의 피날레·재연』은 『환호』와 SP를 소모하지 않으며 『흔들리는 불꽃의 피날레』의 180%에 해당하는 대미지를 준다.",
+        "name": "환호성이 울려 퍼지는 피날레",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Default",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "적 1명에게 공격력 545.1%/600.9%/578.6%/634.5%의 화염 속성 대미지를 주며,\n4턴 동안 『매혹』 효과가 100% 증가한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Fire",
+      "skill_lv": "10/10/13/13",
+      "sn": 119252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "타카마키 안·댄싱 스타",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "적 1명에게 공격력 83.8%/92.2%/93.9%/102.2%의 화염 속성 대미지를 준다.\n3턴 동안 자신이 주는 대미지가 15.0%/16.5%/16.8%/18.3% 증가한다(최대 6중첩).\n『환호』를 1중첩 획득한다.",
+        "name": "열정의 스텝",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119211,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "적 1명에게 공격력 132.3%/145.5%/148.2%/161.4%의 화염 속성 대미지를 준다.\n이번 『열정의 안무 노트』 내에서, 후속 최대 2단계 『스텝』의 스킬 대미지가 50% 증가한다(해당 효과는 중첩 불가).\n『환호』 2중첩을 획득한다.",
+        "name": "눈부신 회전",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119212,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Weak",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『환호』 4중첩을 소모하여 『흔들리는 불꽃의 피날레』를 1회 시전할 수 있다. 1명의 적에게 공격력 411.1%/452.2%/460.4%/501.5%의 화염 속성 대미지를 준다.\n『열정의 안무 노트』 시전 시 관통이 15.0%/16.5%/16.8%/18.3% 증가한다.",
+        "name": "흔들리는 불꽃의 피날레",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 119213,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "2단계 이상의 『열정의 안무 노트』 발동 시 목표를 연소 상태에 빠뜨리고 3턴 동안 자신의 공격력이 42.0% 증가한다.",
+        "name": "점화",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119231,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "타카마키 안·댄싱 스타가 필드에 있는 동안 연소 상태인 적이 받는 회복량이 50.0% 감소하고, 받는 대미지가 24.0% 증가한다.",
+        "name": "뇌쇄",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 119232,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 2990.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1200.03 / 1221.63 / 1243.23 / 1264.83 / 1286.43 / 1308.03 / 1329.63",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

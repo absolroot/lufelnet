@@ -2,127 +2,251 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-07-23 08:00:00",
+        "endTime": "2026-08-20 08:00:00",
         "fiveStar": [
           {
-            "name": "芮絲汀娜&卡蘿莉娜",
+            "name": "高卷杏·星舞",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "新井素羽",
+            "name": "藤川雪實",
             "type": "thief"
           },
           {
-            "name": "加納駿",
+            "name": "平野亞蘭",
             "type": "thief"
           },
           {
-            "name": "黑谷清",
+            "name": "佐原海夕",
             "type": "thief"
           }
         ],
-        "name": "監管者的恩賜",
-        "startTime": "2026-07-16 10:5:00",
+        "name": "緋紅之吻",
+        "startTime": "2026-07-23 08:00:00",
         "type": "角色活動契約·精準"
       },
       {
-        "endTime": "2026-07-23 08:00:00",
+        "endTime": "2026-08-20 08:00:00",
         "fiveStar": [
           {
-            "name": "芮絲汀娜&卡蘿莉娜",
+            "name": "高卷杏·星舞",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "新井素羽",
+            "name": "藤川雪實",
             "type": "thief"
           },
           {
-            "name": "加納駿",
+            "name": "平野亞蘭",
             "type": "thief"
           },
           {
-            "name": "黑谷清",
+            "name": "佐原海夕",
             "type": "thief"
           }
         ],
-        "name": "監管者的恩賜",
-        "startTime": "2026-07-16 10:5:00",
+        "name": "緋紅之吻",
+        "startTime": "2026-07-23 08:00:00",
+        "type": "角色活動契約·隨機"
+      },
+      {
+        "endTime": "2026-08-20 08:00:00",
+        "fiveStar": [
+          {
+            "name": "伊織順平",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "藤川雪實",
+            "type": "thief"
+          },
+          {
+            "name": "平野亞蘭",
+            "type": "thief"
+          },
+          {
+            "name": "佐原海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "逆襲的強打者",
+        "startTime": "2026-07-23 08:00:00",
+        "type": "角色活動契約·精準"
+      },
+      {
+        "endTime": "2026-08-20 08:00:00",
+        "fiveStar": [
+          {
+            "name": "伊織順平",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "藤川雪實",
+            "type": "thief"
+          },
+          {
+            "name": "平野亞蘭",
+            "type": "thief"
+          },
+          {
+            "name": "佐原海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "逆襲的強打者",
+        "startTime": "2026-07-23 08:00:00",
+        "type": "角色活動契約·隨機"
+      },
+      {
+        "endTime": "2026-08-20 08:00:00",
+        "fiveStar": [
+          {
+            "name": "虎狼丸",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "藤川雪實",
+            "type": "thief"
+          },
+          {
+            "name": "平野亞蘭",
+            "type": "thief"
+          },
+          {
+            "name": "佐原海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "長鳴的決意之牙",
+        "startTime": "2026-07-23 08:00:00",
+        "type": "角色活動契約·精準"
+      },
+      {
+        "endTime": "2026-08-20 08:00:00",
+        "fiveStar": [
+          {
+            "name": "虎狼丸",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "藤川雪實",
+            "type": "thief"
+          },
+          {
+            "name": "平野亞蘭",
+            "type": "thief"
+          },
+          {
+            "name": "佐原海夕",
+            "type": "thief"
+          }
+        ],
+        "name": "長鳴的決意之牙",
+        "startTime": "2026-07-23 08:00:00",
         "type": "角色活動契約·隨機"
       }
     ],
     "weapon": [
       {
-        "endTime": "2026-07-23 08:00:00",
+        "endTime": "2026-08-20 08:00:00",
         "fiveStar": [
           {
-            "name": "群青的審判",
+            "name": "致命塗裝",
             "type": "weapon",
-            "user": "芮絲汀娜&卡蘿莉娜"
+            "user": "高卷杏·星舞"
+          },
+          {
+            "name": "巴魯姆克",
+            "type": "weapon",
+            "user": "伊織順平"
+          },
+          {
+            "name": "咆哮",
+            "type": "weapon",
+            "user": "虎狼丸"
           }
         ],
         "fourStar": [
           {
-            "name": "罪與罰",
+            "name": "萬寶重擊",
             "type": "weapon",
-            "user": "新井素羽"
+            "user": "藤川雪實"
           },
           {
-            "name": "噬魔",
+            "name": "痛楚之畏",
             "type": "weapon",
-            "user": "加納駿"
+            "user": "高卷杏·星舞"
           },
           {
-            "name": "搖曳流火",
+            "name": "最終清算",
             "type": "weapon",
-            "user": "黑谷清"
+            "user": "平野亞蘭"
           },
           {
-            "name": "剛毅的使者",
+            "name": "海域聲呐",
             "type": "weapon",
-            "user": "芮絲汀娜&卡蘿莉娜"
+            "user": "佐原海夕"
           }
         ],
         "name": "無聲硝煙·精準",
-        "startTime": "2026-07-16 10:5:00",
+        "startTime": "2026-07-23 08:00:00",
         "type": "武器活動補給·精準"
       },
       {
-        "endTime": "2026-07-23 08:00:00",
+        "endTime": "2026-08-20 08:00:00",
         "fiveStar": [
           {
-            "name": "群青的審判",
+            "name": "致命塗裝",
             "type": "weapon",
-            "user": "芮絲汀娜&卡蘿莉娜"
+            "user": "高卷杏·星舞"
+          },
+          {
+            "name": "巴魯姆克",
+            "type": "weapon",
+            "user": "伊織順平"
+          },
+          {
+            "name": "咆哮",
+            "type": "weapon",
+            "user": "虎狼丸"
           }
         ],
         "fourStar": [
           {
-            "name": "罪與罰",
+            "name": "萬寶重擊",
             "type": "weapon",
-            "user": "新井素羽"
+            "user": "藤川雪實"
           },
           {
-            "name": "噬魔",
+            "name": "痛楚之畏",
             "type": "weapon",
-            "user": "加納駿"
+            "user": "高卷杏·星舞"
           },
           {
-            "name": "搖曳流火",
+            "name": "最終清算",
             "type": "weapon",
-            "user": "黑谷清"
+            "user": "平野亞蘭"
           },
           {
-            "name": "剛毅的使者",
+            "name": "海域聲呐",
             "type": "weapon",
-            "user": "芮絲汀娜&卡蘿莉娜"
+            "user": "佐原海夕"
           }
         ],
         "name": "無聲硝煙·隨機",
-        "startTime": "2026-07-16 10:5:00",
+        "startTime": "2026-07-23 08:00:00",
         "type": "武器活動補給·隨機"
       }
     ]

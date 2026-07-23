@@ -52,6 +52,58 @@
         "name": "Blossoms in the Sea Breeze",
         "startTime": "2026-07-16 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-08-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kasumi Yoshizawa",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Faith Held Close",
+        "startTime": "2026-07-23 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-08-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Kasumi Yoshizawa",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Faith Held Close",
+        "startTime": "2026-07-23 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
@@ -88,6 +140,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-07-16 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-08-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Royal Étoile",
+            "type": "weapon",
+            "user": "Kasumi"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          },
+          {
+            "name": "Divine Sword of Sinai",
+            "type": "weapon",
+            "user": "Kasumi"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-07-23 11:30:00",
         "type": "Arms Deals"
       }
     ]

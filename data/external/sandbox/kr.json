@@ -1,13 +1,13 @@
 {
   "data": {
-    "endTime": "2026-07-23 05:00:00",
+    "endTime": "2026-08-23 05:00:00",
     "nodes": {
-      "2001": {
+      "2101": {
         "affix": [
           {
-            "desc": "지배 괴도가 주는 최종 대미지가 60% 증가한다.",
-            "name": "자기장 지배",
-            "sn": 4502
+            "desc": "염동/핵열/축복/주원 속성 팀원이 주는 최종 대미지가 60% 증가한다.",
+            "name": "속성 자기장Ⅱ",
+            "sn": 4512
           }
         ],
         "award": [
@@ -37,75 +37,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-nagaraja.png",
+            "image": "B-guaiwutouxiang-arahabaki.png",
             "level": "66",
-            "name": "요란한 나가라자",
-            "skill": "303,307,1317",
-            "sn": 640511,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-quetzalcoatl.png",
-            "level": "66",
-            "name": "요란한 케찰코아틀",
-            "skill": "406,403,1084",
-            "sn": 640512,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-yurung.png",
-            "level": "66",
-            "name": "요란한 유룽",
-            "skill": "306,902,1317",
-            "sn": 640513,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-yurung.png",
-            "level": "66",
-            "name": "요란한 유룽",
-            "skill": "306,902,1317",
-            "sn": 640514,
+            "name": "요란한 아라하바키",
+            "skill": "806,1019",
+            "sn": 640311,
             "stat": {}
           }
         ],
-        "id": 2001,
+        "id": 2101,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·ι",
+        "name": "체크 포인트·β",
         "pos": [
-          114.39999999999999,
-          -400.0
+          -160.0,
+          -377.2
         ],
         "unlockCond": null
       },
-      "2002": {
+      "2102": {
         "affix": [
           {
-            "desc": "화염/빙결/전격/질풍 속성 팀원이 주는 최종 대미지가 60% 증가한다.",
-            "name": "속성 자기장Ⅰ",
-            "sn": 4511
+            "desc": "파티에 같은 속성의 괴도가 2/3/4명 있을 시, 전체 괴도의 최종 대미지가 20%/40%/60% 증가한다.",
+            "name": "같은 색 자기장",
+            "sn": 4514
           }
         ],
         "award": [
@@ -131,7 +86,7 @@
           }
         ],
         "connected": [
-          2001
+          2101
         ],
         "enemy": [
           {
@@ -142,11 +97,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-jatayu.png",
+            "image": "B-guaiwutouxiang-queenMab.png",
             "level": "72",
-            "name": "요란한 자타유",
-            "skill": "403,407",
-            "sn": 640721,
+            "name": "요란한 퀸 메이브",
+            "skill": "103,306",
+            "sn": 640711,
             "stat": {}
           },
           {
@@ -157,33 +112,38 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-garuda.png",
+            "image": "B-guaiwutouxiang-queenMab.png",
             "level": "72",
-            "name": "요란한 가루다",
-            "skill": "403,406,1085",
-            "sn": 640722,
+            "name": "요란한 퀸 메이브",
+            "skill": "103,306",
+            "sn": 640712,
             "stat": {}
           }
         ],
-        "id": 2002,
+        "id": 2102,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·γ",
+        "name": "체크 포인트·δ",
         "pos": [
-          102.8,
-          -11.600000000000023
+          -285.59999999999997,
+          -125.59999999999997
         ],
         "unlockCond": null
       },
-      "2003": {
+      "2103": {
         "affix": [
           {
-            "desc": "모든 괴도의 TECHNICAL로 주는 최종 대미지가 100% 증가한다.",
-            "name": "기술 자기장",
-            "sn": 4535
+            "desc": "모든 괴도가 실드를 받을 때마다 3턴 동안 최종 대미지가 8% 증가한다(8회 중첩 가능).",
+            "name": "실드 자기장",
+            "sn": 4541
           }
         ],
         "award": [
+          {
+            "count": 50,
+            "img": "item-3.png",
+            "name": "이계 엠버"
+          },
           {
             "count": 100,
             "img": "item-302021.png",
@@ -206,8 +166,7 @@
           }
         ],
         "connected": [
-          2002,
-          2004
+          2102
         ],
         "enemy": [
           {
@@ -271,22 +230,22 @@
             "stat": {}
           }
         ],
-        "id": 2003,
+        "id": 2103,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "체크 포인트·η",
+        "name": "체크 포인트·γ",
         "pos": [
-          -68.4,
-          22.799999999999955
+          -137.20000000000002,
+          217.19999999999993
         ],
         "unlockCond": null
       },
-      "2004": {
+      "2104": {
         "affix": [
           {
-            "desc": "모든 괴도가 실드를 받을 때마다 3턴 동안 최종 대미지가 8% 증가한다(8회 중첩 가능).",
-            "name": "실드 자기장",
-            "sn": 4541
+            "desc": "모든 괴도의 TECHNICAL로 주는 최종 대미지가 100% 증가한다.",
+            "name": "기술 자기장",
+            "sn": 4535
           }
         ],
         "award": [
@@ -312,8 +271,7 @@
           }
         ],
         "connected": [
-          2003,
-          2006
+          2103
         ],
         "enemy": [
           {
@@ -324,11 +282,11 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-oberon.png",
+            "image": "B-guaiwutouxiang-byako.png",
             "level": "78",
-            "name": "비뚤어진 오베론",
-            "skill": "303,1404,1021,1016",
-            "sn": 641231,
+            "name": "비뚤어진 백호",
+            "skill": "1025,206,203,1316",
+            "sn": 641411,
             "stat": {}
           },
           {
@@ -339,33 +297,53 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-titania.png",
+            "image": "B-guaiwutouxiang-cerberus.png",
             "level": "78",
-            "name": "비뚤어진 티타니아",
-            "skill": "303,603,1507",
-            "sn": 641232,
+            "name": "비뚤어진 케르베로스",
+            "skill": "103,1006,1411",
+            "sn": 641412,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-orthos.png",
+            "level": "78",
+            "name": "비뚤어진 오르트로스",
+            "skill": "102,1014,1404",
+            "sn": 641413,
             "stat": {}
           }
         ],
-        "id": 2004,
+        "id": 2104,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·θ",
+        "name": "체크 포인트·η",
         "pos": [
-          -80.0,
-          205.60000000000002
+          11.600000000000001,
+          285.6
         ],
         "unlockCond": null
       },
-      "2005": {
+      "2105": {
         "affix": [
           {
-            "desc": "적 전체가 다운 상태이면 받는 최종 대미지가 100% 증가한다.",
-            "name": "다운 자기장",
-            "sn": 4601
+            "desc": "모든 적이 괴도에게 대미지를 1회 받을 때마다 해당 괴도의 최종 대미지가 3턴 동안 4%씩 증가한다(15회 중첩 가능).",
+            "name": "다중 자기장",
+            "sn": 4571
           }
         ],
         "award": [
+          {
+            "count": 50,
+            "img": "item-3.png",
+            "name": "이계 엠버"
+          },
           {
             "count": 275,
             "img": "item-302021.png",
@@ -388,7 +366,7 @@
           }
         ],
         "connected": [
-          2004
+          2104
         ],
         "enemy": [
           {
@@ -399,21 +377,21 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-atabaku.png",
+            "image": "B-guaiwutouxiang-koryu.png",
             "level": "82",
-            "name": "흉악한 아타바크",
-            "skill": "2444,107,1008",
-            "sn": 645011,
+            "name": "흉악한 황룡",
+            "skill": "504,507,1423",
+            "sn": 645111,
             "stat": {}
           }
         ],
-        "id": 2005,
+        "id": 2105,
         "img": "tianerong-xingpan-point02.png",
         "isActive": true,
         "name": "체크 포인트·α",
         "pos": [
-          -251.6,
-          742.8000000000002
+          194.4,
+          251.60000000000002
         ],
         "unlockCond": [
           {
@@ -422,12 +400,12 @@
           }
         ]
       },
-      "2006": {
+      "2106": {
         "affix": [
           {
-            "desc": "모든 괴도 총공격 시전 시 최종 대미지 100% 증가",
-            "name": "총공격 자기장",
-            "sn": 4537
+            "desc": "HIGHLIGHT 에너지 회복 속도가 20% 감소하고, 모든 괴도 HIGHLIGHT의 최종 대미지가 100% 증가한다.",
+            "name": "HL 자기장",
+            "sn": 4533
           }
         ],
         "award": [
@@ -453,8 +431,7 @@
           }
         ],
         "connected": [
-          2002,
-          2004
+          2103
         ],
         "enemy": [
           {
@@ -465,45 +442,30 @@
               "Resistant": [],
               "Weak": []
             },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "image": "B-guaiwutouxiang-zaougongen.png",
             "level": "80",
-            "name": "비뚤어진 쿠 훌린",
-            "skill": "1008,1102",
-            "sn": 641711,
-            "stat": {}
-          },
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [],
-              "Weak": []
-            },
-            "image": "B-guaiwutouxiang-scathach.png",
-            "level": "80",
-            "name": "비뚤어진 스카아하",
-            "skill": "1016,1404,207",
-            "sn": 641712,
+            "name": "비뚤어진 자오우곤겐",
+            "skill": "1009,108",
+            "sn": 641531,
             "stat": {}
           }
         ],
-        "id": 2006,
+        "id": 2106,
         "img": "tianerong-xingpan-point03.png",
         "isActive": true,
-        "name": "체크 포인트·δ",
+        "name": "체크 포인트·ζ",
         "pos": [
-          125.6,
-          182.80000000000007
+          -251.6,
+          274.4
         ],
         "unlockCond": null
       },
-      "2007": {
+      "2107": {
         "affix": [
           {
-            "desc": "모든 괴도는 추가 턴에서 최종 대미지가 120% 증가한다.",
-            "name": "재가동 자기장",
-            "sn": 4551
+            "desc": "적 전체가 다운 상태이면 받는 최종 대미지가 100% 증가한다.",
+            "name": "다운 자기장",
+            "sn": 4601
           }
         ],
         "award": [
@@ -529,7 +491,7 @@
           }
         ],
         "connected": [
-          2006
+          2106
         ],
         "enemy": [
           {
@@ -593,13 +555,13 @@
             "stat": {}
           }
         ],
-        "id": 2007,
+        "id": 2107,
         "img": "tianerong-xingpan-point01.png",
         "isActive": true,
-        "name": "체크 포인트·β",
+        "name": "체크 포인트·μ",
         "pos": [
-          297.2,
-          582.8
+          -320.0,
+          491.6
         ],
         "unlockCond": [
           {
@@ -607,9 +569,26 @@
             "value": 6
           }
         ]
+      },
+      "2108": {
+        "affix": [],
+        "award": [],
+        "connected": [
+          2107
+        ],
+        "enemy": [],
+        "id": 2108,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": false,
+        "name": "체크 포인트·ε",
+        "pos": [
+          -217.20000000000002,
+          514.4
+        ],
+        "unlockCond": null
       }
     },
-    "startTime": "2026-06-22 05:00:00"
+    "startTime": "2026-07-23 08:00:00"
   },
   "msg": "OK",
   "status": 0

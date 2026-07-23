@@ -10,22 +10,21 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Phys",
+                "Ice",
                 "Electric",
-                "Psychokinesis",
-                "Nuclear",
+                "Wind",
                 "Bless",
                 "Curse"
               ],
               "Weak": [
-                "Wind"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-melchizedek.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "멜키세덱",
-            "skill": "706,1004",
-            "sn": 548101,
+            "name": "조종당한 릴리스",
+            "skill": "607,603",
+            "sn": 549101,
             "stat": {}
           }
         ],
@@ -53,7 +52,7 @@
             "level": "89",
             "name": "조종당하는 우리엘",
             "skill": "1026,1016,1090",
-            "sn": 548111,
+            "sn": 549111,
             "stat": {}
           }
         ],
@@ -61,9 +60,9 @@
         "sn": 78402
       }
     ],
-    "buff": "혈암의 기억: 자신의 턴 시작 시, 적 전체에 『용혈 부패』를 1중첩 부여한다. 『용혈 부패』: 1턴 동안 받는 최종 대미지가 5% 증가한다(8회 중첩 가능).",
-    "endTime": "2026-07-23 07:30:00",
-    "startTime": "2026-06-25 07:30:00"
+    "buff": "화석의 검림: 괴도가 누적 40의 SP를 소모하거나 HIGHLIGHT/테우르기아를 발동할 때마다 모든 동료가 『예리한 뼛조각』을 1중첩 획득한다. 『예리한 뼛조각』: 중첩당 최종 대미지가 5% 증가하며 2턴 동안 지속된다(최대 8중첩).",
+    "endTime": "2026-08-20 07:30:00",
+    "startTime": "2026-07-23 08:30:00"
   },
   "msg": "OK",
   "status": 0

@@ -52,6 +52,58 @@
         "name": "潮風に舞う花",
         "startTime": "2026-07-16 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-08-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "芳澤 かすみ",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "胸に秘めた信念",
+        "startTime": "2026-07-23 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-08-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "芳澤 かすみ",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          },
+          {
+            "name": "長尾 チヅ子",
+            "type": "thief"
+          }
+        ],
+        "name": "胸に秘めた信念",
+        "startTime": "2026-07-23 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
       }
     ],
     "weapon": [
@@ -88,6 +140,41 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2026-07-16 11:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-08-06 10:59:59",
+        "fiveStar": [
+          {
+            "name": "ロイヤル・エトワール",
+            "type": "weapon",
+            "user": "かすみ"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "エーデルワイス",
+            "type": "weapon",
+            "user": "琴音"
+          },
+          {
+            "name": "グラビティフォース",
+            "type": "weapon",
+            "user": "チヅ子"
+          },
+          {
+            "name": "シナイの神剣",
+            "type": "weapon",
+            "user": "かすみ"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-07-23 11:30:00",
         "type": "武器補給"
       }
     ]

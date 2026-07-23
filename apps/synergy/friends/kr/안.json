@@ -1,9 +1,483 @@
 {
   "data": {
-    "item": [],
+    "item": [
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303242.png",
+        "name": "길거리 음식 가이드",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "비경 코인",
+            "price": 6400,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 32
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303248.png",
+        "name": "패션 잡지",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "비경 코인",
+            "price": 6000,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 30
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303229.png",
+        "name": "명품 향수",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "비경 코인",
+            "price": 13600,
+            "resetType": "없음",
+            "shopName": "드러그 스토어"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 68
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303246.png",
+        "name": "최신 미용 기구",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 31600,
+            "resetType": "없음",
+            "shopName": "드러그 스토어"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 158
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303239.png",
+        "name": "우아한 나무 빗",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 43600,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 218
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "마롱 케이크",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 18800,
+            "resetType": "없음",
+            "shopName": "밀리언 디저트"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 94
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303214.png",
+        "name": "하트 링",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 14000,
+            "resetType": "없음",
+            "shopName": "할인 상점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 70
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303244.png",
+        "name": "전통 간식 세트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 9600,
+            "resetType": "없음",
+            "shopName": "밀리언 디저트"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 48
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303228.png",
+        "name": "트뤼프 초콜릿",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 12400,
+            "resetType": "없음",
+            "shopName": "밀리언 디저트"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 62
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-303247.png",
+        "name": "장미꽃 목욕 세트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 8800,
+            "resetType": "없음",
+            "shopName": "드러그 스토어"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 44
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606330.png",
+        "name": "네일 세트",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 8000,
+            "resetType": "없음",
+            "shopName": "드러그 스토어"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 40
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606331.png",
+        "name": "생크림 크레이프",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 12000,
+            "resetType": "없음",
+            "shopName": "밀리언 디저트"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 60
+      },
+      {
+        "bonus_synergy": 0,
+        "compound": [],
+        "image": "item-606332.png",
+        "name": "모델 포즈 사전",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "비경 코인",
+            "price": 15200,
+            "resetType": "없음",
+            "shopName": "태평당 서점"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 76
+      }
+    ],
     "name": "타카마키 안",
-    "special_award": [],
-    "unlock_quest": null
+    "special_award": [
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30443,
+        "rank": 1,
+        "skill": {
+          "affix": "216",
+          "description": "·「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「타카마키 안·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「왜곡된 모험」에서 아군 전체의 화염, 빙결, 전격, 질풍 속성 대미지가 5% 증가합니다.",
+          "effect": "2",
+          "icon": "PC073_03_12_33_02.png",
+          "name": "개성 표출"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 2,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30446,
+        "rank": 3,
+        "skill": {
+          "affix": "217",
+          "description": "·「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「타카마키 안·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「교차하는 모험의 땅」에서 아군 전체의 화염, 빙결, 전격, 질풍 속성 대미지가 5% 증가합니다.",
+          "effect": "1",
+          "icon": "PC073_03_12_33_01.png",
+          "name": "멈춰버린 유혹"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 4,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30449,
+        "rank": 5,
+        "skill": {
+          "affix": "218",
+          "description": "·「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「타카마키 안·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「왜곡된 모험」에서 아군 전체의 화염, 빙결, 전격, 질풍 속성 대미지가 10% 증가합니다.",
+          "effect": "2",
+          "icon": "PC073_03_12_33_02.png",
+          "name": "매혹의 회전"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 6,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30452,
+        "rank": 7,
+        "skill": {
+          "affix": "219",
+          "description": "·「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「타카마키 안·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n「교차하는 모험의 땅」에서 아군 전체의 화염, 빙결, 전격, 질풍 속성 대미지가 10% 증가합니다.",
+          "effect": "1",
+          "icon": "PC073_03_12_33_01.png",
+          "name": "위험한 미학"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 8,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": 30456,
+        "rank": 9,
+        "skill": {
+          "affix": "220",
+          "description": "·「왜곡된 모험」의 격투 모드에서 체험용 캐릭터인 「타카마키 안·댄싱 스타」의 의식 레벨이 1레벨 오릅니다.\n임의 콘텐츠에서 아군 전체의 화염, 빙결, 전격, 질풍 속성 대미지가 2% 증가합니다.",
+          "effect": "-1",
+          "icon": "PC073_03_12_33_03.png",
+          "name": "가시 돋친 장미"
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 10,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 11,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      },
+      {
+        "award": {
+          "name": null
+        },
+        "quest": null,
+        "rank": 12,
+        "skill": {
+          "affix": null,
+          "description": null,
+          "effect": null,
+          "icon": null,
+          "name": null
+        }
+      }
+    ],
+    "unlock_quest": [
+      {
+        "details": "뜻밖의 장소에서 익숙하면서도 낯선 모습을 보았다... 가서 말을 걸어보자.",
+        "name": "열정의 댄싱 스타"
+      }
+    ]
   },
   "msg": "OK",
   "status": 0

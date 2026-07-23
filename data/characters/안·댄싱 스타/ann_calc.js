@@ -739,7 +739,7 @@
     var summary = el('span', 'ann-turn-summary');
     summary.appendChild(document.createTextNode('SP ' + turn.startSp));
     summary.appendChild(el('span', 'ann-turn-sp-gain', '(+' + turn.spGain + ')'));
-    summary.appendChild(document.createTextNode(' → ' + turn.endSp + ' / ' + t('cheer') + ' ' + turn.endCheer));
+    summary.appendChild(document.createTextNode(' → ' + turn.endSp + ' / ' + t('cheer') + ' ' + turn.queueCheer));
     headerBtn.appendChild(summary);
     turnBox.appendChild(headerBtn);
 

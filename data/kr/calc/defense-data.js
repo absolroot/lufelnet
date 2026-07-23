@@ -732,7 +732,7 @@ const penetrateData = {
       "type": "스킬3",
       "target": "자신",
       "skillIcon": "/assets/img/skill-element/화염.png",
-      "skillName": "플레임 피날레",
+      "skillName": "흔들리는 불꽃의 피날레",
       "options": [
         "LV10",
         "LV10+심상5",

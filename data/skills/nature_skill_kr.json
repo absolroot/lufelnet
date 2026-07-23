@@ -7,15 +7,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70101,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -27,15 +25,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70102,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -47,15 +43,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70103,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -67,15 +61,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "크리티컬 효과가 12.0%/24.0% 증가한다.",
         "name": "크리티컬 효과 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70104,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -87,15 +79,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적의 다운 수치를 감소시킬 때, 모든 적에게 『취약』을 1중첩 부여한다. 2턴 동안 지속되며 최대 4중첩까지 중첩된다. 『취약』: 받는 대미지가 2.0%/4.0% 증가한다.",
+        "cost": "",
+        "desc": "자신이 적의 다운 수치를 감소시킬 때, 2턴 동안 적 전체에 취약 1중첩을 부여한다(4회 중첩 가능). 취약: 받는 대미지가 2.0%/4.0% 증가한다.",
         "name": "중상 취약",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70105,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -107,15 +97,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "아군 물리 속성 동료가 『취약』상태인 적을 공격할 때, 총 대미지 증폭이 2.5%/5.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "빈틈 추격",
+        "cost": "",
+        "desc": "아군 물리 속성 동료가 취약 상태인 적을 공격할 때 총 대미지 증폭이 2.5%/5.0% 증가한다(중첩 불가).",
+        "name": "약점 추격",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70106,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -127,15 +115,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "『취약』을 4중첩 보유한 적이 물리 대미지를 받을 때 다운 허약이 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "취약 4중첩인 적이 물리 대미지를 받을 때 다운 취약이 2.0%/4.0% 증가한다(중첩 불가).",
         "name": "열상 폭발",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70107,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -147,15 +133,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용한 후, 적합성을 무시하고 모든 적의 다운 수치를 1/2중첩 감소시킨다.",
+        "cost": "",
+        "desc": "자신이 적에게 HIGHLIGHT/테우르기아 시전 후, 적합성을 무시하고 적 전체의 다운 수치가 1/2 감소한다.",
         "name": "불균형 타격",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70108,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -167,15 +151,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70201,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -187,15 +169,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70202,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -207,15 +187,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70203,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -227,15 +205,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "크리티컬 확률이 6.0%/12.0% 증가한다.",
         "name": "크리티컬 확률 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70204,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -247,15 +223,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적의 다운 수치를 감소시킬 때, 모든 적에게 『취약』을 1중첩 부여한다. 2턴 동안 지속되며 최대 4중첩까지 중첩된다. 『취약』: 받는 대미지가 2.0%/4.0% 증가한다.",
+        "cost": "",
+        "desc": "자신이 적의 다운 수치를 감소시킬 때, 2턴 동안 적 전체에 취약 1중첩을 부여한다(4회 중첩 가능). 취약: 받는 대미지가 2.0%/4.0% 증가한다.",
         "name": "중상 취약",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70205,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -267,15 +241,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적을 공격할 때 대상이 『취약』을 4중첩 보유하고 있으면 자신의 다운 특수 공격이 2.5%/5.0% 증가한다.",
+        "cost": "",
+        "desc": "자신이 적을 공격할 때, 목표가 취약을 4중첩 보유하고 있다면 자신의 다운 특공이 2.5%/5.0% 증가한다.",
         "name": "궁지 반격",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70206,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -287,15 +259,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 『취약』을 부여할 때, 대상이 받는 총격 속성 총 대미지 증폭이 2.0%/4.0% 증가한다. 1턴 동안 지속된다. (해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "자신이 적에게 취약을 부여 시, 1턴 동안 해당 적이 받는 총격 속성 총 대미지 증폭이 2.0%/4.0% 증가한다(중첩 불가).",
         "name": "급소 통찰",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70207,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Conditional Target",
         "target_count": "All"
       }
@@ -307,15 +277,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용한 후, 적합성을 무시하고 모든 적의 다운 수치를 1/2중첩 감소시킨다.",
+        "cost": "",
+        "desc": "자신이 적에게 HIGHLIGHT/테우르기아 시전 후, 적합성을 무시하고 적 전체의 다운 수치가 1/2 감소한다.",
         "name": "약점 저격",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70208,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -327,15 +295,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70301,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -347,15 +313,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70302,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -367,15 +331,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "지속 대미지 효과가 2.0%/4.0% 증가한다.",
         "name": "지속 대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70303,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -387,15 +349,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "스킬마스터가 320/640 증가한다.",
-        "name": "스킬마스터 증가",
+        "cost": "",
+        "desc": "스킬 마스터가 320/640 증가한다.",
+        "name": "스킬 마스터 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70304,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -407,15 +367,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 페르소나 스킬을 사용한 후 적에게 화상 효과를 부여한다.\n적에게 이미 화상 효과가 있으면 『고온 연소』를 부여한다. 2턴 동안 지속되며 최대 3중첩까지 중첩된다.\n『고온 연소』: 턴 종료 시 부여자 공격력 15.0%/30.0%만큼의 대미지를 받는다.",
-        "name": "성화 연소",
+        "cost": "",
+        "desc": "자신이 페르소나 스킬을 시전한 후, 적에게 연소 효과를 부여한다.\n적이 이미 연소 상태라면 2턴 동안 고온 연소를 부여한다(3회 중첩 가능).\n고온 연소: 턴 종료 시 효과를 부여한 자의 공격력 15.0%/30.0%에 해당하는 대미지를 받는다.",
+        "name": "불꽃 분신",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70305,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -427,15 +385,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "『고온 연소』는 크리티컬이 발생할 수 있다.\n자신의 턴 종료 시, 모든 적의 『고온 연소』 효과를 1/2회 결산한다.",
-        "name": "열염 폭파",
+        "cost": "",
+        "desc": "고온 연소는 크리티컬이 발생할 수 있다.\n자신의 턴 종료 시, 적 전체의 고온 연소 효과를 1/2회 결산한다.",
+        "name": "화염 폭파",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70306,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -447,15 +403,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "아군 화염 속성 캐릭터가 『고온 연소』상태인 적을 공격할 때, 총 대미지 증폭이 2.5%/5.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "연소 소진",
+        "cost": "",
+        "desc": "아군 화염 속성 캐릭터가 고온 연소 상태인 적을 공격할 때 총 대미지 증폭이 2.5%/5.0% 증가한다(중첩 불가).",
+        "name": "전소",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70307,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -467,15 +421,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용한 후, 적이 받는 치료 효과를 25.0%/50.0% 감소시킨다. 2턴 동안 지속된다.",
-        "name": "잿빛 낙인",
+        "cost": "",
+        "desc": "자신이 적에게 HIGHLIGHT/테우르기아 시전 후, 2턴 동안 적이 받는 치유 효과가 25.0%/50.0% 감소한다.",
+        "name": "잿더미 낙인",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70308,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -487,15 +439,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70401,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -507,15 +457,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70402,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -527,15 +475,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "실드 효과가 7.5%/15.0% 증가한다.",
         "name": "실드 효과 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70403,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -547,15 +493,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "방어력이 15.0%/30.0% 증가한다.",
         "name": "방어력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70404,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -567,15 +511,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신의 턴 시작 시, 아군 동료에게 500/1000포인트의 실드를 부여한다. 2턴 동안 지속된다.",
-        "name": "한빙 수호",
+        "cost": "",
+        "desc": "자신의 턴 시작 시, 2턴 동안 아군 동료에게 500/1000pt의 실드를 부여한다.",
+        "name": "얼음의 수호",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70405,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -587,15 +529,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 보유한 실드가 1000포인트일 때마다 총 대미지 증폭이 1% 증가한다. 최대 2.5%/5.0%까지 증가한다.",
-        "name": "서리 실드 공명",
+        "cost": "",
+        "desc": "자신에게 실드가 1,000포인트 있을 때마다 총 대미지 증폭이 1% 증가한다(최대 2.5%/5.0%).",
+        "name": "서리 방패 공명",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70406,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -607,15 +547,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "실드 상태인 아군 캐릭터의 빙결 속성 약점 대미지가 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "빙결의 고리",
+        "cost": "",
+        "desc": "실드 상태인 아군 캐릭터의 빙결 속성 약점 대미지가 2.0%/4.0% 증가한다(중첩 불가).",
+        "name": "서리의 고리",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70407,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -627,15 +565,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용한 후, 50.0%/100.0% 기본 확률로 스킬 주 목표를 동결 상태에 빠뜨린다. 1턴 동안 지속된다.",
-        "name": "혹한 도래",
+        "cost": "",
+        "desc": "자신이 적에게 HIGHLIGHT/테우르기아 시전 후, 1턴 동안 50.0%/100.0%의 기본 확률로 스킬 메인 목표를 얼음 봉인 상태에 빠뜨린다.",
+        "name": "다가온 혹한",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70408,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Conditional Target",
         "target_count": "All"
       }
@@ -647,15 +583,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70501,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -667,15 +601,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70502,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -687,15 +619,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "크리티컬 확률이 6.0%/12.0% 증가한다.",
         "name": "크리티컬 확률 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70503,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -707,15 +637,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "크리티컬 효과가 12.0%/24.0% 증가한다.",
         "name": "크리티컬 효과 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70504,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -727,15 +655,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 페르소나 스킬을 사용한 후 모든 적에게 감전 효과를 부여한다.\n적에게 이미 감전 효과가 있으면 『고압 감전』 효과를 부여한다. 2턴 동안 지속되며 최대 3중첩까지 중첩된다.\n『고압 감전』: 전격 속성 대미지를 받을 때 받는 크리티컬 확률이 1.5%/3.0% 증가한다.",
+        "cost": "",
+        "desc": "자신이 페르소나 스킬을 시전한 후, 모든 적에게 감전 효과를 부여한다.\n적이 이미 감전 상태라면 2턴 동안 고압 감전 효과를 부여한다(3회 중첩 가능).\n고압 감전: 전격 속성 대미지를 받을 때, 해당 대미지의 크리티컬 확률이 1.5%/3.0% 증가한다.",
         "name": "감전 효과",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70505,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -747,15 +673,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신의 크리티컬 확률이 100%를 초과할 때, 초과한 크리티컬 확률 1%마다 크리티컬 효과 2.0%/4.0%로 전환된다. 최대 크리티컬 확률 20%까지 계산된다.",
-        "name": "오버클록 치명",
+        "cost": "",
+        "desc": "자신의 크리티컬 확률이 100%를 초과할 때, 초과한 크리티컬 확률 1%당 크리티컬 효과 2.0%/4.0%로 변환한다(최대 크리티컬 확률 20% 상한 적용).",
+        "name": "오버클럭 폭파",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70506,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -767,15 +691,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "임의의 적이 『고압 감전』을 3중첩 보유하고 있으면, 해당 적이 받는 전격 속성 약점 대미지가 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "자기폭풍 격파",
+        "cost": "",
+        "desc": "적이 고압 감전 3중첩을 보유하면 해당 적이 받는 전격 속성 약점 대미지가 2.0%/4.0% 증가한다. (중첩 불가)",
+        "name": "자기장 폭풍",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70507,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -787,15 +709,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 아군에게 HIGHLIGHT/테우르기아를 사용한 후, 아군 전체 전격 속성 캐릭터의 크리티컬 확률이 5.0%/10.0% 증가한다.",
+        "cost": "",
+        "desc": "자신이 아군에게 HIGHLIGHT/테우르기아 시전 후, 아군 전체 전격 속성 캐릭터의 크리티컬 확률이 5.0%/10.0% 증가한다.",
         "name": "전류 증폭",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70508,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -807,15 +727,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70601,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -827,15 +745,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70602,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -847,15 +763,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70603,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -867,15 +781,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "관통이 3.8%/7.5% 증가한다.",
         "name": "관통 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70604,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -887,15 +799,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "아군 질풍 속성 캐릭터가 풍습 상태인 적을 공격할 때 관통이 5.0%/10.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "파풍 강습",
+        "cost": "",
+        "desc": "아군 질풍 속성 캐릭터가 풍습을 보유한 적을 공격할 때 관통이 5.0%/10.0% 증가한다(중첩 불가).",
+        "name": "질풍 강습",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70605,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -907,15 +817,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "적 캐릭터의 방어력이 1포인트 미만일 때, 받는 질풍 속성 약점 대미지가 추가로 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "폭풍의 일심",
+        "cost": "",
+        "desc": "적의 방어력이 1 미만일 때 해당 적이 받는 질풍 속성 약점 대미지가 추가로 2.0%/4.0% 증가한다(중첩 불가).",
+        "name": "소용돌이의 중심",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70606,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -927,15 +835,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 보유한 관통 8%마다 총 대미지 증폭이 0.5%/1.0% 증가한다. 최대 2.5%/5.0%까지 증가한다.",
-        "name": "질풍 관통",
+        "cost": "",
+        "desc": "자신이 관통을 8% 보유할 때마다 총 대미지 증폭이 0.5%/1.0% 증가한다(최대 2.5%/5.0%).",
+        "name": "질풍의 틈새",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70607,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -947,15 +853,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용한 후, 적의 강화 효과를 1/2개 해제한다.",
+        "cost": "",
+        "desc": "자신이 적에게 HIGHLIGHT/테우르기아 시전 후, 적의 강화 효과를 1/2개 해제한다.",
         "name": "정화의 바람",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70608,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Conditional Target",
         "target_count": "All"
       }
@@ -967,15 +871,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70701,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -987,15 +889,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70702,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1007,15 +907,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70703,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1027,15 +925,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "효과 명중이 12.0%/24.0% 증가한다.",
         "name": "효과 명중 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70704,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1047,15 +943,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 페르소나를 사용한 후 스킬 목표에게 『사고 절취』를 1중첩 부여한다. 2턴 동안 지속되며 최대 3중첩까지 중첩된다.\n『사고 절취』: 받는 대미지가 1.5%/3.0% 증가한다.",
-        "name": "의식 절취",
+        "cost": "",
+        "desc": "자신이 적에게 페르소나 스킬을 시전한 후, 2턴 동안 스킬 목표에게 사유 탈취 1중첩을 부여한다(최대 3중첩).\n사유 탈취: 받는 대미지가 1.5%/3.0% 증가한다.",
+        "name": "의식 탈취",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70705,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Conditional Target",
         "target_count": "All"
       }
@@ -1067,15 +961,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 정신 이상 또는 『사고 절취』상태인 적을 공격할 때, 최종 대미지 증폭이 2.5%/5.0% 증가한다.",
-        "name": "이념 증폭",
+        "cost": "",
+        "desc": "자신이 정신 이상 또는 사유 탈취를 보유한 적을 공격할 때, 최종 대미지 증폭이 2.5%/5.0% 증가한다.",
+        "name": "잡념 증폭",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70706,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1087,15 +979,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "임의의 적이 『사고 절취』를 보유하고 있으면, 해당 적이 받는 염동 속성 약점 대미지가 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "임의의 적이 사유 탈취를 보유하면 해당 적이 받는 염동 속성 약점 대미지가 2.0%/4.0% 증가한다. (중첩 불가)",
         "name": "정신 사냥꾼",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70707,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1107,15 +997,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신은 적의 『사고 절취』 중첩 수에 따라 적의 속성 효과를 감소시키고, 자신은 같은 양의 속성을 증가시킨다. 여러 적에게서 획득한 속성은 최대 1회만 적용된다.\n『사고 절취』 1중첩: 적의 방어력 보너스 10.0%/20.0%를 훔친다.\n『사고 절취』 2중첩: 적의 공격력 보너스 6.2%/12.5%를 훔친다.\n『사고 절취』 3중첩: 적의 대미지 보너스 5.0%/10.0%를 훔친다.\n(해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "적의 사유 탈취 중첩 수에 따라 적의 능력치 효과를 낮추고 자신은 같은 수치의 능력치를 얻는다. 여러 적이 존재해도 획득 효과는 1회만 적용된다.\n사유 탈취 1중첩: 적의 방어력 보너스 10.0%/20.0%를 훔침\n사유 탈취 2중첩: 적의 공격력 보너스 6.2%/12.5%를 훔침\n사유 탈취 3중첩: 적의 대미지 보너스 5.0%/10.0%를 훔침\n(중첩 불가)",
         "name": "정신 약탈",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70708,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1127,15 +1015,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70801,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1147,15 +1033,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70802,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1167,15 +1051,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70803,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1187,15 +1069,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "스킬마스터가 320/640 증가한다.",
-        "name": "스킬마스터 증가",
+        "cost": "",
+        "desc": "스킬 마스터가 320/640 증가한다.",
+        "name": "스킬 마스터 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70804,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1207,15 +1087,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 페르소나 스킬을 사용한 후 50.0%/100.0%의 고정 확률로 모든 적에게 무작위 원소 이상 1개를 부여하고 방사 1중첩을 부여한다.",
-        "name": "혼돈 반응",
+        "cost": "",
+        "desc": "자신이 적에게 페르소나 스킬을 시전한 후, 50.0%/100.0%의 고정 확률로 적 전체에게 무작위 원소 이상을 1개 부여하고, 방사선 1중첩을 부여한다.",
+        "name": "혼돈의 반응",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70805,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1227,15 +1105,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적을 공격할 때, 적에게 원소 이상이 1종류 있을 때마다 자신의 총 대미지 증폭이 0.5%/1.0% 증가한다. 최대 2.5%/5.0%까지 증가한다.",
-        "name": "무질서 분열",
+        "cost": "",
+        "desc": "자신이 적을 공격할 때, 적이 보유한 원소 이상 1종류당 자신의 총 대미지 증폭이 0.5%/1.0% 증가한다(최대 2.5%/5.0%).",
+        "name": "무질서한 분열",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70806,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1247,15 +1123,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "적의 모든 원소 이상 효과값을 강화한다.\n화상: 받는 치료 효과가 10.0%/20.0% 감소한다.\n감전: 받는 핵열 속성 크리티컬 효과가 7.5%/15.0% 증가한다.\n풍습: 핵열 속성 방어력이 9.0%/18.0% 감소한다.\n동결: 공격력이 15.0%/30.0% 감소한다.\n방사: 받는 핵열 대미지가 6.0%/12.0% 증가한다.\n(해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "적이 보유한 모든 원소 이상 효과를 강화한다.\n연소: 받는 치유 효과 10.0%/20.0% 감소\n감전: 받는 핵열 속성 크리티컬 효과 7.5%/15.0% 증가\n풍습: 핵열 속성 방어력 9.0%/18.0% 감소\n빙결: 공격력 15.0%/30.0% 감소\n방사: 받는 핵열 대미지 6.0%/12.0% 증가\n(중첩 불가)",
         "name": "원소 촉매",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70807,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1267,15 +1141,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "적이 화상, 감전, 풍습, 동결, 방사를 동시에 보유하고 있으면, 해당 적이 받는 핵열 속성 약점 대미지가 2.5%/5.0% 증가한다. (해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "적이 연소, 감전, 풍습, 빙결, 방사를 모두 보유하면 해당 적이 받는 핵열 속성 약점 대미지가 2.5%/5.0% 증가한다. (중첩 불가)",
         "name": "공명 핵폭발",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70808,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1287,15 +1159,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70901,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1307,15 +1177,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70902,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1327,15 +1195,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70903,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1347,15 +1213,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "치료 효과가 7.5%/15.0% 증가한다.",
         "name": "치료 효과 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70904,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1367,15 +1231,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 페르소나 스킬을 사용한 후 아군 동료에게 축복을 1중첩 부여한다. 대상의 축복 중첩 수가 5중첩 이상이면 『강력한 축복』을 부여한다. 2턴 동안 지속된다.\n『강력한 축복』: 매 턴 최대 생명 1.5%/3.0%를 회복한다. (해당 효과 중첩 불가)",
-        "name": "은혜 범람",
+        "cost": "",
+        "desc": "자신이 페르소나 스킬을 사용하면 아군 동료에게 축복 1중첩을 부여한다. 대상의 축복이 5중첩 이상이면 강력한 축복을 2턴 동안 부여한다.\n강력한 축복: 매 턴 최대 생명의 1.5%/3.0%를 회복한다(중첩 불가).",
+        "name": "넘치는 은총",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70905,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1387,15 +1249,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "임의의 동료가 『강력한 축복』을 보유하고 있으면, 해당 동료의 축복 속성 약점 대미지가 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "신성 심판",
+        "cost": "",
+        "desc": "임의의 동료가 강력한 축복을 보유하면 축복 속성 약점 대미지가 2.0%/4.0% 증가한다(중첩 불가).",
+        "name": "신성한 심판",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70906,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1407,15 +1267,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 『강력한 축복』을 보유하고 있으면, 총 대미지 증폭이 2.5%/5.0% 증가한다.",
-        "name": "축복 심판",
+        "cost": "",
+        "desc": "자신이 강력한 축복을 보유할 때, 총 대미지 증폭이 2.5%/5.0% 증가한다.",
+        "name": "축복의 심판",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70907,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1427,15 +1285,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 아군 동료에게 HIGHLIGHT/테우르기아를 사용한 후, 아군 전체의 최대 생명이 10.0%/20.0% 증가한다. 2턴 동안 지속된다.",
-        "name": "성광 강림",
+        "cost": "",
+        "desc": "자신이 아군 동료에게 HIGHLIGHT/테우르기아 시전 후, 2턴 동안 아군 전체의 최대 생명이 10.0%/20.0% 증가한다.",
+        "name": "빛의 강림",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 70908,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1447,15 +1303,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71001,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1467,15 +1321,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71002,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1487,15 +1339,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71003,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1507,15 +1357,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "지속 대미지 효과가 2.0%/4.0% 증가한다.",
         "name": "지속 대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71004,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1527,15 +1375,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 페르소나 스킬을 사용한 후 모든 적에게 주원 1중첩을 부여한다. 대상의 주원 중첩 수가 5중첩 이상이면 『심연의 주원』을 부여한다. 2턴 동안 지속된다.\n『심연의 주원』: 매 턴 최대 생명 2.5%/5.0%에 해당하는 대미지를 받는다(부여자 공격력 100.0%/200.0% 대미지를 상한으로 한다). (해당 효과 중첩 불가)",
-        "name": "주원 속박",
+        "cost": "",
+        "desc": "자신이 페르소나 스킬을 시전한 후, 적 전체에 주원 1중첩을 부여한다. 목표의 주원 중첩 수가 5중첩 이상이면, 2턴 동안 심연의 주원을 획득한다.\n심연의 주원: 매 턴 최대 생명의 2.5%/5.0%에 해당하는 대미지를 받는다(최대 부여자의 공격력 100.0%/200.0%에 해당하는 대미지)(중첩 불가).",
+        "name": "얽매인 저주",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71005,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1547,15 +1393,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "임의의 적이 『심연의 주원』을 보유하고 있으면, 해당 적이 받는 주원 속성 약점 대미지가 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "임의의 적이 심연의 주원을 보유하면 해당 적이 받는 주원 속성 약점 대미지가 2.0%/4.0% 증가한다. (중첩 불가)",
         "name": "그림자 침식",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71006,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1567,15 +1411,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 『심연의 주원』상태인 적을 공격할 때, 총 대미지 증폭이 2.5%/5.0% 증가한다.",
-        "name": "허약 주인",
+        "cost": "",
+        "desc": "자신이 심연의 주원을 보유한 적을 공격할 때, 총 대미지 증폭이 2.5%/5.0% 증가한다.",
+        "name": "취약의 주인",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71007,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1587,15 +1429,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용한 후, 해당 적이 받는 지속 대미지 효과가 3.0%/6.0% 증가한다. 2턴 동안 지속된다. (해당 효과 중첩 불가)",
+        "cost": "",
+        "desc": "자신이 적에게 HIGHLIGHT/테우르기아를 사용 시, 2턴 동안 대상이 받는 지속 대미지 효과가 3.0%/6.0% 증가한다(중첩 불가).",
         "name": "심연의 속삭임",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71008,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1607,15 +1447,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71101,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1627,15 +1465,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71102,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1647,15 +1483,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71103,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1667,15 +1501,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "방어력이 15.0%/30.0% 증가한다.",
         "name": "방어력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71104,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1687,15 +1519,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "만능 속성 대미지가 10.0%/20.0% 증가한다.",
         "name": "만능 속성 대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71105,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1707,15 +1537,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "전투 시작 시, 아군에 서로 다른 속성의 괴도가 1명 있을 때마다 자신의 공격력이 7.5%/15.0% 증가한다.",
-        "name": "속성 유대",
+        "cost": "",
+        "desc": "전투 시작 시, 아군에 각기 다른 속성의 괴도가 1명 있을 때마다 자신의 공격력이 7.5%/15.0% 증가한다.",
+        "name": "속성 인연",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71106,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1727,15 +1555,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "아군이 서로 다른 적합성 속성 대미지를 1종류 줄 때마다 자신은 『조화』를 1중첩 획득한다. 『조화』가 6중첩에 도달하면 자신의 최종 대미지 증폭이 2.5%/5.0% 증가한다.",
+        "cost": "",
+        "desc": "아군이 각기 다른 적합성 속성 대미지를 1종류 줄 때마다 자신은 조화 1중첩을 획득한다. 조화가 6중첩에 도달하면 자신의 최종 대미지 증폭이 2.5%/5.0% 증가한다.",
         "name": "조화의 힘",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71107,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1747,15 +1573,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "적의 적합성에 내성/무효/반사/흡수가 5개 이상 있을 때, 받는 최종 대미지 증폭이 2.0%/4.0% 증가한다. (해당 효과 중첩 불가)",
-        "name": "철벽 킬러",
+        "cost": "",
+        "desc": "적의 내성이 내성/무효/반사/흡수가 5개 이상일 때 받는 최종 대미지 증폭이 2.0%/4.0% 증가한다(중첩 불가).",
+        "name": "철벽의 천적",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71108,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Enemy",
         "target_count": "All"
       }
@@ -1767,15 +1591,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "공격력이 10.0%/20.0% 증가한다.",
         "name": "공격력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71201,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1787,15 +1609,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "대미지가 8.0%/16.0% 증가한다.",
         "name": "대미지 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71202,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1807,15 +1627,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "생명이 10.0%/20.0% 증가한다.",
         "name": "생명 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71203,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1827,15 +1645,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
+        "cost": "",
         "desc": "방어력이 15.0%/30.0% 증가한다.",
         "name": "방어력 증가",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71204,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Myself",
         "target_count": 1
       }
@@ -1847,15 +1663,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "전투 시작 시, 아군 전체의 공격력이 영구적으로 7.5%/15.0% 증가한다.",
-        "name": "공격 심득",
+        "cost": "",
+        "desc": "전투 시작 시, 아군 전체의 공격력이 7.5%/15.0% 영구 증가한다.",
+        "name": "공격의 마음가짐",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71205,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1867,15 +1681,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "전투 시작 시, 아군 전체의 대미지가 영구적으로 6.0%/12.0% 증가한다.",
-        "name": "대미지 전문화",
+        "cost": "",
+        "desc": "전투 시작 시, 아군 전체의 대미지가 6.0%/12.0% 영구 증가한다.",
+        "name": "대미지 마스터리",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71206,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1887,15 +1699,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "전투 시작 시, 아군 전체의 크리티컬 효과가 영구적으로 7.5%/15.0% 증가한다.",
+        "cost": "",
+        "desc": "전투 시작 시, 아군 전체의 크리티컬 효과가 7.5%/15.0% 영구 증가한다.",
         "name": "크리티컬 효과 강화",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71207,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }
@@ -1907,15 +1717,13 @@
         "ascend": "0/0",
         "auto_select": "Default",
         "cooldown": 0,
-        "cost": "75",
-        "desc": "전투 시작 시, 아군 전체의 관통이 영구적으로 2.0%/4.0% 증가한다.",
+        "cost": "",
+        "desc": "전투 시작 시, 아군 전체의 관통이 2.0%/4.0% 영구 증가한다.",
         "name": "관통 강화",
         "nature": null,
         "skill_lv": "1/2",
         "sn": 71208,
-        "tags": [
-          null
-        ],
+        "tags": [null],
         "target": "Alive Ally",
         "target_count": "All"
       }

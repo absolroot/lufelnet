@@ -81,17 +81,19 @@ window.enCharacterSkillsData["미나미·여름"] = {
     "type": "버프",
     "sp": 0,
     "cool": 4,
-    "description": "Increase 1 other ally's damage by 24.4%/26.9%/25.9%/28.4%, and increase critical damage by 16.66% of the portion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier). Lasts for 2 turns. Also, when Beachflower Minami uses medicine, increase medicine effects by 9.8%/10.8%/10.4%/11.4%."
+    "description": "Increase 1 other ally's damage by 24.4%/26.9%/25.9%/28.4%, and increase critical damage by 16.66% of the potion of Beachflower Minami's critical multiplier over 100% (up to 213.4%/229.9%/229.9%/246.4% of critical multiplier). Lasts for 2 turns. Also, when Beachflower Minami uses medicine, increase medicine effects by 9.8%/10.8%/10.4%/11.4%."
   },
   "passive1": {
     "name": "Soothing Sunlight",
     "element": "패시브",
-    "description": "Each time a skill is used on allies, grant 1 Blessing stack to targets.\nWhen Beachflower Minami is present, for each Blessing stack on allies, increase their damage by 6.0% (up to 36.0%)."
+    "description": "Each time a skill is used on allies, grant 1 Blessing stack to targets.\nWhen Beachflower Minami is present, for each Blessing stack on allies, increase their damage by 6.0% (up to 36.0%).",
+    "cool": 0
   },
   "passive2": {
     "name": "Blossoms by the Beach",
     "element": "패시브",
-    "description": "When Beachflower Minami is present, increase allies' Attack by 12.0%, and for each type of buff granted by Potent Medicine, increase Attack by 15.0%."
+    "description": "When Beachflower Minami is present, increase allies' Attack by 12.0%, and for each type of buff granted by Potent Medicine, increase Attack by 15.0%.",
+    "cool": 0
   }
 };
 
@@ -131,12 +133,14 @@ window.jpCharacterSkillsData["미나미·여름"] = {
   "passive1": {
     "name": "癒しの陽光",
     "element": "패시브",
-    "description": "味方にスキルを使用するごとに、対象に祝印を１つ付与する。\n美波・ビーチフラワーが場にいる時、祝印を獲得している味方は、１つごとに与ダメージが6.0%上昇する（最大36.0%まで）。"
+    "description": "味方にスキルを使用するごとに、対象に祝印を１つ付与する。\n美波・ビーチフラワーが場にいる時、祝印を獲得している味方は、１つごとに与ダメージが6.0%上昇する（最大36.0%まで）。",
+    "cool": 0
   },
   "passive2": {
     "name": "海辺に咲く花",
     "element": "패시브",
-    "description": "美波・ビーチフラワーが場にいる時、味方の攻撃力が12.0%上昇し、付与されている強化特効薬の効果１種類ごとに、攻撃力が15.0%上昇する。"
+    "description": "美波・ビーチフラワーが場にいる時、味方の攻撃力が12.0%上昇し、付与されている強化特効薬の効果１種類ごとに、攻撃力が15.0%上昇する。",
+    "cool": 0
   }
 };
 

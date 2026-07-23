@@ -1172,7 +1172,7 @@ const criticalSelfData = {
       "type": "전용무기",
       "target": "자신",
       "skillIcon": "/assets/img/character-weapon/안·댄싱 스타-5-01.png",
-      "skillName": "치명적 도장",
+      "skillName": "치명적인 도색",
       "options": [
         "개조0",
         "개조1&2",

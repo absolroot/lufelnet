@@ -73,7 +73,7 @@ window.enCharacterSkillsData["야오링·사자무"] = {
     "type": "버프",
     "sp": 24,
     "cool": 1,
-    "description": "Gain Flaming Sword Dance: Increase damage by 34.3%/37.8%/36.4%/39.9%, and melee attack evolves to Yanhua Slash. After activating Yanhua Slash, or at the end of the turn, remove this effect.\nThis skill has a cooldown time of 1 turn, and after using it, other skills can be used on the same turn (this skill is not considered a normal skill).\nYanhua Slash: Deal Fire damage to all foes equal to 127.4%/140.4%/135.2%/148.2% of Attack, and can activate Fire Technicals. When Fireburn is activated, the damage increase effect becomes 20%."
+    "description": "Gain Flaming Sword Dance: Increase damage by 34.3%/37.8%/36.4%/39.9%, and melee attack evolves to Yanhua Slash. After activating Yanhua Slash, or at the end of the turn, remove this effect.\nThis skill has a cooldown time of 1 turn, and after using it, other skills can be used on the same turn (this skill is not treated as a normal skill).\nYanhua Slash: Deal Fire damage to all foes equal to 127.4%/140.4%/135.2%/148.2% of Attack, and can activate Fire Technicals. When Fireburn is activated, the damage increase effect becomes 20%."
   },
   "skill_highlight": {
     "element": "화염광역",
@@ -119,7 +119,7 @@ window.jpCharacterSkillsData["야오링·사자무"] = {
     "type": "버프",
     "sp": 24,
     "cool": 1,
-    "description": "自身を『焔花刀舞』状態にする：与ダメージが34.3%/37.8%/36.4%/39.9%上昇し、近接攻撃を『焔花斬』に強化する。この状態は『焔花斬』発動後、またはターン終了時に解除される。\nこのスキルは１ターンのクールタイムを持ち、使用後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとは見なされない）。\n『焔花斬』：敵全体に攻撃力127.4%/140.4%/135.2%/148.2%の火炎属性ダメージを与え、火炎テクニカルが発生するようになる。炎焼が発動する時、そのダメージ上昇効果が２０%になる。"
+    "description": "自身を『焔花刀舞』状態にする：与ダメージが34.3%/37.8%/36.4%/39.9%上昇し、近接攻撃を『焔花斬』に強化する。この状態は『焔花斬』発動後、またはターン終了時に解除される。\nこのスキルは１ターンのクールタイムを持ち、使用後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとして扱わない）。\n『焔花斬』：敵全体に攻撃力127.4%/140.4%/135.2%/148.2%の火炎属性ダメージを与え、火炎テクニカルが発生するようになる。炎焼が発動する時、そのダメージ上昇効果が２０%になる。"
   },
   "skill_highlight": {
     "element": "화염광역",

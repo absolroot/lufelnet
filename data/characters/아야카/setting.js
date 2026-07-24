@@ -31,5 +31,25 @@ window.characterSetting["아야카"] = {
     "mind_stats1": "대미지감면 16%",
     "mind_stats2": "공격력 20%",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "감전 효과",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["자기장 폭풍","전류 증폭"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -31,5 +31,25 @@ window.characterSetting["루페르"] = {
     "mind_stats1": "-",
     "mind_stats2": "-",
     "mind_skill1": "-",
-    "mind_skill2": "-"
+    "mind_skill2": "-",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

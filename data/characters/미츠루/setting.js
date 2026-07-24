@@ -31,5 +31,25 @@ window.characterSetting["미츠루"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/S2!",
-    "mind_skill2": "S3/TH!"
+    "mind_skill2": "S3/TH!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "대미지 증가",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "다가온 혹한",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

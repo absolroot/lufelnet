@@ -31,5 +31,25 @@ window.characterSetting["토모코·여름"] = {
     "mind_stats1": "SP회복 125%",
     "mind_stats2": "공격력 20%",
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3/HL"
+    "mind_skill2": "S3/HL",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "의식 탈취",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "정신 사냥꾼",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

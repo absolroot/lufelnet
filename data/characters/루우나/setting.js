@@ -31,5 +31,25 @@ window.characterSetting["루우나"] = {
     "mind_stats1": "대미지보너스 16%",
     "mind_stats2": "효과명중 24%!",
     "mind_skill1": "S3/HL!",
-    "mind_skill2": "S1/S2!"
+    "mind_skill2": "S1/S2!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

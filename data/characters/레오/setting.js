@@ -31,5 +31,25 @@ window.characterSetting["레오"] = {
     "mind_stats1": "생명 20%",
     "mind_stats2": "공격력 20%×",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

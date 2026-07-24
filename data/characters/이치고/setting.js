@@ -31,5 +31,25 @@ window.characterSetting["이치고"] = {
     "mind_stats1": "대미지 보너스 16%",
     "mind_stats2": "관통 7.5%!",
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3/HL!"
+    "mind_skill2": "S3/HL!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "지속 대미지 증가",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "심연의 속삭임",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -31,5 +31,25 @@ window.characterSetting["모르가나"] = {
     "mind_stats1": "치료효과 14%×",
     "mind_stats2": "공격력 20%×",
     "mind_skill1": "-",
-    "mind_skill2": "-"
+    "mind_skill2": "-",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -31,5 +31,25 @@ window.characterSetting["코로마루"] = {
     "mind_stats1": "효과명중 24%!",
     "mind_stats2": "대미지 보너스 16%",
     "mind_skill1": "S2/TH!",
-    "mind_skill2": "S1/S3"
+    "mind_skill2": "S1/S3",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

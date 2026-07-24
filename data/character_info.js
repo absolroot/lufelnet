@@ -51,7 +51,7 @@ Object.assign(window.characterData, {
         "name_en": "Ryuji Sakamoto·Starlight",
         "name_jp": "坂本 竜司・スターナイト",
         "name_cn": "坂本龙司·星舞",
-        "skill_item": 6
+        "skill_item": 7
     },
     "시오미 코토네": {
         "limit": true,
@@ -74,7 +74,7 @@ Object.assign(window.characterData, {
         "name_jp": "汐見 琴音",
         "name_cn": "汐见琴音",
         "codename": "KOTONE",
-        "skill_item": ""
+        "skill_item": 5
     },
     "아라가키": {
         "limit": true,
@@ -97,7 +97,7 @@ Object.assign(window.characterData, {
         "name_jp": "荒垣 真次郎",
         "name_cn": "荒垣真次郎",
         "codename": "",
-        "skill_item": ""
+        "skill_item": 7
     },
     "아마다": {
         "limit": true,
@@ -120,7 +120,7 @@ Object.assign(window.characterData, {
         "name_jp": "天田 乾",
         "name_cn": "天田乾",
         "codename": "",
-        "skill_item": ""
+        "skill_item": 7
     },
     "이치고·여름": {
         "limit": true,
@@ -142,7 +142,7 @@ Object.assign(window.characterData, {
         "name_jp": "鹿野 莓 夏",
         "name_cn": "鹿野莓·夏日",
         "codename": "BERRY·Summer",
-        "skill_item": ""
+        "skill_item": 7
     },
     "아야카·여름": {
         "limit": true,
@@ -163,7 +163,7 @@ Object.assign(window.characterData, {
         "name_jp": "坂井 綾香 夏",
         "name_cn": "坂井绫香·夏日",
         "codename": "CHORD·Summer",
-        "skill_item": 6
+        "skill_item": 7
     },
     "안·댄싱 스타": {
         "limit": true,
@@ -186,7 +186,7 @@ Object.assign(window.characterData, {
         "name_en": "Ann Takamaki·Starlight",
         "name_jp": "高巻 杏・スターナイト",
         "name_cn": "高卷杏·星舞",
-        "skill_item": 6
+        "skill_item": 7
     },
     "미쿠": {
         "limit": true,

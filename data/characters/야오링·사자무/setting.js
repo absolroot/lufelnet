@@ -31,5 +31,25 @@ window.characterSetting["야오링·사자무"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["스킬 마스터 증가","불꽃 분신"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["화염 폭파", "전소"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

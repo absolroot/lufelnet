@@ -511,12 +511,12 @@ window.matchWeapons = {
     "lightning_stamp": [
       {
         "order": 6,
-        "name": "찬란한 축복",
+        "name": "빛나는 축복",
         "name_en": "Radiant Blessing",
         "name_jp": "輝きの祝福",
         "stamp_img": "item-datu-302938.png",
         "stamp_icon": "weaponEngraving-icon-6.png",
-        "effect": "동료에게 스킬 사용 시, 메인 목표 외 다른 동료는 추가로 자신의 최대 생명 1.5%/3.0%/4.5%/6.0%의 회복 효과를 획득하고, 모든 동료의 대미지가 3.0%/6.0%/9.0%/12.0% 증가한다. 2턴 동안 지속된다.",
+        "effect": "아군에게 스킬을 사용하면, 2턴 동안 메인 목표 외의 다른 아군이 자신의 최대 생명 1.5%/3.0%/4.5%/6.0%에 해당하는 회복 효과를 추가로 받고, 아군 전체의 대미지가 3.0%/6.0%/9.0%/12.0% 증가한다.",
         "effect_en": "After using a skill on an ally, allies other than the main target additionally restore HP equal to 1.5%/3.0%/4.5%/6.0% of their max HP, and all allies' damage increases by 3.0%/6.0%/9.0%/12.0% for 2 turns.",
         "effect_jp": "味方にスキルを使用した時、選択した対象以外の味方はさらに自身の最大HPの1.5%/3.0%/4.5%/6.0%を回復し、味方全体の与ダメージが3.0%/6.0%/9.0%/12.0%上昇する。2ターン持続する。",
         "release": "안·댄싱 스타",

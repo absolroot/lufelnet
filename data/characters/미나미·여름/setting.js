@@ -33,5 +33,25 @@ window.characterSetting["미나미·여름"] = {
     "mind_stats1": "생명 20%!",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "넘치는 은총",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["신성한 심판","빛의 강림"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

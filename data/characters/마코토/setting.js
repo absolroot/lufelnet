@@ -32,5 +32,25 @@ window.characterSetting["마코토"] = {
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_stats2_glb": "관통 7.5%!",
     "mind_skill1": "S2/HL!",
-    "mind_skill2": "S1/S3!"
+    "mind_skill2": "S1/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "혼돈의 반응",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["무질서한 분열","공명 핵폭발"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

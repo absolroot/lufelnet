@@ -357,6 +357,29 @@ export class DataLoader {
             .filter((nature, index, list) => list.indexOf(nature) === index);
     }
 
+    static normalizeNatureId(value) {
+        const raw = String(value || '').trim();
+        if (!raw) return '';
+        if (Object.values(DataLoader.ELEMENT_TO_NATURE).includes(raw)) return raw;
+        return DataLoader.ELEMENT_TO_NATURE[raw] || '';
+    }
+
+    static applyNatureSkillOrder(natures, settingOrCharName = null) {
+        const source = (Array.isArray(natures) ? natures : [natures])
+            .map((nature) => String(nature || ''))
+            .filter(Boolean)
+            .filter((nature, index, list) => list.indexOf(nature) === index);
+        const setting = typeof settingOrCharName === 'string'
+            ? DataLoader.getCharacterSetting(settingOrCharName)
+            : (settingOrCharName || {});
+        const order = Array.isArray(setting.nature_skill_order)
+            ? setting.nature_skill_order.map((nature) => DataLoader.normalizeNatureId(nature)).filter(Boolean)
+            : [];
+        if (!order.length) return source;
+        const ordered = order.filter((nature, index, list) => source.includes(nature) && list.indexOf(nature) === index);
+        return ordered.concat(source.filter((nature) => !ordered.includes(nature)));
+    }
+
     static getNatureLabel(nature, lang = this.getCurrentLang()) {
         return (DataLoader.NATURE_LABELS_BY_LANG[lang] && DataLoader.NATURE_LABELS_BY_LANG[lang][nature])
             || DataLoader.NATURE_LABELS[nature]
@@ -397,6 +420,130 @@ export class DataLoader {
         return orderedNatures.flatMap((nature) => (
             list.filter((entry) => entry && entry.nature === nature && entry.innateType === innateType)
         ));
+    }
+
+    static getCharacterSetting(charName) {
+        const name = String(charName || '').trim();
+        if (!name || !window.characterSetting) return {};
+        if (window.characterSetting[name]) return window.characterSetting[name];
+
+        const matchedKey = Object.keys(window.characterSetting).find((key) => (
+            key === name
+            || key.trim() === name
+            || key.replace(/\s+/g, '') === name.replace(/\s+/g, '')
+        ));
+        return matchedKey ? window.characterSetting[matchedKey] : {};
+    }
+
+    static normalizeNatureSkillRecommendationName(value) {
+        return String(value || '').replace(/\s+/g, '').toLowerCase();
+    }
+
+    static getNatureSkillRecommendationValue(item) {
+        if (!item || typeof item !== 'object') return item;
+        return item.skill ?? item.sn ?? item.skillSn ?? item.name ?? item.skillName ?? '';
+    }
+
+    static expandNatureSkillRecommendationItem(item) {
+        if (Array.isArray(item)) {
+            return item.flatMap((entry) => DataLoader.expandNatureSkillRecommendationItem(entry));
+        }
+
+        const value = DataLoader.getNatureSkillRecommendationValue(item);
+        if (Array.isArray(value)) {
+            return value.flatMap((entry) => {
+                if (entry === null || typeof entry === 'undefined' || entry === '') return [];
+                if (item && typeof item === 'object') {
+                    return [{ ...item, skill: entry }];
+                }
+                return DataLoader.expandNatureSkillRecommendationItem(entry);
+            });
+        }
+
+        return [item];
+    }
+
+    static normalizeNatureSkillRecommendationList(value) {
+        if (!value) return [];
+        const list = Array.isArray(value) ? value : [value];
+        return list.flatMap((item) => DataLoader.expandNatureSkillRecommendationItem(item));
+    }
+
+    static getNatureSkillRecommendationSource(recommend, innateType, nature) {
+        const key = String(innateType);
+        const flat = recommend[key] ?? recommend[innateType];
+        const nested = nature && recommend[nature] && typeof recommend[nature] === 'object'
+            ? (recommend[nature][key] ?? recommend[nature][innateType])
+            : undefined;
+        return typeof nested !== 'undefined' ? nested : flat;
+    }
+
+    static getNatureSkillRecommendationNote(recommendation, lang = this.getCurrentLang()) {
+        const item = recommendation?.raw;
+        if (!item || typeof item !== 'object') return '';
+        if (item.notes && typeof item.notes === 'object') {
+            const nested = lang === 'kr' ? item.notes.kr : item.notes[lang];
+            if (nested) return String(nested);
+        }
+        const key = lang === 'kr' ? 'note' : `note_${lang}`;
+        return item[key] ? String(item[key]) : '';
+    }
+
+    static resolveNatureSkillRecommendationItem(item, innateType, natures, lang = this.getCurrentLang()) {
+        const value = DataLoader.getNatureSkillRecommendationValue(item);
+        if (value === null || typeof value === 'undefined' || value === '') return null;
+
+        const allowedNatures = (Array.isArray(natures) ? natures : [natures])
+            .map((nature) => String(nature || ''))
+            .filter(Boolean);
+        if (!allowedNatures.length) return null;
+
+        let matched = null;
+        const numericSn = Number(value);
+        if (numericSn) {
+            matched = DataLoader.getNatureSkillBySn(numericSn, lang);
+        } else {
+            const normalizedValue = DataLoader.normalizeNatureSkillRecommendationName(value);
+            const krList = (window.natureSkillDataByLang && window.natureSkillDataByLang.kr)
+                || window.natureSkillData
+                || [];
+            const krMatch = krList.find((entry) => (
+                entry
+                && entry.skill
+                && entry.innateType === innateType
+                && allowedNatures.includes(entry.nature)
+                && DataLoader.normalizeNatureSkillRecommendationName(entry.skill.name) === normalizedValue
+            ));
+            matched = krMatch ? DataLoader.getNatureSkillBySn(krMatch.skill.sn, lang) : null;
+        }
+
+        if (!matched || matched.innateType !== innateType || !allowedNatures.includes(matched.nature)) return null;
+        return {
+            raw: item,
+            sn: Number(matched.skill?.sn),
+            entry: matched
+        };
+    }
+
+    static async getNatureSkillRecommendationsForCharacter(charName, natures, innateType, lang = this.getCurrentLang()) {
+        await DataLoader.loadNatureSkillData(lang);
+        await DataLoader.loadNatureSkillData('kr');
+
+        const setting = DataLoader.getCharacterSetting(charName);
+        const recommend = setting.nature_skill_recommend || {};
+        const orderedNatures = DataLoader.applyNatureSkillOrder(natures, setting);
+        return orderedNatures.flatMap((nature) => (
+            DataLoader.normalizeNatureSkillRecommendationList(
+                DataLoader.getNatureSkillRecommendationSource(recommend, innateType, nature)
+            )
+                .map((item) => DataLoader.resolveNatureSkillRecommendationItem(item, innateType, [nature], lang))
+                .filter(Boolean)
+        ));
+    }
+
+    static async getFirstRecommendedNatureSkill(charName, natures, innateType, lang = this.getCurrentLang()) {
+        const recommendations = await DataLoader.getNatureSkillRecommendationsForCharacter(charName, natures, innateType, lang);
+        return recommendations.length ? recommendations[0].entry : null;
     }
 
     /**

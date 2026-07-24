@@ -31,5 +31,25 @@ window.characterSetting["카요"] = {
     "mind_stats1": "효과명중 28%",
     "mind_stats2": "공격력 20%",
     "mind_skill1": "S2/S3",
-    "mind_skill2": "S1"
+    "mind_skill2": "S1",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -33,5 +33,25 @@ window.characterSetting["미쿠"] = {
     "mind_stats1": "공격력 20%!",
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S2/S3!",
-    "mind_skill2": "S1!"
+    "mind_skill2": "S1!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["대미지 증가","공격력 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["크리티컬 효과 강화","관통 강화"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

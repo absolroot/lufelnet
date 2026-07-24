@@ -31,5 +31,25 @@ window.characterSetting["쇼키"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "효과 명중 24%",
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3/HL!"
+    "mind_skill2": "S3/HL!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -31,5 +31,25 @@ window.characterSetting["유키미"] = {
     "mind_stats1": "실드효과 14%×",
     "mind_stats2": "방어력 30%",
     "mind_skill1": "S1/S3",
-    "mind_skill2": "S2/HL"
+    "mind_skill2": "S2/HL",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

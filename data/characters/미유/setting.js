@@ -28,5 +28,25 @@ window.characterSetting["미유"] = {
     "mind_stats1": "실드효과 14%×",
     "mind_stats2": "방어력 30%",
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3"
+    "mind_skill2": "S3",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

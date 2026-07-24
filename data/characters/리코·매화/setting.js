@@ -33,5 +33,25 @@ window.characterSetting["리코·매화"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "질풍 강습",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "소용돌이의 중심",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

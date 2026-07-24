@@ -31,5 +31,25 @@ window.characterSetting["미나미"] = {
     "mind_stats1": "효과저항 24%×",
     "mind_stats2": "생명 20%×",
     "mind_skill1": "2/HL×",
-    "mind_skill2": "S1/S3×"
+    "mind_skill2": "S1/S3×",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

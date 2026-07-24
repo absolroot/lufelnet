@@ -32,5 +32,25 @@ window.characterSetting["슌"] = {
     "mind_stats2": "생명 20%",
     /*"mind_stats2_glb": "방어력 30%",*/
     "mind_skill1": "-",
-    "mind_skill2": "-"
+    "mind_skill2": "-",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -167,12 +167,18 @@
         }
     };
 
+    const skillCacheByLang = {};
     let allSkills = [];
+    let krSkills = [];
     let currentCharacterName = '';
     let activeNature = '';
     let detectedNatures = [];
     let selectedType = null;
     let activeLang = 'kr';
+    let activeRecommendations = {
+        [TYPE_SYNERGY]: [],
+        [TYPE_COMBAT]: []
+    };
 
     function getCurrentLanguage() {
         try {
@@ -208,6 +214,23 @@
         if (i18nKey && window.I18nService && typeof window.I18nService.t === 'function') {
             const translated = window.I18nService.t(i18nKey, fallback);
             if (translated && translated !== i18nKey && translated !== key) return translated;
+        }
+        return fallback;
+    }
+
+    function getRecommendedLabel() {
+        const fallback = activeLang === 'en'
+            ? 'Recommended'
+            : (activeLang === 'jp' ? '推奨' : (activeLang === 'cn' ? '推荐' : '추천'));
+        if (typeof window.t === 'function') {
+            try {
+                const translated = window.t('recommended', fallback);
+                if (translated && translated !== 'recommended') return translated;
+            } catch (_) {}
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            const translated = window.I18nService.t('recommended', fallback);
+            if (translated && translated !== 'recommended') return translated;
         }
         return fallback;
     }
@@ -279,6 +302,27 @@
             .filter((nature, index, list) => list.indexOf(nature) === index);
     }
 
+    function normalizeNatureId(value) {
+        const raw = String(value || '').trim();
+        if (!raw) return '';
+        if (Object.values(ELEMENT_TO_NATURE).includes(raw)) return raw;
+        return ELEMENT_TO_NATURE[raw] || '';
+    }
+
+    function applyNatureSkillOrder(natures) {
+        const source = (Array.isArray(natures) ? natures : [natures])
+            .map((nature) => String(nature || ''))
+            .filter(Boolean)
+            .filter((nature, index, list) => list.indexOf(nature) === index);
+        const setting = getCharacterSetting();
+        const order = Array.isArray(setting.nature_skill_order)
+            ? setting.nature_skill_order.map(normalizeNatureId).filter(Boolean)
+            : [];
+        if (!order.length) return source;
+        const ordered = order.filter((nature, index, list) => source.includes(nature) && list.indexOf(nature) === index);
+        return ordered.concat(source.filter((nature) => !ordered.includes(nature)));
+    }
+
     function normalizeNatureSkillPayload(payload) {
         const skills = Array.isArray(payload)
             ? (Array.isArray(payload[0]) ? payload[0] : payload)
@@ -286,15 +330,22 @@
         return skills.filter((entry) => entry && entry.skill && (entry.innateType === TYPE_SYNERGY || entry.innateType === TYPE_COMBAT));
     }
 
-    async function loadNatureSkills() {
-        if (allSkills.length) return allSkills;
-        const dataLang = getDataLang(activeLang);
+    async function loadNatureSkillsForLang(lang) {
+        const dataLang = getDataLang(lang);
+        if (skillCacheByLang[dataLang]) return skillCacheByLang[dataLang];
         const dataPath = `/data/skills/nature_skill_${dataLang}.json`;
         const url = `${getBaseUrl()}${dataPath}${getAppVersionQuery()}`;
         const fetcher = typeof window.fetchWithRevalidate === 'function' ? window.fetchWithRevalidate : fetch;
         const response = await fetcher(url, { cache: 'no-cache' });
         if (!response || !response.ok) throw new Error(`Failed to load ${dataPath}`);
-        allSkills = normalizeNatureSkillPayload(await response.json());
+        skillCacheByLang[dataLang] = normalizeNatureSkillPayload(await response.json());
+        return skillCacheByLang[dataLang];
+    }
+
+    async function loadNatureSkills() {
+        if (allSkills.length) return allSkills;
+        allSkills = await loadNatureSkillsForLang(activeLang);
+        krSkills = getDataLang(activeLang) === 'kr' ? allSkills : await loadNatureSkillsForLang('kr');
         return allSkills;
     }
 
@@ -329,6 +380,177 @@
         return allSkills.find((entry) => Number(entry.skill && entry.skill.sn) === numericSn) || null;
     }
 
+    function normalizeRecommendationName(value) {
+        return String(value || '').replace(/\s+/g, '').toLowerCase();
+    }
+
+    function getCharacterSetting() {
+        if (!currentCharacterName || !window.characterSetting) return {};
+        if (window.characterSetting[currentCharacterName]) return window.characterSetting[currentCharacterName];
+
+        const normalized = currentCharacterName.trim();
+        const matchedKey = Object.keys(window.characterSetting).find((key) => (
+            key === currentCharacterName
+            || key.trim() === normalized
+            || key.replace(/\s+/g, '') === currentCharacterName.replace(/\s+/g, '')
+        ));
+        return matchedKey ? window.characterSetting[matchedKey] : {};
+    }
+
+    function loadCharacterSetting() {
+        if (!currentCharacterName) return Promise.resolve(false);
+        const currentSetting = getCharacterSetting();
+        if (currentSetting && Object.keys(currentSetting).length) return Promise.resolve(true);
+
+        window.characterSetting = window.characterSetting || {};
+        const src = `${getBaseUrl()}/data/characters/${encodeURIComponent(currentCharacterName)}/setting.js${getAppVersionQuery()}`;
+        return new Promise((resolve) => {
+            try {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = true;
+                script.onload = () => resolve(!!(getCharacterSetting() && Object.keys(getCharacterSetting()).length));
+                script.onerror = () => resolve(false);
+                document.head.appendChild(script);
+            } catch (_) {
+                resolve(false);
+            }
+        });
+    }
+
+    function getRecommendationValue(item) {
+        if (!item || typeof item !== 'object') return item;
+        return item.skill ?? item.sn ?? item.skillSn ?? item.name ?? item.skillName ?? '';
+    }
+
+    function expandRecommendedItem(item) {
+        if (Array.isArray(item)) {
+            return item.flatMap((entry) => expandRecommendedItem(entry));
+        }
+
+        const value = getRecommendationValue(item);
+        if (Array.isArray(value)) {
+            return value.flatMap((entry) => {
+                if (entry === null || typeof entry === 'undefined' || entry === '') return [];
+                if (item && typeof item === 'object') {
+                    return [{ ...item, skill: entry }];
+                }
+                return expandRecommendedItem(entry);
+            });
+        }
+
+        return [item];
+    }
+
+    function getRecommendationNote(recommendation) {
+        const item = recommendation && recommendation.raw;
+        if (!item || typeof item !== 'object') return '';
+        if (item.notes && typeof item.notes === 'object') {
+            const nested = activeLang === 'kr' ? item.notes.kr : item.notes[activeLang];
+            if (nested) return String(nested);
+        }
+        const key = activeLang === 'kr' ? 'note' : `note_${activeLang}`;
+        return item[key] ? String(item[key]) : '';
+    }
+
+    function resolveRecommendedSkill(item, type, allowedNatures) {
+        const value = getRecommendationValue(item);
+        if (value === null || typeof value === 'undefined' || value === '') return null;
+
+        const natures = Array.isArray(allowedNatures) && allowedNatures.length ? allowedNatures : detectedNatures;
+        let matched = null;
+        const numericSn = Number(value);
+        if (numericSn) {
+            matched = findSkill(numericSn);
+        } else {
+            const normalizedValue = normalizeRecommendationName(value);
+            const krMatch = krSkills.find((entry) => (
+                entry
+                && entry.skill
+                && entry.innateType === type
+                && natures.includes(entry.nature)
+                && normalizeRecommendationName(entry.skill.name) === normalizedValue
+            ));
+            matched = krMatch ? findSkill(krMatch.skill.sn) : null;
+        }
+
+        if (!matched || matched.innateType !== type || !natures.includes(matched.nature)) return null;
+        return {
+            raw: item,
+            sn: Number(matched.skill && matched.skill.sn),
+            entry: matched
+        };
+    }
+
+    function normalizeRecommendedList(value) {
+        if (!value) return [];
+        const list = Array.isArray(value) ? value : [value];
+        return list.flatMap((item) => expandRecommendedItem(item));
+    }
+
+    function getRecommendedSource(recommend, type, nature) {
+        const key = String(type);
+        const flat = recommend[key] ?? recommend[type];
+        const nested = nature && recommend[nature] && typeof recommend[nature] === 'object'
+            ? (recommend[nature][key] ?? recommend[nature][type])
+            : undefined;
+        return typeof nested !== 'undefined' ? nested : flat;
+    }
+
+    function buildActiveRecommendations() {
+        const recommend = getCharacterSetting().nature_skill_recommend || {};
+        activeRecommendations = {
+            [TYPE_SYNERGY]: detectedNatures.flatMap((nature) => (
+                normalizeRecommendedList(getRecommendedSource(recommend, TYPE_SYNERGY, nature))
+                    .map((item) => resolveRecommendedSkill(item, TYPE_SYNERGY, [nature]))
+                    .filter(Boolean)
+            )),
+            [TYPE_COMBAT]: detectedNatures.flatMap((nature) => (
+                normalizeRecommendedList(getRecommendedSource(recommend, TYPE_COMBAT, nature))
+                    .map((item) => resolveRecommendedSkill(item, TYPE_COMBAT, [nature]))
+                    .filter(Boolean)
+            ))
+        };
+    }
+
+    function getRecommendationsFor(type, nature) {
+        return (activeRecommendations[type] || []).filter((recommendation) => (
+            recommendation.entry
+            && recommendation.entry.innateType === type
+            && (!nature || recommendation.entry.nature === nature)
+        ));
+    }
+
+    function getRecommendationForSkill(entry) {
+        if (!entry || !entry.skill) return null;
+        const sn = Number(entry.skill.sn);
+        return getRecommendationsFor(entry.innateType, entry.nature).find((recommendation) => recommendation.sn === sn) || null;
+    }
+
+    function getFirstRecommendedSkill(type, nature) {
+        const recommendation = getRecommendationsFor(type, nature)[0];
+        return recommendation ? recommendation.entry : null;
+    }
+
+    function hasValidSavedSkill(state, type) {
+        const sn = type === TYPE_SYNERGY ? state.synergySn : state.combatSn;
+        const entry = findSkill(sn);
+        return !!(entry && entry.nature === activeNature && entry.innateType === type);
+    }
+
+    function applyRecommendedDefaults(state) {
+        const nextState = { ...(state || {}), nature: activeNature };
+        if (!hasValidSavedSkill(nextState, TYPE_SYNERGY)) {
+            const recommended = getFirstRecommendedSkill(TYPE_SYNERGY, activeNature);
+            nextState.synergySn = recommended ? Number(recommended.skill.sn) : '';
+        }
+        if (!hasValidSavedSkill(nextState, TYPE_COMBAT)) {
+            const recommended = getFirstRecommendedSkill(TYPE_COMBAT, activeNature);
+            nextState.combatSn = recommended ? Number(recommended.skill.sn) : '';
+        }
+        return nextState;
+    }
+
     function getSelectedSkill(type) {
         const saved = readSavedState();
         const sn = type === TYPE_SYNERGY ? saved.synergySn : saved.combatSn;
@@ -336,8 +558,26 @@
         return entry && entry.nature === activeNature && entry.innateType === type ? entry : null;
     }
 
+    function createRecommendedBadge() {
+        const badge = document.createElement('span');
+        badge.className = 'nature-skill-recommend-badge';
+        badge.textContent = getRecommendedLabel();
+        badge.setAttribute('aria-label', getRecommendedLabel());
+        return badge;
+    }
+
+    function createRecommendationNoteElement(recommendation) {
+        const noteText = getRecommendationNote(recommendation);
+        if (!noteText) return null;
+        const note = document.createElement('p');
+        note.className = 'nature-skill-recommend-note';
+        note.textContent = noteText;
+        return note;
+    }
+
     function createSlot(type) {
         const selected = getSelectedSkill(type);
+        const recommendation = selected ? getRecommendationForSkill(selected) : null;
         const isSynergy = type === TYPE_SYNERGY;
         const typeLabel = isSynergy ? text('synergy') : text('combat');
         const displayName = selected ? (selected.skill.name || typeLabel) : typeLabel;
@@ -358,15 +598,22 @@
         const header = document.createElement('span');
         header.className = 'skill-header nature-skill-slot-header';
 
+        const titleLine = document.createElement('span');
+        titleLine.className = 'nature-skill-title-line';
+
         const label = document.createElement('span');
         label.className = 'skill-name nature-skill-slot-label';
         label.textContent = displayName;
+        titleLine.appendChild(label);
+        if (recommendation) {
+            titleLine.appendChild(createRecommendedBadge());
+        }
 
         const hint = document.createElement('span');
         hint.className = 'skill-cost nature-skill-slot-hint';
         hint.textContent = selected ? text('clickChange') : text('clickSelect');
 
-        header.appendChild(label);
+        header.appendChild(titleLine);
         header.appendChild(hint);
         info.appendChild(header);
 
@@ -376,6 +623,8 @@
             skillDesc.innerHTML = formatSkillDescription(selected.skill.desc || '');
 
             info.appendChild(skillDesc);
+            const note = createRecommendationNoteElement(recommendation);
+            if (note) info.appendChild(note);
         } else {
             const plus = document.createElement('span');
             plus.className = 'nature-skill-slot-plus';
@@ -410,7 +659,7 @@
             tab.addEventListener('click', () => {
                 activeNature = nature;
                 const saved = readSavedState();
-                writeSavedState({ ...saved, nature: activeNature });
+                writeSavedState(applyRecommendedDefaults({ ...saved, nature: activeNature }));
                 render();
             });
             tabs.appendChild(tab);
@@ -499,6 +748,7 @@
 
     function createModalOption(entry) {
         const skill = entry.skill || {};
+        const recommendation = getRecommendationForSkill(entry);
         const option = document.createElement('button');
         option.type = 'button';
         option.className = 'nature-skill-modal-option skill-card';
@@ -518,6 +768,9 @@
         const name = document.createElement('strong');
         name.className = 'skill-name nature-skill-option-name';
         name.textContent = skill.name || '';
+        if (recommendation) {
+            name.appendChild(createRecommendedBadge());
+        }
 
         const meta = document.createElement('span');
         meta.className = 'skill-cost nature-skill-option-meta';
@@ -555,6 +808,8 @@
         header.appendChild(meta);
         info.appendChild(header);
         info.appendChild(desc);
+        const note = createRecommendationNoteElement(recommendation);
+        if (note) info.appendChild(note);
         option.appendChild(icon);
         option.appendChild(info);
         option.addEventListener('click', () => selectSkill(entry));
@@ -614,10 +869,13 @@
             hideCard(error.message || 'Failed to load nature skills');
             return;
         }
+        await loadCharacterSetting();
+        detectedNatures = applyNatureSkillOrder(detectedNatures);
+        buildActiveRecommendations();
 
         const saved = readSavedState();
         activeNature = detectedNatures.includes(saved.nature) ? saved.nature : detectedNatures[0];
-        writeSavedState({ ...saved, nature: activeNature });
+        writeSavedState(applyRecommendedDefaults(saved));
         render();
     }
 

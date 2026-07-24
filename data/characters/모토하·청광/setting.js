@@ -31,5 +31,25 @@ window.characterSetting["모토하·청광"] = {
     "mind_stats1": "대미지 보너스 16%!",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/S3!",
-    "mind_skill2": "S2/HL!"
+    "mind_skill2": "S2/HL!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["크리티컬 효과 증가","크리티컬 확률 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "오버클럭 폭파",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

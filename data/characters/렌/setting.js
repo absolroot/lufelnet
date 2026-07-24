@@ -31,5 +31,25 @@ window.characterSetting["렌"] = {
     "mind_stats1": "대미지보너스 16%",
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "얽매인 저주",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["그림자 침식", "취약의 주인"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

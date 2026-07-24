@@ -33,5 +33,25 @@ window.characterSetting["미유·여름"] = {
     "mind_stats1": "공격력 20%!",
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S1/S2!",
-    "mind_skill2": "S3/HL!"
+    "mind_skill2": "S3/HL!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["얼음의 수호","대미지 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "서리 방패 공명",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

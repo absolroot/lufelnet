@@ -31,5 +31,25 @@ window.characterSetting["키라"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "관통 7.5%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["크리티컬 효과 증가","중상 취약"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["약점 추격","열상 폭발"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

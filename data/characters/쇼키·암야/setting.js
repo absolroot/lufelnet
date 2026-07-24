@@ -31,5 +31,25 @@ window.characterSetting["쇼키·암야"] = {
     "mind_stats1": "대미지 보너스 16%",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["넘치는 은총","대미지 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["축복의 심판"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

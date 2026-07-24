@@ -31,5 +31,25 @@ window.characterSetting["아이기스"] = {
     "mind_stats1": "크리티컬 효과 24%!",
     "mind_stats2": "대미지 보너스 16%",
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3/TH!"
+    "mind_skill2": "S3/TH!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "크리티컬 효과 증가",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["궁지 반격","급소 통찰"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

@@ -31,5 +31,25 @@ window.characterSetting["아케치"] = {
     "mind_stats1": "대미지보너스 16%",
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S1/S2!",
-    "mind_skill2": "S3/HL!"
+    "mind_skill2": "S3/HL!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["대미지 증가","만능 속성 대미지 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["철벽의 천적", "조화의 힘"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

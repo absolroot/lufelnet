@@ -31,5 +31,25 @@ window.characterSetting["유카리"] = {
     "mind_stats1": "SP 회복",
     "mind_stats2": "공격력",
     "mind_skill1": "S1/S3!",
-    "mind_skill2": "S2/TH!"
+    "mind_skill2": "S2/TH!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "질풍 강습",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["정화의 바람","소용돌이의 중심"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

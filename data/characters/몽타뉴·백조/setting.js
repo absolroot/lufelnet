@@ -31,5 +31,29 @@ window.characterSetting["몽타뉴·백조"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "크리티컬 확률 12%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_order": ["Wind", "Ice"],
+    "nature_skill_recommend": {
+        "Wind": {
+            "501": [
+                { "skill": 70604, "note": "", "note_en": "", "note_jp": "", "note_cn": "" },
+                { "skill": 70602, "note": "", "note_en": "", "note_jp": "", "note_cn": "" }
+            ],
+            "502": [
+                { "skill": 70607, "note": "", "note_en": "", "note_jp": "", "note_cn": "" },
+                { "skill": 70606, "note": "", "note_en": "", "note_jp": "", "note_cn": "" }
+            ]
+        },
+        "Ice": {
+            "501": [
+                { "skill": 70405, "note": "", "note_en": "", "note_jp": "", "note_cn": "" },
+                { "skill": 70402, "note": "", "note_en": "", "note_jp": "", "note_cn": "" },
+                { "skill": 70401, "note": "", "note_en": "", "note_jp": "", "note_cn": "" }
+            ],
+            "502": [
+                { "skill": 70406, "note": "", "note_en": "", "note_jp": "", "note_cn": "" },
+                { "skill": 70407, "note": "", "note_en": "", "note_jp": "", "note_cn": "" }
+            ]
+        }
+    }
 };

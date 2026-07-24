@@ -32,5 +32,25 @@ window.characterSetting["마사키"] = {
     "mind_stats2": "방어력 30%",
     /*"mind_stats2_glb": "생명 20%",*/
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3/HL"
+    "mind_skill2": "S3/HL",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["얼음의 수호","실드 효과 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "서리의 고리",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

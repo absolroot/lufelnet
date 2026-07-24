@@ -31,5 +31,25 @@ window.characterSetting["YUI"] = {
     "mind_stats1": "공격력 20%",
     "mind_stats2": "크리티컬 효과 24%!",
     "mind_skill1": "S1/HL!",
-    "mind_skill2": "S2/S3/추격!"
+    "mind_skill2": "S2/S3/추격!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["크리티컬 효과 증가","크리티컬 확률 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "오버클럭 폭파",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

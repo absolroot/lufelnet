@@ -759,6 +759,32 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     width: 100%;
 }
 
+.revelation-button .nature-skill-button-label {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    min-width: 0;
+    white-space: normal;
+}
+
+.nature-skill-recommend-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    padding: 2px 5px;
+    border: 1px solid rgba(158, 255, 255, 0.45);
+    border-radius: 4px;
+    background: rgba(67, 204, 204, 0.16);
+    color: #cfffff;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
 .nature-skill-modal {
     display: none;
     position: fixed;
@@ -891,6 +917,10 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 }
 
 .nature-skill-option-name {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px;
     font-size: 13px;
     line-height: 1.3;
     min-width: 0;
@@ -928,6 +958,17 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     line-height: 1.45;
     word-break: break-word;
     overflow-wrap: break-word;
+}
+
+.nature-skill-recommend-note {
+    display: block;
+    margin-top: 8px;
+    color: rgba(158, 255, 255, 0.82);
+    font-size: 12px;
+    line-height: 1.45;
+    white-space: pre-line;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .nature-skill-modal-empty {

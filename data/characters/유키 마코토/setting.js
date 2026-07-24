@@ -24,5 +24,25 @@ window.characterSetting["유키 마코토"] = {
     "mind_stats1": "대미지 보너스 16%",
     "mind_stats2": "관통 7.5%",
     "mind_skill1": "S1/S2",
-    "mind_skill2": "S3/TH!"
+    "mind_skill2": "S3/TH!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["불꽃 분신", "대미지 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["화염 폭파", "전소"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

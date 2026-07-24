@@ -31,5 +31,25 @@ window.characterSetting["카타야마"] = {
     "mind_stats1": "속도 10!",
     "mind_stats2": "크리티컬 확률 12%",
     "mind_skill1": "S1/S2!",
-    "mind_skill2": "S3/HL!"
+    "mind_skill2": "S3/HL!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": ["감전 효과", "크리티컬 확률 증가"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": ["전류 증폭", "자기장 폭풍"],
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

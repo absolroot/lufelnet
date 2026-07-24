@@ -33,5 +33,25 @@ window.characterSetting["슌·프론티어"] = {
     "mind_stats1": "생명 20%",
     "mind_stats2": "실드효과 14%",
     "mind_skill1": "S1/HL",
-    "mind_skill2": "S2/S3!"
+    "mind_skill2": "S2/S3!",
+    "nature_skill_recommend": {
+        "501": [
+            {
+                "skill": "중상 취약",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ],
+        "502": [
+            {
+                "skill": "급소 통찰",
+                "note": "",
+                "note_en": "",
+                "note_jp": "",
+                "note_cn": ""
+            }
+        ]
+    }
 };

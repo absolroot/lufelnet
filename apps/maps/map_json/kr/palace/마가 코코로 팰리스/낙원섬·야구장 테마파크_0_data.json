@@ -1,0 +1,721 @@
+{
+    "tiles": [
+        {
+            "image": "bqg_A_04_01.png",
+            "position": [
+                67,
+                1350
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_02.png",
+            "position": [
+                137,
+                1149
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_03.png",
+            "position": [
+                267,
+                1160
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_04.png",
+            "position": [
+                383,
+                1316
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_05.png",
+            "position": [
+                20,
+                758
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_06.png",
+            "position": [
+                135,
+                558
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_07.png",
+            "position": [
+                33,
+                559
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_08.png",
+            "position": [
+                20,
+                442
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_09.png",
+            "position": [
+                0,
+                234
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_10.png",
+            "position": [
+                141,
+                106
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_11.png",
+            "position": [
+                44,
+                9
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_12.png",
+            "position": [
+                96,
+                448
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "bqg_A_04_13.png",
+            "position": [
+                99,
+                332
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8804306,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                533,
+                1178
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804402,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                556,
+                1403
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804501,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                41,
+                1064
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804601,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                206,
+                727
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804602,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                243,
+                680
+            ],
+            "ratio": 0.6875,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804701,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                87,
+                689
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804702,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                82,
+                784
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88041001,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                208,
+                272
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88041002,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                271,
+                118
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88041003,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                278,
+                232
+            ],
+            "ratio": 0.6875,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88041201,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                148,
+                466
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88041301,
+            "image": "yishijie-icon-box-suo-new.png",
+            "position": [
+                129,
+                419
+            ],
+            "ratio": 0.6875,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047001,
+            "image": "breakable.png",
+            "position": [
+                104,
+                1393
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047002,
+            "image": "breakable.png",
+            "position": [
+                240,
+                1308
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047003,
+            "image": "breakable.png",
+            "position": [
+                421,
+                1376
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047004,
+            "image": "breakable.png",
+            "position": [
+                39,
+                866
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047005,
+            "image": "breakable.png",
+            "position": [
+                174,
+                782
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047006,
+            "image": "breakable.png",
+            "position": [
+                105,
+                502
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047007,
+            "image": "breakable.png",
+            "position": [
+                22,
+                482
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047008,
+            "image": "breakable.png",
+            "position": [
+                68,
+                528
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047009,
+            "image": "breakable.png",
+            "position": [
+                101,
+                403
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047010,
+            "image": "breakable.png",
+            "position": [
+                22,
+                478
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047011,
+            "image": "breakable.png",
+            "position": [
+                67,
+                373
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047012,
+            "image": "breakable.png",
+            "position": [
+                196,
+                137
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047013,
+            "image": "breakable.png",
+            "position": [
+                223,
+                138
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047014,
+            "image": "breakable.png",
+            "position": [
+                316,
+                186
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88047015,
+            "image": "breakable.png",
+            "position": [
+                196,
+                141
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8804005,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                129,
+                961
+            ],
+            "ratio": 0.36666666666666664,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804009,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                87,
+                352
+            ],
+            "ratio": 0.36666666666666664,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8804201,
+            "image": "yishijie-icon-xiaoguai-new.png",
+            "position": [
+                28,
+                414
+            ],
+            "ratio": 0.4583333333333333,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 26804,
+                "enemies": [
+                    [
+                        {
+                            "sn": 258101,
+                            "name": "괴상한 봉황",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Ice"
+                                ],
+                                "Nullify": [
+                                    "Wind"
+                                ],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": 78,
+                            "isDnmLv": true,
+                            "realLv": -2,
+                            "stat": {
+                                "HP": 225278.172,
+                                "HP 계산식": "(88137.0 * (1 + 1.56) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 2463.2325,
+                                "공격력 계산식": "(963.71 * (1 + 1.56) + 0) * (1 + 0)",
+                                "방어력": 1242.02,
+                                "방어력 계산식": "(1242.02 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.39,
+                                "효과 명중 계산식": "(0.39 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.49,
+                                "효과 저항 계산식": "(0.49 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 94.367,
+                                "속도 계산식": "(94.37 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.037,
+                                "대미지 보너스 계산식": "(1.04 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 84031,
+                                    "name": "아기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "적 1명에게 화염 속성 대미지를 주고, 일정 확률로 적을 연소 상태에 빠뜨린다."
+                                    }
+                                },
+                                {
+                                    "sn": 84032,
+                                    "name": "마하라기온",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "적 전체에 화염 속성 대미지를 주고, 일정 확률로 적을 연소 상태에 빠뜨린다."
+                                    }
+                                },
+                                {
+                                    "sn": 84033,
+                                    "name": "인페르노",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "적 전체에 화염 속성 대미지를 주고, 연소 중첩 수에 따라 스킬 대미지가 증가한다."
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 258101,
+                    "title": "봉황 능력 소개",
+                    "content": "1. 봉황은 열반 능력을 갖추고 있습니다. 봉황이 사망하면 열반에 들어가며, 열반 과정은 2턴 동안 지속됩니다. 열반 중에는 받는 대미지가 감소하며, 열반 중 처치당하면 열반에 실패합니다. 열반에 성공할 때마다 봉황은 새로운 능력을 획득합니다(최대 3회 열반 가능).\n2. 봉황이 열반에 1회 성공할 때마다, 다음 열반 단계에서의 대미지 감소 효과가 낮아집니다.\n3. 봉황은 열반에 성공하면 생명 50%로 부활하며, 부활한 후 2턴 뒤에 최대 생명의 50%를 회복합니다.\n4. 봉황이 열반에 성공하면 즉시 플레이어에게 부여된 연소 중첩을 폭발시켜, 연소 중첩 수에 따라 대미지를 줍니다.\n5. 열반 1회 후: 봉황의 스킬이 대상을 연소 상태에 빠뜨릴 확률이 증가하고, 최대 생명이 증가합니다.\n   열반 2회 후: 연소로 주는 대미지가 증가하고, 봉황의 공격력이 증가합니다.\n   열반 3회 후: 연소의 지속 턴이 영구로 변경되고, 봉황의 방어력이 증가합니다."
+                }
+            }
+        }
+    ],
+    "rotate": 270.0,
+    "map_size": [
+        588,
+        1512
+    ]
+}

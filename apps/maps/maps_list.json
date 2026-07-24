@@ -1658,6 +1658,275 @@
               "description_jp": ""
             }
           ]
+        },
+        {
+          "id": "paradise_island",
+          "name": "마가 코코로 팰리스",
+          "name_en": "",
+          "name_jp": "",
+          "icon": "",
+          "submaps": [
+            {
+              "id": "joy_paradise_island",
+              "name": "유열의 낙원섬",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/마가 코코로 팰리스/낙원섬·유열의 낙원섬_0_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            },
+            {
+              "id": "love_paradise_island",
+              "name": "사랑의 낙원섬",
+              "name_en": "",
+              "name_jp": "",
+              "file": [],
+              "description": "",
+              "description_en": "",
+              "description_jp": "",
+              "submaps": [
+                {
+                  "id": "love_paradise_outside",
+                  "name": "사랑의 낙원섬 밖",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·사랑의 낙원섬_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "love_paradise_inside",
+                  "name": "사랑의 낙원섬 안",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·사랑의 낙원섬 야외 식장_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "baseball_paradise",
+                  "name": "야구장 낙원",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·야구장 테마파크_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "studio_1",
+                  "name": "제1 스튜디오",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·제1 스튜디오_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                }
+              ]
+            },
+            {
+              "id": "passion_paradise_island",
+              "name": "열정의 낙원섬",
+              "name_en": "",
+              "name_jp": "",
+              "file": [],
+              "description": "",
+              "description_en": "",
+              "description_jp": "",
+              "submaps": [
+                {
+                  "id": "passion_paradise_outside",
+                  "name": "열정의 낙원섬 밖",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·열정의 낙원섬_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "passion_paradise_inside",
+                  "name": "열정의 낙원섬 안",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·열정의 낙원섬 야외 식장_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "dam_paradise",
+                  "name": "댐 낙원",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·댐 테마파크_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "studio_2",
+                  "name": "제2 스튜디오",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·제2 스튜디오_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                }
+              ]
+            },
+            {
+              "id": "dream_paradise_island",
+              "name": "꿈의 낙원섬",
+              "name_en": "",
+              "name_jp": "",
+              "file": [],
+              "description": "",
+              "description_en": "",
+              "description_jp": "",
+              "submaps": [
+                {
+                  "id": "dream_paradise_outside",
+                  "name": "꿈의 낙원섬 밖",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·꿈의 낙원섬_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "anthill_paradise",
+                  "name": "개미굴 낙원",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·개미굴 테마파크_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "studio_3",
+                  "name": "제3 스튜디오",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·제3 스튜디오_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                },
+                {
+                  "id": "collapsed_outdoor_hall",
+                  "name": "붕괴된 야외 식장",
+                  "name_en": "",
+                  "name_jp": "",
+                  "file": [
+                    "palace/마가 코코로 팰리스/낙원섬·꿈의 낙원섬 야외 식장_0_data.json"
+                  ],
+                  "file_en": [
+                  ],
+                  "file_jp": [
+                  ],
+                  "description": "",
+                  "description_en": "",
+                  "description_jp": ""
+                }
+              ]
+            },
+            {
+              "id": "ultimate_studio",
+              "name": "궁극의 스튜디오",
+              "name_en": "",
+              "name_jp": "",
+              "file": [
+                "palace/마가 코코로 팰리스/낙원섬·궁극의 스튜디오_0_data.json"
+              ],
+              "file_en": [
+              ],
+              "file_jp": [
+              ],
+              "description": "",
+              "description_en": "",
+              "description_jp": ""
+            }
+          ]
         }
       ]
     },

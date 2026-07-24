@@ -1,0 +1,24 @@
+{
+    "tiles": [
+        {
+            "image": "map_ybt_C_YB01.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.50000685,
+                0.5
+            ]
+        }
+    ],
+    "objects": [],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        2048,
+        1621
+    ]
+}

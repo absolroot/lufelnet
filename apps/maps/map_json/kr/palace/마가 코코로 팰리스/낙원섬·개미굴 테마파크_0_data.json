@@ -1,0 +1,590 @@
+{
+    "tiles": [
+        {
+            "image": "yx_A_06_01.png",
+            "position": [
+                676,
+                911
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_02.png",
+            "position": [
+                492,
+                1076
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_03.png",
+            "position": [
+                524,
+                697
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_04.png",
+            "position": [
+                306,
+                766
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_05.png",
+            "position": [
+                92,
+                736
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_06.png",
+            "position": [
+                692,
+                835
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_07.png",
+            "position": [
+                763,
+                321
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_08.png",
+            "position": [
+                790,
+                540
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_09.png",
+            "position": [
+                791,
+                396
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_12.png",
+            "position": [
+                94,
+                423
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "yx_A_06_13.png",
+            "position": [
+                175,
+                466
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8806104,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                961,
+                701
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806205,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                649,
+                1606
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806303,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                659,
+                720
+            ],
+            "ratio": 0.7916666666666666,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806505,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                212,
+                1002
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806506,
+            "image": "yishijie-icon-HackedGlass.png",
+            "position": [
+                210,
+                742
+            ],
+            "ratio": 0.475,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806603,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                845,
+                567
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806707,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                1032,
+                350
+            ],
+            "ratio": 0.7916666666666666,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88061302,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                372,
+                689
+            ],
+            "ratio": 0.7916666666666666,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067001,
+            "image": "breakable.png",
+            "position": [
+                743,
+                1155
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067002,
+            "image": "breakable.png",
+            "position": [
+                681,
+                1307
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067003,
+            "image": "breakable.png",
+            "position": [
+                562,
+                1562
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067004,
+            "image": "breakable.png",
+            "position": [
+                594,
+                913
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067005,
+            "image": "breakable.png",
+            "position": [
+                500,
+                802
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067006,
+            "image": "breakable.png",
+            "position": [
+                604,
+                896
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067007,
+            "image": "breakable.png",
+            "position": [
+                295,
+                1004
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067008,
+            "image": "breakable.png",
+            "position": [
+                748,
+                920
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067009,
+            "image": "breakable.png",
+            "position": [
+                975,
+                675
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067010,
+            "image": "breakable.png",
+            "position": [
+                1031,
+                787
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067011,
+            "image": "breakable.png",
+            "position": [
+                378,
+                411
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88067012,
+            "image": "breakable.png",
+            "position": [
+                345,
+                417
+            ],
+            "ratio": 0.95,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8806005,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                157,
+                1022
+            ],
+            "ratio": 0.4222222222222222,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806006,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                960,
+                901
+            ],
+            "ratio": 0.4222222222222222,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8806201,
+            "image": "yishijie-icon-xiaoguai-new.png",
+            "position": [
+                292,
+                550
+            ],
+            "ratio": 0.5277777777777778,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": {
+                "instSn": 26806,
+                "enemies": [
+                    [
+                        {
+                            "sn": 258121,
+                            "name": "괴상한 봉황",
+                            "adapt": {
+                                "Weak": [
+                                    "Electric"
+                                ],
+                                "Resistant": [
+                                    "Ice"
+                                ],
+                                "Nullify": [
+                                    "Wind"
+                                ],
+                                "Reflect": [],
+                                "Absorb": []
+                            },
+                            "level": 78,
+                            "isDnmLv": true,
+                            "realLv": -2,
+                            "stat": {
+                                "HP": 675834.516,
+                                "HP 계산식": "(264411.0 * (1 + 1.56) + 0) * (1 + 0)",
+                                "SP": 100.0,
+                                "SP 계산식": "(100.0 * (1 + 0) + 0) * (1 + 0)",
+                                "공격력": 3941.1721,
+                                "공격력 계산식": "(1541.93 * (1 + 1.56) + 0) * (1 + 0)",
+                                "방어력": 1242.02,
+                                "방어력 계산식": "(1242.02 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 확률": 0.0,
+                                "크리티컬 확률 계산식": "(0.0 * (1 + 0) + 0) * (1 + 0)",
+                                "크리티컬 효과": 1.3,
+                                "크리티컬 효과 계산식": "(1.3 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 명중": 0.39,
+                                "효과 명중 계산식": "(0.39 * (1 + 0) + 0) * (1 + 0)",
+                                "효과 저항": 0.49,
+                                "효과 저항 계산식": "(0.49 * (1 + 0) + 0) * (1 + 0)",
+                                "다운 수치": 0,
+                                "다운 수치 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "명중률": 1.0,
+                                "명중률 계산식": "(1.0 * (1 + 0) + 0) * (1 + 0)",
+                                "속도": 94.367,
+                                "속도 계산식": "(94.37 * (1 + 0) + 0) * (1 + 0)",
+                                "SP 회복": 0,
+                                "SP 회복 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "관통": 0,
+                                "관통 계산식": "(0 * (1 + 0) + 0) * (1 + 0)",
+                                "대미지 보너스": 1.037,
+                                "대미지 보너스 계산식": "(1.04 * (1 + 0) + 0) * (1 + 0)",
+                                "받는 대미지": 0,
+                                "받는 대미지 계산식": "(0 * (1 + 0) + 0) * (1 + 0)"
+                            },
+                            "skill_data": [
+                                {
+                                    "sn": 84031,
+                                    "name": "아기",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "적 1명에게 화염 속성 대미지를 주고, 일정 확률로 적을 연소 상태에 빠뜨린다."
+                                    }
+                                },
+                                {
+                                    "sn": 84032,
+                                    "name": "마하라기온",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "적 전체에 화염 속성 대미지를 주고, 일정 확률로 적을 연소 상태에 빠뜨린다."
+                                    }
+                                },
+                                {
+                                    "sn": 84033,
+                                    "name": "인페르노",
+                                    "desc": {
+                                        "level": 1,
+                                        "desc": "적 전체에 화염 속성 대미지를 주고, 연소 중첩 수에 따라 스킬 대미지가 증가한다."
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                ],
+                "tutorial": {
+                    "sn": 258121,
+                    "title": "봉황 능력 소개",
+                    "content": "1. 봉황은 열반 능력을 갖추고 있습니다. 봉황이 사망하면 열반에 들어가며, 열반 과정은 1턴 동안 지속됩니다. 열반 중에는 받는 대미지가 감소하며, 열반 중 처치당하면 열반에 실패합니다. 열반에 성공할 때마다 봉황은 새로운 능력을 획득합니다(최대 3회 열반 가능).\n2. 봉황이 열반에 1회 성공할 때마다, 다음 열반 단계에서의 대미지 감소 효과가 낮아집니다.\n3. 봉황은 열반에 성공하면 생명 50%로 부활하며, 부활 후 1턴 뒤에 최대 생명의 50%를 회복합니다.\n4. 봉황이 열반에 성공하면 즉시 플레이어에게 부여된 연소 중첩을 폭발시켜, 연소 중첩 수에 따라 대미지를 줍니다.\n5. 열반 1회 후: 봉황의 스킬이 대상을 연소 상태에 빠뜨릴 확률이 증가하고, 최대 생명이 증가합니다.\n   열반 2회 후: 연소로 주는 대미지가 증가하고, 봉황의 공격력이 증가합니다.\n   열반 3회 후: 연소의 지속 턴이 영구로 변경되고, 봉황의 방어력이 증가합니다.\n6. 봉황은 열반에 성공하면 대미지 보너스를 획득하며, 열반에 성공할 때마다 대미지 보너스 효과가 더욱 강해집니다."
+                }
+            }
+        }
+    ],
+    "rotate": 0.0,
+    "map_size": [
+        1196,
+        1752
+    ]
+}

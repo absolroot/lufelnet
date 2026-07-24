@@ -1,0 +1,70 @@
+{
+    "tiles": [
+        {
+            "image": "map_jbg_C_RK02.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5005502
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8810004,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                2206,
+                676
+            ],
+            "ratio": 0.8,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8810005,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                253,
+                641
+            ],
+            "ratio": 0.8,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8810006,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1159,
+                327
+            ],
+            "ratio": 0.8,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        2048,
+        978
+    ]
+}

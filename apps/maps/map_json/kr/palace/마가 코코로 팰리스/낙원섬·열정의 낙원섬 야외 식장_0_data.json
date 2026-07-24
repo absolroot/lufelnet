@@ -1,0 +1,295 @@
+{
+    "tiles": [
+        {
+            "image": "map_lyd_C_ZD02.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8812101,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1065,
+                146
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812102,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1010,
+                207
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812103,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1058,
+                312
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812104,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1131,
+                240
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812105,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1071,
+                223
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812106,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1221,
+                247
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812107,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1251,
+                317
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812108,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1157,
+                394
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812109,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1159,
+                192
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812110,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1143,
+                139
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812111,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1185,
+                101
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812112,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1233,
+                116
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812113,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1250,
+                169
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812114,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1211,
+                206
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812115,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1101,
+                114
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812116,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                1236,
+                261
+            ],
+            "ratio": 0.7567567567567568,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812117,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                956,
+                149
+            ],
+            "ratio": 0.7,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8812118,
+            "image": "yishijie-icon-box-teshu-new.png",
+            "position": [
+                1074,
+                262
+            ],
+            "ratio": 0.5833333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 0.0,
+    "map_size": [
+        1024,
+        482
+    ]
+}

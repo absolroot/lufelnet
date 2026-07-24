@@ -1,0 +1,347 @@
+{
+    "tiles": [
+        {
+            "image": "lyd_A_03_01.png",
+            "position": [
+                1297,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_02.png",
+            "position": [
+                1241,
+                169
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_03.png",
+            "position": [
+                1098,
+                327
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_04.png",
+            "position": [
+                848,
+                214
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_05.png",
+            "position": [
+                579,
+                252
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_06.png",
+            "position": [
+                187,
+                242
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_07.png",
+            "position": [
+                8,
+                289
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_08.png",
+            "position": [
+                31,
+                536
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_09.png",
+            "position": [
+                1,
+                902
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_10.png",
+            "position": [
+                165,
+                817
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_11.png",
+            "position": [
+                376,
+                922
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_12.png",
+            "position": [
+                631,
+                864
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        },
+        {
+            "image": "lyd_A_03_13.png",
+            "position": [
+                889,
+                806
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8803105,
+            "image": "yishijie-icon-HackedGlass.png",
+            "position": [
+                1438,
+                239
+            ],
+            "ratio": 0.4125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803201,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                1355,
+                267
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803402,
+            "image": "yishijie-icon-yuluncaokong02.png",
+            "position": [
+                991,
+                472
+            ],
+            "ratio": 0.4125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803607,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                228,
+                451
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803703,
+            "image": "yishijie-icon-yuluncaokong02.png",
+            "position": [
+                26,
+                422
+            ],
+            "ratio": 0.4125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803906,
+            "image": "yishijie-icon-HackedGlass.png",
+            "position": [
+                132,
+                1155
+            ],
+            "ratio": 0.4125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803907,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                153,
+                933
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88031103,
+            "image": "yishijie-icon-yuluncaokong02.png",
+            "position": [
+                501,
+                1073
+            ],
+            "ratio": 0.4125,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 88031201,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                764,
+                1037
+            ],
+            "ratio": 0.825,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [
+        {
+            "sn": 8803004,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                976,
+                318
+            ],
+            "ratio": 0.36666666666666664,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8803012,
+            "image": "yishijie-icon-anquanwu-new.png",
+            "position": [
+                764,
+                959
+            ],
+            "ratio": 0.36666666666666664,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "rotate": 0.0,
+    "map_size": [
+        1620,
+        1498
+    ]
+}

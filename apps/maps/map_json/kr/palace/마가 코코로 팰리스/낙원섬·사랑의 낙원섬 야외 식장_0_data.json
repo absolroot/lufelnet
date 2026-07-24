@@ -1,0 +1,115 @@
+{
+    "tiles": [
+        {
+            "image": "map_lyd_C_ZD01.png",
+            "position": [
+                0,
+                0
+            ],
+            "ratio": 1,
+            "rotate": 0,
+            "rotate_pivot": [
+                0.50119877,
+                0.50000006
+            ]
+        }
+    ],
+    "objects": [
+        {
+            "sn": 8811101,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                320,
+                832
+            ],
+            "ratio": 1.0810810810810811,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8811102,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                257,
+                806
+            ],
+            "ratio": 1.0810810810810811,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8811103,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                205,
+                763
+            ],
+            "ratio": 1.0810810810810811,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8811104,
+            "image": "yishijie-icon-nengyuan-hexin-05.png",
+            "position": [
+                152,
+                734
+            ],
+            "ratio": 1.0810810810810811,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8811109,
+            "image": "yishijie-icon-box-01-new.png",
+            "position": [
+                113,
+                734
+            ],
+            "ratio": 1.0,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        },
+        {
+            "sn": 8811110,
+            "image": "yishijie-icon-box-hexin-new.png",
+            "position": [
+                600,
+                733
+            ],
+            "ratio": 0.8333333333333334,
+            "rotate": 0.0,
+            "rotate_pivot": [
+                0.5,
+                0.5
+            ],
+            "enemy_data": null
+        }
+    ],
+    "enemies": [],
+    "rotate": 180.0,
+    "map_size": [
+        866,
+        1842
+    ]
+}

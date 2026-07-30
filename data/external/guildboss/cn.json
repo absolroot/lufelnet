@@ -76,7 +76,10 @@
             "Nullify": [],
             "Reflect": [],
             "Resistant": [
-              "Phys"
+              "Phys",
+              "Gun",
+              "Electric",
+              "Bless"
             ],
             "Weak": [
               "Wind"

@@ -54,7 +54,7 @@ window.personaFiles["아라미타마"] = {
   ],
   "innate_skill": [
     {
-      "name": "히트 업Ⅱ",
+      "name": "격앙Ⅱ",
       "name_en": "Heat Up II",
       "name_jp": "ヒートアップⅡ",
       "desc": "선제 공격 시 최대 생명 5.0%와 SP 6포인트를 회복한다.",

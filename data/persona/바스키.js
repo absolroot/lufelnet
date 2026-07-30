@@ -20,7 +20,7 @@ window.personaFiles["바스키"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
-    "comment_cn": "",
+  "comment_cn": "",
   "added": "KR v4.2.1",
   "cost": null,
   "combination": null,
@@ -42,52 +42,52 @@ window.personaFiles["바스키"] = {
   "passive_skill": [
     {
       "name": "하늘과 땅을 잇는 올가미",
-      "name_en": "Serpent of the Sky and Earth",
-      "name_jp": "天と地を繋ぐヴァスキ",
+      "name_en": "Serpent's Turmoil",
+      "name_jp": "btltbc-0804-蛇龍の攪拌",
       "desc": "효과 명중이 34.9% 증가한다. 전투 시작 시 「응시」를 3중첩 획득한다. 아군 동료가 스킬로 디버프 효과 추가 시, 자신이 「응시」를 1중첩 획득한다(5회 중첩 가능, 동료마다 턴당 「응시」 최대 1회 추가). 자신이 페르소나 스킬 시전 시, 「응시」를 5중첩 보유한 경우 「응시」를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 10% 증가한다.",
-      "desc_en": "Increases Ailment Accuracy by 34.9%. At the start of battle, gains 3 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 10%.",
-      "desc_jp": "状態異常命中が34.9%増加する。戦闘開始時、3重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を10%増加させる。",
+      "desc_en": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 3 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 10%.",
+      "desc_jp": "btltbc-0804-状態異常命中が３４.９%上昇する。\n戦闘開始時『辛苦の澱み』を３つ獲得する。各味方がスキルで弱体を付与した時『辛苦の澱み』を１つ獲得する（１ターンに最大１つまで）。『辛苦の澱み』は最大５つまで累積できる。\n『辛苦の澱み』：スキルを使用した時、５つ消費して選択した対象の受ける持続ダメージ効果が１０%上昇する。",
       "name_cn": "连接天地的绞索",
       "desc_cn": "效果命中提升34.9%。战斗开始时获得3层「凝视」，友方同伴释放技能添加负面效果时，自身获得1层「凝视」，上限5层。（每个同伴每回合最多添加1层「凝视」）。自身释放人格面具技能时，若拥有5层「凝视」，则消耗5层「凝视」，使技能主目标受到持续伤害效果提升10%。"
     },
     {
       "name": "하늘과 땅을 잇는 올가미Ⅰ",
-      "name_en": "Serpent of the Sky and Earth I",
-      "name_jp": "天と地を繋ぐヴァスキ I",
+      "name_en": "Serpent's Turmoil I",
+      "name_jp": "btltbc-0804-蛇龍の攪拌Ⅰ",
       "desc": "효과 명중이 34.9% 증가한다. 전투 시작 시 「응시」를 5중첩 획득한다. 아군 동료가 스킬로 디버프 효과 추가 시, 자신이 「응시」를 1중첩 획득한다(5회 중첩 가능, 동료마다 턴당 「응시」 최대 1회 추가). 자신이 페르소나 스킬 시전 시, 「응시」를 5중첩 보유한 경우 「응시」를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 10% 증가한다.",
-      "desc_en": "Increases Ailment Accuracy by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 10%.",
-      "desc_jp": "状態異常命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を10%増加させる。",
+      "desc_en": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 5 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 10%.",
+      "desc_jp": "btltbc-0804-状態異常命中が３４.９%上昇する。\n戦闘開始時『辛苦の澱み』を５つ獲得する。各味方がスキルで弱体を付与した時『辛苦の澱み』を１つ獲得する（１ターンに最大１つまで）。『辛苦の澱み』は最大５つまで累積できる。\n『辛苦の澱み』：スキルを使用した時、５つ消費して選択した対象の受ける持続ダメージ効果が１０%上昇する。",
       "name_cn": "连接天地的绞索Ⅰ",
       "desc_cn": "效果命中提升34.9%。战斗开始时获得5层「凝视」，友方同伴释放技能添加负面效果时，自身获得1层「凝视」，上限5层。（每个同伴每回合最多添加1层「凝视」）。自身释放人格面具技能时，若拥有5层「凝视」，则消耗5层「凝视」，使技能主目标受到持续伤害效果提升10%。"
     },
     {
       "name": "하늘과 땅을 잇는 올가미Ⅱ",
-      "name_en": "Serpent of the Sky and Earth II",
-      "name_jp": "天と地を繋ぐヴァスキ II",
+      "name_en": "Serpent's Turmoil II",
+      "name_jp": "btltbc-0804-蛇龍の攪拌Ⅱ",
       "desc": "효과 명중이 34.9% 증가한다. 전투 시작 시 「응시」를 5중첩 획득한다. 아군 동료가 스킬로 디버프 효과 추가 시, 자신이 「응시」를 1중첩 획득한다(5회 중첩 가능, 동료마다 턴당 「응시」 최대 1회 추가). 자신이 페르소나 스킬 시전 시, 「응시」를 5중첩 보유한 경우 「응시」를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 15% 증가한다.",
-      "desc_en": "Increases Ailment Accuracy by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 15%.",
-      "desc_jp": "状態異常命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を15%増加させる。",
+      "desc_en": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 5 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 15%.",
+      "desc_jp": "btltbc-0804-状態異常命中が３４.９%上昇する。\n戦闘開始時『辛苦の澱み』を５つ獲得する。各味方がスキルで弱体を付与した時『辛苦の澱み』を１つ獲得する（１ターンに最大１つまで）。『辛苦の澱み』は最大５つまで累積できる。\n『辛苦の澱み』：スキルを使用した時、５つ消費して選択した対象の受ける持続ダメージ効果が１５%上昇する。",
       "name_cn": "连接天地的绞索Ⅱ",
       "desc_cn": "效果命中提升34.9%。战斗开始时获得5层「凝视」，友方同伴释放技能添加负面效果时，自身获得1层「凝视」，上限5层。（每个同伴每回合最多添加1层「凝视」）。自身释放人格面具技能时，若拥有5层「凝视」，则消耗5层「凝视」，使技能主目标受到持续伤害效果提升15%。"
     },
     {
       "name": "하늘과 땅을 잇는 올가미Ⅲ",
-      "name_en": "Serpent of the Sky and Earth III",
-      "name_jp": "天と地を繋ぐヴァスキ III",
+      "name_en": "Serpent's Turmoil III",
+      "name_jp": "btltbc-0804-蛇龍の攪拌Ⅲ",
       "desc": "효과 명중이 34.9% 증가한다. 전투 시작 시 「응시」를 5중첩 획득한다. 아군 동료가 스킬로 디버프 효과 추가 시, 자신이 「응시」를 1중첩 획득한다(5회 중첩 가능, 동료마다 턴당 「응시」 최대 1회 추가). 자신이 페르소나 스킬 시전 시, 「응시」를 5중첩 보유한 경우 「응시」를 5중첩 소모하여 스킬 메인 목표가 받는 지속 대미지 효과가 15% 증가하며, 「뱀독」을 1중첩 추가 획득한다.",
-      "desc_en": "Increases Ailment Accuracy by 34.9%. At the start of battle, gains 5 stacks of [Stare]. When allies add debuff effects with their skills, gains 1 stack of [Stare] for yourself (up to 5 stacks, 1 stack per ally per turn). When using the signature skill, if you have 5 stacks of [Stare], consumes all [Stare] to increase the damage effect taken by the main target of the skill by 15% and gain 1 stack of [Serpent's Bite].",
-      "desc_jp": "状態異常命中が34.9%増加する。戦闘開始時、5重複の『意識』を獲得する。味方がスキルでデバフ効果を付与すると、自身に『意識』を1重複獲得（最大5重複、味方1人あたり1重複/ターン）。固有スキル使用時、『意識』が5重複の時、すべての『意識』を消費してメインターゲットが受けるダメージ効果を15%増加させ、『ヴァスキの毒』を1重複獲得する。",
+      "desc_en": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 5 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 15%, and inflict 1 Serpent's Venom stack.",
+      "desc_jp": "btltbc-0804-状態異常命中が３４.９%上昇する。\n戦闘開始時『辛苦の澱み』を５つ獲得する。各味方がスキルで弱体を付与した時『辛苦の澱み』を１つ獲得する（１ターンに最大１つまで）。『辛苦の澱み』は最大５つまで累積できる。\n『辛苦の澱み』：スキルを使用した時、５つ消費して選択した対象の受ける持続ダメージ効果が１５%上昇し、さらに『蛇龍の毒』を１つ付与する。",
       "name_cn": "连接天地的绞索Ⅲ",
       "desc_cn": "效果命中提升34.9%。战斗开始时获得5层「凝视」，友方同伴释放技能添加负面效果时，自身获得1层「凝视」，上限5层。（每个同伴每回合最多添加1层「凝视」）。自身释放人格面具技能时，若拥有5层「凝视」，则消耗5层「凝视」，使技能主目标受到持续伤害效果提升15%，并额外使其获得1层「蛇毒」。"
     }
   ],
   "uniqueSkill": {
     "name": "끝없는 속박",
-    "name_en": "Endless Bind",
-    "name_jp": "無限の縛り",
+    "name_en": "Venomous Spiral",
+    "name_jp": "btltbc-0804-毒纏の螺旋",
     "desc": "1명의 적의 받는 대미지가 16.0%/16.8%/17.6% 증가하고, 목표가 「뱀독」을 1중첩 획득한다(2회 중첩 가능). 효과는 3턴 동안 지속된다. 「뱀독」: 턴마다 아군 중 공격력이 가장 높은 괴도 공격력 12.8%/13.4%/14.1%의 주원 속성 대미지를 받는다(최대로 원더 공격력의 300% 적용).",
-    "desc_en": "Increases the enemy's dmg taken by 16.0%/16.8%/17.6% and gains 1 stack of [Serpent's Bite] (up to 2 stacks). Effect lasts for 3 turns. [Serpent's Bite]: Each turn, the highest ATK Wonder deals 12.8%/13.4%/14.1% ATK Psy dmg to the target (maximum 300% of Wonder ATK).",
-    "desc_jp": "敵が受けるダメージが16.0%/16.8%/17.6%増加し、『ヴァスキの毒』を1重複獲得（最大2重複）。効果は3ターンの間持続する。『ヴァスキの毒』：各ターン、最も高いATKのウォンダーがターゲットに12.8%/13.4%/14.1% ATKの念動属性ダメージを与える（最大300%のウォンダーATK適用）。",
+    "desc_en": "Increase 1 foe's damage taken by 16.0%/16.8%/17.6% and inflict 1 Serpent's Venom stack. This effect lasts for 3 turns, up to a maximum of 2 stacks.\nSerpent's Venom: Every turn, take Curse damage equal to 12.8%/13.4%/14.1% of the Attack of the Phantom Thief with the highest Attack (Maximum of 300% of Wonder's Attack).",
+    "desc_jp": "btltbc-0804-敵単体の被ダメージが16.0%/16.8%/17.6%上昇し、３ターンの間『蛇龍の毒』を１つ付与する。最大２つまで累積できる。\n『蛇龍の毒』：毎ターン、攻撃力が最も高い味方の攻撃力12.8%/13.4%/14.1%の呪怨属性ダメージを受ける（最大で主人公の攻撃力３００%分まで）。",
     "priority": 2,
     "icon": "디버프",
     "icon_gl": "버프",
@@ -99,8 +99,8 @@ window.personaFiles["바스키"] = {
     "name_en": "Highlight",
     "name_jp": "ハイライト",
     "desc": "모든 적에게 공격력 90.0%/96.3%/102.6%의 총격 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다.",
-    "desc_en": "Deals 90.0%/96.3%/102.6% ATK Gun dmg to all foes and increase their dmg taken by 19.6%/21.0%/22.3% for 2 turns.",
-    "desc_jp": "全ての敵に90.0%/96.3%/102.6% ATKの銃撃属性ダメージを与え、敵が受けるダメージが19.6%/21.0%/22.3%増加する。効果は2ターンの間持続する。",
+    "desc_en": "Deal Gun damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns.",
+    "desc_jp": "敵全体に攻撃力90.0%/96.3%/102.6%の銃撃属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。",
     "priority": 1,
     "name_cn": "HIGHLIGHT",
     "desc_cn": "对所有敌人造成90.0%/96.3%/102.6%攻击力的射击属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。"
@@ -113,7 +113,11 @@ window.personaFiles["바스키"] = {
       "level": "6/7/8",
       "learn_level": "10",
       "name_cn": "三连倒",
-      "desc_cn": "对所有敌人造成3次14.9/15.6/16.4%攻击力的射击属性伤害，暴击率提升16%，命中率降低15%。"
+      "desc_cn": "对所有敌人造成3次14.9/15.6/16.4%攻击力的射击属性伤害，暴击率提升16%，命中率降低15%。",
+      "name_en": "Triple Down",
+      "desc_en": "Decrease this skill's accuracy by 15%, increase critical rate by 16%, and deal Gun damage to all foes equal to 14.9/15.6/16.4% of Attack (3 hits).",
+      "name_jp": "トリプルダウン",
+      "desc_jp": "このスキルの命中率を１５%下げ、クリティカル率を１６%上昇させ、敵全体に攻撃力14.9/15.6/16.4%の銃撃属性ダメージを３回与える。"
     },
     {
       "name": "마한마온",
@@ -122,7 +126,11 @@ window.personaFiles["바스키"] = {
       "level": "6/7/8",
       "learn_level": "20",
       "name_cn": "玛翰玛翁",
-      "desc_cn": "对所有敌人造成45.0/49.3/53.6%攻击力的祝福属性伤害，对50%生命值以下的敌人附加低几率祝福属性即死效果，生命值越低概率越高。"
+      "desc_cn": "对所有敌人造成45.0/49.3/53.6%攻击力的祝福属性伤害，对50%生命值以下的敌人附加低几率祝福属性即死效果，生命值越低概率越高。",
+      "name_en": "Mahamaon",
+      "desc_en": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "name_jp": "マハンマオン",
+      "desc_jp": "敵全体に攻撃力45.0/49.3/53.6%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。"
     },
     {
       "name": "총탄의 열광Ⅳ",
@@ -131,7 +139,11 @@ window.personaFiles["바스키"] = {
       "level": "6/7/8",
       "learn_level": "30",
       "name_cn": "枪弹狂热Ⅳ",
-      "desc_cn": "枪械攻击暴击率提升8.9%。"
+      "desc_cn": "枪械攻击暴击率提升8.9%。",
+      "name_en": "Trigger Happy IV",
+      "desc_en": "Increase critical rate of ranged attacks by 8.9%.",
+      "name_jp": "トリガーハッピーⅣ",
+      "desc_jp": "遠隔攻撃のクリティカル率が８.９%上昇する。"
     },
     {
       "name": "명중 강화Ⅳ",
@@ -140,7 +152,11 @@ window.personaFiles["바스키"] = {
       "level": "6/7/8",
       "learn_level": "40",
       "name_cn": "命中强化Ⅳ",
-      "desc_cn": "效果命中提升16.2%。"
+      "desc_cn": "效果命中提升16.2%。",
+      "name_en": "Accuracy Boost IV",
+      "desc_en": "Increase ailment accuracy by 16.2%.",
+      "name_jp": "異常命中ブースタⅣ",
+      "desc_jp": "状態異常命中が１６.２%上昇する。"
     }
   ],
   "name_cn": "婆苏吉"

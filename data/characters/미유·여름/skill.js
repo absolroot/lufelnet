@@ -88,12 +88,14 @@ window.enCharacterSkillsData["미유·여름"] = {
   "passive1": {
     "name": "Hang Ten!",
     "element": "패시브",
-    "description": "During battle, increase Wavecatcher Miyu's Attack based on SP Recovery. At a maximum of 280.0% SP Recovery, increase Attack up to 98.0%."
+    "description": "During battle, increase Wavecatcher Miyu's Attack based on SP Recovery. At a maximum of 280.0% SP Recovery, increase Attack up to 98.0%.",
+    "cool": 0
   },
   "passive2": {
     "name": "Ride it Out!",
     "element": "패시브",
-    "description": "When Surf is active, increase damage by 30.0%."
+    "description": "When Surf is active, increase damage by 30.0%.",
+    "cool": 0
   }
 };
 
@@ -134,12 +136,14 @@ window.jpCharacterSkillsData["미유·여름"] = {
   "passive1": {
     "name": "いい波来てます！",
     "element": "패시브",
-    "description": "戦闘中、自身のＳＰ回復に応じて攻撃力が上昇する。最大でＳＰ回復280.0%で、攻撃力が98.0%上昇する。"
+    "description": "戦闘中、自身のＳＰ回復に応じて攻撃力が上昇する。最大でＳＰ回復280.0%で、攻撃力が98.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
     "name": "ノリにノってます！",
     "element": "패시브",
-    "description": "『サーフ』状態の時、与ダメージが30.0%上昇する。"
+    "description": "『サーフ』状態の時、与ダメージが30.0%上昇する。",
+    "cool": 0
   }
 };
 

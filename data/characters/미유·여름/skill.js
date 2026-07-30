@@ -59,7 +59,7 @@ window.enCharacterSkillsData["미유·여름"] = {
     "type": "AoE DMG",
     "sp": 0,
     "cool": 0,
-    "description": "Deal Ice damage to all foes equal to 178.7%/197.0%/189.7%/208.0% of Attack, with a 100% base chance to inflict Freeze for 2 turns. Restore 40 SP to Miyu (this effect is affected by SP Recovery), SP restored by this can exceed the SP cap (up to SP equal to the SP cap)."
+    "description": "Deal Ice damage to all foes equal to 100.7%/111.0%/106.9%/117.2% of Attack, with a 100% base chance to inflict Freeze for 2 turns. Restore 40 SP to Miyu (this effect is affected by SP Recovery), SP restored by this can exceed the SP cap (up to SP equal to the SP cap)."
   },
   "skill2": {
     "name": "Cerulean Concerto",

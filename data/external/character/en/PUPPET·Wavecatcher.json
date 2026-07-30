@@ -1,0 +1,283 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Wavecatcher Miyu can enter Surf state, spending SP to automatically attack foes.\nIncrease Wavecatcher Miyu's max SP to 200, and at the start of battle, set her SP to 0. At the start of other allies' turns, restore 15 SP to Wavecatcher Miyu (affected by SP Recovery).\nDuring battle, based on the total of her recovered SP (including SP above the maximum), gain the following effects.\n100: Increase Attack by 25%.\n200: Increase damage by 25%.\n300: Increase critical rate by 12%.\n400: Increase critical damage by 24%.",
+        "name": "Surfing Mermaid",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Decrease SP cost of Catch a Wave by 40%, and increase max Offshore stacks by 2.\nWhen Surf is active, extend duration of all buffs/debuffs applied by 1 turn.",
+        "name": "Offshore Paradise",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "While Surf is active, increase Wavecatcher Miyu's critical damage by 20%.\nEvery 4 times Catch a Wave is activated, activate a special Catch a Wave 1 more time without spending SP. This Catch a Wave does not count toward skill activation counts, and cannot grant Offshore stacks.",
+        "name": "Roaring Surf Line",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Paddle Out and Thief Tactics by 3.",
+        "name": "Sea Breeze Paddling",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Increase Wavecatcher Miyu's Resonance damage by 30% for 2 turns.",
+        "name": "Refreshing Beach Resort",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Jellyfish Splash and Aerial Tide by 3.",
+        "name": "Southern High Tide",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Wavecatcher Miyu's max SP by 250 more.\nAt the start of battle, recover max SP, and enter Surf state. Also increase max Offshore stacks by 2.\nAdditional effects are added to the following skills.\nJellyfish Splash: Increase SP recovered when used by 50%.\nAerial Tide: Surf state is not removed after using this skill, and Offshore stacks are lost after the turn ends. When stacks are lost, recover max SP.",
+        "name": "Summer Sea Mermaid",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Ice damage to all foes equal to 329.4%/363.2%/349.7%/383.4% of Attack. When in Surf state, deal bonus Ice damage equal to 164.7%/181.6%/174.8%/191.7% of Attack 1 time.",
+      "name": "Highlight",
+      "nature": "Ice",
+      "skill_lv": "10/10/13/13",
+      "sn": 127252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Rate": "0.12"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "Wavecatcher Miyu",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "Deal Ice damage to all foes equal to 100.7%/111.0%/106.9%/117.2% of Attack, and inflict Freeze for 2 turns.\nRestore Wavecatcher Miyu's SP by 40 (this is affected by SP Recovery). This skill can restore SP above max SP (up to the value of max SP).",
+        "name": "Jellyfish Splash",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 127211,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "Deal Ice damage to all foes equal to 178.7%/197.0%/189.7%/208.0% of Attack. When Surf is active, for each Offshore stack, increase this skill's damage by 10%. After activating this skill, remove Surf, and remove all Offshore stacks. This skill is counted as a Resonance.",
+        "name": "Aerial Tide",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 127212,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 60",
+        "desc": "Remove spiritual ailments from Wavecatcher Miyu, and enter Surf state. When this skill is used again while Surf is active, remove Surf and all Offshore stacks. On the turn when Surf is removed, other skills can be used, but Surf cannot be re-entered.\nSurf: While this state is active, nullify Down, spiritual ailments, and certain unable to act effects, and Wavecatcher Miyu cannot use melee attacks, ranged attacks, or items. Also, extend the duration of buffs and debuffs applied by 1 turn. At the end of an ally's turn, if Wavecatcher Miyu has enough SP to activate Catch a Wave, automatically spend SP and activate Catch a Wave.\nCatch a Wave: Spend 30 SP to deal Ice damage to all foes equal to 50.2%/55.3%/53.3%/58.4% of Attack, and gain 1 Offshore stack. For each Offshore stack, increase the skill damage of Catch a Wave by 5%, and increase the SP cost by 30. Stacks up to 4 times. Catch a Wave is counted as a Resonance, and cannot decrease foes' Down Points.",
+        "name": "Paddle Out",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 127213,
+        "tags": [
+          "Support"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, increase Wavecatcher Miyu's Attack based on SP Recovery. At a maximum of 280.0% SP Recovery, increase Attack up to 98.0%.",
+        "name": "Hang Ten!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Surf is active, increase damage by 30.0%.",
+        "name": "Ride it Out!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 127232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2960.0,
+      "Crit Mult.": 2.45,
+      "Crit Rate": 0.37,
+      "SP Recovery": 2.8
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1179.97 / 1201.57 / 1222.37 / 1243.97 / 1264.77 / 1286.37 / 1307.17",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3419.97 / 3481.57 / 3543.17 / 3604.77 / 3666.37 / 3727.97 / 3789.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "200.0 / 200.0 / 200.0 / 200.0 / 200.0 / 200.0 / 200.0",
+      "SP Recovery": "189.0% / 189.0% / 189.0% / 189.0% / 189.0% / 189.0% / 189.0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

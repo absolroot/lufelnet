@@ -240,14 +240,14 @@ window.matchWeapons = {
   },
   "설원의 침묵": {
     "element": "빙결",
-    "name_en": "Glacial Eternity",
-    "name_jp": "氷河永寂",
+    "name_en": "Ice Age",
+    "name_jp": "アイスエイジ",
     "where_to_get": "Shop",
     "release": "미유·여름",
     "order": "14",
     "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n전투 진입 시 동료 1명에게 『혹한의 각인』을 추가하고, 원더가 동료를 목표로 페르소나 스킬을 시전하면 메인 목표에게 『혹한의 각인』을 추가한다(필드에 유일). 필드에 『혹한의 각인』을 보유한 동료가 있으면 원더의 주는 대미지가 17.5%/20.4%/23.3%/26.2%/29.2%/32.1%/35.0% 증가한다.\n『혹한의 각인』: 3턴 동안 주는 대미지가 8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0% 증가하고, 주는 빙결 속성 대미지가 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0% 추가 증가한다.",
-    "effect_en": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAt battle start, grant [Extreme Mark] to 1 ally. When WONDER uses a Persona skill on an ally, grant [Extreme Mark] to the target (only 1 ally can have this). If an ally with [Extreme Mark] is on the field, WONDER's damage is increased by 17.5%/20.4%/23.3%/26.2%/29.2%/32.1%/35.0%.\n[Extreme Mark]: Increase damage by 8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0% and Ice damage by 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0% for 3 turns.",
-    "effect_jp": "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n戦闘開始時、味方1人に『極限の印』を付与。ワンダーが味方にペルソナスキルを使用すると、その対象に『極限の印』を付与（味方は1人しか持てない）。『極限の印』を持つ味方がいる場合、ワンダーのダメージが17.5%/20.4%/23.3%/26.2%/29.2%/32.1%/35.0%増加する。\n『極限の印』：3ターン間、ダメージが8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0%増加、氷結属性ダメージが11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%増加。",
+    "effect_en": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAt the start of battle, grant Ancient Frost to 1 ally. Also, when Wonder uses skills on allies, grant Ancient Frost to the main target (1 time each).\nWhen allies have Ancient Frost, increase Wonder's damage by 17.5%/20.4%/23.3%/26.2%/29.2%/32.1%/35.0%.\nAncient Frost: Increase damage by 8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0%, and increase Ice damage by 11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0% for 3 turns.",
+    "effect_jp": "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n戦闘開始時、味方単体に『太古の霜』を付与する。さらに主人公が味方にスキルを使用した時、メインターゲットに『太古の霜』を付与する（それぞれ1回のみ）。\n味方が『太古の霜』を所持している時、主人公の与ダメージが17.5%/20.4%/23.3%/26.2%/29.2%/32.1%/35.0%上昇する。\n『太古の霜』：３ターンの間、与ダメージが8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0%上昇し、氷結属性の与ダメージが11.0%/12.8%/14.7%/16.5%/18.3%/20.2%/22.0%上昇する。",
     "shard": [
       {
         "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",

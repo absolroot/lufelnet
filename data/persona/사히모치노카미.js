@@ -3,7 +3,7 @@ window.personaFiles["사히모치노카미"] = {
   "id": "267",
   "key": "사히모치노카미",
   "name": "사히모치노카미",
-  "name_en": "Sahimochi-no-kami",
+  "name_en": "Sahimochi-no-Kami",
   "name_jp": "サヒモチノカミ",
   "grade": "8",
   "star": "5",
@@ -21,7 +21,7 @@ window.personaFiles["사히모치노카미"] = {
   "comment_en": "",
   "comment_jp": "",
     "comment_cn": "",
-  "added": "KR v4.3.2",
+  "added": "",
   "cost": null,
   "combination": null,
   "recommendSkill": [

@@ -1,0 +1,78 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Ice"
+    ],
+    "Weak": [
+      "Nuclear"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Deal Ice damage to all foes equal to 100.0%/105.0%/110.0% of Attack. Also, increase the targets' Resonance damage amplification taken by 8.0%/8.4%/8.8%, and Ice damage taken by 8.0%/8.4%/8.8% for 2 turns.",
+    "level": "6/7/8",
+    "name": "One-Fathom Fang"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 21",
+      "desc": "Deal Ice damage to all foes equal to 60.8/63.8/66.9% of Attack. 33.8/35.5/37.2% chance to inflict Freeze for 2 turns.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Mabufudyne"
+    },
+    {
+      "cost": "",
+      "desc": "Decreases damage taken by 14% when it rains.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Raindrop Barrier IV"
+    },
+    {
+      "cost": "SP 22",
+      "desc": "Increase party's Defense by 16.3%/17.1%/17.9%. For every 500 of the user's Defense, increase party's Defense by 2.7%/2.8%/3.0% more, up to 10.8%/11.3%/11.9%. Lasts for 3 turns.",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Marakukaja"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Ice damage by 10.8%.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Ice Boost IV"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 99,
+  "name": "Sahimochi-no-Kami",
+  "nature": "Ice",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (1 turn).",
+      "name": "Ocean's Blade Bearer"
+    },
+    {
+      "desc": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (2 turns).",
+      "name": "Ocean's Blade Bearer I"
+    },
+    {
+      "desc": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
+      "name": "Ocean's Blade Bearer II"
+    },
+    {
+      "desc": "Increase Attack 29.1%.\nAt the start of battle, gain 5 Shark's Blade stacks. When ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
+      "name": "Ocean's Blade Bearer III"
+    }
+  ],
+  "rank": 8,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Ice damage to all foes equal to 180.0%/192.6%/205.2% of Attack.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

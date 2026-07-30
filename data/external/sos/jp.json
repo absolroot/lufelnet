@@ -2,7 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Fire attack Score x 3",
+        "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -10,28 +10,25 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
-                "Electric",
-                "Bless",
-                "Curse"
+                "Fire"
               ],
               "Weak": [
-                "Fire"
+                "Ice"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-surtr.png",
             "level": "89",
-            "name": "リリス",
-            "skill": "607,603",
-            "sn": "532101",
+            "name": "スルト",
+            "skill": "108,103,1008",
+            "sn": "533101",
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
-        "sn": "348401"
+        "scoreRatio": 1.0,
+        "sn": "358401"
       },
       {
-        "bonusRule": "All ally Bless attack Score x 3",
+        "bonusRule": "All ally Electric attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -39,27 +36,28 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire",
+                "Phys",
+                "Gun",
                 "Wind",
-                "Curse"
+                "Bless"
               ],
               "Weak": [
-                "Bless"
+                "Electric"
               ]
             },
-            "image": "B-guaiwutouxiang-set.png",
+            "image": "B-guaiwutouxiang-cuchulainn.png",
             "level": "89",
-            "name": "セト",
-            "skill": "1101,1103",
-            "sn": "532111",
+            "name": "クー・フーリン",
+            "skill": "1023,1154",
+            "sn": "533111",
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
-        "sn": "348402"
+        "scoreRatio": 1.0,
+        "sn": "358402"
       }
     ],
-    "buff": "源泉の雫: 味方に薬品を使用した時、選択した対象に『昂揚の奔流』を１つ付与する。\n『昂揚の奔流』：３ターンの間、与える最終ダメージが２０%上昇する。最大２つまで累積できる。",
+    "buff": "磁極の波: スキル／意識奏功／ハイライト／テウルギアを発動した時、自身に『漲る波紋』を１つ付与する。\n『漲る波紋』：２ターンの間、最終ダメージが５%上昇する。最大８つまで累積できる。",
     "endTime": "2026-08-13 10:30:00",
     "startTime": "2026-07-30 11:30:00"
   },

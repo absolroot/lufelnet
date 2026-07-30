@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["미유·여름"] = {
     "role": "광역 빙결 추가효과 딜러",
     "video": ["fZzquAemH08", "DfMX3zOm7KQ"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["ahzTgJFRXqA"],
+    "video_jp": ["kvkTlSXzjsI","PaQZtvXyMUM"],
     "main_revelation": ["전념"],
     "sub_revelation": ["화려"],
     "sub_revel2": ["공격력", "대미지 보너스"],

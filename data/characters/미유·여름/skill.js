@@ -52,94 +52,94 @@ window.characterSkillsData["미유·여름"] = {
 };
 
 window.enCharacterSkillsData["미유·여름"] = {
-  "name": "Miyu·Summer",
+  "name": "Wavecatcher Miyu",
   "skill1": {
-    "name": "Jellyfish Reverie",
+    "name": "Jellyfish Splash",
     "element": "빙결광역",
     "type": "AoE DMG",
     "sp": 0,
     "cool": 0,
-    "description": "Deal Ice damage to all foes equal to 100.7%/111.0%/106.9%/117.2% of Attack, with a 100% base chance to inflict Freeze for 2 turns. Restore 40 SP to Miyu (this effect is affected by SP Recovery), SP restored by this can exceed the SP cap (up to SP equal to the SP cap)."
+    "description": "Deal Ice damage to all foes equal to 100.7%/111.0%/106.9%/117.2% of Attack, and inflict Freeze for 2 turns.\nRestore Wavecatcher Miyu's SP by 40 (this is affected by SP Recovery). This skill can restore SP above max SP (up to the value of max SP)."
   },
   "skill2": {
-    "name": "Cerulean Concerto",
+    "name": "Aerial Tide",
     "element": "빙결광역",
     "type": "AoE DMG",
     "sp": 0,
     "cool": 0,
-    "description": "Deal Ice damage to all foes equal to 178.7%/197.0%/189.7%/208.0% of Attack. When [Ocean's Domain] is active, each [Thousandfold Waves] stacks increase skill damage by 10%. After using this skill, exit [Ocean's Domain] and lose all [Thousandfold Waves] stacks. This counts as a Resonance."
+    "description": "Deal Ice damage to all foes equal to 178.7%/197.0%/189.7%/208.0% of Attack. When Surf is active, for each Offshore stack, increase this skill's damage by 10%. After activating this skill, remove Surf, and remove all Offshore stacks. This skill is counted as a Resonance."
   },
   "skill3": {
-    "name": "Lightwave Leap",
+    "name": "Paddle Out",
     "element": "버프",
     "type": "Enhance",
     "sp": 60,
     "cool": 0,
-    "description": "Get on the surfboard, immediately cleanse Miyu's spiritual ailments and open [Ocean's Domain]: Gain Null Down and Null spiritual/control ailment, Miyu cannot use Melee Attack, Gun Attack, and Item; When gaining any effect, extend its duration by 1 turn; When an ally end their turn, automatically use [Tidal Surge] if Miyu has enough SP.\n[Tidal Surge]: Spend 30 SP to deal Ice damage to all foes equal to 50.2%/55.3%/53.3%/58.4% of Attack. Gain 1 [Thousandfold Waves] stack, each [Thousandfold Waves] stack increases [Tidal Surge] skill damage by 5% and SP cost by 30. Stack up to 4 times. This counts as a Resonance. Damage from this Resonance cannot deal Down Point damage.\nUse this skill again to exit [Ocean's Domain] then lose all [Thousandfold Waves]. Miyu can still use other skills this turn but cannot open [Ocean's Domain]."
+    "description": "Remove spiritual ailments from Wavecatcher Miyu, and enter Surf state. When this skill is used again while Surf is active, remove Surf and all Offshore stacks. On the turn when Surf is removed, other skills can be used, but Surf cannot be re-entered.\nSurf: While this state is active, nullify Down, spiritual ailments, and certain unable to act effects, and Wavecatcher Miyu cannot use melee attacks, ranged attacks, or items. Also, extend the duration of buffs and debuffs applied by 1 turn. At the end of an ally's turn, if Wavecatcher Miyu has enough SP to activate Catch a Wave, automatically spend SP and activate Catch a Wave.\nCatch a Wave: Spend 30 SP to deal Ice damage to all foes equal to 50.2%/55.3%/53.3%/58.4% of Attack, and gain 1 Offshore stack. For each Offshore stack, increase the skill damage of Catch a Wave by 5%, and increase the SP cost by 30. Stacks up to 4 times. Catch a Wave is counted as a Resonance, and cannot decrease foes' Down Points."
   },
   "skill_highlight": {
-    "name": "",
+    "name": "Highlight",
     "element": "빙결광역",
     "type": "AoE DMG",
     "sp": 0,
-    "cool": 0,
-    "description": "Deal Ice damage to all foes equal to 219.6%/242.1%/233.1%/255.6% of Attack. If [Ocean's Domain] is active, deal bonus Ice damage to all foes equal to 146.4%/161.4%/155.4%/170.4% of Attack."
+    "cool": 4,
+    "description": "Deal Ice damage to all foes equal to 329.4%/363.2%/349.7%/383.4% of Attack. When in Surf state, deal bonus Ice damage equal to 164.7%/181.6%/174.8%/191.7% of Attack 1 time."
   },
   "passive1": {
-    "name": "Finesse",
+    "name": "Hang Ten!",
     "element": "패시브",
-    "description": "During battle, increase Miyu's Attack based on her SP Recovery, up to 98% Attack at 280% SP Recovery."
+    "description": "During battle, increase Wavecatcher Miyu's Attack based on SP Recovery. At a maximum of 280.0% SP Recovery, increase Attack up to 98.0%."
   },
   "passive2": {
-    "name": "Wit",
+    "name": "Ride it Out!",
     "element": "패시브",
-    "description": "When [Ocean's Domain] is active, increase damage by 30%."
+    "description": "When Surf is active, increase damage by 30.0%."
   }
 };
 
 window.jpCharacterSkillsData["미유·여름"] = {
-  "name": "佐原 海夕 夏",
+  "name": "海夕・サマーウェーブ",
   "skill1": {
-    "name": "クラゲの夢",
+    "name": "ジェリースプラッシュ",
     "element": "빙결광역",
     "type": "全体ダメージ",
     "sp": 0,
     "cool": 0,
-    "description": "敵全体に攻撃力100.7%/111.0%/106.9%/117.2%の氷結属性ダメージを与え、100%の基礎確率で2ターンの間、凍結状態にする。\n自身のSPを40回復する（この効果はSP回復特性の影響を受ける）。\nこの方法で得たSPは最大値を超えて獲得でき（最大SP相当の追加SPまで可能）。"
+    "description": "敵全体に攻撃力100.7%/111.0%/106.9%/117.2%の氷結属性ダメージを与え、２ターンの間、凍結状態にする。\n自身のＳＰを４０回復する（この効果はＳＰ回復の影響を受ける）。このスキルで回復したＳＰは最大ＳＰを超過して回復できる（最大ＳＰの上限値に相当する分まで）。"
   },
   "skill2": {
-    "name": "蒼の協奏",
+    "name": "エアリアルタイド",
     "element": "빙결광역",
     "type": "全体ダメージ",
     "sp": 0,
     "cool": 0,
-    "description": "敵全体に攻撃力178.7%/197.0%/189.7%/208.0%の氷結属性ダメージを与える。\n『海の領域』状態では、『重なる波』1スタックごとにこのスキルのダメージが10%増加する。使用後、『海の領域』から離脱し、『重なる波』がリセットされる。このスキルは追加効果とみなされる。"
+    "description": "敵全体に攻撃力178.7%/197.0%/189.7%/208.0%の氷結属性ダメージを与える。『サーフ』状態の時、『オフショア』１つごとに、このスキルの与ダメージが１０%上昇する。スキル発動後、『サーフ』状態は解除され、『オフショア』は全て消失する。このスキルは意識奏功として扱う。"
   },
   "skill3": {
-    "name": "光に乗り蒼き波へ",
+    "name": "パドル・アウト",
     "element": "버프",
     "type": "強化",
     "sp": 60,
     "cool": 0,
-    "description": "サーフボードに乗り、即座に自身の精神異常状態を解除し『海の領域』を展開する。\nこの間、ダウン、精神異常、制御効果に免疫を持ち、近接攻撃・銃撃攻撃・アイテム使用ができなくなる。\nいずれかの状態異常やバフを獲得すると持続時間が1ターン延長される。\nこの間、味方のターン終了時にSPが十分であれば、自動的に一定のSPを消費して『波と雲』を発動する。\n\n『波と雲』：SPを30消費し、敵全体に攻撃力50.2%/55.3%/53.3%/58.4%の氷結属性ダメージを与え、自身に『重なる波』を1スタック付与する。\n『重なる波』1スタックごとに『波と雲』のダメージが5%、SP消費量が30増加し、最大4回まで重複可能。\n『波と雲』は追加効果とみなされ、敵にダウン値を与えない。\nこのスキルを再使用すると『海の領域』が解除され、『重なる波』がリセットされる。そのターンは他のスキルを使用できるが、『海の領域』を再展開することはできない。"
+    "description": "自身の行動異常を治療し、『サーフ』状態になる。『サーフ』状態中に再びこのスキルを使用すると『サーフ』状態は解除され、『オフショア』は全て消失する。解除されたターン中は他のスキルを使用できるが、再度『サーフ』状態になることはできない。\n『サーフ』：この状態中は、ダウン／行動異常／一部の行動不能を無効化し、自身は近接攻撃／遠隔攻撃／アイテム使用ができない。また強化／弱体効果が付与された時、その持続ターンが１ターン延長される。さらに味方の行動終了時、『キャッチザウェーブ』に必要なＳＰがあれば、自動的にＳＰを消費して『キャッチザウェーブ』を発動する。\n『キャッチザウェーブ』：ＳＰを３０消費し、敵全体に攻撃力50.2%/55.3%/53.3%/58.4%の氷結属性ダメージを与え、『オフショア』を１つ獲得する。『オフショア』１つごとに、『キャッチザウェーブ』のスキルダメージが５%上昇し、消費ＳＰが３０増加する。最大４つまで累積できる。『キャッチザウェーブ』は意識奏功として扱い、敵のダウン値を減少させることはできない。"
   },
   "skill_highlight": {
-    "name": "",
+    "name": "ハイライト",
     "element": "빙결광역",
     "type": "全体ダメージ",
     "sp": 0,
-    "cool": 0,
-    "description": "敵全体に攻撃力219.6%/242.1%/233.1%/255.6%の氷結属性ダメージを与える。\n『海の領域』状態の場合、さらに攻撃力146.4%/161.4%/155.4%/170.4%の氷結属性ダメージを追加で与える。"
+    "cool": 4,
+    "description": "敵全体に攻撃力329.4%/363.2%/349.7%/383.4%の氷結属性ダメージを与える。『サーフ』状態の時、追加で攻撃力164.7%/181.6%/174.8%/191.7%の氷結属性ダメージを１回与える。"
   },
   "passive1": {
-    "name": "交酬",
+    "name": "いい波来てます！",
     "element": "패시브",
-    "description": "戦闘中、自身のSP回復量に応じて攻撃力が上昇し、SP回復が280.0%の時、攻撃力が最大98.0%上昇する。"
+    "description": "戦闘中、自身のＳＰ回復に応じて攻撃力が上昇する。最大でＳＰ回復280.0%で、攻撃力が98.0%上昇する。"
   },
   "passive2": {
-    "name": "賢さ",
+    "name": "ノリにノってます！",
     "element": "패시브",
-    "description": "『海の領域』状態中、与ダメージが30%上昇する。"
+    "description": "『サーフ』状態の時、与ダメージが30.0%上昇する。"
   }
 };
 

@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["미쿠"] = {
     "role": "추가 전투 2턴 해명",
     "video": ["Wei_GLHARR4"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["HQkOBd9NSNM","G8GFpHbqnfo","cYPx4ZmXm6w"],
+    "video_jp": ["qwWKpsTCcos","6csjhyUy3-E","lfdOfXKt-EQ","q9XQB7NeeKg"],
     "main_revelation": ["진정성"],
     "sub_revelation": ["직책"],
     "sub_revel2": ["공격력","대미지 보너스"],

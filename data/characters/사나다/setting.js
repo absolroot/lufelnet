@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["사나다"] = {
     "role": "다운 광역 전격 딜러",
     "video": ["Wd7BYGJUr4U", "mQFpIXh6s-I"],
-    "video_en": [""],
-    "video_jp": ["ovfil9aC398"],
+    "video_en": ["kZ9G4oipSvQ","bIEE3-k1Tbo"],
+    "video_jp": ["ovfil9aC398","NEpvKNnC6Cs"],
     "main_revelation": ["돌파", "결심"],
     "sub_revelation": ["변화", "신중"],
     "sub_revel2": ["공격력", "대미지 보너스"],

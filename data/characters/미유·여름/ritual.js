@@ -22,39 +22,39 @@ window.ritualData["미유·여름"] = {
 };
 
 window.enCharacterRitualData["미유·여름"] = {
-  "name": "Miyu·Summer",
-  "r0": "Call of the Tide",
-  "r0_detail": "During battle, Miyu can get on her surfboard to open [Ocean's Domain], spending SP to keep dealing damage to foes. Increase Miyu's max SP to 200. At the start of battle, set her SP to 0. At the start of each other ally's action, Miyu will restore 15 SP (this effect is affected by SP Recovery). \nMiyu will gain the following buffs based on the SP she restored (including SP over the cap):\nRestored 100 SP: Increase Attack by 10%;\nRestored 200 SP: Increase damage by 10%;\nRestored 300 SP: Increase critical rate by 12%;\nRestored 400 SP: Increase critical damage by 24%.",
-  "r1": "Girl from the Sea",
-  "r1_detail": "Decrease the SP cost of [Tidal Surge] by 40%. Increase the maximum number of [Thousandfold Waves] stacks by 2.\nWhen Miyu opens [Ocean's Domain], immediately extend all her effect duration by 1 turn.",
-  "r2": "Gazing at Sunset",
-  "r2_detail": "When [Ocean's Domain] is active, increase Miyu's critical damage by 20%. \nAfter using [Tidal Surge] 4 times, Miyu will use 1 special [Tidal Surge]. This [Tidal Surge] does not cost SP and grant [Thousandfold Waves].",
-  "r3": "To Reach That Light",
-  "r3_detail": "Increase the skill levels of Lightwave Leap and Thief Tactics by 3.",
-  "r4": "Silent Vigil",
-  "r4_detail": "Highlight Enchanced: Increase Miyu's Resonance damage by 30% for 3 turns.",
-  "r5": "Dissolve into the Tides",
-  "r5_detail": "Increase the skill levels of Jellyfish Reverie and Cerulean Concerto by 3.",
-  "r6": "That Azure Dream",
-  "r6_detail": "Increase Miyu's max SP by 250. At the start of battle, fully restore SP then automatically open [Ocean's Domain]. Increase the maximum number of [Thousandfold Waves] stacks by 2.\nIncrease the SP restored by [Jellyfish Reverie] by 50%.\nMiyu will not exit [Ocean's Domain] when using [Cerulean Concerto]. Change the timing of [Thousandfold Waves] stack loss to the end of turn, fully restore SP after losing all stacks."
+  "name": "Wavecatcher Miyu",
+  "r0": "Surfing Mermaid",
+  "r0_detail": "Wavecatcher Miyu can enter Surf state, spending SP to automatically attack foes.\nIncrease Wavecatcher Miyu's max SP to 200, and at the start of battle, set her SP to 0. At the start of other allies' turns, restore 15 SP to Wavecatcher Miyu (affected by SP Recovery).\nDuring battle, based on the total of her recovered SP (including SP above the maximum), gain the following effects.\n100: Increase Attack by 25%.\n200: Increase damage by 25%.\n300: Increase critical rate by 12%.\n400: Increase critical damage by 24%.",
+  "r1": "Offshore Paradise",
+  "r1_detail": "Decrease SP cost of Catch a Wave by 40%, and increase max Offshore stacks by 2.\nWhen Surf is active, extend duration of all buffs/debuffs applied by 1 turn.",
+  "r2": "Roaring Surf Line",
+  "r2_detail": "While Surf is active, increase Wavecatcher Miyu's critical damage by 20%.\nEvery 4 times Catch a Wave is activated, activate a special Catch a Wave 1 more time without spending SP. This Catch a Wave does not count toward skill activation counts, and cannot grant Offshore stacks.",
+  "r3": "Sea Breeze Paddling",
+  "r3_detail": "Increase the skill levels of Paddle Out and Thief Tactics by 3.",
+  "r4": "Refreshing Beach Resort",
+  "r4_detail": "Highlight Enhanced: Increase Wavecatcher Miyu's Resonance damage by 30% for 2 turns.",
+  "r5": "Southern High Tide",
+  "r5_detail": "Increase the skill levels of Jellyfish Splash and Aerial Tide by 3.",
+  "r6": "Summer Sea Mermaid",
+  "r6_detail": "Increase Wavecatcher Miyu's max SP by 250 more.\nAt the start of battle, recover max SP, and enter Surf state. Also increase max Offshore stacks by 2.\nAdditional effects are added to the following skills.\nJellyfish Splash: Increase SP recovered when used by 50%.\nAerial Tide: Surf state is not removed after using this skill, and Offshore stacks are lost after the turn ends. When stacks are lost, recover max SP."
 };
 
 window.jpCharacterRitualData["미유·여름"] = {
-  "name": "佐原 海夕 夏",
-  "r0": "波の呼び声",
-  "r0_detail": "佐原 海夕・夏は戦闘中にサーフボードに乗って『海の領域』を展開し、SPを消費して敵に持続的な津波攻撃を行える。最大SPは200に増加し、戦闘開始時の初期SPは0となる。自身以外の味方ターン開始時、佐原 海夕・夏はSPを15回復する（この効果はSP回復特性の影響を受ける）。\n\n戦闘中に累計で回復したSP（上限超過分を含む）に応じて、以下のボーナスを獲得する：\nSP100到達：攻撃力+10%；\nSP200到達：与ダメージ+10%；\nSP300到達：クリティカル率+12%；\nSP400到達：CRT倍率+24%。",
-  "r1": "深海から来た少女",
-  "r1_detail": "『波と雲』のSP消費量が40%減少し、『重なる波』の最大スタック数が2増加する。\n『海の領域』を展開する時、自身が持つ全ての状態効果の持続時間を1ターン延長する。",
-  "r2": "夕陽の下の眼差し",
-  "r2_detail": "『海の領域』状態でCRT倍率が20%上昇する。\n『波と雲』を4回発動するたびに、佐原 海夕・夏は特別な『波と雲』を1回追加発動する。この追加発動はSPを消費せず、『重なる波』を付与しない。",
-  "r3": "その光に届くために",
-  "r3_detail": "『光に乗り蒼き波へ』および『戦闘技術』のスキルレベルが3上昇する。",
-  "r4": "静かな待機",
-  "r4_detail": "ハイライト効果が強化され、自身の追加効果ダメージが30%上昇し、効果は2ターン持続する。",
-  "r5": "波の懐へ",
-  "r5_detail": "『クラゲの夢』と『蒼の協奏』のスキルレベルが3上昇する。",
-  "r6": "その蒼き夢",
-  "r6_detail": "佐原 海夕・夏の最大SPがさらに250増加し、戦闘開始時にSPが満タンになり、自動的に『海の領域』を展開する。\n『重なる波』の最大スタック数がさらに2増加する。\n『クラゲの夢』使用時のSP回復量が50%増加する。\n『蒼の協奏』使用後、『海の領域』は解除されず、『重なる波』はターン終了後にリセットされる。\nリセット後、SPを最大値まで回復する。"
+  "name": "海夕・サマーウェーブ",
+  "r0": "水着のマーメイド",
+  "r0_detail": "海夕・サマーウェーブは『サーフ』状態になり、ＳＰを消費して自動的に敵を攻撃できる。\n自身の最大ＳＰが２００に上昇し、戦闘開始時のＳＰは０になる。自身以外の味方の行動開始時、自身のＳＰを１５回復する（この効果はＳＰ回復の影響を受ける）。\n戦闘中に回復したＳＰ（上限を超えた分もカウントされる）の累計に応じて、以下の効果を獲得する。\n「１００：攻撃力が２５%上昇」\n「２００：与ダメージが２５%上昇」\n「３００：クリティカル率が１２%上昇」\n「４００：クリティカルダメージが２４%上昇」",
+  "r1": "楽園のオフショア",
+  "r1_detail": "『キャッチザウェーブ』の消費ＳＰが４０%低下し、『オフショア』の最大累積数が２つ増加する。\n『サーフ』状態になった時、付与されている全ての強化／弱体効果の持続ターンを１ターン延長する。",
+  "r2": "波涛のサーフライン",
+  "r2_detail": "『サーフ』状態の時、自身のクリティカルダメージが２０%上昇する。\n『キャッチザウェーブ』を４回発動するごとに、追加でＳＰを消費しない特殊な『キャッチザウェーブ』を１回発動する。この特殊な『キャッチザウェーブ』は発動回数にはカウントされず、『オフショア』も獲得できない。",
+  "r3": "潮風のパドリング",
+  "r3_detail": "『パドル・アウト』／『怪盗戦技』のスキルレベルが３上昇する。",
+  "r4": "清涼のリゾートビーチ",
+  "r4_detail": "ハイライト能力追加：２ターンの間、自身の意識奏功の与ダメージが３０%上昇する。",
+  "r5": "南洋のハイタイド",
+  "r5_detail": "『ジェリースプラッシュ』／『エアリアルタイド』のスキルレベルが３上昇する。",
+  "r6": "夏の海原のマーメイド",
+  "r6_detail": "自身の最大ＳＰが追加で２５０上昇する。\n戦闘開始時、ＳＰを最大まで回復し、『サーフ』状態になる。また『オフショア』の最大累積数が追加で２つ増加する。\nそれぞれのスキルに以下の効果を追加する。\n『ジェリースプラッシュ』：使用時のＳＰ回復量が５０%上昇する。\n『エアリアルタイド』：使用後に『サーフ』状態が解除されなくなる。また『オフショア』の消失がターン終了後になり、消失後にＳＰが最大まで回復する。"
 };
 
 window.cnCharacterRitualData["미유·여름"] = {

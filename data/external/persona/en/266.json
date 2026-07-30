@@ -13,9 +13,9 @@
   },
   "fixed_skill": {
     "cost": "SP 24",
-    "desc": "btlwip-0724-[Skill_desc_26611]",
+    "desc": "Increase 1 foe's damage taken by 16.0%/16.8%/17.6% and inflict 1 Serpent's Venom stack. This effect lasts for 3 turns, up to a maximum of 2 stacks.\nSerpent's Venom: Every turn, take Curse damage equal to 12.8%/13.4%/14.1% of the Attack of the Phantom Thief with the highest Attack (Maximum of 300% of Wonder's Attack).",
     "level": "6/7/8",
-    "name": "btlwip-0724-[Skill_name_26611]"
+    "name": "Venomous Spiral"
   },
   "innate_skill": [
     {
@@ -53,20 +53,20 @@
   "nature": "Gun",
   "passive_skill": [
     {
-      "desc": "btlwip-0724-[Skill_desc_26641]",
-      "name": "btlwip-0724-[Skill_name_26641]"
+      "desc": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 3 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 10%.",
+      "name": "Serpent's Turmoil"
     },
     {
-      "desc": "btlwip-0724-[Skill_desc_26642]",
-      "name": "btlwip-0724-[Skill_name_26642]"
+      "desc": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 5 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 10%.",
+      "name": "Serpent's Turmoil I"
     },
     {
-      "desc": "btlwip-0724-[Skill_desc_26643]",
-      "name": "btlwip-0724-[Skill_name_26643]"
+      "desc": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 5 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 15%.",
+      "name": "Serpent's Turmoil II"
     },
     {
-      "desc": "btlwip-0724-[Skill_desc_26644]",
-      "name": "btlwip-0724-[Skill_name_26644]"
+      "desc": "Increase ailment accuracy by 34.9%.\nAt the start of battle, gain 5 Bitter Stagnation stacks. Whenever allies apply debuffs with skills, they gain 1 Bitter Stagnation stack (up to 1 stack per turn). This effect stacks up to 5 times.\nBitter Stagnation: When a skill is used, spend 5 stacks to increase continuous damage taken by the main target by 15%, and inflict 1 Serpent's Venom stack.",
+      "name": "Serpent's Turmoil III"
     }
   ],
   "rank": 8,

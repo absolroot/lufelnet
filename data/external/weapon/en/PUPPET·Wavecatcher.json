@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Mermaid Dreamer",
+        "quality": 5,
+        "skill": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0% and Resonance critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%.\nWhen spending SP to activate a skill or Resonance, increase Wavecatcher Miyu's damage by 6.8%/8.8%/8.8%/10.8%/10.8%/12.8%/12.8%. This effect is permanent and stacks up to 5 times.",
+        "stat": {
+          "attack": 779.61,
+          "defense": 391.98,
+          "hp": 2259.46
+        },
+        "user": "Wavecatcher Miyu"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Jellie Voyager",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Surf is active, increase Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%.",
+        "stat": {
+          "attack": 623.35,
+          "defense": 313.75,
+          "hp": 1807.87
+        },
+        "user": "Wavecatcher Miyu"
+      }
+    ],
+    "name": "Wavecatcher Miyu"
+  },
+  "msg": "OK",
+  "status": 0
+}

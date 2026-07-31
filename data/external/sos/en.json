@@ -2,7 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Fire attack Score x 3",
+        "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -10,28 +10,25 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
-                "Electric",
-                "Bless",
-                "Curse"
+                "Fire"
               ],
               "Weak": [
-                "Fire"
+                "Ice"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-surtr.png",
             "level": "89",
-            "name": "Lilith",
-            "skill": "607,603",
-            "sn": "532101",
+            "name": "Surt",
+            "skill": "108,103,1008",
+            "sn": "533101",
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
-        "sn": "348401"
+        "scoreRatio": 1.0,
+        "sn": "358401"
       },
       {
-        "bonusRule": "All ally Bless attack Score x 3",
+        "bonusRule": "All ally Electric attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -39,27 +36,28 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire",
+                "Phys",
+                "Gun",
                 "Wind",
-                "Curse"
+                "Bless"
               ],
               "Weak": [
-                "Bless"
+                "Electric"
               ]
             },
-            "image": "B-guaiwutouxiang-set.png",
+            "image": "B-guaiwutouxiang-cuchulainn.png",
             "level": "89",
-            "name": "Seth",
-            "skill": "1101,1103",
-            "sn": "532111",
+            "name": "Cu Chulainn",
+            "skill": "1023,1154",
+            "sn": "533111",
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
-        "sn": "348402"
+        "scoreRatio": 1.0,
+        "sn": "358402"
       }
     ],
-    "buff": "Wellspring Drop: When using medicine on allies, grant 1 Exalted Torrent stack to the main target.\nExalted Torrent: Increase final damage by 20% for 3 turns. Stacks up to 2 times.",
+    "buff": "Magnetic Waves: After activating a skill, Resonance, Highlight, or Theurgy, gain 1 Rising Ripples stack.\nRising Ripples: Increase final damage by 5% for 2 turns. Stacks up to 8 times.",
     "endTime": "2026-08-13 10:30:00",
     "startTime": "2026-07-30 11:30:00"
   },

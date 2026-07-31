@@ -77,6 +77,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     anniversaryGlobalOneHalf: '글로벌 1.5주년',
     anniversaryCnOneHalf: 'CN 1.5주년',
     anniversaryCnSecond: 'CN 2주년',
+    anniversaryPersona30th: 'Persona 30주년',
     anniversaryCnTwoHalf: 'CN 2.5주년',
 
     // Notices

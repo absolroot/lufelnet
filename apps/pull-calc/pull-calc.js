@@ -322,7 +322,7 @@ function applyServerDelayToData(isSea) {
         // Shift anniversaryEvents dates
         if (window.ReleaseScheduleData.anniversaryEvents) {
             window.ReleaseScheduleData.anniversaryEvents.forEach(event => {
-                if (event.date) {
+                if (event.date && event.dateSeaShift !== false) {
                     event.date = addDaysToDateString(event.date, shiftDays);
                 }
             });

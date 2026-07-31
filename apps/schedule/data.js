@@ -31,6 +31,7 @@ window.ReleaseScheduleData = {
         { type: "first", date: "2025-04-12", name: "CN 1st Anniversary", server: "cn" },
         { type: "onehalf", date: "2025-10-12", name: "CN 1.5 Anniversary", server: "cn" },
         { type: "second", date: "2026-04-12", name: "CN 2nd Anniversary", server: "cn" },
+        { type: "persona30th", date: "2026-09-20", name: "Persona 30th Anniversary", server: "persona", dateSeaShift: false },
         { type: "twohalf", date: "2026-10-12", name: "CN 2.5 Anniversary", server: "cn" }
     ],
 
@@ -90,8 +91,8 @@ window.ReleaseScheduleData = {
         { version: "4.10(4.6.1)", characters: ["미츠루"], days: 14 },
         { version: "4.11(4.6.2)", characters: ["후카"], days: 14 },
         { version: "4.12(4.7.1)", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"],  goldTicketUnlocks: ["TURBO"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["토모코·여름", "유우미", "YUI"], note: "Janosik IV", days: 14 },
-        { version: "4.12(4.7.1)", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", mindscape_core: ["J&C"], days: 14 },
-        { version: "4.13(4.7.2)", characters: ["준페이"], days: 14 },
+        { version: "4.12(4.7.1)", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", days: 14 },
+        { version: "4.13(4.7.2)", characters: ["준페이"], mindscape_core: ["J&C"], days: 14 },
         { version: "4.14(4.8.1)", characters: ["나루미"], mindscape_core: ["렌", "야오링·사자무"], revelation: ["순수", "타락", "강인"], weapon_stamp: ["천상의 별"], days: 14 },
         { version: "4.15(4.8.2)", characters: ["코로마루"], rev_set:["예리","방해"], days: 14  },
         { version: "5.0.1", characters: ["모토하·청광","아란"],  "main-story": "6", mindscape_core: ["유스케", "아야카"], weapon_stamp: ["마그네틱 스톰"], weapon: ["혼돈의 해커스"], limitTransitions: [{ from: true, to: false, characters: ["렌", "유스케", "YUI"] }], days: 14 },

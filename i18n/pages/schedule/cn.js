@@ -62,6 +62,7 @@ window.I18N_PAGE_SCHEDULE_CN = {
     "anniversaryGlobalOneHalf": "国际服 1.5 周年",
     "anniversaryCnOneHalf": "CN 1.5 周年",
     "anniversaryCnSecond": "CN 2 周年",
+    "anniversaryPersona30th": "Persona 30 周年",
     "anniversaryCnTwoHalf": "CN 2.5 周年",
     "noticeHtml": "请注意剧透。<br>该日程以 GLB/JP 服务器为基准。<br>到 4.0 版本为止按 2 周间隔上线，之后按 3 周间隔上线。时间可能会因活动或节假日而调整，<strong style=\"color:rgb(255, 255, 0);\">上线顺序也可能发生变化。</strong><br>目前后续版本编号遵循 CN/KR/TW 服务器上线时使用的版本编号。<br>详细补丁历史请参考 <a href=\"https://docs.google.com/spreadsheets/d/1KmLUs1Cpp2WuDQZYHCW1xzCVCThWCB6R2VR5pFuLixE/edit?usp=sharing\" target=\"_blank\">P5X Patch History by Sages</a>。",
     "seoTitle": "上线日程 - 女神异闻录：夜幕魅影 | 路菲尔网",

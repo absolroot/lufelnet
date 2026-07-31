@@ -69,7 +69,7 @@
             // Shift anniversaryEvents dates
             if (window.ReleaseScheduleData.anniversaryEvents) {
                 window.ReleaseScheduleData.anniversaryEvents.forEach(event => {
-                    if (event.date) {
+                    if (event.date && event.dateSeaShift !== false) {
                         event.date = addDaysToDateString(event.date, shiftDays);
                     }
                 });
@@ -1575,6 +1575,7 @@
         else if (event.type === 'onehalf') localizedName = event.server === 'global' ? t('anniversaryGlobalOneHalf') : t('anniversaryCnOneHalf');
         else if (event.type === 'second') localizedName = t('anniversaryCnSecond');
         else if (event.type === 'twohalf') localizedName = t('anniversaryCnTwoHalf');
+        else if (event.type === 'persona30th') localizedName = t('anniversaryPersona30th');
 
         if (!localizedName || localizedName === event.type) {
             localizedName = event.name;

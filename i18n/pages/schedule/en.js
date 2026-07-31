@@ -77,6 +77,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     anniversaryGlobalOneHalf: 'Global 1.5 Anniversary',
     anniversaryCnOneHalf: 'CN 1.5 Anniversary',
     anniversaryCnSecond: 'CN 2nd Anniversary',
+    anniversaryPersona30th: 'Persona 30th Anniversary',
     anniversaryCnTwoHalf: 'CN 2.5 Anniversary',
 
     // Notices

@@ -223,6 +223,16 @@
     return grid;
   }
 
+  function insertBeforeOrAppend(parent, node, beforeNode) {
+    if (!parent || !node) return false;
+    if (beforeNode && beforeNode.parentNode === parent) {
+      parent.insertBefore(node, beforeNode);
+      return true;
+    }
+    parent.appendChild(node);
+    return true;
+  }
+
   function ensureMONT2SelectorCard() {
     ensureMONT2Styles();
 
@@ -233,14 +243,18 @@
       card.className = 'mont2-mode-card';
       card.appendChild(createModeButtonGrid('skill'));
 
-      const levelButtons = skillsCard.querySelector('.skill-level-buttons');
-      const skillsGrid = skillsCard.querySelector('.skills-grid');
-      if (levelButtons) {
-        skillsCard.insertBefore(card, levelButtons);
-      } else if (skillsGrid) {
-        skillsCard.insertBefore(card, skillsGrid);
-      } else {
-        skillsCard.appendChild(card);
+      const skillsGrid = skillsCard.querySelector(':scope > .skills-grid') || skillsCard.querySelector('.skills-grid');
+      const levelToolbar = skillsCard.querySelector('.skill-level-toolbar');
+
+      let inserted = false;
+      if (skillsGrid && skillsGrid.parentNode === skillsCard) {
+        inserted = insertBeforeOrAppend(skillsCard, card, skillsGrid);
+      }
+      if (!inserted && levelToolbar && levelToolbar.parentNode) {
+        inserted = insertBeforeOrAppend(levelToolbar.parentNode, card, levelToolbar.nextSibling);
+      }
+      if (!inserted) {
+        insertBeforeOrAppend(skillsCard, card, null);
       }
     }
 
@@ -254,11 +268,11 @@
       const ritualHeader = ritualCard.querySelector('.ritual-header');
       const ritualGrid = ritualCard.querySelector('.ritual-grid');
       if (ritualHeader && ritualHeader.nextSibling) {
-        ritualCard.insertBefore(ritualModeCard, ritualHeader.nextSibling);
+        insertBeforeOrAppend(ritualCard, ritualModeCard, ritualHeader.nextSibling);
       } else if (ritualGrid) {
-        ritualCard.insertBefore(ritualModeCard, ritualGrid);
+        insertBeforeOrAppend(ritualCard, ritualModeCard, ritualGrid);
       } else {
-        ritualCard.appendChild(ritualModeCard);
+        insertBeforeOrAppend(ritualCard, ritualModeCard, null);
       }
     }
 
@@ -447,7 +461,11 @@
 
       if (name !== '몽타뉴·백조' && name !== '코토네 몽타뉴·백조') return;
 
-      ensureMONT2SelectorCard();
+      try {
+        ensureMONT2SelectorCard();
+      } catch (e) {
+        console.warn('[MONT2_icons] ensureMONT2SelectorCard error', e);
+      }
 
       let currentLevelIndex = '-1';
       try {

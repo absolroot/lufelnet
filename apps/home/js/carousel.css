@@ -80,6 +80,11 @@
   scale: 0.75 !important;
 }
 
+.char-img.single-banner[src*="%EB%AF%B8%EC%9C%A0%C2%B7%EC%97%AC%EB%A6%84"] {
+  transform: scale(1.2);
+  top: 7%;
+}
+
 /* 하루 */
 .char-img.single-banner[src*="%ED%95%98%EB%A3%A8"]{
   top: 95%;

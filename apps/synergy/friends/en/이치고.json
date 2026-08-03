@@ -1,0 +1,804 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I kyuned.",
+              "reward": 50
+            },
+            {
+              "content": "Nope.",
+              "reward": 40
+            },
+            {
+              "content": "Kyun kyun!",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "Charm Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I can wait.",
+              "reward": 50
+            },
+            {
+              "content": "I don't mind but...",
+              "reward": 40
+            },
+            {
+              "content": "You're leaving me kyunless?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "Charm Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Follow your heart.",
+              "reward": 60
+            },
+            {
+              "content": "It won't be easy.",
+              "reward": 40
+            },
+            {
+              "content": "I'll cheer you on.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "Charm Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Take a deep breath.",
+              "reward": 40
+            },
+            {
+              "content": "Don't put yourself down.",
+              "reward": 50
+            },
+            {
+              "content": "You are cute.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "Charm Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You worked hard to use that voice.",
+              "reward": 50
+            },
+            {
+              "content": "Your normal voice is charming too.",
+              "reward": 40
+            },
+            {
+              "content": "Both voices are cute.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "Charm Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "I'll give it my all.",
+              "reward": 60
+            },
+            {
+              "content": "It's a big responsibility, but...",
+              "reward": 40
+            },
+            {
+              "content": "Let's do this together.",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "Charm Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You got this.",
+              "reward": 50
+            },
+            {
+              "content": "Are you sure?",
+              "reward": 40
+            },
+            {
+              "content": "Was I any help?",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "Charm Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You've gotten so strong.",
+              "reward": 50
+            },
+            {
+              "content": "You've changed a lot.",
+              "reward": 40
+            },
+            {
+              "content": "Both Ichigos are great.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "Charm Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "You'll be fine.",
+              "reward": 50
+            },
+            {
+              "content": "I thought you changed...",
+              "reward": 40
+            },
+            {
+              "content": "The princess is in a bind.",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "Charm Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "friend_lover_dialog": [],
+    "item": [
+      {
+        "bonus_synergy": 44,
+        "compound": [],
+        "image": "item-303204.png",
+        "name": "Hi-tech Headphones",
+        "new_gift_synergy": 88,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 22800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 23800,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Akindo"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "Arcade Exchange Voucher",
+            "price": 4760,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 44
+      },
+      {
+        "bonus_synergy": 4,
+        "compound": [],
+        "image": "item-303226.png",
+        "name": "Vitamin Drink Set",
+        "new_gift_synergy": 8,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 1600,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 1680,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Vending Machine"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303243.png",
+        "name": "Crimson Lipstick",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 1,
+        "compound": [],
+        "image": "item-303248.png",
+        "name": "Fashion Magazine",
+        "new_gift_synergy": 2,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 480,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 500,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 1,
+        "compound": [],
+        "image": "item-303250.png",
+        "name": "Shonen Manga Weekly",
+        "new_gift_synergy": 2,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 460,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 480,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 11,
+        "compound": [],
+        "image": "item-303256.png",
+        "name": "Omni-Vitamins",
+        "new_gift_synergy": 22,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 4280,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 4500,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 11
+      },
+      {
+        "bonus_synergy": 110,
+        "compound": [],
+        "image": "item-303266.png",
+        "name": "Vanilla Perfume",
+        "new_gift_synergy": 220,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 75000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.13",
+            "price": 76000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 110
+      },
+      {
+        "bonus_synergy": 2,
+        "compound": [],
+        "image": "item-303270.png",
+        "name": "Weathered Teru Teru Bozu",
+        "new_gift_synergy": 4,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 760,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 7,
+            "moneyName": "Money",
+            "price": 800,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303282.png",
+        "name": "Limited-Edition Keychain",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Crystal Healing"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303283.png",
+        "name": "Candy Set",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 3000,
+            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "resetType": "주간",
+            "shopName": "Super Muramasa"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "compound": [],
+        "image": "item-303284.png",
+        "name": "Essential Oils",
+        "new_gift_synergy": 38,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 7700,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "Mont Blanc",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "price": 6000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303286.png",
+        "name": "Snow Globe",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 10000,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "compound": [],
+        "image": "item-303287.png",
+        "name": "Aroma Diffuser",
+        "new_gift_synergy": 56,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-317002.png",
+        "name": "Cartoon Mask",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5590,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "Money",
+            "price": 5880,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Tokobushiya"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 39,
+        "compound": [],
+        "image": "item-317012.png",
+        "name": "Big Jellyfish Plushie",
+        "new_gift_synergy": 78,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 18620,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 19600,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "resetType": "주간",
+            "shopName": "Triple Seven"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 39
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "Eternal Love",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
+      }
+    ],
+    "name": "Ichigo Shikano",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "Something wrong?",
+              "reward": 40
+            },
+            {
+              "content": "Is it weird...?",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "Hellooo?",
+              "reward": 40
+            },
+            {
+              "content": "Earth to Ichigo.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "What about practice?",
+              "reward": 60
+            },
+            {
+              "content": "\"Too wild?\"",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "Unlock new lines in the Voice menu for each character on the Thieves screen.",
+        "icon": "xielizhe-icon-berry-03.png",
+        "name": "Hear Your Voice 1",
+        "rank": 1
+      },
+      {
+        "description": "Unlock new lines in the Voice menu for each character on the Thieves screen.",
+        "icon": "xielizhe-icon-berry-01.png",
+        "name": "Hear Your Voice 2",
+        "rank": 5
+      },
+      {
+        "description": "Unlock new lines in the Voice menu for each character on the Thieves screen.",
+        "icon": "xielizhe-icon-berry-04.png",
+        "name": "Hear Your Voice 3",
+        "rank": 9
+      },
+      {
+        "description": "Unlock new lines in the Voice menu for each character on the Thieves screen.",
+        "icon": "xielizhe-icon-berry-05.png",
+        "name": "Hear Your Voice 4",
+        "rank": 13
+      },
+      {
+        "description": "Unlock new lines in the Voice menu for each character on the Thieves screen.",
+        "icon": "xielizhe-icon-berry-02.png",
+        "name": "Hear Your Voice 5",
+        "rank": 17
+      }
+    ],
+    "time": "Night",
+    "unlock_quest": [
+      {
+        "details": "I never expected Riko to awaken a Persona, too.\nLet's return to Shibuya and talk about this.",
+        "name": "Unconditional Love"
+      }
+    ],
+    "visit_dialog": [
+      {
+        "destination": "Akihabara",
+        "good_answers": [
+          [
+            {
+              "content": "Absolutely cute.",
+              "reward": 50
+            },
+            {
+              "content": "You'd fit right in.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Harajuku",
+        "good_answers": [
+          [
+            {
+              "content": "Blue.",
+              "reward": 50
+            },
+            {
+              "content": "Pink.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Zoshigaya",
+        "good_answers": [
+          [
+            {
+              "content": "It doesn't matter to me.",
+              "reward": 60
+            },
+            {
+              "content": "As long as you like the food...",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinagawa",
+        "good_answers": [
+          [
+            {
+              "content": "Without a doubt.",
+              "reward": 50
+            },
+            {
+              "content": "You might be too cute for it.",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "Shinjuku",
+        "good_answers": [
+          [
+            {
+              "content": "Point at a pair of earrings",
+              "reward": 50
+            },
+            {
+              "content": "Pick up a ring",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -1,0 +1,804 @@
+{
+  "data": {
+    "advance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "きゅんとした",
+              "reward": 50
+            },
+            {
+              "content": "してない",
+              "reward": 40
+            },
+            {
+              "content": "きゅんきゅん！",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 2,
+          "to": 3
+        },
+        "unlock_cond": "魅力 Lv.3"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "覚悟が決まるまで待つ",
+              "reward": 50
+            },
+            {
+              "content": "自分は構わないけど…",
+              "reward": 40
+            },
+            {
+              "content": "今日はきゅんがないな？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 4,
+          "to": 5
+        },
+        "unlock_cond": "魅力 Lv.5"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "思い通りにやってみろ",
+              "reward": 60
+            },
+            {
+              "content": "我を貫くのは大変だぞ？",
+              "reward": 40
+            },
+            {
+              "content": "自分は応援する",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 6,
+          "to": 7
+        },
+        "unlock_cond": "魅力 Lv.6"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "いいから落ち着け",
+              "reward": 40
+            },
+            {
+              "content": "自分で自分を追い込むな",
+              "reward": 50
+            },
+            {
+              "content": "苺はかわいいよ",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 8,
+          "to": 9
+        },
+        "unlock_cond": "魅力 Lv.8"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "その声は努力の賜物なんだな",
+              "reward": 50
+            },
+            {
+              "content": "低い声にも魅力がある",
+              "reward": 40
+            },
+            {
+              "content": "どっちもかわいいと思う",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 10,
+          "to": 11
+        },
+        "unlock_cond": "魅力 Lv.10"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "全力を尽くす",
+              "reward": 60
+            },
+            {
+              "content": "責任重大だ",
+              "reward": 40
+            },
+            {
+              "content": "一緒に頑張ろう",
+              "reward": 50
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 12,
+          "to": 13
+        },
+        "unlock_cond": "魅力 Lv.11"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "応援してる",
+              "reward": 50
+            },
+            {
+              "content": "本当にいいのか？",
+              "reward": 40
+            },
+            {
+              "content": "上手くエスコートできた？",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 14,
+          "to": 15
+        },
+        "unlock_cond": "魅力 Lv.13"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "強くなったな",
+              "reward": 50
+            },
+            {
+              "content": "出会った頃とは大違いだ",
+              "reward": 40
+            },
+            {
+              "content": "どちらの苺でもいい",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 16,
+          "to": 17
+        },
+        "unlock_cond": "魅力 Lv.15"
+      },
+      {
+        "good_answers": [
+          [
+            {
+              "content": "苺ならきっと大丈夫",
+              "reward": 50
+            },
+            {
+              "content": "成長したと思ったのに…",
+              "reward": 40
+            },
+            {
+              "content": "困ったお姫様だ",
+              "reward": 60
+            }
+          ]
+        ],
+        "rank_up": {
+          "from": 19,
+          "to": 20
+        },
+        "unlock_cond": "魅力 Lv.17"
+      }
+    ],
+    "can_romance": true,
+    "friend_lover_dialog": [],
+    "item": [
+      {
+        "bonus_synergy": 44,
+        "compound": [],
+        "image": "item-303204.png",
+        "name": "高性能ヘッドホン",
+        "new_gift_synergy": 88,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 22800,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 23800,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "あきんどお～"
+          },
+          {
+            "isHidden": 1,
+            "mapName": null,
+            "maxBuy": -1,
+            "moneyName": "ゲームセンター引換券",
+            "price": 4760,
+            "resetType": "없음",
+            "shopName": "AAAAAA=="
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 44
+      },
+      {
+        "bonus_synergy": 4,
+        "compound": [],
+        "image": "item-303226.png",
+        "name": "健康ドリンクセット",
+        "new_gift_synergy": 8,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 1600,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 1680,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "自動販売機"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303243.png",
+        "name": "真紅のルージュ",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 1,
+        "compound": [],
+        "image": "item-303248.png",
+        "name": "ファッション誌",
+        "new_gift_synergy": 2,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 480,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 500,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 1,
+        "compound": [],
+        "image": "item-303250.png",
+        "name": "週刊少年漫画雑誌",
+        "new_gift_synergy": 2,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 460,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 480,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 11,
+        "compound": [],
+        "image": "item-303256.png",
+        "name": "全能ビタミン剤",
+        "new_gift_synergy": 22,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 4280,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 4500,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 11
+      },
+      {
+        "bonus_synergy": 110,
+        "compound": [],
+        "image": "item-303266.png",
+        "name": "バニラ香水",
+        "new_gift_synergy": 220,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 75000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "魅力 LV.13",
+            "price": 76000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 110
+      },
+      {
+        "bonus_synergy": 2,
+        "compound": [],
+        "image": "item-303270.png",
+        "name": "曰く付きてるてる坊主",
+        "new_gift_synergy": 4,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 760,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 7,
+            "moneyName": "所持金",
+            "price": 800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 2
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303282.png",
+        "name": "限定版キーホルダー",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
+          },
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303283.png",
+        "name": "お菓子袋詰めセット",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 2850,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 3000,
+            "reducePriceCond": "道玄坂琉七 LV.9",
+            "resetType": "주간",
+            "shopName": "スーパームラマサ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 19,
+        "compound": [],
+        "image": "item-303284.png",
+        "name": "エッセンシャルオイル",
+        "new_gift_synergy": 38,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 7320,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 7700,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 19
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-303285.png",
+        "name": "モンブラン",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5700,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "price": 6000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 24,
+        "compound": [],
+        "image": "item-303286.png",
+        "name": "スノードーム",
+        "new_gift_synergy": 48,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 9500,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 10000,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 24
+      },
+      {
+        "bonus_synergy": 28,
+        "compound": [],
+        "image": "item-303287.png",
+        "name": "アロマディフューザー",
+        "new_gift_synergy": 56,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 12000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ボディチョップ"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 15,
+        "compound": [],
+        "image": "item-317002.png",
+        "name": "カートゥーンマスク",
+        "new_gift_synergy": 30,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 5590,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 5880,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "トコブシ屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 15
+      },
+      {
+        "bonus_synergy": 39,
+        "compound": [],
+        "image": "item-317012.png",
+        "name": "大クラゲのぬいぐるみ",
+        "new_gift_synergy": 78,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 18620,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 19600,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "トリプルセブン"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 39
+      },
+      {
+        "bonus_synergy": 1000,
+        "compound": [],
+        "image": "item-305976.png",
+        "name": "永遠の愛",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [],
+        "synergy": 999
+      }
+    ],
+    "name": "鹿野 苺",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "どうかした？",
+              "reward": 40
+            },
+            {
+              "content": "そんなに変かな…",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "気をしっかり",
+              "reward": 40
+            },
+            {
+              "content": "苺に戻って",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "とりあえず練習しよう",
+              "reward": 60
+            },
+            {
+              "content": "ヤバくなるとどうなる？",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "『怪盗』画面の『ボイス』機能にて、新たなボイスが解放される。",
+        "icon": "xielizhe-icon-berry-03.png",
+        "name": "あの声が聴きたい１",
+        "rank": 1
+      },
+      {
+        "description": "『怪盗』画面の『ボイス』機能にて、新たなボイスが解放される。",
+        "icon": "xielizhe-icon-berry-01.png",
+        "name": "あの声が聴きたい２",
+        "rank": 5
+      },
+      {
+        "description": "『怪盗』画面の『ボイス』機能にて、新たなボイスが解放される。",
+        "icon": "xielizhe-icon-berry-04.png",
+        "name": "あの声が聴きたい３",
+        "rank": 9
+      },
+      {
+        "description": "『怪盗』画面の『ボイス』機能にて、新たなボイスが解放される。",
+        "icon": "xielizhe-icon-berry-05.png",
+        "name": "あの声が聴きたい４",
+        "rank": 13
+      },
+      {
+        "description": "『怪盗』画面の『ボイス』機能にて、新たなボイスが解放される。",
+        "icon": "xielizhe-icon-berry-02.png",
+        "name": "あの声が聴きたい５",
+        "rank": 17
+      }
+    ],
+    "time": "夜",
+    "unlock_quest": [
+      {
+        "details": "まさか理子もペルソナに目覚めるとは思わなかった。\n渋谷に戻ってから話そう。",
+        "name": "無償の愛"
+      }
+    ],
+    "visit_dialog": [
+      {
+        "destination": "秋葉原",
+        "good_answers": [
+          [
+            {
+              "content": "確かにかわいい",
+              "reward": 50
+            },
+            {
+              "content": "苺にも似合いそう",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "原宿",
+        "good_answers": [
+          [
+            {
+              "content": "水色",
+              "reward": 50
+            },
+            {
+              "content": "ピンク",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "雑司ヶ谷",
+        "good_answers": [
+          [
+            {
+              "content": "そんなことはない",
+              "reward": 60
+            },
+            {
+              "content": "おいしそうに食べてくれれば…",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "品川",
+        "good_answers": [
+          [
+            {
+              "content": "できる",
+              "reward": 50
+            },
+            {
+              "content": "声がかわいすぎるかも",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "新宿",
+        "good_answers": [
+          [
+            {
+              "content": "イヤリング",
+              "reward": 50
+            },
+            {
+              "content": "指輪",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

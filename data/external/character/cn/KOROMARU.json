@@ -134,10 +134,16 @@
     ],
     "final_innate": [],
     "highlight_skill": null,
-    "innate": {},
+    "innate": {
+      "Ailment Acc.": "0.24",
+      "Damage Mult.": "0.16"
+    },
     "innate_awake_skill": [],
-    "innate_skill_type": [],
-    "name": "鹿野莓·夏日",
+    "innate_skill_type": [
+      "S2/HL",
+      "S1/S3"
+    ],
+    "name": "虎狼丸",
     "normal_skill": [
       {
         "ascend": "0/5/0/5",
@@ -225,7 +231,12 @@
         "target_count": "All"
       }
     ],
-    "rating": {},
+    "rating": {
+      "Ailment Acc.": 1.4,
+      "Attack": 3660.0,
+      "Damage Mult.": 0.09,
+      "Unknown Attr": 0.0
+    },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
       "Ailment Acc.": "35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0% / 35.0%",

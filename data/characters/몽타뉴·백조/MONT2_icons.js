@@ -12,6 +12,7 @@
       label: '봄',
       label_en: 'Spring',
       label_jp: '旋風',
+      label_cn: '仲春',
       icon: '🌸',
       color: '#7cc576' // 연한 녹색 (질풍)
     },
@@ -20,6 +21,7 @@
       label: '겨울',
       label_en: 'Winter',
       label_jp: '銀盤',
+      label_cn: '冬夜',
       icon: '❄️',
       color: '#6bb3d9' // 연한 파랑 (빙결)
     }
@@ -38,6 +40,10 @@
     jp: {
       spring: ['『旋風』状態：', '『旋風』状態:', '『旋風』状態の時'],
       winter: ['『銀盤』状態：', '『銀盤』状態:', '『銀盤』状態の時']
+    },
+    cn: {
+      spring: ['『仲春形态』：', '『仲春形态』:', '『仲春形态』下'],
+      winter: ['『冬夜形态』：', '『冬夜形态』:', '『冬夜形态』下']
     }
   };
 
@@ -54,6 +60,10 @@
     jp: {
       spring: ['疾風属性の味方', '疾風属性ダメージ'],
       winter: ['氷結属性の味方', '氷結属性ダメージ']
+    },
+    cn: {
+      spring: ['疾风属性怪盗', '疾风伤害'],
+      winter: ['冰冻属性怪盗', '冰冻伤害']
     }
   };
 
@@ -82,10 +92,12 @@
       const langParam = urlParams.get('lang');
       if (langParam === 'en') return 'en';
       if (langParam === 'jp') return 'jp';
+      if (langParam === 'cn') return 'cn';
 
       const path = window.location.pathname || '';
       if (path.includes('/en/')) return 'en';
       if (path.includes('/jp/')) return 'jp';
+      if (path.includes('/cn/')) return 'cn';
       return 'kr';
     } catch (_) {
       return 'kr';
@@ -178,6 +190,7 @@
     const lang = getCurrentLanguage();
     if (lang === 'en' && mode.label_en) return mode.label_en;
     if (lang === 'jp' && mode.label_jp) return mode.label_jp;
+    if (lang === 'cn' && mode.label_cn) return mode.label_cn;
     return mode.label;
   }
 
@@ -358,6 +371,9 @@
     } else if (lang === 'en') {
       sentences = baseHtml.split(/\n/);
       joinChar = '\n';
+    } else if (lang === 'cn') {
+      sentences = baseHtml.split(/(?<=[。；])\s*/);
+      joinChar = '';
     } else {
       sentences = baseHtml.split(/(?<=다)\.\s*/);
       joinChar = '. ';

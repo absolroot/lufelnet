@@ -557,6 +557,15 @@ body:not(.tactic-edit-mode) .turn-row {
     background: rgba(78, 205, 196, 0.3);
 }
 
+.note-color-btn {
+    color: var(--note-title, #e8d59c);
+}
+
+.note-color-btn:hover {
+    border-color: var(--note-border, #c9a227);
+    color: var(--note-title, #e8d59c);
+}
+
 .action-item.auto {
     border-left: 3px solid #4ecdc4;
 }
@@ -692,22 +701,38 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     font-style: normal;
 }
 
+.note-action-layout {
+    display: flex;
+    align-items: stretch;
+    min-width: 0;
+}
+
+.note-action-body {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.note-action-header {
+    padding: 2px 0;
+}
+
 .note-action-item .action-memo-container {
+    margin-top: 2px;
     padding-left: 0;
 }
 
 /* Note Action Item Style */
 .note-action-item {
-    background: linear-gradient(135deg, rgba(70, 70, 50, 0.9), rgba(50, 50, 40, 0.95)) !important;
-    border-left: 3px solid #c9a227 !important;
+    background: var(--note-bg, linear-gradient(135deg, rgba(70, 70, 50, 0.9), rgba(50, 50, 40, 0.95))) !important;
+    border-left: 3px solid var(--note-border, #c9a227) !important;
 }
 
 .note-action-item::before {
-    background: rgba(201, 162, 39, 0.15) !important;
+    background: var(--note-tint, rgba(201, 162, 39, 0.15)) !important;
 }
 
 .note-action-item .action-name {
-    color: #e8d59c;
+    color: var(--note-title, #e8d59c);
     font-style: italic;
     font-size: 0.5rem;
 }
@@ -1057,6 +1082,11 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
 
 .action-drag-handle:active {
     cursor: grabbing;
+}
+
+.note-action-item .action-drag-handle {
+    align-self: stretch;
+    min-height: 0;
 }
 
 /* Drop Zone Styling - subtle highlight */

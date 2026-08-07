@@ -19,8 +19,9 @@ const GAS_SHARE_TYPE = 'tactic';
 const GAS_SAVED_TYPE = 'saved';
 
 export class ImportExport {
-    constructor(store) {
+    constructor(store, settingsUI = null) {
         this.store = store;
+        this.settingsUI = settingsUI;
         this.fileInput = document.getElementById('fileInput');
         this.btnImport = document.getElementById('btnImport');
         this.btnExport = document.getElementById('btnExport');
@@ -265,6 +266,10 @@ export class ImportExport {
         setGlobalItemOptions({});
         setGlobalSharedChecks({ defense: [], pierceBuffAoe: [], criticalBuffAoe: [] });
         setGlobalSkillEffectAmpState(getDefaultGlobalSkillEffectAmpState(), { silent: true });
+
+        if (this.settingsUI && typeof this.settingsUI.enableNatureSkillInputsForLoadedData === 'function') {
+            this.settingsUI.enableNatureSkillInputsForLoadedData(internalState);
+        }
 
         // Load data into store
         this.store.loadData(internalState);

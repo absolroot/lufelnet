@@ -1,10 +1,12 @@
 export class TacticSettingsUI {
     constructor() {
+        const defaultShowNatureSkillInputs = this.getDefaultShowNatureSkillInputs();
         this.settings = {
             defaultRitual: '0',
             defaultModification: '-',
             autoWonderWeapon: true,
-            autoActionPrompt: true
+            autoActionPrompt: true,
+            showNatureSkillInputs: defaultShowNatureSkillInputs
         };
         this.STORAGE_KEY = 'tactic_maker_settings';
 
@@ -14,10 +16,29 @@ export class TacticSettingsUI {
             inputRitual: document.getElementById('settingDefaultRitual'),
             inputModification: document.getElementById('settingDefaultModification'),
             inputAutoWonderWeapon: document.getElementById('settingAutoWonderWeapon'),
-            inputAutoActionPrompt: document.getElementById('settingAutoActionPrompt')
+            inputAutoActionPrompt: document.getElementById('settingAutoActionPrompt'),
+            inputShowNatureSkillInputs: document.getElementById('settingShowNatureSkillInputs')
         };
 
         this.init();
+    }
+
+    getCurrentLanguage() {
+        if (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function') {
+            return window.I18nService.getCurrentLanguage();
+        }
+        if (window.LanguageRouter && typeof window.LanguageRouter.getCurrentLanguage === 'function') {
+            return window.LanguageRouter.getCurrentLanguage();
+        }
+        if (typeof window.getCurrentLanguage === 'function') {
+            return window.getCurrentLanguage();
+        }
+        return 'kr';
+    }
+
+    getDefaultShowNatureSkillInputs() {
+        const lang = this.getCurrentLanguage();
+        return lang === 'kr' || lang === 'cn';
     }
 
     init() {
@@ -38,6 +59,9 @@ export class TacticSettingsUI {
                 if (typeof this.settings.autoActionPrompt === 'undefined') {
                     this.settings.autoActionPrompt = true;
                 }
+                if (typeof this.settings.showNatureSkillInputs === 'undefined') {
+                    this.settings.showNatureSkillInputs = this.getDefaultShowNatureSkillInputs();
+                }
             }
         } catch (e) {
             console.error('Failed to load settings:', e);
@@ -56,6 +80,9 @@ export class TacticSettingsUI {
         if (this.elements.inputAutoActionPrompt) {
             this.elements.inputAutoActionPrompt.checked = this.settings.autoActionPrompt;
         }
+        if (this.elements.inputShowNatureSkillInputs) {
+            this.elements.inputShowNatureSkillInputs.checked = this.settings.showNatureSkillInputs;
+        }
     }
 
     saveSettings() {
@@ -64,6 +91,12 @@ export class TacticSettingsUI {
         } catch (e) {
             console.error('Failed to save settings:', e);
         }
+    }
+
+    notifySettingsChange(key, value) {
+        window.dispatchEvent(new CustomEvent('tactic-settings-change', {
+            detail: { key, value, settings: { ...this.settings } }
+        }));
     }
 
     bindEvents() {
@@ -99,6 +132,7 @@ export class TacticSettingsUI {
             this.elements.inputAutoWonderWeapon.addEventListener('change', (e) => {
                 this.settings.autoWonderWeapon = e.target.checked;
                 this.saveSettings();
+                this.notifySettingsChange('autoWonderWeapon', this.settings.autoWonderWeapon);
             });
         }
 
@@ -106,6 +140,13 @@ export class TacticSettingsUI {
             this.elements.inputAutoActionPrompt.addEventListener('change', (e) => {
                 this.settings.autoActionPrompt = e.target.checked;
                 this.saveSettings();
+                this.notifySettingsChange('autoActionPrompt', this.settings.autoActionPrompt);
+            });
+        }
+
+        if (this.elements.inputShowNatureSkillInputs) {
+            this.elements.inputShowNatureSkillInputs.addEventListener('change', (e) => {
+                this.setShowNatureSkillInputs(e.target.checked);
             });
         }
     }
@@ -139,5 +180,38 @@ export class TacticSettingsUI {
 
     getAutoActionPrompt() {
         return this.settings.autoActionPrompt;
+    }
+
+    getShowNatureSkillInputs() {
+        return this.settings.showNatureSkillInputs;
+    }
+
+    setShowNatureSkillInputs(value, options = {}) {
+        const nextValue = !!value;
+        const changed = this.settings.showNatureSkillInputs !== nextValue;
+        this.settings.showNatureSkillInputs = nextValue;
+        if (this.elements.inputShowNatureSkillInputs) {
+            this.elements.inputShowNatureSkillInputs.checked = nextValue;
+        }
+        if (options.persist !== false) {
+            this.saveSettings();
+        }
+        if (changed && options.silent !== true) {
+            this.notifySettingsChange('showNatureSkillInputs', nextValue);
+        }
+    }
+
+    dataHasNatureSkillValues(data) {
+        const party = Array.isArray(data?.party) ? data.party : [];
+        return party.some(member => {
+            const natureSkill = member?.natureSkill;
+            return !!(natureSkill && (natureSkill.synergySn || natureSkill.combatSn));
+        });
+    }
+
+    enableNatureSkillInputsForLoadedData(data) {
+        if (this.dataHasNatureSkillValues(data)) {
+            this.setShowNatureSkillInputs(true);
+        }
     }
 }

@@ -63,6 +63,7 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
     // New Keys
 
     memo: "メモ",
+    memoColor: "メモの色",
 
     search: "検索",
 
@@ -149,6 +150,8 @@ window.I18N_PAGE_TACTIC_MAKER_JP = {
     modificationLabel: "改造",
 
     autoWonderWeapon: "ワンダー武器自動設定 (反逆/支配)",
+
+    showNatureSkillInputs: "イメジャリースキル入力欄を表示",
 
     selectPersona: "ペルソナ選択",
 

@@ -97,16 +97,6 @@ function getNatureSkillUIText(key, fallback = '') {
     return fallback || key;
 }
 
-function getNatureSkillRecommendedLabel() {
-    const lang = (window.I18nService && typeof window.I18nService.getCurrentLanguage === 'function')
-        ? window.I18nService.getCurrentLanguage()
-        : 'kr';
-    const fallback = lang === 'en'
-        ? 'Recommended'
-        : (lang === 'jp' ? '推奨' : (lang === 'cn' ? '推荐' : '추천'));
-    return getTacticMakerText('recommended', fallback);
-}
-
 function getLoadedNatureSkillRecommendations(charName, natures, innateType) {
     const setting = DataLoader.getCharacterSetting(charName);
     const recommend = setting.nature_skill_recommend || {};
@@ -314,8 +304,26 @@ export class PartyUI {
             this.updateAllSlotTriggersOnly();
         });
 
+        window.addEventListener('tactic-settings-change', (event) => {
+            if (event.detail?.key !== 'showNatureSkillInputs') return;
+            this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
+            if (this.openNeedStatSlotIndex !== null) {
+                const charData = this.store.state.party[this.openNeedStatSlotIndex];
+                if (charData && charData.name) {
+                    this.refreshOpenNeedStatPanel(this.openNeedStatSlotIndex, charData);
+                }
+            }
+        });
+
         // Explicitly render initial state to ensure UI is ready
         this.store.state.party.forEach((p, i) => this.renderSlot(i, p));
+    }
+
+    shouldShowNatureSkillInputs() {
+        if (!this.settingsUI || typeof this.settingsUI.getShowNatureSkillInputs !== 'function') {
+            return true;
+        }
+        return this.settingsUI.getShowNatureSkillInputs();
     }
 
     /**
@@ -1446,6 +1454,12 @@ export class PartyUI {
     renderNatureSkillConfig(wrapper, data, index, charInfo) {
         if (!wrapper) return;
 
+        if (!this.shouldShowNatureSkillInputs()) {
+            wrapper.innerHTML = '';
+            wrapper.style.display = 'none';
+            return;
+        }
+
         const detectedNatures = DataLoader.applyNatureSkillOrder(
             DataLoader.resolveNatures(charInfo?.element || ''),
             data?.name || null
@@ -1515,7 +1529,7 @@ export class PartyUI {
         button.setAttribute('aria-label', `${typeLabel} ${skillName}`);
         button.innerHTML = `
             <img class="revelation-icon" src="${iconPath}" alt="${escapeHtml(DataLoader.getNatureLabel(iconNature))}" onerror="this.style.display='none'">
-            <span class="nature-skill-button-label">${escapeHtml(skillName)}${recommendation ? `<span class="nature-skill-recommend-badge" aria-label="${escapeHtml(getNatureSkillRecommendedLabel())}">${escapeHtml(getNatureSkillRecommendedLabel())}</span>` : ''}</span>
+            <span class="nature-skill-button-label">${escapeHtml(skillName)}</span>
         `;
         button.addEventListener('click', (event) => {
             event.stopPropagation();
@@ -1645,7 +1659,7 @@ export class PartyUI {
             <img class="skill-icon nature-skill-icon" src="${DataLoader.getNatureIconPath(entry.nature)}" alt="${escapeHtml(DataLoader.getNatureLabel(entry.nature))}" onerror="this.style.display='none'">
             <span class="skill-info">
                 <span class="skill-header nature-skill-option-header">
-                    <strong class="skill-name nature-skill-option-name">${escapeHtml(skill.name || '')}${recommendation ? `<span class="nature-skill-recommend-badge" aria-label="${escapeHtml(getNatureSkillRecommendedLabel())}">${escapeHtml(getNatureSkillRecommendedLabel())}</span>` : ''}</strong>
+                    <strong class="skill-name nature-skill-option-name">${escapeHtml(skill.name || '')}</strong>
                     <span class="skill-cost nature-skill-option-meta">
                         <span>${escapeHtml(getNatureSkillUIText('level', 'LV'))} ${escapeHtml(skill.skill_lv || '1/2')}</span>
                         <span class="nature-skill-option-meta-separator">·</span>
@@ -2129,7 +2143,7 @@ export class PartyUI {
         );
         let recommendedSynergy = null;
         let recommendedCombat = null;
-        if (detectedNatures.length) {
+        if (detectedNatures.length && this.shouldShowNatureSkillInputs()) {
             try {
                 await Promise.all([
                     DataLoader.loadNatureSkillData(),

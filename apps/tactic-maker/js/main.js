@@ -105,7 +105,7 @@ class TacticMakerApp {
         this.updateLoadingProgress(85);
 
         // Initialize Import/Export
-        this.importExport = new ImportExport(this.store);
+        this.importExport = new ImportExport(this.store, this.settingsUI);
         this.updateLoadingProgress(90);
 
         // Initialize Capture
@@ -282,6 +282,14 @@ class TacticMakerApp {
         // Check if there's auto-saved data
         const savedTime = this.store.getLastSaveTime();
         if (savedTime) {
+            try {
+                const savedData = localStorage.getItem(this.store.autoSaveKey);
+                if (savedData && this.settingsUI && typeof this.settingsUI.enableNatureSkillInputsForLoadedData === 'function') {
+                    this.settingsUI.enableNatureSkillInputsForLoadedData(JSON.parse(savedData));
+                }
+            } catch (e) {
+                console.error('[TacticMaker] Failed to inspect auto-save data:', e);
+            }
             // Load auto-saved data
             this.store.loadFromLocalStorage();
 

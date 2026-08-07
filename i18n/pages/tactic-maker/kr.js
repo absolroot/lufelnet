@@ -29,6 +29,7 @@ window.I18N_PAGE_TACTIC_MAKER_KR = {
     confirm: "확인",
     // New Keys
     memo: "메모",
+    memoColor: "메모 색상",
     search: "검색",
     searchPlaceholder: "이름, 코드네임 검색...",
     noTurns: "아직 턴이 없습니다. \"+ 턴 추가\" 버튼을 클릭하세요.",
@@ -81,6 +82,7 @@ window.I18N_PAGE_TACTIC_MAKER_KR = {
     ritualLabel: "의식",
     modificationLabel: "개조",
     autoWonderWeapon: "원더 무기 자동 설정 (반항/지배)",
+    showNatureSkillInputs: "심상 스킬 입력칸 표시",
     selectPersona: "페르소나 선택",
     selectRole: "직업 선택",
     // Action Modal

@@ -17,6 +17,51 @@ import {
     normalizeMikuMusic
 } from './miku-music.js';
 
+const NOTE_COLOR_PALETTE = [
+    {
+        key: 'yellow',
+        background: 'linear-gradient(135deg, rgba(70, 70, 50, 0.9), rgba(50, 50, 40, 0.95))',
+        border: '#c9a227',
+        tint: 'rgba(201, 162, 39, 0.15)',
+        title: '#e8d59c'
+    },
+    {
+        key: 'blue',
+        background: 'linear-gradient(135deg, rgba(44, 61, 82, 0.9), rgba(35, 45, 63, 0.95))',
+        border: '#5ba7e8',
+        tint: 'rgba(91, 167, 232, 0.15)',
+        title: '#b9dcff'
+    },
+    {
+        key: 'green',
+        background: 'linear-gradient(135deg, rgba(42, 70, 56, 0.9), rgba(33, 52, 43, 0.95))',
+        border: '#60c58c',
+        tint: 'rgba(96, 197, 140, 0.15)',
+        title: '#bff2d2'
+    },
+    {
+        key: 'rose',
+        background: 'linear-gradient(135deg, rgba(79, 47, 56, 0.9), rgba(59, 38, 46, 0.95))',
+        border: '#e06b86',
+        tint: 'rgba(224, 107, 134, 0.15)',
+        title: '#ffc6d2'
+    },
+    {
+        key: 'violet',
+        background: 'linear-gradient(135deg, rgba(62, 50, 82, 0.9), rgba(47, 39, 64, 0.95))',
+        border: '#aa87f0',
+        tint: 'rgba(170, 135, 240, 0.15)',
+        title: '#ddceff'
+    },
+    {
+        key: 'gray',
+        background: 'linear-gradient(135deg, rgba(64, 67, 73, 0.9), rgba(45, 47, 53, 0.95))',
+        border: '#aeb6c2',
+        tint: 'rgba(174, 182, 194, 0.13)',
+        title: '#e2e7ee'
+    }
+];
+
 export class TacticUI {
     constructor(store, settingsUI) {
         this.store = store;
@@ -38,6 +83,9 @@ export class TacticUI {
 
         // Track loaded skill scripts
         this.loadedSkillScripts = new Set();
+
+        // One-shot focus target for newly-created note memo textareas.
+        this.pendingMemoFocusKey = null;
 
         // Subscribe to store changes
         this.store.subscribe((event, data) => this.handleStoreUpdate(event, data));
@@ -635,6 +683,108 @@ export class TacticUI {
 
     getActionStateKey(turnIdx, colKey, actionIdx) {
         return `${turnIdx}:${colKey}:${actionIdx}`;
+    }
+
+    getActionDragHandleMarkup() {
+        return `
+            <div class="action-drag-handle" title="${this.getI18nText('actionDragMoveTooltip', '드래그하여 이동')}">
+                <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
+                    <circle cx="2" cy="2" r="1.5"/>
+                    <circle cx="8" cy="2" r="1.5"/>
+                    <circle cx="2" cy="7" r="1.5"/>
+                    <circle cx="8" cy="7" r="1.5"/>
+                    <circle cx="2" cy="12" r="1.5"/>
+                    <circle cx="8" cy="12" r="1.5"/>
+                </svg>
+            </div>
+        `;
+    }
+
+    setupActionDragHandle(item, turnIdx, colKey, actionIdx) {
+        const dragHandle = item.querySelector('.action-drag-handle');
+        if (!dragHandle) return;
+
+        item.draggable = false;
+
+        dragHandle.addEventListener('mousedown', () => {
+            if (this.isEditMode()) {
+                item.draggable = true;
+            }
+        });
+
+        item.addEventListener('dragstart', (e) => {
+            if (!this.isEditMode()) {
+                e.preventDefault();
+                return;
+            }
+            item.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/plain', JSON.stringify({
+                turnIdx,
+                colKey,
+                actionIdx
+            }));
+
+            const emptyImg = document.createElement('div');
+            emptyImg.style.width = '1px';
+            emptyImg.style.height = '1px';
+            emptyImg.style.opacity = '0';
+            document.body.appendChild(emptyImg);
+            e.dataTransfer.setDragImage(emptyImg, 0, 0);
+            requestAnimationFrame(() => emptyImg.remove());
+
+            this._draggedAction = { turnIdx, colKey, actionIdx, element: item };
+
+            const tableContainer = document.querySelector('.tactic-table-container');
+            if (tableContainer) {
+                tableContainer.classList.add('is-dragging');
+                const partyCount = (this.store.state.party || []).filter(m => m).length + 1;
+                tableContainer.style.setProperty('--party-count', partyCount);
+            }
+        });
+
+        item.addEventListener('dragend', () => {
+            item.draggable = false;
+            item.classList.remove('dragging');
+            this._draggedAction = null;
+            document.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
+            document.querySelectorAll('.tactic-cell.drag-over').forEach(el => el.classList.remove('drag-over'));
+            const tableContainer = document.querySelector('.tactic-table-container');
+            if (tableContainer) tableContainer.classList.remove('is-dragging');
+        });
+    }
+
+    consumePendingMemoFocus(turnIdx, colKey, actionIdx, memoContainer, memoInput, autoResize) {
+        const key = this.getActionStateKey(turnIdx, colKey, actionIdx);
+        if (this.pendingMemoFocusKey !== key) return;
+
+        this.pendingMemoFocusKey = null;
+        memoContainer.classList.remove('hidden');
+        requestAnimationFrame(() => {
+            autoResize();
+            memoInput.focus();
+            const valueLength = memoInput.value.length;
+            memoInput.setSelectionRange(valueLength, valueLength);
+        });
+    }
+
+    getNoteColor(colorKey) {
+        return NOTE_COLOR_PALETTE.find(color => color.key === colorKey) || NOTE_COLOR_PALETTE[0];
+    }
+
+    getNextNoteColorKey(colorKey) {
+        const current = this.getNoteColor(colorKey);
+        const currentIndex = NOTE_COLOR_PALETTE.findIndex(color => color.key === current.key);
+        return NOTE_COLOR_PALETTE[(currentIndex + 1) % NOTE_COLOR_PALETTE.length].key;
+    }
+
+    applyNoteColorStyle(item, colorKey) {
+        const color = this.getNoteColor(colorKey);
+        item.dataset.memoColor = color.key;
+        item.style.setProperty('--note-bg', color.background);
+        item.style.setProperty('--note-border', color.border);
+        item.style.setProperty('--note-tint', color.tint);
+        item.style.setProperty('--note-title', color.title);
     }
 
     getActionActorName(action, char) {
@@ -1505,19 +1655,28 @@ export class TacticUI {
 
         if (isNote) {
             const noteLabel = window.I18nService ? window.I18nService.t('noteAction', '메모') : '메모';
-            const hasMemoNote = !!(action.memo);
+            const memoColorLabel = window.I18nService ? window.I18nService.t('memoColor', '메모 색상') : '메모 색상';
             item.classList.add('note-action-item');
+            this.applyNoteColorStyle(item, action.memoColor);
             item.innerHTML = `
-                <div class="action-content-wrapper">
-                    <div class="action-main-row">
-                        <span class="action-name">${noteLabel}</span>
+                <div class="note-action-layout">
+                    ${this.getActionDragHandleMarkup()}
+                    <div class="note-action-body">
+                        <div class="action-content-wrapper note-action-header">
+                            <div class="action-main-row">
+                                <span class="action-name">${noteLabel}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="action-actions">
-                    <button type="button" class="action-icon-btn ${hasMemoNote ? 'active' : ''}" data-action-btn="memo" title="${window.I18nService ? window.I18nService.t('memo') : '메모'}">
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
-                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    <button type="button" class="action-icon-btn note-color-btn" data-action-btn="color" title="${memoColorLabel}">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+                            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+                            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+                            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+                            <path d="M12 22C6.5 22 2 17.97 2 13S6.48 4 12 4s10 3.58 10 8c0 1.66-1.34 3-3 3h-1.77c-.86 0-1.46.82-1.23 1.65l.24.86c.34 1.23-.58 2.49-1.86 2.49H12z"/>
                         </svg>
                     </button>
                     <button type="button" class="action-icon-btn" data-action-btn="duplicate" title="${window.I18nService ? window.I18nService.t('duplicate') || '복제' : '복제'}">
@@ -1535,14 +1694,10 @@ export class TacticUI {
                 </div>
             `;
 
-            // Memo section for note item - editable inline, toggleable
+            // Memo section for note item - always editable inline in edit mode.
             const memoContainer = document.createElement('div');
             memoContainer.className = 'action-memo-container';
-
-            // Initially hidden unless there's a memo
-            if (!action.memo) {
-                memoContainer.classList.add('hidden');
-            }
+            const noteBody = item.querySelector('.note-action-body');
 
             if (this.isEditMode()) {
                 const memoInput = document.createElement('textarea');
@@ -1570,17 +1725,17 @@ export class TacticUI {
                 });
 
                 memoContainer.appendChild(memoInput);
-                item.appendChild(memoContainer);
+                noteBody.appendChild(memoContainer);
+                this.consumePendingMemoFocus(turnIdx, colKey, actionIdx, memoContainer, memoInput, autoResize);
 
-                // Initial resize if there's content
-                if (action.memo) setTimeout(autoResize, 0);
+                setTimeout(autoResize, 0);
             } else if (action.memo) {
                 const memo = document.createElement('div');
                 memo.className = 'action-memo';
                 memo.textContent = action.memo;
                 memoContainer.classList.remove('hidden');
                 memoContainer.appendChild(memo);
-                item.appendChild(memoContainer);
+                noteBody.appendChild(memoContainer);
             }
 
             item.querySelectorAll('button[data-action-btn]').forEach(btn => {
@@ -1588,27 +1743,12 @@ export class TacticUI {
                     e.stopPropagation();
                     if (!this.isEditMode()) return;
                     const kind = btn.dataset.actionBtn;
-                    if (kind === 'memo') {
-                        // Toggle memo container visibility
-                        const isHidden = memoContainer.classList.contains('hidden');
-                        memoContainer.classList.toggle('hidden');
-                        btn.classList.toggle('active', isHidden);
-                        
-                        if (isHidden) {
-                            // Opening memo - focus input
-                            const input = memoContainer.querySelector('.action-memo-inline');
-                            if (input) input.focus();
-                        } else {
-                            // Closing memo - clear the memo value in store
-                            const input = memoContainer.querySelector('.action-memo-inline');
-                            if (input) {
-                                input.value = '';
-                                this.store.updateAction(turnIdx, colKey, actionIdx, {
-                                    ...action,
-                                    memo: ''
-                                });
-                            }
-                        }
+                    if (kind === 'color') {
+                        const nextColor = this.getNextNoteColorKey(action.memoColor);
+                        this.store.updateAction(turnIdx, colKey, actionIdx, {
+                            ...action,
+                            memoColor: nextColor
+                        });
                         return;
                     }
                     if (kind === 'duplicate') {
@@ -1621,6 +1761,7 @@ export class TacticUI {
                 });
             });
 
+            this.setupActionDragHandle(item, turnIdx, colKey, actionIdx);
             return item;
         }
 
@@ -1649,16 +1790,7 @@ export class TacticUI {
         const hasMemo = !!(action.memo);
         item.innerHTML = `
             <div class="action-content-wrapper">
-                <div class="action-drag-handle" title="${this.getI18nText('actionDragMoveTooltip', '드래그하여 이동')}">
-                    <svg width="10" height="14" viewBox="0 0 10 14" fill="currentColor">
-                        <circle cx="2" cy="2" r="1.5"/>
-                        <circle cx="8" cy="2" r="1.5"/>
-                        <circle cx="2" cy="7" r="1.5"/>
-                        <circle cx="8" cy="7" r="1.5"/>
-                        <circle cx="2" cy="12" r="1.5"/>
-                        <circle cx="8" cy="12" r="1.5"/>
-                    </svg>
-                </div>
+                ${this.getActionDragHandleMarkup()}
                 <div class="action-main-row"></div>
             </div>
             <div class="action-actions">
@@ -1683,64 +1815,7 @@ export class TacticUI {
             </div>
         `;
 
-        // Setup drag handle
-        const dragHandle = item.querySelector('.action-drag-handle');
-        if (dragHandle) {
-            item.draggable = false; // Only drag via handle
-
-            dragHandle.addEventListener('mousedown', () => {
-                if (this.isEditMode()) {
-                    item.draggable = true;
-                }
-            });
-
-            item.addEventListener('dragstart', (e) => {
-                if (!this.isEditMode()) {
-                    e.preventDefault();
-                    return;
-                }
-                item.classList.add('dragging');
-                e.dataTransfer.effectAllowed = 'move';
-                e.dataTransfer.setData('text/plain', JSON.stringify({
-                    turnIdx: turnIdx,
-                    colKey: colKey,
-                    actionIdx: actionIdx
-                }));
-
-                // Use transparent drag image to hide default browser preview
-                const emptyImg = document.createElement('div');
-                emptyImg.style.width = '1px';
-                emptyImg.style.height = '1px';
-                emptyImg.style.opacity = '0';
-                document.body.appendChild(emptyImg);
-                e.dataTransfer.setDragImage(emptyImg, 0, 0);
-                requestAnimationFrame(() => emptyImg.remove());
-
-                // Store reference for drop handling
-                this._draggedAction = { turnIdx, colKey, actionIdx, element: item };
-
-                // Add is-dragging class to table container for layout stability
-                const tableContainer = document.querySelector('.tactic-table-container');
-                if (tableContainer) {
-                    tableContainer.classList.add('is-dragging');
-                    // Set party count CSS variable for column width calculation
-                    const partyCount = (this.store.state.party || []).filter(m => m).length + 1; // +1 for wonder
-                    tableContainer.style.setProperty('--party-count', partyCount);
-                }
-            });
-
-            item.addEventListener('dragend', () => {
-                item.draggable = false;
-                item.classList.remove('dragging');
-                this._draggedAction = null;
-                // Remove all drop indicators
-                document.querySelectorAll('.action-drop-indicator').forEach(el => el.remove());
-                document.querySelectorAll('.tactic-cell.drag-over').forEach(el => el.classList.remove('drag-over'));
-                // Remove is-dragging class
-                const tableContainer = document.querySelector('.tactic-table-container');
-                if (tableContainer) tableContainer.classList.remove('is-dragging');
-            });
-        }
+        this.setupActionDragHandle(item, turnIdx, colKey, actionIdx);
 
         const mainRow = item.querySelector('.action-main-row');
         // Always render dropdowns (styling handles view mode)
@@ -1830,6 +1905,7 @@ export class TacticUI {
             const handleActorChange = (newActor) => {
                 // Handle note selection
                 if (newActor === '__NOTE__') {
+                    this.pendingMemoFocusKey = this.getActionStateKey(turnIdx, colKey, actionIdx);
                     this.store.updateAction(turnIdx, colKey, actionIdx, {
                         isNote: true,
                         character: '',
@@ -2623,13 +2699,21 @@ export class TacticUI {
                 wonderPersonaIndex: personaIndex,
                 action: isNoteSelected ? '' : actionValue,
                 mikuMusic: mikuMusicValue,
-                memo: memoValue
+                memo: memoValue,
+                ...(isNoteSelected ? { memoColor: existingAction?.memoColor || '' } : {})
             };
 
             // NOTE: column(order) is not tied to actor; do NOT move between columns.
             if (isEdit) {
+                if (isNoteSelected && !isNote) {
+                    this.pendingMemoFocusKey = this.getActionStateKey(turnIdx, colKey, actionIdx);
+                }
                 this.store.updateAction(turnIdx, colKey, actionIdx, actionData);
             } else {
+                if (isNoteSelected) {
+                    const actions = this.store.state.turns[turnIdx]?.columns?.[colKey] || [];
+                    this.pendingMemoFocusKey = this.getActionStateKey(turnIdx, colKey, actions.length);
+                }
                 this.store.addAction(turnIdx, colKey, actionData);
             }
 

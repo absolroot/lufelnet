@@ -1319,6 +1319,12 @@ export class ImportExport {
         if (editModeToggle) {
             editModeToggle.checked = false;
         }
+
+        const editModeBtn = document.getElementById('btnEditMode');
+        if (editModeBtn) {
+            editModeBtn.classList.remove('active');
+            editModeBtn.setAttribute('aria-pressed', 'false');
+        }
         
         // Hide loading overlay
         const loadingOverlay = document.getElementById('tacticLoadingOverlay');

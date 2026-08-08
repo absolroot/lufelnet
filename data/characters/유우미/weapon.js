@@ -38,7 +38,7 @@ window.enCharacterWeaponData["유우미"] = {
     "attack": 733.32,
     "defense": 400.84,
     "skill_name": "Wine & Revelry",
-    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For each Cocktail spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% (2 turns)\nIncrease damage by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5% (2 turns)\nIncrease critical rate by 4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6% (2 turns)\nThese effects do not stack. If the Cocktail spent was Tailor-Made, multiply effect by 120%. If it was Standard, multiply effect by 100%. If it was Basic, multiply effect by 50%. For every 2 Cocktails gained, reduce Yumi's cooldown time by 1 turn."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. For each Cocktail spent, randomly grant 1 of the following effects to the party:\nIncrease Attack by 6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4% (2 turns)\nIncrease damage by 4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6% (2 turns)\nIncrease critical rate by 5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5% (2 turns)\nThese effects do not stack. If the Cocktail spent was Tailor-Made, multiply effect by 120%. If it was Standard, multiply effect by 100%. If it was Basic, multiply effect by 50%. For every 2 Cocktails gained, reduce Yumi's cooldown time by 1 turn."
   }
 };
 
@@ -58,7 +58,7 @@ window.jpCharacterWeaponData["유우미"] = {
     "attack": 733.32,
     "defense": 400.84,
     "skill_name": "飲酒と舞踏",
-    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。『カクテル』を１つ消費するごとに、味方全体にランダムで以下の効果を１つ付与する：\n「攻撃力上昇6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4%（２ターン持続）」\n「与ダメージ上昇5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%（２ターン持続）」\n「クリティカル率上昇4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6%（２ターン持続）」\nこの効果は重複せずに未付与の効果が選択され、『オーダーメイド』が消費された時１２０%、『スタンダード』が消費された時１００%、『ベーシック』が消費された時５０%の倍率になる。『カクテル』を２つ獲得するごとに、自身のクールタイムが１ターン短縮される。"
+    "description": "攻撃力が30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。『カクテル』を１つ消費するごとに、味方全体にランダムで以下の効果を１つ付与する：\n「攻撃力上昇6.0%/7.8%/7.8%/9.6%/9.6%/11.4%/11.4%（２ターン持続）」\n「与ダメージ上昇4.0%/5.2%/5.2%/6.4%/6.4%/7.6%/7.6%（２ターン持続）」\n「クリティカル率上昇5.0%/6.5%/6.5%/8.0%/8.0%/9.5%/9.5%（２ターン持続）」\nこの効果は重複せずに未付与の効果が選択され、『オーダーメイド』が消費された時１２０%、『スタンダード』が消費された時１００%、『ベーシック』が消費された時５０%の倍率になる。『カクテル』を２つ獲得するごとに、自身のクールタイムが１ターン短縮される。"
   }
 };
 

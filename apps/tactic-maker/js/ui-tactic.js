@@ -87,6 +87,9 @@ export class TacticUI {
         // One-shot focus target for newly-created note memo textareas.
         this.pendingMemoFocusKey = null;
 
+        // View-mode turn highlight target.
+        this.selectedTurnIndex = null;
+
         // Subscribe to store changes
         this.store.subscribe((event, data) => this.handleStoreUpdate(event, data));
 
@@ -146,6 +149,22 @@ export class TacticUI {
 
     isEditMode() {
         return document.body.classList.contains('tactic-edit-mode');
+    }
+
+    selectTurn(turnIdx) {
+        if (this.isEditMode()) return;
+        this.selectedTurnIndex = this.selectedTurnIndex === turnIdx ? null : turnIdx;
+
+        this.tableBody.querySelectorAll('.turn-row.selected-turn').forEach(row => {
+            row.classList.remove('selected-turn');
+        });
+
+        if (this.selectedTurnIndex === null) return;
+
+        const row = this.tableBody.querySelector(`.turn-row[data-turn-index="${turnIdx}"]`);
+        if (row) {
+            row.classList.add('selected-turn');
+        }
     }
 
     colorToRgb(color) {
@@ -517,6 +536,12 @@ export class TacticUI {
             const tr = document.createElement('tr');
             tr.dataset.turnIndex = turnIdx;
             tr.className = 'turn-row';
+            if (this.selectedTurnIndex === turnIdx) {
+                tr.classList.add('selected-turn');
+            }
+            tr.addEventListener('click', () => {
+                this.selectTurn(turnIdx);
+            });
 
             // Turn number cell
             const tdTurn = document.createElement('td');
@@ -1157,8 +1182,8 @@ export class TacticUI {
         renderOptions();
 
         trigger.addEventListener('click', (e) => {
-            e.stopPropagation();
             if (!document.body.classList.contains('tactic-edit-mode')) return;
+            e.stopPropagation();
 
             document.querySelectorAll('.custom-select-options.show').forEach(el => {
                 if (el !== menu) el.classList.remove('show');

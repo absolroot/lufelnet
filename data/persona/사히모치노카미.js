@@ -68,7 +68,7 @@ window.personaFiles["사히모치노카미"] = {
       "desc_en": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (1 turn).",
       "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、１ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１%上昇させる。",
       "name_cn": "迅捷的送归者",
-      "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」（处于后台时也能生效），上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1%，持续1回合。"
+      "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1%，持续1回合。"
     },
     {
       "name": "신속한 귀환자 Ⅰ",
@@ -78,7 +78,7 @@ window.personaFiles["사히모치노카미"] = {
       "desc_en": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (2 turns).",
       "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１%上昇させる。",
       "name_cn": "迅捷的送归者Ⅰ",
-      "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」（处于后台时也能生效），上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1%，持续2回合。"
+      "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1%，持续2回合。"
     },
     {
       "name": "신속한 귀환자 Ⅱ",
@@ -88,7 +88,7 @@ window.personaFiles["사히모치노카미"] = {
       "desc_en": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
       "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１.５%上昇させる。",
       "name_cn": "迅捷的送归者Ⅱ",
-      "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」（处于后台时也能生效），上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1.5%，持续2回合。"
+      "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1.5%，持续2回合。"
     },
     {
       "name": "신속한 귀환자 Ⅲ",
@@ -98,7 +98,7 @@ window.personaFiles["사히모치노카미"] = {
       "desc_en": "Increase Attack 29.1%.\nAt the start of battle, gain 5 Shark's Blade stacks. When ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『鱗刃』を５つ獲得する。味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１.５%上昇させる。",
       "name_cn": "迅捷的送归者Ⅲ",
-      "desc_cn": "攻击力提升29.1%。战斗开始时，获得5层「寒鳞」。友方角色释放人格面具技能时，自身获得1层「寒鳞」（处于后台时也能生效），上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1.5%，持续2回合。"
+      "desc_cn": "攻击力提升29.1%。战斗开始时，获得5层「寒鳞」。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1.5%，持续2回合。"
     }
   ],
   "uniqueSkill": {

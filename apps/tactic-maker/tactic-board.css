@@ -271,7 +271,21 @@ body:not(.tactic-edit-mode) .action-item:hover {
 }
 
 body:not(.tactic-edit-mode) .turn-row {
-    cursor: default;
+    cursor: pointer;
+}
+
+body:not(.tactic-edit-mode) .turn-row.selected-turn .col-turn,
+body:not(.tactic-edit-mode) .turn-row.selected-turn .tactic-cell {
+    background: rgba(255, 224, 87, 0.18);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(255, 224, 87, 0.5);
+}
+
+body:not(.tactic-edit-mode) .turn-row.selected-turn .col-turn {
+    border-left: 3px solid #ffe057;
+}
+
+body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
+    background: rgba(255, 224, 87, 0.14);
 }
 
 /* Hide Wonder Persona Name */

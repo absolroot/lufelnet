@@ -101,6 +101,7 @@ window.ReleaseScheduleData = {
         { version: "5.1.2", characters: ["모르가나·댄싱 스타"], mindscape_core: ["키라", "마코토"], mindscape_sync: ["미쿠"], days: 14},
         { version: "5.2.2", characters: ["안·댄싱 스타"], "main-story": "7-1", mindscape_core: ["리코·매화"], mindscape_nature: true, weapon_stamp: ["메아리의 절규"], persona: ["가브리엘"],  revelation: ["자아"], days: 14},
         { version: "5.3.1", characters: ["아야카·여름"], days: 14, "summer": true, click_disable: true},
+        { version: "5.3.2", characters: ["이치고·여름"], days: 14, "summer": true, click_disable: true},
 
         // --- 예정이지만 언제 나올지 모르는 것들 ---
         { version: "???", characters: ["시오미 코토네"], schedulePending: true, click_disable: true },

@@ -153,7 +153,7 @@ Object.assign(window.characterData, {
         "color": "#b0ff6f",
         "element": "질풍",
         "rarity": 5,
-        "position": "",
+        "position": "지배",
         "release_order": 51,
         "persona": "칼리오페",
         "persona_en": "Calliope",

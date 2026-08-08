@@ -1192,7 +1192,7 @@
             }
         }
 
-        // 한국어 폴백 안내문
+        // CN/KR fallback notice
         const fallbackNoticeText = getI18nText('msgKrFallbackNotice', '');
         const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback && fallbackNoticeText) ? `
             <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; border-radius: 4px; user-select: text;">

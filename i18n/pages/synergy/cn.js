@@ -54,7 +54,7 @@ window.I18N_PAGE_SYNERGY_CN = {
     "soulmateLabelFriend": "亲密挚友",
     "soulmateNotice": "在本事件中，除了以上选项外，还会面临重要决定。",
     "patchPendingSuffix": "（预计后续补丁实装）",
-    "msgKrFallbackNotice": "管理员尚未更新或公开的内容，可能会暂时以韩语显示。暂时没有单独翻译计划，如有不便请先使用翻译工具。",
+    "msgKrFallbackNotice": "管理员尚未更新或公开的内容，可能会暂时以中文/韩语显示。暂时没有单独翻译计划，如有不便请先使用翻译工具。",
     "pageTitleGuidePrefix": "P5X 协同者攻略",
     "pageTitleSiteSuffix": "女神异闻录5: 夜幕魅影 路菲尔网",
     "currencyArcadeKeywords": [

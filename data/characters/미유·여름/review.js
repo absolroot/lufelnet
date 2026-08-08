@@ -141,7 +141,7 @@ Although greatly influenced by SP recovery, the character can easily reach **283
 
 Recommended SP recovery requirements based on the suggested operation cycle are as follows. Extra turns are not included in the count.  
 
-- NAVI : 3 › 1 › 2 › 3 › 1 › 2  
+- ORACLE (NAVI) : 3 › 1 › 2 › 3 › 1 › 2
 - ANGE : 3 › 1 › 1 › 1 › 1 › 2  
 
 <table>
@@ -154,19 +154,19 @@ Recommended SP recovery requirements based on the suggested operation cycle are 
   </tr>
   <tr>
     <td rowspan="6">0</td>
-    <td>NAVI</td>
+    <td>ORACLE</td>
     <td>266.7%</td>
     <td>260.1%</td>
     <td>12</td>
   </tr>
   <tr>
-    <td>NAVI</td>
+    <td>ORACLE</td>
     <td>333.4%</td>
     <td>330.1%</td>
     <td>14</td>
   </tr>
   <tr style="color:rgb(255, 240, 131);">
-    <td><b>NAVI TURBO</b></td>
+    <td><b>ORACLE TURBO</b></td>
     <td><b>290.1%</b></td>
     <td><b>286.7%</b></td>
     <td><b>14</b></td>
@@ -192,19 +192,19 @@ Recommended SP recovery requirements based on the suggested operation cycle are 
 
   <tr>
     <td rowspan="7">1</td>
-    <td>NAVI</td>
+    <td>ORACLE</td>
     <td>240.1%</td>
     <td>235.1%</td>
     <td>14</td>
   </tr>
   <tr>
-    <td>NAVI</td>
+    <td>ORACLE</td>
     <td>300.1%</td>
     <td>293.4%</td>
     <td>16</td>
   </tr>
   <tr style="color:rgb(255, 240, 131);">
-    <td><b>NAVI TURBO</b></td>
+    <td><b>ORACLE TURBO</b></td>
     <td><b>293.4%</b></td>
     <td><b>280.1%</b></td>
     <td><b>16</b></td>
@@ -236,7 +236,7 @@ Recommended SP recovery requirements based on the suggested operation cycle are 
 
   <tr>
     <td rowspan="2">6</td>
-    <td>NAVI</td>
+    <td>ORACLE</td>
     <td>188.5%</td>
     <td>-</td>
     <td>30</td>

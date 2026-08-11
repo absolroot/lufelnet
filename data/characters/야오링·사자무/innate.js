@@ -60,7 +60,7 @@ window.innateData["야오링·사자무"] = {
       "cooldown": 0,
       "cost": "",
       "desc": "자신이 화상 상태의 적을 공격할 때 『불꽃놀이 유성』 및 『흐르는 별빛』의 스킬 대미지가 10.0%/15.0%/20.0%+자신의 의식 레벨*10% 증가한다.",
-      "desc_en": "When attacking enemies with Burn, increase the skill damage of [Fiery Shooting Star] by 10.0%/15.0%/20.0% + Self Awareness Level * 10%.",
+      "desc_en": "When attacking enemies with Burn, increase the skill damage of [Yanhua Slash] by 10.0%/15.0%/20.0% + Self Awareness Level * 10%.",
       "desc_jp": "自身が燃焼状態の敵を攻撃する時、『花火流星』のスキルダメージが10.0%/15.0%/20.0% + 自身の意識レベル * 10% 상승한다.",
       "desc_cn": "自身攻击处于燃烧状态的敌人时，『铁火流星』及『焰流星火』的技能伤害提升10.0%/15.0%/20.0%+自身意识等级*10%。",
       "level": "3",

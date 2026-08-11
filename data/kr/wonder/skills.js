@@ -1534,6 +1534,18 @@ const personaSkillList = {
         "target": "전체",
         "icon": "만능광역"
     },
+    "만상 소멸": {
+        "name_jp": "万象の消滅",
+        "name_en": "Universal Annihilation",
+        "name_cn": "万象湮灭",
+        "description": "모든 적에게 공격력 100.0%/105.0%/110.0%의 만능 속성 대미지를 주고, 6턴 동안 모든 적이 받는 대미지가 24.0%/25.2%/26.4% 증가하며, 다운 취약이 4.0%/4.2%/4.4% 증가한다. 직접 사용 시 적합성을 무시하고 목표의 다운 수치를 5포인트 차감한다. 쿨타임: 추가 턴이 아닌 원더의 턴 6개. 패시브 효과: 동료가 적을 다운 상태에 빠뜨리면 해당 스킬을 자동으로 시전한다.",
+        "description_jp": "敵全体に攻撃力100.0%/105.0%/110.0%の万能属性ダメージを与える。6ターンの間、敵全体の被ダメージが24.0%/25.2%/26.4%上昇し、ダウン脆弱が4.0%/4.2%/4.4%上昇する。能動的に発動した時、適性を無視して対象のダウン値を5減少させる。クールタイム：追加ターンではないワンダーのターン6回。パッシブ効果：味方が敵をダウンさせた時、このスキルを自動で発動する。",
+        "description_en": "Deal Almighty damage to all foes equal to 100.0%/105.0%/110.0% of Attack. Increase all foes' damage taken by 24.0%/25.2%/26.4% and downed vulnerability by 4.0%/4.2%/4.4% for 6 turns. When actively used, ignore affinity and reduce targets' Down Value by 5. Cooldown Time: 6 Wonder actions (does not count extra actions). Passive Effect: When an ally knocks down a foe, automatically cast this skill.",
+        "description_cn": "对所有敌人造成100.0%/105.0%/110.0%攻击力的万能属性伤害，使所有敌人的受到伤害提升24.0%/25.2%/26.4%，倒地易伤提升4.0%/4.2%/4.4%，持续6回合。主动释放时无视适应性削减目标5点倒地值。冷却时间：6个非额外回合。被动效果：同伴造成倒地时，自动释放该技能。",
+        "type": "공격",
+        "target": "전체",
+        "icon": "만능광역"
+    },
     "살육 유도": {
         "name_jp": "殺意の誘惑",
         "name_en": "Killer Allure",
@@ -5480,5 +5492,4 @@ window.skillList = skillList;
 window.skillList_en = skillList_en;
 window.skillList_jp = skillList_jp;
 window.personaSkillList = personaSkillList;
-
 

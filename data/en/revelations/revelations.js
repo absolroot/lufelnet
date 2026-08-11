@@ -21,6 +21,8 @@ const mapping_en = {
     "예리": "Agility",
     "순수": "Purity",
     // Sub revelations
+    "반성": "Reflection",
+    "기쁨": "Joy",
     "슬픔": "Sorrow",
     "변화": "Change",
     "신중": "Prudence",
@@ -82,6 +84,8 @@ const enRevelationData = {
         "순수": "Purity",
     },
     "subTranslated": {
+        "반성": "Reflection",
+        "기쁨": "Joy",
         "슬픔": "Sorrow",
         "변화": "Change",
         "신중": "Prudence",
@@ -116,7 +120,7 @@ const enRevelationData = {
         "강인": "Tenacity",
     },
     "main": {
-        "Ego": ["Determination"], // 자아
+        "Ego": ["Reflection", "Determination"], // 자아
         "Purity": ["Depravity", "Change", "Flourishing"], // 순수
         "Nativity": ["Power"], // 탄생
         "Agility": ["Flourishing", "Satiety", "Hindrance"], // 예리
@@ -137,6 +141,8 @@ const enRevelationData = {
         "Freedom": ["Triumph", "Defeat", "Disappointment"], // 자유
     },
     "sub": {
+        "Reflection": [], // 반성
+        "Joy": [], // 기쁨
         "Flourishing": ["Agility", "Purity"], // 번영
         "Determination": [], // 결단
         "Depravity": ["Purity"], // 타락
@@ -171,6 +177,16 @@ const enRevelationData = {
         "Prosperity": ["Departure", "Trust"], // 풍요
     },
     "sub_effects": {
+        "Reflection": { // 반성
+            "set2": "Increase Wind DMG by 10%.",
+            "set4": "Each hit increases the user's Follow Up DMG by 15% for 2 turns, stacking up to 3 times.",
+            "type": ["질풍", "추가 효과", "미출시"]
+        },
+        "Joy": { // 기쁨
+            "set2": "Increase Healing Effect by 9%.",
+            "set4": "After producing a healing effect with a Persona skill, increase all allies' DMG Dealt by 10% for 2 turns.",
+            "type": ["치료", "버프", "미출시"]
+        },
         "Flourishing": { // 번영
             "set2": "Increase Attack by 12%.",
             "set4": "Increase DMG Dealt by 16%. After the user gains 2 [Rhapsody Beat], grants 50% of this partial buff effect to other allies. This can trigger once per battle and stack up to 2 times.",
@@ -334,6 +350,7 @@ const enRevelationData = {
     },
     "set_effects": {
         "Ego": {
+            "Reflection": "Increase Follow Up DMG Amplification by 16%.",
             "Determination": "After the user consumes SP, increase DMG Dealt by 10% for 2 turns, stacking up to 4 times.",
             "type": ["미출시"]
         },

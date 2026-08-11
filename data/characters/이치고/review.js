@@ -18,7 +18,7 @@
 - 각 『원념』은 적에게 부여할 때의 이치고의 버프 상태를 기억(스냅샷)하며, 3스킬을 통해 갱신할 때 해당 시점의 이치고 버프로 덮어씌워진다.
 
 - 크리티컬은 별도로 각 지속 대미지 중첩이 계산되는 시점의 이치고의 크리티컬 확률과 효과를 따라간다. 
-이 시점에 이치고의 크리티컬 확률이 100% 보다 낮아 크리티컬이 발동되지 않을 경우 『안정 영역』 메커니즘이 발동되지 않는 버그가 있다.
+이 시점에 이치고의 크리티컬이 발동되지 않은 경우 『안정 영역』 메커니즘이 발동되지 않는 버그가 있다.
 
 - 적이 턴을 끝낼 때 받는 지속대미지 결산의 경우 이치고의 관통 버프가 적용되지 않아, 방어력 감소 효과가 다른 캐릭터들보다 유의미하다.
 
@@ -31,7 +31,7 @@
 | 1/2/3스킬                 | O                    | O                           | O           | O    |
 | 원념 부여/갱신             | O                    | -                           | O           | -    |
 | 원념×2 결산 - HL          | -                    | O (결산 시점 기준)          | -           | -    |
-| 지속대미지 결산 - HL      | -                    | O (결산 시점 기준)          | -           | -    |
+| 지속대미지 결산 - HL      | -                    | -                           | -           | -    |
 | 원념 결산 - 턴 종료        | -                    | O (결산 시점 기준)          | -           | -    |
 | HIGHLIGHT 기본            | O                    | -                           | O           | O    |
 
@@ -61,7 +61,7 @@ Ichigo is extremely powerful, but her damage-dealing mechanism is the most compl
 - **Each [Resentment] stack snapshots Ichigo’s buff state at the time of application, and when refreshed via S3, it overwrites with Ichigo’s buffs at that moment.**
 
 - Criticals are calculated separately, based on Ichigo’s Critical Rate and Critical Damage at the time each DoT stack is calculated.  
-  If Ichigo’s Critical Rate is below 100% at this point and a crit does not occur, the Stable Domain mechanic will not activate due to a bug.  
+  If Ichigo does not crit at this point, the Stable Domain mechanic will not activate due to a bug.
 
 - For end-of-turn DoT settlement, Ichigo’s pierce buffs do not apply, making Defense Reduction effects more significant compared to other characters.  
 
@@ -74,7 +74,7 @@ Below is the buff table showing which of Ichigo’s buffs apply:
 | S1/S2/S3                  | O                    | O                            | O             | O      |
 | Resentment Application/Refresh| O                    | -                            | O             | -      |
 | Resentment×2 Settlement - HL  | -                    | O (based on settlement time) | -             | -      |
-| DoT Settlement - HL       | -                    | O (based on settlement time) | -             | -      |
+| DoT Settlement - HL       | -                    | -                            | -             | -      |
 | Resentment Settlement - Turn End | -                 | O (based on settlement time) | -             | -      |
 | HIGHLIGHT Base            | O                    | -                            | O             | O      |  
 
@@ -102,7 +102,7 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 - **各[怨念]は付与時の苺のバフ状態をスナップショットし、S3で更新する際、その時点の苺のバフで上書きされる。**  
 
 - クリティカルは別計算で、各持続ダメージスタックが計算される時点の苺のクリティカル率とCRT倍率に従う。  
-  この時点で苺のクリティカル率が100%未満でクリティカルが発生しない場合、Stable Domainのメカニズムが発動しない不具合がある。  
+  この時点で苺のクリティカルが発生しない場合、Stable Domainのメカニズムが発動しない不具合がある。
 
 - ターン終了時の持続ダメージ精算では苺の貫通バフが適用されないため、防御力減少効果が他の怪盗に比べて有意義になる。  
 
@@ -115,7 +115,7 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 | S1/S2/S3                  | O                        | O                           | O          | O    |
 | 怨念付与/更新             | O                        | -                           | O          | -    |
 | 怨念×2精算 - HL           | -                        | O (精算時点基準)            | -          | -    |
-| 持続ダメージ精算 - HL     | -                        | O (精算時点基準)            | -          | -    |
+| 持続ダメージ精算 - HL     | -                        | -                           | -          | -    |
 | 怨念精算 - ターン終了     | -                        | O (精算時点基準)            | -          | -    |
 | HIGHLIGHT 基本            | O                        | -                           | O          | O    |  
 
@@ -142,7 +142,7 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 - 每一层『怨念』都会记录施加当下鹿野莓的增益状态（快照），而通过技能3刷新时，也会被刷新当下的增益状态重新覆盖。
 
 - 暴击则会单独按照每次持续伤害结算瞬间鹿野莓的暴击率与暴击效果来计算。
-此时如果鹿野莓的暴击率没有到100%，并且没有触发暴击，就会出现『稳定领域』机制无法发动的问题。
+此时如果鹿野莓没有触发暴击，就会出现『稳定领域』机制无法发动的问题。
 
 - 在敌人回合结束时触发的持续伤害结算中，鹿野莓的穿透增益不会生效，因此和其他角色相比，防御力降低效果会显得更有价值。
 
@@ -155,7 +155,7 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 | 1/2/3技能                 | O                | O                           | O          | O    |
 | 怨念附加/刷新             | O                | -                           | O          | -    |
 | 怨念×2结算 - HL           | -                | O（按结算时点）             | -          | -    |
-| 持续伤害结算 - HL         | -                | O（按结算时点）             | -          | -    |
+| 持续伤害结算 - HL         | -                | -                           | -          | -    |
 | 怨念结算 - 回合结束       | -                | O（按结算时点）             | -          | -    |
 | HIGHLIGHT基础伤害         | O                | -                           | O          | O    |
 

@@ -1,5 +1,6 @@
 function getWonderWeaponOptions() {
   return [
+    "바람의 속삭임",
     "혼돈의 해커스",
     "엔트로피·제로",
     "천상의 별",
@@ -20,6 +21,19 @@ function getWonderWeaponOptions() {
 }
 
 window.matchWeapons = {
+  "바람의 속삭임": {
+    "element": "질풍",
+    "name_en": "Windwhisper",
+    "name_jp": "風の囁き",
+    "where_to_get": "",
+    "release": "",
+    "order": "17",
+    "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n동료가 페르소나 스킬 또는 추가 효과로 질풍 속성 대미지를 줄 때마다 원더가 바람 결정을 1개 획득한다. 첫 발동 시 원더가 바람 결정을 추가로 2개 획득한다. 보유한 바람 결정 수에 따라 『바람의 결계』 효과가 발동하며, 바람 결정은 3턴 후 사라진다.\n『바람의 결계』: 보유한 바람 결정 수에 따라 다음 효과가 발동한다.\n1개 이상: 자신의 공격력이 200/266/266/333/333/400/400 증가한다.\n2개 이상: 모든 적이 받는 대미지가 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0% 증가한다.\n3개 이상: 모든 적이 질풍 속성 대미지를 받을 때 받는 크리티컬 효과가 10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0% 증가한다.",
+    "effect_en": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nWhenever any ally deals Wind damage with a Persona skill or additional effect, WONDER gains 1 Wind Crystal. The first time this triggers, WONDER gains 2 extra Wind Crystals. [Windfield] effects activate based on the number of Wind Crystals held, and Wind Crystals disappear after 3 turns.\n[Windfield]: Activates the following effects based on the number of Wind Crystals held.\n1 or more: Increase the user's Attack by 200/266/266/333/333/400/400.\n2 or more: Increase damage taken by all foes by 9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%.\n3 or more: Increase Critical Damage taken by all foes from Wind damage by 10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0%.",
+    "effect_jp": "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n味方がペルソナスキルまたは追加効果で疾風属性ダメージを与えるたび、WONDERが風の結晶を1個獲得する。初回発動時、WONDERはさらに風の結晶を2個獲得する。所持している風の結晶の数に応じて『風の結界』の効果が発動し、風の結晶は3ターン後に消滅する。\n『風の結界』：所持している風の結晶の数に応じて、以下の効果を発動する。\n1個以上：自身の攻撃力が200/266/266/333/333/400/400上昇する。\n2個以上：すべての敵が受けるダメージが9.0%/12.0%/12.0%/15.0%/15.0%/18.0%/18.0%上昇する。\n3個以上：すべての敵が疾風属性ダメージを受ける時、受けるクリティカル効果が10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0%上昇する。",
+    "name_cn": "风语者之刺",
+    "effect_cn": "攻击力提升28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%,\n所有同伴使用人格面具技能或追加效果造成疾风属性伤害时，WONDER获得1颗『风语晶核』，首次触发时WONDER可额外获得2颗『风语晶核』。根据持有的『风语晶核』数量激活『风灵法阵』的效果，『风语晶核』在3回合后销毁。\n『风灵法阵』：根据持有的『风语晶核』数量激活以下效果：\n不少于1颗：自身攻击力提升200/266/266/333/333/400/400点。\n不少于2颗：全体敌人受到伤害提升9.0%/12.0%/12.0%/15.0%/15.0%/18.0%。\n不少于3颗：全体敌人受到疾风属性伤害的暴击效果提升10.0%/13.3%/13.3%/16.7%/16.7%/20.0%/20.0%。"
+  },
   "혼돈의 해커스": {
     "element": "총격",
     "name_en": "Chaos Hex",

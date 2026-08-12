@@ -1191,6 +1191,11 @@
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'ann_calc', globalVarName: 'AnnCalc' }));
             }
 
+            // 아야카·여름 전용 운영 시뮬레이터 로드
+            if (name === '아야카·여름') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'ayaka_summer_calc', globalVarName: 'AyakaSummerCalc' }));
+            }
+
             await Promise.all(tasks.map(t => safeAwait('loadPerCharacterResource', t)));
         }
 

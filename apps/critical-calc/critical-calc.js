@@ -757,10 +757,10 @@ class CriticalCalc {
 
             const caret = document.createElement('span');
             caret.className = 'accordion-caret';
-            // 버프 탭은 '공통'만, 자신 탭은 '계시/원더/공통'만 열림
+            // 버프 탭은 '원더/공통/속성 심상', 자신 탭은 '계시/원더/공통/속성 심상'만 열림
             const initiallyOpen = !isSelf 
-                ? groupName === '공통'
-                : (groupName === '계시' || groupName === '원더' || groupName === '공통');
+                ? (groupName === '원더' || groupName === '공통' || groupName === '속성 심상')
+                : (groupName === '계시' || groupName === '원더' || groupName === '공통' || groupName === '속성 심상');
             caret.classList.toggle('open', initiallyOpen);
             
             // SVG chevron 생성

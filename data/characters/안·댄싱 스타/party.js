@@ -23,10 +23,32 @@ window.recommendParty["안·댄싱 스타"] = {
     "party": [
         {
             "members": [
-                "",
-                "",
-                "",
-                ""
+                "안·댄싱 스타",
+                "준페이",
+                "렌·댄싱 스타",
+                "미쿠"
+            ],
+        "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "안·댄싱 스타",
+                "코로마루",
+                "렌·댄싱 스타",
+                "미쿠"
+            ],
+        "comment": "",
+            "comment_en": "",
+            "comment_jp": ""
+        },
+        {
+            "members": [
+                "안·댄싱 스타",
+                "J&C",
+                "렌·댄싱 스타",
+                "미쿠"
             ],
         "comment": "",
             "comment_en": "",

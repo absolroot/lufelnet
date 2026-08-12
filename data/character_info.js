@@ -146,7 +146,7 @@ Object.assign(window.characterData, {
     },
     "아야카·여름": {
         "limit": true,
-        "tag": "",
+        "tag": "추가 효과",
         "tag_en": "",
         "tag_jp": "",
         "tag_cn": "",
@@ -158,7 +158,7 @@ Object.assign(window.characterData, {
         "persona": "칼리오페",
         "persona_en": "Calliope",
         "persona_jp": "カリオペ",
-        "name": "아야카·여름",
+        "name": "사카이 아야카·여름",
         "name_en": "Ayaka·Summer",
         "name_jp": "坂井 綾香 夏",
         "name_cn": "坂井绫香·夏日",
@@ -813,7 +813,7 @@ Object.assign(window.characterData, {
     "리코·매화": {
         "limit": true,
         "has_innate": true,
-        "tag": "크리티컬 효과, 크리티컬 확률, 공격력, 대미지보너스, 풍습, SP 회복",
+        "tag": "크리티컬 효과, 크리티컬 확률, 공격력, 대미지보너스, 풍습, SP 회복, 관통",
         "color": "#a0ffb7",
         "element": "질풍",
         "rarity": 5,
@@ -999,6 +999,7 @@ Object.assign(window.characterData, {
     },
     "모토하·여름": {
         "limit": true,
+        "has_innate": true,
         "tag": "최대 생명, HP 소모",
         "color": "#feffbe",
         "element": "축복",

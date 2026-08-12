@@ -263,7 +263,7 @@
       '.operation-settings.ann-operation-settings .ann-turn-cell .ann-icon-chip{width:24px;height:20px;flex-basis:24px;border-radius:5px}',
       '.ann-sim-card{background:var(--card-background,#1f1f1f);border-bottom:3px solid var(--border-red,#d11f1f);border-radius:16px;padding:10px 35px 20px 35px;margin:20px 0;box-shadow:0 4px 6px rgba(0,0,0,.1)}',
       '.ann-sim-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16.6px 0 20px;padding:10px 0 20px;border-bottom:1px solid rgba(255,255,255,.14)}',
-      '.ann-sim-card h2{font-size:20px;color:#fff;margin:0;font-weight:600;letter-spacing:.3px;border:0;padding:0;width:auto;line-height:1.35}',
+      '.ann-sim-card h2{font-size:20px;color:#fff;margin:0;font-weight:600;letter-spacing:.3px;border:0!important;padding:0!important;width:auto!important;line-height:1.35}',
       '.ann-header-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex:0 0 auto}',
       '.ann-reset-btn,.ann-add-turn-btn,.ann-tab,.ann-skill-btn{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.2);color:rgba(255,255,255,.78);border-radius:8px;cursor:pointer;transition:all .16s ease-out}',
       '.ann-reset-btn,.ann-add-turn-btn{padding:7px 12px;font-size:12px;white-space:nowrap}',

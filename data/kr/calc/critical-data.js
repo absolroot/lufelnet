@@ -1166,6 +1166,31 @@ const criticalSelfData = {
       ]
     }
   ],
+  "아야카·여름": [
+    {
+      "id": "chord-summer-weapon5-crit-rate",
+      "type": "전용무기",
+      "target": "자신",
+      "skillIcon": "/assets/img/character-weapon/아야카·여름-5-01.png",
+      "skillName": "바다빛 잔향",
+      "options": [
+        "개조0&1",
+        "개조2&3",
+        "개조4&5",
+        "개조6"
+      ],
+      "values": {
+        "개조0&1": 18.1,
+        "개조2&3": 23.5,
+        "개조4&5": 28.9,
+        "개조6": 34.3
+      },
+      "defaultOption": "개조6",
+      "value": 34.3,
+      "skillEffectAmpAffected": false,
+      "duration": "-"
+    }
+  ],
   "안·댄싱 스타": [
     {
       "id": "ann-starlight-weapon5-crit-rate",
@@ -1174,18 +1199,18 @@ const criticalSelfData = {
       "skillIcon": "/assets/img/character-weapon/안·댄싱 스타-5-01.png",
       "skillName": "치명적인 도색",
       "options": [
-        "개조0",
-        "개조1&2",
-        "개조3&4",
-        "개조5&6"
+        "개조0&1",
+        "개조2&3",
+        "개조4&5",
+        "개조6"
       ],
       "values": {
-        "개조0": 18.1,
-        "개조1&2": 23.5,
-        "개조3&4": 28.9,
-        "개조5&6": 34.3
+        "개조0&1": 18.1,
+        "개조2&3": 23.5,
+        "개조4&5": 28.9,
+        "개조6": 34.3
       },
-      "defaultOption": "개조5&6",
+      "defaultOption": "개조6",
       "value": 34.3,
       "skillEffectAmpAffected": false,
       "duration": "-"

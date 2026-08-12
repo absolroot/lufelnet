@@ -22,6 +22,49 @@
       "tw"
     ]
   },
+  {
+    "kind": "custom",
+    "order": 0,
+    "title": "P5X 세번째 여름",
+    "title_en": "P5X's Third Summer",
+    "title_jp": "P5X 3度目の夏",
+    "title_cn": "P5X 第三个夏天",
+    "body": "8.13~9.24",
+    "body_en": "Aug 13 - Sep 24",
+    "body_jp": "8/13~9/24",
+    "body_cn": "8.13~9.24",
+    "background_image": "/assets/img/home/2026summer.mp4",
+    "background_bottom": 0,
+    "background_bottom_mobile": 0,
+    "color": "#2196f3",
+    "link": "",
+    "visible_langs": ["kr", "en", "jp", "cn"],
+    "regions": [
+      "cn"
+    ]
+  },
+  {
+    "kind": "custom",
+    "order": 0,
+    "title": "P5X 세번째 여름",
+    "title_en": "P5X's Third Summer",
+    "title_jp": "P5X 3度目の夏",
+    "title_cn": "P5X 第三个夏天",
+    "body": "8.20~9.24",
+    "body_en": "Aug 20 - Sep 24",
+    "body_jp": "8/20~9/24",
+    "body_cn": "8.20~9.24",
+    "background_image": "/assets/img/home/2026summer.mp4",
+    "background_bottom": 0,
+    "background_bottom_mobile": 0,
+    "color": "#2196f3",
+    "link": "",
+    "visible_langs": ["kr", "en", "jp", "cn"],
+    "regions": [
+      "kr",
+      "tw"
+    ]
+  },
     {
       "kind": "custom",
       "order": 0,

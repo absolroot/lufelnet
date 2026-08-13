@@ -1,5 +1,66 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Ice attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "image": "B-guaiwutouxiang-surtr.png",
+            "level": "89",
+            "name": "スルト",
+            "skill": "108,103,1008",
+            "sn": "533101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "358401"
+      },
+      {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "クー・フーリン",
+            "skill": "1023,1154",
+            "sn": "533111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "358402"
+      }
+    ],
+    "buff": "磁極の波: スキル／意識奏功／ハイライト／テウルギアを発動した時、自身に『漲る波紋』を１つ付与する。\n『漲る波紋』：２ターンの間、最終ダメージが５%上昇する。最大８つまで累積できる。",
+    "endTime": "2026-08-27 10:30:00",
+    "startTime": "2026-08-13 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

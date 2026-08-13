@@ -2,266 +2,92 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-08-13 11:00:00",
+        "endTime": "2026-09-09 10:59:59",
         "fiveStar": [
           {
-            "name": "Mayumi Hashimoto",
+            "name": "Ichigo Shikano",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Shun Kano",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Yukimi Fujikawa",
             "type": "thief"
           },
           {
-            "name": "Shoki Ikenami",
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Full Throttle",
-        "startTime": "2026-07-30 11:30:00",
+        "name": "Kyun Kyun Cutie",
+        "startTime": "2026-08-13 11:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-08-13 11:00:00",
+        "endTime": "2026-09-09 10:59:59",
         "fiveStar": [
           {
-            "name": "Mayumi Hashimoto",
+            "name": "Ichigo Shikano",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Shun Kano",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Kiyoshi Kurotani",
+            "name": "Yukimi Fujikawa",
             "type": "thief"
           },
           {
-            "name": "Shoki Ikenami",
+            "name": "Toshiya Sumi",
             "type": "thief"
           }
         ],
-        "name": "Full Throttle",
-        "startTime": "2026-07-30 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-08-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Beachflower Minami",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          },
-          {
-            "name": "Chizuko Nagao",
-            "type": "thief"
-          }
-        ],
-        "name": "Blossoms in the Sea Breeze",
-        "startTime": "2026-07-16 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-08-13 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Beachflower Minami",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kotone Montagne",
-            "type": "thief"
-          },
-          {
-            "name": "Chizuko Nagao",
-            "type": "thief"
-          }
-        ],
-        "name": "Blossoms in the Sea Breeze",
-        "startTime": "2026-07-16 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-08-13 11:00:00",
-        "fiveStar": [
-          {
-            "name": "Wavecatcher Miyu",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          },
-          {
-            "name": "Shoki Ikenami",
-            "type": "thief"
-          }
-        ],
-        "name": "Iridescent Ocean Jewel",
-        "startTime": "2026-07-30 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-08-13 11:00:00",
-        "fiveStar": [
-          {
-            "name": "Wavecatcher Miyu",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Kiyoshi Kurotani",
-            "type": "thief"
-          },
-          {
-            "name": "Shoki Ikenami",
-            "type": "thief"
-          }
-        ],
-        "name": "Iridescent Ocean Jewel",
-        "startTime": "2026-07-30 11:30:00",
+        "name": "Kyun Kyun Cutie",
+        "startTime": "2026-08-13 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
       {
-        "endTime": "2026-08-13 10:59:59",
+        "endTime": "2026-09-09 10:59:59",
         "fiveStar": [
           {
-            "name": "Everlasting Garden",
+            "name": "My Destiny",
             "type": "weapon",
-            "user": "Beachflower Minami"
+            "user": "Ichigo"
           }
         ],
         "fourStar": [
           {
-            "name": "Lava Flame",
+            "name": "Emerald Charmer",
             "type": "weapon",
-            "user": "Lufel"
+            "user": "Tomiyama"
           },
           {
-            "name": "Edelweiss",
+            "name": "Heavy Metal Pain",
             "type": "weapon",
-            "user": "Kotone"
+            "user": "Yukimi"
           },
           {
-            "name": "Tea Time Delight",
+            "name": "Scarlet Scepter",
             "type": "weapon",
-            "user": "Beachflower Minami"
+            "user": "Sumi"
           },
           {
-            "name": "Gravitational Force",
+            "name": "Love Letter",
             "type": "weapon",
-            "user": "Chizuko"
+            "user": "Ichigo"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2026-07-16 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-08-13 11:00:00",
-        "fiveStar": [
-          {
-            "name": "Mermaid Dreamer",
-            "type": "weapon",
-            "user": "Wavecatcher Miyu"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Death Stinger",
-            "type": "weapon",
-            "user": "Kurotani"
-          },
-          {
-            "name": "Mattatóre",
-            "type": "weapon",
-            "user": "Shoki"
-          },
-          {
-            "name": "Jellie Voyager",
-            "type": "weapon",
-            "user": "Wavecatcher Miyu"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-07-30 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-08-13 11:00:00",
-        "fiveStar": [
-          {
-            "name": "Nebula Pennant",
-            "type": "weapon",
-            "user": "Mayumi"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Death Stinger",
-            "type": "weapon",
-            "user": "Kurotani"
-          },
-          {
-            "name": "Mattatóre",
-            "type": "weapon",
-            "user": "Shoki"
-          },
-          {
-            "name": "Formula Pennant",
-            "type": "weapon",
-            "user": "Mayumi"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-07-30 11:30:00",
+        "startTime": "2026-08-13 11:30:00",
         "type": "Arms Deals"
       }
     ]

@@ -24,7 +24,7 @@ window.ritualData["마나카"] = {
 window.enCharacterRitualData["마나카"] = {
   "name": "Manaka Nagao",
   "r0": "Andante",
-  "r0_detail": "On each ally's action, gain 1 Musical Note stack, up to a maximum of 12 stacks.\nBefore any ally's action, Manaka can activate Da Capo (the initial use count in each battle is 1). After activating Da Capo, when Wonder takes 7 actions other than additional actions, restore the use count by 1 (this effect activates only 1 time per battle).\nDa Capo: Remove 1 debuff effect from 1 ally. At the end of the target's next action, grant a special additional action. When in this state, the target's HP, SP, buff/debuff effects, and skill cooldowns are reset to their state at the start of the previous action.",
+  "r0_detail": "On each ally's action, gain 1 Musical Note stack, up to a maximum of 12 stacks.\nBefore any ally's action, Manaka can activate Da Capo (the initial use count in each battle is 1). After activating Da Capo, when Wonder takes 7 actions other than additional actions, restore the use count by 1 (this effect activates only 1 time per battle).\nDa Capo: Remove 1 debuff effect from 1 ally. At the end of the target's next action, grant a special additional action. When entering this state, the target's HP, SP, buff/debuff effects, and skill cooldowns are reset to their state at the start of the previous action.",
   "r1": "Allegro",
   "r1_detail": "At the start of battle, gain the maximum number of Musical Note stacks, and reduce the first cooldown time by 4 actions.\nAlso, when using Melody of Steps, also increase party's critical rate by 12% for 2 turns.",
   "r2": "Fortissimo",

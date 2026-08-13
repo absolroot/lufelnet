@@ -52,88 +52,94 @@ window.characterSkillsData["이치고"] = {
 window.enCharacterSkillsData["이치고"] = {
   "name": "Ichigo Shikano",
   "skill1": {
-    "name": "Butterfly Beheadment",
+    "name": "Vorpal Butterfly",
     "element": "주원",
     "type": "단일피해",
     "sp": 20,
     "cool": 1,
-    "description": "Deal Curse damage to 1 foe equal to 129.0%/142.2%/137.0%/150.2% of Attack, inflict 2 [Resentment] stacks on the target. When the target is above 70% current HP, increase skill damage by 200%. If this skill kills the target, activate this skill again (can chain activation).\n[Resentment]: Take Curse damage equal to 6%/12%/18% of Ichigo's Attack (effect increases at level 1/50/70) for 4 turns. Stacks up to 10 times. When a foe with [Resentment] dies, transfer its [Resentment] to the highest HP foe (cannot transfer to target with Null/Repel/Drain Curse)."
+    "description": "Deal Curse damage to 1 foe equal to 129.0%/142.2%/137.0%/150.2% of Attack, and inflict 2 Lovesick stacks. When the target has over 70% HP remaining, increase skill damage by 200%. If this skill defeats a target, activate this skill again (can be activated consecutively)."
   },
   "skill2": {
-    "name": "Blood Rose's Kiss",
+    "name": "Obsessive Rose",
     "element": "주원",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Curse damage to 1 foe equal to 92.9%/102.4%/98.6%/108.1% of Attack, inflict 4 [Resentment] stacks on the target."
+    "description": "Deal Curse damage to 1 foe equal to 106.9%/117.8%/113.4%/124.4% of Attack, and inflict 4 Lovesick stacks."
   },
   "skill3": {
-    "name": "Hush! It's Execution Time",
+    "name": "My Beloved Prince",
     "element": "주원",
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Curse damage to 1 foe equal to 221.6%/244.3%/235.2%/257.9% of Attack + [Resentment] stacks x 11.7%/12.9%/12.4%/13.6% of Attack, when [Resentment] stacks reach 10, deal bonus Curse damage equal to 103.3%/113.8%/109.6%/120.2% of Attack; Then refresh the duration of [Resentment]."
+    "description": "Deal Curse damage to 1 foe equal to 254.8%/280.9%/270.4%/296.6% of Attack + 11.7%/12.9%/12.4%/13.6% for each Lovesick stack. Also, when targets have 10 or more Lovesick stacks, deal bonus Curse damage equal to 118.7%/130.9%/126.1%/138.2% of Attack. After activating this skill, reset the duration of Lovesick stacks."
   },
   "skill_highlight": {
+    "name": "Highlight",
     "element": "주원",
     "type": "단일피해",
-    "cool": 0,
-    "description": "Deal Curse damage to 1 foe equal to 457.1%/503.9%/485.2%/532.0% of ATK, and make [Resentment] can deal critical for 3 turns. Immediately deal all Damage Over Time damage on the target and deal [Resentment] damage 2 times."
+    "cool": 4,
+    "description": "Deal Curse damage to 1 foe equal to 457.1%/503.9%/485.2%/532.0% of Attack, and Lovesick can activate critical hits for 3 turns.\nAlso, activate all continuous damage effects on the target 1 time, and activate Lovesick effect 2 more times."
   },
   "passive1": {
-    "name": "Obsession",
+    "name": "Overflowing Love",
     "element": "패시브",
-    "description": "Increase Attack by 15% for each [Obsessive Love] stack."
+    "description": "For each Chains of Love stack, increase Ichigo's Attack by 15.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Attachment",
+    "name": "Melting Ichi-Go Butter",
     "element": "패시브",
-    "description": "When Ichigo is on the field, increase party's Damage Over Time Effect by 15%."
+    "description": "When Ichigo is present, increase party's continuous damage by 15.0%.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["이치고"] = {
   "name": "鹿野 苺",
   "skill1": {
-    "name": "深紅の蝶",
+    "name": "ヴォーパルバタフライ",
     "element": "주원",
     "type": "단일피해",
     "sp": 20,
     "cool": 1,
-    "description": "敵1体に攻撃力129.0%/142.2%/137.0%/150.2%の呪怨属性ダメージを与え、『怨念』を2スタック付与する。対象の現在HPが70%以上の場合、スキルダメージが200%増加する。スキルで敵を撃破した場合、スキル効果が1回追加発動する（連続発動可能）。"
+    "description": "敵単体に攻撃力129.0%/142.2%/137.0%/150.2%の呪怨属性ダメージを与え、『愛執』を２つ付与する。対象のＨＰが７０%より多い時、スキルダメージが２００%上昇する。このスキルで対象を撃破した場合、再度このスキルが発動する（連続して発動可能）。"
   },
   "skill2": {
-    "name": "紅薔薇のキス",
+    "name": "オブセッシヴローズ",
     "element": "주원",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵1体に攻撃力92.9%/102.4%/98.6%/108.1%の呪怨属性ダメージを与え、『怨念』を4スタック付与する。"
+    "description": "敵単体に攻撃力106.9%/117.8%/113.4%/124.4%の呪怨属性ダメージを与え、『愛執』を４つ付与する。"
   },
   "skill3": {
-    "name": "シッ！処刑の時間",
+    "name": "プリンス・マイ・ラヴ",
     "element": "주원",
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "敵1体に攻撃力221.6%/244.3%/235.2%/257.9% + 『怨念』スタック数 × 11.7%/12.9%/12.4%/13.6%の呪怨属性ダメージを与える。『怨念』が10スタックに達すると、追加で攻撃力103.3%/113.8%/109.6%/120.2%の呪怨属性ダメージを与える。同時に『怨念』の持続時間がリセットされる。"
+    "description": "敵単体に攻撃力254.8%/280.9%/270.4%/296.6%＋『愛執』累積数×11.7%/12.9%/12.4%/13.6%の呪怨属性ダメージを与える。さらに対象の『愛執』が１０個以上の場合、追加で攻撃力118.7%/130.9%/126.1%/138.2%の呪怨属性ダメージを与える。スキル発動後に『愛執』の持続時間をリセットする。"
   },
   "skill_highlight": {
+    "name": "ハイライト",
     "element": "주원",
     "type": "단일피해",
-    "cool": 0,
-    "description": "敵1体に攻撃力457.1%/503.9%/485.2%/532.0%の呪怨属性ダメージを与え、3ターンの間『怨念』がクリティカル発動可能になる。対象の全ての持続ダメージ効果を即時1回結算し、『怨念』効果を追加で2回結算する。"
+    "cool": 4,
+    "description": "敵単体に攻撃力457.1%/503.9%/485.2%/532.0%の呪怨属性ダメージを与え、３ターンの間、『愛執』でクリティカルが発生するようになる。\nさらに対象に付与されているすべての持続ダメージ効果が１回発動し、追加で２回『愛執』の効果が発動する。"
   },
   "passive1": {
-    "name": "執着",
+    "name": "ダイスキがいっぱい",
     "element": "패시브",
-    "description": "『執着』1スタックごとに自身の攻撃力が15.0%増加する。"
+    "description": "『独占欲』１つごとに、自身の攻撃力が15.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "愛着",
+    "name": "どろどろいちごバター",
     "element": "패시브",
-    "description": "鹿野 苺がフィールドにいる時、味方全体の持続ダメージ効果が15.0%増加する。"
+    "description": "自身が場にいる時、味方全体の持続ダメージ効果が15.0%上昇する。",
+    "cool": 0
   }
 };
 

@@ -84,7 +84,7 @@ window.enCharacterSkillsData["치즈코"] = {
   "passive1": {
     "name": "Eagle Eye",
     "element": "패시브",
-    "description": "Increase Nuclear damage taken by foes with Radiation by 15.0%. Lasts for 2 turns.",
+    "description": "When foes are inflicted with Radiation, increase their Nuclear damage taken by 15.0% for 2 turns.",
     "cool": 0
   },
   "passive2": {

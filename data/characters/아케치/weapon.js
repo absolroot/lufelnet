@@ -39,7 +39,7 @@ window.enCharacterWeaponData["아케치"] = {
     "attack": 739.92,
     "defense": 409.62,
     "skill_name": "Divine Blessing",
-    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Deduction or Stratagem are active, increase party's Attack by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns.\nAlso, when an ally with Mastermind activates a skill, Highlight, Theurgy, or Resonance, increase Akechi's critical damage by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns. Stacks up to 2 times."
+    "description": "Increase Attack by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen entering Deduction or Stratagem state, increase party's Attack by 21.0%/27.3%/27.3%/33.7%/33.7%/40.0%/40.0% for 2 turns.\nAlso, when an ally with Mastermind activates a skill, Highlight, Theurgy, or Resonance, increase Akechi's critical damage by 15.0%/19.5%/19.5%/24.0%/24.0%/28.5%/28.5% for 2 turns. Stacks up to 2 times."
   }
 };
 

@@ -3,9 +3,9 @@
   window.characterReview["이치고"] = {
     name_en: "Ichigo Shikano", name_jp: "鹿野 苺", codename: "BERRY",
     review: `
-주원 속성 지속 대미지를 주는『원념』중첩을 적에게 부여하는 강력한 단일 딜러다다.
+주원 속성 지속 대미지를 주는『원념』중첩을 적에게 부여하는 강력한 단일 딜러다.
 
-스킬1과 스킬2를 통해『원념』을 적에게 중첩시키고, 최대 중첩을 완성 한 후 **스킬3으로 『원념』의 지속시간을 갱신하고 강력한 대미지**를 준다.
+스킬1과 스킬2를 통해『원념』을 적에게 중첩시키고, 최대 중첩을 완성한 후 **스킬3으로 『원념』의 지속시간을 갱신하고 강력한 대미지**를 준다.
 
 **HIGHLIGHT는 이치고의 핵심 스킬로 중첩된 『원념』을 결산하고, 지속 대미지가 크리티컬이 가능하도록 바꾼다.**
 
@@ -45,20 +45,20 @@
 
 `,
     review_en: `
-A powerful single-target DPS that applies stacks of the Curse-element DoT [Resentment] to enemies.  
+A powerful single-target DPS that applies stacks of the Curse-element DoT Lovesick to enemies.
 
-Applies [Resentment] to enemies through S1 and S2, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.  
+Applies Lovesick to enemies through S1 and S2, then after reaching maximum stacks, **refreshes the duration with S3 and deals heavy damage**.
 
-In addition, **HIGHLIGHT settles the stacked [Resentment] and allows [Resentment]’s DoT to crit**.  
+In addition, **Highlight activates stacked Lovesick effects and allows Lovesick’s DoT to crit**.
 
 
 <br>
 
 Ichigo is extremely powerful, but her damage-dealing mechanism is the most complex among all characters to date.  
 
-[Resentment] deals damage in two main ways: damage dealt at the end of the enemy’s turn and forced DoT calculation via HL.  
+Lovesick deals damage in two main ways: damage dealt at the end of the enemy’s turn and forced DoT activation via Highlight.
 
-- **Each [Resentment] stack snapshots Ichigo’s buff state at the time of application, and when refreshed via S3, it overwrites with Ichigo’s buffs at that moment.**
+- **Each Lovesick stack snapshots Ichigo’s buff state at the time of application, and when refreshed via S3, it overwrites with Ichigo’s buffs at that moment.**
 
 - Criticals are calculated separately, based on Ichigo’s Critical Rate and Critical Damage at the time each DoT stack is calculated.  
   If Ichigo does not crit at this point, the Stable Domain mechanic will not activate due to a bug.
@@ -72,13 +72,13 @@ Below is the buff table showing which of Ichigo’s buffs apply:
 | -                         | ATK / Damage Mult      | Crit Rate / Crit Mult | DEF Reduction | Pierce |
 |---------------------------|----------------------|------------------------------|---------------|--------|
 | S1/S2/S3                  | O                    | O                            | O             | O      |
-| Resentment Application/Refresh| O                    | -                            | O             | -      |
-| Resentment×2 Settlement - HL  | -                    | O (based on settlement time) | -             | -      |
-| DoT Settlement - HL       | -                    | -                            | -             | -      |
-| Resentment Settlement - Turn End | -                 | O (based on settlement time) | -             | -      |
-| HIGHLIGHT Base            | O                    | -                            | O             | O      |  
+| Lovesick Application/Refresh | O                  | -                            | O             | -      |
+| Lovesick×2 Activation - Highlight | -             | O (based on activation time) | -             | -      |
+| DoT Activation - Highlight   | -                    | -                            | -             | -      |
+| Lovesick Activation - Turn End | -                 | O (based on activation time) | -             | -      |
+| Highlight Base            | O                    | -                            | O             | O      |
 
-※ It is currently unclear whether HL is penetrable.
+※ It is currently unclear whether Highlight is penetrable.
 
 <br>
 
@@ -87,19 +87,19 @@ The **DoT Damage Increase** buff is calculated in a separate bucket from standar
 For reference, Nian’s DoT Damage Increase, released before Ichigo, is calculated in the standard damage increase bucket.   
 `,
     review_jp: `
-単体対象に呪怨属性の持続ダメージ[怨念]スタックを付与する強力なアタッカー。  
+単体対象に呪怨属性の持続ダメージ『愛執』を付与する強力なアタッカー。
 
-S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**S3で持続時間を更新しつつ強力なダメージを与える**。  
+S1とS2で敵に『愛執』を付与し、最大スタックに到達した後、**S3で持続時間を更新しつつ強力なダメージを与える**。
 
-さらに、**HIGHLIGHTは蓄積された[怨念]を精算し、[怨念]の持続ダメージがクリティカル可能になる**。   
+さらに、**ハイライトは蓄積された『愛執』を発動し、『愛執』の持続ダメージがクリティカル可能になる**。
 
 ---
 
 苺は非常に強力だが、ダメージメカニズムはこれまでの怪盗の中で最も複雑である。  
 
-[怨念]がダメージを与える方法は主に2つあり、敵ターン終了時に発生するダメージと、HLによる強制的な持続ダメージ精算である。  
+『愛執』がダメージを与える方法は主に2つあり、敵ターン終了時に発生するダメージと、ハイライトによる強制的な持続ダメージ発動である。
 
-- **各[怨念]は付与時の苺のバフ状態をスナップショットし、S3で更新する際、その時点の苺のバフで上書きされる。**  
+- **各『愛執』は付与時の苺のバフ状態をスナップショットし、S3で更新する際、その時点の苺のバフで上書きされる。**
 
 - クリティカルは別計算で、各持続ダメージスタックが計算される時点の苺のクリティカル率とCRT倍率に従う。  
   この時点で苺のクリティカルが発生しない場合、Stable Domainのメカニズムが発動しない不具合がある。
@@ -113,13 +113,13 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
 | -                         | 攻撃力 / 攻撃倍率+ | クリティカル率 / 効果       | 防御力減少 | 貫通 |
 |---------------------------|--------------------------|-----------------------------|------------|------|
 | S1/S2/S3                  | O                        | O                           | O          | O    |
-| 怨念付与/更新             | O                        | -                           | O          | -    |
-| 怨念×2精算 - HL           | -                        | O (精算時点基準)            | -          | -    |
-| 持続ダメージ精算 - HL     | -                        | -                           | -          | -    |
-| 怨念精算 - ターン終了     | -                        | O (精算時点基準)            | -          | -    |
-| HIGHLIGHT 基本            | O                        | -                           | O          | O    |  
+| 愛執付与/更新             | O                        | -                           | O          | -    |
+| 愛執×2発動 - ハイライト   | -                        | O (発動時点基準)            | -          | -    |
+| 持続ダメージ発動 - ハイライト | -                    | -                           | -          | -    |
+| 愛執発動 - ターン終了     | -                        | O (発動時点基準)            | -          | -    |
+| ハイライト 基本           | O                        | -                           | O          | O    |
 
-※ 現在、HLの貫通適用の有無は確認されていない。
+※ 現在、ハイライトの貫通適用の有無は確認されていない。
 
 <br>
 
@@ -170,12 +170,12 @@ S1とS2で敵に[怨念]を付与し、最大スタックに到達した後、**
     pros: ["체력 비례 대미지가 아닌 공격력 기반 지속 대미지로 모든 보스에게 유의미한 대미지를 줄 수 있다.", "3스킬과 HIGHLIGHT가 강력하다."],
     pros_en: [
       "Deals meaningful damage to all bosses thanks to ATK-based DoT instead of HP-based scaling.",
-      "Has powerful Skill 3 and HIGHLIGHT."
+      "Has powerful Skill 3 and Highlight."
     ]
     ,
     pros_jp: [
       "HP比例ではなく攻撃力依存の継続ダメージにより、すべてのボスに有効なダメージを与えられる。",
-      "スキル3とHIGHLIGHTが強力。"
+      "スキル3とハイライトが強力。"
     ]
     ,
     pros_cn: ["她的持续伤害基于攻击力而不是敌方生命值，因此面对所有首领都能打出有效伤害。", "技能3与HIGHLIGHT都非常强。"],

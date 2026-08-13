@@ -23,38 +23,38 @@ window.ritualData["이치고"] = {
 
 window.enCharacterRitualData["이치고"] = {
   "name": "Ichigo Shikano",
-  "r0": "If I Take the Poison of Love",
-  "r0_detail": "When Ichigo uses [Butterfly Beheadment] for the first time, gain 1 [Obsessive Love] stack. When using Highlight, gain 1 [Obsessive Love] stack. Stacks up to 3 times. Gain the following boost effects based on [Obsessive Love] stacks:\n1 stack: For every [Resentment] stack on foes, increase their damage taken by 2.5%;\n2 stacks: Increase critical rate by 15%, Ichigo's Persona skill damage counts as Damage Over Time Effect;\n3 stacks: Increase Damage Over Time Effect by 25%.\n\nResentment: For 4 turns, the target takes Curse damage each turn equal to 18% of Ichigo Shikano’s ATK (can stack up to 10 times). When an enemy affected by Resentment dies, it transfers to the enemy with the highest HP (does not transfer to enemies who Null/Drain/Repel Curse).",
-  "r1": "If I'm Broken",
-  "r1_detail": "Decrease foes' Defense by 3% for each [Resentment] stack; When using a Persona skill, inflict 1 [Resentment] stack on the target more.",
-  "r2": "If I Allow Delusions to Run Rampant",
-  "r2_detail": "At the start of battle, gain 1 [Obsessive Love] stack. Increase maximum [Obsessive Love] stack to 5. Gain the following boost effects based on [Obsessive Love] stacks:\n4 stacks: Increase critical damage by 36%;\n5 stacks: When Ichigo takes fatal damage, enter near death and gain 4 [Crazed Delusion] stacks, she cannot drop below 1 HP when in near death, spend 1 [Crazed Delusion] after each ally's action, faint after spending all [Crazed Delusion] stacks.",
-  "r3": "If Begging for Mercy Works",
-  "r3_detail": "Increase the skill levels of Hush! It's Execution Time and Thief Tactics by 3.",
-  "r4": "If Love Keeps Growing",
-  "r4_detail": "After using Highlight, increase Attack by 6%. Stacks up to 5 times. This effect is permanent.",
-  "r5": "If Danger Draws Near",
-  "r5_detail": "Increase the skill levels of Butterfly Beheadment and Blood Rose's Kiss by 3.",
-  "r6": "If You Discovered My Other Self",
-  "r6_detail": "Increase maximum [Resentment] stack to 15.\nWhen [Obsessive Love] reaches a certain stack, gain the following effects:\n1 stack: After using [Butterfly Beheadment], additionally use [Butterfly Beheadment] on the target (once per battle);\n2 stacks: After using [Blood Rose's Kiss], additionally use [Blood Rose's Kiss] on the target (once per battle);\n3 stacks: After using [Hush! It's Execution Time], additionally use [Hush! It's Execution Time] on the target (once per battle);\n4 stacks: Ichigo can use Highlight on her turn once (once per battle, do not spend Highlight Energy and affect Highlight cooldown)."
+  "r0": "Mine Alone",
+  "r0_detail": "The first time Ichigo activates Vorpal Butterfly, gain 1 Chains of Love stack. Also, each time she activates a Highlight, gain 1 Chains of Love stack. Chains of Love stacks up to 3 times.\nGain the following effects based on the number of Chains of Love stacks.\n1: For each Lovesick stack inflicted, increase target's damage taken by 4%.\n2: Increase critical rate by 15%. Also, all of Ichigo's skill damage is counted as continuous damage.\n3: Increase continuous damage by 25%.",
+  "r1": "Pounding Heartbeat",
+  "r1_detail": "For each Lovesick stack inflicted, decrease target's Defense by 3%.\nAlso, each time a skill is used, inflict 1 more Lovesick stack on the target.",
+  "r2": "Power of Love",
+  "r2_detail": "At the start of battle, gain 1 Chains of Love stack.\nChains of Love now stacks up to 5 times, and gain the following effects based on the number of stacks.\n4: Increase critical damage by 36%.\n5: The first time Ichigo takes fatal damage, survive with 1 HP and enter a special near-death state, and gain 4 Power of Love stacks. At the end each ally's turn, spend 1 Power of Love stack, and after all Power of Love stacks have been spent, Ichigo will be KO'd.",
+  "r3": "Forever My Prince",
+  "r3_detail": "Increase the skill levels of My Beloved Prince and Thief Tactics by 3.",
+  "r4": "Maiden's True Strength",
+  "r4_detail": "Highlight Enhanced: Each time her Highlight is activated, permanently increase Ichigo's Attack by 6%. Stacks up to 5 times.",
+  "r5": "Garden of Devotion",
+  "r5_detail": "Increase the skill levels of Vorpal Butterfly and Obsessive Rose by 3.",
+  "r6": "A World of Our Own",
+  "r6_detail": "Lovesick now stacks up to 15 times.\nBased on the total number of Chains of Love stacks, the following effects can be activated. \n1: After activating Vorpal Butterfly, activate Vorpal Butterfly 1 more time on the selected target.\n2: After activating Obsessive Rose, activate Obsessive Rose 1 more time on the selected target.\n3: After activating My Beloved Prince, activate My Beloved Prince 1 more time on the selected target.\n4: During Ichigo's turn, can activate Highlight 1 time on the selected target without spending the Highlight gauge (not affected by Highlight cooldown time).\n(Each effect can activate only once during battle. If a target is defeated or the skill is nullified, reflected, or absorbed, a different target is selected for the skill effect.)"
 };
 
 window.jpCharacterRitualData["이치고"] = {
-  "name": "鹿野 イチゴ",
-  "r0": "中毒の愛",
-  "r0_detail": "鹿野イチゴが初めて『深紅の蝶』を発動すると、『執着』を1スタック獲得する。HIGHLIGHTを発動するたびに『執着』を1スタック獲得する。『執着』は最大3スタックまで獲得可能で、スタック数に応じて以下の強化効果を得る。\n· 1スタック: 『怨念』1スタックごとに敵が受けるダメージが2.5%増加する。\n· 2スタック: クリティカル率が15%上昇し、自身のペルソナスキルによる全ダメージが持続ダメージとして扱われる。\n· 3スタック: 持続ダメージ効果が25%上昇する。\n\n怨念：4ターンのあいだ、鹿野 苺の攻撃力18%分の呪怨属性ダメージを毎ターン受ける（最大10スタック）。『怨念』を持つ敵が倒れた場合、最もHPが多い敵に移動する（呪怨属性を無効・吸収・反射する敵には移動しない）。",
-  "r1": "壊れるなら",
-  "r1_detail": "『怨念』1スタックごとに敵の防御力が3%減少し、ペルソナスキルを使用するたびに目標に『怨念』を1スタック付与する。",
-  "r2": "堕ちるなら",
-  "r2_detail": "戦闘開始時に『執着』を1スタック獲得する。『執着』の最大スタックが5まで増加し、スタック数に応じて以下の追加効果を得る。\n· 4スタック: CRT倍率が36%上昇する。\n· 5スタック: 初めて致命的ダメージを受けると瀕死状態に入り、『狂気の妄想』を4スタック獲得する。瀕死中はHPが1未満に下がらず、味方ターン終了時に『狂気の妄想』を1スタック消費する。すべて消費すると戦闘不能になる。",
-  "r3": "許すなら",
-  "r3_detail": "『シーッ！処刑の時間』、『戦闘技術』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r4": "愛するなら",
-  "r4_detail": "HIGHLIGHTを発動するたびに怪盗の攻撃力が永続的に6%上昇する（最大5回まで）。",
-  "r5": "危険なら",
-  "r5_detail": "『深紅の蝶』、『赤いバラのキス』のスキルレベルが3レベル上昇し、最大15レベルまで上昇する。",
-  "r6": "もう一人の私なら",
-  "r6_detail": "『怨念』の最大スタックが15まで増加する。\n· 『執着』が指定スタック数に達すると以下の効果を得る。\n· 1スタック: 『深紅の蝶』発動後、目標に『深紅の蝶』を1回追加発動する（戦闘ごとに1回）。\n· 2スタック: 『赤いバラのキス』発動後、目標に『赤いバラのキス』を1回追加発動する（戦闘ごとに1回）。\n· 3スタック: 『シーッ！処刑の時間』発動後、目標に『シーッ！処刑の時間』を1回追加発動する（戦闘ごとに1回）。\n· 4スタック: 自分のターンに指定目標へ『HIGHLIGHT』を1回発動する（戦闘ごとに1回、HIGHLIGHTエネルギーを消費せず、HIGHLIGHTのクールタイムに影響しない）。"
+  "name": "鹿野 苺",
+  "r0": "独り占め恋心",
+  "r0_detail": "苺は初めて『ヴォーパルバタフライ』を発動した時、『独占欲』を１つ獲得する。さらに自身がハイライトを発動するごとに、『独占欲』を１つ獲得する。『独占欲』は最大３つまで累積できる。\nまた『独占欲』の累積数に応じて以下の効果を獲得する。\n「１：付与されている『愛執』１つごとに、対象の被ダメージが４%上昇する」\n「２：クリティカル率が１５%上昇する。また自身が発動したスキルのダメージをすべて持続ダメージとして扱う」\n「３：持続ダメージ効果が２５%上昇する」",
+  "r1": "募るトキメキ",
+  "r1_detail": "付与されている『愛執』１つごとに、対象の防御力が３%低下する。\nまたスキルを使用するごとに、追加で対象に『愛執』を１つ付与する。",
+  "r2": "アイノチカラ",
+  "r2_detail": "戦闘開始時、『独占欲』を１つ獲得する。\n『独占欲』を最大５つまで累積できるようになり、累積数に応じて追加で以下の効果を獲得する。\n「４：クリティカルダメージが３６%上昇する」\n「５：自身が初めて致死ダメージを受ける時、ＨＰが１未満にならない特殊な瀕死状態になり、『アイノチカラ』を４つ獲得する。味方の各行動終了時、『アイノチカラ』を１つ消費し、すべての『アイノチカラ』を消費した時、戦闘不能になる」",
+  "r3": "王子様ふぉーえばー",
+  "r3_detail": "『プリンス・マイ・ラヴ』『怪盗戦技』のスキルレベルが３上昇する。",
+  "r4": "乙女の底力",
+  "r4_detail": "ハイライト能力追加：ハイライトを発動するごとに、自身の攻撃力が永続的に６%上昇する。最大５つまで累積できる。",
+  "r5": "恋のお花畑",
+  "r5_detail": "『ヴォーパルバタフライ』『オブセッシヴローズ』のスキルレベルが３上昇する。",
+  "r6": "２人だけの世界",
+  "r6_detail": "『愛執』を最大１５個まで累積できるようになる\n『独占欲』の累積数に応じて以下の効果が発動可能になる。\n「１：『ヴォーパルバタフライ』を使用した後、選択した対象に追加で１回『ヴォーパルバタフライ』が発動する」\n「２：『オブセッシヴローズ』を使用した後、選択した対象に追加で１回『オブセッシヴローズ』が発動する」\n「３：『プリンス・マイ・ラヴ』を使用した後、選択した対象に追加で１回『プリンス・マイ・ラヴ』が発動する」\n「４：自身のターン中、ハイライトゲージを消費せず、選択した対象に１回『ハイライト』を発動できる（ハイライト発動クールタイムには影響しない）」\n（それぞれの効果は戦闘中に一度だけ発動することができる。追加発動するスキル効果は、スキル使用時に対象が撃破されている、またはスキルが無効・反射・吸収された場合、別の対象が選択される）"
 };
 
 window.cnCharacterRitualData["이치고"] = {

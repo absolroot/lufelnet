@@ -37,7 +37,7 @@ window.enCharacterWeaponData["안"] = {
     "health": 2140.53,
     "attack": 799.42,
     "defense": 409.62,
-    "description": "Increase Fire damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When La Vie En Rose is active, inflict Burn on 1 random foe. Increase Fire damage 25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5% for each Burning foe. Maximum of 76%/100%/100%/124%/124%/148%/148%."
+    "description": "Increase Fire damage by 24.2%/24.2%/31.5%/31.5%/38.8%/38.8%/46.1%. When entering La Vie En Rose state, inflict Burn on 1 random foe. Increase Fire damage 25.5%/33.5%/33.5%/41.5%/41.5%/49.5%/49.5% for each Burning foe. Maximum of 76%/100%/100%/124%/124%/148%/148%."
   }
 };
 

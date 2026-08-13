@@ -26,7 +26,7 @@ window.enCharacterRitualData["안"] = {
   "r0": "Passion",
   "r0_detail": "When dealing Fire damage to a foe with a skill, gain 1 Passion. Gain up to 4 stacks of Passion with 1 skill.\nIf Passion is at 4 or more stacks on Ann's action, spend all Passion stacks to gain La Vie en Rose for 1 turn.\nLa Vie en Rose: Increase Ann's Attack by 30%/40%/50% (effect changes at level 1/50/70).\n*Cannot gain La Vie en Rose consecutively on Ann's next action.",
   "r1": "Seguidilla",
-  "r1_detail": "When La Vie en Rose is active, increase the party's Attack by 25% for 1 turn.",
+  "r1_detail": "When entering La Vie en Rose state, increase the party's Attack by 25% for 1 turn.",
   "r2": "Marriage of Flames",
   "r2_detail": "When La Vie en Rose ends, activate 2 follow-up attacks, dealing Fire damage equal to 66% of Ann's Attack to random foes.",
   "r3": "Beautiful Sins",

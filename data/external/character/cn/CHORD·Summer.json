@@ -1,0 +1,287 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "坂井绫香·夏日在战斗中将接管所有队友的HIGHLIGHT施放，且将队友的HIGHLIGHT冷却时间减少一回合，对应地队友将无法通过常规手段施放HIGHLIGHT。\n坂井绫香·夏日自身回合开始时，通过施放特殊技能『时光协奏曲』，可使队友无消耗施放一次HIGHLIGHT。\n坂井绫香·夏日在场时，HIGHLIGHT能量上限提升至250%，且坂井绫香·夏日在施放自身HIGHLIGHT后可以获得『星愿』来大幅强化技能『写给风的旋律』。",
+        "name": "你给予的夏日时光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "若『夏夜星幕』已展开，坂井绫香·夏日将在队友施放HIGHLIGHT后立即发动1次技能伤害提升100%的『夏夜星幕』。\n『夏夜星幕』每次发动，坂井绫香·夏日的暴击效果都会提升5%，持续2回合，最多叠加6层。",
+        "name": "与那日相同的海色",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "坂井绫香·夏日在施放特殊技能『时光协奏曲』后攻击力提升30%，持续1回合，并立即回复25%HIGHLIGHT能量。\nHIGHLIGHT能量上限进一步提升至300%。",
+        "name": "追寻不变之物",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『写给风的旋律』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "无法停止跳动的心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：坂井绫香·夏日造成伤害额外提高30%，持续1回合。",
+        "name": "梦的碎片",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『星轨协奏』、『未尽之歌』的技能等级提升3级,至多提升至15级。",
+        "name": "思念满溢而出",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "坂井绫香·夏日的追加效果伤害增幅提升20%，且所有人格面具技能都将视为追加效果。\n『夏夜星幕』展开后，坂井绫香·夏日将获得永久的『拾音成曲』。\n『夏夜星幕』每发动1次，都将回复25%HIGHLIGHT能量。",
+        "name": "直到将歌声传达给你",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 0,
+      "cost": "",
+      "desc": "获得1层『星愿』，并使『夏夜星幕』造成伤害时暴击效果提升24.4%/26.9%/25.9%/28.4%，持续1回合。\n消耗100%HIGHLIGHT能量后每继续消耗50%HIGHLIGHT能量都会再获得1层『星愿』,并使『夏夜星幕』造成伤害时暴击效果进一步提升12.2%/13.4%/13.0%/14.2%。\n重复施放HIGHLIGHT获得的暴击效果提升无法叠加。",
+      "name": "HIGHLIGHT",
+      "nature": "Support",
+      "skill_lv": "10/10/13/13",
+      "sn": 132252,
+      "tags": [
+        null
+      ],
+      "target": "Myself",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "坂井绫香·夏日",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "对所有敌人造成330.9%/364.8%/351.2%/385.1%攻击力的疾风属性伤害。\n施放后将展开『夏夜星幕』，自身造成伤害永久提升39.0%/43.0%/41.4%/45.4%并回复100%HIGHLIGHT能量。\n展开『夏夜星幕』后无法施放。\n『夏夜星幕』：在坂井绫香·夏日回合结束前对所有敌人造成41.4%/45.6%/43.9%/48.2%攻击力的疾风属性伤害，视为追加伤害。",
+        "name": "星轨协奏",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 132211,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "对所有敌人造成173.7%/191.5%/184.4%/202.2%攻击力的疾风属性伤害，并使自身获得『拾音成曲』，持续2回合。\n『拾音成曲』：在自身回合结束时额外回复32%HIGHLIGHT能量。\n首次施放『未尽之歌』后，将立即触发一次『拾音成曲』的HIGHLIGHT能量回复效果。",
+        "name": "未尽之歌",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 132212,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "对所有敌人造成2次105.1%/115.9%/111.6%/122.3%攻击力的疾风属性伤害。若『夏夜星幕』已展开，则消耗全部『星愿』，每消耗1层『星愿』都会额外触发1次『夏夜星幕』。若『星愿』消耗达到了3层，额外触发的『夏夜星幕』的技能伤害还会额外提升100%。",
+        "name": "写给风的旋律",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 132213,
+        "tags": [
+          "主动",
+          "群伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『夏夜星幕』造成的伤害提升36.0%，并将驱散敌方1层增益效果。驱散效果每回合最多触发1次。",
+        "name": "轻吟",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132231,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "队友施放HIGHLIGHT或神通法后坂井绫香·夏日的攻击力提升21.0%，持续2回合，可叠加2层。",
+        "name": "共奏",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132232,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3010.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1209.99 / 1231.59 / 1253.19 / 1275.59 / 1297.19 / 1318.79 / 1340.39",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

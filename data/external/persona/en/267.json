@@ -52,19 +52,19 @@
   "nature": "Ice",
   "passive_skill": [
     {
-      "desc": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (1 turn).",
+      "desc": "Increase Attack by 29.1%.\nWhen an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1% per stack spent for 1 turn.",
       "name": "Ocean's Blade Bearer"
     },
     {
-      "desc": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (2 turns).",
+      "desc": "Increase Attack by 29.1%.\nWhen an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1% per stack spent for 2 turns.",
       "name": "Ocean's Blade Bearer I"
     },
     {
-      "desc": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
+      "desc": "Increase Attack by 29.1%.\nWhen an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1.5% per stack spent for 2 turns.",
       "name": "Ocean's Blade Bearer II"
     },
     {
-      "desc": "Increase Attack 29.1%.\nAt the start of battle, gain 5 Shark's Blade stacks. When ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 5 Shark's Blade stacks. When an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when a Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1.5% per stack spent for 2 turns.",
       "name": "Ocean's Blade Bearer III"
     }
   ],

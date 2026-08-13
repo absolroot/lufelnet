@@ -2,6 +2,34 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Curse attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-throne.png",
+            "level": "89",
+            "name": "ソロネ",
+            "skill": "155,158",
+            "sn": "531101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "368401"
+      },
+      {
         "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
@@ -20,44 +48,15 @@
             "level": "89",
             "name": "スルト",
             "skill": "108,103,1008",
-            "sn": "533101",
+            "sn": "531111",
             "stat": {}
           }
         ],
         "scoreRatio": 1.0,
-        "sn": "358401"
-      },
-      {
-        "bonusRule": "All ally Electric attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Phys",
-                "Gun",
-                "Wind",
-                "Bless"
-              ],
-              "Weak": [
-                "Electric"
-              ]
-            },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
-            "level": "89",
-            "name": "クー・フーリン",
-            "skill": "1023,1154",
-            "sn": "533111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "358402"
+        "sn": "368402"
       }
     ],
-    "buff": "磁極の波: スキル／意識奏功／ハイライト／テウルギアを発動した時、自身に『漲る波紋』を１つ付与する。\n『漲る波紋』：２ターンの間、最終ダメージが５%上昇する。最大８つまで累積できる。",
+    "buff": "腐食の亀裂: 味方がスキルで弱点ダメージを与えた時『腐食の亀裂』を獲得する。\n『腐食の亀裂』：２ターンの間、与える最終ダメージが２０%上昇し、持続ダメージ効果が２０%上昇する。",
     "endTime": "2026-08-27 10:30:00",
     "startTime": "2026-08-13 11:30:00"
   },

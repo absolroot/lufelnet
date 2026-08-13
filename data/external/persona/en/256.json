@@ -53,19 +53,19 @@
   "nature": "Almighty",
   "passive_skill": [
     {
-      "desc": "Increase ailment accuracy by 34.9%.\nAfter using a skill on a foe that has 15 or more debuff stacks, increase target's damage taken by 4.5% and increase user's ailment accuracy by 30% for 2 turns. After inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
+      "desc": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 30%, and also increase target's damage taken by 4.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
       "name": "Prelude to the End"
     },
     {
-      "desc": "Increase ailment accuracy by 34.9%.\nAfter using a skill on a foe that has 15 or more debuff stacks, increase target's damage taken by 4.5% and increase user's ailment accuracy by 50% for 2 turns. After inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
+      "desc": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 50%, and also increase target's damage taken by 4.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
       "name": "Prelude to the End I"
     },
     {
-      "desc": "Increase ailment accuracy by 34.9%.\nAfter using a skill on a foe that has 15 or more debuff stacks, increase target's damage taken by 6.5% and increase user's ailment accuracy by 50% for 2 turns. After inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
+      "desc": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 50%, and also increase target's damage taken by 6.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
       "name": "Prelude to the End II"
     },
     {
-      "desc": "Increase ailment accuracy by 34.9%.\nAfter using a skill on a foe that has 15 or more debuff stacks, increase target's damage taken by 6.5% and increase user's ailment accuracy by 50% for 2 turns. After inflicting a spiritual ailment, decrease all foes' Defense by 12% for 2 turns.",
+      "desc": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 50%, and also increase target's damage taken by 6.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 12% for 2 turns.",
       "name": "Prelude to the End III"
     }
   ],

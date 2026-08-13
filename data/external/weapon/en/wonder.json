@@ -136,7 +136,7 @@
       {
         "name": "Cursed Ties",
         "quality": 5,
-        "skill": "Increase ailment accuracy by 34.0%/39.7%/45.3%/51.0%/56.7%/62.3%/68.0%.\nAfter an ally deals curse damage, 70% chance for Wonder to inflict Evil Eye on target.\nWhen attacking a foe with Evil Eye, increase Attack by 18.0%/21.0%/24.0%/27.0%/30.0%/33.0%/36.0%.\nEvil Eye: Decrease Defense by 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0% and increase damage taken from Curse attacks by 8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0%.",
+        "skill": "Increase ailment accuracy by 34.0%/39.7%/45.3%/51.0%/56.7%/62.3%/68.0%.\nAfter an ally deals curse damage, 70% chance for Wonder to inflict Evil Eye on target.\nWhen attacking a foe that has Evil Eye, increase Attack by 18.0%/21.0%/24.0%/27.0%/30.0%/33.0%/36.0%.\nEvil Eye: Decrease Defense by 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0% and increase damage taken from Curse attacks by 8.0%/9.3%/10.7%/12.0%/13.3%/14.7%/16.0%for 3 turns.",
         "stat": {
           "attack": 654.08,
           "defense": 396.41,

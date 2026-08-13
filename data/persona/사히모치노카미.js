@@ -65,8 +65,8 @@ window.personaFiles["사히모치노카미"] = {
       "name_en": "Ocean's Blade Bearer",
       "name_jp": "大海の運び手",
       "desc": "공격력이 29.1% 증가한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 1턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1% 증가시킨다.",
-      "desc_en": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (1 turn).",
-      "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、１ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１%上昇させる。",
+      "desc_en": "Increase Attack by 29.1%.\nWhen an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1% per stack spent for 1 turn.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、１ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに敵全体の被ダメージを１%上昇させる。",
       "name_cn": "迅捷的送归者",
       "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1%，持续1回合。"
     },
@@ -75,8 +75,8 @@ window.personaFiles["사히모치노카미"] = {
       "name_en": "Ocean's Blade Bearer I",
       "name_jp": "大海の運び手Ⅰ",
       "desc": "공격력이 29.1% 증가한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 2턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1% 증가시킨다.",
-      "desc_en": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1% per Serrated Shark's Blade (2 turns).",
-      "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１%上昇させる。",
+      "desc_en": "Increase Attack by 29.1%.\nWhen an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1% per stack spent for 2 turns.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに敵全体の被ダメージを１%上昇させる。",
       "name_cn": "迅捷的送归者Ⅰ",
       "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1%，持续2回合。"
     },
@@ -85,8 +85,8 @@ window.personaFiles["사히모치노카미"] = {
       "name_en": "Ocean's Blade Bearer II",
       "name_jp": "大海の運び手Ⅱ",
       "desc": "공격력이 29.1% 증가한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 2턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1.5% 증가시킨다.",
-      "desc_en": "Increase Attack 29.1%.\nWhen ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
-      "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１.５%上昇させる。",
+      "desc_en": "Increase Attack by 29.1%.\nWhen an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1.5% per stack spent for 2 turns.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに敵全体の被ダメージを１.５%上昇させる。",
       "name_cn": "迅捷的送归者Ⅱ",
       "desc_cn": "攻击力提升29.1%。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1.5%，持续2回合。"
     },
@@ -95,8 +95,8 @@ window.personaFiles["사히모치노카미"] = {
       "name_en": "Ocean's Blade Bearer III",
       "name_jp": "大海の運び手Ⅲ",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 「차가운 비늘」을 5중첩 획득한다. 아군 캐릭터가 페르소나 스킬 시전 시, 자신은 「차가운 비늘」을 1중첩 획득한다(5회 중첩 가능). 추가 효과 시전 시 「예리한 비늘」을 1중첩 획득한다(5회 중첩 가능). 자신이 적 캐릭터에게 페르소나 스킬을 시전할 때, 자신의 「차가운 비늘」이 5중첩일 경우, 2턴 동안 모든 「차가운 비늘」과 「예리한 비늘」을 소모해 중첩마다 적이 받는 대미지를 1.5% 증가시킨다.",
-      "desc_en": "Increase Attack 29.1%.\nAt the start of battle, gain 5 Shark's Blade stacks. When ally activates skill, gain 1 Shark's Blade (max 5 stacks). Also, when Resonance is activated, gain 1 Serrated Shark's Blade (max 5 times). These effects activate even in reserve.\nWith 5 Shark's Blade, when user activates skill on foe, spend all Shark's Blade and Serrated Shark's Blade. Increase target's dmg taken 1.5% per Serrated Shark's Blade (2 turns).",
-      "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『鱗刃』を５つ獲得する。味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに対象の被ダメージを１.５%上昇させる。",
+      "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 5 Shark's Blade stacks. When an ally activates a skill, gain 1 Shark's Blade stack. Stacks up to 5 times. Also, when a Resonance is activated, gain 1 Serrated Shark's Blade stack. Stacks up to 5 times. These effects activate even in reserve.\nWith 5 Shark's Blade stacks, when the user activates a skill on foes, spend all Shark's Blade and Serrated Shark's Blade stacks to increase all foes' damage taken by 1.5% per stack spent for 2 turns.",
+      "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時、『鱗刃』を５つ獲得する。味方がスキルを発動した時、『鱗刃』を１つ獲得し、最大５つまで累積できる。また意識奏功を発動した時、『鋭利な鱗刃』を１つ獲得し、最大５つまで累積できる。これらの効果は控えにいる場合でも発動する。\n『鱗刃』が５つ累積している状態で、自身が敵にスキルを発動した時、『鱗刃』と『鋭利な鱗刃』をすべて消費し、２ターンの間、消費した『鱗刃』と『鋭利な鱗刃』１つごとに敵全体の被ダメージを１.５%上昇させる。",
       "name_cn": "迅捷的送归者Ⅲ",
       "desc_cn": "攻击力提升29.1%。战斗开始时，获得5层「寒鳞」。友方角色释放人格面具技能时，自身获得1层「寒鳞」，上限5层。释放追加效果时获得1层「锋利寒鳞」，上限5层。自身对敌方角色释放人格面具技能后，若自身「寒鳞」层数达到5层，则消耗所有「寒鳞」和「锋利寒鳞」，每层使敌人受到伤害提升1.5%，持续2回合。"
     }

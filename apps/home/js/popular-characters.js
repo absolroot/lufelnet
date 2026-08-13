@@ -14,11 +14,11 @@
         ],
         en: [
             { name: '미쿠', badge: 'HOT' },
-            { name: '유키 마코토', badge: 'HOT' },
+            { name: '미나미·여름', badge: 'HOT' },
         ],
         jp: [
             { name: '미쿠', badge: 'HOT' },
-            { name: '유키 마코토', badge: 'HOT' },
+            { name: '미나미·여름', badge: 'HOT' },
         ],
     };
 

@@ -150,7 +150,7 @@ Object.assign(window.characterData, {
         "tag_en": "",
         "tag_jp": "",
         "tag_cn": "",
-        "color": "#b0ff6f",
+        "color": "#c5ff6f",
         "element": "질풍",
         "rarity": 5,
         "position": "지배",

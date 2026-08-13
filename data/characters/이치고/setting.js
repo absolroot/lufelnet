@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["이치고"] = {
     "role": "하이라이트 지속 대미지 딜러",
     "video": ["qZo778THxVI", "Wf3H5gs2iPY"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["qZo778THxVI","Qz5w5fk-TeI"],
+    "video_jp": ["qZo778THxVI","fHcgm-ihP4M"],
     "main_revelation": ["돌파"],
     "sub_revelation": ["슬픔"],
     "sub_revel2": ["공격력", "대미지 보너스"],

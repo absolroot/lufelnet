@@ -182,3 +182,13 @@
   top: 100%;
   scale: 1.2;
 }
+
+.char-img.single-banner[src*="%EC%95%84%EC%95%BC%EC%B9%B4%C2%B7%EC%97%AC%EB%A6%84"] {
+  top: 120%;
+  scale: 1.25;
+}
+
+.char-img.single-banner[src*="%EC%9D%B4%EC%B9%98%EA%B3%A0"] {
+  top: 97%;
+  scale: 1.3;
+}

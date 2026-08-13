@@ -1,0 +1,284 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "The first time Ichigo activates Vorpal Butterfly, gain 1 Chains of Love stack. Also, each time she activates a Highlight, gain 1 Chains of Love stack. Chains of Love stacks up to 3 times.\nGain the following effects based on the number of Chains of Love stacks.\n1: For each Lovesick stack inflicted, increase target's damage taken by 4%.\n2: Increase critical rate by 15%. Also, all of Ichigo's skill damage is counted as continuous damage.\n3: Increase continuous damage by 25%.",
+        "name": "Mine Alone",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "For each Lovesick stack inflicted, decrease target's Defense by 3%.\nAlso, each time a skill is used, inflict 1 more Lovesick stack on the target.",
+        "name": "Pounding Heartbeat",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain 1 Chains of Love stack.\nChains of Love now stacks up to 5 times, and gain the following effects based on the number of stacks.\n4: Increase critical damage by 36%.\n5: The first time Ichigo takes fatal damage, survive with 1 HP and enter a special near-death state, and gain 4 Power of Love stacks. At the end each ally's turn, spend 1 Power of Love stack, and after all Power of Love stacks have been spent, Ichigo will be KO'd.",
+        "name": "Power of Love",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of My Beloved Prince and Thief Tactics by 3.",
+        "name": "Forever My Prince",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Each time her Highlight is activated, permanently increase Ichigo's Attack by 6%. Stacks up to 5 times.",
+        "name": "Maiden's True Strength",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Vorpal Butterfly and Obsessive Rose by 3.",
+        "name": "Garden of Devotion",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Lovesick now stacks up to 15 times.\nBased on the total number of Chains of Love stacks, the following effects can be activated. \n1: After activating Vorpal Butterfly, activate Vorpal Butterfly 1 more time on the selected target.\n2: After activating Obsessive Rose, activate Obsessive Rose 1 more time on the selected target.\n3: After activating My Beloved Prince, activate My Beloved Prince 1 more time on the selected target.\n4: During Ichigo's turn, can activate Highlight 1 time on the selected target without spending the Highlight gauge (not affected by Highlight cooldown time).\n(Each effect can activate only once during battle. If a target is defeated or the skill is nullified, reflected, or absorbed, a different target is selected for the skill effect.)",
+        "name": "A World of Our Own",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Curse damage to 1 foe equal to 457.1%/503.9%/485.2%/532.0% of Attack, and Lovesick can activate critical hits for 3 turns.\nAlso, activate all continuous damage effects on the target 1 time, and activate Lovesick effect 2 more times.",
+      "name": "Highlight",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 142152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Damage Mult.": "0.16",
+      "Pierce Rate": "0.075"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "Ichigo Shikano",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 20",
+        "desc": "Deal Curse damage to 1 foe equal to 129.0%/142.2%/137.0%/150.2% of Attack, and inflict 2 Lovesick stacks. When the target has over 70% HP remaining, increase skill damage by 200%. If this skill defeats a target, activate this skill again (can be activated consecutively).",
+        "name": "Vorpal Butterfly",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Curse damage to 1 foe equal to 106.9%/117.8%/113.4%/124.4% of Attack, and inflict 4 Lovesick stacks.",
+        "name": "Obsessive Rose",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142112,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Deal Curse damage to 1 foe equal to 254.8%/280.9%/270.4%/296.6% of Attack + 11.7%/12.9%/12.4%/13.6% for each Lovesick stack. Also, when targets have 10 or more Lovesick stacks, deal bonus Curse damage equal to 118.7%/130.9%/126.1%/138.2% of Attack. After activating this skill, reset the duration of Lovesick stacks.",
+        "name": "My Beloved Prince",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142113,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "For each Chains of Love stack, increase Ichigo's Attack by 15.0%.",
+        "name": "Overflowing Love",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Ichigo is present, increase party's continuous damage by 15.0%.",
+        "name": "Melting Ichi-Go Butter",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3600.02 / 3664.82 / 3729.62 / 3794.42 / 3859.22 / 3924.02 / 3988.82",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

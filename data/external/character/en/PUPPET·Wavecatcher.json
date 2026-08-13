@@ -22,7 +22,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Decrease SP cost of Catch a Wave by 40%, and increase max Offshore stacks by 2.\nWhen Surf is active, extend duration of all buffs/debuffs applied by 1 turn.",
+        "desc": "Decrease SP cost of Catch a Wave by 40%, and increase max Offshore stacks by 2.\nWhen entering Surf state, extend duration of all buffs/debuffs applied by 1 turn.",
         "name": "Offshore Paradise",
         "nature": null,
         "skill_lv": "3",

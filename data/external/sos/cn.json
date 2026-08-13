@@ -10,6 +10,33 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Electric",
+                "Psychokinesis"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-ookuni.png",
+            "level": "89",
+            "name": "被操控的大国主",
+            "skill": "1016,1021,1404",
+            "sn": 550101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Ice",
                 "Electric",
                 "Wind",
@@ -24,45 +51,17 @@
             "level": "89",
             "name": "被操控的莉莉丝",
             "skill": "607,603",
-            "sn": 549101,
+            "sn": 550111,
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Fire",
-                "Nuclear",
-                "Bless"
-              ],
-              "Weak": [
-                "Gun"
-              ]
-            },
-            "image": "B-guaiwutouxiang-uriel.png",
-            "level": "89",
-            "name": "被操控的尤利尔",
-            "skill": "1026,1016,1090",
-            "sn": 549111,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
         "sn": 78402
       }
     ],
-    "buff": "化石刃丛: 怪盗每累计消耗40精力或释放HIGHLIGHT/神通法时，全体同伴获得1层『锋锐骨片』；『锋锐骨片』：每层提供5%的最终伤害加成，持续2回合，最多可叠加8层。",
-    "endTime": "2026-08-13 06:30:00",
-    "startTime": "2026-07-16 07:30:00"
+    "buff": "往昔回溯: 怪盗每累计消耗80精力或每累计消耗50%的HIGHLIGHT能量时，全体同伴获得1层『时空碎片』；『时空碎片』：每层提供7%的最终伤害加成，持续2回合，最多可叠加6层。",
+    "endTime": "2026-09-03 06:30:00",
+    "startTime": "2026-08-13 07:30:00"
   },
   "msg": "OK",
   "status": 0

@@ -1,0 +1,284 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "苺は初めて『ヴォーパルバタフライ』を発動した時、『独占欲』を１つ獲得する。さらに自身がハイライトを発動するごとに、『独占欲』を１つ獲得する。『独占欲』は最大３つまで累積できる。\nまた『独占欲』の累積数に応じて以下の効果を獲得する。\n「１：付与されている『愛執』１つごとに、対象の被ダメージが４%上昇する」\n「２：クリティカル率が１５%上昇する。また自身が発動したスキルのダメージをすべて持続ダメージとして扱う」\n「３：持続ダメージ効果が２５%上昇する」",
+        "name": "独り占め恋心",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "付与されている『愛執』１つごとに、対象の防御力が３%低下する。\nまたスキルを使用するごとに、追加で対象に『愛執』を１つ付与する。",
+        "name": "募るトキメキ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "戦闘開始時、『独占欲』を１つ獲得する。\n『独占欲』を最大５つまで累積できるようになり、累積数に応じて追加で以下の効果を獲得する。\n「４：クリティカルダメージが３６%上昇する」\n「５：自身が初めて致死ダメージを受ける時、ＨＰが１未満にならない特殊な瀕死状態になり、『アイノチカラ』を４つ獲得する。味方の各行動終了時、『アイノチカラ』を１つ消費し、すべての『アイノチカラ』を消費した時、戦闘不能になる」",
+        "name": "アイノチカラ",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『プリンス・マイ・ラヴ』『怪盗戦技』のスキルレベルが３上昇する。",
+        "name": "王子様ふぉーえばー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：ハイライトを発動するごとに、自身の攻撃力が永続的に６%上昇する。最大５つまで累積できる。",
+        "name": "乙女の底力",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『ヴォーパルバタフライ』『オブセッシヴローズ』のスキルレベルが３上昇する。",
+        "name": "恋のお花畑",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『愛執』を最大１５個まで累積できるようになる\n『独占欲』の累積数に応じて以下の効果が発動可能になる。\n「１：『ヴォーパルバタフライ』を使用した後、選択した対象に追加で１回『ヴォーパルバタフライ』が発動する」\n「２：『オブセッシヴローズ』を使用した後、選択した対象に追加で１回『オブセッシヴローズ』が発動する」\n「３：『プリンス・マイ・ラヴ』を使用した後、選択した対象に追加で１回『プリンス・マイ・ラヴ』が発動する」\n「４：自身のターン中、ハイライトゲージを消費せず、選択した対象に１回『ハイライト』を発動できる（ハイライト発動クールタイムには影響しない）」\n（それぞれの効果は戦闘中に一度だけ発動することができる。追加発動するスキル効果は、スキル使用時に対象が撃破されている、またはスキルが無効・反射・吸収された場合、別の対象が選択される）",
+        "name": "２人だけの世界",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "敵単体に攻撃力457.1%/503.9%/485.2%/532.0%の呪怨属性ダメージを与え、３ターンの間、『愛執』でクリティカルが発生するようになる。\nさらに対象に付与されているすべての持続ダメージ効果が１回発動し、追加で２回『愛執』の効果が発動する。",
+      "name": "ハイライト",
+      "nature": "Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 142152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Damage Mult.": "0.16",
+      "Pierce Rate": "0.075"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "鹿野 苺",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 20",
+        "desc": "敵単体に攻撃力129.0%/142.2%/137.0%/150.2%の呪怨属性ダメージを与え、『愛執』を２つ付与する。対象のＨＰが７０%より多い時、スキルダメージが２００%上昇する。このスキルで対象を撃破した場合、再度このスキルが発動する（連続して発動可能）。",
+        "name": "ヴォーパルバタフライ",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142111,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵単体に攻撃力106.9%/117.8%/113.4%/124.4%の呪怨属性ダメージを与え、『愛執』を４つ付与する。",
+        "name": "オブセッシヴローズ",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142112,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "敵単体に攻撃力254.8%/280.9%/270.4%/296.6%＋『愛執』累積数×11.7%/12.9%/12.4%/13.6%の呪怨属性ダメージを与える。さらに対象の『愛執』が１０個以上の場合、追加で攻撃力118.7%/130.9%/126.1%/138.2%の呪怨属性ダメージを与える。スキル発動後に『愛執』の持続時間をリセットする。",
+        "name": "プリンス・マイ・ラヴ",
+        "nature": "Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 142113,
+        "tags": [
+          "単体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『独占欲』１つごとに、自身の攻撃力が15.0%上昇する。",
+        "name": "ダイスキがいっぱい",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "自身が場にいる時、味方全体の持続ダメージ効果が15.0%上昇する。",
+        "name": "どろどろいちごバター",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 142132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "546.67 / 556.27 / 566.67 / 576.27 / 585.87 / 596.27 / 605.87",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3600.02 / 3664.82 / 3729.62 / 3794.42 / 3859.22 / 3924.02 / 3988.82",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

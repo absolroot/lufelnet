@@ -198,7 +198,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "",
-        "desc": "Increase Nuclear damage taken by foes with Radiation by 15.0%. Lasts for 2 turns.",
+        "desc": "When foes are inflicted with Radiation, increase their Nuclear damage taken by 15.0% for 2 turns.",
         "name": "Eagle Eye",
         "nature": null,
         "skill_lv": "3",

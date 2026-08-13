@@ -571,17 +571,20 @@
     });
 
     arr.sort((a, b) => {
-      // 1) lightning_stamp 보유 무기 우선
+      // 1) 출시 순 정렬을 우선 적용
+      const orderDiff = sortOrder === 'asc' ? (a.order - b.order) : (b.order - a.order);
+      if (orderDiff !== 0) return orderDiff;
+
+      // 2) 출시 순이 같으면 lightning_stamp 보유 무기 우선
       if (a.hasStamp && !b.hasStamp) return -1;
       if (!a.hasStamp && b.hasStamp) return 1;
 
-      // 2) 둘 다 lightning_stamp가 있으면 stamp order 내림차순
+      // 3) 둘 다 lightning_stamp가 있으면 stamp order 내림차순
       if (a.hasStamp && b.hasStamp && a.stampOrder !== b.stampOrder) {
         return b.stampOrder - a.stampOrder;
       }
 
-      // 3) 그 외에는 기존 출시 순 정렬 유지
-      return sortOrder === 'asc' ? (a.order - b.order) : (b.order - a.order);
+      return 0;
     });
 
     return arr.map(x => x.key);

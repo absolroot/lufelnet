@@ -2,6 +2,34 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Curse attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-throne.png",
+            "level": "89",
+            "name": "Throne",
+            "skill": "155,158",
+            "sn": "531101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "368401"
+      },
+      {
         "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
@@ -20,44 +48,15 @@
             "level": "89",
             "name": "Surt",
             "skill": "108,103,1008",
-            "sn": "533101",
+            "sn": "531111",
             "stat": {}
           }
         ],
         "scoreRatio": 1.0,
-        "sn": "358401"
-      },
-      {
-        "bonusRule": "All ally Electric attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Phys",
-                "Gun",
-                "Wind",
-                "Bless"
-              ],
-              "Weak": [
-                "Electric"
-              ]
-            },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
-            "level": "89",
-            "name": "Cu Chulainn",
-            "skill": "1023,1154",
-            "sn": "533111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "358402"
+        "sn": "368402"
       }
     ],
-    "buff": "Magnetic Waves: After activating a skill, Resonance, Highlight, or Theurgy, gain 1 Rising Ripples stack.\nRising Ripples: Increase final damage by 5% for 2 turns. Stacks up to 8 times.",
+    "buff": "Eroding Fissure: When allies deal weakness damage, gain Eroding Fissure.\nEroding Fissure: Increase final damage by 20%, and increase continuous damage by 20% for 2 turns.",
     "endTime": "2026-08-27 10:30:00",
     "startTime": "2026-08-13 11:30:00"
   },

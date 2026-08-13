@@ -23,20 +23,20 @@ window.ritualData["아야카·여름"] = {
 
 window.enCharacterRitualData["아야카·여름"] = {
   "name": "Ayaka·Summer",
-  "r0": "The Summer Time You Gave Me",
-  "r0_detail": "During battle, Ayaka·Summer takes control of all allies' HIGHLIGHT activations and decreases allies' HIGHLIGHT cooldown by 1 turn. In exchange, allies cannot activate HIGHLIGHT through normal means.\nAt the start of Ayaka·Summer's turn, she can activate the special skill Time Concerto to let an ally activate HIGHLIGHT 1 time at no cost.\nWhen Ayaka·Summer is on the field, increase the HIGHLIGHT energy cap to 250%. After Ayaka·Summer activates her own HIGHLIGHT, she can gain Starwish to greatly enhance Melody for the Wind.",
-  "r1": "The Same Sea Hue as That Day",
-  "r1_detail": "If Summer Night Star Curtain has already been deployed, after an ally activates HIGHLIGHT, Ayaka·Summer immediately triggers Summer Night Star Curtain 1 time with its skill damage increased by 100%.\nEach time Summer Night Star Curtain activates, increase Ayaka·Summer's critical damage by 5% for 2 turns. Stacks up to 6 times.",
-  "r2": "Searching for What Does Not Change",
-  "r2_detail": "After Ayaka·Summer activates the special skill Time Concerto, increase her Attack by 30% for 1 turn, and immediately restore 25% HIGHLIGHT energy.\nFurther increase the HIGHLIGHT energy cap to 300%.",
-  "r3": "A Heart That Will Not Stop Beating",
-  "r3_detail": "Increase the skill levels of Melody for the Wind and Thief Tactics by 3, up to level 15.",
+  "r0": "The Summer Days You Gave",
+  "r0_detail": "Ayaka will take over all allies' HIGHLIGHT activation, and decrease their HIGHLIGHT cooldown by 1 turn.\nAllies cannot activate their HIGHLIGHT through normal means (by spending HIGHLIGHT Energy or corresponding combat resource).\nAt the start of Ayaka's turn, she can use the special skill [Concerto of Time] to activate an ally's HIGHLIGHT for free.\nWhen Ayaka is present, increase HIGHLIGHT Energy cap to 250%. After Ayaka uses her HIGHLIGHT, gain [Star Wish] to heavily boost [Windward Melody].",
+  "r1": "That Day's Ocean Blue",
+  "r1_detail": "If [Summer Starscape] is open, after an ally uses a HIGHLIGHT, immediately activate 1 [Summer Starscape] and increase its Skill Damage by 100%.\nAfter activating [Summer Starscape], increase Ayaka's critical damage by 5% for 2 turns. Stacks up to 6 times.",
+  "r2": "Searching for the Unchanging",
+  "r2_detail": "After Ayaka uses [Concerto of Time], increase Attack by 30% for 1 turn. Then immediately restore 25% HIGHLIGHT Energy.\nIncrease HIGHLIGHT Energy cap to 300%.",
+  "r3": "Unrelenting Heart",
+  "r3_detail": "Increase the skill levels of [Windward Melody] and [Thief Tactics] by 3.",
   "r4": "Fragments of a Dream",
-  "r4_detail": "HIGHLIGHT Enhanced: Increase Ayaka·Summer's damage by 30% more for 1 turn.",
-  "r5": "Overflowing Longing",
-  "r5_detail": "Increase the skill levels of Starlit Concerto and Unfinished Song by 3, up to level 15.",
-  "r6": "Until My Song Reaches You",
-  "r6_detail": "Increase Ayaka·Summer's Resonance damage amplification by 20%, and all Persona skills are counted as Resonance.\nAfter Summer Night Star Curtain is deployed, Ayaka·Summer gains permanent Gathered Notes.\nEach time Summer Night Star Curtain activates, restore 25% HIGHLIGHT energy."
+  "r4_detail": "HIGHLIGHT Enhanced: Increase Ayaka's damage by 30% for 1 turn.",
+  "r5": "Overflowing Feelings",
+  "r5_detail": "Increase the skill levels of [Celestial Concerto] and [Unfinished Song] by 3.",
+  "r6": "Until This Song Reaches You",
+  "r6_detail": "Increase Ayaka's Resonance Damage Amplification by 20%.\nAll Persona skills count as Resonance.\nAfter opening [Summer Starscape], permanently gain [Improvised Song].\nWhen activating [Summer Starscape], restore 25% HIGHLIGHT Energy."
 };
 
 window.jpCharacterRitualData["아야카·여름"] = {

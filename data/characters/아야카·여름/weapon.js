@@ -27,22 +27,23 @@ window.WeaponData["아야카·여름"] = {
 window.enCharacterWeaponData["아야카·여름"] = {
   "name": "Ayaka·Summer",
   "weapon4-1": {
-    "name": "Wind-Sung Tide",
+    "name": "Tidal Chant",
     "health": 1744.19,
     "attack": 639.7,
     "defense": 313.75,
-    "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nFor each Starwish stack gained, increase Ayaka·Summer's damage by 5.8%/7.7%/7.7%/9.6%/9.6%/11.5%/11.5% for 1 turn. Stacks up to 3 times."
+    "skill_name": "Tidal Echo",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nFor each [Star Wish] stack gained, increase user's damage by 5.8%/7.7%/7.7%/9.6%/9.6%/11.5%/11.5% for 1 turn. Stacks up to 3 times."
   },
   "weapon5-1": {
-    "name": "Sea-Hued Echoes",
+    "name": "Ocean Echoes",
     "health": 2180.22,
     "attack": 799.42,
     "defense": 391.98,
-    "skill_name": "",
-    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nAfter Summer Night Star Curtain is deployed, permanently increase Ayaka·Summer's critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%.\nAfter Ayaka·Summer activates HIGHLIGHT, increase Resonance damage amplification by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8% for 2 turns."
+    "skill_name": "Azure Love Song",
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nAfter opening [Summer Starscape], permanently increase user's critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%.\nAfter user uses a HIGHLIGHT, increase Resonance Damage Amplification by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8% for 2 turns."
   }
 };
+
 
 window.jpCharacterWeaponData["아야카·여름"] = {
   "name": "坂井 綾香 夏",

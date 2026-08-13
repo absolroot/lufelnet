@@ -53,12 +53,12 @@ window.characterSkillsData["아야카·여름"] = {
 window.enCharacterSkillsData["아야카·여름"] = {
   "name": "Ayaka·Summer",
   "skill1": {
-    "name": "Starlit Concerto",
+    "name": "Celestial Concerto",
     "element": "질풍광역",
     "type": "AoE DMG",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Wind damage to all foes equal to 330.9%/364.8%/351.2%/385.1% of Attack.\nAfter activation, deploy Summer Night Star Curtain, permanently increase Ayaka·Summer's damage by 39.0%/43.0%/41.4%/45.4%, and restore 100% HIGHLIGHT energy.\nThis skill cannot be used after Summer Night Star Curtain has been deployed.\nSummer Night Star Curtain: Before Ayaka·Summer's turn ends, deal Wind damage to all foes equal to 41.4%/45.6%/43.9%/48.2% of Attack. This is counted as Resonance damage."
+    "description": "Deal Wind damage to all foes equal to 330.9%/364.8%/351.2%/385.1% of Attack.\nThen, open [Summer Starscape], permanently increase Ayaka's damage by 39.0%/43.0%/41.4%/45.4%, and restore 100% HIGHLIGHT Energy.\nAfter opening [Summer Starscape], Ayaka cannot use this skill.\n[Summer Starscape]: Before the end of Ayaka's turn, deal Wind damage to all foes equal to 41.4%/45.6%/43.9%/48.2% of Attack. This damage is counted as a Resonance."
   },
   "skill2": {
     "name": "Unfinished Song",
@@ -66,33 +66,33 @@ window.enCharacterSkillsData["아야카·여름"] = {
     "type": "AoE DMG",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Wind damage to all foes equal to 173.7%/191.5%/184.4%/202.2% of Attack, and gain Gathered Notes for 2 turns.\nGathered Notes: At the end of Ayaka·Summer's turn, additionally restore 32% HIGHLIGHT energy.\nAfter Unfinished Song is used for the first time, immediately trigger Gathered Notes' HIGHLIGHT energy recovery effect 1 time."
+    "description": "Deal Wind damage to all foes equal to 173.7%/191.5%/184.4%/202.2% of Attack.\nAyaka gains [Improvised Song] for 2 turns.\n[Improvised Song]: At the end of Ayaka's turn, restore 32% bonus HIGHLIGHT Energy.\nAfter using [Unfinished Song] for the first time, immediately activate [Improvised Song]'s HIGHLIGHT Energy recovery effect."
   },
   "skill3": {
-    "name": "Melody for the Wind",
+    "name": "Windward Melody",
     "element": "질풍광역",
     "type": "AoE DMG",
     "sp": 26,
     "cool": 0,
-    "description": "Deal Wind damage to all foes 2 times, each equal to 105.1%/115.9%/111.6%/122.3% of Attack. Then spend all Starwish stacks. For each Starwish stack spent, trigger Summer Night Star Curtain 1 additional time. If 3 Starwish stacks were spent, the additionally triggered Summer Night Star Curtain deals 100% more skill damage."
+    "description": "Deal Wind damage to all foes equal to 105.1%/115.9%/111.6%/122.3% of Attack (2 hits).\nIf [Summer Starscape] is open, spend all [Star Wish] stacks, and for each stack spent, activate 1 [Summer Starscape].\nIf Ayaka spent 3 [Star Wish] stacks, increase [Summer Starscape]'s Skill Damage by 100%."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "질풍광역",
     "type": "Buff",
-    "description": "Gain 1 Starwish stack, and when Summer Night Star Curtain deals damage, increase critical damage by 24.4%/26.9%/25.9%/28.4% for 1 turn.\nAfter spending 100% HIGHLIGHT energy, for every additional 50% HIGHLIGHT energy spent, gain 1 more Starwish stack and further increase critical damage when Summer Night Star Curtain deals damage by 12.2%/13.4%/13.0%/14.2%.\nCritical damage increases gained from repeated HIGHLIGHT activations cannot stack.",
+    "description": "Gain 1 [Star Wish] stack. Then increase [Summer Starscape]'s critical damage by 24.4%/26.9%/25.9%/28.4% for 1 turn.\nAfter spending 100% HIGHLIGHT Energy, each subsequent 50% HIGHLIGHT Energy spent will grant 1 bonus [Star Wish] stack. Then further increase [Summer Starscape]'s critical damage by 12.2%/13.4%/13.0%/14.2%.\nThe critical damage buff from repeated HIGHLIGHT activation does not stack.",
     "cool": 0
   },
   "passive1": {
-    "name": "Soft Humming",
+    "name": "Gentle Hum",
     "element": "패시브",
-    "description": "Increase damage dealt by Summer Night Star Curtain by 36.0%, and dispel 1 buff from foes. This dispel can trigger up to 1 time per turn.",
+    "description": "Increase [Summer Starscape]'s damage by 36.0%. [Summer Starscape] can dispel 1 buff each turn.",
     "cool": 0
   },
   "passive2": {
     "name": "Duet",
     "element": "패시브",
-    "description": "After an ally uses HIGHLIGHT or Theurgy, increase Ayaka·Summer's Attack by 21.0% for 2 turns. Stacks up to 2 times.",
+    "description": "After an ally uses a HIGHLIGHT/Theurgy, increase Ayaka's Attack by 21.0% for 2 turns. Stacks up to 2 times.",
     "cool": 0
   }
 };

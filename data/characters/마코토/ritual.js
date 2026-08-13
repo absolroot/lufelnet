@@ -28,7 +28,7 @@ window.enCharacterRitualData["마코토"] = {
   "r1": "Execution of Justice",
   "r1_detail": "At the start of battle, gain 5 Tenacity stacks, allowing Makoto to activate Crash Out.\nWhen Crash Out is active, increase Attack by 50% more and damage by 35%.",
   "r2": "Hot and Cold",
-  "r2_detail": "When Crash Out is active, inflict random elemental ailments on foes, and for each different type of elemental ailment, increase Makoto's pierce rate by 6%.",
+  "r2_detail": "When entering Crash Out state, inflict random elemental ailments on foes, and for each different type of elemental ailment, increase Makoto's pierce rate by 6%.",
   "r3": "Full Throttle",
   "r3_detail": "Increase the skill levels of Sanctioned Drift and Nuclear Fury by 3.",
   "r4": "Fist of the Phantom Star",

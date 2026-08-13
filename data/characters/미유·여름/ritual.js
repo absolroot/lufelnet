@@ -26,7 +26,7 @@ window.enCharacterRitualData["미유·여름"] = {
   "r0": "Surfing Mermaid",
   "r0_detail": "Wavecatcher Miyu can enter Surf state, spending SP to automatically attack foes.\nIncrease Wavecatcher Miyu's max SP to 200, and at the start of battle, set her SP to 0. At the start of other allies' turns, restore 15 SP to Wavecatcher Miyu (affected by SP Recovery).\nDuring battle, based on the total of her recovered SP (including SP above the maximum), gain the following effects.\n100: Increase Attack by 25%.\n200: Increase damage by 25%.\n300: Increase critical rate by 12%.\n400: Increase critical damage by 24%.",
   "r1": "Offshore Paradise",
-  "r1_detail": "Decrease SP cost of Catch a Wave by 40%, and increase max Offshore stacks by 2.\nWhen Surf is active, extend duration of all buffs/debuffs applied by 1 turn.",
+  "r1_detail": "Decrease SP cost of Catch a Wave by 40%, and increase max Offshore stacks by 2.\nWhen entering Surf state, extend duration of all buffs/debuffs applied by 1 turn.",
   "r2": "Roaring Surf Line",
   "r2_detail": "While Surf is active, increase Wavecatcher Miyu's critical damage by 20%.\nEvery 4 times Catch a Wave is activated, activate a special Catch a Wave 1 more time without spending SP. This Catch a Wave does not count toward skill activation counts, and cannot grant Offshore stacks.",
   "r3": "Sea Breeze Paddling",

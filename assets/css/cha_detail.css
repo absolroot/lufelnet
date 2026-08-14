@@ -3150,6 +3150,186 @@ html.skel .character-name::after {
     display: none !important;
 }
 
+/* Character page footer: All-Out Attack artwork */
+.character-allout {
+    --character-allout-radius: 16px;
+}
+
+.character-allout[hidden] {
+    display: none !important;
+}
+
+.character-allout__nav[hidden],
+.character-allout__dots[hidden] {
+    display: none !important;
+}
+
+.character-allout:not(.is-ready) {
+    display: block;
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.character-allout.is-ready {
+    margin: 40px 0 72px;
+}
+
+.character-allout__stage {
+    position: relative;
+    width: 100%;
+}
+
+.character-allout__viewport {
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--character-allout-radius);
+    clip-path: inset(0 round var(--character-allout-radius));
+}
+
+.character-allout__track {
+    display: flex;
+    width: 100%;
+    transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: transform;
+}
+
+.character-allout__slide {
+    box-sizing: border-box;
+    flex: 0 0 100%;
+    min-width: 0;
+    overflow: hidden;
+    border-radius: var(--character-allout-radius);
+}
+
+.character-allout__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--character-allout-radius);
+}
+
+.character-allout.is-ready .character-allout__image {
+    animation: character-allout-reveal 420ms ease-out both;
+}
+
+.character-allout__nav {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.68);
+    color: #fff;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: background-color 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+
+.character-allout__nav:hover,
+.character-allout__nav:focus-visible {
+    border-color: #fff;
+    background: rgba(0, 0, 0, 0.9);
+    outline: none;
+    transform: translateY(-50%) scale(1.06);
+}
+
+.character-allout__nav span {
+    display: block;
+    font-size: 34px;
+    line-height: 1;
+    transform: translateY(-1px);
+}
+
+.character-allout__nav--prev {
+    left: clamp(8px, 2vw, 24px);
+}
+
+.character-allout__nav--next {
+    right: clamp(8px, 2vw, 24px);
+}
+
+.character-allout__dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 14px;
+}
+
+.character-allout__dot {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.38);
+    cursor: pointer;
+    transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.character-allout__dot:hover,
+.character-allout__dot:focus-visible {
+    background: rgba(255, 255, 255, 0.78);
+    outline: 2px solid rgba(255, 255, 255, 0.68);
+    outline-offset: 3px;
+}
+
+.character-allout__dot.is-active {
+    background: #ff2f38;
+    transform: scale(1.22);
+}
+
+@keyframes character-allout-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 1200px) {
+    .character-allout {
+        --character-allout-radius: 10px;
+    }
+}
+
+@media (max-width: 640px) {
+    .character-allout.is-ready {
+        margin: 32px 0 56px;
+    }
+
+    .character-allout__nav {
+        width: 38px;
+        height: 38px;
+    }
+
+    .character-allout__nav span {
+        font-size: 30px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .character-allout__track,
+    .character-allout__nav,
+    .character-allout__dot {
+        transition: none;
+    }
+
+    .character-allout.is-ready .character-allout__image {
+        animation: none;
+    }
+}
+
 /* ---- Layout stability ---- */
 
 /* Review area */

@@ -1128,12 +1128,179 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    const charactersWithoutAllOutImage = new Set([
+        '류지·댄싱 스타',
+        '아라가키',
+        '아마다',
+        '시오미 코토네',
+        '이치고·여름',
+        '미쿠'
+    ]);
+
+    const wonderAllOutFiles = [
+        '원더.png',
+        '원더-신년.png',
+        '원더-여름.png',
+        '원더-벨벳룸.png'
+    ];
+
+    function formatAllOutText(template, values) {
+        return Object.keys(values).reduce((text, key) => {
+            return text.replace(new RegExp(`\\{${key}\\}`, 'g'), values[key]);
+        }, String(template || ''));
+    }
+
+    function getAllOutDisplayName(characterName, character) {
+        const lang = getCurrentLanguage();
+        if (lang === 'en') return character.name_en || characterName;
+        if (lang === 'jp') return character.name_jp || character.name_en || characterName;
+        if (lang === 'cn') return character.name_cn || character.name_en || characterName;
+        return character.name || characterName;
+    }
+
+    function initCharacterAllOut(characterName, character) {
+        const section = document.getElementById('character-allout');
+        const track = document.getElementById('character-allout-track');
+        const prevButton = document.getElementById('character-allout-prev');
+        const nextButton = document.getElementById('character-allout-next');
+        const dots = document.getElementById('character-allout-dots');
+        if (!section || !track || !prevButton || !nextButton || !dots) return;
+        if (charactersWithoutAllOutImage.has(characterName)) return;
+
+        const files = characterName === '원더'
+            ? wonderAllOutFiles
+            : [`${characterName}.png`];
+        let pendingImages = files.length;
+        let currentIndex = 0;
+        let slides = [];
+
+        const updateLabels = () => {
+            const displayName = getAllOutDisplayName(characterName, character);
+            section.setAttribute('aria-label', t('characterAllOutSectionLabel', '총공격'));
+            prevButton.setAttribute('aria-label', t('characterAllOutPrevious', '이전 총공격 이미지'));
+            nextButton.setAttribute('aria-label', t('characterAllOutNext', '다음 총공격 이미지'));
+
+            slides.forEach((slide, index) => {
+                const image = slide.querySelector('.character-allout__image');
+                if (image) {
+                    image.alt = formatAllOutText(
+                        t('characterAllOutImageAlt', '{name} 총공격 이미지'),
+                        { name: displayName, index: String(index + 1) }
+                    );
+                }
+            });
+
+            dots.querySelectorAll('.character-allout__dot').forEach((dot, index) => {
+                dot.setAttribute('aria-label', formatAllOutText(
+                    t('characterAllOutShowImage', '총공격 이미지 {index} 보기'),
+                    { name: displayName, index: String(index + 1) }
+                ));
+            });
+        };
+
+        const updateCarousel = () => {
+            track.style.transform = `translateX(-${currentIndex * 100}%)`;
+            slides.forEach((slide, index) => {
+                slide.setAttribute('aria-hidden', index === currentIndex ? 'false' : 'true');
+            });
+            dots.querySelectorAll('.character-allout__dot').forEach((dot, index) => {
+                const isActive = index === currentIndex;
+                dot.classList.toggle('is-active', isActive);
+                dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+            });
+        };
+
+        const showSlide = (index) => {
+            if (slides.length < 2) return;
+            currentIndex = (index + slides.length) % slides.length;
+            updateCarousel();
+        };
+
+        const finishLoading = () => {
+            pendingImages -= 1;
+            if (pendingImages > 0) return;
+
+            slides = Array.from(track.querySelectorAll('.character-allout__slide'));
+            if (!slides.length) {
+                section.hidden = true;
+                return;
+            }
+
+            dots.innerHTML = '';
+            if (slides.length > 1) {
+                slides.forEach((slide, index) => {
+                    const dot = document.createElement('button');
+                    dot.type = 'button';
+                    dot.className = 'character-allout__dot';
+                    dot.addEventListener('click', () => showSlide(index));
+                    dots.appendChild(dot);
+                });
+                prevButton.hidden = false;
+                nextButton.hidden = false;
+                dots.hidden = false;
+            } else {
+                prevButton.hidden = true;
+                nextButton.hidden = true;
+                dots.hidden = true;
+            }
+
+            currentIndex = 0;
+            updateLabels();
+            updateCarousel();
+            section.classList.add('is-ready');
+        };
+
+        files.forEach((fileName) => {
+            const slide = document.createElement('div');
+            slide.className = 'character-allout__slide';
+
+            const image = document.createElement('img');
+            image.className = 'character-allout__image';
+            image.loading = 'eager';
+            image.decoding = 'async';
+            image.addEventListener('load', finishLoading, { once: true });
+            image.addEventListener('error', () => {
+                slide.remove();
+                finishLoading();
+            }, { once: true });
+
+            slide.appendChild(image);
+            track.appendChild(slide);
+            image.dataset.src = `${BASE_URL}/assets/img/gallery/allout/${encodeURIComponent(fileName)}`;
+        });
+
+        prevButton.addEventListener('click', () => showSlide(currentIndex - 1));
+        nextButton.addEventListener('click', () => showSlide(currentIndex + 1));
+        window.addEventListener('languageDetected', updateLabels);
+        section.hidden = false;
+
+        const loadImages = () => {
+            track.querySelectorAll('.character-allout__image[data-src]').forEach((image) => {
+                image.src = image.dataset.src;
+                delete image.dataset.src;
+            });
+        };
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                if (!entries.some((entry) => entry.isIntersecting)) return;
+                observer.disconnect();
+                loadImages();
+            }, { rootMargin: '800px 0px' });
+            observer.observe(section);
+        } else {
+            loadImages();
+        }
+    }
+
     // URL에서 캐릭터 이름을 가져와서 현재 페이지 표시
     const urlParams = new URLSearchParams(window.location.search);
     const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
 
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
+        // 총공격 이미지 임시 비활성화: 공개 시 아래 호출의 주석만 해제합니다.
+        // safeRun('character-allout', () => initCharacterAllOut(characterName, character));
 
         // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
         safeRun('persona3-css-and-text', () => {

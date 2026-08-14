@@ -2,8 +2,8 @@
   'use strict';
 
   const BASE = (typeof BASE_URL !== 'undefined' ? BASE_URL : '');
-  const IMAGES_DIR = `${BASE}/apps/gallery/images`;
-  const THUMBS_DIR = `${BASE}/apps/gallery/images/thumbs`;
+  const IMAGES_DIR = `${BASE}/assets/img/gallery`;
+  const THUMBS_DIR = `${BASE}/assets/img/gallery/thumbs`;
   const DATA_URL = `${BASE}/apps/gallery/gallery-tags.json?v=${Date.now()}`;
   // 디렉터리 나열은 사용하지 않음 (플러그인 비활성화). JSON만 사용
 
@@ -246,7 +246,7 @@
     img.setAttribute('data-src', buildThumbURL(item.filename));
     img.onerror = function(){
       const current = img.getAttribute('data-src') || '';
-      const isThumb = current.indexOf('/apps/gallery/images/thumbs/') !== -1;
+      const isThumb = current.indexOf('/assets/img/gallery/thumbs/') !== -1;
       if (isThumb) {
         img.onerror = null; // 무한 루프 방지
         img.setAttribute('data-src', buildImageURL(item.filename));

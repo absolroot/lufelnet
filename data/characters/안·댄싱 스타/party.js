@@ -1,7 +1,8 @@
 window.recommendParty = window.recommendParty || {};
 window.recommendParty["안·댄싱 스타"] = {
     "weapon": [
-        "작열의 연옥!"
+        "태고의 역장",
+        "작열의 연옥"
     ],
     "persona": [
         {

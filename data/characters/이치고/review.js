@@ -17,7 +17,7 @@
 
 - 각 『원념』은 적에게 부여할 때의 이치고의 버프 상태를 기억(스냅샷)하며, 3스킬을 통해 갱신할 때 해당 시점의 이치고 버프로 덮어씌워진다.
 
-- 지속 대미지는 페르소나 스킬 및 추가 효과가 아니기 때문에 『안정 영역』 메커니즘의 영향을 받지 않고, 크리티컬이 발생해야 크리티컬 대미지가 적용된다.
+- 지속 대미지는 페르소나 스킬 및 추가 효과가 아니기 때문에 『안정 영역』 메커니즘의 영향을 받지 않고, 크리티컬이 발생해야 크리티컬 효과가 적용된다.
 
 - 적이 턴을 끝낼 때 받는 지속대미지 결산의 경우 이치고의 관통 버프가 적용되지 않아, 방어력 감소 효과가 다른 캐릭터들보다 유의미하다.
 
@@ -59,7 +59,7 @@ Lovesick deals damage in two main ways: damage dealt at the end of the enemy’s
 
 - **Each Lovesick stack snapshots Ichigo’s buff state at the time of application, and when refreshed via S3, it overwrites with Ichigo’s buffs at that moment.**
 
-- DoT is neither a Persona Skill nor an Additional Effect, so it is unaffected by the Stable Domain mechanic; Critical Damage is applied only when a critical hit occurs.
+- DoT counts as neither a Persona skill nor a Resonance, so it is unaffected by Stable Domain; Crit Mult is applied only when a critical hit occurs.
 
 - For end-of-turn DoT settlement, Ichigo’s pierce buffs do not apply, making Defense Reduction effects more significant compared to other characters.  
 
@@ -76,7 +76,7 @@ Below is the buff table showing which of Ichigo’s buffs apply:
 | Lovesick Activation - Turn End | -                 | O (based on activation time) | -             | -      |
 | Highlight Base            | O                    | -                            | O             | O      |
 
-※ It is currently unconfirmed whether Penetration applies to the activation triggered by Highlight.
+※ It is currently unconfirmed whether pierce rate applies to DoT activations triggered by Highlight.
 
 <br>
 
@@ -89,7 +89,7 @@ For reference, Nian’s DoT Damage Increase, released before Ichigo, is calculat
 
 S1とS2で敵に『愛執』を付与し、最大スタックに到達した後、**S3で持続時間を更新しつつ強力なダメージを与える**。
 
-**ハイライトは苺の中核スキルで、蓄積された『愛執』を発動し、『愛執』がクリティカル可能になる。**
+**ハイライトは苺の中核スキルで、蓄積された『愛執』を発動し、『愛執』でクリティカルが発生するようになる。**
 
 ---
 
@@ -99,7 +99,7 @@ S1とS2で敵に『愛執』を付与し、最大スタックに到達した後�
 
 - **各『愛執』は付与時の苺のバフ状態をスナップショットし、S3で更新する際、その時点の苺のバフで上書きされる。**
 
-- 持続ダメージはペルソナスキルにも追加効果にも該当しないため、Stable Domainのメカニズムの影響を受けず、クリティカルが発生した場合にのみクリティカルダメージが適用される。
+- 持続ダメージはペルソナスキルにも意識奏功にも該当しないため、『安定領域』の影響を受けず、クリティカルが発生した場合にのみCRT倍率が適用される。
 
 - ターン終了時の持続ダメージ精算では苺の貫通バフが適用されないため、防御力減少効果が他の怪盗に比べて有意義になる。  
 
@@ -116,7 +116,7 @@ S1とS2で敵に『愛執』を付与し、最大スタックに到達した後�
 | 愛執発動 - ターン終了     | -                        | O (発動時点基準)            | -          | -    |
 | ハイライト 基本           | O                        | -                           | O          | O    |
 
-※ 現在、ハイライトによる発動に貫通が適用されるかは確認されていない。
+※ 現在、ハイライトによる持続ダメージ発動に貫通が適用されるかは確認されていない。
 
 <br>
 
@@ -128,7 +128,7 @@ S1とS2で敵に『愛執』を付与し、最大スタックに到達した後�
 
 她会通过技能1和技能2给敌人叠加『怨念』，叠满后再用**技能3刷新『怨念』持续时间并打出高额伤害**。
 
-**HIGHLIGHT是鹿野莓的核心技能，会结算已叠加的『怨念』，并使『怨念』能够暴击。**
+**HIGHLIGHT是鹿野莓的核心技能，会结算已叠加的『怨念』，并使『怨念』可触发暴击。**
 
 <br>
 
@@ -138,7 +138,7 @@ S1とS2で敵に『愛執』を付与し、最大スタックに到達した後�
 
 - 每一层『怨念』都会记录施加当下鹿野莓的增益状态（快照），而通过技能3刷新时，也会被刷新当下的增益状态重新覆盖。
 
-- 持续伤害既不属于人格面具技能，也不属于追加效果，因此不受『稳定领域』机制影响，只有触发暴击时，暴击伤害才会生效。
+- 持续伤害既不属于人格面具技能，也不属于追加效果，因此不受『稳定领域』影响，只有触发暴击时，暴击效果才会生效。
 
 - 在敌人回合结束时触发的持续伤害结算中，鹿野莓的穿透增益不会生效，因此和其他角色相比，防御力降低效果会显得更有价值。
 
@@ -155,7 +155,7 @@ S1とS2で敵に『愛執』を付与し、最大スタックに到達した後�
 | 怨念结算 - 回合结束       | -                | O（按结算时点）             | -          | -    |
 | HIGHLIGHT基础伤害         | O                | -                           | O          | O    |
 
-※ 目前尚未确认由HIGHLIGHT触发的结算是否适用穿透。
+※ 目前尚未确认由HIGHLIGHT触发的持续伤害结算是否适用穿透。
 
 <br>
 

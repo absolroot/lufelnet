@@ -10,6 +10,33 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
+                "Electric",
+                "Psychokinesis"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-ookuni.png",
+            "level": "89",
+            "name": "조종당하는 오오쿠니누시",
+            "skill": "1016,1021,1404",
+            "sn": 550101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
                 "Ice",
                 "Electric",
                 "Wind",
@@ -24,45 +51,17 @@
             "level": "89",
             "name": "조종당한 릴리스",
             "skill": "607,603",
-            "sn": 549101,
+            "sn": 550111,
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": 78401
-      },
-      {
-        "bonusRule": null,
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Fire",
-                "Nuclear",
-                "Bless"
-              ],
-              "Weak": [
-                "Gun"
-              ]
-            },
-            "image": "B-guaiwutouxiang-uriel.png",
-            "level": "89",
-            "name": "조종당하는 우리엘",
-            "skill": "1026,1016,1090",
-            "sn": 549111,
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
         "sn": 78402
       }
     ],
-    "buff": "화석의 검림: 괴도가 누적 40의 SP를 소모하거나 HIGHLIGHT/테우르기아를 발동할 때마다 모든 동료가 『예리한 뼛조각』을 1중첩 획득한다. 『예리한 뼛조각』: 중첩당 최종 대미지가 5% 증가하며 2턴 동안 지속된다(최대 8중첩).",
-    "endTime": "2026-08-20 07:30:00",
-    "startTime": "2026-07-23 08:30:00"
+    "buff": "과거 회귀: 괴도가 누적 80 SP를 소모하거나 누적 50%의 HIGHLIGHT 에너지를 소모할 때마다, 아군 전체가 『시간의 조각』 1중첩을 획득한다. 『시간의 조각』: 2턴 동안 중첩마다 7%의 최종 대미지 보너스를 제공한다(6회 중첩 가능).",
+    "endTime": "2026-09-10 07:30:00",
+    "startTime": "2026-08-20 08:30:00"
   },
   "msg": "OK",
   "status": 0

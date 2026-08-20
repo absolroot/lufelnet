@@ -47,12 +47,12 @@ window.innateData["모토하·여름"] = {
       "type": "패시브",
       "name_cn": "潮升",
       "desc_cn": "释放『海浪追逐者』后，自身永久获得20.0%/30.0%/40.0%的攻击力提升、22.5%/33.8%/45.0%的暴击效果提升，最多可叠加2层。",
-      "name": "밀려오는 파도",
+      "name": "몰려드는 파도",
       "name_en": "Rising Tide",
-      "desc_en": "After using Surf 'n' Shine, permanently increase Tropical Motoha's Attack by 17.5%/26.2%/35.0% and Critical Effect by 22.5%/33.8%/45.0%. Stacks up to 2 times.",
-      "desc": "『파도 추격자』 사용 후, 자신의 공격력이 영구적으로 17.5%/26.2%/35.0% 증가하고 크리티컬 효과가 22.5%/33.8%/45.0% 증가한다. 최대 2회 중첩된다.",
+      "desc_en": "After using Surf 'n' Shine, permanently increase Tropical Motoha's Attack by 20.0%/30.0%/40.0% and Critical Effect by 22.5%/33.8%/45.0%. Stacks up to 2 times.",
+      "desc": "『파도 추격자』 시전 후, 자신의 공격력이 20.0%/30.0%/40.0%, 크리티컬 효과가 22.5%/33.8%/45.0% 영구 증가한다(2회 중첩 가능).",
       "name_jp": "潮の高まり",
-      "desc_jp": "『サーフ＆シャイン』使用後、自身の攻撃力が永続的に17.5%/26.2%/35.0%上昇し、クリティカル効果が22.5%/33.8%/45.0%上昇する。最大2つまで累積できる。"
+      "desc_jp": "『サーフ＆シャイン』使用後、自身の攻撃力が永続的に20.0%/30.0%/40.0%上昇し、クリティカル効果が22.5%/33.8%/45.0%上昇する。最大2つまで累積できる。"
     },
     {
       "ascend": "0",
@@ -67,9 +67,9 @@ window.innateData["모토하·여름"] = {
       "name": "작열하는 태양",
       "name_en": "Scorching Sun",
       "name_jp": "灼熱の太陽",
-      "desc": "자신이 페르소나 스킬을 사용해 생명을 소모할 때, 이번 스킬의 스킬 대미지가 20.0%/30.0%/40.0%+10%*의식 레벨만큼 증가한다.\n『한여름』 상태일 때, 자신의 총 대미지 증폭이 10.0%/15.0%/20.0%+5%*의식 레벨만큼 증가하고, 대미지가 20.0%/30.0%/40.0%+10%*의식 레벨만큼 증가한다.",
-      "desc_en": "When Tropical Motoha uses a Persona skill that spends HP, increase that skill's skill damage by 20.0%/30.0%/40.0% + 10% × Awareness Level.\nWhile Summer Hype is active, increase her Final Damage Mult. by 10.0%/15.0%/20.0% + 5% × Awareness Level and her damage by 20.0%/30.0%/40.0% + 10% × Awareness Level.",
-      "desc_jp": "自身がペルソナスキルでHPを消費した時、そのスキルのスキルダメージが20.0%/30.0%/40.0%＋10%×意識レベル分上昇する。\n『真夏のテンション』状態の時、自身の最終ダメージが10.0%/15.0%/20.0%＋5%×意識レベル分上昇し、与ダメージが20.0%/30.0%/40.0%＋10%×意識レベル分上昇する。"
+      "desc": "자신이 페르소나 스킬을 시전하여 생명 소모 시, 이번 스킬의 스킬 대미지가 25.0%/37.5%/50.0%+6%*의식 레벨만큼 증가한다.\n『한여름』 상태에서는 자신의 총 대미지 증폭이 10.0%/15.0%/20.0%+2.5%*의식 레벨만큼 증가하고, 대미지가 22.5%/33.8%/45.0%+5%*의식 레벨만큼 증가한다.",
+      "desc_en": "When Tropical Motoha uses a Persona skill that spends HP, increase that skill's skill damage by 25.0%/37.5%/50.0% + 6% × Awareness Level.\nWhile Summer Hype is active, increase her Final Damage Mult. by 10.0%/15.0%/20.0% + 2.5% × Awareness Level and her damage by 22.5%/33.8%/45.0% + 5% × Awareness Level.",
+      "desc_jp": "自身がペルソナスキルでHPを消費した時、そのスキルのスキルダメージが25.0%/37.5%/50.0%＋6%×意識レベル分上昇する。\n『真夏のテンション』状態の時、自身の最終ダメージが10.0%/15.0%/20.0%＋2.5%×意識レベル分上昇し、与ダメージが22.5%/33.8%/45.0%＋5%×意識レベル分上昇する。"
     }
   ]
 };

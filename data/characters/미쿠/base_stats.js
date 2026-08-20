@@ -10,8 +10,7 @@ window.basicStatsData["미쿠"] = {
         "speed": 100
     },
     "awake7": {
-        "hp_per": 20,
-        "crit_rate": 12
+        "attack": 29
     },
     "a0_lv80": {
         "HP": 3539.98,

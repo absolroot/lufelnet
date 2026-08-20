@@ -1,7 +1,7 @@
 window.recommendParty = window.recommendParty || {};
 window.recommendParty["아야카·여름"] = {
     "weapon": [
-        "바람의 속삭임!"
+        "속삭이는 자의 가시!"
     ],
     "persona": [
         {

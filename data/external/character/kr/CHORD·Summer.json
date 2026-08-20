@@ -1,0 +1,287 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "사카이 아야카·여름은 전투 중 모든 동료의 HIGHLIGHT 시전을 관리하며, 동료의 HIGHLIGHT 쿨타임을 1턴 감소시킨다. 이에 따라 동료는 일반 수단으로 HIGHLIGHT를 시전할 수 없다.\n사카이 아야카·여름은 자신의 턴 시작 시, 특수 스킬 『시간의 협주곡』을 시전하여 동료가 소모 없이 HIGHLIGHT를 1회 시전하게 할 수 있다.\n사카이 아야카·여름이 필드에 있을 때, HIGHLIGHT 에너지 상한이 250% 증가하며, 사카이 아야카·여름이 자신의 HIGHLIGHT 시전 후 『별의 소원』을 획득하여 스킬 『바람에게 보내는 멜로디』를 대폭 강화할 수 있다.",
+        "name": "네가 준 여름날",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『여름밤 별의 장막』이 이미 전개되었다면, 사카이 아야카·여름은 동료가 HIGHLIGHT를 시전한 후 즉시 스킬 대미지가 100% 증가한 『여름밤 별의 장막』을 1회 발동한다.\n『여름밤 별의 장막』이 발동할 때마다 2턴 동안 사카이 아야카·여름의 크리티컬 효과가 5% 증가한다(6회 중첩 가능).",
+        "name": "그날과 같은 바다색",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "사카이 아야카·여름이 특수 스킬 『시간의 협주곡』 시전 후 1턴 동안 공격력이 30% 증가하고, 즉시 25%의 HIGHLIGHT 에너지를 회복한다.\nHIGHLIGHT 에너지 상한이 300%로 추가 증가한다.",
+        "name": "변하지 않는 것을 쫓아서",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『바람에게 보내는 멜로디』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "멈추지 않는 심장",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: 1턴 동안 사카이 아야카·여름이 주는 대미지가 30% 추가로 증가한다.",
+        "name": "꿈의 조각",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『별빛 협주』, 『끝나지 않은 노래』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "넘쳐흐르는 그리움",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "사카이 아야카·여름의 추가 효과 대미지 증폭이 20% 증가하며, 모든 페르소나 스킬이 추가 효과로 간주된다.\n『여름밤 별의 장막』 전개 후, 사카이 아야카·여름은 영구적인 『선율 엮기』를 획득한다.\n『여름밤 별의 장막』이 1회 발동할 때마다 HIGHLIGHT 에너지를 25% 회복한다.",
+        "name": "노래가 네게 닿을 때까지",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 0,
+      "cost": "",
+      "desc": "『별의 소원』 1중첩을 획득하고, 1턴 동안 『여름밤 별의 장막』이 대미지를 줄 때 크리티컬 효과가 24.4%/26.9%/25.9%/28.4% 증가한다.\n100%의 HIGHLIGHT 에너지를 소모한 후 추가로 50%의 HIGHLIGHT 에너지를 소모할 때마다 『별의 소원』 1중첩을 추가로 획득하고, 『여름밤 별의 장막』이 대미지를 줄 때 크리티컬 효과가 12.2%/13.4%/13.0%/14.2% 추가로 증가한다.\nHIGHLIGHT를 중복 시전하여 획득한 크리티컬 효과 증가는 중첩되지 않는다.",
+      "name": "HIGHLIGHT",
+      "nature": "Support",
+      "skill_lv": "10/10/13/13",
+      "sn": 132252,
+      "tags": [
+        null
+      ],
+      "target": "Myself",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "사카이 아야카·여름",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "적 전체에 공격력 330.9%/364.8%/351.2%/385.1%의 질풍 속성 대미지를 준다.\n시전 후 『여름밤 별의 장막』을 전개하며, 자신이 주는 대미지가 영구적으로 39.0%/43.0%/41.4%/45.4% 증가하고 HIGHLIGHT 에너지를 100% 회복한다.\n『여름밤 별의 장막』 전개 후에는 시전할 수 없다.\n『여름밤 별의 장막』: 사카이 아야카·여름의 턴 종료 전 적 전체에 공격력 41.4%/45.6%/43.9%/48.2%의 질풍 속성 대미지를 주며, 추가 대미지로 간주한다.",
+        "name": "별빛 협주",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 132211,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "적 전체에 공격력 173.7%/191.5%/184.4%/202.2%의 질풍 속성 대미지를 주고, 자신은 2턴 동안 『선율 엮기』를 획득한다.\n『선율 엮기』: 자신의 턴 종료 시 HIGHLIGHT 에너지를 32% 추가 회복한다.\n『끝나지 않은 노래』 최초 시전 후, 즉시 『선율 엮기』의 HIGHLIGHT 에너지 회복 효과가 1회 발동한다.",
+        "name": "끝나지 않은 노래",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 132212,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "적 전체에 공격력 105.1%/115.9%/111.6%/122.3%의 질풍 속성 대미지를 2회 준다. 『여름밤 별의 장막』이 이미 전개되었다면 모든 『별의 소원』을 소모하며, 『별의 소원』 1중첩을 소모할 때마다 『여름밤 별의 장막』이 1회 추가 발동한다. 『별의 소원』을 3중첩 소모했다면, 추가 발동하는 『여름밤 별의 장막』의 스킬 대미지가 100% 추가로 증가한다.",
+        "name": "바람에게 보내는 멜로디",
+        "nature": "Wind",
+        "skill_lv": "10/10/13/13",
+        "sn": 132213,
+        "tags": [
+          "액티브",
+          "광역피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『여름밤 별의 장막』이 주는 대미지가 36.0% 증가하고, 적의 버프 효과를 1중첩 해제한다. 해제 효과는 턴당 최대 1회 발동한다.",
+        "name": "가벼운 콧노래",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132231,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "동료가 HIGHLIGHT 또는 테우르기아 시전 후 2턴 동안 사카이 아야카·여름의 공격력이 21.0% 증가한다(2회 중첩 가능).",
+        "name": "합주",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 132232,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3010.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1209.99 / 1231.59 / 1253.19 / 1275.59 / 1297.19 / 1318.79 / 1340.39",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "593.32 / 603.72 / 614.92 / 625.32 / 635.72 / 646.92 / 657.32",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3300.03 / 3359.23 / 3419.23 / 3478.43 / 3537.63 / 3596.83 / 3656.83",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

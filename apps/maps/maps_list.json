@@ -1183,8 +1183,8 @@
             {
               "id": "magazine_office",
               "name": "잡지사",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Publishing House",
+              "name_jp": "出版社",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1193,17 +1193,19 @@
                 {
                   "id": "office_enterance",
                   "name": "사무실 입구",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Office Area Entrance",
+                  "name_jp": "オフィスエリア入口",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·사무실 입구_0_data.json",
                     "palace/시모츠나 팰리스/개미굴·사무실 입구_1_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/Office Area Entrance_0_data.json",
+                    "palace/Shimotsuna's Palace/Office Area Entrance_1_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/オフィスエリア入口_0_data.json",
+                    "palace/シモツナ・パレス/オフィスエリア入口_1_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1212,16 +1214,16 @@
                 {
                   "id": "office_lower",
                   "name": "사무실 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Office Area",
+                  "name_jp": "オフィスエリア下層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·사무실 하층_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/Lower Office Area_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/オフィスエリア下層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1230,16 +1232,16 @@
                 {
                   "id": "office_upper",
                   "name": "사무실 상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Office Area",
+                  "name_jp": "オフィスエリア上層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·사무실 상층_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/Upper Office Area_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/オフィスエリア上層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1248,16 +1250,16 @@
                 {
                   "id": "printing_lower",
                   "name": "인쇄실 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower Printing Facility",
+                  "name_jp": "印刷工場エリア下層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·인쇄실 하층_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/Lower Printing Facility_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/印刷工場エリア下層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -1266,16 +1268,16 @@
                 {
                   "id": "printing_upper",
                   "name": "인쇄실 상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper Printing Facility",
+                  "name_jp": "印刷工場エリア上層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·인쇄실 상층_0_data.json"
                   ],
                   "file_en": [
-
+                    "palace/Shimotsuna's Palace/Upper Printing Facility_0_data.json"
                   ],
                   "file_jp": [
-
+                    "palace/シモツナ・パレス/印刷工場エリア上層_0_data.json"
                   ],
                   "description": "",
                   "description_en": "",
@@ -2247,10 +2249,16 @@
             {
               "id": "area3",
               "name": "에어리어3",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 3",
+              "name_jp": "エリア3",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 3_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Kaitul/Path of Kaitul Area 3_data.json"
+              ],
+              "file_jp": [
+                "mementos/美徳奪われし路/美徳奪われし路エリア３_data.json"
               ],
               "description": "",
               "description_en": "",
@@ -2259,10 +2267,16 @@
             {
               "id": "area4",
               "name": "에어리어4",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 4",
+              "name_jp": "エリア4",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 4_data.json"
+              ],
+              "file_en": [
+                "mementos/Path of Kaitul/Path of Kaitul Area 4_data.json"
+              ],
+              "file_jp": [
+                "mementos/美徳奪われし路/美徳奪われし路エリア４_data.json"
               ],
               "description": "",
               "description_en": "",

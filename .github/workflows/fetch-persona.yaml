@@ -34,7 +34,7 @@ jobs:
 
       - name: Fetch & Update Persona
         env:
-          BASE_URL: https://iant.kr:5000/data
+          BASE_URL: https://p5x.iant.kr/data
         run: |
           set -euo pipefail
           # default: kr,en,jp,cn (101~300)

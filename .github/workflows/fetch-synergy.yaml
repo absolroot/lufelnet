@@ -29,7 +29,7 @@ jobs:
 
       - name: Fetch & update synergy data
         env:
-          BASE_URL: https://iant.kr:5000/data
+          BASE_URL: https://p5x.iant.kr/data
         run: |
           set -euo pipefail
           node scripts/fetch-synergy.mjs || {
@@ -40,7 +40,7 @@ jobs:
 
       - name: Fetch & update cybercoop data
         env:
-          BASE_URL: https://iant.kr:5000/data
+          BASE_URL: https://p5x.iant.kr/data
         run: |
           set -euo pipefail
           node scripts/fetch-synergy.mjs cybercoop || {

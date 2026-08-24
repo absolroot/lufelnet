@@ -41,7 +41,7 @@ const IANT_SOURCE_SERVERS = new Set(['kr', 'en', 'jp', 'cn', 'tw', 'sea']);
 const ALL_EXTERNAL_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 const DEFAULT_REPORT_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'character-patch-diff.md');
 const DEFAULT_REPORT_JSON_FILE = path.join(PROJECT_ROOT, 'scripts', 'reports', 'character-patch-diff.json');
-const IANT_BASE_URL = 'https://iant.kr:5000';
+const IANT_BASE_URL = 'https://p5x.iant.kr';
 const IANT_SERVER_TO_LOCAL_LANG = {
   kr: 'kr',
   en: 'en',

@@ -24,7 +24,7 @@ jobs:
 
       - name: Fetch core data
         env:
-          BASE_URL: https://iant.kr:5000/data
+          BASE_URL: https://p5x.iant.kr/data
           FETCH_MODE: core
         run: |
           bash scripts/fetch-external-data.sh

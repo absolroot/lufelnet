@@ -29,7 +29,7 @@ const EFFECT_FIELD_BY_LANG = {
   jp: 'effect_jp',
   cn: 'effect_cn'
 };
-const IANT_BASE_URL = 'https://iant.kr:5000';
+const IANT_BASE_URL = 'https://p5x.iant.kr';
 const IANT_SOURCE_SERVERS = new Set(['kr', 'en', 'jp', 'cn', 'tw', 'sea']);
 const wonderSourceCache = new Map();
 

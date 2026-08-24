@@ -34,7 +34,7 @@ const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn'];
 const SUPPORTED_PARTS = ['profile', 'innate_skill', 'passive_skill', 'uniqueSkill', 'highlight'];
 const EXCLUDED_PERSONA_KEYS = new Set(['가짜 랑다', '???']);
 const EXCLUDED_TEST_MARKERS = ['AAAAAA=='];
-const IANT_BASE_URL = 'https://iant.kr:5000';
+const IANT_BASE_URL = 'https://p5x.iant.kr';
 const IANT_SOURCE_SERVERS = new Set(['kr', 'en', 'jp', 'cn', 'tw', 'sea']);
 const personaSourceCache = new Map();
 

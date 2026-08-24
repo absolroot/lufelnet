@@ -17,7 +17,7 @@
  *     - endId  : 끝 ID (기본값: 300, 포함 범위)
  *
  * API 예시:
- *   https://iant.kr:5000/data/persona/kr/101?source=lufelnet
+ *   https://p5x.iant.kr/data/persona/kr/101?source=lufelnet
  */
 
 import fs from 'fs';
@@ -30,7 +30,7 @@ const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, '..');
 
 const ROOT_DIR = path.join(PROJECT_ROOT, 'data', 'external');
-const BASE_URL = process.env.BASE_URL || 'https://iant.kr:5000/data';
+const BASE_URL = process.env.BASE_URL || 'https://p5x.iant.kr/data';
 
 const ALLOWED_REGIONS = ['kr', 'en', 'cn', 'tw', 'jp', 'sea'];
 

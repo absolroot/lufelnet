@@ -945,7 +945,7 @@
     }
 
     async function fetchRecords(userUrl) {
-        const endpoint = 'https://iant.kr:5000/gacha/get_records';
+        const endpoint = 'https://p5x.iant.kr/gacha/get_records';
 
         // Try POST (x-www-form-urlencoded)
         try {

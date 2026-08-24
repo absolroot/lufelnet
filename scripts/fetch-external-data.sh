@@ -14,7 +14,7 @@ set +o pipefail
 set -u
 
 ROOT_DIR="${ROOT_DIR:-data/external}"
-BASE_URL="${BASE_URL:-https://iant.kr:5000/data}"
+BASE_URL="${BASE_URL:-https://p5x.iant.kr/data}"
 FETCH_MODE="${FETCH_MODE:-all}"
 
 ENDPOINTS=("gacha" "guildboss" "sos" "sandbox")

@@ -27,7 +27,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PROJECT_ROOT = path.join(__dirname, '..');
 
-const BASE_URL = process.env.BASE_URL || 'https://iant.kr:5000/data';
+const BASE_URL = process.env.BASE_URL || 'https://p5x.iant.kr/data';
 const SOURCE = process.env.SYNERGY_SOURCE || 'mydiscord';
 
 const FRIEND_NUM_FILE = path.join(PROJECT_ROOT, 'apps', 'synergy', 'friends', 'friend_num.json');

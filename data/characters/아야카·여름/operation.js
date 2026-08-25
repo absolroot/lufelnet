@@ -16,18 +16,18 @@ window.operationData["아야카·여름"] = {
     ],
     "note": [
         "· HL 에너지를 채우는 계시, 스킬, 적 약점 타격 등에 따라 HL 강화 수치가 달라질 수 있다.",
-        "· 최대 에너지가 존재하므로 HL은 아야카 턴 이전에 미리 사용하는 것이 좋다."
+        "· HL 에너지 상한이 존재하므로 최대 에너지에 도달하면 아야카 턴 이전에 미리 사용하는 것이 좋다."
     ],
     "note_en": [
         "· The HL enhancement value may vary depending on Revelations, skills, enemy weakness hits, and other effects that affect the HL gauge.",
-        "· Since the gauge has a maximum limit, it is recommended to use HL before Ayaka·Summer's turn."
+        "· Since HL energy has a cap, it is recommended to use HL before Ayaka·Summer's turn once it reaches the maximum."
     ],
     "note_jp": [
         "· HLゲージに影響する啓示、スキル、敵の弱点攻撃などによって、HLの強化値が変わる場合があります。",
-        "· ゲージ上限があるため、HLは坂井 綾香 夏のターン前にあらかじめ使用しておくのがおすすめです。"
+        "· HLエネルギーには上限があるため、最大まで溜まった場合は坂井 綾香 夏のターン前にあらかじめ使用しておくのがおすすめです。"
     ],
     "note_cn": [
         "· 根据影响HL槽的启示、技能、攻击敌人弱点等情况，HL强化数值可能会变化。",
-        "· 由于存在槽位上限，建议在坂井绫香·夏日的回合前提前使用HL。"
+        "· 由于HL能量存在上限，达到最大能量时，建议在坂井绫香·夏日的回合前提前使用HL。"
     ]
 };

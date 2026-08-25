@@ -39,6 +39,19 @@ window.recommendParty["아야카·여름"] = {
             "comment_en": "",
             "comment_jp": "",
             "comment_cn": ""
+        },
+        {
+            "members": [
+                "아야카·여름",
+                "모르가나·댄싱 스타",
+                "리코·매화",
+                "후카",
+                "아야카"
+            ],
+            "comment": "",
+            "comment_en": "",
+            "comment_jp": "",
+            "comment_cn": ""
         }
     ],
     "friends": [
@@ -55,6 +68,13 @@ window.recommendParty["아야카·여름"] = {
             "comment_en": "Can provide CRIT Mult and ATK, while her Attribute Mindscape skill offers substantial Wind damage amplification.",
             "comment_jp": "クリティカル倍率と攻撃力を提供でき、属性イメジャリーのスキルによる高い疾風属性ダメージ増幅も期待できる。",
             "comment_cn": "可提供暴击效果与攻击力，并可通过属性心象技能获得高额疾风属性伤害增幅。"
+        },
+        {
+            "name": "아야카",
+            "comment": "이격 캐릭터와 동시 출전이 가능해졌다. 스킬3은 250%의 HL게이지가 차 있을 경우 해당 게이지에 알맞은 효과를 발동시켜 높은 효율을 보여준다.",
+            "comment_en": "She can now be fielded alongside her alternate version. When the HL gauge is charged to 250%, Skill 3 triggers the corresponding effect for that gauge level, making it highly efficient.",
+            "comment_jp": "別バージョンとの同時編成が可能になった。HLゲージが250%まで溜まっている場合、スキル3でそのゲージ量に応じた効果を発動できるため、非常に効率が高い。",
+            "comment_cn": "现已可以与异格角色同时上场。HL能量槽达到250%时，技能3可触发与当前能量相应的效果，具有很高的效率。"
         }
     ]
 };

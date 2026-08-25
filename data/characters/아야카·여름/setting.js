@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["아야카·여름"] = {
     "role": "질풍 추가효과 광역딜러",
-    "video": ["diqQ0KQa43w"],
+    "video": ["4jXnTKOfTgA","_IBmrIaRMdY","diqQ0KQa43w"],
     "video_en": [""],
     "video_jp": [""],
     "main_revelation": ["자아"],

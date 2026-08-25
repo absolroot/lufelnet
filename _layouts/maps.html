@@ -69,6 +69,22 @@
   <link rel="stylesheet" href="{{ site.baseurl }}/apps/maps/object-filter-panel.css?v={{ site.time | date: '%s' }}">
   <link rel="stylesheet" href="{{ site.baseurl }}/apps/maps/map-select-panel.css?v={{ site.time | date: '%s' }}">
 
+  <script data-cfasync="false">
+    window.nitroAds = window.nitroAds || {
+      createAd: function () {
+        return new Promise((resolve) => {
+          window.nitroAds.queue.push(['createAd', arguments, resolve]);
+        });
+      },
+      addUserToken: function () {
+        window.nitroAds.queue.push(['addUserToken', arguments]);
+      },
+      queue: []
+    };
+  </script>
+  <script data-cfasync="false" async src="https://s.nitropay.com/ads-2620.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/nitro-ads.js?v={{ site.time | date: '%s' }}" defer></script>
+
   {{ content }}
 
 </head>

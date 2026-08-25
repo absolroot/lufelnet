@@ -161,6 +161,7 @@
     };
   </script>
   <script data-cfasync="false" async src="https://s.nitropay.com/ads-2620.js"></script>
+  <script src="{{ site.baseurl }}/assets/js/nitro-ads.js?v={{ site.time | date: '%s' }}" defer></script>
 
   <!-- Google tag (gtag.js), lazily loaded. Nitro custom consent ID "ga" updates Consent Mode in CMP regions. -->
   <script>
@@ -484,29 +485,7 @@
         <div id="ncmp-consent-link"></div>
       </div>
     </div>
-    {% comment %}Temporarily disabled until Nitro MCM onboarding is complete.{% endcomment %}
-    {% comment %}
-    <div class="footer-ad-container">
-      <div id="footer-banner" style="height:90px"></div>
-
-      <script>
-        window['nitroAds'].createAd('footer-banner', {
-          "sizes": [
-            [970, 90],
-            [728, 90],
-            [320, 50]
-          ],
-          "delayLoading": true,
-          "report": {
-            "enabled": true,
-            "icon": true,
-            "wording": "Report Ad",
-            "position": "top-right"
-          }
-        });
-      </script>
-    </div>
-    {% endcomment %}
+    {% include nitro-ad.html id="footer-banner" format="banner" class="nitro-ad-container--footer" %}
   </div>
 
   <!-- PWA 설치 프롬프트 -->

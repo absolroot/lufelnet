@@ -5,7 +5,7 @@ window.I18N_PAGE_DEFENSE_CALC_EN = {
     "defenseI18n": {
         "nav_home": "Home",
         "nav_current": "Defense Calc",
-        "page_title": "Defense Reduction Calculator",
+        "page_title": "Defense Reduction Calc.",
         "boss_info": "Boss Info",
         "boss_select": "Select Boss",
         "base_defense": "· Enemy Defense:",

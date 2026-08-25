@@ -438,6 +438,10 @@
     color: var(--guide-text-muted);
 }
 
+.nitro-ad-container--guide-meta {
+    margin-top: var(--guide-space-xl);
+}
+
 .guide-thumbnail {
     width: 100%;
     margin-top: var(--guide-space-xl);

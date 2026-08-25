@@ -61,8 +61,10 @@
         <span class="current-page" id="nav-current" data-i18n="nav_current">-</span>
     </div>
     <div class="header-container">
-        <h1 id="page-title" data-i18n="page_title">-</h1>
-        <p class="page-description" id="page-description" data-i18n="page_description"></p>
+        <div class="header-title">
+            <h1 id="page-title" data-i18n="page_title">-</h1>
+            <p class="page-description" id="page-description" data-i18n="page_description"></p>
+        </div>
     </div>
 
     <!-- Filter section -->
@@ -200,6 +202,8 @@
             <span id="filteredCount" data-i18n="filtered_count">전체 0개</span>
         </div>
     </div>
+
+    {% include nitro-ad.html id="revelations-search-banner" format="banner" class="nitro-ad-container--section" %}
 
     <!-- Revelation Stats (Accordion) -->
     <div id="revelation-stats" class="rev-stats-section">

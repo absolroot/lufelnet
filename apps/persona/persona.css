@@ -75,8 +75,18 @@ textarea {
     align-items: flex-start;
 }
 
-.persona-list-panel {
+.persona-list-column {
+    display: flex;
     flex: 0 0 390px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+}
+
+.persona-list-panel {
+    flex: 0 0 auto;
+    width: 100%;
     min-width: 0;
     max-height: 80vh;
     overflow-y: auto;
@@ -84,6 +94,11 @@ textarea {
     background: #222;
     border-radius: 8px;
     box-sizing: border-box;
+}
+
+.nitro-ad-container--persona-list {
+    width: 300px;
+    max-width: 300px;
 }
 
 .persona-detail-panel {
@@ -1474,9 +1489,18 @@ textarea {
         flex-direction: column;
     }
 
+    .persona-list-column {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+
     .persona-list-panel {
         width: 100%;
         padding: 0 16px;
+    }
+
+    .nitro-ad-container--persona-list {
+        display: none;
     }
 
     .sticky-content {

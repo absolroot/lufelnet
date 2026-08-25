@@ -43,10 +43,14 @@ input[type="checkbox"]:hover {
     padding: 0 0px 10px 0px;
 }
 
+.header-container--with-ad .header-title-row {
+    justify-content: flex-start;
+}
+
 #spoilerToggleWrap {
     display: flex;
     gap: 4px;
-    margin-left: auto;
+    margin-left: 0;
 }
 
 @media (max-width: 1200px) {

@@ -55,18 +55,23 @@
 <!-- 메인 컨텐츠 -->
 <div class="main-wrapper">
     <!-- 네비게이션 경로 -->
-    <div class="navigation-path">
-        <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
-        <span class="separator">/</span>
-        <span class="current-page" id="navCurrent">-</span>
-    </div>
-    <div class="header-container">
-        <h1 id="page-title">-</h1>
-        <label id="spoilerToggleWrap"
-            style="display:flex; align-items:center; cursor:pointer; font-size:13px; opacity:0.85;">
-            <input type="checkbox" id="showSpoilerToggle"> <span id="showSpoilerLabel"
-                style="margin-left: 4px; color:#ededed;">Show Spoilers</span>
-        </label>
+    <div class="header-container header-container--with-ad">
+        <div class="header-title">
+            <div class="navigation-path">
+                <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+                <span class="separator">/</span>
+                <span class="current-page" id="navCurrent">-</span>
+            </div>
+            <div class="header-title-row">
+                <h1 id="page-title">-</h1>
+                <label id="spoilerToggleWrap"
+                    style="display:flex; align-items:center; cursor:pointer; font-size:13px; opacity:0.85;">
+                    <input type="checkbox" id="showSpoilerToggle"> <span id="showSpoilerLabel"
+                        style="margin-left: 4px; color:#ededed;">Show Spoilers</span>
+                </label>
+            </div>
+        </div>
+        {% include nitro-ad.html id="critical-header-banner" format="leaderboard" class="nitro-ad-container--header" %}
     </div>
 
     <!-- 상단 카드 컨테이너 -->

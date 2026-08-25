@@ -675,6 +675,9 @@ const Guides = {
                         <span class="guide-meta-item">${date}</span>
                         ${author ? `<span class="guide-meta-item">${author}</span>` : ''}
                     </div>
+                    <div class="nitro-ad-container nitro-ad-container--leaderboard nitro-ad-container--guide-meta">
+                        <div id="guide-meta-banner" class="nitro-ad-slot" data-nitro-ad data-nitro-format="leaderboard"></div>
+                    </div>
                     ${thumbnail ? `<img class="guide-thumbnail" src="${thumbnail}" alt="${title}">` : ''}
                     ${tocHtml}
                 </header>
@@ -686,6 +689,7 @@ const Guides = {
         `;
 
         container.innerHTML = html;
+        window.LufelNitroAds?.initializePlacements?.();
         this.updateLanguageTexts();
     },
 

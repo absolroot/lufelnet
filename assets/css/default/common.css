@@ -273,6 +273,38 @@ body {
     gap: 0;
 }
 
+.header-container.header-container--with-ad {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 16px;
+}
+
+.header-container--with-ad .header-title {
+    flex: 1 1 320px;
+    min-width: 0;
+}
+
+.header-container--with-ad .header-title-row {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 16px;
+}
+
+.header-container--with-ad .nitro-ad-container--header {
+    flex: 0 0 728px;
+    width: 728px;
+    max-width: 728px;
+    margin-right: 0;
+    margin-left: auto;
+}
+
 .header-container h1 {
     font-size: 28px;
     color: rgb(255, 255, 255, 0.9);
@@ -386,17 +418,69 @@ body {
     display: none;
 }
 
-.footer-ad-container {
+.nitro-ad-container {
     width: 100%;
-    margin-top: 20px;
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
     overflow: hidden;
 }
 
-#footer-banner {
+.nitro-ad-slot {
     width: 100%;
-    max-width: 100%;
     margin: 0 auto;
     text-align: center;
+}
+
+.nitro-ad-container--banner .nitro-ad-slot,
+.nitro-ad-container--leaderboard .nitro-ad-slot {
+    height: 90px;
+}
+
+.nitro-ad-container--rectangle .nitro-ad-slot {
+    width: 300px;
+    height: 250px;
+}
+
+.nitro-ad-container--footer {
+    margin-top: 20px;
+    margin-bottom: 16px;
+}
+
+.nitro-ad-container--section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.nitro-ad-container--gap-after {
+    margin-bottom: 16px;
+}
+
+@media (max-width: 1100px) {
+    .header-container.header-container--with-ad {
+        flex-wrap: wrap;
+        padding-bottom: 16px;
+    }
+
+    .header-container--with-ad .nitro-ad-container--header {
+        flex-basis: 100%;
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container--with-ad .nitro-ad-container--header {
+        max-width: 320px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .nitro-ad-container--banner .nitro-ad-slot,
+    .nitro-ad-container--leaderboard .nitro-ad-slot {
+        height: 50px;
+    }
 }
 
 

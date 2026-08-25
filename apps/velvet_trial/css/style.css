@@ -11,10 +11,6 @@
   color: var(--vt-text);
 }
 
-.main-wrapper.velvet-trial-shell .header-container {
-  margin-bottom: 24px;
-}
-
 /* Tabs Resembling Synergy .character-tab */
 .vt-tabs {
   display: grid;

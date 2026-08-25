@@ -45,13 +45,16 @@
 <!-- main contents -->
 <div class="main-wrapper">
     <!-- navigation path -->
-    <div class="navigation-path">
-        <script>document.write(`<a href="../../">홈</a>`);</script>
-        <span class="separator">/</span>
-        <span class="current-page">과금 계산</span>
-    </div>
-    <div class="header-container">
-        <h1>과금 계산기</h1>
+    <div class="header-container header-container--with-ad">
+        <div class="header-title">
+            <div class="navigation-path">
+                <script>document.write(`<a href="../../">홈</a>`);</script>
+                <span class="separator">/</span>
+                <span class="current-page">과금 계산</span>
+            </div>
+            <h1>과금 계산기</h1>
+        </div>
+        {% include nitro-ad.html id="pay-calc-header-banner" format="leaderboard" class="nitro-ad-container--header" %}
     </div>
 
     <!-- top cards -->

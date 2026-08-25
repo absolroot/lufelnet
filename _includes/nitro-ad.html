@@ -1,0 +1,4 @@
+{% assign nitro_ad_format = include.format | default: 'banner' %}
+<div class="nitro-ad-container nitro-ad-container--{{ nitro_ad_format }}{% if include.class %} {{ include.class }}{% endif %}">
+  <div id="{{ include.id }}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="{{ nitro_ad_format }}"></div>
+</div>

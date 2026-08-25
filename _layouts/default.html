@@ -484,8 +484,22 @@
         <div id="ncmp-consent-link"></div>
       </div>
     </div>
+    <div class="footer-ad-container">
+      <div id="footer-banner" style="height:250px"></div>
 
-
+      <script>
+        window['nitroAds'].createAd('footer-banner', {
+          "height": 250,
+          "delayLoading": true,
+          "report": {
+            "enabled": true,
+            "icon": true,
+            "wording": "Report Ad",
+            "position": "top-right"
+          }
+        });
+      </script>
+    </div>
   </div>
 
   <!-- PWA 설치 프롬프트 -->

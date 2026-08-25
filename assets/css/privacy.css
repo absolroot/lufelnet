@@ -1,0 +1,128 @@
+.privacy-page {
+    width: 100%;
+    max-width: 960px;
+    padding-top: 40px;
+    padding-bottom: 56px;
+}
+
+.privacy-article {
+    padding: clamp(24px, 5vw, 56px);
+    border: 0;
+    border-radius: 18px;
+    background: rgb(18, 18, 18);
+    color: rgba(255, 255, 255, 0.78);
+    line-height: 1.75;
+}
+
+.privacy-header {
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.privacy-eyebrow {
+    margin: 0 0 8px;
+    color: #e06a6a;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.privacy-header h1 {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.96);
+    font-size: clamp(30px, 5vw, 46px);
+    line-height: 1.15;
+}
+
+.privacy-summary {
+    max-width: 760px;
+    margin: 18px 0 0;
+    font-size: 16px;
+}
+
+.privacy-updated {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.46);
+    font-size: 13px;
+}
+
+.privacy-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    margin: 28px 0 36px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.privacy-toc a,
+.privacy-article a {
+    color: #f09a9a;
+    text-underline-offset: 3px;
+}
+
+.privacy-toc a {
+    font-size: 13px;
+}
+
+.privacy-article section {
+    scroll-margin-top: 24px;
+}
+
+.privacy-article section + section {
+    margin-top: 36px;
+}
+
+.privacy-article h2 {
+    margin: 0 0 14px;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 23px;
+    line-height: 1.35;
+}
+
+.privacy-article h3 {
+    margin: 24px 0 8px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 17px;
+}
+
+.privacy-article p,
+.privacy-article ul {
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+.privacy-article ul {
+    padding-left: 22px;
+}
+
+.privacy-article li + li {
+    margin-top: 8px;
+}
+
+.privacy-article code {
+    padding: 2px 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.88);
+}
+
+@media screen and (max-width: 720px) {
+    .privacy-page {
+        padding: 20px 12px 40px;
+    }
+
+    .privacy-article {
+        border-radius: 12px;
+    }
+
+    .privacy-toc {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .privacy-article h2 {
+        font-size: 20px;
+    }
+}

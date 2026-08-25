@@ -1,85 +1,179 @@
 ---
 permalink: /privacy.html
-layout: null
+layout: default
+language: en
+title: Privacy Policy - LufelNet
+description: Privacy Policy for LufelNet, including advertising, analytics, account, and privacy-choice disclosures.
+custom_css: [privacy]
 ---
-<!DOCTYPE html>
+<main class="main-wrapper privacy-page">
+  <article class="privacy-article">
+    <header class="privacy-header">
+      <p class="privacy-eyebrow">LufelNet legal</p>
+      <h1>Privacy Policy</h1>
+      <p class="privacy-summary">
+        This policy explains how <strong>lufel.net</strong> ("LufelNet", "we", "us") handles information when you use the site, including its optional account, community, analytics, advertising, and Pull Tracker features.
+      </p>
+      <p class="privacy-updated">Last updated: August 25, 2026</p>
+    </header>
 
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Privacy Policy - Lufel.net</title>
-</head>
-<body>
-  <h1>Privacy Policy</h1>
+    <nav class="privacy-toc" aria-label="Privacy policy contents">
+      <a href="#information">Information we handle</a>
+      <a href="#uses">How we use information</a>
+      <a href="#services">Service providers</a>
+      <a href="#choices">Your choices</a>
+      <a href="#us-rights">US privacy rights</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-  <p>At <strong>lufel.net</strong>, we use third-party services, including <strong>Google AdSense</strong>, to serve advertisements on our website. These services may use cookies and similar technologies to collect data from your device for advertising purposes.</p>
+    <section id="overview">
+      <h2>1. Overview</h2>
+      <p>
+        Most LufelNet features can be used without creating an account. If you choose to sign in, publish community content, synchronize Pull Tracker data, or use other optional features, additional information is processed as described below. We do not connect your LufelNet account identifier to Google Analytics as a GA user ID.
+      </p>
+    </section>
 
-  <h2>1. What Data is Collected</h2>
-  <p>When you visit our website, information such as your IP address, browser type, device identifiers, and cookie data may be collected and shared with our advertising partners, primarily Google and its certified vendors.</p>
+    <section id="information">
+      <h2>2. Information we handle</h2>
 
-  <h2>2. Purpose of Data Processing</h2>
-  <p>Your data may be used for the following purposes:</p>
-  <ul>
-    <li>Serving personalized or non-personalized advertisements</li>
-    <li>Measuring ad performance and audience engagement</li>
-    <li>Storing and/or accessing information on your device (such as cookies)</li>
-    <li>Developing and improving advertising services</li>
-  </ul>
+      <h3>Information collected automatically</h3>
+      <p>
+        When you visit the site, we and our service providers may process IP address, browser and device information, cookie or similar identifiers, approximate location, referring and visited URLs, timestamps, language, and interaction or advertising measurements. The precise data depends on your region, consent choices, browser settings, and enabled features.
+      </p>
 
-  <h2>3. Who Processes Your Data</h2>
-  <p>Your data may be shared with Google and other third-party vendors who participate in the <a href="https://iabeurope.eu/transparency-consent-framework/">IAB Transparency & Consent Framework (TCF)</a>. A full list of vendors and their purposes can be found in the consent popup shown when visiting this site from the EU.</p>
+      <h3>Account and community information</h3>
+      <p>
+        Account creation is optional. If you register with email or Google, Supabase processes authentication details such as your email address, provider identifier, session information, and any profile data returned by the selected sign-in provider. If you create or interact with community tactics, we may store your user ID together with the tactic title, author name, comment, tactic data or URL, region, type, version, timestamps, and like activity. Published tactic information, including the displayed author name and comment, may be visible to other users.
+      </p>
 
-  <p>For more details about how Google processes data, please see:
-    <br><a href="https://policies.google.com/technologies/partner-sites">How Google uses information on sites that use its services</a>
-  </p>
+      <h3>Browser storage</h3>
+      <p>
+        LufelNet uses browser storage for functional settings such as language, navigation state, saved or temporary tool data, and authentication sessions. Advertising, consent, and analytics providers may also use cookies or browser storage as described in this policy and their own policies.
+      </p>
+    </section>
 
-  <h2>4. Legal Basis for Processing</h2>
-  <p>We process your data based on your consent. Some partners may also process your data based on legitimate interests, which you have the right to object to at any time.</p>
+    <section id="pull-tracker">
+      <h2>3. P5X Pull Tracker data</h2>
+      <p>
+        The Pull Tracker uses a temporary URL supplied by you to retrieve P5X gacha history. Because the game endpoint does not allow a direct browser request, the request is proxied through <strong>p5x.iant.kr</strong>. The supplied URL is used to retrieve the requested history and is not saved by LufelNet as an account credential.
+      </p>
+      <ul>
+        <li>Pull records, merged results, chart preferences, and recent inputs may be stored locally in your browser.</li>
+        <li>If you explicitly enable Google Drive synchronization, the merged history is stored in your private Google Drive AppDataFolder as <code>p5x_pull_tracker.json</code> using the limited <code>drive.appdata</code> scope.</li>
+        <li>Google sign-in and access tokens are handled in your browser through Google Identity Services. LufelNet does not request access to your ordinary Drive documents.</li>
+        <li>Use the Pull Tracker's Clear function and your browser or Google account controls to remove locally stored data and the optional Drive file.</li>
+      </ul>
+    </section>
 
-  <h2>5. Managing Your Consent</h2>
-  <p>When you first visit lufel.net from the EU/EEA, a consent popup is shown. You may manage your preferences or withdraw consent using the "Manage options" link in the popup or by clearing cookies from your browser and revisiting the site.</p>
+    <section id="uses">
+      <h2>4. How we use information</h2>
+      <ul>
+        <li>Provide, secure, troubleshoot, and improve site features.</li>
+        <li>Authenticate optional accounts and maintain sessions.</li>
+        <li>Store, display, and operate community tactics and interactions.</li>
+        <li>Measure traffic, feature usage, and site performance.</li>
+        <li>Serve, personalize where permitted, and measure advertising.</li>
+        <li>Honor consent, sale or sharing opt-out, and other privacy choices.</li>
+        <li>Prevent abuse and comply with legal obligations.</li>
+      </ul>
+    </section>
 
-  <h2>6. P5X Gacha Pull Tracker (가챠 통계) Data</h2>
-  <p>
-    The Pull Tracker feature lets you fetch and visualize your P5X gacha history using a user-supplied URL.
-    For technical reasons (CORS), the request is proxied via <strong>iant.kr</strong>. The following clarifies what is and is not processed/stored.
-  </p>
-  <h3>What We Process</h3>
-  <ul>
-    <li>The URL you paste (temporary request URL issued by the game) is used only to fetch your gacha history.</li>
-    <li>The resulting <strong>gacha history records</strong> (dates, item names/grades) are handled client-side and may be merged for statistics.</li>
-    <li><strong>No account identifiers</strong> (e.g., UID/auth key) are stored by this site. The temporary key is not saved on our servers.</li>
-  </ul>
-  <h3>Where Your Data Is Stored</h3>
-  <p><strong>Local (in your browser)</strong></p>
-  <ul>
-    <li>We store recent inputs and merged results in browser storage to speed up future visits (e.g., <code>pull-tracker:last-response</code>, <code>pull-tracker:merged</code>, <code>pull-tracker:hide4</code>).</li>
-  </ul>
-  <p><strong>Google Drive (optional)</strong></p>
-  <ul>
-    <li>If you sign in and choose to sync, the merged history is saved in your <strong>Google Drive AppDataFolder</strong> as <code>p5x_pull_tracker.json</code>.</li>
-    <li>We request the minimal scope (<code>drive.appdata</code>) and access only this app-specific file. You can delete it at any time.</li>
-  </ul>
-  <h3>How We Use Data</h3>
-  <ul>
-    <li>Data is used to compute personal statistics (rates, averages, “in progress” pity) and to render charts locally in your browser.</li>
-    <li>Aggregated/anonymous statistics may be used for analysis at <a href="https://iant.kr/gacha" target="_blank" rel="noopener">iant.kr/gacha</a>. We do not publish personally identifiable information.</li>
-  </ul>
-  <h3>How To Delete</h3>
-  <ul>
-    <li>Use the <strong>Clear</strong> button on the Pull Tracker page to wipe local data and request deletion of the Drive file.</li>
-    <li>You may also manually remove the file from Google Drive AppDataFolder and clear your browser storage/cookies.</li>
-  </ul>
-  <h3>Security Notes</h3>
-  <ul>
-    <li>Google sign-in is handled by Google Identity Services. Access tokens are stored only in your browser and are not kept on our servers.</li>
-    <li>We do not request access to your general Drive files; only the app’s hidden AppData file is used when you opt-in.</li>
-  </ul>
+    <section id="services">
+      <h2>5. Service providers and other recipients</h2>
+      <p>Information may be processed by the following services when the relevant feature is used:</p>
+      <ul>
+        <li>
+          <strong>Nitro / Overwolf</strong> provides advertising, ad measurement, and the regional consent-management platform. Its services may process cookies, device-specific information, IP address, approximate location, browsing activity, and advertising interactions for personalized or non-personalized advertising as permitted by your region and choices. See the <a href="https://nitropay.com/privacy" target="_blank" rel="noopener noreferrer">Nitro Privacy Policy</a>.
+        </li>
+        <li>
+          <strong>Google Analytics 4</strong> measures site traffic and usage. In regions where a consent banner applies, Google Consent Mode is used. If analytics storage is denied, analytics cookies are not written, although Google tags may send cookieless measurement pings. Outside those regions, Analytics normally operates without a prior opt-in. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a> and <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google's partner-sites explanation</a>.
+        </li>
+        <li>
+          <strong>Supabase</strong> provides optional account authentication, session management, and community tactic storage. See the <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer">Supabase Privacy Policy</a>.
+        </li>
+        <li>
+          <strong>Google Identity Services and Google Drive</strong> provide optional Google sign-in and Pull Tracker AppDataFolder synchronization.
+        </li>
+        <li>
+          <strong>p5x.iant.kr</strong> proxies the user-requested Pull Tracker retrieval. Hosting, content-delivery, embedded-media, and support providers may also receive ordinary request information needed to deliver their services.
+        </li>
+      </ul>
+      <p>
+        These providers may process information in countries other than your own under their applicable contractual and legal safeguards.
+      </p>
+    </section>
 
-  <h2>7. Contact</h2>
-  <p>This site is operated by an individual. If you have any questions about this privacy notice, you can contact the site administrator at: <em>superphil722@gmail.com</em></p>
+    <section id="legal-bases">
+      <h2>6. Legal bases for EEA, UK, and Swiss users</h2>
+      <p>Where applicable, we rely on one or more of the following legal bases:</p>
+      <ul>
+        <li><strong>Consent</strong> for personalized advertising, analytics storage, and other processing presented in the consent manager.</li>
+        <li><strong>Contract or requested steps</strong> when you choose to create an account, publish a tactic, or synchronize data.</li>
+        <li><strong>Legitimate interests</strong> in operating, securing, measuring, and improving the site where those interests are not overridden by your rights.</li>
+        <li><strong>Legal obligations</strong> when processing is required by applicable law.</li>
+      </ul>
+    </section>
 
-  <hr>
-  <p>Last updated: Sep 9, 2025</p>
-</body>
-</html>
+    <section id="retention">
+      <h2>7. Retention</h2>
+      <p>
+        We retain information only for as long as reasonably necessary for the purposes described above, including operating the requested feature, maintaining security, resolving disputes, and meeting legal obligations. Account and community records may remain until the account or content is deleted or a valid deletion request is completed. Browser and Google Drive data remain until you remove them. Advertising and analytics providers retain information according to their settings and policies.
+      </p>
+    </section>
+
+    <section id="choices">
+      <h2>8. Your choices and rights</h2>
+      <ul>
+        <li>Use the privacy controls in the footer to reopen the EU consent manager or access the available US opt-out control.</li>
+        <li>Change browser cookie or storage settings and use available browser privacy signals.</li>
+        <li>Revoke Google account access or remove the optional Pull Tracker Drive file through your Google account.</li>
+        <li>Contact us to request access, correction, deletion, restriction, portability, or objection where applicable.</li>
+        <li>Withdraw consent at any time without affecting processing that occurred before withdrawal.</li>
+      </ul>
+      <p>
+        You may also complain to the data-protection authority responsible for your location. We may need to verify a request before completing it.
+      </p>
+    </section>
+
+    <section id="us-rights">
+      <h2>9. US state privacy disclosures</h2>
+      <p>
+        Depending on the law that applies, US residents may have rights to know or access, correct, delete, and obtain a copy of personal information, and to opt out of sale, sharing for cross-context behavioral advertising, or certain targeted advertising. We will not discriminate against you for exercising an applicable privacy right.
+      </p>
+      <p>
+        During the preceding 12 months, the categories processed may have included identifiers, internet or other electronic-network activity, approximate geolocation, and inferences related to site or advertising interests. Sources include you, your browser or device, and the services identified above. These categories may be disclosed to analytics, advertising, infrastructure, authentication, and feature providers for the purposes described in this policy.
+      </p>
+      <p>
+        Once Nitro advertising is enabled, disclosures to Nitro/Overwolf and participating advertising partners may be considered a "sale" or "sharing" under some US state laws even when no money is paid for the information. California residents can use the <strong>Do Not Sell My Personal Information</strong> control shown in the footer to opt out of applicable sale or sharing. LufelNet also treats an enabled Global Privacy Control browser signal as an opt-out by setting Nitro's required opt-out cookie. We do not knowingly sell or share personal information of users under 16, and we do not use sensitive personal information for purposes that require a right to limit its use.
+      </p>
+      <p>
+        To submit another applicable request, email the address below and describe the request and the state in which you reside. An authorized agent may submit a request where permitted by law, subject to appropriate verification.
+      </p>
+    </section>
+
+    <section id="children">
+      <h2>10. Children's privacy</h2>
+      <p>
+        LufelNet is a general-audience game-information site and is not directed to children under the age at which parental consent is required in their jurisdiction. If you believe a child has provided personal information through an optional feature, contact us so we can review and delete it where appropriate.
+      </p>
+    </section>
+
+    <section id="changes">
+      <h2>11. Changes to this policy</h2>
+      <p>
+        We may update this policy when site features, providers, or legal requirements change. The date at the top shows the latest revision. Material changes may also be highlighted on the site when appropriate.
+      </p>
+    </section>
+
+    <section id="contact">
+      <h2>12. Contact</h2>
+      <p>
+        LufelNet is operated by an individual. For privacy questions or requests, contact <a href="mailto:superphil722@gmail.com">superphil722@gmail.com</a>.
+      </p>
+    </section>
+  </article>
+</main>
+
+<script>
+  Navigation.load('');
+</script>

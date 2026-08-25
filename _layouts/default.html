@@ -115,11 +115,55 @@
   <script src="https://cdn.jsdelivr.net/npm/lz-string@1.4.4/libs/lz-string.min.js"></script>
 -->
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Consent Mode: full measurement outside regulated regions, denied defaults where Nitro CMP applies. -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
+
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+      wait_for_update: 2000,
+      region: [
+        'AT', 'BE', 'BG', 'CH', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR',
+        'GB', 'GR', 'HR', 'HU', 'IE', 'IS', 'IT', 'LI', 'LT', 'LU', 'LV', 'MT',
+        'NL', 'NO', 'PL', 'PT', 'RO', 'SE', 'SI', 'SK'
+      ]
+    });
+    gtag('consent', 'default', {
+      analytics_storage: 'granted',
+      ad_storage: 'granted',
+      ad_user_data: 'granted',
+      ad_personalization: 'granted'
+    });
+
+    // Honor browser-level Global Privacy Control before the advertising script initializes.
+    if (navigator.globalPrivacyControl === true) {
+      document.cookie = 'CCPAOPTOUT=1; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
+    }
+  </script>
+
+  <!-- Nitro advertising and regional privacy controls (site ID 2620). -->
+  <script data-cfasync="false">
+    window.nitroAds = window.nitroAds || {
+      createAd: function () {
+        return new Promise((resolve) => {
+          window.nitroAds.queue.push(['createAd', arguments, resolve]);
+        });
+      },
+      addUserToken: function () {
+        window.nitroAds.queue.push(['addUserToken', arguments]);
+      },
+      queue: []
+    };
+  </script>
+  <script data-cfasync="false" async src="https://s.nitropay.com/ads-2620.js"></script>
+
+  <!-- Google tag (gtag.js), lazily loaded. Nitro custom consent ID "ga" updates Consent Mode in CMP regions. -->
+  <script>
 
     (function () {
       const GA_ID = 'G-57DTGQ5TR7';
@@ -432,10 +476,13 @@
     <div class="footer-text">
       <p id="footer-disclaimer" data-i18n="footer.disclaimer">{{ site.data.i18n[page.lang].footer_disclaimer }}</p>
       <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH"
-            target="_blank" style="color: #fff; text-decoration: underline;">discord.gg/x3fvdQtBVg</a>　@<span
-            id="footer-contact-name" data-i18n="footer.contactName">{{ site.data.i18n[page.lang].footer_contact_name
-            }}</span></span></p>
-      <p></p>
+            target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a id="footer-privacy-link"
+            class="privacy-link" href="{{ site.baseurl }}/privacy.html">{% if page.language == 'kr' or page.lang == 'kr' %}개인정보처리방침{% elsif page.language == 'jp' or page.lang == 'jp' %}プライバシーポリシー{% elsif page.language == 'cn' or page.lang == 'cn' %}隐私政策{% else %}Privacy Policy{% endif %}</a>　<a href="/about/"
+            class="discord-link">{% if page.language == 'kr' or page.lang == 'kr' %}사이트 지원{% elsif page.language == 'cn' or page.lang == 'cn' %}支持网站{% else %}Support{% endif %}</a></span></p>
+      <div id="privacy-controls" class="footer-legal-links">
+        <span data-ccpa-link="1"></span>
+        <div id="ncmp-consent-link"></div>
+      </div>
     </div>
 
 

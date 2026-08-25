@@ -837,20 +837,23 @@ class Navigation {
         const footerTranslations = {
             kr: {
                 disclaimer: "※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.",
-                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@루트　<a href="/about/">사이트 지원</a>`
+                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a id="footer-privacy-link" class="privacy-link" href="/privacy.html">개인정보처리방침</a>　<a href="/about/" class="discord-link">사이트 지원</a>`,
+                privacy: '개인정보처리방침'
             },
             en: {
                 disclaimer: "※ LufelNet is an unofficial Persona 5X information site created by individuals. The trademarks and copyrights of game content and materials belong to SEGA·ATLUS·Perfect World Games.",
-                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a href="/about/" target="_blank" class="discord-link">Support</a>　<a href="https://lufel.net/privacy.html" class="privacy-link">Privacy Policy</a>
-`
+                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a id="footer-privacy-link" class="privacy-link" href="/privacy.html">Privacy Policy</a>　<a href="/about/" target="_blank" class="discord-link">Support</a>`,
+                privacy: 'Privacy Policy'
             },
             jp: {
                 disclaimer: "※ ルフェルネットは個人が作成した非公式ペルソナ5X情報提供サイトで、ゲームのコンテンツと素材の商標と著作権はSEGA·ATLUS·Perfect World Gamesに帰属します。",
-                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a href="/about/" target="_blank" class="discord-link">Support</a>　`
+                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a id="footer-privacy-link" class="privacy-link" href="/privacy.html">プライバシーポリシー</a>　<a href="/about/" target="_blank" class="discord-link">Support</a>`,
+                privacy: 'プライバシーポリシー'
             },
             cn: {
                 disclaimer: "※ 路菲尔网是由个人制作的非官方《女神异闻录5X》信息站。游戏内容与素材的商标及版权归 SEGA·ATLUS·Perfect World Games 所有。",
-                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a href="/cn/about/" target="_blank" class="discord-link">支持网站</a>　`
+                contact: `✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link">Discord</a>　@AbsolRoot　<a id="footer-privacy-link" class="privacy-link" href="/privacy.html">隐私政策</a>　<a href="/cn/about/" target="_blank" class="discord-link">支持网站</a>`,
+                privacy: '隐私政策'
             }
         };
 
@@ -865,6 +868,10 @@ class Navigation {
         }
         if (contactElement) {
             contactElement.innerHTML = translation.contact;
+        }
+        const privacyElement = document.getElementById('footer-privacy-link');
+        if (privacyElement) {
+            privacyElement.textContent = translation.privacy;
         }
     }
 }

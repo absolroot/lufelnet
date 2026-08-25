@@ -357,6 +357,35 @@ body {
     padding: 0px 10px 0px 10px;
 }
 
+.footer-legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 16px;
+    min-height: 20px;
+    margin-top: 10px;
+}
+
+.footer-legal-links a,
+.footer-legal-links button {
+    color: inherit;
+    font: inherit;
+    text-decoration: underline;
+}
+
+.footer-legal-links button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.footer-legal-links [data-ccpa-link="1"]:empty,
+.footer-legal-links #ncmp-consent-link:empty {
+    display: none;
+}
+
 
 /* 다크 테마 스타일 */
 :root {

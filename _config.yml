@@ -50,6 +50,7 @@ include: ["assets"]
 
 # exclude files/folders
 exclude:
+  - ads_backup.txt
   - .git
   - .gitignore
   - node_modules

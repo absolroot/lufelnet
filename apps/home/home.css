@@ -544,6 +544,11 @@
     margin: 24px 10px;
 }
 
+.nitro-ad-container--home-bosses {
+    margin-top: 24px;
+    margin-bottom: 0;
+}
+
 /* 미들 컨테이너 */
 
 .middle-container {

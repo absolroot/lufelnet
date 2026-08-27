@@ -52,6 +52,9 @@
                 railStack: false,
                 railStickyTop: 0,
                 railVerticalAlign: 'center',
+                refreshTime: 30,
+                refreshVisibleOnly: true,
+                refreshLimit: 0,
                 mediaQuery: '(min-width: 1860px)'
             }
         },

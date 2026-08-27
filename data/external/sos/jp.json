@@ -2,6 +2,35 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "クー・フーリン",
+            "skill": "1023,1154",
+            "sn": "534101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "378401"
+      },
+      {
         "bonusRule": "All ally Curse attack Score x 3",
         "enemy": [
           {
@@ -22,41 +51,15 @@
             "level": "89",
             "name": "ソロネ",
             "skill": "155,158",
-            "sn": "531101",
+            "sn": "534111",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "368401"
-      },
-      {
-        "bonusRule": "All ally Ice attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Fire"
-              ],
-              "Weak": [
-                "Ice"
-              ]
-            },
-            "image": "B-guaiwutouxiang-surtr.png",
-            "level": "89",
-            "name": "スルト",
-            "skill": "108,103,1008",
-            "sn": "531111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "368402"
+        "sn": "378402"
       }
     ],
-    "buff": "腐食の亀裂: 味方がスキルで弱点ダメージを与えた時『腐食の亀裂』を獲得する。\n『腐食の亀裂』：２ターンの間、与える最終ダメージが２０%上昇し、持続ダメージ効果が２０%上昇する。",
+    "buff": "陰鬱な気配: 敵をダウンさせた時、対象に『仄暗い幻』を付与する。ハイライト／テウルギアで敵を攻撃した時、選択した対象に『仄暗い幻』を付与する。\n『仄暗い幻』：２ターンの間、受ける最終ダメージが４０%上昇する。",
     "endTime": "2026-09-09 10:30:00",
     "startTime": "2026-08-27 11:30:00"
   },

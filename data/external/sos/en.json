@@ -2,6 +2,35 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "Cu Chulainn",
+            "skill": "1023,1154",
+            "sn": "534101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "378401"
+      },
+      {
         "bonusRule": "All ally Curse attack Score x 3",
         "enemy": [
           {
@@ -22,41 +51,15 @@
             "level": "89",
             "name": "Throne",
             "skill": "155,158",
-            "sn": "531101",
+            "sn": "534111",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "368401"
-      },
-      {
-        "bonusRule": "All ally Ice attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Fire"
-              ],
-              "Weak": [
-                "Ice"
-              ]
-            },
-            "image": "B-guaiwutouxiang-surtr.png",
-            "level": "89",
-            "name": "Surt",
-            "skill": "108,103,1008",
-            "sn": "531111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "368402"
+        "sn": "378402"
       }
     ],
-    "buff": "Eroding Fissure: When allies deal weakness damage, gain Eroding Fissure.\nEroding Fissure: Increase final damage by 20%, and increase continuous damage by 20% for 2 turns.",
+    "buff": "Downbeat Vibes: When a foe is knocked down, inflict Downbeat Daze on the target. When attacking foes with a Highlight or Theurgy, inflict Downbeat Daze on the main target.\nDownbeat Daze: Increase final damage taken by 40% for 2 turns.",
     "endTime": "2026-09-09 10:30:00",
     "startTime": "2026-08-27 11:30:00"
   },

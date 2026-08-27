@@ -729,6 +729,78 @@
         "synergy": 9
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306217.png",
+              "name": "バジル",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "所持金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "【バジル】\n作業台で『バジルの香り袋』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305968.png",
+              "name": "シルクの巾着",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 500,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ハイセンス"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『バジルの香り袋』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305950.png",
+        "name": "バジルの香り袋",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -790,14 +862,10 @@
       }
     ],
     "time": "放課後",
-    "unlock_quest": {
-      "details": "新しい一日が始まった。\n学校に行こう。",
-      "name": "誇りの行方"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "2章進行後に開放"
+        "details": "新しい一日が始まった。\n学校に行こう。",
+        "name": "誇りの行方"
       }
     ],
     "visit_dialog": [
@@ -875,6 +943,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "2章進行後に開放"
       }
     ]
   },

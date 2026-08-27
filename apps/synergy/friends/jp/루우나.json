@@ -580,7 +580,7 @@
         "bonus_synergy": 15,
         "compound": [],
         "image": "item-317002.png",
-        "name": "カートゥーン柄アイマスク",
+        "name": "カートゥーンマスク",
         "new_gift_synergy": 30,
         "seed": [],
         "shop": [
@@ -650,6 +650,78 @@
           "shop"
         ],
         "synergy": 42
+      },
+      {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306219.png",
+              "name": "レモンマートル",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "所持金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "【レモンマートル】\n作業台で『レモンマートルティー』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "シンプルな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 290,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 300,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『デイジーのポプリ』『ヒマワリの種』『ジャスミン茶』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305952.png",
+        "name": "レモンマートルティー",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
       },
       {
         "bonus_synergy": 1000,
@@ -723,18 +795,10 @@
       }
     ],
     "time": "夜",
-    "unlock_quest": {
-      "details": "ベルベットルームの試練にチャレンジしよう。",
-      "name": "ベルベットルーム"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "summary",
-        "text": "秋葉原旅行サブクエスト解放後に開放"
-      },
-      {
-        "type": "story",
-        "text": "1章進行後に開放"
+        "details": "ベルベットルームの試練にチャレンジしよう。",
+        "name": "ベルベットルーム"
       }
     ],
     "visit_dialog": [
@@ -827,6 +891,16 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "summary",
+        "text": "秋葉原旅行サブクエスト解放後に開放"
+      },
+      {
+        "type": "story",
+        "text": "1章進行後に開放"
       }
     ]
   },

@@ -673,6 +673,78 @@
         "synergy": 39
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306219.png",
+              "name": "レモンマートル",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "所持金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "【レモンマートル】\n作業台で『レモンマートルティー』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "シンプルな包装",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 290,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 300,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "일간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『デイジーのポプリ』『ヒマワリの種』『ジャスミン茶』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305952.png",
+        "name": "レモンマートルティー",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -719,45 +791,41 @@
         "rank": 1
       },
       {
-        "description": "『闇ネット』で『雑司ヶ谷』エリアの商品を購入できる。",
+        "description": "『闇ネット』で『雑司ヶ谷』エリアの商品を購入できる",
         "icon": "xielizhe-icon-matoi-01.png",
         "name": "どこでも雑司ヶ谷",
         "rank": 5
       },
       {
-        "description": "『闇ネット』で『四軒茶屋』エリアの商品を購入できる。",
+        "description": "『闇ネット』で『四軒茶屋』エリアの商品を購入できる",
         "icon": "xielizhe-icon-matoi-01.png",
         "name": "どこでも四軒茶屋",
         "rank": 7
       },
       {
-        "description": "『闇ネット』で『吉祥寺』エリアの商品を購入できる。",
+        "description": "『闇ネット』で『吉祥寺』エリアの商品を購入できる",
         "icon": "xielizhe-icon-matoi-01.png",
         "name": "どこでも吉祥寺",
         "rank": 11
       },
       {
-        "description": "『闇ネット』で『新宿』エリアの商品を購入できる。",
+        "description": "『闇ネット』で『新宿』エリアの商品を購入できる",
         "icon": "xielizhe-icon-matoi-01.png",
         "name": "どこでも新宿",
         "rank": 13
       },
       {
-        "description": "『闇ネット』で『秋葉原』エリアの商品を購入できる。",
+        "description": "『闇ネット』で『秋葉原』エリアの商品を購入できる",
         "icon": "xielizhe-icon-matoi-01.png",
         "name": "どこでも秋葉原",
         "rank": 17
       }
     ],
     "time": "夕方",
-    "unlock_quest": {
-      "details": "ミッションの『追跡』ボタンで時間を進めるか、都市生活を行い時間を進めよう。",
-      "name": "無償の愛"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "3章進行後に開放"
+        "details": "ミッションの『追跡』ボタンで時間を進めるか、都市生活を行い時間を進めよう。",
+        "name": "無償の愛"
       }
     ],
     "visit_dialog": [
@@ -835,6 +903,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3章進行後に開放"
       }
     ]
   },

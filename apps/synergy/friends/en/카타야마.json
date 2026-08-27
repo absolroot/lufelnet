@@ -140,7 +140,22 @@
         "unlock_cond": "Knowledge Lv.11"
       },
       {
-        "good_answers": [],
+        "good_answers": [
+          [
+            {
+              "content": "Piece of... cake...",
+              "reward": 60
+            },
+            {
+              "content": "Please... praise me...",
+              "reward": 50
+            },
+            {
+              "content": "I'm gonna pass out...",
+              "reward": 40
+            }
+          ]
+        ],
         "rank_up": {
           "from": 14,
           "to": 15
@@ -148,7 +163,22 @@
         "unlock_cond": "Knowledge Lv.13"
       },
       {
-        "good_answers": [],
+        "good_answers": [
+          [
+            {
+              "content": "I'll support you too.",
+              "reward": 60
+            },
+            {
+              "content": "I'll rely on you too.",
+              "reward": 50
+            },
+            {
+              "content": "I'll accept ramen as payment.",
+              "reward": 40
+            }
+          ]
+        ],
         "rank_up": {
           "from": 16,
           "to": 17
@@ -156,7 +186,22 @@
         "unlock_cond": "Knowledge Lv.15"
       },
       {
-        "good_answers": [],
+        "good_answers": [
+          [
+            {
+              "content": "The first step...",
+              "reward": 60
+            },
+            {
+              "content": "She looked a little salty, but...",
+              "reward": 50
+            },
+            {
+              "content": "Mission accomplished.",
+              "reward": 40
+            }
+          ]
+        ],
         "rank_up": {
           "from": 19,
           "to": 20
@@ -614,6 +659,78 @@
         "synergy": 55
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306219.png",
+              "name": "Lemon Myrtle",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "Money",
+                  "price": 1200,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "[Lemon Myrtle]\nCan be crafted at the workbench into Lemon Myrtle Tea and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305907.png",
+              "name": "Simple Packaging",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 290,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 300,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "일간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "A common material.\nCan be used at the workbench to craft these gifts for accomplices: Daisy Potpourri, Sunflower Seeds, and Jasmine Tea.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305952.png",
+        "name": "Lemon Myrtle Tea",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -628,7 +745,38 @@
     "name": "Kumi Katayama",
     "romance_dialog": [
       {
-        "good_answers": []
+        "good_answers": [
+          [
+            {
+              "content": "Leave it to me!",
+              "reward": 40
+            },
+            {
+              "content": "I don't mind.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "Not really.",
+              "reward": 40
+            },
+            {
+              "content": "All good here.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "We could always eat here.",
+              "reward": 60
+            },
+            {
+              "content": "That's fine, but...",
+              "reward": 50
+            }
+          ]
+        ]
       }
     ],
     "special_award": [
@@ -657,7 +805,7 @@
         "rank": 13
       },
       {
-        "description": "You will now earn a small amount of Thief Compendium Tomes when you study.",
+        "description": "You will now earn a small amount of Thief Compendium Volumes when you study.",
         "icon": "xielizhe-icon-pianshanjiuwei-05.png",
         "name": "Youthful School Days 5",
         "rank": 17

@@ -5,12 +5,12 @@
         "good_answers": [
           [
             {
-              "content": "Your health is more important.",
+              "content": "But now you know where you stand.",
               "reward": 60
             },
             {
-              "content": "There's always tomorrow.",
-              "reward": 50
+              "content": "You trained the new hire well.",
+              "reward": 60
             }
           ]
         ],
@@ -18,18 +18,22 @@
           "from": 2,
           "to": 3
         },
-        "unlock_cond": "Proficiency Lv.3"
+        "unlock_cond": "Guts Lv.3"
       },
       {
         "good_answers": [
           [
             {
-              "content": "There's no rush.",
+              "content": "Let's give it all we've got!",
+              "reward": 60
+            },
+            {
+              "content": "Let's do our best!",
               "reward": 50
             },
             {
-              "content": "I'm happy to help anytime.",
-              "reward": 60
+              "content": "I'll do what I can...",
+              "reward": 40
             }
           ]
         ],
@@ -37,17 +41,21 @@
           "from": 4,
           "to": 5
         },
-        "unlock_cond": "Proficiency Lv.5"
+        "unlock_cond": "Guts Lv.5"
       },
       {
         "good_answers": [
           [
             {
-              "content": "Your voice is beautiful.",
+              "content": "You should look inward more.",
+              "reward": 60
+            },
+            {
+              "content": "You've grown a lot too.",
               "reward": 40
             },
             {
-              "content": "Were you nervous?",
+              "content": "You worry too much.",
               "reward": 50
             }
           ]
@@ -56,18 +64,22 @@
           "from": 6,
           "to": 7
         },
-        "unlock_cond": "Proficiency Lv.6"
+        "unlock_cond": "Guts Lv.6"
       },
       {
         "good_answers": [
           [
             {
-              "content": "It was a good song.",
+              "content": "That happens sometimes.",
+              "reward": 50
+            },
+            {
+              "content": "Challenges help you grow.",
               "reward": 60
             },
             {
-              "content": "You really did!",
-              "reward": 50
+              "content": "You're just always intense.",
+              "reward": 40
             }
           ]
         ],
@@ -75,22 +87,22 @@
           "from": 8,
           "to": 9
         },
-        "unlock_cond": "Proficiency Lv.8"
+        "unlock_cond": "Guts Lv.8"
       },
       {
         "good_answers": [
           [
             {
-              "content": "What do you want to say most?",
+              "content": "I'm happy to hear it.",
+              "reward": 60
+            },
+            {
+              "content": "If you say so...",
               "reward": 50
             },
             {
-              "content": "Just keep trying stuff out.",
+              "content": "You don't have to keep doing that.",
               "reward": 40
-            },
-            {
-              "content": "Who are your songs for?",
-              "reward": 60
             }
           ]
         ],
@@ -98,22 +110,22 @@
           "from": 10,
           "to": 11
         },
-        "unlock_cond": "Proficiency Lv.10"
+        "unlock_cond": "Guts Lv.10"
       },
       {
         "good_answers": [
           [
             {
-              "content": "You didn't do anything wrong.",
-              "reward": 40
-            },
-            {
-              "content": "Is that all you want to say to her?",
+              "content": "I've got this.",
               "reward": 60
             },
             {
-              "content": "What do you want to do?",
-              "reward": 50
+              "content": "I'll protect our fields.",
+              "reward": 60
+            },
+            {
+              "content": "Don't worry about it.",
+              "reward": 60
             }
           ]
         ],
@@ -121,21 +133,21 @@
           "from": 12,
           "to": 13
         },
-        "unlock_cond": "Proficiency Lv.11"
+        "unlock_cond": "Guts Lv.11"
       },
       {
         "good_answers": [
           [
             {
-              "content": "I wanna hear you play at your best.",
-              "reward": 50
+              "content": "Piece of... cake...",
+              "reward": 60
             },
             {
-              "content": "You must be imagining things.",
-              "reward": 40
+              "content": "Please... praise me...",
+              "reward": 60
             },
             {
-              "content": "I just want to cheer you up.",
+              "content": "I'm gonna pass out...",
               "reward": 60
             }
           ]
@@ -144,18 +156,22 @@
           "from": 14,
           "to": 15
         },
-        "unlock_cond": "Proficiency Lv.13"
+        "unlock_cond": "Guts Lv.13"
       },
       {
         "good_answers": [
           [
             {
-              "content": "Congrats!",
+              "content": "I'll support you too.",
               "reward": 50
             },
             {
-              "content": "I wanna hear!",
-              "reward": 60
+              "content": "I'll rely on you too.",
+              "reward": 50
+            },
+            {
+              "content": "I'll accept ramen as payment.",
+              "reward": 50
             }
           ]
         ],
@@ -163,18 +179,22 @@
           "from": 16,
           "to": 17
         },
-        "unlock_cond": "Proficiency Lv.15"
+        "unlock_cond": "Guts Lv.15"
       },
       {
         "good_answers": [
           [
             {
-              "content": "Go ahead.",
+              "content": "The first step...",
               "reward": 60
             },
             {
-              "content": "I'm sure she'll understand.",
+              "content": "She looked a little salty, but...",
               "reward": 50
+            },
+            {
+              "content": "Mission accomplished.",
+              "reward": 40
             }
           ]
         ],
@@ -182,74 +202,30 @@
           "from": 19,
           "to": 20
         },
-        "unlock_cond": "Proficiency Lv.17"
+        "unlock_cond": "Guts Lv.17"
       }
     ],
-    "can_romance": true,
-    "friend_lover_dialog": [
-      {
-        "content": "I support you as a fan.",
-        "is_romance": false
-      },
-      {
-        "content": "I feel the same way you do.",
-        "is_romance": true
-      }
-    ],
+    "can_romance": false,
+    "friend_lover_dialog": [],
     "item": [
-      {
-        "bonus_synergy": 38,
-        "compound": [],
-        "image": "item-303073.png",
-        "name": "Premiere CD",
-        "new_gift_synergy": 76,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 17670,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "Money",
-            "personalityLimit": "Guts LV.5",
-            "price": 18600,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
-            "resetType": "주간",
-            "shopName": "Rocinante"
-          },
-          {
-            "isHidden": 1,
-            "mapName": null,
-            "maxBuy": -1,
-            "moneyName": "Arcade Exchange Voucher",
-            "price": 3720,
-            "resetType": "없음",
-            "shopName": "AAAAAA=="
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 38
-      },
       {
         "bonus_synergy": 12,
         "compound": [],
-        "image": "item-303211.png",
-        "name": "ChocoStick Value Pack",
+        "image": "item-303084.png",
+        "name": "Idol Trading Card",
         "new_gift_synergy": 24,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 4650,
+            "discountPrice": 4750,
             "isHidden": 0,
             "mapName": null,
-            "maxBuy": 2,
+            "maxBuy": 3,
             "moneyName": "Money",
-            "price": 4890,
-            "reducePriceCond": "Runa Dogenzaka LV.9",
+            "price": 4990,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
-            "shopName": "Zoshigaya Mart"
+            "shopName": "Rocinante"
           }
         ],
         "source": [
@@ -258,97 +234,10 @@
         "synergy": 12
       },
       {
-        "bonus_synergy": 52,
-        "compound": [],
-        "image": "item-303252.png",
-        "name": "Electric Toothbrush",
-        "new_gift_synergy": 104,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 28800,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "Money",
-            "price": 29800,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
-            "resetType": "주간",
-            "shopName": "Triple Seven"
-          },
-          {
-            "discountPrice": 28800,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "Money",
-            "price": 29800,
-            "reducePriceCond": "Runa Dogenzaka LV.5",
-            "resetType": "주간",
-            "shopName": "Akindo"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 52
-      },
-      {
-        "bonus_synergy": 3,
-        "compound": [],
-        "image": "item-303260.png",
-        "name": "Heart-Shaped Hand Mirror",
-        "new_gift_synergy": 6,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 1140,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 4,
-            "moneyName": "Money",
-            "price": 1200,
-            "reducePriceCond": "Runa Dogenzaka LV.7",
-            "resetType": "주간",
-            "shopName": "Kyouryuu Jewelry"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 3
-      },
-      {
-        "bonus_synergy": 42,
-        "compound": [],
-        "image": "item-303267.png",
-        "name": "Harmonica",
-        "new_gift_synergy": 84,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 20800,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "Money",
-            "personalityLimit": "Proficiency LV.10",
-            "price": 21800,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
-            "resetType": "주간",
-            "shopName": "Taisho Store"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 42
-      },
-      {
         "bonus_synergy": 12,
         "compound": [],
-        "image": "item-303268.png",
-        "name": "Music Box",
+        "image": "item-303208.png",
+        "name": "Magnetic Necklace",
         "new_gift_synergy": 24,
         "seed": [],
         "shop": [
@@ -356,84 +245,20 @@
             "discountPrice": 4560,
             "isHidden": 0,
             "mapName": null,
-            "maxBuy": 3,
+            "maxBuy": 2,
             "moneyName": "Money",
             "price": 4800,
-            "reducePriceCond": "Runa Dogenzaka LV.13",
-            "resetType": "주간",
-            "shopName": "Stationery Store"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 12
-      },
-      {
-        "bonus_synergy": 15,
-        "compound": [],
-        "image": "item-303269.png",
-        "name": "Guitar Care Set",
-        "new_gift_synergy": 30,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 5700,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 3,
-            "moneyName": "Money",
-            "price": 6000,
             "reducePriceCond": "Runa Dogenzaka LV.1",
             "resetType": "주간",
-            "shopName": "Taisho Store"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 15
-      },
-      {
-        "bonus_synergy": 2,
-        "compound": [],
-        "image": "item-303270.png",
-        "name": "Weathered Teru Teru Bozu",
-        "new_gift_synergy": 4,
-        "seed": [],
-        "shop": [
+            "shopName": "37 Degrees Celsius"
+          },
           {
-            "discountPrice": 760,
+            "discountPrice": 4560,
             "isHidden": 0,
             "mapName": null,
-            "maxBuy": 7,
+            "maxBuy": 2,
             "moneyName": "Money",
-            "price": 800,
-            "reducePriceCond": "Runa Dogenzaka LV.1",
-            "resetType": "주간",
-            "shopName": "High Sense"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 2
-      },
-      {
-        "bonus_synergy": 37,
-        "compound": [],
-        "image": "item-303271.png",
-        "name": "Choker",
-        "new_gift_synergy": 74,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 17100,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "Money",
-            "price": 18000,
+            "price": 4800,
             "reducePriceCond": "Runa Dogenzaka LV.13",
             "resetType": "주간",
             "shopName": "Crystal Healing"
@@ -442,7 +267,243 @@
         "source": [
           "shop"
         ],
-        "synergy": 37
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 4,
+        "compound": [],
+        "image": "item-303221.png",
+        "name": "Mini Cactus",
+        "new_gift_synergy": 8,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 1430,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 1500,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Rafflesia"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 4
+      },
+      {
+        "bonus_synergy": 1,
+        "compound": [],
+        "image": "item-303222.png",
+        "name": "Planter Cover",
+        "new_gift_synergy": 2,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 480,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 500,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Rafflesia"
+          },
+          {
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Band Badge",
+            "price": 20,
+            "resetType": "주간",
+            "shopName": "Band Point Exchange"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 1
+      },
+      {
+        "bonus_synergy": 50,
+        "compound": [],
+        "image": "item-303223.png",
+        "name": "Robot Vacuum",
+        "new_gift_synergy": 100,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 27000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.5",
+            "price": 28000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          },
+          {
+            "discountPrice": 27000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Knowledge LV.5",
+            "price": 28000,
+            "reducePriceCond": "Runa Dogenzaka LV.5",
+            "resetType": "주간",
+            "shopName": "Akindo"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303224.png",
+        "name": "Glass Vase",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3040,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.4",
+            "price": 3200,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "High Sense"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303225.png",
+        "name": "Flower Basket",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3040,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "price": 3200,
+            "reducePriceCond": "Runa Dogenzaka LV.7",
+            "resetType": "주간",
+            "shopName": "Flower Shop Sukebe"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 28,
+        "compound": [],
+        "image": "item-303228.png",
+        "name": "Truffles",
+        "new_gift_synergy": 56,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 11400,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Kindness LV.8",
+            "price": 12000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Taisho Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 28
+      },
+      {
+        "bonus_synergy": 112,
+        "compound": [],
+        "image": "item-303229.png",
+        "name": "Designer Perfume",
+        "new_gift_synergy": 224,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 77000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "Money",
+            "personalityLimit": "Charm LV.13",
+            "price": 78000,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "The Body Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 2,
+        "compound": [],
+        "image": "item-303234.png",
+        "name": "Watercolor Postcard",
+        "new_gift_synergy": 4,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 760,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "reducePriceCond": "Runa Dogenzaka LV.1",
+            "resetType": "주간",
+            "shopName": "Rocinante"
+          },
+          {
+            "discountPrice": 760,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "Money",
+            "price": 800,
+            "reducePriceCond": "Runa Dogenzaka LV.13",
+            "resetType": "주간",
+            "shopName": "Stationery Store"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 2
       },
       {
         "bonus_synergy": 8,
@@ -606,103 +667,6 @@
         "synergy": 28
       },
       {
-        "bonus_synergy": 13,
-        "compound": [
-          {
-            "item": {
-              "box": [],
-              "compound": [],
-              "content_bg": "<color=#ffffff>  </color>",
-              "icon": "item-306121.png",
-              "name": "Osmanthuses",
-              "seed": [
-                {
-                  "consume_ap": [
-                    15,
-                    13,
-                    10
-                  ],
-                  "count": "random(1,6)",
-                  "rate": "100%",
-                  "seed": {
-                    "box": [],
-                    "compound": [],
-                    "content_bg": "<color=#ffffff>  </color>",
-                    "icon": "item-306106.png",
-                    "name": "Osmanthus Seeds",
-                    "seed": [],
-                    "shop": [
-                      {
-                        "discountPrice": 820,
-                        "isHidden": 0,
-                        "mapName": null,
-                        "maxBuy": 10,
-                        "moneyName": "Money",
-                        "personalityLimit": "Kindness LV.6",
-                        "price": 860,
-                        "reducePriceCond": "Runa Dogenzaka LV.7",
-                        "resetType": "일간",
-                        "shopName": "Flower Shop Sukebe"
-                      }
-                    ],
-                    "source": [
-                      "shop"
-                    ],
-                    "tips": "Can be planted in your home garden to bloom into osmanthus. Increases your Kindness when first harvested.",
-                    "type": "Seeds"
-                  }
-                }
-              ],
-              "shop": [],
-              "source": [
-                "seed"
-              ],
-              "tips": "[Osmanthus]\nCan be crafted at the workbench into an Osmanthus Bouquet and gifted to an accomplice.",
-              "type": "Flower"
-            },
-            "itemCount": 4
-          },
-          {
-            "item": {
-              "box": [],
-              "compound": [],
-              "content_bg": "<color=#ffffff>  </color>",
-              "icon": "item-305932.png",
-              "name": "Gorgeous Packaging",
-              "seed": [],
-              "shop": [
-                {
-                  "discountPrice": 480,
-                  "isHidden": 0,
-                  "mapName": null,
-                  "maxBuy": 10,
-                  "moneyName": "Money",
-                  "price": 500,
-                  "reducePriceCond": "Runa Dogenzaka LV.1",
-                  "resetType": "일간",
-                  "shopName": "Rafflesia"
-                }
-              ],
-              "source": [
-                "shop"
-              ],
-              "tips": "Used to craft Camellia Tea, Osmanthus Tea, Preserved Flowers, Violet Bouquets, and Osmanthus Bouquets at the workbench.",
-              "type": "Material"
-            },
-            "itemCount": 1
-          }
-        ],
-        "image": "item-305945.png",
-        "name": "Osmanthus Tea",
-        "new_gift_synergy": 26,
-        "seed": [],
-        "shop": [],
-        "source": [
-          "compound"
-        ],
-        "synergy": 13
-      },
-      {
         "bonus_synergy": 17,
         "compound": [
           {
@@ -710,8 +674,8 @@
               "box": [],
               "compound": [],
               "content_bg": "<color=#ffffff>  </color>",
-              "icon": "item-306218.png",
-              "name": "Balsam",
+              "icon": "item-306217.png",
+              "name": "Basil",
               "seed": [],
               "shop": [
                 {
@@ -729,7 +693,7 @@
               "source": [
                 "shop"
               ],
-              "tips": "[Balsam]\nCan be crafted at the workbench into Balsam Dye and gifted to an accomplice.",
+              "tips": "[Basil]\nCan be crafted at the workbench into a Basil-Scented Pouch and gifted to an accomplice.",
               "type": "Flower"
             },
             "itemCount": 6
@@ -739,33 +703,33 @@
               "box": [],
               "compound": [],
               "content_bg": "<color=#ffffff>  </color>",
-              "icon": "item-305969.png",
-              "name": "White Handkerchief",
+              "icon": "item-305968.png",
+              "name": "Silk Pouch",
               "seed": [],
               "shop": [
                 {
-                  "discountPrice": 380,
+                  "discountPrice": 480,
                   "isHidden": 0,
                   "mapName": null,
                   "maxBuy": 10,
                   "moneyName": "Money",
-                  "price": 400,
+                  "price": 500,
                   "reducePriceCond": "Runa Dogenzaka LV.1",
                   "resetType": "주간",
-                  "shopName": "Taisho Store"
+                  "shopName": "High Sense"
                 }
               ],
               "source": [
                 "shop"
               ],
-              "tips": "A common material.\nCan be used at the workbench to craft this gift for accomplices: Balsam Dye.",
+              "tips": "A common material.\nCan be used at the workbench to craft this gift for accomplices: Basil-Scented Pouch.",
               "type": "Material"
             },
             "itemCount": 1
           }
         ],
-        "image": "item-305951.png",
-        "name": "Balsam Dye",
+        "image": "item-305950.png",
+        "name": "Basil-Scented Pouch",
         "new_gift_synergy": 0,
         "seed": [],
         "shop": [],
@@ -786,17 +750,37 @@
         "synergy": 999
       }
     ],
-    "name": "Ayaka Sakai",
+    "name": "Musubi Matsukata",
     "romance_dialog": [
       {
         "good_answers": [
           [
             {
-              "content": "Feel free to stay the night.",
+              "content": "Leave it to me!",
+              "reward": 40
+            },
+            {
+              "content": "I don't mind.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "Not really.",
+              "reward": 40
+            },
+            {
+              "content": "All good here.",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "We could always eat here.",
               "reward": 60
             },
             {
-              "content": "Let's play till dark.",
+              "content": "That's fine, but...",
               "reward": 50
             }
           ]
@@ -805,115 +789,104 @@
     ],
     "special_award": [
       {
-        "description": "It will be easier to get Perfect or Great notes.",
-        "icon": "xielizhe-icon-banjinglingxiang-01.png",
-        "name": "Solo Revolution",
+        "description": "Enable the auto plant feature. Adds 3 additional types of flowers for purchase at the Shibuya flower shop.",
+        "icon": "xielizhe-icon-songfangjie-05.png",
+        "name": "Auto Plant 1",
         "rank": 1
       },
       {
-        "description": "A Miss will become a Perfect once every 10 seconds.",
-        "icon": "xielizhe-icon-banjinglingxiang-02.png",
-        "name": "Savior on Stage",
+        "description": "Matsukata will regularly send plant seeds.",
+        "icon": "xielizhe-icon-songfangjie-02.png",
+        "name": "Matsukata's Recommended Seed 1",
         "rank": 5
       },
       {
-        "description": "Unlock the song \"Seize the Light.\"",
-        "icon": "xielizhe-icon-banjinglingxiang-03.png",
-        "name": "Solo Rock",
+        "description": "Increase yield from harvested plants.",
+        "icon": "xielizhe-icon-songfangjie-01.png",
+        "name": "Auto Plant 2",
         "rank": 9
       },
       {
-        "description": "You can complete long notes without lifting your finger.",
-        "icon": "xielizhe-icon-banjinglingxiang-04.png",
-        "name": "Twelve-String Sunset",
+        "description": "Automatically harvest plants when they are ready.",
+        "icon": "xielizhe-icon-songfangjie-04.png",
+        "name": "Auto Plant 3",
         "rank": 13
       },
       {
-        "description": "Unlock the song \"Wonder Light.\"",
-        "icon": "xielizhe-icon-banjinglingxiang-03.png",
-        "name": "With the Daybreak",
-        "rank": 20
+        "description": "Plant seeds sent by Matsukata will sometimes be rare.",
+        "icon": "xielizhe-icon-songfangjie-03.png",
+        "name": "Matsukata's Recommended Seed 2",
+        "rank": 17
       }
     ],
-    "time": "After School",
+    "time": "Night",
     "unlock_quest": [
       {
-        "details": "I should talk to Ritsuka and hear her thoughts.",
-        "name": "Rocking with the Band Club 1"
+        "details": "Miyazawa delivered a sincere public apology.\nHis heart has truly changed...",
+        "name": "Outcome of Pride"
+      },
+      {
+        "details": "I should log into Harvest World Online.",
+        "name": "Virtual Encounter"
       }
     ],
     "visit_dialog": [
       {
-        "destination": "Inokashira Park",
+        "destination": "Shibuya",
         "good_answers": [
           [
             {
-              "content": "Breaks are important.",
+              "content": "I know what you mean.",
               "reward": 60
             },
             {
-              "content": "Would you prefer to be alone?",
+              "content": "You should try flowers sometime.",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Miura Beach",
+        "destination": "Ginza",
         "good_answers": [
           [
             {
-              "content": "Thanks for inviting me.",
+              "content": "That's really okay?",
               "reward": 60
             },
             {
-              "content": "I'm kinda hungry...",
+              "content": "I feel a bit guilty...",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Suidobashi",
+        "destination": "Akihabara",
         "good_answers": [
           [
             {
-              "content": "How about the Ferris wheel?",
+              "content": "I'm a regular.",
               "reward": 60
             },
             {
-              "content": "Give the roller coaster a go!",
+              "content": "When the mood strikes me.",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "Yongen-Jaya",
+        "destination": "Shinagawa",
         "good_answers": [
           [
             {
-              "content": "Can't beat golden age movies.",
-              "reward": 60
+              "content": "With friends, sometimes.",
+              "reward": 50
             },
             {
-              "content": "I prefer modern flicks.",
-              "reward": 50
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "Seaside Park",
-        "good_answers": [
-          [
-            {
-              "content": "It's a wonderful place.",
+              "content": "Usually on dates.",
               "reward": 60
-            },
-            {
-              "content": "I think it's a great spot.",
-              "reward": 50
             }
           ]
         ]

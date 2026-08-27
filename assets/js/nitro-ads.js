@@ -20,6 +20,17 @@
                 [300, 250]
             ],
             mediaQuery: '(min-width: 769px)'
+        },
+        article: {
+            format: 'article',
+            articleOffsetTop: 0,
+            pageInterval: 3,
+            report: {
+                enabled: true,
+                icon: true,
+                wording: 'Report Ad',
+                position: 'bottom-right'
+            }
         }
     };
 
@@ -88,7 +99,8 @@
     ];
 
     const LOCAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '[::1]']);
-    const RIGHT_RAIL_CONTENT_GAP = 48;
+    const RIGHT_RAIL_CONTENT_GAP_MIN = 48;
+    const RIGHT_RAIL_CONTENT_GAP_MAX = 60;
     const RIGHT_RAIL_VERTICAL_SHIFT = 90;
     const isLocalDemo = LOCAL_HOSTNAMES.has(window.location.hostname);
     const initializedGlobalPlacements = new Set();
@@ -107,7 +119,7 @@
             - (Number.parseFloat(mainWrapperStyles.paddingRight) || 0);
         const minimumRailSpacing = Number.isFinite(options.railSpacing) ? options.railSpacing : 10;
         const availableRailWidth = Math.floor(
-            viewportWidth - contentRight - RIGHT_RAIL_CONTENT_GAP - minimumRailSpacing
+            viewportWidth - contentRight - RIGHT_RAIL_CONTENT_GAP_MIN - minimumRailSpacing
         );
         const fittingRailSizes = railSizes.filter(([width]) => width <= availableRailWidth);
         if (!fittingRailSizes.length) return null;
@@ -116,8 +128,15 @@
 
         const railWidth = Math.max(...fittingRailSizes.map(([width]) => width));
         const railHeight = Math.max(...fittingRailSizes.map(([, height]) => height));
+        const contentGap = Math.min(
+            RIGHT_RAIL_CONTENT_GAP_MAX,
+            Math.max(
+                RIGHT_RAIL_CONTENT_GAP_MIN,
+                Math.floor(viewportWidth - contentRight - railWidth - minimumRailSpacing)
+            )
+        );
         const contentAlignedSpacing = Math.floor(
-            viewportWidth - contentRight - railWidth - RIGHT_RAIL_CONTENT_GAP
+            viewportWidth - contentRight - railWidth - contentGap
         );
 
         options.railSpacing = Math.max(minimumRailSpacing, contentAlignedSpacing);

@@ -682,7 +682,7 @@ const Guides = {
                     ${tocHtml}
                 </header>
 
-                <div class="guide-content">
+                <div id="guide-article-content" class="guide-content" data-nitro-ad data-nitro-format="article">
                     ${contentWithAnchors}
                 </div>
             </article>

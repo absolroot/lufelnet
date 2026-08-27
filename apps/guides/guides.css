@@ -496,6 +496,17 @@
     color: var(--guide-text-secondary);
 }
 
+.guide-content [id^="guide-article-content-autowrap-"] {
+    margin-right: auto !important;
+    margin-left: auto !important;
+    text-align: center !important;
+}
+
+.guide-content [id^="guide-article-content-autowrap-"] > * {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
 /* Headings with anchor-style indicator */
 .guide-content h1,
 .guide-content h2,

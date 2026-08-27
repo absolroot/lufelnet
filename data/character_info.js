@@ -535,7 +535,7 @@ Object.assign(window.characterData, {
         "role_en": "Down, AOE Debuffer",
         "role_jp": "ダウン、範囲デバフ",
         "tag": "다운, 방어력 감소, 감전, 대미지 보너스, 공격력, 크리티컬 효과",
-        "color": "#ecf714",
+        "color": "#f9ff81",
         "element": "전격",
         "rarity": 5,
         "position": "굴복",

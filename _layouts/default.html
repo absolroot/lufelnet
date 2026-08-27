@@ -160,6 +160,7 @@
       queue: []
     };
   </script>
+  {% include nitro-debug-timing.html %}
   <script data-cfasync="false" async src="https://s.nitropay.com/ads-2620.js"></script>
   <script src="{{ site.baseurl }}/assets/js/nitro-ads.js?v={{ site.time | date: '%s' }}" defer></script>
 
@@ -538,7 +539,7 @@
             // 주기적으로 업데이트 확인 (개발 중)
             setInterval(() => {
               registration.update();
-            }, 1200000); // 20분마다 확인
+            }, 3600000); // 60분마다 확인
 
             // 업데이트 확인
             registration.addEventListener('updatefound', () => {

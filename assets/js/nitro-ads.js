@@ -110,8 +110,9 @@
 
     const LOCAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '[::1]']);
     const RIGHT_RAIL_CONTENT_GAP_MIN = 48;
-    const RIGHT_RAIL_CONTENT_GAP_MAX = 60;
+    const RIGHT_RAIL_CONTENT_GAP_MAX = 72;
     const RIGHT_RAIL_VERTICAL_SHIFT = 90;
+    const PLACEMENT_VISIBLE_MARGIN = 1200;
     const isLocalDemo = LOCAL_HOSTNAMES.has(window.location.hostname);
     const initializedGlobalPlacements = new Set();
 
@@ -164,9 +165,12 @@
     }
 
     function createAd(id, options, resetInitializedState) {
+        if (typeof window.LufelNitroAds?.recordDebugTiming === 'function') {
+            window.LufelNitroAds.recordDebugTiming('request', { id });
+        }
+
         Promise.resolve(window.nitroAds.createAd(id, {
             demo: isLocalDemo,
-            delayLoading: true,
             report: {
                 enabled: true,
                 icon: true,
@@ -204,8 +208,11 @@
 
         createAd(slot.id, {
             ...preset,
+            visibleMargin: PLACEMENT_VISIBLE_MARGIN,
             ...(format === 'article' && window.matchMedia('(max-width: 768px)').matches ? { pageInterval: 4 } : {}),
-            ...(slot.dataset.nitroRenderVisibleOnly === 'true' ? { renderVisibleOnly: true } : {}),
+            ...(slot.dataset.nitroRenderVisibleOnly === 'true' ? {
+                renderVisibleOnly: true
+            } : {}),
         }, () => {
             delete slot.dataset.nitroInitialized;
         });

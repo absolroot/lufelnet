@@ -246,40 +246,40 @@
     transform: rotate(-2deg) translateY(10px);
 }
 
-/* 호버 시 카드 이미지 색이 빛나는 효과*/
-.card:hover {
-    filter: brightness(1.1);
-    transform: rotate(-1deg) translateY(0px);
-    z-index: 1;
-}
+/* 실제 호버를 지원하는 환경에서만 카드 호버 효과 적용 */
+@media (hover: hover) and (pointer: fine) {
+    /* 호버 시 카드 이미지 색이 빛나는 효과 */
+    .card:hover {
+        filter: brightness(1.1);
+        transform: rotate(-1deg) translateY(0px);
+        z-index: 1;
+    }
 
-/* 카드 호버 시 이름표 배경색 변경 */
-.card:hover .name-text {
-    background: linear-gradient(to bottom, #8e222d, #841f28);
-    /* 빨간색 그라데이션으로 변경 */
-    transition: background 0.5s;
-    /* 부드러운 전환 효과 */
-}
+    /* 카드 호버 시 이름표 배경색 변경 */
+    .card:hover .name-text {
+        background: linear-gradient(to bottom, #8e222d, #841f28);
+        /* 빨간색 그라데이션으로 변경 */
+        transition: background 0.5s;
+        /* 부드러운 전환 효과 */
+    }
 
+    /* 페르소나3 호버 시 스타일 */
+    .card:hover .name-text[data-persona3="true"] {
+        background: linear-gradient(to bottom, #0e4570, #0d4e76);
+        transition: background 0.5s;
+    }
 
-/* 페르소나3 호버 시 스타일 */
-.card:hover .name-text[data-persona3="true"] {
-    background: linear-gradient(to bottom, #0e4570, #0d4e76);
-    transition: background 0.5s;
-}
+    /* 페르소나4 호버 시 스타일 */
+    .card:hover .name-text[data-persona4="true"] {
+        background: linear-gradient(to bottom, #cba233, #bf992f);
+        transition: background 0.5s;
+    }
 
-
-/* 페르소나4 호버 시 스타일 */
-.card:hover .name-text[data-persona4="true"] {
-    background: linear-gradient(to bottom, #cba233, #bf992f);
-    transition: background 0.5s;
-}
-
-
-/* 페르소나5 호버 시 스타일 */
-.card:hover .name-text[data-persona5="true"] {
-    background: linear-gradient(to bottom, #8c0b0b, #8d1919);
-    transition: background 0.5s;
+    /* 페르소나5 호버 시 스타일 */
+    .card:hover .name-text[data-persona5="true"] {
+        background: linear-gradient(to bottom, #8c0b0b, #8d1919);
+        transition: background 0.5s;
+    }
 }
 
 

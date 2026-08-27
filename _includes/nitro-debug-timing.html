@@ -1,0 +1,73 @@
+<script data-cfasync="false">
+  (function () {
+    'use strict';
+
+    const debugLevel = new URLSearchParams(window.location.search).get('nitroads_debug');
+    if (debugLevel !== '1' && debugLevel !== '2') return;
+
+    const placementStartedAt = new Map();
+    const records = [];
+    const eventNames = ['loaded', 'createAd', 'prepare', 'bidReceived', 'rendered'];
+
+    window.LufelNitroAds = window.LufelNitroAds || {};
+    window.LufelNitroAds.debugTimings = records;
+
+    function roundMilliseconds(value) {
+      return Number.isFinite(value) ? Math.round(value) : null;
+    }
+
+    function recordTiming(eventName, event) {
+      const detail = event.detail || {};
+      const adInfo = detail.adInfo || detail;
+      const placementId = detail.id || adInfo.adUnitCode || null;
+      const now = performance.now();
+
+      if ((eventName === 'request' || eventName === 'createAd')
+        && placementId
+        && !placementStartedAt.has(placementId)) {
+        placementStartedAt.set(placementId, now);
+      }
+
+      const placementStarted = placementId ? placementStartedAt.get(placementId) : null;
+      const record = {
+        event: eventName,
+        pageElapsedMs: roundMilliseconds(now),
+        placementId,
+        placementElapsedMs: placementStarted == null
+          ? null
+          : roundMilliseconds(now - placementStarted),
+        auctionTimeoutMs: roundMilliseconds(detail.auctionTimeout),
+        bidder: adInfo.bidder || null,
+        bidderResponseMs: roundMilliseconds(adInfo.timeToRespond),
+        size: Number.isFinite(adInfo.width) && Number.isFinite(adInfo.height)
+          ? `${adInfo.width}x${adInfo.height}`
+          : null
+      };
+
+      records.push(record);
+
+      const parts = [
+        `event=${record.event}`,
+        `page=${record.pageElapsedMs}ms`
+      ];
+      if (record.placementId) parts.push(`placement=${record.placementId}`);
+      if (record.placementElapsedMs != null) parts.push(`placementElapsed=${record.placementElapsedMs}ms`);
+      if (record.auctionTimeoutMs != null) parts.push(`auctionTimeout=${record.auctionTimeoutMs}ms`);
+      if (record.bidder) parts.push(`bidder=${record.bidder}`);
+      if (record.bidderResponseMs != null) parts.push(`bidderResponse=${record.bidderResponseMs}ms`);
+      if (record.size) parts.push(`size=${record.size}`);
+
+      console.info(`[NitroTiming] ${parts.join(' ')}`);
+    }
+
+    eventNames.forEach((eventName) => {
+      document.addEventListener(`nitroAds.${eventName}`, (event) => {
+        recordTiming(eventName, event);
+      });
+    });
+
+    window.LufelNitroAds.recordDebugTiming = function (eventName, detail) {
+      recordTiming(eventName, { detail });
+    };
+  })();
+</script>

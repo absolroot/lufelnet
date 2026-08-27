@@ -1,0 +1,282 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Katayama uses Discharge Sprocket, Secret Technique: Lightning Legs is unlocked and becomes usable 1 time.\nWhen Secret Technique: Lightning Legs deals damage, greatly decrease the target's Down Points regardless of Electric affinity. Also, increase the Defense decrease effect of Hard Knocks by 10% for 2 turns (for every 10 points of Speed, increase by 2.22% more, up to a maximum bonus of 40%).",
+        "name": "Tenacious Teacher",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Katayama knocks down a foe, permanently decrease the target's Down Point maximum by 1.\nWhen a target is inflicted with Detention, increase critical damage taken by 30% more for 1 turn.\nWhen Katayama deals Electric damage, inflict Shock on the target.",
+        "name": "Lightning Lecturer",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Katayama knocks down a foe with a skill, increase the target's damage taken while downed by 10% more for 1 turn. Also, permanently increase party's Attack by 10% (stacks up to 3 times).",
+        "name": "Role Model",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Discharge Sprocket and Thunderbolt Outrage by 3.",
+        "name": "Electric Cycle",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: After activating a Highlight, the next time Katayama knocks down a foe, permanently increase the target's damage taken by 20% more. This effect does not stack.",
+        "name": "Class in Session",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Secret Technique: Lightning Legs and Thief Tactics by 3.",
+        "name": "Unstoppable Light",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain 2 Wings of Guidance stacks. Gain 1 Wings of Guidance stack after every 2 skills used. Wings of Guidance stacks up to 3 times.\nAt the start of Katayama's turn, spend 1 Wings of Guidance stack to gain the following buffs for 1 turn. Increase Katayama's Attack by 50%, critical rate by 10%, critical damage by 30%, and allow her Highlight to activate critical hits. Also, increase damage taken by foes with Hard Knocks by 30% more, and increase damage taken by downed foes with Detention by 20% more.\nWhen Katayama takes fatal damage, if she has Wings of Guidance, spend 1 Wings of Guidance stack to evade that damage (this effect activates once per battle, and is not effective against certain skills).",
+        "name": "Unconditional Love",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Electric damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, and 50% chance to inflict Dizzy on foes for 1 turn. Also, permanently decrease the target's Defense by 29.3%/32.3%/31.1%/34.1% (this effect does not stack). Also, increase damage taken by 19.5%/21.5%/20.7%/22.7% for 3 turns.",
+      "name": "Highlight",
+      "nature": "Electric",
+      "skill_lv": "10/10/13/13",
+      "sn": 143152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Rate": "0.12",
+      "Speed": "10"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S2",
+      "S3/HL"
+    ],
+    "name": "Kumi Katayama",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Deal Electric damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, and inflict Hard Knocks for 3 turns. When in Lightning Legs state, also increase this skill's damage by 35%.\nAlso, Secret Technique: Lightning Legs can be used 1 time.\nHard Knocks: Decrease Defense by 9.8%/10.8%/10.4%/11.4% (for every 10 points of Speed, increase by 2.22% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%). Also, increase damage taken by 7.8%/8.6%/8.3%/9.1% (for every 10 points of Speed, increase by 1.78% more, up to a maximum of 31.2%/34.4%/33.2%/36.4%).",
+        "name": "Discharge Sprocket",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 143111,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Electric damage to all foes equal to 135.5%/149.3%/143.8%/157.7% of Attack. Decrease Down Points of all targets that take damage by 1 regardless of Electric affinity, and inflict Hard Knocks for 1 turn. When in Lightning Legs state, decrease Down Points of all targets that take damage by 3 more and inflict Detention for 1 turn.\nHard Knocks: Decrease Defense by 9.8%/10.8%/10.4%/11.4% (for every 10 points of Katayama's Speed, increase by 2.22% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%). Also, increase damage taken by 7.8%/8.6%/8.3%/9.1% (for every 10 points of Katayama's Speed, increase by 1.78% more, up to a maximum of 31.2%/34.4%/33.2%/36.4%).\nDetention: Increase damage taken while knocked down by 0.56% for every 10 points of Katayama's Speed (up to a maximum of 9.8%/10.8%/10.4%/11.4%). Also, increase damage taken by 6.8%/7.5%/7.3%/8.0% (for every 10 points of Katayama's Speed, increase by 1.55% more, up to a maximum of 27.3%/30.1%/29.0%/31.8%).",
+        "name": "Thunderbolt Outrage",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 143112,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 25",
+        "desc": "Deal Electric damage to all foes equal to 141.9%/156.5%/150.6%/165.2% of Attack. When targets take damage, decrease Down Points by 5 regardless of Electric affinity, and inflict Detention for 1 turn.\nWhen this skill knocks down any target, gain Lightning Legs for 2 turns.\nDetention: Increase damage taken while knocked down by 0.56% for every 10 points of Katayama's Speed (up to a maximum of 9.8%/10.8%/10.4%/11.4%). Also, increase damage taken by 6.8%/7.5%/7.3%/8.0% (for every 10 points of Speed, increase by 1.55% more, up to a maximum of 27.3%/30.1%/29.0%/31.8%).\nLightning Legs: Enhance the skill effects of the next Discharge Sprocket or Thunderbolt Outrage used.",
+        "name": "Secret Technique: Lightning Legs",
+        "nature": "Electric",
+        "skill_lv": "10/10/13/13",
+        "sn": 143113,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When an ally attacks a knocked down foe, increase Attack by 36.0%.",
+        "name": "Answer the Call",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "All Allies",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, when Katayama's Speed is above 100, increase Attack by 24 for every 1 point of Speed above 100 (up to 1920).",
+        "name": "High-Speed Vector",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 143132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 3750.0,
+      "Speed": 160.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1069.99 / 1089.19 / 1108.39 / 1127.59 / 1146.79 / 1165.99 / 1185.19",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3390.02 / 3450.82 / 3512.42 / 3573.22 / 3634.02 / 3694.82 / 3756.42",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "125.89 / 125.89 / 125.89 / 125.89 / 125.89 / 125.89 / 125.89",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

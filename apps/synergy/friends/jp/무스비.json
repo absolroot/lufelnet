@@ -5,15 +5,11 @@
         "good_answers": [
           [
             {
-              "content": "知り合いがいると心強い",
-              "reward": 50
+              "content": "『今』を的確に捉えられてる",
+              "reward": 60
             },
             {
-              "content": "そうかな…？",
-              "reward": 40
-            },
-            {
-              "content": "自分も楽しいと思う",
+              "content": "きちんと後輩を育てられてる",
               "reward": 60
             }
           ]
@@ -22,21 +18,21 @@
           "from": 2,
           "to": 3
         },
-        "unlock_cond": "優しさ Lv.3"
+        "unlock_cond": "度胸 Lv.3"
       },
       {
         "good_answers": [
           [
             {
-              "content": "大丈夫だよ",
+              "content": "もちろん全力で！",
               "reward": 60
             },
             {
-              "content": "愛歌が悪いわけじゃない",
+              "content": "頑張ります！",
               "reward": 50
             },
             {
-              "content": "前向きになろう",
+              "content": "できる範囲で…",
               "reward": 40
             }
           ]
@@ -45,22 +41,22 @@
           "from": 4,
           "to": 5
         },
-        "unlock_cond": "優しさ Lv.5"
+        "unlock_cond": "度胸 Lv.5"
       },
       {
         "good_answers": [
           [
             {
-              "content": "順序立ててやっていこう",
-              "reward": 50
+              "content": "自分に目を向けよう",
+              "reward": 60
             },
             {
-              "content": "愛歌ならできるはず",
+              "content": "松方さんもすくすく育ってる",
               "reward": 40
             },
             {
-              "content": "旅行先は考えておこう",
-              "reward": 60
+              "content": "不安定なのも個性",
+              "reward": 50
             }
           ]
         ],
@@ -68,22 +64,22 @@
           "from": 6,
           "to": 7
         },
-        "unlock_cond": "優しさ Lv.6"
+        "unlock_cond": "度胸 Lv.6"
       },
       {
         "good_answers": [
           [
             {
-              "content": "それがいいと思う",
-              "reward": 40
-            },
-            {
-              "content": "応援してる",
+              "content": "そういうときもある",
               "reward": 50
             },
             {
-              "content": "愛歌の歌が聞きたい",
+              "content": "葛藤も成長には必要",
               "reward": 60
+            },
+            {
+              "content": "ＹＵＩはいつも激しい",
+              "reward": 40
             }
           ]
         ],
@@ -91,22 +87,22 @@
           "from": 8,
           "to": 9
         },
-        "unlock_cond": "優しさ Lv.8"
+        "unlock_cond": "度胸 Lv.8"
       },
       {
         "good_answers": [
           [
             {
-              "content": "お疲れ様",
-              "reward": 40
-            },
-            {
-              "content": "かっこよかった",
+              "content": "伝えてくれてありがとう",
               "reward": 60
             },
             {
-              "content": "これで出かけられるな",
+              "content": "そういうことにしておく",
               "reward": 50
+            },
+            {
+              "content": "もう無理しなくていいよ",
+              "reward": 40
             }
           ]
         ],
@@ -114,22 +110,22 @@
           "from": 10,
           "to": 11
         },
-        "unlock_cond": "優しさ Lv.10"
+        "unlock_cond": "度胸 Lv.10"
       },
       {
         "good_answers": [
           [
             {
-              "content": "やめておく？",
-              "reward": 40
-            },
-            {
-              "content": "目指すは飴の屋台だ",
+              "content": "ドンと任せろ",
               "reward": 60
             },
             {
-              "content": "空いてるところから行こう",
-              "reward": 50
+              "content": "この畑は俺が守る",
+              "reward": 60
+            },
+            {
+              "content": "気にしないで",
+              "reward": 60
             }
           ]
         ],
@@ -137,22 +133,22 @@
           "from": 12,
           "to": 13
         },
-        "unlock_cond": "優しさ Lv.11"
+        "unlock_cond": "度胸 Lv.11"
       },
       {
         "good_answers": [
           [
             {
-              "content": "答えが見つかったな",
+              "content": "楽勝…でした…",
               "reward": 60
             },
             {
-              "content": "それがいいと思う",
-              "reward": 40
+              "content": "褒めて…ください…",
+              "reward": 60
             },
             {
-              "content": "愛歌ならできる",
-              "reward": 50
+              "content": "もう倒れそう…",
+              "reward": 60
             }
           ]
         ],
@@ -160,22 +156,22 @@
           "from": 14,
           "to": 15
         },
-        "unlock_cond": "優しさ Lv.13"
+        "unlock_cond": "度胸 Lv.13"
       },
       {
         "good_answers": [
           [
             {
-              "content": "良かったな",
-              "reward": 40
-            },
-            {
-              "content": "セッションが楽しみだ",
+              "content": "これからも頼ってほしい",
               "reward": 50
             },
             {
-              "content": "３人でもやろう",
-              "reward": 60
+              "content": "こっちも頼るから",
+              "reward": 50
+            },
+            {
+              "content": "報酬はラーメンで",
+              "reward": 50
             }
           ]
         ],
@@ -183,22 +179,22 @@
           "from": 16,
           "to": 17
         },
-        "unlock_cond": "優しさ Lv.15"
+        "unlock_cond": "度胸 Lv.15"
       },
       {
         "good_answers": [
           [
             {
-              "content": "そうだな",
-              "reward": 40
-            },
-            {
-              "content": "自分もサポートする",
+              "content": "まずは第１歩だ",
               "reward": 60
             },
             {
-              "content": "愛歌の言う通りだ",
+              "content": "仏頂面だったけど…",
               "reward": 50
+            },
+            {
+              "content": "目標達成だ",
+              "reward": 40
             }
           ]
         ],
@@ -206,36 +202,27 @@
           "from": 19,
           "to": 20
         },
-        "unlock_cond": "優しさ Lv.17"
+        "unlock_cond": "度胸 Lv.17"
       }
     ],
-    "can_romance": true,
-    "friend_lover_dialog": [
-      {
-        "content": "自分は…",
-        "is_romance": true
-      },
-      {
-        "content": "愛歌のことは大切だけど…",
-        "is_romance": false
-      }
-    ],
+    "can_romance": false,
+    "friend_lover_dialog": [],
     "item": [
       {
-        "bonus_synergy": 5,
+        "bonus_synergy": 12,
         "compound": [],
-        "image": "item-303080.png",
-        "name": "アイドルのアクキー",
-        "new_gift_synergy": 10,
+        "image": "item-303084.png",
+        "name": "アイドルトレカ",
+        "new_gift_synergy": 24,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 1900,
+            "discountPrice": 4750,
             "isHidden": 0,
             "mapName": null,
-            "maxBuy": 5,
+            "maxBuy": 3,
             "moneyName": "所持金",
-            "price": 2000,
+            "price": 4990,
             "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
             "shopName": "ロシナンテ"
@@ -244,32 +231,68 @@
         "source": [
           "shop"
         ],
-        "synergy": 5
+        "synergy": 12
       },
       {
-        "bonus_synergy": 1,
+        "bonus_synergy": 12,
         "compound": [],
-        "image": "item-303205.png",
-        "name": "ゴシップ週刊誌",
-        "new_gift_synergy": 2,
+        "image": "item-303208.png",
+        "name": "磁気ネックレス",
+        "new_gift_synergy": 24,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 480,
+            "discountPrice": 4560,
             "isHidden": 0,
             "mapName": null,
-            "maxBuy": 5,
+            "maxBuy": 2,
             "moneyName": "所持金",
-            "price": 500,
+            "price": 4800,
             "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
-            "shopName": "トリプルセブン"
+            "shopName": "３７℃"
+          },
+          {
+            "discountPrice": 4560,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 2,
+            "moneyName": "所持金",
+            "price": 4800,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "パワーストーン専門店"
           }
         ],
         "source": [
           "shop"
         ],
-        "synergy": 1
+        "synergy": 12
+      },
+      {
+        "bonus_synergy": 4,
+        "compound": [],
+        "image": "item-303221.png",
+        "name": "卓上用ミニサボテン",
+        "new_gift_synergy": 8,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 1430,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 1500,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ラフレシ屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 4
       },
       {
         "bonus_synergy": 1,
@@ -306,10 +329,99 @@
         "synergy": 1
       },
       {
+        "bonus_synergy": 50,
+        "compound": [],
+        "image": "item-303223.png",
+        "name": "最新式ロボット掃除機",
+        "new_gift_synergy": 100,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 27000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "知識 LV.5",
+            "price": 28000,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "大正屋"
+          },
+          {
+            "discountPrice": 27000,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "personalityLimit": "知識 LV.5",
+            "price": 28000,
+            "reducePriceCond": "道玄坂琉七 LV.5",
+            "resetType": "주간",
+            "shopName": "あきんどお～"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 50
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303224.png",
+        "name": "ガラスの花瓶",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3040,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 3,
+            "moneyName": "所持金",
+            "personalityLimit": "優しさ LV.4",
+            "price": 3200,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ハイセンス"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
+        "bonus_synergy": 8,
+        "compound": [],
+        "image": "item-303225.png",
+        "name": "バスケットフラワー",
+        "new_gift_synergy": 16,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 3040,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 1,
+            "moneyName": "所持金",
+            "price": 3200,
+            "reducePriceCond": "道玄坂琉七 LV.7",
+            "resetType": "주간",
+            "shopName": "花屋助兵衛"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 8
+      },
+      {
         "bonus_synergy": 28,
         "compound": [],
-        "image": "item-303227.png",
-        "name": "宇治抹茶プリンセット",
+        "image": "item-303228.png",
+        "name": "トリュフチョコ",
         "new_gift_synergy": 56,
         "seed": [],
         "shop": [
@@ -319,7 +431,7 @@
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
-            "personalityLimit": "優しさ LV.13",
+            "personalityLimit": "優しさ LV.8",
             "price": 12000,
             "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
@@ -332,40 +444,66 @@
         "synergy": 28
       },
       {
-        "bonus_synergy": 60,
+        "bonus_synergy": 112,
         "compound": [],
-        "image": "item-303276.png",
-        "name": "ミニスピーカー",
-        "new_gift_synergy": 120,
+        "image": "item-303229.png",
+        "name": "ブランド香水",
+        "new_gift_synergy": 224,
         "seed": [],
         "shop": [
           {
-            "discountPrice": 35000,
+            "discountPrice": 77000,
             "isHidden": 0,
             "mapName": null,
             "maxBuy": 1,
             "moneyName": "所持金",
-            "price": 36000,
+            "personalityLimit": "魅力 LV.13",
+            "price": 78000,
             "reducePriceCond": "道玄坂琉七 LV.1",
             "resetType": "주간",
-            "shopName": "大正屋"
-          },
-          {
-            "discountPrice": 35000,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "所持金",
-            "price": 36000,
-            "reducePriceCond": "道玄坂琉七 LV.5",
-            "resetType": "주간",
-            "shopName": "あきんどお～"
+            "shopName": "ボディチョップ"
           }
         ],
         "source": [
           "shop"
         ],
-        "synergy": 60
+        "synergy": 112
+      },
+      {
+        "bonus_synergy": 2,
+        "compound": [],
+        "image": "item-303234.png",
+        "name": "水彩絵ハガキ",
+        "new_gift_synergy": 4,
+        "seed": [],
+        "shop": [
+          {
+            "discountPrice": 760,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 800,
+            "reducePriceCond": "道玄坂琉七 LV.1",
+            "resetType": "주간",
+            "shopName": "ロシナンテ"
+          },
+          {
+            "discountPrice": 760,
+            "isHidden": 0,
+            "mapName": null,
+            "maxBuy": 5,
+            "moneyName": "所持金",
+            "price": 800,
+            "reducePriceCond": "道玄坂琉七 LV.13",
+            "resetType": "주간",
+            "shopName": "文房具屋"
+          }
+        ],
+        "source": [
+          "shop"
+        ],
+        "synergy": 2
       },
       {
         "bonus_synergy": 8,
@@ -529,131 +667,6 @@
         "synergy": 28
       },
       {
-        "bonus_synergy": 14,
-        "compound": [],
-        "image": "item-303294.png",
-        "name": "クラシックのレコード",
-        "new_gift_synergy": 28,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 5130,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 2,
-            "moneyName": "所持金",
-            "price": 5400,
-            "reducePriceCond": "道玄坂琉七 LV.1",
-            "resetType": "주간",
-            "shopName": "ロシナンテ"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 14
-      },
-      {
-        "bonus_synergy": 42,
-        "compound": [],
-        "image": "item-317004.png",
-        "name": "ミニわたあめメーカー",
-        "new_gift_synergy": 84,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 20800,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "所持金",
-            "price": 21800,
-            "reducePriceCond": "道玄坂琉七 LV.5",
-            "resetType": "주간",
-            "shopName": "あきんどお～"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 42
-      },
-      {
-        "bonus_synergy": 9,
-        "compound": [],
-        "image": "item-317013.png",
-        "name": "ふわふわ毛布",
-        "new_gift_synergy": 18,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 3420,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 3,
-            "moneyName": "所持金",
-            "price": 3600,
-            "reducePriceCond": "道玄坂琉七 LV.5",
-            "resetType": "주간",
-            "shopName": "トコブシ屋"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 9
-      },
-      {
-        "bonus_synergy": 15,
-        "compound": [],
-        "image": "item-317014.png",
-        "name": "ポップミュージック集",
-        "new_gift_synergy": 30,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 5700,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 3,
-            "moneyName": "所持金",
-            "price": 6000,
-            "reducePriceCond": "道玄坂琉七 LV.1",
-            "resetType": "주간",
-            "shopName": "大正屋"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 15
-      },
-      {
-        "bonus_synergy": 65,
-        "compound": [],
-        "image": "item-317016.png",
-        "name": "小型電子キーボード",
-        "new_gift_synergy": 130,
-        "seed": [],
-        "shop": [
-          {
-            "discountPrice": 39000,
-            "isHidden": 0,
-            "mapName": null,
-            "maxBuy": 1,
-            "moneyName": "所持金",
-            "price": 40000,
-            "reducePriceCond": "道玄坂琉七 LV.5",
-            "resetType": "주간",
-            "shopName": "あきんどお～"
-          }
-        ],
-        "source": [
-          "shop"
-        ],
-        "synergy": 65
-      },
-      {
         "bonus_synergy": 17,
         "compound": [
           {
@@ -737,38 +750,38 @@
         "synergy": 999
       }
     ],
-    "name": "長尾愛歌",
+    "name": "松方結",
     "romance_dialog": [
       {
         "good_answers": [
           [
             {
-              "content": "緊張しすぎ",
+              "content": "任せて！",
               "reward": 40
             },
             {
-              "content": "その辺に座って",
+              "content": "構わないけど",
               "reward": 40
             }
           ],
           [
             {
-              "content": "飲み物持ってくる",
+              "content": "特にない",
               "reward": 40
             },
             {
-              "content": "愛歌オススメの曲を聴こう",
+              "content": "平気だ",
               "reward": 40
             }
           ],
           [
             {
-              "content": "謝るのはもう禁止",
-              "reward": 50
-            },
-            {
-              "content": "一緒に深呼吸しよう",
+              "content": "ここで一緒に食べたい",
               "reward": 60
+            },
+            {
+              "content": "それでもいいけど…",
+              "reward": 50
             }
           ]
         ]
@@ -776,55 +789,74 @@
     ],
     "special_award": [
       {
-        "description": "都市生活で『魅力』と『優しさ』の人間パラメータが上がりやすくなる",
-        "icon": "xielizhe-icon-ange-01.png",
-        "name": "一歩踏み出す力",
+        "description": "『自動栽培』機能が利用可能になる 渋谷の花屋で購入できる花が３種類追加される",
+        "icon": "xielizhe-icon-songfangjie-05.png",
+        "name": "自動栽培１",
         "rank": 1
       },
       {
-        "description": "都市生活で『度胸』と『器用さ』の人間パラメータが上がりやすくなる",
-        "icon": "xielizhe-icon-ange-01.png",
-        "name": "肩を並べて進む勇気",
+        "description": "松方結から定期的に種が届く",
+        "icon": "xielizhe-icon-songfangjie-02.png",
+        "name": "松方のおすすめシード１",
         "rank": 5
       },
       {
-        "description": "人間パラメータが１６/１８/２０到達で『スキーマポイント＋＋』を獲得する",
-        "icon": "xielizhe-icon-ange-02.png",
-        "name": "喜びを伝える決意",
+        "description": "栽培した作物を回収できるようになる",
+        "icon": "xielizhe-icon-songfangjie-01.png",
+        "name": "自動栽培２",
         "rank": 9
       },
       {
-        "description": "都市生活で『知識』の人間パラメータが上がりやすくなる",
-        "icon": "xielizhe-icon-ange-01.png",
-        "name": "見聞を広げる努力",
+        "description": "作物が収穫可能になると、自動で収穫される",
+        "icon": "xielizhe-icon-songfangjie-04.png",
+        "name": "自動栽培３",
         "rank": 13
       },
       {
-        "description": "人間パラメータが２０到達後、超過した２００ポイントごとにランダムなギフトを獲得する",
-        "icon": "xielizhe-icon-ange-02.png",
-        "name": "何より大切なこと",
+        "description": "松方結から届く種に、レア品種が含まれることがある",
+        "icon": "xielizhe-icon-songfangjie-03.png",
+        "name": "松方のおすすめシード２",
         "rank": 17
       }
     ],
-    "time": "放課後",
+    "time": "夜",
     "unlock_quest": [
       {
-        "details": "チヅ子が話したいようだ。\nジャズクラブの外で彼女を探そう。",
-        "name": "心意を伝える音符・下"
+        "details": "宮澤は記者会見で公開謝罪した。\nこれが改心なのか…",
+        "name": "誇りの行方"
+      },
+      {
+        "details": "『マルトクバーチャルワールド』に入ろう。",
+        "name": "バーチャルな出会い"
       }
     ],
     "visit_dialog": [
       {
-        "destination": "新宿",
+        "destination": "渋谷",
         "good_answers": [
           [
             {
-              "content": "素敵だ",
-              "reward": 50
+              "content": "気持ちはわかる",
+              "reward": 60
             },
             {
-              "content": "愛歌も挑戦してる",
+              "content": "いつか花にも挑戦したい",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "銀座",
+        "good_answers": [
+          [
+            {
+              "content": "いいの？",
               "reward": 60
+            },
+            {
+              "content": "さすがに悪い",
+              "reward": 50
             }
           ]
         ]
@@ -834,56 +866,26 @@
         "good_answers": [
           [
             {
-              "content": "そんなことない",
-              "reward": 50
-            },
-            {
-              "content": "可愛いから",
-              "reward": 60
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "お台場海浜公園",
-        "good_answers": [
-          [
-            {
-              "content": "頑張れば見えるかも？",
+              "content": "常連だ",
               "reward": 60
             },
             {
-              "content": "さすがに見えない",
+              "content": "たしなむ程度",
               "reward": 50
             }
           ]
         ]
       },
       {
-        "destination": "神田",
+        "destination": "品川",
         "good_answers": [
           [
             {
-              "content": "歌えばいい",
-              "reward": 60
-            },
-            {
-              "content": "周りが驚く",
-              "reward": 50
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "渋谷",
-        "good_answers": [
-          [
-            {
-              "content": "当然だ",
+              "content": "友達とたまに",
               "reward": 50
             },
             {
-              "content": "かなり遠慮した",
+              "content": "デートでよく来る",
               "reward": 60
             }
           ]

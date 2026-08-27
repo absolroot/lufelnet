@@ -796,6 +796,78 @@
         "synergy": 9
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306218.png",
+              "name": "ホウセンカ",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "所持金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "【ホウセンカ】\n作業台で『ホウセンカ染め』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305969.png",
+              "name": "白いハンカチ",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 380,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 400,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "大正屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『ホウセンカ染め』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305951.png",
+        "name": "ホウセンカ染め",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -857,14 +929,10 @@
       }
     ],
     "time": "夕方",
-    "unlock_quest": {
-      "details": "疲れる一日だった。\n早く部屋に戻って寝よう。",
-      "name": "夢の跡"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "1章進行後に開放"
+        "details": "疲れる一日だった。\n早く部屋に戻って寝よう。",
+        "name": "夢の跡"
       }
     ],
     "visit_dialog": [
@@ -942,6 +1010,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "1章進行後に開放"
       }
     ]
   },

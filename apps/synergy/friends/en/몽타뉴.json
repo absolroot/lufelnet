@@ -781,6 +781,78 @@
         "synergy": 16
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306217.png",
+              "name": "Basil",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "Money",
+                  "price": 1200,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "[Basil]\nCan be crafted at the workbench into a Basil-Scented Pouch and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305968.png",
+              "name": "Silk Pouch",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 500,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "High Sense"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "A common material.\nCan be used at the workbench to craft this gift for accomplices: Basil-Scented Pouch.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305950.png",
+        "name": "Basil-Scented Pouch",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -852,14 +924,10 @@
       }
     ],
     "time": "Evening",
-    "unlock_quest": {
-      "details": "A new day begins.\nTime for school.",
-      "name": "Outcome of Pride"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "Available after progressing through Chapter 2"
+        "details": "A new day begins.\nTime for school.",
+        "name": "Outcome of Pride"
       }
     ],
     "visit_dialog": [
@@ -952,6 +1020,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 2"
       }
     ]
   },

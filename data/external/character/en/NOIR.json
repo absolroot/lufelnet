@@ -148,7 +148,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 26",
-        "desc": "Deal Psychokinesis damage to all foes equal to 75.8%/83.6%/80.5%/88.3% of Attack (2 hits). 97.6%/97.6%/103.6%/103.6% chance to inflict 1 Target Audience stack on the main target and 53.7%/53.7%/57.0%/57.0% chance to inflict 1 Target Audience stack on other foes. Then, change Target Audience stacks on foes to Target Audience stacks on Haru and Target Audience's duration to 3 turns. Also gain 1 Focused Round stack.\nFocused Round: When using a ranged attack with Target Audience, increase skill damage by 29.3%/32.3%/31.1%/34.1%. After the ranged attack, remove all Target Audience stacks granted to Haru.",
+        "desc": "Deal Psychokinesis damage to all foes equal to 75.8%/83.6%/80.5%/88.3% of Attack (2 hits). 97.6%/97.6%/103.6%/103.6% chance to inflict 1 Target Audience stack on the main target and 53.7%/53.7%/57.0%/57.0% chance to inflict 1 Target Audience stack on other foes. Then, transfer Target Audience stacks on foes to Haru and change Target Audience's duration to 3 turns. Also gain 1 Focused Round stack.\nFocused Round: When using a ranged attack with Target Audience, increase skill damage by 29.3%/32.3%/31.1%/34.1%. After the ranged attack, remove all Target Audience stacks granted to Haru.",
         "name": "Extrasensory Aim",
         "nature": "Psychokinesis",
         "skill_lv": "10/10/13/13",

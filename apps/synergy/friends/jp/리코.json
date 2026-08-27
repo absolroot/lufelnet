@@ -690,6 +690,78 @@
         "synergy": 28
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306218.png",
+              "name": "ホウセンカ",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "所持金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "【ホウセンカ】\n作業台で『ホウセンカ染め』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305969.png",
+              "name": "白いハンカチ",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 380,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 400,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "大正屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『ホウセンカ染め』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305951.png",
+        "name": "ホウセンカ染め",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -730,45 +802,41 @@
     ],
     "special_award": [
       {
-        "description": "『渋谷・レストラン』に行けるようになる。",
+        "description": "『渋谷・レストラン』に行ける",
         "icon": "xielizhe-icon-lizi-01.png",
         "name": "おすすめビュッフェ",
         "rank": 1
       },
       {
-        "description": "『元町・中華街』に行けるようになる。",
+        "description": "『元町・中華街』に行ける",
         "icon": "xielizhe-icon-lizi-01.png",
         "name": "満腹中華街",
         "rank": 3
       },
       {
-        "description": "『品川・水族館』に行けるようになる。シナジー好感度が増加する。",
+        "description": "『品川・水族館』に行ける、シナジー好感度が増加する",
         "icon": "xielizhe-icon-lizi-01.png",
         "name": "癒しの水族館",
         "rank": 7
       },
       {
-        "description": "『銀座・寿司屋』に行けるようになる。",
+        "description": "『銀座・寿司屋』に行ける",
         "icon": "xielizhe-icon-lizi-01.png",
         "name": "回らない寿司店",
         "rank": 13
       },
       {
-        "description": "『秋葉原・家電量販店』に行けるようになる。\nシナジー好感度が増加する。",
+        "description": "『秋葉原・家電量販店』に行ける、シナジー好感度が増加する",
         "icon": "xielizhe-icon-lizi-01.png",
         "name": "充実電気街",
         "rank": 17
       }
     ],
     "time": "放課後",
-    "unlock_quest": {
-      "details": "ある場所の一室で、１人の男が明石に電話をかけた。",
-      "name": "無償の愛"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "3章エンディング後に開放"
+        "details": "ある場所の一室で、１人の男が明石に電話をかけた。",
+        "name": "無償の愛"
       }
     ],
     "visit_dialog": [
@@ -846,6 +914,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3章エンディング後に開放"
       }
     ]
   },

@@ -633,9 +633,81 @@
         "synergy": 35
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306218.png",
+              "name": "Balsam",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "Money",
+                  "price": 1200,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "[Balsam]\nCan be crafted at the workbench into Balsam Dye and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305969.png",
+              "name": "White Handkerchief",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 380,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 400,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "Taisho Store"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "A common material.\nCan be used at the workbench to craft this gift for accomplices: Balsam Dye.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305951.png",
+        "name": "Balsam Dye",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
-        "image": "item-305966.png",
+        "image": "item-305976.png",
         "name": "Eternal Love",
         "new_gift_synergy": 0,
         "seed": [],
@@ -670,11 +742,11 @@
           ],
           [
             {
-              "content": "Let's just calm down.",
+              "content": "Let's just take a breather first.",
               "reward": 60
             },
             {
-              "content": "Relax your shoulders.",
+              "content": "You need to relax your shoulders.",
               "reward": 50
             }
           ]
@@ -683,9 +755,9 @@
     ],
     "special_award": [
       {
-        "description": "Unlock the ability to purchase enhancement items from the drugstore in Zoshigaya. *The Zoshigaya Drugstore will be added in a future update.",
+        "description": "Unlock the ability to purchase enhancement items from the pharmacy in Zoshigaya.",
         "icon": "xielizhe-icon-marian-03.png",
-        "name": "Recommended Medications",
+        "name": "Recommended Everyday Medicine",
         "rank": 1
       },
       {

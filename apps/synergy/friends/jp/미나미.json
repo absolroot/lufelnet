@@ -633,9 +633,81 @@
         "synergy": 35
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306218.png",
+              "name": "ホウセンカ",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "所持金",
+                  "price": 1200,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "ラフレシ屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "【ホウセンカ】\n作業台で『ホウセンカ染め』に加工し、シナジー対象者にプレゼントできる。",
+              "type": "花"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305969.png",
+              "name": "白いハンカチ",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 380,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "所持金",
+                  "price": 400,
+                  "reducePriceCond": "道玄坂琉七 LV.1",
+                  "resetType": "주간",
+                  "shopName": "大正屋"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "一般的な作成素材。\n作業台でシナジー対象者へのプレゼント『ホウセンカ染め』に加工できる。",
+              "type": "素材"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305951.png",
+        "name": "ホウセンカ染め",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
-        "image": "item-305966.png",
+        "image": "item-305976.png",
         "name": "永遠の愛",
         "new_gift_synergy": 0,
         "seed": [],
@@ -683,7 +755,7 @@
     ],
     "special_award": [
       {
-        "description": "雑司ヶ谷の薬局で強化アイテムが購入可能になる。※雑司ヶ谷の薬局は今後のアップデートで追加されます。",
+        "description": "雑司ヶ谷の薬局で強化アイテムが購入可能になる。",
         "icon": "xielizhe-icon-marian-03.png",
         "name": "オススメ常備薬",
         "rank": 1

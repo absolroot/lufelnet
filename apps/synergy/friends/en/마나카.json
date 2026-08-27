@@ -143,7 +143,7 @@
         "good_answers": [
           [
             {
-              "content": "You got your answer!",
+              "content": "You got your answer.",
               "reward": 60
             },
             {
@@ -166,7 +166,7 @@
         "good_answers": [
           [
             {
-              "content": "It all worked out!",
+              "content": "It all worked out.",
               "reward": 40
             },
             {
@@ -174,7 +174,7 @@
               "reward": 50
             },
             {
-              "content": "Let's do a trio!",
+              "content": "Let's do a trio.",
               "reward": 60
             }
           ]
@@ -189,32 +189,16 @@
         "good_answers": [
           [
             {
-              "content": "No need to be nervous.",
+              "content": "You're right.",
               "reward": 40
             },
             {
-              "content": "Please, take a seat over there.",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "I'll get you a drink.",
-              "reward": 40
-            },
-            {
-              "content": "Let's listen to your playlist.",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "Stop apologizing. You're fine.",
-              "reward": 50
-            },
-            {
-              "content": "Let's take a deep breath.",
+              "content": "I'm always here for you.",
               "reward": 60
+            },
+            {
+              "content": "I know that for certain.",
+              "reward": 50
             }
           ]
         ],
@@ -225,8 +209,17 @@
         "unlock_cond": "Kindness Lv.17"
       }
     ],
-    "can_romance": false,
-    "friend_lover_dialog": [],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "I feel the same way.",
+        "is_romance": true
+      },
+      {
+        "content": "You're an important friend to me.",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 5,
@@ -661,6 +654,78 @@
         "synergy": 65
       },
       {
+        "bonus_synergy": 17,
+        "compound": [
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-306217.png",
+              "name": "Basil",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 1140,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 3,
+                  "moneyName": "Money",
+                  "price": 1200,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "Rafflesia"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "[Basil]\nCan be crafted at the workbench into a Basil-Scented Pouch and gifted to an accomplice.",
+              "type": "Flower"
+            },
+            "itemCount": 6
+          },
+          {
+            "item": {
+              "box": [],
+              "compound": [],
+              "content_bg": "<color=#ffffff>  </color>",
+              "icon": "item-305968.png",
+              "name": "Silk Pouch",
+              "seed": [],
+              "shop": [
+                {
+                  "discountPrice": 480,
+                  "isHidden": 0,
+                  "mapName": null,
+                  "maxBuy": 10,
+                  "moneyName": "Money",
+                  "price": 500,
+                  "reducePriceCond": "Runa Dogenzaka LV.1",
+                  "resetType": "주간",
+                  "shopName": "High Sense"
+                }
+              ],
+              "source": [
+                "shop"
+              ],
+              "tips": "A common material.\nCan be used at the workbench to craft this gift for accomplices: Basil-Scented Pouch.",
+              "type": "Material"
+            },
+            "itemCount": 1
+          }
+        ],
+        "image": "item-305950.png",
+        "name": "Basil-Scented Pouch",
+        "new_gift_synergy": 0,
+        "seed": [],
+        "shop": [],
+        "source": [
+          "compound"
+        ],
+        "synergy": 17
+      },
+      {
         "bonus_synergy": 1000,
         "compound": [],
         "image": "item-305976.png",
@@ -688,7 +753,7 @@
           ],
           [
             {
-              "content": "I'll get you a drink.",
+              "content": "I'll get you something to drink.",
               "reward": 40
             },
             {
@@ -698,7 +763,7 @@
           ],
           [
             {
-              "content": "Stop apologizing. You're fine.",
+              "content": "Apologizing is now banned.",
               "reward": 50
             },
             {

@@ -863,6 +863,21 @@ async function initializePageContent() {
     }
 
     // 카드 클릭 인터랙션 (Selection -> Detail View)
+    function scrollToMobilePersonaAd() {
+        if (!window.matchMedia('(max-width: 768px)').matches) return;
+
+        const adContainer = document.querySelector('.nitro-ad-container--persona-list');
+        if (!adContainer) return;
+
+        const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+            ? 'auto'
+            : 'smooth';
+
+        window.requestAnimationFrame(() => {
+            adContainer.scrollIntoView({ behavior, block: 'start' });
+        });
+    }
+
     function wireCardInteractions() {
         const grid = document.getElementById('personaCards');
         if (containers) {
@@ -880,6 +895,7 @@ async function initializePageContent() {
 
                     // 2. Render Detail
                     renderDetailInPanel(container);
+                    scrollToMobilePersonaAd();
 
                     // 3. Update URL (SEO / Deep Linking)
                     const targetName = container.dataset.name;

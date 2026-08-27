@@ -178,7 +178,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  event.respondWith(fetch(request));
+  // Let the browser handle all remaining requests directly.
 });
 
 self.addEventListener('sync', (event) => {

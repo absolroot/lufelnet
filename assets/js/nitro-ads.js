@@ -18,8 +18,16 @@
         rectangle: {
             sizes: [
                 [300, 250]
-            ],
-            mediaQuery: '(min-width: 769px)'
+            ]
+        },
+        'schedule-incontent': {
+            sizes: [
+                [300, 250],
+                [970, 90],
+                [728, 90],
+                [320, 100],
+                [320, 50]
+            ]
         },
         article: {
             format: 'article',
@@ -174,16 +182,27 @@
         if (!slot.id || slot.dataset.nitroInitialized === 'true') return;
 
         const format = slot.dataset.nitroFormat || 'banner';
-        const preset = PLACEMENT_PRESETS[format];
-        if (!preset) {
+        const basePreset = PLACEMENT_PRESETS[format];
+        if (!basePreset) {
             console.warn(`[NitroAds] Unknown placement format: ${format}`);
             return;
+        }
+
+        let preset = basePreset;
+        if (format === 'schedule-incontent') {
+            const container = slot.closest('.nitro-ad-container') || slot;
+            const availableWidth = Math.floor(container.getBoundingClientRect().width);
+            const fittingSizes = basePreset.sizes.filter(([width]) => width <= availableWidth);
+            if (!fittingSizes.length) return;
+            preset = { ...basePreset, sizes: fittingSizes };
         }
 
         slot.dataset.nitroInitialized = 'true';
 
         createAd(slot.id, {
             ...preset,
+            ...(format === 'article' && window.matchMedia('(max-width: 768px)').matches ? { pageInterval: 4 } : {}),
+            ...(slot.dataset.nitroRenderVisibleOnly === 'true' ? { renderVisibleOnly: true } : {}),
         }, () => {
             delete slot.dataset.nitroInitialized;
         });

@@ -78,7 +78,7 @@
     let currentMapVersion = 0; // 현재 선택된 버전
     let currentMapId = null; // 현재 맵 ID (위치 저장용)
     // 위치 저장 디바운스용
-    const positionSaveTimeout = null;
+    let positionSaveTimeout = null;
 
     // 텍스처 메모리 캐시 (세션 동안 유지)
     const textureCache = new Map();

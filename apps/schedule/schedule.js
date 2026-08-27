@@ -1685,6 +1685,53 @@
         container.innerHTML = currentHtml + nextHtml;
     }
 
+    const SCHEDULE_INLINE_AD_INTERVAL = 10;
+
+    function renderScheduleInlineAd(group, index) {
+        const safeGroup = String(group || 'all').replace(/[^a-z0-9-]/gi, '-').toLowerCase();
+        const id = `schedule-${safeGroup}-incontent-${index}`;
+
+        return `
+            <div class="nitro-ad-container nitro-ad-container--schedule-incontent schedule-inline-ad">
+                <div id="${id}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="schedule-incontent" data-nitro-render-visible-only="true"></div>
+            </div>
+        `;
+    }
+
+    function renderTimelineItems(items, adGroup, includeAd = true) {
+        let html = '';
+        let currentYear = null;
+        let renderedCount = 0;
+
+        items.forEach((item, itemIndex) => {
+            const itemYear = getScheduleYearLabel(item);
+            if (itemYear !== currentYear) {
+                currentYear = itemYear;
+                html += renderYearDivider(currentYear);
+            }
+
+            html += item.server
+                ? renderAnniversaryEvent(item)
+                : renderReleaseCard(item);
+            renderedCount += 1;
+
+            const hasFollowingCard = itemIndex < items.length - 1;
+            if (includeAd && hasFollowingCard && renderedCount === SCHEDULE_INLINE_AD_INTERVAL) {
+                html += renderScheduleInlineAd(adGroup, 1);
+            }
+        });
+
+        return html;
+    }
+
+    function initializeScheduleAds() {
+        window.requestAnimationFrame(() => {
+            if (window.LufelNitroAds && typeof window.LufelNitroAds.initializePlacements === 'function') {
+                window.LufelNitroAds.initializePlacements();
+            }
+        });
+    }
+
     // Render timeline
     function renderTimeline(releases, filter = 'all') {
         const container = document.getElementById('timeline-container');
@@ -1736,21 +1783,7 @@
             const allReleasedItems = [...releasedReleases, ...releasedAnniversaries];
             allReleasedItems.sort(compareScheduleItems);
 
-            let currentYear = null;
-            allReleasedItems.forEach(item => {
-                const itemYear = getScheduleYearLabel(item);
-                if (itemYear !== currentYear) {
-                    currentYear = itemYear;
-                    html += renderYearDivider(currentYear);
-                }
-
-                // Check if it's an anniversary event or regular release
-                if (item.server) { // Anniversary events have server property
-                    html += renderAnniversaryEvent(item);
-                } else {
-                    html += renderReleaseCard(item);
-                }
-            });
+            html += renderTimelineItems(allReleasedItems, 'released', false);
 
             html += `
                     </div>
@@ -1761,21 +1794,7 @@
             const allFutureEvents = [...nonReleasedReleases, ...nonReleasedAnniversaries];
             allFutureEvents.sort(compareScheduleItems);
 
-            let currentYear2 = null;
-            allFutureEvents.forEach(event => {
-                const eventYear = getScheduleYearLabel(event);
-                if (eventYear !== currentYear2) {
-                    currentYear2 = eventYear;
-                    html += renderYearDivider(currentYear2);
-                }
-
-                // Check if it's an anniversary event or regular release
-                if (event.server) { // Anniversary events have server property
-                    html += renderAnniversaryEvent(event);
-                } else {
-                    html += renderReleaseCard(event);
-                }
-            });
+            html += renderTimelineItems(allFutureEvents, 'future');
         } else {
             // Standard rendering for filtered view - include anniversary events for all filters
             let allEvents = [...filteredReleases];
@@ -1792,24 +1811,11 @@
             // Sort by date
             allEvents.sort(compareScheduleItems);
 
-            let currentYear = null;
-            allEvents.forEach(event => {
-                const eventYear = getScheduleYearLabel(event);
-                if (eventYear !== currentYear) {
-                    currentYear = eventYear;
-                    html += renderYearDivider(currentYear);
-                }
-
-                // Check if it's an anniversary event or regular release
-                if (event.server) { // Anniversary events have server property
-                    html += renderAnniversaryEvent(event);
-                } else {
-                    html += renderReleaseCard(event);
-                }
-            });
+            html += renderTimelineItems(allEvents, `filter-${filter}`);
         }
 
         container.innerHTML = html;
+        initializeScheduleAds();
 
         // Re-initialize tooltips after rendering
         setTimeout(() => {

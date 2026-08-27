@@ -1500,7 +1500,9 @@ textarea {
     }
 
     .nitro-ad-container--persona-list {
-        display: none;
+        width: 100%;
+        max-width: 300px;
+        scroll-margin-top: 72px;
     }
 
     .sticky-content {

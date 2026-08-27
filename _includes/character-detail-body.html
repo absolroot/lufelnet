@@ -422,7 +422,7 @@
         <h2>{% if page.language == 'cn' %}技能{% else %}스킬{% endif %}</h2>
         <div class="skills-grid">
         </div>
-        {% include nitro-ad.html id="character-ritual-banner" format="banner" class="nitro-ad-container--character-card" %}
+        {% include nitro-ad.html id="character-ritual-banner" format="banner" class="nitro-ad-container--character-card" lazy=true %}
     </div>
 
     <!-- 의식 섹션 -->
@@ -579,7 +579,7 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
         <div style="height: 10px;"></div>-->
-        {% include nitro-ad.html id="character-weapon-banner" format="banner" class="nitro-ad-container--character-card" %}
+        {% include nitro-ad.html id="character-weapon-banner" format="banner" class="nitro-ad-container--character-card" lazy=true %}
     </div>
 
     <!-- 속성 심상 섹션 (KR 우선 적용, 기본 숨김) -->

@@ -471,6 +471,23 @@ body {
 }
 
 @media (max-width: 768px) {
+    .footer-container {
+        display: flex;
+        flex-direction: column;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .footer-text {
+        margin-top: 0;
+    }
+
+    .nitro-ad-container--footer {
+        order: -1;
+        margin-top: 0;
+        margin-bottom: 16px;
+    }
+
     .header-container--with-ad .nitro-ad-container--header {
         max-width: 320px;
         margin-right: auto;

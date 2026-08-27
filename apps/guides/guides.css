@@ -1500,4 +1500,9 @@ html[data-lang="jp"] .guide-content code {
         padding-left: var(--guide-space-sm);
         padding-right: var(--guide-space-sm);
     }
+
+    .guide-content [id^="guide-article-content-autowrap-"] {
+        padding-top: var(--guide-space-md) !important;
+        padding-bottom: var(--guide-space-md) !important;
+    }
 }

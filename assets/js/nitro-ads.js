@@ -66,7 +66,8 @@
                     '.container',
                     '.carousel-slide',
                     '.slide-bg',
-                    '.slide-left'
+                    '.slide-left',
+                    '.page-bottom-container'
                 ],
                 railCloseColor: '#666666',
                 railSpacing: 10,

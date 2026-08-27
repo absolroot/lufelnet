@@ -1522,7 +1522,7 @@ Object.assign(window.characterData, {
         "position": "우월",
         "release_order": 0,
         "persona": "다에이라",
-        "persona_en": "Diaera",
+        "persona_en": "Daeira",
         "persona_jp": "ダエイラ",
         "name": "니시모리 하루나",
         "name_en": "Haruna Nishimori",

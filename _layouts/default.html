@@ -474,7 +474,6 @@
     </button>
   </div>
   <div class="footer-container">
-    {% include nitro-ad.html id="footer-banner" format="banner" class="nitro-ad-container--footer" %}
     <div class="footer-text">
       <p id="footer-disclaimer" data-i18n="footer.disclaimer">{{ site.data.i18n[page.lang].footer_disclaimer }}</p>
       <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH"
@@ -486,6 +485,7 @@
         <div id="ncmp-consent-link"></div>
       </div>
     </div>
+    {% include nitro-ad.html id="footer-banner" format="banner" class="nitro-ad-container--footer" %}
   </div>
 
   <!-- PWA 설치 프롬프트 -->
@@ -531,7 +531,7 @@
             // 주기적으로 업데이트 확인 (개발 중)
             setInterval(() => {
               registration.update();
-            }, 60000); // 1분마다 확인
+            }, 1200000); // 20분마다 확인
 
             // 업데이트 확인
             registration.addEventListener('updatefound', () => {

@@ -36,6 +36,7 @@
             options: {
                 format: 'rail',
                 sizes: [
+                    [300, 600],
                     [160, 600]
                 ],
                 rail: 'right',
@@ -97,21 +98,29 @@
         if (options.format !== 'rail' || options.rail !== 'right') return options;
 
         const mainWrapper = document.querySelector('.main-wrapper');
-        const railSize = options.sizes?.[0];
-        if (!railSize) return options;
+        const railSizes = options.sizes || [];
+        if (!mainWrapper || !railSizes.length) return null;
 
-        const [railWidth, railHeight] = railSize;
         const viewportWidth = document.documentElement.clientWidth;
-        if (mainWrapper && railWidth) {
-            const mainWrapperStyles = window.getComputedStyle(mainWrapper);
-            const contentRight = mainWrapper.getBoundingClientRect().right
-                - (Number.parseFloat(mainWrapperStyles.paddingRight) || 0);
-            const contentAlignedSpacing = Math.floor(
-                viewportWidth - contentRight - railWidth - RIGHT_RAIL_CONTENT_GAP
-            );
+        const mainWrapperStyles = window.getComputedStyle(mainWrapper);
+        const contentRight = mainWrapper.getBoundingClientRect().right
+            - (Number.parseFloat(mainWrapperStyles.paddingRight) || 0);
+        const minimumRailSpacing = Number.isFinite(options.railSpacing) ? options.railSpacing : 10;
+        const availableRailWidth = Math.floor(
+            viewportWidth - contentRight - RIGHT_RAIL_CONTENT_GAP - minimumRailSpacing
+        );
+        const fittingRailSizes = railSizes.filter(([width]) => width <= availableRailWidth);
+        if (!fittingRailSizes.length) return null;
 
-            options.railSpacing = Math.max(options.railSpacing, contentAlignedSpacing);
-        }
+        options.sizes = fittingRailSizes;
+
+        const railWidth = Math.max(...fittingRailSizes.map(([width]) => width));
+        const railHeight = Math.max(...fittingRailSizes.map(([, height]) => height));
+        const contentAlignedSpacing = Math.floor(
+            viewportWidth - contentRight - railWidth - RIGHT_RAIL_CONTENT_GAP
+        );
+
+        options.railSpacing = Math.max(minimumRailSpacing, contentAlignedSpacing);
 
         if (railHeight) {
             const centeredTop = Math.floor((window.innerHeight - railHeight) / 2);
@@ -166,8 +175,11 @@
         if (placement.includedPaths && !placement.includedPaths.some((pattern) => pattern.test(window.location.pathname))) return;
         if (placement.excludedPaths?.some((pattern) => pattern.test(window.location.pathname))) return;
 
+        const options = resolveGlobalPlacementOptions(placement);
+        if (!options) return;
+
         initializedGlobalPlacements.add(placement.id);
-        createAd(placement.id, resolveGlobalPlacementOptions(placement), () => {
+        createAd(placement.id, options, () => {
             initializedGlobalPlacements.delete(placement.id);
         });
     }

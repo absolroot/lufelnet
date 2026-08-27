@@ -192,3 +192,8 @@
   top: 97%;
   scale: 1.3;
 }
+
+.char-img.single-banner[src*="%EC%B9%B4%ED%83%80%EC%95%BC%EB%A7%88"] {
+  top: 115%;
+  scale: 1.25;
+}

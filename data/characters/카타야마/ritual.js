@@ -23,38 +23,38 @@ window.ritualData["카타야마"] = {
 
 window.enCharacterRitualData["카타야마"] = {
   "name": "Kumi Katayama",
-  "r0": "Guidance of the Efficient",
-  "r0_detail": "After Katayama uses [Wings of Passion], unlock [Secret Art: Lightning Legs]. [Secret Art: Lightning Legs] can ignore all affinites to heavily decrease Down Points, then increase [Devastation]'s Defense Down by 10% + 2.22% for every 10 points of Katayama's Speed for 1 turns, up to 40%.",
-  "r1": "No Quarter for Evil",
-  "r1_detail": "When Katayama knocks down a foe, decrease target's max Down Points by 1. This effect is permanent;\n[Break] increase target's critical damage taken by 30% more;\nWhen Katayama deals Elec damage, there is a 100% base chance to inflict the target with Shock.",
-  "r2": "Guided by Justice",
-  "r2_detail": "After Katayama knocks down a foe with a skill, increase target's Downed Damage Taken by 10% for 1 turn; Then increase all allies' Attack by 10%. Stacks up to 3 times. This effect is permanent.",
-  "r3": "Passionate Teacher",
-  "r3_detail": "Increase the skill levels of Wings of Passion and Thunderous Judgement by 3.",
-  "r4": "Blazing Radiance",
-  "r4_detail": "Highlight Enchanced: After using Highlight, increase foe's damage taken by 20%. This effect is permanent and cannot stack.",
-  "r5": "Peerless Teacher",
-  "r5_detail": "Increase the skill levels of Secret Art: Lightning Legs and Thief Tactics by 3.",
-  "r6": "Undying Teacher's Soul",
-  "r6_detail": "At the start of battle, Katayama gains 2 [Burning Soul] stacks. When using 2 Persona skills, gain 1 [Burning Soul] stack. Stacks up to 3 times.\nAt the start of turn, Katayama can spend 1 [Burning Soul] stack to heavily buff herself for 1 turn. When this is active, increase Attack by 50%, critical rate by 10%, critical damage by 30%, Highlight can deal critical, targets with [Devastation] increase damage taken by $30% more, targets with [Break] increase Downed Damage Taken by 20% more.\nWhen Katayama takes fatal damage, if she has [Burning Soul], spend 1 [Burning Soul] stack to evade this attack. (This effect can be activated once per battle, cannot work against certain skills)."
+  "r0": "Tenacious Teacher",
+  "r0_detail": "When Katayama uses Discharge Sprocket, Secret Technique: Lightning Legs is unlocked and becomes usable 1 time.\nWhen Secret Technique: Lightning Legs deals damage, greatly decrease the target's Down Points regardless of Electric affinity. Also, increase the Defense decrease effect of Hard Knocks by 10% for 2 turns (for every 10 points of Speed, increase by 2.22% more, up to a maximum bonus of 40%).",
+  "r1": "Lightning Lecturer",
+  "r1_detail": "When Katayama knocks down a foe, permanently decrease the target's Down Point maximum by 1.\nWhen a target is inflicted with Detention, increase critical damage taken by 30% more for 1 turn.\nWhen Katayama deals Electric damage, inflict Shock on the target.",
+  "r2": "Role Model",
+  "r2_detail": "When Katayama knocks down a foe with a skill, increase the target's damage taken while downed by 10% more for 1 turn. Also, permanently increase party's Attack by 10% (stacks up to 3 times).",
+  "r3": "Electric Cycle",
+  "r3_detail": "Increase the skill levels of Discharge Sprocket and Thunderbolt Outrage by 3.",
+  "r4": "Class in Session",
+  "r4_detail": "Highlight Enhanced: After activating a Highlight, the next time Katayama knocks down a foe, permanently increase the target's damage taken by 20% more. This effect does not stack.",
+  "r5": "Unstoppable Light",
+  "r5_detail": "Increase the skill levels of Secret Technique: Lightning Legs and Thief Tactics by 3.",
+  "r6": "Unconditional Love",
+  "r6_detail": "At the start of battle, gain 2 Wings of Guidance stacks. Gain 1 Wings of Guidance stack after every 2 skills used. Wings of Guidance stacks up to 3 times.\nAt the start of Katayama's turn, spend 1 Wings of Guidance stack to gain the following buffs for 1 turn. Increase Katayama's Attack by 50%, critical rate by 10%, critical damage by 30%, and allow her Highlight to activate critical hits. Also, increase damage taken by foes with Hard Knocks by 30% more, and increase damage taken by downed foes with Detention by 20% more.\nWhen Katayama takes fatal damage, if she has Wings of Guidance, spend 1 Wings of Guidance stack to evade that damage (this effect activates once per battle, and is not effective against certain skills)."
 };
 
 window.jpCharacterRitualData["카타야마"] = {
   "name": "片山 久未",
-  "r0": "高効率指導",
-  "r0_detail": "『熱血回旋斬』を使用後、『奥義・閃光脚』を解放して使用できる。\n『奥義・閃光脚』は敵の適応を無視してダウン値を大幅に削り、さらに付与する『重傷』の防御力低下効果が+10%、加えてSPD10ごとに+2.22%（最大40%）。",
-  "r1": "悪行不容",
-  "r1_detail": "敵をダウンさせると、その対象のダウン値上限を永続的に1減少させる。\n『撃破』が強化され、対象が受けるCRT倍率が30%上昇する。\n自身が電撃属性ダメージを与えると、100%の基礎確率で感電状態を付与する。",
-  "r2": "正義の導き",
-  "r2_detail": "スキルで敵をダウンさせた後、対象の『ダウン特効』が1ターンの間10%上昇し、全味方の攻撃力が永続的に10%上昇する（最大3重複）。",
-  "r3": "熱血教師",
-  "r3_detail": "『熱血回旋斬』、『審判雷撃』のスキルレベルが+3（最大15）。",
-  "r4": "閃光輝耀",
-  "r4_detail": "HIGHLIGHT効果強化：HIGHLIGHT発動後、その敵が永続的に受けるダメージが20%増加（重複不可）。",
-  "r5": "無双教師",
-  "r5_detail": "『奥義・閃光脚』、『戦闘技術』のスキルレベルが+3（最大15）。",
-  "r6": "不滅の教師魂",
-  "r6_detail": "戦闘開始時、『燃魂』を2スタック獲得する。\nペルソナスキルを2回発動するごとに『燃魂』を1スタック獲得（最大3）。\nターン開始時に『燃魂』を1消費し、1ターン自身を強化：\n· 攻撃力+50%\n· CRT発生率+10%\n· CRT倍率+30%\nHIGHLIGHTはクリティカル可能。『重傷』の敵は被ダメージ+30%、『撃破』の敵はダウン特効+20%。\n致命的ダメージを受けると、『燃魂』を1消費して無効化する（戦闘中1回のみ）。"
+  "r0": "閃光脚の担任教師",
+  "r0_detail": "片山は『放電スプロケット』を使用することで、『奥義・閃光脚』を１回、使用できるようになる。\n『奥義・閃光脚』でダメージを与えると、対象の属性相性を無視してダウン値を大幅に減少させる。さらに２ターンの間、自身が付与した『抜き打ち指導』状態の防御力低下効果が１０%上昇し、追加で片山の速さ１０ごとに２.２２%になるように上昇する（追加上昇分は最大４０%まで）。",
+  "r1": "カミナリ説教",
+  "r1_detail": "自身が敵をダウンさせた時、対象のダウン値上限が永続的に１減少する。\n『居残り指導』状態の対象は、１ターンの間、追加で被クリティカルダメージが３０%上昇する。\n自身が電撃属性ダメージを与えた時、対象を感電状態にする。",
+  "r2": "率先垂範",
+  "r2_detail": "自身のスキルで敵をダウンさせた時、１ターンの間、対象のダウン状態被ダメージが１０%上昇する。さらに味方全体の攻撃力が永続的に１０%上昇する（最大３回まで累積する）。",
+  "r3": "発電サイクル",
+  "r3_detail": "『放電スプロケット』／『落雷アウトレージ』のスキルレベルが３上昇する。",
+  "r4": "補習の時間",
+  "r4_detail": "ハイライト能力追加：ハイライト発動後、自身が次に敵をダウンさせた時、追加でその対象の被ダメージが永続的に２０%上昇する。この効果は累積しない。",
+  "r5": "閃光無双",
+  "r5_detail": "『奥義・閃光脚』／『怪盗戦技』のスキルレベルが３上昇する。",
+  "r6": "無償の愛",
+  "r6_detail": "戦闘開始時、『抱翼の覚悟』を２つ獲得する。スキルを２回使用するごとに『抱翼の覚悟』を１つ獲得する。『抱翼の覚悟』は最大３つまで累積できる。\n自身のターン開始時に『抱翼の覚悟』を１つ消費して、１ターンの間、自身を強化できる。効果中、攻撃力が５０%、クリティカル率が１０%、クリティカルダメージが３０%上昇し、ハイライトでクリティカルが発生するようになる。さらに『抜き打ち指導』状態の対象の被ダメージ上昇効果が追加で３０%上昇し、『居残り指導』状態の対象のダウン状態被ダメージ上昇効果が追加で２０%上昇する。\n自身が致死ダメージを受ける時、『抱翼の覚悟』を獲得していれば、『抱翼の覚悟』を１つ消費してそのダメージを回避する（この効果は戦闘中に一度だけ発動し、一部のスキルには無効）。"
 };
 
 window.cnCharacterRitualData["카타야마"] = {

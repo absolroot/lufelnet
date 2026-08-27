@@ -54,66 +54,68 @@ window.characterSkillsData["카타야마"] = {
 window.enCharacterSkillsData["카타야마"] = {
   "name": "Kumi Katayama",
   "skill1": {
-    "name": "Wings of Passion",
+    "name": "Discharge Sprocket",
     "element": "전격광역",
     "type": "AoE DMG",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 3 turns.\nIf Katayama has [Super Limit], increase skill damage by 30%.\nUnlock [Secret Art: Lightning Legs]."
+    "description": "Deal Electric damage to all foes equal to 101.7%/112.1%/108.0%/118.4% of Attack, and inflict Hard Knocks for 3 turns. When in Lightning Legs state, also increase this skill's damage by 35%.\nAlso, Secret Technique: Lightning Legs can be used 1 time.\nHard Knocks: Decrease Defense by 9.8%/10.8%/10.4%/11.4% (for every 10 points of Speed, increase by 2.22% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%). Also, increase damage taken by 7.8%/8.6%/8.3%/9.1% (for every 10 points of Speed, increase by 1.78% more, up to a maximum of 31.2%/34.4%/33.2%/36.4%)."
   },
   "skill2": {
-    "name": "Thunderous Judgement",
+    "name": "Thunderbolt Outrage",
     "element": "전격광역",
     "type": "AoE DMG",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 135.5%/149.3%/143.8%/157.7% of Attack, if skill dealt damage, ignore all affinites and decrease Down Points by 1, then inflict [Devastation]: Decrease Defense by 9.8%/10.8%/10.4%/11.4% + 2.22% for every 10 points of Katayama's Speed, up to 39.0%/43.0%/41.4%/45.4%, and increase damage taken by 7.8%/8.6%/8.3%/9.1% + 1.78% for every 10 points of Katayama's Speed, up to 31.2%/34.4%/33.2%/36.4%. Lasts for 2 turn.\nIf Katayama has [Super Limit], decrease target's Down Points by 3 and inflict [Break]: Increase Downed Damage Taken by 0.56% for every 10 points of Katayama's Speed, up to 9.8%/10.8%/10.4%/11.4%, and increase damage taken by 5.9% + 1.33% for every 10 points of Katayama's Speed, up to 23.4%/25.8%/24.9%/27.3%. Lasts for 1 turn."
+    "description": "Deal Electric damage to all foes equal to 135.5%/149.3%/143.8%/157.7% of Attack. Decrease Down Points of all targets that take damage by 1 regardless of Electric affinity, and inflict Hard Knocks for 1 turn. When in Lightning Legs state, decrease Down Points of all targets that take damage by 3 more and inflict Detention for 1 turn.\nHard Knocks: Decrease Defense by 9.8%/10.8%/10.4%/11.4% (for every 10 points of Katayama's Speed, increase by 2.22% more, up to a maximum of 39.0%/43.0%/41.4%/45.4%). Also, increase damage taken by 7.8%/8.6%/8.3%/9.1% (for every 10 points of Katayama's Speed, increase by 1.78% more, up to a maximum of 31.2%/34.4%/33.2%/36.4%).\nDetention: Increase damage taken while knocked down by 0.56% for every 10 points of Katayama's Speed (up to a maximum of 9.8%/10.8%/10.4%/11.4%). Also, increase damage taken by 6.8%/7.5%/7.3%/8.0% (for every 10 points of Katayama's Speed, increase by 1.55% more, up to a maximum of 27.3%/30.1%/29.0%/31.8%)."
   },
   "skill3": {
-    "name": "Secret Art: Lightning Legs",
+    "name": "Secret Technique: Lightning Legs",
     "element": "전격광역",
     "type": "AoE DMG",
     "sp": 25,
     "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 141.9%/156.5%/150.6%/165.2% of Attack, if skill dealt damage, ignore all affinites and decrease target's Down Points by 5, then inflict [Break]: Increase Downed Damage Taken by 0.56% for every 10 points of Katayama's Speed, up to 9.8%/10.8%/10.4%/11.4%, and increase damage taken by 5.9% + 1.33% for every 10 points of Katayama's Speed, up to 23.4%/25.8%/24.9%/27.3%. Lasts for 1 turn.\nIf this skill knocks down any target, grant Katayama [Super Limit] for 2 turns.\n[Super Limit]: Evolve the next [Wings of Passion] and [Thunderous Judgement]."
+    "description": "Deal Electric damage to all foes equal to 141.9%/156.5%/150.6%/165.2% of Attack. When targets take damage, decrease Down Points by 5 regardless of Electric affinity, and inflict Detention for 1 turn.\nWhen this skill knocks down any target, gain Lightning Legs for 2 turns.\nDetention: Increase damage taken while knocked down by 0.56% for every 10 points of Katayama's Speed (up to a maximum of 9.8%/10.8%/10.4%/11.4%). Also, increase damage taken by 6.8%/7.5%/7.3%/8.0% (for every 10 points of Speed, increase by 1.55% more, up to a maximum of 27.3%/30.1%/29.0%/31.8%).\nLightning Legs: Enhance the skill effects of the next Discharge Sprocket or Thunderbolt Outrage used."
   },
   "skill_highlight": {
-    "name": "HIGHLIGHT",
+    "name": "Highlight",
     "element": "전격광역",
     "type": "AoE DMG",
     "sp": 0,
-    "cool": 0,
-    "description": "Deal Elec damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, with a 50% base chance to inflict Dizzy for 1 turn. After using Highlight, decrease target's Defense by 29.3%/32.3%/31.1%/34.1%. This effect is permanent and cannot stack. Additionally, increase target's damage taken by 19.5%/21.5%/20.7%/22.7% for 3 turns."
+    "cool": 4,
+    "description": "Deal Electric damage to all foes equal to 317.6%/350.1%/337.1%/369.7% of Attack, and 50% chance to inflict Dizzy on foes for 1 turn. Also, permanently decrease the target's Defense by 29.3%/32.3%/31.1%/34.1% (this effect does not stack). Also, increase damage taken by 19.5%/21.5%/20.7%/22.7% for 3 turns."
   },
   "passive1": {
-    "name": "Admonition",
+    "name": "Answer the Call",
     "element": "패시브",
-    "description": "When allies attack downed foes, increase their Attack by 30%."
+    "description": "When an ally attacks a knocked down foe, increase Attack by 36.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Passionate",
+    "name": "High-Speed Vector",
     "element": "패시브",
-    "description": "During battle, when Katayama's Speed is above 100, increase Attack by 24 points for every point of Speed above 100, up to 1920."
+    "description": "During battle, when Katayama's Speed is above 100, increase Attack by 24 for every 1 point of Speed above 100 (up to 1920).",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["카타야마"] = {
   "name": "片山 久未",
   "skill1": {
-    "name": "熱血回旋斬",
+    "name": "放電スプロケット",
     "element": "전격광역",
     "type": "全体ダメージ",
     "sp": 22,
     "cool": 0,
-    "description": "敵全体に101.7%/112.1%/108.0%/118.4%の攻撃力で電撃属性ダメージを与え、『重傷』を3ターン付与する。\n『重傷』：防御力-9.8%/-10.8%/-10.4%/-11.4%に加え、SPD10ごとに-2.22%（最大-39.0%/-43.0%/-41.4%/-45.4%）。被ダメージ+7.8%/8.6%/8.3%/9.1%、さらにSPD10ごとに+1.78%（最大31.2%/34.4%/33.2%/36.4%）。\n自身が『超極限』状態なら、このスキルのダメージ+30%。\n使用後、『奥義・閃光脚』が解放される。"
+    "description": "敵全体に攻撃力101.7%/112.1%/108.0%/118.4%の電撃属性ダメージを与え、３ターンの間、『抜き打ち指導』状態にする。『閃光脚』状態の時、追加でこのスキルの与ダメージが３５%上昇する。\nさらに『奥義・閃光脚』を１回、使用できるようになる。\n『抜き打ち指導』：防御力が9.8%/10.8%/10.4%/11.4%低下し、追加で片山の速さ１０ごとに２.２２%になるように低下（追加低下分は最大39.0%/43.0%/41.4%/45.4%まで）する。また、被ダメージが7.8%/8.6%/8.3%/9.1%上昇し、追加で片山の速さ１０ごとに１.７８%になるように上昇（追加上昇分は最大31.2%/34.4%/33.2%/36.4%まで）する。"
   },
   "skill2": {
-    "name": "審判雷撃",
+    "name": "落雷アウトレージ",
     "element": "전격광역",
     "type": "全体ダメージ",
     "sp": 20,
     "cool": 0,
-    "description": "敵全体に135.5%/149.3%/143.8%/157.7%の攻撃力で電撃属性ダメージを与える。命中時、弱点に関係なくダウン値を1減少させ、『重傷』を1ターン付与する。\n自身が『超極限』状態なら、追加でダウン値を3減少させ、1ターン『撃破』を付与する。\n『撃破』：ダウン特効がSPD10ごとに+0.56%（最大9.8%/10.8%/10.4%/11.4%）。被ダメージがSPD10ごとに+1.33%（最大23.4%/25.8%/24.9%/27.3%）。"
+    "description": "敵全体に攻撃力135.5%/149.3%/143.8%/157.7%の電撃属性ダメージを与える。ダメージを与えた対象の属性相性を無視してダウン値を１減少させ、１ターンの間、『抜き打ち指導』状態にする。『閃光脚』状態の時、追加でダメージを与えた対象のダウン値を３減少させ、１ターンの間、『居残り指導』状態にする。\n『抜き打ち指導』：防御力が9.8%/10.8%/10.4%/11.4%低下し、追加で片山の速さ１０ごとに２.２２%になるように低下（追加低下分は最大39.0%/43.0%/41.4%/45.4%まで）する。また、被ダメージが7.8%/8.6%/8.3%/9.1%上昇し、追加で片山の速さ１０ごとに１.７８%になるように上昇（追加上昇分は最大31.2%/34.4%/33.2%/36.4%まで）する。\n『居残り指導』：ダウン状態被ダメージが片山の速さ１０ごとに０.５６%になるように上昇（最大9.8%/10.8%/10.4%/11.4%まで）する。また、被ダメージが6.8%/7.5%/7.3%/8.0%上昇し、追加で片山の速さ１０ごとに１.５５%になるように上昇（追加上昇分は最大27.3%/30.1%/29.0%/31.8%まで）する。"
   },
   "skill3": {
     "name": "奥義・閃光脚",
@@ -121,25 +123,27 @@ window.jpCharacterSkillsData["카타야마"] = {
     "type": "全体ダメージ",
     "sp": 25,
     "cool": 0,
-    "description": "敵全体に141.9%/156.5%/150.6%/165.2%の攻撃力で電撃属性ダメージを与える。命中時、弱点に関係なくダウン値を5減少させ、1ターン『撃破』を付与する。\nこのスキルで敵をダウンさせた場合、自身が『超極限』を獲得し、2ターン持続する。\n『超極限』：次の『熱血回旋斬』と『審判雷撃』の効果を強化する。"
+    "description": "敵全体に攻撃力141.9%/156.5%/150.6%/165.2%の電撃属性ダメージを与える。ダメージを与えた対象の属性相性を無視してダウン値を５減少させ、１ターンの間、『居残り指導』状態にする。\nこのスキルでいずれかの対象をダウンさせた時、２ターンの間、『閃光脚』状態になる。\n『居残り指導』：ダウン状態被ダメージが片山の速さ１０ごとに０.５６%になるように上昇（最大9.8%/10.8%/10.4%/11.4%まで）する。また、被ダメージが6.8%/7.5%/7.3%/8.0%上昇し、追加で片山の速さ１０ごとに１.５５%になるように上昇（追加上昇分は最大27.3%/30.1%/29.0%/31.8%まで）する。\n『閃光脚』：次に使用する『放電スプロケット』と『落雷アウトレージ』のスキル効果を強化する。"
   },
   "skill_highlight": {
-    "name": "HIGHLIGHT",
+    "name": "ハイライト",
     "element": "전격광역",
     "type": "全体ダメージ",
     "sp": 0,
-    "cool": 0,
-    "description": "敵全体に317.6%/350.1%/337.1%/369.7%の攻撃力で電撃属性ダメージを与え、50%の基礎確率で感電状態にする（1ターン）。\nHIGHLIGHT発動後、その敵の防御力を永続的に29.3%/32.3%/31.1%/34.1%減少（重複不可）。さらに、その敵が3ターンの間、被ダメージが19.5%/21.5%/20.7%/22.7%増加する。"
+    "cool": 4,
+    "description": "敵全体に攻撃力317.6%/350.1%/337.1%/369.7%の電撃属性ダメージを与え、５０%の確率で１ターンの間、目眩状態にする。さらに防御力が永続的に29.3%/32.3%/31.1%/34.1%低下する（この効果は累積しない）。また３ターンの間、被ダメージが19.5%/21.5%/20.7%/22.7%上昇する。"
   },
   "passive1": {
-    "name": "訓戒",
+    "name": "回答指名",
     "element": "패시브",
-    "description": "味方がダウン中の敵を攻撃する時、攻撃力+30.0%。"
+    "description": "味方がダウン状態の対象を攻撃する時、攻撃力が36.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "熱血",
+    "name": "速度ベクトル",
     "element": "패시브",
-    "description": "戦闘中、自身のSPDが100を超える場合、100を超えるごとにATK+24（最大1920）。"
+    "description": "戦闘中、自身の速さが１００以上の時、１００を超えた分の速さ１ごとに自身の攻撃力が２４上昇する（最大1920まで）。",
+    "cool": 0
   }
 };
 

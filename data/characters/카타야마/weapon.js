@@ -42,20 +42,20 @@ window.enCharacterWeaponData["카타야마"] = {
     "description": "When user has [Super Limit], increase Speed by 7.4/8.5/9.6/10.7/11.8/12.9/14.0."
   },
   "weapon4-1": {
-    "name": "Voltaic Heart",
-    "health": 1791,
-    "attack": 565,
-    "defense": 317,
-    "skill_name": "Night Roamer",
-    "description": "Increase Attack by 12.0/12.0/16.0/16.0/20.0/20.0/24.0%.\nWhen user knocks down a foe, increase user's Attack by 7.5/9.8/9.8/12.0/12.0/14.2/14.2% for every knocked down foe, up to 22.5/29.2/29.2/36.0/36.0/42.7/42.7%. Lasts for 1 turn."
+    "name": "Blitzkrieg Bangs",
+    "health": 1791.59,
+    "attack": 565.81,
+    "defense": 317.1,
+    "skill_name": "",
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nWhen Katayama knocks down foes, increase Attack by 7.5%/9.8%/9.8%/12.0%/12.0%/14.2%/14.2% for each foe knocked down (up to a maximum of 22.5%/29.2%/29.2%/36.0%/36.0%/42.7%/42.7%). Lasts for 1 turn."
   },
   "weapon5-1": {
-    "name": "Ironsworn Rider",
-    "health": 2239,
-    "attack": 706,
-    "defense": 396,
-    "skill_name": "Demon Unleashed",
-    "description": "Increase Speed by 15/15/20/20/25/25/30. After user uses [Secret Art: Lightning Legs], increase critical rate by 9.0/11.7/11.7/14.3/14.3/17.0/17.0% for 2 turns.\nWhen a foe is knocked down while Katayama is on the field, increase target's critical damage taken by 30.6/39.8/39.8/49.0/49.0/58.2/58.2% for 1 turn."
+    "name": "Lightning Riders",
+    "health": 2239.65,
+    "attack": 706.91,
+    "defense": 396.41,
+    "skill_name": "",
+    "description": "Increase Speed by 15.0/15.0/20.0/20.0/25.0/25.0/30.0.\nAfter using Secret Technique: Lightning Legs, increase Katayama's critical rate by 9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0% for 2 turns.\nIf any foes are knocked down when Katayama is present, increase the target's critical damage taken by 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% for 1 turn."
   }
 };
 
@@ -70,18 +70,20 @@ window.jpCharacterWeaponData["카타야마"] = {
     "description": "自身が『超極限』所持時、SPD +7.4/8.5/9.6/10.7/11.8/12.9/14.0増加する。"
   },
   "weapon4-1": {
-    "name": "ボルト・レッドハート",
-    "health": 1791,
-    "attack": 565,
-    "defense": 317,
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%増加する。敵をダウンさせるたびに攻撃力が7.5%/9.8%/9.8%/12.0%/12.0%/14.2%/14.2%（持続1ターン、最大22.5%/29.2%/29.2%/36.0%/36.0%/42.7%/42.7%）。"
+    "name": "レッドヒートブーツ",
+    "health": 1791.59,
+    "attack": 565.81,
+    "defense": 317.1,
+    "skill_name": "",
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\n自身が敵をダウンさせた時、１ターンの間、その対象１体ごとに自身の攻撃力が7.5%/9.8%/9.8%/12.0%/12.0%/14.2%/14.2%上昇する（最大22.5%/29.2%/29.2%/36.0%/36.0%/42.7%/42.7%まで）。"
   },
   "weapon5-1": {
-    "name": "鉄誓の狼騎兵",
-    "health": 2239,
-    "attack": 706,
-    "defense": 396,
-    "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0。『奥義・閃光脚』使用時、CRT発生率+9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%（2ターン）。さらにフィールドにいる任意の敵がダウンすると、その敵が受けるCRT倍率が30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%増加（1ターン）。"
+    "name": "ライトニングブーツ",
+    "health": 2239.65,
+    "attack": 706.91,
+    "defense": 396.41,
+    "skill_name": "",
+    "description": "速さが15.0/15.0/20.0/20.0/25.0/25.0/30.0上昇する。\n『奥義・閃光脚』を使用した時、２ターンの間、自身のクリティカル率が9.0%/11.7%/11.7%/14.3%/14.3%/17.0%/17.0%上昇する。\n自身が場にいる時、いずれかの敵がダウンすると、１ターンの間、対象の被クリティカルダメージが30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%上昇する。"
   }
 };
 

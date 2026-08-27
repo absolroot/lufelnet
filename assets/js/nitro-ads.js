@@ -20,7 +20,8 @@
                 [300, 250]
             ]
         },
-        'schedule-incontent': {
+        incontent: {
+            fitToContainer: true,
             sizes: [
                 [300, 250],
                 [970, 90],
@@ -188,13 +189,14 @@
             return;
         }
 
-        let preset = basePreset;
-        if (format === 'schedule-incontent') {
+        const { fitToContainer = false, ...baseOptions } = basePreset;
+        let preset = baseOptions;
+        if (fitToContainer) {
             const container = slot.closest('.nitro-ad-container') || slot;
             const availableWidth = Math.floor(container.getBoundingClientRect().width);
-            const fittingSizes = basePreset.sizes.filter(([width]) => width <= availableWidth);
+            const fittingSizes = baseOptions.sizes.filter(([width]) => width <= availableWidth);
             if (!fittingSizes.length) return;
-            preset = { ...basePreset, sizes: fittingSizes };
+            preset = { ...baseOptions, sizes: fittingSizes };
         }
 
         slot.dataset.nitroInitialized = 'true';

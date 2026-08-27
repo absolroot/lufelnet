@@ -209,7 +209,6 @@
         <div class="review-content" id="character-review">
             <!-- 리뷰 내용이 여기에 동적으로 로드됩니다 -->
         </div>
-        {% include nitro-ad.html id="character-review-banner" format="banner" class="nitro-ad-container--character-card" %}
     </div>
 
     <!-- 세팅 섹션 -->
@@ -390,8 +389,8 @@
                     </div>
                 </div>
             </div>
+            {% include nitro-ad.html id="character-operation-banner" format="banner" class="nitro-ad-container--character-card nitro-ad-container--character-operation" %}
         </div>
-        <div style="height: 48px;"></div>
         <!-- 광고 (기본적으로 표시) -->
         <!--
         <div id="ad-unit-1" class="ad-unit">
@@ -422,7 +421,6 @@
         <h2>{% if page.language == 'cn' %}技能{% else %}스킬{% endif %}</h2>
         <div class="skills-grid">
         </div>
-        {% include nitro-ad.html id="character-ritual-banner" format="banner" class="nitro-ad-container--character-card" lazy=true %}
     </div>
 
     <!-- 의식 섹션 -->
@@ -488,6 +486,7 @@
                 <p class="ritual-description"></p>
             </div>
         </div>
+        {% include nitro-ad.html id="character-ritual-banner" format="banner" class="nitro-ad-container--character-card nitro-ad-container--character-ritual" lazy=true %}
     </div>
 
 
@@ -579,7 +578,6 @@
             (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
         <div style="height: 10px;"></div>-->
-        {% include nitro-ad.html id="character-weapon-banner" format="banner" class="nitro-ad-container--character-card" lazy=true %}
     </div>
 
     <!-- 속성 심상 섹션 (KR 우선 적용, 기본 숨김) -->
@@ -590,6 +588,9 @@
         </div>
         <div id="nature-skill-tabs" class="nature-skill-tabs" aria-label="속성 선택"></div>
         <div id="nature-skill-slots" class="nature-skill-slots"></div>
+        {% comment %}속성 심상 하단 광고 임시 비활성화
+        {% include nitro-ad.html id="character-nature-banner" format="banner" class="nitro-ad-container--character-card" lazy=true %}
+        {% endcomment %}
     </div>
 
     <!-- 심상 코어 섹션 (innate.js 존재 캐릭터 전용, 기본 숨김) -->
@@ -1546,11 +1547,7 @@
                     pcGroup.style.marginTop = hasReview ? '24px' : '0px';
                 } catch (_) { }
 
-                const reviewAdContainer = document.getElementById('character-review-banner')?.parentElement;
-                ReviewCard.insertBefore(
-                    pcGroup,
-                    reviewAdContainer?.parentElement === ReviewCard ? reviewAdContainer : null
-                );
+                ReviewCard.appendChild(pcGroup);
                 ReviewCard.style.display = '';
             } else {
                 if (!hasReview && ReviewCard) {

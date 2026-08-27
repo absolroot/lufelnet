@@ -473,7 +473,14 @@
       </svg>
     </button>
   </div>
-  <div class="footer-container">
+  <div class="page-bottom-container">
+    {% assign ad_mode = page.ad_mode | default: 'page-end' %}
+    {% if ad_mode == 'page-end' %}
+    <div class="page-end-ad-region">
+      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true %}
+    </div>
+    {% endif %}
+    <div class="footer-container">
     <div class="footer-text">
       <p id="footer-disclaimer" data-i18n="footer.disclaimer">{{ site.data.i18n[page.lang].footer_disclaimer }}</p>
       <p><span id="footer-contact">✉️ contact : superphil722@gmail.com　💬 <a href="https://discord.gg/8S8pnv2MsH"
@@ -485,7 +492,7 @@
         <div id="ncmp-consent-link"></div>
       </div>
     </div>
-    {% include nitro-ad.html id="footer-banner" format="banner" class="nitro-ad-container--footer" lazy=true %}
+    </div>
   </div>
 
   <!-- PWA 설치 프롬프트 -->

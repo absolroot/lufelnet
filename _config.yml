@@ -39,6 +39,40 @@ defaults:
     values:
       redirect_from: /tactic
 
+  # 본문 종료 광고 제외 페이지
+  - scope:
+      path: "apps/login"
+    values:
+      ad_mode: none
+  - scope:
+      path: "apps/home/privacy.html"
+    values:
+      ad_mode: none
+  - scope:
+      path: "apps/astrolabe"
+    values:
+      ad_mode: none
+  - scope:
+      path: "pages/astrolabe"
+    values:
+      ad_mode: none
+  - scope:
+      path: "apps/share"
+    values:
+      ad_mode: none
+  - scope:
+      path: "pages/share"
+    values:
+      ad_mode: none
+  - scope:
+      path: "apps/share-character"
+    values:
+      ad_mode: none
+  - scope:
+      path: "pages/share-character"
+    values:
+      ad_mode: none
+
 # multilingual settings
 languages: ["kr", "en", "jp", "cn"]
 default_lang: "kr"

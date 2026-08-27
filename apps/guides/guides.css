@@ -1502,7 +1502,7 @@ html[data-lang="jp"] .guide-content code {
     }
 
     .guide-content [id^="guide-article-content-autowrap-"] {
-        padding-top: var(--guide-space-md) !important;
-        padding-bottom: var(--guide-space-md) !important;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
     }
 }

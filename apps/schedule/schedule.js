@@ -1692,8 +1692,8 @@
         const id = `schedule-${safeGroup}-incontent-${index}`;
 
         return `
-            <div class="nitro-ad-container nitro-ad-container--schedule-incontent schedule-inline-ad">
-                <div id="${id}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="schedule-incontent" data-nitro-render-visible-only="true"></div>
+            <div class="nitro-ad-container nitro-ad-container--incontent schedule-inline-ad">
+                <div id="${id}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="incontent" data-nitro-render-visible-only="true"></div>
             </div>
         `;
     }

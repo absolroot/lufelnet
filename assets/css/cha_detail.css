@@ -1127,6 +1127,7 @@ h2 {
 
 .ritual-item:last-child {
     grid-column: 1 / -1;
+    padding-bottom: 22px;
     /* last item (ritual 6) use full width */
 }
 
@@ -2837,6 +2838,16 @@ h2 {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nitro-ad-container--character-operation {
+    border-top: 0;
+}
+
+.nitro-ad-container--character-ritual {
+    margin-top: 0;
+    margin-bottom: 16px;
+    padding-top: 12px;
 }
 
 .pros-cons-section {

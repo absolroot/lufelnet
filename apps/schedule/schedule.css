@@ -306,11 +306,6 @@
     margin-bottom: 24px;
 }
 
-.schedule-inline-ad .nitro-ad-slot {
-    width: 100%;
-    height: 250px;
-}
-
 @media (max-width: 768px) {
     .schedule-inline-ad {
         width: calc(100% + 28px);

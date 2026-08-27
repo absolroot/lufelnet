@@ -247,6 +247,7 @@ body {
         width: calc(100% - 240px);
     }
 
+    body.nav-expanded .page-end-ad-region,
     body.nav-expanded .footer-container {
         left: 120px;
         width: calc(100% - 240px);
@@ -256,6 +257,7 @@ body {
 @media screen and (max-width: 1440px) {
 
     .main-wrapper,
+    .page-end-ad-region,
     .footer-container {
         left: 0;
         transition: none;
@@ -360,20 +362,39 @@ body {
     color: rgba(255, 255, 255, 0.3);
 }
 
+.page-bottom-container {
+    width: 100%;
+}
+
+.page-end-ad-region,
 .footer-container {
     width: calc(100% - 160px);
     max-width: 1200px;
+    position: relative;
+    left: 40px;
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.page-end-ad-region {
+    box-sizing: border-box;
+    margin: 24px auto 0;
+    z-index: 1;
+}
+
+.footer-container {
     margin: auto auto 0px auto !important;
     padding-bottom: 20px;
     padding-top: 20px;
     background-color: transparent;
-    position: relative;
-    left: 40px;
-    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     z-index: 10;
 }
 
 @media screen and (max-width: 1200px) {
+    .page-end-ad-region {
+        width: calc(100% - 32px);
+        left: 0;
+    }
+
     .footer-container {
         width: 100%;
         left: 0;
@@ -442,9 +463,9 @@ body {
     height: 250px;
 }
 
-.nitro-ad-container--footer {
-    margin-top: 20px;
-    margin-bottom: 16px;
+.nitro-ad-container--incontent .nitro-ad-slot {
+    width: 100%;
+    height: 250px;
 }
 
 .nitro-ad-container--section {
@@ -480,12 +501,6 @@ body {
 
     .footer-text {
         margin-top: 0;
-    }
-
-    .nitro-ad-container--footer {
-        order: -1;
-        margin-top: 0;
-        margin-bottom: 16px;
     }
 
     .header-container--with-ad .nitro-ad-container--header {

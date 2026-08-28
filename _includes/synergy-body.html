@@ -69,11 +69,19 @@
 
         <!-- Detail section -->
         <div class="character-detail" id="characterDetail">
-            <div class="detail-placeholder">
-                <div class="loading-spinner"></div>
+            <div id="characterDetailBeforeAd" class="synergy-detail-content">
+                <div class="detail-placeholder">
+                    <div class="loading-spinner"></div>
+                </div>
             </div>
+            <div id="synergy-detail-ad-mount" hidden></div>
+            <div id="characterDetailAfterAd" class="synergy-detail-content"></div>
         </div>
     </div>
+
+    <template id="synergy-detail-ad-template">
+        {% include nitro-ad.html id="synergy-events-banner" format="banner" class="nitro-ad-container--synergy-events" lazy=true %}
+    </template>
 </div>
 
 <script src="{{ site.baseurl }}/apps/synergy/synergy_search.js?v={{ site.time | date: '%s' }}"></script>

@@ -388,6 +388,15 @@
     margin-bottom: 32px;
 }
 
+.synergy-detail-content,
+#synergy-detail-ad-mount:not([hidden]) {
+    display: contents;
+}
+
+.nitro-ad-container--synergy-events {
+    margin: 0 auto 32px;
+}
+
 .detail-section-title {
     font-size: 18px;
     font-weight: 600;

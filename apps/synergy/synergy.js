@@ -1071,6 +1071,44 @@
     // applyFilters를 전역으로 노출
     window.applyFilters = applyFilters;
 
+    const SYNERGY_EVENTS_AD_ID = 'synergy-events-banner';
+    const SYNERGY_EVENTS_AD_MARKER = '<!-- synergy-events-ad -->';
+
+    function setSynergyDetailContent(beforeHtml, afterHtml = '') {
+        const beforeContainer = document.getElementById('characterDetailBeforeAd');
+        const afterContainer = document.getElementById('characterDetailAfterAd');
+        if (!beforeContainer || !afterContainer) return false;
+
+        beforeContainer.innerHTML = beforeHtml;
+        afterContainer.innerHTML = afterHtml;
+        return true;
+    }
+
+    function syncSynergyEventsAd(shouldShow) {
+        const mount = document.getElementById('synergy-detail-ad-mount');
+        if (!mount) return;
+
+        if (!shouldShow) {
+            mount.hidden = true;
+            return;
+        }
+
+        let adContainer = document.getElementById(SYNERGY_EVENTS_AD_ID)?.closest('.nitro-ad-container--synergy-events');
+        if (!adContainer) {
+            const template = document.getElementById('synergy-detail-ad-template');
+            const templateAdContainer = template?.content?.firstElementChild;
+            if (!templateAdContainer) return;
+            adContainer = templateAdContainer.cloneNode(true);
+            mount.appendChild(adContainer);
+        }
+
+        mount.hidden = false;
+
+        if (typeof window.LufelNitroAds?.initializePlacements === 'function') {
+            window.LufelNitroAds.initializePlacements();
+        }
+    }
+
     // 캐릭터 선택 (전역으로 노출)
     async function selectCharacter(characterName, forceLoad = false) {
         if (!forceLoad && selectedCharacter === characterName) return;
@@ -1092,12 +1130,13 @@
 
         const t = window.t || ((k) => k);
         const loadingText = t('msgLoading');
-        detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadingText}</div>`;
+        setSynergyDetailContent(`<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadingText}</div>`);
 
         const data = await loadCharacterData(characterName);
         if (!data) {
             const errorText = t('msgLoadError');
-            detailContainer.innerHTML = `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${errorText}</div>`;
+            setSynergyDetailContent(`<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${errorText}</div>`);
+            syncSynergyEventsAd(false);
             return;
         }
 
@@ -1560,6 +1599,13 @@
                 `;
             });
             html += `</div></div></div>`;
+        }
+
+        if (
+            data.advance_dialog && data.advance_dialog.length > 0
+            && data.visit_dialog && data.visit_dialog.length > 0
+        ) {
+            html += SYNERGY_EVENTS_AD_MARKER;
         }
 
         // 3. 도시 이벤트 (Visit Dialog)
@@ -2113,7 +2159,14 @@
             }, 0);
         }
 
-        detailContainer.innerHTML = html;
+        const adMarkerIndex = html.indexOf(SYNERGY_EVENTS_AD_MARKER);
+        const hasEventsAd = adMarkerIndex >= 0;
+        const beforeAdHtml = hasEventsAd ? html.slice(0, adMarkerIndex) : html;
+        const afterAdHtml = hasEventsAd
+            ? html.slice(adMarkerIndex + SYNERGY_EVENTS_AD_MARKER.length)
+            : '';
+        setSynergyDetailContent(beforeAdHtml, afterAdHtml);
+        syncSynergyEventsAd(hasEventsAd);
 
         // 소울 메이트 표시 추가 (soulmate.js가 로드된 경우)
         if (window.addSoulmateIndicator) {

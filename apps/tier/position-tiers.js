@@ -402,6 +402,7 @@ const handleDeleteTier = () => {
 
         // Remove the entire mobile container
         mobileContainer.remove();
+        syncMobileTierAdPlacement();
       }
     } else {
       // Desktop layout: remove tier label + 7 position cells + settings cell
@@ -662,7 +663,10 @@ const getNextTierRow = (currentTierLabelCell) => {
     // In mobile layout, find the next mobile container
     const currentContainer = currentTierLabelCell.closest('.tier-mobile-container');
     if (currentContainer) {
-      const nextContainer = currentContainer.nextElementSibling;
+      let nextContainer = currentContainer.nextElementSibling;
+      while (nextContainer && !nextContainer.classList.contains('tier-mobile-container')) {
+        nextContainer = nextContainer.nextElementSibling;
+      }
       if (nextContainer && nextContainer.classList.contains('tier-mobile-container')) {
         return nextContainer.querySelector('.tier-label-cell');
       }
@@ -727,6 +731,7 @@ const handleMoveTier = (tierLabelCell, direction) => {
       tierRowElements.forEach(element => {
         positionTiersContainer.insertBefore(element, insertPosition);
       });
+      syncMobileTierAdPlacement();
     }
   }
 };
@@ -741,7 +746,10 @@ const getPreviousTierRow = (tierLabelCell) => {
     // In mobile layout, find the previous mobile container
     const currentContainer = tierLabelCell.closest('.tier-mobile-container');
     if (currentContainer) {
-      const prevContainer = currentContainer.previousElementSibling;
+      let prevContainer = currentContainer.previousElementSibling;
+      while (prevContainer && !prevContainer.classList.contains('tier-mobile-container')) {
+        prevContainer = prevContainer.previousElementSibling;
+      }
       if (prevContainer && prevContainer.classList.contains('tier-mobile-container')) {
         return prevContainer.querySelector('.tier-label-cell');
       }
@@ -985,6 +993,50 @@ const getTierColor = (label) => {
   return colors[Math.floor(Math.random() * colors.length)];
 };
 
+const MOBILE_TIER_AD_ID = 'tier-mobile-t1-t2-rectangle';
+
+const syncMobileTierAdPlacement = () => {
+  const existingAdContainer = document.getElementById(MOBILE_TIER_AD_ID)?.closest('.tier-mobile-inline-ad');
+
+  if (window.innerWidth > 1200) {
+    existingAdContainer?.remove();
+    return;
+  }
+
+  const mobileTierContainers = Array.from(positionTiersContainer.querySelectorAll('.tier-mobile-container'));
+  const findTierContainer = (label) => mobileTierContainers.find((container) => (
+    container.querySelector('.tier-label-cell span')?.textContent.trim().toUpperCase() === label
+  ));
+  const tier1Container = findTierContainer('T1');
+  const tier2Container = findTierContainer('T2');
+
+  if (!tier1Container || !tier2Container) {
+    if (existingAdContainer) existingAdContainer.hidden = true;
+    return;
+  }
+
+  let adContainer = existingAdContainer;
+  if (!adContainer) {
+    adContainer = document.createElement('div');
+    adContainer.className = 'nitro-ad-container nitro-ad-container--rectangle tier-mobile-inline-ad';
+
+    const adSlot = document.createElement('div');
+    adSlot.id = MOBILE_TIER_AD_ID;
+    adSlot.className = 'nitro-ad-slot';
+    adSlot.dataset.nitroAd = '';
+    adSlot.dataset.nitroFormat = 'rectangle';
+    adSlot.dataset.nitroRenderVisibleOnly = 'true';
+    adContainer.appendChild(adSlot);
+  }
+
+  adContainer.hidden = false;
+  positionTiersContainer.insertBefore(adContainer, tier2Container);
+
+  if (typeof window.LufelNitroAds?.initializePlacements === 'function') {
+    window.LufelNitroAds.initializePlacements();
+  }
+};
+
 const createTierRow = (label) => {
   const tierLabel = label || getNewTierLabel();
   const tierColor = getTierColor(tierLabel);
@@ -1040,6 +1092,7 @@ const createMobileTierRow = (label, tierColor) => {
 
   // Add to main container
   positionTiersContainer.appendChild(mobileContainer);
+  syncMobileTierAdPlacement();
 
   return tierLabelCell;
 };
@@ -2090,6 +2143,7 @@ settingsModal
   .addEventListener("input", (event) => {
     if (activeTier) {
       activeTier.querySelector("span").textContent = event.target.value;
+      syncMobileTierAdPlacement();
     }
   });
 

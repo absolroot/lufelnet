@@ -53,7 +53,7 @@
 <!-- Main content -->
 <div class="main-wrapper schedule-page">
     <!-- Header -->
-    <div class="header-container header-container--with-ad">
+    <div class="header-container header-container--with-ad" id="schedule-header">
         <div class="header-title">
             <div class="navigation-path">
                 <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="nav.home">-</a>`);</script>
@@ -80,6 +80,30 @@
                 target="_blank">P5X Patch History by Sages</a>.
         </p>
     </div>
+
+    <script>
+        (function () {
+            var mobileMedia = window.matchMedia('(max-width: 768px)');
+            var header = document.getElementById('schedule-header');
+            var notice = document.getElementById('schedule-notice');
+            var adContainer = document.getElementById('schedule-header-banner')?.closest('.nitro-ad-container');
+
+            if (!header || !notice || !adContainer) return;
+
+            function placeHeaderAd() {
+                if (mobileMedia.matches) {
+                    if (adContainer.previousElementSibling !== notice) {
+                        notice.insertAdjacentElement('afterend', adContainer);
+                    }
+                } else if (adContainer.parentElement !== header) {
+                    header.appendChild(adContainer);
+                }
+            }
+
+            placeHeaderAd();
+            mobileMedia.addEventListener('change', placeHeaderAd);
+        })();
+    </script>
 
     <!-- Current Release Banner -->
     <div id="current-banner" class="current-banner">

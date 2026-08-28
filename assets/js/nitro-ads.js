@@ -113,6 +113,7 @@
     const RIGHT_RAIL_CONTENT_GAP_MAX = 72;
     const RIGHT_RAIL_VERTICAL_SHIFT = 90;
     const PLACEMENT_VISIBLE_MARGIN = 1200;
+    const MOBILE_BANNER_MEDIA_QUERY = '(max-width: 768px)';
     const isLocalDemo = LOCAL_HOSTNAMES.has(window.location.hostname);
     const initializedGlobalPlacements = new Set();
 
@@ -188,6 +189,7 @@
         if (!slot.id || slot.dataset.nitroInitialized === 'true') return;
 
         const format = slot.dataset.nitroFormat || 'banner';
+        const mediaQuery = slot.dataset.nitroMediaQuery;
         const basePreset = PLACEMENT_PRESETS[format];
         if (!basePreset) {
             console.warn(`[NitroAds] Unknown placement format: ${format}`);
@@ -196,18 +198,28 @@
 
         const { fitToContainer = false, ...baseOptions } = basePreset;
         let preset = baseOptions;
+        if (
+            (format === 'banner' || format === 'leaderboard')
+            && window.matchMedia(MOBILE_BANNER_MEDIA_QUERY).matches
+        ) {
+            preset = {
+                ...preset,
+                sizes: preset.sizes.filter(([width, height]) => width <= 320 && height <= 50)
+            };
+        }
         if (fitToContainer) {
             const container = slot.closest('.nitro-ad-container') || slot;
             const availableWidth = Math.floor(container.getBoundingClientRect().width);
-            const fittingSizes = baseOptions.sizes.filter(([width]) => width <= availableWidth);
+            const fittingSizes = preset.sizes.filter(([width]) => width <= availableWidth);
             if (!fittingSizes.length) return;
-            preset = { ...baseOptions, sizes: fittingSizes };
+            preset = { ...preset, sizes: fittingSizes };
         }
 
         slot.dataset.nitroInitialized = 'true';
 
         createAd(slot.id, {
             ...preset,
+            ...(mediaQuery ? { mediaQuery } : {}),
             visibleMargin: PLACEMENT_VISIBLE_MARGIN,
             ...(format === 'article' && window.matchMedia('(max-width: 768px)').matches ? { pageInterval: 4 } : {}),
             ...(slot.dataset.nitroRenderVisibleOnly === 'true' ? {

@@ -42,7 +42,7 @@ window.personaFiles["트럼페터"] = {
       "name_jp": "黙示の前奏曲",
       "desc": "효과 명중이 34.9% 증가한다. 자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 30% 증가하고, 적이 받는 대미지가 4.5% 증가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 8% 감소한다.",
       "desc_en": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 30%, and also increase target's damage taken by 4.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
-      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が３０%上昇し、さらに２ターンの間、対象の被ダメージが４.５%上昇する。\n自身が行動異常を付与した時、２ターンの間、敵全体の防御力が８%低下する。",
+      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が３０%上昇し、さらに２ターンの間、対象の被ダメージが４.５%上昇する。自身が行動異常を付与した時、２ターンの間、敵全体の防御力が８%低下する。",
       "name_cn": "崩坏的号角",
       "desc_cn": "效果命中提升34.9%。自身对敌方使用人格面具技能时，若技能目标的异常效果数量≥15个，则使自身效果命中提升30%，并使敌人受到伤害提升4.5%，持续2回合。自身成功添加精神异常效果后，额外使所有敌人防御力降低8%，持续2回合。"
     },
@@ -52,7 +52,7 @@ window.personaFiles["트럼페터"] = {
       "name_jp": "黙示の前奏曲Ⅰ",
       "desc": "효과 명중이 34.9% 증가한다. 자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 증가하고, 적이 받는 대미지가 4.5% 증가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 8% 감소한다.",
       "desc_en": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 50%, and also increase target's damage taken by 4.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
-      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が５０%上昇し、さらに２ターンの間、対象の被ダメージが４.５%上昇する。\n自身が行動異常を付与した時、２ターンの間、敵全体の防御力が８%低下する。",
+      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が５０%上昇し、さらに２ターンの間、対象の被ダメージが４.５%上昇する。自身が行動異常を付与した時、２ターンの間、敵全体の防御力が８%低下する。",
       "name_cn": "崩坏的号角Ⅰ",
       "desc_cn": "效果命中提升34.9%。自身对敌方使用人格面具技能时，若技能目标的异常效果数量≥15个，则使自身效果命中提升50%，并使敌人受到伤害提升4.5%，持续2回合。自身成功添加精神异常效果后，额外使所有敌人防御力降低8%，持续2回合。"
     },
@@ -62,7 +62,7 @@ window.personaFiles["트럼페터"] = {
       "name_jp": "黙示の前奏曲Ⅱ",
       "desc": "효과 명중이 34.9% 증가한다. 자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 증가하고, 적이 받는 대미지가 6.5% 증가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 8% 감소한다.",
       "desc_en": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 50%, and also increase target's damage taken by 6.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 8% for 2 turns.",
-      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が５０%上昇し、さらに２ターンの間、対象の被ダメージが６.５%上昇する。\n自身が行動異常を付与した時、２ターンの間、敵全体の防御力が８%低下する。",
+      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が５０%上昇し、さらに２ターンの間、対象の被ダメージが６.５%上昇する。自身が行動異常を付与した時、２ターンの間、敵全体の防御力が８%低下する。",
       "name_cn": "崩坏的号角Ⅱ",
       "desc_cn": "效果命中提升34.9%。自身对敌方使用人格面具技能时，若技能目标的异常效果数量≥15个，则使自身效果命中提升50%，并使敌人受到伤害提升6.5%，持续2回合。自身成功添加精神异常效果后，额外使所有敌人防御力降低8%，持续2回合。"
     },
@@ -72,7 +72,7 @@ window.personaFiles["트럼페터"] = {
       "name_jp": "黙示の前奏曲Ⅲ",
       "desc": "효과 명중이 34.9% 증가한다. 자신이 적에게 페르소나 스킬 사용 시, 스킬 목표의 이상 효과 수량이 15개 이상일 경우 2턴 동안 자신의 효과 명중이 50% 증가하고, 적이 받는 대미지가 6.5% 증가한다. 자신이 정신 이상 효과를 추가한 후, 2턴 동안 적 전체의 방어력이 12% 감소한다.",
       "desc_en": "Increase ailment accuracy by 34.9%.\nWhen using a skill on a foe that has 15 or more debuff stacks, increase ailment accuracy by 50%, and also increase target's damage taken by 6.5% for 2 turns.\nAfter inflicting a spiritual ailment, decrease all foes' Defense by 12% for 2 turns.",
-      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が５０%上昇し、さらに２ターンの間、対象の被ダメージが６.５%上昇する。\n自身が行動異常を付与した時、２ターンの間、敵全体の防御力が１２%低下する。",
+      "desc_jp": "状態異常命中が３４.９%上昇する。\n自身が敵にスキルを使用する時、対象の弱体効果数が１５個以上ならば、状態異常の命中率が５０%上昇し、さらに２ターンの間、対象の被ダメージが６.５%上昇する。自身が行動異常を付与した時、２ターンの間、敵全体の防御力が１２%低下する。",
       "name_cn": "崩坏的号角Ⅲ",
       "desc_cn": "效果命中提升34.9%。自身对敌方使用人格面具技能时，若技能目标的异常效果数量≥15个，则使自身效果命中提升50%，并使敌人受到伤害提升6.5%，持续2回合。自身成功添加精神异常效果后，额外使所有敌人防御力降低12%，持续2回合。"
     }

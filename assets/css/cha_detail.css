@@ -2850,6 +2850,19 @@ h2 {
     padding-top: 12px;
 }
 
+.character-review-mobile-ad {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .character-review-mobile-ad:not([hidden]) {
+        display: block;
+        width: 300px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
 .pros-cons-section {
     background: rgba(0, 0, 0, 0.15);
     border-radius: 8px;

@@ -588,9 +588,7 @@
         </div>
         <div id="nature-skill-tabs" class="nature-skill-tabs" aria-label="속성 선택"></div>
         <div id="nature-skill-slots" class="nature-skill-slots"></div>
-        {% comment %}속성 심상 하단 광고 임시 비활성화
         {% include nitro-ad.html id="character-nature-banner" format="banner" class="nitro-ad-container--character-card" lazy=true %}
-        {% endcomment %}
     </div>
 
     <!-- 심상 코어 섹션 (innate.js 존재 캐릭터 전용, 기본 숨김) -->
@@ -1553,6 +1551,47 @@
                 if (!hasReview && ReviewCard) {
                     ReviewCard.style.display = 'none';
                 }
+            }
+
+            window.syncCharacterReviewMobileAd = () => {
+                const adId = 'character-review-mobile-rectangle';
+                const existingAdContainer = document.getElementById(adId)?.closest('.character-review-mobile-ad');
+                const shouldShow = window.matchMedia('(max-width: 768px)').matches
+                    && !!ReviewCard
+                    && (hasReview || hasProsOrCons);
+
+                if (!shouldShow) {
+                    if (existingAdContainer) existingAdContainer.hidden = true;
+                    return;
+                }
+
+                let adContainer = existingAdContainer;
+                if (!adContainer) {
+                    adContainer = document.createElement('div');
+                    adContainer.className = 'nitro-ad-container nitro-ad-container--rectangle character-review-mobile-ad';
+
+                    const adSlot = document.createElement('div');
+                    adSlot.id = adId;
+                    adSlot.className = 'nitro-ad-slot';
+                    adSlot.dataset.nitroAd = '';
+                    adSlot.dataset.nitroFormat = 'rectangle';
+                    adSlot.dataset.nitroRenderVisibleOnly = 'true';
+                    adSlot.dataset.nitroMediaQuery = '(max-width: 768px)';
+                    adContainer.appendChild(adSlot);
+                }
+
+                adContainer.hidden = false;
+                ReviewCard.parentNode.insertBefore(adContainer, ReviewCard);
+
+                if (typeof window.LufelNitroAds?.initializePlacements === 'function') {
+                    window.LufelNitroAds.initializePlacements();
+                }
+            };
+
+            window.syncCharacterReviewMobileAd();
+            if (!window.characterReviewMobileAdResizeBound) {
+                window.addEventListener('resize', () => window.syncCharacterReviewMobileAd?.(), { passive: true });
+                window.characterReviewMobileAdResizeBound = true;
             }
         } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
 

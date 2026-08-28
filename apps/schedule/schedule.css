@@ -40,6 +40,13 @@
     }
 }
 
+@media (max-width: 768px) {
+    .schedule-page > .nitro-ad-container--header {
+        max-width: 320px;
+        margin-bottom: 16px;
+    }
+}
+
 /* Current Info Banner */
 .current-banner {
     background: var(--card-background, #232323);

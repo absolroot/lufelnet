@@ -59,6 +59,23 @@
     // 전역으로 노출
     window.getCurrentLanguage = getCurrentLanguage;
 
+    function slugifyCharacterCode(value) {
+        return String(value || '')
+            .trim()
+            .toLowerCase()
+            .replace(/['".]/g, '')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
+
+    function getCharacterCodeName(characterName) {
+        if (characterName === '메로페') return 'merope';
+
+        const characterInfo = window.characterData && window.characterData[characterName];
+        const synergyInfo = characterList[characterName];
+        return slugifyCharacterCode(characterInfo?.codename || synergyInfo?.name_en);
+    }
+
     /* === CONSTANTS === */
     const CURRENCY_MAPPING = [
         { icon: 'item-huobi-1038.png', keywordKey: 'currencyArcadeKeywords' },
@@ -1106,13 +1123,8 @@
 
     // URL 파라미터 및 타이틀 업데이트
     async function updateURLAndTitle(characterName) {
-        // 캐릭터의 코드네임 가져오기 (characters.js에서)
-        let charCodeName = characterName.toLowerCase();
-        if (characterName === '메로페') {
-            charCodeName = 'merope';
-        } else if (window.characterData && window.characterData[characterName] && window.characterData[characterName].codename) {
-            charCodeName = window.characterData[characterName].codename.toLowerCase();
-        }
+        // SEO 페이지 생성기와 같은 규칙으로 코드네임/영문 이름 슬러그 사용
+        const charCodeName = getCharacterCodeName(characterName);
 
         // 캐릭터의 표시 이름 가져오기 (타이틀용, JSON 파일에서)
         let displayCharName = characterName;
@@ -2472,14 +2484,7 @@
 
             // 각 캐릭터의 코드네임과 비교
             for (const name of Object.keys(characterList)) {
-                let codeName = null;
-
-                // 메로페 예외 처리
-                if (name === '메로페') {
-                    codeName = 'merope';
-                } else if (window.characterData && window.characterData[name] && window.characterData[name].codename) {
-                    codeName = window.characterData[name].codename.toLowerCase();
-                }
+                const codeName = getCharacterCodeName(name);
 
                 if (codeName && codeName === decodedChar) {
                     foundCharacter = name;

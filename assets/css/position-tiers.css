@@ -519,6 +519,10 @@ button {
 }
 
 /* Mobile Responsiveness */
+.tier-mobile-inline-ad {
+  display: none;
+}
+
 @media (max-width: 1200px) {
   .position-tiers-container {
     width: 100%;
@@ -607,6 +611,13 @@ button {
     margin: 0 8px 16px 8px;
     border-radius: 8px;
     overflow: hidden;
+  }
+
+  .tier-mobile-inline-ad {
+    display: block;
+    width: 300px;
+    max-width: calc(100% - 16px);
+    margin: 0 auto 16px;
   }
 
   .tier-label-cell {

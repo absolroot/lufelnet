@@ -24,7 +24,7 @@ window.ritualData["레오"] = {
 window.enCharacterRitualData["레오"] = {
   "name": "Leo Kamiyama",
   "r0": "Hyper Hero Time!",
-  "r0_detail": "Grant 1 Power of Friendship stack to allies when their HP falls 75% or less. This can stack up to 2 times.\nWhen allies have Power of Friendship, increase Attack by 6% of Kamiyama's Attack (up to 120/180/240, increasing at Lv. 1/50/70) for 1 turn.",
+  "r0_detail": "Grant 1 Power of Friendship stack to allies when their HP falls to 75% or less. This can stack up to 2 times.\nWhen allies have Power of Friendship, increase Attack by 6% of Kamiyama's Attack (up to 120/180/240, increasing at Lv. 1/50/70) for 1 turn.",
   "r1": "Intense Link",
   "r1_detail": "Increase allies' Defense by 10% when they have Power of Friendship.",
   "r2": "Undying Justice",

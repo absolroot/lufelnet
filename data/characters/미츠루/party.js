@@ -37,7 +37,7 @@ window.recommendParty["미츠루"] = {
         {
             "name": "후카",
             "comment": "해명 괴도 초기 행동 시간 4턴 감소 패시브의 영향을 받는다.",
-            "comment_en": "Theuces the initial action time of the Elucidator by 4 turns.",
+            "comment_en": "Mitsuru's Responsibility passive reduces Fuuka's initial cooldown by 4 ally actions.",
             "comment_jp": "怪盗の初期行動時間を4ターン減少させる。",
             "comment_cn": "可享受让解明怪盗初始行动时间减少4回合的被动效果。"
         },

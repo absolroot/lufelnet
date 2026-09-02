@@ -149,7 +149,7 @@
         if (lang !== 'cn') return true;
         try {
             const allowlistState = await window.LufelAllowlistGuide?.whenReady?.();
-            if (allowlistState?.status === 'blocked') return true;
+            if (allowlistState?.status === 'blocked' && window.matchMedia('(min-width: 769px)').matches) return true;
         } catch (_) { }
         try {
             if (localStorage.getItem(STORAGE_HIDE_FOREVER) === '1') return true;

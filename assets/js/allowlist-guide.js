@@ -32,7 +32,6 @@
             eyebrow: 'Ad display settings', title: 'Could you allow ads on LufelNet?',
             body: 'Advertising helps us keep guides and data free.',
             reassurance: 'This will not change your settings on other websites, and you can switch it back at any time.', status: 'Ad requests are currently blocked', guideLabel: 'Allow ads in your blocker', officialGuide: 'Open official help', close: 'Not right now', refresh: 'Refresh after allowing ads',
-            learn: 'How to allowlist', banner: 'Finding LufelNet useful? Please consider allowing ads on this site only.',
             steps: {
                 ublock: ['Click uBlock Origin in the browser toolbar.', 'Click the large power button to trust lufel.net.', 'Reload this page.'],
                 adguard: ['Open AdGuard from the toolbar or app assistant.', 'Turn off protection for this website, or add lufel.net to Allowlist.', 'Reload this page.'],
@@ -46,7 +45,6 @@
             eyebrow: '광고 표시 설정', title: '광고 표시를 허용해 주실 수 있을까요?',
             body: '루페르넷은 광고 수익으로 공략과 데이터를 무료로 제공하고 있습니다.',
             reassurance: '다른 웹사이트의 광고 차단 설정에는 영향을 주지 않으며, 필요하면 언제든 원래대로 되돌릴 수 있습니다.', status: '광고 요청이 현재 차단되어 있습니다', guideLabel: '차단 프로그램에서 광고 허용하기', officialGuide: '공식 도움말 열기', close: '지금은 괜찮아요', refresh: '광고 허용 후 새로고침',
-            learn: '예외 처리 방법', banner: '공략이 도움이 되셨나요? lufel.net에서만 광고를 허용해 주세요.',
             steps: {
                 ublock: ['브라우저 도구 모음에서 uBlock Origin 아이콘을 누릅니다.', '큰 전원 버튼을 눌러 lufel.net을 신뢰 사이트로 설정합니다.', '이 페이지를 새로고침합니다.'],
                 adguard: ['브라우저 도구 모음 또는 앱 도우미에서 AdGuard를 엽니다.', '이 웹사이트의 보호를 끄거나 lufel.net을 Allowlist에 추가합니다.', '이 페이지를 새로고침합니다.'],
@@ -60,7 +58,6 @@
             eyebrow: '広告表示の設定', title: '広告の表示を許可していただけますか？',
             body: 'LufelNet は、広告収益によって攻略情報とデータを無料で提供しています。',
             reassurance: '他のサイトの設定には影響せず、必要になればいつでも元に戻せます。', status: '広告リクエストは現在ブロックされています', guideLabel: 'ブロッカーで広告を許可する', officialGuide: '公式ヘルプを開く', close: '今はしない', refresh: '広告を許可したら再読み込み',
-            learn: '許可リストへの追加方法', banner: '攻略が役に立ったら、lufel.net だけ広告を許可してください。',
             steps: {
                 ublock: ['ブラウザのツールバーで uBlock Origin のアイコンを開きます。', '大きな電源ボタンを押して lufel.net を信頼済みサイトにします。', 'このページを再読み込みします。'],
                 adguard: ['ツールバーまたはアプリのアシスタントから AdGuard を開きます。', 'このサイトの保護をオフにするか、lufel.net を Allowlist に追加します。', 'このページを再読み込みします。'],
@@ -74,7 +71,6 @@
             eyebrow: '广告展示设置', title: '可以允许显示广告吗？',
             body: 'LufelNet 通过广告收入，持续免费提供攻略和数据。',
             reassurance: '不会影响其他网站的拦截设置，您随时可以恢复原来的设置。', status: '广告请求当前已被拦截', guideLabel: '在拦截器中允许广告', officialGuide: '打开官方帮助', close: '暂时不用', refresh: '允许广告后刷新页面',
-            learn: '查看允许方法', banner: '觉得攻略有帮助吗？请考虑仅在 lufel.net 允许广告。',
             steps: {
                 ublock: ['点击浏览器工具栏中的 uBlock Origin 图标。', '点击大电源按钮，将 lufel.net 设为受信任网站。', '刷新本页面。'],
                 adguard: ['从浏览器工具栏或应用助手中打开 AdGuard。', '关闭此网站的保护，或将 lufel.net 添加到 Allowlist。', '刷新本页面。'],
@@ -212,17 +208,10 @@
         refresh.addEventListener('click', () => { try { localStorage.removeItem(STORAGE_KEY); } catch (_) { } location.reload(); });
         document.addEventListener('keydown', keydown); dialog.focus();
     }
-    function showBanner() {
-        removeUi(); const text = copy(); const banner = element('aside', 'lufel-allowlist-banner');
-        banner.setAttribute('role', 'status'); banner.setAttribute('aria-live', 'polite');
-        const learn = element('button', '', text.learn); learn.type = 'button'; learn.addEventListener('click', showModal);
-        const x = element('button', 'lufel-allowlist-banner__close', '×'); x.type = 'button'; x.setAttribute('aria-label', text.close);
-        x.addEventListener('click', () => { dismiss(); removeUi(); });
-        banner.append(element('p', '', text.banner), learn, x); document.body.append(banner);
-    }
     function show(mode) {
         if (state.status !== 'blocked' || (!mode && hiddenRecently())) return;
-        if (mode === 'desktop' || (!mode && matchMedia(DESKTOP).matches)) showModal(); else showBanner();
+        if (mode === 'mobile' || (!mode && !matchMedia(DESKTOP).matches)) return;
+        showModal();
     }
     function init() {
         const start = () => {

@@ -720,6 +720,13 @@ textarea {
     white-space: nowrap;
 }
 
+@media (min-width: 769px) {
+    .nitro-ad-container--character-search {
+        margin-top: 8px;
+        margin-bottom: 16px;
+    }
+}
+
 .search-icon {
     position: absolute;
     left: 16px;

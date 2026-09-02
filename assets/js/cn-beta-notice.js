@@ -145,8 +145,12 @@
         return fallback;
     }
 
-    function shouldSkip(lang) {
+    async function shouldSkip(lang) {
         if (lang !== 'cn') return true;
+        try {
+            const allowlistState = await window.LufelAllowlistGuide?.whenReady?.();
+            if (allowlistState?.status === 'blocked') return true;
+        } catch (_) { }
         try {
             if (localStorage.getItem(STORAGE_HIDE_FOREVER) === '1') return true;
         } catch (_) { }
@@ -343,7 +347,7 @@
 
     async function init() {
         const lang = detectCurrentLanguage();
-        if (shouldSkip(lang)) return;
+        if (await shouldSkip(lang)) return;
         if (!document.body) return;
         await showNotice(lang);
     }

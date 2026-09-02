@@ -157,8 +157,7 @@
         const heading = element('div');
         heading.append(element('p', 'lufel-allowlist-dialog__eyebrow', text.eyebrow));
         const title = element('h2', '', text.title); title.id = 'lufelAllowlistTitle'; heading.append(title);
-        const x = element('button', 'lufel-allowlist-dialog__close', '×'); x.type = 'button'; x.setAttribute('aria-label', text.close);
-        header.append(heading, x);
+        header.append(heading);
         const body = element('div', 'lufel-allowlist-dialog__body');
         const status = element('p', 'lufel-allowlist-status', text.status); status.setAttribute('role', 'status');
         body.append(status, element('p', 'lufel-allowlist-dialog__body-copy', text.body), element('p', 'lufel-allowlist-dialog__reassurance', text.reassurance));
@@ -196,7 +195,7 @@
         footer.append(later, refresh); dialog.append(header, body, footer); layer.append(dialog); document.body.append(layer);
         function close(save) { if (save) dismiss(); removeUi(); document.removeEventListener('keydown', keydown); if (active?.focus) active.focus(); }
         function keydown(event) {
-            if (event.key === 'Escape') close(true);
+            if (event.key === 'Escape') { event.preventDefault(); return; }
             if (event.key !== 'Tab') return;
             const focusable = Array.from(dialog.querySelectorAll('button,a[href]')).filter((node) => node.offsetParent !== null);
             if (!focusable.length) return;
@@ -204,7 +203,7 @@
             if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
             if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
         }
-        x.addEventListener('click', () => close(true)); later.addEventListener('click', () => close(true));
+        later.addEventListener('click', () => close(true));
         refresh.addEventListener('click', () => { try { localStorage.removeItem(STORAGE_KEY); } catch (_) { } location.reload(); });
         document.addEventListener('keydown', keydown); dialog.focus();
     }

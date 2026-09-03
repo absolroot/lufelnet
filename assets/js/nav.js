@@ -240,8 +240,8 @@ class Navigation {
                 key: 'site',
                 labelKey: 'sectionSite',
                 items: [
-                    { key: 'gallery', textKey: 'gallery', icon: 'gallery.png', url: `/${currentLang}/gallery/` },
-                    { key: 'about', textKey: 'about', icon: 'about.png', url: `/${currentLang}/about/` }
+                    { key: 'about', textKey: 'about', icon: 'about.png', url: `/${currentLang}/about/` },
+                    { key: 'gallery', textKey: 'gallery', icon: 'gallery.png', url: `/${currentLang}/gallery/` }
                 ]
             }
         ];

@@ -1281,7 +1281,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!entries.some((entry) => entry.isIntersecting)) return;
                 observer.disconnect();
                 loadImages();
-            }, { rootMargin: '800px 0px' });
+            }, { rootMargin: '1600px 0px' });
             observer.observe(section);
         } else {
             loadImages();

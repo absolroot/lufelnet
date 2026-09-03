@@ -30,4 +30,4 @@ window.characterSetting["이치고·여름"] = {
         "502": [{ "skill": ["정신 사냥꾼","정신 약탈"], "note": "", "note_en": "", "note_jp": "", "note_cn": "" }]
     }
 };
-\
+

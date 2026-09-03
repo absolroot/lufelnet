@@ -1129,12 +1129,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const charactersWithoutAllOutImage = new Set([
-        '류지·댄싱 스타',
-        '아라가키',
-        '아마다',
-        '시오미 코토네',
-        '이치고·여름',
-        '미쿠'
+        ''
     ]);
 
     const wonderAllOutFiles = [
@@ -1299,8 +1294,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (characterName && characterData[characterName]) {
         const character = characterData[characterName];
-        // 총공격 이미지 임시 비활성화: 공개 시 아래 호출의 주석만 해제합니다.
-        // safeRun('character-allout', () => initCharacterAllOut(characterName, character));
+        safeRun('character-allout', () => initCharacterAllOut(characterName, character));
 
         // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
         safeRun('persona3-css-and-text', () => {

@@ -343,13 +343,14 @@
         return tagsRaw.includes('원소 이상') && !tagsRaw.includes('원소 이상 제거');
     }
 
-    function hasTag(characterTags, wantedTag, isPersona3, isPersona5, isP5D, isLimited, isAsiaLimited, hasMindscapeCore) {
+    function hasTag(characterTags, wantedTag, isPersona3, isPersona5, isP5D, isP5X, isLimited, isAsiaLimited, hasMindscapeCore) {
         const wantedNorm = normalizeToken(wantedTag);
         const tagsRaw = String(characterTags || '');
 
         if (wantedNorm === 'persona5' || wantedNorm === '페르소나5') return isPersona5;
         if (wantedNorm === 'persona3' || wantedNorm === '페르소나3') return isPersona3;
         if (wantedNorm === 'p5d') return isP5D;
+        if (wantedNorm === 'p5x') return isP5X;
         if (wantedNorm === '한정' || wantedNorm === 'limited') return isLimited;
         if (wantedNorm === '통상' || wantedNorm === 'normal') return !isLimited;
         if (wantedNorm === 'normalasia') return !isAsiaLimited;
@@ -411,6 +412,7 @@
             const isPersona5 = card.dataset.persona5 === 'true';
             const isPersona3 = card.dataset.persona3 === 'true';
             const isP5D = card.dataset.p5d === 'true';
+            const isP5X = card.dataset.p5x === 'true';
             const isLimited = card.dataset.limit === 'true';
             const isAsiaLimited = card.dataset.limitAsia === 'true';
             const hasMindscapeCore = card.dataset.mindscapeCore === 'true';
@@ -421,7 +423,7 @@
                 || (element === '질풍빙결' && (selectedElements.includes('질풍') || selectedElements.includes('빙결')));
             const positionMatch = noPositionFilter || selectedPositions.includes(position);
             const rarityMatch = noRarityFilter || selectedRarities.includes(rarity);
-            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isP5D, isLimited, isAsiaLimited, hasMindscapeCore));
+            const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isP5D, isP5X, isLimited, isAsiaLimited, hasMindscapeCore));
 
             const shouldHide = !(elementMatch && positionMatch && rarityMatch && tagMatch) || card.classList.contains('hidden-by-search');
             card.classList.toggle('hidden-by-filter', shouldHide);

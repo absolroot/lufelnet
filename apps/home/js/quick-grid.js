@@ -6,9 +6,7 @@
     const newItems = [
         'character',
         'revelations',
-        'wonderweapon',
-        'criticalCalc',
-        'gallery'
+        'criticalCalc'
     ];
 
     const HOME_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];

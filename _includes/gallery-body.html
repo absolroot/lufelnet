@@ -65,30 +65,37 @@
     -->
   </div>
 
-  <div class="gallery-toolbar">
-    <div class="filters">
-      <input id="search-input" style="display:none;" type="text" placeholder="검색..." aria-label="Search"
-        data-i18n-placeholder="searchPlaceholder" />
-      <select id="category-select" aria-label="Category">
-        <option value="" data-i18n="filterAll">전체</option>
-      </select>
-      <select id="tag-select" aria-label="Tag">
-        <option value="" data-i18n="filterAllTags">모든 태그</option>
-      </select>
-    </div>
-    <div class="sort" style="display:none;">
-      <select id="sort-select" aria-label="Sort">
-        <option value="order_desc" data-i18n="sortOrderDesc">순서 ↓</option>
-        <option value="order_asc" data-i18n="sortOrderAsc">순서 ↑</option>
-        <option value="name_asc" data-i18n="sortNameAsc">이름 A→Z</option>
-        <option value="name_desc" data-i18n="sortNameDesc">이름 Z→A</option>
-      </select>
-    </div>
+  <div class="gallery-tabs" role="tablist" aria-label="Gallery content" data-i18n-aria="tabsLabel">
+    <button id="gallery-tab-illustrations" class="gallery-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="gallery-content" data-gallery-tab="illustrations" data-i18n="tabIllustrations">일러스트</button>
+    <button id="gallery-tab-allout" class="gallery-tab" type="button" role="tab" aria-selected="false" aria-controls="gallery-content" data-gallery-tab="allout" data-i18n="tabAllOut" tabindex="-1">총공격</button>
   </div>
 
-  <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
-  <div id="gallery-loader">
-    <div class="gallery-spinner"></div>
+  <div id="gallery-content" role="tabpanel" aria-labelledby="gallery-tab-illustrations">
+    <div class="gallery-toolbar">
+      <div class="filters">
+        <input id="search-input" style="display:none;" type="text" placeholder="검색..." aria-label="Search"
+          data-i18n-placeholder="searchPlaceholder" />
+        <select id="category-select" aria-label="Category">
+          <option value="" data-i18n="filterAll">전체</option>
+        </select>
+        <select id="tag-select" aria-label="Tag">
+          <option value="" data-i18n="filterAllTags">모든 태그</option>
+        </select>
+      </div>
+      <div class="sort" style="display:none;">
+        <select id="sort-select" aria-label="Sort">
+          <option value="order_desc" data-i18n="sortOrderDesc">순서 ↓</option>
+          <option value="order_asc" data-i18n="sortOrderAsc">순서 ↑</option>
+          <option value="name_asc" data-i18n="sortNameAsc">이름 A→Z</option>
+          <option value="name_desc" data-i18n="sortNameDesc">이름 Z→A</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+    <div id="gallery-loader">
+      <div class="gallery-spinner"></div>
+    </div>
   </div>
 
 </div>

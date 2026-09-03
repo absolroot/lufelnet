@@ -2,6 +2,9 @@ window.I18N_PAGE_GALLERY_JP = {
     pageTitle: 'ギャラリー',
     pageDescription: 'ゲーム内イラスト、カットシーンなどさまざまな画像を楽しめます。',
     navCurrent: 'ギャラリー',
+    tabsLabel: 'ギャラリーコンテンツ',
+    tabIllustrations: 'イラスト',
+    tabAllOut: '総攻撃',
 
     // Filters
     filterAll: 'すべて',
@@ -19,6 +22,7 @@ window.I18N_PAGE_GALLERY_JP = {
     modalClose: '閉じる',
     modalPrevious: '前へ',
     modalNext: '次へ',
+    openImage: '画像を開く',
 
     // Loading
     loading: '読み込み中...',

@@ -1,11 +1,12 @@
-(function(){
+(function () {
   'use strict';
 
-  const BASE = (typeof BASE_URL !== 'undefined' ? BASE_URL : '');
+  const BASE = typeof BASE_URL !== 'undefined' ? BASE_URL : '';
   const IMAGES_DIR = `${BASE}/assets/img/gallery`;
   const THUMBS_DIR = `${BASE}/assets/img/gallery/thumbs`;
-  const DATA_URL = `${BASE}/apps/gallery/gallery-tags.json?v=${Date.now()}`;
-  // 디렉터리 나열은 사용하지 않음 (플러그인 비활성화). JSON만 사용
+  const ILLUSTRATIONS_URL = `${BASE}/apps/gallery/gallery-tags.json?v=${Date.now()}`;
+  const ALL_OUT_URL = `${BASE}/apps/gallery/allout-manifest.json?v=${Date.now()}`;
+  const PAGE_SIZE = 20;
 
   const gridEl = document.getElementById('gallery-grid');
   const searchInput = document.getElementById('search-input');
@@ -16,440 +17,383 @@
   const modalImg = document.getElementById('modal-image');
   const modalClose = document.getElementById('modal-close');
   const modalCaption = document.getElementById('modal-caption');
+  const tabButtons = Array.from(document.querySelectorAll('[data-gallery-tab]'));
+  const tabPanel = document.getElementById('gallery-content');
 
-  /**
-   * 현재 언어 문자열 반환
-   */
-  function getLang(){
-    try { return (typeof LanguageRouter !== 'undefined') ? LanguageRouter.getCurrentLanguage() : (window.currentLang || 'kr'); } catch(_) { return 'kr'; }
-  }
+  let activeTab = 'illustrations';
+  let lists = { illustrations: [], allout: [] };
+  let filteredList = [];
+  let modalList = [];
+  let modalIndex = -1;
+  let visibleCount = PAGE_SIZE;
+  let ioLoadMore = null;
 
-  function getI18nText(key, fallback = ''){
+  function getLang() {
     try {
-      if (typeof window.t === 'function') {
-        return window.t(key, fallback);
-      }
-    } catch (_) {}
-    return fallback;
-  }
-
-  async function waitForI18n(maxRetries = 50, delayMs = 100){
-    while (typeof window.t !== 'function' && maxRetries > 0){
-      await new Promise(resolve => setTimeout(resolve, delayMs));
-      maxRetries--;
+      return typeof LanguageRouter !== 'undefined'
+        ? LanguageRouter.getCurrentLanguage()
+        : (window.currentLang || 'kr');
+    } catch (_) {
+      return 'kr';
     }
   }
 
-  /**
-   * 통합 i18n 번들 적용
-   */
-  function applyI18n(){
-    const pageTitle = getI18nText('pageTitle', '갤러리');
+  function t(key, fallback = '') {
+    try {
+      return typeof window.t === 'function' ? window.t(key, fallback) : fallback;
+    } catch (_) {
+      return fallback;
+    }
+  }
+
+  async function waitForI18n(maxRetries = 50, delayMs = 100) {
+    while (typeof window.t !== 'function' && maxRetries > 0) {
+      await new Promise((resolve) => setTimeout(resolve, delayMs));
+      maxRetries -= 1;
+    }
+  }
+
+  function applyI18n() {
     const titleEl = document.getElementById('gallery-title');
-    if (titleEl) titleEl.textContent = pageTitle;
-
-    if (searchInput) searchInput.placeholder = getI18nText('searchPlaceholder', '검색...');
-    // 드롭다운 기본 옵션 라벨 업데이트
-    if (categorySelect && categorySelect.options.length > 0) {
-      categorySelect.options[0].textContent = getI18nText('filterAllGroups', getI18nText('filterAll', '전체'));
-    }
-    if (tagSelect && tagSelect.options.length > 0) {
-      tagSelect.options[0].textContent = getI18nText('filterAllTags', '모든 태그');
-    }
-    if (sortSelect && sortSelect.options.length>=4){
-      sortSelect.options[0].textContent = getI18nText('sortOrderDesc', '순서 ↓');
-      sortSelect.options[1].textContent = getI18nText('sortOrderAsc', '순서 ↑');
-      sortSelect.options[2].textContent = getI18nText('sortNameAsc', '이름 A→Z');
-      sortSelect.options[3].textContent = getI18nText('sortNameDesc', '이름 Z→A');
-    }
-
-    // SEO 타이틀/메타 업데이트
+    if (titleEl) titleEl.textContent = t('pageTitle', '갤러리');
+    if (searchInput) searchInput.placeholder = t('searchPlaceholder', '검색...');
     if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
-      window.SeoEngine.setContextHint({
-        domain: 'gallery',
-        mode: 'list'
-      }, { rerun: true });
-    } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-      window.SeoEngine.run();
+      window.SeoEngine.setContextHint({ domain: 'gallery', mode: 'list' }, { rerun: true });
     }
-
-    // Navigation path 번역
     const navHomeEl = document.getElementById('nav-home');
-    const navCurEl = document.getElementById('nav-current');
-    if (navHomeEl) navHomeEl.textContent = getI18nText('nav.home', '홈');
-    if (navCurEl) navCurEl.textContent = getI18nText('navCurrent', '갤러리');
+    const navCurrentEl = document.getElementById('nav-current');
+    if (navHomeEl) navHomeEl.textContent = t('nav.home', '홈');
+    if (navCurrentEl) navCurrentEl.textContent = t('navCurrent', '갤러리');
   }
 
-  /**
-   * JSON 로드
-   */
-  async function fetchJsonList(){
-    const res = await fetch(DATA_URL);
-    if (!res.ok) return [];
-    const list = await res.json();
-    return list.map((it, idx)=>({
-      filename: it.filename,
-      tags: Array.isArray(it.tags) ? it.tags : [],
-      category: Array.isArray(it.category) ? it.category : [],
-      order: Number.isFinite(it.order) ? it.order : (idx+1),
+  async function fetchList(url, mediaType) {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`Could not load ${mediaType} gallery data.`);
+    const list = await response.json();
+    return list.map((item, index) => ({
+      filename: item.filename,
+      thumbnail: item.thumbnail || '',
+      tags: Array.isArray(item.tags) ? item.tags : [],
+      category: Array.isArray(item.category) ? item.category : [],
+      order: Number.isFinite(item.order) ? item.order : index + 1,
+      mediaType
     }));
   }
 
-  // 디렉터리 내 파일도 모두 포함
-  async function fetchDirFiles(){ return []; }
-
-  /**
-   * 유니크 값 수집
-   */
-  function collectUnique(list, key){
-    const set = new Set();
-    list.forEach(it=>{ const v = it[key]; if (Array.isArray(v)) v.forEach(x=>set.add(String(x))); else if (v) set.add(String(v)); });
-    const lang = getLang();
-    const arr = Array.from(set);
-    // 표시 언어 기준 A→Z 정렬 (tags는 캐릭터/커스텀 매핑 포함, category는 카테고리 매핑)
-    return arr.sort((a,b)=>{
-      if (key === 'tags') {
-        const aa = getLocalizedTagLabel(a, lang) || '';
-        const bb = getLocalizedTagLabel(b, lang) || '';
-        return aa.localeCompare(bb);
-      } else {
-        const aa = (typeof GalleryI18N !== 'undefined' && GalleryI18N) ? (GalleryI18N.translateCategory(a, lang) || a) : a;
-        const bb = (typeof GalleryI18N !== 'undefined' && GalleryI18N) ? (GalleryI18N.translateCategory(b, lang) || b) : b;
-        return (aa||'').localeCompare(bb||'');
-      }
-    });
-  }
-
-  // 캐릭터 이름 현지화 (characters.js 전역 characterData 사용)
-  function localizeCharacterTag(tag, lang){
+  function localizeCharacterTag(tag, lang, fullName = false) {
     try {
-      const data = (typeof window !== 'undefined' && window.characterData && typeof window.characterData === 'object')
+      const data = window.characterData && typeof window.characterData === 'object'
         ? window.characterData
         : (typeof characterData === 'object' ? characterData : null);
-      if (!data) return tag;
-      const entry = data[tag];
+      const entry = data && data[tag];
       if (!entry) return tag;
-      if (lang === 'en' && entry.name_en){
-        // space바로 나뉜 텍스트 중 앞 단어만 사용
-        const words = entry.name_en.split(' ');
-        return words[0];
-      }
+      if (lang === 'en' && entry.name_en) return fullName ? entry.name_en : entry.name_en.split(' ')[0];
       if (lang === 'jp' && entry.name_jp) return entry.name_jp;
       if (lang === 'cn' && entry.name_cn) return entry.name_cn;
       return tag;
-    } catch(_) { return tag; }
+    } catch (_) {
+      return tag;
+    }
   }
 
-  // 태그 라벨 현지화 (캐릭터명 우선 → 커스텀 매핑 → 원문)
-  function getLocalizedTagLabel(rawTag, lang){
-    const byChar = localizeCharacterTag(rawTag, lang);
-    if (byChar && byChar !== rawTag) return byChar;
+  function getLocalizedTagLabel(rawTag, item) {
+    const lang = getLang();
+    const byCharacter = localizeCharacterTag(rawTag, lang, item && item.mediaType === 'allout');
+    if (byCharacter && byCharacter !== rawTag) return byCharacter;
     try {
-      if (typeof GalleryI18N !== 'undefined' && GalleryI18N && typeof GalleryI18N.translateTag === 'function'){
-        const byMap = GalleryI18N.translateTag(rawTag, lang);
-        if (byMap && byMap !== rawTag) return byMap;
-      }
-    } catch(_){}
-    return rawTag;
+      const translated = window.GalleryI18N && window.GalleryI18N.translateTag(rawTag, lang);
+      return translated || rawTag;
+    } catch (_) {
+      return rawTag;
+    }
   }
 
-  /**
-   * 옵션 그리기
-   */
-  function populateFilters(list){
-    // 카테고리
-    const cats = collectUnique(list, 'category');
-    cats.sort((a,b)=>{
-      const lang = getLang();
-      const aa = GalleryI18N ? GalleryI18N.translateCategory(a, lang) : a;
-      const bb = GalleryI18N ? GalleryI18N.translateCategory(b, lang) : b;
-      return (aa||'').localeCompare(bb||'');
-    }).forEach(c=>{ const opt=document.createElement('option'); opt.value=c; opt.textContent=(GalleryI18N ? GalleryI18N.translateCategory(c, getLang()) : c); opt.setAttribute('data-label', opt.textContent.toLowerCase()); categorySelect.appendChild(opt); });
-    // 태그
-    const allTags = collectUnique(list.map(it=>({tags:it.tags})), 'tags');
-    allTags.forEach(t=>{ const label=getLocalizedTagLabel(t, getLang()); const opt=document.createElement('option'); opt.value=t; opt.textContent=label; opt.setAttribute('data-label', (label||'').toLowerCase()); tagSelect.appendChild(opt); });
+  function getLocalizedCategoryLabel(rawCategory) {
+    try {
+      return window.GalleryI18N && window.GalleryI18N.translateCategory(rawCategory, getLang()) || rawCategory;
+    } catch (_) {
+      return rawCategory;
+    }
   }
 
-  /**
-   * 정렬
-   */
-  function sortList(list){
-    const v = sortSelect.value;
-    const byName = (a,b)=>a.filename.localeCompare(b.filename);
-    const byOrder = (a,b)=>a.order-b.order;
-    if (v==='order_desc') return [...list].sort((a,b)=>byOrder(b,a));
-    if (v==='name_asc') return [...list].sort(byName);
-    if (v==='name_desc') return [...list].sort((a,b)=>byName(b,a));
+  function collectUnique(list, key) {
+    return Array.from(new Set(list.flatMap((item) => Array.isArray(item[key]) ? item[key].map(String) : [])));
+  }
+
+  function resetSelect(select, label) {
+    select.replaceChildren();
+    const allOption = document.createElement('option');
+    allOption.value = '';
+    allOption.textContent = label;
+    select.appendChild(allOption);
+  }
+
+  function populateFilters(list) {
+    resetSelect(categorySelect, t('filterAllGroups', t('filterAll', '전체')));
+    resetSelect(tagSelect, t('filterAllTags', '모든 태그'));
+    const isAllOut = activeTab === 'allout';
+    categorySelect.hidden = isAllOut;
+
+    if (!isAllOut) {
+      collectUnique(list, 'category')
+        .sort((a, b) => getLocalizedCategoryLabel(a).localeCompare(getLocalizedCategoryLabel(b)))
+        .forEach((category) => {
+          const option = document.createElement('option');
+          option.value = category;
+          option.textContent = getLocalizedCategoryLabel(category);
+          categorySelect.appendChild(option);
+        });
+    }
+
+    const tagItems = new Map();
+    list.forEach((item) => item.tags.forEach((tag) => tagItems.set(String(tag), item)));
+    Array.from(tagItems.entries())
+      .sort(([a, itemA], [b, itemB]) => getLocalizedTagLabel(a, itemA).localeCompare(getLocalizedTagLabel(b, itemB)))
+      .forEach(([tag, item]) => {
+        const option = document.createElement('option');
+        option.value = tag;
+        option.textContent = getLocalizedTagLabel(tag, item);
+        tagSelect.appendChild(option);
+      });
+  }
+
+  function sortList(list) {
+    const byOrder = (a, b) => a.order - b.order || a.filename.localeCompare(b.filename);
+    const byName = (a, b) => a.filename.localeCompare(b.filename);
+    if (sortSelect.value === 'order_desc') return [...list].sort((a, b) => byOrder(b, a));
+    if (sortSelect.value === 'name_asc') return [...list].sort(byName);
+    if (sortSelect.value === 'name_desc') return [...list].sort((a, b) => byName(b, a));
     return [...list].sort(byOrder);
   }
 
-  /**
-   * 필터
-   */
-  function filterList(list){
-    const q = (searchInput.value||'').toLowerCase().trim();
-    const cat = categorySelect.value;
+  function filterList(list) {
+    const query = (searchInput.value || '').toLowerCase().trim();
+    const category = categorySelect.value;
     const tag = tagSelect.value;
-    return list.filter(it=>{
-      if (cat && !it.category.includes(cat)) return false;
-      if (tag && !it.tags.map(String).includes(tag)) return false;
-      if (!q) return true;
-      const hay = [it.filename, it.category, ...(it.tags||[])].join(' ').toLowerCase();
-      return hay.includes(q);
+    return list.filter((item) => {
+      if (category && !item.category.includes(category)) return false;
+      if (tag && !item.tags.map(String).includes(tag)) return false;
+      if (!query) return true;
+      return [item.filename, ...item.category, ...item.tags].join(' ').toLowerCase().includes(query);
     });
   }
 
-  /**
-   * 썸네일 URL 생성: 썸네일 별도 파일이 없으므로 브라우저 리사이즈 + lazy 로 대체
-   */
-  function buildImageURL(filename){
-    return `${IMAGES_DIR}/${encodeURIComponent(filename)}`;
+  function buildImageUrl(item) {
+    const relativePath = item.mediaType === 'allout' ? `allout/${item.filename}` : item.filename;
+    const parts = relativePath.split('/').map((part) => encodeURIComponent(part));
+    return `${IMAGES_DIR}/${parts.join('/')}`;
   }
 
-  function buildThumbURL(filename){
-    // filename 확장자는 모두 webp로 바꾸기
-    return `${THUMBS_DIR}/${encodeURIComponent(filename.replace(/\.[^.]+$/, '.webp'))}`;
+  function buildThumbUrl(item) {
+    const thumbnail = item.thumbnail || item.filename.replace(/\.[^.]+$/, '.webp');
+    const parts = thumbnail.split('/').map((part) => encodeURIComponent(part));
+    return `${THUMBS_DIR}/${parts.join('/')}`;
   }
 
-  /**
-   * IntersectionObserver로 지연 로드
-   */
-  function setupLazy(container){
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if (entry.isIntersecting){
-          const img = entry.target;
-          const src = img.getAttribute('data-src');
-          if (src){
-            img.src = src;
-            img.onload = ()=> img.classList.add('loaded');
-            img.removeAttribute('data-src');
-          }
-          io.unobserve(img);
-        }
+  function setupLazy(container) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const image = entry.target;
+        const source = image.dataset.src;
+        if (source) image.src = source;
+        delete image.dataset.src;
+        observer.unobserve(image);
       });
-    },{rootMargin:'200px'});
-    container.querySelectorAll('img[data-src]').forEach(img=>io.observe(img));
+    }, { rootMargin: '200px' });
+    container.querySelectorAll('img[data-src]').forEach((image) => observer.observe(image));
   }
 
-  /**
-   * 카드 DOM 생성 (단일)
-   */
-  function buildCard(item){
-    const card = document.createElement('div');
-    card.className = 'gallery-card';
-    const thumb = document.createElement('div');
+  function buildCard(item) {
+    const card = document.createElement('article');
+    card.className = `gallery-card${item.mediaType === 'allout' ? ' is-allout' : ''}`;
+    const thumb = document.createElement('button');
+    thumb.type = 'button';
     thumb.className = 'thumb-wrapper';
-    const img = document.createElement('img');
-    img.alt = item.filename;
-    // 썸네일 있으면 우선 사용, 없으면 원본
-    img.setAttribute('data-src', buildThumbURL(item.filename));
-    img.onerror = function(){
-      const current = img.getAttribute('data-src') || '';
-      const isThumb = current.indexOf('/assets/img/gallery/thumbs/') !== -1;
-      if (isThumb) {
-        img.onerror = null; // 무한 루프 방지
-        img.setAttribute('data-src', buildImageURL(item.filename));
-      }
-    };
-    img.decoding = 'async';
-    img.loading = 'lazy';
-    thumb.appendChild(img);
-    // 캡션
-    const cap = document.createElement('div');
-    cap.className = 'card-caption';
-    const tags = document.createElement('div'); tags.className='tags';
-    const lang = getLang();
-    // 최대 4개(모바일 3개) 표시, 초과 시 ...
-    const isMobile = window.innerWidth <= 768;
-    const isJapanese = lang === 'jp';
-    let tags_sliced = [];
-    const mapped = (item.tags||[]).map(t=> getLocalizedTagLabel(t, lang));
+    thumb.setAttribute('aria-label', `${getLocalizedTagLabel(item.tags[0], item)} ${t('openImage', '이미지 열기')}`);
+    const image = document.createElement('img');
+    image.alt = item.filename;
+    image.dataset.src = buildThumbUrl(item);
+    image.addEventListener('load', () => image.classList.add('loaded'), { once: true });
+    image.addEventListener('error', () => {
+      if (image.dataset.fallbackLoaded === 'true') return;
+      image.dataset.fallbackLoaded = 'true';
+      image.src = buildImageUrl(item);
+    }, { once: true });
+    image.decoding = 'async';
+    image.loading = 'lazy';
+    thumb.appendChild(image);
+    thumb.addEventListener('click', () => openModal(item));
 
-
-    if (isJapanese && isMobile) tags_sliced = mapped.slice(0, 2);
-    else tags_sliced = mapped.slice(0, isMobile || isJapanese ? 3 : 4);
-    
-    if (tags_sliced.length < mapped.length) tags_sliced.push('...');
-    tags_sliced.forEach(t=>{
+    const caption = document.createElement('div');
+    caption.className = 'card-caption';
+    const tags = document.createElement('div');
+    tags.className = 'tags';
+    const maxTags = getLang() === 'jp' && window.innerWidth <= 768 ? 2 : (window.innerWidth <= 768 || getLang() === 'jp' ? 3 : 4);
+    item.tags.slice(0, maxTags).forEach((tag) => {
       const chip = document.createElement('span');
       chip.className = 'tag-chip';
-      chip.textContent = (t === '...') ? t : `#${t}`;
+      chip.textContent = `#${getLocalizedTagLabel(tag, item)}`;
       tags.appendChild(chip);
     });
-    cap.appendChild(tags);
-    // 클릭으로 모달
-    thumb.addEventListener('click', ()=> openModal(item));
-    card.appendChild(thumb); card.appendChild(cap);
+    caption.appendChild(tags);
+    card.append(thumb, caption);
     return card;
   }
 
-  /**
-   * 카드 렌더링 (append=true면 기존 유지하고 뒤에만 추가)
-   */
-  function render(list, append=false){
-    if (!append) gridEl.innerHTML = '';
-    const frag = document.createDocumentFragment();
-    list.forEach(item=>{ frag.appendChild(buildCard(item)); });
-    gridEl.appendChild(frag);
+  function render(list, append = false) {
+    if (!append) gridEl.replaceChildren();
+    const fragment = document.createDocumentFragment();
+    list.forEach((item) => fragment.appendChild(buildCard(item)));
+    gridEl.appendChild(fragment);
     setupLazy(gridEl);
   }
 
-  let modalList = [];
-  let modalIndex = -1;
-
-  function refreshArrows(){
-    const prev = document.getElementById('modal-prev');
+  function refreshArrows() {
+    const previous = document.getElementById('modal-prev');
     const next = document.getElementById('modal-next');
-    if (!prev || !next) return;
-    prev.disabled = modalIndex <= 0;
-    next.disabled = modalIndex >= modalList.length - 1;
+    if (previous) previous.disabled = modalIndex <= 0;
+    if (next) next.disabled = modalIndex >= modalList.length - 1;
   }
 
-  function renderModalTags(item){
-    modalCaption.innerHTML = '';
-    const lang = getLang();
-    (item.tags||[]).map(t=> getLocalizedTagLabel(t, lang)).forEach(t=>{
-      const chip = document.createElement('span');
-      chip.className = 'tag-chip';
-      if (t === '...') {
-        chip.textContent = t;
-      } else {
-        chip.textContent = `#${t}`;
-      }
-      modalCaption.appendChild(chip);
-    });
-  }
-
-  function openModalByIndex(idx){
-    modalIndex = idx;
+  function openModalByIndex(index) {
+    modalIndex = index;
     const item = modalList[modalIndex];
     if (!item) return;
-    modalImg.src = buildImageURL(item.filename);
+    modalImg.src = buildImageUrl(item);
     modalImg.alt = item.filename;
-    renderModalTags(item);
+    modalCaption.replaceChildren();
+    item.tags.forEach((tag) => {
+      const chip = document.createElement('span');
+      chip.className = 'tag-chip';
+      chip.textContent = `#${getLocalizedTagLabel(tag, item)}`;
+      modalCaption.appendChild(chip);
+    });
     modal.classList.add('open');
-    modal.setAttribute('aria-hidden','false');
+    modal.setAttribute('aria-hidden', 'false');
     refreshArrows();
   }
 
-  function openModal(item){
-    const idx = modalList.findIndex(x=>x.filename===item.filename);
-    openModalByIndex(idx >= 0 ? idx : 0);
+  function openModal(item) {
+    const index = modalList.findIndex((entry) => entry.filename === item.filename);
+    openModalByIndex(index >= 0 ? index : 0);
   }
 
-  function moveModal(step){
-    const next = modalIndex + step;
-    if (next < 0 || next >= modalList.length) return;
-    openModalByIndex(next);
-  }
-  function closeModal(){
+  function closeModal() {
     modal.classList.remove('open');
-    modal.setAttribute('aria-hidden','true');
+    modal.setAttribute('aria-hidden', 'true');
     modalImg.src = '';
+    modalIndex = -1;
   }
 
-  function wireModal(){
+  function moveModal(step) {
+    const nextIndex = modalIndex + step;
+    if (nextIndex >= 0 && nextIndex < modalList.length) openModalByIndex(nextIndex);
+  }
+
+  function wireModal() {
     modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e)=>{ if (e.target===modal) closeModal(); });
-    document.addEventListener('keydown', (e)=>{
+    modal.addEventListener('click', (event) => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', (event) => {
       if (!modal.classList.contains('open')) return;
-      if (e.key==='Escape') closeModal();
-      if (e.key==='ArrowLeft') moveModal(-1);
-      if (e.key==='ArrowRight') moveModal(1);
+      if (event.key === 'Escape') closeModal();
+      if (event.key === 'ArrowLeft') moveModal(-1);
+      if (event.key === 'ArrowRight') moveModal(1);
     });
-    const prevBtn = document.getElementById('modal-prev');
-    const nextBtn = document.getElementById('modal-next');
-    if (prevBtn) prevBtn.addEventListener('click', ()=> moveModal(-1));
-    if (nextBtn) nextBtn.addEventListener('click', ()=> moveModal(1));
+    document.getElementById('modal-prev').addEventListener('click', () => moveModal(-1));
+    document.getElementById('modal-next').addEventListener('click', () => moveModal(1));
   }
 
-  async function main(){
+  function ensureSentinel() {
+    let sentinel = document.getElementById('gallery-sentinel');
+    if (!sentinel) {
+      sentinel = document.createElement('div');
+      sentinel.id = 'gallery-sentinel';
+      sentinel.style.height = '1px';
+      gridEl.after(sentinel);
+    }
+    return sentinel;
+  }
+
+  function setupInfiniteScroll() {
+    const sentinel = ensureSentinel();
+    if (ioLoadMore) ioLoadMore.disconnect();
+    ioLoadMore = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting) || visibleCount >= filteredList.length) return;
+      const loader = document.getElementById('gallery-loader');
+      if (loader) loader.style.display = 'flex';
+      window.setTimeout(() => {
+        const nextCount = Math.min(visibleCount + PAGE_SIZE, filteredList.length);
+        render(filteredList.slice(visibleCount, nextCount), true);
+        visibleCount = nextCount;
+        if (loader) loader.style.display = 'none';
+      }, 250);
+    }, { rootMargin: '400px' });
+    ioLoadMore.observe(sentinel);
+  }
+
+  function update() {
+    filteredList = sortList(filterList(lists[activeTab]));
+    modalList = [...filteredList];
+    visibleCount = PAGE_SIZE;
+    render(filteredList.slice(0, visibleCount));
+    setupInfiniteScroll();
+  }
+
+  function setActiveTab(nextTab) {
+    if (!lists[nextTab]) return;
+    activeTab = nextTab;
+    closeModal();
+    categorySelect.value = '';
+    tagSelect.value = '';
+    tabButtons.forEach((button) => {
+      const selected = button.dataset.galleryTab === activeTab;
+      button.classList.toggle('is-active', selected);
+      button.setAttribute('aria-selected', String(selected));
+      button.tabIndex = selected ? 0 : -1;
+      if (selected && tabPanel) tabPanel.setAttribute('aria-labelledby', button.id);
+    });
+    populateFilters(lists[activeTab]);
+    update();
+  }
+
+  function wireTabs() {
+    tabButtons.forEach((button, index) => {
+      button.addEventListener('click', () => setActiveTab(button.dataset.galleryTab));
+      button.addEventListener('keydown', (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const targetIndex = event.key === 'Home' ? 0
+          : event.key === 'End' ? tabButtons.length - 1
+            : (index + (event.key === 'ArrowRight' ? 1 : -1) + tabButtons.length) % tabButtons.length;
+        tabButtons[targetIndex].focus();
+        setActiveTab(tabButtons[targetIndex].dataset.galleryTab);
+      });
+    });
+  }
+
+  async function main() {
     await waitForI18n();
     applyI18n();
     wireModal();
-
-    Promise.all([fetchJsonList(), fetchDirFiles()]).then(([jsonList])=>{
-      fullList = [...jsonList];
-      modalList = [...fullList];
-      populateFilters(fullList);
-
-      // 무한 스크롤 상태값
-      pageSize = 20;
-      visibleCount = 20;
-      filteredList = [...fullList];
-
-      const update = ()=>{
-        const out = sortList(filterList(fullList));
-        filteredList = [...out];
-        modalList = [...out];
-        visibleCount = pageSize; // 필터/정렬 변경 시 초기화
-        render(out.slice(0, visibleCount));
-        // 관찰자 재설정 (필터 변경 후 즉시 하단 감지 가능)
-        setupInfiniteScroll();
-      };
-      [searchInput, categorySelect, tagSelect, sortSelect].forEach(el=> el && el.addEventListener('input', update));
-      // select 요소는 change 이벤트도 바인딩
-      [categorySelect, tagSelect, sortSelect].forEach(el=> el && el.addEventListener('change', update));
-      update();
-
-      // 인피니트 스크롤 시작
-      setupInfiniteScroll();
-    }).catch(err=>{
-      console.error(err);
-      const errorBox = document.createElement('div');
-      errorBox.style.color = 'rgba(255,255,255,0.7)';
-      errorBox.style.padding = '12px';
-      errorBox.textContent = getI18nText('loadError', 'Failed to load gallery data.');
-      gridEl.innerHTML = '';
-      gridEl.appendChild(errorBox);
-    });
-  }
-
-  // 인피니트 스크롤 구현
-  let fullList = [];
-  let filteredList = [];
-  let pageSize = 20;
-  let visibleCount = 20;
-  let ioLoadMore = null;
-
-  function ensureSentinel(){
-    let s = document.getElementById('gallery-sentinel');
-    if (!s){
-      s = document.createElement('div');
-      s.id = 'gallery-sentinel';
-      s.style.height = '1px';
-      s.style.width = '100%';
-      gridEl.after(s);
-    }
-    return s;
-  }
-
-  function setupInfiniteScroll(){
-    const sentinel = ensureSentinel();
-    if (ioLoadMore) ioLoadMore.disconnect();
-    ioLoadMore = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        if (visibleCount >= filteredList.length) return;
-        // 로딩 스피너 0.5초 노출 후 로드
-        const loader = document.getElementById('gallery-loader');
-        if (loader) loader.style.display = 'flex';
-        setTimeout(() => {
-          const nextCount = Math.min(visibleCount + pageSize, filteredList.length);
-          const slice = filteredList.slice(visibleCount, nextCount);
-          visibleCount = nextCount;
-          // 기존은 유지하고, 새 항목만 append 렌더링
-          render(slice, true);
-          if (loader) loader.style.display = 'none';
-        }, 500);
+    wireTabs();
+    try {
+      const [illustrations, allout] = await Promise.all([
+        fetchList(ILLUSTRATIONS_URL, 'illustrations'),
+        fetchList(ALL_OUT_URL, 'allout')
+      ]);
+      lists = { illustrations, allout };
+      [searchInput, categorySelect, tagSelect, sortSelect].forEach((element) => {
+        element.addEventListener('input', update);
+        element.addEventListener('change', update);
       });
-    }, { rootMargin: '400px' });
-    ioLoadMore.observe(sentinel);
+      setActiveTab('illustrations');
+    } catch (error) {
+      console.error(error);
+      gridEl.textContent = t('loadError', '갤러리 데이터를 불러오지 못했습니다.');
+    }
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => { void main(); });
   else void main();
 })();
-
-

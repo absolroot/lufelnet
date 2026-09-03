@@ -451,11 +451,6 @@ body {
     position: relative;
 }
 
-.nitro-ad-container--banner,
-.nitro-ad-container--leaderboard {
-    max-width: 976px;
-}
-
 .nitro-ad-placeholder {
     position: absolute;
     inset: 0;
@@ -479,6 +474,14 @@ body {
     z-index: 1;
 }
 
+.nitro-ad-container--banner .nitro-ad-placeholder,
+.nitro-ad-container--leaderboard .nitro-ad-placeholder {
+    right: auto;
+    left: 50%;
+    width: min(100%, 976px);
+    transform: translateX(-50%);
+}
+
 .nitro-ad-container--has-content .nitro-ad-placeholder {
     display: none;
 }
@@ -491,6 +494,7 @@ body {
 
 .nitro-ad-container--banner .nitro-ad-slot,
 .nitro-ad-container--leaderboard .nitro-ad-slot {
+    max-width: 976px;
     height: 90px;
 }
 

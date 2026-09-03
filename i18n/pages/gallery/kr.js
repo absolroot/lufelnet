@@ -2,6 +2,9 @@ window.I18N_PAGE_GALLERY_KR = {
     pageTitle: '갤러리',
     pageDescription: '게임 내 일러스트, 컷씬 등 다양한 이미지를 감상할 수 있습니다.',
     navCurrent: '갤러리',
+    tabsLabel: '갤러리 콘텐츠',
+    tabIllustrations: '일러스트',
+    tabAllOut: '총공격',
 
     // Filters
     filterAll: '전체',
@@ -19,6 +22,7 @@ window.I18N_PAGE_GALLERY_KR = {
     modalClose: '닫기',
     modalPrevious: '이전',
     modalNext: '다음',
+    openImage: '이미지 열기',
 
     // Loading
     loading: '로딩 중...',

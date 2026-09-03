@@ -5,6 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:local": "node scripts/dev-local.mjs",
+    "gallery:allout:generate": "node scripts/gallery/generate-allout-assets.mjs",
+    "gallery:allout:check": "node scripts/gallery/generate-allout-assets.mjs --check",
     "patch-console": "node apps/patch-console/run-patch-console.mjs",
     "inflation:admin": "node apps/inflation/admin-server.mjs",
     "inflation:validate": "node apps/inflation/validate-inflation-data.mjs",

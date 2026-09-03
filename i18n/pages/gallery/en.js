@@ -2,6 +2,9 @@ window.I18N_PAGE_GALLERY_EN = {
     pageTitle: 'Gallery',
     pageDescription: 'Browse in-game illustrations, cutscenes, and various images.',
     navCurrent: 'Gallery',
+    tabsLabel: 'Gallery content',
+    tabIllustrations: 'Illustrations',
+    tabAllOut: 'All-Out Attack',
 
     // Filters
     filterAll: 'All',
@@ -19,6 +22,7 @@ window.I18N_PAGE_GALLERY_EN = {
     modalClose: 'Close',
     modalPrevious: 'Previous',
     modalNext: 'Next',
+    openImage: 'Open image',
 
     // Loading
     loading: 'Loading...',

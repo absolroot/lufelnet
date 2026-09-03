@@ -26,7 +26,8 @@ window.characterSetting["이치고·여름"] = {
     "mind_skill1": "S1/HL",
     "mind_skill2": "S2/S3",
     "nature_skill_recommend": {
-        "501": [{ "skill": "", "note": "", "note_en": "", "note_jp": "", "note_cn": "" }],
-        "502": [{ "skill": "", "note": "", "note_en": "", "note_jp": "", "note_cn": "" }]
+        "501": [{ "skill": ["의식 탈취", "생명 증가"], "note": "", "note_en": "", "note_jp": "", "note_cn": "" }],
+        "502": [{ "skill": ["정신 사냥꾼","정신 약탈"], "note": "", "note_en": "", "note_jp": "", "note_cn": "" }]
     }
 };
+\

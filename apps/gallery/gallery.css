@@ -56,6 +56,51 @@
   opacity: 0.6;
 }
 
+.gallery-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 0 18px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.gallery-tab {
+  min-height: 34px;
+  padding: 7px 13px;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.62);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.gallery-tab:hover {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.gallery-tab:active {
+  transform: translateY(1px);
+}
+
+.gallery-tab.is-active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.gallery-tab:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
 .gallery-toolbar {
   display: flex;
   align-items: center;
@@ -103,11 +148,20 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
+.gallery-card.is-allout .thumb-wrapper {
+  aspect-ratio: 2.32 / 1;
+}
+
 .thumb-wrapper {
   position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
   aspect-ratio: 16/9;
   overflow: hidden;
   background: #111;
+  cursor: zoom-in;
 }
 
 .thumb-wrapper img {
@@ -363,5 +417,13 @@
   .gallery-toolbar {
     margin-left: 0px;
     margin-right: 0px;
+  }
+
+  .gallery-tabs {
+    width: 100%;
+  }
+
+  .gallery-tab {
+    flex: 1 1 0;
   }
 }

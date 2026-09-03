@@ -1533,3 +1533,10 @@ Object.assign(window.characterData, {
         "persona_cn": "戴埃拉"
     }
 });
+
+// P5X original characters: exclude Persona series collaborations and Hatsune Miku.
+Object.values(window.characterData).forEach((character) => {
+    if (!character.persona3 && !character.persona5 && !character.p5d && character.codename !== 'MIKU') {
+        character.p5x = true;
+    }
+});

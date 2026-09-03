@@ -187,6 +187,7 @@ redirect_from: []
                     <label class="normal-asia-filter"><input type="checkbox" name="tag" value="normalAsia"><img
                             src="{{ site.baseurl }}/assets/img/pay/미래의 운명 ASIA.png" alt="Standard ASIA"></label>
                     <label class="icon-only-tag mindscape-core-filter"><input type="checkbox" name="tag" value="mindscapeCore"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/character-detail/innate/core.png" alt="" aria-hidden="true"><span data-i18n="characterFilterMindscapeCore">심상 코어</span></label>
+                    <label><input type="checkbox" name="tag" value="p5x"><img src="{{ site.baseurl }}/assets/img/etc/p5x.png" alt="P5X"></label>
                     <label><input type="checkbox" name="tag" value="페르소나5"><img src="{{ site.baseurl }}/assets/img/etc/p5r.png" alt="P5R"></label>
                     <label><input type="checkbox" name="tag" value="페르소나3"><img src="{{ site.baseurl }}/assets/img/etc/p3r.png" alt="P3R"></label>
                     <label><input type="checkbox" name="tag" value="p5d"><img src="{{ site.baseurl }}/assets/img/etc/p5d.png" alt="P5D"></label>
@@ -749,13 +750,29 @@ redirect_from: []
         return Object.values(characterData).some(char => char.p5d === true);
     }
 
+    function shouldShowP5XFilter() {
+        if (!characterData) return false;
+        return Object.values(characterData).some(char => char.p5x === true);
+    }
+
     function shouldShowNormalAsiaFilter() {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         return currentLang === 'en' || currentLang === 'jp';
     }
 
-    // P3/P5D 필터 표시/숨김 처리
+    // 콜라보 필터 표시/숨김 처리
     function toggleTypeFilters() {
+        const p5xFilter = document.querySelector('label input[value="p5x"]');
+        if (p5xFilter) {
+            const p5xLabel = p5xFilter.closest('label');
+            if (shouldShowP5XFilter()) {
+                p5xLabel.style.display = 'flex';
+            } else {
+                p5xFilter.checked = false;
+                p5xLabel.style.display = 'none';
+            }
+        }
+
         const p3Filter = document.querySelector('label input[value="페르소나3"]');
         if (p3Filter) {
             const p3Label = p3Filter.closest('label');
@@ -911,6 +928,7 @@ redirect_from: []
             card.dataset.persona5 = charData.persona5 ? 'true' : 'false';
             card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
             card.dataset.p5d = charData.p5d ? 'true' : 'false';
+            card.dataset.p5x = charData.p5x ? 'true' : 'false';
             const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
             const glbLimit = (isGlobalLang && charData.limit_glb !== undefined) ? charData.limit_glb : charData.limit;
             const asiaLimit = charData.limit_asia !== undefined ? charData.limit_asia : charData.limit;
@@ -1121,6 +1139,7 @@ redirect_from: []
         if (text) return text;
 
         if (value === 'p5d') return 'P5D';
+        if (value === 'p5x') return 'P5X';
         if (value === 'normalAsia') return 'Standard ASIA';
         if (value === '페르소나5') return 'P5R';
         if (value === '페르소나3') return 'P3R';

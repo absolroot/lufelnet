@@ -235,6 +235,23 @@
         });
     }
 
+    function watchPlaceholder(slot) {
+        const container = slot.closest('.nitro-ad-container--with-placeholder');
+        if (!container || slot.dataset.nitroPlaceholderWatching === 'true') return;
+
+        const markIfRendered = () => {
+            if (container.querySelector('iframe, [data-google-query-id], [data-ad-status="filled"]')) {
+                container.classList.add('nitro-ad-container--has-content');
+                observer.disconnect();
+            }
+        };
+
+        slot.dataset.nitroPlaceholderWatching = 'true';
+        const observer = new MutationObserver(markIfRendered);
+        observer.observe(container, { childList: true, subtree: true, attributes: true });
+        markIfRendered();
+    }
+
     function createGlobalPlacement(placement) {
         if (!placement.id || initializedGlobalPlacements.has(placement.id)) return;
         if (placement.includedPaths && !placement.includedPaths.some((pattern) => pattern.test(window.location.pathname))) return;
@@ -250,7 +267,10 @@
     }
 
     function initializePlacements() {
-        document.querySelectorAll('[data-nitro-ad]').forEach(createPlacement);
+        document.querySelectorAll('[data-nitro-ad]').forEach((slot) => {
+            watchPlaceholder(slot);
+            createPlacement(slot);
+        });
         GLOBAL_PLACEMENTS.forEach(createGlobalPlacement);
     }
 

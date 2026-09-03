@@ -1,4 +1,10 @@
 {% assign nitro_ad_format = include.format | default: 'banner' %}
-<div class="nitro-ad-container nitro-ad-container--{{ nitro_ad_format }}{% if include.class %} {{ include.class }}{% endif %}">
+{% assign nitro_ad_placeholder = include.placeholder | default: false %}
+<div class="nitro-ad-container nitro-ad-container--{{ nitro_ad_format }}{% if include.class %} {{ include.class }}{% endif %}{% if nitro_ad_placeholder %} nitro-ad-container--with-placeholder{% endif %}">
   <div id="{{ include.id }}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="{{ nitro_ad_format }}"{% if include.lazy %} data-nitro-render-visible-only="true"{% endif %}></div>
+  {% if nitro_ad_placeholder %}
+  <div class="nitro-ad-placeholder" data-nitro-ad-placeholder aria-hidden="true">
+    <span data-i18n="footer.advertisement">Advertisement</span>
+  </div>
+  {% endif %}
 </div>

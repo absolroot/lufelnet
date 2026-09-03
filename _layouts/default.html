@@ -487,7 +487,7 @@
     {% assign ad_mode = page.ad_mode | default: 'page-end' %}
     {% if ad_mode == 'page-end' %}
     <div class="page-end-ad-region">
-      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true %}
+      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true placeholder=true %}
     </div>
     {% endif %}
     <div class="footer-container">

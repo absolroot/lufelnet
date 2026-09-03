@@ -8,7 +8,8 @@ window.I18N_COMMON_CN = {
     "footer": {
         "disclaimer": "※ 路菲尔网是个人制作的非官方《女神异闻录5: 夜幕魅影》资讯站，游戏内容与素材的商标及版权归 SEGA·ATLUS·Perfect World Games 所有。",
         "contactName": "루트",
-        "reportLink": "反馈与请求"
+        "reportLink": "反馈与请求",
+        "advertisement": "Advertisement"
     },
     "home": {
         "languageNotice": "",

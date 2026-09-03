@@ -18,7 +18,8 @@ window.I18N_COMMON_JP = {
     footer: {
         disclaimer: '※ ルフェルネットは個人が作成した非公式ペルソナ5X情報提供サイトで、ゲームのコンテンツと素材の商標と著作権はSEGA·ATLUS·Perfect World Gamesに帰属します。',
         contactName: 'Root',
-        reportLink: '情報提供・リクエスト'
+        reportLink: '情報提供・リクエスト',
+        advertisement: 'Advertisement'
     },
 
     // ホームページ

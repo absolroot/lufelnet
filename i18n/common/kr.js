@@ -18,7 +18,8 @@ window.I18N_COMMON_KR = {
     footer: {
         disclaimer: '※ 루페르넷은 개인이 만든 비공식 페르소나5X 정보 제공 사이트로 게임의 콘텐츠와 소재의 트레이드마크와 저작권은 SEGA·ATLUS·Perfect World Games에 있습니다.',
         contactName: '루트',
-        reportLink: '제보 및 요청'
+        reportLink: '제보 및 요청',
+        advertisement: 'Advertisement'
     },
 
     // 홈페이지

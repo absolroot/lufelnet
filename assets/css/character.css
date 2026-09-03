@@ -724,6 +724,7 @@ textarea {
     .nitro-ad-container--character-search {
         margin-top: 8px;
         margin-bottom: 28px;
+        transform: translateX(-40px);
     }
 }
 

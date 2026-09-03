@@ -18,7 +18,8 @@ window.I18N_COMMON_EN = {
     footer: {
         disclaimer: '※ LufelNet is an unofficial Persona 5X information site created by individuals. The trademarks and copyrights of game content and materials belong to SEGA·ATLUS·Perfect World Games.',
         contactName: 'Root',
-        reportLink: 'Report & Request'
+        reportLink: 'Report & Request',
+        advertisement: 'Advertisement'
     },
 
     // Homepage

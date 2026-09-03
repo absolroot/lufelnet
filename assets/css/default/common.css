@@ -447,6 +447,42 @@ body {
     overflow: hidden;
 }
 
+.nitro-ad-container--with-placeholder {
+    position: relative;
+}
+
+.nitro-ad-container--banner,
+.nitro-ad-container--leaderboard {
+    max-width: 976px;
+}
+
+.nitro-ad-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 4px;
+    background: var(--card-background);
+    background: color-mix(in srgb, var(--card-background) 94%, white);
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    pointer-events: none;
+    text-transform: uppercase;
+}
+
+.nitro-ad-container--with-placeholder .nitro-ad-slot {
+    position: relative;
+    z-index: 1;
+}
+
+.nitro-ad-container--has-content .nitro-ad-placeholder {
+    display: none;
+}
+
 .nitro-ad-slot {
     width: 100%;
     margin: 0 auto;

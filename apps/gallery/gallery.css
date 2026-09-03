@@ -239,6 +239,10 @@
   .gallery-modal img {
     max-width: 1160px;
   }
+
+  .gallery-modal.is-allout img {
+    max-width: min(1320px, max(1160px, calc(100vw - 400px)));
+  }
 }
 
 .modal-close {

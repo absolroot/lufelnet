@@ -45,6 +45,7 @@
 
     const ASTROLABE_PATH = /^\/(?:(?:kr|en|jp|cn)\/)?astrolabe\/?$/i;
     const MAPS_PATH = /^\/(?:(?:kr|en|jp|cn)\/)?maps\/?$/i;
+    const GALLERY_PATH = /^\/(?:(?:kr|en|jp|cn)\/)?gallery\/?$/i;
 
     const GLOBAL_PLACEMENTS = [
         {
@@ -113,6 +114,7 @@
     const RIGHT_RAIL_CONTENT_GAP_MAX = 72;
     const RIGHT_RAIL_WIDE_VIEWPORT_MIN = 2560;
     const RIGHT_RAIL_WIDE_VIEWPORT_CONTENT_GAP_MAX = 96;
+    const GALLERY_RIGHT_RAIL_CONTENT_GAP_MAX = 128;
     const RIGHT_RAIL_VERTICAL_SHIFT = 90;
     const PLACEMENT_VISIBLE_MARGIN = 1200;
     const MOBILE_BANNER_MEDIA_QUERY = '(max-width: 768px)';
@@ -142,9 +144,11 @@
 
         const railWidth = Math.max(...fittingRailSizes.map(([width]) => width));
         const railHeight = Math.max(...fittingRailSizes.map(([, height]) => height));
-        const maximumContentGap = viewportWidth >= RIGHT_RAIL_WIDE_VIEWPORT_MIN
-            ? RIGHT_RAIL_WIDE_VIEWPORT_CONTENT_GAP_MAX
-            : RIGHT_RAIL_CONTENT_GAP_MAX;
+        const maximumContentGap = GALLERY_PATH.test(window.location.pathname)
+            ? GALLERY_RIGHT_RAIL_CONTENT_GAP_MAX
+            : viewportWidth >= RIGHT_RAIL_WIDE_VIEWPORT_MIN
+                ? RIGHT_RAIL_WIDE_VIEWPORT_CONTENT_GAP_MAX
+                : RIGHT_RAIL_CONTENT_GAP_MAX;
         const contentGap = Math.min(
             maximumContentGap,
             Math.max(

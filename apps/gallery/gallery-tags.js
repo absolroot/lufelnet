@@ -260,6 +260,7 @@
     modalIndex = index;
     const item = modalList[modalIndex];
     if (!item) return;
+    modal.classList.toggle('is-allout', item.mediaType === 'allout');
     modalImg.src = buildImageUrl(item);
     modalImg.alt = item.filename;
     modalCaption.replaceChildren();
@@ -281,6 +282,7 @@
 
   function closeModal() {
     modal.classList.remove('open');
+    modal.classList.remove('is-allout');
     modal.setAttribute('aria-hidden', 'true');
     modalImg.src = '';
     modalIndex = -1;

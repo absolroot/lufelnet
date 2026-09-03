@@ -70,6 +70,7 @@ class Navigation {
                 tacticMaker: '택틱 메이커',
                 astrolabe: '성좌의 시련',
                 velvetTrial: '벨벳 시련',
+                gallery: '갤러리',
                 about: '소개'
             },
             en: {
@@ -99,6 +100,7 @@ class Navigation {
                 tacticMaker: 'Tactic Maker',
                 astrolabe: 'Astrolabe',
                 velvetTrial: 'Velvet Trial',
+                gallery: 'Gallery',
                 about: 'About'
             },
             jp: {
@@ -128,6 +130,7 @@ class Navigation {
                 tacticMaker: 'タクティクスメーカー',
                 astrolabe: 'アストロラーベ',
                 velvetTrial: 'ベルベット試練',
+                gallery: 'ギャラリー',
                 about: '紹介'
             },
             cn: {
@@ -157,6 +160,7 @@ class Navigation {
                 tacticMaker: '战术编辑器',
                 astrolabe: '星盘试炼',
                 velvetTrial: '天鹅绒试炼',
+                gallery: '画廊',
                 about: '关于'
             }
         };
@@ -168,7 +172,7 @@ class Navigation {
             'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
             'material-calc', 'defense-calc', 'critical-calc', 'share', 'pullTracker', 'pay-calc',
             'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
-            'about'
+            'gallery', 'about'
         ];
 
         const cnMenus = krLikeMenus.filter((key) => !['pay-calc'].includes(key));
@@ -179,13 +183,13 @@ class Navigation {
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
                 'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'share', 'pullTracker',
                 'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
-                'about'
+                'gallery', 'about'
             ],
             jp: [
                 'character', 'persona', 'revelations-info', 'synergy', 'wonderweapon', 'maps', 'article',
                 'schedule-release', 'pull-calc', 'material-calc', 'defense-calc', 'critical-calc', 'share', 'pullTracker',
                 'tier', 'tactic-library', 'tactic-maker', 'astrolabe', 'velvet-trial',
-                'about'
+                'gallery', 'about'
             ],
             cn: cnMenus
         };
@@ -236,6 +240,7 @@ class Navigation {
                 key: 'site',
                 labelKey: 'sectionSite',
                 items: [
+                    { key: 'gallery', textKey: 'gallery', icon: 'gallery.png', url: `/${currentLang}/gallery/` },
                     { key: 'about', textKey: 'about', icon: 'about.png', url: `/${currentLang}/about/` }
                 ]
             }
@@ -438,7 +443,7 @@ class Navigation {
                 'tier-list': 'tier',
                 'tier-maker': 'tier',
                 'home': null,
-                'gallery': null
+                'gallery': 'gallery'
             };
 
             const resolved = activePageAliases.hasOwnProperty(activePage)

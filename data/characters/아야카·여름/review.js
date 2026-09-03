@@ -70,28 +70,32 @@ HIGHLIGHT本身没有单独伤害，所以在坂井绫香·夏日的回合前使
 ※ 参考事项：HIGHLIGHT在每回合攻击敌人弱点时会获得+21能量，其他情况则获得+17能量，且该充能只会对结束回合类型的行动触发1次。
 `,
         pros: [
-          ""
+          "매 턴 아군 1명의 HIGHLIGHT를 자원 소모 없이 발동할 수 있다.",
+          "HIGHLIGHT와 스킬3을 연계해 높은 광역 누적 대미지를 낼 수 있다."
         ],
         pros_en: [
-          ""
+          "Can activate one ally's HIGHLIGHT each turn without consuming resources.",
+          "Can deal high cumulative AoE damage by linking HIGHLIGHT with Skill 3."
         ],
         pros_jp: [
-          ""
+          "毎ターン、味方1人のHIGHLIGHTをリソース消費なしで発動できる。",
+          "HIGHLIGHTとスキル3を連携させて、高い累積範囲ダメージを与えられる。"
         ],
         pros_cn: [
-          ""
+          "每回合可无资源消耗地发动1名队友的HIGHLIGHT。",
+          "可通过HIGHLIGHT与技能3的联动造成高额的群体累计伤害。"
         ],
         cons: [
-          ""
+          "아야카·여름 외 아군은 HIGHLIGHT를 직접 사용할 수 없어 타이밍을 조절할 수 없다."
         ],
         cons_en: [
-          ""
+          "Allies other than Ayaka·Summer cannot use HIGHLIGHT directly, so its timing cannot be adjusted."
         ],
         cons_jp: [
-          ""
+          "坂井 綾香 夏以外の味方はHIGHLIGHTを直接使用できないため、発動タイミングを調整できない。"
         ],
         cons_cn: [
-          ""
+          "除坂井绫香·夏日以外的队友无法直接使用HIGHLIGHT，因此无法调整其发动时机。"
         ],
     };
 })();

@@ -3054,6 +3054,7 @@ h2 {
 
 #recommended-party-content.party-grid-layout .party-section {
     width: calc(100% - 20px);
+    margin-bottom: 0;
 }
 
 /* 파티 리스트 폭을 카드 폭에 맞추기 (기존 min-width: 440px 무시) - 2열 모드에서만 */

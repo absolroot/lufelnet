@@ -2,8 +2,8 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["카타야마"] = {
     "role": "다운 광역 디버퍼",
     "video": ["57SfYmK-wac", "bDyJLsMk6wY"],
-    "video_en": [""],
-    "video_jp": [""],
+    "video_en": ["Z05QC8ASm0k"],
+    "video_jp": ["a_0x6anExCw"],
     "main_revelation": ["희망", "창조"],
     "sub_revelation": ["변화", "화해"],
     "sub_revel2": ["공격력", "대미지보너스"],

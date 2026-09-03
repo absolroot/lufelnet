@@ -12,6 +12,8 @@
 
 『조타수』의 턴 종료 시 『출격·기적의 베리베리호』가 발동한다. 이 추가 공격은 베리베리호의 최대 생명력과 조타수의 공격력을 함께 사용하며, **대미지 속성은 조타수의 페르소나 적응 속성을 따르고 조타수의 관통·대미지 보너스·대미지 증가·크리티컬 스탯으로 계산**된다.
 
+『출격·기적의 베리베리호』는 『조타수』의 페르소나 스킬로 판정을 받기 때문에 아군 페르소나 스킬을 사용할 때 발동하는 효과들도 함께 발생하게 된다. (예: 미츠루의 추가 공격)
+
 의식6부터는 『조타수』가 해제되지 않아, 2턴에 1번이던 『출격·기적의 베리베리호』를 매 턴 발동할 수 있다.
         `,
         review_en: `
@@ -24,6 +26,8 @@ When a Psy ally is in the party, use Skill 1; when a [Summer] ally is in the par
 Skill 3 provides AoE healing and Crit Rate, and consumes a Seal to greatly increase the Crit DMG of Psy/[Summer] allies. It also designates the main target as the [Helmsman].
 
 At the end of the [Helmsman]'s turn, [Ram: Miracle Ichi-Boat] activates. This additional attack uses the [Miracle Ichi-Boat]'s Max HP and the [Helmsman]'s ATK. **Its damage attribute follows the [Helmsman]'s Persona affinity, and it is calculated with the [Helmsman]'s Pierce, DMG Bonus, DMG Amp, and Crit stats.**
+
+[Ram: Miracle Ichi-Boat] counts as the [Helmsman]'s Persona skill, so effects that trigger when allies use Persona skills also activate. (E.g., Mitsuru's additional attack.)
 
 From Awareness 6 onward, the [Helmsman] designation is not removed, allowing [Ram: Miracle Ichi-Boat], which was previously used once every 2 turns, to activate every turn.
         `,
@@ -38,6 +42,8 @@ From Awareness 6 onward, the [Helmsman] designation is not removed, allowing [Ra
 
 『操舵手』のターン終了時に『ミラクルベリー号、出撃！』が発動する。この追加攻撃は『ミラクルベリー号』の最大ＨＰと『操舵手』の攻撃力を使用する。**ダメージ属性は『操舵手』のペルソナ適性属性に従い、『操舵手』の貫通、与ダメージ上昇、与ダメージ増幅、クリティカル関連ステータスで計算される。**
 
+『ミラクルベリー号、出撃！』は『操舵手』のペルソナスキルとして扱われるため、味方がペルソナスキルを使用した時に発動する効果も同時に発生する。（例：美鶴の追加攻撃）
+
 意識6からは『操舵手』の指定が解除されなくなり、２ターンに１回だった『ミラクルベリー号、出撃！』を毎ターン発動できる。
         `,
         review_cn: `
@@ -50,6 +56,8 @@ From Awareness 6 onward, the [Helmsman] designation is not removed, allowing [Ra
 技能3提供群体治疗与暴击率提升，并消耗持有的印记，大幅提升念动/『夏日』队员的暴击效果。同时将主目标指定为『舵手』。
 
 『舵手』回合结束时会释放『出击·奇迹莓莓号』。这次追加攻击会使用『奇迹莓莓号』的最大生命值与『舵手』的攻击力。**伤害属性跟随『舵手』的人格面具适应性属性，并采用『舵手』的穿透、伤害加成、伤害增幅与暴击属性进行计算。**
+
+『出击·奇迹莓莓号』被视为『舵手』的人格面具技能，因此友方使用人格面具技能时触发的效果也会一同生效。（例如美鹤的追加攻击）
 
 意识6起，『舵手』不会再卸任，原本每2回合触发一次的『出击·奇迹莓莓号』可以每回合触发。
         `,

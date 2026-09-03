@@ -77,6 +77,14 @@
       '.character-calc-card{background:var(--calc-card-bg,var(--card-background));border-bottom:3px solid var(--calc-border-color,var(--calc-accent,#d11f1f));border-radius:16px;padding:20px 32px 24px;margin:20px 0;box-shadow:var(--calc-shadow,0 4px 6px rgba(0,0,0,.2))}',
       '.character-calc-title{font-size:20px;color:#fff;margin:0px 0 14px;font-weight:600;letter-spacing:.5px;display:flex;align-items:center;gap:8px}',
       '.character-calc-title-icon{width:22px;height:22px;object-fit:contain;opacity:.95}',
+      '.character-calc-title.is-collapsible{cursor:pointer;user-select:none}',
+      '.character-calc-title.is-collapsible:hover{opacity:.8}',
+      '.character-calc-title-copy{flex:1;min-width:0}',
+      '.character-calc-title.is-collapsible:focus-visible{outline:2px solid var(--calc-active-border,rgba(209,31,31,.65));outline-offset:2px}',
+      '.character-calc-chevron{width:8px;height:8px;margin-right:4px;border-right:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);transform:rotate(45deg) translate(-1px,-1px);transition:transform .2s ease,border-color .2s ease;flex-shrink:0}',
+      '.character-calc-title.is-collapsible:hover .character-calc-chevron{border-color:rgba(255,255,255,.9)}',
+      '.character-calc-card.is-collapsed .character-calc-chevron{transform:rotate(-45deg) translate(-1px,-1px)}',
+      '.character-calc-body[hidden]{display:none}',
       '.character-calc-goal-section{margin-bottom:20px}',
       '.character-calc-goal-label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}',
       '.character-calc-goal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}',
@@ -89,6 +97,7 @@
       '.character-calc-section-label{font-size:14px;font-weight:600;color:#fff;letter-spacing:.4px}',
       '.character-calc-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;row-gap:6px}',
       '.character-calc-row{display:flex;align-items:center;justify-content:space-between;padding:4px 6px;margin:0 -6px;border-radius:6px;min-height:30px;transition:all .2s}',
+      '.character-calc-row[hidden]{display:none}',
       '.character-calc-row.is-disabled{opacity:.4;filter:grayscale(60%)}',
       '.character-calc-row:hover{background:rgba(255,255,255,.03)}',
       '.character-calc-check-wrap{display:flex;align-items:center;gap:8px;flex:1;min-width:0}',
@@ -98,6 +107,10 @@
       '.character-calc-value{font-size:13px;color:var(--calc-muted-value-color,rgba(255,255,255,.45));font-variant-numeric:tabular-nums;white-space:nowrap;min-width:48px;text-align:right;font-weight:500}',
       '.character-calc-value.accent{color:var(--calc-value-color,#b39ddb);font-style:italic}',
       '.character-calc-input-wrap,.character-calc-select-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0}',
+      '.character-calc-segmented-control{display:flex;gap:3px;padding:2px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.12);border-radius:7px}',
+      '.character-calc-segmented-option{border:1px solid transparent;border-radius:4px;background:transparent;color:rgba(255,255,255,.6);cursor:pointer;font:inherit;font-size:11px;font-weight:600;padding:4px 8px;transition:background .18s ease,color .18s ease,border-color .18s ease}',
+      '.character-calc-segmented-option:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05)}',
+      '.character-calc-segmented-option.active{color:#fff;background:var(--calc-active-bg,rgba(209,31,31,.18));border-color:var(--calc-active-border,rgba(209,31,31,.5))}',
       '.character-calc-input,.character-calc-select{background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.15);border-radius:6px;color:#fff;font-size:12px;padding:3px 6px;min-width:50px;width:60px;text-align:right;transition:all .2s}',
       '.character-calc-select{text-align:left;min-width:78px;width:auto;cursor:pointer}',
       '.character-calc-input:focus,.character-calc-select:focus{outline:none;border-color:var(--calc-input-focus-border,var(--calc-active-border,rgba(209,31,31,.5)));background:rgba(255,255,255,.09);box-shadow:none}',
@@ -279,13 +292,14 @@
 
     var state = {
       selectedGoal: config.goals[0].id,
-      checks: {}
+      checks: {},
+      collapsed: config.collapsible === true && config.defaultCollapsed === true
     };
 
     for (index = 0; index < rows.length; index++) {
       var row = rows[index];
       var checkKey = row.checkKey || row.key;
-      if (checkKey) state.checks[checkKey] = row.defaultChecked !== false;
+      if (checkKey && row.checkable !== false) state.checks[checkKey] = row.defaultChecked !== false;
       if (row.stateKey) state[row.stateKey] = resolveValue(row.defaultValue, { state: state, row: row });
     }
 
@@ -296,7 +310,11 @@
       total: null,
       diff: null,
       dynamicValues: {},
-      checkboxes: {}
+      checkboxes: {},
+      rowElements: {},
+      card: null,
+      body: null,
+      collapseTitle: null
     };
 
     function hasGoal(goalId) {
@@ -338,13 +356,28 @@
       return 0;
     }
 
+    function isRowVisible(row) {
+      return resolveValue(row.visibleWhen, { state: state, row: row }) !== false;
+    }
+
     function includeRowValue(row) {
       var checkKey = row.checkKey || row.key;
-      if (checkKey && !state.checks[checkKey]) return 0;
+      if (!isRowVisible(row)) return 0;
+      if (row.checkable !== false && checkKey && !state.checks[checkKey]) return 0;
       return getRowValue(row);
     }
 
     function calcTotal() {
+      if (typeof config.calculateTotal === 'function') {
+        return num(config.calculateTotal({
+          state: state,
+          rows: rows,
+          getRowValue: getRowValue,
+          includeRowValue: includeRowValue,
+          isRowVisible: isRowVisible
+        }));
+      }
+
       var total = 0;
       for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
         total += includeRowValue(rows[rowIndex]);
@@ -367,6 +400,7 @@
       if (!parsed || typeof parsed !== 'object') return;
 
       if (parsed.selectedGoal && hasGoal(parsed.selectedGoal)) state.selectedGoal = parsed.selectedGoal;
+      if (config.collapsible === true && typeof parsed.collapsed === 'boolean') state.collapsed = parsed.collapsed;
 
       for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
         var row = rows[rowIndex];
@@ -397,6 +431,17 @@
 
     function setRowEnabled(rowEl, enabled) {
       rowEl.classList.toggle('is-disabled', !enabled);
+    }
+
+    function updateRowVisibility() {
+      for (var rowIndex = 0; rowIndex < rows.length; rowIndex++) {
+        var row = rows[rowIndex];
+        var rowEl = refs.rowElements[row.key];
+        if (!rowEl) continue;
+        var visible = isRowVisible(row);
+        rowEl.hidden = !visible;
+        rowEl.setAttribute('aria-hidden', visible ? 'false' : 'true');
+      }
     }
 
     function applyMutuallyExclusiveGroup(row, currentCheckKey) {
@@ -442,6 +487,15 @@
     function createCheckLabel(row, rowEl) {
       var wrap = el('label', 'character-calc-check-wrap');
       var checkKey = row.checkKey || row.key;
+      if (row.checkable === false) {
+        if (row.iconSlot) {
+          var fixedIcon = makeRevelationIcon(row.iconSlot);
+          if (fixedIcon) wrap.appendChild(fixedIcon);
+        }
+        wrap.appendChild(el('span', 'character-calc-label', resolveValue(row.label, { state: state, row: row })));
+        return wrap;
+      }
+
       var checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
       checkbox.className = 'character-calc-check';
@@ -468,14 +522,16 @@
 
     function createFixedRow(row) {
       var rowEl = el('div', 'character-calc-row');
+      refs.rowElements[row.key] = rowEl;
       rowEl.appendChild(createCheckLabel(row, rowEl));
       rowEl.appendChild(el('span', 'character-calc-value' + (row.valueClass ? ' ' + row.valueClass : ''), formatValue(getRowValue(row), getRowUnit(row))));
-      setRowEnabled(rowEl, !!state.checks[row.checkKey || row.key]);
+      setRowEnabled(rowEl, row.checkable === false || !!state.checks[row.checkKey || row.key]);
       return rowEl;
     }
 
     function createInputRow(row) {
       var rowEl = el('div', 'character-calc-row');
+      refs.rowElements[row.key] = rowEl;
       rowEl.appendChild(createCheckLabel(row, rowEl));
 
       var control = el('div', 'character-calc-input-wrap');
@@ -493,41 +549,84 @@
 
       if (getRowUnit(row)) control.appendChild(el('span', 'character-calc-unit', getRowUnit(row)));
       rowEl.appendChild(control);
-      setRowEnabled(rowEl, !!state.checks[row.checkKey || row.key]);
+      setRowEnabled(rowEl, row.checkable === false || !!state.checks[row.checkKey || row.key]);
       return rowEl;
     }
 
     function createSelectRow(row) {
       var rowEl = el('div', 'character-calc-row');
+      refs.rowElements[row.key] = rowEl;
       rowEl.appendChild(createCheckLabel(row, rowEl));
 
       var control = el('div', 'character-calc-select-wrap');
-      var select = document.createElement('select');
-      select.className = 'character-calc-select';
-
       var options = getRowOptions(row);
-      for (var optionIndex = 0; optionIndex < options.length; optionIndex++) {
-        var optionData = options[optionIndex];
-        var option = document.createElement('option');
-        option.value = optionData.value;
-        option.textContent = resolveValue(optionData.label, { state: state, row: row, option: optionData });
-        if (String(optionData.value) === String(state[row.stateKey])) option.selected = true;
-        select.appendChild(option);
+      if (row.presentation === 'segmented') {
+        var segmented = el('div', 'character-calc-segmented-control');
+        segmented.setAttribute('role', 'group');
+        for (var segmentIndex = 0; segmentIndex < options.length; segmentIndex++) {
+          (function (optionData) {
+            var optionLabel = resolveValue(optionData.label, { state: state, row: row, option: optionData });
+            var button = el('button', 'character-calc-segmented-option' + (String(optionData.value) === String(state[row.stateKey]) ? ' active' : ''), optionLabel);
+            button.type = 'button';
+            button.setAttribute('aria-pressed', String(optionData.value) === String(state[row.stateKey]) ? 'true' : 'false');
+            button.addEventListener('click', function () {
+              state[row.stateKey] = optionData.value;
+              var buttons = segmented.querySelectorAll('.character-calc-segmented-option');
+              for (var buttonIndex = 0; buttonIndex < buttons.length; buttonIndex++) {
+                var active = String(buttons[buttonIndex].dataset.value) === String(state[row.stateKey]);
+                buttons[buttonIndex].classList.toggle('active', active);
+                buttons[buttonIndex].setAttribute('aria-pressed', active ? 'true' : 'false');
+              }
+              saveState();
+              recalculate();
+            });
+            button.dataset.value = optionData.value;
+            segmented.appendChild(button);
+          })(options[segmentIndex]);
+        }
+        control.appendChild(segmented);
+      } else {
+        var select = document.createElement('select');
+        select.className = 'character-calc-select';
+        for (var optionIndex = 0; optionIndex < options.length; optionIndex++) {
+          var optionData = options[optionIndex];
+          var option = document.createElement('option');
+          option.value = optionData.value;
+          option.textContent = resolveValue(optionData.label, { state: state, row: row, option: optionData });
+          if (String(optionData.value) === String(state[row.stateKey])) option.selected = true;
+          select.appendChild(option);
+        }
+
+        select.addEventListener('change', function () {
+          state[row.stateKey] = select.value;
+          saveState();
+          recalculate();
+        });
+        control.appendChild(select);
       }
-
-      select.addEventListener('change', function () {
-        state[row.stateKey] = select.value;
-        saveState();
-        recalculate();
-      });
-
-      control.appendChild(select);
       refs.dynamicValues[row.key] = el('span', 'character-calc-value accent');
       control.appendChild(refs.dynamicValues[row.key]);
       rowEl.appendChild(control);
 
-      setRowEnabled(rowEl, !!state.checks[row.checkKey || row.key]);
+      setRowEnabled(rowEl, row.checkable === false || !!state.checks[row.checkKey || row.key]);
       return rowEl;
+    }
+
+    function createRowElement(row) {
+      if (row.type === 'fixed') return createFixedRow(row);
+      if (row.type === 'input') return createInputRow(row);
+      if (row.type === 'select') return createSelectRow(row);
+      return null;
+    }
+
+    function updateCollapsedState() {
+      if (config.collapsible !== true || !refs.card || !refs.body || !refs.collapseTitle) return;
+      refs.card.classList.toggle('is-collapsed', state.collapsed);
+      refs.body.hidden = state.collapsed;
+      refs.collapseTitle.setAttribute('aria-expanded', state.collapsed ? 'false' : 'true');
+      refs.collapseTitle.setAttribute('aria-label', state.collapsed
+        ? t('characterCalc.expand', 'Expand calculator')
+        : t('characterCalc.collapse', 'Collapse calculator'));
     }
 
     function buildCard() {
@@ -536,8 +635,34 @@
 
       var title = el('h2', 'character-calc-title');
       if (config.titleIconName) title.appendChild(makeStatIcon(config.titleIconName));
-      title.appendChild(document.createTextNode(resolveValue(config.title, { state: state })));
-      card.appendChild(title);
+      title.appendChild(el('span', 'character-calc-title-copy', resolveValue(config.title, { state: state })));
+
+      var body = el('div', 'character-calc-body');
+      if (config.collapsible === true) {
+        var chevron = el('span', 'character-calc-chevron');
+        chevron.setAttribute('aria-hidden', 'true');
+        title.classList.add('is-collapsible');
+        title.setAttribute('role', 'button');
+        title.tabIndex = 0;
+        title.appendChild(chevron);
+        function toggleCollapsed() {
+          state.collapsed = !state.collapsed;
+          updateCollapsedState();
+          saveState();
+        }
+        title.addEventListener('click', toggleCollapsed);
+        title.addEventListener('keydown', function (event) {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          toggleCollapsed();
+        });
+        card.appendChild(title);
+        refs.card = card;
+        refs.body = body;
+        refs.collapseTitle = title;
+      } else {
+        card.appendChild(title);
+      }
 
       var goalSection = el('div', 'character-calc-goal-section');
       goalSection.appendChild(el('div', 'character-calc-goal-label', t('characterCalc.goalLabel', 'Goal Selection')));
@@ -560,7 +685,7 @@
         goalGrid.appendChild(button);
       }
       goalSection.appendChild(goalGrid);
-      card.appendChild(goalSection);
+      body.appendChild(goalSection);
 
       var content = el('div', 'character-calc-content');
       for (var sectionIndex = 0; sectionIndex < sections.length; sectionIndex++) {
@@ -573,14 +698,13 @@
         var grid = el('div', 'character-calc-grid');
         for (var rowIndex = 0; rowIndex < section.rows.length; rowIndex++) {
           var row = section.rows[rowIndex];
-          if (row.type === 'fixed') grid.appendChild(createFixedRow(row));
-          if (row.type === 'input') grid.appendChild(createInputRow(row));
-          if (row.type === 'select') grid.appendChild(createSelectRow(row));
+          var rowEl = createRowElement(row);
+          if (rowEl) grid.appendChild(rowEl);
         }
         sectionEl.appendChild(grid);
         content.appendChild(sectionEl);
       }
-      card.appendChild(content);
+      body.appendChild(content);
 
       var summary = el('div', 'character-calc-summary');
       var targetWrap = el('div', 'character-calc-target');
@@ -601,7 +725,9 @@
       totalWrap.appendChild(totalRight);
       summary.appendChild(totalWrap);
 
-      card.appendChild(summary);
+      body.appendChild(summary);
+      card.appendChild(body);
+      updateCollapsedState();
       return card;
     }
 
@@ -610,6 +736,8 @@
       var total = calcTotal();
       var diff = total - goal.value;
       var unit = typeof config.valueUnit !== 'undefined' ? config.valueUnit : '%';
+
+      updateRowVisibility();
 
       if (refs.target) refs.target.textContent = formatValue(goal.value, unit);
       if (refs.total) refs.total.textContent = formatValue(total, unit);

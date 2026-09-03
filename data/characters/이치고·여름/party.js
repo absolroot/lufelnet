@@ -43,10 +43,10 @@ window.recommendParty["이치고·여름"] = {
         },
         {
             "name": "미츠루",
-            "comment": "『출격·기적의 베리베리호』는 『조타수』의 페르소나 스킬로 판정을 받아 미츠루의 추가 공격이 한 번 더 발동된다.",
-            "comment_en": "[Ram: Miracle Ichi-Boat] counts as the [Helmsman's] Persona skill, triggering Mitsuru's additional attack once more.",
-            "comment_jp": "『ミラクルベリー号、出撃！』は『操舵手』のペルソナスキルとして扱われるため、美鶴の追加攻撃がもう一度発動する。",
-            "comment_cn": "『出击·奇迹莓莓号』被视为『舵手』的人格面具技能，因此会额外触发一次美鹤的追加攻击。"
+            "comment": "『출격·기적의 베리베리호』는 이치고·여름의 페르소나 스킬로 판정을 받아 미츠루의 추가 공격이 한 번 더 발동된다.",
+            "comment_en": "[Ram: Miracle Ichi-Boat] counts as Ichigo Shikano·Summer's Persona skill, triggering Mitsuru's additional attack once more.",
+            "comment_jp": "『ミラクルベリー号、出撃！』は苺・夏のペルソナスキルとして扱われるため、美鶴の追加攻撃がもう一度発動する。",
+            "comment_cn": "『出击·奇迹莓莓号』被视为鹿野莓·夏日的人格面具技能，因此会额外触发一次美鹤的追加攻击。"
         }
     ]
 };

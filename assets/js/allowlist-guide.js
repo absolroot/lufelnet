@@ -110,9 +110,29 @@
         if (typeof fetch !== 'function' || !/^https?:$/.test(location.protocol)) return Promise.resolve(false);
         const timeout = new Promise((resolve) => setTimeout(() => resolve(false), 1800));
         const requests = Promise.all(NETWORK_PROBES.map((url) => fetch(url, {
-            method: 'HEAD', mode: 'no-cors', cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer'
-        }).then(() => false, () => true))).then((results) => results.some(Boolean));
-        return Promise.race([requests, timeout]);
+            // Match the method used by actual advertising loaders. Some blockers
+            // deliberately allow HEAD probes while blocking normal script GETs.
+            method: 'GET', mode: 'no-cors', cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer'
+        }).then(() => false, () => true)));
+        const nitroLoader = new Promise((resolve) => {
+            const current = window.__lufelNitroLoaderStatus;
+            if (current === 'blocked' || current === 'loaded') {
+                resolve(current === 'blocked');
+                return;
+            }
+            const onStatus = (event) => {
+                if (event.detail !== 'blocked' && event.detail !== 'loaded') return;
+                document.removeEventListener('lufel:nitro-loader-status', onStatus);
+                resolve(event.detail === 'blocked');
+            };
+            document.addEventListener('lufel:nitro-loader-status', onStatus);
+            setTimeout(() => {
+                document.removeEventListener('lufel:nitro-loader-status', onStatus);
+                resolve(window.__lufelNitroLoaderStatus === 'blocked');
+            }, 1800);
+        });
+        const result = Promise.all([requests, nitroLoader]).then(([results, nitroBlocked]) => results.some(Boolean) || nitroBlocked);
+        return Promise.race([result, timeout]);
     }
     function probe() {
         const bait = document.createElement('div');

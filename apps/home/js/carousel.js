@@ -573,6 +573,23 @@
     }
   }
 
+  async function fetchCarouselStudioPreview() {
+    try {
+      if (new URLSearchParams(window.location.search).get('carousel_preview') !== '1') return null;
+      const res = await fetch(`${BASE}/apps/home/js/carousel-preview.local.json?preview=${Date.now()}`, { cache: 'no-store' });
+      if (!res.ok) return null;
+      const draft = await res.json();
+      if (!draft || !draft.image) return null;
+      return {
+        kind: 'custom', order: -999, carousel_studio_preview: true,
+        title: draft.title || '가챠 배너 미리보기', body: draft.name || '',
+        image: `/assets/img/character-detail/${encodeURIComponent(draft.image)}`,
+        color: draft.color || '#8b1e2d', visible_langs: ['kr', 'en', 'jp', 'cn', 'tw', 'sea'],
+        regions: ['kr', 'cn', 'tw', 'en', 'jp', 'sea']
+      };
+    } catch (_) { return null; }
+  }
+
   function pickByLang(obj, baseKey, lang) {
     const v_en = obj[`${baseKey}_en`];
     const v_jp = obj[`${baseKey}_jp`];
@@ -697,6 +714,7 @@
           customImgOffset: hasImgOffset ? imgOffsetCandidate : null,
           customLink: link,
           customLinkTarget: linkTarget,
+          carouselStudioPreview: Boolean(item.carousel_studio_preview),
           order,
         };
       }).filter(x => x.name || x.subtitle || x.body);
@@ -981,7 +999,7 @@
 
     const bg = document.createElement('div');
     bg.className = 'slide-bg';
-    if (slide.kind !== 'custom' || slide.__aprilFools) bg.classList.add('slide-bg-diamond');
+    if (slide.kind !== 'custom' || slide.__aprilFools || slide.carouselStudioPreview) bg.classList.add('slide-bg-diamond');
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
       const isMobileBg = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
@@ -1103,7 +1121,7 @@
         setImageLoadingPriority(img, isPrioritySlide);
         img.alt = slide.name || 'banner';
         img.src = slide.customImage;
-        img.className = slide.__aprilFools ? 'char-img front single-banner' : 'char-img front middle';
+        img.className = (slide.__aprilFools || slide.carouselStudioPreview) ? 'char-img front single-banner' : 'char-img front middle';
         if (slide.__aprilFools) {
           const isMobileBanner = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
           if (isMobileBanner) {
@@ -1448,9 +1466,10 @@
     characterIndex = buildCharacterReverseIndex();
 
     try {
-      const [data, customRaw] = await Promise.all([
+      const [data, customRaw, studioPreview] = await Promise.all([
         fetchGacha(state.region),
         fetchCustomSlides(),
+        fetchCarouselStudioPreview(),
       ]);
       const thief = (data && data.data && data.data.thief) ? data.data.thief : [];
       const merged = consolidateThiefByPrefixAndFiveStar(
@@ -1505,7 +1524,7 @@
       });
 
       // Merge custom slides by order
-      const customSlides = mapCustomSlides(customRaw, state.region);
+      const customSlides = mapCustomSlides(studioPreview ? [studioPreview, ...(customRaw || [])] : customRaw, state.region);
       const withOrder = customSlides.filter(s => Number.isFinite(s.order));
       const withoutOrder = customSlides.filter(s => !Number.isFinite(s.order));
       withOrder.sort((a, b) => a.order - b.order);

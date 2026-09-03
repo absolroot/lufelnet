@@ -2,7 +2,7 @@
     window.characterReview = window.characterReview || {};
     window.characterReview["미츠루"] = { name_en: "Kirijo Mitsuru", name_jp: "桐条 美鶴", codename: "MITSURU",
         review: `
-포지션은 '반항'으로 단일 딜러지만 **'서포터'**의 역할이 강한 P3 콜라보 캐릭터다.
+포지션은 '반항'으로 단일 딜러지만 **'서브 딜러'이자 '디버퍼'**의 역할이 강한 P3 콜라보 캐릭터다.
 
 - 스킬2로 방어력 감소와 받는 대미지 증가를 적 1명에게 영구 지속시키고, 스킬1로 『서리 결정』3스택과 함께 방어력 감소를 부여한다.
 
@@ -52,7 +52,7 @@
 </table>
 
         `,
-review_en: `Although Mitsuru's role is Assassin, her actual role is that of a **Saboteur**. She functions as an improved, single-target DPS version of Crow.
+review_en: `Although Mitsuru's role is Assassin, she is a single-target DPS P3 collaboration character with a strong role as a **sub-DPS** and **debuffer**.
 
 Her skill 2 can permanently decrease 1 foe's Defense and increase their damage taken, her skill 1 can inflict 3 [Frost] stacks and decrease Defense.
 
@@ -104,7 +104,7 @@ However, since the exact stats Mitsuru replicates are unclear, it is uncertain w
 
 `,
 review_jp: `
-桐条美鶴は『反抗』ポジションに属しているが、実際の役割は**サポーター**寄りのP3コラボキャラクター。以前の『支配』タイプで味方サポートを担当していた明智の改良版とも言える存在。
+桐条美鶴は『反抗』ポジションに属する単体アタッカーだが、**サブアタッカー**兼**デバッファー**としての役割が強いP3コラボキャラクター。
 
 - スキル2で敵単体の防御力を永続的に減少させ、被ダメージを増加させる。スキル1では『霜結』3スタックを付与しつつ防御力を低下させる。
 
@@ -155,7 +155,7 @@ review_jp: `
 </table>
 `,
 review_cn: `
-虽然定位属于“反抗”，是单体输出，但她其实更偏向**辅助型**的P3联动角色。
+虽然定位属于“反抗”，是单体输出，但她作为**副输出**兼**减益**的作用更强，是P3联动角色。
 
 - 她可以通过技能2给1名敌人永久附加防御力降低与受到伤害提升，技能1则会附加3层『霜结』并进一步压低防御力。
 

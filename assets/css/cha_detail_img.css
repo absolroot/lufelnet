@@ -17,6 +17,14 @@
     --char-scale: 1.12;
 }
 
+.character-images .thief-image[data-character="이치고·여름"][data-image-file="이치고·여름.webp"] {
+    --char-scale: 1.2;
+}
+
+.character-images .persona-image[data-character="이치고·여름"][data-persona="텔크시에페이아"][data-image-file="이치고·여름 - 텔크시에페이아.webp"] {
+    --char-scale: 1.2;
+}
+
 .character-images .thief-image[data-character="안·댄싱 스타"][data-image-file="안·댄싱 스타.webp"] {
     --char-scale: 1.1;
 }

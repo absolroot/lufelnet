@@ -676,14 +676,14 @@ const penetrateData = {
         "LV2:3",
         "LV3:3"
       ],
-      "values": [
-        4,
-        6,
-        8,
-        10,
-        15,
-        20
-      ],
+      "values": {
+        "LV1:2": 4,
+        "LV2:2": 6,
+        "LV3:2": 8,
+        "LV1:3": 10,
+        "LV2:3": 15,
+        "LV3:3": 20
+      },
       "defaultOption": "LV3:3",
       "value": 20,
       "skillEffectAmpAffected": false,

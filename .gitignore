@@ -112,6 +112,9 @@ apps/patch-console/state/
 .playwright-mcp/
 /inflation-*.png
 
+# Local-only Home Carousel Studio draft
+/apps/home/js/carousel-preview.local.json
+
 # Unreleased local character data
 /data/characters/시오미 코토네/
 /data/external/character/*/KOTONE.json

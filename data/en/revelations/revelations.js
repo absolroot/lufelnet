@@ -358,7 +358,8 @@ const enRevelationData = {
             "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
             "Sorrow": "Increase continuous damage effect by 16%.",
             "Obtain": "Increase ATK based on your HP%, when HP% is 40%, increase ATK by 40%.",
-            "type": []
+            "Joy": "When all allies' HP is below 10%, increase Critical Effect by 20%. This effect does not stack.",
+            "type": ["미출시"]
         },
         "Hope": {
             "Labor": "When equipped by an Elucidator Phantom Thief: When granting buffs to allies with a skill, increase the main target's pierce rate by 5% for 1 turn.",

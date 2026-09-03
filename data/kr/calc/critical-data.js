@@ -462,6 +462,51 @@ const criticalBuffData = {
       ]
     }
   ],
+  "이치고·여름": [
+    {
+      "id": "ichigo-summer-skill3-crit-rate",
+      "type": "스킬3",
+      "type_en": "Skill 3",
+      "type_jp": "スキル3",
+      "target": "광역",
+      "target_en": "Multi",
+      "target_jp": "複数対象",
+      "skillIcon": "/assets/img/skill-element/버프.png",
+      "skillName": "마음이 향하는 곳",
+      "skillName_en": "Skill 3",
+      "skillName_jp": "スキル3",
+      "options": [
+        "LV10",
+        "LV10+심상5",
+        "LV13",
+        "LV13+심상5"
+      ],
+      "values": {
+        "LV10": 14.6,
+        "LV10+심상5": 16.1,
+        "LV13": 15.5,
+        "LV13+심상5": 17
+      },
+      "defaultOption": "LV13+심상5",
+      "value": 17,
+      "skillEffectAmpAffected": true,
+      "duration": "2턴",
+      "note": "",
+      "note_en": "",
+      "note_jp": "",
+      "skillName_cn": "心之所向",
+      "note_cn": "",
+      "type_cn": "技能3",
+      "target_cn": "群体",
+      "duration_cn": "2回合",
+      "options_cn": [
+        "10级",
+        "10级+5意识",
+        "13级",
+        "13级+5意识"
+      ]
+    }
+  ],
   "미쿠": [
     {
       "id": "miku-crit-rate",

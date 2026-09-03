@@ -111,6 +111,8 @@
     const LOCAL_HOSTNAMES = new Set(['localhost', '127.0.0.1', '::1', '[::1]']);
     const RIGHT_RAIL_CONTENT_GAP_MIN = 48;
     const RIGHT_RAIL_CONTENT_GAP_MAX = 72;
+    const RIGHT_RAIL_WIDE_VIEWPORT_MIN = 2560;
+    const RIGHT_RAIL_WIDE_VIEWPORT_CONTENT_GAP_MAX = 96;
     const RIGHT_RAIL_VERTICAL_SHIFT = 90;
     const PLACEMENT_VISIBLE_MARGIN = 1200;
     const MOBILE_BANNER_MEDIA_QUERY = '(max-width: 768px)';
@@ -140,8 +142,11 @@
 
         const railWidth = Math.max(...fittingRailSizes.map(([width]) => width));
         const railHeight = Math.max(...fittingRailSizes.map(([, height]) => height));
+        const maximumContentGap = viewportWidth >= RIGHT_RAIL_WIDE_VIEWPORT_MIN
+            ? RIGHT_RAIL_WIDE_VIEWPORT_CONTENT_GAP_MAX
+            : RIGHT_RAIL_CONTENT_GAP_MAX;
         const contentGap = Math.min(
-            RIGHT_RAIL_CONTENT_GAP_MAX,
+            maximumContentGap,
             Math.max(
                 RIGHT_RAIL_CONTENT_GAP_MIN,
                 Math.floor(viewportWidth - contentRight - railWidth - minimumRailSpacing)

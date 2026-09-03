@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import process from 'process';
 import crypto from 'crypto';
+import vm from 'vm';
 import { fileURLToPath } from 'url';
 import { spawn } from 'child_process';
 import {
@@ -59,6 +60,10 @@ const SEO_REGISTRY_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'registry.json'
 const SEO_SUFFIX_CONFIG_FILE = path.join(PROJECT_ROOT, 'data', 'seo', 'suffix-config.json');
 const SEO_HISTORY_FILE = path.join(APP_STATE_ROOT, 'seo-history.json');
 const SEO_HISTORY_MAX_ITEMS = 300;
+const CAROUSEL_STUDIO_DRAFT_FILE = path.join(PROJECT_ROOT, 'apps', 'home', 'js', 'carousel-preview.local.json');
+const CAROUSEL_STUDIO_CSS_FILE = path.join(PROJECT_ROOT, 'apps', 'home', 'js', 'carousel.css');
+const CAROUSEL_STUDIO_IMAGE_DIR = path.join(PROJECT_ROOT, 'assets', 'img', 'character-detail');
+const CHARACTER_INFO_FILE = path.join(PROJECT_ROOT, 'data', 'character_info.js');
 
 const DOMAIN_CAPABILITIES = [
   {
@@ -2946,6 +2951,107 @@ async function handleRevelationAdminRenameKr(res, payload) {
   }
 }
 
+function carouselStudioDefaultDraft() {
+  return {
+    image: '', name: '캐릭터 이름', title: '가챠 배너 미리보기', color: '#8b1e2d',
+    top: 77, right: 30, scale: 1.1
+  };
+}
+
+function readCarouselStudioDraft() {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(CAROUSEL_STUDIO_DRAFT_FILE, 'utf8'));
+    return { ...carouselStudioDefaultDraft(), ...(isPlainObject(parsed) ? parsed : {}) };
+  } catch (_) { return carouselStudioDefaultDraft(); }
+}
+
+function normalizeCarouselStudioImage(value) {
+  const name = path.basename(String(value || '').trim());
+  if (!name || !/\.(?:webp|png|jpe?g)$/i.test(name)) return '';
+  const candidate = path.join(CAROUSEL_STUDIO_IMAGE_DIR, name);
+  return fs.existsSync(candidate) && fs.statSync(candidate).isFile() ? name : '';
+}
+
+function carouselStudioRule(image) {
+  return `.char-img.single-banner[src*="${encodeURIComponent(path.parse(image).name)}"]`;
+}
+
+function loadCarouselStudioCharacterColors() {
+  try {
+    const sandbox = { window: { characterData: {}, characterList: {} } };
+    vm.runInNewContext(fs.readFileSync(CHARACTER_INFO_FILE, 'utf8'), sandbox, { timeout: 1000 });
+    return Object.fromEntries(Object.entries(sandbox.window.characterData || {}).map(([name, value]) => [name, String(value?.color || '').trim()]));
+  } catch (_) { return {}; }
+}
+
+function getCarouselStudioAssetEntries() {
+  const colors = loadCarouselStudioCharacterColors();
+  if (!fs.existsSync(CAROUSEL_STUDIO_IMAGE_DIR)) return [];
+  return fs.readdirSync(CAROUSEL_STUDIO_IMAGE_DIR)
+    .filter((name) => /\.webp$/i.test(name) && !name.includes(' - '))
+    .sort((a, b) => a.localeCompare(b))
+    .map((name) => {
+      const character = path.parse(name).name;
+      return { name, character, color: /^#[0-9a-f]{6}$/i.test(colors[character] || '') ? colors[character] : '#444444' };
+    });
+}
+
+function readCarouselStudioRules() {
+  const css = fs.readFileSync(CAROUSEL_STUDIO_CSS_FILE, 'utf8').replace(/\/\*[\s\S]*?\*\//g, '');
+  const regex = /\.char-img\.single-banner\[src\*="([^"]+)"\]\s*\{([\s\S]*?)\}/g;
+  const rules = [];
+  let match;
+  while ((match = regex.exec(css))) {
+    const body = match[2];
+    const prop = (key) => (new RegExp(`${key}\\s*:\\s*([^;]+);`).exec(body) || [])[1]?.trim() || '';
+    rules.push({ selector: match[0].slice(0, match[0].indexOf('{')).trim(), imageKey: match[1], top: prop('top'), right: prop('right'), scale: prop('scale'), transform: prop('transform'), hasTransform: /transform\s*:/.test(body) });
+  }
+  return rules;
+}
+
+async function handleCarouselStudioAssets(res) {
+  const images = getCarouselStudioAssetEntries();
+  sendJson(res, 200, { ok: true, images, draft: readCarouselStudioDraft(), rules: readCarouselStudioRules() });
+}
+
+async function handleCarouselStudioDraft(res, payload) {
+  const image = normalizeCarouselStudioImage(payload.image);
+  if (!image) { sendJson(res, 400, { ok: false, error: 'Select an image from assets/img/character-detail.' }); return; }
+  const number = (value, fallback) => Number.isFinite(Number(value)) ? Number(value) : fallback;
+  const draft = {
+    image, name: String(payload.name || '').slice(0, 80), title: String(payload.title || '').slice(0, 100),
+    color: /^#[0-9a-f]{6}$/i.test(String(payload.color || '')) ? String(payload.color) : '#8b1e2d',
+    top: number(payload.top, 77), right: number(payload.right, 30), scale: number(payload.scale, 1.1)
+  };
+  fs.writeFileSync(CAROUSEL_STUDIO_DRAFT_FILE, `${JSON.stringify(draft, null, 2)}\n`, 'utf8');
+  sendJson(res, 200, { ok: true, draft });
+}
+
+async function handleCarouselStudioApply(res, payload) {
+  const draft = { ...readCarouselStudioDraft(), ...payload };
+  const image = normalizeCarouselStudioImage(draft.image);
+  if (!image) { sendJson(res, 400, { ok: false, error: 'Invalid carousel image.' }); return; }
+  const top = Number(draft.top), right = Number(draft.right), scale = Number(draft.scale);
+  if (![top, right, scale].every(Number.isFinite)) { sendJson(res, 400, { ok: false, error: 'top, right and scale must be numeric.' }); return; }
+  const selector = carouselStudioRule(image);
+  const css = fs.readFileSync(CAROUSEL_STUDIO_CSS_FILE, 'utf8');
+  const block = `${selector} {\n  top: ${top}%;\n  right: ${right}%;\n  scale: ${scale};\n}`;
+  const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const blockRegex = new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\}`, 'g');
+  let next;
+  if (blockRegex.test(css)) {
+    next = css.replace(blockRegex, (whole, body) => {
+      const set = (key, value) => new RegExp(`(^|\\n)(\\s*)${key}\\s*:[^;]*;`, 'm').test(body)
+        ? body.replace(new RegExp(`(^|\\n)(\\s*)${key}\\s*:[^;]*;`, 'm'), `$1$2${key}: ${value};`)
+        : `${body.replace(/\s*$/, '')}\n  ${key}: ${value};\n`;
+      let updated = set('top', `${top}%`); updated = set('right', `${right}%`); updated = set('scale', scale);
+      return `${selector} {${updated}}`;
+    });
+  } else next = `${css.replace(/\s*$/, '')}\n\n/* Carousel Studio */\n${block}\n`;
+  fs.writeFileSync(CAROUSEL_STUDIO_CSS_FILE, next, 'utf8');
+  sendJson(res, 200, { ok: true, selector, block });
+}
+
 function serveFileFromBase(res, baseDir, requestPath, { defaultIndex = null } = {}) {
   let target = requestPath;
   if (defaultIndex && requestPath === '/') {
@@ -2980,6 +3086,7 @@ async function requestHandler(req, res) {
     || normalizedPathname === '/ignored'
     || normalizedPathname === '/editor'
     || normalizedPathname === '/seo-admin'
+    || normalizedPathname === '/carousel-studio'
     || normalizedPathname === '/revelation-admin'
   ) {
     pathname = '/';
@@ -3003,6 +3110,21 @@ async function requestHandler(req, res) {
 
   if (pathname === '/api/health' && req.method === 'GET') {
     sendJson(res, 200, { ok: true });
+    return;
+  }
+
+  if (pathname === '/api/carousel-studio' && req.method === 'GET') {
+    await handleCarouselStudioAssets(res);
+    return;
+  }
+  if (pathname === '/api/carousel-studio/draft' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleCarouselStudioDraft(res, body);
+    return;
+  }
+  if (pathname === '/api/carousel-studio/apply' && req.method === 'POST') {
+    const body = await readBody(req);
+    await handleCarouselStudioApply(res, body);
     return;
   }
 

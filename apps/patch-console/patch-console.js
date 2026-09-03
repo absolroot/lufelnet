@@ -1,6 +1,7 @@
 const state = {
   domain: 'character',
   activeView: 'work',
+  carouselStudio: { initialized: false, images: [], rules: [], draft: null },
   capabilities: [],
   listRows: [],
   reportRows: [],
@@ -128,7 +129,7 @@ const FALLBACK_CAPABILITIES = [
 const APP_VERSION = 'patch-console v0.15.3';
 const VIEW_KEY = 'patch-console.activeView';
 const DATA_EDITOR_MODE_KEY = 'patch-console.dataEditorMode';
-const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'seo-admin', 'revelation-admin']);
+const VALID_VIEWS = new Set(['work', 'ignored', 'editor', 'seo-admin', 'carousel-studio', 'revelation-admin']);
 const VIEW_META = {
   work: {
     title: '패치 작업',
@@ -146,6 +147,7 @@ const VIEW_META = {
     title: 'SEO Admin',
     description: 'seo-meta 기반으로 타이틀/설명/출시 여부를 운영합니다.'
   },
+  'carousel-studio': { title: 'Carousel Studio', description: '로컬 가챠 배너를 미리보고 이미지별 CSS를 조정합니다.' },
   'revelation-admin': {
     title: 'Revelation Admin',
     description: 'Revelation 카드 데이터 운영 전용 화면입니다.'
@@ -159,6 +161,7 @@ const dom = {
   panelIgnored: document.getElementById('panel-ignored'),
   panelEditor: document.getElementById('panel-editor'),
   panelSeoAdmin: document.getElementById('panel-seo-admin'),
+  panelCarouselStudio: document.getElementById('panel-carousel-studio'),
   panelRevelationAdmin: document.getElementById('panel-revelation-admin'),
   activeViewTitle: document.getElementById('active-view-title'),
   activeViewDescription: document.getElementById('active-view-description'),
@@ -350,6 +353,7 @@ const dom = {
   seoVisibleCount: document.getElementById('seo-visible-count'),
   btnSeoRefreshHistory: document.getElementById('btn-seo-refresh-history'),
   seoHistoryList: document.getElementById('seo-history-list')
+  ,carouselStudioImage: document.getElementById('carousel-studio-image'), carouselStudioTitle: document.getElementById('carousel-studio-title'), carouselStudioName: document.getElementById('carousel-studio-name'), carouselStudioColor: document.getElementById('carousel-studio-color'), carouselStudioTop: document.getElementById('carousel-studio-top'), carouselStudioRight: document.getElementById('carousel-studio-right'), carouselStudioScale: document.getElementById('carousel-studio-scale'), carouselStudioTopRange: document.getElementById('carousel-studio-top-range'), carouselStudioRightRange: document.getElementById('carousel-studio-right-range'), carouselStudioScaleRange: document.getElementById('carousel-studio-scale-range'), carouselStudioTopOutput: document.getElementById('carousel-studio-top-output'), carouselStudioRightOutput: document.getElementById('carousel-studio-right-output'), carouselStudioScaleOutput: document.getElementById('carousel-studio-scale-output'), carouselStudioTransformNote: document.getElementById('carousel-studio-transform-note'), carouselStudioCanvas: document.getElementById('carousel-studio-canvas'), carouselStudioCanvasWidth: document.getElementById('carousel-studio-canvas-width'), carouselStudioLivePreview: document.getElementById('carousel-studio-live-preview'), carouselStudioGeometry: document.getElementById('carousel-studio-geometry'), carouselStudioCssPreview: document.getElementById('carousel-studio-css-preview'), carouselStudioRuleList: document.getElementById('carousel-studio-rule-list'), carouselStudioStatus: document.getElementById('carousel-studio-status'), btnCarouselStudioPreview: document.getElementById('btn-carousel-studio-preview'), btnCarouselStudioApply: document.getElementById('btn-carousel-studio-apply')
 };
 
 function appendLog(message) {
@@ -365,6 +369,7 @@ function getUrlView() {
     const path = String(url.pathname || '').toLowerCase();
     const pathEnd = path.split('/').filter(Boolean).pop() || '';
     if (pathEnd === 'seo-admin') return 'seo-admin';
+    if (pathEnd === 'carousel-studio') return 'carousel-studio';
     if (pathEnd === 'revelation-admin') return 'revelation-admin';
     if (pathEnd === 'ignored') return 'ignored';
     if (pathEnd === 'editor') return 'editor';
@@ -411,13 +416,46 @@ function getViewPath(view) {
   try {
     const url = new URL(window.location.href);
     const normalizedPath = String(url.pathname || '/')
-      .replace(/\/(work|ignored|editor|seo-admin|revelation-admin|index\.html)?\/?$/, '/')
+      .replace(/\/(work|ignored|editor|seo-admin|carousel-studio|revelation-admin|index\.html)?\/?$/, '/')
       .replace(/\/+/g, '/');
     return `${normalizedPath}${next}`;
   } catch {
     return `/${next}`;
   }
 }
+
+const CAROUSEL_STUDIO_BASE_TRANSFORM = 'translateY(-50%) scale(1.65)';
+function carouselStudioDraftFromForm() {
+  return { image: dom.carouselStudioImage?.value || '', title: dom.carouselStudioTitle?.value || '', name: dom.carouselStudioName?.value || '', color: dom.carouselStudioColor?.value || '#8b1e2d', top: Number(dom.carouselStudioTop?.value), right: Number(dom.carouselStudioRight?.value), scale: Number(dom.carouselStudioScale?.value) };
+}
+function getCarouselStudioRules() { const key = encodeURIComponent(String(dom.carouselStudioImage?.value || '').replace(/\.[^.]+$/, '')); return state.carouselStudio.rules.filter((item) => key.includes(item.imageKey)); }
+function getCarouselStudioRule() { return getCarouselStudioRules().at(-1) || null; }
+function getCarouselStudioEffectiveRule() { return getCarouselStudioRules().reduce((effective, rule) => ({ selector: rule.selector, top: rule.top || effective.top, right: rule.right || effective.right, scale: rule.scale || effective.scale, transform: rule.transform || effective.transform }), { selector: '', top: '', right: '', scale: '', transform: '' }); }
+function getCarouselStudioTransform(rule = getCarouselStudioEffectiveRule()) { return rule?.transform || CAROUSEL_STUDIO_BASE_TRANSFORM; }
+function getCarouselStudioTransformScale(transform = getCarouselStudioTransform()) { const values = [...String(transform).matchAll(/scale\(\s*([\d.]+)/g)].map((match) => Number(match[1])).filter(Number.isFinite); return values.length ? values.reduce((acc, value) => acc * value, 1) : 1; }
+function carouselStudioCssDraftFromForm() { const draft = carouselStudioDraftFromForm(); return { ...draft, scale: Number((draft.scale / getCarouselStudioTransformScale()).toFixed(4)) }; }
+function renderCarouselStudio() {
+  const studio = state.carouselStudio;
+  const d = studio.draft || {};
+  if (dom.carouselStudioImage) dom.carouselStudioImage.innerHTML = studio.images.map((asset) => `<option value="${escapeHtml(asset.name)}">${escapeHtml(asset.character)}</option>`).join('');
+  if (dom.carouselStudioImage && studio.images.length) dom.carouselStudioImage.value = studio.images.some((asset) => asset.name === d.image) ? d.image : studio.images[0].name;
+  for (const [node, value] of [[dom.carouselStudioTitle,d.title],[dom.carouselStudioName,d.name],[dom.carouselStudioColor,d.color],[dom.carouselStudioTop,d.top],[dom.carouselStudioRight,d.right],[dom.carouselStudioScale,d.scale]]) if (node && value != null) node.value = value;
+  loadCarouselStudioRuleValues();
+  if (dom.carouselStudioRuleList) dom.carouselStudioRuleList.innerHTML = studio.rules.map((r) => `<div class="carousel-studio-rule"><code>${escapeHtml(r.imageKey)}</code><span>top ${escapeHtml(r.top || 'default')} · right ${escapeHtml(r.right || 'default')} · scale ${escapeHtml(r.scale || 'default')}${r.hasTransform ? ' · transform' : ''}</span></div>`).join('') || '<p class="muted small">기존 단일 배너 규칙이 없습니다.</p>';
+  renderCarouselStudioCss();
+}
+function syncCarouselStudioInputs(source) {
+  const pairs = [['top', dom.carouselStudioTop, dom.carouselStudioTopRange, dom.carouselStudioTopOutput, '%'], ['right', dom.carouselStudioRight, dom.carouselStudioRightRange, dom.carouselStudioRightOutput, '%'], ['scale', dom.carouselStudioScale, dom.carouselStudioScaleRange, dom.carouselStudioScaleOutput, '']];
+  for (const [key, number, range, output, suffix] of pairs) { const value = source === key ? (number?.value || range?.value) : (number?.value || range?.value); if (number && range && value !== '') { number.value = value; range.value = value; } if (output) output.value = `${value}${suffix}`; }
+  renderCarouselStudioCss();
+}
+function renderCarouselStudioCss() { const d = carouselStudioCssDraftFromForm(); const encoded = encodeURIComponent(String(d.image || '').replace(/\.[^.]+$/, '')); const text = d.image ? `.char-img.single-banner[src*="${encoded}"] {\n  top: ${d.top}%;\n  right: ${d.right}%;\n  scale: ${d.scale};\n}` : '이미지를 선택하세요.'; if (dom.carouselStudioCssPreview) dom.carouselStudioCssPreview.textContent = text; renderCarouselStudioLivePreview(); }
+function hexToRgba(hex, alpha) { const value = String(hex || '').replace('#', ''); const number = Number.parseInt(value, 16); return Number.isFinite(number) && value.length === 6 ? `rgba(${(number >> 16) & 255}, ${(number >> 8) & 255}, ${number & 255}, ${alpha})` : `rgba(68, 68, 68, ${alpha})`; }
+function fitCarouselStudioCanvas() { const outer = dom.carouselStudioLivePreview; const canvas = outer?.querySelector('.studio-canvas'); if (!outer || !canvas) return; const width = Number(canvas.dataset.width); const height = Number(canvas.dataset.height); const scale = Math.min(1, outer.clientWidth / width); outer.style.height = `${Math.round(height * scale)}px`; canvas.style.transform = `scale(${scale})`; }
+function renderCarouselStudioLivePreview() { const d = carouselStudioDraftFromForm(); if (!dom.carouselStudioLivePreview) return; if (!d.image) { dom.carouselStudioLivePreview.innerHTML = '<p class="muted">캐릭터 이미지를 선택하세요.</p>'; return; } const selectedWidth = Number(dom.carouselStudioCanvasWidth?.value); const width = Number.isFinite(selectedWidth) ? Math.min(3840, Math.max(769, selectedWidth)) : Number(dom.carouselStudioCanvas?.value || 1200); const height = width >= 1200 ? 280 : 300; const artWidth = Math.min(520, Math.max(220, width * .42)); const src = `/assets/img/character-detail/${encodeURIComponent(d.image)}`; const strong = hexToRgba(d.color, .6); const soft = hexToRgba(d.color, .18); const transform = getCarouselStudioTransform(); const transformScale = getCarouselStudioTransformScale(transform); const cssScale = d.scale / transformScale; dom.carouselStudioLivePreview.innerHTML = `<div class="studio-canvas" data-width="${width}" data-height="${height}" style="width:${width}px;height:${height}px"><div class="studio-slide"><div class="studio-bg" style="background:radial-gradient(120% 120% at 80% 100%, ${strong}, ${soft} 60%)"></div><div class="studio-copy"><strong>${escapeHtml(d.title || '가챠 배너 미리보기')}</strong><span>${escapeHtml(d.name || '')}</span></div><div class="studio-art"><img src="${src}" alt="${escapeHtml(d.name || d.image)}" style="top:${d.top}%;right:${d.right}%;transform:${escapeHtml(transform)};scale:${cssScale}"></div><div class="studio-dots"><i class="active"></i><i></i><i></i></div></div></div>`; if (dom.carouselStudioGeometry) dom.carouselStudioGeometry.textContent = `실제 홈 기준: ${width}px × ${height}px · 이미지 영역: ${artWidth.toFixed(1)}px × ${height}px · top ${d.top}% = ${(height * d.top / 100).toFixed(1)}px · right ${d.right}% = ${(artWidth * d.right / 100).toFixed(1)}px · 화면 배율 ${d.scale}`; requestAnimationFrame(fitCarouselStudioCanvas); }
+function loadCarouselStudioRuleValues() { const image = String(dom.carouselStudioImage?.value || ''); const asset = state.carouselStudio.images.find((item) => item.name === image); const effective = getCarouselStudioEffectiveRule(); const transform = getCarouselStudioTransform(effective); const transformScale = getCarouselStudioTransformScale(transform); const numeric = (value) => Number.parseFloat(String(value || '')); if (dom.carouselStudioColor) dom.carouselStudioColor.value = asset?.color || '#444444'; if (dom.carouselStudioName && asset) dom.carouselStudioName.value = asset.character; if (dom.carouselStudioTop) dom.carouselStudioTop.value = 77; if (dom.carouselStudioRight) dom.carouselStudioRight.value = 30; if (dom.carouselStudioScale) dom.carouselStudioScale.value = 1.1 * transformScale; const top = numeric(effective.top), right = numeric(effective.right), scale = numeric(effective.scale); if (Number.isFinite(top)) dom.carouselStudioTop.value = top; if (Number.isFinite(right)) dom.carouselStudioRight.value = right; if (Number.isFinite(scale)) dom.carouselStudioScale.value = scale * transformScale; syncCarouselStudioInputs(); if (dom.carouselStudioTransformNote) dom.carouselStudioTransformNote.textContent = `실제 transform: ${transform} · 최종 Scale은 실제 화면 배율이며 CSS scale은 최종 Scale ÷ ${transformScale}`; if (dom.carouselStudioStatus) dom.carouselStudioStatus.textContent = effective.selector ? `기존 CSS cascade를 불러왔습니다: ${effective.selector}` : '기존 개별 CSS가 없어 단일 배너 기본값을 적용했습니다.'; }
+async function loadCarouselStudio() { const data = await requestJson('/api/carousel-studio'); state.carouselStudio = { initialized: true, images: data.images || [], rules: data.rules || [], draft: data.draft || null }; renderCarouselStudio(); await saveCarouselStudioDraft(); }
+async function saveCarouselStudioDraft() { const draft = carouselStudioDraftFromForm(); if (!draft.image) return; const result = await requestJson('/api/carousel-studio/draft', { method: 'POST', body: draft }); state.carouselStudio.draft = result.draft; if (dom.carouselStudioStatus) dom.carouselStudioStatus.textContent = '로컬 전용 프리뷰 초안을 저장했습니다.'; }
 
 function setActiveView(view) {
   const normalized = normalizeView(view);
@@ -428,6 +466,7 @@ function setActiveView(view) {
   if (dom.panelIgnored) dom.panelIgnored.classList.toggle('hidden', state.activeView !== 'ignored');
   if (dom.panelEditor) dom.panelEditor.classList.toggle('hidden', state.activeView !== 'editor');
   if (dom.panelSeoAdmin) dom.panelSeoAdmin.classList.toggle('hidden', state.activeView !== 'seo-admin');
+  if (dom.panelCarouselStudio) dom.panelCarouselStudio.classList.toggle('hidden', state.activeView !== 'carousel-studio');
   if (dom.panelRevelationAdmin) dom.panelRevelationAdmin.classList.toggle('hidden', state.activeView !== 'revelation-admin');
 
   const sidebars = document.querySelectorAll('.view-sidebar');
@@ -436,7 +475,7 @@ function setActiveView(view) {
     sidebar.classList.toggle('hidden', target !== state.activeView);
   }
 
-  document.body.classList.remove('view-work', 'view-ignored', 'view-editor', 'view-seo-admin', 'view-revelation-admin');
+  document.body.classList.remove('view-work', 'view-ignored', 'view-editor', 'view-seo-admin', 'view-carousel-studio', 'view-revelation-admin');
   document.body.classList.add(`view-${state.activeView}`);
 
   if (dom.viewTabs) {
@@ -477,6 +516,7 @@ function setActiveView(view) {
       appendLog(`[seo] bootstrap failed: ${error.message}`);
     });
   }
+  if (state.activeView === 'carousel-studio' && !state.carouselStudio.initialized) loadCarouselStudio().catch((error) => appendLog(`[carousel] load failed: ${error.message}`));
   if (state.activeView === 'revelation-admin' && state.domain === 'revelation') {
     ensureRevelationAdminBootstrapped();
   }
@@ -4613,6 +4653,14 @@ function bindDomainEvents() {
 }
 
 function bindEvents() {
+  for (const [key, node] of [['top', dom.carouselStudioTop], ['right', dom.carouselStudioRight], ['scale', dom.carouselStudioScale]]) node?.addEventListener('input', () => syncCarouselStudioInputs(key));
+  for (const [key, node] of [['top', dom.carouselStudioTopRange], ['right', dom.carouselStudioRightRange], ['scale', dom.carouselStudioScaleRange]]) node?.addEventListener('input', () => { const target = key === 'top' ? dom.carouselStudioTop : key === 'right' ? dom.carouselStudioRight : dom.carouselStudioScale; if (target) target.value = node.value; syncCarouselStudioInputs(key); });
+  dom.carouselStudioImage?.addEventListener('change', loadCarouselStudioRuleValues);
+  dom.carouselStudioCanvas?.addEventListener('change', () => { if (dom.carouselStudioCanvasWidth) dom.carouselStudioCanvasWidth.value = dom.carouselStudioCanvas.value; renderCarouselStudioLivePreview(); });
+  dom.carouselStudioCanvasWidth?.addEventListener('input', renderCarouselStudioLivePreview);
+  for (const node of [dom.carouselStudioTitle, dom.carouselStudioName, dom.carouselStudioColor]) node?.addEventListener('input', renderCarouselStudioCss);
+  dom.btnCarouselStudioPreview?.addEventListener('click', () => saveCarouselStudioDraft().catch((error) => { if (dom.carouselStudioStatus) dom.carouselStudioStatus.textContent = error.message; }));
+  dom.btnCarouselStudioApply?.addEventListener('click', async () => { try { const result = await requestJson('/api/carousel-studio/apply', { method: 'POST', body: carouselStudioCssDraftFromForm() }); if (dom.carouselStudioStatus) dom.carouselStudioStatus.textContent = `CSS 반영 완료: ${result.selector}`; state.carouselStudio.initialized = false; await loadCarouselStudio(); } catch (error) { if (dom.carouselStudioStatus) dom.carouselStudioStatus.textContent = error.message; } });
   if (dom.viewTabs?.length) {
     for (const tab of dom.viewTabs) {
       tab.addEventListener('click', (event) => {
@@ -5560,6 +5608,7 @@ async function bootstrap() {
   resetSelectedParts(state.domain);
   bindPartsPicker();
   bindEvents();
+  window.addEventListener('resize', fitCarouselStudioCanvas);
   bindDomainEvents();
   renderActiveViewHeader();
   renderSeoStats();

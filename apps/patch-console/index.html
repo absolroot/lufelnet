@@ -32,6 +32,7 @@
         <p id="view-cluster-ops" class="sidebar-label">Operations</p>
         <nav class="sidebar-nav sidebar-nav-ops" role="tablist" aria-label="운영 관리 뷰">
           <button class="view-tab" data-view="seo-admin" type="button" aria-selected="false" aria-controls="panel-seo-admin" tabindex="-1">SEO Admin</button>
+          <button class="view-tab" data-view="carousel-studio" type="button" aria-selected="false" aria-controls="panel-carousel-studio" tabindex="-1">Carousel Studio</button>
           <button class="view-tab" data-view="revelation-admin" type="button" aria-selected="false" aria-controls="panel-revelation-admin" tabindex="-1">Revelation Admin</button>
         </nav>
       </section>
@@ -558,6 +559,35 @@
               <p class="muted" style="padding:10px;">아직 저장 이력이 없습니다.</p>
             </div>
           </details>
+        </section>
+
+        <section id="panel-carousel-studio" class="view-panel hidden">
+          <section class="carousel-studio-layout">
+            <div class="group carousel-studio-controls">
+              <div class="group-head"><div><h2>가챠 배너 위치 조정</h2><p class="muted small">로컬 이미지로 실제 홈 캐러셀 프리뷰를 만듭니다.</p></div></div>
+              <div class="field"><label for="carousel-studio-image">캐릭터 이미지</label><select id="carousel-studio-image"></select></div>
+              <div class="carousel-studio-fields">
+                <div class="field"><label for="carousel-studio-title">배너 제목</label><input id="carousel-studio-title" type="text"></div>
+                <div class="field"><label for="carousel-studio-name">캐릭터 표시명</label><input id="carousel-studio-name" type="text"></div>
+                <div class="field"><label for="carousel-studio-color">캐릭터 배경색</label><input id="carousel-studio-color" type="color" value="#8b1e2d" disabled title="character_info.js의 캐릭터 대표 색상을 사용합니다."></div>
+              </div>
+              <div class="carousel-studio-controls-grid">
+                <label class="field"><span>Top <output id="carousel-studio-top-output"></output></span><input id="carousel-studio-top-range" type="range" min="0" max="150" step="1"><input id="carousel-studio-top" type="number" step="1"></label>
+                <label class="field"><span>Right <output id="carousel-studio-right-output"></output></span><input id="carousel-studio-right-range" type="range" min="-20" max="70" step="1"><input id="carousel-studio-right" type="number" step="1"></label>
+                <label class="field"><span>최종 Scale <output id="carousel-studio-scale-output"></output></span><input id="carousel-studio-scale-range" type="range" min="0.5" max="3.5" step="0.01"><input id="carousel-studio-scale" type="number" min="0.5" max="3.5" step="0.01"></label>
+              </div>
+              <p id="carousel-studio-transform-note" class="muted small"></p>
+              <div class="actions"><button id="btn-carousel-studio-preview" class="btn primary" type="button">로컬 초안 저장</button><button id="btn-carousel-studio-apply" class="btn danger" type="button">CSS 반영</button></div>
+              <p id="carousel-studio-status" class="muted small"></p>
+              <pre id="carousel-studio-css-preview" class="carousel-studio-css-preview"></pre>
+            </div>
+            <div class="group carousel-studio-preview-panel">
+              <div class="carousel-studio-preview-head"><div><h2>홈 가챠 배너 프리뷰</h2><p class="muted small">홈 캐러셀 컨테이너 폭을 기준으로, 실제 58% / 42% 레이아웃을 그대로 계산합니다.</p></div><div class="carousel-studio-canvas-controls"><label class="field carousel-studio-canvas-field"><span>데스크톱 프리셋</span><select id="carousel-studio-canvas"><option value="1024">1024 × 300</option><option value="1200" selected>1200 × 280</option><option value="1440">1440 × 280</option><option value="1920">1920 × 280</option></select></label><label class="field carousel-studio-canvas-field"><span>홈 컨테이너 폭</span><input id="carousel-studio-canvas-width" type="number" min="769" max="3840" step="1" value="1200"></label></div></div>
+              <div id="carousel-studio-live-preview" class="carousel-studio-live-preview" aria-label="가챠 배너 프리뷰"></div>
+              <p id="carousel-studio-geometry" class="muted small carousel-studio-geometry"></p>
+              <details class="carousel-studio-rules"><summary>기존 이미지별 조정값</summary><div id="carousel-studio-rule-list"></div></details>
+            </div>
+          </section>
         </section>
 
         <section id="panel-revelation-admin" class="view-panel hidden">

@@ -1693,9 +1693,11 @@
 
         return `
             <div class="nitro-ad-container nitro-ad-container--incontent schedule-inline-ad nitro-ad-container--with-placeholder">
-                <div id="${id}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="incontent" data-nitro-render-visible-only="true"></div>
-                <div class="nitro-ad-placeholder" data-nitro-ad-placeholder aria-hidden="true">
-                    <span data-i18n="footer.advertisement">Advertisement</span>
+                <div class="nitro-ad-slot-frame">
+                    <div id="${id}" class="nitro-ad-slot" data-nitro-ad data-nitro-format="incontent" data-nitro-render-visible-only="true"></div>
+                    <div class="nitro-ad-placeholder" data-nitro-ad-placeholder aria-hidden="true">
+                        <span data-i18n="footer.advertisement">Advertisement</span>
+                    </div>
                 </div>
             </div>
         `;

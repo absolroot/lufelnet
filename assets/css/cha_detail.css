@@ -2840,14 +2840,28 @@ h2 {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.nitro-ad-container--character-operation {
-    border-top: 0;
+.settings-card .operation-settings > .setting-section:last-child {
+    padding-bottom: 0;
 }
 
-.nitro-ad-container--character-ritual {
-    margin-top: 0;
-    margin-bottom: 16px;
-    padding-top: 12px;
+.settings-card .operation-settings {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.ritual-card .ritual-grid > .ritual-item:last-child {
+    padding-bottom: 0;
+}
+
+.recommended-party-card:has(#recommended-party-content:not(:empty))
+    #recommended-party-content .party-section:last-child {
+    margin-bottom: 0;
+}
+
+.recommended-party-card:has(#recommended-party-content:empty)
+    .friends-lineup {
+    margin-bottom: 0;
 }
 
 .character-review-mobile-ad {

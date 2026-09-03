@@ -451,6 +451,10 @@ body {
     position: relative;
 }
 
+.nitro-ad-slot-frame {
+    position: relative;
+}
+
 .nitro-ad-placeholder {
     position: absolute;
     inset: 0;

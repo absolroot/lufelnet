@@ -676,9 +676,11 @@ const Guides = {
                         ${author ? `<span class="guide-meta-item">${author}</span>` : ''}
                     </div>
                     <div class="nitro-ad-container nitro-ad-container--leaderboard nitro-ad-container--guide-meta nitro-ad-container--with-placeholder">
-                        <div id="guide-meta-banner" class="nitro-ad-slot" data-nitro-ad data-nitro-format="leaderboard"></div>
-                        <div class="nitro-ad-placeholder" data-nitro-ad-placeholder aria-hidden="true">
-                            <span data-i18n="footer.advertisement">Advertisement</span>
+                        <div class="nitro-ad-slot-frame">
+                            <div id="guide-meta-banner" class="nitro-ad-slot" data-nitro-ad data-nitro-format="leaderboard"></div>
+                            <div class="nitro-ad-placeholder" data-nitro-ad-placeholder aria-hidden="true">
+                                <span data-i18n="footer.advertisement">Advertisement</span>
+                            </div>
                         </div>
                     </div>
                     ${thumbnail ? `<img class="guide-thumbnail" src="${thumbnail}" alt="${title}">` : ''}

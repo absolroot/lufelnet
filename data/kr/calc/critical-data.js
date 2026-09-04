@@ -526,7 +526,28 @@ const criticalBuffData = {
         "LV13": 10.1,
         "LV13+심상5": 11.0
       },
+      "values_en": {
+        "LV10": 9.0,
+        "LV10+Mindscape5": 9.9,
+        "LV13": 10.1,
+        "LV13+Mindscape5": 11.0
+      },
+      "values_jp": {
+        "LV10": 9.0,
+        "LV10+イメジャリー5": 9.9,
+        "LV13": 10.1,
+        "LV13+イメジャリー5": 11.0
+      },
+      "values_cn": {
+        "LV10": 9.0,
+        "LV10+心象5": 9.9,
+        "LV13": 10.1,
+        "LV13+心象5": 11.0
+      },
       "defaultOption": "LV13+심상5",
+      "defaultOption_en": "LV13+Mindscape5",
+      "defaultOption_jp": "LV13+イメジャリー5",
+      "defaultOption_cn": "LV13+心象5",
       "value": 11.0,
       "skillEffectAmpAffected": true,
       "mikuSkillEffectAmpAffected": true,
@@ -578,7 +599,28 @@ const criticalBuffData = {
         "LV13": 16.8,
         "LV13+심상5": 18.3
       },
+      "values_en": {
+        "LV10": 15.0,
+        "LV10+Mindscape5": 16.5,
+        "LV13": 16.8,
+        "LV13+Mindscape5": 18.3
+      },
+      "values_jp": {
+        "LV10": 15.0,
+        "LV10+イメジャリー5": 16.5,
+        "LV13": 16.8,
+        "LV13+イメジャリー5": 18.3
+      },
+      "values_cn": {
+        "LV10": 15.0,
+        "LV10+心象5": 16.5,
+        "LV13": 16.8,
+        "LV13+心象5": 18.3
+      },
       "defaultOption": "LV13+심상5",
+      "defaultOption_en": "LV13+Mindscape5",
+      "defaultOption_jp": "LV13+イメジャリー5",
+      "defaultOption_cn": "LV13+心象5",
       "value": 18.3,
       "skillEffectAmpAffected": true,
       "mikuSkillEffectAmpAffected": true,

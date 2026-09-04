@@ -54,6 +54,58 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-10-02 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Kumi Katayama",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          }
+        ],
+        "name": "Ride the Lightning",
+        "startTime": "2026-09-04 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-10-02 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Kumi Katayama",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Motoha Arai",
+            "type": "thief"
+          },
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          }
+        ],
+        "name": "Ride the Lightning",
+        "startTime": "2026-09-04 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-09-11 09:59:59",
         "fiveStar": [
           {
@@ -140,6 +192,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-08-21 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-10-02 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Lightning Riders",
+            "type": "weapon",
+            "user": "Katayama"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Crime and Punishment",
+            "type": "weapon",
+            "user": "Motoha"
+          },
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Blitzkrieg Bangs",
+            "type": "weapon",
+            "user": "Katayama"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-09-04 10:30:00",
         "type": "Arms Deals"
       },
       {

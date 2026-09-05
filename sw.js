@@ -173,6 +173,12 @@ self.addEventListener('fetch', (event) => {
     url.pathname.includes('/assets/css/');
 
   if (isJSOrCSSOrData) {
+    const isVersionManifest = url.pathname.endsWith('/assets/js/version-manifest.js');
+    if (url.searchParams.has('v') && !isVersionManifest) {
+      // Content-versioned resources are immutable for that URL. Let the browser
+      // use its HTTP cache; a new APP_VERSION produces a new request URL.
+      return;
+    }
     const revalidateRequest = new Request(request, { cache: 'no-cache' });
     event.respondWith(fetch(revalidateRequest));
     return;

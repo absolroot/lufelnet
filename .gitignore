@@ -110,6 +110,7 @@ reports/
 scripts/reports/
 apps/patch-console/state/
 .playwright-mcp/
+.seo-cache/
 /inflation-*.png
 
 # Local-only Home Carousel Studio draft

@@ -69,6 +69,12 @@ window.I18N_PAGE_HOME_KR = {
     guides_untitled: '제목 없음',
     guides_badge_new: 'NEW',
     guides_badge_notice: '공지',
+    home_section_loading: '불러오는 중...',
+    home_section_ready: '콘텐츠를 불러왔습니다.',
+    home_section_empty: '현재 표시할 내용이 없습니다.',
+    home_section_error: '이 섹션을 불러오지 못했습니다.',
+    home_section_retry: '다시 시도',
+    home_section_retry_aria: '이 섹션을 다시 불러옵니다.',
 
     tactic_like_alt: '좋아요',
     tactic_ritual_alt: '의식 {value}',

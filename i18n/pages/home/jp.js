@@ -69,6 +69,12 @@ window.I18N_PAGE_HOME_JP = {
     guides_untitled: '無題',
     guides_badge_new: 'NEW',
     guides_badge_notice: 'お知らせ',
+    home_section_loading: '読み込み中...',
+    home_section_ready: 'コンテンツを読み込みました。',
+    home_section_empty: '現在表示できる内容がありません。',
+    home_section_error: 'このセクションを読み込めませんでした。',
+    home_section_retry: '再試行',
+    home_section_retry_aria: 'このセクションを再読み込みします。',
 
     tactic_like_alt: 'いいね',
     tactic_ritual_alt: '意識 {value}',

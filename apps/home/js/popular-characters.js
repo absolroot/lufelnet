@@ -307,7 +307,7 @@
         });
     }
 
-    async function initPopularCharacters() {
+    async function loadPopularCharacters() {
         const popularRoot = document.querySelector('.popular-content');
         const container = document.getElementById('popular-character-cards');
         if (!popularRoot || !container) return;
@@ -348,6 +348,12 @@
         }
 
         renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
+        return { empty: orderedKeys.length === 0 };
+    }
+
+    async function initPopularCharacters() {
+        if (window.HomeSectionState) return window.HomeSectionState.run('popular-characters', loadPopularCharacters);
+        return loadPopularCharacters();
     }
 
     document.addEventListener('DOMContentLoaded', () => {

@@ -82,10 +82,10 @@ From Awareness 6 onward, the [Helmsman] designation is not removed, allowing [Ra
             "追加攻击视作人格面具技能，可考虑与其他效果进行联动。"
         ],
         cons: [
-            "파티에 여름 및 염동 속성 동료가 있어야 효과가 극대화된다."
+            "효과를 극대화하려면 파티에 여름 또는 염동 속성 동료가 필요하다."
         ],
-        cons_en: ["Requires both Summer and Psy allies in the party to maximize her effectiveness."],
-        cons_jp: ["効果を最大限に活かすには、パーティーに『夏』と念動の仲間が必要。"],
-        cons_cn: ["要最大化发挥效果，队伍中需要有『夏日』与念动队员。"]
+        cons_en: ["Requires Summer or Psy allies in the party to maximize her effectiveness."],
+        cons_jp: ["効果を最大限に活かすには、パーティーに『夏』または念動の仲間が必要。"],
+        cons_cn: ["要最大化发挥效果，队伍中需要有『夏日』或念动队员。"]
     };
 })();

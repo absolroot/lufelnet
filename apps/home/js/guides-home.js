@@ -106,7 +106,7 @@ async function waitHomeGuideI18nReady() {
     } catch (_) { }
 }
 
-window.loadHomeGuides = async function (currentLang) {
+async function loadHomeGuidesOnce(currentLang) {
     const container = document.getElementById('guides-list');
     if (!container) return;
     await waitHomeGuideI18nReady();
@@ -118,7 +118,7 @@ window.loadHomeGuides = async function (currentLang) {
     syncHomeGuidesVisibility(rawLang);
     if (!shouldShowHomeGuides(rawLang)) {
         container.innerHTML = '';
-        return;
+        return { empty: true };
     }
 
     // Show loading state
@@ -141,7 +141,7 @@ window.loadHomeGuides = async function (currentLang) {
 
         if (recentGuides.length === 0) {
             container.innerHTML = `<div class="guides-empty" style="padding: 20px; text-align: center; color: #888;">${homeGuideT('guides_empty', 'No guides available.', rawLang)}</div>`;
-            return;
+            return { empty: true };
         }
 
         // Render guides
@@ -149,11 +149,18 @@ window.loadHomeGuides = async function (currentLang) {
             const item = createGuideItem(guide, rawLang, index, recentGuides.length);
             container.appendChild(item);
         });
+        return { empty: false };
 
     } catch (error) {
         console.error('Error loading home guides:', error);
-        container.innerHTML = `<div class="guides-error" style="padding: 20px; text-align: center; color: #888;">${homeGuideT('guides_error', 'Failed to load guides.', rawLang)}</div>`;
+        throw error;
     }
+}
+
+window.loadHomeGuides = async function (currentLang) {
+    const load = () => loadHomeGuidesOnce(currentLang);
+    if (window.HomeSectionState) return window.HomeSectionState.run('guides', load);
+    return load();
 };
 
 function createGuideItem(guide, rawLang, index = 0, total = 1) {

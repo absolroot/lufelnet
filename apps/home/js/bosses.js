@@ -268,6 +268,9 @@
       root.innerHTML = '';
       root.appendChild(card);
     } else {
+      card.classList.remove('home-boss-skeleton-card');
+      card.removeAttribute('aria-hidden');
+      card.querySelectorAll('.bosses-loading-placeholder').forEach((node) => node.remove());
       const oldGb = card.querySelector('.guildboss-section');
       if (oldGb) oldGb.remove();
     }
@@ -409,36 +412,29 @@
     bossesCountdownTimer = setInterval(updateCountdown, COUNTDOWN_INTERVAL_MS);
   }
 
-  async function init() {
+  async function loadHomeBosses() {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
-    try {
-      await waitHomeI18nReady();
-      const region = loadRegion();
-      const [affixMap, data] = await Promise.all([
-        loadAffixMap(),
-        fetchGuildBoss(region)
-      ]);
-      renderGuildBoss(root, data, region, affixMap);
-    } catch (e) {
-      // eslint-disable-next-line no-console
-      try { console.error(e); } catch(_) {}
-    }
+    await waitHomeI18nReady();
+    const region = loadRegion();
+    const [affixMap, data] = await Promise.all([loadAffixMap(), fetchGuildBoss(region)]);
+    renderGuildBoss(root, data, region, affixMap);
+    return { empty: !data || !data.data };
+  }
+
+  async function init() {
+    const load = () => loadHomeBosses();
+    if (window.HomeSectionState) return window.HomeSectionState.run('bosses', load);
+    return load();
   }
 
   // expose reloader for carousel-region sync
   window.reloadHomeBosses = async function () {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
-    try {
-      await waitHomeI18nReady();
-      const region = loadRegion();
-      const [affixMap, data] = await Promise.all([
-        loadAffixMap(),
-        fetchGuildBoss(region)
-      ]);
-      renderGuildBoss(root, data, region, affixMap);
-    } catch (e) { try { console.error(e); } catch(_) {} }
+    const load = () => loadHomeBosses();
+    if (window.HomeSectionState) return window.HomeSectionState.run('bosses', load);
+    return load();
   };
 
   if (document.readyState === 'loading') {

@@ -544,6 +544,36 @@
     margin: 24px 10px;
 }
 
+/* Shared home section loading states. Keep the final layout stable while data loads. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.home-panel-skeleton, .home-row-skeleton { background: linear-gradient(105deg, rgba(255,255,255,.045) 35%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.045) 65%); background-size: 220% 100%; animation: homeSectionShimmer 1.35s ease-in-out infinite; }
+@keyframes homeSectionShimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+.home-quick-skeleton { min-height: 126px; align-items: center; flex-direction: column; justify-content: center; }
+.home-quick-skeleton span, .home-quick-skeleton i { background: linear-gradient(105deg, rgba(255,255,255,.055) 35%, rgba(255,255,255,.16) 50%, rgba(255,255,255,.055) 65%); background-size: 220% 100%; animation: homeSectionShimmer 1.35s ease-in-out infinite; }
+.home-quick-skeleton span { width: 54px; height: 54px; border-radius: 50%; }
+.home-quick-skeleton i { width: 62%; height: 12px; margin-top: 14px; border-radius: 6px; }
+.home-character-skeleton { width: 98px; min-width: 98px; display: flex; flex-direction: column; }
+.home-character-skeleton span, .home-character-skeleton i { display: block; background: linear-gradient(105deg, rgba(255,255,255,.045) 35%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.045) 65%); background-size: 220% 100%; animation: homeSectionShimmer 1.35s ease-in-out infinite; }
+.home-character-skeleton span { width: 98px; height: 140px; border-radius: 8px 8px 0 0; }
+.home-character-skeleton i { width: 98px; height: 28.5px; border-radius: 0 0 8px 8px; margin-top: 0; }
+.home-panel-skeleton { min-height: 250px; border-radius: 10px; }
+.home-boss-skeleton-card { box-sizing: border-box; width: 100%; max-width: 1200px; margin: 24px auto 0; padding: 20px; background: var(--card-background); border-bottom: 3px solid var(--border-red); border-radius: 10px; }
+#home-bosses-root { width: 100%; margin: 24px 0 0; color: #eee; }
+.bosses-card > .bosses-loading-placeholder { min-height: 574px; margin: 0; border-radius: 8px; }
+.home-row-skeleton { min-height: 95px; display: flex; gap: 15px; align-items: center; padding: 15px; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,.05); }
+.home-row-skeleton i { display: block; flex: 0 0 100px; width: 100px; height: 65px; border-radius: 6px; background: rgba(255,255,255,.1); }
+.home-row-skeleton span { width: min(56%, 420px); height: 48px; border-radius: 6px; background: rgba(255,255,255,.1); }
+.home-row-skeleton--tactic { min-height: 150px; }
+.home-section-status { min-height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #aaa; text-align: center; padding: 20px; box-sizing: border-box; }
+.home-section-status--error { color: #f0b1b1; }
+.home-section-status--loading { color: #aaa; }
+.home-section-ready { animation: homeSectionReveal .22s ease-out both; }
+@keyframes homeSectionReveal { from { opacity: .35; } to { opacity: 1; } }
+.home-section-retry { min-height: 36px; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 6px; background: #282828; color: #fff; cursor: pointer; }
+.home-section-retry:hover, .home-section-retry:focus-visible { background: #3a3a3a; outline: 2px solid #d2ad76; outline-offset: 2px; }
+@media (max-width: 768px) { .home-quick-skeleton { min-height: 116px; } .character-cards .character-card { width: 80px; } .home-character-skeleton { width: 80px; min-width: 80px; } .home-character-skeleton span { width: 80px; height: 100px; } .home-character-skeleton i { width: 80px; height: 28.5px; } .home-panel-skeleton { min-height: 220px; } .bosses-card > .bosses-loading-placeholder { min-height: 1180px; } }
+@media (prefers-reduced-motion: reduce) { .home-quick-skeleton span, .home-quick-skeleton i, .home-character-skeleton span, .home-character-skeleton i, .home-panel-skeleton, .home-row-skeleton, .home-section-ready { animation: none; } }
+
 .nitro-ad-container--home-bosses {
     margin-top: 24px;
     margin-bottom: 0;
@@ -757,6 +787,7 @@
     cursor: pointer;
     position: relative;
     flex: 0 0 auto;
+    width: 98px;
 }
 
 .character-card-img {

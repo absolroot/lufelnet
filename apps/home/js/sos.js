@@ -112,6 +112,18 @@
   function titleByLang(){ const l=detectLang(); return t('boss_title', '보스', l); }
   function seaLabel(){ const l=detectLang(); return t('boss_mode_sos', '마음의 바다', l); }
 
+  function waitForGuildBossSkeleton(root) {
+    if (!root || !root.querySelector('.bosses-loading-placeholder')) return Promise.resolve();
+    return new Promise((resolve) => {
+      const observer = new MutationObserver(() => {
+        if (root.querySelector('.bosses-loading-placeholder')) return;
+        observer.disconnect();
+        resolve();
+      });
+      observer.observe(root, { childList: true, subtree: true });
+    });
+  }
+
   function renderSOS(container, data, region){
     const lang = detectLang();
     // ensure style for score ratio chip
@@ -124,6 +136,7 @@
     // Reuse existing card if present (unified Boss card)
     let card = container.querySelector('.bosses-card');
     let hadCountdown = !!(card && card.querySelector('#bosses-countdown'));
+    const hasInitialSkeleton = !!(card && card.querySelector('.home-boss-skeleton'));
     if (!card) {
       card = document.createElement('div');
       card.className = 'bosses-card';
@@ -135,6 +148,20 @@
       const t = document.createElement('div'); t.className='bosses-title'; t.textContent = titleByLang();
       header.appendChild(t); card.appendChild(header);
       hadCountdown = false;
+    }
+
+    if (hasInitialSkeleton) {
+      card.classList.remove('home-boss-skeleton-card');
+      card.removeAttribute('aria-hidden');
+    }
+
+    // When SOS wins the initial race, retain a correctly sized placeholder
+    // until the guild boss loader replaces it with its section.
+    if (!card.querySelector('.guildboss-section, .bosses-loading-placeholder')) {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'home-panel-skeleton bosses-loading-placeholder';
+      placeholder.setAttribute('aria-hidden', 'true');
+      card.appendChild(placeholder);
     }
 
     // section wrapper to add spacing for sos part
@@ -217,7 +244,7 @@
     });
 
     section.appendChild(list);
-    if (!container.querySelector('.bosses-card')) container.appendChild(card);
+    if (!container.querySelector('.bosses-card')) container.replaceChildren(card);
 
     // Countdown only if not already running from bosses.js
     const endStr = data && data.data && data.data.endTime; const endUTC=endStr?parseRegionLocalToUTC(endStr, region):null;
@@ -235,7 +262,7 @@
   async function init(){
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
-    try { await waitHomeI18nReady(); const region=loadRegion(); const data=await fetchSOS(region); renderSOS(root, data, region); } catch(e) { try{console.error(e);}catch(_){} }
+    try { await waitHomeI18nReady(); const region=loadRegion(); const data=await fetchSOS(region); await waitForGuildBossSkeleton(root); renderSOS(root, data, region); } catch(e) { try{console.error(e);}catch(_){} }
   }
 
   window.reloadHomeSOS = async function(){
@@ -246,7 +273,7 @@
       const card = root.querySelector('.bosses-card');
       const old = card && card.querySelector('.sos-section');
       if (old) old.remove();
-      const region=loadRegion(); const data=await fetchSOS(region); renderSOS(root, data, region);
+      const region=loadRegion(); const data=await fetchSOS(region); await waitForGuildBossSkeleton(root); renderSOS(root, data, region);
     }catch(e){ try{ console.error(e); }catch(_){} }
   };
 

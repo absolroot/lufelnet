@@ -10,8 +10,8 @@ window.WeaponData["이치고·여름"] = {
 };
 window.enCharacterWeaponData["이치고·여름"] = {
   "name": "Ichigo Shikano·Summer",
-  "weapon4-1": { "name": "Chain of Reversing Light", "health": 2283.59, "attack": 486.57, "defense": 292.76, "skill_name": "", "description": "Increase healing effects by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. When receiving healing, increase damage dealt by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn." },
-  "weapon5-1": { "name": "Lovey-Dovey Voyager", "health": 2854.11, "attack": 607.79, "defense": 365.57, "skill_name": "", "description": "Increase Max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When the user gains any [Seal], increase all allies' Crit DMG by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns. Increase the [Helmsman]'s ATK by 22.6%/29.4%/29.4%/36.2%/36.2%/43.0%/43.0%." }
+  "weapon4-1": { "name": "Chain of Calling", "health": 2283.59, "attack": 486.57, "defense": 292.76, "skill_name": "Soul Drain", "description": "Increase healing effect by 8.7%/8.7%/11.3%/11.3%/13.9%/13.9%/16.5%. When user receives healing, increase damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn." },
+  "weapon5-1": { "name": "Lovey-Dovey Voyager", "health": 2854.11, "attack": 607.79, "defense": 365.57, "skill_name": "Aqua Vow", "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%. When user gains any [Seal], increase all allies' critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns. Increase the [Helmsman]'s Attack by 22.6%/29.4%/29.4%/36.2%/36.2%/43.0%/43.0%." }
 };
 window.jpCharacterWeaponData["이치고·여름"] = {
   "name": "鹿野 苺 夏",

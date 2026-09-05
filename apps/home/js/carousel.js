@@ -1452,7 +1452,7 @@
     });
   }
 
-  async function reloadSlides() {
+  async function loadSlides() {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
     window.LufelNitroAds?.recordDebugTiming?.('home-carousel-start', { source: state.region });
@@ -1584,7 +1584,9 @@
   function init() {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
-    reloadSlides();
+    const load = () => loadSlides();
+    if (window.HomeSectionState) return window.HomeSectionState.run('carousel', load);
+    return load();
   }
 
   if (document.readyState === 'loading') {

@@ -15,13 +15,13 @@ window.ritualData["이치고·여름"] = {
 };
 window.enCharacterRitualData["이치고·여름"] = {
   "name": "Ichigo Shikano·Summer",
-  "r0": "Magical Ichigo Sets Sail", "r0_detail": "Before the first character's action in battle, Ichigo invites all allies to board the [Miracle Ichi-Boat]. The [Miracle Ichi-Boat]'s current HP and Max HP are recorded as the sum of all allies' current HP and Max HP. Then reduce all allies' HP to 1 and make them immune to instant death. When allies take damage or receive healing, the [Miracle Ichi-Boat] takes it instead. Ichigo faints when the [Miracle Ichi-Boat] reaches 0 HP.\nWhile the [Miracle Ichi-Boat] is sailing, at the start of any ally's turn, Ichigo restores that ally's HP by 5% of the [Miracle Ichi-Boat]'s Max HP.",
-  "r1": "Ocean's First Glimmer", "r1_detail": "Increase the [Miracle Ichi-Boat]'s Max HP by 20%. When its HP first drops to 0, restore 10% of its Max HP. [Ram: Miracle Ichi-Boat] additionally increases the target's Crit DMG Taken by 50% for 3 turns.",
-  "r2": "Tide's Call from Afar", "r2_detail": "Increase the buffs from [Romantic Pearl] and [Astral Anchor] for the [Helmsman] by 60%. At the start of the [Helmsman]'s turn, increase their ATK by 60% for 2 turns.",
-  "r3": "Two Hearts Meet Here", "r3_detail": "Increase the skill levels of [Astral Anchor] and [Heart's Desire] by 3, up to level 15.",
-  "r4": "The Course Guides the Way", "r4_detail": "HIGHLIGHT Enhanced: Increase the main target's DMG Bonus by 20% and Healing Received by 10% for 3 turns.",
-  "r5": "Destiny Sails Past the Bay", "r5_detail": "Increase the skill levels of [Romantic Pearl] and [Thief Tactics] by 3, up to level 15.",
-  "r6": "Where Miracle Arrives", "r6_detail": "[Heart's Desire] additionally increases the [Helmsman]'s Total DMG Amp by 20%. The [Helmsman] no longer steps down, and only 1 ally can be the [Helmsman] at a time. At the end of every [Helmsman]'s turn, use [Ram: Miracle Ichi-Boat]. Increase [Ram: Miracle Ichi-Boat]'s Skill Damage by 30%."
+  "r0": "Magical Ichigo Sets Sail", "r0_detail": "Before the first character's action in battle, Ichigo will invite all allies to board the [Miracle Ichi-Boat]. The [Miracle Ichi-Boat]'s current HP and max HP are recorded as the sum of all allies' current HP and max HP. Then decrease all allies' HP to 1 and grant them Null Insta-Kill. When all allies would take damage or receive healing, the [Miracle Ichi-Boat] will take those instead. Ichigo will faint when the [Miracle Ichi-Boat] reaches at 0 HP.\nWhen the [Miracle Ichi-Boat] is sailing, at the start of any ally's turn, Ichigo will restore their HP equal to 5% of the [Miracle Ichi-Boat]'s max HP.",
+  "r1": "Ocean's First Glimmer", "r1_detail": "Increase the [Miracle Ichi-Boat]'s max HP by 20%. When its HP first reaches to 0, restore 10% of its max HP. [Ram: Miracle Ichi-Boat] additionally increase targets' critical damage taken by 50% for 3 turns.",
+  "r2": "Tide's Call from Afar", "r2_detail": "Increase buff effects from [Romantic Pearl] and [Astral Anchor] for the [Helmsman] by 60%. At the start of the [Helmsman]'s turn, increase their Attack by 60% for 2 turns.",
+  "r3": "Two Hearts Meet Here", "r3_detail": "Increase the skill levels of [Astral Anchor] and [Heart's Desire] by 3.",
+  "r4": "The Course Guides the Way", "r4_detail": "HIGHLIGHT Enhanced: Increase the main target's damage by 20% and healing received by 10% for 3 turns.",
+  "r5": "Destiny Sails Past the Bay", "r5_detail": "Increase the skill levels of [Romantic Pearl] and [Thief Tactics] by 3.",
+  "r6": "Where Miracle Arrives", "r6_detail": "[Heart's Desire] additionally increase the [Helmsman]'s Total Damage Amplification by 20%. The [Helmsman] will no longer step down. Only 1 ally can be the [Helmsman] at a time. At the end of every [Helmsman]'s turn, activate [Ram: Miracle Ichi-Boat]. Increase [Ram: Miracle Ichi-Boat]'s Skill Damage by 30%."
 };
 window.jpCharacterRitualData["이치고·여름"] = {
   "name": "鹿野 苺 夏",

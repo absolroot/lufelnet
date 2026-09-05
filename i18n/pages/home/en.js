@@ -68,6 +68,12 @@ window.I18N_PAGE_HOME_EN = {
     guides_untitled: 'Untitled',
     guides_badge_new: 'NEW',
     guides_badge_notice: 'NOTICE',
+    home_section_loading: 'Loading...',
+    home_section_ready: 'Content loaded.',
+    home_section_empty: 'Nothing to show right now.',
+    home_section_error: 'Unable to load this section.',
+    home_section_retry: 'Try again',
+    home_section_retry_aria: 'Retry loading this section.',
 
     tactic_like_alt: 'Like',
     tactic_ritual_alt: 'Awakening {value}',

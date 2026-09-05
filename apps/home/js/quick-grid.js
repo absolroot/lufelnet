@@ -322,6 +322,13 @@
             }
             */
         });
+        return order.length;
+    };
+
+    const renderWithState = async () => {
+        const load = async () => ({ empty: render() === 0 });
+        if (window.HomeSectionState) return window.HomeSectionState.run('quick-grid', load);
+        return load();
     };
 
     if (document.readyState === 'loading') {
@@ -329,18 +336,18 @@
             if (window.__HOME_I18N_READY__) {
                 try { await window.__HOME_I18N_READY__; } catch (_) { }
             }
-            render();
+            renderWithState();
         });
     } else {
         (async () => {
             if (window.__HOME_I18N_READY__) {
                 try { await window.__HOME_I18N_READY__; } catch (_) { }
             }
-            render();
+            renderWithState();
         })();
     }
 
     document.addEventListener('languageChanged', () => {
-        render();
+        renderWithState();
     });
 })();

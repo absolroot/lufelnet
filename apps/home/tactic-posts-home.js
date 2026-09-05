@@ -59,11 +59,11 @@ async function ensureHomePublicIp() {
   return window.__HOME_IP;
 }
 
-window.loadHomeTacticsFromSupabase = async function (currentLang) {
+async function loadHomeTacticsOnce(currentLang) {
   try {
     await waitHomeTacticI18nReady();
     const postsListEl = document.getElementById('postsList');
-    if (!postsListEl || typeof supabase === 'undefined') return;
+    if (!postsListEl || typeof supabase === 'undefined') return { empty: true };
     const rawLang = HOME_TACTIC_RAW_LANGS.includes(String(currentLang || '').toLowerCase())
       ? String(currentLang).toLowerCase()
       : detectHomeTacticRawLang();
@@ -83,10 +83,10 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
         .in('region', ['en', 'sea'])
         .order('created_at', { ascending: false })
         .limit(3);
-      if (fallbackError) { console.error('Supabase fallback load error:', fallbackError); return; }
+      if (fallbackError) throw fallbackError;
       data = fallbackData || [];
     }
-    if (error) { console.error('Supabase load error:', error); return; }
+    if (error) throw error;
     await ensureHomePublicIp();
     window.__HOME_LIKES_MAP = {};
     try {
@@ -152,8 +152,15 @@ window.loadHomeTacticsFromSupabase = async function (currentLang) {
         if (container && previewEl) container.appendChild(previewEl);
       } catch (_) { }
     });
-  } catch (e) { console.error('홈 택틱 로드 실패:', e); }
+    return { empty: !data || data.length === 0 };
+  } catch (e) { throw e; }
 }
+
+window.loadHomeTacticsFromSupabase = async function (currentLang) {
+  const load = () => loadHomeTacticsOnce(currentLang);
+  if (window.HomeSectionState) return window.HomeSectionState.run('tactics', load);
+  return load();
+};
 
 function formatHomeDate(date) {
   try {

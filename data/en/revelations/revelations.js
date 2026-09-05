@@ -21,8 +21,8 @@ const mapping_en = {
     "예리": "Agility",
     "순수": "Purity",
     // Sub revelations
-    "반성": "Reflection",
-    "기쁨": "Joy",
+    "반성": "Failure",
+    "기쁨": "Happiness",
     "슬픔": "Sorrow",
     "변화": "Change",
     "신중": "Prudence",
@@ -50,10 +50,10 @@ const mapping_en = {
     "개선": "Triumph",
     "좌절": "Defeat",
     "풍족": "Satiety",
-    "번영": "Flourishing",
-    "결단": "Determination",
+    "번영": "Wealth",
+    "결단": "Cruelty",
     "획득": "Obtain",
-    "타락": "Depravity",
+    "타락": "Debauch",
     "강인": "Tenacity",
 };
 
@@ -84,8 +84,8 @@ const enRevelationData = {
         "순수": "Purity",
     },
     "subTranslated": {
-        "반성": "Reflection",
-        "기쁨": "Joy",
+        "반성": "Failure",
+        "기쁨": "Happiness",
         "슬픔": "Sorrow",
         "변화": "Change",
         "신중": "Prudence",
@@ -113,18 +113,18 @@ const enRevelationData = {
         "개선": "Triumph",
         "좌절": "Defeat",
         "풍족": "Satiety",
-        "번영": "Flourishing",
-        "결단": "Determination",
+        "번영": "Wealth",
+        "결단": "Cruelty",
         "획득": "Obtain",
-        "타락": "Depravity",
+        "타락": "Debauch",
         "강인": "Tenacity",
     },
     "main": {
-        "Ego": ["Reflection", "Determination"], // 자아
-        "Purity": ["Depravity", "Change", "Flourishing"], // 순수
+        "Ego": ["Failure", "Cruelty"], // 자아
+        "Purity": ["Debauch", "Change", "Wealth"], // 순수
         "Nativity": ["Power"], // 탄생
-        "Agility": ["Flourishing", "Satiety", "Hindrance"], // 예리
-        "Perseverance": ["Sorrow", "Change", "Obtain"], //돌파
+        "Agility": ["Wealth", "Satiety", "Hindrance"], // 예리
+        "Perseverance": ["Sorrow", "Change", "Obtain", "Happiness"], //돌파
         "Hope": ["Labor", "Ruin", "Change"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조
         "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
@@ -141,11 +141,11 @@ const enRevelationData = {
         "Freedom": ["Triumph", "Defeat", "Disappointment"], // 자유
     },
     "sub": {
-        "Reflection": [], // 반성
-        "Joy": [], // 기쁨
-        "Flourishing": ["Agility", "Purity"], // 번영
-        "Determination": [], // 결단
-        "Depravity": ["Purity"], // 타락
+        "Failure": [], // 반성
+        "Happiness": ["Perseverance"], // 기쁨
+        "Wealth": ["Agility", "Purity"], // 번영
+        "Cruelty": [], // 결단
+        "Debauch": ["Purity"], // 타락
         "Tenacity": ["Creation"], // 강인
         "Satiety": ["Agility"], // 풍족
         "Obtain": ["Perseverance"], // 획득
@@ -177,22 +177,22 @@ const enRevelationData = {
         "Prosperity": ["Departure", "Trust"], // 풍요
     },
     "sub_effects": {
-        "Reflection": { // 반성
+        "Failure": { // 반성
             "set2": "Increase Wind DMG by 10%.",
             "set4": "Each hit increases the user's Follow Up DMG by 15% for 2 turns, stacking up to 3 times.",
             "type": ["질풍", "추가 효과", "미출시"]
         },
-        "Joy": { // 기쁨
+        "Happiness": { // 기쁨
             "set2": "Increase Healing Effect by 9%.",
             "set4": "After producing a healing effect with a Persona skill, increase all allies' DMG Dealt by 10% for 2 turns.",
             "type": ["치료", "버프", "미출시"]
         },
-        "Flourishing": { // 번영
+        "Wealth": { // 번영
             "set2": "Increase Attack by 12%.",
             "set4": "Increase DMG Dealt by 16%. After the user gains 2 [Rhapsody Beat], grants 50% of this partial buff effect to other allies. This can trigger once per battle and stack up to 2 times.",
             "type": ["버프", "미출시"]
         },
-        "Determination": { // 결단
+        "Cruelty": { // 결단
             "set2": "Increase DMG Dealt by 10%.",
             "set4": "Increase Attack by 15%. When the user spends [Rhapsody Beat], gain an additional 20% Critical Effect for 2 turns.",
             "type": ["크리티컬 효과", "미출시"]
@@ -337,7 +337,7 @@ const enRevelationData = {
             "set4": "When cast a skill that reduces health, increase damage by 12% for 2 turns, up to 2 stacks.",
             "type": ["미출시"]
         },
-        "Depravity": { //타락
+        "Debauch": { //타락
             "set2": "Increase ATK by 12%.",
             "set4": "DMG Dealt increased by 12%. This effect increases to 24% during an Extra Turn.",
             "type": ["미출시"]
@@ -350,15 +350,15 @@ const enRevelationData = {
     },
     "set_effects": {
         "Ego": {
-            "Reflection": "Increase Follow Up DMG Amplification by 16%.",
-            "Determination": "After the user consumes SP, increase DMG Dealt by 10% for 2 turns, stacking up to 4 times.",
+            "Failure": "Increase Follow Up DMG Amplification by 16%.",
+            "Cruelty": "After the user consumes SP, increase DMG Dealt by 10% for 2 turns, stacking up to 4 times.",
             "type": ["미출시"]
         },
         "Perseverance": {
             "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
             "Sorrow": "Increase continuous damage effect by 16%.",
             "Obtain": "Increase ATK based on your HP%, when HP% is 40%, increase ATK by 40%.",
-            "Joy": "When all allies' HP is below 10%, increase Critical Effect by 20%. This effect does not stack.",
+            "Happiness": "When all allies' HP is below 10%, increase Critical Effect by 20%. This effect does not stack.",
             "type": ["미출시"]
         },
         "Hope": {
@@ -437,7 +437,7 @@ const enRevelationData = {
             // "type": ["미출시"]
         },
         "Agility": {
-            "Flourishing": "Increase All-Out Attack DMG by 10%. After dealing All-Out Attack DMG, increase the entire party's Attack by 15%.",
+            "Wealth": "Increase All-Out Attack DMG by 10%. After dealing All-Out Attack DMG, increase the entire party's Attack by 15%.",
             "Satiety": "Increase All-Out Attack DMG by 16%.",
             "Hindrance": "During combat, increase Ailment Accuracy by 20%, and grant all allies a DMG Bonus equal to 10% of the user's Ailment Accuracy (up to 10% DMG Bonus).",
             "type": ["미출시"]
@@ -446,9 +446,9 @@ const enRevelationData = {
             "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%."
         },
         "Purity": { // 순수
-            "Depravity": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
+            "Debauch": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",
             "Change": "When using HIGHLIGHT, increases ATK by 30% and DMG Dealt by 25%.",
-            "Flourishing": "During battle, increase ATK by 20%. After landing a Crit, grant all allies a 12% DMG Bonus for 1 turn.",
+            "Wealth": "During battle, increase ATK by 20%. After landing a Crit, grant all allies a 12% DMG Bonus for 1 turn.",
             "type": ["미출시"]
         }
     },

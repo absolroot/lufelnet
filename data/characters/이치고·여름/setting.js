@@ -1,7 +1,7 @@
 window.characterSetting = window.characterSetting || {};
 window.characterSetting["이치고·여름"] = {
     "role": "생명연결 서브딜러",
-    "video": ["jvjD_Rez1Cw","IOcJaOwEnmY"],
+    "video": ["IOcJaOwEnmY","jvjD_Rez1Cw"],
     "video_en": [""],
     "video_jp": ["", ""],
     "main_revelation": ["돌파"],

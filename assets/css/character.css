@@ -118,10 +118,12 @@
     /* row-gap을 50px로 증가 */
     justify-content: left;
     padding: 20px 0px;
+    position: relative;
 }
 
 .character-cards--loading {
     min-height: max(720px, 100vh);
+    align-content: flex-start;
 }
 
 .card {
@@ -145,22 +147,6 @@
     border-radius: 10px;
     background: #202020;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
-}
-
-.character-card-skeleton::before {
-    opacity: 1;
-    background: linear-gradient(105deg,
-        transparent 35%,
-        rgba(255, 255, 255, 0.09) 48%,
-        transparent 62%);
-    background-size: 220% 100%;
-    animation: character-skeleton-shimmer 1.35s ease-in-out infinite;
-    mix-blend-mode: normal;
-    filter: none;
-}
-
-.character-card-skeleton__image {
-    display: block;
 }
 
 @keyframes character-skeleton-shimmer {
@@ -197,6 +183,46 @@
     transition: all 0.1s;
     pointer-events: none;
     z-index: 2;
+}
+
+.card.character-card-skeleton::before {
+    opacity: 1;
+    background: linear-gradient(105deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.09) 48%,
+        transparent 62%);
+    background-size: 220% 100%;
+    animation: character-skeleton-shimmer 1.35s ease-in-out infinite;
+    mix-blend-mode: normal;
+    filter: none;
+}
+
+.character-card-skeleton__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    filter: grayscale(100%);
+}
+
+.character-skeleton-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh 32px;
+    justify-content: left;
+    align-content: flex-start;
+    padding: 20px 0;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.7s ease-in-out;
+    z-index: 10;
+}
+
+.character-skeleton-overlay.is-fading {
+    opacity: 0;
 }
 
 .card img {
@@ -641,6 +667,12 @@
         /* 패딩 줄임 */
         gap: 2vh 2vw;
         /* 갭 조정 */
+    }
+
+    .character-skeleton-overlay {
+        justify-content: space-between;
+        gap: 2vh 2vw;
+        padding: 10px;
     }
 
     .filter-toggle-btn img {

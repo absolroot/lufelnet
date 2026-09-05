@@ -218,6 +218,7 @@ function renderCharacterListPage({ lang, title, description }) {
     'layout: default',
     'custom_css: [character]',
     'custom_js: [character/spoiler-state]',
+    'preload_character_skeleton: true',
     `title: ${yamlQuote(title)}`,
     `description: ${yamlQuote(description)}`,
     `language: ${lang}`,

@@ -4,6 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  {% if page.preload_character_skeleton %}
+  <link rel="preload" as="image" href="{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp" fetchpriority="high">
+  {% endif %}
 
   <!--
   <meta name="google-adsense-account" content="ca-pub-5862324369257695">

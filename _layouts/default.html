@@ -58,6 +58,9 @@
   {% else %}
   <meta name="description" content="Persona 5X Strategy and Information Site">
   {% endif %}
+  {% if page.robots %}
+  <meta name="robots" content="{{ page.robots }}">
+  {% endif %}
   <meta name="keywords" content="P5X, Persona5X, Guide, Strategy, Phantom Thieves">
   <meta name="author" content="LufelNet">
 
@@ -144,6 +147,75 @@
     if (navigator.globalPrivacyControl === true) {
       document.cookie = 'CCPAOPTOUT=1; Path=/; Max-Age=31536000; SameSite=Lax; Secure';
     }
+  </script>
+
+  <!-- Shared first-content lifecycle. Async pages can hold/release readiness without delaying top or rail ads. -->
+  <script>
+    (function () {
+      'use strict';
+
+      if (window.LufelPageLifecycle) return;
+
+      const holds = new Set();
+      let domReady = document.readyState !== 'loading';
+      let ready = false;
+      let scheduled = false;
+      let fallbackTimer = null;
+
+      function emitReady(source) {
+        if (ready) return;
+        ready = true;
+        scheduled = false;
+        if (fallbackTimer !== null) {
+          clearTimeout(fallbackTimer);
+          fallbackTimer = null;
+        }
+        document.dispatchEvent(new CustomEvent('lufel:content-ready', {
+          detail: { source: source || 'unknown' }
+        }));
+      }
+
+      function scheduleReady(source) {
+        if (ready || scheduled || !domReady || holds.size > 0) return;
+        scheduled = true;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            scheduled = false;
+            if (!ready && domReady && holds.size === 0) emitReady(source);
+          });
+        });
+      }
+
+      function onDomReady() {
+        if (domReady && fallbackTimer !== null) return;
+        domReady = true;
+        fallbackTimer = window.setTimeout(() => emitReady('timeout'), 3000);
+        scheduleReady('dom');
+      }
+
+      window.LufelPageLifecycle = {
+        hold(key) {
+          if (ready || !key) return false;
+          holds.add(String(key));
+          return true;
+        },
+        release(key) {
+          if (!key) return false;
+          const removed = holds.delete(String(key));
+          scheduleReady(`release:${key}`);
+          return removed;
+        },
+        isReady() {
+          return ready;
+        }
+      };
+
+      if (domReady) {
+        onDomReady();
+      } else {
+        document.addEventListener('DOMContentLoaded', onDomReady, { once: true });
+      }
+    })();
   </script>
 
   <!-- Nitro advertising and regional privacy controls (site ID 2620). -->
@@ -487,7 +559,7 @@
     {% assign ad_mode = page.ad_mode | default: 'page-end' %}
     {% if ad_mode == 'page-end' %}
     <div class="page-end-ad-region">
-      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true placeholder=true %}
+      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true placeholder=true start_after="content-ready" %}
     </div>
     {% endif %}
     <div class="footer-container">

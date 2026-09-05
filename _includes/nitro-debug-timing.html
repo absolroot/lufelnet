@@ -41,7 +41,10 @@
         bidderResponseMs: roundMilliseconds(adInfo.timeToRespond),
         size: Number.isFinite(adInfo.width) && Number.isFinite(adInfo.height)
           ? `${adInfo.width}x${adInfo.height}`
-          : null
+          : null,
+        durationMs: roundMilliseconds(detail.duration),
+        value: Number.isFinite(detail.value) ? Math.round(detail.value * 1000) / 1000 : null,
+        source: detail.source || null
       };
 
       records.push(record);
@@ -56,6 +59,9 @@
       if (record.bidder) parts.push(`bidder=${record.bidder}`);
       if (record.bidderResponseMs != null) parts.push(`bidderResponse=${record.bidderResponseMs}ms`);
       if (record.size) parts.push(`size=${record.size}`);
+      if (record.durationMs != null) parts.push(`duration=${record.durationMs}ms`);
+      if (record.value != null) parts.push(`value=${record.value}`);
+      if (record.source) parts.push(`source=${record.source}`);
 
       console.info(`[NitroTiming] ${parts.join(' ')}`);
     }
@@ -69,5 +75,55 @@
     window.LufelNitroAds.recordDebugTiming = function (eventName, detail) {
       recordTiming(eventName, { detail });
     };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      recordTiming('dom-content-loaded', { detail: {} });
+    }, { once: true });
+
+    window.addEventListener('load', () => {
+      recordTiming('window-load', { detail: {} });
+    }, { once: true });
+
+    document.addEventListener('lufel:content-ready', (event) => {
+      recordTiming('content-ready', event);
+    }, { once: true });
+
+    if ('PerformanceObserver' in window) {
+      let cumulativeLayoutShift = 0;
+
+      try {
+        new PerformanceObserver((list) => {
+          const entries = list.getEntries();
+          const lastEntry = entries[entries.length - 1];
+          if (lastEntry) {
+            recordTiming('largest-contentful-paint', {
+              detail: { value: lastEntry.startTime }
+            });
+          }
+        }).observe({ type: 'largest-contentful-paint', buffered: true });
+      } catch (_) { }
+
+      try {
+        new PerformanceObserver((list) => {
+          list.getEntries().forEach((entry) => {
+            if (entry.hadRecentInput) return;
+            cumulativeLayoutShift += entry.value;
+            recordTiming('layout-shift', {
+              detail: { value: cumulativeLayoutShift }
+            });
+          });
+        }).observe({ type: 'layout-shift', buffered: true });
+      } catch (_) { }
+
+      try {
+        new PerformanceObserver((list) => {
+          list.getEntries().forEach((entry) => {
+            recordTiming('long-task', {
+              detail: { duration: entry.duration, source: entry.name }
+            });
+          });
+        }).observe({ type: 'longtask', buffered: true });
+      } catch (_) { }
+    }
   })();
 </script>

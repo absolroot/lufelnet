@@ -120,6 +120,7 @@
     const MOBILE_BANNER_MEDIA_QUERY = '(max-width: 768px)';
     const isLocalDemo = LOCAL_HOSTNAMES.has(window.location.hostname);
     const initializedGlobalPlacements = new Set();
+    let contentReady = Boolean(window.LufelPageLifecycle?.isReady?.());
 
     function resolveGlobalPlacementOptions(placement) {
         const options = { ...placement.options };
@@ -196,6 +197,7 @@
 
     function createPlacement(slot) {
         if (!slot.id || slot.dataset.nitroInitialized === 'true') return;
+        if (slot.dataset.nitroStartAfter === 'content-ready' && !contentReady) return;
 
         const format = slot.dataset.nitroFormat || 'banner';
         const mediaQuery = slot.dataset.nitroMediaQuery;
@@ -278,8 +280,18 @@
         GLOBAL_PLACEMENTS.forEach(createGlobalPlacement);
     }
 
+    function initializeContentReadyPlacements() {
+        contentReady = true;
+        document.querySelectorAll('[data-nitro-ad][data-nitro-start-after="content-ready"]').forEach((slot) => {
+            watchPlaceholder(slot);
+            createPlacement(slot);
+        });
+    }
+
     window.LufelNitroAds = window.LufelNitroAds || {};
     window.LufelNitroAds.initializePlacements = initializePlacements;
+
+    document.addEventListener('lufel:content-ready', initializeContentReadyPlacements, { once: true });
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializePlacements, { once: true });

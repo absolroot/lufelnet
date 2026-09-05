@@ -10,6 +10,7 @@ const SCRIPT_PATH = fileURLToPath(import.meta.url);
 const PROJECT_ROOT = path.resolve(path.dirname(SCRIPT_PATH), '..', '..');
 const OUTPUT_PATH = path.join(PROJECT_ROOT, '_data', 'asset_versions.json');
 const HASH_LENGTH = 16;
+const TEXT_EXTENSIONS = new Set(['.css', '.csv', '.js', '.json', '.md', '.mjs', '.txt']);
 
 // These sets only define which files are discovered. Every output value is
 // calculated from one file's own bytes; no shared/group hash is produced.
@@ -69,8 +70,12 @@ function collectFiles(group) {
 }
 
 function hashFile(file) {
+  const bytes = fs.readFileSync(file.absolutePath);
+  const content = TEXT_EXTENSIONS.has(path.extname(file.relativePath).toLowerCase())
+    ? Buffer.from(bytes.toString('utf8').replace(/\r\n?/g, '\n'), 'utf8')
+    : bytes;
   return crypto.createHash('sha256')
-    .update(fs.readFileSync(file.absolutePath))
+    .update(content)
     .digest('hex')
     .slice(0, HASH_LENGTH);
 }

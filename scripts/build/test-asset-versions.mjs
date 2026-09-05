@@ -10,9 +10,13 @@ const SCRIPT_PATH = fileURLToPath(import.meta.url);
 const PROJECT_ROOT = path.resolve(path.dirname(SCRIPT_PATH), '..', '..');
 const MANIFEST_PATH = path.join(PROJECT_ROOT, '_data', 'asset_versions.json');
 const HASH_PATTERN = /^[0-9a-f]{16}$/;
+const TEXT_EXTENSIONS = new Set(['.css', '.csv', '.js', '.json', '.md', '.mjs', '.txt']);
 
-function contentHash(content) {
-  return crypto.createHash('sha256').update(content).digest('hex').slice(0, 16);
+function contentHash(content, assetPath) {
+  const normalized = TEXT_EXTENSIONS.has(path.extname(assetPath).toLowerCase())
+    ? Buffer.from(content.toString('utf8').replace(/\r\n?/g, '\n'), 'utf8')
+    : content;
+  return crypto.createHash('sha256').update(normalized).digest('hex').slice(0, 16);
 }
 
 function readAsset(assetPath) {
@@ -39,7 +43,7 @@ const representativeAssets = [
 for (const assetPath of representativeAssets) {
   assert.equal(
     manifest.files[assetPath],
-    contentHash(readAsset(assetPath)),
+    contentHash(readAsset(assetPath), assetPath),
     `${assetPath} must use its own file content hash`
   );
 }
@@ -47,13 +51,16 @@ for (const assetPath of representativeAssets) {
 const cssPath = '/assets/css/default/common.css';
 const jsPath = '/assets/js/version-runtime.js';
 const dataPath = '/data/character_info.js';
-const cssHashBefore = contentHash(readAsset(cssPath));
-const jsHashBefore = contentHash(readAsset(jsPath));
+const cssHashBefore = contentHash(readAsset(cssPath), cssPath);
+const jsHashBefore = contentHash(readAsset(jsPath), jsPath);
 const dataBytes = readAsset(dataPath);
-const simulatedDataHashAfter = contentHash(Buffer.concat([dataBytes, Buffer.from('\n/* data-only-build-test */\n')]));
+const simulatedDataHashAfter = contentHash(
+  Buffer.concat([dataBytes, Buffer.from('\n/* data-only-build-test */\n')]),
+  dataPath
+);
 
-assert.equal(contentHash(readAsset(cssPath)), cssHashBefore);
-assert.equal(contentHash(readAsset(jsPath)), jsHashBefore);
+assert.equal(contentHash(readAsset(cssPath), cssPath), cssHashBefore);
+assert.equal(contentHash(readAsset(jsPath), jsPath), jsHashBefore);
 assert.notEqual(simulatedDataHashAfter, manifest.files[dataPath]);
 
 console.log(`Verified ${Object.keys(manifest.files).length} independent per-file content hashes.`);

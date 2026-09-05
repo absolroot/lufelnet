@@ -40,6 +40,36 @@ function formatTemplate(template, value) {
   return String(template || '').replace(/\{value\}/g, String(value));
 }
 
+function getHomeTacticParty(tactic) {
+  if (Array.isArray(tactic?.party)) return tactic.party;
+  const parsed = typeof tactic?.query === 'string'
+    ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null)
+    : tactic?.query;
+  return Array.isArray(parsed?.party) ? parsed.party : [];
+}
+
+function getHomeTacticCharacterImageUrl(name) {
+  return `${BASE_URL}/assets/img/character-half/${encodeURIComponent(name)}.webp`;
+}
+
+function preloadHomeTacticPortraits(tactics) {
+  const names = new Set();
+  (tactics || []).forEach(tactic => {
+    try {
+      normalizeHomePreviewParty(getHomeTacticParty(tactic)).forEach(member => {
+        if (member?.name && member.name !== '원더' && member.name !== 'Wonder') names.add(member.name);
+      });
+    } catch (_) { }
+  });
+
+  names.forEach(name => {
+    const image = new Image();
+    image.decoding = 'async';
+    try { image.fetchPriority = 'high'; } catch (_) { image.setAttribute('fetchpriority', 'high'); }
+    image.src = getHomeTacticCharacterImageUrl(name);
+  });
+}
+
 async function waitHomeTacticI18nReady() {
   if (!window.__HOME_I18N_READY__) return;
   try {
@@ -87,6 +117,7 @@ async function loadHomeTacticsOnce(currentLang) {
       data = fallbackData || [];
     }
     if (error) throw error;
+    preloadHomeTacticPortraits(data);
     // IP verification is only needed when a visitor presses Like. Do not hold
     // the lower-page previews (and their character images) behind that request.
     void ensureHomePublicIp();
@@ -141,14 +172,7 @@ async function loadHomeTacticsOnce(currentLang) {
       postsListEl.appendChild(item);
       // 파티 프리뷰 렌더링
       try {
-        const party = Array.isArray(t.party)
-          ? t.party
-          : (() => {
-              const parsed = typeof t.query === 'string'
-                ? (t.query.startsWith('{') ? JSON.parse(t.query) : null)
-                : t.query;
-              return Array.isArray(parsed?.party) ? parsed.party : [];
-            })();
+        const party = getHomeTacticParty(t);
         const previewEl = createHomePreviewFromParty(party);
         const container = item.querySelector('.tactic-preview-container');
         if (container && previewEl) container.appendChild(previewEl);
@@ -288,12 +312,16 @@ function createHomePreviewFromParty(party) {
 
       const charImg = document.createElement('img');
       charImg.className = 'character-img';
-      charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
       charImg.alt = member.name;
       charImg.title = member.name;
-      charImg.loading = 'lazy';
+      // The home shows only three Tactic Library previews. These are the
+      // visible result of the card, so do not make pointer proximity decide
+      // when their character portraits begin downloading.
+      charImg.loading = 'eager';
       charImg.decoding = 'async';
-      charImg.setAttribute('fetchpriority', 'auto');
+      charImg.setAttribute('fetchpriority', 'high');
+      // Set src last: browsers decide lazy eligibility when src is assigned.
+      charImg.src = getHomeTacticCharacterImageUrl(member.name);
       container.appendChild(charImg);
     }
 

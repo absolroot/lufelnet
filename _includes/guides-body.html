@@ -47,15 +47,15 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
-<link rel="stylesheet" href="/apps/guides/guides.css">
-<script src="/apps/guides/guides.js"></script>
+<link rel="stylesheet" href="/apps/guides/guides.css?h={{ site.data.asset_versions.files['/apps/guides/guides.css'] }}">
+<script src="/apps/guides/guides.js?h={{ site.data.asset_versions.files['/apps/guides/guides.js'] }}"></script>
 
 <!-- main contents -->
 <div class="main-wrapper">
     <div class="header-container header-container--with-ad">
         <div class="header-title">
             <div class="navigation-path">
-                <script>document.write(`<a href="/?v=${APP_VERSION}" id="nav-home" data-i18n="nav.home">-</a>`);</script>
+                <a href="/" id="nav-home" data-i18n="nav.home">-</a>
                 <span class="separator">/</span>
                 <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
             </div>
@@ -70,7 +70,7 @@
     </div>
 </div>
 
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script>
     function detectArticleLang() {
         const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);

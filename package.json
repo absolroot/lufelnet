@@ -4,6 +4,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "assets:hashes:generate": "node scripts/build/generate-asset-versions.mjs",
+    "assets:hashes:check": "node scripts/build/generate-asset-versions.mjs --check",
+    "assets:hashes:test": "node scripts/build/test-asset-versions.mjs",
+    "assets:cache-policy:test": "node scripts/build/test-service-worker-cache-policy.mjs",
+    "site:build": "npm run assets:hashes:generate && bundle exec jekyll build --config _config.yml,_config.full-build.yml",
     "dev:local": "node scripts/dev-local.mjs",
     "gallery:allout:generate": "node scripts/gallery/generate-allout-assets.mjs",
     "gallery:allout:check": "node scripts/gallery/generate-allout-assets.mjs --check",

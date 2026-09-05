@@ -8,7 +8,7 @@
   window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 </script>
 {% endif %}
-<script src="{{ site.baseurl }}/assets/js/character/character-calc-base.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/assets/js/character/character-calc-base.js?h={{ site.data.asset_versions.files['/assets/js/character/character-calc-base.js'] }}"></script>
 
 <!-- URL rewrite: /character.html?name=X&lang=Y → /{lang}/character/{slug}/ -->
 <script>
@@ -90,8 +90,8 @@
 
 {% include supabase-config.html %}
 
-<script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/data/persona/order.js?h={{ site.data.asset_versions.files['/data/persona/order.js'] }}"></script>
+<script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
 <script>
     if (typeof ensurePersonaFilesLoaded === 'function') {
         ensurePersonaFilesLoaded();
@@ -917,11 +917,11 @@
                 ? `/${pathLangMatch[1]}`
                 : (pageLang && pageLang !== 'kr' ? `/${pageLang}` : '');
             if (homeLink) {
-                homeLink.href = `${langPrefix || ''}/?v=${APP_VERSION}`;
+                homeLink.href = `${langPrefix || ''}/`;
                 homeLink.textContent = getCharacterI18nText('nav.home', '홈');
             }
             if (listLink) {
-                listLink.href = `${langPrefix || ''}/character/?v=${APP_VERSION}`;
+                listLink.href = `${langPrefix || ''}/character/`;
                 listLink.textContent = getCharacterI18nText('navCurrent', '괴도');
             }
         } catch (e) { console.warn('[SAFE:nav-i18n]', e); }
@@ -1269,7 +1269,7 @@
 
             try {
                 const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
-                const langUrl = `${base}/data/character_info_glb.js?v=${APP_VERSION}`;
+                const langUrl = `${base}/data/character_info_glb.js?h={{ site.data.asset_versions.files['/data/character_info_glb.js'] }}`;
                 const response = await fetchWithRevalidate(langUrl);
                 if (!response.ok) return;
 
@@ -2652,7 +2652,7 @@
         return new Promise((resolve) => {
             if (currentLang === 'en') {
                 // 영어 계시 데이터 로드
-                fetchWithRevalidate(`${BASE_URL}/data/en/revelations/revelations.js?v=${APP_VERSION}`)
+                fetchWithRevalidate(`${BASE_URL}/data/en/revelations/revelations.js?h={{ site.data.asset_versions.files['/data/en/revelations/revelations.js'] }}`)
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 enRevelationData로 변경해서 실행
@@ -2667,7 +2667,7 @@
                     });
             } else if (currentLang === 'jp') {
                 // 일본어 계시 데이터는 영어 데이터와 동일하게 사용
-                fetchWithRevalidate(`${BASE_URL}/data/jp/revelations/revelations.js?v=${APP_VERSION}`)
+                fetchWithRevalidate(`${BASE_URL}/data/jp/revelations/revelations.js?h={{ site.data.asset_versions.files['/data/jp/revelations/revelations.js'] }}`)
                     .then(response => response.text())
                     .then(scriptContent => {
                         // revelationData를 jpRevelationData로 변경해서 실행
@@ -2681,7 +2681,7 @@
                         resolve(); // 실패해도 계속 진행
                     });
             } else if (currentLang === 'cn') {
-                fetchWithRevalidate(`${BASE_URL}/data/cn/revelations/revelations.js?v=${APP_VERSION}`)
+                fetchWithRevalidate(`${BASE_URL}/data/cn/revelations/revelations.js?h={{ site.data.asset_versions.files['/data/cn/revelations/revelations.js'] }}`)
                     .then(response => response.text())
                     .then(scriptContent => {
                         const modifiedScript = scriptContent.replace('const cnRevelationData', 'window.cnRevelationData');
@@ -2883,7 +2883,7 @@
 
         try {
             const base = (typeof BASE_URL !== 'undefined') ? BASE_URL : '';
-            const url = `${base}/data/character_info.js?v=${APP_VERSION}`;
+            const url = `${base}/data/character_info.js?h={{ site.data.asset_versions.files['/data/character_info.js'] }}`;
             const res = await fetchWithRevalidate(url);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const text = await res.text();
@@ -3809,4 +3809,4 @@
     </div>
 </div>
 
-<script src="{{ site.baseurl }}/assets/js/character/nature-skill.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/assets/js/character/nature-skill.js?h={{ site.data.asset_versions.files['/assets/js/character/nature-skill.js'] }}"></script>

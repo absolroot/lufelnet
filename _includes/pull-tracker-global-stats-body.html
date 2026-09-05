@@ -47,11 +47,11 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
-<link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?h={{ site.data.asset_versions.files['/apps/pull-tracker/pull-tracker.css'] }}">
 
 <div class="main-wrapper">
   <div class="navigation-path">
-    <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-lang-key="home" id="navhome">홈</span></a>`);</script>
+    <a href="{{ site.baseurl }}/"><span data-lang-key="home" id="navhome">홈</span></a>
     <span class="separator">/</span>
     <span class="current-page" id="navCurrent">Global Stats</span>
   </div>
@@ -148,9 +148,9 @@
 </div>
 
 
-<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?h={{ site.data.asset_versions.files['/apps/pull-tracker/js/i18n-runtime.js'] }}"></script>
 <script>
   window.__pullI18nReady = (async () => {
     try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('global'); } catch (_) { }
@@ -279,9 +279,9 @@
   })();
 </script>
 
-<script src="{{ site.baseurl }}/data/character_info.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/pull-tracker/js/lostlist.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/pull-tracker/js/global-stats.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/data/character_info.js?h={{ site.data.asset_versions.files['/data/character_info.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/lostlist.js?h={{ site.data.asset_versions.files['/apps/pull-tracker/js/lostlist.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/global-stats.js?h={{ site.data.asset_versions.files['/apps/pull-tracker/js/global-stats.js'] }}"></script>
 <script>
   // Initialize navigation (guarded)
   try { if (typeof Navigation !== 'undefined' && Navigation.load) { Navigation.load('pullTracker_global'); } } catch (_) { }

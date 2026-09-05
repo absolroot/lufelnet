@@ -4,7 +4,7 @@ title: 로그인
 language: kr
 permalink: /login/index.html
 ---
-<link rel="stylesheet" href="/login/login.css">
+<link rel="stylesheet" href="/apps/login/login.css?h={{ site.data.asset_versions.files['/apps/login/login.css'] }}">
 {% include supabase-config.html %}
 
 <div class="main-wrapper">
@@ -21,7 +21,7 @@ permalink: /login/index.html
   </div>
 </div>
 
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script>
 function getI18nText(key, fallback = '') {
   if (typeof window.t === 'function') {

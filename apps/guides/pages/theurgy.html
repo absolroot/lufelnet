@@ -10,8 +10,8 @@ image: /apps/guides/data/assets/theurgy/스크린샷 2026-02-11 114301.png
 ---
 
 <head>
-    <link rel="stylesheet" href="/apps/guides/guides.css">
-    <script src="/apps/guides/guides.js"></script>
+    <link rel="stylesheet" href="/apps/guides/guides.css?h={{ site.data.asset_versions.files['/apps/guides/guides.css'] }}">
+    <script src="/apps/guides/guides.js?h={{ site.data.asset_versions.files['/apps/guides/guides.js'] }}"></script>
 </head>
 
 <div class="main-wrapper">
@@ -20,7 +20,7 @@ image: /apps/guides/data/assets/theurgy/스크린샷 2026-02-11 114301.png
     </div>
 </div>
 
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', async () => {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';

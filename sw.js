@@ -1,9 +1,9 @@
 // Service Worker for PWA
-const SW_FALLBACK_VERSION = 'v4-js-css-no-cache';
+const SW_FALLBACK_VERSION = 'per-file-hash-v1';
 const SW_VERSION = (() => {
   try {
     const url = new URL(self.location.href);
-    return url.searchParams.get('v') || SW_FALLBACK_VERSION;
+    return url.searchParams.get('h') || url.searchParams.get('v') || SW_FALLBACK_VERSION;
   } catch (_) {
     return SW_FALLBACK_VERSION;
   }
@@ -34,6 +34,7 @@ function toImageCacheKey(request) {
     const url = new URL(request.url);
     // Ignore runtime version query to avoid duplicate cache entries.
     url.searchParams.delete('v');
+    url.searchParams.delete('h');
     return url.toString();
   } catch (_) {
     return request.url;
@@ -173,11 +174,9 @@ self.addEventListener('fetch', (event) => {
     url.pathname.includes('/assets/css/');
 
   if (isJSOrCSSOrData) {
-    const isVersionManifest = url.pathname.endsWith('/assets/js/version-manifest.js');
-    const isStylesheet = url.pathname.endsWith('.css') || url.pathname.includes('/assets/css/');
-    if (url.searchParams.has('v') && !isVersionManifest && !isStylesheet) {
-      // Versioned JS/data can use the browser HTTP cache. CSS intentionally
-      // revalidates because style changes may deploy without an APP_VERSION bump.
+    if (url.searchParams.has('h')) {
+      // The build-generated hash changes only when this exact file changes,
+      // so the browser HTTP cache is safe for this immutable URL.
       return;
     }
     const revalidateRequest = new Request(request, { cache: 'no-cache' });

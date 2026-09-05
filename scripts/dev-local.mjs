@@ -6,6 +6,7 @@ import process from 'process';
 import readline from 'readline';
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
+import { generateAssetVersions } from './build/generate-asset-versions.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -194,6 +195,20 @@ function logDev(message) {
 
 function logDevError(message) {
   writePrefixed('dev', message, 'stderr');
+}
+
+function refreshAssetVersions() {
+  const result = generateAssetVersions();
+  const metadataPath = path.join(PROJECT_ROOT, '.jekyll-metadata');
+  const manifestMtime = fs.statSync(result.outputPath).mtimeMs;
+  const metadataMtime = fs.existsSync(metadataPath) ? fs.statSync(metadataPath).mtimeMs : 0;
+  if (manifestMtime > metadataMtime && fs.existsSync(metadataPath)) {
+    fs.rmSync(metadataPath, { force: true });
+    logDev('cleared stale Jekyll incremental metadata');
+  }
+  if (result.changed) {
+    logDev('asset content hashes updated');
+  }
 }
 
 function createPrefixedChunkWriter(prefix, stream = 'stdout') {
@@ -536,6 +551,7 @@ function startJekyllProcess() {
     logDev('jekyll is stopping; try again in a moment');
     return;
   }
+  refreshAssetVersions();
   const args = buildJekyllServeArgs();
   launchManagedProcess(proc, BUNDLE_CMD, args, { detached: process.platform !== 'win32' });
   logDev(`jekyll start requested (mode=${runtime.currentMode})`);
@@ -601,6 +617,7 @@ function startBuildProcess(modeName) {
     logDev("build mode must be 'full' or 'fast'");
     return;
   }
+  refreshAssetVersions();
   const args = buildJekyllBuildArgs(mode);
   launchManagedProcess(proc, BUNDLE_CMD, args, { detached: false });
   logDev(`build started (${mode})`);

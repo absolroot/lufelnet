@@ -28,7 +28,7 @@
 
 
   <!-- 지역별 메타태그 동적 생성 스크립트 -->
-  <script src="{{ site.baseurl }}/assets/js/geo-meta.js?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/geo-meta.js?h={{ site.data.asset_versions.files['/assets/js/geo-meta.js'] }}" defer></script>
 
   <!-- canonical URL -->
   {% assign current_url = page.url | replace:'index.html','' | replace:'.html','' %}
@@ -241,7 +241,7 @@
     };
   </script>
   <script data-cfasync="false" async src="https://s.nitropay.com/ads-2620.js" onload="window.__setLufelNitroLoaderStatus('loaded')" onerror="window.__setLufelNitroLoaderStatus('blocked')"></script>
-  <script src="{{ site.baseurl }}/assets/js/nitro-ads.js?v={{ site.time | date: '%s' }}" defer></script>
+  <script src="{{ site.baseurl }}/assets/js/nitro-ads.js?h={{ site.data.asset_versions.files['/assets/js/nitro-ads.js'] }}" defer></script>
 
   <!-- Google tag (gtag.js), lazily loaded. Nitro custom consent ID "ga" updates Consent Mode in CMP regions. -->
   <script>
@@ -298,15 +298,13 @@
 
 
   <!-- 버전 관리 스크립트 -->
-  <script src="{{ site.baseurl }}/assets/js/version-manifest.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/version-manifest.js?h={{ site.data.asset_versions.files['/assets/js/version-manifest.js'] }}"></script>
   <script>
     (function loadVersionScripts() {
-      var appVersion = (typeof window.APP_VERSION === 'string' && window.APP_VERSION.trim())
-        ? window.APP_VERSION.trim()
-        : '0';
-      var versionScriptBuild = '{{ site.time | date: '%s' }}';
-      document.write('<script src="{{ site.baseurl }}/assets/js/version-runtime.js?v=' + encodeURIComponent(versionScriptBuild) + '"><\/script>');
-      document.write('<script src="{{ site.baseurl }}/assets/js/version.js?v=' + encodeURIComponent(versionScriptBuild) + '"><\/script>');
+      var runtimeHash = '{{ site.data.asset_versions.files['/assets/js/version-runtime.js'] }}';
+      var versionUiHash = '{{ site.data.asset_versions.files['/assets/js/version.js'] }}';
+      document.write('<script src="{{ site.baseurl }}/assets/js/version-runtime.js?h=' + encodeURIComponent(runtimeHash) + '"><\/script>');
+      document.write('<script src="{{ site.baseurl }}/assets/js/version.js?h=' + encodeURIComponent(versionUiHash) + '"><\/script>');
     })();
   </script>
 
@@ -323,7 +321,7 @@
 
 
   <script>
-    // APP_VERSION을 사용하여 리소스 버전 관리
+    // 빌드에서 생성한 콘텐츠 해시로 정적 자원 캐시를 관리한다.
     const BASE_URL = '{{ site.baseurl }}';
 
 
@@ -388,42 +386,60 @@
     {% endif %}
 
     // 기본 CSS 및 JS 파일 로드
-    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?v=' + APP_VERSION + '">');
-    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/allowlist-guide.css?v=' + APP_VERSION + '">');
-    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?v=' + APP_VERSION + '">');
-    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/version-update.css?v=' + APP_VERSION + '">');
-    document.write('<script src="{{ site.baseurl }}/assets/js/language-router.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-compat.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/character/character-data-utils.js?v=' + APP_VERSION + '"><\/script>');
-    //document.write('<script src="{{ site.baseurl }}/assets/js/april-fools.js?v=' + APP_VERSION + '&af=20260331-7"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/nav.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/allowlist-guide.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/cn-beta-notice.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/top_button.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?v=' + APP_VERSION + '"><\/script>');
-    document.write('<script src="{{ site.baseurl }}/assets/js/seo/engine.js?v=' + APP_VERSION + '"><\/script>');
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/common.css?h={{ site.data.asset_versions.files['/assets/css/default/common.css'] }}">');
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/allowlist-guide.css?h={{ site.data.asset_versions.files['/assets/css/default/allowlist-guide.css'] }}">');
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/nav.css?h={{ site.data.asset_versions.files['/assets/css/default/nav.css'] }}">');
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/version-update.css?h={{ site.data.asset_versions.files['/assets/css/default/version-update.css'] }}">');
+    document.write('<script src="{{ site.baseurl }}/assets/js/language-router.js?h={{ site.data.asset_versions.files['/assets/js/language-router.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/i18n/service/i18n-compat.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-compat.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/character/character-data-utils.js?h={{ site.data.asset_versions.files['/assets/js/character/character-data-utils.js'] }}"><\/script>');
+    //document.write('<script src="{{ site.baseurl }}/assets/js/april-fools.js?h={{ site.data.asset_versions.files['/assets/js/april-fools.js'] }}&af=20260331-7"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/nav.js?h={{ site.data.asset_versions.files['/assets/js/nav.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/allowlist-guide.js?h={{ site.data.asset_versions.files['/assets/js/allowlist-guide.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/cn-beta-notice.js?h={{ site.data.asset_versions.files['/assets/js/cn-beta-notice.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/top_button.js?h={{ site.data.asset_versions.files['/assets/js/top_button.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?h={{ site.data.asset_versions.files['/assets/js/seo/context-resolver.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?h={{ site.data.asset_versions.files['/assets/js/seo/url-normalizer.js'] }}"><\/script>');
+    document.write('<script src="{{ site.baseurl }}/assets/js/seo/engine.js?h={{ site.data.asset_versions.files['/assets/js/seo/engine.js'] }}"><\/script>');
 
     // 페이지별 CSS 파일 로드
     {% if page.custom_css %}
     {% for css_file in page.custom_css %}
-    document.write(`<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/{{ css_file }}.css?v=${APP_VERSION}">`);
+    {% capture css_asset_path %}/assets/css/{{ css_file }}.css{% endcapture %}
+    {% assign css_asset_hash = site.data.asset_versions.files[css_asset_path] %}
+    document.write('<link rel="stylesheet" href="{{ site.baseurl }}{{ css_asset_path }}?h={{ css_asset_hash }}">');
     {% endfor %}
     {% endif %}
 
     // 페이지별 JS 파일 로드
     {% if page.custom_js %}
     {% for js_file in page.custom_js %}
-    document.write(`<script src="{{ site.baseurl }}/assets/js/{{ js_file }}.js?v=${APP_VERSION}"><\/script>`);
+    {% capture js_asset_path %}/assets/js/{{ js_file }}.js{% endcapture %}
+    {% assign js_asset_hash = site.data.asset_versions.files[js_asset_path] %}
+    document.write('<script src="{{ site.baseurl }}{{ js_asset_path }}?h={{ js_asset_hash }}"><\/script>');
     {% endfor %}
     {% endif %}
 
     // 페이지별 데이터 파일 로드 (기본 한국어, geo-meta.js에서 언어별 동적 로딩)
     {% if page.custom_data %}
     {% for data_file in page.custom_data %}
+    {% assign data_asset_path = nil %}
+    {% assign data_prefix = data_file | slice: 0, 5 %}
+    {% unless data_file contains '://' %}
+      {% assign data_first_char = data_file | slice: 0 %}
+      {% if data_first_char == '/' %}
+        {% assign data_asset_path = data_file %}
+      {% elsif data_prefix == 'data/' %}
+        {% assign data_asset_path = '/' | append: data_file %}
+      {% else %}
+        {% assign data_asset_path = '/data/kr/' | append: data_file %}
+      {% endif %}
+    {% endunless %}
+    {% assign data_asset_hash = site.data.asset_versions.files[data_asset_path] %}
     {
       const dataFile = '{{ data_file }}';
+      const dataHash = '{{ data_asset_hash }}';
       let dataSrc = '';
       if (/^https?:\/\//i.test(dataFile)) {
         dataSrc = dataFile;
@@ -434,7 +450,10 @@
       } else {
         dataSrc = `${BASE_URL}/data/kr/${dataFile}`;
       }
-      document.write(`<script src="${dataSrc}?v=${APP_VERSION}"><\/script>`);
+      const cacheQuery = dataHash
+        ? `?h=${encodeURIComponent(dataHash)}`
+        : `?v=${encodeURIComponent(APP_VERSION)}`;
+      document.write(`<script src="${dataSrc}${cacheQuery}"><\/script>`);
     }
     {% endfor %}
     {% endif %}
@@ -613,7 +632,7 @@
 
     if ('serviceWorker' in navigator && !isLocalhost) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js?v=' + encodeURIComponent(APP_VERSION))
+        navigator.serviceWorker.register('{{ site.baseurl }}/sw.js?h={{ site.data.asset_versions.files['/sw.js'] }}')
           .then((registration) => {
             console.log('[PWA] Service Worker 등록 성공:', registration.scope);
 

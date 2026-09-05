@@ -65,7 +65,7 @@
 
         if (!isSameOrigin(resolved)) return source;
         if (!shouldAttachVersion(resolved)) return source;
-        if (resolved.searchParams.has('v')) return source;
+        if (resolved.searchParams.has('h') || resolved.searchParams.has('v')) return source;
 
         resolved.searchParams.set('v', getAppVersion());
         return toOutputUrl(resolved, input);

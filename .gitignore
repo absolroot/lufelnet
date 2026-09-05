@@ -5,6 +5,8 @@ __pycache__/
 *.so
 .Python
 build/
+!scripts/build/
+!scripts/build/*.mjs
 develop-eggs/
 dist/
 downloads/

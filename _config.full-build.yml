@@ -1,0 +1,3 @@
+# Deployment and verification builds must render every page with the asset
+# manifest generated in the same run.
+incremental: false

@@ -3,7 +3,7 @@ layout: default
 title: 회원가입
 permalink: /login/signup.html
 ---
-<link rel="stylesheet" href="/login/login.css">
+<link rel="stylesheet" href="/apps/login/login.css?h={{ site.data.asset_versions.files['/apps/login/login.css'] }}">
 {% include supabase-config.html %}
 
 <div class="auth-container">
@@ -78,4 +78,4 @@ document.addEventListener('DOMContentLoaded', () => {
   Navigation.load('');
   VersionChecker.check();
 });
-</script> 
+</script>

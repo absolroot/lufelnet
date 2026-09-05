@@ -26,11 +26,11 @@ layout: null
             };
         })();
     </script>
-    <script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/assets/js/seo/engine.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/i18n/service/i18n-service.js"></script>
-    <script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js"></script>
+    <script src="{{ site.baseurl }}/assets/js/seo/context-resolver.js?h={{ site.data.asset_versions.files['/assets/js/seo/context-resolver.js'] }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/seo/url-normalizer.js?h={{ site.data.asset_versions.files['/assets/js/seo/url-normalizer.js'] }}"></script>
+    <script src="{{ site.baseurl }}/assets/js/seo/engine.js?h={{ site.data.asset_versions.files['/assets/js/seo/engine.js'] }}"></script>
+    <script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+    <script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {

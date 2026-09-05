@@ -60,58 +60,13 @@ class VersionChecker {
 
     static async clearCache() {
         try {
-            // Service Worker에 버전 업데이트 메시지 전송 (캐시 삭제 요청)
-            if ('serviceWorker' in navigator && navigator.serviceWorker.controller) {
-                try {
-                    // Service Worker에 버전 업데이트 알림
-                    navigator.serviceWorker.controller.postMessage({
-                        type: 'VERSION_UPDATE',
-                        version: APP_VERSION
-                    });
-                    console.log('[VersionChecker] Service Worker에 버전 업데이트 알림:', APP_VERSION);
-                } catch (e) {
-                    console.warn('[VersionChecker] Service Worker 메시지 전송 실패:', e);
-                }
-            }
-
-            // 모든 캐시 삭제 (Service Worker 캐시 포함)
-            const cacheNames = await caches.keys();
-            await Promise.all(
-                cacheNames.map(name => caches.delete(name))
-            );
-            //console.log('Cache cleared successfully');
-
-            // CSS와 JS 파일 강제 새로고침 (APP_VERSION 사용)
-            const resources = document.querySelectorAll('link[rel="stylesheet"], script[src]');
-            resources.forEach(resource => {
-                const url = new URL(resource.href || resource.src);
-                // 기존 v 파라미터 제거
-                url.searchParams.delete('v');
-                // 새로운 버전 추가
-                url.searchParams.set('v', APP_VERSION);
-
-                if (resource.tagName === 'LINK') {
-                    resource.href = url.toString();
-                } else if (resource.src && !resource.src.includes('googlesyndication') && !resource.src.includes('googletagmanager')) {
-                    // 광고 및 분석 스크립트 제외하고 새로고침
-                    const newScript = document.createElement('script');
-                    newScript.src = url.toString();
-                    resource.parentNode.replaceChild(newScript, resource);
-                }
-            });
-
-            // Service Worker는 해제하지 않음 (PWA 기능 유지)
-            // 대신 업데이트만 요청
+            // Each content-hashed URL is immutable. Preserve unchanged CSS,
+            // JS and images, update only the worker itself, then reload HTML.
             if ('serviceWorker' in navigator) {
                 const registrations = await navigator.serviceWorker.getRegistrations();
-                // 각 Service Worker 업데이트 요청
-                await Promise.all(
-                    registrations.map(registration => registration.update())
-                );
-                //console.log('Service workers updated');
+                await Promise.all(registrations.map(registration => registration.update()));
             }
 
-            // 브라우저 캐시 강제 무효화
             await fetch(window.location.href, {
                 cache: 'reload',
                 headers: {
@@ -121,7 +76,7 @@ class VersionChecker {
                 }
             });
         } catch (error) {
-            console.error('Cache clearing failed:', error);
+            console.error('Update refresh failed:', error);
         }
     }
 

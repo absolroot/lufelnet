@@ -38,10 +38,10 @@
   }
 })();
 </script>
-<link rel="stylesheet" href="/apps/home/home.css">
-<script src="/apps/home/tactic-posts-home.js"></script>
-<script src="/apps/home/js/popular-characters.js?v={{ site.time | date: '%s' }}"></script>
-<script src="/apps/home/js/guides-home.js"></script>
+<link rel="stylesheet" href="/apps/home/home.css?h={{ site.data.asset_versions.files['/apps/home/home.css'] }}">
+<script src="/apps/home/tactic-posts-home.js?h={{ site.data.asset_versions.files['/apps/home/tactic-posts-home.js'] }}"></script>
+<script src="/apps/home/js/popular-characters.js?h={{ site.data.asset_versions.files['/apps/home/js/popular-characters.js'] }}"></script>
+<script src="/apps/home/js/guides-home.js?h={{ site.data.asset_versions.files['/apps/home/js/guides-home.js'] }}"></script>
 
 {% if page.alternate_urls %}
 {% for alt in page.alternate_urls %}
@@ -418,18 +418,18 @@
 </div>
 
 <!-- Home i18n bootstrap -->
-<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
-<script src="/apps/home/js/home-i18n.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
+<script src="/apps/home/js/home-i18n.js?h={{ site.data.asset_versions.files['/apps/home/js/home-i18n.js'] }}"></script>
 <!-- Carousel JS -->
-<script src="/apps/home/js/carousel.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/carousel.js?h={{ site.data.asset_versions.files['/apps/home/js/carousel.js'] }}"></script>
 <!-- Tooltip (for affix hover) -->
-<script src="{{ site.baseurl }}/assets/js/tooltip.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/assets/js/tooltip.js?h={{ site.data.asset_versions.files['/assets/js/tooltip.js'] }}"></script>
 <!-- Bosses JS -->
-<script src="/apps/home/js/bosses.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/bosses.js?h={{ site.data.asset_versions.files['/apps/home/js/bosses.js'] }}"></script>
 <!-- SOS JS -->
-<script src="/apps/home/js/sos.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/sos.js?h={{ site.data.asset_versions.files['/apps/home/js/sos.js'] }}"></script>
 <!-- Quick Grid JS -->
-<script src="/apps/home/js/quick-grid.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/quick-grid.js?h={{ site.data.asset_versions.files['/apps/home/js/quick-grid.js'] }}"></script>
 <!-- Lufelnet Anniversary Modal -->
 <script>
     // ON/OFF: enabled 값을 true/false로 바꾸면 됩니다.
@@ -442,10 +442,10 @@
         imageSrc: '/assets/img/home/Texture-huigui-qiribg03.png'
     };
 </script>
-<script src="/apps/home/js/anniversary-modal.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/home/js/anniversary-modal.js?h={{ site.data.asset_versions.files['/apps/home/js/anniversary-modal.js'] }}"></script>
 <!-- Account Service Notice Modal -->
-<!-- <script src="/apps/home/js/account-service-notice.js?v={{ site.time | date: '%s' }}"></script> -->
-<link rel="stylesheet" href="/apps/home/js/carousel.css?v={{ site.time | date: '%s' }}">
+<!-- <script src="/apps/home/js/account-service-notice.js?h={{ site.data.asset_versions.files['/apps/home/js/account-service-notice.js'] }}"></script> -->
+<link rel="stylesheet" href="/apps/home/js/carousel.css?h={{ site.data.asset_versions.files['/apps/home/js/carousel.css'] }}">
 
 
 <script>

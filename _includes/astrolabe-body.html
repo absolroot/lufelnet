@@ -48,7 +48,7 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
-<link rel="stylesheet" href="{{ site.baseurl }}/apps/astrolabe/css/style.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/astrolabe/css/style.css?h={{ site.data.asset_versions.files['/apps/astrolabe/css/style.css'] }}">
 
 <style>
     /* Override container styles for full-screen canvas */
@@ -159,16 +159,16 @@
         }
     });
 </script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/config.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/astrolabe/kr.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/astrolabe/en.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/astrolabe/jp.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/astrolabe/cn.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/astrolabe/tw.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/astrolabe/sea.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/i18n.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/data-loader.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/adapt-sprite.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/canvas-renderer.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/node-detail.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/astrolabe/js/main.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/config.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/config.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/kr.js?h={{ site.data.asset_versions.files['/i18n/pages/astrolabe/kr.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/en.js?h={{ site.data.asset_versions.files['/i18n/pages/astrolabe/en.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/jp.js?h={{ site.data.asset_versions.files['/i18n/pages/astrolabe/jp.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/cn.js?h={{ site.data.asset_versions.files['/i18n/pages/astrolabe/cn.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/tw.js?h={{ site.data.asset_versions.files['/i18n/pages/astrolabe/tw.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/astrolabe/sea.js?h={{ site.data.asset_versions.files['/i18n/pages/astrolabe/sea.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/i18n.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/i18n.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/data-loader.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/data-loader.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/adapt-sprite.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/adapt-sprite.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/canvas-renderer.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/canvas-renderer.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/node-detail.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/node-detail.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/astrolabe/js/main.js?h={{ site.data.asset_versions.files['/apps/astrolabe/js/main.js'] }}"></script>

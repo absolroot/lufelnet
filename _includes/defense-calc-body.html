@@ -41,12 +41,12 @@
 })();
 </script>
 
-<link rel="stylesheet" href="/apps/defense-calc/defense-calc.css">
-<script src="/apps/defense-calc/defense-calc.js"></script>
+<link rel="stylesheet" href="/apps/defense-calc/defense-calc.css?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.css'] }}">
+<script src="/apps/defense-calc/defense-calc.js?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.js'] }}"></script>
 
-<script src="{{ site.baseurl }}/data/characters/J&C/JC_calc.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/data/characters/J&C/JC_calc.js?h={{ site.data.asset_versions.files['/data/characters/J&C/JC_calc.js'] }}"></script>
+<script src="{{ site.baseurl }}/data/persona/order.js?h={{ site.data.asset_versions.files['/data/persona/order.js'] }}"></script>
+<script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
 <script>
   if (typeof ensurePersonaFilesLoaded === 'function') {
     ensurePersonaFilesLoaded();
@@ -66,7 +66,7 @@
     <div class="header-container header-container--with-ad">
         <div class="header-title">
             <div class="navigation-path">
-                <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+                <a href="../../" id="nav-home">-</a>
                 <span class="separator">/</span>
                 <span class="current-page" id="nav-current">-</span>
             </div>
@@ -424,10 +424,10 @@
 </div>
 
 
-<script src="{{ site.baseurl }}/i18n/pages/defense-calc/kr.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/defense-calc/en.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/defense-calc/jp.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/defense-calc/cn.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/defense-calc/kr.js?h={{ site.data.asset_versions.files['/i18n/pages/defense-calc/kr.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/defense-calc/en.js?h={{ site.data.asset_versions.files['/i18n/pages/defense-calc/en.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/defense-calc/jp.js?h={{ site.data.asset_versions.files['/i18n/pages/defense-calc/jp.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/defense-calc/cn.js?h={{ site.data.asset_versions.files['/i18n/pages/defense-calc/cn.js'] }}"></script>
 <script>
     function detectDefenseCalcLang() {
         const pathMatch = window.location.pathname.match(/^\/(kr|en|jp|cn)(\/|$)/i);

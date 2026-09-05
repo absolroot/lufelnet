@@ -10,14 +10,14 @@ window.LufelPageLifecycle?.hold('synergy');
 </script>
 
 <div class="main-wrapper">
-    <link rel="stylesheet" href="{{ site.baseurl }}/apps/synergy/synergy.css?v={{ site.time | date: '%s' }}">
-    <link rel="stylesheet" href="{{ site.baseurl }}/apps/synergy/soulmate.css?v={{ site.time | date: '%s' }}">
-    <script src="{{ site.baseurl }}/assets/js/ad-injector.js?v={{ site.time | date: '%s' }}"></script>
-    <script src="{{ site.baseurl }}/data/character_info.js?v={{ site.time | date: '%s' }}"></script>
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/synergy/synergy.css?h={{ site.data.asset_versions.files['/apps/synergy/synergy.css'] }}">
+    <link rel="stylesheet" href="{{ site.baseurl }}/apps/synergy/soulmate.css?h={{ site.data.asset_versions.files['/apps/synergy/soulmate.css'] }}">
+    <script src="{{ site.baseurl }}/assets/js/ad-injector.js?h={{ site.data.asset_versions.files['/assets/js/ad-injector.js'] }}"></script>
+    <script src="{{ site.baseurl }}/data/character_info.js?h={{ site.data.asset_versions.files['/data/character_info.js'] }}"></script>
 
     <!-- i18n 서비스 -->
-    <script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
-    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+    <script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
     <div class="navigation-path">
         <script>document.write(`<a href="../../" id="nav-home" data-i18n="nav.home">-</a>`);</script>
@@ -88,8 +88,8 @@ window.LufelPageLifecycle?.hold('synergy');
     </template>
 </div>
 
-<script src="{{ site.baseurl }}/apps/synergy/synergy_search.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/synergy/item_from.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/synergy/synergy.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/synergy/discount_tooltip.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/synergy/soulmate.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/synergy_search.js?h={{ site.data.asset_versions.files['/apps/synergy/synergy_search.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/item_from.js?h={{ site.data.asset_versions.files['/apps/synergy/item_from.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/synergy.js?h={{ site.data.asset_versions.files['/apps/synergy/synergy.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/discount_tooltip.js?h={{ site.data.asset_versions.files['/apps/synergy/discount_tooltip.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/synergy/soulmate.js?h={{ site.data.asset_versions.files['/apps/synergy/soulmate.js'] }}"></script>

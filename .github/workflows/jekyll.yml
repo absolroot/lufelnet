@@ -39,8 +39,18 @@ jobs:
       if: github.event_name == 'pull_request'
       run: npm run seo:all:check
 
+    - name: Check committed asset content hashes (PR only)
+      if: github.event_name == 'pull_request'
+      run: npm run assets:hashes:check
+
     - name: Generate all SEO pages
       run: npm run seo:all:generate
+
+    - name: Generate asset content hashes
+      run: npm run assets:hashes:generate
+
+    - name: Test independent per-file asset hashes
+      run: npm run assets:hashes:test && npm run assets:cache-policy:test
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
@@ -57,7 +67,7 @@ jobs:
         bundle install --jobs 4 --retry 3 --without development
     
     - name: Build site
-      run: bundle exec jekyll build
+      run: bundle exec jekyll build --config _config.yml,_config.full-build.yml
 
     - name: Validate sitemap outputs
       run: npm run seo:sitemap:check

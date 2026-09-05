@@ -76,7 +76,7 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
-<link rel="stylesheet" href="{{ site.baseurl }}/apps/velvet_trial/css/style.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/velvet_trial/css/style.css?h={{ site.data.asset_versions.files['/apps/velvet_trial/css/style.css'] }}">
 
 <script>
     window.BASE_URL = "{{ site.baseurl }}";
@@ -136,14 +136,14 @@
         }
     });
 </script>
-<script src="{{ site.baseurl }}/apps/velvet_trial/js/config.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/kr.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/en.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/jp.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/cn.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/velvet_trial/js/i18n.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/velvet_trial/js/data-loader.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/velvet_trial/js/adapt-sprite.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/velvet_trial/js/render.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/velvet_trial/js/main.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/config.js?h={{ site.data.asset_versions.files['/apps/velvet_trial/js/config.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/kr.js?h={{ site.data.asset_versions.files['/i18n/pages/velvet-trial/kr.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/en.js?h={{ site.data.asset_versions.files['/i18n/pages/velvet-trial/en.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/jp.js?h={{ site.data.asset_versions.files['/i18n/pages/velvet-trial/jp.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/pages/velvet-trial/cn.js?h={{ site.data.asset_versions.files['/i18n/pages/velvet-trial/cn.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/i18n.js?h={{ site.data.asset_versions.files['/apps/velvet_trial/js/i18n.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/data-loader.js?h={{ site.data.asset_versions.files['/apps/velvet_trial/js/data-loader.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/adapt-sprite.js?h={{ site.data.asset_versions.files['/apps/velvet_trial/js/adapt-sprite.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/render.js?h={{ site.data.asset_versions.files['/apps/velvet_trial/js/render.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/velvet_trial/js/main.js?h={{ site.data.asset_versions.files['/apps/velvet_trial/js/main.js'] }}"></script>
 

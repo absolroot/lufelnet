@@ -55,8 +55,8 @@
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/character.css?v={{ site.time | date: '%s' }}">
-<link rel="stylesheet" href="{{ site.baseurl }}/apps/share-character/share-character.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/character.css?h={{ site.data.asset_versions.files['/assets/css/character.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/share-character/share-character.css?h={{ site.data.asset_versions.files['/apps/share-character/share-character.css'] }}">
 
 <div class="main-wrapper sc-page">
     <div class="navigation-path">
@@ -321,8 +321,8 @@
 
 <div id="scToastHost" class="sc-toast-host" aria-live="polite" aria-atomic="true"></div>
 
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/assets/js/share/share-hub.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/share-character/js/share-character-capture.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/share-character/js/share-character-share-backup.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/share-character/share-character.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
+<script src="{{ site.baseurl }}/assets/js/share/share-hub.js?h={{ site.data.asset_versions.files['/assets/js/share/share-hub.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/share-character/js/share-character-capture.js?h={{ site.data.asset_versions.files['/apps/share-character/js/share-character-capture.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/share-character/js/share-character-share-backup.js?h={{ site.data.asset_versions.files['/apps/share-character/js/share-character-share-backup.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/share-character/share-character.js?h={{ site.data.asset_versions.files['/apps/share-character/share-character.js'] }}"></script>

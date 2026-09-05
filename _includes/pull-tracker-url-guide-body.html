@@ -49,7 +49,7 @@
 
 <div class="main-wrapper guide-page">
   <div class="navigation-path">
-    <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}" id="navhome"><span data-lang-key="home">Home</span></a>`);</script>
+    <a href="{{ site.baseurl }}/" id="navhome"><span data-lang-key="home">Home</span></a>
     <span class="separator">/</span>
     <a href="../"><span id="navBack">Pull Tracker</span></a>
     <span class="separator">/</span>
@@ -462,9 +462,9 @@
   }
 </style>
 
-<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?v={{ site.time | date: '%s' }}"></script>
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/pull-tracker/js/i18n-runtime.js?h={{ site.data.asset_versions.files['/apps/pull-tracker/js/i18n-runtime.js'] }}"></script>
 <script>
   window.__pullI18nReady = (async () => {
     try { if (window.PullTrackerI18n) await window.PullTrackerI18n.init('guide'); } catch (_) { }

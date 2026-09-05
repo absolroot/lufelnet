@@ -10,10 +10,10 @@ image: /assets/img/home/seo.png
 ---
 
 <head>
-    <link rel="stylesheet" href="/apps/guides/guides.css">
-    <script src="/apps/guides/guides.js"></script>
-    <link rel="stylesheet" href="/apps/guides/guides-related.css">
-    <script src="/apps/guides/guides-related.js"></script>
+    <link rel="stylesheet" href="/apps/guides/guides.css?h={{ site.data.asset_versions.files['/apps/guides/guides.css'] }}">
+    <script src="/apps/guides/guides.js?h={{ site.data.asset_versions.files['/apps/guides/guides.js'] }}"></script>
+    <link rel="stylesheet" href="/apps/guides/guides-related.css?h={{ site.data.asset_versions.files['/apps/guides/guides-related.css'] }}">
+    <script src="/apps/guides/guides-related.js?h={{ site.data.asset_versions.files['/apps/guides/guides-related.js'] }}"></script>
 </head>
 
 <!-- main contents -->
@@ -24,7 +24,7 @@ image: /assets/img/home/seo.png
     </div>
 </div>
 
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script>
     function getI18nText(key, fallback = '') {
         if (typeof window.t === 'function') {

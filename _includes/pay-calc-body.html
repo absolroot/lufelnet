@@ -39,8 +39,8 @@
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
-<link rel="stylesheet" href="/apps/pay-calc/pay-calc.css">
-<script src="/apps/pay-calc/pay-calc.js"></script>
+<link rel="stylesheet" href="/apps/pay-calc/pay-calc.css?h={{ site.data.asset_versions.files['/apps/pay-calc/pay-calc.css'] }}">
+<script src="/apps/pay-calc/pay-calc.js?h={{ site.data.asset_versions.files['/apps/pay-calc/pay-calc.js'] }}"></script>
 
 <!-- main contents -->
 <div class="main-wrapper">

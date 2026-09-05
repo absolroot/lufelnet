@@ -39,7 +39,7 @@ window.LufelPageLifecycle?.hold('character-list');
     <div class="header-container character-list-header">
         <div class="header-title">
             <div class="navigation-path">
-                <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+                <a href="../" id="nav-home">-</a>
                 <span class="separator">/</span>
                 <span class="current-page" id="nav-current">-</span>
             </div>
@@ -394,7 +394,7 @@ window.LufelPageLifecycle?.hold('character-list');
     }
 </style>
 
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script>
     // 다국어 지원 함수
     function getI18nText(key, fallback = '') {
@@ -557,7 +557,7 @@ window.LufelPageLifecycle?.hold('character-list');
             window.LufelNitroAds?.recordDebugTiming?.('character-data-start', { source: currentLang });
 
             // KR 원본과 현재 언어 데이터는 독립 요청이므로 함께 시작한다.
-            const krPromise = fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            const krPromise = fetchCharactersData(`/data/character_info.js?h={{ site.data.asset_versions.files['/data/character_info.js'] }}`);
             let langPromise = Promise.resolve(null);
             if (currentLang !== 'kr') {
                 const langDataPath = (currentLang === 'en' || currentLang === 'jp')
@@ -965,7 +965,7 @@ window.LufelPageLifecycle?.hold('character-list');
             if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
                 link.href = LanguageRouter.buildCharacterDetailUrl(characterName, currentLang);
             } else {
-                link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+                link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}`;
             }
             link.style.textDecoration = 'none';
             link.style.color = 'inherit';
@@ -1333,4 +1333,4 @@ window.LufelPageLifecycle?.hold('character-list');
     });
 
 </script>
-<script src="{{ site.baseurl }}/apps/character/character-search.js?v=20260602b"></script>
+<script src="{{ site.baseurl }}/apps/character/character-search.js?h={{ site.data.asset_versions.files['/apps/character/character-search.js'] }}"></script>

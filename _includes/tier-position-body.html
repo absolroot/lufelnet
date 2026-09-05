@@ -97,8 +97,8 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
-<script type="module" src="{{ site.baseurl }}/apps/tier/position-tiers.js?v=${APP_VERSION}"></script>
-<script type="module" src="{{ site.baseurl }}/apps/tier/position-tier-qa.js?v=${APP_VERSION}"></script>
+<script type="module" src="{{ site.baseurl }}/apps/tier/position-tiers.js?h={{ site.data.asset_versions.files['/apps/tier/position-tiers.js'] }}"></script>
+<script type="module" src="{{ site.baseurl }}/apps/tier/position-tier-qa.js?h={{ site.data.asset_versions.files['/apps/tier/position-tier-qa.js'] }}"></script>
 
 <!-- Main content -->
 <div class="main-wrapper">
@@ -528,8 +528,8 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 </div>
 
 <!-- i18n 서비스 -->
-<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
 <script>
     function getTierText(key, fallback = '') {
@@ -807,7 +807,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
         try {
             // 1) KR 데이터 샌드박스 로드
-            const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            const kr = await fetchCharactersData(`/data/character_info.js?h={{ site.data.asset_versions.files['/data/character_info.js'] }}`);
             if (!kr) throw new Error('Failed to load KR character data');
             const krCharacterData = kr.characterData || {};
             const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
@@ -1075,4 +1075,4 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         }
     });
 </script>
-<script src="{{ site.baseurl }}/apps/tier/capture.js"></script>
+<script src="{{ site.baseurl }}/apps/tier/capture.js?h={{ site.data.asset_versions.files['/apps/tier/capture.js'] }}"></script>

@@ -52,8 +52,8 @@
 {% include supabase-config.html %}
 
   <!-- 페르소나 순서 및 로더 (window.personaFiles 구성) -->
-  <script src="{{ site.baseurl }}/data/persona/order.js?v={{ site.time | date: '%s' }}"></script>
-  <script src="{{ site.baseurl }}/assets/js/persona-loader.js?v={{ site.time | date: '%s' }}"></script>
+  <script src="{{ site.baseurl }}/data/persona/order.js?h={{ site.data.asset_versions.files['/data/persona/order.js'] }}"></script>
+  <script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
   <script>
     if (typeof ensurePersonaFilesLoaded === 'function') {
       ensurePersonaFilesLoaded();
@@ -392,7 +392,7 @@
 
     <!-- SortableJS (drag and drop library) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
-    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+    <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
     <script>
       /* ========== Global data ========== */
       // Wonder persona 3 slots
@@ -508,7 +508,7 @@
           const lang = getCurrentLanguage();
           let forceKR = false;
           try { forceKR = localStorage.getItem('forceKRList') === 'true'; } catch (_) {}
-          const kr = await fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+          const kr = await fetchCharactersData(`/data/character_info.js?h={{ site.data.asset_versions.files['/data/character_info.js'] }}`);
           if (!kr) {
             __ensureCharacterDataLoadedPromise = null;
             return false;

@@ -52,7 +52,7 @@ window.LufelPageLifecycle?.hold('schedule');
 {% endif %}
 
 <!-- Schedule Page CSS -->
-<link rel="stylesheet" href="{{ site.baseurl }}/apps/schedule/schedule.css?v={{ site.time | date: '%s' }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/apps/schedule/schedule.css?h={{ site.data.asset_versions.files['/apps/schedule/schedule.css'] }}">
 
 <!-- Main content -->
 <div class="main-wrapper schedule-page">
@@ -60,7 +60,7 @@ window.LufelPageLifecycle?.hold('schedule');
     <div class="header-container header-container--with-ad" id="schedule-header">
         <div class="header-title">
             <div class="navigation-path">
-                <script>document.write(`<a href="../../?v=${APP_VERSION}" id="nav-home" data-i18n="nav.home">-</a>`);</script>
+                <a href="../../" id="nav-home" data-i18n="nav.home">-</a>
                 <span class="separator">/</span>
                 <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
             </div>
@@ -148,12 +148,12 @@ window.LufelPageLifecycle?.hold('schedule');
 </div>
 
 <!-- Load i18n Service (MUST be loaded before schedule.js) -->
-<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
 <!-- Load Schedule Data & Renderer -->
-<script src="{{ site.baseurl }}/apps/schedule/data.js?v={{ site.time | date: '%s' }}"></script>
-<script src="{{ site.baseurl }}/apps/schedule/schedule.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/apps/schedule/data.js?h={{ site.data.asset_versions.files['/apps/schedule/data.js'] }}"></script>
+<script src="{{ site.baseurl }}/apps/schedule/schedule.js?h={{ site.data.asset_versions.files['/apps/schedule/schedule.js'] }}"></script>
 
 <script>
     (function () {

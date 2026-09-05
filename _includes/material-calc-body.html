@@ -41,9 +41,9 @@
 })();
 </script>
 
-<link rel="stylesheet" href="/apps/material-calc/material-planner.css">
-<script src="/apps/material-calc/material-planner.js"></script>
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<link rel="stylesheet" href="/apps/material-calc/material-planner.css?h={{ site.data.asset_versions.files['/apps/material-calc/material-planner.css'] }}">
+<script src="/apps/material-calc/material-planner.js?h={{ site.data.asset_versions.files['/apps/material-calc/material-planner.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
 {% if page.alternate_urls %}
 {% for alt in page.alternate_urls %}
@@ -54,7 +54,7 @@
 
 <div class="main-wrapper">
     <div class="navigation-path">
-        <script>document.write(`<a href="${BASE_URL}/?v=${APP_VERSION}"><span data-i18n="nav.home">-</span></a>`);</script>
+        <a href="{{ site.baseurl }}/"><span data-i18n="nav.home">-</span></a>
         <span class="separator">/</span>
         <span class="current-page" data-i18n="navCurrent">-</span>
     </div>
@@ -716,7 +716,7 @@
 </script>
 
 <!-- Export/Import handler -->
-<script src="/apps/material-calc/material-planner-export.js?v={{ site.time | date: '%s' }}"></script>
+<script src="/apps/material-calc/material-planner-export.js?h={{ site.data.asset_versions.files['/apps/material-calc/material-planner-export.js'] }}"></script>
 <script>
     document.addEventListener('DOMContentLoaded', async () => {
         if (typeof window.initPageI18n === 'function') {

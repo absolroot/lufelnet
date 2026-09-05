@@ -301,8 +301,8 @@
 
 
 <!-- i18n 서비스 -->
-<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?v={{ site.time | date: '%s' }}"></script>
-<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
 <script>
     // 전역 변수 초기화
@@ -832,11 +832,10 @@
             const lang = getPageLanguage();
             if (lang !== 'en' && lang !== 'jp') return null;
 
-            const version = window.APP_VERSION ? `?v=${encodeURIComponent(String(window.APP_VERSION))}` : '';
-            const url = `${BASE_URL}/data/character_info_glb.js${version}`;
+            const url = `${BASE_URL}/data/character_info_glb.js?h={{ site.data.asset_versions.files['/data/character_info_glb.js'] }}`;
 
             try {
-                const response = await fetch(url, { cache: 'no-store' });
+                const response = await fetch(url);
                 if (!response.ok) return null;
                 const text = await response.text();
                 const sandbox = {};

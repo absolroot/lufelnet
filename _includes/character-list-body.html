@@ -251,8 +251,9 @@ window.LufelPageLifecycle?.hold('character-list');
     <div class="character-cards character-cards--loading" id="characterCards">
         {% for i in (1..12) %}
         <div class="card character-card-skeleton" aria-hidden="true">
-            <span class="character-card-skeleton__portrait"></span>
-            <span class="character-card-skeleton__name"></span>
+            <img class="character-card-skeleton__image"
+                src="{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp"
+                alt="" width="560" height="932">
         </div>
         {% endfor %}
     </div>

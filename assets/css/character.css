@@ -143,7 +143,7 @@
     overflow: hidden;
     cursor: default;
     border-radius: 10px;
-    background: #242424;
+    background: #202020;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
 }
 
@@ -159,20 +159,8 @@
     filter: none;
 }
 
-.character-card-skeleton__portrait {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(160deg, #2d2d2d 0%, #1b1b1b 100%);
-}
-
-.character-card-skeleton__name {
-    position: absolute;
-    left: 14%;
-    right: 14%;
-    bottom: 8%;
-    height: 12px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.1);
+.character-card-skeleton__image {
+    display: block;
 }
 
 @keyframes character-skeleton-shimmer {

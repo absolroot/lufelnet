@@ -32,6 +32,13 @@
 - 배포·검증 빌드는 `_config.full-build.yml`을 함께 사용해 증분 메타데이터가 이전 해시를 재사용하지 않게 합니다.
 - 자산 관련 변경 후 최소 검증 명령은 `npm run assets:hashes:generate`, `npm run assets:hashes:check`, `npm run assets:hashes:test`, `npm run assets:cache-policy:test`, `npm run site:build`입니다.
 
+# 페르소나·계시 목록 인덱스
+- 페르소나 목록은 `data/persona/index.js`의 경량 인덱스로 먼저 표시하고, 상세 데이터는 우선순위/유휴 큐로 로드합니다. 이 파일은 직접 편집하지 말고 `npm run persona:index:generate`로 생성합니다.
+- 새 페르소나를 추가하거나 `data/persona/order.js`, `data/persona/nonorder.js`, 개별 `data/persona/**/*.js`의 목록 표시 필드(이름, 속성, 직업, 등급, 티어 등)를 바꾼 경우 `npm run persona:index:generate`와 `npm run persona:index:check`를 실행합니다. 새 페르소나는 순서 목록과 `_data/persona_slugs.json`에도 등록되어야 합니다.
+- 계시 페이지의 추천 캐릭터 역색인은 `data/revelations/character-index.js`입니다. 직접 편집하지 말고 `npm run revelation:index:generate`로 생성합니다. 원본은 각 `data/characters/<캐릭터>/setting.js`의 `main_revelation` 및 `sub_revelation`입니다.
+- 새 계시, 새 캐릭터의 계시 추천, 또는 위 `setting.js` 배열을 수정한 경우 `npm run revelation:index:generate`와 `npm run revelation:index:check`를 실행합니다. 계시 데이터는 지원 언어(`en`, `kr`, `jp`, `cn`)의 `data/*/revelations/revelations.js`도 함께 갱신하고, EN/JP의 미출시 표기를 서버 출시 상태에 맞게 유지합니다.
+- `npm run site:build`는 두 인덱스를 먼저 생성합니다. 관련 변경 후에는 인덱스 검사와 자산 해시 검사를 통과시킨 뒤 빌드합니다.
+
 # 이미지와 영상 캐시
 - `/assets/img/`의 지원 이미지 형식은 서비스 워커가 URL의 `v`와 `h`를 제거한 경로 키로 최대 2,000개까지 캐시합니다.
 - 12시간은 삭제 만료 시간이 아닙니다. 캐시 이미지를 즉시 반환한 뒤, 간격이 지났을 때 다음 요청에서 백그라운드 재검증합니다. 네트워크 실패 시 기존 캐시는 유지됩니다.

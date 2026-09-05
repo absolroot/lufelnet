@@ -15,6 +15,8 @@
   const SLIDE_INTERVAL_MS = 6000;
   const COUNTDOWN_INTERVAL_MS = 1000;
   const LCP_PRELOAD_LINK_ID = 'home-carousel-lcp-preload';
+  const INITIAL_MEDIA_SLIDE_COUNT = 2;
+  const DEFERRED_MEDIA_DELAY_MS = 2500;
 
   const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
   const APP_VER = (typeof window !== 'undefined' && (window.APP_VERSION || '')) || '';
@@ -30,6 +32,7 @@
     hover: false,
     countdownTimer: null,
     slideTimeout: null,
+    deferredMediaTimer: null,
   };
   let releaseOrderCharacterData = null;
   let releaseOrderDataSource = null;
@@ -306,7 +309,7 @@
     return null;
   }
 
-  function setImageLoadingPriority(img, prioritize) {
+  function setImageLoadingPriority(img, prioritize, warm) {
     if (!img) return;
     img.decoding = 'async';
     if (prioritize) {
@@ -314,8 +317,45 @@
       try { img.fetchPriority = 'high'; } catch (_) { img.setAttribute('fetchpriority', 'high'); }
       return;
     }
+    if (warm) {
+      img.loading = 'eager';
+      try { img.fetchPriority = 'auto'; } catch (_) { img.setAttribute('fetchpriority', 'auto'); }
+      return;
+    }
     img.loading = 'lazy';
     try { img.fetchPriority = 'auto'; } catch (_) { img.setAttribute('fetchpriority', 'auto'); }
+  }
+
+  function setDeferredImageSource(img, src, defer) {
+    if (!defer) {
+      img.src = src;
+      return;
+    }
+    img.dataset.deferredSrc = src;
+  }
+
+  function activateDeferredMedia(root, slideIndex) {
+    if (!root) return;
+    const selector = Number.isInteger(slideIndex)
+      ? `.carousel-slide[data-slide-index="${slideIndex}"]`
+      : '.carousel-slide';
+    root.querySelectorAll(selector).forEach(slideEl => {
+      slideEl.querySelectorAll('img[data-deferred-src]').forEach(img => {
+        img.src = img.dataset.deferredSrc;
+        delete img.dataset.deferredSrc;
+      });
+      slideEl.querySelectorAll('.slide-bg[data-deferred-custom-background]').forEach(bg => {
+        applyCustomSlideBackground(bg, bg.__homeSlide, bg.__homeIsMobileBackground);
+        delete bg.dataset.deferredCustomBackground;
+        delete bg.__homeSlide;
+        delete bg.__homeIsMobileBackground;
+      });
+    });
+  }
+
+  function scheduleDeferredMedia(root) {
+    if (state.deferredMediaTimer) clearTimeout(state.deferredMediaTimer);
+    state.deferredMediaTimer = setTimeout(() => activateDeferredMedia(root), DEFERRED_MEDIA_DELAY_MS);
   }
 
   function isVideoAssetUrl(url) {
@@ -370,6 +410,22 @@
       bg.appendChild(overlay);
     }
     return true;
+  }
+
+  function applyCustomSlideBackground(bg, slide, isMobileBg) {
+    if (!bg || !slide || !slide.customBgImage) return;
+    if (applyCustomSlideVideoBackground(bg, slide, isMobileBg)) return;
+    let bgImageCss = `url(${slide.customBgImage})`;
+    if (isMobileBg) bgImageCss = `linear-gradient(180deg, #1111118c 0%, transparent 50%), ${bgImageCss}`;
+    bg.style.backgroundImage = bgImageCss;
+    bg.style.backgroundRepeat = 'no-repeat';
+    bg.style.backgroundSize = 'cover';
+    const { offsetX, offsetY } = getCoverOffsets(
+      (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset
+    );
+    bg.style.backgroundPosition = `calc(50% + ${offsetX}px) calc(50% + ${offsetY}px)`;
+    bg.style.backgroundPositionX = `calc(50% + ${offsetX}px)`;
+    bg.style.backgroundPositionY = `calc(50% + ${offsetY}px)`;
   }
 
   function updateLcpPreload(url) {
@@ -993,9 +1049,12 @@
   function buildSlideElement(slide, index) {
     const el = document.createElement('div');
     el.className = 'carousel-slide';
+    el.dataset.slideIndex = String(index);
 
     const isMobile = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
     const isPrioritySlide = index === state.currentIndex;
+    const isWarmSlide = index < INITIAL_MEDIA_SLIDE_COUNT;
+    const deferSlideMedia = !isWarmSlide;
 
     const bg = document.createElement('div');
     bg.className = 'slide-bg';
@@ -1003,6 +1062,11 @@
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
       const isMobileBg = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      if (deferSlideMedia) {
+        bg.dataset.deferredCustomBackground = 'true';
+        bg.__homeSlide = slide;
+        bg.__homeIsMobileBackground = isMobileBg;
+      } else {
       if (applyCustomSlideVideoBackground(bg, slide, isMobileBg)) {
         // video backgrounds are rendered with a dedicated media element
       } else {
@@ -1032,6 +1096,7 @@
       // Set axis-specific properties as well for broader browser consistency
       bg.style.backgroundPositionX = `calc(50% + ${offsetX}px)`;
       bg.style.backgroundPositionY = `calc(50% + ${offsetY}px)`;
+      }
       }
     } else {
       // color-based gradient if available
@@ -1118,9 +1183,9 @@
     if (slide.kind === 'custom') {
       if (slide.customImage) {
         const img = document.createElement('img');
-        setImageLoadingPriority(img, isPrioritySlide);
+        setImageLoadingPriority(img, isPrioritySlide, isWarmSlide);
         img.alt = slide.name || 'banner';
-        img.src = slide.customImage;
+        setDeferredImageSource(img, slide.customImage, deferSlideMedia);
         img.className = (slide.__aprilFools || slide.carouselStudioPreview) ? 'char-img front single-banner' : 'char-img front middle';
         if (slide.__aprilFools) {
           const isMobileBanner = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
@@ -1153,11 +1218,11 @@
         const c = imgs[origIdx];
         const img = document.createElement('img');
         const shouldPrioritize = isPrioritySlide && posIdx === 0;
-        setImageLoadingPriority(img, shouldPrioritize);
+        setImageLoadingPriority(img, shouldPrioritize, isWarmSlide);
         img.alt = c.name || 'character';
         const src = getCharacterImageUrl(c.name);
         if (!src) return; // hide if no image match
-        img.src = src;
+        setDeferredImageSource(img, src, deferSlideMedia);
         img.className = 'char-img';
         if (imgs.length === 1) {
           img.classList.add('front', 'single-banner');
@@ -1346,6 +1411,8 @@
     toolbar.appendChild(dots);
     // Toolbar moved to bottom
     root.appendChild(container);
+    activateDeferredMedia(root, state.currentIndex);
+    scheduleDeferredMedia(root);
 
     // Position to current index
     updateTrackPosition(track);
@@ -1398,6 +1465,7 @@
     updateLcpPreload(getLcpCandidateImageUrl(state.slides[state.currentIndex]));
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
+    activateDeferredMedia(root, state.currentIndex);
     const track = root.querySelector('.carousel-track');
     if (track) updateTrackPosition(track);
   }
@@ -1429,6 +1497,10 @@
   function stopTimers() {
     if (state.countdownTimer) { clearInterval(state.countdownTimer); state.countdownTimer = null; }
     if (state.slideTimeout) { clearTimeout(state.slideTimeout); state.slideTimeout = null; }
+    if (state.deferredMediaTimer) {
+      clearTimeout(state.deferredMediaTimer);
+      state.deferredMediaTimer = null;
+    }
   }
 
   function refreshTimeDisplays() {

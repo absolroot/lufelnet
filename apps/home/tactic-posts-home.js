@@ -87,7 +87,9 @@ async function loadHomeTacticsOnce(currentLang) {
       data = fallbackData || [];
     }
     if (error) throw error;
-    await ensureHomePublicIp();
+    // IP verification is only needed when a visitor presses Like. Do not hold
+    // the lower-page previews (and their character images) behind that request.
+    void ensureHomePublicIp();
     window.__HOME_LIKES_MAP = {};
     try {
       const ids = (data || []).map(t => String(t.id));
@@ -291,7 +293,7 @@ function createHomePreviewFromParty(party) {
       charImg.title = member.name;
       charImg.loading = 'lazy';
       charImg.decoding = 'async';
-      charImg.setAttribute('fetchpriority', 'low');
+      charImg.setAttribute('fetchpriority', 'auto');
       container.appendChild(charImg);
     }
 

@@ -11,7 +11,7 @@ const ALL_OUT_DIR = path.join(ROOT, 'assets', 'img', 'gallery', 'allout');
 const THUMB_DIR = path.join(ROOT, 'assets', 'img', 'gallery', 'thumbs', 'allout');
 const MANIFEST_PATH = path.join(ROOT, 'apps', 'gallery', 'allout-manifest.json');
 const CHECK_ONLY = process.argv.includes('--check');
-const WONDER_VARIANTS = new Set(['원더-벨벳룸', '원더-신년', '원더-여름']);
+const WONDER_VARIANTS = new Set(['원더-벨벳룸', '원더-신년', '원더-슈진교복', '원더-여름']);
 const WONDER_RELEASE_ORDER = 0;
 
 function loadCharacterData() {

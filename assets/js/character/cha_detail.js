@@ -1134,6 +1134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const wonderAllOutFiles = [
         '원더.png',
+        '원더-슈진교복.png',
         '원더-신년.png',
         '원더-여름.png',
         '원더-벨벳룸.png'

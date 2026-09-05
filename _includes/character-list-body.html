@@ -266,6 +266,8 @@ window.LufelPageLifecycle?.hold('character-list');
             width: 160px;
             aspect-ratio: 560 / 932;
             margin-bottom: 55px;
+            overflow: hidden;
+            border-radius: 4.375% / 2.63%;
         }
 
         #characterCards.character-cards--loading .character-card-skeleton::before {
@@ -275,7 +277,7 @@ window.LufelPageLifecycle?.hold('character-list');
             background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.09) 48%, transparent 62%);
             background-size: 220% 100%;
             animation: character-skeleton-shimmer 1.35s ease-in-out infinite;
-            border-radius: 10px;
+            border-radius: 4.375% / 2.63%;
             z-index: 2;
         }
 
@@ -284,7 +286,7 @@ window.LufelPageLifecycle?.hold('character-list');
             position: absolute;
             inset: 0;
             z-index: 0;
-            border-radius: 10px;
+            border-radius: 4.375% / 2.63%;
             background: linear-gradient(160deg, #2d2d2d 0%, #1b1b1b 100%);
         }
 
@@ -295,8 +297,8 @@ window.LufelPageLifecycle?.hold('character-list');
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+            border-radius: 0;
+            box-shadow: none;
             opacity: 0.2;
             filter: grayscale(100%);
         }
@@ -1148,13 +1150,17 @@ window.LufelPageLifecycle?.hold('character-list');
             cardsContainer.replaceChildren(fragment);
             cardsContainer.appendChild(skeletonOverlay);
             cardsContainer.classList.remove('character-cards--loading');
+            cardsContainer.classList.add('character-cards--skeleton-fading');
             // Commit the opaque skeleton layer before starting its fade. Without this,
             // a fast cached load can coalesce both states into one paint.
             void skeletonOverlay.offsetWidth;
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     skeletonOverlay.classList.add('is-fading');
-                    skeletonOverlay.addEventListener('transitionend', () => skeletonOverlay.remove(), { once: true });
+                    skeletonOverlay.addEventListener('transitionend', () => {
+                        skeletonOverlay.remove();
+                        cardsContainer.classList.remove('character-cards--skeleton-fading');
+                    }, { once: true });
                 });
             });
         } else {

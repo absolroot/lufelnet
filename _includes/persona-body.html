@@ -1,3 +1,7 @@
+<script>
+window.LufelPageLifecycle?.hold('persona-list');
+</script>
+
 {% if page.persona_kr_name %}
 <script>
   window.__PERSONA_DEFAULT = {{ page.persona_kr_name | jsonify }};

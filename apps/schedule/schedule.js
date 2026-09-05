@@ -1929,31 +1929,32 @@
 
     // Main initialization
     async function init() {
-        // Wait for i18n service (window.t) to be ready
-        if (typeof window.t !== 'function') {
-            await new Promise(resolve => {
-                const checkI18n = setInterval(() => {
-                    if (typeof window.t === 'function') {
-                        clearInterval(checkI18n);
-                        resolve();
-                    }
-                }, 50);
-                // Fallback timeout after 3 seconds
-                setTimeout(() => {
-                    clearInterval(checkI18n);
-                    resolve();
-                }, 3000);
-            });
-        }
-
         try {
-            // Load SEA Server Mode state from localStorage
-            await Promise.all([
+            const scheduleDataPromise = Promise.all([
                 ensureScheduleCharacterData(),
                 loadPersonaCsv(),
                 loadWeaponsData(),
                 loadRevelationData()
             ]);
+
+            // Wait for i18n service (window.t) to be ready while data loads.
+            if (typeof window.t !== 'function') {
+                await new Promise(resolve => {
+                    const checkI18n = setInterval(() => {
+                        if (typeof window.t === 'function') {
+                            clearInterval(checkI18n);
+                            resolve();
+                        }
+                    }, 50);
+                    setTimeout(() => {
+                        clearInterval(checkI18n);
+                        resolve();
+                    }, 3000);
+                });
+            }
+
+            // Data requests start before the i18n readiness wait and join here.
+            await scheduleDataPromise;
 
             // Get SEA server preference
             const urlParams = new URLSearchParams(window.location.search);
@@ -1972,6 +1973,8 @@
             if (container) {
                 container.innerHTML = `<div class="empty-state">${t('loadScheduleFailed')}</div>`;
             }
+        } finally {
+            window.LufelPageLifecycle?.release('schedule');
         }
     }
 

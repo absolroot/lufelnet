@@ -1455,6 +1455,7 @@
   async function reloadSlides() {
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
+    window.LufelNitroAds?.recordDebugTiming?.('home-carousel-start', { source: state.region });
     await waitHomeI18nReady();
     updateLcpPreload(null);
 
@@ -1567,6 +1568,7 @@
       state.currentIndex = 0;
       updateLcpPreload(getLcpCandidateImageUrl(state.slides[state.currentIndex]));
       render(root);
+      window.LufelNitroAds?.recordDebugTiming?.('home-carousel-ready', { source: state.region });
     } catch (err) {
       root.innerHTML = '';
       const errEl = document.createElement('div');

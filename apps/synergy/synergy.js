@@ -2477,6 +2477,12 @@
 
     // 초기화
     async function init() {
+        try {
+        const contentDataPromise = Promise.all([
+            loadCharacterList(),
+            loadMapNameTranslations()
+        ]);
+
         // i18n 초기화
         if (typeof window.initPageI18n === 'function') {
             await window.initPageI18n('synergy');
@@ -2500,17 +2506,14 @@
             }
         } catch (e) { }
 
-        // 캐릭터 목록 로드
-        const loaded = await loadCharacterList();
+        // 캐릭터 목록과 맵 번역은 i18n과 병렬로 시작된다.
+        const [loaded] = await contentDataPromise;
         if (!loaded) {
             const loadErrorText = getI18nText('msgLoadError');
             document.getElementById('characterDetail').innerHTML =
                 `<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadErrorText}</div>`;
             return;
         }
-
-        // mapName 번역 데이터 로드
-        await loadMapNameTranslations();
 
         // 필터 설정
         setupFilters();
@@ -2552,6 +2555,9 @@
 
         // 탭 생성
         await createTabs();
+        } finally {
+            window.LufelPageLifecycle?.release('synergy');
+        }
     }
 
     // DOM 로드 완료 시 초기화

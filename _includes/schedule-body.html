@@ -1,4 +1,8 @@
 <script>
+window.LufelPageLifecycle?.hold('schedule');
+</script>
+
+<script>
 (function () {
     var params = new URLSearchParams(window.location.search || '');
     var path = String(window.location.pathname || '/');

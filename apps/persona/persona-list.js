@@ -119,31 +119,39 @@ function initializePersonaLoadingProgress() {
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
-    // 1. Initialize i18n
-    if (typeof initPageI18n === 'function') {
-        await initPageI18n('persona');
-    }
+    try {
+        // 1. Initialize i18n
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('persona');
+        }
 
-    // 2. Load Core Modules
-    Navigation.load('persona');
-    VersionChecker.check();
-    updateSEOContent();
-    initializePersonaLoadingProgress();
+        // 2. Load Core Modules
+        Navigation.load('persona');
+        VersionChecker.check();
+        updateSEOContent();
+        initializePersonaLoadingProgress();
 
-    // 3. Initialize Page Content
-    const runInit = () => {
-        initializePageContent().then(() => {
-            setTimeout(handleSearchParam, 100);
-            triggerPersonaRoutingWhenReady();
-            setupGlobalSkillLevelSelector();
-            if (window.initPersonaSearch) window.initPersonaSearch();
-        });
-    };
+        // 3. Initialize Page Content
+        const runInit = () => {
+            initializePageContent().then(() => {
+                setTimeout(handleSearchParam, 100);
+                triggerPersonaRoutingWhenReady();
+                setupGlobalSkillLevelSelector();
+                if (window.initPersonaSearch) window.initPersonaSearch();
+            }).catch((error) => {
+                console.error('Persona initialization failed:', error);
+                window.LufelPageLifecycle?.release('persona-list');
+            });
+        };
 
-    if (typeof ensurePersonaFilesLoaded === 'function') {
-        ensurePersonaFilesLoaded(runInit);
-    } else {
-        runInit();
+        if (typeof ensurePersonaFilesLoaded === 'function') {
+            ensurePersonaFilesLoaded(runInit);
+        } else {
+            runInit();
+        }
+    } catch (error) {
+        console.error('Persona initialization failed:', error);
+        window.LufelPageLifecycle?.release('persona-list');
     }
 });
 
@@ -324,6 +332,7 @@ async function initializePageContent() {
         }
         // 청크 단위로 DOM 삽입
         cardsContainer.appendChild(fragment);
+        window.LufelPageLifecycle?.release('persona-list');
 
         if (currentIndex < sortedPersonas.length) {
             if ('requestIdleCallback' in window) {

@@ -117,6 +117,7 @@
     const GALLERY_RIGHT_RAIL_CONTENT_GAP_MAX = 128;
     const RIGHT_RAIL_VERTICAL_SHIFT = 90;
     const PLACEMENT_VISIBLE_MARGIN = 1200;
+    const MAX_PLACEMENT_VISIBLE_MARGIN = 4000;
     const MOBILE_BANNER_MEDIA_QUERY = '(max-width: 768px)';
     const isLocalDemo = LOCAL_HOSTNAMES.has(window.location.hostname);
     const initializedGlobalPlacements = new Set();
@@ -226,12 +227,17 @@
             preset = { ...preset, sizes: fittingSizes };
         }
 
+        const requestedVisibleMargin = Number.parseInt(slot.dataset.nitroVisibleMargin, 10);
+        const visibleMargin = Number.isFinite(requestedVisibleMargin)
+            ? Math.max(0, Math.min(MAX_PLACEMENT_VISIBLE_MARGIN, requestedVisibleMargin))
+            : PLACEMENT_VISIBLE_MARGIN;
+
         slot.dataset.nitroInitialized = 'true';
 
         createAd(slot.id, {
             ...preset,
             ...(mediaQuery ? { mediaQuery } : {}),
-            visibleMargin: PLACEMENT_VISIBLE_MARGIN,
+            visibleMargin,
             ...(format === 'article' && window.matchMedia('(max-width: 768px)').matches ? { pageInterval: 4 } : {}),
             ...(slot.dataset.nitroRenderVisibleOnly === 'true' ? {
                 renderVisibleOnly: true
@@ -245,17 +251,31 @@
         const container = slot.closest('.nitro-ad-container--with-placeholder');
         if (!container || slot.dataset.nitroPlaceholderWatching === 'true') return;
 
-        const markIfRendered = () => {
-            if (container.querySelector('iframe, [data-google-query-id], [data-ad-status="filled"]')) {
-                container.classList.add('nitro-ad-container--has-content');
-                observer.disconnect();
+        const hasVisibleCreative = () => {
+            const bidder = String(slot.dataset.bidder || '').trim().toLowerCase();
+            if (!bidder || bidder === 'blank') return false;
+
+            if (slot.matches('[data-ad-status="filled"]') || slot.querySelector('[data-ad-status="filled"]')) {
+                return true;
             }
+
+            return Array.from(slot.querySelectorAll('iframe')).some((iframe) => {
+                const rect = iframe.getBoundingClientRect();
+                return rect.width > 0 && rect.height > 0;
+            });
+        };
+
+        const syncPlaceholder = () => {
+            // Nitro can create a Google query ID and a zero-height iframe for a
+            // no-fill auction. Keep the reserved space for a later refresh, but
+            // do not hide the placeholder until a real creative is visible.
+            container.classList.toggle('nitro-ad-container--has-content', hasVisibleCreative());
         };
 
         slot.dataset.nitroPlaceholderWatching = 'true';
-        const observer = new MutationObserver(markIfRendered);
+        const observer = new MutationObserver(syncPlaceholder);
         observer.observe(container, { childList: true, subtree: true, attributes: true });
-        markIfRendered();
+        syncPlaceholder();
     }
 
     function createGlobalPlacement(placement) {

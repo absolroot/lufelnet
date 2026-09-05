@@ -176,9 +176,10 @@ async function initializePageContent() {
     const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
     // 새 데이터(window.personaFiles)만 사용 (기존 persona.js 는 더 이상 참조하지 않음)
-    const personaSource = (typeof window !== 'undefined' && window.personaFiles)
-        ? window.personaFiles
+    const personaSource = (typeof window !== 'undefined' && window.personaIndex)
+        ? window.personaIndex
         : {};
+    window.personaFiles = window.personaFiles || {};
 
     // order.js 에서 로드된 순서 정보 + nonorder.js 정보 병합
     let sortedPersonas = [];
@@ -229,7 +230,8 @@ async function initializePageContent() {
             cardBg.src = `${window.SITE_BASEURL}/assets/img/persona/persona-card-${personaSource[personaName].element}.webp`;
             cardBg.alt = "card background";
             cardBg.className = 'card-background';
-            cardBg.loading = 'lazy';
+            cardBg.loading = index < 6 ? 'eager' : 'lazy';
+            if (index < 6) cardBg.fetchPriority = 'high';
             cardBg.decoding = 'async';
 
             // Persona image with optimized lazy loading
@@ -237,7 +239,8 @@ async function initializePageContent() {
             img.src = `${window.SITE_BASEURL}/assets/img/persona/${personaName}.webp`;
             img.alt = personaName;
             img.className = 'persona-img';
-            img.loading = 'lazy';
+            img.loading = index < 6 ? 'eager' : 'lazy';
+            if (index < 6) img.fetchPriority = 'high';
             img.decoding = 'async';  // 비동기 디코딩으로 렌더링 성능 향상
 
             // Add rarity cover
@@ -245,7 +248,7 @@ async function initializePageContent() {
             coverStar.src = `${window.SITE_BASEURL}/assets/img/persona/persona-cover-star${personaSource[personaName].star}.webp`;
             coverStar.alt = "rarity cover";
             coverStar.className = 'cover-star';
-            coverStar.loading = 'lazy';
+            coverStar.loading = index < 6 ? 'eager' : 'lazy';
 
             // Add remaining elements
             const positionContainer = document.createElement('div');
@@ -333,6 +336,18 @@ async function initializePageContent() {
         // 청크 단위로 DOM 삽입
         cardsContainer.appendChild(fragment);
         window.LufelPageLifecycle?.release('persona-list');
+        containers = document.querySelectorAll('.persona-detail-container');
+        wireCardInteractions();
+
+        if (currentIndex === processed) {
+            triggerPersonaRoutingWhenReady();
+            if (!window.hasInitialAutoSelected && containers.length > 0) {
+                const firstCard = containers[0];
+                firstCard.classList.add('selected');
+                void renderDetailInPanel(firstCard);
+                window.hasInitialAutoSelected = true;
+            }
+        }
 
         if (currentIndex < sortedPersonas.length) {
             if ('requestIdleCallback' in window) {
@@ -381,7 +396,7 @@ async function initializePageContent() {
             // Initial Auto Select (Once) - Only if no deep link handled
             if (!window.hasInitialAutoSelected && containers.length > 0) {
                 const firstCard = containers[0];
-                renderDetailInPanel(firstCard);
+                void renderDetailInPanel(firstCard);
                 firstCard.classList.add('selected');
                 window.hasInitialAutoSelected = true;
             }
@@ -399,9 +414,8 @@ async function initializePageContent() {
 
     // Function to generate detailed info section dynamically
     function generatePersonaDetail(personaName) {
-        if (!personaSource[personaName]) return null;
-
-        const persona = personaSource[personaName];
+        const persona = window.personaFiles[personaName];
+        if (!persona) return null;
         // Create info section
         const infoSection = document.createElement('div');
         infoSection.className = 'persona-info-section';
@@ -903,7 +917,7 @@ async function initializePageContent() {
                     container.classList.add('selected');
 
                     // 2. Render Detail
-                    renderDetailInPanel(container);
+                    void renderDetailInPanel(container);
                     scrollToMobilePersonaAd();
 
                     // 3. Update URL (SEO / Deep Linking)
@@ -930,9 +944,20 @@ async function initializePageContent() {
         }
     }
 
-    function renderDetailInPanel(sourceContainer) {
+    async function renderDetailInPanel(sourceContainer) {
         const detailPanel = document.getElementById('personaDetailContent');
         const sourceName = sourceContainer.dataset.name;
+
+        if (!detailPanel) return;
+        detailPanel.className = 'sticky-content';
+        detailPanel.textContent = '';
+        try {
+            if (typeof window.loadPersonaFile === 'function') await window.loadPersonaFile(sourceName);
+        } catch (error) {
+            console.error('Failed to load persona detail:', error);
+            return;
+        }
+        if (!sourceContainer.classList.contains('selected')) return;
 
         // Generate content dynamically
         const infoSection = generatePersonaDetail(sourceName);
@@ -962,11 +987,6 @@ async function initializePageContent() {
 
     // ----------------------------------------------------
     // Filter implementation
-
-    // Ensure personaFiles is available for search
-    if (typeof window.personaFiles === 'undefined') {
-        window.personaFiles = personaSource;
-    }
 
     // ----------------------------------------------------
     // Filter Implementation (Modal & Tags)
@@ -1125,6 +1145,8 @@ async function initializePageContent() {
     // Initial Sort & Render
     updateSort('tier');
 
+    window.addEventListener('pagehide', () => window.cancelPersonaBackgroundPreload?.(), { once: true });
+
     // Sort Event Listener
     document.getElementById('sortSelect').addEventListener('change', (e) => {
         updateSort(e.target.value);
@@ -1222,6 +1244,13 @@ async function initializePageContent() {
 
         // Re-render
         sortedPersonas = newSorted;
+        if (!window.__personaInitialDetailPreloadStarted && typeof window.loadPersonaFile === 'function') {
+            window.__personaInitialDetailPreloadStarted = true;
+            void window.loadPersonaFile(sortedPersonas[0]);
+            window.preloadPersonaFiles?.(sortedPersonas.slice(1, 6), false)
+                ?.catch(() => {})
+                ?.finally(() => window.startPersonaBackgroundPreload?.(sortedPersonas.slice(0, 6)));
+        }
         cardsContainer.innerHTML = ''; // Clear existing
         currentIndex = 0;
         if ('requestIdleCallback' in window) {
@@ -1251,7 +1280,7 @@ async function initializePageContent() {
     // Check if we haven't auto-selected yet
     const firstCard = document.querySelector('.persona-detail-container');
     if (firstCard && !window.hasInitialAutoSelected) {
-        renderDetailInPanel(firstCard);
+        void renderDetailInPanel(firstCard);
         firstCard.classList.add('selected');
         window.hasInitialAutoSelected = true;
     }

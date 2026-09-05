@@ -303,6 +303,7 @@
 <!-- i18n 서비스 -->
 <script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
+<script src="{{ site.baseurl }}/data/revelations/character-index.js?h={{ site.data.asset_versions.files['/data/revelations/character-index.js'] }}"></script>
 
 <script>
     // 전역 변수 초기화
@@ -337,7 +338,7 @@
                 dataScript.src = scriptSrc;
                 dataScript.onload = () => {
                     // 언어별 전역 변수 설정
-                    setTimeout(() => {
+                    (() => {
                         if (lang === 'en' && typeof enRevelationData !== 'undefined') {
                             window.enRevelationData = enRevelationData;
                             //console.log('English revelation data loaded:', enRevelationData);
@@ -363,7 +364,7 @@
                             });
                         };
                         resolve();
-                    }, 100); // 100ms 지연으로 데이터 로딩 완료 보장
+                    })();
                 };
                 dataScript.onerror = () => reject(new Error(`Failed to load ${scriptSrc}`));
                 document.head.appendChild(dataScript);
@@ -665,11 +666,15 @@
             sky: document.querySelector('.rev-tab-panel[data-panel="sky"]'),
         };
 
-        if (panels.uni) panels.uni.innerHTML = renderMainTable(lang, 'uni') + renderSubTable(lang, 'universe');
-        if (panels.sun) panels.sun.innerHTML = renderMainTable(lang, 'sun') + renderSubTable(lang, 'universal');
-        if (panels.moon) panels.moon.innerHTML = renderMainTable(lang, 'moon') + renderSubTable(lang, 'universal');
-        if (panels.star) panels.star.innerHTML = renderMainTable(lang, 'star') + renderSubTable(lang, 'universal');
-        if (panels.sky) panels.sky.innerHTML = renderMainTable(lang, 'sky') + renderSubTable(lang, 'universal');
+        const renderedTabs = window.__revelationStatsRenderedTabs || (window.__revelationStatsRenderedTabs = new Set());
+        const renderTab = (key) => {
+            const panel = panels[key];
+            if (!panel || renderedTabs.has(key)) return;
+            const group = key === 'uni' ? 'universe' : 'universal';
+            panel.innerHTML = renderMainTable(lang, key) + renderSubTable(lang, group);
+            renderedTabs.add(key);
+        };
+        renderTab('uni');
 
         // Events
         const accBtn = document.getElementById('rev-accordion-btn');
@@ -700,6 +705,7 @@
                 document.querySelectorAll('.rev-tab').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const key = btn.getAttribute('data-tab');
+                renderTab(key);
                 document.querySelectorAll('.rev-tab-panel').forEach(p => p.style.display = 'none');
                 const target = document.querySelector(`.rev-tab-panel[data-panel="${key}"]`);
                 if (target) target.style.display = 'block';
@@ -743,7 +749,6 @@
             // 캐릭터 데이터 로드
             await loadCharacterData();
             // 모든 캐릭터의 setting.js 로드
-            await loadAllCharacterSettings();
             // Load external stats JSON (non-blocking for rest of page build)
             await loadRevStatsData();
 
@@ -1036,12 +1041,17 @@
             img.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.webp`;
             img.alt = revelation.name;
             img.className = 'revelation-img';
+            img.loading = index < 4 ? 'eager' : 'lazy';
+            img.decoding = 'async';
+            if (index < 4) img.fetchPriority = 'high';
 
             // Name image - use Korean name for file path
             const nameImg = document.createElement('img');
             nameImg.src = `{{ site.baseurl }}/assets/img/revelation/${koreanName}.png`;
             nameImg.alt = revelation.name;
             nameImg.className = 'name-img';
+            nameImg.loading = index < 4 ? 'eager' : 'lazy';
+            nameImg.decoding = 'async';
 
             imgContainer.appendChild(img);
 
@@ -1177,6 +1187,8 @@
                 return `/character.html?name=${encodeURIComponent(safeName)}&lang=${safeLang}`;
             }
             function findUsersOfRevelation(koreanRevName) {
+                const index = window.revelationCharacterIndex || {};
+                if (Array.isArray(index[koreanRevName])) return index[koreanRevName].slice();
                 if (typeof characterData === 'undefined') return [];
                 const users = [];
 

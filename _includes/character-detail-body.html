@@ -486,7 +486,7 @@
                 <p class="ritual-description"></p>
             </div>
         </div>
-        {% include nitro-ad.html id="character-ritual-banner" format="banner" class="nitro-ad-container--character-card nitro-ad-container--character-ritual" lazy=true placeholder=true %}
+        {% include nitro-ad.html id="character-ritual-banner" format="banner" class="nitro-ad-container--character-card nitro-ad-container--character-ritual" lazy=true placeholder=true visible_margin=2400 %}
     </div>
 
 
@@ -616,7 +616,7 @@
             <div id="recommended-party-content" class="recommended-party-content">
                 <!-- 파티 내용이 여기에 동적으로 추가됨 -->
             </div>
-            {% include nitro-ad.html id="character-nature-banner" format="banner" class="nitro-ad-container--character-card nitro-ad-container--character-party" lazy=true placeholder=true %}
+            {% include nitro-ad.html id="character-nature-banner" format="banner" class="nitro-ad-container--character-card nitro-ad-container--character-party" lazy=true placeholder=true visible_margin=2400 %}
         </div>
     </div>
 
@@ -1583,6 +1583,7 @@
                     adSlot.dataset.nitroAd = '';
                     adSlot.dataset.nitroFormat = 'rectangle';
                     adSlot.dataset.nitroRenderVisibleOnly = 'true';
+                    adSlot.dataset.nitroVisibleMargin = '2400';
                     adSlot.dataset.nitroMediaQuery = '(max-width: 768px)';
                     adContainer.appendChild(adSlot);
                 }

@@ -39,7 +39,9 @@
     }
 
     function buildMapping() {
-        nameSource = (typeof window !== 'undefined' && window.personaFiles) ? window.personaFiles : {};
+        nameSource = (typeof window !== 'undefined' && window.personaIndex)
+            ? window.personaIndex
+            : ((typeof window !== 'undefined' && window.personaFiles) ? window.personaFiles : {});
         personaNameMapping = {}; // Reset
         searchIndex = {}; // Reset index
 

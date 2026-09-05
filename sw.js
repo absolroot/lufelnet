@@ -174,9 +174,10 @@ self.addEventListener('fetch', (event) => {
 
   if (isJSOrCSSOrData) {
     const isVersionManifest = url.pathname.endsWith('/assets/js/version-manifest.js');
-    if (url.searchParams.has('v') && !isVersionManifest) {
-      // Content-versioned resources are immutable for that URL. Let the browser
-      // use its HTTP cache; a new APP_VERSION produces a new request URL.
+    const isStylesheet = url.pathname.endsWith('.css') || url.pathname.includes('/assets/css/');
+    if (url.searchParams.has('v') && !isVersionManifest && !isStylesheet) {
+      // Versioned JS/data can use the browser HTTP cache. CSS intentionally
+      // revalidates because style changes may deploy without an APP_VERSION bump.
       return;
     }
     const revalidateRequest = new Request(request, { cache: 'no-cache' });

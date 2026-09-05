@@ -120,6 +120,10 @@
     padding: 20px 0px;
 }
 
+.character-cards--loading {
+    min-height: max(720px, 100vh);
+}
+
 .card {
     position: relative;
     width: 160px;
@@ -127,6 +131,59 @@
     margin-bottom: 55px;
     transform-style: preserve-3d;
     transition: all 0.1s;
+}
+
+.card > a {
+    display: block;
+    aspect-ratio: 560 / 932;
+}
+
+.character-card-skeleton {
+    aspect-ratio: 560 / 932;
+    overflow: hidden;
+    cursor: default;
+    border-radius: 10px;
+    background: #242424;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
+.character-card-skeleton::before {
+    opacity: 1;
+    background: linear-gradient(105deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.09) 48%,
+        transparent 62%);
+    background-size: 220% 100%;
+    animation: character-skeleton-shimmer 1.35s ease-in-out infinite;
+    mix-blend-mode: normal;
+    filter: none;
+}
+
+.character-card-skeleton__portrait {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #2d2d2d 0%, #1b1b1b 100%);
+}
+
+.character-card-skeleton__name {
+    position: absolute;
+    left: 14%;
+    right: 14%;
+    bottom: 8%;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@keyframes character-skeleton-shimmer {
+    from { background-position: 120% 0; }
+    to { background-position: -120% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .character-card-skeleton::before {
+        animation: none;
+    }
 }
 
 .card.hidden-by-filter {

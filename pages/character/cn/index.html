@@ -1,27 +1,17 @@
 ---
-layout: null
+layout: default
+custom_css: [character]
+custom_js: [character/spoiler-state]
+title: "怪盗养成攻略 - 女神异闻录5: 夜幕魅影 路菲尔网"
+description: "查看《女神异闻录5: 夜幕魅影》的怪盗养成攻略。推荐配置、技能、意识与专属武器信息一站查看。"
+language: cn
 permalink: /cn/character/
+robots: noindex,nofollow
 sitemap: false
+alternate_urls:
+  ko: /kr/character/
+  en: /en/character/
+  ja: /jp/character/
+  'zh-CN': /cn/character/
 ---
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex,nofollow">
-  <title>怪盗养成攻略 - 女神异闻录5: 夜幕魅影 路菲尔网</title>
-  <meta name="description" content="查看《女神异闻录5: 夜幕魅影》的怪盗养成攻略。推荐配置、技能、意识与专属武器信息一站查看。">
-</head>
-<body>
-  <script>
-    (function () {
-      var params = new URLSearchParams(window.location.search || "");
-      params.set("lang", "cn");
-      var query = params.toString();
-      var next = "/character/" + (query ? ("?" + query) : "");
-      window.location.replace(next);
-    })();
-  </script>
-  <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=cn"></noscript>
-  <a href="/character/?lang=cn">Continue</a>
-</body>
-</html>
+{% include character-list-body.html %}

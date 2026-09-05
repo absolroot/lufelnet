@@ -130,19 +130,21 @@
                 // 현재 언어 감지
                 this.currentLang = customLang || this._detectLanguage();
 
-                // 역조회를 위해 kr 번역 항상 로드
-                if (this.currentLang !== 'kr') {
-                    await this.loadCommonTranslations('kr');
+                // 역조회용 KR과 현재 언어 리소스는 서로 독립적이므로 병렬 로드
+                const initializationTasks = [
+                    this.loadCommonTranslations(this.currentLang)
+                ];
+                if (this.currentLang !== this.fallbackLanguage) {
+                    initializationTasks.push(this.loadCommonTranslations(this.fallbackLanguage));
                 }
 
-                // 공통 번역 로드
-                await this.loadCommonTranslations();
-
-                // 페이지별 번역 로드 (페이지 이름이 제공된 경우)
+                // 페이지별 번역도 공통 번역과 네트워크 의존성이 없어 함께 시작
                 if (pageName) {
                     this.currentPage = pageName;
-                    await this.loadPageTranslations(pageName);
+                    initializationTasks.push(this.loadPageTranslations(pageName, this.currentLang));
                 }
+
+                await Promise.all(initializationTasks);
 
                 // console.log(`[I18nService] Initialized with language: ${this.currentLang}, page: ${pageName || 'none'}`);
             } catch (error) {
@@ -475,13 +477,11 @@
             const oldLang = this.currentLang;
             this.currentLang = newLang;
 
-            // 공통 번역 로드
-            await this.loadCommonTranslations(newLang);
-
-            // 현재 페이지 번역 로드
+            const languageTasks = [this.loadCommonTranslations(newLang)];
             if (this.currentPage) {
-                await this.loadPageTranslations(this.currentPage, newLang);
+                languageTasks.push(this.loadPageTranslations(this.currentPage, newLang));
             }
+            await Promise.all(languageTasks);
 
             // 리스너들에게 알림
             this._notifyLanguageChange(oldLang, newLang);

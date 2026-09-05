@@ -535,6 +535,7 @@
 
         if (filterContent) {
             filterContent.style.display = 'block';
+            filterContent.style.visibility = 'visible';
         }
 
         if (filterToggleBtn && filterContent) {

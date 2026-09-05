@@ -1,27 +1,17 @@
 ---
-layout: null
+layout: default
+custom_css: [character]
+custom_js: [character/spoiler-state]
+title: "Character Build Guide | Lufelnet Persona 5: The Phantom X"
+description: "Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info."
+language: en
 permalink: /en/character/
+robots: noindex,nofollow
 sitemap: false
+alternate_urls:
+  ko: /kr/character/
+  en: /en/character/
+  ja: /jp/character/
+  'zh-CN': /cn/character/
 ---
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Character Build Guide | Lufelnet Persona 5: The Phantom X</title>
-  <meta name="description" content="Character development guide for Persona 5: The Phantom X. Check recommended setup, skills, awareness, and exclusive weapon info.">
-</head>
-<body>
-  <script>
-    (function () {
-      var params = new URLSearchParams(window.location.search || "");
-      params.set("lang", "en");
-      var query = params.toString();
-      var next = "/character/" + (query ? ("?" + query) : "");
-      window.location.replace(next);
-    })();
-  </script>
-  <noscript><meta http-equiv="refresh" content="0; url=/character/?lang=en"></noscript>
-  <a href="/character/?lang=en">Continue</a>
-</body>
-</html>
+{% include character-list-body.html %}

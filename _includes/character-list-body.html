@@ -1,0 +1,1335 @@
+{% if page.alternate_urls %}
+{% for alt in page.alternate_urls %}
+<link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
+{% endfor %}
+<link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] }}" />
+{% endif %}
+
+<script>
+window.LufelPageLifecycle?.hold('character-list');
+</script>
+
+<!-- URL rewrite: /character/?lang=en → /en/character/ -->
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var lang = params.get('lang');
+  if (!lang) return;
+  var path = window.location.pathname;
+  // Only rewrite from /character/ (not from /{lang}/character/ which is already path-based)
+  if (/^\/(kr|en|jp|cn)\//.test(path)) return;
+  if (['kr','en','jp','cn'].indexOf(lang) === -1) return;
+  // Set SEO flag so LanguageRouter skips redirect logic after replaceState
+  window.__SEO_PATH_LANG__ = lang;
+  var newPath = '/' + lang + '/character/';
+  params.delete('lang');
+  params.delete('v');
+  var remaining = params.toString();
+  history.replaceState(null, '', newPath + (remaining ? '?' + remaining : ''));
+})();
+</script>
+
+<div class="main-wrapper">
+    <!-- 언어 안내 메시지 -->
+    <!--
+    <div id="language-notice" class="language-notice" style="display: none;">
+        <p id="language-notice-text"></p>
+    </div>-->
+
+    <div class="header-container character-list-header">
+        <div class="header-title">
+            <div class="navigation-path">
+                <script>document.write(`<a href="../?v=${APP_VERSION}" id="nav-home">-</a>`);</script>
+                <span class="separator">/</span>
+                <span class="current-page" id="nav-current">-</span>
+            </div>
+            <h1 id="page-title">-</h1>
+        </div>
+    </div>
+    <!-- Filter section -->
+    <div class="filter-section">
+        <div class="filter-header">
+            <button class="filter-toggle-btn">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
+                <span></span>
+            </button>
+            <button class="filter-reset-btn" style="display: none;">
+                <img src="{{ site.baseurl }}/assets/img/character-cards/reset.png" alt="초기화" />
+            </button>
+        </div>
+
+        <div class="filter-content" style="display: block; visibility: hidden;">
+            <!-- Element filter -->
+            <div class="filter-group">
+                <h3>속성</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="element" value="물리">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_물리.png" alt="물리">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="총격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_총격.png" alt="총격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="화염">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_화염.png" alt="화염">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="빙결">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_빙결.png" alt="빙결">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="전격">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_전격.png" alt="전격">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="질풍">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_질풍.png" alt="질풍">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="염동">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_염동.png" alt="염동">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="핵열">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_핵열.png" alt="핵열">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="축복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_축복.png" alt="축복">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="주원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_주원.png" alt="주원">
+                        <span></span>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="element" value="만능">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/속성_만능.png" alt="만능">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Position filter -->
+            <div class="filter-group">
+                <h3>직업</h3>
+                <div class="filter-options">
+                    <label>
+                        <input type="checkbox" name="position" value="지배">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_지배.png" alt="지배">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="반항">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_반항.png" alt="반항">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="우월">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_우월.png" alt="우월">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="굴복">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_굴복.png" alt="굴복">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="방위">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_방위.png" alt="방위">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="구원">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_구원.png" alt="구원">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="해명">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_해명.png" alt="해명">
+                    </label>
+                    <label>
+                        <input type="checkbox" name="position" value="자율">
+                        <img src="{{ site.baseurl }}/assets/img/character-cards/직업_자율.png" alt="자율">
+                    </label>
+                </div>
+            </div>
+
+            <!-- Rarity filter -->
+            <div class="filter-group">
+                <h3>유형</h3>
+                <div class="filter-options tag-options">
+                    <label>
+                        <input type="checkbox" name="rarity" value="5" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star5.png" alt="★">
+                        </div>
+                    </label>
+                    <label>
+                        <input type="checkbox" name="rarity" value="4" hidden>
+                        <div class="star-container">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                            <img src="{{ site.baseurl }}/assets/img/character-detail/star4.png" alt="★">
+                        </div>
+                    </label>
+                    <label><input type="checkbox" name="tag" value="한정"><img
+                            src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="한정"></label>
+                    <label><input type="checkbox" name="tag" value="통상"><img
+                            src="{{ site.baseurl }}/assets/img/pay/미래의 운명.png" alt="통상"></label>
+                    <label class="normal-asia-filter"><input type="checkbox" name="tag" value="normalAsia"><img
+                            src="{{ site.baseurl }}/assets/img/pay/미래의 운명 ASIA.png" alt="Standard ASIA"></label>
+                    <label class="icon-only-tag mindscape-core-filter"><input type="checkbox" name="tag" value="mindscapeCore"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/character-detail/innate/core.png" alt="" aria-hidden="true"><span data-i18n="characterFilterMindscapeCore">심상 코어</span></label>
+                    <label><input type="checkbox" name="tag" value="p5x"><img src="{{ site.baseurl }}/assets/img/etc/p5x.png" alt="P5X"></label>
+                    <label><input type="checkbox" name="tag" value="페르소나5"><img src="{{ site.baseurl }}/assets/img/etc/p5r.png" alt="P5R"></label>
+                    <label><input type="checkbox" name="tag" value="페르소나3"><img src="{{ site.baseurl }}/assets/img/etc/p3r.png" alt="P3R"></label>
+                    <label><input type="checkbox" name="tag" value="p5d"><img src="{{ site.baseurl }}/assets/img/etc/p5d.png" alt="P5D"></label>
+                </div>
+            </div>
+
+            <!-- Tag filter -->
+            <div class="filter-group">
+                <h3>태그</h3>
+                <div class="filter-options tag-options">
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="크리티컬확률"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/크리티컬 확률.png" alt="" aria-hidden="true"><span>크리티컬 확률</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="방어력감소"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/방어력 감소.png" alt="" aria-hidden="true"><span>방어력 감소</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="관통"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/관통.png" alt="" aria-hidden="true"><span>관통</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="효과명중"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/효과 명중.png" alt="" aria-hidden="true"><span>효과 명중</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="실드"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/실드.png" alt="" aria-hidden="true"><span>실드</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="화상"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/화상.png" alt="" aria-hidden="true"><span>화상</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="풍습"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/풍습.png" alt="" aria-hidden="true"><span>풍습</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="감전"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/감전.png" alt="" aria-hidden="true"><span>감전</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="동결"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/동결.png" alt="" aria-hidden="true"><span>동결</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="HP 소모"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/생명.png" alt="" aria-hidden="true"><span>HP 소모</span></label>
+                    <label class="icon-only-tag"><input type="checkbox" name="tag" value="적합성 저하"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/stat-icon/적합성 저하.png" alt="" aria-hidden="true"><span>적합성 저하</span></label>
+                    <label><input type="checkbox" name="tag" value="TECHNICAL"><span>TECHNICAL</span></label>
+                    <label><input type="checkbox" name="tag" value="추가효과"><span>추가 효과</span></label>
+                    <label><input type="checkbox" name="tag" value="지속대미지"><span>지속 대미지</span></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Separator line -->
+    <div class="separator-line"></div>
+
+    <!-- Search section below filter section -->
+    <div class="search-section">
+        <div class="search-container">
+            <div class="search-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5c0-3.59-2.91-6.5-6.5-6.5S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.27v.79L19 20.49 20.49 19 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
+                        fill="rgba(255, 255, 255, 0.6)" />
+                </svg>
+            </div>
+            <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
+            <div id="searchDropdown" class="search-dropdown"></div>
+        </div>
+        <div class="search-count"></div>
+        <div class="spoiler-toggle-container">
+            <label class="spoiler-toggle-label">
+                <input type="checkbox" id="spoilerToggle" class="spoiler-toggle-checkbox">
+                <span class="spoiler-toggle-text" id="spoilerToggleText">Show Spoilers</span>
+            </label>
+        </div>
+    </div>
+
+    {% include nitro-ad.html id="character-search-banner" format="banner" class="nitro-ad-container--section nitro-ad-container--character-search" placeholder=true %}
+
+    <!-- Character card container -->
+    <div class="character-cards character-cards--loading" id="characterCards">
+        {% for i in (1..12) %}
+        <div class="card character-card-skeleton" aria-hidden="true">
+            <span class="character-card-skeleton__portrait"></span>
+            <span class="character-card-skeleton__name"></span>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+    window.LufelNitroAds?.recordDebugTiming?.('character-skeleton', { source: 'initial-html' });
+    </script>
+
+    <!-- 광고 -->
+    <!--
+    <div id="ad-unit-bottom" class="AD-bottom" style="margin-top: 40px; margin-bottom:12px; text-align: center; align-items: center; display: flex; justify-content: center;"> 
+    <ins class="adsbygoogle"
+        style="display:inline-block;width:970px;height:90px"
+        data-ad-client="ca-pub-5862324369257695"
+        data-ad-slot="9244892982"></ins>
+    </div>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+    <style>
+        @media (max-width: 1440px) {
+            .AD-bottom {
+                display: none !important;
+            }
+        }
+    </style>-->
+</div>
+
+<style>
+    /* 스포일러 토글 스타일 */
+    .spoiler-toggle-container {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+    }
+
+    .spoiler-toggle-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.8);
+        user-select: none;
+        transition: color 0.2s ease;
+    }
+
+    .spoiler-toggle-label:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .spoiler-toggle-checkbox {
+        appearance: none;
+        width: 20px !important;
+        height: 20px !important;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+        position: relative;
+        transition: all 0.2s ease;
+        background: transparent;
+        background-image: none !important;
+        margin-right: 4px !important;
+    }
+
+    .spoiler-toggle-checkbox:checked {
+        background: #a90505b7;
+        border-color: #a90505b7;
+        background-image: none !important;
+        width: 20px !important;
+        height: 20px !important;
+        margin-right: 4px !important;
+    }
+
+    /* 체크 표시가 박스 가운데에 있을 수 있도록 */
+    .spoiler-toggle-checkbox:checked::after {
+        content: '✓';
+        position: absolute;
+        top: -2px;
+        left: 1px;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 2px 0 0 2px;
+    }
+
+    .spoiler-toggle-checkbox:hover {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .spoiler-toggle-text {
+        font-weight: 500;
+    }
+
+    /* 검색 섹션 레이아웃 조정 */
+    .search-section {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .search-container {
+        flex: 1;
+        position: relative;
+    }
+
+    .search-count {
+        white-space: nowrap;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+    }
+
+    /* 미출시 캐릭터 태그 스타일 */
+    .not-released-tag {
+        position: absolute;
+        top: 10px;
+        right: 0px;
+        background: #f6d933;
+        color: #000;
+        font-size: 8px;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 0px;
+        z-index: 10;
+        box-shadow: 0 1px 3px rgba(255, 255, 255, 0.05);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    /* 캐릭터 카드에 relative position 추가 (태그 위치 기준) */
+    .card {
+        position: relative;
+    }
+
+    .card a {
+        position: relative;
+        display: block;
+    }
+</style>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?v={{ site.time | date: '%s' }}"></script>
+<script>
+    // 다국어 지원 함수
+    function getI18nText(key, fallback = '') {
+        if (typeof window.t === 'function') {
+            return window.t(key, fallback);
+        }
+        if (window.I18nService && typeof window.I18nService.t === 'function') {
+            return window.I18nService.t(key, fallback);
+        }
+        return fallback || key;
+    }
+
+    function translateTermSafe(text) {
+        if (!text) return text;
+        if (window.I18nService && typeof window.I18nService.translateTerm === 'function') {
+            return window.I18nService.translateTerm(text);
+        }
+        return text;
+    }
+
+    async function updateLanguageContent() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const tabLabels = {
+            kr: { list: '캐릭터', share: '현황 공유' },
+            en: { list: 'Characters', share: 'Roster Share' },
+            jp: { list: 'キャラ', share: '所持共有' },
+            cn: { list: '角色', share: '持有分享' }
+        };
+        const resolvedTabLabels = tabLabels[currentLang] || tabLabels.kr;
+
+        const navHome = document.getElementById('nav-home');
+        const navCurrent = document.getElementById('nav-current');
+        const pageTitle = document.getElementById('page-title');
+        const characterListTab = document.getElementById('character-list-tab');
+        const rosterShareCta = document.getElementById('roster-share-cta');
+        const searchInput = document.getElementById('characterSearch');
+
+        if (navHome) {
+            navHome.textContent = getI18nText('nav.home', navHome.textContent || '');
+        }
+        if (navCurrent) {
+            navCurrent.textContent = getI18nText('navCurrent', navCurrent.textContent || '');
+        }
+        if (pageTitle) {
+            pageTitle.textContent = getI18nText('pageTitle', pageTitle.textContent || '');
+        }
+        if (characterListTab) {
+            characterListTab.textContent = resolvedTabLabels.list;
+            characterListTab.href = `${BASE_URL}/${currentLang}/character/`;
+        }
+        if (rosterShareCta) {
+            rosterShareCta.textContent = resolvedTabLabels.share;
+            rosterShareCta.href = `${BASE_URL}/${currentLang}/share/character/`;
+        }
+        if (searchInput) {
+            searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');
+        }
+
+        const filteredFallback = 'Total';
+        const countUnitFallback = '';
+        window.i18nFilteredCount = getI18nText('filteredCount', filteredFallback);
+        window.i18nCountUnit = getI18nText('countUnit', countUnitFallback);
+
+        updateFilterTitles();
+    }
+
+    function updateFilterTitles() {
+        const filterGroups = document.querySelectorAll('.filter-group h3');
+        const keys = ['filterElement', 'filterPosition', 'filterType', 'filterTag'];
+
+        keys.forEach((key, index) => {
+            if (!filterGroups[index]) return;
+            filterGroups[index].textContent = getI18nText(key, filterGroups[index].textContent || '');
+        });
+    }
+
+    function updateSEOContent() {
+        const metaDescription = document.querySelector('meta[name="description"]');
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        const ogDescription = document.querySelector('meta[property="og:description"]');
+
+        const fallbackTitle = document.title || 'Character Build Guide - Persona 5: The Phantom X LufelNet';
+        const fallbackDescription = (metaDescription && metaDescription.getAttribute('content')) || '';
+        const seoTitle = getI18nText('seoTitle', fallbackTitle);
+        const seoDescription = getI18nText('seoDescription', fallbackDescription);
+
+        document.title = seoTitle;
+        if (metaDescription) metaDescription.setAttribute('content', seoDescription);
+        if (ogTitle) ogTitle.setAttribute('content', seoTitle);
+        if (ogDescription) ogDescription.setAttribute('content', seoDescription);
+    }
+
+    // Initialize navigation on page load
+    // 기존 DOMContentLoaded 리스너 제거됨 - 하단의 통합된 리스너 사용
+
+    // 스크립트에서 데이터 추출하는 함수
+    function extractDataFromScript(scriptText) {
+        // 레거시 정규식 경로는 더 이상 사용하지 않음.
+        // 호출 호환성 유지용 더미 구현.
+        throw new Error('Failed to extract data from script');
+    }
+
+    // 안전한 스크립트 로더
+    function loadScriptOnce(src) {
+        return new Promise((resolve, reject) => {
+            const exists = Array.from(document.scripts).some(s => s.src && s.src.includes(src));
+            if (exists) return resolve();
+            const s = document.createElement('script');
+            s.src = src;
+            s.onload = () => resolve();
+            s.onerror = () => reject(new Error('Failed to load ' + src));
+            document.head.appendChild(s);
+        });
+    }
+
+    // 언어별 characters.js를 샌드박스에서 평가해 순수 데이터만 추출
+    async function fetchCharactersData(url) {
+        try {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const text = await res.text();
+            const sandbox = {};
+            // 파일 내에서 window.characterList / window.characterData에 병합하도록 되어 있어도
+            // 이 샌드박스 window는 비어 있으므로 순수 언어 데이터만 담긴다.
+            const win = (new Function('window', `${text}\n; return window;`))(sandbox);
+            const list = win.characterList || { mainParty: [], supportParty: [] };
+            const data = win.characterData || {};
+            return { characterList: list, characterData: data };
+        } catch (e) {
+            return null;
+        }
+    }
+
+    // 스포일러 토글 상태 확인 함수
+    function isSpoilerEnabled() {
+        try {
+            if (window.SpoilerState && typeof window.SpoilerState.get === 'function') {
+                return !!window.SpoilerState.get();
+            }
+        } catch (_) { }
+        try {
+            return localStorage.getItem('spoilerToggle') === 'true';
+        } catch (_) {
+            return false;
+        }
+    }
+
+    // 언어별 캐릭터 데이터 로딩 및 병합
+    async function loadCharacterData() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+            ? window.isKrLikeLanguage(currentLang)
+            : (currentLang === 'kr' || currentLang === 'cn');
+        const spoilerEnabled = isSpoilerEnabled();
+
+        // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 언어별 캐릭터 리스트 저장
+        let originalLangCharacterList = null;
+
+        try {
+            window.LufelNitroAds?.recordDebugTiming?.('character-data-start', { source: currentLang });
+
+            // KR 원본과 현재 언어 데이터는 독립 요청이므로 함께 시작한다.
+            const krPromise = fetchCharactersData(`/data/character_info.js?v=${APP_VERSION}`);
+            let langPromise = Promise.resolve(null);
+            if (currentLang !== 'kr') {
+                const langDataPath = (currentLang === 'en' || currentLang === 'jp')
+                    ? '/data/character_info_glb.js'
+                    : `/data/${currentLang}/characters/characters.js`;
+                langPromise = fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
+            }
+
+            const [kr, lang] = await Promise.all([krPromise, langPromise]);
+            if (!kr) {
+                throw new Error('Failed to load KR character data');
+            }
+            const krCharacterData = kr.characterData || {};
+            const krCharacterList = kr.characterList || { mainParty: [], supportParty: [] };
+
+            // 2) 언어 데이터 로드 및 병합(샌드박스 평가로 전역 오염 방지)
+            if (!isKrLike) {
+                if (lang) {
+                    const langCharacterData = lang.characterData || {};
+                    const langCharacterList = lang.characterList || { mainParty: [], supportParty: [] };
+                    originalLangCharacterList = [...(langCharacterList.mainParty || []), ...(langCharacterList.supportParty || [])];
+                    if (!spoilerEnabled) {
+                        const mergedData = mergeCharacterData(krCharacterData, langCharacterData);
+                        window.characterData = mergedData;
+                        window.characterList = langCharacterList;
+                    } else {
+                        window.characterData = applyGlobalLimitFields(krCharacterData, langCharacterData);
+                        window.characterList = krCharacterList;
+                    }
+                } else {
+                    // 언어별 데이터 로드 실패 시 KR 사용
+                    originalLangCharacterList = [...(krCharacterList?.mainParty || []), ...(krCharacterList?.supportParty || [])];
+                    window.characterData = krCharacterData;
+                    window.characterList = krCharacterList;
+                }
+            } else if (currentLang === 'cn') {
+                if (lang) {
+                    const langCharacterData = lang.characterData || {};
+                    window.characterData = mergeCharacterData(krCharacterData, langCharacterData);
+                } else {
+                    window.characterData = krCharacterData;
+                }
+                originalLangCharacterList = [...(krCharacterList.mainParty || []), ...(krCharacterList.supportParty || [])];
+                window.characterList = krCharacterList;
+            } else {
+                window.characterData = krCharacterData;
+                window.characterList = krCharacterList;
+            }
+
+            // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 리스트를 전역 변수에 저장
+            window.originalLangCharacterList = originalLangCharacterList;
+            window.LufelNitroAds?.recordDebugTiming?.('character-data-complete', { source: currentLang });
+
+            return true;
+
+        } catch (error) {
+            console.error('Failed to load character data:', error);
+            return false;
+        }
+    }
+
+    // 캐릭터 데이터 병합 함수 (하이브리드 방식)
+    function applyGlobalLimitFields(baseData, langData) {
+        const nextData = {};
+        const sourceData = langData || {};
+
+        for (const characterKey in baseData) {
+            const baseChar = baseData[characterKey];
+            const langChar = sourceData[characterKey];
+            nextData[characterKey] = { ...baseChar };
+            nextData[characterKey].limit_asia = baseChar.limit;
+            nextData[characterKey].limit_glb = (langChar && langChar.limit !== undefined) ? langChar.limit : baseChar.limit;
+            nextData[characterKey].limit = nextData[characterKey].limit_glb;
+        }
+
+        return nextData;
+    }
+
+    function mergeCharacterData(krData, langData) {
+        const mergedData = {};
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+
+        // 샘플 데이터 확인
+        const firstKrKey = Object.keys(krData)[0];
+        const firstLangKey = Object.keys(langData)[0];
+
+        // 언어별 데이터에 있는 캐릭터만 포함 (langData 기준으로 필터링)
+        for (const characterKey in langData) {
+            //console.log('Merging character:', characterKey);
+
+            if (krData[characterKey]) {
+                //console.log(`✅ Found KR data for ${characterKey}`);
+                // 한국어 데이터를 기본으로 완전히 복사 (모든 속성 보존)
+                mergedData[characterKey] = { ...krData[characterKey] };
+
+                const langChar = langData[characterKey];
+                const krChar = krData[characterKey];
+                const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
+
+                if (isGlobalLang) {
+                    mergedData[characterKey].limit_asia = krChar.limit;
+                    mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : krChar.limit;
+                    mergedData[characterKey].limit = mergedData[characterKey].limit_glb;
+                }
+
+                // name 처리: 현재 언어에 따라 적절한 이름 사용
+                if (currentLang === 'en') {
+                    if (krChar.name_en) {
+                        mergedData[characterKey].name = krChar.name_en;
+                    } else if (langChar.name && langChar.name !== '') {
+                        mergedData[characterKey].name = langChar.name;
+                    }
+                } else if (currentLang === 'jp') {
+                    if (krChar.name_jp) {
+                        mergedData[characterKey].name = krChar.name_jp;
+                    } else if (langChar.name && langChar.name !== '') {
+                        mergedData[characterKey].name = langChar.name;
+                    } else {
+                    }
+                } else if (currentLang === 'cn') {
+                    if (krChar.name_cn) {
+                        mergedData[characterKey].name = krChar.name_cn;
+                    } else if (langChar.name && langChar.name !== '') {
+                        mergedData[characterKey].name = langChar.name;
+                    }
+                } else {
+                    // KR 언어일 때는 기본 KR 이름 사용
+                }
+
+                // persona 처리: 현재 언어에 따라 적절한 페르소나 이름 사용
+                if (currentLang === 'en') {
+                    if (krChar.persona_en) {
+                        mergedData[characterKey].persona = krChar.persona_en;
+                    } else if (langChar.persona && langChar.persona !== '') {
+                        mergedData[characterKey].persona = langChar.persona;
+                    }
+                } else if (currentLang === 'jp') {
+                    if (krChar.persona_jp) {
+                        mergedData[characterKey].persona = krChar.persona_jp;
+                        //console.log(`Using KR JP persona for ${characterKey}: ${krChar.persona_jp}`);
+                    } else if (langChar.persona && langChar.persona !== '') {
+                        mergedData[characterKey].persona = langChar.persona;
+                        //console.log(`Using Lang JP persona for ${characterKey}: ${langChar.persona}`);
+                    }
+                } else if (currentLang === 'cn') {
+                    if (krChar.persona_cn) {
+                        mergedData[characterKey].persona = krChar.persona_cn;
+                    } else if (langChar.persona && langChar.persona !== '') {
+                        mergedData[characterKey].persona = langChar.persona;
+                    }
+                }
+
+                // 속성 번역 처리 (element 필드는 그대로 유지하되, 표시용 번역 추가)
+                if (currentLang !== 'kr') {
+                    const translatedElement = translateTermSafe(mergedData[characterKey].element);
+                    if (translatedElement && translatedElement !== mergedData[characterKey].element) {
+                        mergedData[characterKey].element_display = translatedElement;
+                    }
+
+                    const translatedPosition = translateTermSafe(mergedData[characterKey].position);
+                    if (translatedPosition && translatedPosition !== mergedData[characterKey].position) {
+                        mergedData[characterKey].position_display = translatedPosition;
+                    }
+                }
+
+                // 다른 필드들은 언어별 데이터에 값이 있고 빈 문자열이 아닐 때만 덮어쓰기
+                // 중요: element, position, rarity 등은 절대 덮어쓰지 않음 (한국어 데이터 유지)
+                // role은 characterSetting으로 이동했으므로 여기서는 처리하지 않음
+                if (langChar.tag && langChar.tag !== '') {
+                    mergedData[characterKey].tag = langChar.tag;
+                }
+                // release_order는 언어별 데이터에 있으면 무조건 사용 (0도 유효한 값)
+                if (langChar.release_order !== undefined) {
+                    mergedData[characterKey].release_order = langChar.release_order;
+                    //console.log(`Using Lang release_order for ${characterKey}: ${langChar.release_order}`);
+                }
+
+                // 중요한 속성들이 제대로 보존되었는지 확인
+                if (!mergedData[characterKey].element || !mergedData[characterKey].position || !mergedData[characterKey].rarity) {
+                    console.warn(`Missing critical data for ${characterKey}:`, {
+                        element: mergedData[characterKey].element,
+                        position: mergedData[characterKey].position,
+                        rarity: mergedData[characterKey].rarity
+                    });
+                }
+
+            } else {
+                console.warn(`❌ Character ${characterKey} not found in KR data`);
+                console.warn('Available KR characters:', Object.keys(krData).slice(0, 10), '... (showing first 10)');
+            }
+        }
+
+        return mergedData;
+    }
+
+    // Type filters 표시 여부 확인
+    function shouldShowP3Filter() {
+        if (!characterData) return false;
+
+        // 로딩된 캐릭터 중에 persona3=true인 캐릭터가 있는지 확인
+        return Object.values(characterData).some(char => char.persona3 === true);
+    }
+
+    function shouldShowP5DFilter() {
+        if (!characterData) return false;
+        return Object.values(characterData).some(char => char.p5d === true);
+    }
+
+    function shouldShowP5XFilter() {
+        if (!characterData) return false;
+        return Object.values(characterData).some(char => char.p5x === true);
+    }
+
+    function shouldShowNormalAsiaFilter() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        return currentLang === 'en' || currentLang === 'jp';
+    }
+
+    // 콜라보 필터 표시/숨김 처리
+    function toggleTypeFilters() {
+        const p5xFilter = document.querySelector('label input[value="p5x"]');
+        if (p5xFilter) {
+            const p5xLabel = p5xFilter.closest('label');
+            if (shouldShowP5XFilter()) {
+                p5xLabel.style.display = 'flex';
+            } else {
+                p5xFilter.checked = false;
+                p5xLabel.style.display = 'none';
+            }
+        }
+
+        const p3Filter = document.querySelector('label input[value="페르소나3"]');
+        if (p3Filter) {
+            const p3Label = p3Filter.closest('label');
+            if (shouldShowP3Filter()) {
+                p3Label.style.display = 'flex';
+            } else {
+                p3Label.style.display = 'none';
+            }
+        }
+
+        const p5dFilter = document.querySelector('label input[value="p5d"]');
+        if (p5dFilter) {
+            const p5dLabel = p5dFilter.closest('label');
+            if (shouldShowP5DFilter()) {
+                p5dLabel.style.display = 'flex';
+            } else {
+                p5dLabel.style.display = 'none';
+            }
+        }
+
+        const normalAsiaFilter = document.querySelector('label input[value="normalAsia"]');
+        if (normalAsiaFilter) {
+            const normalAsiaLabel = normalAsiaFilter.closest('label');
+            if (shouldShowNormalAsiaFilter()) {
+                normalAsiaLabel.style.display = 'flex';
+            } else {
+                normalAsiaFilter.checked = false;
+                normalAsiaLabel.style.display = 'none';
+            }
+        }
+    }
+
+    // 중복 실행 방지를 위한 플래그
+    let isInitializing = false;
+    let isInitialized = false;
+    let isApplyingSpoiler = false;
+    let characterLifecycleReleased = false;
+    let domInitializationStarted = false;
+
+    function releaseCharacterLifecycle() {
+        if (characterLifecycleReleased) return;
+        characterLifecycleReleased = true;
+        window.LufelPageLifecycle?.release('character-list');
+    }
+
+    async function initializePageContent(options = {}) {
+        const force = !!(options && options.force);
+        // 중복 실행 방지
+        if (isInitializing || (isInitialized && !force)) {
+            // console.log('initializePageContent already running or completed');
+            return;
+        }
+
+        isInitializing = true;
+        // console.log('=== STARTING PAGE INITIALIZATION ===');
+
+        // 캐릭터 데이터 로딩
+        const dataLoaded = await (options.dataPromise || loadCharacterData());
+        if (!dataLoaded || typeof window.characterData === 'undefined') {
+            console.error('characterData is not loaded');
+            isInitializing = false;
+            releaseCharacterLifecycle();
+            return;
+        }
+
+        // 지역 변수를 window.characterData로 설정
+        const characterData = window.characterData;
+        const characterList = window.characterList;
+
+        // Type 필터 표시 여부 처리
+        toggleTypeFilters();
+
+        const cardsContainer = document.getElementById('characterCards');
+        const searchCount = document.querySelector('.search-count');
+
+        // Combine mainParty and supportParty from characterList (언어별 제한된 목록)
+        let allCharacters = [
+            ...characterList.mainParty,
+            ...characterList.supportParty
+        ];
+
+        // Exclude 'Wonder' from characters
+        allCharacters = allCharacters.filter(character => character !== "원더");
+
+        // characterList에 있는 캐릭터만 사용하고, characterData에도 존재하는지 확인
+        const availableCharacters = allCharacters.filter(characterName => characterData[characterName] !== undefined);
+
+        // Sort by release_order (descending), then by rarity
+        const sortedCharacters = availableCharacters.sort((a, b) => {
+            const aReleaseOrder = characterData[a].release_order || 0;
+            const bReleaseOrder = characterData[b].release_order || 0;
+            const releaseOrderDiff = bReleaseOrder - aReleaseOrder;
+
+            if (releaseOrderDiff !== 0) return releaseOrderDiff;
+            return characterData[b].rarity - characterData[a].rarity;
+        });
+
+
+
+        // 초기 검색 결과 수 표시
+        const countText = window.i18nFilteredCount ?? '전체';
+        const countUnit = window.i18nCountUnit ?? '';
+        searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
+
+
+        // IntersectionObserver for lazy image loading
+        const imageObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    const realSrc = img.dataset.src;
+                    if (realSrc) {
+                        const realImage = new Image();
+                        realImage.onload = () => {
+                            img.src = realSrc;
+                            img.classList.add('loaded');
+                        };
+                        realImage.src = realSrc;
+                        delete img.dataset.src;
+                    }
+                    imageObserver.unobserve(img);
+                }
+            });
+        }, { rootMargin: '200px' }) : null;
+
+        // Create card for each character using DocumentFragment (single reflow)
+        const fragment = document.createDocumentFragment();
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        const spoilerEnabled = isSpoilerEnabled();
+        const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+            ? window.isKrLikeLanguage(currentLang)
+            : (currentLang === 'kr' || currentLang === 'cn');
+        const originalCharacterList = (spoilerEnabled && !isKrLike) ? (window.originalLangCharacterList || []) : null;
+
+        sortedCharacters.forEach((characterName, index) => {
+
+            const charData = characterData[characterName];
+            if (!charData) {
+                return;
+            }
+
+            const element = charData.element;
+            const position = charData.position;
+            const rarity = charData.rarity;
+
+            if (!element || !position || !rarity) {
+                console.warn(`Missing attributes for ${characterName}:`, {
+                    element: element,
+                    position: position,
+                    rarity: rarity
+                });
+            }
+
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.dataset.element = element || 'undefined';
+            card.dataset.position = position || 'undefined';
+            card.dataset.rarity = rarity || 'undefined';
+            card.dataset.persona5 = charData.persona5 ? 'true' : 'false';
+            card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
+            card.dataset.p5d = charData.p5d ? 'true' : 'false';
+            card.dataset.p5x = charData.p5x ? 'true' : 'false';
+            const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
+            const glbLimit = (isGlobalLang && charData.limit_glb !== undefined) ? charData.limit_glb : charData.limit;
+            const asiaLimit = charData.limit_asia !== undefined ? charData.limit_asia : charData.limit;
+            card.dataset.limit = glbLimit ? 'true' : 'false';
+            card.dataset.limitAsia = asiaLimit ? 'true' : 'false';
+            card.dataset.tags = charData.tag || '';
+            card.dataset.mindscapeCore = charData.has_innate === true ? 'true' : 'false';
+
+            // Create link wrapper - prefer slug-based detail URLs when available
+            const link = document.createElement('a');
+            if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
+                link.href = LanguageRouter.buildCharacterDetailUrl(characterName, currentLang);
+            } else {
+                link.href = `/character.html?name=${encodeURIComponent(characterName)}&lang=${currentLang}&v=${APP_VERSION}`;
+            }
+            link.style.textDecoration = 'none';
+            link.style.color = 'inherit';
+
+            // Position icon container
+            const positionContainer = document.createElement('div');
+            positionContainer.className = 'position-container';
+
+            // Position icon
+            const positionIcon = document.createElement('img');
+            const positionForIcon = position || 'undefined';
+            positionIcon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${positionForIcon}.png`;
+            positionIcon.alt = charData.position_display || position || 'undefined';
+            positionIcon.className = 'position-icon';
+
+            // Character image (lazy loaded via IntersectionObserver)
+            const img = document.createElement('img');
+            img.src = `{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp`;
+            img.alt = characterName;
+            img.className = 'character-img';
+            img.dataset.src = `{{ site.baseurl }}/assets/img/character-cards/${characterName}.webp`;
+
+            // Element icon
+            const elementIcon = document.createElement('img');
+            const elementForIcon = element || 'undefined';
+            elementIcon.src = `{{ site.baseurl }}/assets/img/character-cards/속성_${elementForIcon}.png`;
+            elementIcon.alt = charData.element_display || element || 'undefined';
+            elementIcon.className = 'element-icon';
+
+            // Add name
+            const nameText = document.createElement('span');
+            // 스포일러 모드와 언어에 따른 이름 표시 로직
+            const displayCodename = (window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function')
+                ? window.CharacterDataUtils.getDisplayCodename(charData, currentLang)
+                : ((currentLang === 'en' && charData.codename_en) ? charData.codename_en : charData.codename);
+            if (currentLang === 'en' && displayCodename) {
+                nameText.textContent = displayCodename;
+            } else if (currentLang === 'jp' && spoilerEnabled && charData.name_jp) {
+                // 스포일러 모드에서 일본어 이름 사용
+                nameText.textContent = charData.name_jp;
+            } else if (currentLang === 'cn' && charData.name_cn) {
+                nameText.textContent = charData.name_cn;
+            } else {
+                nameText.textContent = charData.name;
+            }
+            nameText.className = 'name-text';
+            nameText.dataset.persona3 = charData.persona3;
+            nameText.dataset.persona4 = charData.persona4;
+            nameText.dataset.persona5 = charData.persona5;
+            nameText.dataset.p5d = charData.p5d;
+
+            // 스포일러 모드에서 미출시 캐릭터 태그 추가
+            if (originalCharacterList) {
+                const isUnreleased = !originalCharacterList.includes(characterName);
+
+                if (isUnreleased) {
+                    const notReleasedTag = document.createElement('div');
+                    notReleasedTag.className = 'not-released-tag';
+                    notReleasedTag.textContent = getI18nText('notReleased', 'Not Released');
+                    link.appendChild(notReleasedTag);
+                }
+            }
+
+            positionContainer.appendChild(positionIcon);
+            link.appendChild(positionContainer);
+            link.appendChild(img);
+            link.appendChild(elementIcon);
+            link.appendChild(nameText);
+            card.appendChild(link);
+            fragment.appendChild(card);
+
+            // Observe image for lazy loading
+            if (imageObserver) {
+                imageObserver.observe(img);
+            } else {
+                // Fallback: load immediately if IntersectionObserver not supported
+                const realImage = new Image();
+                realImage.onload = () => { img.src = img.dataset.src; img.classList.add('loaded'); };
+                realImage.src = img.dataset.src;
+            }
+        });
+        // 스켈레톤 또는 이전 카드와 한 번에 교체해 빈 그리드 구간을 만들지 않는다.
+        cardsContainer.replaceChildren(fragment);
+        cardsContainer.classList.remove('character-cards--loading');
+        window.LufelNitroAds?.recordDebugTiming?.('character-first-content', { source: currentLang });
+        releaseCharacterLifecycle();
+
+        // 필터 및 검색 기능 초기화
+        if (window.CharacterSearch && typeof window.CharacterSearch.setSearchDataset === 'function') {
+            if (!isInitialized && typeof window.CharacterSearch.initOnce === 'function') {
+                window.CharacterSearch.initOnce(sortedCharacters);
+            } else {
+                window.CharacterSearch.setSearchDataset(sortedCharacters);
+            }
+        } else if (window.initCharacterSearch) {
+            window.initCharacterSearch(sortedCharacters);
+        } else {
+            console.error('Character search script not loaded');
+        }
+
+        // 번역 적용 (데이터 로딩 후)
+        await applyI18nTranslations();
+
+        // 초기화 완료
+        isInitializing = false;
+        isInitialized = true;
+    } // initializePageContent 함수 종료
+
+    // initializePageContent 함수 종료
+
+    // 번역 시스템 적용
+    async function applyI18nTranslations() {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        applyCharacterFilterTooltips(currentLang);
+        if (currentLang === 'kr') return;
+
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            const elementImg = card.querySelector('.element-icon');
+            const elementKey = card.dataset.element;
+            if (elementImg && elementKey) {
+                const translatedElement = translateTermSafe(elementKey);
+                elementImg.alt = translatedElement;
+                elementImg.title = translatedElement;
+            }
+
+            const positionImg = card.querySelector('.position-icon');
+            const positionKey = card.dataset.position;
+            if (positionImg && positionKey) {
+                const translatedPosition = translateTermSafe(positionKey);
+                positionImg.alt = translatedPosition;
+                positionImg.title = translatedPosition;
+            }
+        });
+
+        const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label');
+        elementLabels.forEach(label => {
+            const input = label.querySelector('input[name="element"]');
+            const img = label.querySelector('img');
+            const source = (input && input.value) || (img && img.alt);
+            if (!img || !source) return;
+            const translated = translateTermSafe(source);
+            img.alt = translated;
+        });
+
+        const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
+        positionLabels.forEach(label => {
+            const input = label.querySelector('input[name="position"]');
+            const img = label.querySelector('img');
+            const source = (input && input.value) || (img && img.alt);
+            if (!img || !source) return;
+            const translated = translateTermSafe(source);
+            img.alt = translated;
+        });
+
+        const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
+        tagLabels.forEach(span => {
+            const text = span.textContent;
+            if (!text) return;
+            const label = span.closest('label');
+            const input = label ? label.querySelector('input[name="tag"]') : null;
+            const source = (input && input.value) || text;
+            span.textContent = getCharacterFilterTagLabel(source, translateTermSafe(text), currentLang);
+        });
+
+        const searchInput = document.getElementById('characterSearch');
+        if (searchInput) {
+            searchInput.placeholder = getI18nText('searchPlaceholder', searchInput.placeholder || '');
+        }
+
+        const filterSection = document.querySelector('.filter-section');
+        if (filterSection && window.I18nService && typeof window.I18nService.translateDOM === 'function') {
+            window.I18nService.translateDOM(filterSection);
+            applyCharacterFilterShortLabels(currentLang);
+            applyCharacterFilterTooltips(currentLang);
+        }
+    }
+
+    function setCharacterFilterTooltip(label, text) {
+        if (!label || !text) return;
+        label.dataset.tooltip = text;
+        label.setAttribute('aria-label', text);
+        label.removeAttribute('title');
+
+        const img = label.querySelector('img');
+        if (img) {
+            img.removeAttribute('title');
+        }
+    }
+
+    function getCharacterTypeFilterTooltip(input, label, currentLang) {
+        if (!input) return '';
+        if (input.name === 'rarity') return `${input.value}★`;
+
+        const value = input.value;
+        const text = label.querySelector('span')?.textContent?.trim();
+        if (text) return text;
+
+        if (value === 'p5d') return 'P5D';
+        if (value === 'p5x') return 'P5X';
+        if (value === 'normalAsia') return 'Standard ASIA';
+        if (value === '페르소나5') return 'P5R';
+        if (value === '페르소나3') return 'P3R';
+        if (currentLang === 'en') {
+            const englishTypeLabels = {
+                '한정': 'Limited',
+                '통상': 'Standard'
+            };
+            if (englishTypeLabels[value]) return englishTypeLabels[value];
+        }
+
+        return translateTermSafe(value);
+    }
+
+    function applyCharacterFilterTooltips(currentLang) {
+        const elementLabels = document.querySelectorAll('.filter-group:first-child .filter-options label');
+        elementLabels.forEach(label => {
+            const input = label.querySelector('input[name="element"]');
+            if (!input) return;
+            setCharacterFilterTooltip(label, translateTermSafe(input.value));
+        });
+
+        const positionLabels = document.querySelectorAll('.filter-group:nth-child(2) .filter-options label');
+        positionLabels.forEach(label => {
+            const input = label.querySelector('input[name="position"]');
+            if (!input) return;
+            setCharacterFilterTooltip(label, translateTermSafe(input.value));
+        });
+
+        const typeLabels = document.querySelectorAll('.filter-group:nth-child(3) .filter-options label');
+        typeLabels.forEach(label => {
+            const input = label.querySelector('input[name="rarity"], input[name="tag"]');
+            const tooltip = getCharacterTypeFilterTooltip(input, label, currentLang);
+            setCharacterFilterTooltip(label, tooltip);
+        });
+
+        const iconTagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label.icon-only-tag');
+        iconTagLabels.forEach(label => {
+            const input = label.querySelector('input[name="tag"]');
+            const span = label.querySelector('span');
+            const source = input ? input.value : '';
+            const labelText = span?.textContent?.trim() || translateTermSafe(source);
+            setCharacterFilterTooltip(label, getCharacterFilterTagLabel(source, labelText, currentLang));
+        });
+    }
+
+    function getCharacterFilterTagLabel(source, translated, currentLang) {
+        if (currentLang !== 'en') return translated;
+        const englishFilterLabels = {
+            '방어력감소': 'Def. Reduction',
+            '효과명중': 'Ailment Acc.'
+        };
+        return englishFilterLabels[source] || translated;
+    }
+
+    function applyCharacterFilterShortLabels(currentLang) {
+        if (currentLang !== 'en') return;
+        const tagLabels = document.querySelectorAll('.filter-group:last-child .filter-options label span');
+        tagLabels.forEach(span => {
+            const label = span.closest('label');
+            const input = label ? label.querySelector('input[name="tag"]') : null;
+            if (!input) return;
+            span.textContent = getCharacterFilterTagLabel(input.value, span.textContent, currentLang);
+        });
+    }
+
+    function refreshForSpoilerChange() {
+        if (isApplyingSpoiler) return;
+        isApplyingSpoiler = true;
+        return initializePageContent({ force: true }).finally(() => {
+            isApplyingSpoiler = false;
+        });
+    }
+
+    function initializeSpoilerToggle() {
+        const spoilerToggle = document.getElementById('spoilerToggle');
+        const spoilerToggleText = document.getElementById('spoilerToggleText');
+
+        if (!spoilerToggle || !spoilerToggleText) return;
+
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        spoilerToggleText.textContent = getI18nText('showSpoilers', 'Show Spoilers');
+
+        const spoilerContainer = document.querySelector('.spoiler-toggle-container');
+        if (window.SpoilerState && typeof window.SpoilerState.bindCheckbox === 'function') {
+            window.SpoilerState.bindCheckbox({
+                checkbox: spoilerToggle,
+                container: spoilerContainer,
+                displayStyle: 'block',
+                lang: currentLang,
+                source: 'character-index',
+                onChange: () => {
+                    refreshForSpoilerChange();
+                }
+            });
+            return;
+        }
+
+        const savedState = localStorage.getItem('spoilerToggle') === 'true';
+        spoilerToggle.checked = savedState;
+
+        spoilerToggle.addEventListener('change', function () {
+            const isEnabled = this.checked;
+            localStorage.setItem('spoilerToggle', isEnabled.toString());
+            refreshForSpoilerChange();
+        });
+
+        if (spoilerContainer) {
+            const isKrLike = (typeof window.isKrLikeLanguage === 'function')
+                ? window.isKrLikeLanguage(currentLang)
+                : (currentLang === 'kr' || currentLang === 'cn');
+            spoilerContainer.style.display = isKrLike ? 'none' : 'block';
+        }
+    }
+
+    const initialCharacterDataPromise = loadCharacterData();
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        domInitializationStarted = true;
+        try {
+        Navigation.load('character'); // nav active
+        VersionChecker.check();
+
+        if (typeof LanguageRouter !== 'undefined' && !window.location.search.includes('lang=')
+            && !/^\/(kr|en|jp|cn)\//.test(window.location.pathname)) {
+            const currentUrl = new URL(window.location);
+            currentUrl.searchParams.set('lang', 'kr');
+            window.history.replaceState({}, '', currentUrl);
+        }
+
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+
+        window.LufelNitroAds?.recordDebugTiming?.('character-i18n-start', { source: currentLang });
+        let i18nPromise;
+        if (typeof initPageI18n === 'function') {
+            i18nPromise = initPageI18n('character', { preloadLanguages: 'active-and-kr' });
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            i18nPromise = window.I18nService.init('character', currentLang);
+        } else {
+            i18nPromise = Promise.resolve();
+        }
+        await Promise.all([i18nPromise, initialCharacterDataPromise]);
+        window.LufelNitroAds?.recordDebugTiming?.('character-i18n-complete', { source: currentLang });
+
+        updateSEOContent();
+        await updateLanguageContent();
+        await initializePageContent({ dataPromise: initialCharacterDataPromise });
+        initializeSpoilerToggle();
+        } catch (error) {
+            console.error('Failed to initialize character page:', error);
+            isInitializing = false;
+            releaseCharacterLifecycle();
+        }
+    });
+
+    // 추가 안전장치: window.onload에서도 체크
+    window.addEventListener('load', async () => {
+        // console.log('Window load event fired');
+        if (!domInitializationStarted && !isInitialized) {
+            // console.log('Page not initialized yet, running initialization...');
+            await initializePageContent({ dataPromise: initialCharacterDataPromise });
+        } else {
+            // console.log('Page already initialized, skipping...');
+        }
+    });
+
+</script>
+<script src="{{ site.baseurl }}/apps/character/character-search.js?v=20260602b"></script>

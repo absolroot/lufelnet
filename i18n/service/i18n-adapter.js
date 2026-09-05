@@ -68,7 +68,7 @@
     };
 
     // Initialize i18n adapter for a specific page
-    window.initPageI18n = async function (pageName = null) {
+    window.initPageI18n = async function (pageName = null, options = {}) {
         const i18nService = await waitForI18nService();
 
         if (!i18nService) {
@@ -88,9 +88,12 @@
             await i18nService.init();
         }
 
-        // Initialize i18n service - Load all languages for compatibility
-        const languages = ['kr', 'en', 'jp', 'cn'];
-        await Promise.all(languages.map(async (lang) => {
+        // 기존 페이지는 호환성을 위해 전 언어를 미리 로드한다.
+        // 선택 적용 페이지는 현재 언어와 KR 폴백만 준비하고 나머지는 전환 시 로드한다.
+        const preloadLanguages = options.preloadLanguages === 'active-and-kr'
+            ? Array.from(new Set(['kr', i18nService.getCurrentLanguage()]))
+            : ['kr', 'en', 'jp', 'cn'];
+        await Promise.all(preloadLanguages.map(async (lang) => {
             // Load common translations
             await i18nService.loadCommonTranslations(lang);
 

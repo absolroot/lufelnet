@@ -17,3 +17,24 @@
 - 코드 수정하는 과정에서 한국어나 일본어 등 다른 언어를 변환하다가 UTF 에러 등 깨지는 경우가 많은데 항상 이런 일이 없도록 점검할 것
 - 즉 UTF-8 BOM 으로 저장하지 말것. 
 - /u가 붙는 유니코드 형태로 글을 작성하지 말고, UTF 평문으로 작성할 것
+
+# 정적 자산 캐시와 신규 기능
+- 같은 출처의 CSS, JS, 빌드 시 경로를 알 수 있는 데이터 파일은 공통 사이트 버전이 아니라 **파일별 콘텐츠 해시**를 사용합니다.
+- 해시 원본은 `_data/asset_versions.json`이며 직접 편집하지 않습니다. `npm run assets:hashes:generate`로 생성합니다.
+- `_config.yml`의 `safe: true`는 유지합니다. 해시는 Jekyll 플러그인이 아니라 Node 사전 빌드 단계에서 생성합니다.
+- `assets/css`와 `assets/js`의 페이지 자산은 가능하면 frontmatter의 `custom_css`, `custom_js`에 등록합니다. 기본 레이아웃이 파일별 `?h=`를 자동으로 붙입니다.
+- 템플릿에서 로컬 자산을 직접 참조해야 한다면 다음 형태를 사용합니다.
+  - CSS: `/path/file.css?h={{ site.data.asset_versions.files['/path/file.css'] }}`
+  - JS: `/path/file.js?h={{ site.data.asset_versions.files['/path/file.js'] }}`
+- 정적 CSS/JS URL에 `site.time`, `APP_VERSION`, `Date.now()` 또는 수동 숫자 버전을 붙이지 않습니다. 새 무해시 로컬 CSS/JS 태그는 `npm run assets:hashes:test`와 GitHub Actions가 실패시켜야 합니다.
+- 런타임에만 파일명이 결정되는 자산은 전체 해시 목록을 모든 페이지에 싣지 않습니다. 페이지별 작은 매핑을 주입하거나, 즉시 최신성이 필요한 동적 데이터만 기존 재검증 경로를 명시적으로 사용합니다.
+- Git에서 제외된 로컬 도구인 `apps/article-editor/`, `apps/patch-console/`은 배포용 해시 생성과 공개 템플릿 검사 대상에 포함하지 않습니다.
+- 배포·검증 빌드는 `_config.full-build.yml`을 함께 사용해 증분 메타데이터가 이전 해시를 재사용하지 않게 합니다.
+- 자산 관련 변경 후 최소 검증 명령은 `npm run assets:hashes:generate`, `npm run assets:hashes:check`, `npm run assets:hashes:test`, `npm run assets:cache-policy:test`, `npm run site:build`입니다.
+
+# 이미지와 영상 캐시
+- `/assets/img/`의 지원 이미지 형식은 서비스 워커가 URL의 `v`와 `h`를 제거한 경로 키로 최대 2,000개까지 캐시합니다.
+- 12시간은 삭제 만료 시간이 아닙니다. 캐시 이미지를 즉시 반환한 뒤, 간격이 지났을 때 다음 요청에서 백그라운드 재검증합니다. 네트워크 실패 시 기존 캐시는 유지됩니다.
+- 이미지 캐시는 2,000개를 초과할 때 오래된 키부터 정리하며, 응답 크기가 5MB를 넘는 이미지는 저장하지 않습니다.
+- 현재 이미지에 파일별 해시를 일괄 적용하지 않습니다. 적용하려면 서비스 워커가 해시가 있는 이미지의 `h`를 캐시 키에 보존하도록 함께 변경해야 합니다.
+- 영상은 이미지 Cache Storage 대상이 아닙니다. 콘텐츠 해시를 도입하더라도 Range 요청을 지원하는 브라우저/CDN 캐시를 사용하고, 서비스 워커에 영상 전체를 저장하지 않습니다.

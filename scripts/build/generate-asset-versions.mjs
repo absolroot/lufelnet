@@ -18,12 +18,12 @@ const ASSET_SETS = Object.freeze({
   styles: {
     roots: ['assets', 'apps'],
     extensions: new Set(['.css']),
-    excludedPrefixes: ['apps/patch-console/']
+    excludedPrefixes: ['apps/article-editor/', 'apps/patch-console/']
   },
   scripts: {
     roots: ['assets/js', 'apps', 'i18n'],
     extensions: new Set(['.js', '.mjs']),
-    excludedPrefixes: ['apps/patch-console/']
+    excludedPrefixes: ['apps/article-editor/', 'apps/patch-console/']
   },
   data: {
     roots: ['data'],

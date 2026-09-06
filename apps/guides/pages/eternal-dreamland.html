@@ -1,0 +1,40 @@
+---
+layout: default
+custom_css: []
+custom_js: []
+permalink: /article/eternal-dreamland/
+language: kr
+title: 흉몽 '영원한 꿈나라' 규칙과 활용법 - 루페르넷
+description: 흉몽의 문 신규 꿈나라 '영원한 꿈나라'의 다운 규칙과 득점 배율, 디버프 지속, 의식·스킬·페르소나·원더 무기 상호작용을 정리한다.
+image: /apps/guides/data/assets/eternal-dreamland/kr-update-overview.png
+---
+
+<head>
+    <link rel="stylesheet" href="/apps/guides/guides.css?h={{ site.data.asset_versions.files['/apps/guides/guides.css'] }}">
+    <script src="/apps/guides/guides.js?h={{ site.data.asset_versions.files['/apps/guides/guides.js'] }}"></script>
+</head>
+
+<div class="main-wrapper">
+    <div class="guide-view-container" id="guide-view-container">
+        <div class="guides-loading" data-i18n="loadingGuide">Loading guide...</div>
+    </div>
+</div>
+
+<script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
+        if (typeof initPageI18n === 'function') {
+            await initPageI18n('guides');
+            if (typeof setLang === 'function') {
+                await setLang(currentLang);
+            }
+        } else if (window.I18nService && typeof window.I18nService.init === 'function') {
+            await window.I18nService.init('guides', currentLang);
+        }
+
+        Navigation.load('article');
+        VersionChecker.check();
+        Guides.loadGuide('eternal-dreamland');
+    });
+</script>

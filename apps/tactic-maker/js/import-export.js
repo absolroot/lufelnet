@@ -12,6 +12,7 @@ import {
     setGlobalSkillEffectAmpState
 } from './need-stat-state.js';
 import { normalizeMikuMusic } from './miku-music.js';
+import { DataLoader } from './data-loader.js';
 
 const GAS_URL = 'https://script.google.com/macros/s/AKfycbx6PjXsslrfZTN599BQp69teGi8FCz8bo8O1ZvGu3PK75IY4_P79EJttHbP0893wnv8/exec';
 const GAS_SHARE_TYPE_QUERY_KEY = 'shareType';
@@ -30,7 +31,7 @@ export class ImportExport {
         this.isSharedDataLoad = false; // Flag for shared data loading
 
         this.initEventListeners();
-        this.checkUrlParams();
+        void this.checkUrlParams();
     }
 
     initEventListeners() {
@@ -80,7 +81,7 @@ export class ImportExport {
     /**
      * Check URL params for shared data import
      */
-    checkUrlParams() {
+    async checkUrlParams() {
         const urlParams = new URLSearchParams(window.location.search);
         const sharedData = urlParams.get('data');
         const binId = urlParams.get('bin');
@@ -108,7 +109,7 @@ export class ImportExport {
                 }
 
                 const data = JSON.parse(jsonString);
-                this.applyImportedData(data);
+                await this.applyImportedData(data);
 
                 // Clean URL
                 window.history.replaceState({}, document.title, window.location.pathname);
@@ -176,7 +177,7 @@ export class ImportExport {
             }
 
             // Apply the data with title override if available
-            this.applyImportedData(payload);
+            await this.applyImportedData(payload);
 
             // Update title if provided
             if (data.title) {
@@ -230,7 +231,7 @@ export class ImportExport {
         try {
             const text = await file.text();
             const data = JSON.parse(text);
-            this.applyImportedData(data);
+            await this.applyImportedData(data);
         } catch (error) {
             console.error('[ImportExport] Import failed:', error);
             const message = (window.I18nService && window.I18nService.t)
@@ -243,7 +244,7 @@ export class ImportExport {
     /**
      * Apply imported data to store
      */
-    applyImportedData(data) {
+    async applyImportedData(data) {
         const format = this.detectFormat(data);
 
         if (format === 'unknown') {
@@ -273,6 +274,14 @@ export class ImportExport {
 
         // Load data into store
         this.store.loadData(internalState);
+
+        // A shared tactic can name Personas before any detailed persona script
+        // has been requested. Load those dependencies before its loading
+        // overlay is dismissed, then render the imported cards with portraits.
+        await DataLoader.ensurePersonaDetails(
+            (this.store.state.wonder?.personas || []).map((persona) => persona?.name)
+        );
+        this.store.notify('fullReload', this.store.state);
 
         // Load global item options if present in imported data
         const globalOptions = internalState.needStatSelections?.globalItemOptions;
@@ -1289,7 +1298,7 @@ export class ImportExport {
                     }
                 }
                 const data = JSON.parse(jsonString);
-                this.applyImportedData(data);
+                await this.applyImportedData(data);
 
                 console.log('[ImportExport] Bin data loaded successfully');
                 

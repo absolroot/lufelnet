@@ -232,6 +232,9 @@ export class WonderUI extends EventEmitter {
             this._unsubStore = this.store.subscribe((event) => {
                 if (event === 'wonderChange' || event === 'fullReload' || event === 'partyChange') {
                     this.render();
+                    (this.store.state.wonder?.personas || []).forEach((_, index) => {
+                        void this.ensurePersonaDetailForSlot(index);
+                    });
                 }
             });
         }
@@ -256,6 +259,42 @@ export class WonderUI extends EventEmitter {
                 memo: ''
             };
             this.store.setWonderConfig({ ...wonder, personas: updated });
+        }
+
+        // The index supplies the selector metadata, but this card also needs
+        // its detailed record before it can render the portrait and unique skill.
+        void this.ensurePersonaDetailForSlot(0);
+    }
+
+    async ensurePersonaDetailForSlot(index) {
+        const wonder = this.store.state.wonder || {};
+        const persona = (wonder.personas || [])[index];
+        const personaName = persona?.name;
+        if (!personaName || (window.personaFiles || {})[personaName] || typeof window.loadPersonaFile !== 'function') {
+            return;
+        }
+
+        try {
+            const personaData = await window.loadPersonaFile(personaName);
+            const currentWonder = this.store.state.wonder || {};
+            const currentPersonas = [...(currentWonder.personas || [])];
+            const currentPersona = currentPersonas[index];
+            if (!personaData || currentPersona?.name !== personaName) return;
+
+            const uniqueSkill = personaData.uniqueSkill?.name || '';
+            const currentSkills = currentPersona.skills || ['', '', '', ''];
+            if (currentSkills[0] === uniqueSkill) {
+                this.render();
+                return;
+            }
+
+            currentPersonas[index] = {
+                ...currentPersona,
+                skills: [uniqueSkill, ...currentSkills.slice(1)]
+            };
+            this.store.setWonderConfig({ ...currentWonder, personas: currentPersonas });
+        } catch (error) {
+            console.error('[TacticMaker] Failed to load initial persona:', personaName, error);
         }
     }
 

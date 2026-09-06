@@ -257,11 +257,21 @@ export class PersonaModal extends EventEmitter {
         });
 
         // Card clicks (event delegation)
-        this.modal.querySelector('.persona-cards-container').addEventListener('click', (e) => {
+        this.modal.querySelector('.persona-cards-container').addEventListener('click', async (e) => {
             const cardItem = e.target.closest('.persona-card-item');
             if (cardItem) {
-                if (cardItem.classList.contains('disabled')) return;
+                if (cardItem.classList.contains('disabled') || cardItem.classList.contains('loading')) return;
                 const personaKey = cardItem.dataset.persona;
+                if (personaKey && typeof window.loadPersonaFile === 'function') {
+                    cardItem.classList.add('loading');
+                    try {
+                        await window.loadPersonaFile(personaKey);
+                    } catch (error) {
+                        console.error('[TacticMaker] Failed to load persona:', personaKey, error);
+                        cardItem.classList.remove('loading');
+                        return;
+                    }
+                }
                 if (this.onSelect) {
                     this.onSelect(personaKey);
                 }
@@ -302,7 +312,9 @@ export class PersonaModal extends EventEmitter {
     }
 
     loadPersonaData() {
-        this.personaSource = DataLoader.getPersonaList();
+        // The index has every selector field (name, element, position, rarity,
+        // grade and tier), while personaFiles only contains details loaded on demand.
+        this.personaSource = window.personaIndex || DataLoader.getPersonaList();
         this.sortPersonas();
     }
 

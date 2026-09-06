@@ -358,6 +358,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
 
 <!-- Data Scripts (Persona) -->
+<script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/order.js?h={{ site.data.asset_versions.files['/data/persona/order.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/nonorder.js?h={{ site.data.asset_versions.files['/data/persona/nonorder.js'] }}"></script>
 <script src="{{ site.baseurl }}/apps/tactic-maker/pattern.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/pattern.js'] }}"></script>

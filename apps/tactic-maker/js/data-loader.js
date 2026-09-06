@@ -128,7 +128,9 @@ export class DataLoader {
 
                     // Optional data (nice to have but not blocking)
                     const hasWeapons = window.matchWeapons && Object.keys(window.matchWeapons).length > 0;
-                    const hasPersonas = window.personaFiles && Object.keys(window.personaFiles).length > 0;
+                    // Persona cards now use the lightweight index. Detailed persona
+                    // files are fetched only after a card is selected.
+                    const hasPersonaIndex = window.personaIndex && Object.keys(window.personaIndex).length > 0;
                     const hasSkills = window.personaSkillList && Object.keys(window.personaSkillList).length > 0;
                     const hasRevelations = window.revelationData && window.revelationData.main;
 
@@ -137,7 +139,7 @@ export class DataLoader {
                     if (hasCharacterData) loadedCount++;
                     if (hasCharacterList) loadedCount++;
                     if (hasWeapons) loadedCount++;
-                    if (hasPersonas) loadedCount++;
+                    if (hasPersonaIndex) loadedCount++;
                     if (hasSkills) loadedCount++;
                     if (hasRevelations) loadedCount++;
                     const progress = 15 + Math.floor((loadedCount / 6) * 25); // 15% to 40%
@@ -146,9 +148,11 @@ export class DataLoader {
                     }
 
                     // Minimum required: characterData
-                    // For Wonder components we strongly need weapons/personas/skills too
+                    // Detailed Persona data is loaded on demand by the selector.
+                    // Waiting for personaFiles here would otherwise always hit the
+                    // timeout after the persona page switched to index-first loading.
                     const minimalReady = hasCharacterData;
-                    const fullReady = minimalReady && hasWeapons && hasPersonas && hasSkills;
+                    const fullReady = minimalReady && hasWeapons && hasPersonaIndex && hasSkills;
 
                     if ((fullReady) || attempts >= maxAttempts) {
                         this._dataReady = true;
@@ -158,7 +162,7 @@ export class DataLoader {
                             characterData: hasCharacterData,
                             characterList: hasCharacterList,
                             weapons: hasWeapons,
-                            personas: hasPersonas,
+                            personaIndex: hasPersonaIndex,
                             skills: hasSkills,
                             revelations: hasRevelations,
                             attempts
@@ -280,6 +284,23 @@ export class DataLoader {
      */
     static getPersonaList() {
         return window.personaFiles || {};
+    }
+
+    /**
+     * Load the detailed records required to render Wonder Persona cards.
+     * The selector itself uses personaIndex, while shared tactics need these
+     * records before their imported configuration is shown.
+     */
+    static async ensurePersonaDetails(personaNames) {
+        const names = [...new Set((personaNames || []).filter(Boolean))];
+        if (!names.length || typeof window.loadPersonaFile !== 'function') return;
+
+        const results = await Promise.allSettled(names.map((name) => window.loadPersonaFile(name)));
+        results.forEach((result, index) => {
+            if (result.status === 'rejected') {
+                console.error('[TacticMaker] Failed to load persona:', names[index], result.reason);
+            }
+        });
     }
 
     /**

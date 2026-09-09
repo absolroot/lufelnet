@@ -1,0 +1,284 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Cosmic Yui can summon 4 types of Veggie Knights during battle, and can stack Veggie Energy. When Veggie Energy is stacked, Cosmic Yui can activate Veg-Out Attack. This skill's damage is counted as All-Out Attack damage.\nAt the start of the turn, gain abilities based on Veggie Knights gained, and change the color of Cosmic Yui's Phantom Thief Attire.\nEggplant Purple: When using a skill, gain 1 more stack of Veggie Energy.\nPotato Yellow: Increase Cosmic Yui's All-Out Attack damage by 15%.\nMushroom Red: When dealing damage with a skill or All-Out Attack, 4.5% chance to inflict Brainwash on the target for 1 turn.\nAsparagus Green: When dealing damage with a skill or All-Out Attack, restore Cosmic Yui's HP by 1% of the damage dealt (up to a maximum of 1000 at once).",
+        "name": "Vegetable Avatar",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, Cosmic Yui immediately summons all 4 types of Veggie Knights and gains the maximum number of Veggie Energy stacks.\nFor each Veggie Knight gained, increase Cosmic Yui's critical damage by 8% (up to 5 Veggie Knights).\nAt the start of battle, Cosmic Yui changes to Potato Yellow state, and at the start of her first turn, automatically change to Eggplant Purple.",
+        "name": "Veggie Knight Rounds",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Gain 1 more Potato Knight that will not be spent.\nWhen activating the Resonance Harvest Havoc, increase Potato Power effects by 10% more.\nAt the start of battle, gain Potato Power for 2 turns.",
+        "name": "Seed Potato Knight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Veggie Knights, Go! and Veg-Out Attack by 3.",
+        "name": "Veggie Knight Master",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Increase Cosmic Yui's Attack by 35% for 4 turns.",
+        "name": "Cyber Farmer",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Harvest Fest and Thief Tactics by 3.",
+        "name": "Starlight Fest",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Unlock the Prismatic state. Change Cosmic Yui's Phantom Thief Attire to Prismatic Color, and simultaneously gain abilities from Eggplant Purple, Potato Yellow, Mushroom Red, and Asparagus Green.\nAt the start of battle, permanently enter Huge Harvest state, and change the following effects.\nWhen an ally ends their action, activate the Resonance Harvest Havoc.\nWhen using Veggie Knights, Go!, summon 1 more Potato Knight.",
+        "name": "Prismatic Vegetables",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "Weak",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Nuclear damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack. Also, according to specific rules, activate Harvest Havoc on the target.",
+      "name": "Highlight",
+      "nature": "Nuclear",
+      "skill_lv": "10/10/13/13",
+      "sn": 111252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/HL",
+      "S2/S3"
+    ],
+    "name": "Cosmic Yui",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "Deal Nuclear damage to 1 foe equal to 120.8%/133.2%/128.3%/140.6% of Attack, gain 3 Veggie Energy stacks, and enter Huge Harvest state until the end of her next turn.\nIf Potato Knight is present when this skill is used, automatically change to Potato Yellow at the end of the turn.\nHuge Harvest: At the end of Cosmic Yui's action, activate the Resonance Harvest Havoc, dealing Nuclear damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack. Also, based on the current state, activate the following effects.\nEggplant Purple: Gain 1 Veggie Energy.\nPotato Yellow: Gain Potato Power, and increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\nMushroom Red: Inflict Shroom Spores on the target, and increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nAsparagus Green: Restore 976/1076/1036/1136 HP to the ally with the lowest remaining HP.",
+        "name": "Harvest Fest",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/13/13",
+        "sn": 111211,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 0",
+        "desc": "Increase Cosmic Yui's Attack by 29.3%/32.3%/31.1%/34.1% and critical rate by 11.7%/12.9%/12.4%/13.6% for 2 turns, and summon 1 Veggie Knight according to a specific order.\nAfter using this skill, other skills can be used on the same turn (this skill is not treated as a normal skill).\nPassive: At the start of Cosmic Yui's action, automatically summon 1 Veggie Knight according to a specific order. Up to 1 Eggplant Knight, Mushroom Knight, or Asparagus Knight can be summoned each. Up to 4 Potato Knights can be summoned.",
+        "name": "Veggie Knights, Go!",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 111212,
+        "tags": [
+          "Summon"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "Deal Nuclear damage to 1 foe equal to 130.2%/143.5%/138.2%/151.5% of Attack, and for each Veggie Knight present, deal 1 more hit of Nuclear damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. Also, if 2 or more Potato Knights are present, spend all but 1 Potato Knight, and for each Potato Knight spent, deal 1 more hit of Nuclear damage equal to 24.4%/26.9%/25.9%/28.4% of Attack. This skill's damage is counted as an All-Out Attack.\nWhen this skill is selected and used, gain 2 Veggie Energy stacks.\nIf Eggplant Knight is present after activating this skill, automatically change to Eggplant Purple state at the end of the turn.\nPassive: At 7 Veggie Energy stacks, able to spend all Veggie Energy stacks to activate damage effect of Veg-Out Attack. Damage is distributed equally among all foes. This is not treated as normal skill damage.",
+        "name": "Veg-Out Attack",
+        "nature": "Nuclear",
+        "skill_lv": "10/10/13/13",
+        "sn": 111213,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, for each Veggie Knight gained, increase Cosmic Yui's damage by 8.1% (up to 4 Veggie Knights).",
+        "name": "Veggie Satellite",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase All-Out Attack damage by 15.0%. When participating in an All-Out Attack, increase that damage more based on the total number of Veggie Knights Cosmic Yui has gained.",
+        "name": "Mixed Vegetables",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 111232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2940.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1170.01 / 1190.81 / 1212.41 / 1233.21 / 1254.01 / 1275.61 / 1296.41",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "579.99 / 590.39 / 600.79 / 611.19 / 621.59 / 631.99 / 642.39",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

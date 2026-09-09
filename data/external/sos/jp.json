@@ -2,7 +2,7 @@
   "data": {
     "boss": [
       {
-        "bonusRule": "All ally Electric attack Score x 3",
+        "bonusRule": "All ally Nuclear attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -10,56 +10,51 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Phys",
-                "Gun",
-                "Wind",
-                "Bless"
+                "Ice"
               ],
               "Weak": [
-                "Electric"
+                "Nuclear"
               ]
             },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "image": "B-guaiwutouxiang-seiryu.png",
             "level": "89",
-            "name": "クー・フーリン",
-            "skill": "1023,1154",
-            "sn": "534101",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 1.0,
-        "sn": "378401"
-      },
-      {
-        "bonusRule": "All ally Curse attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Fire",
-                "Nuclear",
-                "Bless"
-              ],
-              "Weak": [
-                "Curse"
-              ]
-            },
-            "image": "B-guaiwutouxiang-throne.png",
-            "level": "89",
-            "name": "ソロネ",
-            "skill": "155,158",
-            "sn": "534111",
+            "name": "セイリュウ",
+            "skill": "207,1404,203",
+            "sn": "535101",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "378402"
+        "sn": "388401"
+      },
+      {
+        "bonusRule": "All ally Ice attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "image": "B-guaiwutouxiang-surtr.png",
+            "level": "89",
+            "name": "スルト",
+            "skill": "108,103,1008",
+            "sn": "535111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "388402"
       }
     ],
-    "buff": "陰鬱な気配: 敵をダウンさせた時、対象に『仄暗い幻』を付与する。ハイライト／テウルギアで敵を攻撃した時、選択した対象に『仄暗い幻』を付与する。\n『仄暗い幻』：２ターンの間、受ける最終ダメージが４０%上昇する。",
+    "buff": "虚空圧壊: 戦闘開始時、味方は『絶息境』を獲得する。意識奏功で敵を攻撃した時『絶息境』を獲得する。\n『絶息境』：１ターンの間、与える最終ダメージが４０%上昇する。",
     "endTime": "2026-09-24 06:30:00",
     "startTime": "2026-09-09 11:30:00"
   },

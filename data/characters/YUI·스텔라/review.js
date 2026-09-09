@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["YUI·스텔라"] = { name_en: "YUI·PRISM", name_jp: "YUI·PRISM", codename: "YUI·PRISM",
+    window.characterReview["YUI·스텔라"] = { name_en: "Cosmic Yui", name_jp: "YUI·MUSUBI", codename: "YUI·PRISM",
         review: `
 **총공격 수치를 메인 딜 계수로서 활용하는 핵열 단일 딜러**다.
 
@@ -15,24 +15,24 @@
 
 `,
 review_en: `
-Although the explanation may seem complicated, the actual gameplay cycle is simple. If you just follow the rotation order without worrying too much about the details, it works smoothly.
+Cosmic Yui is a single-target Nuclear damage dealer who uses All-Out Attack damage as her main damage multiplier. Although the explanation may seem complicated, the actual gameplay cycle is simple. If you just follow the rotation order without worrying too much about the details, it works smoothly.
 
-- At the start of each turn, 1 Knight is automatically summoned, and using Skill 2 (1T cooldown) also summons 1 Knight.
+- At the start of each turn, 1 Veggie Knight is automatically summoned, and using Veggie Knights, Go! (1T cooldown) also summons 1 Veggie Knight.
   - Eggplant → Potato → Mushroom → Asparagus
 
-- When using Skill 3, if you have 2 or more Potato Knights, additional Potato Knights will be consumed to increase damage. (At least 1 Potato Knight will remain.)
+- When using Veg-Out Attack, if you have 2 or more Potato Knights, additional Potato Knights will be consumed to increase damage. (At least 1 Potato Knight will remain.)
 
-- 『Mobilize Energy』: When 7 stacks are accumulated, the passive is triggered, automatically casting Skill 3.
+- 『Veggie Energy』: At 7 stacks, the passive activates the damage effect of Veg-Out Attack automatically.
 `,
 review_jp: `
-説明は複雑に見えるかもしれませんが、実際の運用はシンプルです。細かい説明を気にせず、サイクル順に進めれば問題なく構成されています。
+ＹＵＩ・ＭＵＳＵＢＩは、総攻撃ダメージを主なダメージ倍率として活用する核熱単体アタッカーです。説明は複雑に見えるかもしれませんが、実際の運用はシンプルです。細かい説明を気にせず、サイクル順に進めれば問題なく構成されています。
 
-- 各ターン開始時に自動で騎士を1体召喚し、スキル2（クールダウン1T）を使用するとさらに騎士を1体召喚します。
+- 各ターン開始時に『ベジナイツ』を1体自動で召喚し、『召喚、ベジナイツ！』（クールダウン1T）を使用するとさらに『ベジナイツ』を1体召喚します。
   - ナス → ジャガイモ → キノコ → アスパラガス
 
-- スキル3使用時、ジャガイモ騎士が2体以上いる場合、追加のジャガイモ騎士を消費してダメージが上昇します。（最低でもジャガイモ騎士1体は残ります。）
+- 『ベジナイツアタック！』使用時、『ポテトナイト』が2体以上いる場合、追加の『ポテトナイト』を消費してダメージが上昇します。（最低でも『ポテトナイト』1体は残ります。）
 
-- 『動力』：7スタックが溜まるとパッシブが発動し、自動的にスキル3を使用します。
+- 『ベジエナジー』：7つ溜まるとパッシブが発動し、自動で『ベジナイツアタック！』のダメージ効果を発動します。
 `,
 review_cn: `
 **一名以总攻击伤害作为主要输出系数的核热单体输出**。

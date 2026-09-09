@@ -24,6 +24,7 @@
       typeof characterData !== 'undefined' &&
       // personaFiles(신규) 또는 personaData(레거시) 둘 중 하나만 있어도 진행
       ( (typeof window.personaFiles !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length) ||
+        (typeof window.personaIndex !== 'undefined' && window.personaIndex && Object.keys(window.personaIndex).length) ||
         (typeof personaData !== 'undefined') ) &&
       typeof matchWeapons !== 'undefined' &&
       typeof revelationData !== 'undefined'
@@ -45,6 +46,15 @@
     if (!payload || typeof payload !== 'object') return;
 
     // 공통 적용 함수 호출 (URL은 유지). 번역 표시가 즉시 적용되도록 약간 딜레이 후 한 번 더 번역 적용을 트리거
+    // Legacy payloads store Wonder Personas by name/index. Load their details
+    // before applying the payload so unique skills and portraits keep working.
+    const personaNames = (Array.isArray(payload.wonderPersonas) ? payload.wonderPersonas : payload.w) || [];
+    if (typeof window.preloadPersonaFiles === 'function') {
+      await window.preloadPersonaFiles(personaNames.filter(Boolean), true).catch((error) => {
+        console.warn('[TacticLibrary] Persona detail preload failed:', error);
+      });
+    }
+
     window.applyImportedData(payload, { keepUrl: true, titleOverride: data.title });
 
     // library 로드 후 번역 적용

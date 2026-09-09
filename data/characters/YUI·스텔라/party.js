@@ -63,8 +63,8 @@ window.recommendParty["YUI·스텔라"] = {
             "name": "카타야마",
             "A": 6,
             "comment": "YUI의 의식6는 턴이 끝날 때마다 공격하면서 다운 수치를 감소시키기 때문에 카타야마의 다운 감소 사이클과 맞물린다.",
-            "comment_en": "YUI’s A6 attacks at the end of each turn and reduces Down, aligning with Katayama’s Down reduction cycle.",
-            "comment_jp": "YUIの意識6はターン終了時に攻撃してダウン値を減少させるため、片山のダウン減少サイクルと噛み合う。",
+            "comment_en": "Cosmic Yui's A6 attacks at the end of each turn and reduces Down, aligning with Katayama’s Down reduction cycle.",
+            "comment_jp": "ＹＵＩ・ＭＵＳＵＢＩの意識6はターン終了時に攻撃してダウン値を減少させるため、片山のダウン減少サイクルと噛み合う。",
             "comment_cn": "YUI的意识6会在每回合结束时攻击并减少Down值，因此能和片山的Down削减循环形成联动。"
         },
         {

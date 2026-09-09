@@ -90,6 +90,7 @@
 
 {% include supabase-config.html %}
 
+<script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/order.js?h={{ site.data.asset_versions.files['/data/persona/order.js'] }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
 <script>
@@ -2851,7 +2852,9 @@
         const currentLang = getCurrentLanguage();
         const store = (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
             ? window.personaFiles
-            : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {});
+            : ((typeof window !== 'undefined' && window.personaIndex && Object.keys(window.personaIndex).length)
+                ? window.personaIndex
+                : (typeof personaData !== 'undefined' ? personaData : (window.persona && window.persona.personaData) || {}));
         if (!store || !store[personaName]) {
             return currentLang === 'cn' ? '' : personaName;
         }

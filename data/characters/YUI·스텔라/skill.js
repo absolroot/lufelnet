@@ -50,90 +50,114 @@ window.characterSkillsData["YUI·스텔라"] = {
 };
 
 window.enCharacterSkillsData["YUI·스텔라"] = {
-  "name": "YUI·Prism",
+  "name": "Cosmic Yui",
   "skill1": {
-    "name": "Cosmic Smash",
+    "name": "Harvest Fest",
     "element": "핵열",
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Nuke damage to 1 foe equal to 100.7%/111.0%/106.9%/117.2% of Attack, gain 3 points of [Mobilize Energy] and enter [Smash] state for 2 turns.\n\n[Smash]: At the end of YUI's turn, activate Resonance [Vegetable Knights: Strike], command all Vegetable Knights to deal Nuke damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack, then activate the following effects based on the current color state:\n\n[<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>]: Gain 1 point of [Mobilize Energy];\n[<span style='color:#C7BE5A;'>Potato Yellow</span>]: YUI gains [Tuber Power], increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\n[<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>]: Inflict skill target with [Mushroom Spores], increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\n[<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>]: Restore 976/1076/1036/1136 HP to the lowest HP ally.\n\nIf YUI has [<span style='color:#C7BE5A;'>Potato Knight</span>] after using this skill, change to [<span style='color:#C7BE5A;'>Potato Yellow</span>] state at the end of YUI's action."
+    "description": "Deal Nuclear damage to 1 foe equal to 120.8%/133.2%/128.3%/140.6% of Attack, gain 3 Veggie Energy stacks, and enter Huge Harvest state until the end of her next turn.\nIf Potato Knight is present when this skill is used, automatically change to <span style='color:#C7BE5A;'>Potato Yellow</span> at the end of the turn.\nHuge Harvest: At the end of Cosmic Yui's action, activate the Resonance Harvest Havoc, dealing Nuclear damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack. Also, based on the current state, activate the following effects.\n<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>: Gain 1 Veggie Energy.\n<span style='color:#C7BE5A;'>Potato Yellow</span>: Gain Potato Power, and increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\n<span style='color:rgb(254, 149, 244);'>Mushroom Red</span>: Inflict Shroom Spores on the target, and increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\n<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>: Restore 976/1076/1036/1136 HP to the ally with the lowest remaining HP."
   },
   "skill2": {
-    "name": "Vegetable Knights: Assemble",
+    "name": "Veggie Knights, Go!",
     "element": "버프",
     "type": "버프",
     "sp": 0,
     "cool": 1,
-    "description": "Increase YUI's Attack by 19.5%/21.5%/20.7%/22.7% and critical rate by 11.7%/12.9%/12.4%/13.6. Lasts for 2 turns. Summon 1 Vegetable Knight in a specific order. After using this skill, YUI can use other skills, this doesn't count as a Persona skill. \nPassive: At the start of turn, automatically summon 1 Vegetable Knight in a specific order. \nYUI can only have 1 [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Knight</span>], [<span style='color:rgb(11, 190, 11);'>Asparagus Knight</span>], and 4 [<span style='color:#C7BE5A;'>Potato Knights</span>]."
+    "description": "Increase Cosmic Yui's Attack by 29.3%/32.3%/31.1%/34.1% and critical rate by 11.7%/12.9%/12.4%/13.6% for 2 turns, and summon 1 Veggie Knight according to a specific order.\nAfter using this skill, other skills can be used on the same turn (this skill is not treated as a normal skill).\nPassive: At the start of Cosmic Yui's action, automatically summon 1 Veggie Knight according to a specific order. Up to 1 Eggplant Knight, Mushroom Knight, or Asparagus Knight can be summoned each. Up to 4 Potato Knights can be summoned."
   },
   "skill3": {
-    "name": "Vegetable Knights: Mobilize",
+    "name": "Veg-Out Attack",
     "element": "핵열",
     "type": "단일피해",
     "sp": 23,
     "cool": 0,
-    "description": "Deal Nuke damage to 1 foe equal to 104.3%/115.0%/110.7%/121.4% of Attack, for every 1 Vegetable Knight, deal bonus Nuke damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. When YUI has 2 or more [<span style='color:#C7BE5A;'>Potato Knights</span>], spend additional Potato Knights, for every 1 Potato Knight spent, deal bonus Nuke damage equal to 24.4%/26.9%/25.9%/28.4%% of Attack. This skill damage counts as an All-Out Attack damage. When YUI manually uses this skill, gain 2 points of [Mobilize Energy].\n\nPassive: When YUI has 7 or more [Mobilize Energy] points, spend all [Mobilize Energy] to deal the damage from [Vegetable Knights: Mobilize], distribute this damage between all foes, this doesn't count as Persona skill damage.\nIf YUI has [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>] after using this skill, change to [<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>] state at the end of YUI's action."
+    "description": "Deal Nuclear damage to 1 foe equal to 130.2%/143.5%/138.2%/151.5% of Attack, and for each Veggie Knight present, deal 1 more hit of Nuclear damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. Also, if 2 or more Potato Knights are present, spend all but 1 Potato Knight, and for each Potato Knight spent, deal 1 more hit of Nuclear damage equal to 24.4%/26.9%/25.9%/28.4% of Attack. This skill's damage is counted as an All-Out Attack.\nWhen this skill is selected and used, gain 2 Veggie Energy stacks.\nIf Eggplant Knight is present after activating this skill, automatically change to <span style='color:rgb(184, 33, 214);'>Eggplant Purple</span> state at the end of the turn.\nPassive: At 7 Veggie Energy stacks, able to spend all Veggie Energy stacks to activate damage effect of Veg-Out Attack. Damage is distributed equally among all foes. This is not treated as normal skill damage."
   },
   "skill_highlight": {
     "element": "핵열",
     "type": "단일피해",
-    "description": "Deal Nuke damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack, and immediately activate [Vegetable Knights: Strike] on that foe based on specific rules."
+    "description": "Deal Nuclear damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack. Also, according to specific rules, activate Harvest Havoc on the target."
   },
   "passive1": {
-    "name": "Companion Star",
+    "name": "Veggie Satellite",
     "element": "패시브",
-    "description": "During battle, for every 1 [Vegetable Knight], increase YUI's damage by 8.1%, up to 4 [Vegetable Knights]."
+    "description": "During battle, for each Veggie Knight gained, increase Cosmic Yui's damage by 8.1% (up to 4 Veggie Knights)."
   },
   "passive2": {
-    "name": "Brilliant",
+    "name": "Mixed Vegetables",
     "element": "패시브",
-    "description": "Increase All-Out Attack damage by 15%.\nWhen YUI is part of an All-Out Attack, increase that All-Out Attack's damage based on the total amount of [Vegetable Knights] YUI has."
+    "description": "Increase All-Out Attack damage by 15.0%. When participating in an All-Out Attack, increase that damage more based on the total number of Veggie Knights Cosmic Yui has gained."
   }
 };
 
 window.jpCharacterSkillsData["YUI·스텔라"] = {
-  "name": "YUI・プリズム",
+  "name": "YUI·MUSUBI",
   "skill1": {
-    "name": "宇宙大乱闘",
+    "name": "ハーベストフェスタ！",
     "element": "핵열",
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "敵単体に攻撃力の100.7%/111.0%/106.9%/117.2%の核熱属性ダメージを与え、自身に『動力』を3ポイント付与し、2ターンの間『乱闘』状態に入る。\n『乱闘』: 自身のターン終了時、追加効果『野菜騎士・出撃』を発動し、全ての野菜騎士がランダムな敵1体に攻撃力の93.5%/103.1%/99.2%/108.8%の核熱属性ダメージを与える。\n\n現在の色状態に応じて以下の効果を追加で発動する：\n- 『<span style='color:rgb(184, 33, 214);'>ナスの紫</span>』：『動力』を1ポイント追加獲得\n- 『<span style='color:#C7BE5A;'>ジャガイモの黄</span>』：『塊茎パワー』を得て、3ターンの間総攻撃ダメージが14.6%/16.1%/15.5%/17.0%上昇\n- 『<span style='color:rgb(254, 149, 244);'>キノコの桃</span>』：対象に『キノコ胞子』を付与し、2ターンの間被ダメージが19.5%/21.5%/20.7%/22.7%増加\n- 『<span style='color:rgb(11, 190, 11);'>アスパラガスの緑</span>』：HPが最も低い味方1体を976/1076/1036/1136回復\n\nこのスキル使用後、ジャガイモ騎士を所持している場合、ターン終了時に自動で『<span style='color:#C7BE5A;'>ジャガイモの黄</span>』状態に切り替わる。"
+    "description": "敵単体に攻撃力120.8%/133.2%/128.3%/140.6%の核熱属性ダメージを与え、『ベジエナジー』を３つ獲得し、次の自身のターン終了時まで、『収穫祭』状態になる。\nこのスキルを使用した時、『ポテトナイト』を獲得している場合、ターン終了時に自動で『ＰＴＴイエロー』状態に変化する。\n『収穫祭』状態：自身の行動終了時、意識奏功『ベジタブルストライク』を発動し、ランダムな敵単体に攻撃力93.5%/103.1%/99.2%/108.8%の核熱属性ダメージを与える。さらに現在の状態に応じて、以下の効果を追加で発動する。\n「『ＮＳパープル』状態：『ベジエナジー』を１つ獲得する」\n「『ＰＴＴイエロー』状態：『ゴロゴロ大豊作！』を獲得し、３ターンの間、総攻撃ダメージが14.6%/16.1%/15.5%/17.0%上昇する」\n「『ＫＮＫレッド』状態：対象に『キノコパウダー』を付与し、２ターンの間、被ダメージを19.5%/21.5%/20.7%/22.7%上昇させる」\n「『ＡＳＰＲグリーン』状態：残りＨＰが最も低い味方のＨＰを976/1076/1036/1136回復する」"
   },
   "skill2": {
-    "name": "野菜騎士・集合",
+    "name": "召喚、ベジナイツ！",
     "element": "버프",
     "type": "버프",
     "sp": 0,
     "cool": 1,
-    "description": "自身の攻撃力を19.5%/21.5%/20.7%/22.7%、クリティカル率を11.7%/12.9%/12.4%/13.6%上昇させ、2ターン持続する。定められた順序で野菜騎士を1体召喚する。このスキル使用後、他のスキルを追加で使用でき、ペルソナスキルとしては扱われない。\n\nパッシブ: ターン開始時、定められた順序で自動的に野菜騎士を1体召喚する。\nナス、キノコ、アスパラガス騎士は最大1体まで所持可能、ジャガイモ騎士は最大4体まで所持可能。"
+    "description": "２ターンの間、自身の攻撃力が29.3%/32.3%/31.1%/34.1%、クリティカル率が11.7%/12.9%/12.4%/13.6%上昇する。さらに特定の順序で『ベジナイツ』を１体召喚する。このスキルを使用後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとして扱わない）。\n自動効果：自身の行動開始時、自動で特定の順序に従って『ベジナイツ』を１体召喚する。『ナスナイト』、『キノコナイト』、『アスパラナイト』は最大１体まで、『ポテトナイト』は最大４体まで獲得できる。"
   },
   "skill3": {
-    "name": "野菜騎士・総動員",
+    "name": "ベジナイツアタック！",
     "element": "핵열",
     "type": "단일피해",
     "sp": 23,
     "cool": 0,
-    "description": "敵単体に攻撃力の104.3%/115.0%/110.7%/121.4%の核熱属性ダメージを与え、所持している野菜騎士1体につき1回、29.3%/32.3%/31.1%/34.1%の核熱属性追加ダメージを与える。ジャガイモ騎士を2体以上所持している場合、それを消費し、1体ごとに24.4%/26.9%/25.9%/28.4%の追加ダメージを与える。このダメージは総攻撃として扱われる。スキルを手動で使用した場合、『動力』を2ポイント獲得する。\n\nパッシブ: 『動力』が7ポイントに達した場合、全ての『動力』を消費して敵全体に『野菜騎士・総動員』ダメージを与える（ダメージは敵全体に均等分配）。これはペルソナスキルとしては扱われない。\n\nスキル使用後、ナス騎士を所持している場合、ターン終了時に自動で『<span style='color:rgb(184, 33, 214);'>ナスの紫</span>』状態に切り替わる。"
+    "description": "敵単体に攻撃力130.2%/143.5%/138.2%/151.5%の核熱属性ダメージを与え、所持している『ベジナイツ』１体ごとに、追加で攻撃力29.3%/32.3%/31.1%/34.1%の核熱属性ダメージを１回与える。さらに『ポテトナイト』を２体以上所持している場合、１体を残して『ポテトナイト』を消費し、消費した『ポテトナイト』１体ごとに、追加で攻撃力24.4%/26.9%/25.9%/28.4%の核熱属性ダメージを１回与える。このスキルのダメージは総攻撃のダメージとして扱われる。\nこのスキルを選択して使用した場合、『ベジエナジー』を２つ獲得する。\nこのスキルの発動後に『ナスナイト』を所持している場合、ターン終了時に自動で『ＮＳパープル』状態になる。\n自動効果：『ベジエナジー』が７つの時、すべての『ベジエナジー』を消費して『ベジナイツアタック！』のダメージ効果を発動することができる。このダメージはすべての敵で均等に分配され、通常のスキルダメージとして扱わない。"
   },
   "skill_highlight": {
     "element": "핵열",
     "type": "단일피해",
-    "description": "敵単体に攻撃力の439.2%/484.2%/466.2%/511.2%の核熱属性ダメージを与え、対象に即座に『野菜騎士・出撃』を発動する。\n\n※『野菜騎士・出撃』：追加効果。全ての野菜騎士が敵単体に攻撃力の93.5%/103.1%/99.2%/108.8%の核熱属性ダメージを与える。"
+    "description": "敵単体に攻撃力439.2%/484.2%/466.2%/511.2%の核熱属性ダメージを与える。さらに特定のルールに従って、対象に『ベジタブルストライク』を発動する。"
   },
   "passive1": {
-    "name": "伴星",
+    "name": "ベジサテライツ",
     "element": "패시브",
-    "description": "野菜騎士1体につき、YUI·プリズムの与ダメージが8.1%上昇（最大4体まで適用）。"
+    "description": "戦闘中、獲得している『ベジナイツ』１体ごとに、ＹＵＩ・ＭＵＳＵＢＩの与ダメージが8.1%上昇する（最大４体分まで）。"
   },
   "passive2": {
-    "name": "燦爛",
+    "name": "ミックスベジタブル",
     "element": "패시브",
-    "description": "総攻撃ダメージが15%上昇する。総攻撃に参加した際、所持している野菜騎士の数に応じて追加ダメージが適用される。"
+    "description": "総攻撃ダメージが15.0%上昇する。総攻撃に参加した時、その総攻撃ダメージはＹＵＩ・ＭＵＳＵＢＩが獲得している『ベジナイツ』の合計数に応じて追加で上昇する。"
   }
 };
+
+function colorizeYuiSkillTerms(data, terms) {
+  for (const skill of Object.values(data)) {
+    for (const [key, value] of Object.entries(skill)) {
+      if (typeof value !== "string") continue;
+      for (const [term, color] of terms) {
+        skill[key] = skill[key].replaceAll(term, `<span style='color:${color};'>${term}</span>`);
+      }
+    }
+  }
+}
+
+colorizeYuiSkillTerms(window.enCharacterSkillsData["YUI·스텔라"], [
+  ["Eggplant Purple", "rgb(184, 33, 214)"],
+  ["Potato Yellow", "#C7BE5A"],
+  ["Mushroom Red", "rgb(254, 149, 244)"],
+  ["Asparagus Green", "rgb(11, 190, 11)"]
+]);
+colorizeYuiSkillTerms(window.jpCharacterSkillsData["YUI·스텔라"], [
+  ["ＮＳパープル", "rgb(184, 33, 214)"],
+  ["ＰＴＴイエロー", "#C7BE5A"],
+  ["ＫＮＫレッド", "rgb(254, 149, 244)"],
+  ["ＡＳＰＲグリーン", "rgb(11, 190, 11)"]
+]);
 
 window.cnCharacterSkillsData["YUI·스텔라"] = {
   "name": "YUI·幻彩",

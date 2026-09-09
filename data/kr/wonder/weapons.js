@@ -2,6 +2,7 @@ function getWonderWeaponOptions() {
   return [
     "속삭이는 자의 가시",
     "혼돈의 해커스",
+    "백야",
     "엔트로피·제로",
     "천상의 별",
     "태고의 역장",
@@ -638,4 +639,20 @@ window.matchWeapons = {
     "name_cn": "七日之焰",
     "effect_cn": "攻击力提升28.0%/28.0%/37.3%/37.3%/46.7%/46.7%/56.0%。每装配1种不同属性的人格面具，对敌人造成的伤害提升6.0%/8.0%/8.0%/10.0%/10.0%/12.0%/12.0%，最多叠加3层。击倒敌人时，有100%固定概率使敌人防御力降低15.0%/20.0%/20.0%/25.0%/25.0%/30.0%/30.0%，效果持续1回合。"
   }
+};
+
+// EN/JP official Wonder weapon source sync.
+window.matchWeapons["엔트로피·제로"].name_en = "Event Horizon";
+window.matchWeapons["엔트로피·제로"].name_jp = "コアリアクター";
+window.matchWeapons["엔트로피·제로"].effect_en = "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAt the start of battle, grant 2 Spaghettification stacks to all allies. Also, when an ally deals Nuclear damage with a skill, grant 1 Spaghettification stack to all allies.\nFor each ally with Spaghettification, increase user's Attack by 50/58/66/75/83/91/100.\nSpaghettification: Increase Attack by 5.5%/6.4%/7.3%/8.2%/9.2%/10.1%/11.0%. Also, when dealing Nuclear damage, increase critical damage by 5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0%. Stacks up to 2 times. Lasts 2 turns (calculated individually for each stack).";
+window.matchWeapons["엔트로피·제로"].effect_jp = "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n戦闘開始時、味方全体に『炉心連鎖』を２つ付与する。さらに味方がスキルで核熱属性ダメージを与えた時、味方全体に『炉心連鎖』を１つ付与する。\n『炉心連鎖』状態の味方１体ごとに、自身の攻撃力が50/58/66/75/83/91/100上昇する。\n『炉心連鎖』：攻撃力が5.5%/6.4%/7.3%/8.2%/9.2%/10.1%/11.0%上昇し、さらに核熱属性ダメージを与える時、クリティカルダメージが5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0%上昇する。最大２つまで累積でき、２ターン持続する（持続ターンはそれぞれ計算される）。";
+window.matchWeapons["백야"] = {
+  "element": "버프",
+  "name_en": "Midnight Sun",
+  "name_jp": "白夜",
+  "effect": "공격력이 12.0%/14.0%/16.0%/18.0%/20.0%/22.0%/24.0% 증가한다. 공격력이 6.4%/7.4%/8.3%/9.3%/10.2%/11.2%/12.2% 증가하고, 페르소나를 교체하는 턴에서 공격력이 2배로 증가한다.",
+  "effect_en": "Increase Attack by 12.0%/14.0%/16.0%/18.0%/20.0%/22.0%/24.0%. Increase Attack by 6.4%/7.4%/8.3%/9.3%/10.2%/11.2%/12.2% more and double this effect after changing Personas for 1 turn.",
+  "effect_jp": "攻撃力が12.0%/14.0%/16.0%/18.0%/20.0%/22.0%/24.0%上昇する。さらに攻撃力が6.4%/7.4%/8.3%/9.3%/10.2%/11.2%/12.2%上昇し、この効果はペルソナを切り替えたターン２倍になる。",
+  "name_cn": "极昼",
+  "effect_cn": "攻击力提升12.0%/14.0%/16.0%/18.0%/20.0%/22.0%/24.0%。攻击力提升6.4%/7.4%/8.3%/9.3%/10.2%/11.2%/12.2%，在切换人格面具的回合，攻击力翻倍提升。"
 };

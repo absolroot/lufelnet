@@ -22,40 +22,62 @@ window.ritualData["YUI·스텔라"] = {
 };
 
 window.enCharacterRitualData["YUI·스텔라"] = {
-  "name": "YUI·Prism",
-  "r0": "Doki Doki Sprout Legion",
-  "r0_detail": "YUI can summon [<span style='color:rgb(184, 33, 214);'>Eggplant Knight</span>], [<span style='color:#C7BE5A;'>Potato Knights</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Knight</span>], [<span style='color:rgb(11, 190, 11);'>Asparagus Knight</span>] and gain [Mobilize Energy] in battle. When YUI has enough [Mobilize Energy], she can order the Vegetable Knights to use [Vegetable Knights: Mobilize] on foes, this skill damage counts as All-Out Attack damage.\nWhen YUI has a different Vegetable Knight, she can change her Phantom Thief Attire to match the corresponding Knight and gain bonuses:\n\n[<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>]: After using a Persona skill, gain 1 additional point of [Mobilize Energy];\n[<span style='color:#C7BE5A;'>Potato Yellow</span>]: Increase YUI's All-Out Attack damage by 15%;\n[<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>]: When dealing damage with a Persona skill/All-Out Attack, there is a 4.5% base chance to inflict Brainwash on the target for 1 turn.\n[<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>]: When dealing damage with a Persona skill/All-Out Attack, restore YUI's HP by 1% of damage dealt (up to 1000 HP).",
-  "r1": "Deep Space Defenders",
-  "r1_detail": "At the start of battle, YUI will immediately summon 4 different [Vegetable Knights] and gain max [Mobilize Energy] stacks.\nFor every 1 [Vegetable Knight], increase YUI's critical damage by 8%, up to 5 [Vegetable Knights].\nAt the start of battle, [Potato Yellow] is active. At the start of YUI's first turn, change to [Eggplant Purple].",
-  "r2": "The Last Potato",
-  "r2_detail": "YUI gains 1 more [<span style='color:#C7BE5A;'>Potato Knight</span>] that can't be spent, increase [Tuber Power] from Resonance [Vegetable Knights: Strike] by 10%. At the start of battle, gain [Tuber Power] for 2 turns.",
-  "r3": "Dark Farm Hypothesis",
-  "r3_detail": "Increase the skill levels of Vegetable Knights: Assemble and Vegetable Knights: Mobilize by 3.",
-  "r4": "The Traveler's Guide to the Stars",
-  "r4_detail": "Highlight Enhanced: Increase YUI's Attack by 35% for 4 turns.",
-  "r5": "The Super Dimension Fleet",
-  "r5_detail": "Increase the skill levels of Cosmic Smash and Thief Tactics by 3",
-  "r6": "Galactic Celebration",
-  "r6_detail": "Unlock [<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>Prismatic Wings</span>] state, [<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>Prismatic Wings</span>] has the ability of [<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>], [<span style='color:#C7BE5A;'>Potato Yellow</span>], [<span style='color:rgb(254, 149, 244);'>Mushroom Pink</span>], and [<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>].\nAt the start of battle, [Smash] state is active. This effect is permanent.\nChange [Smash] effect to: At the end of all allies' turn, activate Resonance [Vegetable Knights: Strike].\nWhen YUI manually uses [Vegetable Knights: Assemble], summon 1 more [<span style='color:#C7BE5A;'>Potato Knight</span>]."
+  "name": "Cosmic Yui",
+  "r0": "Vegetable Avatar",
+  "r0_detail": "Cosmic Yui can summon 4 types of Veggie Knights during battle, and can stack Veggie Energy. When Veggie Energy is stacked, Cosmic Yui can activate Veg-Out Attack. This skill's damage is counted as All-Out Attack damage.\nAt the start of the turn, gain abilities based on Veggie Knights gained, and change the color of Cosmic Yui's Phantom Thief Attire.\n<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>: When using a skill, gain 1 more stack of Veggie Energy.\n<span style='color:#C7BE5A;'>Potato Yellow</span>: Increase Cosmic Yui's All-Out Attack damage by 15%.\n<span style='color:rgb(254, 149, 244);'>Mushroom Red</span>: When dealing damage with a skill or All-Out Attack, 4.5% chance to inflict Brainwash on the target for 1 turn.\n<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>: When dealing damage with a skill or All-Out Attack, restore Cosmic Yui's HP by 1% of the damage dealt (up to a maximum of 1000 at once).",
+  "r1": "Veggie Knight Rounds",
+  "r1_detail": "At the start of battle, Cosmic Yui immediately summons all 4 types of Veggie Knights and gains the maximum number of Veggie Energy stacks.\nFor each Veggie Knight gained, increase Cosmic Yui's critical damage by 8% (up to 5 Veggie Knights).\nAt the start of battle, Cosmic Yui changes to <span style='color:#C7BE5A;'>Potato Yellow</span> state, and at the start of her first turn, automatically change to <span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>.",
+  "r2": "Seed Potato Knight",
+  "r2_detail": "Gain 1 more Potato Knight that will not be spent.\nWhen activating the Resonance Harvest Havoc, increase Potato Power effects by 10% more.\nAt the start of battle, gain Potato Power for 2 turns.",
+  "r3": "Veggie Knight Master",
+  "r3_detail": "Increase the skill levels of Veggie Knights, Go! and Veg-Out Attack by 3.",
+  "r4": "Cyber Farmer",
+  "r4_detail": "Highlight Enhanced: Increase Cosmic Yui's Attack by 35% for 4 turns.",
+  "r5": "Starlight Fest",
+  "r5_detail": "Increase the skill levels of Harvest Fest and Thief Tactics by 3.",
+  "r6": "Prismatic Vegetables",
+  "r6_detail": "Unlock Prismatic state. Change Cosmic Yui's Phantom Thief Attire to Prismatic Color, and simultaneously gain abilities from <span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>, <span style='color:#C7BE5A;'>Potato Yellow</span>, <span style='color:rgb(254, 149, 244);'>Mushroom Red</span>, and <span style='color:rgb(11, 190, 11);'>Asparagus Green</span>.\nAt the start of battle, permanently enter Huge Harvest state, and change the following effects.\nWhen an ally ends their action, activate the Resonance Harvest Havoc.\nWhen using Veggie Knights, Go!, summon 1 more Potato Knight."
 };
 
 window.jpCharacterRitualData["YUI·스텔라"] = {
-  "name": "YUI·プリズム",
-  "r0": "ドキドキ芽キャベ団",
-  "r0_detail": "戦闘中にナス、ジャガイモ、キノコ、アスパラガスの騎士を召喚し、『動力』を蓄積できる。『動力』が最大になると、『総動員』を命令でき、このダメージは総攻撃として扱われる。所持している野菜騎士の種類に応じて、ターン開始時に怪盗服の色が該当する騎士の色に変化し、以下の効果を得る：\n\n- 『<span style='color:rgb(184, 33, 214);'>ナスの紫</span>』：ペルソナスキル使用後、『動力』を1ポイント追加獲得\n- 『<span style='color:#C7BE5A;'>ジャガイモの黄</span>』：総攻撃のダメージが15%増加\n- 『<span style='color:rgb(254, 149, 244);'>キノコの桃</span>』：ペルソナスキル／総攻撃でダメージを与える際、4.5%の確率で対象に洗脳を付与（1ターン）\n- 『<span style='color:rgb(11, 190, 11);'>アスパラガスの緑</span>』：ペルソナスキル／総攻撃でダメージを与える際、その1%分のHPを回復（1回最大1000）",
-  "r1": "深宇宙防衛戦",
-  "r1_detail": "戦闘開始時、4種類すべての野菜騎士を召喚し、『動力』が最大になる。野菜騎士1体につきクリティカル効果が8%上昇（最大5体まで適用）。戦闘開始時は『<span style='color:#C7BE5A;'>ジャガイモの黄</span>』状態で、最初のターン開始時に『<span style='color:rgb(184, 33, 214);'>ナスの紫</span>』状態に自動で切り替わる。",
-  "r2": "最後のジャガイモ",
-  "r2_detail": "消費されないジャガイモ騎士を1体追加で所持。『野菜騎士・出撃』発動時に得られる『塊茎パワー』効果が10%追加上昇。戦闘開始時、『塊茎パワー』を獲得（2ターン持続）。",
-  "r3": "暗き耕地の法則",
-  "r3_detail": "『野菜騎士・集合』および『野菜騎士・総動員』のスキルレベルが3上昇し、最大15まで増加。",
-  "r4": "銀河漂流ガイド",
-  "r4_detail": "HIGHLIGHT効果強化：さらに攻撃力が4ターンの間35%上昇する。",
-  "r5": "超時空艦隊",
-  "r5_detail": "『宇宙大乱闘』および『戦闘技術』のスキルレベルが3上昇し、最大15まで増加。",
-  "r6": "銀河祭開幕",
-  "r6_detail": "『<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>プリズムウィング</span>』フォーム解禁。怪盗服が虹色に変化し、4色すべての効果を得る。戦闘開始時、『乱闘』状態になり、戦闘中永続する。\n『乱闘』効果変更：味方のターン終了時ごとに『野菜騎士・出撃』を追加で発動。\n『野菜騎士・集合』使用時、ジャガイモ騎士を1体追加召喚。"
+  "name": "YUI·MUSUBI",
+  "r0": "ベジタブルアバター",
+  "r0_detail": "ＹＵＩ・ＭＵＳＵＢＩは戦闘中に４種類の『ベジナイツ』を召喚し、『ベジエナジー』を累積することができる。『ベジエナジー』が累積すると、ＹＵＩ・ＭＵＳＵＢＩは『ベジナイツアタック！』を発動することができる。このスキルのダメージは総攻撃のダメージとして扱う。\nターン開始時、獲得している『ベジナイツ』に対応する能力を獲得し、怪盗服の色を変化させることができる。\n「『ＮＳパープル』状態：スキルを使用した時、追加で『ベジエナジー』を１つ獲得する」\n「『ＰＴＴイエロー』状態：自身の総攻撃ダメージが１５%上昇する」\n「『ＫＮＫレッド』状態：スキルダメージおよび総攻撃のダメージを与えた時、４.５%の確率で対象を１ターンの間、洗脳状態にする」\n「『ＡＳＰＲグリーン』状態：スキルダメージおよび総攻撃のダメージを与えた時、自身のＨＰをそのダメージの１%分回復する（１回につき最大１０００まで）」",
+  "r1": "ベジナイトラウンズ",
+  "r1_detail": "戦闘開始時、ＹＵＩ・ＭＵＳＵＢＩは即座に４種類すべての『ベジナイツ』を召喚し、『ベジエナジー』を上限まで獲得する。\n獲得している『ベジナイツ』１体ごとに、ＹＵＩ・ＭＵＳＵＢＩのクリティカルダメージが８%上昇する（最大５体分まで）。\n戦闘開始時、ＹＵＩ・ＭＵＳＵＢＩは『ＰＴＴイエロー』状態になり、自身の最初のターン開始時、自動で『ＮＳパープル』状態になる。",
+  "r2": "シードポテトナイト",
+  "r2_detail": "消費されない『ポテトナイト』１体を追加で獲得する。\n意識奏功『ベジタブルストライク』によって発動する『ゴロゴロ大豊作！』の効果量が追加で１０%上昇する。\n戦闘開始時、２ターンの間、『ゴロゴロ大豊作！』を獲得する。",
+  "r3": "ベジナイツマスター",
+  "r3_detail": "『召喚、ベジナイツ！』『ベジナイツアタック！』のスキルレベルが３上昇する。",
+  "r4": "サイバーファーマー",
+  "r4_detail": "ハイライト能力追加：４ターンの間、自身の攻撃力が３５%上昇する。",
+  "r5": "スターライトフェスタ",
+  "r5_detail": "『ハーベストフェスタ！』『怪盗戦技』のスキルレベルが３上昇する。",
+  "r6": "デジタブルユニコーン",
+  "r6_detail": "『ユニコーン』形態が解放される。怪盗服がユニコーンカラーに変化し、『ＮＳパープル』、『ＰＴＴイエロー』、『ＫＮＫレッド』、『ＡＳＰＲグリーン』の能力を同時に獲得する。\n戦闘開始時、永続的に『収穫祭』状態になり、効果が以下のように変化する。\n味方の行動終了時、意識奏功『ベジタブルストライク』を発動する。\n『召喚、ベジナイツ！』を使用した時、追加で『ポテトナイト』を１体召喚する。"
 };
+
+function colorizeYuiRitualTerms(data, terms) {
+  for (const [key, value] of Object.entries(data)) {
+    if (typeof value !== "string") continue;
+    for (const [term, color] of terms) {
+      data[key] = data[key].replaceAll(term, `<span style='color:${color};'>${term}</span>`);
+    }
+  }
+}
+
+colorizeYuiRitualTerms(window.enCharacterRitualData["YUI·스텔라"], [
+  ["Eggplant Purple", "rgb(184, 33, 214)"],
+  ["Potato Yellow", "#C7BE5A"],
+  ["Mushroom Red", "rgb(254, 149, 244)"],
+  ["Asparagus Green", "rgb(11, 190, 11)"]
+]);
+colorizeYuiRitualTerms(window.jpCharacterRitualData["YUI·스텔라"], [
+  ["ＮＳパープル", "rgb(184, 33, 214)"],
+  ["ＰＴＴイエロー", "#C7BE5A"],
+  ["ＫＮＫレッド", "rgb(254, 149, 244)"],
+  ["ＡＳＰＲグリーン", "rgb(11, 190, 11)"]
+]);
 
 window.cnCharacterRitualData["YUI·스텔라"] = {
   "name": "YUI·幻彩",

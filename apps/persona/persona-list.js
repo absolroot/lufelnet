@@ -118,8 +118,50 @@ function initializePersonaLoadingProgress() {
     }
 }
 
+function showPersonaDetailSkeleton(detailPanel) {
+    if (!detailPanel) return;
+
+    detailPanel.className = 'sticky-content';
+    detailPanel.setAttribute('aria-busy', 'true');
+    detailPanel.innerHTML = `
+        <div class="detail-placeholder persona-detail-skeleton" aria-hidden="true">
+            <div class="persona-skeleton-header">
+                <div class="persona-skeleton-title-group">
+                    <span class="persona-skeleton-line persona-skeleton-line--title"></span>
+                    <span class="persona-skeleton-line persona-skeleton-line--meta"></span>
+                </div>
+                <div class="persona-skeleton-toggle">
+                    <span class="persona-skeleton-line persona-skeleton-line--toggle-label"></span>
+                    <span class="persona-skeleton-toggle-buttons"></span>
+                </div>
+            </div>
+            <div class="persona-skeleton-block persona-skeleton-block--summary">
+                <span class="persona-skeleton-line persona-skeleton-line--section"></span>
+                <span class="persona-skeleton-line"></span>
+                <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+                <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+            </div>
+            <div class="persona-skeleton-block persona-skeleton-block--skill">
+                <span class="persona-skeleton-line persona-skeleton-line--section"></span>
+                <span class="persona-skeleton-line"></span>
+                <span class="persona-skeleton-line"></span>
+                <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+                <span class="persona-skeleton-line"></span>
+                <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+            </div>
+            <div class="persona-skeleton-block persona-skeleton-block--skills">
+                <span class="persona-skeleton-line persona-skeleton-line--section"></span>
+                <span class="persona-skeleton-row"></span>
+                <span class="persona-skeleton-row"></span>
+                <span class="persona-skeleton-row"></span>
+            </div>
+        </div>
+        <div id="personaLoadingProgress" class="loading-progress" aria-live="polite" hidden></div>`;
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        showPersonaDetailSkeleton(document.getElementById('personaDetailContent'));
         // 1. Initialize i18n
         if (typeof initPageI18n === 'function') {
             await initPageI18n('persona');
@@ -191,15 +233,58 @@ async function initializePageContent() {
     // 대량 렌더링 최적화: 청크 단위로 분할 렌더링하여 메인 스레드 점유를 줄임
     const CHUNK_SIZE = 10;
     let currentIndex = 0;
+    let personaCardRevealQueue = Promise.resolve();
+    let hasRevealedPersonaCard = false;
+
+    function waitForPersonaCardImages(container) {
+        const images = Array.from(container.querySelectorAll('img'));
+
+        return Promise.all(images.map((image) => new Promise((resolve) => {
+            const finish = () => {
+                image.removeEventListener('load', finish);
+                image.removeEventListener('error', finish);
+                if (typeof image.decode === 'function') {
+                    image.decode().catch(() => {}).finally(resolve);
+                    return;
+                }
+                resolve();
+            };
+
+            if (image.complete) {
+                finish();
+                return;
+            }
+
+            image.addEventListener('load', finish, { once: true });
+            image.addEventListener('error', finish, { once: true });
+        })));
+    }
+
+    function queuePersonaCardReveal(container) {
+        personaCardRevealQueue = personaCardRevealQueue.then(async () => {
+            await waitForPersonaCardImages(container);
+            if (!container.isConnected) return;
+
+            if (hasRevealedPersonaCard) {
+                await new Promise((resolve) => setTimeout(resolve, 56));
+            }
+
+            if (!container.isConnected) return;
+            container.classList.remove('persona-card-pending');
+            container.classList.add('persona-card-enter');
+            hasRevealedPersonaCard = true;
+        });
+    }
 
     function renderChunk() {
         const fragment = document.createDocumentFragment();
+        const renderedCards = [];
         let processed = 0;
         while (processed < CHUNK_SIZE && currentIndex < sortedPersonas.length) {
             const personaName = sortedPersonas[currentIndex];
             const index = currentIndex;
             const detailContainer = document.createElement('div');
-            detailContainer.className = 'persona-detail-container';
+            detailContainer.className = 'persona-detail-container persona-card-pending';
             // Add data attributes for filtering
             detailContainer.dataset.element = personaSource[personaName].element;
             detailContainer.dataset.position = personaSource[personaName].position;
@@ -330,11 +415,13 @@ async function initializePageContent() {
             detailContainer.appendChild(cardSection);
 
             fragment.appendChild(detailContainer);
+            renderedCards.push(detailContainer);
             currentIndex++;
             processed++;
         }
         // 청크 단위로 DOM 삽입
         cardsContainer.appendChild(fragment);
+        renderedCards.forEach(queuePersonaCardReveal);
         window.LufelPageLifecycle?.release('persona-list');
         containers = document.querySelectorAll('.persona-detail-container');
         wireCardInteractions();
@@ -949,12 +1036,13 @@ async function initializePageContent() {
         const sourceName = sourceContainer.dataset.name;
 
         if (!detailPanel) return;
-        detailPanel.className = 'sticky-content';
-        detailPanel.textContent = '';
+        showPersonaDetailSkeleton(detailPanel);
         try {
             if (typeof window.loadPersonaFile === 'function') await window.loadPersonaFile(sourceName);
         } catch (error) {
             console.error('Failed to load persona detail:', error);
+            detailPanel.removeAttribute('aria-busy');
+            detailPanel.textContent = '';
             return;
         }
         if (!sourceContainer.classList.contains('selected')) return;
@@ -968,6 +1056,7 @@ async function initializePageContent() {
         // Clear previous content
         detailPanel.innerHTML = '';
         detailPanel.className = 'sticky-content';
+        detailPanel.removeAttribute('aria-busy');
 
         // Append to panel
         detailPanel.appendChild(infoSection);
@@ -1253,6 +1342,8 @@ async function initializePageContent() {
         }
         cardsContainer.innerHTML = ''; // Clear existing
         currentIndex = 0;
+        personaCardRevealQueue = Promise.resolve();
+        hasRevealedPersonaCard = false;
         if ('requestIdleCallback' in window) {
             requestIdleCallback(renderChunk, { timeout: 50 });
         } else {

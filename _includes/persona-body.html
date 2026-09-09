@@ -187,11 +187,40 @@ window.LufelPageLifecycle?.hold('persona-list');
 
         <!-- Right Panel: Detail -->
         <div class="persona-detail-panel">
-            <div id="personaDetailContent" class="sticky-content">
-                <div class="detail-placeholder">
-                    <div class="loading-spinner"></div>
-                    <div id="personaLoadingProgress" class="loading-progress" aria-live="polite" hidden></div>
+            <div id="personaDetailContent" class="sticky-content" aria-busy="true">
+                <div class="detail-placeholder persona-detail-skeleton" aria-hidden="true">
+                    <div class="persona-skeleton-header">
+                        <div class="persona-skeleton-title-group">
+                            <span class="persona-skeleton-line persona-skeleton-line--title"></span>
+                            <span class="persona-skeleton-line persona-skeleton-line--meta"></span>
+                        </div>
+                        <div class="persona-skeleton-toggle">
+                            <span class="persona-skeleton-line persona-skeleton-line--toggle-label"></span>
+                            <span class="persona-skeleton-toggle-buttons"></span>
+                        </div>
+                    </div>
+                    <div class="persona-skeleton-block persona-skeleton-block--summary">
+                        <span class="persona-skeleton-line persona-skeleton-line--section"></span>
+                        <span class="persona-skeleton-line"></span>
+                        <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+                        <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+                    </div>
+                    <div class="persona-skeleton-block persona-skeleton-block--skill">
+                        <span class="persona-skeleton-line persona-skeleton-line--section"></span>
+                        <span class="persona-skeleton-line"></span>
+                        <span class="persona-skeleton-line"></span>
+                        <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+                        <span class="persona-skeleton-line"></span>
+                        <span class="persona-skeleton-line persona-skeleton-line--short"></span>
+                    </div>
+                    <div class="persona-skeleton-block persona-skeleton-block--skills">
+                        <span class="persona-skeleton-line persona-skeleton-line--section"></span>
+                        <span class="persona-skeleton-row"></span>
+                        <span class="persona-skeleton-row"></span>
+                        <span class="persona-skeleton-row"></span>
+                    </div>
                 </div>
+                <div id="personaLoadingProgress" class="loading-progress" aria-live="polite" hidden></div>
                 <div class="empty-state-message" style="display: none;">
                     <p data-i18n="emptyStateMessage">페르소나를 선택하여 상세 정보를 확인하세요.</p>
                 </div>

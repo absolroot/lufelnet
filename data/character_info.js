@@ -124,7 +124,7 @@ Object.assign(window.characterData, {
     },
     "이치고·여름": {
         "limit": true,
-        "tag": "치료",
+        "tag": "치료, 크리티컬 확률",
         "tag_en": "",
         "tag_jp": "",
         "tag_cn": "",

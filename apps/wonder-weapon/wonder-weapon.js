@@ -609,6 +609,42 @@
     if (!tabsContainer) return;
 
     tabsContainer.innerHTML = '';
+    let tabRevealQueue = Promise.resolve();
+    let hasRevealedTab = false;
+
+    function waitForTabImages(tab) {
+      return Promise.all(Array.from(tab.querySelectorAll('img')).map((image) => new Promise((resolve) => {
+        const finish = () => {
+          image.removeEventListener('load', finish);
+          image.removeEventListener('error', finish);
+          if (typeof image.decode === 'function') {
+            image.decode().catch(() => {}).finally(resolve);
+            return;
+          }
+          resolve();
+        };
+
+        if (image.complete) {
+          finish();
+          return;
+        }
+
+        image.addEventListener('load', finish, { once: true });
+        image.addEventListener('error', finish, { once: true });
+      })));
+    }
+
+    function queueTabReveal(tab) {
+      tabRevealQueue = tabRevealQueue.then(async () => {
+        await waitForTabImages(tab);
+        if (!tab.isConnected) return;
+        if (hasRevealedTab) await new Promise((resolve) => setTimeout(resolve, 36));
+        if (!tab.isConnected) return;
+        tab.classList.remove('weapon-tab-pending');
+        tab.classList.add('weapon-tab-enter');
+        hasRevealedTab = true;
+      });
+    }
 
     const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
     // const t = i18n[lang] || i18n.kr;
@@ -650,7 +686,7 @@
       }
 
       const tab = document.createElement('div');
-      tab.className = 'weapon-tab';
+      tab.className = 'weapon-tab weapon-tab-pending';
       tab.dataset.weapon = krName;
       tab.dataset.weaponNameKr = krName;
       tab.dataset.weaponNameEn = data.name_en || '';
@@ -670,7 +706,8 @@
       img.className = 'weapon-tab-image';
       img.src = `${BASE_URL}/assets/img/wonder-weapon/${krName}.webp`;
       img.alt = displayName;
-      img.loading = 'lazy';
+      img.loading = index < 12 ? 'eager' : 'lazy';
+      if (index < 6) img.fetchPriority = 'high';
       img.onerror = function () {
         this.onerror = null;
         this.src = `${BASE_URL}/assets/img/placeholder.png`;
@@ -694,7 +731,7 @@
         elementIcon.className = 'weapon-tab-element-icon';
         elementIcon.src = `${BASE_URL}/assets/img/skill-element/${data.element}.png`;
         elementIcon.alt = data.element;
-        elementIcon.loading = 'lazy';
+        elementIcon.loading = index < 12 ? 'eager' : 'lazy';
         source.appendChild(elementIcon);
       }
 
@@ -717,6 +754,7 @@
 
       // 탭 생성 후 shard 아이콘 업데이트
       updateWeaponTabShardIcon(krName);
+      queueTabReveal(tab);
     });
 
     // 첫 번째 보이는 탭 선택 (비동기 처리로 탭이 완전히 렌더링된 후 선택)

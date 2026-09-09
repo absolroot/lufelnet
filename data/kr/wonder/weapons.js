@@ -25,9 +25,17 @@ window.matchWeapons = {
     "element": "질풍",
     "name_en": "Whisperer's Sting",
     "name_jp": "風の囁き",
-    "where_to_get": "",
-    "release": "",
+    "where_to_get": "Shop",
+    "release": "아야카·여름",
     "order": "17",
+    "shard": [
+      {
+        "desc": "교환 - 운명의 섬 {item-huobi-49.png} 800",
+        "desc_en": "Exchange - Land of Fortune {item-huobi-49.png} 800",
+        "desc_jp": "交換 - 運命の島 {item-huobi-49.png} 800",
+        "desc_cn": "兑换 - 气运驻场 {item-huobi-49.png} 800"
+      }
+    ],
     "effect": "공격력이 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0% 증가한다.\n아군 전체가 페르소나 스킬 또는 추가 효과를 사용하여 질풍 속성 대미지를 줄 때, 적 1명을 적중할 때마다 원더가 『속삭임의 수정』 1개를 획득한다(최대 10개). 『속삭임의 수정』은 『바람 정령 마법진』을 가동하는 데 사용되며, 2턴 후 소멸한다.\n『바람 정령 마법진』: 가동 시 『속삭임의 수정』의 수량에 따라 다음 효과를 활성화한다:\n2개 이상: 자신의 공격력이 200/233/266/300/333/366/400포인트 증가한다.\n5개 이상: 적 전체의 받는 대미지가 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0% 증가한다.\n10개 이상: 적 전체의 받는 크리티컬 효과가 5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0% 증가하고, 받는 질풍 속성 대미지의 크리티컬 효과가 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0% 증가한다.",
     "effect_en": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nWhen allies deal Wind damage with a Persona skill or Resonance, WONDER gains 1 [Wind Whisper Crystal] stack for each foe hit. Stacks up to 10 times. [Wind Whisper Crystal] can activate [Spirit Sigil] based on the number of stacks held. Lasts for 2 turns.\n[Spirit Sigil]: Gain the following effects based on the number of [Wind Whisper Crystal] stacks held.\n2 or more: Increase the user's Attack by 200/233/266/300/333/366/400.\n5 or more: Increase all foes' damage taken by 10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%.\n10 or more: Increase all foes' critical damage taken by 5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0%, and Wind critical damage taken by 12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0%.",
     "effect_jp": "攻撃力が28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%上昇する。\n味方がペルソナスキルまたは追加効果で疾風属性ダメージを与える時、敵1体に命中するたび、WONDERが『風の結晶』を1個獲得する（上限10個）。所持している『風の結晶』の数に応じて『風の結界』の効果が発動し、『風の結晶』は2ターン後に消滅する。\n『風の結界』：所持している『風の結晶』の数に応じて、以下の効果を発動する。\n2個以上：自身の攻撃力が200/233/266/300/333/366/400上昇する。\n5個以上：すべての敵が受けるダメージが10.0%/11.7%/13.3%/15.0%/16.7%/18.3%/20.0%上昇する。\n10個以上：すべての敵が受けるクリティカル効果が5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0%上昇し、疾風属性ダメージを受ける時、受けるクリティカル効果が12.5%/14.6%/16.7%/18.8%/20.8%/22.9%/25.0%上昇する。",

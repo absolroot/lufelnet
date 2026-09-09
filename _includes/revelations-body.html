@@ -1001,7 +1001,9 @@
         // Create card for each revelation
         allRevelations.forEach((revelation, index) => {
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'card revelation-card-enter';
+            // Leave a small, visible beat between cards without prolonging the cascade.
+            card.style.setProperty('--revelation-card-delay', `${Math.min(index, 16) * 56}ms`);
             card.dataset.type = revelation.type;
             card.dataset.name = revelation.name;
             card.dataset.searchText = buildSearchText(revelation);

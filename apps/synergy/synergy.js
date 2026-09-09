@@ -675,6 +675,42 @@
         if (!tabsContainer) return;
 
         tabsContainer.innerHTML = '';
+        let tabRevealQueue = Promise.resolve();
+        let hasRevealedTab = false;
+
+        function waitForTabImages(tab) {
+            return Promise.all(Array.from(tab.querySelectorAll('img')).map((image) => new Promise((resolve) => {
+                const finish = () => {
+                    image.removeEventListener('load', finish);
+                    image.removeEventListener('error', finish);
+                    if (typeof image.decode === 'function') {
+                        image.decode().catch(() => {}).finally(resolve);
+                        return;
+                    }
+                    resolve();
+                };
+
+                if (image.complete) {
+                    finish();
+                    return;
+                }
+
+                image.addEventListener('load', finish, { once: true });
+                image.addEventListener('error', finish, { once: true });
+            })));
+        }
+
+        function queueTabReveal(tab) {
+            tabRevealQueue = tabRevealQueue.then(async () => {
+                await waitForTabImages(tab);
+                if (!tab.isConnected) return;
+                if (hasRevealedTab) await new Promise((resolve) => setTimeout(resolve, 36));
+                if (!tab.isConnected) return;
+                tab.classList.remove('synergy-tab-pending');
+                tab.classList.add('synergy-tab-enter');
+                hasRevealedTab = true;
+            });
+        }
 
         // 먼저 각 캐릭터의 time 값을 가져오기
         const characterTimeMap = {};
@@ -892,7 +928,7 @@
 
         characterNamesData.forEach(({ characterName, displayName, char, characterTime }, index) => {
             const tab = document.createElement('div');
-            tab.className = 'character-tab';
+            tab.className = 'character-tab synergy-tab-pending';
             tab.dataset.character = characterName;
 
             // 필터링용 데이터 속성 추가
@@ -946,6 +982,7 @@
             });
 
             tabsContainer.appendChild(tab);
+            queueTabReveal(tab);
         });
 
         // 언어 파일 존재 여부 확인 (비동기, 필터링에 사용)

@@ -154,6 +154,17 @@
           "hp": 2051.35
         },
         "user": "Wonder"
+      },
+      {
+        "name": "Event Horizon",
+        "quality": 5,
+        "skill": "Increase Attack by 28.0%/32.7%/37.3%/42.0%/46.7%/51.3%/56.0%.\nAt the start of battle, grant 2 Spaghettification stacks to all allies. Also, when an ally deals Nuclear damage with a skill, grant 1 Spaghettification stack to all allies.\nFor each ally with Spaghettification, increase user's Attack by 50/58/66/75/83/91/100.\nSpaghettification: Increase Attack by 5.5%/6.4%/7.3%/8.2%/9.2%/10.1%/11.0%. Also, when dealing Nuclear damage, increase critical damage by 5.0%/5.8%/6.7%/7.5%/8.3%/9.2%/10.0%. Stacks up to 2 times. Lasts 2 turns (calculated individually for each stack).",
+        "stat": {
+          "attack": 654.08,
+          "defense": 356.79,
+          "hp": 2051.35
+        },
+        "user": "Wonder"
       }
     ],
     "fourStar": [

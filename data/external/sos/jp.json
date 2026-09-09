@@ -1,5 +1,68 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "クー・フーリン",
+            "skill": "1023,1154",
+            "sn": "534101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "378401"
+      },
+      {
+        "bonusRule": "All ally Curse attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Nuclear",
+                "Bless"
+              ],
+              "Weak": [
+                "Curse"
+              ]
+            },
+            "image": "B-guaiwutouxiang-throne.png",
+            "level": "89",
+            "name": "ソロネ",
+            "skill": "155,158",
+            "sn": "534111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "378402"
+      }
+    ],
+    "buff": "陰鬱な気配: 敵をダウンさせた時、対象に『仄暗い幻』を付与する。ハイライト／テウルギアで敵を攻撃した時、選択した対象に『仄暗い幻』を付与する。\n『仄暗い幻』：２ターンの間、受ける最終ダメージが４０%上昇する。",
+    "endTime": "2026-09-24 06:30:00",
+    "startTime": "2026-09-09 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

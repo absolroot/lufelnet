@@ -2,7 +2,7 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-09-24 10:59:59",
+        "endTime": "2026-09-24 06:59:59",
         "fiveStar": [
           {
             "name": "Kumi Katayama",
@@ -28,7 +28,7 @@
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-09-24 10:59:59",
+        "endTime": "2026-09-24 06:59:59",
         "fiveStar": [
           {
             "name": "Kumi Katayama",
@@ -51,6 +51,58 @@
         ],
         "name": "Ride the Lightning",
         "startTime": "2026-08-27 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-10-15 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Cosmic Yui",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Plantastic Planet Protectors",
+        "startTime": "2026-09-09 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-10-15 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Cosmic Yui",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Plantastic Planet Protectors",
+        "startTime": "2026-09-09 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -108,7 +160,7 @@
     ],
     "weapon": [
       {
-        "endTime": "2026-09-24 10:59:59",
+        "endTime": "2026-09-24 06:59:59",
         "fiveStar": [
           {
             "name": "Lightning Riders",
@@ -140,6 +192,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-08-27 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-10-15 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Starlight Decimators",
+            "type": "weapon",
+            "user": "Cosmic Yui"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Sprouting Voyagers",
+            "type": "weapon",
+            "user": "Cosmic Yui"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-09-09 11:30:00",
         "type": "Arms Deals"
       },
       {

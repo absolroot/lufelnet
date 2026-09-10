@@ -18,7 +18,7 @@ const mapping_en = {
     "수락": "Acceptance",
     "자유": "Freedom",
     "진정성": "Integrity",
-    "예리": "Agility",
+    "예리": "Acuity",
     "순수": "Purity",
     // Sub revelations
     "반성": "Failure",
@@ -80,7 +80,7 @@ const enRevelationData = {
         "수락": "Acceptance",
         "자유": "Freedom",
         "진정성": "Integrity",
-        "예리": "Agility",
+        "예리": "Acuity",
         "순수": "Purity",
     },
     "subTranslated": {
@@ -123,8 +123,8 @@ const enRevelationData = {
         "Ego": ["Failure", "Cruelty"], // 자아
         "Purity": ["Debauch", "Change", "Wealth"], // 순수
         "Nativity": ["Power"], // 탄생
-        "Agility": ["Wealth", "Satiety", "Hindrance"], // 예리
-        "Perseverance": ["Sorrow", "Change", "Obtain", "Happiness"], //돌파
+        "Acuity": ["Satiety"], // 예리
+        "Perseverance": ["Sorrow", "Change", "Obtain"], // 돌파
         "Hope": ["Labor", "Ruin", "Change"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조
         "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
@@ -142,12 +142,12 @@ const enRevelationData = {
     },
     "sub": {
         "Failure": [], // 반성
-        "Happiness": ["Perseverance"], // 기쁨
-        "Wealth": ["Agility", "Purity"], // 번영
+        "Happiness": [], // 기쁨
+        "Wealth": ["Purity"], // 번영
         "Cruelty": [], // 결단
         "Debauch": ["Purity"], // 타락
         "Tenacity": ["Creation"], // 강인
-        "Satiety": ["Agility"], // 풍족
+        "Satiety": ["Acuity"], // 풍족
         "Obtain": ["Perseverance"], // 획득
         "Sorrow": ["Perseverance"], // 슬픔
         "Change": ["Perseverance", "Hope", "Purity"], // 변화
@@ -164,7 +164,7 @@ const enRevelationData = {
         "Pleasure": ["Wisdom", "Integrity"], // 환희
         "Labor": ["Resolve", "Integrity", "Hope"], // 직책
         "Peace": ["Faith", "Acceptance"], // 평화
-        "Hindrance": ["Awareness", "Departure", "Agility"], // 방해
+        "Hindrance": ["Awareness", "Departure"], // 방해
         "Control": ["Awareness", "Departure"], // 주권
         "Renewal": ["Growth", "Trust"], // 변환
         "Courage": ["Meditation"], // 용맹
@@ -355,11 +355,9 @@ const enRevelationData = {
             "type": ["미출시"]
         },
         "Perseverance": {
-            "Change": "Each enemy on field increases your electric damage by 8%, up to 32%.",
-            "Sorrow": "Increase continuous damage effect by 16%.",
-            "Obtain": "Increase ATK based on your HP%, when HP% is 40%, increase ATK by 40%.",
-            "Happiness": "When all allies' HP is below 10%, increase Critical Effect by 20%. This effect does not stack.",
-            "type": ["미출시"]
+            "Change": "For each foe on the field, increase Electric damage by 8%. Maximum of 32%.",
+            "Sorrow": "Increase continuous damage by 16%.",
+            "Obtain": "Increase Attack based on missing HP. Increase Attack by a maximum of 40% when HP is down to 40%."
         },
         "Hope": {
             "Labor": "When equipped by an Elucidator Phantom Thief: When granting buffs to allies with a skill, increase the main target's pierce rate by 5% for 1 turn.",
@@ -436,11 +434,8 @@ const enRevelationData = {
             "Pleasure": "Increase DMG Bonus up to 30% based on 50% of your Ailment Accuracy Rate.",
             // "type": ["미출시"]
         },
-        "Agility": {
-            "Wealth": "Increase All-Out Attack DMG by 10%. After dealing All-Out Attack DMG, increase the entire party's Attack by 15%.",
-            "Satiety": "Increase All-Out Attack DMG by 16%.",
-            "Hindrance": "During combat, increase Ailment Accuracy by 20%, and grant all allies a DMG Bonus equal to 10% of the user's Ailment Accuracy (up to 10% DMG Bonus).",
-            "type": ["미출시"]
+        "Acuity": {
+            "Satiety": "Increase All-Out Attack damage by 16%."
         },
         "Nativity": { // 탄생
             "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%."

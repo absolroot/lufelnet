@@ -124,7 +124,7 @@ const enRevelationData = {
         "Purity": ["Debauch", "Change", "Wealth"], // 순수
         "Nativity": ["Power"], // 탄생
         "Acuity": ["Satiety"], // 예리
-        "Perseverance": ["Sorrow", "Change", "Obtain"], // 돌파
+        "Perseverance": ["Sorrow", "Change", "Obtain", "Happiness"], // 돌파
         "Hope": ["Labor", "Ruin", "Change"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조
         "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
@@ -142,7 +142,7 @@ const enRevelationData = {
     },
     "sub": {
         "Failure": [], // 반성
-        "Happiness": [], // 기쁨
+        "Happiness": ["Perseverance"], // 기쁨
         "Wealth": ["Purity"], // 번영
         "Cruelty": [], // 결단
         "Debauch": ["Purity"], // 타락
@@ -357,7 +357,8 @@ const enRevelationData = {
         "Perseverance": {
             "Change": "For each foe on the field, increase Electric damage by 8%. Maximum of 32%.",
             "Sorrow": "Increase continuous damage by 16%.",
-            "Obtain": "Increase Attack based on missing HP. Increase Attack by a maximum of 40% when HP is down to 40%."
+            "Obtain": "Increase Attack based on missing HP. Increase Attack by a maximum of 40% when HP is down to 40%.",
+            "Happiness": "When all allies' HP is below 10%, increase Critical Effect by 20%. This effect does not stack."
         },
         "Hope": {
             "Labor": "When equipped by an Elucidator Phantom Thief: When granting buffs to allies with a skill, increase the main target's pierce rate by 5% for 1 turn.",

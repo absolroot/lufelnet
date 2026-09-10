@@ -514,7 +514,7 @@ Object.assign(window.characterData, {
         "tag": "총공격, 추가 효과",
         "tag_en": "All-Out Attack, Follow-Up",
         "tag_jp": "総攻撃、意識奏功",
-        "color": "#6be1cdff",
+        "color": "#6be1cd",
         "element": "핵열",
         "rarity": 5,
         "position": "반항",
@@ -526,7 +526,7 @@ Object.assign(window.characterData, {
         "name_en": "Cosmic Yui",
         "name_jp": "YUI·MUSUBI",
         "name_cn": "YUI·幻彩",
-        "codename": "BUI·Prism",
+        "codename": "BUI·Cosmic",
         "skill_item": 5,
         "persona_cn": "艾普苏黛丝"
     },

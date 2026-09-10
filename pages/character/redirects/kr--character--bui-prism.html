@@ -1,6 +1,6 @@
 ---
 layout: null
-permalink: /character/bui-prism/
+permalink: /kr/character/bui-prism/
 sitemap: false
 ---
 <!doctype html>
@@ -17,8 +17,8 @@ sitemap: false
       var requestedLang = params.get("lang");
       params.delete("lang");
       params.delete("name");
-      var languageTargets = {"kr":"/kr/character/bui-cosmic/","en":"/en/character/bui-cosmic/","jp":"/jp/character/bui-cosmic/","cn":"/cn/character/bui-cosmic/"};
-      var defaultPath = "/en/character/bui-cosmic/";
+      var languageTargets = null;
+      var defaultPath = "/kr/character/bui-cosmic/";
       function normalizeLang(raw) {
         var value = String(raw || "").toLowerCase();
         if (value === "kr" || value === "en" || value === "jp" || value === "cn") return value;
@@ -64,7 +64,7 @@ sitemap: false
       window.location.replace(next);
     })();
   </script>
-  <noscript><meta http-equiv="refresh" content="0; url=/en/character/bui-cosmic/"></noscript>
-  <a href="/en/character/bui-cosmic/">Continue</a>
+  <noscript><meta http-equiv="refresh" content="0; url=/kr/character/bui-cosmic/"></noscript>
+  <a href="/kr/character/bui-cosmic/">Continue</a>
 </body>
 </html>

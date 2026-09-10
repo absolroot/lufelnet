@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["YUI·스텔라"] = { name_en: "Cosmic Yui", name_jp: "YUI·MUSUBI", codename: "YUI·PRISM",
+    window.characterReview["YUI·스텔라"] = { name_en: "Cosmic Yui", name_jp: "YUI·MUSUBI", codename: "BUI·Cosmic",
         review: `
 **총공격 수치를 메인 딜 계수로서 활용하는 핵열 단일 딜러**다.
 

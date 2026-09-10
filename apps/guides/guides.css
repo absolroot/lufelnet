@@ -777,6 +777,164 @@ html[data-lang="jp"] .guide-content code {
     border-radius: 4px;
 }
 
+/* Sea fishing: keep the six king-fish routes readable before the full tables. */
+.guide-content .sea-fishing-king-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--guide-space-md);
+    margin: var(--guide-space-xl) 0;
+}
+
+.guide-content .sea-fishing-king-card {
+    display: flex;
+    align-items: center;
+    gap: var(--guide-space-md);
+    min-width: 0;
+    padding: var(--guide-space-md);
+    background: linear-gradient(135deg, rgba(232, 184, 101, 0.14), var(--guide-bg-tertiary));
+    border: 1px solid rgba(232, 184, 101, 0.35);
+    border-radius: 10px;
+}
+
+.guide-content .sea-fishing-king-fish-visual,
+.guide-content .sea-fishing-fish-card-visual {
+    flex: 0 0 82px;
+    width: 82px;
+    margin: 0;
+}
+
+.guide-content .sea-fishing-king-card div {
+    min-width: 0;
+}
+
+.guide-content .sea-fishing-king-card span,
+.guide-content .sea-fishing-king-card strong,
+.guide-content .sea-fishing-king-card p {
+    display: block;
+}
+
+.guide-content .sea-fishing-king-card span {
+    margin-bottom: 2px;
+    color: var(--guide-accent-gold);
+    font-size: var(--guide-text-xs);
+}
+
+.guide-content .sea-fishing-king-card strong {
+    color: var(--guide-text-primary);
+    font-size: var(--guide-text-base);
+}
+
+.guide-content .sea-fishing-king-card p {
+    margin: var(--guide-space-xs) 0 0;
+    font-size: var(--guide-text-xs);
+    line-height: 1.55;
+}
+
+.guide-content .sea-fishing-fish-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--guide-space-md);
+    margin: var(--guide-space-xl) 0 var(--guide-space-2xl);
+}
+
+.guide-content .sea-fishing-fish-card {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--guide-space-lg);
+    min-width: 0;
+    padding: var(--guide-space-sm);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 10px;
+    background: var(--guide-bg-tertiary);
+}
+
+.guide-content .sea-fishing-fish-card-visual {
+    position: relative;
+    aspect-ratio: 316 / 196;
+}
+
+.guide-content .sea-fishing-fish-card-inner,
+.guide-content .sea-fishing-fish-card-icon,
+.guide-content .sea-fishing-fish-card-grade-tag {
+    position: relative;
+    margin: 0;
+    object-fit: contain;
+}
+
+.guide-content .sea-fishing-fish-card-inner {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.guide-content .sea-fishing-fish-card-icon {
+    position: absolute;
+    top: 17%;
+    left: 13%;
+    z-index: 1;
+    width: 75%;
+    height: 64%;
+}
+
+.guide-content .sea-fishing-fish-card-grade-tag {
+    position: absolute;
+    right: 4%;
+    bottom: 15%;
+    z-index: 2;
+    width: 29%;
+    height: 38%;
+}
+
+.guide-content .sea-fishing-fish-card-body {
+    min-width: 0;
+    flex: 1;
+}
+
+.guide-content .sea-fishing-fish-card-body > span,
+.guide-content .sea-fishing-fish-card-body > strong {
+    display: block;
+}
+
+.guide-content .sea-fishing-fish-card-body > span {
+    margin-bottom: 2px;
+    font-size: var(--guide-text-xs);
+    color: var(--guide-text-secondary);
+}
+
+.guide-content .sea-fishing-fish-card-body > strong {
+    margin-bottom: var(--guide-space-sm);
+    color: var(--guide-text-primary);
+    font-size: var(--guide-text-base);
+}
+
+.guide-content .sea-fishing-fish-card dl {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--guide-space-xs);
+    margin: 0;
+    font-size: var(--guide-text-sm);
+    line-height: 1.55;
+}
+
+.guide-content .sea-fishing-fish-card dl div {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: var(--guide-space-xs);
+}
+
+.guide-content .sea-fishing-fish-card dt {
+    color: var(--guide-text-muted);
+}
+
+.guide-content .sea-fishing-fish-card dd {
+    min-width: 0;
+    margin: 0;
+    color: var(--guide-text-primary);
+}
+
 /* Table alignment */
 .guide-content th[align="center"],
 .guide-content td[align="center"] {
@@ -974,6 +1132,28 @@ html[data-lang="jp"] .guide-content code {
 
     .guide-content td img {
         max-height: 48px;
+    }
+
+    .guide-content .sea-fishing-king-grid {
+        grid-template-columns: 1fr;
+        gap: var(--guide-space-sm);
+    }
+
+    .guide-content .sea-fishing-king-card {
+        padding: var(--guide-space-sm);
+    }
+
+    .guide-content .sea-fishing-fish-card {
+        padding: 20px;
+    }
+
+    .guide-content .sea-fishing-fish-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-content .sea-fishing-fish-card-visual {
+        flex-basis: 84px;
+        width: 84px;
     }
 }
 

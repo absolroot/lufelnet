@@ -1,5 +1,49 @@
 [
   {
+    "id": "sea-fishing-conditions-2026",
+    "titles": {
+      "kr": "2026 해상 낚시 물고기 출현 조건 정리",
+      "en": "2027 GLB Sea Fishing Fish Appearance Conditions",
+      "jp": "2027 GLB 海上釣り 魚の出現条件まとめ",
+      "cn": "2026 海上钓鱼鱼类出现条件整理"
+    },
+    "excerpts": {
+      "kr": "2026년 CN/KR 해상 낚시는 연안 모래사장·근해 암초 지대·원양 대해마다 낚을 수 있는 물고기와 미끼가 다르다. 원하는 물고기를 정했다면 먼저 해역과 출현 시간, 미끼를 확인하자. 대왕·어왕 물고기는 현재 진행 중인 낚시 한 판 안에서 선행 물고기를 정해진 횟수만큼 낚아야 출현한다.",
+      "en": "In 2026 CN/KR Sea Fishing, fish and bait differ between the Coastal Sandy Beach, Nearshore Reef Area, and Open Ocean. Check the area, Fishing Time, and bait before targeting a fish. King fish appear only after you catch their prerequisite fish the required number of times in the current fishing session.",
+      "jp": "2026年CN/KR版の海上釣りでは、沿岸の砂浜・近海の岩礁地帯・外洋ごとに釣れる魚と釣り餌が異なる。狙う魚を決めたら、海域・出現時間・釣り餌を確認しよう。大物魚は今回の釣りの中で先行する魚を決められた回数だけ釣ると出現する。",
+      "cn": "2026年CN/KR海上钓鱼中，沿岸沙滩、近海礁石区和远洋大海可钓到的鱼及所需鱼饵各不相同。确定目标鱼后，先确认海域、出现时间和鱼饵。大鱼必须在当前这局钓鱼中钓到指定次数的前置鱼类才会出现。"
+    },
+    "searchContent": {
+      "kr": "2026 해상 낚시 물고기 출현 조건 연안 모래사장 근해 암초 지대 원양 대해 피싱 타임 물결 파동 대왕 어왕 돛새치 남방참다랑어 황금쑤기미 안경만두게"
+    },
+    "category": "citylife",
+    "date": "2026-09-10",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/sea-fishing-conditions-2026/kr-sea-fishing-2026-hero.png"
+  },
+  {
+    "id": "sea-fishing-conditions",
+    "titles": {
+      "kr": "2025 해상 낚시 물고기 출현 조건 정리",
+      "en": "2026 GLB Sea Fishing Fish Appearance Conditions",
+      "jp": "2026 GLB 海上釣り 魚の出現条件まとめ",
+      "cn": "2025 海上钓鱼鱼类出现条件整理"
+    },
+    "excerpts": {
+      "kr": "해상 낚시는 모래여울·암초·심해마다 낚을 수 있는 물고기와 필요한 미끼가 다르다. 원하는 물고기가 있다면 먼저 해역과 출현 시간, 미끼를 확인하자. 대왕 물고기는 선행 물고기를 정해진 횟수만큼 낚아 출현을 열어야 하며, 출현 뒤에는 낚을 기회가 2회뿐이다.",
+      "en": "Sea fishing has different fish and bait requirements in each area. Check the area, Fishing Time, and bait before targeting a fish. King fish appear after you catch their prerequisite fish the required number of times, and you then have only two chances to catch them.",
+      "jp": "海上釣りでは、海域ごとに釣れる魚と必要な釣り餌が異なる。狙う魚を決めたら、まず海域・出現時間・釣り餌を確認しよう。大物魚は先行する魚を決められた回数だけ釣ると出現し、釣れるチャンスは2回だけだ。",
+      "cn": "海上钓鱼中，不同海域可钓到的鱼和所需鱼饵不同。想钓目标鱼时，先确认海域、出现时间和鱼饵。大鱼需要先钓到指定次数的前置鱼类才会出现，出现后只有2次钓取机会。"
+    },
+    "searchContent": {
+      "kr": "해상 낚시 물고기 출현 조건 모래여울 암초 심해 피싱 타임 일반 낚시 소형 미끼 중형 미끼 대형 미끼 대왕 물고기 물결 파동 블루탱 엔젤피쉬 이세 새우 돛새치 왕관해마 남방참다랑어 홍어 고등어 보리멸 꽃게 제왕 연어 준치"
+    },
+    "category": "citylife",
+    "date": "2026-09-10",
+    "author": "AbsolRoot",
+    "thumbnail": "/apps/guides/data/assets/sea-fishing-conditions/kr-sea-fishing-legacy-hero.png"
+  },
+  {
     "id": "eternal-dreamland",
     "titles": {
       "kr": "흉몽 '영원한 꿈나라' 규칙과 활용법",

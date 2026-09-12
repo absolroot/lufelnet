@@ -15,6 +15,13 @@
                 [320, 50]
             ]
         },
+        'multi-size-banner': {
+            sizes: [
+                [970, 90],
+                [728, 90],
+                [320, 50]
+            ]
+        },
         rectangle: {
             sizes: [
                 [300, 250]
@@ -123,6 +130,21 @@
     const initializedGlobalPlacements = new Set();
     let contentReady = Boolean(window.LufelPageLifecycle?.isReady?.());
 
+    document.addEventListener('nitroAds.rendered', (event) => {
+        const detail = event.detail || {};
+        const adInfo = detail.adInfo || detail;
+        const slot = adInfo?.adUnitCode ? document.getElementById(adInfo.adUnitCode) : null;
+        const height = Number(adInfo?.height);
+
+        if (!slot || slot.dataset.nitroCollapseUntilRendered !== 'true' || !Number.isFinite(height) || height < 0) {
+            return;
+        }
+
+        // Nitro reserves the tallest permitted size before the auction. These inline
+        // character-page placements instead take only the height of a rendered creative.
+        slot.style.setProperty('--nitro-rendered-height', `${height}px`);
+    });
+
     function resolveGlobalPlacementOptions(placement) {
         const options = { ...placement.options };
         if (options.format !== 'rail' || options.rail !== 'right') return options;
@@ -211,7 +233,7 @@
         const { fitToContainer = false, ...baseOptions } = basePreset;
         let preset = baseOptions;
         if (
-            (format === 'banner' || format === 'leaderboard')
+            (format === 'banner' || format === 'leaderboard' || format === 'multi-size-banner')
             && window.matchMedia(MOBILE_BANNER_MEDIA_QUERY).matches
         ) {
             preset = {

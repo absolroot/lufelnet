@@ -168,11 +168,14 @@
                     const source = (typeof personaSkillList !== 'undefined') ? personaSkillList : (window.personaSkillList || (window.skills && window.skills.personaSkillList));
                     return tryGet(source, nameKr);
                 } else if (kind === 'persona') {
-                    const source =
-                        (typeof window !== 'undefined' && window.personaFiles && Object.keys(window.personaFiles).length)
-                            ? window.personaFiles
-                            : ((typeof personaData !== 'undefined') ? personaData : (window.personaData || (window.persona && window.persona.personaData)));
-                    return tryGet(source, nameKr);
+                    // Persona details are lazy-loaded. Use the always-present index first
+                    // when a detail script has not yet been requested for this Persona.
+                    const loaded = (typeof window !== 'undefined' && window.personaFiles) || null;
+                    const index = (typeof window !== 'undefined' && window.personaIndex) || null;
+                    const legacy = (typeof personaData !== 'undefined')
+                        ? personaData
+                        : (window.personaData || (window.persona && window.persona.personaData));
+                    return tryGet(loaded, nameKr) || tryGet(index, nameKr) || tryGet(legacy, nameKr);
                 }
             } catch(_) { return null; }
             return null;

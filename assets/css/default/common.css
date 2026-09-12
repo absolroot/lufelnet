@@ -479,7 +479,8 @@ body {
 }
 
 .nitro-ad-container--banner .nitro-ad-placeholder,
-.nitro-ad-container--leaderboard .nitro-ad-placeholder {
+.nitro-ad-container--leaderboard .nitro-ad-placeholder,
+.nitro-ad-container--multi-size-banner .nitro-ad-placeholder {
     right: auto;
     left: 50%;
     width: min(100%, 976px);
@@ -500,6 +501,16 @@ body {
 .nitro-ad-container--leaderboard .nitro-ad-slot {
     max-width: 976px;
     height: 90px;
+}
+
+/* This placement collapses on no-fill; Nitro expands it to the winning creative's size. */
+.nitro-ad-container--multi-size-banner .nitro-ad-slot {
+    max-width: 976px;
+}
+
+.nitro-ad-slot[data-nitro-collapse-until-rendered="true"] {
+    min-height: 0 !important;
+    height: var(--nitro-rendered-height, 0px) !important;
 }
 
 .nitro-ad-container--rectangle .nitro-ad-slot {

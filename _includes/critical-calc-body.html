@@ -44,6 +44,13 @@
 <link rel="stylesheet" href="/apps/critical-calc/critical-calc.css?h={{ site.data.asset_versions.files['/apps/critical-calc/critical-calc.css'] }}">
 <script src="/apps/critical-calc/table-renderer.js?h={{ site.data.asset_versions.files['/apps/critical-calc/table-renderer.js'] }}"></script>
 <script src="/apps/critical-calc/critical-calc.js?h={{ site.data.asset_versions.files['/apps/critical-calc/critical-calc.js'] }}"></script>
+<script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
+<script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
+<script>
+  if (typeof ensurePersonaFilesLoaded === 'function') {
+    ensurePersonaFilesLoaded();
+  }
+</script>
 
 {% if page.alternate_urls %}
 {% for alt in page.alternate_urls %}
@@ -317,6 +324,19 @@
         Navigation.load('critical-calc', 1);
         VersionChecker.check();
         updateSEOContent(currentLang);
-        new CriticalCalc();
+        const start = () => {
+            try {
+                if (typeof DefenseI18N !== 'undefined' &&
+                    DefenseI18N.enrichDefenseDataWithWonderNames) {
+                    DefenseI18N.enrichDefenseDataWithWonderNames();
+                }
+            } catch (_) {}
+            new CriticalCalc();
+        };
+        if (typeof ensurePersonaFilesLoaded === 'function') {
+            ensurePersonaFilesLoaded(start);
+        } else {
+            start();
+        }
     });
 </script>

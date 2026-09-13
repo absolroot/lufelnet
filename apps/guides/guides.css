@@ -778,6 +778,61 @@ html[data-lang="jp"] .guide-content code {
 }
 
 /* Sea fishing: keep the six king-fish routes readable before the full tables. */
+.guide-content .sea-fishing-mechanic-guide {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--guide-space-md);
+    margin: var(--guide-space-xl) 0;
+}
+
+.guide-content .sea-fishing-mechanic-card {
+    padding: var(--guide-space-lg);
+    border: 1px solid var(--guide-border-subtle);
+    border-radius: 10px;
+    background: var(--guide-bg-tertiary);
+}
+
+.guide-content .sea-fishing-mechanic-card--jackpot {
+    border-color: rgba(232, 184, 101, 0.48);
+}
+
+.guide-content .sea-fishing-mechanic-card--ripple {
+    border-color: rgba(145, 219, 255, 0.52);
+}
+
+.guide-content .sea-fishing-mechanic-card-label {
+    margin: 0 0 var(--guide-space-xs);
+    font-size: var(--guide-text-xs);
+    font-weight: 700;
+}
+
+.guide-content .sea-fishing-mechanic-card--jackpot .sea-fishing-mechanic-card-label {
+    color: var(--guide-accent-gold);
+}
+
+.guide-content .sea-fishing-mechanic-card--ripple .sea-fishing-mechanic-card-label {
+    color: #91dbff;
+}
+
+.guide-content .sea-fishing-mechanic-card h2 {
+    margin: 0 0 var(--guide-space-sm);
+    font-size: var(--guide-text-lg);
+}
+
+.guide-content .sea-fishing-mechanic-card p {
+    margin: 0;
+    line-height: 1.65;
+}
+
+.guide-content .sea-fishing-mechanic-card p + p {
+    margin-top: var(--guide-space-sm);
+}
+
+.guide-content .sea-fishing-mechanic-card-note {
+    color: var(--guide-text-secondary);
+    font-size: var(--guide-text-sm);
+}
+
 .guide-content .sea-fishing-king-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1135,6 +1190,11 @@ html[data-lang="jp"] .guide-content code {
     }
 
     .guide-content .sea-fishing-king-grid {
+        grid-template-columns: 1fr;
+        gap: var(--guide-space-sm);
+    }
+
+    .guide-content .sea-fishing-mechanic-guide {
         grid-template-columns: 1fr;
         gap: var(--guide-space-sm);
     }

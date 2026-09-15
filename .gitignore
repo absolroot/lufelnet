@@ -80,6 +80,9 @@ data/external/before/
 
 _backup/
 
+# Local source backups for All-Out Attack gallery assets.
+/assets/img/gallery/allout/bakcup/
+
 
 # OS
 .DS_Store

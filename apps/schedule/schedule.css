@@ -437,8 +437,8 @@
 }
 
 .p3p-icon {
-    height: 14px;
-    max-width: 36px;
+    width: 36px;
+    height: auto;
 }
 
 .content-label {

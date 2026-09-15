@@ -99,7 +99,7 @@ Object.assign(window.characterData, {
         "codename": "",
         "skill_item": 7
     },
-    "시오미 코토네": {
+    "코토네": {
         "limit": true,
         "tag": "",
         "tag_en": "",
@@ -115,7 +115,7 @@ Object.assign(window.characterData, {
         "persona_en": "Orpheus",
         "persona_jp": "オルフェウス",
         "persona_cn": "俄耳甫斯",
-        "name": "시오미 코토네",
+        "name": "코토네",
         "name_en": "Kotone Shiomi",
         "name_jp": "汐見 琴音",
         "name_cn": "汐见琴音",

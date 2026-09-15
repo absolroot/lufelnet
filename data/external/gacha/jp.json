@@ -156,6 +156,162 @@
         "name": "羽ばたく愛の歌",
         "startTime": "2026-09-03 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2027-06-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "結城 理",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "満月の契約者",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2027-06-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "結城 理",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "満月の契約者",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "岳羽 ゆかり",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "月夜に響く弦音",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "岳羽 ゆかり",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "月夜に響く弦音",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "真田 明彦",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "雷鳴のフィスト",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "真田 明彦",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "雷鳴のフィスト",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
       }
     ],
     "weapon": [
@@ -262,6 +418,111 @@
         ],
         "name": "無音の硝煙",
         "startTime": "2026-09-03 11:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2027-06-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "デオスクシポス",
+            "type": "weapon",
+            "user": "理"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "ナイトアワード",
+            "type": "weapon",
+            "user": "白鳥"
+          },
+          {
+            "name": "名刀透徹",
+            "type": "weapon",
+            "user": "理"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "サルンガ",
+            "type": "weapon",
+            "user": "ゆかり"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "ナイトアワード",
+            "type": "weapon",
+            "user": "白鳥"
+          },
+          {
+            "name": "鬼神の弓",
+            "type": "weapon",
+            "user": "ゆかり"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-09-15 12:00:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "サバジオス",
+            "type": "weapon",
+            "user": "真田"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "ナイトアワード",
+            "type": "weapon",
+            "user": "白鳥"
+          },
+          {
+            "name": "ヘルセスタス",
+            "type": "weapon",
+            "user": "真田"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-09-15 12:00:00",
         "type": "武器補給"
       }
     ]

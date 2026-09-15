@@ -54,6 +54,8 @@ window.I18N_PAGE_SCHEDULE_EN = {
     collaboP5rDesc: 'P5R Collaboration',
     collaboP3rTitle: 'P3R Collaboration Release',
     collaboP3rDesc: 'P3R Collaboration',
+    collaboP3pTitle: 'P3P Collaboration Release',
+    collaboP3pDesc: 'P3P Collaboration',
     mainStoryPrefix: 'Main Story',
     mainStoryTitle: 'Main Story Update',
     summerEventTitle: 'Summer Event Release',

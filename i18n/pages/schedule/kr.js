@@ -54,6 +54,8 @@ window.I18N_PAGE_SCHEDULE_KR = {
     collaboP5rDesc: 'P5R 콜라보',
     collaboP3rTitle: 'P3R 콜라보 출시',
     collaboP3rDesc: 'P3R 콜라보',
+    collaboP3pTitle: 'P3P 콜라보 출시',
+    collaboP3pDesc: 'P3P 콜라보',
     mainStoryPrefix: '메인 스토리',
     mainStoryTitle: '메인 스토리 업데이트',
     summerEventTitle: '여름 이벤트 출시',

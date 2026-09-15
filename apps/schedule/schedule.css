@@ -436,6 +436,11 @@
     flex-shrink: 0;
 }
 
+.p3p-icon {
+    height: 14px;
+    max-width: 36px;
+}
+
 .content-label {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);

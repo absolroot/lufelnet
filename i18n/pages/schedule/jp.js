@@ -54,6 +54,8 @@ window.I18N_PAGE_SCHEDULE_JP = {
     collaboP5rDesc: 'P5R コラボレーション',
     collaboP3rTitle: 'P3R コラボレーション配信',
     collaboP3rDesc: 'P3R コラボレーション',
+    collaboP3pTitle: 'P3P コラボレーション配信',
+    collaboP3pDesc: 'P3P コラボレーション',
     mainStoryPrefix: 'メインストーリー',
     mainStoryTitle: 'メインストーリー更新',
     summerEventTitle: 'サマーイベント配信',

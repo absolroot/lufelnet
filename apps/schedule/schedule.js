@@ -130,6 +130,21 @@
         return 'kr';
     }
 
+    function getP3PCollaborationLabels() {
+        const fallbacks = {
+            kr: { title: 'P3P 콜라보 출시', description: 'P3P 콜라보' },
+            en: { title: 'P3P Collaboration Release', description: 'P3P Collaboration' },
+            jp: { title: 'P3P コラボレーション配信', description: 'P3P コラボレーション' },
+            cn: { title: 'P3P联动上线', description: 'P3P联动' }
+        };
+        const fallback = fallbacks[getScheduleLang()] || fallbacks.kr;
+
+        return {
+            title: t('collaboP3pTitle', fallback.title),
+            description: t('collaboP3pDesc', fallback.description)
+        };
+    }
+
     async function ensureScheduleCharacterData() {
         const lang = getScheduleLang();
         if (lang === 'kr') {
@@ -847,6 +862,7 @@
                     version: item.version,
                     date: releaseDate ? formatDateStr(releaseDate) : null,
                     characters: item.characters,
+                    collaboration: item.collaboration,
                     note: item.note,
                     'main-story': item['main-story'],
                     schedulePending: pendingDate,
@@ -1178,6 +1194,8 @@
             let hasP5 = false;
             let hasP5R = false;
             let hasP3 = false;
+            const hasP3P = release.collaboration === 'p3p';
+            const p3pLabels = hasP3P ? getP3PCollaborationLabels() : null;
 
             release.characters.forEach(charName => {
                 const char = charData[charName];
@@ -1196,7 +1214,14 @@
             });
 
             // 언어별 콜라보 설명 (출시 콘텐츠 명시)
-            if (hasP5R) {
+            if (hasP3P) {
+                collaboIconHtml = `
+                    <div class="content-badge collabo-badge">
+                        <img class="content-icon p3p-icon" src="${BASE_URL}/apps/schedule/p3p.png" alt="P3P" title="${p3pLabels.title}">
+                        <span class="content-label">${p3pLabels.description}</span>
+                    </div>
+                `;
+            } else if (hasP5R) {
                 collaboIconHtml = `
                     <div class="content-badge collabo-badge">
                         <img class="content-icon" src="${BASE_URL}/apps/schedule/p5r.png" alt="P5R" title="${t('collaboP5rTitle')}">

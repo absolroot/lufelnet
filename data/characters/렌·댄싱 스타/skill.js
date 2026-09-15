@@ -66,7 +66,7 @@ window.enCharacterSkillsData["렌·댄싱 스타"] = {
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Curse damage to all foes equal to 124.6%/137.4%/132.3%/145.1% of Attack. Decrease all foes' Defense by 9.8%/10.8%/10.4%/11.4% (based on Ren's Attack, up to 39.0%/43.0%/41.4%/45.4% bonus Defense Down at 3904/4304/4144/4544 Attack). Ren enters [Phantom Form].\nAfter boost, additionally increase foes' damage taken by 48.8%/53.8%/51.8%/56.8%. Increase the Defense Down debuff to 19.5%/21.5%/20.7%/22.7% (based on Ren's Attack, up to 78.1%/86.1%/82.9%/90.9% bonus Defense Down at 3904/4304/4144/4544 Attack). The next [Phantom Gala] will ignore all affinites and decrease target's Down Points by 4.\nGrant the ally with the highest Attack [Phantom Form] (excluding Ren)."
+    "description": "Deal Curse damage to all foes equal to 124.6%/137.4%/132.3%/145.1% of Attack. Decrease all foes' Defense by 9.8%/10.8%/10.4%/11.4% (based on Ren's Attack, up to 39.0%/43.0%/41.4%/45.4% bonus Defense Down at 3904/4304/4144/4544 Attack) for 2 turns. Ren enters [Phantom Form].\nAfter boost, additionally increase foes' damage taken by 48.8%/53.8%/51.8%/56.8% for 2 turns. Increase the Defense Down debuff to 19.5%/21.5%/20.7%/22.7% (based on Ren's Attack, up to 78.1%/86.1%/82.9%/90.9% bonus Defense Down at 3904/4304/4144/4544 Attack). The next [Phantom Gala] will ignore all affinites and decrease target's Down Points by 4.\nGrant the ally with the highest Attack [Phantom Form] (excluding Ren)."
   },
   "skill3": {
     "name": "Phantom Gala",

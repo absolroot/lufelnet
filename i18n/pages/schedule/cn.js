@@ -41,6 +41,8 @@ window.I18N_PAGE_SCHEDULE_CN = {
     "collaboP5rDesc": "P5R联动",
     "collaboP3rTitle": "P3R联动上线",
     "collaboP3rDesc": "P3R联动",
+    "collaboP3pTitle": "P3P联动上线",
+    "collaboP3pDesc": "P3P联动",
     "mainStoryPrefix": "主线剧情",
     "mainStoryTitle": "主线故事更新",
     "summerEventTitle": "夏日活动上线",

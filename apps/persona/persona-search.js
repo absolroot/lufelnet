@@ -246,6 +246,10 @@
             }
 
             if (isMatch) {
+                // Search results must not wait behind the image-ready reveal queue.
+                // Otherwise a cold-cache load can show an empty result area while the
+                // matching card is already present but still transparent.
+                container.classList.remove('persona-card-pending');
                 container.classList.remove('hidden-by-search');
                 container.style.display = '';
             } else {

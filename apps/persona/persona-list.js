@@ -263,13 +263,15 @@ async function initializePageContent() {
     function queuePersonaCardReveal(container) {
         personaCardRevealQueue = personaCardRevealQueue.then(async () => {
             await waitForPersonaCardImages(container);
-            if (!container.isConnected) return;
+            // Filters and search reveal matching cards immediately. Do not put an
+            // already-visible result back through the delayed entrance animation.
+            if (!container.isConnected || !container.classList.contains('persona-card-pending')) return;
 
             if (hasRevealedPersonaCard) {
                 await new Promise((resolve) => setTimeout(resolve, 56));
             }
 
-            if (!container.isConnected) return;
+            if (!container.isConnected || !container.classList.contains('persona-card-pending')) return;
             container.classList.remove('persona-card-pending');
             container.classList.add('persona-card-enter');
             hasRevealedPersonaCard = true;
@@ -424,6 +426,15 @@ async function initializePageContent() {
         renderedCards.forEach(queuePersonaCardReveal);
         window.LufelPageLifecycle?.release('persona-list');
         containers = document.querySelectorAll('.persona-detail-container');
+        // A filter or search may be applied before progressive rendering finishes.
+        // Keep newly appended cards in that state and reveal matching results at once.
+        if (filterCache.elements.size || filterCache.positions.size || filterCache.rarities.size || filterCache.grades.size) {
+            applyFilters();
+        }
+        const activeSearchValue = document.getElementById('personaSearch')?.value.trim();
+        if (activeSearchValue && typeof window.filterBySearch === 'function') {
+            window.filterBySearch(activeSearchValue);
+        }
         wireCardInteractions();
 
         if (currentIndex === processed) {
@@ -1168,7 +1179,15 @@ async function initializePageContent() {
             activeFiltersContainer.appendChild(createTag(label, 'element', val, `${window.SITE_BASEURL}/assets/img/persona/속성_${val}.png`));
         });
         filterCache.positions.forEach(val => {
-            const label = window.t ? window.t(`positions.${val}`, val) : val;
+            const positionKey = {
+                '지배': 'controller',
+                '반항': 'assassin',
+                '우월': 'striker',
+                '굴복': 'breaker',
+                '방위': 'guardian',
+                '구원': 'medic'
+            }[val];
+            const label = window.t && positionKey ? window.t(`positions.${positionKey}`, val) : val;
             activeFiltersContainer.appendChild(createTag(label, 'position', val, `${window.SITE_BASEURL}/assets/img/persona/직업_${val}.png`));
         });
         filterCache.rarities.forEach(val => {
@@ -1212,6 +1231,7 @@ async function initializePageContent() {
                 const isVisible = elementMatch && positionMatch && rarityMatch && gradeMatch;
 
                 if (isVisible) {
+                    container.classList.remove('persona-card-pending');
                     container.style.position = 'relative';
                     container.style.visibility = 'visible';
                     container.style.height = 'auto';

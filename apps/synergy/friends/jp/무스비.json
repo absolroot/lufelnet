@@ -139,15 +139,15 @@
         "good_answers": [
           [
             {
-              "content": "楽勝…でした…",
+              "content": "逃げたらダメだ",
               "reward": 60
             },
             {
-              "content": "褒めて…ください…",
+              "content": "勇気を出そう",
               "reward": 60
             },
             {
-              "content": "もう倒れそう…",
+              "content": "後輩を信じろ",
               "reward": 60
             }
           ]
@@ -162,15 +162,11 @@
         "good_answers": [
           [
             {
-              "content": "これからも頼ってほしい",
+              "content": "これからもよろしく",
               "reward": 50
             },
             {
-              "content": "こっちも頼るから",
-              "reward": 50
-            },
-            {
-              "content": "報酬はラーメンで",
+              "content": "楽しんでいこう",
               "reward": 50
             }
           ]
@@ -185,16 +181,12 @@
         "good_answers": [
           [
             {
-              "content": "まずは第１歩だ",
-              "reward": 60
-            },
-            {
-              "content": "仏頂面だったけど…",
+              "content": "力になれて良かった",
               "reward": 50
             },
             {
-              "content": "目標達成だ",
-              "reward": 40
+              "content": "自分はきっかけに過ぎない",
+              "reward": 60
             }
           ]
         ],
@@ -205,8 +197,17 @@
         "unlock_cond": "度胸 Lv.17"
       }
     ],
-    "can_romance": false,
-    "friend_lover_dialog": [],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "特別な人だと思ってる",
+        "is_romance": true
+      },
+      {
+        "content": "大切な友達だと思ってる",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 12,
@@ -756,32 +757,22 @@
         "good_answers": [
           [
             {
-              "content": "任せて！",
-              "reward": 40
-            },
-            {
-              "content": "構わないけど",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "特にない",
-              "reward": 40
-            },
-            {
-              "content": "平気だ",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "ここで一緒に食べたい",
+              "content": "なんか緊張してる？",
               "reward": 60
             },
             {
-              "content": "それでもいいけど…",
-              "reward": 50
+              "content": "いつもの調子でいい",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "重くない",
+              "reward": 60
+            },
+            {
+              "content": "重いくらいがいい",
+              "reward": 60
             }
           ]
         ]

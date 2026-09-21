@@ -139,15 +139,15 @@
         "good_answers": [
           [
             {
-              "content": "Piece of... cake...",
+              "content": "You shouldn't run away.",
               "reward": 60
             },
             {
-              "content": "Please... praise me...",
+              "content": "Take a chance.",
               "reward": 60
             },
             {
-              "content": "I'm gonna pass out...",
+              "content": "Trust your junior.",
               "reward": 60
             }
           ]
@@ -162,15 +162,11 @@
         "good_answers": [
           [
             {
-              "content": "I'll support you too.",
+              "content": "Let's do it together.",
               "reward": 50
             },
             {
-              "content": "I'll rely on you too.",
-              "reward": 50
-            },
-            {
-              "content": "I'll accept ramen as payment.",
+              "content": "This is where the fun begins.",
               "reward": 50
             }
           ]
@@ -185,16 +181,12 @@
         "good_answers": [
           [
             {
-              "content": "The first step...",
-              "reward": 60
-            },
-            {
-              "content": "She looked a little salty, but...",
+              "content": "I'm glad I could help.",
               "reward": 50
             },
             {
-              "content": "Mission accomplished.",
-              "reward": 40
+              "content": "I just gave you a push.",
+              "reward": 60
             }
           ]
         ],
@@ -205,8 +197,17 @@
         "unlock_cond": "Guts Lv.17"
       }
     ],
-    "can_romance": false,
-    "friend_lover_dialog": [],
+    "can_romance": true,
+    "friend_lover_dialog": [
+      {
+        "content": "You're very special to me.",
+        "is_romance": true
+      },
+      {
+        "content": "You're an important friend.",
+        "is_romance": false
+      }
+    ],
     "item": [
       {
         "bonus_synergy": 12,
@@ -756,32 +757,22 @@
         "good_answers": [
           [
             {
-              "content": "Leave it to me!",
-              "reward": 40
-            },
-            {
-              "content": "I don't mind.",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "Not really.",
-              "reward": 40
-            },
-            {
-              "content": "All good here.",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "We could always eat here.",
+              "content": "Are you nervous?",
               "reward": 60
             },
             {
-              "content": "That's fine, but...",
-              "reward": 50
+              "content": "Just take it easy.",
+              "reward": 60
+            }
+          ],
+          [
+            {
+              "content": "It's not too much.",
+              "reward": 60
+            },
+            {
+              "content": "Nope, just the right amount.",
+              "reward": 60
             }
           ]
         ]

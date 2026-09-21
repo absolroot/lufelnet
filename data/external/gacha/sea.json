@@ -2,107 +2,107 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-09-17 09:59:59",
+        "endTime": "2026-10-02 09:59:59",
         "fiveStar": [
           {
-            "name": "Ichigo Shikano",
+            "name": "Kumi Katayama",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Kayo Tomiyama",
+            "name": "Motoha Arai",
             "type": "thief"
           },
           {
-            "name": "Yukimi Fujikawa",
+            "name": "Riko Tanemura",
             "type": "thief"
           },
           {
-            "name": "Toshiya Sumi",
+            "name": "Tomoko Noge",
             "type": "thief"
           }
         ],
-        "name": "Kyun Kyun Cutie",
-        "startTime": "2026-08-21 10:30:00",
+        "name": "Ride the Lightning",
+        "startTime": "2026-09-04 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-09-17 09:59:59",
+        "endTime": "2026-10-02 09:59:59",
         "fiveStar": [
           {
-            "name": "Ichigo Shikano",
+            "name": "Kumi Katayama",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Kayo Tomiyama",
+            "name": "Motoha Arai",
             "type": "thief"
           },
           {
-            "name": "Yukimi Fujikawa",
+            "name": "Riko Tanemura",
             "type": "thief"
           },
           {
-            "name": "Toshiya Sumi",
+            "name": "Tomoko Noge",
             "type": "thief"
           }
         ],
-        "name": "Kyun Kyun Cutie",
-        "startTime": "2026-08-21 10:30:00",
+        "name": "Ride the Lightning",
+        "startTime": "2026-09-04 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-10-02 09:59:59",
+        "endTime": "2026-10-23 09:59:59",
         "fiveStar": [
           {
-            "name": "Kumi Katayama",
+            "name": "Cosmic Yui",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Seiji Shiratori",
             "type": "thief"
           }
         ],
-        "name": "Ride the Lightning",
-        "startTime": "2026-09-04 10:30:00",
+        "name": "Plantastic Planet Protectors",
+        "startTime": "2026-09-17 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-10-02 09:59:59",
+        "endTime": "2026-10-23 09:59:59",
         "fiveStar": [
           {
-            "name": "Kumi Katayama",
+            "name": "Cosmic Yui",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Seiji Shiratori",
             "type": "thief"
           }
         ],
-        "name": "Ride the Lightning",
-        "startTime": "2026-09-04 10:30:00",
+        "name": "Plantastic Planet Protectors",
+        "startTime": "2026-09-17 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -160,41 +160,6 @@
     ],
     "weapon": [
       {
-        "endTime": "2026-09-17 09:59:59",
-        "fiveStar": [
-          {
-            "name": "My Destiny",
-            "type": "weapon",
-            "user": "Ichigo"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Emerald Charmer",
-            "type": "weapon",
-            "user": "Tomiyama"
-          },
-          {
-            "name": "Heavy Metal Pain",
-            "type": "weapon",
-            "user": "Yukimi"
-          },
-          {
-            "name": "Scarlet Scepter",
-            "type": "weapon",
-            "user": "Sumi"
-          },
-          {
-            "name": "Love Letter",
-            "type": "weapon",
-            "user": "Ichigo"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-08-21 10:30:00",
-        "type": "Arms Deals"
-      },
-      {
         "endTime": "2026-10-02 09:59:59",
         "fiveStar": [
           {
@@ -227,6 +192,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-09-04 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-10-23 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Starlight Decimators",
+            "type": "weapon",
+            "user": "Cosmic Yui"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Sprouting Voyagers",
+            "type": "weapon",
+            "user": "Cosmic Yui"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-09-17 10:30:00",
         "type": "Arms Deals"
       },
       {

@@ -93,14 +93,18 @@
 }
 
 * {
-    font-family: 'EnglishFont', 'JapaneseFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'EnglishFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     letter-spacing: -0.02rem;
+}
+
+html[lang="ja"] * {
+    font-family: 'Noto Sans JP', 'EnglishFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 html[lang="zh"] *,
 html[lang="zh-CN"] *,
 html[data-lang="cn"] * {
-    font-family: 'ChineseFont', 'EnglishFont', 'JapaneseFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'ChineseFont', 'EnglishFont', 'Noto Sans', 'Apple SD Gothic Neo', "Open Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 /* 색 전역 선언 */

@@ -992,7 +992,6 @@ window.LufelPageLifecycle?.hold('character-list');
         // Create card for each character using DocumentFragment (single reflow)
         const fragment = document.createDocumentFragment();
         const initialSkeletonTransition = cardsContainer.classList.contains('character-cards--loading');
-        const initialCardImagePromises = [];
         const initialCardImageCount = 12;
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const spoilerEnabled = isSpoilerEnabled();
@@ -1117,20 +1116,16 @@ window.LufelPageLifecycle?.hold('character-list');
             // Observe image for lazy loading
             if (initialSkeletonTransition && index < initialCardImageCount) {
                 const realSrc = img.dataset.src;
-                initialCardImagePromises.push(new Promise((resolve) => {
-                    const realImage = new Image();
-                    realImage.onload = () => {
-                        img.src = realSrc;
-                        img.classList.add('loaded');
-                        delete img.dataset.src;
-                        resolve();
-                    };
-                    realImage.onerror = () => {
-                        delete img.dataset.src;
-                        resolve();
-                    };
-                    realImage.src = realSrc;
-                }));
+                const realImage = new Image();
+                realImage.onload = () => {
+                    img.src = realSrc;
+                    img.classList.add('loaded');
+                    delete img.dataset.src;
+                };
+                realImage.onerror = () => {
+                    delete img.dataset.src;
+                };
+                realImage.src = realSrc;
             } else if (imageObserver) {
                 imageObserver.observe(img);
             } else {
@@ -1141,7 +1136,6 @@ window.LufelPageLifecycle?.hold('character-list');
             }
         });
         if (initialSkeletonTransition) {
-            await Promise.all(initialCardImagePromises);
             const skeletonOverlay = document.createElement('div');
             skeletonOverlay.className = 'character-skeleton-overlay';
             while (cardsContainer.firstChild) {

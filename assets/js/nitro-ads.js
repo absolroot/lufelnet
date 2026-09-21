@@ -22,6 +22,20 @@
                 [320, 50]
             ]
         },
+        'multi-size-banner-with-rectangle': {
+            sizes: [
+                [970, 90],
+                [728, 90],
+                [336, 280],
+                [300, 250],
+                [320, 50]
+            ],
+            mobileSizes: [
+                [336, 280],
+                [300, 250],
+                [320, 50]
+            ]
+        },
         rectangle: {
             sizes: [
                 [300, 250]
@@ -230,7 +244,7 @@
             return;
         }
 
-        const { fitToContainer = false, ...baseOptions } = basePreset;
+        const { fitToContainer = false, mobileSizes, ...baseOptions } = basePreset;
         let preset = baseOptions;
         if (
             (format === 'banner' || format === 'leaderboard' || format === 'multi-size-banner')
@@ -239,6 +253,12 @@
             preset = {
                 ...preset,
                 sizes: preset.sizes.filter(([width, height]) => width <= 320 && height <= 50)
+            };
+        } else if (mobileSizes && window.matchMedia(MOBILE_BANNER_MEDIA_QUERY).matches) {
+            const availableWidth = Math.floor((slot.closest('.nitro-ad-container') || slot).getBoundingClientRect().width);
+            preset = {
+                ...preset,
+                sizes: mobileSizes.filter(([width]) => width <= availableWidth)
             };
         }
         if (fitToContainer) {

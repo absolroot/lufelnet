@@ -261,7 +261,56 @@
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
     "stat_100": null,
-    "sync_normal_skill": [],
+    "sync_normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "tdxct-[Skill_descSynchroniza_151111]",
+        "name": "Feel the Beat",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 151111,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "tdxct-[Skill_descSynchroniza_151112]",
+        "name": "Clear Sound",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 151112,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "tdxct-[Skill_descSynchroniza_151113]",
+        "name": "Showstopper",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 151113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
     "theurgia_skill": []
   },
   "msg": "OK",

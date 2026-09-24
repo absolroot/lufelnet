@@ -71,13 +71,16 @@
   async function waitHomeI18nReady() {
     if (!window.__HOME_I18N_READY__) return;
     try {
-      await window.__HOME_I18N_READY__;
+      await Promise.race([
+        Promise.resolve(window.__HOME_I18N_READY__).catch(() => false),
+        new Promise(resolve => setTimeout(resolve, 2000))
+      ]);
     } catch (_) { }
   }
 
   async function fetchCharactersData(url) {
     try {
-      const res = await fetch(url, { cache: 'no-store' });
+      const res = await fetch(url);
       if (!res.ok) throw new Error(`Failed to load character data: ${url}`);
       const text = await res.text();
       const sandbox = {};
@@ -107,10 +110,12 @@
     const source = shouldUseGlbReleaseOrder(region) ? 'glb' : 'base';
     if (releaseOrderDataSource === source && releaseOrderCharacterData) return;
 
-    const version = APP_VER || Date.now();
-    const suffix = version ? `?v=${version}` : '';
-    const basePath = `${BASE}/data/character_info.js${suffix}`;
-    const glbPath = `${BASE}/data/character_info_glb.js${suffix}`;
+    const basePath = window.getHomeStaticAssetUrl
+      ? window.getHomeStaticAssetUrl('/data/character_info.js')
+      : `${BASE}/data/character_info.js`;
+    const glbPath = window.getHomeStaticAssetUrl
+      ? window.getHomeStaticAssetUrl('/data/character_info_glb.js')
+      : `${BASE}/data/character_info_glb.js`;
 
     let dataBox = null;
     if (source === 'glb') {
@@ -122,7 +127,9 @@
         releaseOrderDataSource = 'glb';
       }
     } else {
-      dataBox = await fetchCharactersData(basePath);
+      dataBox = (window.characterData && Object.keys(window.characterData).length)
+        ? { characterList: window.characterList, characterData: window.characterData }
+        : await fetchCharactersData(basePath);
       releaseOrderDataSource = 'base';
     }
 
@@ -145,7 +152,10 @@
 
       if (prepared && prepared.characterData) {
         if (!Object.keys(window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ || {}).length) {
-          const baseData = await fetchCharactersData(`${BASE}/data/character_info.js${version ? `?v=${version}` : ''}`);
+          const baseUrl = window.getHomeStaticAssetUrl
+            ? window.getHomeStaticAssetUrl('/data/character_info.js')
+            : `${BASE}/data/character_info.js`;
+          const baseData = await fetchCharactersData(baseUrl);
           if (baseData && baseData.characterData) {
             window.__HOME_CAROUSEL_BASE_CHARACTER_DATA__ = baseData.characterData;
           }
@@ -157,8 +167,12 @@
     }
 
     const [kr, glb] = await Promise.all([
-      fetchCharactersData(`${BASE}/data/character_info.js${version ? `?v=${version}` : ''}`),
-      fetchCharactersData(`${BASE}/data/character_info_glb.js${version ? `?v=${version}` : ''}`),
+      fetchCharactersData(window.getHomeStaticAssetUrl
+        ? window.getHomeStaticAssetUrl('/data/character_info.js')
+        : `${BASE}/data/character_info.js`),
+      fetchCharactersData(window.getHomeStaticAssetUrl
+        ? window.getHomeStaticAssetUrl('/data/character_info_glb.js')
+        : `${BASE}/data/character_info_glb.js`),
     ]);
 
     const krCharacterData = (kr && kr.characterData) ? kr.characterData : (window.characterData || {});
@@ -622,8 +636,10 @@
 
   async function fetchCustomSlides() {
     try {
-      const url = `${BASE}/apps/home/js/custom-slides.json${APP_VER ? `?v=${APP_VER}` : ''}`;
-      const res = await fetch(url, { cache: 'no-store' });
+      const url = window.getHomeStaticAssetUrl
+        ? window.getHomeStaticAssetUrl('/apps/home/js/custom-slides.json')
+        : `${BASE}/apps/home/js/custom-slides.json`;
+      const res = await fetch(url);
       if (!res.ok) return [];
       const data = await res.json().catch(() => []);
       return Array.isArray(data) ? data : [];

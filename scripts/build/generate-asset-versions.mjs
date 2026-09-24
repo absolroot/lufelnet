@@ -25,6 +25,11 @@ const ASSET_SETS = Object.freeze({
     extensions: new Set(['.js', '.mjs']),
     excludedPrefixes: ['apps/article-editor/', 'apps/patch-console/']
   },
+  runtimeData: {
+    roots: ['apps/home/js', 'apps/guides/data'],
+    extensions: new Set(['.json']),
+    excludedPrefixes: ['apps/article-editor/', 'apps/patch-console/']
+  },
   data: {
     roots: ['data'],
     extensions: null,

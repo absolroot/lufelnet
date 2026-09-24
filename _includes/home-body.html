@@ -38,6 +38,20 @@
   }
 })();
 </script>
+<script>
+window.__HOME_STATIC_ASSET_HASHES__ = Object.freeze({
+  '/apps/home/js/custom-slides.json': {{ site.data.asset_versions.files['/apps/home/js/custom-slides.json'] | jsonify }},
+  '/apps/home/js/affix_name.json': {{ site.data.asset_versions.files['/apps/home/js/affix_name.json'] | jsonify }},
+  '/apps/guides/data/guides-list.json': {{ site.data.asset_versions.files['/apps/guides/data/guides-list.json'] | jsonify }},
+  '/data/character_info.js': {{ site.data.asset_versions.files['/data/character_info.js'] | jsonify }},
+  '/data/character_info_glb.js': {{ site.data.asset_versions.files['/data/character_info_glb.js'] | jsonify }}
+});
+window.getHomeStaticAssetUrl = function (path) {
+  const base = window.BASE_URL || window.SITE_BASEURL || '';
+  const hash = window.__HOME_STATIC_ASSET_HASHES__[path];
+  return `${base}${path}${hash ? `?h=${encodeURIComponent(hash)}` : ''}`;
+};
+</script>
 <link rel="stylesheet" href="/apps/home/home.css?h={{ site.data.asset_versions.files['/apps/home/home.css'] }}">
 <script src="/apps/home/js/home-section-state.js?h={{ site.data.asset_versions.files['/apps/home/js/home-section-state.js'] }}"></script>
 <script src="/apps/home/tactic-posts-home.js?h={{ site.data.asset_versions.files['/apps/home/tactic-posts-home.js'] }}"></script>
@@ -427,6 +441,15 @@
 </div>
 
 <!-- Home i18n bootstrap -->
+{% assign home_ui_lang = page.language | default: 'kr' %}
+{% assign home_common_path = '/i18n/common/' | append: home_ui_lang | append: '.js' %}
+{% assign home_page_i18n_path = '/i18n/pages/home/' | append: home_ui_lang | append: '.js' %}
+<script src="{{ home_common_path }}?h={{ site.data.asset_versions.files[home_common_path] }}"></script>
+<script src="{{ home_page_i18n_path }}?h={{ site.data.asset_versions.files[home_page_i18n_path] }}"></script>
+{% unless home_ui_lang == 'kr' %}
+<script src="/i18n/common/kr.js?h={{ site.data.asset_versions.files['/i18n/common/kr.js'] }}"></script>
+<script src="/i18n/pages/home/kr.js?h={{ site.data.asset_versions.files['/i18n/pages/home/kr.js'] }}"></script>
+{% endunless %}
 <script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script src="/apps/home/js/home-i18n.js?h={{ site.data.asset_versions.files['/apps/home/js/home-i18n.js'] }}"></script>
 <!-- Carousel JS -->

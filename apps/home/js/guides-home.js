@@ -127,7 +127,10 @@ async function loadHomeGuidesOnce(currentLang) {
     try {
         // Fetch guides data
         const baseUrl = window.SITE_BASEURL || '';
-        const response = await fetch(`${baseUrl}/apps/guides/data/guides-list.json?v=${Date.now()}`);
+        const guidesUrl = window.getHomeStaticAssetUrl
+            ? window.getHomeStaticAssetUrl('/apps/guides/data/guides-list.json')
+            : `${baseUrl}/apps/guides/data/guides-list.json`;
+        const response = await fetch(guidesUrl);
         if (!response.ok) throw new Error('Failed to load guides list');
 
         let guides = await response.json();

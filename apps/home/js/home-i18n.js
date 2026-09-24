@@ -152,10 +152,14 @@
         if (window.__HOME_I18N_INIT_DONE__) return true;
 
         if (typeof window.initPageI18n === 'function') {
-            await window.initPageI18n('home');
+            await window.initPageI18n('home', {
+                preloadLanguages: 'active-and-kr'
+            });
         } else if (window.I18nService && typeof window.I18nService.init === 'function') {
             await window.I18nService.init('home');
-            await Promise.all(UI_LANGS.map(async (lang) => {
+            const activeLang = resolveUiLang(detectRawLang());
+            const preloadLanguages = Array.from(new Set(['kr', activeLang]));
+            await Promise.all(preloadLanguages.map(async (lang) => {
                 await window.I18nService.loadCommonTranslations(lang);
                 await window.I18nService.loadPageTranslations('home', lang);
             }));

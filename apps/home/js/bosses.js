@@ -24,8 +24,10 @@
     if (!affixMapLoaded) {
       affixMapLoaded = (async () => {
         try {
-          const url = `${BASE}/apps/home/js/affix_name.json${APP_VER ? `?v=${APP_VER}` : ''}`;
-          const res = await fetch(url, { cache: 'no-store' });
+          const url = window.getHomeStaticAssetUrl
+            ? window.getHomeStaticAssetUrl('/apps/home/js/affix_name.json')
+            : `${BASE}/apps/home/js/affix_name.json`;
+          const res = await fetch(url);
           if (!res.ok) throw new Error('Failed to load affix_name.json');
           const list = await res.json();
           const map = {};
@@ -100,7 +102,10 @@
   async function waitHomeI18nReady() {
     if (!window.__HOME_I18N_READY__) return;
     try {
-      await window.__HOME_I18N_READY__;
+      await Promise.race([
+        Promise.resolve(window.__HOME_I18N_READY__).catch(() => false),
+        new Promise(resolve => setTimeout(resolve, 2000))
+      ]);
     } catch (_) {}
   }
 

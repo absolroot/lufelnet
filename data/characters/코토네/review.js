@@ -8,7 +8,7 @@
         review: `
 시오미 코토네는 P3P 콜라보로 출시된 화염 속성 버퍼다.
 
-P5X 아시아 서버 2.5주년이자 페르소나 시리즈 30주년을 기념해 아시아 서버와 글로벌 서버에 동시 출시되었으며, 공식 최초의 3D 모델 버전이다. 
+P5X 아시아 서버 2.5주년이자 페르소나 시리즈 30주년을 기념해 아시아 서버와 글로벌 서버에 동시 출시되었으며, 공식 최초의 HD 3D 모델로 등장했다.
 
 선행 출시된 아시아 버전에서는 성능 차이를 고려해, 이전 동시 출시 캐릭터와 마찬가지로 싱크로 심상을 통한 보정이 이루어졌다.
 
@@ -46,7 +46,7 @@ P5X 아시아 서버 2.5주년이자 페르소나 시리즈 30주년을 기념�
         review_en: `
 Kotone Shiomi is a Fire support released as part of the P3P collaboration.
 
-She was released simultaneously on the Asia and global servers to celebrate P5X Asia's 2.5th anniversary and the Persona series' 30th anniversary, marking her first official 3D-model appearance.
+She was released simultaneously on the Asia and global servers to celebrate P5X Asia's 2.5th anniversary and the Persona series' 30th anniversary, marking her first official HD 3D-model appearance.
 
 On the earlier Asia release, Sync Mindscape adjustments were made to account for performance differences, as with prior simultaneous-release characters.
 
@@ -84,7 +84,7 @@ Awareness 0, 1, and 2 use the same cycle, so their play pattern does not change;
         review_jp: `
 汐見琴音は、P3Pコラボで実装された火炎属性のバッファー。
 
-P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し、アジアサーバーとグローバルサーバーで同時に実装された、公式として初の3Dモデル版でもある。
+P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し、アジアサーバーとグローバルサーバーで同時に実装された、公式として初のHD 3Dモデルでの登場でもある。
 
 先行実装されたアジア版では性能差を考慮し、これまでの同時実装キャラクターと同様にSync Mindscapeによる調整が行われた。
 
@@ -122,7 +122,7 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
         review_cn: `
 汐见琴音是作为P3P联动角色登场的火焰属性辅助。
 
-为纪念P5X亚洲服务器2.5周年与女神异闻录系列30周年，她在亚洲服务器与全球服务器同步上线，也是官方首次推出的3D模型版本。
+为纪念P5X亚洲服务器2.5周年与女神异闻录系列30周年，她在亚洲服务器与全球服务器同步上线，也是官方首次以HD 3D模型亮相。
 
 考虑到强度差异，先行上线的亚洲版本和此前的同步上线角色一样，通过Sync Mindscape进行了调整。
 

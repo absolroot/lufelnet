@@ -171,7 +171,7 @@
 
     async function fetchCharactersData(url) {
         try {
-            const res = await fetch(url, { cache: 'no-store' });
+            const res = await fetch(url);
             if (!res.ok) throw new Error('HTTP ' + res.status);
             const text = await res.text();
             const sandbox = {};
@@ -317,12 +317,17 @@
         const lang = getCurrentLang();
         const selectedRegion = loadRegion();
         const maxCount = getMaxCountFromDom(popularRoot);
-        const v = window.APP_VERSION || Date.now();
+        const staticAssetUrl = (path) => window.getHomeStaticAssetUrl
+            ? window.getHomeStaticAssetUrl(path)
+            : `${window.BASE_URL || ''}${path}`;
+        const existingKr = (window.characterData && Object.keys(window.characterData).length)
+            ? { characterList: window.characterList, characterData: window.characterData }
+            : null;
 
         const [kr, glb] = await Promise.all([
-            fetchCharactersData(`${window.BASE_URL || ''}/data/character_info.js?v=${v}`),
+            existingKr || fetchCharactersData(staticAssetUrl('/data/character_info.js')),
             shouldUseGlbReleaseOrder(selectedRegion)
-                ? fetchCharactersData(`${window.BASE_URL || ''}/data/character_info_glb.js?v=${v}`)
+                ? fetchCharactersData(staticAssetUrl('/data/character_info_glb.js'))
                 : Promise.resolve(null)
         ]);
 

@@ -3,6 +3,18 @@ body {
     background-color: #fff9fb;
 }
 
+/* Keep the shared footer surface separate from Kotone's page background. */
+.page-bottom-container {
+    background-color: #222222;
+    box-sizing: border-box;
+    padding-top: 24px;
+}
+
+/* Use padding for a visible footer gap; the shared top margin otherwise collapses outside this surface. */
+.page-bottom-container .page-end-ad-region {
+    margin-top: 0;
+}
+
 .container {
     background: transparent !important;
 }

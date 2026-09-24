@@ -2555,6 +2555,18 @@ const personaSkillList = {
         "target": "단일",
         "icon": "버프"
     },
+    "음률 공명": {
+        "name_jp": "音律和鳴",
+        "name_en": "Harmonic Resonance",
+        "name_cn": "音律和鸣",
+        "description": "2턴 동안 동료 1명의 대미지를 24.0%/25.2%/26.4% 증가시킨다. 대상이 페르소나 스킬을 시전하거나 동료의 페르소나 스킬 효과를 받을 때마다 「화음」을 통해 2턴 동안 약점 대미지가 1.5%/1.6%/1.7% 증가한다(상한 6.0%/6.3%/6.6%). 상한에 도달하면 영구 지속 버프인 「공명」으로 전환된다.",
+        "description_jp": "味方1体の与ダメージが24.0%/25.2%/26.4%上昇する。効果は2ターン持続。対象に『和律』を付与する。ペルソナスキルを使用するか、味方のペルソナスキル効果を受けるたび、弱点ダメージが1.5%/1.6%/1.7%上昇する（最大6.0%/6.3%/6.6%まで）。効果は2ターン持続。最大値に達すると、『和律』が『和鳴』に強化され、強化効果は永続する。",
+        "description_en": "Increase 1 ally's DMG by 24.0%/25.2%/26.4% for 2 turns. Grant the target [Harmonic Rhythm]. Each time the target uses a Persona skill or is affected by an ally's Persona skill, increase Weakness DMG by 1.5%/1.6%/1.7%, up to 6.0%/6.3%/6.6%, for 2 turns. Upon reaching the maximum, upgrade [Harmonic Rhythm] to [Harmonic Resonance], making its buffs permanent.",
+        "description_cn": "使1名同伴造成的伤害提升24.0%/25.2%/26.4%，持续2回合。使其获得『和律』：每次释放人格面具技能，或受到同伴人格面具技能效果时，弱点伤害提升1.5%/1.6%/1.7%，上限6.0%/6.3%/6.6%，持续2回合。若达到最大值，将『和律』升级为『和鸣』：增益效果变为永续效果。",
+        "type": "지원",
+        "target": "단일",
+        "icon": "버프"
+    },
     "응집": {
         "name_jp": "凝結",
         "name_en": "Cohesion",

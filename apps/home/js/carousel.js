@@ -420,6 +420,9 @@
     bg.style.backgroundImage = bgImageCss;
     bg.style.backgroundRepeat = 'no-repeat';
     bg.style.backgroundSize = 'cover';
+    if (Number.isFinite(slide.customBgScale) && slide.customBgScale !== 1) {
+      bg.style.transform = `scale(${slide.customBgScale})`;
+    }
     const { offsetX, offsetY } = getCoverOffsets(
       (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset
     );
@@ -767,6 +770,7 @@
           customBgImage: bgImage,
           customBgOffset: hasBgOffset ? bgOffsetCandidate : null,
           customBgOffsetMobile: hasBgOffsetMobile ? bgOffsetMobileCandidate : null,
+          customBgScale: toNumberOrNull(item.background_scale),
           customImgOffset: hasImgOffset ? imgOffsetCandidate : null,
           customLink: link,
           customLinkTarget: linkTarget,
@@ -928,7 +932,7 @@
       @media (min-width: 768px) { .slide-name { font-size: 2rem; } }
       .slide-types { line-height: 1.2; opacity: 0.85; white-space: pre-line; }
       .slide-fivestar { font-size: 0.95rem; opacity: 0.95; }
-      .slide-subtitle { font-size: 1.0rem; font-weight: 600; opacity: 0.95; }
+      .slide-subtitle { font-size: 1.0rem; font-weight: 600; opacity: 0.95; text-shadow: 0 2px 3px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       .slide-body { font-size: 0.9rem; opacity: 0.9; text-shadow: 0 2px 6px rgba(0,0,0,1), 0 0 2px rgba(0,0,0,0.8); }
       .slide-time { font-size: 0.9rem; opacity: 0.6; }
       .slide-countdown { font-size: 1rem; font-weight: 400; color: #ffd166; }
@@ -1079,6 +1083,9 @@
       bg.style.backgroundImage = bgImageCss;
       bg.style.backgroundRepeat = 'no-repeat';
       bg.style.backgroundSize = 'cover';
+      if (Number.isFinite(slide.customBgScale) && slide.customBgScale !== 1) {
+        bg.style.transform = `scale(${slide.customBgScale})`;
+      }
       // Support JSON-driven bg offset with top/right/bottom/left (px)
       let offsetX = 0, offsetY = 0;
       const offsetSource = (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset;

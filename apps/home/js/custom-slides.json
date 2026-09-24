@@ -2,6 +2,50 @@
   {
     "kind": "custom",
     "order": 0,
+    "title": "2.5주년 & P3P 콜라보 시작!",
+    "title_en": "2.5th Anniversary & P3P Collaboration Begins!",
+    "title_jp": "2.5周年＆P3Pコラボ開始！",
+    "title_cn": "2.5周年＆P3P联动开启！",
+    "subtitle": "캐릭터 선택권 우선순위 추천",
+    "subtitle_en": "Character Selector Priority Guide",
+    "subtitle_jp": "キャラ選択券の優先順位おすすめ",
+    "subtitle_cn": "角色自选券优先顺序推荐",
+    "body": "한정 선택권 3장 지급 중",
+    "body_en": "3 limited selectors available",
+    "body_jp": "限定選択券3枚配布中",
+    "body_cn": "限时自选券3张发放中",
+    "background_image": "/assets/img/gallery/20260915.jpg",
+    "background_scale": 1.05,
+    "background_bottom": 96,
+    "background_right": 28,
+    "background_bottom_mobile": 0,
+    "color": "#d8b85b",
+    "link": "/kr/2.5-anniversary/",
+    "link_cn": "/cn/2.5-anniversary/",
+    "visible_langs": ["kr", "cn", "en", "jp"],
+    "regions": ["kr", "cn", "tw"]
+  },
+  {
+    "kind": "custom",
+    "order": 0,
+    "title_en": "P3P Collaboration Begins!",
+    "title_jp": "P3Pコラボ開始！",
+    "body_en": "Kotone Shiomi is here",
+    "body_jp": "汐見琴音が登場",
+    "background_image": "/assets/img/gallery/20260915.jpg",
+    "background_scale": 1.05,
+    "background_bottom": 96,
+    "background_right": 28,
+    "background_bottom_mobile": 0,
+    "color": "#d8b85b",
+    "link_en": "/en/character/kotone/",
+    "link_jp": "/jp/character/kotone/",
+    "visible_langs": ["en", "jp"],
+    "regions": ["en", "jp", "sea"]
+  },
+  {
+    "kind": "custom",
+    "order": 0,
     "title": "P5X 세번째 여름",
     "title_en": "P5X's Third Summer",
     "title_jp": "P5X 3度目の夏",
@@ -15,9 +59,9 @@
     "background_bottom_mobile": 0,
     "color": "#2196f3",
     "link": "",
-    "visible_langs": ["kr", "en", "jp", "cn"],
+    "visible_langs": [""],
     "regions": [
-      "cn"
+      ""
     ]
   },
   {
@@ -36,10 +80,9 @@
     "background_bottom_mobile": 0,
     "color": "#2196f3",
     "link": "",
-    "visible_langs": ["kr", "en", "jp", "cn"],
+    "visible_langs": [""],
     "regions": [
-      "kr",
-      "tw"
+      ""
     ]
   },
     {
@@ -60,9 +103,7 @@
       "link": "",
       "visible_langs": [""],
       "regions": [
-        "kr",
-        "cn",
-        "tw"
+        ""
       ]
     },
   {

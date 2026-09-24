@@ -1,6 +1,11 @@
 (function () {
     'use strict';
 
+    // A sibling anniversary page can provide its own data paths, pools, and UI copy
+    // before loading this renderer without changing the 2nd-anniversary defaults.
+    const APP_CONFIG = window.SecondAnniversaryConfig || {};
+    const APP_BASE = APP_CONFIG.appBase || '/apps/second-anniversary';
+
     const DEFAULT_LANG = 'kr';
     const SUPPORTED_LANGS = ['kr', 'en', 'jp', 'cn'];
     const EXCLUDED_CODENAMES = new Set(['WONDER', 'AIGIS_01']);
@@ -36,7 +41,8 @@
         '반항': '단일딜러',
         '방위': '탱커/특화 버퍼',
         '구원': '힐러',
-        '해명': '전역 서포터'
+        '해명': '전역 서포터',
+        '자율': '올라운더'
     };
 
     const ELEMENT_LABELS = {
@@ -48,9 +54,9 @@
 
     const ROLE_LABELS = {
         kr: ROLE_MAP,
-        en: { 우월: 'Buffer', 굴복: 'Debuffer', 지배: 'AOE Dealer', 반항: 'ST Dealer', 방위: 'Sustain Support', 구원: 'Healer', 해명: 'Support' },
-        jp: { 우월: 'バッファー', 굴복: 'デバッファー', 지배: '全体アタッカー', 반항: '単体アタッカー', 방위: '耐久サポート', 구원: 'ヒーラー', 해명: 'サポート' },
-        cn: { 우월: '增益', 굴복: '减益', 지배: '群攻输出', 반항: '单体输出', 방위: '生存辅助', 구원: '治疗', 해명: '辅助' }
+        en: { 우월: 'Buffer', 굴복: 'Debuffer', 지배: 'AOE Dealer', 반항: 'ST Dealer', 방위: 'Sustain Support', 구원: 'Healer', 해명: 'Support', 자율: 'All-rounder' },
+        jp: { 우월: 'バッファー', 굴복: 'デバッファー', 지배: '全体アタッカー', 반항: '単体アタッカー', 방위: '耐久サポート', 구원: 'ヒーラー', 해명: 'サポート', 자율: 'オールラウンダー' },
+        cn: { 우월: '增益', 굴복: '减益', 지배: '群攻输出', 반항: '单体输出', 방위: '生存辅助', 구원: '治疗', 해명: '辅助', 자율: '全能' }
     };
 
     const UI_TEXT = {
@@ -128,7 +134,7 @@
         }
     };
 
-    const SLOT_DEFS = [
+    const SLOT_DEFS = APP_CONFIG.slotDefs || [
         { id: 'reroll', ticket: 'reroll', pool: 'rerollPool', scopeChar: '아라이 모토하·청광', titleRaw: '리세마라 (선택)' },
         { id: 'event1', ticket: 'event', pool: 'eventMakoto', scopeChar: '유키 마코토', titleRaw: '이벤트 선택권 1' },
         { id: 'event2', ticket: 'event', pool: 'eventMakoto', scopeChar: '유키 마코토', titleRaw: '이벤트 선택권 2' },
@@ -139,6 +145,7 @@
 
     let rootEl = null;
     let currentLang = DEFAULT_LANG;
+    let currentRegion = DEFAULT_LANG;
     let characters = [];
     let pools = {};
     let tierLookups = { kr: {} };
@@ -147,7 +154,7 @@
     let currentTab = 'reroll';
 
     function getUi() {
-        return UI_TEXT[currentLang] || UI_TEXT[DEFAULT_LANG];
+        return Object.assign({}, UI_TEXT[currentLang] || UI_TEXT[DEFAULT_LANG], (APP_CONFIG.uiText || {})[currentLang] || {});
     }
 
     function normalizeLang(raw) {
@@ -159,6 +166,29 @@
         try { if (typeof window.getCurrentLang === 'function') return normalizeLang(window.getCurrentLang()); } catch (_) { }
         try { if (window.LanguageRouter && typeof window.LanguageRouter.getCurrentLanguage === 'function') return normalizeLang(window.LanguageRouter.getCurrentLanguage()); } catch (_) { }
         return DEFAULT_LANG;
+    }
+
+    function detectRegion() {
+        const getRegion = () => {
+            if (typeof window.getCurrentLang === 'function') return window.getCurrentLang();
+            if (window.LanguageRouter && typeof window.LanguageRouter.getCurrentLanguage === 'function') return window.LanguageRouter.getCurrentLanguage();
+            const match = String(window.location && window.location.pathname || '').match(/^\/(kr|tw|cn|en|jp|sea)(?:\/|$)/i);
+            return match ? match[1] : '';
+        };
+        try {
+            const region = String(getRegion() || '').trim().toLowerCase();
+            return region || currentLang;
+        } catch (_) {
+            return currentLang;
+        }
+    }
+
+    function isRegionWindowActive(endsAtByRegion) {
+        if (!endsAtByRegion || typeof endsAtByRegion !== 'object') return true;
+        const endsAt = endsAtByRegion[currentRegion];
+        if (!endsAt) return true;
+        const timestamp = Date.parse(endsAt);
+        return Number.isNaN(timestamp) || Date.now() < timestamp;
     }
 
     function t(key, fallback) {
@@ -269,11 +299,19 @@
     }
 
     function buildPools() {
+        const rerollBaseMax = APP_CONFIG.rerollBaseMaxReleaseOrder;
+        const rerollExtraNames = new Set(APP_CONFIG.rerollExtraNames || []);
+        const regionalRerollExtras = isRegionWindowActive(APP_CONFIG.rerollRegionalExtraEndsAt)
+            ? (APP_CONFIG.rerollRegionalExtraNames || {})[currentRegion] || []
+            : [];
+        regionalRerollExtras.forEach((name) => rerollExtraNames.add(name));
+        const eventKoromaruExcludeNames = new Set(APP_CONFIG.eventKoromaruExcludeNames || []);
         return {
-            rerollPool: characters.filter((entry) => entry.rarity === 5 && entry.limit === true && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스' && (entry.release_order < 37 || entry.release_order >= 44)),
+            rerollPool: characters.filter((entry) => entry.rarity === 5 && entry.limit === true && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스' && (rerollBaseMax === undefined ? (entry.release_order < 37 || entry.release_order >= 44) : entry.release_order <= rerollBaseMax || rerollExtraNames.has(entry.name))),
             eventMakoto: characters.filter((entry) => entry.rarity === 5 && entry.limit === true && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스' && entry.release_order <= 27),
             standard: characters.filter((entry) => entry.rarity === 5 && entry.limit === false && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스'),
-            katayama: characters.filter((entry) => entry.rarity === 5 && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스' && entry.release_order <= 33)
+            katayama: characters.filter((entry) => entry.rarity === 5 && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스' && entry.release_order <= 33),
+            eventKoromaru: characters.filter((entry) => entry.rarity === 5 && !EXCLUDED_CODENAMES.has(entry.codename) && entry.name !== '아이기스' && !eventKoromaruExcludeNames.has(entry.name) && entry.release_order <= 42)
         };
     }
 
@@ -312,14 +350,14 @@
         } catch (_) { }
 
         try {
-            const guideResponse = await window.fetch('/apps/second-anniversary/guide.json');
+            const guideResponse = await window.fetch(APP_BASE + '/guide.json');
             if (guideResponse.ok) {
                 guideData = await guideResponse.json();
             }
         } catch (_) { }
 
         try {
-            const qaResponse = await window.fetch('/apps/second-anniversary/qa.json');
+            const qaResponse = await window.fetch(APP_BASE + '/qa.json');
             if (qaResponse.ok) {
                 qaData = await qaResponse.json();
             }
@@ -361,8 +399,46 @@
     }
 
     function getValidGuides(slotId) {
-        const guides = guideData[slotId] || [];
-        return guides.filter((guide) => !Array.isArray(guide.hidden_langs) || !guide.hidden_langs.includes(currentLang));
+        const guideSlotId = (APP_CONFIG.guideAliases || {})[slotId] || slotId;
+        const guides = guideData[guideSlotId] || [];
+        return guides.filter((guide) => {
+            if (Array.isArray(guide.hidden_langs) && guide.hidden_langs.includes(currentLang)) return false;
+            if (Array.isArray(guide.visible_regions) && !guide.visible_regions.includes(currentRegion)) return false;
+            return isRegionWindowActive(guide.visible_until_by_region);
+        });
+    }
+
+    function getRerollScopeExtraItems() {
+        const regionalItems = isRegionWindowActive(APP_CONFIG.rerollRegionalExtraEndsAt)
+            ? (APP_CONFIG.rerollScopeExtraItemsByRegion || {})[currentRegion]
+            : null;
+        if (Array.isArray(regionalItems) && regionalItems.length > 0) return regionalItems;
+        if (Array.isArray(APP_CONFIG.rerollScopeExtraItems) && APP_CONFIG.rerollScopeExtraItems.length > 0) return APP_CONFIG.rerollScopeExtraItems;
+        return [{ name: APP_CONFIG.rerollScopeExtra || '아라이 모토하·청광' }];
+    }
+
+    function scheduleTimedVisibilityRefresh() {
+        const deadlines = [];
+        const configDeadline = (APP_CONFIG.rerollRegionalExtraEndsAt || {})[currentRegion];
+        if (configDeadline) deadlines.push(configDeadline);
+        Object.values(guideData).forEach((guides) => {
+            if (!Array.isArray(guides)) return;
+            guides.forEach((guide) => {
+                const deadline = guide && guide.visible_until_by_region && guide.visible_until_by_region[currentRegion];
+                if (deadline) deadlines.push(deadline);
+            });
+        });
+        const now = Date.now();
+        const nextDeadline = deadlines
+            .map((value) => Date.parse(value))
+            .filter((value) => Number.isFinite(value) && value > now)
+            .sort((a, b) => a - b)[0];
+        if (!nextDeadline || typeof window.setTimeout !== 'function') return;
+        window.setTimeout(() => {
+            pools = buildPools();
+            render();
+            scheduleTimedVisibilityRefresh();
+        }, Math.min(nextDeadline - now + 25, 2147483647));
     }
 
     function renderHeader() {
@@ -426,27 +502,29 @@
             let scopeContent = '';
             let hintContent = '';
             if (slot.id === 'reroll') {
+                const scopeBase = APP_CONFIG.rerollScopeBase || '야마기시 후카';
+                const scopeExtraItems = getRerollScopeExtraItems();
                 scopeContent = `
                     <div class="sa-tab-scope-stack">
                         <div class="sa-tab-scope-row">
                             <span class="sa-tab-meta-label">${escapeHtml(ui.metaRange)}</span>
                             <div class="sa-tab-scope">
                                 <span style="margin-right:2px;">~</span>
-                                <img src="${getCharacterImage(findCharacter('야마기시 후카'), 'half')}" class="sa-tab-scope-face">
-                                <span>${escapeHtml(getShortName(findCharacter('야마기시 후카')))}</span>
+                                <img src="${getCharacterImage(findCharacter(scopeBase), 'half')}" class="sa-tab-scope-face">
+                                <span>${escapeHtml(getShortName(findCharacter(scopeBase)))}</span>
                             </div>
                         </div>
-                        <div class="sa-tab-scope-row sa-tab-scope-row-indent">
-                            <div class="sa-tab-scope">
-                                <span style="margin-right:2px;">+</span>
-                                <img src="${getCharacterImage(findCharacter('아라이 모토하·청광'), 'half')}" class="sa-tab-scope-face">
-                                <span>${escapeHtml(getShortName(findCharacter('아라이 모토하·청광')))}</span>
-                            </div>
-                        </div>
+                        ${scopeExtraItems.map((item) => {
+                            const character = findCharacter(item.name);
+                            if (item.suffix) {
+                                return `<div class="sa-tab-scope-row sa-tab-scope-row-indent"><div class="sa-tab-scope sa-tab-scope-has-suffix"><span class="sa-tab-scope-prefix">+</span><img src="${getCharacterImage(character, 'half')}" class="sa-tab-scope-face"><span class="sa-tab-scope-name">${escapeHtml(getShortName(character))}</span><span class="sa-tab-scope-suffix">${escapeHtml(item.suffix)}</span></div></div>`;
+                            }
+                            return `<div class="sa-tab-scope-row sa-tab-scope-row-indent"><div class="sa-tab-scope"><span style="margin-right:2px;">+</span><img src="${getCharacterImage(character, 'half')}" class="sa-tab-scope-face"><span>${escapeHtml(getShortName(character))}</span></div></div>`;
+                        }).join('')}
                     </div>
                 `;
                 hintContent = `<div class="sa-tab-hint"><span class="sa-tab-meta-label">${escapeHtml(ui.metaAcquire)}</span><div class="sa-tab-hint-box"><img src="${TICKET_ICONS.reroll}" class="sa-currency-icon" alt=""> ${escapeHtml(ui.acquireReroll)}</div></div>`;
-            } else if (['event1', 'event2'].includes(slot.id)) {
+            } else if (['event1', 'event2', 'event3'].includes(slot.id)) {
                 scopeContent = `<span class="sa-tab-meta-label">${escapeHtml(ui.metaRange)}</span><div class="sa-tab-scope"><span style="margin-right:2px;">~</span> <img src="${getCharacterImage(findCharacter(slot.scopeChar), 'half')}" class="sa-tab-scope-face"> <span>${escapeHtml(getShortName(findCharacter(slot.scopeChar)))}</span></div>`;
                 hintContent = `<div class="sa-tab-hint"><span class="sa-tab-meta-label">${escapeHtml(ui.metaAcquire)}</span><div class="sa-tab-hint-box"><img src="${TICKET_ICONS.login}" class="sa-currency-icon" alt=""> ${escapeHtml(ui.acquireEvent)}</div></div>`;
             } else if (['standard', 'katayama'].includes(slot.id)) {
@@ -525,7 +603,7 @@
                 const ui = getUi();
 
                 return `
-                    <div class="sa-guide-card" style="${isRank1 ? 'border-color: rgba(216, 184, 91, 0.4); background: linear-gradient(145deg, rgba(216, 184, 91, 0.1), rgba(0,0,0,0.3)); box-shadow: 0 8px 32px rgba(216, 184, 91, 0.12);' : ''}">
+                    <div class="sa-guide-card" style="${isRank1 ? (APP_CONFIG.flatVisuals ? 'border-color: rgba(216, 184, 91, 0.4); background: #282519; box-shadow: none;' : 'border-color: rgba(216, 184, 91, 0.4); background: linear-gradient(145deg, rgba(216, 184, 91, 0.1), rgba(0,0,0,0.3)); box-shadow: 0 8px 32px rgba(216, 184, 91, 0.12);') : ''}">
                         <div class="sa-guide-profile">
                             <img src="${getCharacterImage(character, 'half')}" class="sa-guide-profile-img" alt="">
                             <div class="sa-guide-content">
@@ -558,9 +636,18 @@
             let hintContent = '';
             const ui = getUi();
             if (slot.id === 'reroll') {
-                scopeContent = '<div class="sa-tab-scope-row" style="display:flex; align-items:center; gap:8px;"><span class="sa-tab-meta-label">' + escapeHtml(ui.metaRange) + '</span><div class="sa-tab-scope" style="margin-top:0;"><span style="margin-right:2px;">~</span><img src="' + getCharacterImage(findCharacter('야마기시 후카'), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter('야마기시 후카'))) + '</span> <span style="margin:0 4px; color:var(--sa-text-soft);">+</span> <img src="' + getCharacterImage(findCharacter('아라이 모토하·청광'), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter('아라이 모토하·청광'))) + '</span></div></div>';
+                const scopeBase = APP_CONFIG.rerollScopeBase || '야마기시 후카';
+                const scopeExtraItems = getRerollScopeExtraItems();
+                const scopeExtraHtml = scopeExtraItems.map((item) => {
+                    const character = findCharacter(item.name);
+                    if (item.suffix) {
+                        return '<span class="sa-tab-scope sa-tab-scope-has-suffix" style="margin-top:0; margin-left:4px;"><span class="sa-tab-scope-prefix">+</span><img src="' + getCharacterImage(character, 'half') + '" class="sa-tab-scope-face"><span class="sa-tab-scope-name">' + escapeHtml(getShortName(character)) + '</span><span class="sa-tab-scope-suffix">' + escapeHtml(item.suffix) + '</span></span>';
+                    }
+                    return ' <span style="margin:0 4px; color:var(--sa-text-soft);">+</span> <img src="' + getCharacterImage(character, 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(character)) + '</span>';
+                }).join('');
+                scopeContent = '<div class="sa-tab-scope-row" style="display:flex; align-items:center; gap:8px;"><span class="sa-tab-meta-label">' + escapeHtml(ui.metaRange) + '</span><div class="sa-tab-scope" style="margin-top:0;"><span style="margin-right:2px;">~</span><img src="' + getCharacterImage(findCharacter(scopeBase), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter(scopeBase))) + '</span>' + scopeExtraHtml + '</div></div>';
                 hintContent = '<div class="sa-tab-hint" style="margin-top:0;"><span class="sa-tab-meta-label">' + escapeHtml(ui.metaAcquire) + '</span><div class="sa-tab-hint-box"><img src="' + TICKET_ICONS.reroll + '" class="sa-currency-icon" alt=""> ' + escapeHtml(ui.acquireReroll) + '</div></div>';
-            } else if (['event1', 'event2'].includes(slot.id)) {
+            } else if (['event1', 'event2', 'event3'].includes(slot.id)) {
                 scopeContent = '<div class="sa-tab-scope-row" style="display:flex; align-items:center; gap:8px;"><span class="sa-tab-meta-label">' + escapeHtml(ui.metaRange) + '</span><div class="sa-tab-scope" style="margin-top:0;"><span style="margin-right:2px;">~</span> <img src="' + getCharacterImage(findCharacter(slot.scopeChar), 'half') + '" class="sa-tab-scope-face"> <span>' + escapeHtml(getShortName(findCharacter(slot.scopeChar))) + '</span></div></div>';
                 hintContent = '<div class="sa-tab-hint" style="margin-top:0;"><span class="sa-tab-meta-label">' + escapeHtml(ui.metaAcquire) + '</span><div class="sa-tab-hint-box"><img src="' + TICKET_ICONS.login + '" class="sa-currency-icon" alt=""> ' + escapeHtml(ui.acquireEvent) + '</div></div>';
             } else if (['standard', 'katayama'].includes(slot.id)) {
@@ -658,7 +745,7 @@
 
     function setSeoHint() {
         if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
-            window.SeoEngine.setContextHint({ domain: 'second-anniversary', mode: 'list', lang: currentLang }, { rerun: true });
+            window.SeoEngine.setContextHint({ domain: APP_CONFIG.seoDomain || 'second-anniversary', mode: 'list', lang: currentLang }, { rerun: true });
         }
     }
 
@@ -676,9 +763,10 @@
     }
 
     async function init() {
-        rootEl = document.getElementById('second-anniversary-root');
+        rootEl = document.getElementById(APP_CONFIG.rootId || 'second-anniversary-root');
         if (!rootEl) return;
         currentLang = detectLang();
+        currentRegion = detectRegion();
         try {
             await ensureCharacterData(50);
         } catch (_) {
@@ -689,8 +777,9 @@
         pools = buildPools();
         await loadDataFiles();
         render();
+        scheduleTimedVisibilityRefresh();
         setSeoHint();
     }
 
-    window.SecondAnniversaryPage = { init };
+    window[APP_CONFIG.globalName || 'SecondAnniversaryPage'] = { init };
 })();

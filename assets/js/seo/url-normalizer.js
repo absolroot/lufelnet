@@ -180,6 +180,10 @@
       url.pathname = '/' + lang + '/2nd-anniversary/';
       return true;
     }
+    if (domain === 'two-half-anniversary' && /^\/2\.5-anniversary\/?$/i.test(url.pathname)) {
+      url.pathname = '/' + lang + '/2.5-anniversary/';
+      return true;
+    }
     if (domain === 'revelation' && /^\/revelations\/?$/i.test(url.pathname)) {
       url.pathname = '/' + lang + '/revelations/';
       return true;

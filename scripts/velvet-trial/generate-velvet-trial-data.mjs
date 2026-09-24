@@ -10,10 +10,10 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 const LANG_CONFIGS = [
-  { lang: 'kr', sourceRoot: 'KR_Config', baseDir: path.join(ROOT, 'config_db', 'KR_Config') },
-  { lang: 'en', sourceRoot: 'EN_Config', baseDir: path.join(ROOT, 'config_db', 'EN_Config') },
-  { lang: 'jp', sourceRoot: 'JP_Config', baseDir: path.join(ROOT, 'config_db', 'JP_Config') },
-  { lang: 'cn', sourceRoot: 'Config_CN', baseDir: path.join(ROOT, '_config', 'Config_CN') }
+  { lang: 'kr', sourceRoot: 'KR_Config', baseDir: path.join(ROOT, '_config', 'Config_KR'), maxVisibleLevel: 30 },
+  { lang: 'en', sourceRoot: 'EN_Config', baseDir: path.join(ROOT, '_config', 'Config_EN'), maxVisibleLevel: 25, limitedChapterSns: [2, 3, 4, 5] },
+  { lang: 'jp', sourceRoot: 'JP_Config', baseDir: path.join(ROOT, '_config', 'Config_JP'), maxVisibleLevel: 25, limitedChapterSns: [2, 3, 4, 5] },
+  { lang: 'cn', sourceRoot: 'Config_CN', baseDir: path.join(ROOT, '_config', 'Config_CN'), maxVisibleLevel: 30 }
 ];
 
 const ELEMENT_BY_ID = {
@@ -274,6 +274,26 @@ function parseRuleTurnLimit(token) {
   };
 }
 
+function parseRuleOneMoreBonus(token) {
+  const raw = String(token || '');
+  const parts = raw.split(',');
+  const code = Number(parts[0]);
+  if (code === 5 && parts.length >= 2) {
+    const score = Number(parts[1]);
+    if (Number.isFinite(score)) {
+      return {
+        type: 'one_more_bonus',
+        score,
+        raw
+      };
+    }
+  }
+  return {
+    type: 'raw',
+    raw
+  };
+}
+
 function parseRuleDeathLimit(token) {
   const raw = String(token || '');
   const parts = raw.split(',');
@@ -298,6 +318,15 @@ function parseRuleDeathLimit(token) {
 
 function parseConditions(bonusRule) {
   const parts = String(bonusRule || '').split('|');
+  const hasOneMoreBonus = Number(String(parts[1] || '').split(',')[0]) === 5;
+  if (hasOneMoreBonus) {
+    return {
+      rule1: parseRule1(parts[0] || ''),
+      rule2: parseRuleOneMoreBonus(parts[1] || ''),
+      rule3: parseRuleTurnLimit(parts[2] || ''),
+      rule4: parseRuleDeathLimit(parts[3] || '')
+    };
+  }
   return {
     rule1: parseRule1(parts[0] || ''),
     rule2: parseRuleTurnLimit(parts[1] || ''),
@@ -358,7 +387,7 @@ function loadTranslationTables(baseDir, lang) {
   };
 }
 
-function buildLanguageData({ lang, sourceRoot, baseDir }, ctx) {
+function buildLanguageData({ lang, sourceRoot, baseDir, maxVisibleLevel, limitedChapterSns = [] }, ctx) {
   const read = (relativePath) => readJson(path.join(baseDir, relativePath));
 
   const confTrial = read('default/ConfVelvetTrial.json');
@@ -436,7 +465,12 @@ function buildLanguageData({ lang, sourceRoot, baseDir }, ctx) {
         krChapterAffix?.desc
       );
 
-      const levelList = parseCsvNumbers(chapterRow.levelList);
+      const levelList = parseCsvNumbers(chapterRow.levelList)
+        .filter((levelSn) => {
+          const levelRow = levelBySn.get(levelSn);
+          const isLimitedChapter = limitedChapterSns.includes(chapterSn);
+          return levelRow && (!isLimitedChapter || Number(levelRow.levelNum) <= maxVisibleLevel);
+        });
 
       const levels = levelList.map((levelSn) => {
         const levelRow = levelBySn.get(levelSn);
@@ -534,9 +568,9 @@ function buildExpectedOutput() {
     ? new Set(fs.readdirSync(enemyImageDir))
     : new Set();
 
-  const krChapterRows = readJson(path.join(ROOT, 'config_db', 'KR_Config', 'default', 'ConfVelvetTrial.json'));
-  const krMonsterRows = readJson(path.join(ROOT, 'config_db', 'KR_Config', 'text', 'ConfGuaiWu.json'));
-  const krAffixRows = readJson(path.join(ROOT, 'config_db', 'KR_Config', 'default', 'ConfSkillAffix.json'));
+  const krChapterRows = readJson(path.join(ROOT, '_config', 'Config_KR', 'default', 'ConfVelvetTrial.json'));
+  const krMonsterRows = readJson(path.join(ROOT, '_config', 'Config_KR', 'text', 'ConfGuaiWu.json'));
+  const krAffixRows = readJson(path.join(ROOT, '_config', 'Config_KR', 'default', 'ConfSkillAffix.json'));
 
   const sourceInputFiles = [
     'default/ConfVelvetTrial.json',
@@ -595,7 +629,7 @@ function buildExpectedOutput() {
 
   for (const langConfig of LANG_CONFIGS) {
     const data = buildLanguageData(langConfig, ctx);
-    const content = `${normalizeNewline(JSON.stringify(data, null, 2))}\n`;
+    const content = `${normalizeNewline(JSON.stringify(data, null, 2))}\n`.replace(/\n/g, '\r\n');
     expected.set(
       path.join(ROOT, 'apps', 'velvet_trial', 'data', `${langConfig.lang}.json`),
       content
@@ -615,7 +649,7 @@ function runCheck(expectedFiles) {
       continue;
     }
     const actual = normalizeNewline(fs.readFileSync(filePath, 'utf8'));
-    if (actual !== expectedContent) {
+    if (actual !== normalizeNewline(expectedContent)) {
       changed.push(filePath);
     }
   }

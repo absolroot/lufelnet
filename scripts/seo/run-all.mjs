@@ -32,6 +32,7 @@ const SCRIPT_TARGETS = [
   'share-character',
   'schedule',
   'second-anniversary',
+  'two-half-anniversary',
   'synergy',
   'tactic',
   'tactic-maker',

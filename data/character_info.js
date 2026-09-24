@@ -121,7 +121,7 @@ Object.assign(window.characterData, {
         "name_jp": "汐見 琴音",
         "name_cn": "汐见琴音",
         "codename": "KOTONE",
-        "skill_item": 5
+        "skill_item": 1
     },
     "이치고·여름": {
         "limit": true,

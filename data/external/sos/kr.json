@@ -10,22 +10,24 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Electric",
-                "Psychokinesis"
+                "Phys",
+                "Fire",
+                "Wind",
+                "Nuclear"
               ],
               "Weak": [
-                "Wind"
+                "Psychokinesis"
               ]
             },
-            "image": "B-guaiwutouxiang-ookuni.png",
+            "image": "B-guaiwutouxiang-ganesha.png",
             "level": "89",
-            "name": "조종당하는 오오쿠니누시",
-            "skill": "1016,1021,1404",
-            "sn": 551101,
+            "name": "조종당하는 가네샤",
+            "skill": "1013,1022",
+            "sn": 552101,
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
+        "scoreRatio": 2.0,
         "sn": 78401
       },
       {
@@ -37,31 +39,28 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
                 "Electric",
-                "Wind",
-                "Bless",
-                "Curse"
+                "Psychokinesis"
               ],
               "Weak": [
-                "Fire"
+                "Wind"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-ookuni.png",
             "level": "89",
-            "name": "조종당한 릴리스",
-            "skill": "607,603",
-            "sn": 551111,
+            "name": "조종당하는 오오쿠니누시",
+            "skill": "1016,1021,1404",
+            "sn": 552111,
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
+        "scoreRatio": 1.0,
         "sn": 78402
       }
     ],
-    "buff": "재계의 흐름: 치유 효과 또는 실드를 획득할 때마다 『언령 정화』를 획득한다. 『언령 정화』: 2턴 동안 최종 대미지가 30% 증가하며, 현재 생명이 20% 미만일 때 최종 대미지가 10% 추가로 증가한다.",
-    "endTime": "2026-09-24 07:30:00",
-    "startTime": "2026-09-10 08:30:00"
+    "buff": "불멸의 선구자: 以友方为目标释放人格面具技能时，使所有同伴获得『意志传承』。『意志传承』：造成最终伤害提升20%，若技能释放者为S.E.E.S.成员，最终伤害额外提升20%，持续3回合。",
+    "endTime": "2026-10-29 07:30:00",
+    "startTime": "2026-09-24 08:30:00"
   },
   "msg": "OK",
   "status": 0

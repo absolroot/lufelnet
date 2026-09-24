@@ -10,22 +10,24 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Electric",
-                "Psychokinesis"
+                "Phys",
+                "Fire",
+                "Wind",
+                "Nuclear"
               ],
               "Weak": [
-                "Wind"
+                "Psychokinesis"
               ]
             },
-            "image": "B-guaiwutouxiang-ookuni.png",
+            "image": "B-guaiwutouxiang-ganesha.png",
             "level": "89",
-            "name": "被操控的大国主",
-            "skill": "1016,1021,1404",
-            "sn": 551101,
+            "name": "被操控的葛内舍",
+            "skill": "1013,1022",
+            "sn": 552101,
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
+        "scoreRatio": 2.0,
         "sn": 78401
       },
       {
@@ -37,31 +39,28 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
                 "Electric",
-                "Wind",
-                "Bless",
-                "Curse"
+                "Psychokinesis"
               ],
               "Weak": [
-                "Fire"
+                "Wind"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-ookuni.png",
             "level": "89",
-            "name": "被操控的莉莉丝",
-            "skill": "607,603",
-            "sn": 551111,
+            "name": "被操控的大国主",
+            "skill": "1016,1021,1404",
+            "sn": 552111,
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
+        "scoreRatio": 1.0,
         "sn": 78402
       }
     ],
-    "buff": "禊之川流: 每次获得治疗效果或护盾时，获得『言灵净化』。『言灵净化』：最终伤害提升30%，当前生命值低于20%时，最终伤害额外提升10%，持续2回合。",
-    "endTime": "2026-09-24 06:30:00",
-    "startTime": "2026-09-03 07:30:00"
+    "buff": "不朽先驱: 以友方为目标释放人格面具技能时，使所有同伴获得『意志传承』。『意志传承』：造成最终伤害提升20%，若技能释放者为S.E.E.S.成员，最终伤害额外提升20%，持续3回合。",
+    "endTime": "2026-10-22 06:30:00",
+    "startTime": "2026-09-24 07:30:00"
   },
   "msg": "OK",
   "status": 0

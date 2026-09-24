@@ -2952,12 +2952,12 @@ const personaSkillList = {
         "icon": "디버프"
     },
     "전의 공명": {
-        "name_jp": "戦意の共鳴",
-        "name_en": "Spirit Harmony",
+        "name_jp": "闘気共振",
+        "name_en": "Warrior's Unity",
         "name_cn": "战意共鸣",
         "description": "자신이 적에게 페르소나 스킬 시전 시 3턴 동안 공격력이 가장 높은 아군 동료(지배/반항 우선 선택)의 공격력이 10%, 크리티컬 효과가 10% 증가한다. 해당 효과는 2턴의 쿨타임이 있다.",
-        "description_jp": "自身が敵にペルソナスキルを使用した時、3ターンの間、味方の攻撃力が最も高い味方（支配/反抗 優先）の攻撃力が10%上昇し、クリティカルダメージが10%上昇する。この効果には2ターンのクールタイムがある。",
-        "description_en": "Increase the ATK of the ally with the highest ATK among allies (Sweeper/Assassin priority) by 10% and CRIT DMG by 10% for 3 turns. This effect has a 2 turn cooldown.",
+        "description_jp": "自身が敵にスキルを使用した時、３ターンの間、攻撃力が最も高い味方（支配／反抗ロールを優先）の攻撃力が１０%上昇し、クリティカルダメージが１０%上昇する。\nクールタイム：２ターン",
+        "description_en": "When using a skill on a foe, increase Attack of the ally with the highest Attack (prioritizing Assassins and Sweepers) by 10%, and increase critical damage by 10% for 3 turns. Cooldown time: 2 turns.",
         "description_cn": "自身对敌人释放人格面具技能时，使攻击力最高的同伴（优先支配/反抗）攻击力提升10%、暴击效果提升10%，持续3回合。该效果有2回合冷却时间。",
         "type": "지원",
         "target": "단일",

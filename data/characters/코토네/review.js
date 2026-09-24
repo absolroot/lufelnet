@@ -50,7 +50,7 @@ P5X 아시아 서버 2.5주년이자 페르소나 시리즈 30주년을 기념�
 - 패시브1: 스킬3의 메인 타겟은 딜러가 될 수 없기 때문에 1+2+3 스킬 사용 시에는 3중첩을 유지할 수 없습니다.
 - 패시브2: 『전력 전개』 사용 시 지속시간이 증가하지 않아 12% 관통 버프가 2번째 『감기』 턴에 사라집니다.
 - 위와 같은 이유로 1+1+3이 더 유리해 스킬2의 사용성이 크게 떨어집니다.
-- 삭망월이 5스택을 달성한 이후 스킬1을 다시 사용하지 않으면 삭망월 중첩에 의한 버프가 갱신되지 않습니다.`,
+- 삭망월이 5스택을 달성한 이후 스킬1을 다시 사용하지 않으면 전용무기의 버프가 적용되지 않습니다.`,
         review_en: `
 Kotone Shiomi is a Fire support released as part of the P3P collaboration.
 
@@ -95,7 +95,7 @@ We will revise this guide again once the mechanics have been established. We apo
 - Passive 1: Skill 3's main target cannot be the damage dealer, so using Skills 1+2+3 cannot maintain 3 Passive 1 stacks.
 - Passive 2: Its duration does not increase when Go for Broke is used, so the 12% Pierce buff disappears on the second Sick turn.
 - For these reasons, 1+1+3 is currently more favorable, greatly reducing the usefulness of Skill 2.
-- Once Lunar Bond reaches 5 stacks, its buffs are not refreshed unless Skill 1 is used again.`,
+- Once Lunar Bond reaches 5 stacks, the exclusive weapon's buff is not applied unless Skill 1 is used again.`,
         review_jp: `
 汐見琴音は、P3Pコラボで実装された火炎属性のバッファー。
 
@@ -140,7 +140,7 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
 - パッシブ1：スキル3のメイン対象をアタッカーにできないため、スキル1+2+3ではパッシブ1を3つ累積できません。
 - パッシブ2：『全力全開』使用時に持続ターンが増加しないため、12%の貫通強化は2回目の『風邪』ターンで消えます。
 - 上記の理由により、現在は1+1+3の方が有利で、スキル2の有用性が大きく下がります。
-- 『ルネーション』が5に到達した後、スキル1を再使用しない限り、『ルネーション』による強化効果は更新されません。`,
+- 『ルネーション』が5に到達した後、スキル1を再使用しない限り、専用武器の強化効果は適用されません。`,
         review_cn: `
 汐见琴音是作为P3P联动角色登场的火焰属性辅助。
 
@@ -184,7 +184,7 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
 - 被动1：技能3的主要目标不能是主力输出，因此使用1+2+3时无法维持被动1的3层效果。
 - 被动2：使用『全力全开』时持续回合不会增加，因此12%的穿透增益会在第2个『感冒』回合消失。
 - 基于上述原因，目前1+1+3更有利，使技能2的实用性大幅下降。
-- 『朔望月』达到5层后，若不再次使用技能1，由『朔望月』层数带来的增益不会刷新。`,
+- 『朔望月』达到5层后，若不再次使用技能1，专属武器的增益效果不会生效。`,
         pros: [
             "아군 딜러가 받은 버프를 일정 비율로 복제할 수 있다.",
             "단순 보유만으로도 최종 대미지 증폭 효과를 제공한다."

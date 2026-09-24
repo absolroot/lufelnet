@@ -106,6 +106,58 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-11-12 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Kotone Shiomi",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Way of Life",
+        "startTime": "2026-09-24 06:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-11-12 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Kotone Shiomi",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "Way of Life",
+        "startTime": "2026-09-24 06:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-09-25 09:59:59",
         "fiveStar": [
           {
@@ -383,6 +435,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-09-17 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-11-12 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Vetri Vel Muruga",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          },
+          {
+            "name": "Ame-no-Nuboko",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-09-24 06:30:00",
         "type": "Arms Deals"
       },
       {

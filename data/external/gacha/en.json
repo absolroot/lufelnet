@@ -2,107 +2,107 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-09-24 06:59:59",
+        "endTime": "2026-10-15 10:59:59",
         "fiveStar": [
           {
-            "name": "Kumi Katayama",
+            "name": "Cosmic Yui",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Seiji Shiratori",
             "type": "thief"
           }
         ],
-        "name": "Ride the Lightning",
-        "startTime": "2026-08-27 11:30:00",
+        "name": "Plantastic Planet Protectors",
+        "startTime": "2026-09-09 11:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-09-24 06:59:59",
+        "endTime": "2026-10-15 10:59:59",
         "fiveStar": [
           {
-            "name": "Kumi Katayama",
+            "name": "Cosmic Yui",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Motoha Arai",
+            "name": "Lufel",
             "type": "thief"
           },
           {
-            "name": "Riko Tanemura",
+            "name": "Kayo Tomiyama",
             "type": "thief"
           },
           {
-            "name": "Tomoko Noge",
+            "name": "Seiji Shiratori",
             "type": "thief"
           }
         ],
-        "name": "Ride the Lightning",
-        "startTime": "2026-08-27 11:30:00",
+        "name": "Plantastic Planet Protectors",
+        "startTime": "2026-09-09 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-10-15 10:59:59",
+        "endTime": "2026-11-12 10:59:59",
         "fiveStar": [
           {
-            "name": "Cosmic Yui",
+            "name": "Kotone Shiomi",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Lufel",
+            "name": "Shun Kano",
             "type": "thief"
           },
           {
-            "name": "Kayo Tomiyama",
+            "name": "Toshiya Sumi",
             "type": "thief"
           },
           {
-            "name": "Seiji Shiratori",
+            "name": "Chizuko Nagao",
             "type": "thief"
           }
         ],
-        "name": "Plantastic Planet Protectors",
-        "startTime": "2026-09-09 11:30:00",
+        "name": "Way of Life",
+        "startTime": "2026-09-24 07:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-10-15 10:59:59",
+        "endTime": "2026-11-12 10:59:59",
         "fiveStar": [
           {
-            "name": "Cosmic Yui",
+            "name": "Kotone Shiomi",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "Lufel",
+            "name": "Shun Kano",
             "type": "thief"
           },
           {
-            "name": "Kayo Tomiyama",
+            "name": "Toshiya Sumi",
             "type": "thief"
           },
           {
-            "name": "Seiji Shiratori",
+            "name": "Chizuko Nagao",
             "type": "thief"
           }
         ],
-        "name": "Plantastic Planet Protectors",
-        "startTime": "2026-09-09 11:30:00",
+        "name": "Way of Life",
+        "startTime": "2026-09-24 07:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -264,41 +264,6 @@
     ],
     "weapon": [
       {
-        "endTime": "2026-09-24 06:59:59",
-        "fiveStar": [
-          {
-            "name": "Lightning Riders",
-            "type": "weapon",
-            "user": "Katayama"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Crime and Punishment",
-            "type": "weapon",
-            "user": "Motoha"
-          },
-          {
-            "name": "Moonlight Needle",
-            "type": "weapon",
-            "user": "Riko"
-          },
-          {
-            "name": "Shadow Crowns",
-            "type": "weapon",
-            "user": "Tomoko"
-          },
-          {
-            "name": "Blitzkrieg Bangs",
-            "type": "weapon",
-            "user": "Katayama"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-08-27 11:30:00",
-        "type": "Arms Deals"
-      },
-      {
         "endTime": "2026-10-15 10:59:59",
         "fiveStar": [
           {
@@ -331,6 +296,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-09-09 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Vetri Vel Muruga",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          },
+          {
+            "name": "Ame-no-Nuboko",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-09-24 07:30:00",
         "type": "Arms Deals"
       },
       {

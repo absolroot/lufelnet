@@ -20,15 +20,15 @@
             "level": "89",
             "name": "Seiryu",
             "skill": "207,1404,203",
-            "sn": "535101",
+            "sn": "536101",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "388401"
+        "sn": "398401"
       },
       {
-        "bonusRule": "All ally Ice attack Score x 3",
+        "bonusRule": "All ally Fire attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -36,25 +36,28 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire"
+                "Ice",
+                "Electric",
+                "Bless",
+                "Curse"
               ],
               "Weak": [
-                "Ice"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-surtr.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "Surt",
-            "skill": "108,103,1008",
-            "sn": "535111",
+            "name": "Lilith",
+            "skill": "607,603",
+            "sn": "536111",
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
-        "sn": "388402"
+        "scoreRatio": 2.0,
+        "sn": "398402"
       }
     ],
-    "buff": "Void Implosion: At the start of battle, allies gain 1 Desperation stack. Gain 1 Desperation stack when attacking a foe with a Resonance.\nDesperation: Increase final damage by 40% for 1 turn.",
+    "buff": "Unfading Trailblazer: When an ally uses a skill on the target, grant Inherited Wish to all allies.\nInherited Wish: Increase final damage by 20% for 3 turns. If the skill user is a SEES member, increase final damage by 20% more.",
     "endTime": "2026-10-23 09:30:00",
     "startTime": "2026-09-24 06:30:00"
   },

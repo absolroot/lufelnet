@@ -20,15 +20,15 @@
             "level": "89",
             "name": "セイリュウ",
             "skill": "207,1404,203",
-            "sn": "535101",
+            "sn": "536101",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "388401"
+        "sn": "398401"
       },
       {
-        "bonusRule": "All ally Ice attack Score x 3",
+        "bonusRule": "All ally Fire attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -36,25 +36,28 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Fire"
+                "Ice",
+                "Electric",
+                "Bless",
+                "Curse"
               ],
               "Weak": [
-                "Ice"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-surtr.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "スルト",
-            "skill": "108,103,1008",
-            "sn": "535111",
+            "name": "リリス",
+            "skill": "607,603",
+            "sn": "536111",
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
-        "sn": "388402"
+        "scoreRatio": 2.0,
+        "sn": "398402"
       }
     ],
-    "buff": "虚空圧壊: 戦闘開始時、味方は『絶息境』を獲得する。意識奏功で敵を攻撃した時『絶息境』を獲得する。\n『絶息境』：１ターンの間、与える最終ダメージが４０%上昇する。",
+    "buff": "色褪せぬ先駆者: 味方を対象にスキルを使用した時、味方全体に『継承する意志』を付与する。\n『継承する意志』：３ターンの間、与える最終ダメージが２０%上昇する。スキル使用者がＳ．Ｅ．Ｅ．Ｓ．の場合、追加で与える最終ダメージが２０%上昇する。",
     "endTime": "2026-10-15 10:30:00",
     "startTime": "2026-09-24 07:30:00"
   },

@@ -43,7 +43,7 @@
   var patternPlaneSize = svgSize + 5000;
   // Test panel: it is painted in the same background SVG, above the checker and behind all page content.
   var rightPanel = '<polygon points="2400,0 ' + svgSize + ',0 ' + svgSize + ',' + svgSize + ' 35,' + svgSize + '" fill="#ffd9ea"/>';
-  var overlay = '<rect width="100%" height="100%" fill="#000000" fill-opacity="0.1"/>';
+  var overlay = '<rect width="100%" height="100%" fill="#000000" fill-opacity="0.07"/>';
   var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="' + svgSize + '" height="' + svgSize + '" viewBox="0 0 ' + svgSize + ' ' + svgSize + '"><defs><pattern id="kotone-checker" width="' + patternSize + '" height="' + patternSize + '" patternUnits="userSpaceOnUse">' + tiles + '</pattern></defs><rect width="100%" height="100%" fill="#fff9fb"/><g transform="rotate(-30 ' + (svgSize / 2) + ' ' + (svgSize / 2) + ')"><rect x="' + patternPlaneInset + '" y="' + patternPlaneInset + '" width="' + patternPlaneSize + '" height="' + patternPlaneSize + '" fill="url(#kotone-checker)"/></g>' + rightPanel + overlay + '</svg>';
   var patternStyle = document.createElement('style');
   patternStyle.id = 'kotone-checker-pattern';

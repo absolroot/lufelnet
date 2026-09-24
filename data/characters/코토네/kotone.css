@@ -19,6 +19,13 @@ body {
     background: transparent !important;
 }
 
+.navigation-path,
+.navigation-path a,
+.navigation-path .separator,
+.navigation-path .current-page {
+    color: #770e0f !important;
+}
+
 h1.character-name::before,
 .nav-section-item.active {
     background-color: #ffb2b3;

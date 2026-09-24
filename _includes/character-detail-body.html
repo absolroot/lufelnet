@@ -12,6 +12,12 @@
   window.__CHARACTER_STYLE_HASHES = {
     kotone: {{ site.data.asset_versions.files['/data/characters/코토네/kotone.css'] | jsonify }}
   };
+  // Keep runtime-selected character resources small and independently cacheable.
+  window.__CHARACTER_RESOURCE_HASHES = {
+    "코토네": {
+      kotone_theme: {{ site.data.asset_versions.files['/data/characters/코토네/kotone_theme.js'] | jsonify }}
+    }
+  };
 </script>
 <script>
   (function () {
@@ -1052,7 +1058,10 @@
             try {
                 window[globalVarName] = window[globalVarName] || {};
                 const _BASE = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
-                const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?v=${APP_VERSION}`;
+                const resourceHashes = window.__CHARACTER_RESOURCE_HASHES && window.__CHARACTER_RESOURCE_HASHES[name];
+                const contentHash = resourceHashes && resourceHashes[fileBase];
+                const cacheQuery = contentHash ? `h=${encodeURIComponent(contentHash)}` : `v=${encodeURIComponent(APP_VERSION)}`;
+                const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?${cacheQuery}`;
 
                 // party.js 는 없는 캐릭터가 많으므로, <script> 삽입 대신 fetch로 조용히 시도
                 if (fileBase === 'party' || fileBase === 'innate') {

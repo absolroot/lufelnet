@@ -2,7 +2,7 @@
   "meta": {
     "lang": "cn",
     "sourceRoot": "Config_CN",
-    "generatedAt": "2026-04-06T00:26:14.490Z"
+    "generatedAt": "2026-09-23T09:49:06.302Z"
   },
   "chapters": [
     {
@@ -8402,6 +8402,540 @@
               ]
             }
           ]
+        },
+        {
+          "sn": 426,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 426,
+              "instSn": 71426,
+              "monsterGroup": 71426,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714261,
+                  "name": "冷漠的杰克霜精",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-jackfrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714262,
+                  "name": "冷漠的杰克霜精",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-jackfrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 714263,
+                  "name": "冷漠的软泥怪",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-slime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 714264,
+                  "name": "冷漠的软泥怪",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-slime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 427,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 427,
+              "instSn": 71427,
+              "monsterGroup": 71427,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714271,
+                  "name": "冷漠的瑟坦特",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-setanta.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714272,
+                  "name": "冷漠的瑟坦特",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-setanta.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 714273,
+                  "name": "冷漠的天钿女命",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-amenouzume.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 428,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 428,
+              "instSn": 71428,
+              "monsterGroup": 71428,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714281,
+                  "name": "冷漠的贝尔芬格",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-belphegor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714282,
+                  "name": "冷漠的白虎",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-byako.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 429,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 429,
+              "instSn": 71429,
+              "monsterGroup": 71429,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714291,
+                  "name": "冷漠的荒霸吐",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714292,
+                  "name": "冷漠的荒霸吐",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 714293,
+                  "name": "冷漠的图特",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-tooto.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Nuclear",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 430,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 430,
+              "instSn": 71430,
+              "monsterGroup": 71430,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714301,
+                  "name": "冷漠的毗湿奴",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-vishnu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714302,
+                  "name": "冷漠的托尔",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-thor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Electric",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -10779,6 +11313,539 @@
                   "adapt": {
                     "Weak": [
                       "Ice",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 526,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 526,
+              "instSn": 71526,
+              "monsterGroup": 71526,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715261,
+                  "name": "生气的皮克希",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715262,
+                  "name": "生气的皮克希",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 715263,
+                  "name": "生气的杰克灯笼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 715264,
+                  "name": "生气的杰克灯笼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 527,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 527,
+              "instSn": 71527,
+              "monsterGroup": 71527,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715271,
+                  "name": "生气的高等皮克希",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715272,
+                  "name": "生气的高等皮克希",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 715273,
+                  "name": "生气的巴古斯",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-bugs.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 528,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 528,
+              "instSn": 71528,
+              "monsterGroup": 71528,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715281,
+                  "name": "生气的摩洛",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-moloch.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Electric",
+                      "Wind",
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715282,
+                  "name": "生气的摩陀",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-mada.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 529,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 529,
+              "instSn": 71529,
+              "monsterGroup": 71529,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715291,
+                  "name": "生气的大国主",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715292,
+                  "name": "生气的大国主",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 715293,
+                  "name": "生气的迦温",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-kiun.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 530,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 530,
+              "instSn": 71530,
+              "monsterGroup": 71530,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715301,
+                  "name": "生气的斯尔特",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-surtr.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715302,
+                  "name": "生气的经津主",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-futunusi.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
                       "Nuclear"
                     ],
                     "Resistant": [
@@ -13207,6 +14274,530 @@
               ]
             }
           ]
+        },
+        {
+          "sn": 626,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 626,
+              "instSn": 71626,
+              "monsterGroup": 71626,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716261,
+                  "name": "邪恶的背背鬼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-obariyon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716262,
+                  "name": "邪恶的背背鬼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-obariyon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 716263,
+                  "name": "邪恶的猫怪",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 716264,
+                  "name": "邪恶的猫怪",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 627,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 627,
+              "instSn": 71627,
+              "monsterGroup": 71627,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716271,
+                  "name": "邪恶的男梦魔",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716272,
+                  "name": "邪恶的男梦魔",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 716273,
+                  "name": "邪恶的女梦魔",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-succubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 628,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 628,
+              "instSn": 71628,
+              "monsterGroup": 71628,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716281,
+                  "name": "邪恶的拉刻西斯",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-lachesis.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716282,
+                  "name": "邪恶的密特拉",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-mitra.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 629,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 629,
+              "instSn": 71629,
+              "monsterGroup": 71629,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716291,
+                  "name": "邪恶的欧赛",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716292,
+                  "name": "邪恶的欧赛",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 716293,
+                  "name": "邪恶的苍白骑士",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-palerider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 630,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 630,
+              "instSn": 71630,
+              "monsterGroup": 71630,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716301,
+                  "name": "邪恶的巴风特",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-baphomet.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716302,
+                  "name": "邪恶的库夫林",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-cuchulainn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -15602,6 +17193,535 @@
                     "Absorb": [
                       "Electric"
                     ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 726,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 726,
+              "instSn": 71726,
+              "monsterGroup": 71726,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717261,
+                  "name": "胆小的幸魂",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717262,
+                  "name": "胆小的幸魂",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 717263,
+                  "name": "胆小的犬神",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-inugami.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 717264,
+                  "name": "胆小的犬神",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-inugami.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 727,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 727,
+              "instSn": 71727,
+              "monsterGroup": 71727,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717271,
+                  "name": "胆小的独角兽",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-unicorn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717272,
+                  "name": "胆小的独角兽",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-unicorn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 717273,
+                  "name": "胆小的权天使",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 728,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 728,
+              "instSn": 71728,
+              "monsterGroup": 71728,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717281,
+                  "name": "胆小的增长天王",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-zouchouten.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717282,
+                  "name": "胆小的大国主",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 729,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 729,
+              "instSn": 71729,
+              "monsterGroup": 71729,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717291,
+                  "name": "胆小的大天使",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717292,
+                  "name": "胆小的大天使",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 717293,
+                  "name": "胆小的婆苏吉",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-vasuki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 730,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 730,
+              "instSn": 71730,
+              "monsterGroup": 71730,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717301,
+                  "name": "胆小的大僧正",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-daisoujou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717302,
+                  "name": "胆小的默基瑟德",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-melkisedec.png",
+                  "imageMissing": true,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
                   }
                 }
               ]

@@ -8,6 +8,19 @@
   window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 </script>
 {% endif %}
+<script>
+  window.__CHARACTER_STYLE_HASHES = {
+    kotone: {{ site.data.asset_versions.files['/data/characters/코토네/kotone.css'] | jsonify }}
+  };
+</script>
+<script>
+  (function () {
+    var characterName = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT;
+    if (characterName !== '코토네') return;
+    var hash = window.__CHARACTER_STYLE_HASHES.kotone;
+    document.write('<style id="kotone-theme-transition">body::before{content:"";position:fixed;inset:0;z-index:2147483647;pointer-events:none;background:#000;opacity:1;transition:opacity 520ms cubic-bezier(.22,1,.36,1)}body.kotone-theme-ready::before{opacity:0}@media (prefers-reduced-motion:reduce){body::before{transition:none}}</style><link id="kotone-character-css" rel="stylesheet" href="{{ site.baseurl }}/data/characters/' + encodeURIComponent(characterName) + '/kotone.css?h=' + encodeURIComponent(hash || '') + '" onload="document.body.classList.add(\'kotone-theme-ready\')">');
+  })();
+</script>
 <script src="{{ site.baseurl }}/assets/js/character/character-calc-base.js?h={{ site.data.asset_versions.files['/assets/js/character/character-calc-base.js'] }}"></script>
 
 <!-- URL rewrite: /character.html?name=X&lang=Y → /{lang}/character/{slug}/ -->
@@ -1218,6 +1231,12 @@
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'ann_calc', globalVarName: 'AnnCalc' }));
             }
 
+            // 코토네 전용 의식별 운영 선택기 로드
+            if (name === '코토네') {
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'kotone_calc', globalVarName: 'KotoneCalc' }));
+                tasks.push(loadPerCharacterResource(name, { fileBase: 'kotone_theme', globalVarName: 'KotoneTheme' }));
+            }
+
             // 아야카·여름 전용 운영 시뮬레이터 로드
             if (name === '아야카·여름') {
                 tasks.push(loadPerCharacterResource(name, { fileBase: 'ayaka_summer_calc', globalVarName: 'AyakaSummerCalc' }));
@@ -1237,10 +1256,14 @@
                     if (!obj || typeof obj !== 'object') return null;
                     // 우선순위: a0_lv1 -> a0_lv80 -> a1_lv80 -> 최상위
                     const candidate = obj.a0_lv1 || obj.a0_lv80 || obj.a1_lv80 || obj;
+                    const floorStat = (value) => {
+                        const numeric = Number(value);
+                        return Number.isFinite(numeric) ? Math.floor(numeric) : value;
+                    };
                     const map = {
-                        '생명': candidate.HP ?? candidate.hp ?? 0,
-                        '공격력': candidate.attack ?? 0,
-                        '방어력': candidate.defense ?? 0,
+                        '생명': floorStat(candidate.HP ?? candidate.hp ?? 0),
+                        '공격력': floorStat(candidate.attack ?? 0),
+                        '방어력': floorStat(candidate.defense ?? 0),
                         '속도': candidate.speed ?? 0,
                         'SP': candidate.SP ?? candidate.sp ?? 0
                     };

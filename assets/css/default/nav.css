@@ -193,7 +193,7 @@
     align-items: center;
     gap: 0px;
     padding: 10px 24px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     text-decoration: none;
     transition: all 0.2s ease;
     position: relative;
@@ -254,7 +254,7 @@
 
 .nav-section-item.active span {
     color: #ffffff;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .nav-section-item.active::after {

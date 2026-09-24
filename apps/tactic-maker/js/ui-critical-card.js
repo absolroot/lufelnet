@@ -82,6 +82,8 @@ export class NeedStatCardUI {
         this.currentCriticalItems = [];
         this.currentPierceItems = [];
         this.currentDefenseItems = [];
+        this.savedKotoneSkillEffectAmp = 0;
+        this.kotoneCopyState = { criticalSource: '', pierceSource: '', awareness: 'r0' };
 
         // Shared rule table from data/kr/calc/defense-mutually-exclusive-rules.js
         this.mutuallyExclusiveRules = this.getSharedMutuallyExclusiveRules();
@@ -111,7 +113,7 @@ export class NeedStatCardUI {
                 priority: String(rule.priority || ''),
                 category: String(rule.category || '')
             }))
-            .filter(rule => rule.ids.length >= 2 && (rule.category === 'defense' || rule.category === 'pierce'));
+            .filter(rule => rule.ids.length >= 2 && (rule.category === 'defense' || rule.category === 'pierce' || rule.category === 'critical'));
     }
 
     /**
@@ -136,7 +138,7 @@ export class NeedStatCardUI {
         const otherIds = rule.ids.filter(ruleId => ruleId !== id);
         if (otherIds.length === 0) return [];
 
-        const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+        const selectedSet = category === 'pierce' ? this.selectedPierceItems : category === 'critical' ? this.selectedItems : this.selectedDefenseItems;
         const uncheckedIds = [];
         const sharedCategory = category === 'defense' ? 'defense' : null;
 
@@ -172,7 +174,7 @@ export class NeedStatCardUI {
      */
     resolveMutuallyExclusiveOnLoad() {
         this.mutuallyExclusiveRules.forEach(rule => {
-            const selectedSet = rule.category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+            const selectedSet = rule.category === 'pierce' ? this.selectedPierceItems : rule.category === 'critical' ? this.selectedItems : this.selectedDefenseItems;
             const checkedIds = rule.ids.filter(id => selectedSet.has(id));
 
             if (checkedIds.length > 1) {
@@ -316,6 +318,7 @@ export class NeedStatCardUI {
         // Collect persona performance values from current container
         const personaPerformanceValues = {};
         let mikuSkillEffectAmpValue = this.getSharedMikuSkillEffectAmpValue();
+        let kotoneSkillEffectAmpValue = this.getSharedKotoneSkillEffectAmpValue();
         const container = document.querySelector('.need-stat-container');
         if (container) {
             container.querySelectorAll('.need-stat-persona-input').forEach(input => {
@@ -331,6 +334,8 @@ export class NeedStatCardUI {
             if (mikuInput) {
                 mikuSkillEffectAmpValue = this.normalizeMikuSkillEffectAmpValue(mikuInput.value);
             }
+            const kotoneInput = container.querySelector('.need-stat-kotone-skill-effect-amp-input');
+            if (kotoneInput) kotoneSkillEffectAmpValue = this.normalizeMikuSkillEffectAmpValue(kotoneInput.value);
         }
 
         this.store.state.needStatSelections[slotIndex] = {
@@ -343,7 +348,9 @@ export class NeedStatCardUI {
             extraSumPierce: this.extraSumPierce,
             extraDefenseReduce: this.extraDefenseReduce,
             personaPerformance: personaPerformanceValues,
-            mikuSkillEffectAmp: mikuSkillEffectAmpValue
+            mikuSkillEffectAmp: mikuSkillEffectAmpValue,
+            kotoneSkillEffectAmp: kotoneSkillEffectAmpValue,
+            kotoneCopyState: this.kotoneCopyState
         };
 
         // Save global item options (shared across all slots)
@@ -401,6 +408,14 @@ export class NeedStatCardUI {
         this.extraDefenseReduce = saved.extraDefenseReduce || 0;
         this.savedPersonaPerformance = saved.personaPerformance || {};
         this.savedMikuSkillEffectAmp = this.normalizeMikuSkillEffectAmpValue(saved.mikuSkillEffectAmp);
+        this.savedKotoneSkillEffectAmp = this.normalizeMikuSkillEffectAmpValue(saved.kotoneSkillEffectAmp);
+        const savedKotoneCopyState = saved.kotoneCopyState || {};
+        const legacyKotoneSource = String(savedKotoneCopyState.source || '');
+        this.kotoneCopyState = {
+            criticalSource: String(savedKotoneCopyState.criticalSource || legacyKotoneSource),
+            pierceSource: String(savedKotoneCopyState.pierceSource || legacyKotoneSource),
+            awareness: ['r0', 'r2', 'r6'].includes(savedKotoneCopyState.awareness) ? savedKotoneCopyState.awareness : 'r0'
+        };
 
         // Resolve mutually exclusive conflicts
         this.resolveMutuallyExclusiveOnLoad();
@@ -527,6 +542,12 @@ export class NeedStatCardUI {
             if (!isFinite(mikuValue) || mikuValue <= 0) return 1;
             return 1 + (mikuValue / 100);
         }
+        if (item.kotoneSkillEffectAmpAffected === true) {
+            const kotoneValue = this.getSharedKotoneSkillEffectAmpValue();
+            const globalState = getGlobalSkillEffectAmpState();
+            const globalValue = this.hasJandCInParty() && globalState.enabled ? globalState.value : 0;
+            return 1 + ((kotoneValue + Math.max(0, globalValue || 0)) / 100);
+        }
         if (!this.hasJandCInParty()) return 1;
         const state = getGlobalSkillEffectAmpState();
         if (!state.enabled) return 1;
@@ -534,7 +555,39 @@ export class NeedStatCardUI {
     }
 
     getEffectiveItemValue(item) {
+        if (item?.kotoneCopySkill3) this.setItemBaseValue(item, this.getKotoneCopyBaseValue(item));
         return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+    }
+
+    getSharedKotoneSkillEffectAmpValue() { return this.normalizeMikuSkillEffectAmpValue(this.savedKotoneSkillEffectAmp); }
+    setSharedKotoneSkillEffectAmpValue(value) { this.savedKotoneSkillEffectAmp = this.normalizeMikuSkillEffectAmpValue(value); return this.savedKotoneSkillEffectAmp; }
+    getKotoneAwarenessLabel(value) { const labels = { kr: { r0: '의식0', r2: '의식2', r6: '의식6' }, en: { r0: 'Awareness 0', r2: 'Awareness 2', r6: 'Awareness 6' }, jp: { r0: '意識0', r2: '意識2', r6: '意識6' }, cn: { r0: '意识0', r2: '意识2', r6: '意识6' } }; return (labels[this.getCurrentLang()] || labels.kr)[value]; }
+    getKotoneCopySource(category) {
+        return category === 'critical' ? this.kotoneCopyState.criticalSource : this.kotoneCopyState.pierceSource;
+    }
+    getKotoneCopyCandidates(category) {
+        const partyNames = new Set((this.store.state.party || []).map(member => member?.name).filter(Boolean));
+        const items = category === 'critical' ? this.currentCriticalItems : this.currentPierceItems;
+        return [...partyNames].filter(name => {
+            const meta = window.characterData && window.characterData[name];
+            return name !== '코토네' && !(meta && (meta.position === '해명' || meta.job === '해명' || meta.role === '해명'))
+                && items.some(item => item.source === name && item.target !== '자신' && !item.kotoneCopySkill3);
+        });
+    }
+    getKotoneCopyBaseValue(item) {
+        const category = item.id === 'kotone-skill3-copy-crit-rate' ? 'critical' : 'pierce';
+        const source = this.getKotoneCopySource(category);
+        if (!source) return 0;
+        const items = category === 'critical' ? this.currentCriticalItems : this.currentPierceItems;
+        const selected = category === 'critical' ? this.selectedItems : this.selectedPierceItems;
+        const sourceSum = items.filter(candidate => candidate.source === source && selected.has(String(candidate.id)) && !candidate.kotoneCopySkill3)
+            .reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0);
+        const wonderSum = this.kotoneCopyState.awareness === 'r6'
+            ? items.filter(candidate => candidate.source === '원더' && selected.has(String(candidate.id))).reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0)
+            : 0;
+        const baseMultiplier = Number(item.kotoneCopyMultiplier) || 0.3;
+        const sourceMultiplier = this.kotoneCopyState.awareness === 'r2' ? baseMultiplier * 1.25 : baseMultiplier;
+        return (sourceSum + wonderSum) * sourceMultiplier;
     }
 
     normalizeMikuSkillEffectAmpValue(value) {
@@ -1309,6 +1362,15 @@ export class NeedStatCardUI {
             `;
         }
 
+        let kotoneCopyHtml = '';
+        if (item.kotoneCopySkill3 === true) {
+            const candidates = this.getKotoneCopyCandidates('critical');
+            const source = this.getKotoneCopySource('critical');
+            const options = ['<option value="">-</option>', ...candidates.map(name => `<option value="${name}" ${source === name ? 'selected' : ''}>${this.getSourceDisplayName(name)}</option>`)].join('');
+            const r6Option = this.currentCriticalItems.some(candidate => candidate.source === '원더') ? `<option value="r6" ${this.kotoneCopyState.awareness === 'r6' ? 'selected' : ''}>${this.getKotoneAwarenessLabel('r6')}</option>` : '';
+            kotoneCopyHtml = `<span class="need-stat-persona-performance"><label class="need-stat-persona-label">${this.getLabels().labelSkillEffectAmp}</label><input type="number" inputmode="decimal" class="need-stat-persona-input need-stat-kotone-skill-effect-amp-input" value="${this.getSharedKotoneSkillEffectAmpValue()}" min="0" step="0.1"><select class="need-stat-kotone-copy-source" data-category="critical">${options}</select><select class="need-stat-kotone-copy-awareness"><option value="r0" ${this.kotoneCopyState.awareness === 'r0' ? 'selected' : ''}>${this.getKotoneAwarenessLabel('r0')}</option><option value="r2" ${this.kotoneCopyState.awareness === 'r2' ? 'selected' : ''}>${this.getKotoneAwarenessLabel('r2')}</option>${r6Option}</select></span>`;
+        }
+
         this.setItemBaseValue(item, finalBaseValue);
         const displayValue = this.formatDisplayValue(this.getEffectiveItemValue(item));
 
@@ -1323,6 +1385,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
                 ${mikuSkillEffectAmpHtml}
+                ${kotoneCopyHtml}
                 ${optionsHtml}
                 <span class="need-stat-value">${displayValue}</span>
             </div>
@@ -1448,6 +1511,15 @@ export class NeedStatCardUI {
             `;
         }
 
+        let kotoneCopyHtml = '';
+        if (item.kotoneCopySkill3 === true) {
+            const candidates = this.getKotoneCopyCandidates('pierce');
+            const source = this.getKotoneCopySource('pierce');
+            const options = ['<option value="">-</option>', ...candidates.map(name => `<option value="${name}" ${source === name ? 'selected' : ''}>${this.getSourceDisplayName(name)}</option>`)].join('');
+            const r6Option = this.currentPierceItems.some(candidate => candidate.source === '원더') ? `<option value="r6" ${this.kotoneCopyState.awareness === 'r6' ? 'selected' : ''}>${this.getKotoneAwarenessLabel('r6')}</option>` : '';
+            kotoneCopyHtml = `<span class="need-stat-persona-performance"><label class="need-stat-persona-label">${this.getLabels().labelSkillEffectAmp}</label><input type="number" inputmode="decimal" class="need-stat-persona-input need-stat-kotone-skill-effect-amp-input" value="${this.getSharedKotoneSkillEffectAmpValue()}" min="0" step="0.1"><select class="need-stat-kotone-copy-source" data-category="pierce">${options}</select><select class="need-stat-kotone-copy-awareness"><option value="r0" ${this.kotoneCopyState.awareness === 'r0' ? 'selected' : ''}>${this.getKotoneAwarenessLabel('r0')}</option><option value="r2" ${this.kotoneCopyState.awareness === 'r2' ? 'selected' : ''}>${this.getKotoneAwarenessLabel('r2')}</option>${r6Option}</select></span>`;
+        }
+
         this.setItemBaseValue(item, finalBaseValue);
         const displayValue = this.formatDisplayValue(this.getEffectiveItemValue(item));
 
@@ -1460,6 +1532,7 @@ export class NeedStatCardUI {
                 <span class="need-stat-name">${displayName}</span>
                 ${personaPerformanceHtml}
                 ${mikuSkillEffectAmpHtml}
+                ${kotoneCopyHtml}
                 ${optionsHtml}
                 <span class="need-stat-value">${displayValue}</span>
             </div>
@@ -2600,10 +2673,12 @@ export class NeedStatCardUI {
         this.bindBossEvents(container, slotIndex);
 
         const updateCriticalDisplays = () => {
+            this.refreshDisplayedValues(container);
             this.updateTotalPairDisplays(slotIndex, this.getCriticalTotal(buffItems, selfItems), 'critical');
         };
 
         const updatePierceDisplays = () => {
+            this.refreshDisplayedValues(container);
             this.updatePierceDisplays(container, slotIndex, this.currentPierceItems, [], this.currentDefenseItems);
         };
 
@@ -2874,11 +2949,13 @@ export class NeedStatCardUI {
         const allPierceItems = [...penetrateSelfItems, ...penetrateBuffItems];
         const allDefenseItems = defenseReduceItems;
         const updateCriticalDisplays = () => {
+            this.refreshDisplayedValues(container);
             this.updateTotalPairDisplays(slotIndex, this.getCriticalTotal(this.currentCriticalItems, []), 'critical');
         };
 
         // Helper to update pierce displays (target/current/needed)
         const updatePierceDisplays = () => {
+            this.refreshDisplayedValues(container);
             const penetrateFromItems = this.calculatePierceTotal(penetrateSelfItems, penetrateBuffItems);
             const defenseReduceFromItems = this.calculateDefenseReduceTotal(defenseReduceItems);
             const totalDefenseReduce = defenseReduceFromItems + this.extraDefenseReduce;
@@ -2931,7 +3008,7 @@ export class NeedStatCardUI {
                 const category = row.dataset.category;
                 if (!itemId) return;
 
-                const selectedSet = category === 'pierce' ? this.selectedPierceItems : this.selectedDefenseItems;
+                const selectedSet = category === 'pierce' ? this.selectedPierceItems : category === 'critical' ? this.selectedItems : this.selectedDefenseItems;
                 const newChecked = !selectedSet.has(itemId);
 
                 if (newChecked) {
@@ -3133,6 +3210,38 @@ export class NeedStatCardUI {
             });
             input.addEventListener('blur', () => {
                 this.syncMikuSkillEffectAmpInputs(container);
+            });
+        });
+
+        container.querySelectorAll('.need-stat-kotone-skill-effect-amp-input').forEach(input => {
+            input.addEventListener('click', e => e.stopPropagation());
+            input.addEventListener('input', e => {
+                e.stopPropagation();
+                this.setSharedKotoneSkillEffectAmpValue(input.value);
+                container.querySelectorAll('.need-stat-kotone-skill-effect-amp-input').forEach(other => { if (other !== input) other.value = input.value; });
+                this.refreshDisplayedValues(container);
+                updateCriticalDisplays(); updatePierceDisplays(); this.saveSelectionsToStore(this.currentSlotIndex);
+            });
+        });
+        container.querySelectorAll('.need-stat-kotone-copy-source, .need-stat-kotone-copy-awareness').forEach(select => {
+            select.addEventListener('click', e => e.stopPropagation());
+            select.addEventListener('change', e => {
+                e.stopPropagation();
+                const changedControl = e.currentTarget;
+                if (changedControl.classList.contains('need-stat-kotone-copy-source')) {
+                    const category = changedControl.dataset.category === 'critical' ? 'critical' : 'pierce';
+                    this.kotoneCopyState[category === 'critical' ? 'criticalSource' : 'pierceSource'] = changedControl.value;
+                    container.querySelectorAll(`.need-stat-kotone-copy-source[data-category="${category}"]`).forEach(other => {
+                        if (other !== changedControl) other.value = changedControl.value;
+                    });
+                } else {
+                    this.kotoneCopyState.awareness = changedControl.value;
+                    container.querySelectorAll('.need-stat-kotone-copy-awareness').forEach(other => {
+                        if (other !== changedControl) other.value = this.kotoneCopyState.awareness;
+                    });
+                }
+                this.refreshDisplayedValues(container);
+                updateCriticalDisplays(); updatePierceDisplays(); this.saveSelectionsToStore(this.currentSlotIndex);
             });
         });
     }

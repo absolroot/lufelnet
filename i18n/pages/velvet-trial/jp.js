@@ -35,7 +35,10 @@ window.I18N_PAGE_VELVET_TRIAL_JP = {
   condition_rule1_weak_allout: 'WEAK/総攻撃で獲得スコア X{multiplier}',
   condition_rule1_element_score: '{elements} 属性スコア倍率 X{multiplier}',
   condition_rule2_turn_limit: '{maxActions}回行動以内に勝利',
+  condition_rule2_one_more_bonus: '『ONE MORE』ボーナススコア {score}',
+  condition_rule3_turn_limit: '{maxActions}回行動以内に勝利',
   condition_rule3_death_limit: '死亡者数 {maxDeaths}名以下',
+  condition_rule4_death_limit: '死亡者数 {maxDeaths}名以下',
   adaptLabels: {
     Weak: { text: '弱', cls: 'weak' },
     Resistant: { text: '耐', cls: 'res' },

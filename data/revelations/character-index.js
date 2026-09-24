@@ -1,5 +1,7 @@
 window.revelationCharacterIndex = {
   "탄생": [
+    "마유미",
+    "코토네",
     "J&C"
   ],
   "자유": [
@@ -20,7 +22,6 @@ window.revelationCharacterIndex = {
   ],
   "힘": [
     "레오",
-    "마유미",
     "미나미·여름",
     "아케치",
     "유우미",
@@ -84,7 +85,6 @@ window.revelationCharacterIndex = {
     "레오",
     "마사키",
     "마유미",
-    "마유미",
     "모토하",
     "미나미",
     "미나미·여름",
@@ -95,6 +95,7 @@ window.revelationCharacterIndex = {
     "유우미",
     "유키미",
     "카요",
+    "코토네",
     "토모코",
     "토모코",
     "토모코·여름",
@@ -119,6 +120,7 @@ window.revelationCharacterIndex = {
     "준페이",
     "카타야마",
     "코로마루",
+    "코토네",
     "토모코",
     "토모코·여름",
     "하루나"
@@ -137,6 +139,7 @@ window.revelationCharacterIndex = {
     "야오링",
     "유키미",
     "치즈코",
+    "코토네",
     "키요시",
     "토모코",
     "토모코·여름",
@@ -159,6 +162,7 @@ window.revelationCharacterIndex = {
     "준페이",
     "카타야마",
     "코로마루",
+    "코토네",
     "토모코",
     "토모코·여름",
     "하루나"
@@ -282,6 +286,12 @@ window.revelationCharacterIndex = {
     "마사키",
     "미유"
   ],
+  "분쟁": [
+    "마유미",
+    "안",
+    "야오링·사자무",
+    "코토네"
+  ],
   "진리": [
     "마코토",
     "치즈코"
@@ -332,10 +342,6 @@ window.revelationCharacterIndex = {
   ],
   "강인": [
     "아이기스"
-  ],
-  "분쟁": [
-    "안",
-    "야오링·사자무"
   ],
   "결단": [
     "안·댄싱 스타"

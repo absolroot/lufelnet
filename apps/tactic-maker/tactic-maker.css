@@ -373,10 +373,10 @@ body:not(.tactic-edit-mode) .party-slots-wrapper {
     margin-bottom: 0px;
 }
 
-/* In view mode, use grid for right-aligned wrapping */
+/* In view mode, create columns only for displayed party cards. */
 body:not(.tactic-edit-mode) .party-slots-container {
     display: grid;
-    grid-template-columns: repeat(5, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 16px;
     max-width: 1464px;
     margin-left: auto;
@@ -1936,9 +1936,9 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
     gap: 16px;
 }
 
-/* In view mode, Wonder slot moves out so grid becomes 3 columns */
+/* In view mode, keep the Wonder weapon with all three personas. */
 body:not(.tactic-edit-mode) .wonder-personas-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 @media (max-width: 1200px) {
@@ -3567,16 +3567,24 @@ body:not(.tactic-edit-mode) .need-stat-trigger-row {
         min-width: 280px;
     }
 
-    /* Wonder personas grid - flex wrap */
+    /* Keep four cards together while possible. Once the grid narrows, the
+       weapon occupies its own row and the personas remain grouped below it. */
     body:not(.tactic-edit-mode) .wonder-personas-grid {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
     }
 
-    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card {
-        flex: 1 1 calc(33.33% - 8px);
-        min-width: 280px;
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card:not(.wonder-slot-card) {
+        min-width: 0;
+        max-width: none;
+    }
+
+    /* The independent first row prevents the weapon card from leaving a
+       single persona orphaned on a later row. */
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-slot-card {
+        grid-column: 1 / -1;
+        min-width: 0;
         max-width: 400px;
     }
 
@@ -3592,9 +3600,12 @@ body:not(.tactic-edit-mode) .need-stat-trigger-row {
 
 @media (max-width: 900px) {
     /* Further reduce for smaller screens */
-    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card {
-        flex: 1 1 calc(50% - 6px);
-        min-width: 250px;
+    body:not(.tactic-edit-mode) .wonder-personas-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card:not(.wonder-slot-card) {
+        min-width: 0;
     }
 
     .tactic-table {
@@ -3624,10 +3635,13 @@ body:not(.tactic-edit-mode) .need-stat-trigger-row {
         min-width: 0;
     }
 
-    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card {
-        flex: 1 1 100%;
+    body:not(.tactic-edit-mode) .wonder-personas-grid > .wonder-persona-card:not(.wonder-slot-card) {
         min-width: 0;
         max-width: none;
+    }
+
+    body:not(.tactic-edit-mode) .wonder-personas-grid {
+        grid-template-columns: 1fr;
     }
 
     .tactic-table {

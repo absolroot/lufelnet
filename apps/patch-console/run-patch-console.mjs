@@ -3038,18 +3038,12 @@ async function handleCarouselStudioApply(res, payload) {
   const block = `${selector} {\n  top: ${top}%;\n  right: ${right}%;\n  scale: ${scale};\n}`;
   const escaped = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const blockRegex = new RegExp(`${escaped}\\s*\\{([\\s\\S]*?)\\}`, 'g');
-  let next;
-  if (blockRegex.test(css)) {
-    next = css.replace(blockRegex, (whole, body) => {
-      const set = (key, value) => new RegExp(`(^|\\n)(\\s*)${key}\\s*:[^;]*;`, 'm').test(body)
-        ? body.replace(new RegExp(`(^|\\n)(\\s*)${key}\\s*:[^;]*;`, 'm'), `$1$2${key}: ${value};`)
-        : `${body.replace(/\s*$/, '')}\n  ${key}: ${value};\n`;
-      let updated = set('top', `${top}%`); updated = set('right', `${right}%`); updated = set('scale', scale);
-      return `${selector} {${updated}}`;
-    });
-  } else next = `${css.replace(/\s*$/, '')}\n\n/* Carousel Studio */\n${block}\n`;
+  // A generic selector (for example, a base character name) can appear after
+  // its costume selector. Move this exact image rule to the end on every save
+  // so top/right/scale all win the real CSS cascade together.
+  const next = `${css.replace(blockRegex, '').replace(/\s*$/, '')}\n\n/* Carousel Studio */\n${block}\n`;
   fs.writeFileSync(CAROUSEL_STUDIO_CSS_FILE, next, 'utf8');
-  sendJson(res, 200, { ok: true, selector, block });
+  sendJson(res, 200, { ok: true, selector, block, rules: readCarouselStudioRules() });
 }
 
 function serveFileFromBase(res, baseDir, requestPath, { defaultIndex = null } = {}) {

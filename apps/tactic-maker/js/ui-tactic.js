@@ -1777,7 +1777,13 @@ export class TacticUI {
                         return;
                     }
                     if (kind === 'duplicate') {
-                        this.store.addAction(turnIdx, colKey, { ...action, isNote: true, character: '', action: '' }, actionIdx);
+                        this.store.addAction(turnIdx, colKey, {
+                            ...action,
+                            isNote: true,
+                            character: '',
+                            action: '',
+                            memoColor: this.getNoteColor(action.memoColor).key
+                        }, actionIdx);
                         return;
                     }
                     if (kind === 'delete') {
@@ -1943,13 +1949,18 @@ export class TacticUI {
                     return;
                 }
 
+                const isDifferentColumnActor = newActor !== (char?.name || '');
                 let newPersona = '';
-                let newAction = '스킬1';
+                let newAction = isDifferentColumnActor
+                    ? this.getPreferredCrossTurnAction(newActor)
+                    : '스킬1';
 
                 if (newActor === '원더') {
                     const personas = (this.store.state.wonder?.personas || []).filter(p => p && p.name);
                     newPersona = personas[0]?.name || '';
-                    newAction = '방어';
+                    newAction = isDifferentColumnActor
+                        ? this.getPreferredCrossTurnAction(newActor)
+                        : (this.getFirstActivePersonaSkill(personas[0]) || '방어');
                 }
 
                 commitStore(newActor, newPersona, newAction, null, '');
@@ -1967,11 +1978,10 @@ export class TacticUI {
                     const personas = this.store.state?.wonder?.personas || [];
                     const oldPData = personas.find(p => p && p.name === oldPName);
                     if (oldPData && oldPData.skills && oldPData.skills.includes(currentAction)) {
-                        // It was a dependent skill. Switch to new persona's last skill (index 3)
+                        // It was a dependent skill. Switch to the new persona's first active skill.
                         const newPData = personas.find(p => p && p.name === newPName);
                         if (newPData && newPData.skills) {
-                            // Use 4th skill (index 3) or 1st if empty? User said "bottom one" which usually means the last slot.
-                            nextAction = newPData.skills[3] || newPData.skills[0] || '방어';
+                            nextAction = this.getFirstActivePersonaSkill(newPData) || '방어';
                         }
                     }
                 }
@@ -2287,7 +2297,7 @@ export class TacticUI {
                 return { character: '원더', wonderPersona: '', wonderPersonaIndex: -1, action: '방어', mikuMusic: '', memo: '' };
             }
             const idx = this.store.state.wonder.personas.findIndex(p => p && p.name === p0.name);
-            const firstSkill = (p0.skills || []).find(s => s) || '';
+            const firstSkill = this.getFirstActivePersonaSkill(p0);
             return {
                 character: '원더',
                 wonderPersona: p0.name,
@@ -2307,6 +2317,46 @@ export class TacticUI {
             mikuMusic: normalizeMikuMusic(char.name, action, ''),
             memo: ''
         };
+    }
+
+    getPersonaPassiveSkillNames(persona) {
+        if (!persona?.name) return new Set();
+
+        const personaData = (window.personaFiles || {})[persona.name] || {};
+        const names = [];
+        const addNames = (skill) => {
+            if (!skill) return;
+            ['name', 'name_en', 'name_jp', 'name_cn'].forEach(key => {
+                if (skill[key]) names.push(skill[key]);
+            });
+        };
+
+        addNames(personaData.uniqueSkill);
+        (personaData.passive_skill || []).forEach(addNames);
+        return new Set(names);
+    }
+
+    getFirstActivePersonaSkill(persona) {
+        if (!persona) return '';
+        const passiveNames = this.getPersonaPassiveSkillNames(persona);
+        // Slot 0 is the persona's innate passive. Start with configurable slots
+        // even while a lazily loaded persona detail is still unavailable.
+        return (persona.skills || []).slice(1).find(skill => skill && !passiveNames.has(skill)) || '';
+    }
+
+    getPreferredCrossTurnAction(actorName) {
+        const actor = actorName === '원더'
+            ? { type: 'wonder', name: '원더' }
+            : { type: 'party', name: actorName };
+        const options = this.getActionOptions(actor);
+        const isElucidator = actorName !== '원더'
+            && (window.characterData || {})[actorName]?.position === '해명';
+        const priorities = isElucidator
+            ? ['Theurgia', '스킬1']
+            : ['HIGHLIGHT', 'Theurgia', '스킬1'];
+        return priorities.find(value =>
+            options.some(option => option.value === value)
+        ) || '스킬1';
     }
 
     createActionModal() {

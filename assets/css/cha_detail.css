@@ -1823,6 +1823,10 @@ h2 {
         gap: 4vh;
     }
 
+    .name-row2 {
+        margin-top: 8px;
+    }
+
     .character-images {
         width: 100%;
     }
@@ -2308,6 +2312,14 @@ h2 {
     position: relative;
     line-height: 1.6;
     margin-top: 0;
+}
+
+.operation-timeline-row-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 4px;
+    vertical-align: -4px;
+    object-fit: contain;
 }
 
 .operation-levels :last-child {
@@ -2873,7 +2885,7 @@ h2 {
         display: block;
         width: 300px;
         max-width: 100%;
-        margin: 0 auto;
+        margin: 8px auto 0;
     }
 }
 
@@ -3095,7 +3107,8 @@ h2 {
     /* 제일 위로 */
 
     /* 폰트 설정 (두꺼울수록 효과가 좋음) */
-    font-weight: 700;
+    font-weight: 900;
+    letter-spacing: -0.025rem;
     color: #ffffff;
     /* 글자색 검정 */
 

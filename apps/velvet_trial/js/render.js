@@ -414,7 +414,7 @@ const VelvetTrialRenderer = (function () {
 
     const condList = document.createElement('ul');
     condList.className = 'vt-condition-list';
-    [formatRule1(level?.conditions?.rule1), formatRule2(level?.conditions?.rule2), formatRule3(level?.conditions?.rule3)]
+    [formatRule1(level?.conditions?.rule1), formatRule2(level?.conditions?.rule2), formatRule3(level?.conditions?.rule3), formatRule4(level?.conditions?.rule4)]
       .filter((text) => text)
       .forEach((text) => {
         const li = document.createElement('li');
@@ -2190,6 +2190,9 @@ const VelvetTrialRenderer = (function () {
   }
 
   function formatRule2(rule) {
+    if (rule?.type === 'one_more_bonus') {
+      return tSafe('condition_rule2_one_more_bonus', { score: formatScore(rule.score) }, 'ONE MORE bonus score {score}');
+    }
     if (rule?.type === 'turn_limit') {
       return tSafe('condition_rule2_turn_limit', { maxActions: rule.maxActions }, 'Win within {maxActions} actions');
     }
@@ -2197,8 +2200,18 @@ const VelvetTrialRenderer = (function () {
   }
 
   function formatRule3(rule) {
+    if (rule?.type === 'turn_limit') {
+      return tSafe('condition_rule3_turn_limit', { maxActions: rule.maxActions }, 'Win within {maxActions} actions');
+    }
     if (rule?.type === 'death_limit') {
       return tSafe('condition_rule3_death_limit', { maxDeaths: rule.maxDeaths }, 'Deaths: {maxDeaths} or less');
+    }
+    return '';
+  }
+
+  function formatRule4(rule) {
+    if (rule?.type === 'death_limit') {
+      return tSafe('condition_rule4_death_limit', { maxDeaths: rule.maxDeaths }, 'Deaths: {maxDeaths} or less');
     }
     return '';
   }

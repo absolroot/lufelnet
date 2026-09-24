@@ -192,7 +192,7 @@ window.LufelPageLifecycle?.hold('character-list');
                     <label class="icon-only-tag mindscape-core-filter"><input type="checkbox" name="tag" value="mindscapeCore"><img class="tag-icon" src="{{ site.baseurl }}/assets/img/character-detail/innate/core.png" alt="" aria-hidden="true"><span data-i18n="characterFilterMindscapeCore">심상 코어</span></label>
                     <label><input type="checkbox" name="tag" value="p5x"><img src="{{ site.baseurl }}/assets/img/etc/p5x.png" alt="P5X"></label>
                     <label><input type="checkbox" name="tag" value="페르소나5"><img src="{{ site.baseurl }}/assets/img/etc/p5r.png" alt="P5R"></label>
-                    <label><input type="checkbox" name="tag" value="페르소나3"><img src="{{ site.baseurl }}/assets/img/etc/p3r.png" alt="P3R"></label>
+                    <label><input type="checkbox" name="tag" value="페르소나3"><img src="{{ site.baseurl }}/assets/img/etc/p3r.png" alt="P3R & P3P"></label>
                     <label><input type="checkbox" name="tag" value="p5d"><img src="{{ site.baseurl }}/assets/img/etc/p5d.png" alt="P5D"></label>
                 </div>
             </div>
@@ -1026,6 +1026,8 @@ window.LufelPageLifecycle?.hold('character-list');
             card.dataset.rarity = rarity || 'undefined';
             card.dataset.persona5 = charData.persona5 ? 'true' : 'false';
             card.dataset.persona3 = charData.persona3 ? 'true' : 'false';
+            card.dataset.persona3p = charData.persona3p ? 'true' : 'false';
+            card.dataset.miku = charData.miku ? 'true' : 'false';
             card.dataset.p5d = charData.p5d ? 'true' : 'false';
             card.dataset.p5x = charData.p5x ? 'true' : 'false';
             const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
@@ -1089,6 +1091,8 @@ window.LufelPageLifecycle?.hold('character-list');
             }
             nameText.className = 'name-text';
             nameText.dataset.persona3 = charData.persona3;
+            nameText.dataset.persona3p = charData.persona3p;
+            nameText.dataset.miku = charData.miku;
             nameText.dataset.persona4 = charData.persona4;
             nameText.dataset.persona5 = charData.persona5;
             nameText.dataset.p5d = charData.p5d;
@@ -1280,7 +1284,7 @@ window.LufelPageLifecycle?.hold('character-list');
         if (value === 'p5x') return 'P5X';
         if (value === 'normalAsia') return 'Standard ASIA';
         if (value === '페르소나5') return 'P5R';
-        if (value === '페르소나3') return 'P3R';
+        if (value === '페르소나3') return 'P3R & P3P';
         if (currentLang === 'en') {
             const englishTypeLabels = {
                 '한정': 'Limited',

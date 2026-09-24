@@ -1,0 +1,161 @@
+
+body {
+    background-color: #fff9fb;
+}
+
+.container {
+    background: transparent !important;
+}
+
+h1.character-name::before,
+.nav-section-item.active {
+    background-color: #ffb2b3;
+}
+
+.p5-layer-box,
+.nav-section-item.active span {
+    color: #770e0f !important;
+}
+
+.weapon-skill p {
+    color: rgb(255 255 255 / 1) !important;
+}
+
+.skill-name {
+    color: #ffffff !important;
+}
+
+.chracter-role {
+    background: #99414f;
+}
+
+/* Main character art only; the Persona carousel image remains unchanged. */
+.character-images .thief-image {
+    filter: drop-shadow(-8px -8px 0 #770e0f);
+}
+
+.container .main-wrapper h2,
+.container .main-wrapper h3 {
+    color: #ffffff !important;
+}
+
+.card-style {
+    background: #99414f;
+    border-bottom: 3px solid #ffd500;
+}
+
+.main-nav,
+.main-nav .logo-container {
+    background: #99414f;
+}
+
+.operation-settings .kotone-operation-tab.active {
+    box-shadow: inset 0 0 0 1px #ffd500;
+}
+
+.operation-settings .kotone-operation-timeline th,
+.battle-plus-stats,
+.operation-note {
+    color: #ffffff;
+}
+
+/* Existing #aaa detail labels, kept as individual Kotone-only overrides. */
+.operation-row > span:first-child,
+.operation-label,
+.skill-cost,
+.label,
+.kotone-operation-timeline th,
+.kotone-operation-mobile-legend,
+.setting-section h3,
+.review-content blockquote {
+    color: #ffffff !important;
+}
+
+.enhancement-values,
+.skill-level-values {
+    color: #b4d6ff !important;
+}
+
+.number-value {
+    color: #ff6a6a !important;
+}
+
+.ritual-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.container .main-wrapper :is(
+    .character-info,
+    .character-settings,
+    .setting-section,
+    .skill-card,
+    .skill-description,
+    .operation-settings,
+    .operation-row,
+    .battle-stat-section,
+    .weapon-card,
+    .ritual-card,
+    .review-content,
+    .party-section,
+    .nature-skill-section
+) {
+    color: #ffffff !important;
+}
+
+/* This follows the broad content-white rule, so every identity-line child keeps Kotone's accent. */
+.container .main-wrapper .sub-info,
+.container .main-wrapper .sub-info * {
+    color: #770e0f !important;
+}
+
+.enhancement-btn.active,
+.skill-level-btn.active {
+    box-shadow: inset 0 0 0 1px #ffd500;
+}
+
+.sync-mindscape-btn.active {
+    box-shadow: inset 0 0 0 1px rgb(249 255 58 / 70%);
+    background: rgb(255 236 80 / 12%);
+    color: #fffeec;
+}
+
+.skill-description .sync-mindscape-value,
+.skill-description .skill-level-values.sync-mindscape-value,
+.skill-description .sync-mindscape-value .number-value,
+.skill-description .skill-level-values.sync-mindscape-value .number-value {
+    color: #ffcb50 !important;
+}
+
+/* Keep Kotone's review and pros/cons copy fully opaque against her theme. */
+.container .main-wrapper .review-content,
+.container .main-wrapper .review-content :is(p, li, strong, em, h1, h2, h3, blockquote) {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Restore the site's Markdown emphasis color after the broad white review rule. */
+.container .main-wrapper .review-content strong {
+    color: #fbdc7f !important;
+}
+
+/* Preserve the base blue/red pros and cons titles against the broad white rule. */
+.container .main-wrapper .pros-cons-section .pros-cons-title.pros-title {
+    color: #3aa0ff !important;
+    opacity: 1 !important;
+}
+
+.container .main-wrapper .pros-cons-section .pros-cons-title.cons-title {
+    color: #ff6b6b !important;
+    opacity: 1 !important;
+}
+
+.container .main-wrapper .pros-cons-list li {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+/* Keep recommendation comments readable against Kotone's theme. */
+.container .main-wrapper .friend-comment {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}

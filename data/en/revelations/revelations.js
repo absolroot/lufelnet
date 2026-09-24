@@ -52,7 +52,7 @@ const mapping_en = {
     "풍족": "Satiety",
     "번영": "Wealth",
     "결단": "Cruelty",
-    "획득": "Obtain",
+    "획득": "Gain",
     "타락": "Debauch",
     "강인": "Tenacity",
 };
@@ -115,16 +115,16 @@ const enRevelationData = {
         "풍족": "Satiety",
         "번영": "Wealth",
         "결단": "Cruelty",
-        "획득": "Obtain",
+        "획득": "Gain",
         "타락": "Debauch",
         "강인": "Tenacity",
     },
     "main": {
         "Ego": ["Failure", "Cruelty"], // 자아
         "Purity": ["Debauch", "Change", "Wealth"], // 순수
-        "Nativity": ["Power"], // 탄생
+        "Nativity": ["Power", "Strife"], // 탄생
         "Acuity": ["Satiety"], // 예리
-        "Perseverance": ["Sorrow", "Change", "Obtain", "Happiness"], // 돌파
+        "Perseverance": ["Sorrow", "Change", "Gain", "Happiness"], // 돌파
         "Hope": ["Labor", "Ruin", "Change"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조
         "Integrity": ["Pleasure", "Labor", "Ruin"], // 진정성
@@ -148,7 +148,7 @@ const enRevelationData = {
         "Debauch": ["Purity"], // 타락
         "Tenacity": ["Creation"], // 강인
         "Satiety": ["Acuity"], // 풍족
-        "Obtain": ["Perseverance"], // 획득
+        "Gain": ["Perseverance"], // 획득
         "Sorrow": ["Perseverance"], // 슬픔
         "Change": ["Perseverance", "Hope", "Purity"], // 변화
         "Prudence": ["Resolve"], // 신중
@@ -168,7 +168,7 @@ const enRevelationData = {
         "Control": ["Awareness", "Departure"], // 주권
         "Renewal": ["Growth", "Trust"], // 변환
         "Courage": ["Meditation"], // 용맹
-        "Strife": ["Acceptance"], // 분쟁
+        "Strife": ["Acceptance", "Nativity"], // 분쟁
         "Love": ["Meditation", "Faith", "Acceptance"], // 사랑
         "Opulence": ["Growth", "Meditation"], // 화려
         "Power": ["Growth", "Trust", "Harmony", "Nativity"], // 힘
@@ -332,10 +332,10 @@ const enRevelationData = {
             "set4": "Increase DMG by 20% for 2 turns; Gain this effect again when using a Follow Up Skill.",
             "type": ["추가 효과", "미출시"]
         },
-        "Obtain": { // 획득
+        "Gain": { // 획득
             "set2": "Increase ATK by 12%.",
             "set4": "When cast a skill that reduces health, increase damage by 12% for 2 turns, up to 2 stacks.",
-            "type": ["미출시"]
+            "type": []
         },
         "Debauch": { //타락
             "set2": "Increase ATK by 12%.",
@@ -357,7 +357,7 @@ const enRevelationData = {
         "Perseverance": {
             "Change": "For each foe on the field, increase Electric damage by 8%. Maximum of 32%.",
             "Sorrow": "Increase continuous damage by 16%.",
-            "Obtain": "Increase Attack based on missing HP. Increase Attack by a maximum of 40% when HP is down to 40%.",
+            "Gain": "Increase Attack based on missing HP. Increase Attack by a maximum of 40% when HP is down to 40%.",
             "Happiness": "When all allies' HP is below 10%, increase Critical Effect by 20%. This effect does not stack."
         },
         "Hope": {
@@ -439,7 +439,8 @@ const enRevelationData = {
             "Satiety": "Increase All-Out Attack damage by 16%."
         },
         "Nativity": { // 탄생
-            "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%."
+            "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%.",
+            "Strife": "At the start of battle or at the start of an extra action, increase party's critical damage by <color=%s>10%</color>. This effect is permanent and stacks up to 2 times."
         },
         "Purity": { // 순수
             "Debauch": "Gain 1 stack of [Devotion] for each different Persona skill cast. ATK increases by 10% for 2 turns, stacking up to 3 times. At 3 stacks, own Critical Effect increases by an additional 12%. The duration of [Devotion] from different Persona skills is calculated independently.",

@@ -1300,10 +1300,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // 페르소나3 캐릭터 스타일/텍스트 적용 (안전 실행)
         safeRun('persona3-css-and-text', () => {
             if (character.persona3) {
-                const link = document.createElement('link');
-                link.rel = 'stylesheet';
-                link.href = `${BASE_URL}/assets/css/persona3r.css`;
-                document.head.appendChild(link);
+                if (characterName !== '코토네') {
+                    const link = document.createElement('link');
+                    link.rel = 'stylesheet';
+                    link.href = `${BASE_URL}/assets/css/persona3r.css`;
+                    document.head.appendChild(link);
+                }
                 const codeNameEl = document.querySelector('.code-name');
                 if (codeNameEl) codeNameEl.style.display = 'none';
                 const seesEl = document.querySelector('.sees');
@@ -2021,6 +2023,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const skillCard = document.createElement('div');
             skillCard.className = 'skill-card';
+            skillCard.dataset.skillType = type;
 
             const iconPath = skill.element ? `${BASE_URL}/assets/img/skill-element/${skill.element}.png` : '';
 
@@ -2307,9 +2310,15 @@ document.addEventListener('DOMContentLoaded', () => {
             skillTypes = ['skill1', 'skill2', 'skill3', 'skill_highlight', 'skill_support', 'passive1', 'passive2'];
         }
 
-        // 모든 스킬 설명 업데이트
-        document.querySelectorAll('.skill-description').forEach((descElement, index) => {
-            const skill = character[skillTypes[index]];
+        // 현재 스킬 카드만, 렌더 시 저장한 실제 스킬 키로 설명을 갱신한다.
+        // P3 캐릭터 중 skill_support가 없는 경우와 속성 심상 카드의 설명이 섞이는 것을 막는다.
+        const skillsGrid = document.querySelector('.skills-card .skills-grid');
+        const skillDescriptionElements = skillsGrid
+            ? skillsGrid.querySelectorAll('.skill-card[data-skill-type] .skill-description')
+            : [];
+        skillDescriptionElements.forEach((descElement) => {
+            const skillCard = descElement.closest('.skill-card');
+            const skill = skillCard ? character[skillCard.dataset.skillType] : null;
 
             if (skill && skill.description) {
                 const useSync = syncMindscapeActive && skill.sync_description;
@@ -2367,9 +2376,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // basic 배열이 비어있거나 모든 항목이 빈 값인 경우
-        const hasBasicContent = basicArray.some(item =>
-            item.label && item.value && item.label.trim() !== '' && item.value.trim() !== ''
-        );
+        const hasBasicContent = basicArray.some(item => {
+            const hasTimeline = Array.isArray(item.turns) && Array.isArray(item.skills) && Array.isArray(item.buffs);
+            return item.label && (hasTimeline || (item.value && item.value.trim() !== ''));
+        });
 
 
         // 현재 언어에 따른 note 배열 선택
@@ -2391,14 +2401,12 @@ document.addEventListener('DOMContentLoaded', () => {
         // basic 섹션 처리
         if (hasBasicContent) {
             basicContent.innerHTML = basicArray
-                .filter(item => item.label && item.value && item.label.trim() !== '' && item.value.trim() !== '')
+                .filter(item => {
+                    const hasTimeline = Array.isArray(item.turns) && Array.isArray(item.skills) && Array.isArray(item.buffs);
+                    return item.label && (hasTimeline || (item.value && item.value.trim() !== ''));
+                })
                 .map(item => {
                     const operationGroupAttr = item.group ? ` data-operation-group="${String(item.group).replace(/"/g, '&quot;')}"` : '';
-                    const skills = item.value.split(' › ');
-                    const skillSteps = skills.map(skill =>
-                        `<div class="skill-step">${skill}</div>`
-                    ).join('<div class="skill-arrow">›</div>');
-
                     // 의식 텍스트 번역
                     let translatedLabel = item.label;
                     const awarenessPrefixEn = t('characterOperationAwarenessPrefixEn', 'A');
@@ -2411,6 +2419,47 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else if (currentLang === 'cn') {
                         translatedLabel = translatedLabel.replace(/의식\s*/g, awarenessPrefixCn);
                     }
+
+                    const hasTimeline = Array.isArray(item.turns) && Array.isArray(item.skills) && Array.isArray(item.buffs);
+                    if (hasTimeline) {
+                        const labels = item.row_labels || {};
+                        const lunarBond = Array.isArray(item.lunar_bond) ? item.lunar_bond : null;
+                        const powerfulBond = Array.isArray(item.powerful_bond) ? item.powerful_bond : null;
+                        const rowIcons = item.row_icons || {};
+                        const characterAssetBase = `${typeof window !== 'undefined' && window.BASE_URL ? window.BASE_URL : ''}/data/characters/${encodeURIComponent(characterName)}`;
+                        const renderRowLabel = (label, iconFile) => `${iconFile ? `<img class="operation-timeline-row-icon" src="${characterAssetBase}/${encodeURIComponent(iconFile)}" alt="" aria-hidden="true">` : ''}${label}`;
+                        const columns = Math.max(8, item.turns.length, item.skills.length, item.buffs.length, lunarBond ? lunarBond.length : 0, powerfulBond ? powerfulBond.length : 0);
+                        const visibleTurnCount = item.turns.filter(Boolean).length;
+                        const renderCells = (values, getAttributes) => Array.from({ length: columns }, (_, index) => {
+                            const isReserved = !item.turns[index];
+                            const rawValue = isReserved ? '' : (values[index] == null || values[index] === '' ? '—' : values[index]);
+                            const attributes = !isReserved && typeof getAttributes === 'function' ? getAttributes(index) : '';
+                            return `<td${isReserved ? ' data-operation-timeline-reserved="true"' : ''}${attributes}>${rawValue}</td>`;
+                        }).join('');
+                        return `
+                            <div class="operation-row operation-row--timeline"${operationGroupAttr}>
+                                <div class="operation-label">${translatedLabel}</div>
+                                <div class="operation-value">
+                                    <div class="operation-timeline-scroll">
+                                        <table class="operation-timeline operation-timeline--${visibleTurnCount}-turns${currentLang === 'en' ? ' operation-timeline--english' : ''}">
+                                            <tbody>
+                                                <tr class="operation-timeline-row--turns"><th scope="row">${labels.turns || 'Turn'}</th>${renderCells(item.turns)}</tr>
+                                                <tr class="operation-timeline-row--skills"><th scope="row">${labels.skills || 'Skill'}</th>${renderCells(item.skills, index => `${item.fatigue_turns && item.fatigue_turns[index] ? ' data-operation-fatigue="true"' : ''}${item.full_power_turns && item.full_power_turns[index] ? ' data-operation-full-power="true"' : ''}`)}</tr>
+                                                <tr class="operation-timeline-row--buffs"><th scope="row">${labels.buffs || 'Buffs'}</th>${renderCells(item.buffs)}</tr>
+                                                ${powerfulBond ? `<tr class="operation-timeline-row--powerful-bond"><th scope="row">${renderRowLabel(labels.powerful_bond || 'Powerful Bond', rowIcons.powerful_bond)}</th>${renderCells(powerfulBond)}</tr>` : ''}
+                                                ${lunarBond ? `<tr class="operation-timeline-row--lunar-bond"><th scope="row">${renderRowLabel(labels.lunar_bond || 'Lunar Bond', rowIcons.lunar_bond)}</th>${renderCells(lunarBond)}</tr>` : ''}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    const skills = item.value.split(' › ');
+                    const skillSteps = skills.map(skill =>
+                        `<div class="skill-step">${skill}</div>`
+                    ).join('<div class="skill-arrow">›</div>');
 
                     return `
                         <div class="operation-row"${operationGroupAttr}>
@@ -2429,9 +2478,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // note 섹션 처리
         if (hasNoteContent) {
+            const mobileHiddenNotes = Array.isArray(opData[characterName].mobile_hidden_notes) ? opData[characterName].mobile_hidden_notes : [];
             noteContent.innerHTML = noteArray
                 .filter(note => note && note.trim() !== '')
-                .map(note => `<div class="operation-note">${note}</div>`)
+                .map((note, index) => `<div class="operation-note${mobileHiddenNotes.includes(index) ? ' operation-note--mobile-hidden' : ''}">${note}</div>`)
                 .join('');
         } else {
             noteContent.innerHTML = ''; // 내용만 비우기
@@ -2441,6 +2491,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (hasBasicContent || hasNoteContent) {
             // 스킬 시퀀스의 줄바꿈 여부 체크
             const skillSequences = operationSettings.querySelectorAll('.skill-sequence');
+            const hasTimeline = operationSettings.querySelector('.operation-row--timeline');
             let needsSingleColumn = false;
 
             // 각 스킬 시퀀스의 줄바꿈 여부 확인
@@ -2469,7 +2520,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // 모바일 환경이거나 줄바꿈이 발생한 경우 1열로 변경
-            if (window.innerWidth <= 1200) {
+            if (hasTimeline || window.innerWidth <= 1200) {
                 operationSettings.style.gridTemplateColumns = '1fr';
                 operationSettings.style.display = 'flex';
                 operationSettings.style.flexDirection = 'column';

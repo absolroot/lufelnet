@@ -55,6 +55,7 @@
     if (first === 'gallery') return { domain: 'gallery', mode: 'list' };
     if (first === 'schedule') return { domain: 'schedule', mode: 'list' };
     if (first === '2nd-anniversary') return { domain: 'second-anniversary', mode: 'list' };
+    if (first === '2.5-anniversary') return { domain: 'two-half-anniversary', mode: 'list' };
     if (first === 'revelations') return { domain: 'revelation', mode: 'list' };
     if (first === 'share') {
       if (second === 'character') return { domain: 'share-character', mode: 'list' };

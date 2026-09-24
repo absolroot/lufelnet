@@ -10,7 +10,7 @@
 
 **체력을 40% 이하로 유지해야 최고의 성능을 유지**할 수 있기 때문에 스킬2를 최대치로 사용하는 것이 좋다. 
 
-특이사항으로 풀풀 파티 기준으로 마음의 바다 대미지 계산 매커니즘이 변경되며 P5X 최초로 99,999,999 대미지를 달성한 딜러가 됐다.`,
+`,
         review_en: `He is a high-damage AoE dealer whose performance relies on maintaining low HP.
 
 Skill 1 and Skill 2 enhance Skill 3, and **when these enhancements reach their maximum, he can unleash explosive damage** in that turn.
@@ -19,14 +19,14 @@ Through Skill 2, he can consume his own HP without consuming a turn, and **keep 
 
 Because of this, receiving healing at an unexpected timing can disrupt his damage cycle.
 
-Notably, with a A6R6 party setup, the Sea of Hearts damage calculation mechanics change, and he became the first P5X character to achieve 99,999,999 damage.`,
+`,
         review_jp: `低HP維持を前提とした高火力の全体アタッカーである。
 
 スキル1とスキル2でスキル3を強化し、その強化が**最大に達したターンに爆発的なダメージ**を与えることができる。
 
 また、スキル2で自身のHPを消費せずに使用でき、**HPを40％以下に保つことで最高の性能を発揮**する。
 
-特筆すべき点として、A6R6では心の海のダメージ計算メカニクスが変化し、P5Xで初めて 99,999,999 ダメージを達成したアタッカーとなった。`,
+`,
         review_cn: `
 以维持低血量为前提的高火力群体祝福输出。
 
@@ -36,7 +36,7 @@ Notably, with a A6R6 party setup, the Sea of Hearts damage calculation mechanics
 
 **只有把生命值维持在40%以下，才能稳定打出最高性能**，因此通常建议尽量把技能2的层数拉满。
 
-另外，在满配队伍条件下，心之海的伤害计算机制会发生变化，他也因此成为P5X首个打出99,999,999伤害的输出角色。`,
+`,
         pros: [
           "의식 0 자체만으로도 완성형에 가깝다",
           "짧은 사이클 내 폭발적인 대미지 구현이 가능하다"

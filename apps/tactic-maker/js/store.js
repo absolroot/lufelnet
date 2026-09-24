@@ -834,8 +834,9 @@ export class TacticStore {
 
         // Normalize action data
         // NOTE: action.type(auto/manual) is deprecated; keep the field out for new actions.
+        const isNote = !!actionData.isNote;
         const action = {
-            isNote: !!actionData.isNote,
+            isNote,
             character: actionData.character || '',
             wonderPersona: actionData.wonderPersona || '',
             wonderPersonaIndex: actionData.wonderPersonaIndex ?? -1,
@@ -845,7 +846,8 @@ export class TacticStore {
                 actionData.action || '',
                 actionData.mikuMusic ?? actionData.music ?? ''
             ),
-            memo: actionData.memo || ''
+            memo: actionData.memo || '',
+            ...(isNote ? { memoColor: actionData.memoColor || '' } : {})
         };
 
         // Insert after specific index if provided, otherwise push to end

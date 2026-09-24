@@ -35,7 +35,10 @@ window.I18N_PAGE_VELVET_TRIAL_KR = {
   condition_rule1_weak_allout: 'WEAK/총공격 시 획득 점수 X{multiplier}',
   condition_rule1_element_score: '{elements} 속성 점수 배율 X{multiplier}',
   condition_rule2_turn_limit: '{maxActions}회 행동 내 승리',
+  condition_rule2_one_more_bonus: '『ONE MORE』 보너스 점수 {score}',
+  condition_rule3_turn_limit: '{maxActions}회 행동 내 승리',
   condition_rule3_death_limit: '사망자 수 {maxDeaths}명 이하',
+  condition_rule4_death_limit: '사망자 수 {maxDeaths}명 이하',
   adaptLabels: {
     Weak: { text: '약', cls: 'weak' },
     Resistant: { text: '내', cls: 'res' },

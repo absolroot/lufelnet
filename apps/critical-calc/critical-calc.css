@@ -319,6 +319,19 @@ input[type="checkbox"]:hover {
     padding: 8px 4px !important;
 }
 
+/* Kotone Skill 3: portrait character selector and awareness spacing */
+.option-column:has(.kotone-character-select) { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.option-column .kotone-character-select { position: relative; display: inline-block; min-width: 112px; margin-right: 0; vertical-align: middle; }
+.option-column .kotone-character-trigger, .option-column .kotone-character-option { display: flex; align-items: center; gap: 6px; width: 100%; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.option-column .kotone-character-trigger { min-height: 28px; padding: 3px 7px; background: rgba(0,0,0,.18); border-radius: 5px; }
+.option-column .kotone-character-trigger:hover { background: rgba(0,0,0,.28); }
+.option-column .kotone-character-trigger img, .option-column .kotone-character-option img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+.option-column .kotone-character-menu { display: none; position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; min-width: 160px; max-height: 240px; overflow-y: auto; padding: 4px; background: #252525; border: 1px solid rgba(255,255,255,.2); border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+.option-column .kotone-character-menu.show { display: block; }
+.option-column .kotone-character-option { padding: 5px 7px; background: rgba(0,0,0,.18); border-radius: 4px; }
+.option-column .kotone-character-option:hover { background: rgba(0,0,0,.28); }
+.option-column .kotone-copy-awareness { margin-left: 0; vertical-align: middle; }
+
 /* 옵션 스타일링 */
 select option {
     background-color: var(--card-background);

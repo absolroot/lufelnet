@@ -13,5 +13,7 @@ const defenseMutuallyExclusiveRules = [
     { ids: ['mio2', 'mio3'], priority: 'mio3', category: 'defense' }, // 미오
     { ids: ['ren-starlight-s2-defense', 'ren-starlight-s2-enhanced-defense'], priority: 'ren-starlight-s2-enhanced-defense', category: 'defense' }, // 렌·댄싱 스타
     { ids: ['miku-penetrate', 'miku-sync-penetrate'], priority: 'miku-sync-penetrate', category: 'pierce' }, // 미쿠
+    { ids: ['kotone-skill3-copy-pierce', 'kotone-sync-skill3-copy-pierce'], priority: 'kotone-sync-skill3-copy-pierce', category: 'pierce' }, // 코토네
+    { ids: ['kotone-skill3-copy-crit-rate', 'kotone-sync-skill3-copy-crit-rate'], priority: 'kotone-sync-skill3-copy-crit-rate', category: 'critical' }, // 코토네
     { ids: ['masaki1', 'masaki2'], priority: 'masaki1', category: 'pierce' }, // 마사키
 ];

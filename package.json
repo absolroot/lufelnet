@@ -36,6 +36,8 @@
     "seo:schedule:check": "node scripts/seo/generate-schedule-pages.mjs --check",
     "seo:second-anniversary:generate": "node scripts/seo/generate-second-anniversary-pages.mjs",
     "seo:second-anniversary:check": "node scripts/seo/generate-second-anniversary-pages.mjs --check",
+    "seo:two-half-anniversary:generate": "node scripts/seo/generate-two-half-anniversary-pages.mjs",
+    "seo:two-half-anniversary:check": "node scripts/seo/generate-two-half-anniversary-pages.mjs --check",
     "seo:tactic:generate": "node scripts/seo/generate-tactic-pages.mjs",
     "seo:tactic:check": "node scripts/seo/generate-tactic-pages.mjs --check",
     "seo:tactic-maker:generate": "node scripts/seo/generate-tactic-maker-pages.mjs",

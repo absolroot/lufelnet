@@ -11,6 +11,8 @@ class CriticalCalc {
         this.selectedSelfItems = new Set();
         this.skillEffectAmpState = this.loadSkillEffectAmpState();
         this.mikuSkillEffectAmpValue = this.loadMikuSkillEffectAmpValue();
+        this.kotoneSkillEffectAmpValue = this.loadKotoneSkillEffectAmpValue();
+        this.kotoneCopyState = this.loadKotoneCopyState();
         this.syncI18nServiceLanguage();
 
         this.buildDatasets();
@@ -303,6 +305,11 @@ class CriticalCalc {
         }
     }
 
+    loadKotoneSkillEffectAmpValue() { try { const value = parseFloat(localStorage.getItem('calcKotoneSkillEffectAmpValueV1')); return isFinite(value) ? Math.max(0, value) : 0; } catch (_) { return 0; } }
+    saveKotoneSkillEffectAmpValue() { try { localStorage.setItem('calcKotoneSkillEffectAmpValueV1', String(this.kotoneSkillEffectAmpValue)); } catch (_) {} }
+    loadKotoneCopyState() { try { const saved = JSON.parse(localStorage.getItem('criticalCalc_kotoneCopyStateV1') || '{}'); return { source: String(saved.source || ''), awareness: ['r0','r2','r6'].includes(saved.awareness) ? saved.awareness : 'r0' }; } catch (_) { return { source: '', awareness: 'r0' }; } }
+    saveKotoneCopyState() { try { localStorage.setItem('criticalCalc_kotoneCopyStateV1', JSON.stringify(this.kotoneCopyState)); } catch (_) {} }
+
     saveMikuSkillEffectAmpValue() {
         try {
             localStorage.setItem('calcMikuSkillEffectAmpValueV1', String(this.mikuSkillEffectAmpValue));
@@ -336,7 +343,8 @@ class CriticalCalc {
         const mikuValue = isMikuSkillEffect
             ? this.mikuSkillEffectAmpValue
             : 0;
-        const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue);
+        const kotoneValue = item.kotoneSkillEffectAmpAffected === true ? this.kotoneSkillEffectAmpValue : 0;
+        const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue) + Math.max(0, kotoneValue);
         return 1 + (totalValue / 100);
     }
 
@@ -351,6 +359,7 @@ class CriticalCalc {
 
     renderItemValue(item, valueCell = item && item.__valueCell) {
         if (!item || !valueCell) return;
+        if (item.kotoneCopySkill3) this.setItemBaseValue(item, this.getKotoneCopyBaseValue(item));
         item.__valueCell = valueCell;
         valueCell.textContent = this.formatDisplayValue(this.getEffectiveItemValue(item));
     }
@@ -573,6 +582,50 @@ class CriticalCalc {
             container.appendChild(input);
             infoWrap.appendChild(container);
         } catch (_) {}
+    }
+
+    getKotoneCopyCandidates() {
+        return Object.keys(this.buffGroups || {}).filter(name => {
+            if (['공통', '속성 심상', '원더', '계시', '미쿠', '코토네'].includes(name)) return false;
+            const items = this.buffGroups[name] || []; const meta = this.getCharacterMeta(name);
+            return items.some(item => item.target !== '자신' && !item.kotoneCopySkill3) && !(meta && (meta.position === '해명' || meta.job === '해명' || meta.role === '해명'));
+        });
+    }
+    getKotoneAwarenessLabel(value) {
+        const labels = { kr: { r0: '의식0', r2: '의식2', r6: '의식6' }, en: { r0: 'Awareness 0', r2: 'Awareness 2', r6: 'Awareness 6' }, jp: { r0: '意識0', r2: '意識2', r6: '意識6' }, cn: { r0: '意识0', r2: '意识2', r6: '意识6' } };
+        return (labels[this.getCurrentLang()] || labels.kr)[value];
+    }
+    getKotoneCopyBaseValue(item) {
+        if (!item || !item.kotoneCopySkill3 || !this.kotoneCopyState.source) return 0;
+        const sourceValues = (this.buffGroups[this.kotoneCopyState.source] || []).filter(candidate => this.selectedBuffItems.has(candidate.id) && !candidate.kotoneCopySkill3);
+        const sourceSum = sourceValues.reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0);
+        const wonderSum = this.kotoneCopyState.awareness === 'r6'
+            ? (this.buffGroups['원더'] || []).filter(candidate => this.selectedBuffItems.has(candidate.id)).reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0)
+            : 0;
+        const baseMultiplier = Number(item.kotoneCopyMultiplier) || 0.3;
+        const sourceMultiplier = this.kotoneCopyState.awareness === 'r2' ? baseMultiplier * 1.25 : baseMultiplier;
+        return (sourceSum + wonderSum) * sourceMultiplier;
+    }
+    attachKotoneSkillEffectAmpControl(headerTr) {
+        if (!headerTr || headerTr.querySelector('.kotone-skill-effect-amp-container')) return; const infoWrap = headerTr.querySelector('.group-info'); if (!infoWrap) return;
+        const container = document.createElement('span'); container.className = 'jc-desire-container kotone-skill-effect-amp-container'; container.addEventListener('click', e => e.stopPropagation());
+        const label = document.createElement('span'); label.className = 'jc-desire-label'; label.textContent = this.getMikuSkillEffectAmpLabel();
+        const input = document.createElement('input'); input.type = 'number'; input.min = '0'; input.step = '0.1'; input.className = 'jc-desire-input'; input.value = String(this.kotoneSkillEffectAmpValue);
+        input.addEventListener('input', () => { this.kotoneSkillEffectAmpValue = Math.max(0, parseFloat(input.value) || 0); this.saveKotoneSkillEffectAmpValue(); this.refreshDisplayedValues(); this.updateTotal(); }); input.addEventListener('blur', () => { input.value = String(this.kotoneSkillEffectAmpValue); });
+        container.append(label, input); infoWrap.appendChild(container);
+    }
+    createKotoneCharacterDropdown(selectedValue, onChange) {
+        const wrap = document.createElement('div'); wrap.className = 'kotone-character-select'; wrap.dataset.value = selectedValue || '';
+        const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'kotone-character-trigger'; const menu = document.createElement('div'); menu.className = 'kotone-character-menu';
+        const choices = [{ value: '', label: '-' }].concat(this.getKotoneCopyCandidates().map(value => ({ value, label: this.getGroupDisplayName(value), image: `${BASE_URL}/assets/img/character-half/thumb/${value}.webp` })));
+        const appendPortrait = (parent, choice) => { if (!choice.image) return; const image = document.createElement('img'); image.src = choice.image; image.alt = ''; image.onerror = function () { this.onerror = () => { this.style.display = 'none'; }; this.src = `${BASE_URL}/assets/img/character-half/${choice.value}.webp`; }; parent.append(image); };
+        const render = () => { const active = choices.find(choice => choice.value === wrap.dataset.value) || choices[0]; trigger.textContent = ''; appendPortrait(trigger, active); trigger.append(document.createTextNode(active.label)); menu.innerHTML = ''; choices.forEach(choice => { const item = document.createElement('button'); item.type = 'button'; item.className = 'kotone-character-option'; appendPortrait(item, choice); item.append(document.createTextNode(choice.label)); item.addEventListener('click', event => { event.stopPropagation(); wrap.dataset.value = choice.value; menu.classList.remove('show'); render(); onChange(choice.value); }); menu.append(item); }); };
+        trigger.addEventListener('click', event => { event.stopPropagation(); document.querySelectorAll('.kotone-character-menu.show').forEach(other => { if (other !== menu) other.classList.remove('show'); }); menu.classList.toggle('show'); }); wrap.append(trigger, menu); render(); return wrap;
+    }
+    attachKotoneCopyControl(optionCell, data, valueCell) {
+        if (!data.kotoneCopySkill3) return; let source;
+        const awareness = document.createElement('select'); ['r0','r2','r6'].forEach(value => { if (value !== 'r6' || (this.buffGroups['원더'] || []).length) awareness.append(new Option(this.getKotoneAwarenessLabel(value),value)); }); awareness.value = this.kotoneCopyState.awareness;
+        const update = () => { this.kotoneCopyState = { source: source.dataset.value || '', awareness: awareness.value }; this.saveKotoneCopyState(); this.renderItemValue(data,valueCell); this.updateTotal(); }; source = this.createKotoneCharacterDropdown(this.kotoneCopyState.source, update); awareness.addEventListener('change',update); optionCell.append(source,awareness);
     }
 
     ensureJCCalcLoadedAndAttach() {
@@ -824,6 +877,7 @@ class CriticalCalc {
             if (groupName === '미쿠') {
                 this.attachMikuSkillEffectAmpControl(headerTr);
             }
+            if (groupName === '코토네') this.attachKotoneSkillEffectAmpControl(headerTr);
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
@@ -926,6 +980,7 @@ class CriticalCalc {
 
     createTableRow(data, isSelf = false, groupName = '') {
         const row = document.createElement('tr');
+        row.dataset.itemId = String(data.id);
         
         const checkCell = document.createElement('td');
         checkCell.className = 'check-column';
@@ -944,7 +999,22 @@ class CriticalCalc {
             if (isSelf) {
                 if (isOn) this.selectedSelfItems.delete(data.id); else this.selectedSelfItems.add(data.id);
             } else {
-                if (isOn) this.selectedBuffItems.delete(data.id); else this.selectedBuffItems.add(data.id);
+                if (isOn) {
+                    this.selectedBuffItems.delete(data.id);
+                } else {
+                    this.selectedBuffItems.add(data.id);
+                    if (data.kotoneCopySkill3) {
+                        const otherId = data.id.startsWith('kotone-sync-')
+                            ? data.id.replace('kotone-sync-', 'kotone-')
+                            : data.id.replace('kotone-', 'kotone-sync-');
+                        if (this.selectedBuffItems.delete(otherId)) {
+                            const otherRow = document.querySelector(`tr[data-item-id="${otherId}"]`);
+                            const otherCheck = otherRow && otherRow.querySelector('.check-column img');
+                            if (otherCheck) otherCheck.src = `${BASE_URL}/assets/img/ui/check-off.png`;
+                            if (otherRow) otherRow.classList.remove('selected');
+                        }
+                    }
+                }
             }
             this.updateTotal();
         };
@@ -1130,6 +1200,7 @@ class CriticalCalc {
             optionCell.appendChild(select);
         }
         row.appendChild(optionCell);
+        this.attachKotoneCopyControl(optionCell, data, valueCell);
         
         const isJCRegistered = groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem;
         if (isJCRegistered && data.id !== 'jc2') {
@@ -1183,6 +1254,7 @@ class CriticalCalc {
     }
 
     updateTotal() {
+        this.refreshDisplayedValues();
         const buffSum = this.sumSelected(this.selectedBuffItems, this.idToBuffItem);
         const selfSum = this.sumSelected(this.selectedSelfItems, this.idToSelfItem);
         const custom1 = parseFloat(this.revelationInput && this.revelationInput.value) || 0;

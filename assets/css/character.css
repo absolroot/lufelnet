@@ -358,6 +358,15 @@
         transition: background 0.5s;
     }
 
+    /* P3P collaboration cards take precedence over the shared Persona 3 blue. */
+    .card:hover .name-text[data-persona3p="true"] {
+        background: linear-gradient(to bottom, #b83b70, #922653);
+    }
+
+    .card:hover .name-text[data-miku="true"] {
+        background: linear-gradient(to bottom, #39c5bb, #1f938d);
+    }
+
     /* 페르소나4 호버 시 스타일 */
     .card:hover .name-text[data-persona4="true"] {
         background: linear-gradient(to bottom, #cba233, #bf992f);

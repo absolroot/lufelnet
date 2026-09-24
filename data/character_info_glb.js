@@ -3,7 +3,7 @@ window.characterList = window.characterList || {
         "YUI·스텔라", "렌", "루페르", "레오", "루우나", "류지", "리코·매화", "마코토", "마사키", "모르가나", "마유미",
         "모토하", "모토하·여름", "몽타뉴", "몽타뉴·백조", "미나미", "미나미·여름","미유·여름",  "미오", "사나다", "슌", "쇼키",
         "세이지", "아야카", "안", "아케치",  "야오링", "야오링·사자무",  "유키 마코토",
-        "원더", "유스케", "유카리", "유키미", "이치고", "YUI", "카스미", "카타야마",
+        "원더", "유스케", "유카리", "유키미", "이치고", "YUI", "카스미", "카타야마", "코토네",
         "키요시", "키라", "치즈코", "토모코", "토모코·여름", "토시야", "하루",
         "하루나","J&C"
     ],
@@ -20,6 +20,9 @@ Object.assign(window.characterData, {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "코토네": {
+        "release_order": 36
     },
     "YUI·스텔라": {
         "release_order": 35
@@ -100,6 +103,7 @@ Object.assign(window.characterData, {
         "release_order": 10
     },
     "아야카": {
+        "limit": false,
         "release_order": 9
     },
     "리코": {
@@ -112,6 +116,7 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "",
+        "limit": false,
         "release_order": 6
     },
     "치즈코": {
@@ -124,14 +129,14 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "",
-        "limit": true,
+        "limit": false,
         "release_order": 4
     },
     "YUI": {
         "role": "",
         "tag": "",
         "persona": "",
-        "limit": true,
+        "limit": false,
         "release_order": 3
     },
     "미나미": {
@@ -144,7 +149,7 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "아르센",
-        "limit": true,
+        "limit": false,
         "release_order": 1
     },
     "루페르": {

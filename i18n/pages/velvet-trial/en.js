@@ -35,7 +35,10 @@ window.I18N_PAGE_VELVET_TRIAL_EN = {
   condition_rule1_weak_allout: 'WEAK/All-Out bonus score X{multiplier}',
   condition_rule1_element_score: '{elements} element score multiplier X{multiplier}',
   condition_rule2_turn_limit: 'Win within {maxActions} actions',
+  condition_rule2_one_more_bonus: 'ONE MORE bonus score {score}',
+  condition_rule3_turn_limit: 'Win within {maxActions} actions',
   condition_rule3_death_limit: 'Deaths: {maxDeaths} or less',
+  condition_rule4_death_limit: 'Deaths: {maxDeaths} or less',
   adaptLabels: {
     Weak: { text: 'Wk', cls: 'weak' },
     Resistant: { text: 'Res', cls: 'res' },

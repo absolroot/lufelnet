@@ -35,7 +35,10 @@ window.I18N_PAGE_VELVET_TRIAL_CN = {
   condition_rule1_weak_allout: 'WEAK / 总攻击奖励分数 X{multiplier}',
   condition_rule1_element_score: '{elements}属性积分倍率 X{multiplier}',
   condition_rule2_turn_limit: '{maxActions}次行动内获胜',
+  condition_rule2_one_more_bonus: '『ONE MORE』奖励分数 {score}',
+  condition_rule3_turn_limit: '{maxActions}次行动内获胜',
   condition_rule3_death_limit: '阵亡人数不超过{maxDeaths}人',
+  condition_rule4_death_limit: '阵亡人数不超过{maxDeaths}人',
   adaptLabels: {
     Weak: { text: '弱', cls: 'weak' },
     Resistant: { text: '耐', cls: 'res' },

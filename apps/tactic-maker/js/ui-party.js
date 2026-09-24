@@ -452,8 +452,8 @@ export class PartyUI {
 
     /**
      * Reorganize slots for view mode (non-edit mode)
-     * In view mode: Wonder slot moves into party-slots-container, sorted by order
-     * Order: 1~n (by order number) / elucidator / slot4 (if visible)
+     * In view mode: party slots are sorted by order while the Wonder weapon
+     * remains in its persona grid.
      */
     reorganizeSlotsForViewMode(isViewMode) {
         const partyContainer = this.container; // party-slots-container
@@ -463,21 +463,9 @@ export class PartyUI {
         if (!partyContainer) return;
 
         if (isViewMode) {
-            // Move Wonder slot directly into party container (not clone)
-            if (wonderSlot && wonderGrid) {
-                // Add slot-card class for consistent styling
-                wonderSlot.classList.add('slot-card', 'wonder-in-party');
-                wonderSlot.dataset.slot = 'wonder';
-
-                // Get Wonder order
-                const wonderOrder = this.store.state.wonder?.order || '-';
-                wonderSlot.dataset.order = wonderOrder !== '-' ? wonderOrder : '99';
-
-                // Move to party container
-                partyContainer.appendChild(wonderSlot);
-            }
-
-            // Now sort all slots by order
+            // Keep the Wonder weapon with its personas. This lets the responsive
+            // Wonder grid preserve four cards on wide screens and group personas
+            // together once the weapon wraps on narrower screens.
             this.sortSlotsByOrder();
         } else {
             // Edit mode: restore original layout

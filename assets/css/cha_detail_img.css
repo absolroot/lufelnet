@@ -428,3 +428,19 @@
 .character-images img[data-image-file*="나루미 - 아스테로페.webp"] {
     --char-scale: 1.12;
 }
+
+.character-images img[data-image-file="코토네.webp"] {
+    --char-scale: 1.3;
+    position: relative;
+    right: 25%;
+}
+
+@media (max-width: 768px) {
+    .character-images img[data-image-file="코토네.webp"] {
+        right: 15%;
+    }
+}
+
+.character-images img[data-image-file="코토네 - 오르페우스.webp"] {
+    --char-scale: 1.15;
+}

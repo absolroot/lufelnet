@@ -1,0 +1,332 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "汐見琴音を獲得すると、戦闘中、場にいる優越ロールの味方１体ごと（主人公のメインペルソナも対象）に、味方全体の最終ダメージ増幅が１%上昇する（自身が戦闘に参加していない場合でも有効）。戦闘開始時、攻撃力が最も高い支配／反抗ロールの味方を『月下の仲間』状態にする。自身のターン開始時、『月下の仲間』の対象を再選択できる。複数の味方を同時に『月下の仲間』状態に選択することはできない。\n『月下の仲間』状態の味方がスキルを使用、または自身が『月下の仲間』状態の味方にスキルを使用した時、対象の『ルネーション』が増加する（最大１０まで）。また、『ルネーション』に応じて以下の効果を獲得する。\n「１：攻撃力が５０%上昇」\n「５：貫通が１５%上昇」\n「１０：クリティカルダメージが５０%上昇」\n『ルネーション』は『月下の仲間』を再選択するとリセットされる。\nさらに汐見琴音は戦闘中に一度だけ、『全力全開』を発動できる。発動すると『運命の輪』状態になる。",
+        "name": "大いなる決断",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『運命の輪』状態になった時、即座にハイライトゲージを消費しないハイライトを１回発動する。\n味方を『月下の仲間』状態にした時、対象が『月下の仲間』状態中に永続する『絆の力』を１つ付与し、『ルネーション』が５になる。\n味方に『琴奏の調べ』を使用後に対象の『絆の力』が３つの場合、５ターンの間、追加で対象のクリティカルダメージが３０%上昇する。",
+        "name": "響く琴の音",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『運命の輪』状態の時、自身がスキル／ハイライトで付与する全ての効果の持続ターンが追加で１ターン延長される。また『焔華・緋月昂揚』を使用する時の複製倍率が１.２５倍になる。",
+        "name": "肝っ玉母さん",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『琴奏の調べ』／『戦術技能』のスキルレベルが上昇する。",
+        "name": "満月の夜に",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "ハイライト能力追加：２ターンの間、味方全体の与ダメージが２５%上昇する。",
+        "name": "無窮の絆",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『月鳴の炎』／『焔華・緋月昂揚』のスキルレベルが上昇する。",
+        "name": "燃え尽きぬ炎",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『全力全開』の使用回数が１回追加される。\n主人公以外の味方に『焔華・緋月昂揚』を使用した時、主人公が『月下の仲間』状態でなければ、追加で主人公が『月下の仲間』状態の味方に付与した特定の強化効果を元の効果量の複製倍率で複製する。この効果は１ターン持続し、一部の効果は複製されない。",
+        "name": "魂の詩片",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "２ターンの間、味方全体のクリティカルダメージが19.5%/21.5%/20.7%/22.7%上昇し、さらに『月下の仲間』状態の味方の攻撃力が24.4%/26.9%/25.9%/28.4%上昇する。『運命の輪』状態の時、持続ターンが２ターン延長される。",
+      "name": "ハイライト",
+      "nature": "Support",
+      "skill_lv": "10/10/13/13",
+      "sn": 152152,
+      "tags": [
+        null
+      ],
+      "target": "Alive Ally",
+      "target_count": "All"
+    },
+    "innate": {
+      "Attack": "0.2",
+      "Damage Down": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S3",
+      "S2/HL"
+    ],
+    "name": "汐見 琴音",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "３ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、味方単体のクリティカルダメージが最大19.5%/21.5%/20.7%/22.7%まで上昇し、最大３つまで累積できる。\n選択した対象が『月下の仲間』状態ならば、『絆の力』を１つ付与する：３ターン持続し、最大３つまで累積できる。自身が場にいる時、累積数に応じて、対象は以下の効果を獲得する。\n「１：攻撃力が39.0%/43.0%/41.4%/45.4%上昇」\n「２：貫通が14.6%/16.1%/15.5%/17.0%上昇」\n「３：最終ダメージ増幅が4.9%/5.4%/5.2%/5.7%上昇」\n『運命の輪』状態の時、このスキルの効果の持続ターンが２ターン延長される。",
+        "name": "琴奏の調べ",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 152112,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "敵全体に攻撃力53.9%/59.4%/57.2%/62.7%の火炎属性ダメージを３回与える。敵の数が５体から１体減るごとに与ダメージが２５%上昇する。\n『月下の仲間』状態の味方が『絆の力』を３つ獲得している時、１ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、敵全体の被ダメージが最大29.3%/32.3%/31.1%/34.1%まで上昇する。\n『運命の輪』状態の時、このスキルの与ダメージが追加で292.8%/322.8%/310.8%/340.8%上昇し、持続ターンが２ターン延長される。さらにダメージを与えた対象の属性相性を無視してダウン値を2/2/2/2減少させる。",
+        "name": "月鳴の炎",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 152111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 22",
+        "desc": "１ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、味方全体の攻撃力が最大29.3%/32.3%/31.1%/34.1%まで上昇する。\n選択した対象が自身を除く『月下の仲間』状態ではない味方の場合、対象が『月下の仲間』状態の味方に付与した特定の強化効果を元の効果量の30.0%/30.0%/30.0%/30.0%の複製倍率で複製する。この効果は１ターン持続し、一部の効果は複製されない。\n『運命の輪』状態の時、このスキルの効果の持続ターンが１ターン延長される。\nクールタイム：２ターン（追加行動は除く）",
+        "name": "焔華・緋月昂揚",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 152113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "味方に強化効果を付与した時、３ターンの間、選択した対象の攻撃力が9.0%上昇する。最大３つまで累積できる。",
+        "name": "先導するリーダー",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152131,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Conditional Target",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『絆の力』を付与した時、２ターンの間、対象の貫通が12.0%上昇する。",
+        "name": "薙ぎ払う一撃",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 152132,
+        "tags": [
+          "潜在能力"
+        ],
+        "target": "Conditional Target",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 4850.0,
+      "HP": 6260.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1080.02 / 1099.22 / 1119.22 / 1138.42 / 1157.62 / 1177.62 / 1196.82",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "633.37 / 644.57 / 656.57 / 667.77 / 678.97 / 690.17 / 702.17",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3419.97 / 3481.57 / 3543.17 / 3604.77 / 3666.37 / 3727.97 / 3789.57",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "tnxct-[Skill_descSynchroniza_152112]",
+        "name": "琴奏の調べ",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 152112,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "tnxct-[Skill_descSynchroniza_152111]",
+        "name": "月鳴の炎",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 152111,
+        "tags": [
+          "全体攻撃"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 2,
+        "cost": "SP 22",
+        "desc": "tnxct-[Skill_descSynchroniza_152113]",
+        "name": "焔華・緋月昂揚",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 152113,
+        "tags": [
+          "強化"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -171,3 +171,11 @@ h1.character-name::before,
     color: #ffffff !important;
     opacity: 1 !important;
 }
+
+.warning-message {
+    color: rgb(228 174 174) !important;
+}
+
+.rarity-section {
+    filter: drop-shadow(1px 1px 0px rgb(0 0 0 / 28%));
+}

@@ -54,14 +54,14 @@ Object.assign(kr.skill3, {
   sync_highlight_values: ["58.6%/64.6%/62.2%/68.2%", "60.0%/60.0%/60.0%/60.0%"]
 });
 // EN/JP use their live-server wording and normal values from the source data.
-Object.assign(en.skill1, { description: "Based on Kotone Shiomi's Attack (up to 4684/5164/4972/5452), increase 1 ally's critical damage by up to 19.5%/21.5%/20.7%/22.7% for 3 turns. Stacks up to 3 times.\nIf the selected target is in the Arcana Link state, grant 1 Powerful Bond stack (3 turns, stacks up to 3 times). When Kotone Shiomi is present, based on the total number of stacks, grant the following effects to the target.\n1: Increase Attack by 39.0%/43.0%/41.4%/45.4%.\n2: Increase pierce rate by 14.6%/16.1%/15.5%/17.0%.\n3: Increase Final Damage Amplification by 4.9%/5.4%/5.2%/5.7%.\nWhen in the Fortune state, extend this skill's effect duration to 5 turns." });
-Object.assign(en.skill2, { description: "Deal Fire damage to all foes 3 times equal to 53.9%/59.4%/57.2%/62.7% of Attack.\nIf the ally in the Arcana Link state has 3 Powerful Bond stacks, increase skill multiplier by 4684/5164/4972/5452 more. Also, based on Kotone Shiomi's Attack (up to 29.3%/32.3%/31.1%/34.1%), increase all foes' damage taken by up to 292.8%/322.8%/310.8%/340.8% for 1 turn.\nWhen in the Fortune state, extend duration to 3 turns and decrease Down Points of all targets that take damage by 5 regardless of affinities." });
-Object.assign(en.skill3, { description: "Based on Kotone Shiomi's Attack (up to 4684/5164/4972/5452), increase party's Attack by up to 29.3%/32.3%/31.1%/34.1% for 1 turn.\nIf the main target is an ally without the Arcana Link state (excluding Kotone Shiomi), copy buffs granted to the ally in the Arcana Link state to the target with 30% of their original effectiveness. The applied buffs last for 1 turn, and certain special buffs cannot be copied.\nWhen in the Fortune state, extend this skill's effect duration to 2 turns.\nCooldown Time: 2 turns (does not count extra actions)." });
-en.skill_highlight.description = "Increase party's critical damage by 19.5%/21.5%/20.7%/22.7%, and also increase Attack of the ally in the Arcana Link state by 24.4%/26.9%/25.9%/28.4% for 2 turns. When in the Fortune state, extend duration to 4 turns.";
-Object.assign(jp.skill1, { description: "３ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、味方単体のクリティカルダメージが最大19.5%/21.5%/20.7%/22.7%まで上昇し、最大３つまで累積できる。\n選択した対象が『月下の仲間』状態ならば、『絆の力』を１つ付与する：３ターン持続し、最大３つまで累積できる。自身が場にいる時、累積数に応じて、対象は以下の効果を獲得する。\n「１：攻撃力が39.0%/43.0%/41.4%/45.4%上昇」\n「２：貫通が14.6%/16.1%/15.5%/17.0%上昇」\n「３：最終ダメージ増幅が4.9%/5.4%/5.2%/5.7%上昇」\n『運命の輪』状態の時、このスキルの効果の持続ターンが５ターンに延長される。" });
-Object.assign(jp.skill2, { description: "敵全体に攻撃力53.9%/59.4%/57.2%/62.7%の火炎属性ダメージを３回与える。\n『月下の仲間』状態の味方が『絆の力』を３つ獲得している時、スキル倍率が追加で4684/5164/4972/5452上昇する。さらに１ターンの間、自身の攻撃力（最大29.3%/32.3%/31.1%/34.1%まで）に応じて、敵全体の被ダメージが最大292.8%/322.8%/310.8%/340.8%まで上昇する。\n『運命の輪』状態の時、持続ターンが３ターンに延長され、ダメージを与えた対象の属性相性を無視してダウン値を５減少させる。" });
-Object.assign(jp.skill3, { description: "１ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、味方全体の攻撃力が最大29.3%/32.3%/31.1%/34.1%まで上昇する。\n選択した対象が自身を除く『月下の仲間』状態ではない味方の場合、対象が『月下の仲間』状態の味方に付与した強化効果を元の効果量の３０%で複製する。この効果は１ターン持続し、一部の特殊な効果は複製されない。\n『運命の輪』状態の時、このスキルの効果の持続ターンが２ターンに延長される。\nクールタイム：２ターン（追加行動は除く）" });
-jp.skill_highlight.description = "２ターンの間、味方全体のクリティカルダメージが19.5%/21.5%/20.7%/22.7%上昇し、さらに『月下の仲間』状態の味方の攻撃力が24.4%/26.9%/25.9%/28.4%上昇する。『運命の輪』状態の時、持続ターンが４ターンに延長される。";
+Object.assign(en.skill1, { description: "Based on Kotone Shiomi's Attack (up to 4684/5164/4972/5452), increase 1 ally's critical damage by up to 19.5%/21.5%/20.7%/22.7% for 3 turns. Stacks up to 3 times.\nIf the main target is in the Arcana Link state, grant 1 Powerful Bond stack (3 turns, stacks up to 3 times). When Kotone Shiomi is present, based on the total number of stacks, grant the following effects to the target.\n1: Increase Attack by 39.0%/43.0%/41.4%/45.4%.\n2: Increase pierce rate by 14.6%/16.1%/15.5%/17.0%.\n3: Increase Final Damage Amplification by 4.9%/5.4%/5.2%/5.7%.\nWhen in the Fortune state, extend this skill's effect duration by 2 turns." });
+Object.assign(en.skill2, { description: "Deal Fire damage to all foes equal to 53.9%/59.4%/57.2%/62.7% of Attack (3 hits). If the enemy count is reduced below 5, increase damage by 25% per reduced foe.\nIf the ally in the Arcana Link state has 3 Powerful Bonds, based on Kotone Shiomi's Attack (up to 4684/5164/4972/5452), increase all foes' damage taken by up to 29.3%/32.3%/31.1%/34.1% for 1 turn.\nWhen in the Fortune state, increase this skill's damage by 292.8%/322.8%/310.8%/340.8% more and extend duration by 2 turns. Also, decrease Down Points of all targets that take damage by 2/2/2/2 regardless of affinities." });
+Object.assign(en.skill3, { description: "Based on Kotone Shiomi's Attack (up to 4684/5164/4972/5452), increase party's Attack by up to 29.3%/32.3%/31.1%/34.1% for 1 turn.\nIf the main target is an ally without the Arcana Link state (excluding Kotone Shiomi), copy certain buffs' effects granted by the target to the Arcana Link ally with a 30.0%/30.0%/30.0%/30.0% copy multiplier of their original effectiveness. These effects last for 1 turn, and certain effects cannot be copied.\nWhen in the Fortune state, extend this skill's effect duration by 1 turn.\nCooldown Time: 2 turns (does not count extra actions)." });
+en.skill_highlight.description = "Increase party's critical damage by 19.5%/21.5%/20.7%/22.7%, and also increase Attack of the ally in the Arcana Link state by 24.4%/26.9%/25.9%/28.4% for 2 turns. When in the Fortune state, extend duration by 2 turns.";
+Object.assign(jp.skill1, { description: "３ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、味方単体のクリティカルダメージが最大19.5%/21.5%/20.7%/22.7%まで上昇し、最大３つまで累積できる。\n選択した対象が『月下の仲間』状態ならば、『絆の力』を１つ付与する：３ターン持続し、最大３つまで累積できる。自身が場にいる時、累積数に応じて、対象は以下の効果を獲得する。\n「１：攻撃力が39.0%/43.0%/41.4%/45.4%上昇」\n「２：貫通が14.6%/16.1%/15.5%/17.0%上昇」\n「３：最終ダメージ増幅が4.9%/5.4%/5.2%/5.7%上昇」\n『運命の輪』状態の時、このスキルの効果の持続ターンが２ターン延長される。" });
+Object.assign(jp.skill2, { description: "敵全体に攻撃力53.9%/59.4%/57.2%/62.7%の火炎属性ダメージを３回与える。敵の数が５体から１体減るごとに与ダメージが２５%上昇する。\n『月下の仲間』状態の味方が『絆の力』を３つ獲得している時、１ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、敵全体の被ダメージが最大29.3%/32.3%/31.1%/34.1%まで上昇する。\n『運命の輪』状態の時、このスキルの与ダメージが追加で292.8%/322.8%/310.8%/340.8%上昇し、持続ターンが２ターン延長される。さらにダメージを与えた対象の属性相性を無視してダウン値を2/2/2/2減少させる。" });
+Object.assign(jp.skill3, { description: "１ターンの間、自身の攻撃力（最大4684/5164/4972/5452まで）に応じて、味方全体の攻撃力が最大29.3%/32.3%/31.1%/34.1%まで上昇する。\n選択した対象が自身を除く『月下の仲間』状態ではない味方の場合、対象が『月下の仲間』状態の味方に付与した特定の強化効果を元の効果量の30.0%/30.0%/30.0%/30.0%の複製倍率で複製する。この効果は１ターン持続し、一部の効果は複製されない。\n『運命の輪』状態の時、このスキルの効果の持続ターンが１ターン延長される。\nクールタイム：２ターン（追加行動は除く）" });
+jp.skill_highlight.description = "２ターンの間、味方全体のクリティカルダメージが19.5%/21.5%/20.7%/22.7%上昇し、さらに『月下の仲間』状態の味方の攻撃力が24.4%/26.9%/25.9%/28.4%上昇する。『運命の輪』状態の時、持続ターンが２ターン延長される。";
 // The EN/JP source has not published Sync Mindscape text yet. Keep its values
 // available with localized descriptions instead of falling back to KR/CN text.
 Object.assign(en.skill1, {
@@ -110,7 +110,7 @@ Object.assign(en.skill2, {
 Object.assign(en.skill3, {
   sync_description: withSyncValues(en.skill3.description, [
     ["29.3%/32.3%/31.1%/34.1%", "58.6%/64.6%/62.2%/68.2%"],
-    ["30% of their original effectiveness", "60% of their original effectiveness"]
+    ["30.0%/30.0%/30.0%/30.0% copy multiplier", "60.0%/60.0%/60.0%/60.0% copy multiplier"]
   ]),
   sync_highlight_values: ["58.6%/64.6%/62.2%/68.2%", "60.0%/60.0%/60.0%/60.0%", "60%"]
 });
@@ -130,7 +130,7 @@ Object.assign(jp.skill2, {
 Object.assign(jp.skill3, {
   sync_description: withSyncValues(jp.skill3.description, [
     ["29.3%/32.3%/31.1%/34.1%", "58.6%/64.6%/62.2%/68.2%"],
-    ["３０%", "６０%"]
+    ["30.0%/30.0%/30.0%/30.0%の複製倍率", "60.0%/60.0%/60.0%/60.0%の複製倍率"]
   ]),
   sync_highlight_values: ["58.6%/64.6%/62.2%/68.2%", "60.0%/60.0%/60.0%/60.0%", "６０%"]
 });

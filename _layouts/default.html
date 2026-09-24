@@ -246,7 +246,7 @@
       document.dispatchEvent(new CustomEvent('lufel:nitro-loader-status', { detail: status }));
     };
   </script>
-  <script data-cfasync="false" async src="https://s.nitropay.com/ads-2620.js" onload="window.__setLufelNitroLoaderStatus('loaded')" onerror="window.__setLufelNitroLoaderStatus('blocked')"></script>
+  <script data-cfasync="false" data-log-level="error" async src="https://s.nitropay.com/ads-2620.js" onload="window.__setLufelNitroLoaderStatus('loaded')" onerror="window.__setLufelNitroLoaderStatus('blocked')"></script>
   <script src="{{ site.baseurl }}/assets/js/nitro-ads.js?h={{ site.data.asset_versions.files['/assets/js/nitro-ads.js'] }}" defer></script>
 
   <!-- Google tag (gtag.js), lazily loaded. Nitro custom consent ID "ga" updates Consent Mode in CMP regions. -->

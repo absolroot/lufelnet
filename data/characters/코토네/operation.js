@@ -159,22 +159,26 @@ window.operationData['코토네'] = {
     basic_jp: createKotoneOperation('jp'),
     basic_cn: createKotoneOperation('cn'),
     note: [
+        "· 출시 초기로 언제든지 운영 방식은 변경될 수 있습니다.",
         "· 핑크색 배경은 『전력전개』발동 턴을 의미한다.",
         "· 실질적으로 의식6을 제외하고는 운영 방식은 크게 변하지 않으나 활성화된 버프가 달라진다.",
         "· 『인연의 힘』, 『삭망월』 행은 현재 중첩 수를 표시한다.",
         "· (미쿠)는 해명 괴도로 미쿠를 활용하는 파티를 의미하며 미쿠의 고스트 룰을 사용하는 턴에 따라 택틱 순서는 변화할 수 있다."
     ],
     note_en: [
+        "· As this is the initial release, the operation strategy may change at any time.",
         "· The pink background marks the turn Go for Broke is activated.",
         "· The Powerful Bond row shows the current stack count, and the Lunar Bond row shows the current level.",
         "· (Miku) refers to a party that uses Miku as its Elucidator; the tactic sequence may change depending on the turn she uses Ghost Rule."
     ],
     note_jp: [
+        "· 実装初期のため、運用方法はいつでも変更される可能性があります。",
         "· ピンク色の背景は『全力全開』を発動するターンを示す。",
         "· 『絆の力』の欄は現在の累積数、『ルネーション』の欄は現在のレベルを示す。",
         "· （ミク）は解明怪盗としてミクを採用するパーティを指し、ミクが『ゴーストルール』を使用するターンによって、タクティクスの順序は変わる場合がある。"
     ],
     note_cn: [
+        "· 由于处于上线初期，运营方式可能随时发生变化。",
         "· 粉色背景表示发动『全力全开』的回合。",
         "· 『羁绊之力』栏显示当前层数，『朔望月』栏显示当前等级。",
         "· （初音未来）是指将初音未来作为解明怪盗使用的队伍；根据初音未来使用『幽灵法则』的回合不同，战术顺序可能会变化。"

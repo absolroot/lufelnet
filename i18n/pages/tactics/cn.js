@@ -10,7 +10,7 @@ window.I18N_PAGE_TACTICS_CN = {
     "ranking_all": "总榜",
     "character_filter_title": "怪盗筛选",
     "spoiler_toggle": "显示剧透",
-    "search_placeholder": "搜索标题...",
+    "search_placeholder": "搜索标题或作者...",
     "type_all": "全部",
     "type_nightmare": "阏凶梦之扉",
     "type_sea": "心之海",

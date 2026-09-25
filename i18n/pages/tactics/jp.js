@@ -10,7 +10,7 @@ window.I18N_PAGE_TACTICS_JP = {
     ranking_all: '総合',
     character_filter_title: 'キャラクターフィルター',
     spoiler_toggle: 'ネタバレ表示',
-    search_placeholder: 'タイトル検索...',
+    search_placeholder: 'タイトルまたは投稿者を検索...',
     type_all: '全体',
     type_nightmare: '閼兇夢',
     type_sea: '心の海',

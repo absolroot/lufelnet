@@ -10,7 +10,7 @@ window.I18N_PAGE_TACTICS_EN = {
     ranking_all: 'AllTime',
     character_filter_title: 'Character Filter',
     spoiler_toggle: 'Show Spoilers',
-    search_placeholder: 'Search title...',
+    search_placeholder: 'Search by title or author...',
     type_all: 'All',
     type_nightmare: 'NTMR',
     type_sea: 'SoS',

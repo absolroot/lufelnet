@@ -10,7 +10,7 @@ window.I18N_PAGE_TACTICS_KR = {
     ranking_all: '역대',
     character_filter_title: '캐릭터 필터',
     spoiler_toggle: '스포일러 표시',
-    search_placeholder: '제목 검색...',
+    search_placeholder: '제목 또는 작성자 검색...',
     type_all: '전체',
     type_nightmare: '흉몽',
     type_sea: '바다',

@@ -499,9 +499,12 @@ class TacticsViewer {
 
         // 검색 필터
         if (this.searchKeyword) {
-            filtered = filtered.filter(tactic =>
-                tactic.title.toLowerCase().includes(this.searchKeyword.toLowerCase())
-            );
+            const keyword = this.searchKeyword.toLocaleLowerCase();
+            filtered = filtered.filter(tactic => {
+                const title = String(tactic.title || '').toLocaleLowerCase();
+                const author = String(tactic.author || '').toLocaleLowerCase();
+                return title.includes(keyword) || author.includes(keyword);
+            });
         }
 
         // 스포일러 체크: 스포일러가 꺼져있고 미출시 캐릭터가 포함된 택틱 숨김

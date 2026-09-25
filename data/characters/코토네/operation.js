@@ -315,7 +315,7 @@ const kotoneOperationRoutes = [
     },
     {
         group: 'r6', id: 'standard', turnCount: 6,
-        skills: ['1', '1+1+3', 'fatigue', 'fatigue', '1+3+2', '3', '', ''],
+        skills: ['1', '1+1+3', 'fatigue', 'fatigue', '1+3+2', 'fatigue', '', ''],
         buffs: [
             ['S1 × 1', '', '', 'P1 × 1', 'P2', ''],
             ['S1 × 3', '', 'S3', 'P1 × 3', 'P2', 'HL'],

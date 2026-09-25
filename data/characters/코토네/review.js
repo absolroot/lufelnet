@@ -26,31 +26,12 @@ P5X 아시아 서버 2.5주년이자 페르소나 시리즈 30주년을 기념�
 
 특수 스킬 **『전력전개』를 사용하면 뒤의 2턴을 먼저 현재 턴으로 가져와 추가턴을 2턴 획득해 3번 행동하고 이후 2턴간 행동할 수 없게 된다.**
 
-3개의 모두 활성화돼있는 타이밍이 가장 강한 버프를 주는 시기인만큼 해당 시기에 강력한 버프를 모두 몰아주는 것이 중요하다.
-
-의식0,1,2는 사이클은 동일해 사용 형태에는 차이가 없게 설계돼있는만큼 명함으로도 제 성능을 충분히 발휘하며, 각 턴에 활성화돼있는 버프에서 차이가 발생하는 구조로 상세하게 설계돼있다. 
-
 ---
 
 **『운명의 수레바퀴』**
 
 > 시오미 코토네가 특수 스킬 『전력 전개』를 시전하여 진입하는 상태. 『운명의 수레바퀴』 상태에 진입하면 추가 턴을 2개 획득한다. 상태 종료 시, 『월하 동료』가 자동으로 HIGHLIGHT/테우르기아를 1회 시전하며, 그 후 시오미 코토네는 2턴 동안 행동할 수 없는 『감기』 상태에 빠진다.
-
----
-
-**[안내사항]**
-
-현재 가이드는 리뷰 및 운영방식에서 업데이트가 필요합니다.
-
-다음 요소들을 반영해 추천 운영 방식을 조정할 필요가 있어, 확인을 거쳐 수정할 예정입니다.
-
-시간이 지나서 정립되면 다시 수정하겠습니다. 불편을 끼쳐드려 죄송합니다.
-
-- 스킬1: 크리티컬 효과 부여 중첩은 『전력 전개』 사용 시 유지시간이 증가하지 않습니다.
-- 패시브1: 스킬3의 메인 타겟은 딜러가 될 수 없기 때문에 1+2+3 스킬 사용 시에는 3중첩을 유지할 수 없습니다.
-- 패시브2: 『전력 전개』 사용 시 지속시간이 증가하지 않아 12% 관통 버프가 2번째 『감기』 턴에 사라집니다.
-- 위와 같은 이유로 1+1+3이 더 유리해 스킬2의 사용성이 크게 떨어집니다.
-- 삭망월이 5스택을 달성한 이후 스킬1을 다시 사용하지 않으면 전용무기의 버프가 적용되지 않습니다.`,
+`,
         review_en: `
 Kotone Shiomi is a Fire support released as part of the P3P collaboration.
 
@@ -70,32 +51,13 @@ However, **it cannot copy debuffs placed on enemies, such as increased damage ta
 
 Using the special skill **Go for Broke brings her next 2 turns forward, granting 2 extra turns to act 3 times in total. She then cannot act for the following 2 turns.**
 
-Her buffs are at their strongest when all three are active, so it is important to concentrate the party's strongest buffs in that window.
-
-Awareness 0, 1, and 2 use the same cycle, so their play pattern does not change; she can fully perform her role even at Awareness 0. Their detailed design instead changes which buffs are active on each turn. See Recommended Operation below for the full breakdown.
-
 ---
 
 **Fortune**
 
 > When entering this state, gain 2 extra actions.
 > When this state ends, the ally in the Arcana Link state activates their Highlight or Theurgy. Afterwards, Kotone Shiomi will enter the Sick state for 2 turns, making her unable to act.
-
----
-
-**[Notice]**
-
-The current guide requires updates to both its review and recommended operation.
-
-The recommended operation will be adjusted after further verification of the following factors.
-
-We will revise this guide again once the mechanics have been established. We apologize for the inconvenience.
-
-- Skill 1: Critical damage buff stacks do not gain duration when Go for Broke is used.
-- Passive 1: Skill 3's main target cannot be the damage dealer, so using Skills 1+2+3 cannot maintain 3 Passive 1 stacks.
-- Passive 2: Its duration does not increase when Go for Broke is used, so the 12% Pierce buff disappears on the second Sick turn.
-- For these reasons, 1+1+3 is currently more favorable, greatly reducing the usefulness of Skill 2.
-- Once Lunar Bond reaches 5 stacks, the exclusive weapon's buff is not applied unless Skill 1 is used again.`,
+`,
         review_jp: `
 汐見琴音は、P3Pコラボで実装された火炎属性のバッファー。
 
@@ -115,32 +77,13 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
 
 特殊スキル**『全力全開』を使用すると、以降2ターンを現在のターンに繰り上げて追加ターンを2つ獲得し、合計3回行動する。その後、2ターンの間行動できなくなる。**
 
-3つすべての効果が有効なタイミングが最も強力な強化タイミングとなるため、この区間に強力なバフを集中させることが重要だ。
-
-意識0・1・2はサイクルが同じで運用に違いがないため、無凸でも十分に性能を発揮できる。各ターンで有効な強化効果が異なるよう詳細に設計されており、詳しくは下のおすすめ運用を確認してほしい。
-
 ---
 
 **『運命の輪』**
 
 > この状態になった時、追加行動を２回獲得する。
 > 終了した時、『月下の仲間』状態の味方のハイライト／テウルギアを発動させる。その後、２ターンの間、自身は『風邪』状態になり、行動不能になる。
-
----
-
-**【お知らせ】**
-
-現在、このガイドはレビューおよびおすすめ運用の更新が必要です。
-
-以下の要素を踏まえ、推奨運用を調整する必要があるため、確認を経て修正する予定です。
-
-挙動が確立され次第、改めて更新します。ご不便をおかけして申し訳ありません。
-
-- スキル1：クリティカルダメージ強化の累積は、『全力全開』使用時に持続ターンが増加しません。
-- パッシブ1：スキル3のメイン対象をアタッカーにできないため、スキル1+2+3ではパッシブ1を3つ累積できません。
-- パッシブ2：『全力全開』使用時に持続ターンが増加しないため、12%の貫通強化は2回目の『風邪』ターンで消えます。
-- 上記の理由により、現在は1+1+3の方が有利で、スキル2の有用性が大きく下がります。
-- 『ルネーション』が5に到達した後、スキル1を再使用しない限り、専用武器の強化効果は適用されません。`,
+`,
         review_cn: `
 汐见琴音是作为P3P联动角色登场的火焰属性辅助。
 
@@ -160,31 +103,12 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
 
 使用特殊技能**『全力全开』后，会将之后2回合提前至当前回合，获得2个额外回合，共行动3次；随后2回合无法行动。**
 
-三个效果全部生效时是增益最强的时机，因此应将强力增益集中在这一阶段。
-
-意识0、1、2的循环相同，使用方式没有差异，因此即使0意识也能充分发挥性能。各回合生效的增益效果有所不同，设计得相当细致；详细内容请参考下方的推荐操作。
-
 ---
 
 **『命运之轮』**
 
 > 汐见琴音通过释放特殊技能『全力全开』进入的状态。进入『命运之轮』状态后获得2个额外回合。状态结束时使『月下伙伴』自动释放1次HIGHLIGHT/神通法，之后汐见琴音陷入2回合无法行动的『感冒』状态。
-
----
-
-**【公告】**
-
-当前指南的评测与推荐操作均需要更新。
-
-考虑到下列因素，推荐操作需要调整；经进一步确认后将进行修订。
-
-待机制经过一段时间得到明确后，我们会再次更新。给您带来不便，敬请谅解。
-
-- 技能1：暴击效果增益的层数在使用『全力全开』时不会增加持续回合。
-- 被动1：技能3的主要目标不能是主力输出，因此使用1+2+3时无法维持被动1的3层效果。
-- 被动2：使用『全力全开』时持续回合不会增加，因此12%的穿透增益会在第2个『感冒』回合消失。
-- 基于上述原因，目前1+1+3更有利，使技能2的实用性大幅下降。
-- 『朔望月』达到5层后，若不再次使用技能1，专属武器的增益效果不会生效。`,
+`,
         pros: [
             "아군 딜러가 받은 버프를 일정 비율로 복제할 수 있다.",
             "단순 보유만으로도 최종 대미지 증폭 효과를 제공한다."

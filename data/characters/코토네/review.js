@@ -24,7 +24,7 @@ P5X 아시아 서버 2.5주년이자 페르소나 시리즈 30주년을 기념�
 
 <br>
 
-특수 스킬 **『전력전개』를 사용하면 뒤의 2턴을 먼저 현재 턴으로 끌고와 추가턴을 획득해 1+2+3스킬을 모두 사용하고 이후 2턴간 행동할 수 없게 된다.**
+특수 스킬 **『전력전개』를 사용하면 뒤의 2턴을 먼저 현재 턴으로 가져와 추가턴을 2턴 획득해 3번 행동하고 이후 2턴간 행동할 수 없게 된다.**
 
 3개의 모두 활성화돼있는 타이밍이 가장 강한 버프를 주는 시기인만큼 해당 시기에 강력한 버프를 모두 몰아주는 것이 중요하다.
 
@@ -68,7 +68,7 @@ However, **it cannot copy debuffs placed on enemies, such as increased damage ta
 
 <br>
 
-Using the special skill **Go for Broke brings her next 2 turns forward as extra actions, allowing her to use Skills 1, 2, and 3 before leaving her unable to act for 2 turns.**
+Using the special skill **Go for Broke brings her next 2 turns forward, granting 2 extra turns to act 3 times in total. She then cannot act for the following 2 turns.**
 
 Her buffs are at their strongest when all three are active, so it is important to concentrate the party's strongest buffs in that window.
 
@@ -113,7 +113,7 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
 
 <br>
 
-特殊スキル**『全力全開』を使用すると、以降2ターンを現在のターンに繰り上げて追加行動を獲得し、スキル1・2・3をすべて使用した後、2ターンの間行動できなくなる。**
+特殊スキル**『全力全開』を使用すると、以降2ターンを現在のターンに繰り上げて追加ターンを2つ獲得し、合計3回行動する。その後、2ターンの間行動できなくなる。**
 
 3つすべての効果が有効なタイミングが最も強力な強化タイミングとなるため、この区間に強力なバフを集中させることが重要だ。
 
@@ -158,7 +158,7 @@ P5Xアジアサーバー2.5周年とペルソナシリーズ30周年を記念し
 
 <br>
 
-使用特殊技能**『全力全开』后，会将之后2回合提前至当前回合，获得额外行动；依次使用技能1、2、3后，接下来2回合将无法行动。**
+使用特殊技能**『全力全开』后，会将之后2回合提前至当前回合，获得2个额外回合，共行动3次；随后2回合无法行动。**
 
 三个效果全部生效时是增益最强的时机，因此应将强力增益集中在这一阶段。
 

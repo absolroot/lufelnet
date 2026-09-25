@@ -104,7 +104,10 @@ Object.assign(en.skill1, {
   sync_highlight_values: ["39.0%/43.0%/41.4%/45.4%", "78.1%/86.1%/82.9%/90.9%", "19.5%/21.5%/20.7%/22.7%", "9.8%/10.8%/10.4%/11.4%"]
 });
 Object.assign(en.skill2, {
-  sync_description: withSyncValues(en.skill2.description, [["29.3%/32.3%/31.1%/34.1%", "58.6%/64.6%/62.2%/68.2%"]]),
+  sync_description: withSyncValues(en.skill2.description, [
+    ["29.3%/32.3%/31.1%/34.1%", "58.6%/64.6%/62.2%/68.2%"],
+    ["2/2/2/2 regardless of affinities", "5/5/5/5 regardless of affinities"]
+  ]),
   sync_highlight_values: ["58.6%/64.6%/62.2%/68.2%", "5/5/5/5"]
 });
 Object.assign(en.skill3, {
@@ -124,7 +127,10 @@ Object.assign(jp.skill1, {
   sync_highlight_values: ["39.0%/43.0%/41.4%/45.4%", "78.1%/86.1%/82.9%/90.9%", "19.5%/21.5%/20.7%/22.7%", "9.8%/10.8%/10.4%/11.4%"]
 });
 Object.assign(jp.skill2, {
-  sync_description: withSyncValues(jp.skill2.description, [["29.3%/32.3%/31.1%/34.1%", "58.6%/64.6%/62.2%/68.2%"]]),
+  sync_description: withSyncValues(jp.skill2.description, [
+    ["29.3%/32.3%/31.1%/34.1%", "58.6%/64.6%/62.2%/68.2%"],
+    ["2/2/2/2", "5/5/5/5"]
+  ]),
   sync_highlight_values: ["58.6%/64.6%/62.2%/68.2%", "5/5/5/5"]
 });
 Object.assign(jp.skill3, {

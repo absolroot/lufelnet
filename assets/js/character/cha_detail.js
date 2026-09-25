@@ -2407,6 +2407,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 })
                 .map(item => {
                     const operationGroupAttr = item.group ? ` data-operation-group="${String(item.group).replace(/"/g, '&quot;')}"` : '';
+                    const operationVariantAttr = item.variant ? ` data-operation-variant="${String(item.variant).replace(/"/g, '&quot;')}"` : '';
                     // 의식 텍스트 번역
                     let translatedLabel = item.label;
                     const awarenessPrefixEn = t('characterOperationAwarenessPrefixEn', 'A');
@@ -2434,11 +2435,27 @@ document.addEventListener('DOMContentLoaded', () => {
                             const isReserved = !item.turns[index];
                             const rawValue = isReserved ? '' : (values[index] == null || values[index] === '' ? '—' : values[index]);
                             const attributes = !isReserved && typeof getAttributes === 'function' ? getAttributes(index) : '';
+                            if (item.buff_slots && values === item.buffs) {
+                                const slots = Array.isArray(rawValue) ? rawValue : [];
+                                const slotLabels = ['S1', 'S2', 'S3', 'P1', 'P2', 'HL'];
+                                const s1Stack = Number((slots[0] || '').match(/^S1\s*×\s*(\d+)$/)?.[1] || 0);
+                                const p1Stack = Number((slots[3] || '').match(/^P1\s*×\s*(\d+)$/)?.[1] || 0);
+                                const isFullStack = s1Stack === 3 && p1Stack === 3;
+                                const slotHtml = Array.from({ length: 6 }, (_, slotIndex) => {
+                                    const slotValue = slots[slotIndex] || '';
+                                    const stackMatch = slotValue.match(/^(S1|P1)\s*×\s*(\d+)$/);
+                                    const displayValue = stackMatch
+                                        ? `${stackMatch[1]} <span class="operation-stack-dots${isFullStack ? ' operation-stack-dots--full' : ''}" role="img" aria-label="${stackMatch[2]}">${'<i aria-hidden="true"></i>'.repeat(Number(stackMatch[2]))}</span>`
+                                        : slotValue;
+                                    return `<span class="operation-buff-slot operation-buff-slot--${slotIndex + 1}" data-slot-label="${slotLabels[slotIndex]}">${displayValue}</span>`;
+                                }).join('');
+                                return `<td class="operation-buff-slots"${isReserved ? ' data-operation-timeline-reserved="true"' : ''}${attributes}><div class="operation-buff-slots-inner">${slotHtml}</div></td>`;
+                            }
                             return `<td${isReserved ? ' data-operation-timeline-reserved="true"' : ''}${attributes}>${rawValue}</td>`;
                         }).join('');
                         return `
-                            <div class="operation-row operation-row--timeline"${operationGroupAttr}>
-                                <div class="operation-label">${translatedLabel}</div>
+                            <div class="operation-row operation-row--timeline"${operationGroupAttr}${operationVariantAttr}>
+                                ${item.variant ? '' : `<div class="operation-label">${translatedLabel}</div>`}
                                 <div class="operation-value">
                                     <div class="operation-timeline-scroll">
                                         <table class="operation-timeline operation-timeline--${visibleTurnCount}-turns${currentLang === 'en' ? ' operation-timeline--english' : ''}">

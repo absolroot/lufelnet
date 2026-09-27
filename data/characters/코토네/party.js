@@ -13,10 +13,10 @@ window.recommendParty["코토네"] = {
         },
         {
             "name": "J&C",
-            "comment": "스킬 증폭 효과를 통해 코토네의 스킬3 버프 복제 비율을 높여주고, 코토네가 또 아군이 JC로부터 받은 받은 스킬 증폭 효과를 복제할 수 있다.",
-            "comment_en": "Skill Amplification raises the buff-copy ratio of Kotone's Skill 3, and Kotone can also copy the Skill Amplification effect allies receive from J&C.",
-            "comment_jp": "スキル成長効果上昇により琴音のスキル3の強化効果の複製倍率を高め、琴音は味方がJ&Cから受けたスキル成長効果上昇も複製できる。",
-            "comment_cn": "可通过『技能效果增幅』提高琴音技能3的增益复制比例，琴音还可以复制同伴从J&C获得的『技能效果增幅』。"
+            "comment": "코토네는 아군이 J&C에게 받은 스킬 효과 증폭 수치를 복제해 부여할 수 있다.",
+            "comment_en": "Kotone can copy and grant the Skill Effect Amplification value an ally receives from J&C.",
+            "comment_jp": "琴音は味方がJ&Cから受けたスキル成長効果上昇の数値を複製して付与できる。",
+            "comment_cn": "琴音可以复制同伴从J&C获得的『技能效果增幅』数值并赋予同伴。"
         },
         {
             "name": "미나미·여름",

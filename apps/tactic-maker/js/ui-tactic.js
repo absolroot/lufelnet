@@ -1615,7 +1615,7 @@ export class TacticUI {
             // Character skills - 스킬1, 스킬2, 스킬3 with element icons
             const charName = char.name;
             const charData = (window.characterData || {})[char.name] || {};
-            const isPersona3 = charData.persona3 === true;
+            const isPersona3 = charData.persona3 === true && charData.persona3p !== true;
 
             // J&C special handling - has 2 skills based on role, no skill3, and 2 HIGHLIGHTs
             if (charName === 'J&C') {
@@ -2975,11 +2975,9 @@ export class TacticUI {
                 select.appendChild(opt);
             }
 
-            // Check if character has persona3: true
-            // persona3: show Theurgia, hide HIGHLIGHT
-            // not persona3: show HIGHLIGHT, hide Theurgia
+            // Persona 3 Portable characters use HIGHLIGHT even when persona3 is also true.
             const charData = (window.characterData || {})[char.name] || {};
-            const isPersona3 = charData.persona3 === true;
+            const isPersona3 = charData.persona3 === true && charData.persona3p !== true;
 
             // Common actions
             const commonGroup = document.createElement('optgroup');

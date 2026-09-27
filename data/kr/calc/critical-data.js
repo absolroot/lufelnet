@@ -467,7 +467,7 @@ const criticalBuffData = {
       "id": "kotone-skill3-copy-crit-rate",
       "type": "스킬3", "type_en": "Skill 3", "type_jp": "スキル3", "target": "단일", "target_en": "Single", "target_jp": "単体",
       "skillIcon": "/assets/img/skill-element/버프.png", "skillName": "염화·떠오르는 붉은 달", "skillName_en": "Skill 3", "skillName_jp": "スキル3",
-      "options": [], "value": 0, "skillEffectAmpAffected": true, "kotoneSkillEffectAmpAffected": true, "kotoneCopySkill3": true, "kotoneCopyMultiplier": 0.3,
+      "options": [], "value": 0, "skillEffectAmpAffected": false, "kotoneCopySkill3": true, "kotoneCopyMultiplier": 0.3,
       "duration": "1턴", "note": "선택한 동료의 크리티컬 확률 버프 복제", "note_en": "Copy selected ally's critical-rate buffs", "note_jp": "選択した味方のCRT発生率強化を複製",
       "skillName_cn": "焰华·绯月昂扬", "note_cn": "复制所选同伴的暴击率增益", "type_cn": "技能3", "target_cn": "单体", "duration_cn": "1回合", "options_cn": []
     },
@@ -475,7 +475,7 @@ const criticalBuffData = {
       "id": "kotone-sync-skill3-copy-crit-rate",
       "type": "스킬3", "type_en": "Skill 3", "type_jp": "スキル3", "target": "단일", "target_en": "Single", "target_jp": "単体",
       "skillIcon": "/assets/img/skill-element/버프.png", "skillName": "염화·떠오르는 붉은 달(싱크로 심상)", "skillName_en": "Skill 3 (Sync Mindscape)", "skillName_jp": "スキル3（シンクロイメジャリー）",
-      "options": [], "value": 0, "skillEffectAmpAffected": true, "kotoneSkillEffectAmpAffected": true, "kotoneCopySkill3": true, "kotoneCopyMultiplier": 0.6,
+      "options": [], "value": 0, "skillEffectAmpAffected": false, "kotoneCopySkill3": true, "kotoneCopyMultiplier": 0.6,
       "duration": "1턴", "note": "선택한 동료의 크리티컬 확률 버프 복제", "note_en": "Copy selected ally's critical-rate buffs", "note_jp": "選択した味方のCRT発生率強化を複製",
       "skillName_cn": "焰华·绯月昂扬（同步心象）", "note_cn": "复制所选同伴的暴击率增益", "type_cn": "技能3", "target_cn": "单体", "duration_cn": "1回合", "options_cn": []
     }

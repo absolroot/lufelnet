@@ -2,7 +2,7 @@
 
 `api.lufel.net` proxies only the public `tactics` and `tactic_likes` PostgREST paths. The site keeps using Supabase Auth. Reads use Cloudflare's per-location cache; D1 stores a global version for each table. A successful write increments that version before the browser receives its response, so the next read uses a fresh cache key.
 
-The cache can hold a read for up to five minutes, but new home posts are checked against the newest tactic ID at most once every 30 seconds across the service. This covers tabs that were open before the site started using the proxy. The normal upload path updates the cache version immediately. Likes are saved before the existing UI updates, and the write also invalidates cached like counts. Reads that include `recent_like` bypass the shared cache.
+The home list cache lasts at most 30 seconds; other public reads can be cached for up to five minutes. The browser requests the home list only when the page loads or reloads, with no periodic refresh or separate newest-tactic probe. The normal upload path updates the cache version immediately. Likes are saved before the existing UI updates, and the write also invalidates cached like counts. Reads that include `recent_like` bypass the shared cache.
 
 ## Deployment
 

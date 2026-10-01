@@ -1,7 +1,7 @@
 const TABLES = new Set(['tactics', 'tactic_likes']);
 const METHODS = new Set(['GET', 'HEAD', 'POST', 'PATCH', 'DELETE']);
 const CACHE_SECONDS = 300;
-const HOME_PROBE_MS = 30000;
+const HOME_CACHE_SECONDS = 30;
 
 function tableFromPath(pathname) {
   const match = /^\/rest\/v1\/(tactics|tactic_likes)$/.exec(pathname);
@@ -56,33 +56,6 @@ async function proxy(request, env, publicRead) {
   return fetch(new Request(target, init));
 }
 
-async function probeLatestTactic(env) {
-  const now = Date.now();
-  const claim = await env.CACHE_STATE.prepare(
-    'UPDATE cache_versions SET last_probe_at_ms = ? WHERE table_name = ? AND last_probe_at_ms < ?'
-  ).bind(now, 'tactics', now - HOME_PROBE_MS).run();
-  if (!claim.meta?.changes) return;
-
-  try {
-    const probe = new Request(new URL('/rest/v1/tactics?select=id&order=created_at.desc&limit=1', env.SUPABASE_URL), {
-      headers: {
-        apikey: env.SUPABASE_PUBLISHABLE_KEY,
-        authorization: `Bearer ${env.SUPABASE_PUBLISHABLE_KEY}`
-      }
-    });
-    const response = await fetch(probe);
-    if (!response.ok) throw new Error(`Latest tactic probe returned ${response.status}`);
-    const rows = await response.json();
-    const latestId = rows[0]?.id == null ? '' : String(rows[0].id);
-    await env.CACHE_STATE.prepare(
-      'UPDATE cache_versions SET version = version + 1, latest_id = ? WHERE table_name = ? AND (latest_id IS NULL OR latest_id <> ?)'
-    ).bind(latestId, 'tactics', latestId).run();
-  } catch (error) {
-    await env.CACHE_STATE.prepare('UPDATE cache_versions SET last_probe_at_ms = 0 WHERE table_name = ?').bind('tactics').run();
-    throw error;
-  }
-}
-
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -120,7 +93,6 @@ export default {
     let key = null;
     if (cacheable) {
       try {
-        if (isHomeList) await probeLatestTactic(env);
         const state = await env.CACHE_STATE.prepare('SELECT version FROM cache_versions WHERE table_name = ?').bind(table).first();
         if (state) {
           key = await cacheKey(request, table, state.version);
@@ -138,7 +110,7 @@ export default {
 
       if (key && upstream.status === 200) {
         const copy = response.clone();
-        copy.headers.set('Cache-Control', `public, max-age=${CACHE_SECONDS}`);
+        copy.headers.set('Cache-Control', `public, max-age=${isHomeList ? HOME_CACHE_SECONDS : CACHE_SECONDS}`);
         ctx.waitUntil(caches.default.put(key, copy).catch(error => console.error('Tactic cache store failed', error)));
       }
 

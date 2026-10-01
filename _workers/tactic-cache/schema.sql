@@ -1,8 +1,6 @@
 CREATE TABLE IF NOT EXISTS cache_versions (
   table_name TEXT PRIMARY KEY,
-  version INTEGER NOT NULL DEFAULT 0,
-  last_probe_at_ms INTEGER NOT NULL DEFAULT 0,
-  latest_id TEXT
+  version INTEGER NOT NULL DEFAULT 0
 );
 
 INSERT OR IGNORE INTO cache_versions (table_name, version) VALUES

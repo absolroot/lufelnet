@@ -12,7 +12,6 @@ afterEach(() => {
 
 function setup() {
   const versions = { tactics: 0, tactic_likes: 0 };
-  const probe = { latestId: '100', storedId: null, lastAt: 0 };
   const entries = new Map();
   const originRequests = [];
   const pending = [];
@@ -24,7 +23,6 @@ function setup() {
   };
   globalThis.fetch = async request => {
     originRequests.push(request);
-    if (request.url.includes('order=created_at.desc')) return Response.json([{ id: probe.latestId }]);
     if (request.method === 'GET') return Response.json([{ id: originRequests.length }]);
     return Response.json({ id: 42 }, { status: 201 });
   };
@@ -39,19 +37,7 @@ function setup() {
             return {
               async first() { return { version: versions[args[0]] }; },
               async run() {
-                if (sql.includes('last_probe_at_ms = ?')) {
-                  if (probe.lastAt >= args[2]) return { meta: { changes: 0 } };
-                  probe.lastAt = args[0];
-                  return { meta: { changes: 1 } };
-                }
-                if (sql.includes('latest_id = ?')) {
-                  if (probe.storedId === args[0]) return { meta: { changes: 0 } };
-                  probe.storedId = args[0];
-                  versions.tactics += 1;
-                  return { meta: { changes: 1 } };
-                }
-                if (sql.includes('last_probe_at_ms = 0')) probe.lastAt = 0;
-                else versions[args[0]] += 1;
+                versions[args[0]] += 1;
                 return { meta: { changes: 1 } };
               }
             };
@@ -63,7 +49,7 @@ function setup() {
   };
   const ctx = { waitUntil(promise) { pending.push(promise); } };
   const settle = async () => Promise.all(pending.splice(0));
-  return { env, ctx, originRequests, versions, probe, settle };
+  return { env, ctx, originRequests, versions, entries, settle };
 }
 
 function request(table, method = 'GET', options = {}) {
@@ -130,7 +116,7 @@ test('failed writes do not invalidate and untrusted origins are rejected', async
   assert.equal((await worker.fetch(noOriginWrite, state.env, state.ctx)).status, 403);
 });
 
-test('home listing detects a direct legacy post within the 30 second probe window', async () => {
+test('home list cache expires after 30 seconds without an extra origin probe', async () => {
   const state = setup();
   const home = new Request('https://api.lufel.net/rest/v1/tactics?select=id&order=created_at.desc&limit=3', {
     headers: { Origin: 'https://lufel.net' }
@@ -138,12 +124,16 @@ test('home listing detects a direct legacy post within the 30 second probe windo
   const first = await worker.fetch(home, state.env, state.ctx);
   assert.equal(first.headers.get('x-tactic-cache'), 'MISS');
   await state.settle();
+  assert.equal([...state.entries.values()][0].headers.get('cache-control'), 'public, max-age=30');
+  assert.equal(state.originRequests.length, 1);
   const second = await worker.fetch(home, state.env, state.ctx);
   assert.equal(second.headers.get('x-tactic-cache'), 'HIT');
+  assert.equal(state.originRequests.length, 1);
 
-  state.probe.latestId = '101';
-  state.probe.lastAt = Date.now() - 31000;
-  const afterPost = await worker.fetch(home, state.env, state.ctx);
-  assert.equal(afterPost.headers.get('x-tactic-cache'), 'MISS');
-  assert.equal(state.versions.tactics, 2);
+  await worker.fetch(request('tactics'), state.env, state.ctx);
+  await state.settle();
+  assert.deepEqual([...state.entries.values()].map(entry => entry.headers.get('cache-control')).sort(), [
+    'public, max-age=30',
+    'public, max-age=300'
+  ]);
 });

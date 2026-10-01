@@ -11,6 +11,9 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  schedule:
+    - cron: '17 */4 * * *'
+  workflow_dispatch:
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
@@ -45,6 +48,9 @@ jobs:
 
     - name: Generate all SEO pages
       run: npm run seo:all:generate
+
+    - name: Generate public home tactics snapshot
+      run: npm run home:tactics:snapshot
 
     - name: Generate asset content hashes
       run: npm run assets:hashes:generate

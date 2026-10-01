@@ -637,7 +637,10 @@ window.LufelPageLifecycle?.hold('character-list');
                 const langDataPath = (currentLang === 'en' || currentLang === 'jp')
                     ? '/data/character_info_glb.js'
                     : `/data/${currentLang}/characters/characters.js`;
-                langPromise = fetchCharactersData(`${langDataPath}?v=${APP_VERSION}`);
+                const langDataVersion = (currentLang === 'en' || currentLang === 'jp')
+                    ? `h={{ site.data.asset_versions.files['/data/character_info_glb.js'] }}`
+                    : `v=${APP_VERSION}`;
+                langPromise = fetchCharactersData(`${langDataPath}?${langDataVersion}`);
             }
 
             const [kr, lang] = await Promise.all([krPromise, langPromise]);
@@ -703,8 +706,7 @@ window.LufelPageLifecycle?.hold('character-list');
             const langChar = sourceData[characterKey];
             nextData[characterKey] = { ...baseChar };
             nextData[characterKey].limit_asia = baseChar.limit;
-            // 글로벌 데이터에 limit이 없으면 아직 한정 모집 상태인 것으로 간주한다.
-            nextData[characterKey].limit_glb = (langChar && langChar.limit !== undefined) ? langChar.limit : true;
+            nextData[characterKey].limit_glb = (langChar && langChar.limit !== undefined) ? langChar.limit : baseChar.limit;
             nextData[characterKey].limit = nextData[characterKey].limit_glb;
         }
 
@@ -735,8 +737,7 @@ window.LufelPageLifecycle?.hold('character-list');
 
                 if (isGlobalLang) {
                     mergedData[characterKey].limit_asia = krChar.limit;
-                    // 글로벌 데이터에 limit이 없으면 아직 한정 모집 상태인 것으로 간주한다.
-                    mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : true;
+                    mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : krChar.limit;
                     mergedData[characterKey].limit = mergedData[characterKey].limit_glb;
                 }
 

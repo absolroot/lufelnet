@@ -103,7 +103,7 @@ Object.assign(window.characterData, {
         "release_order": 10
     },
     "아야카": {
-        "limit": false,
+        "limit": true,
         "release_order": 9
     },
     "리코": {
@@ -116,7 +116,7 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "",
-        "limit": false,
+        "limit": true,
         "release_order": 6
     },
     "치즈코": {
@@ -129,14 +129,14 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "",
-        "limit": false,
+        "limit": true,
         "release_order": 4
     },
     "YUI": {
         "role": "",
         "tag": "",
         "persona": "",
-        "limit": false,
+        "limit": true,
         "release_order": 3
     },
     "미나미": {
@@ -149,7 +149,7 @@ Object.assign(window.characterData, {
         "role": "",
         "tag": "",
         "persona": "아르센",
-        "limit": false,
+        "limit": true,
         "release_order": 1
     },
     "루페르": {

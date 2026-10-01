@@ -6,6 +6,47 @@
   (function () {
     const supabaseUrl = 'https://ipdkvuybgxczqwwmrqsw.supabase.co';
     const supabaseKey = 'sb_publishable_Hk_7I7kkgaAKrPLQz_sdUA_XvrKoJbI';
+    const tacticProxyUrl = 'https://api.lufel.net';
+    let tacticProxyHealth = null;
+
+    async function tacticProxyIsReady() {
+      if (!tacticProxyHealth || Date.now() - tacticProxyHealth.checkedAt > 60000) {
+        const checkedAt = Date.now();
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 2000);
+        const check = fetch(`${tacticProxyUrl}/health`, { signal: controller.signal })
+          .then(response => response.ok)
+          .catch(() => false)
+          .finally(() => clearTimeout(timeout));
+        tacticProxyHealth = { checkedAt, check };
+      }
+      return tacticProxyHealth.check;
+    }
+
+    async function fetchWithTacticCache(input, init) {
+      const sourceUrl = new URL(typeof input === 'string' ? input : input.url);
+      const method = (init?.method || (typeof input === 'string' ? 'GET' : input.method)).toUpperCase();
+      const isTacticRequest = sourceUrl.origin === supabaseUrl &&
+        /^\/rest\/v1\/(tactics|tactic_likes)$/.test(sourceUrl.pathname);
+      if (!isTacticRequest || window.location.hostname !== 'lufel.net') {
+        return fetch(input, init);
+      }
+
+      if (method !== 'GET' && method !== 'HEAD' && !(await tacticProxyIsReady())) {
+        return fetch(input, init);
+      }
+
+      const targetUrl = tacticProxyUrl + sourceUrl.pathname + sourceUrl.search;
+      const target = typeof input === 'string' ? targetUrl : new Request(targetUrl, input);
+      try {
+        const response = await fetch(target, init);
+        if ((method === 'GET' || method === 'HEAD') && response.status >= 500) return fetch(input, init);
+        return response;
+      } catch (error) {
+        if (method === 'GET' || method === 'HEAD') return fetch(input, init);
+        throw error;
+      }
+    }
 
     const supaGlobal = window.supabase;
     const createClient = supaGlobal && typeof supaGlobal.createClient === 'function'
@@ -18,6 +59,7 @@
     }
 
     const client = createClient(supabaseUrl, supabaseKey, {
+      global: { fetch: fetchWithTacticCache },
       auth: {
         persistSession: true,            // 세션을 브라우저 로컬스토리지에 저장
         autoRefreshToken: true,          // 액세스 토큰 자동 갱신

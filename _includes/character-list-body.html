@@ -703,7 +703,8 @@ window.LufelPageLifecycle?.hold('character-list');
             const langChar = sourceData[characterKey];
             nextData[characterKey] = { ...baseChar };
             nextData[characterKey].limit_asia = baseChar.limit;
-            nextData[characterKey].limit_glb = (langChar && langChar.limit !== undefined) ? langChar.limit : baseChar.limit;
+            // 글로벌 데이터에 limit이 없으면 아직 한정 모집 상태인 것으로 간주한다.
+            nextData[characterKey].limit_glb = (langChar && langChar.limit !== undefined) ? langChar.limit : true;
             nextData[characterKey].limit = nextData[characterKey].limit_glb;
         }
 
@@ -734,7 +735,8 @@ window.LufelPageLifecycle?.hold('character-list');
 
                 if (isGlobalLang) {
                     mergedData[characterKey].limit_asia = krChar.limit;
-                    mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : krChar.limit;
+                    // 글로벌 데이터에 limit이 없으면 아직 한정 모집 상태인 것으로 간주한다.
+                    mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : true;
                     mergedData[characterKey].limit = mergedData[characterKey].limit_glb;
                 }
 

@@ -105,6 +105,9 @@ export default {
     if (!table) return new Response('Not found', { status: 404, headers: cors });
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
     if (!METHODS.has(request.method)) return new Response('Method not allowed', { status: 405, headers: cors });
+    if (request.method !== 'GET' && request.method !== 'HEAD' && origin !== allowedOrigin) {
+      return new Response('Forbidden origin', { status: 403, headers: cors });
+    }
     if (!env.SUPABASE_URL || !env.SUPABASE_PUBLISHABLE_KEY) {
       return new Response('Upstream is not configured', { status: 503, headers: cors });
     }

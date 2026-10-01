@@ -123,6 +123,11 @@ test('failed writes do not invalidate and untrusted origins are rejected', async
   });
   const blocked = await worker.fetch(foreign, state.env, state.ctx);
   assert.equal(blocked.status, 403);
+
+  const noOriginWrite = new Request('https://api.lufel.net/rest/v1/tactic_likes', {
+    method: 'PATCH', body: '{}', duplex: 'half'
+  });
+  assert.equal((await worker.fetch(noOriginWrite, state.env, state.ctx)).status, 403);
 });
 
 test('home listing detects a direct legacy post within the 30 second probe window', async () => {

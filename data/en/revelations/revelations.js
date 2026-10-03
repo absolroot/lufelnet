@@ -330,7 +330,7 @@ const enRevelationData = {
         "Satiety": { // 풍족
             "set2": "Increase ATK by 12%.",
             "set4": "Increase DMG by 20% for 2 turns; Gain this effect again when using a Follow Up Skill.",
-            "type": ["추가 효과", "미출시"]
+            "type": ["추가 효과"]
         },
         "Gain": { // 획득
             "set2": "Increase ATK by 12%.",

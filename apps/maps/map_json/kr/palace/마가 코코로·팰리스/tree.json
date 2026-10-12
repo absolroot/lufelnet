@@ -1,0 +1,182 @@
+{
+    "palace": "마가 코코로·팰리스",
+    "palaceLogicSn": 7,
+    "areaCount": 15,
+    "groups": [
+        {
+            "name": "유열의 낙원섬",
+            "areas": [
+                {
+                    "areaSn": 411,
+                    "areaName": "유열의 낙원섬",
+                    "mapTreeRoot": "AAAAAA==",
+                    "isGroupRoot": true,
+                    "sceneSn": 8810,
+                    "sceneName": "낙원섬·유열의 낙원섬",
+                    "png": "유열의 낙원섬\\유열의 낙원섬_8810.png",
+                    "data": "유열의 낙원섬\\유열의 낙원섬_8810_data.json"
+                }
+            ]
+        },
+        {
+            "name": "사랑의 낙원섬",
+            "areas": [
+                {
+                    "areaSn": 412,
+                    "areaName": "사랑의 낙원섬 밖",
+                    "mapTreeRoot": "사랑의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8811,
+                    "sceneName": "낙원섬·사랑의 낙원섬 야외 식장",
+                    "png": "사랑의 낙원섬\\사랑의 낙원섬 밖_8811.png",
+                    "data": "사랑의 낙원섬\\사랑의 낙원섬 밖_8811_data.json"
+                },
+                {
+                    "areaSn": 413,
+                    "areaName": "사랑의 낙원섬 안",
+                    "mapTreeRoot": "사랑의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8801,
+                    "sceneName": "낙원섬·사랑의 낙원섬",
+                    "png": "사랑의 낙원섬\\사랑의 낙원섬 안_8801.png",
+                    "data": "사랑의 낙원섬\\사랑의 낙원섬 안_8801_data.json"
+                },
+                {
+                    "areaSn": 414,
+                    "areaName": "야구장 낙원",
+                    "mapTreeRoot": "사랑의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8804,
+                    "sceneName": "낙원섬·야구장 테마파크",
+                    "png": "사랑의 낙원섬\\야구장 낙원_8804.png",
+                    "data": "사랑의 낙원섬\\야구장 낙원_8804_data.json"
+                },
+                {
+                    "areaSn": 415,
+                    "areaName": "제1 스튜디오",
+                    "mapTreeRoot": "사랑의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8814,
+                    "sceneName": "낙원섬·제1 스튜디오",
+                    "png": "사랑의 낙원섬\\제1 스튜디오_8814.png",
+                    "data": "사랑의 낙원섬\\제1 스튜디오_8814_data.json"
+                }
+            ]
+        },
+        {
+            "name": "열정의 낙원섬",
+            "areas": [
+                {
+                    "areaSn": 416,
+                    "areaName": "열정의 낙원섬 밖",
+                    "mapTreeRoot": "열정의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8812,
+                    "sceneName": "낙원섬·열정의 낙원섬 야외 식장",
+                    "png": "열정의 낙원섬\\열정의 낙원섬 밖_8812.png",
+                    "data": "열정의 낙원섬\\열정의 낙원섬 밖_8812_data.json"
+                },
+                {
+                    "areaSn": 417,
+                    "areaName": "열정의 낙원섬 안",
+                    "mapTreeRoot": "열정의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8802,
+                    "sceneName": "낙원섬·열정의 낙원섬",
+                    "png": "열정의 낙원섬\\열정의 낙원섬 안_8802.png",
+                    "data": "열정의 낙원섬\\열정의 낙원섬 안_8802_data.json"
+                },
+                {
+                    "areaSn": 418,
+                    "areaName": "댐 낙원",
+                    "mapTreeRoot": "열정의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8805,
+                    "sceneName": "낙원섬·댐 테마파크",
+                    "png": "열정의 낙원섬\\댐 낙원_8805.png",
+                    "data": "열정의 낙원섬\\댐 낙원_8805_data.json"
+                },
+                {
+                    "areaSn": 419,
+                    "areaName": "제2 스튜디오",
+                    "mapTreeRoot": "열정의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8815,
+                    "sceneName": "낙원섬·제2 스튜디오",
+                    "png": "열정의 낙원섬\\제2 스튜디오_8815.png",
+                    "data": "열정의 낙원섬\\제2 스튜디오_8815_data.json"
+                }
+            ]
+        },
+        {
+            "name": "꿈의 낙원섬",
+            "areas": [
+                {
+                    "areaSn": 420,
+                    "areaName": "꿈의 낙원섬 밖",
+                    "mapTreeRoot": "꿈의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8813,
+                    "sceneName": "낙원섬·꿈의 낙원섬 야외 식장",
+                    "png": "꿈의 낙원섬\\꿈의 낙원섬 밖_8813.png",
+                    "data": "꿈의 낙원섬\\꿈의 낙원섬 밖_8813_data.json"
+                },
+                {
+                    "areaSn": 421,
+                    "areaName": "꿈의 낙원섬 안",
+                    "mapTreeRoot": "꿈의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8803,
+                    "sceneName": "낙원섬·꿈의 낙원섬",
+                    "png": "꿈의 낙원섬\\꿈의 낙원섬 안_8803.png",
+                    "data": "꿈의 낙원섬\\꿈의 낙원섬 안_8803_data.json"
+                },
+                {
+                    "areaSn": 422,
+                    "areaName": "개미굴 낙원",
+                    "mapTreeRoot": "꿈의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8806,
+                    "sceneName": "낙원섬·개미굴 테마파크",
+                    "png": "꿈의 낙원섬\\개미굴 낙원_8806.png",
+                    "data": "꿈의 낙원섬\\개미굴 낙원_8806_data.json"
+                },
+                {
+                    "areaSn": 423,
+                    "areaName": "제3 스튜디오",
+                    "mapTreeRoot": "꿈의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8816,
+                    "sceneName": "낙원섬·제3 스튜디오",
+                    "png": "꿈의 낙원섬\\제3 스튜디오_8816.png",
+                    "data": "꿈의 낙원섬\\제3 스튜디오_8816_data.json"
+                },
+                {
+                    "areaSn": 424,
+                    "areaName": "붕괴된 야외 식장",
+                    "mapTreeRoot": "꿈의 낙원섬",
+                    "isGroupRoot": false,
+                    "sceneSn": 8819,
+                    "sceneName": "낙원섬·꿈의 낙원섬 야외 식장",
+                    "png": "꿈의 낙원섬\\붕괴된 야외 식장_8819.png",
+                    "data": "꿈의 낙원섬\\붕괴된 야외 식장_8819_data.json"
+                }
+            ]
+        },
+        {
+            "name": "궁극의 스튜디오",
+            "areas": [
+                {
+                    "areaSn": 425,
+                    "areaName": "궁극의 스튜디오",
+                    "mapTreeRoot": "AAAAAA==",
+                    "isGroupRoot": true,
+                    "sceneSn": 8817,
+                    "sceneName": "낙원섬·궁극의 스튜디오",
+                    "png": "궁극의 스튜디오\\궁극의 스튜디오_8817.png",
+                    "data": "궁극의 스튜디오\\궁극의 스튜디오_8817_data.json"
+                }
+            ]
+        }
+    ]
+}

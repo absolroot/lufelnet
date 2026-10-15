@@ -1,5 +1,66 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Ice attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "image": "B-guaiwutouxiang-surtr.png",
+            "level": "89",
+            "name": "スルト",
+            "skill": "108,103,1008",
+            "sn": "536101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "408401"
+      },
+      {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "クー・フーリン",
+            "skill": "1023,1154",
+            "sn": "536111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "408402"
+      }
+    ],
+    "buff": "燐光伝播: テウルギアを発動した後『熱光子』を２つ獲得する。ハイライトを発動した後『熱光子』を１つ獲得する。\n『熱光子』：３ターンの間、１つごとに与える最終ダメージが１０%上昇する。最大４つまで累積できる。",
+    "endTime": "2026-10-29 10:30:00",
+    "startTime": "2026-10-15 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -5,6 +5,58 @@
         "endTime": "2026-11-12 10:59:59",
         "fiveStar": [
           {
+            "name": "桐条 美鶴",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "零下のレイピア",
+        "startTime": "2026-10-15 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "桐条 美鶴",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ルフェル",
+            "type": "thief"
+          },
+          {
+            "name": "富山 佳代",
+            "type": "thief"
+          },
+          {
+            "name": "白鳥 誠司",
+            "type": "thief"
+          }
+        ],
+        "name": "零下のレイピア",
+        "startTime": "2026-10-15 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
             "name": "汐見 琴音",
             "type": "thief"
           }
@@ -211,6 +263,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "聖槍ロンギヌス",
+            "type": "weapon",
+            "user": "美鶴"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "ラヴァ・フレイム",
+            "type": "weapon",
+            "user": "ルフェル"
+          },
+          {
+            "name": "エメラルドチャーム",
+            "type": "weapon",
+            "user": "富山"
+          },
+          {
+            "name": "ナイトアワード",
+            "type": "weapon",
+            "user": "白鳥"
+          },
+          {
+            "name": "ローズフランベルク",
+            "type": "weapon",
+            "user": "美鶴"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-10-15 11:30:00",
+        "type": "武器補給"
+      },
       {
         "endTime": "2026-11-12 10:59:59",
         "fiveStar": [

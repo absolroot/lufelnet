@@ -1,5 +1,66 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Ice attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire"
+              ],
+              "Weak": [
+                "Ice"
+              ]
+            },
+            "image": "B-guaiwutouxiang-surtr.png",
+            "level": "89",
+            "name": "Surt",
+            "skill": "108,103,1008",
+            "sn": "536101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "408401"
+      },
+      {
+        "bonusRule": "All ally Electric attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
+              ],
+              "Weak": [
+                "Electric"
+              ]
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "89",
+            "name": "Cu Chulainn",
+            "skill": "1023,1154",
+            "sn": "536111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "408402"
+      }
+    ],
+    "buff": "Phosphor Emission: After a Theurgy is activated, gain 2 Thermal Photon stacks. After a Highlight is activated, gain 1 Thermal Photon stack.\nThermal Photon: Increase final damage by 10% for each stack. Lasts for 3 turns. Stacks up to 4 times.",
+    "endTime": "2026-10-29 10:30:00",
+    "startTime": "2026-10-15 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

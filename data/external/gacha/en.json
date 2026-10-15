@@ -5,6 +5,58 @@
         "endTime": "2026-11-12 10:59:59",
         "fiveStar": [
           {
+            "name": "Mitsuru Kirijo",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Brilliant Executioner",
+        "startTime": "2026-10-15 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Mitsuru Kirijo",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Kayo Tomiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Brilliant Executioner",
+        "startTime": "2026-10-15 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
             "name": "Kotone Shiomi",
             "type": "thief"
           }
@@ -211,6 +263,41 @@
       }
     ],
     "weapon": [
+      {
+        "endTime": "2026-11-12 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Longinus",
+            "type": "weapon",
+            "user": "Mitsuru"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Emerald Charmer",
+            "type": "weapon",
+            "user": "Tomiyama"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Rose Flamberge",
+            "type": "weapon",
+            "user": "Mitsuru"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-10-15 11:30:00",
+        "type": "Arms Deals"
+      },
       {
         "endTime": "2026-11-12 10:59:59",
         "fiveStar": [

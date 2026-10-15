@@ -39,7 +39,7 @@ window.characterSkillsData["미츠루"] = {
     "name": "지원 스킬",
     "element": "버프",
     "cool": 0,
-    "description": "1명의 적에게 2턴 동안 지속되는 『에너지 표식』을 추가한다. S.E.E.S. 멤버가 해당 적을 처음 공격할 때 자신의 테우르기아 에너지를 35포인트 회복한다. S.E.E.S.가 아닌 멤버는 해당 적을 처음 공격할 때 HIGHLIGHT 에너지를 15%를 회복한다."
+    "description": "1명의 적에게 2턴 동안 지속되는 『에너지 표식』을 추가한다. 테우르기아를 보유한 동료가 해당 적을 처음 공격할 때 해당 동료의 테우르기아 에너지를 35포인트 회복한다. HIGHLIGHT를 보유한 동료가 해당 적을 처음 공격할 때 HIGHLIGHT 에너지를 15% 회복한다."
   },
   "passive1": {
     "name": "책임",
@@ -58,99 +58,108 @@ window.characterSkillsData["미츠루"] = {
 window.enCharacterSkillsData["미츠루"] = {
   "name": "Mitsuru Kirijo",
   "skill1": {
-    "name": "Ice Blossom",
+    "name": "Flower of Ice",
     "element": "빙결",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Ice damage to 1 foe equal to 211.2%/232.8%/224.2%/245.8% of Attack, and inflict 3 [Frost] stacks on target. Decrease target's Defense by 1.2% for every 300 Attack * [Frost] stacks (up to 2928/3228/3108/3408 Attack) for 2 turns."
+    "description": "Deal Ice damage to 1 foe equal to 211.2%/232.8%/224.2%/245.8% of Attack.\nInflict 3 Frostbound stacks on the target, and for every 300 of Mitsuru's Attack, decrease the target's Defense by 1.2% times the amount of Frostbound stacks for 2 turns (up to 2928/3228/3108/3408 of Attack)."
   },
   "skill2": {
-    "name": "Arctic Storm",
+    "name": "Frozen Tempest",
     "element": "버프",
     "type": "단일피해",
     "sp": 0,
-    "description": "Inflict 1 foe with [Queen's Gaze]. Decrease DEF by 7.8%/8.6%/8.3%/9.1%, also decrease Defense by 3.2% for every 300 Attack (up to 2928/3228/3108/3408 Attack) and increase damage taken by 2% for every every 300 Attack (up to 2928/3228/3108/3408 Attack). This effect is permanent. Only 1 [Queen's Gaze] can be active. When selecting a new target, pass [Queen's Gaze] to the new target. When the target with [Queen's Gaze] is defeated, pass [Queen's Gaze] to the highest HP foe. When passing [Queen's Gaze], pass all debuffs inflicted by Mitsuru. Mitsuru can use other skills, this doesn't count as a Persona skill."
+    "description": "Inflict Imperious Queen on 1 foe.\nDecrease target's Defense by 7.8%/8.6%/8.3%/9.1%, and decrease Defense by 3.2% more for every 300 of Mitsuru's Attack (up to 2928/3228/3108/3408 of Attack). Also, increase damage taken by 2% for every 300 of Mitsuru's Attack (up to 2928/3228/3108/3408 of Attack). These effects are permanent.\nImperious Queen can only be active on 1 target at a time and will automatically transfer to the new target whenever this skill is used. When a target with Imperious Queen is KO'd, it will transfer to the foe with the highest HP, and all debuffs inflicted by Mitsuru will also transfer.\nAfter using this skill, Mitsuru can use another skill in the same turn (this skill does not count as a normal skill).",
+    "cool": 0
   },
   "skill3": {
-    "name": "Glacial Lunge",
+    "name": "Snowpierced Waltz",
     "element": "빙결",
     "type": "단일피해",
     "sp": 24,
     "cool": 0,
-    "description": "Increase party's stats by 3% of Elucidator's stats for 2 turns. Deal Ice damage to 1 foe equal to 345.1%/380.5%/366.3%/401.7% of Attack, for every 1 [Frost] stack, increase skill damage by 10%. When target have 5 [Frost] stacks, increase skill critical rate by 15%."
+    "description": "Increase party's stats by 3% of Elucidator's stats for 2 turns.\nDeal Ice damage to 1 foe equal to 345.1%/380.5%/366.3%/401.7% of Attack. For every Frostbound stack, increase skill damage by 10%. Additionally, when the target has 5 or more Frostbound stacks, increase this skill's damage by 35% and increase critical rate of this skill by 15%."
   },
   "skill_highlight": {
-    "name": "Theurgy - Blizzard Edge",
+    "name": "Blizzard Edge",
     "element": "빙결",
     "type": "단일피해",
-    "description": "Use condition: When Mitsuru has 70 Theurgy Energy.\nDeal Ice damage to 1 foe equal to 362.3%/399.4%/384.6%/421.7% of Attack. Upgrade target's [Frost] to [Rime] for 2 turns. When allies use a Persona skill to attack foes with [Rime], activate [Cruel Edge].\n\n[Cruel Edge]: Deal damage to 1 foe equal to [Frost] stacks * 19.5%/21.5%/20.7%/22.7% of Attack. This damage will perfectly replicate all combat stats of the activator (Attack, damage, critical rate, critical damage, pierce rate), skill attribute is identical to the activator's attack skill."
+    "description": "Can be activated when Theurgy gauge is at 70. Deal Ice damage to 1 foe equal to 362.3%/399.4%/384.6%/421.7% of Attack, and for 2 turns, evolve Frostbound stacks on the target to Snowbound and increase damage taken by 19.5%/21.5%/20.7%/22.7%.\nWhen an ally uses a skill to attack a foe inflicted with Snowbound, activate Iceblade 1 time, dealing damage equal to 22.0%/24.2%/23.3%/25.6% of that ally's Attack for every Frostbound stack on the target.",
+    "cool": 0
   },
   "skill_support": {
-    "name": "Assist Skill",
+    "name": "Assist",
     "element": "버프",
     "type": "버프",
-    "description": "Inflict 1 foe with [Energy Mark]. When S.E.E.S. member attack that foe for the first time, restore 35 Theurgy Energy to that member; When non S.E.E.S. member attack that foe for the first time, restore 15% HIGHLIGHT Energy."
+    "description": "Inflict Charged Mark on 1 foe for 2 turns.\nThe first time that each ally attacks a foe inflicted with Charged Mark, increase the Theurgy gauge by 35 if that ally has a Theurgy, or increase the Highlight gauge by 15% if that ally has a Highlight.",
+    "cool": 0
   },
   "passive1": {
-    "name": "Responsibility",
+    "name": "Pre-Navigator",
     "element": "패시브",
-    "description": "At the start of battle, decrease Elucidator's cooldown time by 4 turns."
+    "description": "Decrease any Elucidator's first cooldown time by 4 actions.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Order",
+    "name": "Freeze Mark",
     "element": "패시브",
-    "description": "When Mitsuru is on the field, all Assassin/Sweeper increase damage by 4.8% per [Frost] stacks when attacking foes with [Frost]."
+    "description": "If Mitsuru is on the field, when Assassin and Sweeper allies attack foes inflicted with Frostbound, increase damage by 4.8% times the number of Frostbound stacks.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["미츠루"] = {
   "name": "桐条 美鶴",
   "skill1": {
-    "name": "絢爛氷華",
+    "name": "華麗なる氷花",
     "element": "빙결",
     "type": "단일피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵単体に攻撃力の211.2%/232.8%/224.2%/245.8%の氷結属性ダメージを与え、さらに『霜結』を3層付与する。対象の防御力を低下させる（桐条美鶴の攻撃力300につき、防御力を1.2%×『霜結』層数分低下、最大2928/3228/3108/3408攻撃力まで計算）。効果は2ターン持続。"
+    "description": "敵単体に攻撃力211.2%/232.8%/224.2%/245.8%の氷結属性ダメージを与える。\n２ターンの間、対象に『細氷』を３つ付与し、防御力が美鶴の攻撃力３００ごとに１.２%×『細氷』の累積数分になるように低下する（最大で攻撃力2928/3228/3108/3408分まで）。"
   },
   "skill2": {
-    "name": "極寒の嵐",
+    "name": "フリーズテンペスト",
     "element": "버프",
     "type": "버프",
     "sp": 0,
     "cool": 0,
-    "description": "敵1体を『女王の凝視』状態にし、防御力を7.8%/8.6%/8.3%/9.1%低下させる（桐条美鶴の攻撃力300につき追加で3.2%低下、最大2928/3228/3108/3408攻撃力まで計算）。さらに被ダメージが上昇する（攻撃力300につき2%上昇、同上限まで）。効果はバトル中永続。『女王の凝視』は全体で1体のみ有効で、新しい対象に使用した場合、効果が転移する。対象が戦闘不能になった場合、場上のHPが最も高い敵に自動転移する。『女王の凝視』が転移する時、桐条美鶴が付与した異常効果も全て転移する。このスキル使用後も他のスキルを使用可能であり、ペルソナスキルとは見なされない。"
+    "description": "敵単体を『女王の先導』状態にする。\n対象の防御力が7.8%/8.6%/8.3%/9.1%低下し、追加で防御力が自身の攻撃力３００ごとに３.２%になるように低下する（最大で攻撃力2928/3228/3108/3408分まで）。さらに被ダメージが美鶴の攻撃力３００ごとに２%になるように上昇する（最大で攻撃力2928/3228/3108/3408分まで）。この効果は永続する。\n複数の敵を同時に『女王の先導』状態にすることはできず、このスキルを他の対象に使用した場合、『女王の先導』はその対象に転移する。『女王の先導』状態の敵が戦闘不能になると、ＨＰが最も高い敵に『女王の先導』状態が転移する。『女王の先導』が転移する時、美鶴が付与したすべての弱体状態も同時に転移する。\nこのスキルを使用した後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとして扱わない）。"
   },
   "skill3": {
-    "name": "氷の舞刺撃",
+    "name": "氷舞の刺撃",
     "element": "빙결",
     "type": "단일피해",
     "sp": 24,
     "cool": 0,
-    "description": "解明系怪盗の各属性値の3%分、味方全体の対応属性値を2ターンの間上昇させる。その後、敵1体に攻撃力345.1%/380.5%/366.3%/401.7%の氷結属性ダメージを与える。対象の『霜結』1層ごとにスキルダメージが10%上昇し、『霜結』が5層に達すると、さらにクリティカル率が15%上昇する。"
+    "description": "２ターンの間、味方全体のステータスが『解明』ロールの味方のステータスの３%分上昇する。\n敵単体に攻撃力345.1%/380.5%/366.3%/401.7%の氷結属性ダメージを与え、対象の『細氷』１つごとに、スキルダメージが１０%上昇する。さらに『細氷』が５つ以上の時、スキルダメージが３５%上昇し、クリティカル率が１５%上昇する。"
   },
   "skill_highlight": {
-    "name": "テウルギア：ブリザードブレード",
+    "name": "ブリザードエッジ",
     "element": "빙결",
     "type": "단일피해",
-    "description": "発動条件：神通法エネルギー70点\n敵1体に攻撃力362.3%/399.4%/384.6%/421.7%の氷結属性ダメージを与え、2ターンの間『霜結』を『寒霜結』に強化する。味方がペルソナスキルで『寒霜結』状態の敵を攻撃した時、『冷血の刃』を発動し、対象に『霜結』層数×19.5%/21.5%/20.7%/22.7%の追加ダメージを与える。"
+    "description": "テウルギアゲージが７０の時に発動可能となり、敵単体に攻撃力362.3%/399.4%/384.6%/421.7%の氷結属性ダメージを与え、２ターンの間、対象の『細氷』を『厳寒の細氷』に強化し、被ダメージが19.5%/21.5%/20.7%/22.7%上昇する。\n味方がスキルで『厳寒の細氷』を付与されている敵を攻撃した時、『細氷剣』が発動し、対象に『細氷』の累積数×その味方の攻撃力22.0%/24.2%/23.3%/25.6%のダメージを１回与える。",
+    "cool": 0
   },
   "skill_support": {
-    "name": "サポートスキル",
+    "name": "アシスト",
     "element": "버프",
     "type": "버프",
-    "description": "敵1体に2ターン持続する『エナジーマーク』を付与する。各S.E.E.S.メンバーがその敵を初めて攻撃した時、自身の神通法エネルギーを35回復する。各S.E.E.S.以外のメンバーがその敵を初めて攻撃した時、ハイライトゲージを15%回復する。"
+    "description": "敵単体に２ターンの間、『チャージマーカー』を付与する。\nそれぞれの味方が『チャージマーカー』を付与されている敵を初めて攻撃した時、テウルギアを持つ味方はテウルギアゲージが３５増加し、ハイライトを持つ味方はハイライトゲージが１５%増加する。",
+    "cool": 0
   },
   "passive1": {
-    "name": "責任",
+    "name": "プレナビゲーター",
     "element": "패시브",
-    "description": "解明系怪盗の初期準備時間を4行動分短縮する。"
+    "description": "『解明』ロールの初期クールタイムが4行動分減少する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "秩序",
+    "name": "細氷の目印",
     "element": "패시브",
-    "description": "桐条美鶴が戦場にいる時、反抗または支配タイプのキャラクターが『霜結』状態の敵を攻撃すると、『霜結』層数×4.8%分のダメージ増加効果を得る。"
+    "description": "自身が場にいる間、『反抗』または『支配』ロールの味方が『細氷』を付与されている敵を攻撃する時、そのダメージが『細氷』の累積数×4.8%分上昇する。",
+    "cool": 0
   }
 };
 
@@ -191,7 +200,7 @@ window.cnCharacterSkillsData["미츠루"] = {
     "name": "援助技能",
     "element": "버프",
     "cool": 0,
-    "description": "使1名敌人获得持续2回合的『能量标记』。每名S.E.E.S.成员首次攻击该名敌人时，自身回复35点神通法能量；每名非S.E.E.S.成员首次攻击该名敌人时，回复15%的HIGHLIGHT能量。",
+    "description": "使1名敌人获得持续2回合的『能量标记』。每名拥有神通法的同伴首次攻击该名敌人时，该同伴回复35点神通法能量；每名拥有HIGHLIGHT的同伴首次攻击该名敌人时，回复15%的HIGHLIGHT能量。",
     "type": "增益"
   },
   "passive1": {

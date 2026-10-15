@@ -22,39 +22,39 @@ window.ritualData["미츠루"] = {
 };
 
 window.enCharacterRitualData["미츠루"] = {
-  "name": "키리조 미츠루",
-  "r0": "President's Duty",
-  "r0_detail": "When Mitsuru deals Persona skill damage or Theurgy damage, inflict 1 [Frost] stack on target for 2 turns. Stacks up to 5 times. When Mitsuru attacks foes with [Frost], increase Attack by 7% * [Frost] stacks. When allies use a Persona skill to attack foes with [Rime], activate [Cruel Edge].",
-  "r1": "C’est Magnifique!",
-  "r1_detail": "At the start of battle, inflict all foes with 2 [Rime] stacks that can exceed the cap. Stacks up to 2 times. This effect is permanent. Foes with [Rime] increase critical taken rate by 10%.",
-  "r2": "Fencing Queen",
-  "r2_detail": "Foes with [Queen's Gaze] increase critical damage taken by 40%. When passing [Queen's Gaze], pass all debuffs.",
-  "r3": "Execution!",
-  "r3_detail": "Increase the skill levels of Arctic Storm and Thief Tactics by 3.",
+  "name": "Mitsuru Kirijo",
+  "r0": "Captain's Duty",
+  "r0_detail": "When Mitsuru deals skill or Theurgy damage, inflict 1 Frostbound stack on the target. When using the same skill as the previous skill, inflict 3 more Frostbound stacks after the attack. Lasts for 2 turns. Stacks up to 5 times.\nWhen Mitsuru attacks a foe inflicted with Frostbound, increase Attack by 7% for every Frostbound stack on the target.\nWhen an ally uses a skill to attack a foe inflicted with Snowbound, activate Iceblade.",
+  "r1": "C'est Magnifique",
+  "r1_detail": "At the start of battle, inflict all foes with 2 stacks of Snowbound (this stack can exceed max limit, stacks up to 2 times). This effect is permanent. Increase critical taken rate for foes inflicted with Snowbound by 10%.",
+  "r2": "Queen of Swordplay",
+  "r2_detail": "Increase critical damage taken for foes in the Imperious Queen state by 50%. When transferring Imperious Queen, transfer all debuffs to target.",
+  "r3": "Executed!",
+  "r3_detail": "Increase skill levels of Frozen Tempest and Thief Tactics by 3.",
   "r4": "Behind the Lies",
-  "r4_detail": "Theurgy Enhanced: Increase Theurgy damage by 20%. Increase target's damage taken by 20% more for 2 turns.",
-  "r5": "The Awkward Side",
-  "r5_detail": "Increase the skill levels of Ice Blossom and Glacial Lunge by 3.",
-  "r6": "Burning Will",
-  "r6_detail": "Increase the maximum number of [Frost] stacks to 6. Double Mitsuru's base Theurgy Energy recovery. When using Theurgy, Mitsuru can upgrade target's [Rime] to [Stasis]. When allies attack foes with [Stasis], additionally activate [Cruel Edge] at 200% of the original attack's damage. When Mitsuru attacks foes with [Stasis], gain 15% total damage amp."
+  "r4_detail": "Increase Theurgy damage by 20%, and increase the target's damage taken by 25% more for 2 turns.",
+  "r5": "Sheltered Side",
+  "r5_detail": "Increase skill levels of Flower of Ice and Snowpierced Waltz by 3.",
+  "r6": "Burning Spirit",
+  "r6_detail": "Increase the maximum number of Frostbound stacks to 6.\nDouble the rate at which Mitsuru's Theurgy gauge is filled. When using a Theurgy, evolve Snowbound to Glacierbound on the target for 2 turns.\nWhen allies use skills to attack foes inflicted with Glacierbound, also activate Iceblade 1 more time at 200% of its original damage.\nWhen Mitsuru attacks foes inflicted with Glacierbound, increase final damage amplification by 15%."
 };
 
 window.jpCharacterRitualData["미츠루"] = {
   "name": "桐条 美鶴",
-  "r0": "部長の責務",
-  "r0_detail": "桐条美鶴がペルソナスキルまたは神通法でダメージを与えた時、対象に『霜結』を1層付与する。『霜結』は2ターン持続し、最大5層まで累積可能。『霜結』を持つ敵を攻撃する際、1層につき攻撃力が7%上昇する。『霜結』が『寒霜結』に強化されると、味方がペルソナスキルでこの状態の敵を攻撃した際に、桐条美鶴の『冷血の刃』が発動する。",
-  "r1": "Brilliant！",
-  "r1_detail": "戦闘開始時、全ての敵に『寒霜結』を2層付与する。この効果は重ねがけ上限を突破でき、最大2層まで。本バトル中永続する。『寒霜結』状態の敵は被クリティカル率が10%上昇する。",
-  "r2": "剣舞の氷の女王",
-  "r2_detail": "『女王の凝視』状態の敵が受けるクリティカル効果が40%上昇する。『女王の凝視』が転移する際、全ての異常状態も同時に転移する。",
-  "r3": "処刑！",
-  "r3_detail": "『極寒の嵐』および『戦闘技巧』のスキルレベルが3上昇する（最大15レベルまで）。",
+  "r0": "部長の役目",
+  "r0_detail": "自身がスキル／テウルギアでダメージを与える時、対象に『細氷』を１つ付与する。前に使用したスキルと同じスキルを使用した場合、攻撃後に追加で『細氷』を３つ付与する。『細氷』は２ターン持続し、最大５つまで累積できる。\n自身が『細氷』を付与されている敵を攻撃する時、攻撃力が対象の『細氷』の累積数×７%分上昇する。\n味方がスキルで『厳寒の細氷』を付与されている敵を攻撃した時、『細氷剣』が発動する。",
+  "r1": "ブリリアント！",
+  "r1_detail": "戦闘開始時、敵全体に『厳寒の細氷』を２つ付与する（この追加付与分は上限を超えて付与することができ、最大２つまで累積できる）。この効果は永続する。\n『厳寒の細氷』を付与された敵の被クリティカル率が１０%上昇する。",
+  "r2": "剣武の氷女王",
+  "r2_detail": "『女王の先導』状態の敵の被クリティカルダメージが５０%上昇する。『女王の先導』が転移する時、付与されているすべての弱体状態が同時に転移する。",
+  "r3": "処刑する！",
+  "r3_detail": "『フリーズテンペスト』『戦術技能』のスキルレベルが３上昇する。",
   "r4": "嘘の裏側",
-  "r4_detail": "神通法によるスキルダメージが20%上昇し、さらに対象が受けるダメージが20%上昇する（2ターン持続）。",
+  "r4_detail": "テウルギアによるダメージが２０%上昇し、さらに２ターンの間、対象の被ダメージが２５%上昇する。",
   "r5": "世間知らずの一面",
-  "r5_detail": "『絢爛氷華』および『氷の舞刺撃』のスキルレベルが3上昇する（最大15レベルまで）。",
-  "r6": "闘志、燃え盛る",
-  "r6_detail": "『霜結』の最大層数が6に増加する。自身の神通法エネルギーの基本回復量が2倍になる。神通法を発動すると、2ターンの間、対象の『寒霜結』をさらに『極寒霜結』に強化する。味方が『極寒霜結』状態の敵を攻撃した場合、元のダメージの200%に相当する『冷血の刃』を追加発動する。自身が『極寒霜結』状態の敵を攻撃した場合、与ダメージが15%上昇する。"
+  "r5_detail": "『華麗なる氷花』『氷舞の刺撃』のスキルレベルが３上昇する。",
+  "r6": "燃え上がる闘志",
+  "r6_detail": "『細氷』を６つまで累積できるようになる。\n自身のテウルギアゲージの基礎増加量が２倍になる。テウルギアを発動した時、２ターンの間、対象の『厳寒の細氷』を『極寒の細氷』に強化する。\n味方がスキルで『極寒の細氷』を付与されている敵を攻撃した時、『細氷剣』が本来の２００%分のダメージで１回追加発動する。\n自身が『極寒の細氷』を付与されている敵を攻撃する時、最終ダメージ増幅が１５%上昇する。"
 };
 
 window.cnCharacterRitualData["미츠루"] = {

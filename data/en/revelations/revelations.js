@@ -123,7 +123,7 @@ const enRevelationData = {
         "Ego": ["Failure", "Cruelty"], // 자아
         "Purity": ["Debauch", "Change", "Wealth"], // 순수
         "Nativity": ["Power", "Strife"], // 탄생
-        "Acuity": ["Satiety"], // 예리
+        "Acuity": ["Wealth", "Satiety", "Hindrance"], // 예리
         "Perseverance": ["Sorrow", "Change", "Gain", "Happiness"], // 돌파
         "Hope": ["Labor", "Ruin", "Change"], // 희망
         "Creation": ["Worry", "Reconcilation","Tenacity"], // 창조
@@ -143,7 +143,7 @@ const enRevelationData = {
     "sub": {
         "Failure": [], // 반성
         "Happiness": ["Perseverance"], // 기쁨
-        "Wealth": ["Purity"], // 번영
+        "Wealth": ["Acuity", "Purity"], // 번영
         "Cruelty": [], // 결단
         "Debauch": ["Purity"], // 타락
         "Tenacity": ["Creation"], // 강인
@@ -164,7 +164,7 @@ const enRevelationData = {
         "Pleasure": ["Wisdom", "Integrity"], // 환희
         "Labor": ["Resolve", "Integrity", "Hope"], // 직책
         "Peace": ["Faith", "Acceptance"], // 평화
-        "Hindrance": ["Awareness", "Departure"], // 방해
+        "Hindrance": ["Awareness", "Departure", "Acuity"], // 방해
         "Control": ["Awareness", "Departure"], // 주권
         "Renewal": ["Growth", "Trust"], // 변환
         "Courage": ["Meditation"], // 용맹
@@ -436,7 +436,9 @@ const enRevelationData = {
             // "type": ["미출시"]
         },
         "Acuity": {
-            "Satiety": "Increase All-Out Attack damage by 16%."
+            "Wealth": "Increase All-Out Attack damage by 10%. After dealing All-Out Attack damage, increase the entire party's ATK by 15%.",
+            "Satiety": "Increase All-Out Attack damage by 16%.",
+            "Hindrance": "During battle, increase Ailment Accuracy Rate by 20% and grant all allies a DMG Bonus equal to 10% of your Ailment Accuracy Rate (up to 10%)."
         },
         "Nativity": { // 탄생
             "Power": "When equipped by Justine & Caroline: Increase Desire Level by  5.0%.",

@@ -586,7 +586,7 @@ export class NeedStatCardUI {
             ? items.filter(candidate => candidate.source === '원더' && selected.has(String(candidate.id))).reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0)
             : 0;
         const baseMultiplier = Number(item.kotoneCopyMultiplier) || 0.3;
-        const sourceMultiplier = this.kotoneCopyState.awareness === 'r2' ? baseMultiplier * 1.25 : baseMultiplier;
+        const sourceMultiplier = this.kotoneCopyState.awareness === 'r0' ? baseMultiplier : baseMultiplier * 1.25;
         return (sourceSum + wonderSum) * sourceMultiplier;
     }
 

@@ -82,6 +82,7 @@ window.I18N_PAGE_HOME_JP = {
     tactic_like_ip_required: 'IPアドレスを確認できませんでした。しばらくしてから再試行してください。',
 
     boss_title: 'ボス',
+    boss_update_pending: 'ボス情報は更新待ちです。',
     boss_mode_nightmare: '閼兇夢の扉',
     boss_mode_sos: '魂の海',
     boss_buff_default: 'Buff',

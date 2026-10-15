@@ -278,6 +278,8 @@
       card.querySelectorAll('.bosses-loading-placeholder').forEach((node) => node.remove());
       const oldGb = card.querySelector('.guildboss-section');
       if (oldGb) oldGb.remove();
+      const oldPending = card.querySelector('.bosses-update-pending');
+      if (oldPending) oldPending.remove();
     }
 
     if (!card.querySelector('.bosses-header')) {
@@ -288,6 +290,14 @@
       title.textContent = bossesTitle();
       header.appendChild(title);
       card.appendChild(header);
+    }
+
+    if (!data || !data.data) {
+      const pending = document.createElement('p');
+      pending.className = 'bosses-update-pending';
+      pending.textContent = t('boss_update_pending', '보스 정보 업데이트 대기 중입니다.', lang);
+      card.appendChild(pending);
+      return;
     }
 
     // mode
@@ -424,7 +434,7 @@
     const region = loadRegion();
     const [affixMap, data] = await Promise.all([loadAffixMap(), fetchGuildBoss(region)]);
     renderGuildBoss(root, data, region, affixMap);
-    return { empty: !data || !data.data };
+    return { empty: false };
   }
 
   async function init() {

@@ -82,6 +82,7 @@ window.I18N_PAGE_HOME_KR = {
     tactic_like_ip_required: '좋아요 처리를 위해 IP 확인이 필요합니다. 잠시 후 다시 시도해주세요.',
 
     boss_title: '보스',
+    boss_update_pending: '보스 정보 업데이트 대기 중입니다.',
     boss_mode_nightmare: '흉몽의 문',
     boss_mode_sos: '마음의 바다',
     boss_buff_default: 'Buff',

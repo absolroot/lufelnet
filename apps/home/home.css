@@ -558,6 +558,7 @@
 .home-character-skeleton i { width: 98px; height: 28.5px; border-radius: 0 0 8px 8px; margin-top: 0; }
 .home-panel-skeleton { min-height: 250px; border-radius: 10px; }
 .home-boss-skeleton-card { box-sizing: border-box; width: 100%; max-width: 1200px; margin: 24px auto 0; padding: 20px; background: var(--card-background); border-bottom: 3px solid var(--border-red); border-radius: 10px; }
+.bosses-update-pending { margin: 16px 0 4px; color: #aaa; }
 #home-bosses-root { width: 100%; margin: 24px 0 0; color: #eee; }
 .bosses-card > .bosses-loading-placeholder { min-height: 574px; margin: 0; border-radius: 8px; }
 .home-row-skeleton { min-height: 95px; display: flex; gap: 15px; align-items: center; padding: 15px; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,.05); }

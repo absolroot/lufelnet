@@ -27,37 +27,37 @@ window.enCharacterWeaponData["미츠루"] = {
   "name": "키리조 미츠루",
   "weapon4-1": {
     "name": "Rose Flamberge",
-    "health": 1823,
-    "attack": 581,
-    "defense": 323,
+    "health": 1823.43,
+    "attack": 581.37,
+    "defense": 323.88,
     "skill_name": "Elegant Presence",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When inflicting [Frost], increase user's damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When Frostbound is inflicted on foes, increase Mitsuru's damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn."
   },
   "weapon5-1": {
     "name": "Longinus",
-    "health": 2279,
-    "attack": 726,
-    "defense": 405,
+    "health": 2279.27,
+    "attack": 726.72,
+    "defense": 405.19,
     "skill_name": "Piercing Fate",
-    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When inflicting [Frost], increase party's Attack by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns. After user uses Theurgy, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% and user's critical damage by 14.7%/19.3%/19.3%/23.9%/23.9%/28.5%/28.5% for 2 turns."
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nWhen Frostbound is inflicted on foes, increase party's Attack by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.\nAfter activating Mitsuru's Theurgy, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% and Mitsuru's critical damage by 14.7%/19.3%/19.3%/23.9%/23.9%/28.5%/28.5% for 2 turns."
   }
 };
 
 window.jpCharacterWeaponData["미츠루"] = {
   "name": "桐条 美鶴",
   "weapon4-1": {
-    "name": "ローズフレイムソード",
-    "health": 1823,
-    "attack": 581,
-    "defense": 324,
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。敵に『霜結』を付与するたびに、自身の与ダメージが17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%上昇し、1ターン持続する。"
+    "name": "ローズフランベルク",
+    "health": 1823.43,
+    "attack": 581.37,
+    "defense": 323.88,
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。敵に『細氷』を付与した時、１ターンの間、自身の与ダメージが17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4%上昇する。"
   },
   "weapon5-1": {
     "name": "聖槍ロンギヌス",
-    "health": 2279,
-    "attack": 727,
-    "defense": 405,
-    "description": "クリティカル率が18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%上昇する。『霜結』を付与するたびに、味方全体の攻撃力が18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%上昇し、2ターン持続する。自身が神通法を発動した後、味方全体のクリティカル効果が18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%上昇し、自身のクリティカル効果がさらに14.7%/19.3%/19.3%/23.9%/23.9%/28.5%/28.5%上昇する。効果は2ターン持続する。"
+    "health": 2279.27,
+    "attack": 726.72,
+    "defense": 405.19,
+    "description": "クリティカル率が18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%上昇する。\n『細氷』を付与した時、２ターンの間、味方全体の攻撃力が18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%上昇する。\n自身がテウルギアを発動した後、２ターンの間、味方全体のクリティカルダメージが18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%上昇し、さらに自身のクリティカルダメージが14.7%/19.3%/19.3%/23.9%/23.9%/28.5%/28.5%上昇する。"
   }
 };
 

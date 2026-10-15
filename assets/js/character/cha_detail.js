@@ -623,20 +623,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const mainRevelationValue = document.querySelector('.main-revelation .value');
         const subRevelationValue = document.querySelector('.sub-revelation .value');
 
-        // 메인 계시 설정
-        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
-            mainRevelationValue.textContent = '';
-            mainRevelationValue.appendChild(createRevelationValue(mergedCharacter.main_revelation, true));
-        } else {
-            mainRevelationValue.textContent = '-';
-        }
-
         // 서브 계시 설정
         if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
             subRevelationValue.textContent = '';
             subRevelationValue.appendChild(createRevelationValue(mergedCharacter.sub_revelation, false));
         } else {
             subRevelationValue.textContent = '-';
+        }
+
+        // 메인 계시 효과는 서브 계시가 표시된 뒤에 조합을 찾는다.
+        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
+            mainRevelationValue.textContent = '';
+            mainRevelationValue.appendChild(createRevelationValue(mergedCharacter.main_revelation, true));
+        } else {
+            mainRevelationValue.textContent = '-';
         }
 
         // 계시 주옵션
@@ -1690,6 +1690,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 translatedName = translatedName.substring(0, 4) + '..';
             }
             text.textContent = translatedName;
+            item.dataset.revelationName = translateRevelationName(revelation, isMainRevelation);
 
             const icon = document.createElement('img');
             // 아이콘은 항상 한국어 이름(원본)으로 경로 설정
@@ -1789,8 +1790,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (setEffectsData) {
                     // 현재 선택된 일월성진 계시들 가져오기
                     const subRevelationContainer = document.querySelector('.sub-revelation .revelation-values');
-                    const currentSubRevs = Array.from(subRevelationContainer?.querySelectorAll('.revelation-value-item span') || [])
-                        .map(el => el.textContent.trim())
+                    const currentSubRevs = Array.from(subRevelationContainer?.querySelectorAll('.revelation-value-item') || [])
+                        .map(el => el.dataset.revelationName)
                         .filter(text => text); // 빈 문자열 제거
 
                     // console.log(currentSubRevs);

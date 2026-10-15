@@ -174,7 +174,7 @@ window.personaFiles["비슈누"] = {
       "name_en": "Megidolaon",
       "name_jp": "メギドラオン",
       "desc": "모든 적에게 공격력 43.5/45.7/47.8%의 만능 속성 대미지를 주고, 적의 방어력을 무시한다.",
-      "desc_en": "Deal Almighty damage to all foes equal to 43.5/45.7/47.8% of Attack, ignoring their defense.",
+      "desc_en": "Deal Almighty damage to all foes equal to 43.5/45.7/47.8% of Attack, ignoring their Defense.",
       "desc_jp": "敵全体に防御力無視の攻撃力43.5/45.7/47.8%の万能属性ダメージを与える。",
       "cost": "SP 20",
       "level": "6/7/8",

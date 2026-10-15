@@ -432,7 +432,7 @@ export class ImportExport {
             weaponRefinement: 0,
             personas: wonderPersonas.map((name, idx) => ({
                 name: name || '',
-                skills: [
+                skills: Array.isArray(data.personaSkillSlots?.[idx]) ? data.personaSkillSlots[idx] : [
                     personaSkills[idx * 3] || '',
                     personaSkills[idx * 3 + 1] || '',
                     personaSkills[idx * 3 + 2] || '',
@@ -475,7 +475,7 @@ export class ImportExport {
             return v;
         };
 
-        const personaSkillCandidates = (personaSkills || [])
+        const personaSkillCandidates = wonder.personas.flatMap(persona => persona.skills || [])
             .map(s => String(s || ''))
             .filter(Boolean)
             .sort((a, b) => b.length - a.length);
@@ -945,6 +945,8 @@ export class ImportExport {
             wonderPersonas: state.wonder.personas.map(p => p.name),
             weapon: weaponVal,
             personaSkills,
+            // Preserve all slots without changing the legacy nine-element field.
+            personaSkillSlots: state.wonder.personas.map(p => [...(p?.skills || [])]),
             party,
             turns
         };

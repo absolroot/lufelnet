@@ -252,7 +252,7 @@ window.personaIndex = {
     "wild_emblem_rainbow": true,
     "tier": "A",
     "__path": "data/persona",
-    "__hash": "c6fcb3885dd5a1da"
+    "__hash": "69bc183cb7727983"
   },
   "수르트": {
     "name": "수르트",
@@ -1362,7 +1362,7 @@ window.personaIndex = {
     "wild_emblem_rainbow": false,
     "tier": "",
     "__path": "data/persona/nonorder",
-    "__hash": "aa18adb976f6d1a8"
+    "__hash": "84fa6097657b38a7"
   },
   "블랙 우즈": {
     "name": "블랙 우즈",
@@ -2052,7 +2052,7 @@ window.personaIndex = {
     "wild_emblem_rainbow": false,
     "tier": "",
     "__path": "data/persona/nonorder",
-    "__hash": "f2700ea8ef53ee27"
+    "__hash": "a8270a0d7109f5bb"
   },
   "클로토": {
     "name": "클로토",
@@ -2277,7 +2277,7 @@ window.personaIndex = {
     "wild_emblem_rainbow": false,
     "tier": "",
     "__path": "data/persona/nonorder",
-    "__hash": "58485b484944cfaf"
+    "__hash": "453e59e5010bd902"
   },
   "화백": {
     "name": "화백",

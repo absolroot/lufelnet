@@ -255,7 +255,7 @@ export class WonderUI extends EventEmitter {
             const updated = [...personas];
             updated[0] = {
                 name: '디오니소스',
-                skills: [unique, '', '', ''],
+                skills: [unique, '', '', '', ''],
                 memo: ''
             };
             this.store.setWonderConfig({ ...wonder, personas: updated });
@@ -282,7 +282,7 @@ export class WonderUI extends EventEmitter {
             if (!personaData || currentPersona?.name !== personaName) return;
 
             const uniqueSkill = personaData.uniqueSkill?.name || '';
-            const currentSkills = currentPersona.skills || ['', '', '', ''];
+            const currentSkills = currentPersona.skills || ['', '', '', '', ''];
             if (currentSkills[0] === uniqueSkill) {
                 this.render();
                 return;
@@ -307,7 +307,7 @@ export class WonderUI extends EventEmitter {
         const currentPersonas = [...(wonderState.personas || [{}, {}, {}])];
 
         if (!personaName) {
-            currentPersonas[activeIndex] = { name: '', skills: ['', '', '', ''], memo: '' };
+            currentPersonas[activeIndex] = { name: '', skills: ['', '', '', '', ''], memo: '' };
         } else {
             const existing = currentPersonas[activeIndex] || {};
             const store = (window.personaFiles || {});
@@ -319,7 +319,7 @@ export class WonderUI extends EventEmitter {
                 name: personaName,
                 // Reset skills only if it's a new persona, usually expected behavior
                 // skills[0] is reserved for unique skill display
-                skills: [unique, '', '', '']
+                skills: [unique, '', '', '', '']
             };
         }
 
@@ -800,7 +800,7 @@ export class WonderUI extends EventEmitter {
         const p = persona || {};
         const pName = p.name || '';
         const pDisplayName = pName ? DataLoader.getPersonaDisplayName(pName) : (window.I18nService ? window.I18nService.t('notSelected') : '선택 안함');
-        const skills = p.skills || ['', '', '', ''];
+        const skills = p.skills || ['', '', '', '', ''];
         const memo = p.memo || '';
 
         const store = (window.personaFiles || {});
@@ -906,7 +906,7 @@ export class WonderUI extends EventEmitter {
                             </button>
                         </div>
 
-                        ${[1, 2, 3].map((slot) => {
+                        ${[1, 2, 3, 4].map((slot) => {
             const skill = skills[slot] || '';
             return `
                                 <div class="revelation-dropdown wp-skill-dropdown" data-persona-index="${index}" data-skill-index="${slot}">
@@ -1122,7 +1122,7 @@ export class WonderUI extends EventEmitter {
                 const current = this.store.state.wonder;
                 const newPersonas = [...(current.personas || [{}, {}, {}])];
                 const targetPersona = { ...(newPersonas[pIndex] || {}) };
-                const newSkills = [...(targetPersona.skills || ['', '', '', ''])];
+                const newSkills = [...(targetPersona.skills || ['', '', '', '', ''])];
                 newSkills[sIndex] = selectedVal;
                 targetPersona.skills = newSkills;
                 newPersonas[pIndex] = targetPersona;

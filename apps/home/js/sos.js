@@ -262,7 +262,7 @@
   async function init(){
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
-    try { await waitHomeI18nReady(); const region=loadRegion(); const data=await fetchSOS(region); await waitForGuildBossSkeleton(root); renderSOS(root, data, region); } catch(e) { try{console.error(e);}catch(_){} }
+    try { await waitHomeI18nReady(); const region=loadRegion(); const data=await fetchSOS(region); if (!data || !data.data) return; await waitForGuildBossSkeleton(root); renderSOS(root, data, region); } catch(e) { try{console.error(e);}catch(_){} }
   }
 
   window.reloadHomeSOS = async function(){
@@ -273,7 +273,7 @@
       const card = root.querySelector('.bosses-card');
       const old = card && card.querySelector('.sos-section');
       if (old) old.remove();
-      const region=loadRegion(); const data=await fetchSOS(region); await waitForGuildBossSkeleton(root); renderSOS(root, data, region);
+      const region=loadRegion(); const data=await fetchSOS(region); if (!data || !data.data) return; await waitForGuildBossSkeleton(root); renderSOS(root, data, region);
     }catch(e){ try{ console.error(e); }catch(_){} }
   };
 

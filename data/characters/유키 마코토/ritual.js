@@ -24,7 +24,7 @@ window.ritualData["유키 마코토"] = {
 window.enCharacterRitualData["유키 마코토"] = {
   "name": "Makoto Yuki",
   "r0": "Pathfinder",
-  "r0_detail": "Makoto has 2 Theurgy: Cadenza and Ardhanari. At the start of battle, if Makoto's Theurgy Gauge is below 35, fill up to 35.\nWhen receiving buff, healing, or shield skill effects from an ally (excluding effects that also target foes), gain 1 Moon Phase stack (up to 1 stack per turn). This effect lasts for 2 turns, and stacks up to 4 times.\nWith Moon Phase, increase pierce rate by 4%/8%/12% (effect changes at Lv. 1/50/70, respectively).",
+  "r0_detail": "Makoto has 2 Theurgies: Cadenza and Ardhanari. At the start of battle, if Makoto's Theurgy gauge is below 35, fill up to 35.\nWhen receiving buff, healing, or shield skill effects from an ally (excluding effects that also target foes), gain 1 Moon Phase stack (up to 1 stack per turn). This effect lasts for 2 turns, and stacks up to 4 times.\nWith Moon Phase, increase pierce rate by 4%/8%/12% (effect changes at Lv. 1/50/70, respectively).",
   "r1": "Result of Coincidence",
   "r1_detail": "Additional effects are added to the following skills.\nMelody of Flames: This skill deals 1 more hit of Fire damage.\nNocturne of Battle: Increase party's pierce rate by 10% for 2 turns.\nScarlet Hades: When this skill is activated with 4 Moon Phase stacks, increase Makoto's critical rate by 16%.",
   "r2": "Immovable Soul",
@@ -32,7 +32,7 @@ window.enCharacterRitualData["유키 마코토"] = {
   "r3": "Under the Full Moon",
   "r3_detail": "Increase the skill levels of Scarlet Hades and Combat Tactics by 3.",
   "r4": "Thorny Path",
-  "r4_detail": "Additional effects are added to the following Theurgy.\nCadenza: Increase party's damage by 10% more for 2 turns.\nArdhanari: This skill deals 2 more hits of Fire damage.",
+  "r4_detail": "Additional effects are added to the following Theurgies.\nCadenza: Increase party's damage by 10% more for 2 turns.\nArdhanari: This skill deals 2 more hits of Fire damage.",
   "r5": "Soul Flames",
   "r5_detail": "Increase the skill levels of Melody of Flames and Nocturne of Battle by 3.",
   "r6": "Burn My Dread",

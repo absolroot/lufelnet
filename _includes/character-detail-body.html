@@ -2761,16 +2761,16 @@
         const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
         const mergedCharacter = { ...character, ...setting };
 
-        // 메인 계시 설정
-        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
-            mainRevelationValue.textContent = '';
-            mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
-        }
-
         // 서브 계시 설정
         if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
             subRevelationValue.textContent = '';
             subRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.sub_revelation, false));
+        }
+
+        // 서브 계시를 먼저 표시해야 메인 계시가 실제 조합 효과를 찾을 수 있다.
+        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
+            mainRevelationValue.textContent = '';
+            mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
         }
     }
 

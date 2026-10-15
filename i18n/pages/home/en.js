@@ -81,6 +81,7 @@ window.I18N_PAGE_HOME_EN = {
     tactic_like_ip_required: 'Unable to verify your IP address. Please try again in a moment.',
 
     boss_title: 'Boss',
+    boss_update_pending: 'Boss information is awaiting an update.',
     boss_mode_nightmare: 'Nightmare\'s Gateway',
     boss_mode_sos: 'Sea of Souls',
     boss_buff_default: 'Buff',

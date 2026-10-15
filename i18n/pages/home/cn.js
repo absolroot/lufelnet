@@ -76,6 +76,7 @@ window.I18N_PAGE_HOME_CN = {
     "tactic_like_already_24h": "24 小时内已经点过赞。",
     "tactic_like_ip_required": "无法确认你的 IP 地址，请稍后再试。",
     "boss_title": "首领",
+    "boss_update_pending": "首领信息等待更新。",
     "boss_mode_nightmare": "阏凶梦之扉",
     "boss_mode_sos": "心之海",
     "boss_buff_default": "增益效果",

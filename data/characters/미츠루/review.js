@@ -64,9 +64,9 @@ Her **Theurgy** can deal heavy Ice damage. For the next 2 turns, when allies dea
 
 At Awareness 0/1/6, Mitsuru can inflict 5/7/8 [Frost] stacks on foes.
 
-At Awareness 6, Mitsuru doubles [Cruel Edge]'s damage, making its skill multiplier become 110%/154%/585.6%
+At Awareness 6, Mitsuru doubles [Cruel Edge]'s damage, making its skill multiplier become 121.0%/169.4%/614.4%
 
-Assuming an Assassin Thief attacks with a skill multiplier of 450%, the effective increase would be 24.4%/34.2%/130.1%.
+Assuming an Assassin Thief attacks with a skill multiplier of 450%, the effective increase would be 26.9%/37.6%/136.5%.
 
 However, since the exact stats Mitsuru replicates are unclear, it is uncertain whether independent multiplier buffs on allies will affect her damage.
 
@@ -85,19 +85,19 @@ However, since the exact stats Mitsuru replicates are unclear, it is uncertain w
       <td>A0 (LV10+5) - 5 stacks</td>
       <td>107.6%</td>
       <td>24.0%</td>
-      <td>110.0%</td>
+      <td>121.0%</td>
     </tr>
     <tr>
       <td>A1 (LV10+5) - 7 stacks</td>
       <td>133.4%</td>
       <td>33.6%</td>
-      <td>154.0%</td>
+      <td>169.4%</td>
     </tr>
     <tr>
       <td>A6 (LV13+5) - 8 stacks</td>
       <td>154.5%</td>
       <td>38.4%</td>
-      <td>585.6%</td>
+      <td>614.4%</td>
     </tr>
   </tbody>
 </table>
@@ -116,9 +116,9 @@ review_jp: `
 
 **『霜結』のスタック数**は**意識0/1/6**でそれぞれ**5/7/8**個を維持できる。
 
-意識6では追加ダメージがさらに2倍加算されるため、味方が攻撃した際の**スキル係数**は**110%/154%/585.6%**の形で上昇し、意識6での倍率差が非常に大きい。
+意識6では追加ダメージがさらに2倍加算されるため、味方が攻撃した際の**スキル係数**は**121.0%/169.4%/614.4%**の形で上昇し、意識6での倍率差が非常に大きい。
 
-反抗怪盗が450%のスキル係数で攻撃すると仮定した場合、24.4%/34.2%/130.1%の上昇効果を得る。
+反抗怪盗が450%のスキル係数で攻撃すると仮定した場合、26.9%/37.6%/136.5%の上昇効果を得る。
 
 ただし、味方ステータスのコピー範囲が明確でないため、味方が保有する独立バフの適用可否は状況によって異なる可能性がある。
 
@@ -137,19 +137,19 @@ review_jp: `
       <td>意識0 (LV10+5) - 5スタック</td>
       <td>107.6%</td>
       <td>24.0%</td>
-      <td>110.0%</td>
+      <td>121.0%</td>
     </tr>
     <tr>
       <td>意識1 (LV10+5) - 7スタック</td>
       <td>133.4%</td>
       <td>33.6%</td>
-      <td>154.0%</td>
+      <td>169.4%</td>
     </tr>
     <tr>
       <td>意識6 (LV13+5) - 8スタック</td>
       <td>154.5%</td>
       <td>38.4%</td>
-      <td>585.6%</td>
+      <td>614.4%</td>
     </tr>
   </tbody>
 </table>

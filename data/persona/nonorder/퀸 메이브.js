@@ -111,7 +111,7 @@ window.personaFiles["퀸 메이브"] = {
     "name_en": "Megidola",
     "name_jp": "メギドラ",
     "desc": "모든 적에게 공격력 40.7/42.7/44.8%의 만능 속성 대미지를 주고, 적의 방어력을 무시한다.",
-    "desc_en": "Deal Almighty damage to all foes equal to 40.7/42.7/44.8% of Attack, ignoring their defense.",
+    "desc_en": "Deal Almighty damage to all foes equal to 40.7/42.7/44.8% of Attack, ignoring their Defense.",
     "desc_jp": "敵全体に防御力無視の攻撃力40.7/42.7/44.8%の万能属性ダメージを与える。",
     "priority": 0,
     "icon": "Default",

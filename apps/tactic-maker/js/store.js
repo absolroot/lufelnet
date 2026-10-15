@@ -48,9 +48,9 @@ export class TacticStore {
                 weaponStamp: 4,
                 weaponStampIndex: 0,
                 personas: [
-                    { name: "", skills: ["", "", "", ""], memo: "" },
-                    { name: "", skills: ["", "", "", ""], memo: "" },
-                    { name: "", skills: ["", "", "", ""], memo: "" }
+                    { name: "", skills: ["", "", "", "", ""], memo: "" },
+                    { name: "", skills: ["", "", "", "", ""], memo: "" },
+                    { name: "", skills: ["", "", "", "", ""], memo: "" }
                 ]
             },
 
@@ -278,15 +278,15 @@ export class TacticStore {
     
     /**
      * Get the last skill from a wonder persona
-     * Priority: user-set skills (index 1,2,3) > unique skill (index 0) > personaFiles fallback
+     * Priority: user-set skills (index 1,2,3,4) > unique skill (index 0) > personaFiles fallback
      */
     _getWonderLastSkill(persona) {
         if (!persona || !persona.name) return null;
         
-        const allSkills = persona.skills || ['', '', '', ''];
+        const allSkills = persona.skills || ['', '', '', '', ''];
         
-        // Check user-set skills (index 1, 2, 3) from last to first
-        for (let i = 3; i >= 1; i--) {
+        // Check configurable skills from last to first
+        for (let i = allSkills.length - 1; i >= 1; i--) {
             if (allSkills[i] && allSkills[i].trim()) {
                 return allSkills[i].trim();
             }
@@ -534,10 +534,8 @@ export class TacticStore {
         if (!oldPersona || !newPersona) return;
 
         const oldSkills = new Set(oldPersona.skills || []);
-        const newDefaultSkill = (newPersona.skills && newPersona.skills[3]) ? newPersona.skills[3] : '';
-        // If last skill is empty, try others? user said "last one" (index 3 usually). 
-        // If index 3 is empty, maybe we shouldn't change it or keep it empty. 
-        // Let's assume we use the last skill slot (index 3).
+        // Prefer the new fourth slot, retaining the old third-slot fallback.
+        const newDefaultSkill = newPersona.skills?.[4] || newPersona.skills?.[3] || '';
 
         // Iterate all turns and actions
         let actionsChanged = false;
@@ -953,9 +951,9 @@ export class TacticStore {
             weaponStamp: 4,
             weaponStampIndex: 0,
             personas: [
-                { name: '', skills: ['', '', '', ''], memo: '' },
-                { name: '', skills: ['', '', '', ''], memo: '' },
-                { name: '', skills: ['', '', '', ''], memo: '' }
+                { name: '', skills: ['', '', '', '', ''], memo: '' },
+                { name: '', skills: ['', '', '', '', ''], memo: '' },
+                { name: '', skills: ['', '', '', '', ''], memo: '' }
             ]
         };
         const loadedWonder = data.wonder || {};
@@ -990,6 +988,12 @@ export class TacticStore {
             wonder: {
                 ...defaultWonder,
                 ...loadedWonder,
+                // Append empty slots without shifting or dropping saved skills.
+                personas: (loadedWonder.personas || defaultWonder.personas).map(persona => {
+                    const skills = Array.isArray(persona?.skills) ? [...persona.skills] : [];
+                    while (skills.length < 5) skills.push('');
+                    return { ...persona, skills };
+                }),
                 // Ensure new fields have defaults if missing from loaded data
                 weaponMod: loadedWonder.weaponMod !== undefined ? loadedWonder.weaponMod : 6,
                 weaponStamp: loadedWonder.weaponStamp !== undefined ? loadedWonder.weaponStamp : 4,
@@ -1081,9 +1085,9 @@ export class TacticStore {
                 weaponStamp: 4,
                 weaponStampIndex: 0,
                 personas: [
-                    { name: '', skills: ['', '', '', ''], memo: '' },
-                    { name: '', skills: ['', '', '', ''], memo: '' },
-                    { name: '', skills: ['', '', '', ''], memo: '' }
+                    { name: '', skills: ['', '', '', '', ''], memo: '' },
+                    { name: '', skills: ['', '', '', '', ''], memo: '' },
+                    { name: '', skills: ['', '', '', '', ''], memo: '' }
                 ]
             },
             turns: initialTurns,

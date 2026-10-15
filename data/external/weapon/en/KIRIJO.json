@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Longinus",
+        "quality": 5,
+        "skill": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%.\nWhen Frostbound is inflicted on foes, increase party's Attack by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.\nAfter activating Mitsuru's Theurgy, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% and Mitsuru's critical damage by 14.7%/19.3%/19.3%/23.9%/23.9%/28.5%/28.5% for 2 turns.",
+        "stat": {
+          "attack": 726.72,
+          "defense": 405.19,
+          "hp": 2279.27
+        },
+        "user": "Mitsuru"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Rose Flamberge",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When Frostbound is inflicted on foes, increase Mitsuru's damage by 17.6%/23.2%/23.2%/28.8%/28.8%/34.4%/34.4% for 1 turn.",
+        "stat": {
+          "attack": 581.37,
+          "defense": 323.88,
+          "hp": 1823.43
+        },
+        "user": "Mitsuru"
+      }
+    ],
+    "name": "Mitsuru"
+  },
+  "msg": "OK",
+  "status": 0
+}

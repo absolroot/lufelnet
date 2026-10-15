@@ -1,0 +1,303 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Mitsuru deals skill or Theurgy damage, inflict 1 Frostbound stack on the target. When using the same skill as the previous skill, inflict 3 more Frostbound stacks after the attack. Lasts for 2 turns. Stacks up to 5 times.\nWhen Mitsuru attacks a foe inflicted with Frostbound, increase Attack by 7% for every Frostbound stack on the target.\nWhen an ally uses a skill to attack a foe inflicted with Snowbound, activate Iceblade.",
+        "name": "Captain's Duty",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, inflict all foes with 2 stacks of Snowbound (this stack can exceed max limit, stacks up to 2 times). This effect is permanent. Increase critical taken rate for foes inflicted with Snowbound by 10%.",
+        "name": "C'est Magnifique",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase critical damage taken for foes in the Imperious Queen state by 50%. When transferring Imperious Queen, transfer all debuffs to target.",
+        "name": "Queen of Swordplay",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase skill levels of Frozen Tempest and Thief Tactics by 3.",
+        "name": "Executed!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Theurgy damage by 20%, and increase the target's damage taken by 25% more for 2 turns.",
+        "name": "Behind the Lies",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase skill levels of Flower of Ice and Snowpierced Waltz by 3.",
+        "name": "Sheltered Side",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the maximum number of Frostbound stacks to 6.\nDouble the rate at which Mitsuru's Theurgy gauge is filled. When using a Theurgy, evolve Snowbound to Glacierbound on the target for 2 turns.\nWhen allies use skills to attack foes inflicted with Glacierbound, also activate Iceblade 1 more time at 200% of its original damage.\nWhen Mitsuru attacks foes inflicted with Glacierbound, increase final damage amplification by 15%.",
+        "name": "Burning Spirit",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Inflict Charged Mark on 1 foe for 2 turns.\nThe first time that each ally attacks a foe inflicted with Charged Mark, increase the Theurgy gauge by 35 if that ally has a Theurgy, or increase the Highlight gauge by 15% if that ally has a Highlight.",
+        "name": "Assist",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 144171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Attack": "0.2",
+      "Crit Mult.": "0.24"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/S3",
+      "S2/HL"
+    ],
+    "name": "Mitsuru Kirijo",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Ice damage to 1 foe equal to 211.2%/232.8%/224.2%/245.8% of Attack.\nInflict 3 Frostbound stacks on the target, and for every 300 of Mitsuru's Attack, decrease the target's Defense by 1.2% times the amount of Frostbound stacks for 2 turns (up to 2928/3228/3108/3408 of Attack).",
+        "name": "Flower of Ice",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 144111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 0",
+        "desc": "Inflict Imperious Queen on 1 foe.\nDecrease target's Defense by 7.8%/8.6%/8.3%/9.1%, and decrease Defense by 3.2% more for every 300 of Mitsuru's Attack (up to 2928/3228/3108/3408 of Attack). Also, increase damage taken by 2% for every 300 of Mitsuru's Attack (up to 2928/3228/3108/3408 of Attack). These effects are permanent.\nImperious Queen can only be active on 1 target at a time and will automatically transfer to the new target whenever this skill is used. When a target with Imperious Queen is KO'd, it will transfer to the foe with the highest HP, and all debuffs inflicted by Mitsuru will also transfer.\nAfter using this skill, Mitsuru can use another skill in the same turn (this skill does not count as a normal skill).",
+        "name": "Frozen Tempest",
+        "nature": "Support",
+        "skill_lv": "10/10/13/13",
+        "sn": 144112,
+        "tags": [
+          "Debuff"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "BeHitRatio",
+        "cooldown": 0,
+        "cost": "SP 24",
+        "desc": "Increase party's stats by 3% of Elucidator's stats for 2 turns.\nDeal Ice damage to 1 foe equal to 345.1%/380.5%/366.3%/401.7% of Attack. For every Frostbound stack, increase skill damage by 10%. Additionally, when the target has 5 or more Frostbound stacks, increase this skill's damage by 35% and increase critical rate of this skill by 15%.",
+        "name": "Snowpierced Waltz",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 144113,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Decrease any Elucidator's first cooldown time by 4 actions.",
+        "name": "Pre-Navigator",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Elucidator",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "If Mitsuru is on the field, when Assassin and Sweeper allies attack foes inflicted with Frostbound, increase damage by 4.8% times the number of Frostbound stacks.",
+        "name": "Freeze Mark",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 144132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Conditional Target",
+        "target_count": "All"
+      }
+    ],
+    "rating": {
+      "Attack": 3000.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1100.01 / 1120.01 / 1140.01 / 1159.21 / 1179.21 / 1199.21 / 1219.21",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "613.31 / 624.51 / 635.71 / 646.11 / 657.31 / 668.51 / 679.71",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3449.99 / 3512.39 / 3573.99 / 3636.39 / 3698.79 / 3760.39 / 3822.79",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on Unknown)",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy gauge is at 70. Deal Ice damage to 1 foe equal to 362.3%/399.4%/384.6%/421.7% of Attack, and for 2 turns, evolve Frostbound stacks on the target to Snowbound and increase damage taken by 19.5%/21.5%/20.7%/22.7%.\nWhen an ally uses a skill to attack a foe inflicted with Snowbound, activate Iceblade 1 time, dealing damage equal to 22.0%/24.2%/23.3%/25.6% of that ally's Attack for every Frostbound stack on the target.",
+        "name": "Blizzard Edge",
+        "nature": "Ice",
+        "skill_lv": "10/10/13/13",
+        "sn": 144152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -149,7 +149,7 @@
         "auto_select": "AICondition (Based on HPcur/HP)",
         "cooldown": 0,
         "cost": "",
-        "desc": "For 2 turns, grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 and decrease weakness damage taken by 20%/20%/20%/20%. Grant 2 Down Points and 2 Seashell stacks.\nCooldown Time: 8 ally actions.",
+        "desc": "Grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 and decrease weakness damage taken by 20%/20%/20%/20% for 2 turns. Grant 2 Down Points and 2 Seashell stacks.\nCooldown Time: 8 ally actions.",
         "name": "Poseidon's Blessing",
         "nature": null,
         "skill_lv": "10/10/12/12",

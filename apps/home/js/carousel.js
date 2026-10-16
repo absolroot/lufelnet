@@ -963,6 +963,9 @@
 
       .char-img.front { z-index: 2; transform: translateY(-40%) scale(1.16); }
       .char-img.middle { z-index: 2; transform: translateX(-8%) translateY(-50%) scale(1.08) }
+      .slide-right.three-characters .char-img.middle { right: 16%; }
+      .slide-right.three-characters .char-img.trio-left { right: 36%; }
+      .slide-right.three-characters .char-img.trio-right { right: 10%; }
       .carousel-nav { position: absolute; top: 50%; transform: translateY(-100%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
       .carousel-btn { pointer-events: auto; background: rgba(0,0,0,0.35); color: #fff; border: 1px solid #444; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
       .carousel-dots { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 6px; justify-content: center; z-index: 2; }
@@ -1235,6 +1238,7 @@
       }
     } else {
       const imgs = (slide.fiveStar || []).slice(0, isMobile ? 2 : 3);
+      if (imgs.length === 3) right.classList.add('three-characters');
       // Desired visual order for 3 images: 2(center),1(left),3(right) => indices [1,0,2]
       const order = (imgs.length === 3) ? [1, 0, 2] : imgs.map((_, i) => i);
       order.forEach((origIdx, posIdx) => {
@@ -1254,9 +1258,9 @@
           else { img.classList.add('front'); img.style.right = '4%'; }
         } else if (!isMobile && imgs.length === 3) {
           // 3 images: center(front), left(back), right(back)
-          if (posIdx === 0) { img.classList.add('front', 'middle'); img.style.right = '16%'; }
-          else if (posIdx === 1) { img.classList.add('back'); img.style.right = '36%'; }
-          else { img.classList.add('back'); img.style.right = '10%'; }
+          if (posIdx === 0) { img.classList.add('front', 'middle'); }
+          else if (posIdx === 1) { img.classList.add('back', 'trio-left'); }
+          else { img.classList.add('back', 'trio-right'); }
         } else {
           // mobile 2 images spacing
           if (posIdx === 0) { img.classList.add('back'); img.style.right = '18%'; }
@@ -1584,14 +1588,15 @@
       }).filter(x => x.startUTC && x.endUTC);
 
       // For single-character banners, prefer later character release_order first
-      // Otherwise keep most-recent start/end time first
-      // Multiple-character ties go after single-character ties
+      // Multiple-character banners always follow single-character banners.
+      // Within each group, keep the release/date ordering.
       slides.sort((a, b) => {
         // Compare character counts (used by single/multiple tie rules)
         const aCount = Array.isArray(a.fiveStar) ? a.fiveStar.length : 0;
         const bCount = Array.isArray(b.fiveStar) ? b.fiveStar.length : 0;
         const aIsMultiple = aCount > 1;
         const bIsMultiple = bCount > 1;
+        if (aIsMultiple !== bIsMultiple) return aIsMultiple ? 1 : -1;
 
         // If both are single-character banners, prefer later character release order
         if (!aIsMultiple && !bIsMultiple && aCount === 1 && bCount === 1) {
@@ -1609,11 +1614,6 @@
         const ea = a.endUTC ? a.endUTC.getTime() : 0;
         const eb = b.endUTC ? b.endUTC.getTime() : 0;
         if (eb !== ea) return eb - ea;
-
-        // All times equal: compare character counts (single comes first)
-
-        if (aIsMultiple && !bIsMultiple) return 1; // a (multiple) goes after b (single)
-        if (!aIsMultiple && bIsMultiple) return -1; // b (multiple) goes after a (single)
 
         // All equal: keep original order
         return a.__origIndex - b.__origIndex;

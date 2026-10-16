@@ -1,5 +1,36 @@
 /*이미지별 크기 조절*/
 
+/* Three-character crops: match face sizes for these individual illustrations. */
+.slide-right.three-characters img.char-img[src*="%EB%A0%8C%C2%B7%EB%8C%84%EC%8B%B1%20%EC%8A%A4%ED%83%80"] {
+  width: auto;
+  max-height: none;
+  height: 160%;
+  top: -8%;
+  right: 78%;
+  transform: translateX(50%);
+  opacity: 1;
+}
+
+.slide-right.three-characters img.char-img[src*="%EC%95%84%EC%9D%B4%EA%B8%B0%EC%8A%A4"] {
+  width: auto;
+  max-height: none;
+  height: 125%;
+  top: 20%;
+  right: 51%;
+  transform: translateX(50%);
+  opacity: 1;
+}
+
+.slide-right.three-characters img.char-img[src*="%EB%AA%A8%ED%86%A0%ED%95%98%C2%B7%EC%B2%AD%EA%B4%91"] {
+  width: auto;
+  max-height: none;
+  height: 200%;
+  top: -66%;
+  right: 39%;
+  transform: translateX(50%);
+  opacity: 1;
+}
+
 /* 1명 배너 기본값 - 개별 설정이 없는 경우 */
 .char-img.single-banner {
   right: 30%;

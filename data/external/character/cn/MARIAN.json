@@ -115,7 +115,27 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Bless",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Bless Boost",
+          "nature": "Bless",
+          "value": "0.08"
+        },
+        {
+          "attr": "Bless Damage Taken",
+          "nature": "Bless",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on HPcur/HP)",
@@ -136,7 +156,40 @@
       "Ailment Resist.": "0.24",
       "HP": "0.2"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "友方生命值低于50%时，立即为其回复宫下美波7.0%/10.5%/14.0%最大生命值+320/717/1271的生命值，触发后有2回合的冷却时间。受到宫下美波治疗的同伴伤害永久提升10.0%/15.0%/20.0%、暴击效果永久提升10.0%/15.0%/20.0%；若该同伴为祝福属性角色，效果提升至伤害永久提升30.0%/45.0%/60.0%、暴击效果永久提升30.0%/45.0%/60.0%。",
+        "name": "眷佑",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 123171,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "宫下美波提供的增益效果延长1回合，并且自身的精力值消耗减少15%。\n获得『甘露』时，使所有同伴造成祝福伤害时总伤害增幅提升10.0%/15.0%/20.0%+意识等级*3%，持续2回合。\n使用『春之恩赐』消耗『甘露』时，使所有同伴攻击力提升15.0%/22.5%/30.0%+意识等级*3%，并使主目标伤害提升10.0%/15.0%/20.0%+意识等级*2%，持续2回合。",
+        "name": "润泽",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 123172,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "innate_skill_type": [
       "S2/HL",
       "S1/S3"
@@ -275,7 +328,48 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1125.8 / 1145.8 / 1166.8 / 1186.8 / 1207.8 / 1227.8 / 1248.8",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "833.03 / 848.03 / 863.03 / 878.03 / 894.03 / 909.03 / 924.03",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "5121.81 / 5214.81 / 5307.81 / 5400.81 / 5494.81 / 5587.81 / 5680.81",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0 / 94.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "sync_normal_skill": [],
     "theurgia_skill": []
   },

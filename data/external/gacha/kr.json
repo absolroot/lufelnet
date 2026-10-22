@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-10-22 08:00:00",
-        "fiveStar": [
-          {
-            "name": "시오미 코토네",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "카노 슌",
-            "type": "thief"
-          },
-          {
-            "name": "스미 토시야",
-            "type": "thief"
-          },
-          {
-            "name": "나가오 치즈코",
-            "type": "thief"
-          }
-        ],
-        "name": "만월 소나타",
-        "startTime": "2026-09-24 08:00:00",
-        "type": "이벤트 계약·확정"
-      },
-      {
-        "endTime": "2026-10-22 08:00:00",
-        "fiveStar": [
-          {
-            "name": "시오미 코토네",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "카노 슌",
-            "type": "thief"
-          },
-          {
-            "name": "스미 토시야",
-            "type": "thief"
-          },
-          {
-            "name": "나가오 치즈코",
-            "type": "thief"
-          }
-        ],
-        "name": "만월 소나타",
-        "startTime": "2026-09-24 08:00:00",
-        "type": "이벤트 계약·운명"
-      },
-      {
         "endTime": "2026-11-26 08:00:00",
         "fiveStar": [
           {
@@ -305,76 +253,6 @@
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-10-22 08:00:00",
-        "fiveStar": [
-          {
-            "name": "공작·개조",
-            "type": "weapon",
-            "user": "시오미 코토네"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "마의 습격",
-            "type": "weapon",
-            "user": "카노 슌"
-          },
-          {
-            "name": "킬링 스칼렛",
-            "type": "weapon",
-            "user": "스미 토시야"
-          },
-          {
-            "name": "그래비티 소드",
-            "type": "weapon",
-            "user": "나가오 치즈코"
-          },
-          {
-            "name": "아메노누보코",
-            "type": "weapon",
-            "user": "시오미 코토네"
-          }
-        ],
-        "name": "소리 없는 전쟁·확정",
-        "startTime": "2026-09-24 08:00:00",
-        "type": "무기 이벤트 보급·확정"
-      },
-      {
-        "endTime": "2026-10-22 08:00:00",
-        "fiveStar": [
-          {
-            "name": "공작·개조",
-            "type": "weapon",
-            "user": "시오미 코토네"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "마의 습격",
-            "type": "weapon",
-            "user": "카노 슌"
-          },
-          {
-            "name": "킬링 스칼렛",
-            "type": "weapon",
-            "user": "스미 토시야"
-          },
-          {
-            "name": "그래비티 소드",
-            "type": "weapon",
-            "user": "나가오 치즈코"
-          },
-          {
-            "name": "아메노누보코",
-            "type": "weapon",
-            "user": "시오미 코토네"
-          }
-        ],
-        "name": "소리 없는 전쟁·운명",
-        "startTime": "2026-09-24 08:00:00",
-        "type": "무기 이벤트 보급·운명"
-      },
       {
         "endTime": "2026-11-26 08:00:00",
         "fiveStar": [

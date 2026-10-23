@@ -2,10 +2,10 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-10-23 09:59:59",
+        "endTime": "2026-11-20 09:59:59",
         "fiveStar": [
           {
-            "name": "Cosmic Yui",
+            "name": "Mitsuru Kirijo",
             "type": "thief"
           }
         ],
@@ -23,15 +23,15 @@
             "type": "thief"
           }
         ],
-        "name": "Plantastic Planet Protectors",
-        "startTime": "2026-09-17 10:30:00",
+        "name": "Brilliant Executioner",
+        "startTime": "2026-10-23 10:30:00",
         "type": "Targeted Most Wanted Idol Contracts"
       },
       {
-        "endTime": "2026-10-23 09:59:59",
+        "endTime": "2026-11-20 09:59:59",
         "fiveStar": [
           {
-            "name": "Cosmic Yui",
+            "name": "Mitsuru Kirijo",
             "type": "thief"
           }
         ],
@@ -49,8 +49,8 @@
             "type": "thief"
           }
         ],
-        "name": "Plantastic Planet Protectors",
-        "startTime": "2026-09-17 10:30:00",
+        "name": "Brilliant Executioner",
+        "startTime": "2026-10-23 10:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -264,12 +264,12 @@
     ],
     "weapon": [
       {
-        "endTime": "2026-10-23 09:59:59",
+        "endTime": "2026-11-20 09:59:59",
         "fiveStar": [
           {
-            "name": "Starlight Decimators",
+            "name": "Longinus",
             "type": "weapon",
-            "user": "Cosmic Yui"
+            "user": "Mitsuru"
           }
         ],
         "fourStar": [
@@ -284,18 +284,18 @@
             "user": "Tomiyama"
           },
           {
-            "name": "Sprouting Voyagers",
-            "type": "weapon",
-            "user": "Cosmic Yui"
-          },
-          {
             "name": "Knight's Reward",
             "type": "weapon",
             "user": "Shiratori"
+          },
+          {
+            "name": "Rose Flamberge",
+            "type": "weapon",
+            "user": "Mitsuru"
           }
         ],
         "name": "Silent Pistol",
-        "startTime": "2026-09-17 10:30:00",
+        "startTime": "2026-10-23 10:30:00",
         "type": "Arms Deals"
       },
       {

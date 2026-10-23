@@ -10,16 +10,16 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice"
+                "Fire"
               ],
               "Weak": [
-                "Nuclear"
+                "Ice"
               ]
             },
-            "image": "B-guaiwutouxiang-seiryu.png",
+            "image": "B-guaiwutouxiang-surtr.png",
             "level": "89",
-            "name": "Seiryu",
-            "skill": "207,1404,203",
+            "name": "Surt",
+            "skill": "108,103,1008",
             "sn": "536101",
             "stat": {}
           }
@@ -36,19 +36,19 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
-                "Electric",
-                "Bless",
-                "Curse"
+                "Phys",
+                "Gun",
+                "Wind",
+                "Bless"
               ],
               "Weak": [
-                "Fire"
+                "Electric"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-cuchulainn.png",
             "level": "89",
-            "name": "Lilith",
-            "skill": "607,603",
+            "name": "Cu Chulainn",
+            "skill": "1023,1154",
             "sn": "536111",
             "stat": {}
           }
@@ -58,8 +58,8 @@
       }
     ],
     "buff": "Unfading Trailblazer: When an ally uses a skill on the target, grant Inherited Wish to all allies.\nInherited Wish: Increase final damage by 20% for 3 turns. If the skill user is a SEES member, increase final damage by 20% more.",
-    "endTime": "2026-10-23 09:30:00",
-    "startTime": "2026-09-24 06:30:00"
+    "endTime": "2026-11-06 09:30:00",
+    "startTime": "2026-10-23 10:30:00"
   },
   "msg": "OK",
   "status": 0

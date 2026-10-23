@@ -4,7 +4,7 @@
       {
         "affixs": [
           {
-            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
+            "detail": "When the party has 2 or more Sweeper or Assassin allies, all allies' final damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
@@ -16,7 +16,7 @@
             "name": "Special Effect"
           },
           {
-            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "detail": "Party's Nuclear damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
@@ -29,27 +29,23 @@
             "Absorb": [],
             "Nullify": [],
             "Reflect": [],
-            "Resistant": [
-              "Fire",
-              "Wind",
-              "Bless"
-            ],
+            "Resistant": [],
             "Weak": [
               "Nuclear"
             ]
           },
           "image": "B-guaiwutouxiang-bafang.png",
-          "level": "82",
+          "level": "80",
           "name": "Yatsufusa",
           "skill": "2445,1021,762,1406,103,1019",
-          "sn": "736611",
+          "sn": "736811",
           "stat": {}
         }
       },
       {
         "affixs": [
           {
-            "detail": "At the end of each turn, foes gain 1 Berserk stack.\nBerserk: Increase damage by a set amount. Stacks up to 3 times.",
+            "detail": "When the party has 2 or more Sweeper or Assassin allies, all allies' final damage is increased by 20%.",
             "name": "Special Effect"
           },
           {
@@ -61,7 +57,7 @@
             "name": "Special Effect"
           },
           {
-            "detail": "If the party contains Guardians or Medics, all foes' final damage dealt is decreased by 60% and final damage taken is increased by 20%. If not, all foes' final damage dealt is increased by 60%.",
+            "detail": "When a foe is knocked down, increase final damage by 80%.",
             "name": "Special Effect"
           },
           {
@@ -74,30 +70,26 @@
             "Absorb": [],
             "Nullify": [],
             "Reflect": [],
-            "Resistant": [
-              "Gun",
-              "Fire",
-              "Nuclear"
-            ],
+            "Resistant": [],
             "Weak": [
               "Ice"
             ]
           },
           "image": "B-guaiwutouxiang-surtr.png",
-          "level": "82",
+          "level": "80",
           "name": "Surt",
           "skill": "108,103,1023,1008",
-          "sn": "733611",
+          "sn": "733811",
           "stat": {}
         }
       }
     ],
-    "endTime": "2026-10-23 09:30:00",
+    "endTime": "2026-10-30 09:30:00",
     "mode": {
-      "detail": "Each turn, the boss's attacks grow stronger, and you get more points!",
-      "name": "Multidimensional Dreamscape"
+      "detail": "The more Assassins and Sweepers you have in your party, the more the point multiplier will increase.",
+      "name": "Nexus of Dreams"
     },
-    "startTime": "2026-10-15 10:30:00"
+    "startTime": "2026-10-23 10:30:00"
   },
   "msg": "OK",
   "status": 0

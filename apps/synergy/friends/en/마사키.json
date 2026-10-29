@@ -198,7 +198,7 @@
         "bonus_synergy": 8,
         "compound": [],
         "image": "item-303224.png",
-        "name": "Glass Vase",
+        "name": "Flower Vase",
         "new_gift_synergy": 16,
         "seed": [],
         "shop": [
@@ -790,14 +790,10 @@
       }
     ],
     "time": "After School",
-    "unlock_quest": {
-      "details": "Something strange is happening up ahead.\nWe should go check it out.",
-      "name": "Chamber of Recollections"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "Available after progressing through Chapter 2"
+        "details": "Something strange is happening up ahead.\nWe should go check it out.",
+        "name": "Chamber of Recollections"
       }
     ],
     "visit_dialog": [
@@ -890,6 +886,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "Available after progressing through Chapter 2"
       }
     ]
   },

@@ -30,6 +30,15 @@ function buildIndex() {
       runFile(file, personaSandbox);
       const persona = personaSandbox.window.personaFiles[name];
       if (!persona || typeof persona !== 'object') throw new Error(`Invalid persona data: ${file}`);
+      const skillFields = ['uniqueSkill', 'highlight', 'innate_skill', 'passive_skill'];
+      const searchableFields = ['name', 'name_en', 'name_jp', 'name_cn', 'desc', 'desc_en', 'desc_jp', 'desc_cn'];
+      const skills = skillFields.flatMap(field => {
+        const value = persona[field];
+        return Array.isArray(value) ? value : (value && typeof value === 'object' ? [value] : []);
+      });
+      const searchText = skills.flatMap(skill => searchableFields.map(field => skill[field]))
+        .filter(value => typeof value === 'string' && value.trim())
+        .join(' ');
       index[name] = {
         name: persona.name || name,
         name_en: persona.name_en || '',
@@ -42,6 +51,7 @@ function buildIndex() {
         event: persona.event || '',
         wild_emblem_rainbow: !!persona.wild_emblem_rainbow,
         tier: persona.tier || '',
+        searchText,
         __path: list.directory,
         __hash: crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0, 16)
       };

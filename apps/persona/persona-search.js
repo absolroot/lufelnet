@@ -60,6 +60,8 @@
             searchText += (persona.name || '') + ' ';
             searchText += (persona.name_en || '') + ' ';
             searchText += (persona.name_jp || '') + ' ';
+            searchText += (persona.name_cn || '') + ' ';
+            searchText += (persona.searchText || '') + ' ';
 
             // Unique Skill
             if (persona.uniqueSkill) {

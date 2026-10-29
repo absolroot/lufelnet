@@ -1172,6 +1172,7 @@ Object.assign(window.characterData, {
     },
     "미나미": {
         "limit": false,
+        "has_innate": true,
         "tag": "축복, 디버프 제거, 최대 생명 증가, 대미지보너스, 지속 회복, 관통, 부활",
         "color": "#f7cd80",
         "element": "축복",

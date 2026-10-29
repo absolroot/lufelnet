@@ -53,14 +53,14 @@ window.enCharacterSkillsData["후타바"] = {
     "element": "버프",
     "type": "버프",
     "cool": 0,
-    "description": "For 3 turns, decrease all foes' Defense by 6%; decrease Defense by 0.53% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). When foes with this Defense decrease take weakness damage, multiply the effect by 2.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."
+    "description": "Decrease all foes' Defense by 6%; decrease Defense by 0.53% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). Lasts 3 turns. When foes with this Defense decrease take weakness damage, multiply the effect by 2.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."
   },
   "skill2": {
     "name": "Vulnerability Found!",
     "element": "버프",
     "type": "버프",
     "cool": 0,
-    "description": "For 3 turns, increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nWhen an ally deals damage with a skill, Resonance, Highlight, or Theurgy to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."
+    "description": "Increase 1 foe's damage taken by 6%; increase damage taken by 0.57% more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). Lasts 3 turns.\nWhen an ally deals damage with a skill, Resonance, Highlight, or Theurgy to foes inflicted with this effect, gain 20% Analysis Progress.\nIf Futaba's Analysis Progress is at 100%, also grant Data Storm to all allies for 2 turns."
   },
   "skill3": {
     "name": "Data Link Established!",
@@ -68,7 +68,7 @@ window.enCharacterSkillsData["후타바"] = {
     "type": "버프",
     "cool": 0,
     "unlock": "Ally must have 『Hack Complete』.",
-    "description": "Usable when allies have Data Storm. For 2 turns, increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack).\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist. Resist becomes Normal. Normal becomes Weak. Weak attributes take 25% more weakness damage.)"
+    "description": "Usable when allies have Data Storm. Increase 1 ally's Attack by 270/297/302/329; increase Attack by 21.7 more for every 100 points of Futaba's Attack (up to 4600/5060/5980/6440 of Attack). Lasts 2 turns.\nInflict Virus on all foes for 1 turn, based on the targeted ally's attribute.\nVirus: Change affinities of the foe this is inflicted upon. (Null, Repel, and Drain become Resist. Resist becomes Normal. Normal becomes Weak. Weak attributes take 25% more weakness damage.)"
   },
   "skill_highlight": {
     "name": "Stat Buff",

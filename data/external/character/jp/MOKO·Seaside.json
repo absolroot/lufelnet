@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "ランダムな敵に攻撃力82.4%/90.8%/87.4%/95.9%の念動属性ダメージを３回与える。このスキルでダメージを受けていない敵を優先して攻撃し、ダメージごとに『残光』を１つ付与する。同一の対象に命中した時、与ダメージが３０%になる。",

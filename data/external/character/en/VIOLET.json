@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 0,
       "cost": "",
       "desc": "Can be activated in Masquerade mode. Deal Bless damage to 1 foe equal to 273.1%/301.0%/289.8%/317.8% of Attack. Also, with Step stacks, gain additional effects accordingly.\nLead Step: Increase Highlight damage by 15% for each stack.\nFollow Step: Increase Highlight critical rate by 10%, and critical damage by 20%.",

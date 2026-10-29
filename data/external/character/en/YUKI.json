@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Deal Bless damage to 1 foe equal to 284.1%/313.2%/295.8%/324.9% of Yukimi's Defense. Also increase party's Defense by 20% of Yukimi's Defense (up to 657/725/684/752) for 2 turns.",

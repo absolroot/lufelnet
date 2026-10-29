@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に攻撃力366.0%/403.5%/388.5%/426.0%の念動属性ダメージを与え、１ターンの間、味方全体の与ダメージを『ミステリー』の累積数ごとに7.8%/8.6%/8.3%/9.1%ずつ上昇させる。",

@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Deal Ice damage to 1 foe equal to 292.8%/322.8%/304.8%/334.8% of Attack. Increase damage based on foe's missing HP. When foe's HP is below 20%, increase by up to 30%.",

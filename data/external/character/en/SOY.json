@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on HPcur/HP)",
       "cooldown": 4,
       "cost": "",
       "desc": "Increase party's max HP by 10.3% of Shun's max HP for 2 turns (up to 14100/14100/15600/15600) and restore party's HP by 10.1%/11.1%/10.5%/11.5% of Shun's max HP.\nDeal Ice damage to 1 foe equal to 75.3%/83.1%/78.4%/86.2% of Shun's max HP.",

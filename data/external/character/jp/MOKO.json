@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体を１ターンの間、睡眠状態にし、対象の次の被ダメージが32.8%/36.2%/34.1%/37.5%上昇する。",
       "name": "ハイライト",
-      "nature": null,
+      "nature": "Debuff",
       "skill_lv": "10/10/12/12",
       "sn": 110152,
       "tags": [

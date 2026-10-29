@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on Unknown)",
       "cooldown": 4,
       "cost": "",
       "desc": "Increase Attack by 34.2%/37.7%/36.3%/39.8% and follow-up damage by 24.4%/26.9%/25.9%/28.4% of Attack for 2 turns.\nActivate follow-up when allies deal damage to foes with skills for 2 turns.",
       "name": "Highlight",
-      "nature": null,
+      "nature": "Support",
       "skill_lv": "10/10/13/13",
       "sn": 111152,
       "tags": [

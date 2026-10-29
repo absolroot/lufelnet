@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Deal Psychokinesis damage to 1 foe equal to 366.0%/403.5%/388.5%/426.0% of Attack. Increase party's damage by 7.8%/8.6%/8.3%/9.1% for each stack of Mystery for 1 turn.",

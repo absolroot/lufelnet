@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Deal Electric damage to all foes equal to 162.4%/179.0%/169.1%/185.7% of Attack. For 2 turns, inflict Shock on the main target, and increase Electric damage taken by 10%.",

@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に防御力284.1%/313.2%/295.8%/324.9%の祝福属性ダメージを与える。さらに味方全体の防御力を２ターンの間、雪実の防御力２０%分、最大657/725/684/752まで上昇させる。",

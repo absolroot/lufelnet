@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Default",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵全体に攻撃力195.2%/215.2%/207.2%/227.2%の祝福属性ダメージを与え、自身の最大ＨＰの２０%を回復する。\n自身のＨＰが５０%以上の時、ハイライトのダメージが２５%上昇する。",

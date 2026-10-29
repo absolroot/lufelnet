@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Default",
+      "auto_select": "AICondition (Based on HPcur/HP)",
       "cooldown": 4,
       "cost": "",
       "desc": "２ターンの間、味方全体に防御力59.0%/59.0%/62.7%/62.7%＋1681/2044/2066/2429のシールド『騎士の決意』を付与し、さらに味方全体の被ダメージを31.9%/35.2%/33.9%/37.1%低下させる。",

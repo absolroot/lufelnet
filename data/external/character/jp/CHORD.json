@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on Unknown)",
       "cooldown": 4,
       "cost": "",
       "desc": "味方が４回行動する間、味方全体の与ダメージを45.5%/50.1%/48.3%/52.9%上昇させる。\nこの効果が持続中、味方が行動した後にハイライトゲージが１０%増加する（最大４０%まで）。",
       "name": "ハイライト",
-      "nature": null,
+      "nature": "Support",
       "skill_lv": "10/10/13/13",
       "sn": 132152,
       "tags": [

@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に攻撃力405.0%/446.5%/429.9%/471.4%の物理属性ダメージを与え、次に自身が使用するスキルの与ダメージが58.6%/58.6%/62.2%/62.2%上昇する。",

@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵全体に攻撃力162.4%/179.0%/169.1%/185.7%の電撃属性ダメージを与え、選択した対象を２ターンの間、感電状態にし、電撃属性の被ダメージを１０%上昇させる。",

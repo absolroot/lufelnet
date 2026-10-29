@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵全体の火炎属性の被ダメージが30.1%/33.1%/31.3%/34.4%上昇し、自身の最大ＨＰ41.5%/45.7%/43.2%/47.4%分の火炎属性ダメージを与える。さらに２ターンの間、敵を炎上状態にする。",

@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Default",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Deal Bless damage to all foes equal to 195.2%/215.2%/207.2%/227.2% of Attack, and restore 20% of Tropical Motoha's max HP.\nIf her HP is above 50%, increase Highlight damage by 25%.",

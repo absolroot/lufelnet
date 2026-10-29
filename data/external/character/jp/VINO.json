@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に攻撃力324.5%/357.8%/337.8%/371.1%の核熱属性ダメージを与え、７５%の確率で対象を付与されていないランダムな２種類の属性異常にする。",

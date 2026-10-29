@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Inflict Sleep on 1 foe for 1 turn, and increase next damage taken by 32.8%/36.2%/34.1%/37.5%.",
       "name": "Highlight",
-      "nature": null,
+      "nature": "Debuff",
       "skill_lv": "10/10/12/12",
       "sn": 110152,
       "tags": [

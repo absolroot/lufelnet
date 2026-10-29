@@ -280,7 +280,7 @@
     "theurgia_skill": [
       {
         "ascend": "0/5/0/5",
-        "auto_select": "Default",
+        "auto_select": "AICondition (Based on AAAAAA==)",
         "cooldown": 0,
         "cost": "",
         "desc": "Can be activated when Theurgy gauge is at 70. Deal Wind damage to 1 foe equal to 406.0%/447.6%/431.0%/472.6% of Attack. Also, remove 2 buffs from the target, and inflict Windswept and Erosion.\nAlso, increase party's damage by 0.48% for every 100 points of Yukari's Attack (up to a maximum of 19.5%/21.5%/20.7%/22.7%) for 2 turns.",

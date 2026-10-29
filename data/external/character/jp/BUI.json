@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on Unknown)",
       "cooldown": 4,
       "cost": "",
       "desc": "２ターンの間、自身の攻撃力が34.2%/37.7%/36.3%/39.8%上昇し、追撃のダメージが攻撃力の24.4%/26.9%/25.9%/28.4%分上昇する。\nさらに２ターンの間、味方がスキルで敵にダメージを与えた時、追撃が発生する。",
       "name": "ハイライト",
-      "nature": null,
+      "nature": "Support",
       "skill_lv": "10/10/13/13",
       "sn": 111152,
       "tags": [

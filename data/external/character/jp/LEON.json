@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "AICondition (Based on GJ)",
+      "auto_select": "AICondition (Based on Unknown)",
       "cooldown": 4,
       "cost": "",
       "desc": "自身以外の味方単体の『友情パワー』の累積数を２ターンの間、最大状態にする。対象の残りのＨＰが６０%未満の時、そのＨＰを最大で６０%まで回復する。ただし回復量は神山の攻撃力の２００%が上限となる。さらに２ターンの間、攻撃力を神山の攻撃力１５%分（最大585.6/645.6/609.6/669.6まで）上昇させる。",
       "name": "ハイライト",
-      "nature": null,
+      "nature": "Support",
       "skill_lv": "10/10/12/12",
       "sn": 107152,
       "tags": [

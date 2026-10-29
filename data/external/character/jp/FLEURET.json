@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に攻撃力58.6%/64.6%/61.0%/67.0%の疾風属性ダメージを４回与える。『アタック権』を３つ以上獲得している時、攻撃回数が１回増加する。",

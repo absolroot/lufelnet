@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Deal Bless damage to all foes equal to 124.1%/136.9%/131.8%/144.5% of Attack, and Curse damage equal to 124.1%/136.9%/131.8%/144.5% of Attack (1 hit each).\nAlso, for 4 turns, increase Arrow of Perjury's number of hits by 2.",

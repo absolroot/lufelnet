@@ -118,12 +118,12 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "AICondition (Based on GJ)",
+      "auto_select": "AICondition (Based on Unknown)",
       "cooldown": 4,
       "cost": "",
       "desc": "Grant the maximum number of Power of Friendship stacks to 1 ally (other than Kamiyama) for 2 turns. If the target's remaining HP is below 60%, restore their HP up to 60% (healing is limited to 200% of Kamiyama's Attack). Increase Attack by 15% of Kamiyama's Attack (up to 585.6/645.6/609.6/669.6) for 2 turns.",
       "name": "Highlight",
-      "nature": null,
+      "nature": "Support",
       "skill_lv": "10/10/12/12",
       "sn": 107152,
       "tags": [

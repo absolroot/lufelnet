@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に攻撃力439.2%/484.2%/466.2%/511.2%の核熱属性ダメージを与える。さらに特定のルールに従って、対象に『ベジタブルストライク』を発動する。",

@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "Switch to Doctor mode and immediately inflict 5 Bleed stacks on 1 foe.\nThen, immediately switch to Ripper mode and deal Physical damage to the target equal to 492.8%/543.3%/523.1%/573.6% of Attack (can activate Rending effects).",

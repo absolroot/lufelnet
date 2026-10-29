@@ -118,7 +118,7 @@
     "final_innate": [],
     "highlight_skill": {
       "ascend": "0/5/0/5",
-      "auto_select": "Weak",
+      "auto_select": "AICondition (Based on AAAAAA==)",
       "cooldown": 4,
       "cost": "",
       "desc": "敵単体に攻撃力292.8%/322.8%/304.8%/334.8%の氷結属性ダメージを与える。敵の残りのＨＰが少ないほど与ダメージが上昇し、敵のＨＰが２０%未満の状態で、最大３０%まで上昇する。",

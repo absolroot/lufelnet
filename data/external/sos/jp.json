@@ -20,15 +20,15 @@
             "level": "89",
             "name": "スルト",
             "skill": "108,103,1008",
-            "sn": "536101",
+            "sn": "537101",
             "stat": {}
           }
         ],
         "scoreRatio": 2.0,
-        "sn": "408401"
+        "sn": "418401"
       },
       {
-        "bonusRule": "All ally Electric attack Score x 3",
+        "bonusRule": "All ally Nuclear attack Score x 3",
         "enemy": [
           {
             "adapt": {
@@ -36,28 +36,25 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Phys",
-                "Gun",
-                "Wind",
-                "Bless"
+                "Ice"
               ],
               "Weak": [
-                "Electric"
+                "Nuclear"
               ]
             },
-            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "image": "B-guaiwutouxiang-seiryu.png",
             "level": "89",
-            "name": "クー・フーリン",
-            "skill": "1023,1154",
-            "sn": "536111",
+            "name": "セイリュウ",
+            "skill": "207,1404,203",
+            "sn": "537111",
             "stat": {}
           }
         ],
-        "scoreRatio": 1.0,
-        "sn": "408402"
+        "scoreRatio": 2.0,
+        "sn": "418402"
       }
     ],
-    "buff": "燐光伝播: テウルギアを発動した後『熱光子』を２つ獲得する。ハイライトを発動した後『熱光子』を１つ獲得する。\n『熱光子』：３ターンの間、１つごとに与える最終ダメージが１０%上昇する。最大４つまで累積できる。",
+    "buff": "蝕蜘蛛の巣窟: 『解明』ロールの味方が任意のスキルを選択して使用するごとに、味方全体に『昂る神経網』を１つ付与する。\n『昂る神経網』：１つごとに最終ダメージが２０%上昇する。１ターン持続し、最大で２つ累積できる。",
     "endTime": "2026-11-12 10:30:00",
     "startTime": "2026-10-29 11:30:00"
   },

@@ -1,5 +1,1035 @@
 {
-  "data": null,
-  "msg": "Sandbox not found.",
-  "status": 100
+  "data": {
+    "endTime": "2026-11-26 05:00:00",
+    "nodes": {
+      "1101": {
+        "affix": [
+          {
+            "desc": "『支配』ロールの味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4502
+          }
+        ],
+        "award": [
+          {
+            "count": 600,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 24,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-barong.png",
+            "level": "54",
+            "name": "バロン",
+            "skill": "303,307,1323",
+            "sn": "640221",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-barong.png",
+            "level": "54",
+            "name": "バロン",
+            "skill": "303,307,1323",
+            "sn": "640222",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-sisa.png",
+            "level": "54",
+            "name": "シーサー",
+            "skill": "1014,1087,301",
+            "sn": "640223",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-sisa.png",
+            "level": "54",
+            "name": "シーサー",
+            "skill": "1014,1087,301",
+            "sn": "640224",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-sisa.png",
+            "level": "54",
+            "name": "シーサー",
+            "skill": "1014,1087,301",
+            "sn": "640225",
+            "stat": {}
+          }
+        ],
+        "id": 1101,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -114.39999999999999,
+          -400.0
+        ],
+        "unlockCond": null
+      },
+      "1102": {
+        "affix": [
+          {
+            "desc": "『反抗』ロールの味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4501
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [
+          1101
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-arahabaki.png",
+            "level": "60",
+            "name": "アラハバキ",
+            "skill": "806,1019",
+            "sn": "640311",
+            "stat": {}
+          }
+        ],
+        "id": 1102,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -102.8,
+          -251.6
+        ],
+        "unlockCond": null
+      },
+      "1103": {
+        "affix": [
+          {
+            "desc": "主人公以外の火炎／氷結／電撃／疾風属性の味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4511
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 27,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-ookuni.png",
+            "level": "66",
+            "name": "オオクニヌシ",
+            "skill": "1016,506,1404",
+            "sn": "640621",
+            "stat": {}
+          }
+        ],
+        "id": 1103,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -262.8,
+          80.0
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1102
+          }
+        ]
+      },
+      "1104": {
+        "affix": [
+          {
+            "desc": "『Ｓ．Ｅ．Ｅ．Ｓ．』の味方が与える最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4592
+          }
+        ],
+        "award": [
+          {
+            "count": 50,
+            "img": "item-3.png",
+            "name": "自在結晶"
+          },
+          {
+            "count": 72,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 54,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          1102
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-asura.png",
+            "level": "78",
+            "name": "アスラおう",
+            "skill": "607,1023,603,604",
+            "sn": "643021",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-lakshmi.png",
+            "level": "78",
+            "name": "ラクシュミ",
+            "skill": "203,1503,1507",
+            "sn": "643022",
+            "stat": {}
+          }
+        ],
+        "id": 1104,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "観測点·宮主星",
+        "pos": [
+          -217.20000000000002,
+          331.6
+        ],
+        "unlockCond": [
+          {
+            "type": "clearNodesCount",
+            "value": 3
+          }
+        ]
+      },
+      "1105": {
+        "affix": [
+          {
+            "desc": "主人公以外の念動／核熱／祝福／呪怨属性の味方の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4512
+          }
+        ],
+        "award": [
+          {
+            "count": 1050,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 42,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-byako.png",
+            "level": "72",
+            "name": "ビャッコ",
+            "skill": "1025,206,203,1316",
+            "sn": "641411",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-cerberus.png",
+            "level": "72",
+            "name": "ケルベロス",
+            "skill": "103,1006,1411",
+            "sn": "641412",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-orthos.png",
+            "level": "72",
+            "name": "オルトロス",
+            "skill": "102,1014,1404",
+            "sn": "641413",
+            "stat": {}
+          }
+        ],
+        "id": 1105,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -320.0,
+          262.79999999999995
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1102
+          }
+        ]
+      },
+      "1106": {
+        "affix": [
+          {
+            "desc": "味方全体は意識奏功による回復を受けると、最終ダメージが３０%上昇する。この効果は２ターン持続する。最大２つまで累積できる。",
+            "name": "特殊効果",
+            "sn": 4542
+          }
+        ],
+        "award": [
+          {
+            "count": 1350,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 54,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 40,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "78",
+            "name": "クー・フーリン",
+            "skill": "1008,1102",
+            "sn": "641711",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-scathach.png",
+            "level": "78",
+            "name": "スカアハ",
+            "skill": "1016,1404,207",
+            "sn": "641712",
+            "stat": {}
+          }
+        ],
+        "id": 1106,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          -445.6,
+          194.39999999999998
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1102
+          }
+        ]
+      },
+      "1107": {
+        "affix": [
+          {
+            "desc": "味方全体は現在ＨＰが低いほど最終ダメージが上昇する。最大でＨＰ４０%の時、最終ダメージが８０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4525
+          }
+        ],
+        "award": [
+          {
+            "count": 50,
+            "img": "item-3.png",
+            "name": "自在結晶"
+          },
+          {
+            "count": 180,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 135,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 2,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          1104
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-jikokuten.png",
+            "level": "84",
+            "name": "ジコクテン",
+            "skill": "2309,1408,1005,1084,1019,1002",
+            "sn": "645211",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-zouchouten.png",
+            "level": "84",
+            "name": "ゾウチョウテン",
+            "skill": "302,1025,2310,1002",
+            "sn": "645212",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-koumokuten.png",
+            "level": "84",
+            "name": "コウモクテン",
+            "skill": "2311,1005,1011,1002",
+            "sn": "645213",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-bishamonten.png",
+            "level": "84",
+            "name": "ビシャモンテン",
+            "skill": "2313,603,607,601,1005",
+            "sn": "645214",
+            "stat": {}
+          }
+        ],
+        "id": 1107,
+        "img": "tianerong-xingpan-point02.png",
+        "isActive": true,
+        "name": "観測点·命主星",
+        "pos": [
+          -34.4,
+          651.5999999999999
+        ],
+        "unlockCond": [
+          {
+            "type": "clearNodesCount",
+            "value": 6
+          }
+        ]
+      },
+      "1108": {
+        "affix": [
+          {
+            "desc": "パーティに反抗／支配ロールの味方を２名以上編成する時、味方全体の最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4503
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-nebiros.png",
+            "level": "72",
+            "name": "ネビロス",
+            "skill": "803,810,1410",
+            "sn": "641221",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-nebiros.png",
+            "level": "72",
+            "name": "ネビロス",
+            "skill": "803,810,1410",
+            "sn": "641222",
+            "stat": {}
+          }
+        ],
+        "id": 1108,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          194.4,
+          742.8000000000002
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1110
+          }
+        ]
+      },
+      "1109": {
+        "affix": [
+          {
+            "desc": "反抗／支配ロールの味方のクリティカル率が４０%上昇し、クリティカルダメージが６０%低下する。クリティカルを発生させる時、最終ダメージが３０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4581
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 27,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-zaougongen.png",
+            "level": "78",
+            "name": "ザオウゴンゲン",
+            "skill": "1009,108",
+            "sn": "641531",
+            "stat": {}
+          }
+        ],
+        "id": 1109,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          320.0,
+          582.8
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1110
+          }
+        ]
+      },
+      "1110": {
+        "affix": [
+          {
+            "desc": "味方がテウルギアを発動した時、２ターンの間、最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4536
+          }
+        ],
+        "award": [
+          {
+            "count": 60,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 45,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          1104,
+          1107
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-futunusi.png",
+            "level": "84",
+            "name": "フツヌシ",
+            "skill": "1016,1008,1403",
+            "sn": "644021",
+            "stat": {}
+          }
+        ],
+        "id": 1110,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "観測点·宮主星",
+        "pos": [
+          377.2,
+          365.6
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1104
+          }
+        ]
+      },
+      "1111": {
+        "affix": [
+          {
+            "desc": "心の怪盗団（蓮、モルガナ、竜司、杏、祐介、真、双葉、春）の味方が与える最終ダメージが６０%上昇する。",
+            "name": "特殊効果",
+            "sn": 4591
+          }
+        ],
+        "award": [
+          {
+            "count": 750,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 30,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "72",
+            "name": "クー・フーリン",
+            "skill": "1008,1102",
+            "sn": "641431",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-scathach.png",
+            "level": "72",
+            "name": "スカアハ",
+            "skill": "1016,1404,207",
+            "sn": "641432",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-narcissus.png",
+            "level": "72",
+            "name": "ナルキッソス",
+            "skill": "406,1301",
+            "sn": "641433",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-leanan_sidhe.png",
+            "level": "72",
+            "name": "リャナンシー",
+            "skill": "502,811",
+            "sn": "641434",
+            "stat": {}
+          }
+        ],
+        "id": 1111,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          160.0,
+          297.20000000000005
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1110
+          }
+        ]
+      },
+      "1112": {
+        "affix": [
+          {
+            "desc": "味方全体はシールドを付与されるたびに、最終ダメージが８%上昇する。この効果は３ターン持続する。最大８つまで累積できる。",
+            "name": "特殊効果",
+            "sn": 4541
+          }
+        ],
+        "award": [
+          {
+            "count": 900,
+            "img": "item-302001.png",
+            "name": "星屑の欠片"
+          },
+          {
+            "count": 36,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 27,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-cuchulainn.png",
+            "level": "78",
+            "name": "クー・フーリン",
+            "skill": "1008,1102",
+            "sn": "641711",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-scathach.png",
+            "level": "78",
+            "name": "スカアハ",
+            "skill": "1016,1404,207",
+            "sn": "641712",
+            "stat": {}
+          }
+        ],
+        "id": 1112,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "観測点·守護星",
+        "pos": [
+          137.20000000000002,
+          137.20000000000005
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1110
+          }
+        ]
+      },
+      "1113": {
+        "affix": [
+          {
+            "desc": "主人公以外の味方の意識奏功発動時、最終ダメージが１００%上昇する。",
+            "name": "特殊効果",
+            "sn": 4531
+          }
+        ],
+        "award": [
+          {
+            "count": 60,
+            "img": "item-302021.png",
+            "name": "星屑のボトル"
+          },
+          {
+            "count": 45,
+            "img": "item-302011.png",
+            "name": "星屑晶珠"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "明星晶珠"
+          }
+        ],
+        "connected": [
+          1110
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-anubis.png",
+            "level": "84",
+            "name": "アヌビス",
+            "skill": "706,806",
+            "sn": "644421",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-set.png",
+            "level": "84",
+            "name": "セト",
+            "skill": "103,1102",
+            "sn": "644422",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-tooto.png",
+            "level": "84",
+            "name": "トート",
+            "skill": "901,602",
+            "sn": "644423",
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-horus.png",
+            "level": "84",
+            "name": "ホルス",
+            "skill": "905,1082",
+            "sn": "644424",
+            "stat": {}
+          }
+        ],
+        "id": 1113,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "観測点·宮主星",
+        "pos": [
+          285.59999999999997,
+          -114.40000000000003
+        ],
+        "unlockCond": [
+          {
+            "type": "clearSpecificNode",
+            "value": 1110
+          }
+        ]
+      }
+    },
+    "startTime": "2026-10-29 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

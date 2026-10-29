@@ -10,20 +10,21 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Phys",
-                "Fire",
+                "Ice",
+                "Electric",
                 "Wind",
-                "Nuclear"
+                "Bless",
+                "Curse"
               ],
               "Weak": [
-                "Psychokinesis"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-ganesha.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "조종당하는 가네샤",
-            "skill": "1013,1022",
-            "sn": 552101,
+            "name": "조종당한 릴리스",
+            "skill": "607,603",
+            "sn": 553101,
             "stat": {}
           }
         ],
@@ -39,18 +40,18 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Electric",
-                "Psychokinesis"
+                "Wind",
+                "Bless"
               ],
               "Weak": [
-                "Wind"
+                "Psychokinesis"
               ]
             },
-            "image": "B-guaiwutouxiang-ookuni.png",
+            "image": "B-guaiwutouxiang-quetzalcoatl.png",
             "level": "89",
-            "name": "조종당하는 오오쿠니누시",
-            "skill": "1016,1021,1404",
-            "sn": 552111,
+            "name": "케찰코아틀",
+            "skill": "406,403",
+            "sn": 553111,
             "stat": {}
           }
         ],
@@ -58,9 +59,9 @@
         "sn": 78402
       }
     ],
-    "buff": "불멸의 선구자: 아군을 목표로 페르소나 스킬을 시전할 때 아군 전체에 『의지 전승』을 부여한다. 『의지 전승』: 3턴 동안 주는 최종 대미지가 20% 증가하며, 스킬 시전자가 S.E.E.S. 멤버일 경우 최종 대미지가 20% 추가 증가한다.",
-    "endTime": "2026-10-29 07:30:00",
-    "startTime": "2026-09-24 08:30:00"
+    "buff": "비옥한 지맥: 약점 대미지를 줄 때 자신에게 『넘치는 생기』를 부여한다. 『넘치는 생기』: 2턴 동안 주는 최종 대미지가 20% 증가한다(2회 중첩 가능).",
+    "endTime": "2026-11-26 07:30:00",
+    "startTime": "2026-10-29 08:30:00"
   },
   "msg": "OK",
   "status": 0

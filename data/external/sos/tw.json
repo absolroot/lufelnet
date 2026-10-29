@@ -10,20 +10,21 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Phys",
-                "Fire",
+                "Ice",
+                "Electric",
                 "Wind",
-                "Nuclear"
+                "Bless",
+                "Curse"
               ],
               "Weak": [
-                "Psychokinesis"
+                "Fire"
               ]
             },
-            "image": "B-guaiwutouxiang-ganesha.png",
+            "image": "B-guaiwutouxiang-lilith.png",
             "level": "89",
-            "name": "被操控的象頭神",
-            "skill": "1013,1022",
-            "sn": 552101,
+            "name": "被操控的莉莉絲",
+            "skill": "607,603",
+            "sn": 553101,
             "stat": {}
           }
         ],
@@ -39,18 +40,18 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Electric",
-                "Psychokinesis"
+                "Wind",
+                "Bless"
               ],
               "Weak": [
-                "Wind"
+                "Psychokinesis"
               ]
             },
-            "image": "B-guaiwutouxiang-ookuni.png",
+            "image": "B-guaiwutouxiang-quetzalcoatl.png",
             "level": "89",
-            "name": "被操控的大國主",
-            "skill": "1016,1021,1404",
-            "sn": 552111,
+            "name": "羽蛇神",
+            "skill": "406,403",
+            "sn": 553111,
             "stat": {}
           }
         ],
@@ -58,9 +59,9 @@
         "sn": 78402
       }
     ],
-    "buff": "不朽先驅: 以友方為目標釋放人格面具技能時，使所有同伴獲得『意志傳承』。『意志傳承』：造成最終傷害提升20%，若技能釋放者為S.E.E.S.成員，最終傷害額外提升20%，持續3回合。",
-    "endTime": "2026-10-29 07:30:00",
-    "startTime": "2026-09-24 07:30:00"
+    "buff": "地脈沃土: 造成弱點傷害時，自身獲得『生機勃發』；『生機勃發』：造成的最終傷害提升20%，持續2回合，最多可疊加2層。",
+    "endTime": "2026-11-26 07:30:00",
+    "startTime": "2026-10-29 08:30:00"
   },
   "msg": "OK",
   "status": 0

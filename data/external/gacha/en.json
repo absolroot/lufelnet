@@ -54,6 +54,58 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-11-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Fuuka Yamagishi",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "All-Seeing Eye",
+        "startTime": "2026-10-29 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-11-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Fuuka Yamagishi",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          },
+          {
+            "name": "Chizuko Nagao",
+            "type": "thief"
+          }
+        ],
+        "name": "All-Seeing Eye",
+        "startTime": "2026-10-29 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2026-11-12 10:59:59",
         "fiveStar": [
           {
@@ -296,6 +348,41 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-10-15 11:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-11-26 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Rainbow Relay",
+            "type": "weapon",
+            "user": "Fuuka"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Gravitational Force",
+            "type": "weapon",
+            "user": "Chizuko"
+          },
+          {
+            "name": "Dancer in Moonlight",
+            "type": "weapon",
+            "user": "Fuuka"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-10-29 11:30:00",
         "type": "Arms Deals"
       },
       {

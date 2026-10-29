@@ -1,5 +1,607 @@
 {
-  "data": null,
-  "msg": "Sandbox not found.",
-  "status": 100
+  "data": {
+    "endTime": "2026-11-26 05:00:00",
+    "nodes": {
+      "2401": {
+        "affix": [
+          {
+            "desc": "화염/빙결/전격/질풍 속성 팀원이 주는 최종 대미지가 60% 증가한다.",
+            "name": "속성 자기장Ⅰ",
+            "sn": 4511
+          }
+        ],
+        "award": [
+          {
+            "count": 1500,
+            "img": "item-302001.png",
+            "name": "영롱한 머큐리"
+          },
+          {
+            "count": 45,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 8,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-arahabaki.png",
+            "level": "66",
+            "name": "요란한 아라하바키",
+            "skill": "806,1019",
+            "sn": 640311,
+            "stat": {}
+          }
+        ],
+        "id": 2401,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "체크 포인트·λ",
+        "pos": [
+          -148.4,
+          -217.2
+        ],
+        "unlockCond": null
+      },
+      "2402": {
+        "affix": [
+          {
+            "desc": "지배 괴도가 주는 최종 대미지가 60% 증가한다.",
+            "name": "자기장 지배",
+            "sn": 4502
+          }
+        ],
+        "award": [
+          {
+            "count": 1875,
+            "img": "item-302001.png",
+            "name": "영롱한 머큐리"
+          },
+          {
+            "count": 55,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 35,
+            "img": "item-302011.png",
+            "name": "명성 수정구·하급"
+          },
+          {
+            "count": 10,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [
+          2401
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-seiryu.png",
+            "level": "72",
+            "name": "요란한 청룡",
+            "skill": "207,203,1404",
+            "sn": 640821,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-byako.png",
+            "level": "72",
+            "name": "요란한 백호",
+            "skill": "1025,206,203,1316",
+            "sn": 640822,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-suzaku.png",
+            "level": "72",
+            "name": "요란한 주작",
+            "skill": "606,602,1405",
+            "sn": 640823,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-genbu.png",
+            "level": "72",
+            "name": "요란한 현무",
+            "skill": "1407,205,202",
+            "sn": 640824,
+            "stat": {}
+          }
+        ],
+        "id": 2402,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "체크 포인트·ι",
+        "pos": [
+          -114.39999999999999,
+          -400.0
+        ],
+        "unlockCond": null
+      },
+      "2403": {
+        "affix": [
+          {
+            "desc": "모든 적이 괴도에게 대미지를 1회 받을 때마다 해당 괴도의 최종 대미지가 3턴 동안 4%씩 증가한다(15회 중첩 가능).",
+            "name": "다중 자기장",
+            "sn": 4571
+          }
+        ],
+        "award": [
+          {
+            "count": 50,
+            "img": "item-3.png",
+            "name": "이계 엠버"
+          },
+          {
+            "count": 100,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 65,
+            "img": "item-302011.png",
+            "name": "명성 수정구·하급"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "명성 수정구·고급"
+          },
+          {
+            "count": 20,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [
+          2402
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-asura.png",
+            "level": "76",
+            "name": "흉악한 아수라왕",
+            "skill": "607,1023,603,604",
+            "sn": 643021,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-lakshmi.png",
+            "level": "76",
+            "name": "흉악한 락슈미",
+            "skill": "203,1503,1507",
+            "sn": 643022,
+            "stat": {}
+          }
+        ],
+        "id": 2403,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "체크 포인트·η",
+        "pos": [
+          148.4,
+          -285.6
+        ],
+        "unlockCond": null
+      },
+      "2404": {
+        "affix": [
+          {
+            "desc": "모든 괴도는 추가 턴에서 최종 대미지가 120% 증가한다.",
+            "name": "재가동 자기장",
+            "sn": 4551
+          }
+        ],
+        "award": [
+          {
+            "count": 2700,
+            "img": "item-302001.png",
+            "name": "영롱한 머큐리"
+          },
+          {
+            "count": 70,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 50,
+            "img": "item-302011.png",
+            "name": "명성 수정구·하급"
+          },
+          {
+            "count": 15,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [
+          2403
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "78",
+            "name": "비뚤어진 멜키세덱",
+            "skill": "712,1009,1006,1404",
+            "sn": 641211,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-melchizedek.png",
+            "level": "78",
+            "name": "비뚤어진 멜키세덱",
+            "skill": "712,1009,1006,1404",
+            "sn": 641212,
+            "stat": {}
+          }
+        ],
+        "id": 2404,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "체크 포인트·ζ 2",
+        "pos": [
+          228.39999999999998,
+          -182.79999999999998
+        ],
+        "unlockCond": null
+      },
+      "2405": {
+        "affix": [
+          {
+            "desc": "모든 팀원이 추가 효과를 줄 때, 최종 대미지가 100% 증가한다.",
+            "name": "추가 자기장",
+            "sn": 4531
+          }
+        ],
+        "award": [
+          {
+            "count": 50,
+            "img": "item-3.png",
+            "name": "이계 엠버"
+          },
+          {
+            "count": 275,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 160,
+            "img": "item-302011.png",
+            "name": "명성 수정구·하급"
+          },
+          {
+            "count": 3,
+            "img": "item-302012.png",
+            "name": "명성 수정구·고급"
+          },
+          {
+            "count": 60,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [
+          2404
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-ongyoki.png",
+            "level": "82",
+            "name": "흉악한 온교우키",
+            "skill": "2222,2223",
+            "sn": 645311,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-fuuki.png",
+            "level": "82",
+            "name": "흉악한 후우키",
+            "skill": "1403,2216,2217",
+            "sn": 645312,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-suiki-i18n.png",
+            "level": "82",
+            "name": "흉악한 스이키",
+            "skill": "1031,2218,2219,2220",
+            "sn": 645313,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-kinki.png",
+            "level": "82",
+            "name": "흉악한 킨키",
+            "skill": "1019,1407",
+            "sn": 645314,
+            "stat": {}
+          }
+        ],
+        "id": 2405,
+        "img": "tianerong-xingpan-point02.png",
+        "isActive": true,
+        "name": "체크 포인트·μ 1",
+        "pos": [
+          137.20000000000002,
+          -80.0
+        ],
+        "unlockCond": null
+      },
+      "2406": {
+        "affix": [
+          {
+            "desc": "HIGHLIGHT 에너지 회복 속도가 20% 감소하고, 모든 괴도 HIGHLIGHT의 최종 대미지가 100% 증가한다.",
+            "name": "HL 자기장",
+            "sn": 4533
+          }
+        ],
+        "award": [
+          {
+            "count": 1875,
+            "img": "item-302001.png",
+            "name": "영롱한 머큐리"
+          },
+          {
+            "count": 55,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 35,
+            "img": "item-302011.png",
+            "name": "명성 수정구·하급"
+          },
+          {
+            "count": 10,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [
+          2405
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-raphael.png",
+            "level": "80",
+            "name": "비뚤어진 라파엘",
+            "skill": "1007,1409",
+            "sn": 641731,
+            "stat": {}
+          },
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-uriel.png",
+            "level": "80",
+            "name": "비뚤어진 우리엘",
+            "skill": "1026,1016,1090,905",
+            "sn": 641732,
+            "stat": {}
+          }
+        ],
+        "id": 2406,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": true,
+        "name": "체크 포인트·τ",
+        "pos": [
+          -34.4,
+          274.4
+        ],
+        "unlockCond": null
+      },
+      "2407": {
+        "affix": [
+          {
+            "desc": "적이 받는 ONEMORE/총공격의 대미지가 400% 증가한다.",
+            "name": "연계 자기장",
+            "sn": 4552
+          },
+          {
+            "desc": "전투 시작 및 적의 턴 시작 시, 적은 무작위로 속성 약점 1개를 획득한다(가장 최근에 얻은 약점만 존재).",
+            "name": "연계 자기장",
+            "sn": 4555
+          }
+        ],
+        "award": [
+          {
+            "count": 90,
+            "img": "item-302021.png",
+            "name": "별가루 병·하급"
+          },
+          {
+            "count": 55,
+            "img": "item-302011.png",
+            "name": "명성 수정구·하급"
+          },
+          {
+            "count": 1,
+            "img": "item-302012.png",
+            "name": "명성 수정구·고급"
+          },
+          {
+            "count": 20,
+            "img": "item-20003.png",
+            "name": "패스트 패스·일상"
+          }
+        ],
+        "connected": [
+          2406
+        ],
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [],
+              "Weak": []
+            },
+            "image": "B-guaiwutouxiang-futunusi.png",
+            "level": "82",
+            "name": "흉악한 후츠누시",
+            "skill": "1016,1008,1403",
+            "sn": 644021,
+            "stat": {}
+          }
+        ],
+        "id": 2407,
+        "img": "tianerong-xingpan-point01.png",
+        "isActive": true,
+        "name": "체크 포인트·δ",
+        "pos": [
+          102.8,
+          651.5999999999999
+        ],
+        "unlockCond": null
+      },
+      "2408": {
+        "affix": [],
+        "award": [],
+        "connected": [
+          2407
+        ],
+        "enemy": [],
+        "id": 2408,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": false,
+        "name": "체크 포인트·β",
+        "pos": [
+          -11.600000000000001,
+          742.8000000000002
+        ],
+        "unlockCond": null
+      },
+      "2409": {
+        "affix": [],
+        "award": [],
+        "connected": [
+          2407
+        ],
+        "enemy": [],
+        "id": 2409,
+        "img": "tianerong-xingpan-point03.png",
+        "isActive": false,
+        "name": "체크 포인트·π",
+        "pos": [
+          205.6,
+          537.2
+        ],
+        "unlockCond": null
+      }
+    },
+    "startTime": "2026-10-24 05:00:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

@@ -8,7 +8,7 @@ window.characterList = window.characterList || {
         "하루나","J&C"
     ],
     supportParty: [
-        "유우미", "리코", "마나카", "미유", "카요", "후타바", "미쿠"
+        "유우미", "리코", "마나카", "미유", "카요", "후타바", "후카", "미쿠"
     ]
 };
 
@@ -20,6 +20,9 @@ Object.assign(window.characterData, {
         "tag": "",
         "persona": "",
         "release_order": 0
+    },
+    "후카": {
+        "release_order": 38
     },
     "미츠루": {
         "release_order": 37

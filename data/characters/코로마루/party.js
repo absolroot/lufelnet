@@ -58,8 +58,8 @@ window.recommendParty["코로마루"] = {
         {
             "name": "후카",
             "comment": "코로마루가 백업으로 참전해도 패시브 1개를 제외한 모든 효과를 손해 없이 사용할 수 있어 가장 좋은 선택지 중 하나로 언급된다.",
-            "comment_en": "Even when Koromaru enters as Fuuka's [Backup Character], he can use all of his effects except for 1 passive, making Fuuka one of his best options.",
-            "comment_jp": "コロマルが風花の『候補キャラクター』として参戦しても、パッシブ1つを除くすべての効果を使えるため、風花は有力な選択肢の1つとなる。",
+            "comment_en": "Even when Koromaru enters as Fuuka's Shift Member, he can use all of his effects except for 1 passive, making Fuuka one of his best options.",
+            "comment_jp": "コロマルが風花の『シフトメンバー』として参戦しても、パッシブ1つを除くすべての効果を使えるため、風花は有力な選択肢の1つとなる。",
             "comment_cn": "即使科洛马鲁以替补身份参战，除1个被动外的所有效果也都能无损使用，因此常被视为最优选之一。"
         },
         {

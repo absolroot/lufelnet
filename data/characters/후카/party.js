@@ -108,8 +108,8 @@ window.recommendParty["후카"] = {
             "name": "이치고",
             "A": 6,
             "comment": "조건: 후카 의식6 / 후카는 교체 멤버의 버프를 이전하므로 이치고의 의식6의 전투당 1회 추가 발동 가능한 스킬들을 활용해 추가적인 딜러로서 참여할 수 있다.",
-            "comment_en": "Condition: Fuuka A6. Because Fuuka copies buffs onto her [Backup Character], Ichigo can participate as an additional damage dealer by using the once-per-battle bonus skill activations unlocked at A6.",
-            "comment_jp": "条件：風花A6。風花はバフを『候補キャラクター』に複製できるため、苺はA6で解禁される「戦闘中1回」の追加発動を活かし、追加アタッカーとして参加できる。",
+            "comment_en": "Condition: Fuuka A6. Because Fuuka copies buffs onto her Shift Member, Ichigo can participate as an additional damage dealer by using the once-per-battle bonus skill activations unlocked at A6.",
+            "comment_jp": "条件：風花A6。風花はバフを『シフトメンバー』に複製できるため、苺はA6で解禁される「戦闘中1回」の追加発動を活かし、追加アタッカーとして参加できる。",
             "comment_cn": "条件：风花意识6。风花会继承给替补成员增益，因此一五可以利用意识6解锁的每场战斗1次额外发动技能，作为额外输出参与战斗。"
         },
         {
@@ -122,8 +122,8 @@ window.recommendParty["후카"] = {
         {
             "name": "코로마루",
             "comment": "화염, 빙결, 전격 속성 한정 후카랑 가장 높은 효용성을 보인다. 패시브를 제외하고서 모든 디버프를 출전과 동시에 적에게 부여할 수 있으며 적의 방어력 감소와 약점을 변경시킨다.",
-            "comment_en": "On Fire, Ice, and Elec teams, Koromaru is one of Fuuka's best [Backup Character] options. Aside from his passive, he can apply all of his debuffs as soon as he enters, reducing enemy DEF and changing their weaknesses.",
-            "comment_jp": "火炎・氷結・電撃属性編成に限れば、コロマルは風花の『候補キャラクター』として特に高い相性を持つ。パッシブを除けば、登場と同時にすべてのデバフを敵に付与でき、防御力低下と弱点変化を行える。",
+            "comment_en": "On Fire, Ice, and Elec teams, Koromaru is one of Fuuka's best Shift Member options. Aside from his passive, he can apply all of his debuffs as soon as he enters, reducing enemy DEF and changing their weaknesses.",
+            "comment_jp": "火炎・氷結・電撃属性編成に限れば、コロマルは風花の『シフトメンバー』として特に高い相性を持つ。パッシブを除けば、登場と同時にすべてのデバフを敵に付与でき、防御力低下と弱点変化を行える。",
             "comment_cn": "在火焰、冰结、电击队中与风花的相性极高。除被动外，科洛马鲁登场时就能把所有减益一并施加给敌人，同时降低防御力并改变弱点。"
         }
     ]

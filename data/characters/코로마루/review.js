@@ -42,7 +42,7 @@ The three skills are identical except for which of Fire, Elec, or Ice damage tak
 
 He also has a passive that increases allies' Attack based on his Ailment Accuracy. Since there is no cap, **it is best to stack as much Ailment Accuracy as possible**.
 
-When Koromaru enters as Fuuka's [Backup Character], that passive and Revelation set effects tied to "during battle" do not activate, so you effectively need to prepare at least two Revelation loadouts.
+When Koromaru enters as Fuuka's Shift Member, that passive and Revelation set effects tied to "during battle" do not activate, so you effectively need to prepare at least two Revelation loadouts.
 Sets such as [Defeat] + [Freedom] or [Departure] + [Prosperity], which help fill out Ailment Accuracy, are also valid options, so it is recommended to choose based on the party setup.
 `,
     review_jp: `P3のオリジナルキャラクターで、**火炎・電撃・氷結属性の弱点を強化**するデバッファー。
@@ -61,7 +61,7 @@ Sets such as [Defeat] + [Freedom] or [Departure] + [Prosperity], which help fill
 
 効果命中を上げると味方の攻撃力が上がるパッシブを持っており、上限がないため**効果命中をできるだけ高く積むのが望ましい**。
 
-風花の『候補キャラクター』として参加する場合、そのパッシブと『戦闘中』に該当する啓示セット効果は発動しないため、実質的に2種類以上の啓示構成を用意する必要がある。
+風花の『シフトメンバー』として参加する場合、そのパッシブと『戦闘中』に該当する啓示セット効果は発動しないため、実質的に2種類以上の啓示構成を用意する必要がある。
 効果命中を補いやすい[敗北]＋[自由]セットや[旅立]＋[豊穣]セットも選択肢に入るため、パーティ状況に応じて採用することを勧める。
 `,
     review_cn: `P3的原创角色，是一名**能够强化火焰、电击、冰冻属性弱点**的减益手。

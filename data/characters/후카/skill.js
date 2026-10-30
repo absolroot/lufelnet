@@ -51,25 +51,25 @@ window.characterSkillsData["후카"] = {
 window.enCharacterSkillsData["후카"] = {
   "name": "Fuuka Yamagishi",
   "skill1": {
-    "name": "Radiant Power",
+    "name": "Luminous Force",
     "element": "버프광역",
     "type": "버프",
     "cool": 4,
-    "description": "Increase party's Attack by 10.0%/11.0%/11.2%/12.2% + 1.143% for every 100 points of Fuuka's Attack, up to 40.0%/44.0%/44.8%/48.8%, and damage by 8.0%/8.8%/9.0%/9.8% + 0.914% for every 100 points of Fuuka's Attack, up to 32.0%/35.2%/35.8%/39.0%. Lasts for 2 turns. User gains 1 [Wish Listener] stack."
+    "description": "Increase party's Attack by 12.0%/13.2%/13.4%/14.6% (for every 100 points of Fuuka's Attack, increase by 1.371% more, up to a maximum of 48.0%/52.8%/53.8%/58.6%), and increase damage by 12.0%/13.2%/13.4%/14.6% (for every 100 points of Fuuka's Attack, increase by 1.371% more, up to a maximum of 48.0%/52.8%/53.8%/58.6%). Lasts for 2 turns.\nGain 1 Over Oracle stack."
   },
   "skill2": {
-    "name": "Holy Prayer",
+    "name": "Divine Prayer",
     "element": "버프광역",
     "type": "버프",
     "cool": 16,
-    "description": "Initial Cooldown Time: 16 ally actions\nIncrease party's Attack by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%. Lasts for 3 turns. If main target is a S.E.E.S. member, restore target's Theurgy Energy by 35 points, then increase target's Theurgy damage by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%. Lasts for 3 turns; If the main target is not a S.E.E.S. member, restore HIGHLIGHT Energy by 35 points, then increase target's HIGHLIGHT damage by 6.0%/6.6%/6.7%/7.3% + 0.686% for every 100 points of Fuuka's Attack, up to 24.0%/26.4%/26.9%/29.3%.\nThis skill has an independent cooldown and does not affect the cooldown time of other skills."
+    "description": "Increase party's Attack by 8.0%/8.8%/9.0%/9.8% (for every 100 points of Fuuka's Attack, increase by 0.914% more, up to a maximum of 32.0%/35.2%/35.8%/39.0%) for 3 turns.\nIf the main target has a Theurgy, increase the Theurgy gauge by 35. Also, increase the target's Theurgy damage by 8.0%/8.8%/9.0%/9.8% (for every 100 points of Fuuka's Attack, increase by 0.914% more, up to a maximum of 32.0%/35.2%/35.8%/39.0%) for 3 turns.\nIf the main target has a Highlight, increase the Highlight gauge by 35%. Also, increase the target's Highlight damage by 8.0%/8.8%/9.0%/9.8% (for every 100 points of Fuuka's Attack, increase by 0.914% more, up to a maximum of 32.0%/35.2%/35.8%/39.0%) for 3 turns.\nThis skill's cooldown is calculated independently, and does not affect other support skills (the remaining cooldown is displayed in battle).\nInitial cooldown time: 16 ally actions"
   },
   "skill3": {
-    "name": "Spirit Wave",
+    "name": "Thoughtful Waves",
     "element": "버프광역",
     "type": "버프",
     "cool": 4,
-    "description": "Increase party's critical damage by 10.0%/11.0%/11.2%/12.2% + 0.625% for every 1% of Fuuka's critical damage, up to 40.0%/44.0%/44.8%/48.8%. Lasts for 2 turns. User gains 1 [Wish Listener] stacks.\nWhen any ally meets a certain conditions, activate one of the following effect in order of priority. (When no conditions are met, activate 1 random effect)\n1. When any ally is inflicted with Mental Ailments, cure 1 debuff on the target.\n2. When any ally is below 25% max HP, restore HP equal to 15% of  that ally's max HP.\n3. When any ally is below 30 SP, restore 30 SP to the lowest SP ally."
+    "description": "Increase party's critical damage by 12.0%/13.2%/13.4%/14.6% (for every 1% of Fuuka's critical multiplier, increase by 0.75% more, up to a maximum of 48.0%/52.8%/53.8%/58.6%) for 2 turns. Also, gain 1 Over Oracle stack.\nIf allies meet special conditions, activate 1 of the following effects based on the order listed (if conditions are not met, activate 1 effect at random).\n1. If allies are inflicted with spiritual ailments, remove 1 ailment from the target (incurable ailments count for the condition, but they cannot be removed).\n2. If allies' HP is below 25%, restore 15% of max HP to the ally with the lowest remaining HP percentage.\n3. If allies have less than 30 SP, restore 30 SP to the ally with the lowest SP."
   },
   "skill_highlight": {
     "name": "Stat Buff",
@@ -77,42 +77,42 @@ window.enCharacterSkillsData["후카"] = {
     "description": "Increase party's stats by 20% of Fuuka's stats."
   },
   "passive1": {
-    "name": "Benevolence",
+    "name": "Mercy",
     "element": "패시브",
-    "description": "After any ally uses a Theurgy or HIGHLIGHT, increase party's critical damage by 24.0% for 2 turns."
+    "description": "When an ally activates a Highlight or Theurgy, increase party's critical damage by 24.0% for 2 turns."
   },
   "passive2": {
-    "name": "Compassion",
+    "name": "Courtesy",
     "element": "패시브",
-    "description": "Increase party's stats by 4.5% of [Backup Character]'s stats."
+    "description": "At the start of battle, increase party's stats based on 4.5% of the Shift Member's stats."
   }
 };
 
 window.jpCharacterSkillsData["후카"] = {
   "name": "山岸 風花",
   "skill1": {
-    "name": "輝きの力",
+    "name": "ルミナスフォース",
     "element": "버프광역",
     "type": "버프",
     "sp": 0,
     "cool": 4,
-    "description": "味方全体の攻撃力が10.0%/11.0%/11.2%/12.2%上昇し、山岸 風花の攻撃力100ごとに1.143%追加で上昇（最大40.0%/44.0%/44.8%/48.8%）。与ダメージが8.0%/8.8%/9.0%/9.8%上昇し、攻撃力100ごとに0.914%追加で上昇（最大32.0%/35.2%/35.8%/39.0%）。効果は2ターン持続し、自身は『願いの傾聴』を1スタック獲得する。"
+    "description": "2ターンの間、味方全体の攻撃力が12.0%/13.2%/13.4%/14.6%上昇し、追加で風花の攻撃力100ごとに1.371%になるように上昇（追加上昇分は最大48.0%/52.8%/53.8%/58.6%まで）し、与ダメージが12.0%/13.2%/13.4%/14.6%上昇し、追加で風花の攻撃力100ごとに1.371%になるように上昇（追加上昇分は最大48.0%/52.8%/53.8%/58.6%まで）する。\n『オーバーオラクル』を1つ獲得する。"
   },
   "skill2": {
-    "name": "聖なる祈り",
+    "name": "神気の祈り",
     "element": "버프광역",
     "type": "버프",
     "sp": 0,
     "cool": 16,
-    "description": "初期準備時間：行動16回\n味方全体の攻撃力が6.0%/6.6%/6.7%/7.3%上昇し、山岸 風花の攻撃力100ごとに0.686%追加で上昇（最大24.0%/26.4%/26.9%/29.3%）。効果は3ターン持続。\n対象がS.E.E.S.メンバーの場合、その対象のテウルギアエネルギーを35回復し、テウルギアの与ダメージが同数値分上昇する。\n対象が非S.E.E.S.メンバーの場合、その対象のHIGHLIGHTゲージを35回復し、HIGHLIGHTの与ダメージが同数値分上昇する。\nこのスキルの準備時間は独立して計算され、他の解明スキルの準備時間に影響しない。"
+    "description": "3ターンの間、味方全体の攻撃力が8.0%/8.8%/9.0%/9.8%上昇し、追加で風花の攻撃力100ごとに0.914%になるように上昇（追加上昇分は最大32.0%/35.2%/35.8%/39.0%まで）する。\n選択した対象がテウルギアを持つ場合、テウルギアゲージが35増加する。さらに3ターンの間、対象のテウルギアの与ダメージが8.0%/8.8%/9.0%/9.8%上昇し、追加で風花の攻撃力100ごとに0.914%になるように上昇（追加上昇分は最大32.0%/35.2%/35.8%/39.0%まで）する。\n選択した対象がハイライトを持つ場合、ハイライトゲージが35%増加する。さらに3ターンの間、対象のハイライトの与ダメージが8.0%/8.8%/9.0%/9.8%上昇し、追加で風花の攻撃力100ごとに0.914%になるように上昇（追加上昇分は最大32.0%/35.2%/35.8%/39.0%まで）する。\nこのスキルのクールタイムは個別で計算され、他の支援スキルには影響しない（戦闘中の表示は残りのクールタイムとなる）。\n初期クールタイム：味方の行動16回"
   },
   "skill3": {
-    "name": "心の波動",
+    "name": "想いの波動",
     "element": "버프광역",
     "type": "버프",
     "sp": 0,
     "cool": 4,
-    "description": "味方全体のCRT倍率が10.0%/11.0%/11.2%/12.2%上昇し、山岸 風花のCRT倍率1%ごとに0.625%追加で上昇（最大40.0%/44.0%/44.8%/48.8%）。効果は2ターン持続し、自身は『願いの傾聴』を1スタック獲得する。\nスキル使用時、以下の条件のいずれかを満たす味方がいる場合、優先順位に従っていずれか1つの効果を発動する。条件がない場合はランダムに発動する。\n1. 精神異常状態の味方がいる場合：その味方の状態異常を1つ解除\n2. HPが25%未満の味方がいる場合：HP割合が最も低い味方のHPを15%回復\n3. SPが30未満の味方がいる場合：SPが最も低い味方のSPを30回復"
+    "description": "2ターンの間、味方全体のクリティカルダメージが12.0%/13.2%/13.4%/14.6%上昇し、追加で風花のCRT倍率1%ごとに0.75%になるように上昇（追加上昇分は最大48.0%/52.8%/53.8%/58.6%まで）する。さらに『オーバーオラクル』を1つ獲得する。\n特定の条件を満たす味方がいる時、以下の優先順位で効果が1つ発動する（条件を満たしていない場合、ランダムに1つ発動）。\n「1．行動異常の味方がいる時、いずれかの対象の状態異常を1つ治療（治療不可能な行動異常も条件の対象となるが、治療はされない）」\n「2．HPが25%未満の味方がいる時、HP割合が最も低い味方を最大HPの15%分回復」\n「3．SPが30未満の味方がいる時、SPが最も低い味方のSPを30回復」"
   },
   "skill_highlight": {
     "name": "ステータス強化",
@@ -122,12 +122,12 @@ window.jpCharacterSkillsData["후카"] = {
   "passive1": {
     "name": "慈悲",
     "element": "패시브",
-    "description": "味方がテウルギアまたはHIGHLIGHTを使用すると、味方全体のCRT倍率が24.0%上昇する。効果は2ターン持続する。"
+    "description": "味方がハイライト／テウルギアを発動した時、2ターンの間、味方全体のクリティカルダメージが24.0%上昇する。"
   },
   "passive2": {
-    "name": "深い情",
+    "name": "厚意",
     "element": "패시브",
-    "description": "戦闘開始時、山岸 風花が指定した『候補キャラクター』の各ステータスの4.5%を、現在戦場にいる味方全員のステータスに反映する。"
+    "description": "戦闘開始時、『シフトメンバー』のステータスの4.5%分、味方全体のステータスが上昇する。"
   }
 };
 

@@ -23,38 +23,38 @@ window.ritualData["후카"] = {
 
 window.enCharacterRitualData["후카"] = {
   "name": "야마기시 후카",
-  "r0": "Steadfast Supporter",
-  "r0_detail": "In party menu, Fuuka can select 1 non-Wonder ally as the [Backup Character]. During battle, Fuuka can spend [Wish Listener] to use [Oracle Shift] and make the [Backup Character] active and act. Fuuka can use [Oracle Shift] once after 1 [Combat Turn].\nAt the start of battle, Fuuka gains 1/2/3 [Wish Listener] stacks (effect increases at level 1/50/70). Stacks up to 4 times.\n[Oracle Shift]: Spend 4 [Wish Listener] stacks. The acting [Current Character] become inactive, the [Backup Character] become active and take 1 action. After this action, the [Backup Character] become inactive, and the [Current Character] become active to continue their turn.\tWhen the [Backup Character] is active, they copy all status effects from the [Current Character] except those they applied to themselves. These are cleared when the [Backup Character] become inactive. When the [Backup Character] first become active, activate all [Start of Battle] effects. When the [Backup Character] become inactive, do not affect the duration of effects with turn limits. After the [Backup Character] is active for the first time, decrease their skill cooldown after every [Combat Turn]. \n[Combat Turn]: After all alive allies take 1 non Extra Action action, count as 1 combat turn.",
+  "r0": "Reliable Support",
+  "r0_detail": "At the party selection screen, Fuuka can set 1 ally as a Shift Member, and during battle she can use Oracle Shift to swap in the Shift Member. Oracle Shift can be activated 1 time per round by spending 4 Over Oracle stacks.\nAt the start of battle, gain 1/2/3 Over Oracle stacks (at level 1/50/70, respectively), up to a maximum of 4 stacks.\nOracle Shift: Temporarily swap the currently acting ally with the Shift Member, allowing them to take 1 action. At this time, replicate buff and debuff effects granted to the swapped-out target, excluding effects granted by the target and certain special effects (replicated effects are active only during the swap). When the Shift Member first swaps, activate all start-of-battle effects, and then reduce skill cooldown times as usual based on the number of rounds. After the Shift Member's action, they swap back with the target, who can continue acting. However, support skill cooldown times and the swapped-out target's buff and debuff effect turn counters are not decreased from the Shift Member's action.",
   "r1": "Where I Belong",
-  "r1_detail": "At the start of battle, Fuuka gains 2 bonus [Wish Listener] stacks. Increase max stacks of [Wish Listener] to 8.\nAfter using a skill, increase party's critical rate by 6% for 2 turns. Stacks up to 2 times.",
-  "r2": "Strengths and Weaknesses",
-  "r2_detail": "After using [Oracle Shift], the [Backup Character] immediately use their Theurgy or HIGHLIGHT once. This effect has a 3 [Combat Turns] cooldown.\nAfter using [Oracle Shift], increase party's total damage amp by 6% for 1 turn.\nWhen any ally is below 40% max HP, immediately restore HP equal to 20% of that ally's max HP, and restore HP equal to 15% of  that ally's max HP for 2 turns. This effect can be activated once per battle.",
-  "r3": "The Sustainer",
-  "r3_detail": "Increase the skill levels of Holy Prayer and Spirit Wave by 3.",
-  "r4": "Tower Guide",
-  "r4_detail": "When any ally uses a HIGHLIGHT or Theurgy, increase their HIGHLIGHT or Theurgy damage by 25%.",
-  "r5": "Connecting the Dots",
-  "r5_detail": "Increase the skill levels of Radiant Power by 3.",
-  "r6": "Self-Worth",
-  "r6_detail": "Decrease [Wish Listener] cost of [Oracle Shift] to 3 stacks.\nWhen using [Holy Prayer], gain 2 bonus [Wish Listener] stacks."
+  "r1_detail": "At the start of battle, gain 2 more Over Oracle stacks. Also, increase the maximum number of stacks to 8.\nWhen Fuuka uses a skill, increase party's critical rate by 6% and critical damage by 15% for 2 turns. Stacks up to 2 times.",
+  "r2": "Pros and Cons",
+  "r2_detail": "When swapping in a Shift Member with Oracle Shift, activate the target's Highlight or Theurgy (this effect can activate 1 time every 3 rounds).\nAfter activating Oracle Shift, increase party's final damage amplification by 10% for 1 turn.\nWhen an ally's HP falls below 40% of the maximum, restore 20% of their max HP, and also restore 15% of max HP every turn for 2 turns. This effect activates once per battle.",
+  "r3": "Binding Ties",
+  "r3_detail": "Increase the skill levels of Divine Prayer and Thoughtful Waves by 3.",
+  "r4": "Tower Navigator",
+  "r4_detail": "When an ally activates a Highlight or Theurgy, increase its damage by 25%.",
+  "r5": "Unifying Power",
+  "r5_detail": "Increase the skill level of Luminous Force by 3.",
+  "r6": "My Own Worth",
+  "r6_detail": "The number of Over Oracle stacks spent when activating Oracle Shift becomes 3.\nWhen activating Divine Prayer, gain 2 Over Oracle stacks.\nThe duration of the final damage amplification effect of Pros and Cons becomes 2 turns and stacks up to 2 times."
 };
 
 window.jpCharacterRitualData["후카"] = {
   "name": "山岸 風花",
-  "r0": "信頼されるサポーター",
-  "r0_detail": "戦闘開始前に、山岸風花は味方1人を『候補キャラクター』に指定できる。戦闘中、『願いの傾聴』を4スタック消費して、特殊スキル『啓示転換』を発動できる。発動時、現在行動中のキャラクターは一時退場し、『候補キャラクター』が登場して1回行動した後に退場、元のキャラクターが復帰して行動を続ける。『候補キャラクター』は初登場時に全ての『戦闘開始時』効果が発動し、退場してもバフの残り持続ターンは減少しない。登場時、現在キャラクターが保有しているバフ（自身が付与したものを除く）を複製し、退場時にそれらのバフは解除される。このスキルは1ラウンドにつき1回のみ使用可能。戦闘開始時に『願いの傾聴』を1/2/3スタック獲得する（Lv1/50/70）。最大所持数は4スタック。『候補キャラクター』は初登場後以降、スキルのクールタイムが通常キャラクターと同様に減少する。",
-  "r1": "私の安息所",
-  "r1_detail": "戦闘開始時に『願いの傾聴』を2スタック追加で獲得し、最大所持数が8スタックになる。自身がスキルを発動するたびに、味方全体のクリティカル率が2ターンの間6%上昇（最大2回まで累積）。",
-  "r2": "強みと弱み",
-  "r2_detail": "『啓示転換』で『候補キャラクター』が登場した場合、即座にテウルギアまたはHIGHLIGHTを1回発動する（3ターンごとに1回発動可能）。『啓示転換』発動後、味方全体の総ダメージが1ターンの間6%上昇。HPが40%未満の味方がいる場合、その味方のHPを20%回復し、その後2ターンの間、毎ターン最大HPの15%を回復する。この効果は戦闘中1回のみ発動。",
-  "r3": "絆の支え手",
-  "r3_detail": "『聖なる祈り』と『心の波動』のスキルレベルが3上昇し、最大15レベルまで上昇する。",
-  "r4": "塔の導き手",
-  "r4_detail": "味方がテウルギアまたはHIGHLIGHTを使用すると、そのスキルの与ダメージが25%上昇する。",
-  "r5": "つながりの力",
-  "r5_detail": "『輝きの力』のスキルレベルが3上昇し、最大15レベルまで上昇する。",
-  "r6": "自己確信",
-  "r6_detail": "『啓示転換』使用時に消費する『願いの傾聴』が3スタックに減少する。『聖なる祈り』使用時、『願いの傾聴』を2スタック追加獲得する。"
+  "r0": "頼れる支援者",
+  "r0_detail": "風花は編成画面で味方1体を『シフトメンバー』に指定し、戦闘中に『オラクルシフト』で『シフトメンバー』を交代させることができる。『オラクルシフト』は1ラウンド経過するごとに1回、『オーバーオラクル』を4つ消費して発動できる。\n『オーバーオラクル』は戦闘開始時に1／2／3つ獲得でき（自身のレベルが1／50／70以上の時）、最大4つまで累積できる。\n『オラクルシフト』：『シフトメンバー』が行動選択中の味方と一時的に交代し、1回行動できる。この時、交代した対象に付与されている強化／弱体効果のうち、その対象が付与した効果と一部の特殊な効果を除いて複製する（複製した効果は交代中のみ有効）。『シフトメンバー』が初めて交代した時、戦闘開始時に発動する効果が全て発動し、以降はスキルのクールタイムがラウンドに応じて通常通り減少する。『シフトメンバー』の行動後は交代した対象に戻り、さらに続けて行動できる。ただし、『シフトメンバー』の行動で支援スキルのクールタイムは減少せず、交代した対象の強化／弱体効果の持続ターンは減少しない。",
+  "r1": "私の居場所",
+  "r1_detail": "戦闘開始時、追加で『オーバーオラクル』を2つ獲得する。また、『オーバーオラクル』の最大累積数が8つになる。\n自身がスキルを使用した時、2ターンの間、味方全体のクリティカル率が6%上昇し、クリティカルダメージが15%上昇する。最大2つまで累積できる（獲得するごとに、持続ターンがリセットされる）。",
+  "r2": "得意不得意",
+  "r2_detail": "『オラクルシフト』で『シフトメンバー』が登場した時、対象のハイライト／テウルギアを発動させる（この効果は3ラウンド経過するごとに1回まで）。\n『オラクルシフト』を発動した後、1ターンの間、味方全体の最終ダメージ増幅が10%上昇する。\n味方のHPが最大値の40%未満になった時、対象のHPを最大値の20%分回復し、さらに2ターンの間、毎ターン最大HPの15%分を回復する。この効果は戦闘中に一度だけ発動する。",
+  "r3": "結ぶ者",
+  "r3_detail": "『神気の祈り』／『想いの波動』のスキルレベルが3上昇する。",
+  "r4": "塔の導き者",
+  "r4_detail": "味方がハイライト／テウルギアを発動する時、その与ダメージが25%上昇する。",
+  "r5": "繋がる力",
+  "r5_detail": "『ルミナスフォース』のスキルレベルが3上昇する。",
+  "r6": "自身の価値",
+  "r6_detail": "『オラクルシフト』の発動に消費する『オーバーオラクル』が3つになる。\n『神気の祈り』を使用した時、『オーバーオラクル』を2つ獲得する。\n『得意不得意』の最終ダメージ増幅効果の持続ターンが2ターンになり、最大2つまで累積できるようになる（獲得するごとに、持続ターンがリセットされる）。"
 };
 
 window.cnCharacterRitualData["후카"] = {

@@ -12,9 +12,11 @@
             { name: '미쿠', badge: 'HOT' },
         ],
         en: [
+            { name: '후카', badge: 'NEW' },
             { name: '코토네', badge: 'HOT' },
         ],
         jp: [
+            { name: '후카', badge: 'NEW' },
             { name: '코토네', badge: 'HOT' },
         ],
     };

@@ -90,7 +90,7 @@ window.ReleaseScheduleData = {
         { version: "4.9(4.5)", date: "2026-09-09",characters: ["YUI·스텔라"], "main-story": "5-3", weapon: ["엔트로피·제로"], revelation: ["예리", "풍족", "획득"], days: 14 },
         { version: "4.10(5.4.1)", date: "2026-09-24", characters: ["코토네"], collaboration: "p3p",  rev_set:["탄생","분쟁"], note: "Worldwide Simultaneous Release", days: 21 },
         { version: "4.11(4.6.1)", date: "2026-10-15",characters: ["미츠루"], days: 14 },
-        { version: "4.12(4.6.2)", characters: ["후카"], days: 14 },
+        { version: "4.12(4.6.2)", date: "2026-10-29", characters: ["후카"], days: 14 },
         { version: "4.13(4.7.1)", characters: ["쇼키·암야"], "main-story": "5-4", persona: ["마카브르"],  goldTicketUnlocks: ["TURBO"], weapon_stamp: ["크리스탈 트레저"], mindscape_core: ["토모코·여름", "유우미", "YUI"], note: "Janosik IV", days: 14 },
         { version: "4.13(4.7.1)", characters: ["슌·프론티어"], note: "Desire Gallery Mission (Mindscape Core Dungeon)", days: 14 },
         { version: "4.14(4.7.2)", characters: ["준페이"], mindscape_core: ["J&C"], days: 14 },

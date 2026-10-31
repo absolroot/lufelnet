@@ -5,7 +5,7 @@ window.personaFiles["케찰코아틀"] = {
   "name": "케찰코아틀",
   "name_en": "Quetzalcoatl",
   "name_jp": "ケツアルカトル",
-  "grade": "5",
+  "grade": "7",
   "star": "3",
   "position": "지배",
   "element": "질풍",

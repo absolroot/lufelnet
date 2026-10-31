@@ -2130,9 +2130,9 @@ select:focus {
   transition: all 0.2s ease;
   color: rgba(255, 255, 255, 0.9);
   cursor: text;
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  white-space: normal;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: pre-wrap;
 }
 
 .action-memo-display.placeholder {

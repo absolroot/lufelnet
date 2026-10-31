@@ -2556,7 +2556,7 @@ const defenseCalcData = {
       "defaultOption": "LV13+심상5(의식6)",
       "value": 109.06,
       "skillEffectAmpAffected": true,
-      "duration": "-",
+      "duration": "2턴",
       "note": "",
       "note_en": "",
       "note_jp": "",
@@ -2564,7 +2564,7 @@ const defenseCalcData = {
       "note_cn": "",
       "type_cn": "技能1",
       "target_cn": "单体",
-      "duration_cn": "-",
+      "duration_cn": "2回合",
       "options_cn": [
         "LV10",
         "LV10+心象5",

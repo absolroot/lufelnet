@@ -503,13 +503,13 @@ window.personaIndex = {
     "element": "화염",
     "position": "굴복",
     "star": "2",
-    "grade": "1",
+    "grade": "2",
     "event": "",
     "wild_emblem_rainbow": false,
     "tier": "A",
     "searchText": "화염 내성 제거 Fire Break 火炎ガードキル 消除火焰耐性 2턴 동안 적 1명의 화염 내성을 제거한다. Remove Fire resistance from 1 target for 2 turns. ２ターンの間、敵単体の火炎耐性を打ち消す。 使1名敌人的火焰耐性消除，效果持续2回合。 HIGHLIGHT Highlight ハイライト HIGHLIGHT 모든 적에게 공격력 90.0%/96.3%/102.6%의 화염 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다. Deal Fire damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns. 敵全体に攻撃力90.0%/96.3%/102.6%の火炎属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。 对所有敌人造成90.0%/96.3%/102.6%攻击力的火焰属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。 마술의 소양Ⅰ Spell Master I 魔術の素養Ⅰ 魔术的资质Ⅰ 스킬 사용 시 소모하는 SP가 2.4% 감소한다. Decrease SP cost of skills by 2.4%. スキルのＳＰ消費量が２.４%低下する。 技能消耗的SP降低2.4%。 질풍 간파Ⅰ Wind Reduction I 疾風レデュースⅠ 疾风识破Ⅰ 받는 질풍 속성 대미지가 4.7% 감소한다. Decrease Wind damage taken by 4.7%. 疾風属性の被ダメージを４.７%低下させる。 受到的疾风属性伤害降低4.7%。 스쿠카쟈 Sukukaja スクカジャ 斯库卡加 동료 1명의 효과 명중, 효과 저항이 9.3%/9.8%/10.2% 증가하고, 자신의 효과 명중 25%마다 1.6%/1.7%/1.8% 추가 증가한다. 상한은 6.4%/6.7%/7.0%이며, 효과는 3턴 동안 지속된다. Increase 1 ally's ailment accuracy and ailment resistance by 9.3%/9.8%/10.2%. For every 25% of the user's ailment accuracy, increase the target's ailment accuracy by 1.6%/1.7%/1.8% more, up to 6.4%/6.7%/7.0%. Lasts for 3 turns. ３ターンの間、味方単体の状態異常命中、状態異常抵抗が9.3%/9.8%/10.2%上昇する。自身の状態異常命中が２５%ごとに、味方の状態異常命中がさらに1.6%/1.7%/1.8%上昇する（最大6.4%/6.7%/7.0%まで）。 使1名同伴的效果命中、效果抵抗提升9.3%/9.8%/10.2%，自身每25%效果命中额外提升1.6%/1.7%/1.8%，上限6.4%/6.7%/7.0%。效果持续3回合。 열광적인 점쟁이 Fanatical Prophet 熱狂の予言者 狂热的卜者 효과 명중이 7% 증가한다. 적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 7.1% 증가한다. Increase ailment accuracy by 7%. After using a skill on a foe, increase Fire damage taken by 7.1% for 2 turns. 状態異常命中が７%上昇する。敵にスキルを使用した時、２ターンの間、対象の火炎属性の被ダメージを７.１%上昇する。 效果命中提升7%。以敌人为目标释放人格面具技能后，使其受到的火焰伤害提升7.1%，效果持续2回合。 열광적인 점쟁이Ⅰ Fanatical Prophet I 熱狂の予言者Ⅰ 狂热的卜者Ⅰ 효과 명중이 7% 증가한다. 적에게 스킬 시전 시 2턴 동안 적이 받는 화염 속성 대미지가 8.2% 증가한다. Increase ailment accuracy by 7%. After using a skill on a foe, increase Fire damage taken by 8.2% for 2 turns. 状態異常命中が７%上昇する。敵にスキルを使用した時、２ターンの間、対象の火炎属性の被ダメージを８.２%上昇する。 效果命中提升7%。以敌人为目标释放人格面具技能后，使其受到的火焰伤害提升8.2%，效果持续2回合。",
     "__path": "data/persona",
-    "__hash": "188fdec5a44abb44"
+    "__hash": "eb8565927c9e2258"
   },
   "야마타노오로치": {
     "name": "야마타노오로치",
@@ -903,13 +903,13 @@ window.personaIndex = {
     "element": "물리",
     "position": "방위",
     "star": "4",
-    "grade": "5",
+    "grade": "4",
     "event": "",
     "wild_emblem_rainbow": false,
     "tier": "C",
     "searchText": "타룬다 Tarunda タルンダ 塔伦达 3턴 동안 적 1명의 공격력이 25.8%/27.1%/28.4% 감소한다. Decrease 1 foe's Attack by 25.8%/27.1%/28.4% for 3 turns. ３ターンの間、敵単体の攻撃力が25.8%/27.1%/28.4%低下する。 使1名敌人的攻击力降低25.8%/27.1%/28.4%，效果持续3回合。 HIGHLIGHT Highlight ハイライト HIGHLIGHT 모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 실드를 획득하며 2턴 동안 지속된다. Grant a shield to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275 for 2 turns. ２ターンの間、味方全体に攻撃力48.6%/52.0%/55.4%＋1471/1854/2275のシールドを付与する。 使所有同伴获得48.6%/52.0%/55.4%攻击力+1471/1854/2275的护盾，效果持续2回合。 데쿤다 Dekunda デクンダ 迪坤达 모든 동료의 속성 감소 효과 1개를 제거한다. Remove 1 stat debuff from all allies. 味方全体のステータス低下効果を１つ打ち消す。 驱散所有同伴的1个属性降低效果。 어설트 다이브 Assault Dive アサルトダイブ 俯冲突击 1명의 적에게 공격력 141.8/148.9/156.0%의 물리 속성 대미지를 준다. Deal Physical damage to 1 foe equal to 141.8/148.9/156.0% of Attack. 敵単体に攻撃力141.8/148.9/156.0%の物理属性ダメージを与える。 对1名敌人造成141.8/148.9/156.0%攻击力的物理属性伤害。 방어의 마음가짐Ⅱ Defense Master II 防御の心得Ⅱ 防御的心得Ⅱ 전투 시작 시 2턴 동안 방어력이 18.1% 증가한다. At the start of battle, increase Defense by 18.1% for 2 turns. 戦闘開始時、２ターンの間、自身の防御力が１８.１%上昇する。 战斗开始时防御力提升18.1%，持续2回合。 방어 강화Ⅱ Protect Boost II プロテクブースタⅡ 防御强化Ⅱ 방어력이 12.5% 증가한다. Increase Defense by 12.5%. 防御力が１２.５%上昇する。 防御力提升12.5%。 철로 만든 몸 Iron Body 鉄製の身体 铁铸之身 방어력이 21.2% 증가한다. 모든 동료가 받는 약점 대미지가 18% 감소한다. Increase Defense by 21.2%. Decrease party's weakness damage taken by 18%. 防御力が２１.２%上昇する。味方全体の弱点被ダメージを１８%低下させる。 防御力提升21.2%。使所有同伴受到的弱点伤害降低18%。 철로 만든 몸Ⅰ Iron Body I 鉄製の身体Ⅰ 铁铸之身Ⅰ 방어력이 21.2% 증가한다. 모든 동료가 받는 약점 대미지가 20.5% 감소한다. Increase Defense by 21.2%. Decrease party's weakness damage taken by 20.5%. 防御力が２１.２%上昇する。味方全体の弱点被ダメージを２０.５%低下させる。 防御力提升21.2%。使所有同伴受到的弱点伤害降低20.5%。 철로 만든 몸Ⅱ Iron Body II 鉄製の身体Ⅱ 铁铸之身Ⅱ 방어력이 21.2% 증가한다. 모든 동료가 받는 약점 대미지가 23% 감소한다. Increase Defense by 21.2%. Decrease party's weakness damage taken by 23%. 防御力が２１.２%上昇する。味方全体の弱点被ダメージを２３%低下させる。 防御力提升21.2%。使所有同伴受到的弱点伤害降低23%。",
     "__path": "data/persona",
-    "__hash": "132a9da43f78bff2"
+    "__hash": "bb44984f57ce2871"
   },
   "네코쇼군": {
     "name": "네코쇼군",
@@ -1479,13 +1479,13 @@ window.personaIndex = {
     "element": "빙결",
     "position": "구원",
     "star": "2",
-    "grade": "5",
+    "grade": "1",
     "event": "",
     "wild_emblem_rainbow": false,
     "tier": "",
     "searchText": "디아 Dia ディア 迪亚 동료 1명이 공격력 33.1/34.8/36.4%+1001/1239/1495의 생명을 회복한다. Restore 1 ally's HP by 33.1/34.8/36.4% of Attack + 1001/1239/1495. 味方単体のＨＰを攻撃力の33.1/34.8/36.4%＋1001/1239/1495回復する。 使1名同伴恢复33.1/34.8/36.4%攻击力+1001/1239/1495的生命值。 HIGHLIGHT Highlight ハイライト HIGHLIGHT 모든 동료가 공격력 48.6%/52.0%/55.4%+1471/1854/2275의 생명을 회복한다. Restore HP to party equal to 48.6%/52.0%/55.4% Attack + 1471/1854/2275. 味方全体のＨＰを攻撃力48.6%/52.0%/55.4%＋1471/1854/2275回復する。 使所有同伴恢复48.6%/52.0%/55.4%攻击力+1471/1854/2275的生命值。 부흐 Bufu ブフ 布芙 1명의 적에게 공격력 106.2/111.5/116.8%의 빙결 속성 대미지를 주고, 59.0/62.0/64.9%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다. Deal Ice damage to 1 foe equal to 106.2/111.5/116.8% of Attack. 59.0/62.0/64.9% chance to inflict Freeze for 2 turns. 敵単体に攻撃力106.2/111.5/116.8%の氷結属性ダメージを与える。59.0/62.0/64.9%の確率で敵を２ターンの間、凍結状態にする。 对1名敌人造成106.2/111.5/116.8%攻击力的冰冻属性伤害，有59.0/62.0/64.9%基础概率使敌人陷入冻结状态，效果持续2回合。 기공Ⅰ Nurture I 養心Ⅰ 气功Ⅰ SP 회복 효율이 3.1% 증가한다. Increase SP recovery rate by 3.1%. ＳＰ回復率が３.１%上昇する。 精力回复效率提升3.1%。 사랑의 본질 Essence of Love 愛の本質 爱的本质 생명이 2.9% 증가한다. 치료 효과를 부여한 후 자신의 SP를 2포인트 회복한다. Increase max HP by 2.9%. After healing, restore user's SP by 2. ＨＰが２.９%上昇する。回復効果を与えた時、自身のＳＰが２回復する。 生命值提升2.9%。造成治疗效果后，回复自身2点精力值。 사랑의 본질Ⅰ Essence of Love I 愛の本質Ⅰ 爱的本质Ⅰ 생명이 2.9% 증가한다. 치료 효과를 부여한 후 자신의 SP를 3포인트 회복한다. Increase max HP by 2.9%. After healing, restore user's SP by 3. ＨＰが２.９%上昇する。回復効果を与えた時、自身のＳＰが３回復する。 生命值提升2.9%。造成治疗效果后，回复自身3点精力值。",
     "__path": "data/persona/nonorder",
-    "__hash": "71462ab082bb368e"
+    "__hash": "4b8a47f2b8ceeccf"
   },
   "샌드맨": {
     "name": "샌드맨",
@@ -1591,13 +1591,13 @@ window.personaIndex = {
     "element": "주원",
     "position": "굴복",
     "star": "2",
-    "grade": "5",
+    "grade": "1",
     "event": "",
     "wild_emblem_rainbow": false,
     "tier": "",
     "searchText": "타룬다 Tarunda タルンダ 塔伦达 3턴 동안 적 1명의 공격력이 25.8%/27.1%/28.4% 감소한다. Decrease 1 foe's Attack by 25.8%/27.1%/28.4% for 3 turns. ３ターンの間、敵単体の攻撃力が25.8%/27.1%/28.4%低下する。 使1名敌人的攻击力降低25.8%/27.1%/28.4%，效果持续3回合。 HIGHLIGHT Highlight ハイライト HIGHLIGHT 모든 적에게 공격력 90.0%/96.3%/102.6%의 주원 속성 대미지를 주며, 적이 받는 대미지가 19.6%/21.0%/22.3% 증가한다. 효과는 2턴 동안 지속된다. Deal Curse damage to all foes equal to 90.0%/96.3%/102.6% of Attack. Increase damage taken by 19.6%/21.0%/22.3% for 2 turns. 敵全体に攻撃力90.0%/96.3%/102.6%の呪怨属性ダメージを与える。さらに２ターンの間、被ダメージが19.6%/21.0%/22.3%上昇する。 对所有敌人造成90.0%/96.3%/102.6%攻击力的诅咒属性伤害，并使其受到的伤害提升19.6%/21.0%/22.3%，效果持续2回合。 굳건한 산Ⅰ Ironclad Resolve I 堅守の覚悟Ⅰ 不动如山Ⅰ 속도가 6포인트 감소하고, 생명이 15% 증가한다. Decrease Speed by 6. Increase HP by 15%. 速さが６低下し、ＨＰが１５%上昇する。 速度降低6点，生命值提升15%。 저항 강화Ⅰ Resistance Boost I 異常抵抗ブースタⅠ 抵抗强化Ⅰ 효과 저항이 7% 증가한다. Increase ailment resistance by 7%. 状態異常抵抗が７%上昇する。 效果抵抗提升7%。 흐르는 악취 Putrid Stagnation 悪臭の淀み 流动的臭气 효과 저항이 3.5% 증가한다. 디버프 효과를 받을 때 효과 저항이 30% 증가한다. Increase ailment resistance by 3.5% and debuff resistance by 30%. 状態異常抵抗が３.５%上昇する。弱体効果の抵抗率が３０%上昇する。 效果抵抗提升3.5%。受到减益效果时，效果抵抗提升30%。 흐르는 악취Ⅰ Putrid Stagnation I 悪臭の淀みⅠ 流动的臭气Ⅰ 효과 저항이 3.5% 증가한다. 디버프 효과를 받을 때 효과 저항이 35% 증가한다. Increase ailment resistance by 3.5% and debuff resistance by 35%. 状態異常抵抗が３.５%上昇する。弱体効果の抵抗率が３５%上昇する。 效果抵抗提升3.5%。受到减益效果时，效果抵抗提升35%。",
     "__path": "data/persona/nonorder",
-    "__hash": "b5df3b9929a3e032"
+    "__hash": "9990fc4455a721ec"
   },
   "시사": {
     "name": "시사",
@@ -2071,13 +2071,13 @@ window.personaIndex = {
     "element": "질풍",
     "position": "지배",
     "star": "3",
-    "grade": "5",
+    "grade": "7",
     "event": "",
     "wild_emblem_rainbow": false,
     "tier": "",
     "searchText": "진공파 Vacuum Wave 真空波 真空波 모든 적에게 공격력 64.8/68.0/71.3%의 질풍 속성 대미지를 주고, 36.0/37.8/39.6%의 기본 확률로 적을 풍습 상태에 빠뜨린다. 2턴 동안 지속된다. Deal Wind damage to all foes equal to 64.8/68.0/71.3% of Attack. 36.0/37.8/39.6% chance to inflict Windswept for 2 turns. 敵全体に攻撃力64.8/68.0/71.3%の疾風属性ダメージを与える。36.0/37.8/39.6%の確率で敵を２ターンの間、風襲状態にする。 对所有敌人造成64.8/68.0/71.3%攻击力的疾风属性伤害，有36.0/37.8/39.6%基础概率使敌人陷入风袭状态，持续2回合。 HIGHLIGHT Highlight ハイライト HIGHLIGHT 모든 적에게 공격력 180.0%/192.6%/205.2%의 질풍 속성 대미지를 준다. Deal Wind damage to all foes equal to 180.0%/192.6%/205.2% of Attack. 敵全体に攻撃力180.0%/192.6%/205.2%の疾風属性ダメージを与える。 对所有敌人造成180.0%/192.6%/205.2%攻击力的疾风属性伤害。 질풍 강화Ⅳ Wind Boost IV 疾風ブースタⅣ 疾风强化Ⅳ 질풍 속성 대미지가 10.8% 증가한다. Increase Wind damage by 10.8%. 疾風属性の与ダメージが１０.８%上昇する。 疾风属性伤害提升10.8%。 정교한 타격Ⅳ Pinpoint IV ピンポイントⅣ 精准打击Ⅳ 크리티컬 효과가 16.2% 증가한다. Increase critical damage by 16.2%. クリティカルダメージが１６.２%上昇する。 暴击效果提升16.2%。 망살 러시 Memory Blow 忘殺ラッシュ 忘杀突袭 모든 적에게 공격력 40.8/42.8/44.9%의 물리 속성 대미지를 주고, 2턴 동안 6.7/7.0/7.4%의 기본 확률로 적을 망각 상태에 빠뜨린다. Deal Physical damage to all foes equal to 40.8/42.8/44.9% of Attack. 6.7/7.0/7.4% chance to inflict Forget for 2 turns. 敵全体に攻撃力40.8/42.8/44.9%の物理属性ダメージを与える。6.7/7.0/7.4%の確率で敵を２ターンの間、忘却状態にする。 对所有敌人造成40.8/42.8/44.9%攻击力的物理属性伤害，有6.7/7.0/7.4%基础概率使敌人陷入遗忘状态，效果持续2回合。 화염 간파Ⅳ Fire Reduction IV 火炎レデュースⅣ 火焰识破Ⅳ 받는 화염 속성 대미지가 10.8% 감소한다. Decrease Fire damage taken by 10.8%. 火炎属性の被ダメージを１０.８%低下させる。 受到的火焰属性伤害降低10.8%。 날개 달린 뱀의 폭풍 Windstorm Wings 烈風の羽ばたき 羽蛇之厉风 공격력이 20.4% 증가한다. 생명이 50% 이상인 적에게 주는 질풍 속성 대미지가 38% 증가한다. Increase Attack by 20.4%. Increase Wind damage to foes with 50% or more HP by 38%. 攻撃力が２０.４%上昇する。ＨＰが５０%以上の敵への疾風属性の与ダメージが３８%上昇する。 攻击力提升20.4%。对生命值高于50%的敌人造成的疾风属性伤害提升38%。 날개 달린 뱀의 폭풍Ⅰ Windstorm Wings I 烈風の羽ばたきⅠ 羽蛇之厉风Ⅰ 공격력이 20.4% 증가한다. 생명이 50% 이상인 적에게 주는 질풍 속성 대미지가 43% 증가한다. Increase Attack by 20.4%. Increase Wind damage dealt to foes with 50% or more HP by 43%. 攻撃力が２０.４%上昇する。ＨＰが５０%以上の敵への疾風属性の与ダメージが４３%上昇する。 攻击力提升20.4%。对生命值高于50%的敌人造成的疾风属性伤害提升43%。 날개 달린 뱀의 폭풍Ⅱ Windstorm Wings II 烈風の羽ばたきⅡ 羽蛇之厉风Ⅱ 공격력이 20.4% 증가한다. 생명이 50% 이상인 적에게 주는 질풍 속성 대미지가 48% 증가한다. Increase Attack by 20.4%. Increase Wind damage to foes with 50% or more HP by 48%. 攻撃力が２０.４%上昇する。ＨＰが５０%以上の敵への疾風属性の与ダメージが４８%上昇する。 攻击力提升20.4%。对生命值高于50%的敌人造成的疾风属性伤害提升48%。 날개 달린 뱀의 폭풍Ⅲ Windstorm Wings III 烈風の羽ばたきⅢ 羽蛇之厉风Ⅲ 공격력이 20.4% 증가한다. 생명이 50% 이상인 적에게 주는 질풍 속성 대미지가 53% 증가한다. Increase Attack by 20.4%. Increase Wind damage to foes with 50% or more HP by 53%. 攻撃力が２０.４%上昇する。ＨＰが５０%以上の敵への疾風属性の与ダメージが５３%上昇する。 攻击力提升20.4%。对生命值高于50%的敌人造成的疾风属性伤害提升53%。",
     "__path": "data/persona/nonorder",
-    "__hash": "78af76d9ca07adde"
+    "__hash": "b027c6cff0edc598"
   },
   "켈피": {
     "name": "켈피",

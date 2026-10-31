@@ -5,7 +5,7 @@ window.personaFiles["아라하바키"] = {
   "name": "아라하바키",
   "name_en": "Arahabaki",
   "name_jp": "アラハバキ",
-  "grade": "5",
+  "grade": "4",
   "star": "4",
   "position": "방위",
   "element": "물리",

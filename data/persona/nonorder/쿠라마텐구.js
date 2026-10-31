@@ -5,7 +5,7 @@ window.personaFiles["쿠라마텐구"] = {
   "name": "쿠라마텐구",
   "name_en": "Kurama Tengu",
   "name_jp": "クラマテング",
-  "grade": "5",
+  "grade": "6",
   "star": "4",
   "position": "지배",
   "element": "주원",

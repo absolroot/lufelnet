@@ -479,7 +479,7 @@ Object.assign(window.characterData, {
         "persona_en": "Lucia",
         "persona_jp": "ルキア",
         "name": "야마기시 후카",
-        "name_en": "Fuka Yamagishi",
+        "name_en": "Fuuka Yamagishi",
         "name_jp": "山岸 風花",
         "name_cn": "山岸风花",
         "codename": "FUKA",

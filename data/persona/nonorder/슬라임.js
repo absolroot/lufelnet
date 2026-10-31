@@ -5,7 +5,7 @@ window.personaFiles["슬라임"] = {
   "name": "슬라임",
   "name_en": "Slime",
   "name_jp": "スライム",
-  "grade": "5",
+  "grade": "1",
   "star": "2",
   "position": "굴복",
   "element": "주원",

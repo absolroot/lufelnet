@@ -5,7 +5,7 @@ window.personaFiles["사키미타마"] = {
   "name": "사키미타마",
   "name_en": "Saki Mitama",
   "name_jp": "サキミタマ",
-  "grade": "5",
+  "grade": "1",
   "star": "2",
   "position": "구원",
   "element": "빙결",

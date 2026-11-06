@@ -1,3 +1,7 @@
+.char-img.single-banner[src*="%ED%9B%84%EC%B9%B4.webp"] {
+  top: 98%;
+}
+
 /*이미지별 크기 조절*/
 
 /* Three-character crops: match face sizes for these individual illustrations. */

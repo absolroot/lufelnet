@@ -2680,6 +2680,8 @@
                         {
                             "sn": 248511,
                             "name": "괴상한 스카디",
+                            "name_en": "Skadi",
+                            "name_jp": "スカディ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -2738,6 +2740,8 @@
                         {
                             "sn": 248512,
                             "name": "스카아하",
+                            "name_en": "Scathach",
+                            "name_jp": "スカアハ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -2804,6 +2808,10 @@
                 "tutorial": {
                     "sn": 248511,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. At the start of battle, Scathach enters the Dunscaith state, and cannot be targeted.\n2. Each time 3 attacks are taken before its action, or every 2 actions, Skadi and Scathach will switch the Dunscaith state. When Dunscaith is removed, they will immediately use a skill 1 time.\n3. Skadi and Scathach are in the Soul Link state.\n4. When switching the Dunscaith state, all Phantom Thieves' final damage is increased for 3 turns. This effect does not stack.\n5. Skadi's skills deal Ice damage to all Phantom Thieves based on Attack. Also, Scathach gains 2 Icy Exchange stacks, increasing final damage dealt.\n6. When Scathach gains 6 Icy Exchange stacks, it will Mark 1 random Phantom Thief, and on the next turn deal heavy damage with Gae Bolg's Thorn. After using Gae Bolg's Thorn, all Icy Exchange stacks are removed.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．戦闘開始時、スカアハは『影の城』状態になり、選択対象にできません。\n２．毎回の行動前に攻撃を３回受ける、または２回行動するごとに、スカディとスカアハは『影の城』状態を切り替えます。『影の城』状態が解除された時、即座にスキルを１回使用します。\n３．スカディとスカアハは『ライフリンク』状態にあります。\n４．『影の城』状態を切り替えた時、３ターンの間、怪盗全体の与える最終ダメージが上昇します。この効果は累積しません。\n５．スカディのスキルは怪盗全体に攻撃力に応じた氷結属性ダメージを与えます。さらにスカアハに『氷影交錯』を２つ付与し、与える最終ダメージを上昇させます。\n６．スカアハが『氷影交錯』を６つ獲得した時、ランダムな怪盗１名をマークし、次のターンに『影棘一穿』で大ダメージを与えます。『影棘一穿』を使用した後、全ての『氷影交錯』を解除します。",
                     "content": "1. 전투 시작 시 스카아하가 『그림자의 성』 상태가 되며, 선택할 수 없습니다.\n2. 공격 전 공격을 3회 받거나 2회 행동 시 스카디와 스카아하가 『그림자의 성』 상태로 전환됩니다. 『그림자의 성』 상태가 종료되면 스킬을 1회 즉시 시전합니다.\n3. 스카디와 스카아하는 생명 연결 상태입니다.\n4. 『그림자의 성』 상태로 전환 시 3턴 동안 아군의 최종 대미지 보너스가 증가하며, 최대 1회 중첩됩니다.\n5. 스카디 스킬: 적 전체에 공격력에 해당하는 빙결 속성 대미지를 주고, 스카아하가 『얼음 그림자 협동』을 2중첩 획득해 최종 대미지 보너스가 증가합니다.\n6. 스카아하 스킬: 『얼음 그림자 협동』이 6회 중첩되면 랜덤 적 1명에게 표식을 남겨 다음 턴에 해당 적에게 『게 볼그』를 시전해 고액 단일 대미지를 1회 주고, 모든 『얼음 그림자 협동』이 제거됩니다."
                 }
             }
@@ -2828,6 +2836,8 @@
                         {
                             "sn": 248521,
                             "name": "괴상한 스카디",
+                            "name_en": "Skadi",
+                            "name_jp": "スカディ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -2886,6 +2896,8 @@
                         {
                             "sn": 248522,
                             "name": "스카아하",
+                            "name_en": "Scathach",
+                            "name_jp": "スカアハ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -2952,6 +2964,10 @@
                 "tutorial": {
                     "sn": 248521,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. At the start of battle, Scathach enters the Dunscaith state, and cannot be targeted.\n2. Each time 3 attacks are taken before its action, or every 2 actions, Skadi and Scathach will switch the Dunscaith state. When Dunscaith is removed, they will immediately use a skill 1 time.\n3. Skadi and Scathach are in the Soul Link state.\n4. When switching the Dunscaith state, all Phantom Thieves' final damage is increased for 3 turns. This effect does not stack.\n5. Skadi's skills deal Ice damage to all Phantom Thieves based on Attack. Also, Scathach gains 2 Icy Exchange stacks (when in the Dunscaith state, gain 3 stacks), increasing final damage dealt.\n6. When Scathach gains 6 Icy Exchange stacks, it will Mark 1 random Phantom Thief, and on the next turn deal heavy damage with Gae Bolg's Thorn. After using Gae Bolg's Thorn, all Icy Exchange stacks are removed. When Scathach is in the Dunscaith state, also deal continuous damage.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．戦闘開始時、スカアハは『影の城』状態になり、選択対象にできません。\n２．毎回の行動前に攻撃を３回受ける、または２回行動するごとに、スカディとスカアハは『影の城』状態を切り替えます。『影の城』状態が解除された時、即座にスキルを１回使用します。\n３．スカディとスカアハは『ライフリンク』状態にあります。\n４．『影の城』状態を切り替えた時、３ターンの間、怪盗全体の与える最終ダメージが上昇します。この効果は累積しません。\n５．スカディのスキルは怪盗全体に攻撃力に応じた氷結属性ダメージを与えます。さらにスカアハに『氷影交錯』を２つ（『影の城』状態の場合は３つ）付与し、与える最終ダメージを上昇させます。\n６．スカアハが『氷影交錯』を６つ獲得した時、ランダムな怪盗１名をマークし、次のターンに『影棘一穿』で大ダメージを与えます。『影棘一穿』を使用した後、全ての『氷影交錯』を解除します。スカアハが『影の城』状態でスキルを使用した場合、持続ダメージを付与します。",
                     "content": "1. 전투 시작 시 스카아하가 『그림자의 성』 상태가 되며, 선택할 수 없습니다.\n2. 공격 전 공격을 3회 받거나 2회 행동 시 스카디와 스카아하가 『그림자의 성』 상태로 전환됩니다. 『그림자의 성』 상태가 종료되면 스킬을 1회 즉시 시전합니다.\n3. 스카디와 스카아하는 생명 연결 상태입니다.\n4. 『그림자의 성』 상태로 전환 시 3턴 동안 아군의 최종 대미지 보너스가 증가하며, 최대 1회 중첩됩니다.\n5. 스카디 스킬: 적 전체에 공격력에 해당하는 빙결 속성 대미지를 주고, 스카아하가 『얼음 그림자 협동』을 2중첩 획득해 최종 대미지 보너스가 증가합니다. 『그림자의 성』 상태인 경우 스카아하가 『얼음 그림자 협동』을 3중첩 획득합니다.\n6. 스카아하 스킬: 『얼음 그림자 협동』이 6회 중첩되면 랜덤 적 1명에게 표식을 남겨 다음 턴에 해당 적에게 『게 볼그』를 시전해 고액 단일 대미지를 1회 주고, 모든 『얼음 그림자 협동』이 제거됩니다. 『그림자의 성』 상태이면 스킬 시전 시 지속 대미지를 추가로 줍니다."
                 }
             }
@@ -2976,6 +2992,8 @@
                         {
                             "sn": 248531,
                             "name": "괴상한 스카디",
+                            "name_en": "Skadi",
+                            "name_jp": "スカディ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3034,6 +3052,8 @@
                         {
                             "sn": 248532,
                             "name": "스카아하",
+                            "name_en": "Scathach",
+                            "name_jp": "スカアハ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3100,6 +3120,10 @@
                 "tutorial": {
                     "sn": 248531,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. At the start of battle, Scathach enters the Dunscaith state, and cannot be targeted.\n2. Each time 3 attacks are taken before its action, or every 2 actions, Skadi and Scathach will switch the Dunscaith state. When Dunscaith is removed, they will immediately use a skill 1 time.\n3. Skadi and Scathach are in the Soul Link state.\n4. When switching the Dunscaith state, all Phantom Thieves' final damage is increased for 3 turns. This effect does not stack.\n5. Skadi's skills deal Ice damage to all Phantom Thieves based on Attack. Also, Scathach gains 2 Icy Exchange stacks (when in the Dunscaith state, gain 3 stacks), increasing final damage dealt.\n6. When Scathach gains 6 Icy Exchange stacks, it will Mark 1 random Phantom Thief, and on the next turn deal heavy damage with Gae Bolg's Thorn. After using Gae Bolg's Thorn, all Icy Exchange stacks are removed. When Scathach is in the Dunscaith state, also deal continuous damage.\n7. When either Skadi or Scathach fall below 30% HP, Dunscaith is removed from each, and they gain buffs.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．戦闘開始時、スカアハは『影の城』状態になり、選択対象にできません。\n２．毎回の行動前に攻撃を３回受ける、または２回行動するごとに、スカディとスカアハは『影の城』状態を切り替えます。『影の城』状態が解除された時、即座にスキルを１回使用します。\n３．スカディとスカアハは『ライフリンク』状態にあります。\n４．『影の城』状態を切り替えた時、３ターンの間、怪盗全体の与える最終ダメージが上昇します。この効果は累積しません。\n５．スカディのスキルは怪盗全体に攻撃力に応じた氷結属性ダメージを与えます。さらにスカアハに『氷影交錯』を２つ（『影の城』状態の場合は３つ）付与し、与える最終ダメージを上昇させます。\n６．スカアハが『氷影交錯』を６つ獲得した時、ランダムな怪盗１名をマークし、次のターンに『影棘一穿』で大ダメージを与えます。『影棘一穿』を使用した後、全ての『氷影交錯』を解除します。スカアハが『影の城』状態でスキルを使用した場合、持続ダメージを付与します。\n７．スカディまたはスカアハのＨＰが３０%未満になった時、それぞれの『影の城』状態が解除され、その強化効果を獲得します。",
                     "content": "1. 전투 시작 시 스카아하가 『그림자의 성』 상태가 되며, 선택할 수 없습니다.\n2. 공격 전 공격을 3회 받거나 2회 행동 시 스카디와 스카아하가 『그림자의 성』 상태로 전환됩니다. 『그림자의 성』 상태가 종료되면 스킬을 1회 즉시 시전합니다.\n3. 스카디와 스카아하는 생명 연결 상태입니다.\n4. 『그림자의 성』 상태로 전환 시 3턴 동안 아군의 최종 대미지 보너스가 증가하며, 최대 1회 중첩됩니다.\n5. 스카디 스킬: 적 전체에 공격력에 해당하는 빙결 속성 대미지를 주고, 스카아하가 『얼음 그림자 협동』을 2중첩 획득해 최종 대미지 보너스가 증가합니다. 『그림자의 성』 상태인 경우 스카아하가 『얼음 그림자 협동』을 3중첩 획득합니다.\n6. 스카아하 스킬: 『얼음 그림자 협동』이 6회 중첩되면 랜덤 적 1명에게 표식을 남겨 다음 턴에 해당 적에게 『게 볼그』를 시전해 고액 단일 대미지를 1회 줍니다. 『그림자의 성』 상태이면 스킬 시전 시 지속 대미지를 추가로 주고, 모든 『얼음 그림자 협동』이 제거됩니다.\n7. 스카디 또는 스카아하의 HP가 30%보다 낮아지면 모두 『그림자의 성』 상태가 해제되며, 『그림자의 성』의 버프 효과를 획득합니다."
                 }
             }

@@ -2891,6 +2891,8 @@
                         {
                             "sn": 248611,
                             "name": "괴상한 케찰코아틀",
+                            "name_en": "Quetzalcoatl",
+                            "name_jp": "ケツアルカトル",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [
@@ -2976,6 +2978,10 @@
                 "tutorial": {
                     "sn": 248611,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. All of Quetzalcoatl's affinities are Resist, significantly reducing its damage taken.\n2. After charging its energy, Quetzalcoatl uses Light of Creation on its next turn.\nLight of Creation: Deals severe Almighty damage to all Phantom Thieves, ignoring their Defense, then summons Shadows. The more damage is dealt, the higher the HP of the summoned Shadows.\n3. When summoned Shadows are on the field, they are strengthened by Quetzalcoatl's Sunlight Dance. When a summoned Shadow is defeated, Quetzalcoatl's HP is reduced by a fixed amount.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．ケツアルカトルは全ての属性相性が耐性となり、さらに被ダメージを大幅に軽減します。\n２．ケツアルカトルは力を溜めた後、次のターンに『創世の光輝』を使用します。\n『創世の光輝』：怪盗全体に防御力無視の万能属性の特大ダメージを与え、さらにシャドウを召喚します。与えたダメージが多いほど、召喚されたシャドウのＨＰが上昇します。\n３．場に召喚されたシャドウがいる時、ケツアルカトルは『陽光の舞』でシャドウを強化します。召喚されたシャドウが撃破された時、ケツアルカトルのＨＰが一定割合減少します。",
                     "content": "1. 케찰코아틀 자신은 모든 속성 내성 및 대량의 대미지 감면 효과를 보유합니다.\n2. 케찰코아틀은 차지 후 『창세의 힘』을 시전합니다. 『창세의 힘』: 적 전체의 방어력을 무시하는 대량의 만능 속성 대미지를 주고 백성을 창조합니다. 주는 대미지가 높을수록 백성의 생명이 많아집니다.\n3. 필드에 케찰코아틀의 백성이 존재할 경우 케찰코아틀이 『격려의 춤』을 시전해 백성을 강화합니다. 케찰코아틀의 백성 사망 시 케찰코아틀이 백분율에 따라 생명을 잃습니다."
                 }
             }
@@ -3000,6 +3006,8 @@
                         {
                             "sn": 248621,
                             "name": "괴상한 케찰코아틀",
+                            "name_en": "Quetzalcoatl",
+                            "name_jp": "ケツアルカトル",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [
@@ -3085,6 +3093,10 @@
                 "tutorial": {
                     "sn": 248621,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. All of Quetzalcoatl's affinities are Resist, significantly reducing its damage taken.\n2. After charging its energy, Quetzalcoatl uses Light of Creation on its next turn.\nLight of Creation: Deals severe Almighty damage to all Phantom Thieves, ignoring their Defense, then summons Shadows. The more damage is dealt, the higher the HP of the summoned Shadows.\n3. When summoned Shadows are on the field, they are strengthened by Quetzalcoatl's Sunlight Dance. When a summoned Shadow is defeated, Quetzalcoatl's HP is reduced by a fixed amount. At that time, it activates Wrathful Wail, dealing medium Almighty damage to all Phantom Thieves, and increasing its own final damage dealt for a certain number of turns (up to once per action).",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．ケツアルカトルは全ての属性相性が耐性となり、さらに被ダメージを大幅に軽減します。\n２．ケツアルカトルは力を溜めた後、次のターンに『創世の光輝』を使用します。\n『創世の光輝』：怪盗全体に防御力無視の万能属性の特大ダメージを与え、さらにシャドウを召喚します。与えたダメージが多いほど、召喚されたシャドウのＨＰと攻撃力が上昇します。\n３．場に召喚されたシャドウがいる時、ケツアルカトルは『陽光の舞』でシャドウを強化します。召喚されたシャドウが撃破された時、ケツアルカトルのＨＰが一定割合減少します。この時『憤怒の哀哭』を発動し、怪盗全体に万能属性の中ダメージを与え、さらに一定ターンの間、自身の与える最終ダメージが上昇します（１行動につき一度まで）。",
                     "content": "1. 케찰코아틀 자신은 모든 속성 내성 및 대량의 대미지 감면 효과를 보유합니다.\n2. 케찰코아틀은 차지 후 『창세의 힘』을 시전합니다. 『창세의 힘』: 적 전체의 방어력을 무시하는 대량의 만능 속성 대미지를 주고 백성을 창조합니다. 주는 대미지가 높을수록 백성의 생명이 많아지고 공격력이 증가합니다.\n3. 필드에 케찰코아틀의 백성이 존재할 경우 케찰코아틀이 『격려의 춤』을 시전해 백성을 강화합니다. 케찰코아틀의 백성이 사망하면 케찰코아틀이 백분율에 따라 생명을 잃습니다. 이와 동시에 『분노의 통곡』을 시전해 적 전체에 중간 폭의 만능 속성 대미지를 주고, 자신의 대미지 능력이 중간 폭 증가합니다(턴당 1회만 발동 가능)."
                 }
             }

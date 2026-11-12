@@ -18,8 +18,8 @@ window.personaFiles["마카브르"] = {
   "tier_desc_jp": "KR/CNのv4.7.1に登場し、EN/JPではv4.13で実装されたペルソナ。ゲーム内通貨でも入手でき、価格は高いがそれだけの価値がある。\n支配ロールのアタッカーが攻撃する時、クリティカルダメージ、クリティカル率、ダメージボーナスの3要素を同時に高めるだけでなく、希少な別係数である『総ダメージ増幅』も3%上昇させるため、実質的に総ダメージが3%増える効果を持つ。さらに本能、固有スキル、HIGHLIGHTの持続時間がすべて3ターンと非常に長く、広域アタッカーを使うなら最優先級で推奨される。",
   "tier_desc_cn": "它是 KR/CN v4.7.1 实装的首个抽卡人格面具，EN/JP 则于 v4.13 实装。也可以用游戏内货币获取，虽然价格不低，但很值。\n当支配（群伤）输出攻击时，它不仅能同时提升暴击效果、暴击率和伤害加成这 3 项能力，还会把稀有的独立乘区『总伤害增幅』提高 3%，等同于整体伤害再提高约 3%。此外，本能、固有技能和 HIGHLIGHT 的持续时间都长达 3 回合，因此只要队伍使用群伤输出，它几乎都是第一优先级。",
   "comment": "",
-  "comment_en": "Available on EN/JP servers from v4.13. Obtainable from the Repression Medal IV Exchange Shop.",
-  "comment_jp": "EN/JPではv4.13から実装。交換所『調伏の紋章・Ⅳ』で入手可能。",
+  "comment_en": "",
+  "comment_jp": "",
   "comment_cn": "",
   "added": "KR/CN v4.7.1 / EN/JP v4.13",
   "cost": {
@@ -35,6 +35,10 @@ window.personaFiles["마카브르"] = {
     },
     {
       "name": "전의 공명",
+      "priority": 3
+    },
+    {
+      "name": "만상 소멸",
       "priority": 3
     },
     {

@@ -18,6 +18,9 @@ function runFile(file, sandbox) {
 }
 
 function buildIndex() {
+  const skillSandbox = { window: {} };
+  runFile(path.join(ROOT, 'data', 'kr', 'wonder', 'skills.js'), skillSandbox);
+  const recommendedSkills = vm.runInNewContext('personaSkillList', skillSandbox);
   const index = {};
   for (const list of lists) {
     const sandbox = { window: {} };
@@ -36,7 +39,11 @@ function buildIndex() {
         const value = persona[field];
         return Array.isArray(value) ? value : (value && typeof value === 'object' ? [value] : []);
       });
-      const searchText = skills.flatMap(skill => searchableFields.map(field => skill[field]))
+      const recommendations = (persona.recommendSkill || []).flatMap(skill => {
+        const info = recommendedSkills[skill.name] || {};
+        return [skill.name, ...['name_en', 'name_jp', 'name_cn', 'description', 'description_en', 'description_jp', 'description_cn'].map(field => info[field])];
+      });
+      const searchText = [...skills.flatMap(skill => searchableFields.map(field => skill[field])), ...recommendations]
         .filter(value => typeof value === 'string' && value.trim())
         .join(' ');
       index[name] = {

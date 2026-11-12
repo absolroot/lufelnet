@@ -36,6 +36,18 @@ window.personaFiles["라파엘"] = {
     {
       "name": "타루카쟈",
       "priority": 3
+    },
+    {
+      "name": "무한 알고리즘",
+      "priority": 3
+    },
+    {
+      "name": "음률 공명",
+      "priority": 3
+    },
+    {
+      "name": "역동적인 힘",
+      "priority": 3
     }
   ],
   "passive_priority": "",

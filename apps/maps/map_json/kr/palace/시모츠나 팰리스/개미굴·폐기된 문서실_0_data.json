@@ -3955,6 +3955,8 @@
                         {
                             "sn": 248711,
                             "name": "괴상한 사악한 프로스트",
+                            "name_en": "Black Frost",
+                            "name_jp": "ジャアクフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -4031,6 +4033,8 @@
                         {
                             "sn": 248712,
                             "name": "잭 프로스트",
+                            "name_en": "Jack Frost",
+                            "name_jp": "ジャックフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -4098,6 +4102,8 @@
                         {
                             "sn": 248712,
                             "name": "잭 프로스트",
+                            "name_en": "Jack Frost",
+                            "name_jp": "ジャックフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -4165,6 +4171,10 @@
                 "tutorial": {
                     "sn": 248711,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. Jack Frost's attacks inflict 1 Frost Mark stack. Frost Mark cannot be removed with healing skills.\n2. When Phantom Thieves have a total of 3 Frost Mark stacks, Black Frost removes the stacks and immediately uses Ice Age, dealing heavy Ice damage to all Phantom Thieves.\n3. When Jack Frost is defeated, remove 2 Frost Mark stacks from all Phantom Thieves, and deal damage to all Phantom Thieves. Also, immediately summon 1 Jack Frost.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．ジャックフロストは攻撃で『フロストマーク』を１つ付与します。『フロストマーク』は治療スキルで解除できません。\n２．場に『フロストマーク』を３つ以上付与された怪盗がいる時、ジャアクフロストはそれを解除して即座に『大氷河期』を使用し、怪盗全体に氷結属性の大ダメージを与えます。\n３．ジャックフロストが撃破された時、怪盗全体の『フロストマーク』を２つ解除し、怪盗全体にダメージを与えます。さらにジャックフロストを即座に１体召喚します。",
                     "content": "1. 잭 프로스트의 공격은 『취약』을 1중첩 추가합니다.\n2. 필드에 『취약』 중첩이 3중첩 이상인 괴도가 있다면, 사악한 프로스트가 즉시 대빙하기를 시전하여 모든 괴도에게 막대한 속성 대미지를 줍니다.\n3. 잭 프로스트가 처치되면 모든 괴도의 『취약』 2중첩을 제거하고 모든 괴도에게 대미지를 줍니다. 그리고 즉시 잭 프로스트 1마리를 다시 소환합니다."
                 }
             }
@@ -4189,6 +4199,8 @@
                         {
                             "sn": 248631,
                             "name": "괴상한 케찰코아틀",
+                            "name_en": "Quetzalcoatl",
+                            "name_jp": "ケツアルカトル",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [
@@ -4274,6 +4286,10 @@
                 "tutorial": {
                     "sn": 248631,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. All of Quetzalcoatl's affinities are Resist, significantly reducing its damage taken.\n2. After charging its energy, Quetzalcoatl immediately uses Winged Snake's Glare, and uses Light of Creation on the next turn.\nWinged Snake's Glare: Greatly increase 1 Phantom Thief's damage taken.\nLight of Creation: Deals severe Almighty damage to all Phantom Thieves, ignoring their Defense, then summons a Shadow. The more damage is dealt, the higher the HP and Attack of the summoned Shadow. Also, randomly grant Cloak of Divine Wings to summoned Shadows, greatly decreasing the next damage taken.\n3. When summoned Shadows are on the field, they are strengthened by Quetzalcoatl's Sunlight Dance. When a summoned Shadow is defeated, Quetzalcoatl's HP is reduced by a fixed amount. At that time, it activates Wrathful Wail, dealing medium Almighty damage to all Phantom Thieves, and increasing its own final damage dealt for a period of time (up to once per action).",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．ケツアルカトルは全ての属性相性が耐性となり、さらに被ダメージを大幅に軽減します。\n２．ケツアルカトルは力を溜めた後、即座に『翼蛇の睨視』を使用し、次のターンに『創世の光輝』を使用します。\n『翼蛇の睨視』：怪盗単体の受ける最終ダメージが大幅に上昇します。\n『創世の光輝』：怪盗全体に防御力無視の万能属性の特大ダメージを与え、さらにシャドウを召喚します。与えたダメージが多いほど、召喚されたシャドウのＨＰと攻撃力が上昇します。また、召喚されたシャドウの中からランダムに『神翼の衣』を複数回付与し、次に受けるダメージを大幅に低下させます。\n３．場に召喚されたシャドウがいる時、ケツアルカトルは『陽光の舞』でシャドウを強化します。召喚されたシャドウが撃破された時、ケツアルカトルのＨＰが一定割合減少します。この時『憤怒の哀哭』を発動し、怪盗全体に万能属性の中ダメージを与え、さらに一定ターンの間、自身の与える最終ダメージが上昇します（１行動につき一度まで）。",
                     "content": "1. 케찰코아틀 자신은 모든 속성 내성 및 대량의 대미지 감면 효과를 보유합니다.\n2. 케찰코아틀은 차지 후 『창세의 힘』을 시전합니다. 『창세의 힘』: 적 전체의 방어력을 무시하는 대량의 만능 속성 대미지를 주고 백성을 창조합니다. 주는 대미지가 높을수록 백성의 생명이 많아지고 공격력이 증가한다. 차지 후 아군 중 한 명에게 『케찰코아틀의 응시』를 시전해 대미지를 대폭 증가시킨다. 『창세의 힘』은 랜덤 백성에게 여러 번 『케찰코아틀의 비호』를 시전해 다음에 받는 대미지를 완벽히 차단할 수 있다.\n3. 필드에 케찰코아틀의 백성이 존재할 경우 케찰코아틀이 『격려의 춤』을 시전해 백성을 강화합니다. 케찰코아틀의 백성이 사망하면 케찰코아틀이 백분율에 따라 생명을 잃습니다. 이와 동시에 『분노의 통곡』을 시전해 적 전체에 중간 폭의 만능 속성 대미지를 주고, 자신의 대미지 능력이 중간 폭 증가합니다(턴당 1회만 발동 가능)."
                 }
             }

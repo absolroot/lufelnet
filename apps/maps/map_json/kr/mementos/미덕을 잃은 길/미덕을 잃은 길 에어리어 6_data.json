@@ -6396,6 +6396,8 @@
                         {
                             "sn": 839761,
                             "name": "산달폰",
+                            "name_en": "Sandalphon",
+                            "name_jp": "サンダルフォン",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [
@@ -6478,6 +6480,10 @@
                 "tutorial": {
                     "sn": 839761,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. Sandalphon's skill damage will change based on their Defense.\n2. Every 2 turns, Sandalphon uses Devoted Guard and gains a shield. While shielded, damage is increased.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．サンダルフォンは自身の防御力に応じて、スキルのダメージが変化します。\n２．サンダルフォンは２ターン経過するごとに『献身の守り』を使用し、シールドを獲得します。シールドを獲得していると与ダメージが上昇します。",
                     "content": "1. 산달폰의 스킬 대미지는 자신의 방어력과 관련이 있습니다.\n2. 2턴마다 산달폰은 「헌신의 수호」를 사용해 자신에게 실드를 부여하고 실드를 보유했을 때 주는 대미지가 증가합니다."
                 }
             }
@@ -6502,6 +6508,8 @@
                         {
                             "sn": 839231,
                             "name": "괴상한 오세",
+                            "name_en": "Ose",
+                            "name_jp": "オセ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -6570,6 +6578,8 @@
                         {
                             "sn": 839232,
                             "name": "데카라비아",
+                            "name_en": "Decarabia",
+                            "name_jp": "デカラビア",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -6638,6 +6648,10 @@
                 "tutorial": {
                     "sn": 839231,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. When Ose or Decarabia's remaining HP falls below 75%, Ose temporarily retreats and several Nekomata appear. At that time, all Shadows gain <color=#FF423F>Nekomata's Fervor</color>, increasing their final damage dealt.\n2. When a certain Nekomata is defeated, Genbu appears, and gains Nekomata's Fervor from the defeated Nekomata. Also, all Shadows gain <color=#FF423F>Black Tortoiseshell</color>, decreasing their final damage taken. Also, every turn, Genbu switches between the following states.\nState 1: Each time Genbu takes damage, it counterattacks with <color=#FF423F>Genbu's Rage</color>, dealing heavy damage to all Phantom Thieves.\nState 2: Unable to act, and damage taken increases.\n3. When Genbu is defeated, Ose reappears. At that time, Ose's remaining HP becomes 25%, and gains Nekomata's Fervor from the defeated Genbu.\n4. When either Nekomata or Genbu is present, Decarabia is untargetable.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．オセ、またはデカラビアの残りＨＰが７５%未満になった時、ネコマタが複数体出現し、オセは一時的に撤退します。この時、全てのシャドウは『<color=#FF423F>ネコマタの鋭気</color>』を獲得し、与える最終ダメージが上昇します。\n２．複数のネコマタの中から特定の１体が撃破された時、ゲンブが出現し、撃破されたネコマタの『ネコマタの鋭気』を引き継ぎます。また、全てのシャドウは『<color=#FF423F>ゲンブの守り</color>』を獲得し、受ける最終ダメージが低下します。さらにゲンブは毎ターン、以下の状態を切り替えます。\n「ダメージを受けるごとに『<color=#FF423F>ゲンブの怒り</color>』で反撃し、怪盗全体に大ダメージを与える状態」\n「行動せず、受ける最終ダメージが上昇する状態」\n３．ゲンブが撃破された時、オセが再出現します。この時、オセの残りＨＰは２５%になり、撃破されたゲンブの『ネコマタの鋭気』と『ゲンブの守り』を引き継ぎます。\n４．ネコマタ、またはゲンブが場にいる時、デカラビアを選択対象にできません。",
                     "content": "1. 오세 또는 데카라비아의 HP가 75%보다 낮아지면 오세가 여러 고양이 몬스터로 변합니다. 또한 아군이 <color=#ff381d>『고양이 몬스터의 예리함』</color>을 1중첩 획득하며, 최종 대미지 보너스가 증가합니다. 여러 고양이 몬스터 중 1개만이 진짜입니다.\n2. 진짜 고양이 몬스터가 처치되어야 현무로 돌아오며, <color=#ff381d>『고양이 몬스터의 예리함』</color>을 계승합니다. 아군이 <color=#ff381d>『현무의 수호』</color>를 1중첩 획득하며, 받는 최종 대미지가 감소합니다. 또한 턴마다 상태를 전환합니다. 상태 1: 대미지를 받을 때마다 반격하며 아군 캐릭터 전체에 『현무의 분노』를 시전하여 고액의 광역 대미지를 줍니다. 상태 2: 행동하지 않으며 받는 최종 대미지가 증가합니다.\n3. 현무가 처치되면 오세로 돌아옵니다. HP가 25%가 되고 <color=#ff381d>『고양이 몬스터의 예리함』</color> 및 <color=#ff381d>『현무의 수호』</color>를 계승합니다.\n4. 고양이 몬스터와 현무 단계에서는 데카라비아를 선택할 수 없습니다."
                 }
             }
@@ -6662,6 +6676,8 @@
                         {
                             "sn": 832221,
                             "name": "오베론",
+                            "name_en": "Oberon",
+                            "name_jp": "オベロン",
                             "adapt": {
                                 "Weak": [
                                     "Nuclear"
@@ -6769,6 +6785,8 @@
                         {
                             "sn": 832221,
                             "name": "오베론",
+                            "name_en": "Oberon",
+                            "name_jp": "オベロン",
                             "adapt": {
                                 "Weak": [
                                     "Nuclear"

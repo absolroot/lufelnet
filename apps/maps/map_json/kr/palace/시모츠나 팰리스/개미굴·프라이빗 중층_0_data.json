@@ -4615,6 +4615,8 @@
                         {
                             "sn": 248421,
                             "name": "괴상한 칼리",
+                            "name_en": "Kali",
+                            "name_jp": "カーリー",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -4690,6 +4692,10 @@
                 "tutorial": {
                     "sn": 248421,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. When Kali takes damage, it summons 1 Yaksini.\n2. Every 2 turns, Kali banishes all Yaksini present. If Yaksini are banished, Kali uses Mundamala on 1 Phantom Thief, dealing severe damage based on the number banished.\n3. When Yaksini is defeated, all Phantom Thieves' final damage dealt increases for 1 turn.\n4. On turns when Kali does not banish Yaksini, Yaksini's final damage dealt increases. This effect lasts 2 turns.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．カーリーはダメージを受けた時、ヤクシニーを１体召喚します。\n２．カーリーは場にいるヤクシニーを２ターンごとに消滅させます。ヤクシニーを消滅させた場合、怪盗１名に『髑髏刈り』を放ち、消滅数に応じた特大ダメージを与えます。\n３．ヤクシニーを撃破した時、１ターンの間、怪盗全体の与える最終ダメージが上昇します。\n４．カーリーはヤクシニーを消滅させないターンに、ヤクシニーの与える最終ダメージを上昇させます。この効果は２ターン持続します。",
                     "content": "1. 칼리는 대미지를 받을 시 야크시니 1마리를 소환합니다.\n2. 칼리는 2턴마다 필드에 살아있는 야크시니를 흡수하며, 야크시니를 흡수하면 흡수한 수량에 따라 아군 단일 캐릭터를 향해 『두개골 참격』을 시전해 단일 고액 대미지를 줍니다.\n3. 아군이 야크시니를 처치하면 아군 전체의 최종 대미지 보너스가 증가합니다.\n4. 칼리가 흡수를 시전하지 않은 턴에는 2턴 동안 야크시니의 최종 대미지 보너스가 증가합니다."
                 }
             }
@@ -4714,6 +4720,8 @@
                         {
                             "sn": 248431,
                             "name": "괴상한 칼리",
+                            "name_en": "Kali",
+                            "name_jp": "カーリー",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -4789,6 +4797,10 @@
                 "tutorial": {
                     "sn": 248431,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. When Kali takes damage, it summons 1 Yaksini.\n2. Every 2 turns, Kali banishes all Yaksini present. If Yaksini are banished, Kali uses Mundamala on 1 Phantom Thief, dealing severe damage based on the number banished.\n3. When Yaksini is defeated, all Phantom Thieves' final damage dealt increases for 1 turn.\n4. On turns when Kali does not banish Yaksini, Yaksini's final damage dealt increases. This effect lasts 2 turns.\n5. If there are no Yaksini on a turn when they would be banished, Kali uses Thousand Cuts to deal severe damage to all Phantom Thieves.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．カーリーはダメージを受けた時、ヤクシニーを１体召喚します。\n２．カーリーは場にいるヤクシニーを２ターンごとに消滅させます。ヤクシニーを消滅させた場合、怪盗１名に『髑髏刈り』を放ち、消滅数に応じた特大ダメージを与えます。\n３．ヤクシニーを撃破した時、１ターンの間、怪盗全体の与える最終ダメージが上昇します。\n４．カーリーはヤクシニーを消滅させないターンに、ヤクシニーの与える最終ダメージを上昇させます。この効果は２ターン持続します。\n５．ヤクシニーを消滅させるターンに対象がいない場合、カーリーは怪盗全体に『千手滅殺』を放ち、特大ダメージを与えます。",
                     "content": "1. 칼리는 대미지를 받을 시 야크시니 1마리를 소환합니다.\n2. 칼리는 2턴마다 필드에 살아있는 야크시니를 흡수하며, 야크시니를 흡수하면 흡수한 수량에 따라 아군 단일 캐릭터를 향해 『두개골 참격』을 시전해 단일 고액 대미지를 줍니다.\n3. 아군이 야크시니를 처치하면 아군 전체의 최종 대미지 보너스가 증가합니다.\n4. 칼리가 흡수를 시전하지 않은 턴에는 1턴 동안 야크시니의 최종 대미지 보너스가 증가합니다. \n5. 칼리가 흡수를 시전할 때 필드에 야크시니가 없으면 아군의 모든 캐릭터를 향해 『천만 균열』을 시전해 광역 고액 대미지를 줍니다."
                 }
             }

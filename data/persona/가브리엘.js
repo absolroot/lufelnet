@@ -61,6 +61,10 @@ window.personaFiles["가브리엘"] = {
       "priority": 3
     },
     {
+      "name": "만상 소멸",
+      "priority": 3
+    },
+    {
       "name": "마하타루카 오토",
       "priority": 2
     },

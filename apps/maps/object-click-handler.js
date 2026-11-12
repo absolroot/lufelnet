@@ -30,6 +30,11 @@
             return 'kr';
         },
 
+        getLocalizedField(record, field) {
+            const lang = this.getCurrentLang();
+            return record?.[`${field}_${lang}`] || record?.[field] || '';
+        },
+
         getMapsText(key, fallback = '', lang = null) {
             const currentLang = lang || this.getCurrentLang();
             if (window.MapsI18n && typeof window.MapsI18n.getText === 'function') {
@@ -402,7 +407,7 @@
                 `;
 
                 const tutorialTitle = document.createElement('h4');
-                tutorialTitle.textContent = enemyData.tutorial.title;
+                tutorialTitle.textContent = this.getLocalizedField(enemyData.tutorial, 'title');
                 tutorialTitle.style.cssText = `
                     margin: 0 0 12px 0;
                     font-size: 16px;
@@ -412,7 +417,7 @@
                 tutorialDiv.appendChild(tutorialTitle);
 
                 const tutorialContent = document.createElement('div');
-                tutorialContent.innerHTML = enemyData.tutorial.content.replace(/\n/g, '<br>');
+                tutorialContent.innerHTML = this.getLocalizedField(enemyData.tutorial, 'content').replace(/\n/g, '<br>');
                 tutorialContent.style.cssText = `
                     font-size: 14px;
                     color: #ccc;
@@ -455,7 +460,7 @@
                             font-weight: 600;
                             color: #fff;
                         `;
-                        nameSpan.textContent = `${enemy.name} (Lv.${enemy.level})`;
+                        nameSpan.textContent = `${this.getLocalizedField(enemy, 'name')} (Lv.${enemy.level})`;
                         infoRow.appendChild(nameSpan);
 
                         const hpSpan = document.createElement('span');

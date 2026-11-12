@@ -3313,6 +3313,8 @@
                         {
                             "sn": 248721,
                             "name": "괴상한 사악한 프로스트",
+                            "name_en": "Black Frost",
+                            "name_jp": "ジャアクフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3389,6 +3391,8 @@
                         {
                             "sn": 248712,
                             "name": "잭 프로스트",
+                            "name_en": "Jack Frost",
+                            "name_jp": "ジャックフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3456,6 +3460,8 @@
                         {
                             "sn": 248712,
                             "name": "잭 프로스트",
+                            "name_en": "Jack Frost",
+                            "name_jp": "ジャックフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3523,6 +3529,10 @@
                 "tutorial": {
                     "sn": 248721,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. Jack Frost's attacks inflict 1 Frost Mark stack. Also, every 2 turns, Black Frost uses Diamond Dust and inflicts 1 Frost Mark stack. Frost Mark cannot be removed with healing skills.\n2. When Phantom Thieves have a total of 3 Frost Mark stacks, Black Frost removes the stacks and immediately uses Ice Age, dealing heavy Ice damage to all Phantom Thieves.\n3. When Jack Frost is defeated, remove 2 Frost Mark stacks from all Phantom Thieves, and deal damage to all Phantom Thieves. Also, immediately summon 1 Jack Frost.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．ジャックフロストの攻撃、またはジャアクフロストが２ターンごとに使用する『ダイアモンドダスト』は『フロストマーク』を１つ付与します。『フロストマーク』は治療スキルで解除できません。\n２．場に『フロストマーク』を３つ以上付与された怪盗がいる時、ジャアクフロストはそれを解除して即座に『大氷河期』を使用し、怪盗全体に氷結属性の大ダメージを与えます。\n３．ジャックフロストが撃破された時、怪盗全体の『フロストマーク』を２つ解除し、怪盗全体にダメージを与えます。さらにジャックフロストを即座に１体召喚します。",
                     "content": "1. 잭 프로스트의 공격은 『취약』을 1중첩 추가합니다. 사악한 프로스트는 2턴마다 『다이아의 별』을 시전하여 『취약』을 1중첩 추가합니다.\n2. 필드에 『취약』 중첩이 3중첩 이상인 괴도가 있다면, 사악한 프로스트가 즉시 대빙하기를 시전하여 모든 괴도에게 막대한 속성 대미지를 줍니다.\n3. 잭 프로스트가 처치되면 모든 괴도의 『취약』 2중첩을 제거하고 모든 괴도에게 대미지를 줍니다. 그리고 즉시 잭 프로스트 1마리를 다시 소환합니다."
                 }
             }
@@ -3547,6 +3557,8 @@
                         {
                             "sn": 248731,
                             "name": "괴상한 사악한 프로스트",
+                            "name_en": "Black Frost",
+                            "name_jp": "ジャアクフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3631,6 +3643,8 @@
                         {
                             "sn": 248712,
                             "name": "잭 프로스트",
+                            "name_en": "Jack Frost",
+                            "name_jp": "ジャックフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3698,6 +3712,8 @@
                         {
                             "sn": 248712,
                             "name": "잭 프로스트",
+                            "name_en": "Jack Frost",
+                            "name_jp": "ジャックフロスト",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -3765,6 +3781,10 @@
                 "tutorial": {
                     "sn": 248731,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. Jack Frost's attacks inflict 1 Frost Mark stack. Also, every 2 turns, Black Frost uses Diamond Dust and inflicts 1 Frost Mark stack. Frost Mark cannot be removed with healing skills.\n2. When Phantom Thieves have a total of 3 Frost Mark stacks, Black Frost removes the stacks and immediately uses Ice Age, dealing heavy Ice damage to all Phantom Thieves.\n3. When Jack Frost is defeated, remove 2 Frost Mark stacks from all Phantom Thieves, and deal damage to all Phantom Thieves. Also, immediately summon 1 Jack Frost.\n4. Every 2 turns, summon 1 Black Frost. Black Frost and summoned Black Frosts use the same skills. When the summoned Black Frost is defeated, increase Phantom Thieves' final damage dealt for 2 turns.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．ジャックフロストの攻撃、またはジャアクフロストが２ターンごとに使用する『ダイアモンドダスト』は『フロストマーク』を１つ付与します。『フロストマーク』は治療スキルで解除できません。\n２．場に『フロストマーク』を３つ以上付与された怪盗がいる時、ジャアクフロストはそれを解除して即座に『大氷河期』を使用し、怪盗全体に氷結属性の大ダメージを与えます。\n３．ジャックフロストが撃破された時、怪盗全体の『フロストマーク』を２つ解除し、怪盗全体にダメージを与えます。さらにジャックフロストを即座に１体召喚します。\n４．２ターンごとに『ジャアクフロスト』を１体召喚します。ジャアクフロストと召喚された『ジャアクフロスト』は同じスキルを使用します。召喚された『ジャアクフロスト』が撃破された時、２ターンの間、怪盗の与える最終ダメージが上昇します。",
                     "content": "1. 잭 프로스트의 공격은 『취약』을 1중첩 추가합니다. 사악한 프로스트는 2턴마다 『다이아의 별』을 시전하여 『취약』을 1중첩 추가합니다.\n2. 필드에 『취약』 중첩이 3중첩 이상인 괴도가 있다면, 사악한 프로스트가 즉시 대빙하기를 시전하여 모든 괴도에게 막대한 속성 대미지를 줍니다.\n3. 잭 프로스트가 처치되면 모든 괴도의 『취약』 2중첩을 제거하고 모든 괴도에게 대미지를 줍니다. 그리고 즉시 잭 프로스트 1마리를 다시 소환합니다.\n4. 2턴마다 작은 사악한 프로스트 1마리를 소환합니다. 작은 사악한 프로스트는 사악한 프로스트와 동일한 대미지 스킬을 보유합니다. 작은 사악한 프로스트가 처치되면 1턴 동안 괴도의 최종 대미지 보너스가 증가합니다."
                 }
             }

@@ -1,6 +1,6 @@
 const MATERIAL_INFO = {
   konpaku_gem: {
-    name: { kr: '영혼석', en: 'Konpaku Gem', jp: '魂魄石', cn: '魂石' },
+    name: { kr: '영혼석', en: 'Konpaku Gem', jp: '魂魄玉', cn: '魂石' },
     desc: {
       kr: '레벨업과 돌파에 사용되는 통화형 재화입니다.',
       en: 'Currency used for leveling and ascension.',
@@ -162,7 +162,7 @@ const MATERIAL_INFO = {
     }
   },
   skill_item2: {
-    name: { kr: '금사 향기', en: 'Hermit’s Incense', jp: '仙気の霊香', cn: '金丝香' },
+    name: { kr: '금사 향기', en: 'Hermit\'s Incense', jp: '仙気の霊香', cn: '金丝香' },
     desc: {
       kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
       en: 'Raises an ally’s skill level (up to 10).',
@@ -180,7 +180,7 @@ const MATERIAL_INFO = {
     }
   },
   skill_item4: {
-    name: { kr: '꿈을 먹는 향', en: 'Ephemeral Incense', jp: '霊香（夢喰い）', cn: '啖梦香' },
+    name: { kr: '꿈을 먹는 향', en: 'Ephemeral Incense', jp: '夢幻の霊香', cn: '啖梦香' },
     desc: {
       kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
       en: 'Raises an ally’s skill level (up to 10).',
@@ -189,7 +189,7 @@ const MATERIAL_INFO = {
     }
   },
   skill_item5: {
-    name: { kr: '속박의 향기', en: 'Incense', jp: '霊香（束縛）', cn: '缚生香' },
+    name: { kr: '속박의 향기', en: 'Cursed Incense', jp: '呪縛の霊香', cn: '缚生香' },
     desc: {
       kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
       en: 'Raises an ally’s skill level (up to 10).',
@@ -198,7 +198,7 @@ const MATERIAL_INFO = {
     }
   },
   skill_item6: {
-    name: { kr: '망수향', en: 'Incense', jp: '霊香（束縛）', cn: '妄殊香' },
+    name: { kr: '망수향', en: 'Treacherous Incense', jp: '虚妄の霊香', cn: '妄殊香' },
     desc: {
       kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
       en: 'Raises an ally’s skill level (up to 10).',
@@ -225,7 +225,7 @@ const MATERIAL_INFO = {
     }
   },
   md_stat1: {
-    name: { kr: '명성 수정구·하급', en: 'Stardust Bottle', jp: '星屑のボトル', cn: '明星水晶球·低阶' },
+    name: { kr: '명성 수정구·하급', en: 'Stardust Gem', jp: '星屑晶珠', cn: '明星水晶球·低阶' },
     desc: {
       kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
       en: '',
@@ -234,7 +234,7 @@ const MATERIAL_INFO = {
     }
   },
   md_stat2: {
-    name: { kr: '명성 수정구·고급', en: 'Venus Bottle', jp: '明星のボトル', cn: '明星水晶球·高阶' },
+    name: { kr: '명성 수정구·고급', en: 'Venus Gem', jp: '明星晶珠', cn: '明星水晶球·高阶' },
     desc: {
       kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
       en: '',
@@ -243,7 +243,7 @@ const MATERIAL_INFO = {
     }
   },
   md_skill1: {
-    name: { kr: '별가루 병·하급', en: 'Stardust Gem', jp: '星屑晶珠', cn: '星屑之瓶·低阶' },
+    name: { kr: '별가루 병·하급', en: 'Stardust Bottle', jp: '星屑のボトル', cn: '星屑之瓶·低阶' },
     desc: {
       kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
       en: '',
@@ -252,7 +252,7 @@ const MATERIAL_INFO = {
     }
   },
   md_skill2: {
-    name: { kr: '별가루 병·고급', en: 'Venus Gem', jp: '明星晶珠', cn: '星屑之瓶·高阶' },
+    name: { kr: '별가루 병·고급', en: 'Venus Bottle', jp: '明星のボトル', cn: '星屑之瓶·高阶' },
     desc: {
       kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
       en: '',

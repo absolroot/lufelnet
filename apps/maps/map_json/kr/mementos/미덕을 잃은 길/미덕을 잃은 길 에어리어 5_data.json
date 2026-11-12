@@ -6408,6 +6408,8 @@
                         {
                             "sn": 839751,
                             "name": "강력한 도미니온",
+                            "name_en": "Dominion",
+                            "name_jp": "ドミニオン",
                             "adapt": {
                                 "Weak": [
                                     "Gun"
@@ -6500,6 +6502,8 @@
                         {
                             "sn": 839752,
                             "name": "엔젤",
+                            "name_en": "Angel",
+                            "name_jp": "エンジェル",
                             "adapt": {
                                 "Weak": [
                                     "Curse"
@@ -6583,6 +6587,8 @@
                         {
                             "sn": 839753,
                             "name": "엔젤",
+                            "name_en": "Angel",
+                            "name_jp": "エンジェル",
                             "adapt": {
                                 "Weak": [
                                     "Curse"
@@ -6666,6 +6672,10 @@
                 "tutorial": {
                     "sn": 839751,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "Dominion uses Cohesion, increasing Shadows' Attack and damage. When a Shadow is inflicted with 15 or more debuffs, that Shadow's Cohesion is removed.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "ドミニオンは『凝結』を使用し、シャドウの攻撃力と与ダメージを上昇させます。いずれかのシャドウに弱体効果が１５個以上付与された時、そのシャドウの『凝結』状態が解除されます。",
                     "content": "도미니온은 「응집」을 사용해 동료의 공격력과 대미지를 강화합니다. 임의 동료가 15개 이상의 디버프 효과를 보유하면 「응집」 상태가 해제됩니다."
                 }
             }
@@ -6690,6 +6700,8 @@
                         {
                             "sn": 839211,
                             "name": "괴상한 오세",
+                            "name_en": "Ose",
+                            "name_jp": "オセ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -6758,6 +6770,10 @@
                 "tutorial": {
                     "sn": 839211,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. When Ose's remaining HP falls below 66%, it temporarily retreats and several Nekomata appear. At that time, all Nekomata gain <color=#FF423F>Nekomata's Fervor</color> and their final damage dealt increases.\n2. When a certain Nekomata is defeated, Ose reappears. At that time, Ose's remaining HP becomes 33%, and gains Nekomata's Fervor from the defeated Nekomata.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．オセの残りＨＰが６６%未満になった時、ネコマタが複数体出現し、オセは一時的に撤退します。この時、全てのネコマタは『<color=#FF423F>ネコマタの鋭気</color>』を獲得し、与える最終ダメージが上昇します。\n２．複数のネコマタの中から特定の１体が撃破された時、オセが再出現します。この時、オセの残りＨＰは３３%になり、撃破されたネコマタの『ネコマタの鋭気』を引き継ぎます。",
                     "content": "1. 오세의 HP가 66%보다 낮아지면 여러 고양이 몬스터로 변합니다. 또한 <color=#ff381d>『고양이 몬스터의 예리함』</color>을 1중첩 획득하며, 최종 대미지 보너스가 증가합니다. 여러 고양이 몬스터 중 1개만이 진짜입니다.\n2. 진짜 고양이 몬스터가 처치되면 오세로 돌아온다. HP가 33%가 되고 <color=#ff381d>『고양이 몬스터의 예리함』</color>을 계승합니다."
                 }
             }
@@ -6782,6 +6798,8 @@
                         {
                             "sn": 839221,
                             "name": "괴상한 오세",
+                            "name_en": "Ose",
+                            "name_jp": "オセ",
                             "adapt": {
                                 "Weak": [],
                                 "Resistant": [],
@@ -6850,6 +6868,10 @@
                 "tutorial": {
                     "sn": 839221,
                     "title": "엘리트 섀도 능력",
+                    "title_en": "Unique Shadow Abilities",
+                    "content_en": "1. When Ose's remaining HP falls below 75%, it temporarily retreats and several Nekomata appear. At that time, all Nekomata gain <color=#FF423F>Nekomata's Fervor</color>, increasing their final damage dealt.\n2. When a certain Nekomata is defeated, Genbu appears, and gains Nekomata's Fervor from the defeated Nekomata. Also, Genbu gains <color=#FF423F>Black Tortoiseshell</color>, decreasing its final damage taken. Also, every turn, it switches between the following states.\nState 1: Each time Genbu takes damage, it counterattacks with <color=#FF423F>Genbu's Rage</color>, dealing heavy damage to all Phantom Thieves.\nState 2: Unable to act, and damage taken increases.\n3. When Genbu is defeated, Ose reappears. At that time, Ose's remaining HP becomes 25%, and gains Nekomata's Fervor from the defeated Genbu.",
+                    "title_jp": "特異なシャドウ能力",
+                    "content_jp": "１．オセの残りＨＰが７５%未満になった時、ネコマタが複数体出現し、オセは一時的に撤退します。この時、全てのネコマタは『<color=#FF423F>ネコマタの鋭気</color>』を獲得し、与える最終ダメージが上昇します。\n２．複数のネコマタの中から特定の１体が撃破された時、ゲンブが出現し、撃破されたネコマタの『ネコマタの鋭気』を引き継ぎます。また、ゲンブは『<color=#FF423F>ゲンブの守り</color>』を獲得し、受ける最終ダメージが低下します。さらに毎ターン、以下の状態を切り替えます。\n「ダメージを受けるごとに『<color=#FF423F>ゲンブの怒り</color>』で反撃し、怪盗全体に大ダメージを与える状態」\n「行動せず、受ける最終ダメージが上昇する状態」\n３．ゲンブが撃破された時、オセが再出現します。この時、オセの残りＨＰは２５%になり、撃破されたゲンブの『ネコマタの鋭気』と『ゲンブの守り』を引き継ぎます。",
                     "content": "1. 오세의 HP가 75%보다 낮아지면 여러 고양이 몬스터로 변합니다. 또한 <color=#ff381d>『고양이 몬스터의 예리함』</color>을 1중첩 획득하며, 최종 대미지 보너스가 증가합니다. 여러 고양이 몬스터 중 1개만이 진짜입니다.\n2. 진짜 고양이 몬스터가 처치되어야 현무로 돌아오며, <color=#ff381d>『고양이 몬스터의 예리함』</color>을 계승합니다. 현무가 <color=#ff381d>『현무의 수호』</color>를 1중첩 획득하며 받는 최종 대미지가 감소합니다. 또한 턴마다 상태를 전환합니다. 상태 1: 대미지를 받을 때마다 반격하며 아군 캐릭터 전체에 『현무의 분노』를 시전하여 고액의 광역 대미지를 줍니다. 상태 2: 행동하지 않으며 받는 최종 대미지가 증가합니다.\n3. 현무가 처치되면 오세로 돌아옵니다. HP가 25%가 되고 <color=#ff381d>『고양이 몬스터의 예리함』</color> 및 <color=#ff381d>『현무의 수호』</color>를 계승합니다."
                 }
             }
@@ -6874,6 +6896,8 @@
                         {
                             "sn": 832221,
                             "name": "오베론",
+                            "name_en": "Oberon",
+                            "name_jp": "オベロン",
                             "adapt": {
                                 "Weak": [
                                     "Nuclear"

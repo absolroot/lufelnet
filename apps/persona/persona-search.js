@@ -107,7 +107,15 @@
                 });
             }
 
-            // Note: Recommended Skills are EXCLUDED per user request.
+            // Full-data fallback when the lightweight index is unavailable.
+            const skillsMap = typeof personaSkillList !== 'undefined' ? personaSkillList : (window.personaSkillList || {});
+            (persona.recommendSkill || []).forEach(skill => {
+                const info = skillsMap[skill.name] || {};
+                searchText += skill.name + ' ';
+                ['name_en', 'name_jp', 'name_cn', 'description', 'description_en', 'description_jp', 'description_cn'].forEach(field => {
+                    searchText += (info[field] || '') + ' ';
+                });
+            });
 
             searchIndex[koreanName] = searchText.toLowerCase();
         });

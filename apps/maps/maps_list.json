@@ -1084,8 +1084,8 @@
             {
               "id": "ant_cave_lower",
               "name": "개미굴·저층",
-              "name_en": "Anthill",
-              "name_jp": "蟻塚",
+              "name_en": "Anthill Underground",
+              "name_jp": "アリの巣・地下",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1114,8 +1114,8 @@
             {
               "id": "slum",
               "name": "빈민굴",
-              "name_en": "Anthill",
-              "name_jp": "蟻塚",
+              "name_en": "Slums",
+              "name_jp": "スラム街",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1288,8 +1288,8 @@
             {
               "id": "private",
               "name": "프라이빗",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "VIP Area",
+              "name_jp": "プライベートエリア",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1298,8 +1298,8 @@
                 {
                   "id": "private_lower",
                   "name": "프라이빗 하층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Lower VIP Area",
+                  "name_jp": "プライベートエリア下層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·프라이빗 클럽_0_data.json"
                   ],
@@ -1316,8 +1316,8 @@
                 {
                   "id": "private_middle",
                   "name": "프라이빗 중층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Middle VIP Area",
+                  "name_jp": "プライベートエリア中層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·프라이빗 중층_0_data.json"
                   ],
@@ -1334,8 +1334,8 @@
                 {
                   "id": "private_upper",
                   "name": "프라이빗 상층",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Upper VIP Area",
+                  "name_jp": "プライベートエリア上層",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·프라이빗 상층_0_data.json"
                   ],
@@ -1354,8 +1354,8 @@
             {
               "id": "ant_cave_tower_top",
               "name": "개미굴·탑 꼭대기",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Anthill Tower Apex",
+              "name_jp": "蟻塚・塔頂部",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1364,8 +1364,8 @@
                 {
                   "id": "tower_top_hub",
                   "name": "탑 꼭대기 허브",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Tower Apex Center",
+                  "name_jp": "塔頂部中枢",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·탑 꼭대기 허브_0_data.json"
                   ],
@@ -1382,8 +1382,8 @@
                 {
                   "id": "photo_gallery",
                   "name": "사진 갤러리",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Memorial Gallery",
+                  "name_jp": "メモリアルギャラリー",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·사진 갤러리_0_data.json"
                   ],
@@ -1400,8 +1400,8 @@
                 {
                   "id": "arcade",
                   "name": "오락실",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Relaxation Room",
+                  "name_jp": "リラクゼーションルーム",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·오락실_0_data.json"
                   ],
@@ -1420,8 +1420,8 @@
             {
               "id": "abandoned_space",
               "name": "버려진 공간",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Abandoned Area",
+              "name_jp": "廃棄された区画",
               "file": [],
               "description": "",
               "description_en": "",
@@ -1430,8 +1430,8 @@
                 {
                   "id": "abandoned_cave",
                   "name": "버려진 동굴",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Desolate Cave",
+                  "name_jp": "荒れ果てた洞窟",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·버려진 동굴_0_data.json"
                   ],
@@ -1448,8 +1448,8 @@
                 {
                   "id": "abandoned_document_room",
                   "name": "폐기된 문서실",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Rejected Drafts Facility",
+                  "name_jp": "ボツ稿保管室",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·폐기된 문서실_0_data.json"
                   ],
@@ -1466,8 +1466,8 @@
                 {
                   "id": "abandoned_residence",
                   "name": "버려진 거주지",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Deserted Quarters",
+                  "name_jp": "打ち捨てられた居住区",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·버려진 거주지_0_data.json"
                   ],
@@ -1484,8 +1484,8 @@
                 {
                   "id": "treasure_collection_room",
                   "name": "보물 수집실",
-                  "name_en": "",
-                  "name_jp": "",
+                  "name_en": "Treasure Room",
+                  "name_jp": "宝物保管庫",
                   "file": [
                     "palace/시모츠나 팰리스/개미굴·보물 수집실_0_data.json"
                   ],
@@ -2301,8 +2301,8 @@
             {
               "id": "area5",
               "name": "에어리어5",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 5",
+              "name_jp": "エリア5",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 5_data.json"
               ],
@@ -2313,8 +2313,8 @@
             {
               "id": "area6",
               "name": "에어리어6",
-              "name_en": "",
-              "name_jp": "",
+              "name_en": "Area 6",
+              "name_jp": "エリア6",
               "file": [
                 "mementos/미덕을 잃은 길/미덕을 잃은 길 에어리어 6_data.json"
               ],

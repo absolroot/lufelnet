@@ -180,7 +180,7 @@
         "auto_select": "Default",
         "cooldown": 0,
         "cost": "SP 24",
-        "desc": "Usable with Suspicion.\nSpend all Arrow of Truth stacks, deal a fixed amount of Almighty damage to all foes equal to 19.5%/21.5%/20.7%/22.7% of the damage recorded by each Arrow of Truth stack, and lose Suspicion.\nThen, activate Arrow of Perjury on random foes, dealing Almighty damage equal to 77.4%/85.3%/82.2%/90.1% (4 hits). From the second hit, prioritize new targets, and decrease damage to 15% for hits on the same target.\nIf Akechi has Mastermind, Arrow of Truth gains 240% of the Almighty damage of Arrow of Perjury.",
+        "desc": "Usable with Suspicion.\nSpend all Arrow of Truth stacks, deal a fixed amount of Almighty damage to all foes equal to 19.5%/21.5%/20.7%/22.7% of the damage recorded by each Arrow of Truth stack, and lose Suspicion.\nThen, activate Arrow of Perjury on random foes, dealing Almighty damage equal to 77.4%/85.3%/82.2%/90.1% (4 hits). From the second hit, prioritize new targets, and change damage to 15% for hits on the same target.\nIf Akechi has Mastermind, Arrow of Truth gains 240% of the Almighty damage of Arrow of Perjury.",
         "name": "Rain of Justice",
         "nature": "Almighty",
         "skill_lv": "10/10/13/13",

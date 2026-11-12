@@ -1,0 +1,284 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Tenebre Shoki can spend his own HP to gain Stellato stacks, increasing the skill damage of Scolpire.\nWhen Tenebre Shoki gains a Blessing stack, change to Nocturnal Blessing.\nNocturnal Blessing: Counted as a special Blessing. At the end of the turn, gain a shield equal to 2% of max HP for 2 turns. Stacks up to 10 times. Shield granted lasts for 2 turns.",
+        "name": "Nocturnal Radiance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, Tenebre Shoki gains Undying Starlight.\nThe first time he falls below 0 HP, spend Undying Starlight to restore 63% of max HP (restores to at least 1 HP) and increase Attack by 30% for 2 turns.\nWhen using Steadfast Vow with Undying Starlight, Tenebre Shoki can reduce his own HP below 0 and enter a near death state. After this effect spends Undying Starlight, 2 Stellato stacks gained on the same turn can exceed the maximum limit.\nWhen gaining Stellato, also increase critical rate by 5% and damage dealt by 5% for 2 turns. Stacks up to 3 times.",
+        "name": "Undying Starlight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Decrease HP cost of Steadfast Vow by 25%, and increase Attack by 25% for 2 turns. Increase maximum number of Stellato stacks by 3.",
+        "name": "Dazzling Stage",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Steadfast Vow and Scolpire by 3.",
+        "name": "Defying Darkness",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: Increase Attack by 35% for 4 turns.",
+        "name": "Trailblazing Will",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Blade of Dawn and Thief Tactics by 3.",
+        "name": "Blade Against Arrogance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Tenebre Shoki's HP falls to 0, he will not be KO'd and can continue with negative HP (down to a maximum of 100% of max HP. The activation conditions for Undying Starlight and minimum HP recovery become the maximum value of this effect.).\nWhen HP is negative, enter the Nightlord state, and increase damage dealt by 35% and critical damage by 35%. Also, increase the skill damage increase effect of Scolpire from Stellato to 125% of its original effect.\nIncrease the maximum number of Stellato stacks by 3.\nAt the start of battle, gain 5 Nocturnal Blessing stacks that can exceed the maximum stack limit. These Nocturnal Blessing stacks are permanent.",
+        "name": "The Masks We Wear",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Bless damage to all foes equal to 286.0%/315.3%/303.5%/332.8% of Attack. Based on lost HP, increase Highlight damage. Increase by a maximum of 60% when HP is at 40% or lower.",
+      "name": "Highlight",
+      "nature": "Bless",
+      "skill_lv": "10/10/13/13",
+      "sn": 122252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/HL",
+      "S2/S3"
+    ],
+    "name": "Tenebre Shoki",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 20",
+        "desc": "Deal Bless damage to all foes equal to 125.1%/137.9%/132.8%/145.6% of Attack, and increase Tenebre Shoki's critical damage by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nGain 2 Nocturnal Blessing stacks. If Tenebre Shoki's HP is below 40%, gain 3 more Nocturnal Blessing stacks.",
+        "name": "Blade of Dawn",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 122211,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 40.0%",
+        "desc": "Gain a shield equal to 9.8%/10.8%/10.4%/11.4% of Attack + 1875/2472/2305/2933 for 2 turns (up to a maximum of 40% of max HP per skill use). Gain 1 Stellato stack.\nAfter using this skill, Tenebre Shoki can use another skill in the same turn.\nThis skill does not count as a normal skill, and spends HP instead of SP when used.\nStellato: Increase damage dealt by 9.8%/10.8%/10.4%/11.4%. When using Scolpire, spend all Stellato stacks to increase the skill damage. Stacks up to 8 times.",
+        "name": "Steadfast Vow",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 122212,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 24",
+        "desc": "Deal Bless damage to all foes equal to 256.7%/283.0%/272.5%/298.8% of Attack. With 5 or more Nocturnal Blessing stacks, deal 1 more hit of Bless damage equal to 45.3%/49.9%/48.1%/52.7% of Attack. For each Stellato stack, increase this skill's damage by 12%.\nAfter activating this skill, spend all Stellato stacks, and restore HP equal to 20% of Tenebre Shoki's max HP times the total number of Nocturnal Blessing stacks.",
+        "name": "Scolpire",
+        "nature": "Bless",
+        "skill_lv": "10/10/13/13",
+        "sn": 122213,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "For each Nocturnal Blessing stack, increase Attack by 6.0%.",
+        "name": "Evening Starlight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase pierce rate based on lost HP. Increase by a maximum of 15.0% when HP is 40% or lower.",
+        "name": "Morning Starlight",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 122232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2890.0,
+      "Crit Mult.": 2.51,
+      "Crit Rate": 0.37,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1139.99 / 1160.79 / 1180.79 / 1201.59 / 1222.39 / 1242.39 / 1263.19",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "573.33 / 583.73 / 594.13 / 604.53 / 614.93 / 625.33 / 634.93",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3629.97 / 3695.57 / 3760.37 / 3825.97 / 3891.57 / 3956.37 / 4021.97",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0 / 96.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

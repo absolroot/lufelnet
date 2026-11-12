@@ -1,0 +1,283 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, Gunslinger Shun can grant Deputy's Badge to allies. Allies with Deputy's Badge are immune to knock down. Also, when taking fatal damage, or when using a skill that costs more HP than what is remaining, Gunslinger Shun can take up to 80% of that ally's max HP instead. This effect will not trigger if Gunslinger Shun's current HP or the amount of the effect is less than the required amount.\nGunslinger Shun's ranged attack deals Gun damage to all foes equal to 27.4% of max HP. This attack is a guaranteed critical. When dealing damage, reduce the target's Down Points by 1 regardless of affinity, and decrease Defense by 8% + Gunslinger Shun's max HP (up to 20000 of max HP, up to a maximum of 40%). Lasts for 2 turns. Stacks up to 2 times.\nAfter a ranged attack, other skills can be used on the same turn. After selecting and using a skill, reload ammo.",
+        "name": "Outcome of Pride",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "During battle, when an ally has Deputy's Badge, increase party's critical damage by 45%. The amount of HP lost or spent that can be absorbed by Deputy's Badge is doubled.",
+        "name": "Tried and True",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of Gunslinger Shun's action, if an ally has Deputy's Badge, automatically use Flag of Battle. This effect has a cooldown of 1 turn.\nThe number of damage taken increased stacks inflicted when dealing damage with Gunslinger's Justice is increased by 5.\nThe additional damage increase effect from Flag of Battle is no longer limited by number of foes. Also, increase party's Attack by 60% for 2 turns.",
+        "name": "Reinforcement",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Flag of Battle and Shot in the Dark by 3.",
+        "name": "Supportive Ally",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Highlight Enhanced: After activating a Highlight, permanently increase party's Attack by 25%. This effect does not stack.",
+        "name": "Signal Shot",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of Gunslinger's Justice and Thief Tactics by 3.",
+        "name": "Determined Fire",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "For each normal round Gunslinger Shun spends, gain 1 Reserve Round. With 2 or more Reserve Round stacks, he can enter the Suppressor state, and on the same turn only, Reserve Round stacks can be converted to Buckshot. Up to 3 stacks can be converted.\nBuckshot: When making a ranged attack, increase damage taken by downed enemies by 10%, damage taken by 25%, and critical damage taken by 20% for 1 turn. Each effect stacks up to 3 times. When in the Suppressor state, the third Buckshot deals fixed special non-attribute damage equal to 3333% of Gunslinger Shun's max HP.",
+        "name": "Together with Honor",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on AAAAAA==)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "Deal Gun damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Gunslinger Shun's max HP. Increase party's damage dealt based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 34.2%/37.7%/36.3%/39.8%) for 4 turns.",
+      "name": "Highlight",
+      "nature": "Gun",
+      "skill_lv": "10/10/13/13",
+      "sn": 106252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": "All"
+    },
+    "innate": {
+      "HP": "0.2",
+      "Shield Effect": "0.144"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/HL",
+      "S2/S3"
+    ],
+    "name": "Gunslinger Shun",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 8.0%",
+        "desc": "Deal Gun damage to random foes equal to 41.5%/45.7%/44.0%/48.3% of Gunslinger Shun's max HP (6 hits). This attack is a guaranteed critical. From the second hit, prioritize new targets and change damage to 20% for hits on the same target. For each hit of damage dealt, increase the target's damage taken based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 6.1%/6.7%/6.5%/7.1%) for 2 turns. Stacks up to 6 times.",
+        "name": "Gunslinger's Justice",
+        "nature": "Gun",
+        "skill_lv": "10/10/13/13",
+        "sn": 106211,
+        "tags": [
+          "Multi-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "Increase party's damage dealt based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 24.4%/26.9%/25.9%/28.4%). Lasts for 2 turns. If there are 2 or more foes, increase party's damage dealt more based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 24.4%/26.9%/25.9%/28.4%). Lasts for 2 turns.",
+        "name": "Flag of Battle",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 106212,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 26",
+        "desc": "Grant 1 Deputy's Badge to 1 selected ally besides Gunslinger Shun for 2 turns. Multiple allies cannot have Deputy's Badge at the same time.\nIncrease party's Attack based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 36.6%/40.4%/38.8%/42.6%) for 2 turns, and grant a shield equal to 24.8%/24.8%/26.3%/26.3% of Gunslinger Shun's max HP + 705/858/867/1020. Also grant Gunslinger Shun a shield equal to 24.8%/24.8%/26.3%/26.3% of max HP + 705/858/867/1020 for 2 turns.",
+        "name": "Shot in the Dark",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 106213,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase shield by 9.0%. When the shield effect on Gunslinger Shun ends, restore HP equal to 500% of the remaining shield.",
+        "name": "Indomitable Perseverance",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106231,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When dealing damage with a ranged attack, increase the target's damage taken by 24.0%, and also increase ranged attack damage taken by 12.0% for 2 turns.",
+        "name": "Daredevil",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 106232,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Crit Mult.": 1.63,
+      "HP": 20000.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "850.03 / 865.23 / 880.43 / 895.63 / 911.63 / 926.83 / 942.03",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "579.99 / 590.39 / 600.79 / 611.19 / 621.59 / 631.99 / 642.39",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4350.03 / 4428.43 / 4506.83 / 4585.23 / 4663.63 / 4741.23 / 4819.63",
+      "HP Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

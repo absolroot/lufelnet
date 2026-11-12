@@ -35,7 +35,7 @@
     },
     {
       "cost": "SP 20",
-      "desc": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "learn_level": "18",
       "level": "6/7/8",
       "name": "Hamaon"

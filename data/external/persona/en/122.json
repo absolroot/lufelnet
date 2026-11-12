@@ -21,7 +21,7 @@
   "innate_skill": [
     {
       "cost": "SP 19",
-      "desc": "Deal Curse damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc": "Deal Curse damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "learn_level": "4",
       "level": "6/7/8",
       "name": "Mudo"

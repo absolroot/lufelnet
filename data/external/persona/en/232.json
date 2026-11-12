@@ -34,7 +34,7 @@
     },
     {
       "cost": "SP 19",
-      "desc": "Deal Bless damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc": "Deal Bless damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "learn_level": "15",
       "level": "6/7/8",
       "name": "Mahama"

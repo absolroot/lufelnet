@@ -27,7 +27,7 @@
     },
     {
       "cost": "SP 20",
-      "desc": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "learn_level": "20",
       "level": "6/7/8",
       "name": "Mahamaon"

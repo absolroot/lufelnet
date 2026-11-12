@@ -1,0 +1,83 @@
+{
+  "adapt": {
+    "Absorb": [],
+    "Nullify": [],
+    "Reflect": [],
+    "Resistant": [
+      "Electric",
+      "Curse"
+    ],
+    "Weak": [
+      "Bless"
+    ]
+  },
+  "fixed_skill": {
+    "cost": "SP 22",
+    "desc": "Deal Curse damage to all foes equal to 150.0%/157.5%/165.0% of Attack.\nIncrease all foes' damage taken by 12.0%/12.6%/13.2%, and also, when taking an attack from a Sweeper ally, increase critical damage taken by 10.0%/10.5%/11.0%. Lasts for 3 turns.",
+    "level": "6/7/8",
+    "name": "Sepulchral Scythe"
+  },
+  "innate_skill": [
+    {
+      "cost": "SP 20",
+      "desc": "Deal Curse damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
+      "learn_level": "10",
+      "level": "6/7/8",
+      "name": "Mamudoon"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Curse damage by 10.8%.",
+      "learn_level": "20",
+      "level": "6/7/8",
+      "name": "Curse Boost IV"
+    },
+    {
+      "cost": "체력 8.0%",
+      "desc": "Deal Physical damage to 1 foe equal to 56.7/59.5/62.4% of Attack (2 to 3 hits).",
+      "learn_level": "30",
+      "level": "6/7/8",
+      "name": "Myriad Slashes"
+    },
+    {
+      "cost": "",
+      "desc": "Increase Attack by 16.2%.",
+      "learn_level": "40",
+      "level": "6/7/8",
+      "name": "Attack Boost V"
+    }
+  ],
+  "max_level": 80,
+  "max_level_after_awake": 120,
+  "name": "Macabre",
+  "nature": "Curse",
+  "passive_skill": [
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 1.5%.",
+      "name": "Danse Macabre"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 3%.",
+      "name": "Danse Macabre I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 3%.",
+      "name": "Danse Macabre I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 3%.",
+      "name": "Danse Macabre I"
+    },
+    {
+      "desc": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 3%.",
+      "name": "Danse Macabre I"
+    }
+  ],
+  "rank": 9,
+  "showtime_skill": {
+    "cost": "",
+    "desc": "Deal Curse damage to all foes equal to 180.0%/192.6%/205.2% of Attack.\nIncrease all foes' damage taken by 19.6%/21.0%/22.3% and critical damage taken by 14.7%/15.7%/16.8% for 3 turns.",
+    "level": "6/7/8",
+    "name": "Highlight"
+  }
+}

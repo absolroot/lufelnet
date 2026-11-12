@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "桐条 美鶴",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "零下のレイピア",
-        "startTime": "2026-10-15 11:30:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "桐条 美鶴",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "零下のレイピア",
-        "startTime": "2026-10-15 11:30:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
         "endTime": "2026-11-26 10:59:59",
         "fiveStar": [
           {
@@ -106,55 +54,107 @@
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
-        "endTime": "2026-11-12 10:59:59",
+        "endTime": "2026-12-10 10:59:59",
         "fiveStar": [
           {
-            "name": "汐見 琴音",
+            "name": "星輝・生命欲の暴走",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "加納 駿",
+            "name": "野毛 朋子",
             "type": "thief"
           },
           {
-            "name": "須見 俊也",
+            "name": "黒谷 清",
             "type": "thief"
           },
           {
-            "name": "長尾 チヅ子",
+            "name": "琴音・モンターニュ",
             "type": "thief"
           }
         ],
-        "name": "月光の契約者",
-        "startTime": "2026-09-24 07:30:00",
+        "name": "生命を燈す光",
+        "startTime": "2026-11-12 11:30:00",
         "type": "PICKUP怪ドル契約・TARGET"
       },
       {
-        "endTime": "2026-11-12 10:59:59",
+        "endTime": "2026-12-10 10:59:59",
         "fiveStar": [
           {
-            "name": "汐見 琴音",
+            "name": "星輝・生命欲の暴走",
             "type": "thief"
           }
         ],
         "fourStar": [
           {
-            "name": "加納 駿",
+            "name": "野毛 朋子",
             "type": "thief"
           },
           {
-            "name": "須見 俊也",
+            "name": "黒谷 清",
             "type": "thief"
           },
           {
-            "name": "長尾 チヅ子",
+            "name": "琴音・モンターニュ",
             "type": "thief"
           }
         ],
-        "name": "月光の契約者",
-        "startTime": "2026-09-24 07:30:00",
+        "name": "生命を燈す光",
+        "startTime": "2026-11-12 11:30:00",
+        "type": "PICKUP怪ドル契約・CHANCE"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "駿・生命欲の暴走",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "野毛 朋子",
+            "type": "thief"
+          },
+          {
+            "name": "黒谷 清",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          }
+        ],
+        "name": "生命を護る誇り",
+        "startTime": "2026-11-12 11:30:00",
+        "type": "PICKUP怪ドル契約・TARGET"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "駿・生命欲の暴走",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "野毛 朋子",
+            "type": "thief"
+          },
+          {
+            "name": "黒谷 清",
+            "type": "thief"
+          },
+          {
+            "name": "琴音・モンターニュ",
+            "type": "thief"
+          }
+        ],
+        "name": "生命を護る誇り",
+        "startTime": "2026-11-12 11:30:00",
         "type": "PICKUP怪ドル契約・CHANCE"
       },
       {
@@ -206,150 +206,11 @@
           }
         ],
         "name": "満月の契約者",
-        "startTime": "2026-09-15 12:00:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "岳羽 ゆかり",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "月夜に響く弦音",
-        "startTime": "2026-09-15 12:00:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "岳羽 ゆかり",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "月夜に響く弦音",
-        "startTime": "2026-09-15 12:00:00",
-        "type": "PICKUP怪ドル契約・CHANCE"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "真田 明彦",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "雷鳴のフィスト",
-        "startTime": "2026-09-15 12:00:00",
-        "type": "PICKUP怪ドル契約・TARGET"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "真田 明彦",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ルフェル",
-            "type": "thief"
-          },
-          {
-            "name": "富山 佳代",
-            "type": "thief"
-          },
-          {
-            "name": "白鳥 誠司",
-            "type": "thief"
-          }
-        ],
-        "name": "雷鳴のフィスト",
         "startTime": "2026-09-15 12:00:00",
         "type": "PICKUP怪ドル契約・CHANCE"
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "聖槍ロンギヌス",
-            "type": "weapon",
-            "user": "美鶴"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "エメラルドチャーム",
-            "type": "weapon",
-            "user": "富山"
-          },
-          {
-            "name": "ナイトアワード",
-            "type": "weapon",
-            "user": "白鳥"
-          },
-          {
-            "name": "ローズフランベルク",
-            "type": "weapon",
-            "user": "美鶴"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-10-15 11:30:00",
-        "type": "武器補給"
-      },
       {
         "endTime": "2026-11-26 10:59:59",
         "fiveStar": [
@@ -386,38 +247,73 @@
         "type": "武器補給"
       },
       {
-        "endTime": "2026-11-12 10:59:59",
+        "endTime": "2026-12-10 10:59:59",
         "fiveStar": [
           {
-            "name": "孔雀御前・改",
+            "name": "スパーダデラヴィータ",
             "type": "weapon",
-            "user": "琴音（Ｐ３Ｐ）"
+            "user": "星輝・生命欲の暴走"
           }
         ],
         "fourStar": [
           {
-            "name": "デーモンバイト",
+            "name": "シャドークラウン",
             "type": "weapon",
-            "user": "駿"
+            "user": "朋子"
           },
           {
-            "name": "スカーレットロッド",
+            "name": "デススティンガー",
             "type": "weapon",
-            "user": "須見"
+            "user": "黒谷"
           },
           {
-            "name": "グラビティフォース",
+            "name": "エーデルワイス",
             "type": "weapon",
-            "user": "チヅ子"
+            "user": "琴音"
           },
           {
-            "name": "天沼矛",
+            "name": "スパーダベネデッタ",
             "type": "weapon",
-            "user": "琴音（Ｐ３Ｐ）"
+            "user": "星輝・生命欲の暴走"
           }
         ],
         "name": "無音の硝煙",
-        "startTime": "2026-09-24 07:30:00",
+        "startTime": "2026-11-12 11:30:00",
+        "type": "武器補給"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "マーシャルアクス",
+            "type": "weapon",
+            "user": "駿・生命欲の暴走"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "バッファローアクス",
+            "type": "weapon",
+            "user": "駿・生命欲の暴走"
+          },
+          {
+            "name": "シャドークラウン",
+            "type": "weapon",
+            "user": "朋子"
+          },
+          {
+            "name": "デススティンガー",
+            "type": "weapon",
+            "user": "黒谷"
+          },
+          {
+            "name": "エーデルワイス",
+            "type": "weapon",
+            "user": "琴音"
+          }
+        ],
+        "name": "無音の硝煙",
+        "startTime": "2026-11-12 11:30:00",
         "type": "武器補給"
       },
       {
@@ -449,76 +345,6 @@
             "name": "名刀透徹",
             "type": "weapon",
             "user": "理"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-09-15 12:00:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "サルンガ",
-            "type": "weapon",
-            "user": "ゆかり"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "エメラルドチャーム",
-            "type": "weapon",
-            "user": "富山"
-          },
-          {
-            "name": "ナイトアワード",
-            "type": "weapon",
-            "user": "白鳥"
-          },
-          {
-            "name": "鬼神の弓",
-            "type": "weapon",
-            "user": "ゆかり"
-          }
-        ],
-        "name": "無音の硝煙",
-        "startTime": "2026-09-15 12:00:00",
-        "type": "武器補給"
-      },
-      {
-        "endTime": "2026-11-12 10:59:59",
-        "fiveStar": [
-          {
-            "name": "サバジオス",
-            "type": "weapon",
-            "user": "真田"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "ラヴァ・フレイム",
-            "type": "weapon",
-            "user": "ルフェル"
-          },
-          {
-            "name": "エメラルドチャーム",
-            "type": "weapon",
-            "user": "富山"
-          },
-          {
-            "name": "ナイトアワード",
-            "type": "weapon",
-            "user": "白鳥"
-          },
-          {
-            "name": "ヘルセスタス",
-            "type": "weapon",
-            "user": "真田"
           }
         ],
         "name": "無音の硝煙",

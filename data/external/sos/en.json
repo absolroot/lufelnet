@@ -2,6 +2,36 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Bless attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Gun",
+                "Ice",
+                "Electric",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire",
+                "Bless"
+              ]
+            },
+            "image": "B-guaiwutouxiang-chernobog.png",
+            "level": "89",
+            "name": "Chernobog",
+            "skill": "1016,1026",
+            "sn": "538101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "428401"
+      },
+      {
         "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
@@ -20,43 +50,17 @@
             "level": "89",
             "name": "Surt",
             "skill": "108,103,1008",
-            "sn": "537101",
+            "sn": "538111",
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
-        "sn": "418401"
-      },
-      {
-        "bonusRule": "All ally Nuclear attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Ice"
-              ],
-              "Weak": [
-                "Nuclear"
-              ]
-            },
-            "image": "B-guaiwutouxiang-seiryu.png",
-            "level": "89",
-            "name": "Seiryu",
-            "skill": "207,1404,203",
-            "sn": "537111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
-        "sn": "418402"
+        "scoreRatio": 1.0,
+        "sn": "428402"
       }
     ],
-    "buff": "Ravenous Nest: Each time an Elucidator ally selects and uses a skill, grant 1 Neural Web stack to all allies.\nNeural Web: Increase final damage by 20% for each stack. Lasts for 1 turn. Stacks up to 2 times.",
-    "endTime": "2026-11-12 10:30:00",
-    "startTime": "2026-10-29 11:30:00"
+    "buff": "Flaming Fissure: After spending HP to activate a skill. or when dealing damage with a Resonance, gain 1 Boiling Blood stack.\nBoiling Blood: increase final damage by 20% for 1 turn. Stacks up to 2 times.",
+    "endTime": "2026-11-26 10:30:00",
+    "startTime": "2026-11-12 11:30:00"
   },
   "msg": "OK",
   "status": 0

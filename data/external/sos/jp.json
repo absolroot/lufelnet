@@ -2,6 +2,36 @@
   "data": {
     "boss": [
       {
+        "bonusRule": "All ally Bless attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Gun",
+                "Ice",
+                "Electric",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire",
+                "Bless"
+              ]
+            },
+            "image": "B-guaiwutouxiang-chernobog.png",
+            "level": "89",
+            "name": "チェルノボグ",
+            "skill": "1016,1026",
+            "sn": "538101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "428401"
+      },
+      {
         "bonusRule": "All ally Ice attack Score x 3",
         "enemy": [
           {
@@ -20,43 +50,17 @@
             "level": "89",
             "name": "スルト",
             "skill": "108,103,1008",
-            "sn": "537101",
+            "sn": "538111",
             "stat": {}
           }
         ],
-        "scoreRatio": 2.0,
-        "sn": "418401"
-      },
-      {
-        "bonusRule": "All ally Nuclear attack Score x 3",
-        "enemy": [
-          {
-            "adapt": {
-              "Absorb": [],
-              "Nullify": [],
-              "Reflect": [],
-              "Resistant": [
-                "Ice"
-              ],
-              "Weak": [
-                "Nuclear"
-              ]
-            },
-            "image": "B-guaiwutouxiang-seiryu.png",
-            "level": "89",
-            "name": "セイリュウ",
-            "skill": "207,1404,203",
-            "sn": "537111",
-            "stat": {}
-          }
-        ],
-        "scoreRatio": 2.0,
-        "sn": "418402"
+        "scoreRatio": 1.0,
+        "sn": "428402"
       }
     ],
-    "buff": "蝕蜘蛛の巣窟: 『解明』ロールの味方が任意のスキルを選択して使用するごとに、味方全体に『昂る神経網』を１つ付与する。\n『昂る神経網』：１つごとに最終ダメージが２０%上昇する。１ターン持続し、最大で２つ累積できる。",
-    "endTime": "2026-11-12 10:30:00",
-    "startTime": "2026-10-29 11:30:00"
+    "buff": "内熱の裂口: 自身のＨＰを消費してスキルを使用した時、または意識奏功でダメージを与えた時、『心血沸騰』を１つ獲得する。\n『心血沸騰』：１ターンの間、与える最終ダメージが２０%上昇する。最大２つまで累積できる。",
+    "endTime": "2026-11-26 10:30:00",
+    "startTime": "2026-11-12 11:30:00"
   },
   "msg": "OK",
   "status": 0

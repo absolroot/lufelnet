@@ -18,8 +18,8 @@ window.personaFiles["야노식"] = {
   "tier_desc_jp": "ワンダーの基本ペルソナであり、強化段階によって評価が変化する。\n単体の敵に2ターンの間『標的』というデバフを付与する。P5Xでは防御力減少の価値が非常に高く、防御力を40%以上下げられるだけでなく、被ダメージ増加デバフまで自動で付与できる点が大きな強みとなる。\n\n先頭で使わず、途中でヤノシークに切り替えてペルソナスキルを使うと、『戦闘開始時に「標的」を獲得』効果が発動して『標的』が1回だけ付与される。バフスキルでも同様に『標的』が発動するため、ターン制限のあるコンテンツでは最終ターンの直前にヤノシークで味方アタッカーへバフを使い、敵には自動で『標的』を付与する運用がよく行われる。短時間でクリアしなければならないコンテンツでも、開幕から『標的』を入れられる点は有効だ。",
   "tier_desc_cn": "亚诺希克是 WONDER 的初始人格面具，强度会随着强化而变化。\n它能对单体敌人附加持续 2 回合的『瞄准』减益。在 P5X 中，防御力降低的价值非常高，亚诺希克不仅能让敌人的防御力降低 40% 以上，还会自动附加受到伤害提升类减益，这是它最大的优势之一。\n\n如果不把它放在首发位，而是在战斗中切换后再释放人格面具技能，就会触发“战斗开始时获得『瞄准』”，从而补上 1 次『瞄准』（仅首次生效 1 次）。增益技能同样也会触发『瞄准』，因此在有回合限制的内容里，常见用法是在最后一回合前一回合切到亚诺希克，给我方输出上增益的同时，自动给敌人挂上『瞄准』。在需要短时间内通关的内容里，开局就能附加『瞄准』这一点也很有意义。",
   "comment": "",
-  "comment_en": "※ Enhancement IV was released in KR/CN v4.7.",
-  "comment_jp": "※ 強化IVはKR/CN v4.7で実装。",
+  "comment_en": "※ Rank IX is available on EN/JP servers from v4.13.",
+  "comment_jp": "※ EN/JPではv4.13からランクⅨまで解放可能。",
   "comment_cn": "",
   "added": "",
   "cost": null,
@@ -109,8 +109,8 @@ window.personaFiles["야노식"] = {
       "name_en": "Hunting IV",
       "name_jp": "ハンティングⅣ",
       "desc": "공격력이 29.1% 증가한다. 전투 시작 시 1명의 적이 『조준』을 획득하며, 모든 동료가 『조준』을 보유한 적 공격 시 공격력이 20% 증가하고, 크리티컬 확률과 크리티컬 효과가 4.5% 증가한다. 『조준』을 보유한 적의 방어력이 12% 추가 감소한다. 자신이 『조준』을 가진 적 공격 시 공격력 18%의 총격 속성 대미지를 1회 준다.",
-      "desc_en": "Increase Attack by 29.1%. At the start of battle, Mark a foe. When all allies attack a Marked foe, increase Attack by 20% and increase Critical Rate and Critical Damage by 4.5%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
-      "desc_jp": "攻撃力が２９.１%上昇する。戦闘開始時、敵単体に『標的』を与える。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇し、クリティカル率とクリティカルダメージが４.５%上昇する。『標的』を付与された敵の防御力がさらに１２%低下させる。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。",
+      "desc_en": "Increase Attack by 29.1%. At the start of battle, inflict Marked on 1 foe. When any ally attacks a Marked foe, increase Attack by 20%, and increase critical rate and critical damage by 4.5%. Decrease Marked foes' Defense by 12% more. When user attacks a Marked foe, deal bonus Gun damage equal to 18% of Attack 1 time.",
+      "desc_jp": "攻撃力が２９.１%上昇する。戦闘開始時、敵単体に『標的』を付与する。味方全体が『標的』を付与された敵を攻撃する時、攻撃力が２０%上昇し、クリティカル率とクリティカルダメージが４.５%上昇する。『標的』を付与された敵の防御力がさらに１２%低下する。自身が『標的』を付与された敵を攻撃した時、追加で攻撃力１８%の銃撃属性ダメージを１回与える。",
       "name_cn": "余孽收割Ⅳ",
       "desc_cn": "攻击力提升29.1%。战斗开始时，使1名敌人获得『瞄准』。所有同伴攻击带有『瞄准』的敌人时，攻击力提升20%，暴击率、暴击效果提升4.5%。带有『瞄准』的敌人防御力额外降低12%。自身攻击有『瞄准』的敌人时，造成1次18%攻击力的射击属性伤害。"
     }

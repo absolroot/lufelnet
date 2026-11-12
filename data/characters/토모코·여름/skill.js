@@ -56,7 +56,7 @@ window.enCharacterSkillsData["토모코·여름"] = {
     "type": "광역피해",
     "sp": 23,
     "cool": 0,
-    "description": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Deal 30% damage for hits on the same target.\nPassive: Increase Summer Reminiscence skill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%."
+    "description": "Deal Psy damage to foes equal to 77.6%/85.5%/82.4%/90.3% of Attack (4 hits). From the second hit, prioritize new targets and inflict 1 Sparks stack per hit. Change damage to 30% for hits on the same target.\nPassive: Increase Summer Reminiscence skill damage multiplier and healing by 51.7%/51.7%/60.0%/60.0%."
   },
   "skill2": {
     "name": "Hale Summer Days",
@@ -77,7 +77,7 @@ window.enCharacterSkillsData["토모코·여름"] = {
   "skill_highlight": {
     "element": "염동",
     "type": "광역피해",
-    "description": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 Sparks stack per damage dealt. Repeated hits on the same target deal 30% damage.",
+    "description": "Deal Psy damage to random foes equal to 82.4%/90.8%/87.4%/95.9% of Attack (3 hits). Prioritize attacking foes that have not been hit by this skill and inflict 1 Sparks stack per damage dealt. Change damage to 30% for hits on the same target.",
     "cool": 4
   },
   "passive1": {

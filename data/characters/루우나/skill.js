@@ -90,7 +90,7 @@ window.enCharacterSkillsData["루우나"] = {
     "element": "화염광역",
     "type": "디버프",
     "cool": 4,
-    "description": "Deal Fire damage to all foes equal to 214.7%/236.7%/227.9%/249.9% of Attack.\nPermanently inflict 2 Enthusiastic Fuse stacks on foes. Stacks up to 2 times (remove as wave progresses).\nEnthusiastic Fuse: When any foe takes Fire, Ice, Electric, or Wind skill damage or Resonance damage, spend 1 Enthusiastic Fuse stack, and increase the damage by 22.9% of Runa's ailment accuracy (up to 53.7%/59.2%/57.0%/62.5%). If Runa's skills and Resonance activate this effect, Enthusiastic Fuse will not be spent."
+    "description": "Deal Fire damage to all foes equal to 214.7%/236.7%/227.9%/249.9% of Attack.\nPermanently inflict 2 Enthusiastic Fuse stacks on foes. Stacks up to 2 times (remove as wave progresses).\nEnthusiastic Fuse: When any foe takes Fire, Ice, Electric, or Wind skill damage or Resonance damage, spend 1 Enthusiastic Fuse stack, and increase the damage by 31.4% of Runa's ailment accuracy (up to 53.7%/59.2%/57.0%/62.5%). If Runa's skills and Resonance activate this effect, Enthusiastic Fuse will not be spent."
   },
   "name": "Runa Dogenzaka"
 };
@@ -136,7 +136,7 @@ window.jpCharacterSkillsData["루우나"] = {
     "element": "화염광역",
     "type": "디버프",
     "cool": 4,
-    "description": "敵全体に攻撃力214.7%/236.7%/227.9%/249.9%の火炎属性ダメージを与える。\n敵陣営に対して『激情の導火線』を永続的に２つ付与し、最大２つまで累積できる（Ｗａｖｅ進行時に解除される）。\n『激情の導火線』：いずれかの敵が火炎／氷結／電撃／疾風属性のスキルまたは意識奏功のダメージを受ける時、『激情の導火線』を１つ消費し、そのダメージを琉七の状態異常命中の２２.９%分（最大53.7%/59.2%/57.0%/62.5%まで）上昇させる。琉七のスキル／意識奏功でこの効果を発動させる場合は『激情の導火線』を消費しない。"
+    "description": "敵全体に攻撃力214.7%/236.7%/227.9%/249.9%の火炎属性ダメージを与える。\n敵陣営に対して『激情の導火線』を永続的に２つ付与し、最大２つまで累積できる（Ｗａｖｅ進行時に解除される）。\n『激情の導火線』：いずれかの敵が火炎／氷結／電撃／疾風属性のスキルまたは意識奏功のダメージを受ける時、『激情の導火線』を１つ消費し、そのダメージを琉七の状態異常命中の３１.４%分（最大53.7%/59.2%/57.0%/62.5%まで）上昇させる。琉七のスキル／意識奏功でこの効果を発動させる場合は『激情の導火線』を消費しない。"
   },
   "name": "道玄坂 琉七"
 };

@@ -50,90 +50,94 @@ window.characterSkillsData["쇼키·암야"] = {
 };
 
 window.enCharacterSkillsData["쇼키·암야"] = {
-  "name": "Shoki·Notte",
+  "name": "Tenebre Shoki",
   "skill1": {
-    "name": "Spada dell'Alba",
+    "name": "Blade of Dawn",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "Deal Bless damage to all foes equal to 104.2%/114.9%/110.6%/121.3% of Attack, and increase Shoki's critical damage by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nGrant Shoki 2 [Night's Blessing] stacks, if he is below 40% max HP, grant 3 bonus [Night's Blessing] stacks."
+    "description": "Deal Bless damage to all foes equal to 125.1%/137.9%/132.8%/145.6% of Attack, and increase Tenebre Shoki's critical damage by 48.8%/53.8%/51.8%/56.8% for 2 turns.\nGain 2 Nocturnal Blessing stacks. If Tenebre Shoki's HP is below 40%, gain 3 more Nocturnal Blessing stacks."
   },
   "skill2": {
-    "name": "Giuramento Incrollabile",
+    "name": "Steadfast Vow",
     "element": "버프",
     "type": "보조",
     "sp": 0,
     "cool": 0,
-    "description": "Gain a Shield equal to 9.8%/10.8%/10.4%/11.4% of Attack + 1875/2472/2305/2933 for 2 turns (up to 40% of Shoki's max HP per skill). Gain 1 [Night's Contract] stack.\n[Night's Contract]: Increase damage by 9.8%/10.8%/10.4%/11.4%, when using [Ti Inciderò il Nome Mio], spend all [Night's Contract] to increase skill damage. Stacks up to 8 times.\nAfter using this skill, Shoki can use other skills, this doesn't count as a Persona skill."
+    "description": "Gain a shield equal to 9.8%/10.8%/10.4%/11.4% of Attack + 1875/2472/2305/2933 for 2 turns (up to a maximum of 40% of max HP per skill use). Gain 1 Stellato stack.\nAfter using this skill, Tenebre Shoki can use another skill in the same turn.\nThis skill does not count as a normal skill, and spends HP instead of SP when used.\nStellato: Increase damage dealt by 9.8%/10.8%/10.4%/11.4%. When using Scolpire, spend all Stellato stacks to increase the skill damage. Stacks up to 8 times."
   },
   "skill3": {
-    "name": "Ti Inciderò il Nome Mio",
+    "name": "Scolpire",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 24,
     "cool": 1,
-    "description": "Deal Bless damage to all foes equal to 256.7%/283.0%/272.5%/298.8% of Attack. If Shoki has 5 [Night's Blessing] stacks, deal bonus Bless damage to all foes equal to 45.3%/49.9%/48.1%/52.7% of Attack. Increase skill damage by 10% per [Night's Contract] stack.\nLose all [Night's Contract] after using this skill, and restore HP by 20% of Shoki's max HP per [Night's Blessing] stack."
+    "description": "Deal Bless damage to all foes equal to 256.7%/283.0%/272.5%/298.8% of Attack. With 5 or more Nocturnal Blessing stacks, deal 1 more hit of Bless damage equal to 45.3%/49.9%/48.1%/52.7% of Attack. For each Stellato stack, increase this skill's damage by 12%.\nAfter activating this skill, spend all Stellato stacks, and restore HP equal to 20% of Tenebre Shoki's max HP times the total number of Nocturnal Blessing stacks."
   },
   "skill_highlight": {
     "element": "축복광역",
     "type": "광역피해",
-    "cool": 0,
-    "description": "Deal Bless damage to all foes equal to 228.8%/252.2%/242.8%/266.3% of Attack, increase damage based on missing HP (up to 60% damage at 40% HP)."
+    "cool": 4,
+    "description": "Deal Bless damage to all foes equal to 286.0%/315.3%/303.5%/332.8% of Attack. Based on lost HP, increase Highlight damage. Increase by a maximum of 60% when HP is at 40% or lower."
   },
   "passive1": {
-    "name": "Grace",
+    "name": "Evening Starlight",
     "element": "패시브",
-    "description": "Increase Attack by 6.0% based on the number of [Night's Blessing] stacks."
+    "description": "For each Nocturnal Blessing stack, increase Attack by 6.0%.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Nirvana",
+    "name": "Morning Starlight",
     "element": "패시브",
-    "description": "Increase pierce rate based on missing HP (up to 15.0% pierce rate at 40% HP)."
+    "description": "Increase pierce rate based on lost HP. Increase by a maximum of 15.0% when HP is 40% or lower.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["쇼키·암야"] = {
-  "name": "池波ショウキ・アンヤ",
+  "name": "星輝・生命欲の暴走",
   "skill1": {
-    "name": "黎明の剣",
+    "name": "煌めきの一閃",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 20,
     "cool": 0,
-    "description": "敵全体に攻撃力104.2%/114.9%/110.6%/121.3%の祝福属性ダメージを与え、自身のクリティカル効果が48.8%/53.8%/51.8%/56.8%上昇する（2ターン持続）。\nまた、『暗夜の祝福』を2スタック獲得し、スキル発動時に自身のHPが40%未満の場合、『暗夜の祝福』を追加で3スタック獲得する。"
+    "description": "敵全体に攻撃力125.1%/137.9%/132.8%/145.6%の祝福属性ダメージを与え、２ターンの間、自身のクリティカルダメージが48.8%/53.8%/51.8%/56.8%上昇する。\n『生命欲の祝印』を２つ獲得する。自身のＨＰが４０%未満の場合、追加で『生命欲の祝印』を３つ獲得する。"
   },
   "skill2": {
-    "name": "揺るがぬ誓約",
+    "name": "星の盾",
     "element": "버프",
     "type": "보조",
     "sp": 0,
     "cool": 0,
-    "description": "自身に攻撃力9.8%/10.8%/10.4%/11.4% + 1875/2472/2305/2933のシールド（単一スキル基準で最大HPの40%まで）を2ターン付与し、『暗夜の契約』を1スタック獲得する。\n『暗夜の契約』：自身の与ダメージが9.8%/10.8%/10.4%/11.4%上昇し、『我が名を汝の身に刻まん』を発動すると全スタックを消費してスキルダメージが増加する（最大8スタック）。\nこのスキル使用後も同ターンに他のスキルを使用でき、ペルソナスキルとはみなされない。"
+    "description": "２ターンの間、自身に攻撃力9.8%/10.8%/10.4%/11.4%＋1875/2472/2305/2933分のシールドを付与し（１回のスキルで付与できる上限は自身の最大ＨＰの４０%まで）、『ステッラート』を１つ獲得する。\nこのスキルを使用した後も同ターン内にスキルを使用できる。\nこのスキルは通常のスキルとして扱わず、ＳＰの代わりにＨＰを消費して使用する。\n『ステッラート』：与ダメージが9.8%/10.8%/10.4%/11.4%上昇する。『スコルピーレ』を使用した時、すべての『ステッラート』を消費してスキルダメージを上昇させる。最大８つまで累積できる。"
   },
   "skill3": {
-    "name": "我が名を汝の身に刻まん",
+    "name": "スコルピーレ",
     "element": "축복광역",
     "type": "광역피해",
     "sp": 24,
     "cool": 1,
-    "description": "敵全体に攻撃力256.7%/283.0%/272.5%/298.8%の祝福属性ダメージを1回与え、自身の『暗夜の祝福』が5スタック以上ある場合、攻撃力45.3%/49.9%/48.1%/52.7%の祝福属性ダメージを追加で1回与える。\nさらに、『暗夜の契約』1スタックにつき、このスキルのダメージが10%上昇する。\nスキル発動後、『暗夜の契約』を全て消費し、自身の最大HP20% × 『暗夜の祝福』スタック数に相当するHPを回復する。"
+    "description": "敵全体に攻撃力256.7%/283.0%/272.5%/298.8%の祝福属性ダメージを与える。『生命欲の祝印』を５つ以上獲得している場合、追加で攻撃力45.3%/49.9%/48.1%/52.7%の祝福属性ダメージを１回与える。『ステッラート』１つごとに、このスキルダメージが１２%上昇する。\nこのスキルを発動後『ステッラート』はすべて消失し、自身の最大ＨＰの２０%×『生命欲の祝印』の累積数分、ＨＰを回復する。"
   },
   "skill_highlight": {
     "element": "축복광역",
     "type": "광역피해",
-    "cool": 0,
-    "description": "敵全体に攻撃力228.8%/252.2%/242.8%/266.3%の祝福属性ダメージを与える。自身の現在HPが低いほどHIGHLIGHTダメージが上昇し、HP40%時に最大60%の追加ダメージを獲得する。"
+    "cool": 4,
+    "description": "敵全体に攻撃力286.0%/315.3%/303.5%/332.8%の祝福属性ダメージを与える。現在のＨＰが少ないほど、ハイライトダメージが上昇する。残りのＨＰが４０%以下の時に最大となり６０%上昇する。"
   },
   "passive1": {
-    "name": "恩寵",
+    "name": "宵の星明り",
     "element": "패시브",
-    "description": "『暗夜の祝福』1スタックにつき、池波ショウキ・アンヤの攻撃力が6.0%上昇する。"
+    "description": "獲得している『生命欲の祝印』１つごとに、自身の攻撃力が6.0%上昇する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "涅槃",
+    "name": "暁の星明り",
     "element": "패시브",
-    "description": "現在HPが低いほど池波ショウキ・アンヤの貫通が上昇する。HP40%時に最大15.0%の貫通ボーナスを得る。"
+    "description": "現在のＨＰが少ないほど、自身の貫通が上昇する。残りＨＰが４０%以下の時に最大となり15.0%上昇する。",
+    "cool": 0
   }
 };
 

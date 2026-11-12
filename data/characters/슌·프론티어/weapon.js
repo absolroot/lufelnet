@@ -23,40 +23,42 @@ window.WeaponData["슌·프론티어"] = {
 };
 
 window.enCharacterWeaponData["슌·프론티어"] = {
-  "name": "Shun·Pioneer",
+  "name": "Gunslinger Shun",
   "weapon4-1": {
-    "name": "Wild Execution",
+    "name": "Desperado's Toothpick",
     "health": 2299.15,
     "attack": 449.24,
     "defense": 306.25,
-    "skill_name": "Flesh Monument",
+    "skill_name": "Combat Axe",
     "description": "Increase shield by 8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%.When Shun gains a shield, increase user's max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
   },
   "weapon5-1": {
-    "name": "Unicorn Beacon",
+    "name": "Frontier Justice",
     "health": 2873.92,
     "attack": 561.56,
     "defense": 383.2,
-    "skill_name": "High Noon",
-    "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.When Shun gains a shield, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.When Shun deals Gun damage, decrease target’s Defense by 15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2% for 2 turns."
+    "skill_name": "Defender's Axe",
+    "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Gunslinger Shun grants a shield to himself, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.\nWhen dealing Gun damage, decrease target's Defense by 15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2% for 2 turns."
   }
 };
 
 window.jpCharacterWeaponData["슌·프론티어"] = {
-  "name": "加納 駿・フロンティア",
+  "name": "駿・生命欲の暴走",
   "weapon4-1": {
-    "name": "荒野の処刑",
+    "name": "バッファローアクス",
     "health": 2299.15,
     "attack": 449.24,
     "defense": 306.25,
-    "description": "シールド効果が8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%上昇する。加納 駿・フロンティアがシールドを獲得すると、自身の最大HPが22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%増加し、効果は2ターン持続する。"
+    "description": "シールド効果が8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%上昇する。駿・生命欲の暴走がシールドを獲得すると、自身の最大HPが22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%増加し、効果は2ターン持続する。",
+    "skill_name": "戦角斧"
   },
   "weapon5-1": {
-    "name": "聖馬角の標識",
+    "name": "マーシャルアクス",
     "health": 2873.92,
     "attack": 561.56,
     "defense": 383.2,
-    "description": "最大HPが30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%増加する。加納 駿・フロンティアがシールドを獲得すると、味方全体のクリティカル効果が18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%上昇し、効果は2ターン持続する。加納 駿・フロンティアが銃撃ダメージを与えた場合、対象の防御力が15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2%低下し、効果は2ターン持続する。"
+    "description": "最大ＨＰが30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n自身にシールドが付与された時、２ターンの間、味方全体のクリティカルダメージが18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3%上昇する。\n自身が銃撃属性ダメージを与えた時、２ターンの間、対象の防御力を15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2%低下させる。",
+    "skill_name": "守護斧"
   }
 };
 

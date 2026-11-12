@@ -15,6 +15,16 @@
     const nicknameMap = {
         '유이': 'YUI',
         '라멘': '카노 슌',
+        'Shun·Pioneer': '슌·프론티어',
+        'Shun Pioneer': '슌·프론티어',
+        'SOY·Pioneer': '슌·프론티어',
+        '駿·生命欲の暴走': '슌·프론티어',
+        '加納 駿・フロンティア': '슌·프론티어',
+        'Shoki·Notte': '쇼키·암야',
+        'Shoki Notte': '쇼키·암야',
+        'LUCE·Notte': '쇼키·암야',
+        '星輝·生命欲の暴走': '쇼키·암야',
+        '池波 星輝·永夜': '쇼키·암야',
         '욧샤': '사카모토 류지',
         '수모코': '노게 토모코·여름',
         '수토하': '아라이 모토하·여름',
@@ -315,7 +325,7 @@
             }
 
             nicknameEntries.forEach(([nickname, realName]) => {
-                if (realName === char.name) {
+                if (realName === name || realName === char.name) {
                     terms.push(nickname);
                 }
             });

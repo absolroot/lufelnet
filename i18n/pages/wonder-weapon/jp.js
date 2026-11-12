@@ -16,10 +16,10 @@ window.I18N_PAGE_WONDER_WEAPON_JP = {
     labelCharacters: '使用キャラ',
     labelShard: '破片',
     labelRelease: '実装時期',
-    labelLightningStamp: 'Lightning Stamp',
-    labelLightningStampDesc: '韓国サーバーv4.7.1基準で実装された機能で、武器をさらに強化します。',
+    labelLightningStamp: '刻銘',
+    labelLightningStampDesc: '専用の育成素材で武器の新たなスキルを解放する機能です。EN/JPではv4.13から実装され、最初の対象武器は「グリッター」です。',
     labelWeaponRelease: '武器',
-    labelStampRelease: 'Lightning Stamp',
+    labelStampRelease: '刻銘',
 
     // Sort buttons
     sortReleaseDesc: '発売順 ↓',

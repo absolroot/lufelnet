@@ -1,4 +1,5 @@
 window.I18N_PAGE_SCHEDULE_CN = {
+    "futureScheduleDisclaimer": "未来日程尚未确定。",
     "navCurrent": "上线日程",
     "pageTitle": "上线日程",
     "pageDescription": "按服务器查看角色上线、当前卡池与版本节奏。",

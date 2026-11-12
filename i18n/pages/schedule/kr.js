@@ -1,4 +1,5 @@
 window.I18N_PAGE_SCHEDULE_KR = {
+    "futureScheduleDisclaimer": "미래 일정은 확정된 사항이 아닙니다.",
     // Navigation
     navCurrent: '스케줄',
     pageTitle: '출시 스케줄',

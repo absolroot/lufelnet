@@ -1,4 +1,5 @@
 window.I18N_PAGE_SCHEDULE_EN = {
+    "futureScheduleDisclaimer": "Future schedules are not confirmed.",
     // Navigation
     navCurrent: 'Schedule',
     pageTitle: 'Release Schedule',
@@ -44,7 +45,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     revelationSet2: '2-Set',
     revelationSet4: '4-Set',
     revelationNotReleased: '#NOT RELEASED IN GLOBAL SERVER#',
-    labelLightningStamp: 'Lightning Stamp',
+    labelLightningStamp: 'Engraving',
     coreLabel: 'Core',
 
     // Badge labels

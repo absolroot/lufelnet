@@ -22,39 +22,39 @@ window.ritualData["슌·프론티어"] = {
 };
 
 window.enCharacterRitualData["슌·프론티어"] = {
-  "name": "Shun·Pioneer",
-  "r0": "Adverse Sacrifice",
-  "r0_detail": "In battle, Shun can grant allies [Sheriff Badge].\n[Sheriff Badge]: Ally with [Sheriff Badge] have Null Down, if that ally would take fatal damage or lacks HP to use a skill, Shun will take that HP loss or spend that HP cost instead, up to 80% of that ally's max HP.\nShun's Ranged Attack will deal Gun damage equal to 27.4% of Shun's max HP and is guaranteed to be a critical hit. When dealing damage, ignore all affinites and decrease Down Points by 1. Also, decrease target's Defense by 8% for 2 turns (up to 40% Defense Down at 20000 max HP). Stacks up to 2 times. After using a Ranged Attack, Shun can use other skills. Reload after Shun manually uses a Persona skill.",
-  "r1": "Generous Support",
-  "r1_detail": "In battle, when an ally has [Sheriff Badge], increase party's critical damage by 30%.\nIncrease the HP loss or HP cost that Shun can take from [Sheriff Badge] by 80%.",
-  "r2": "Bonds between Friends",
-  "r2_detail": "At the start of Shun's turn, if an ally has [Sheriff Badge], automatically use [High Noon Flag]. This effect has a 1 turn cooldown.\nEach hit from [Justice Shot] inflicts 5 bonus stacks of damage taken debuff.\n[High Noon Flag]'s bonus damage buff is no longer limited by the number of foes. Also increase party's Attack by 45% more for 2 turns.",
-  "r3": "Chef's Scorching Soul",
-  "r3_detail": "Increase the skill levels of [High Noon Flag] and [Daybreak Shot] by 3.",
-  "r4": "Super-Generous Support",
-  "r4_detail": "HIGHLIGHT Enhanced: After using HIGHLIGHT, increase party's Attack by 25%. This effect is permanent and cannot stack.",
-  "r5": "Chivalry's Burning Heart",
-  "r5_detail": "Increase the skill levels of [Justice Shot] and [Thief Tactics] by 3.",
-  "r6": "Stand with Honor",
-  "r6_detail": "Gain 1 Reserve Round stack when Shun spends 1 Ammo. When Shun has 2 or more Reserve Round stacks, he can enter [Suppressive Fire] mode and convert all Reserve Round into Special Ammo for this turn, convert up to 3 Reserve Round stacks.\nSpecial Ammo: When using a Ranged Attack on foes, increase target's downed damage taken by 8%, damage taken by 15%, and critcal damage taken by 10% for 1 turns. Stacks up to 3 times. Under [Suppressive Fire], the third Special Ammo will deal fixed damage equal to 3333% of Shun's max HP."
+  "name": "Gunslinger Shun",
+  "r0": "Outcome of Pride",
+  "r0_detail": "During battle, Gunslinger Shun can grant Deputy's Badge to allies. Allies with Deputy's Badge are immune to knock down. Also, when taking fatal damage, or when using a skill that costs more HP than what is remaining, Gunslinger Shun can take up to 80% of that ally's max HP instead. This effect will not trigger if Gunslinger Shun's current HP or the amount of the effect is less than the required amount.\nGunslinger Shun's ranged attack deals Gun damage to all foes equal to 27.4% of max HP. This attack is a guaranteed critical. When dealing damage, reduce the target's Down Points by 1 regardless of affinity, and decrease Defense by 8% + Gunslinger Shun's max HP (up to 20000 of max HP, up to a maximum of 40%). Lasts for 2 turns. Stacks up to 2 times.\nAfter a ranged attack, other skills can be used on the same turn. After selecting and using a skill, reload ammo.",
+  "r1": "Tried and True",
+  "r1_detail": "During battle, when an ally has Deputy's Badge, increase party's critical damage by 45%. The amount of HP lost or spent that can be absorbed by Deputy's Badge is doubled.",
+  "r2": "Reinforcement",
+  "r2_detail": "At the start of Gunslinger Shun's action, if an ally has Deputy's Badge, automatically use Flag of Battle. This effect has a cooldown of 1 turn.\nThe number of damage taken increased stacks inflicted when dealing damage with Gunslinger's Justice is increased by 5.\nThe additional damage increase effect from Flag of Battle is no longer limited by number of foes. Also, increase party's Attack by 60% for 2 turns.",
+  "r3": "Supportive Ally",
+  "r3_detail": "Increase the skill levels of Flag of Battle and Shot in the Dark by 3.",
+  "r4": "Signal Shot",
+  "r4_detail": "Highlight Enhanced: After activating a Highlight, permanently increase party's Attack by 25%. This effect does not stack.",
+  "r5": "Determined Fire",
+  "r5_detail": "Increase the skill levels of Gunslinger's Justice and Thief Tactics by 3.",
+  "r6": "Together with Honor",
+  "r6_detail": "For each normal round Gunslinger Shun spends, gain 1 Reserve Round. With 2 or more Reserve Round stacks, he can enter the Suppressor state, and on the same turn only, Reserve Round stacks can be converted to Buckshot. Up to 3 stacks can be converted.\nBuckshot: When making a ranged attack, increase damage taken by downed enemies by 10%, damage taken by 25%, and critical damage taken by 20% for 1 turn. Each effect stacks up to 3 times. When in the Suppressor state, the third Buckshot deals fixed special non-attribute damage equal to 3333% of Gunslinger Shun's max HP."
 };
 
 window.jpCharacterRitualData["슌·프론티어"] = {
-  "name": "加納 駿・フロンティア",
-  "r0": "絶体絶命の献身",
-  "r0_detail": "加納 駿・フロンティアは戦闘中、味方に『錫星の徽章』を付与できる。\n『錫星の徽章』：この徽章を持つ味方はダウン無効となり、致命的なダメージを受けて戦闘不能になる場合や、現在のHPがスキル消費に足りない状態でスキルを使用しようとした場合、加納 駿・フロンティアが代わりにHP減少／消費を負担する（上限は該当味方の最大HPの80%）。\nさらに、加納 駿・フロンティアの銃撃は全ての敵に対して最大HPの27.4%に相当する『確定クリティカル』の銃撃ダメージを与え、適応減衰を無視してダウン値を1減少させ、防御力を8%低下させる。（最大HP20000まで計算、防御力低下は最大40%まで） 銃撃使用後も同ターンに他のスキルを使用でき、ペルソナスキルを使用すると弾丸が再装填される。",
-  "r1": "豊富な援護",
-  "r1_detail": "戦闘中、『錫星の徽章』を持つ味方が存在する場合、味方全体のクリティカル効果が30%上昇する。\nまた、『錫星の徽章』が代替負担できるHP量がさらに80%増加する。",
-  "r2": "仲間との絆",
-  "r2_detail": "加納 駿・フロンティアのターン開始時、『錫星の徽章』を持つ味方がいる場合、自動的に『決戦の旗』が発動する。この効果には1ターンのクールタイムがある。\n『正義の銃撃』の各ヒットは、対象に付与される被ダメージ増加効果を追加で5スタック加算する。\n『決戦の旗』の追加ダメージ増加効果は敵の数に制限されず、味方全体の攻撃力がさらに45%上昇する（2ターン持続）。",
-  "r3": "熱き料理魂",
-  "r3_detail": "『決戦の旗』および『闇を払う銃声』のスキルレベルが3上昇し、最大レベル15まで強化される。",
-  "r4": "より豊富な援護",
-  "r4_detail": "HIGHLIGHT強化：HIGHLIGHT使用後、味方全体の攻撃力が永続的に25%上昇する（重複不可）。",
-  "r5": "燃える侠気",
-  "r5_detail": "『正義の銃撃』および『戦闘技術』のスキルレベルが3上昇し、最大レベル15まで強化される。",
-  "r6": "この栄光と共に",
-  "r6_detail": "加納 駿・フロンティアは通常弾を1発消費するごとに特殊予備弾を1発獲得する。特殊予備弾が2発以上になると『制圧者モード』に突入し、予備弾をそのターンのみ使用可能な特殊弾へ変換する（最大3発）。\n特殊弾効果：特殊弾で攻撃した敵に対し、ダウン弱点が8%上昇し、被ダメージが15%増加し、被クリティカル効果が10%増加する（1ターン、最大3スタック）。\n『制圧者モード』の3発目の特殊弾は、最大HPの3333%の固定ダメージを与える。"
+  "name": "駿・生命欲の暴走",
+  "r0": "誇りの行方",
+  "r0_detail": "駿・生命欲の暴走は、戦闘中、味方に『生命欲の守護』を付与することができる。『生命欲の守護』を付与された味方はダウン状態を無効化できる。さらに致死ダメージを受けた時、または残りＨＰが消費量に満たない状態でスキルを使用した時、駿・生命欲の暴走がその味方の代わりに今回のＨＰ減少、または消費を最大でその味方の最大HPの80%相当まで肩代わりする。この効果は発動する際に、自身の現在ＨＰまたは効果の残量が、肩代わりする量より少ない場合は発動しない。\n駿・生命欲の暴走の遠隔攻撃は、敵全体に最大ＨＰ２７.４%の銃撃属性ダメージを与える。この攻撃は必ずクリティカルが発生する。ダメージを与えた時、属性相性を無視して対象のダウン値を１減少させ、２ターンの間、対象の防御力を８%+自身の最大ＨＰ（最大ＨＰ２００００まで）に応じて低下させる（最大４０%まで）。最大２つまで累積できる。\n遠隔攻撃をした後も同ターン内に他のスキルを使用できる。選択してスキルを使用した後に弾を再装填する。",
+  "r1": "預ける背中",
+  "r1_detail": "戦闘中、『生命欲の守護』が付与されている味方がいる時、味方全体のクリティカルダメージが４５%上昇する。『生命欲の守護』の効果で肩代わりできるＨＰ減少量または消費量が元の量の２倍になる。",
+  "r2": "生命の鼓舞",
+  "r2_detail": "自身の行動開始時、『生命欲の守護』が付与されている味方がいる場合、自動で『デュエルフラッグ』を使用する。この効果には1ターンのクールタイムがある。\n『決闘のテリトリー』のダメージ時に付与する被ダメージ上昇効果の付与数が５つ増加する。\n『デュエルフラッグ』による追加の与ダメージ上昇効果が敵の数に制限されなくなり、さらに２ターンの間、味方全体の攻撃力が６０%上昇する。",
+  "r3": "支える仲間",
+  "r3_detail": "『デュエルフラッグ』『闇を払う銃声』のスキルレベルが３上昇する。",
+  "r4": "突撃の号砲",
+  "r4_detail": "ハイライト能力追加：ハイライト発動後、味方全体の攻撃力が永続的に２５%上昇する。この効果は累積しない。",
+  "r5": "決意の銃撃",
+  "r5_detail": "『決闘のテリトリー』『怪盗戦技』のスキルレベルが３上昇する。",
+  "r6": "この誇りと共に",
+  "r6_detail": "駿・生命欲の暴走は通常の弾を１発消費するごとに、『ショットシェル』を１発獲得する。『ショットシェル』が２発以上の時、『誇りの守護者』状態になることができ、『ショットシェル』を同ターン内でのみ使用できる『バックショット弾』に、最大３発まで変換して使用できる。\n『バックショット弾』：遠隔攻撃した時、１ターンの間、対象のダウン状態被ダメージが１０%上昇、被ダメージが２５%上昇、被クリティカルダメージが２０%上昇する。それぞれ最大３つまで累積できる。『誇りの守護者』状態での３発目の『バックショット弾』は、最大ＨＰ３３３３%分の属性を持たない特殊な固定ダメージを与える。"
 };
 
 window.cnCharacterRitualData["슌·프론티어"] = {

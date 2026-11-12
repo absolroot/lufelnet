@@ -60,7 +60,7 @@ window.enCharacterSkillsData["미유"] = {
     "element": "버프",
     "type": "실드",
     "cool": 0,
-    "description": "For 2 turns, grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 and decrease weakness damage taken by 20%/20%/20%/20%. Grant 2 Down Points and 2 Seashell stacks.\nCooldown Time: 8 ally actions."
+    "description": "Grant a shield to 1 ally equal to 67.2%/67.2%/72.6%/72.6% of Miyu's Defense + 2542/3042/3290/3790 and decrease weakness damage taken by 20%/20%/20%/20% for 2 turns. Grant 2 Down Points and 2 Seashell stacks.\nCooldown Time: 8 ally actions."
   },
   "skill3": {
     "name": "Tide of Dreams",

@@ -28,7 +28,7 @@ window.enCharacterRitualData["몽타뉴"] = {
   "r1": "Camel Spin",
   "r1_detail": "At the end of Kotone's turn, gain a shield equal to 15% of Attack for 1 turn.",
   "r2": "Ice Princess",
-  "r2_detail": "Increase Resonance damage based on foe's missing HP (up to 50%).",
+  "r2_detail": "Increase Resonance damage based on foe's lost HP (up to 50%).",
   "r3": "Heart of Ice",
   "r3_detail": "Increase the skill levels of Frost Lily and Winter Storm by 2.",
   "r4": "Resilience",

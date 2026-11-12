@@ -22,38 +22,39 @@ window.ritualData["쇼키·암야"] = {
 };
 
 window.enCharacterRitualData["쇼키·암야"] = {
-  "name": "Shoki·Notte",
-  "r0": "Star in the Night",
-  "r0_detail": "When Shoki gains Blessing, convert it into [Night's Blessing]: This counts as Blessing, at the end of turn, gain a Shield equal to 2% of max HP for 2 turns. Stacks up to 10 times. Shield from this effect lasts for 2 turns.",
-  "r1": "Shooting Star's Guidance",
-  "r1_detail": "At the start of battle, Shoki gains [Eternal Star Shine]: Survive fatal damage 1 time and spend [Eternal Star Shine] to restore 63% of Shoki's max HP (at least restore to 1 HP). Also, increase Attack by 30% for 1 turn.\nWhen Shoki has [Eternal Star Shine], he can spend HP to below 0 by using [Giuramento Incrollabile], after spending [Eternal Star Shine] from this method, gain 2 [Night's Contract] stacks above the maximum limit for this turn.\nWhen Shoki gains [Night's Contract], increase critical rate by 5% for 2 turns. Stacks up to 3 times.",
-  "r2": "With My Flesh and Bone",
-  "r2_detail": "Decrease the HP cost of [Giuramento Incrollabile] by 25%. Increase the maximum number of [Night's Contract] stacks by 3.",
-  "r3": "Fight against Fate",
-  "r3_detail": "Increase the skill levels of [Giuramento Incrollabile] and [Ti Inciderò il Nome Mio] by 3.",
-  "r4": "Commitment to Honesty",
-  "r4_detail": "Highlight Enhanced: Increase user's Attack by 35% for 4 turns.",
-  "r5": "GIUSTIZIA",
-  "r5_detail": "Increase the skill levels of [Spada dell'Alba] and [Thief Tactics] by 3.",
-  "r6": "Illuminating Passion for Life",
-  "r6_detail": "Shoki will not faint when his HP is below 0 and can decrease it to negative HP (up to 100% max HP); After Shoki's HP is negative, gain [Night's Monarch] state: Increase damage by 30% and critical damage by 30%. Increase [Night's Contract]'s skill damage increase to 120% of the the original effect.\n\t\tIncrease the maximum number of [Night's Contract] stacks by 3. At the start of battle, Shoki gains 5 bonus [NIght's Blessing] stacks above the maximum limit. This effect is permanent."
+  "name": "Tenebre Shoki",
+  "r0": "Nocturnal Radiance",
+  "r0_detail": "Tenebre Shoki can spend his own HP to gain Stellato stacks, increasing the skill damage of Scolpire.\nWhen Tenebre Shoki gains a Blessing stack, change to Nocturnal Blessing.\nNocturnal Blessing: Counted as a special Blessing. At the end of the turn, gain a shield equal to 2% of max HP for 2 turns. Stacks up to 10 times. Shield granted lasts for 2 turns.",
+  "r1": "Undying Starlight",
+  "r1_detail": "At the start of battle, Tenebre Shoki gains Undying Starlight.\nThe first time he falls below 0 HP, spend Undying Starlight to restore 63% of max HP (restores to at least 1 HP) and increase Attack by 30% for 2 turns.\nWhen using Steadfast Vow with Undying Starlight, Tenebre Shoki can reduce his own HP below 0 and enter a near death state. After this effect spends Undying Starlight, 2 Stellato stacks gained on the same turn can exceed the maximum limit.\nWhen gaining Stellato, also increase critical rate by 5% and damage dealt by 5% for 2 turns. Stacks up to 3 times.",
+  "r2": "Dazzling Stage",
+  "r2_detail": "Decrease HP cost of Steadfast Vow by 25%, and increase Attack by 25% for 2 turns. Increase maximum number of Stellato stacks by 3.",
+  "r3": "Defying Darkness",
+  "r3_detail": "Increase the skill levels of Steadfast Vow and Scolpire by 3.",
+  "r4": "Trailblazing Will",
+  "r4_detail": "Highlight Enhanced: Increase Attack by 35% for 4 turns.",
+  "r5": "Blade Against Arrogance",
+  "r5_detail": "Increase the skill levels of Blade of Dawn and Thief Tactics by 3.",
+  "r6": "The Masks We Wear",
+  "r6_detail": "When Tenebre Shoki's HP falls to 0, he will not be KO'd and can continue with negative HP (down to a maximum of 100% of max HP. The activation conditions for Undying Starlight and minimum HP recovery become the maximum value of this effect.).\nWhen HP is negative, enter the Nightlord state, and increase damage dealt by 35% and critical damage by 35%. Also, increase the skill damage increase effect of Scolpire from Stellato to 125% of its original effect.\nIncrease the maximum number of Stellato stacks by 3.\nAt the start of battle, gain 5 Nocturnal Blessing stacks that can exceed the maximum stack limit. These Nocturnal Blessing stacks are permanent."
 };
 
 window.jpCharacterRitualData["쇼키·암야"] = {
-  "r0": "黒夜に灯る星芒",
-  "r0_detail": "池波ショウキ・アンヤは戦闘中、自身のHPを消費して能動的に『暗夜の契約』を獲得でき、『我が名を汝の身に刻まん』のスキルダメージを強化する。\n池波ショウキ・アンヤが祝福効果を獲得すると、特別な『暗夜の祝福』に変換される。『暗夜の祝福』は祝福効果として扱われ、ターン終了時に自身の最大HP2%分のシールドを獲得する。このシールドは2ターン持続し、『暗夜の祝福』は最大10スタックまで蓄積される。",
-  "r1": "流星の導き",
-  "r1_detail": "戦闘開始時、『不滅星輝』を獲得する。自身が初めて瀕死状態に陥った時、『不滅星輝』を消費し、最大HP63%分のHPを回復（最低1のHPを残す）し、自身の攻撃力が30%上昇する（1ターン持続）。\n『不滅星輝』を保有している場合、『揺るがぬ誓約』を発動すると自らHPを0以下にし、能動的に瀕死状態に入ることができる。この方法で『不滅星輝』を消費したターンに獲得する後続の『暗夜の契約』2スタックは上限を突破する。\nさらに『暗夜の契約』を獲得するたび、クリティカル率が5%上昇し、2ターン持続（最大3スタック）。",
-  "r2": "肉体を賭した覚悟",
-  "r2_detail": "『揺るがぬ誓約』発動時、スキル消費が25%減少し、『暗夜の契約』の上限が3スタック増加する。",
-  "r3": "運命への抗争",
-  "r3_detail": "『揺るがぬ誓約』と『我が名を汝の身に刻まん』のスキルレベルが3上昇し、最大15レベルまで強化される。",
-  "r4": "誠実なる覚悟",
-  "r4_detail": "HIGHLIGHT効果強化：自身の攻撃力が35%上昇し、4ターン持続する。",
-  "r5": "GIUSTIZIA",
-  "r5_detail": "『黎明の剣』と『戦闘技術』のスキルレベルが3上昇し、最大15レベルまで強化される。",
-  "r6": "黒夜を照らす生命の渇望",
-  "r6_detail": "池波ショウキ・アンヤのHPが0になっても死亡せず、最大HPの追加100%分までHPがマイナス値に下がることができる。HPがマイナスになると『暗夜君王』状態に入り、与ダメージが30%上昇し、クリティカル効果が30%上昇し、『暗夜の契約』が『我が名を汝の身に刻まん』へ与えるダメージ増加効果が120%に強化される。\nさらに、『暗夜の契約』の上限が追加で3スタック増加する。戦闘開始時、上限突破可能な『暗夜の祝福』を5スタック獲得し、その持続時間は永続となる。"
+  "r0": "生命欲の光",
+  "r0_detail": "星輝・生命欲の暴走は、自身のＨＰを能動的に消費して『ステッラート』を獲得し、『スコルピーレ』のスキルダメージを上昇させることができる。\n自身が祝印を獲得した時、『生命欲の祝印』に変換する\n『生命欲の祝印』：特殊な祝印として扱われる。２ターンの間、ターン終了時に自身の最大ＨＰの２%分のシールドを獲得し、最大１０個まで累積できる。獲得したシールドは２ターン持続する。",
+  "r1": "超新星",
+  "r1_detail": "星輝・生命欲の暴走は戦闘開始時、『超新星』を獲得する\n自身が初めてHPが０以下になる時、『超新星』を消費して自身のＨＰを最大ＨＰの６３%分回復し（最低でもＨＰ１まで回復する）、２ターンの間、攻撃力が３０%上昇する。\n『超新星』を獲得している状態で『星の盾』を使用すると、自分自身でＨＰを０以下にして瀕死状態になることができる。この効果で『超新星』を消費した後、同ターン中に獲得する２つの『ステッラート』は上限を超えて獲得できる。\n『ステッラート』を獲得した時、追加で２ターンの間、クリティカル率が５%上昇し、与ダメージが５%上昇する。最大３つまで累積できる。",
+  "r2": "輝き放つ舞台",
+  "r2_detail": "『星の盾』使用時の消費ＨＰが２５%減少し、２ターンの間、攻撃力が２５%上昇する。『ステッラート』の最大累積数が３つ増加する。",
+  "r3": "闇に刻む光芒",
+  "r3_detail": "『星の盾』『スコルピーレ』のスキルレベルが３上昇する。",
+  "r4": "切り開く意志",
+  "r4_detail": "ハイライト能力追加：４ターンの間、自身の攻撃力が３５%上昇する。",
+  "r5": "傲慢を断つ剣",
+  "r5_detail": "『煌めきの一閃』『怪盗戦技』のスキルレベルが３上昇する。",
+  "r6": "誠実なる仮面",
+  "r6_detail": "自身のＨＰが０になっても戦闘不能にならず、マイナスまで減少し続けるようになる（最大で自身の最大ＨＰの１００%分まで。『超新星』の発動条件とＨＰ回復の最低値が、この効果の最大値になる）。\nＨＰがマイナスになると『不滅の輝き』状態になり、与ダメージが３5%上昇し、クリティカルダメージが３５%上昇する。さらに『ステッラート』による『スコルピーレ』のスキルダメージ上昇効果が元の効果の１２５%になる。\n『ステッラート』の最大累積数が３つ増加する。\n戦闘開始時に上限を超えて所持できる『生命欲の祝印』を５つ獲得する。この『生命欲の祝印』は永続する。",
+  "name": "星輝・生命欲の暴走"
 };
 
 window.cnCharacterRitualData["쇼키·암야"] = {

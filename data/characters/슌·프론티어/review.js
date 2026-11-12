@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["슌·프론티어"] = { name_en: "Shun·Pioneer", name_jp: "加納 駿·フロンティア", codename: "SOY·Pioneer",
+    window.characterReview["슌·프론티어"] = { name_en: "Gunslinger Shun", name_jp: "駿・生命欲の暴走", codename: "SOY·Gunslinger",
         review: `괴도단의 멤버로 각성 형태다. **아군에게 실드를 제공하고 한 명의 아군을 지정해 체력 소모 및 대미지를 대신하여 받는 탱커다.**
         
 같은 포지션인 다른 방위 속성의 괴도들에 비해 높은 수치의 버프를 보유하고 있어 안정성과 더불어 대미지 증가율을 함께 기대할 수 있다.
@@ -29,7 +29,7 @@ His ability to take HP consumption on behalf of allies is designed to synergize 
 
 All attack skills are guaranteed critical hits, allowing Critical Rate to be excluded from stat options. Since his damage scales based on HP, ATK can also be excluded from stat investment.
 
-As a special note, although Shun·Pioneer's Highlight lasts 4 turns, it follows the same mechanic as Mayumi's Highlight. 
+As a special note, although Gunslinger Shun's Highlight lasts 4 turns, it follows the same mechanic as Mayumi's Highlight.
 
 For convenience, the community sometimes refers to this as "4.1 turns." This does not mean there is literally an extra 0.1 turn.
 

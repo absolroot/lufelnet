@@ -73,7 +73,7 @@ window.enCharacterSkillsData["몽타뉴"] = {
     "type": "단일 피해",
     "sp": 24,
     "cool": 0,
-    "description": "Deal Ice damage to 1 foe equal to 179.7%/198.1%/187.0%/205.5% of Attack. When Kotone has Parhelion or 10+ Ice Crystal stacks, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%).\nWhen Blade Dancer is activated, increase damage based on foe's missing HP (up to 29.3%/29.3%/30.5%/30.5%)."
+    "description": "Deal Ice damage to 1 foe equal to 179.7%/198.1%/187.0%/205.5% of Attack. When Kotone has Parhelion or 10+ Ice Crystal stacks, increase damage based on foe's lost HP (up to 29.3%/29.3%/30.5%/30.5%).\nWhen Blade Dancer is activated, increase damage based on foe's lost HP (up to 29.3%/29.3%/30.5%/30.5%)."
   },
   "skill_highlight": {
     "name": "Highlight",
@@ -81,7 +81,7 @@ window.enCharacterSkillsData["몽타뉴"] = {
     "type": "단일피해",
     "sp": 0,
     "cool": 4,
-    "description": "Deal Ice damage to 1 foe equal to 292.8%/322.8%/304.8%/334.8% of Attack. Increase damage based on foe's missing HP. When foe's HP is below 20%, increase by up to 30%."
+    "description": "Deal Ice damage to 1 foe equal to 292.8%/322.8%/304.8%/334.8% of Attack. Increase damage based on foe's lost HP. When foe's HP is below 20%, increase by up to 30%."
   },
   "passive1": {
     "name": "Frozen in Time",

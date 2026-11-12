@@ -1,6 +1,6 @@
 (function () {
     window.characterReview = window.characterReview || {};
-    window.characterReview["쇼키·암야"] = { name_en: "Shoki·Notte", name_jp: "池波 星輝·永夜", codename: "LUCE·Notte",
+    window.characterReview["쇼키·암야"] = { name_en: "Tenebre Shoki", name_jp: "星輝・生命欲の暴走", codename: "LUCE·Tenebre",
         review: `
 저체력 유지 기반의 고화력 광역 축복 딜러다.
 

@@ -1,4 +1,5 @@
 window.I18N_PAGE_SCHEDULE_JP = {
+    "futureScheduleDisclaimer": "今後のスケジュールは確定した情報ではありません。",
     // Navigation
     navCurrent: 'スケジュール',
     pageTitle: 'リリーススケジュール',
@@ -44,7 +45,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     revelationSet2: '2セット',
     revelationSet4: '4セット',
     revelationNotReleased: '#グローバルサーバーで未発表#',
-    labelLightningStamp: 'ライトニングスタンプ',
+    labelLightningStamp: '刻銘',
     coreLabel: 'コア',
 
     // Badge labels

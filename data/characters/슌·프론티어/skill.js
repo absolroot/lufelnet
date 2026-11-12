@@ -48,90 +48,94 @@ window.characterSkillsData["슌·프론티어"] = {
 };
 
 window.enCharacterSkillsData["슌·프론티어"] = {
-  "name": "Shun·Pioneer",
+  "name": "Gunslinger Shun",
   "skill1": {
-    "name": "Justice Shot",
+    "name": "Gunslinger's Justice",
     "element": "총격광역",
     "type": "광역피해",
     "hp": 8,
     "cool": 0,
-    "description": "Deal Gun damage to random foes equal to 41.5%/45.7%/44.0%/48.3% of Shun's max HP (6 hits), this is guaranteed to be a critical hit. Each hit increases target's damage taken for 2 turns (based on Shun's max HP, up to 4.9%/5.4%/5.2%/5.7% at 19520/21520/20720/22720 max HP). Prioritze new targets and change damage to 20% for hits on the same target."
+    "description": "Deal Gun damage to random foes equal to 41.5%/45.7%/44.0%/48.3% of Gunslinger Shun's max HP (6 hits). This attack is a guaranteed critical. From the second hit, prioritize new targets and change damage to 20% for hits on the same target. For each hit of damage dealt, increase the target's damage taken based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 6.1%/6.7%/6.5%/7.1%) for 2 turns. Stacks up to 6 times."
   },
   "skill2": {
-    "name": "High Noon Flag",
+    "name": "Flag of Battle",
     "element": "버프",
     "type": "보조",
     "sp": 23,
     "cool": 0,
-    "description": "Increase party's damage for 2 turns (based on Shun's max HP, up to 19.5%/21.5%/20.7%/22.7% at 19520/21520/20720/22720 max HP). If there are 2 or more foes, additonally increase party's damage for 2 turns (based on Shun's max HP, up to 19.5%/21.5%/20.7%/22.7% at 19520/21520/20720/22720 max HP)."
+    "description": "Increase party's damage dealt based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 24.4%/26.9%/25.9%/28.4%). Lasts for 2 turns. If there are 2 or more foes, increase party's damage dealt more based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 24.4%/26.9%/25.9%/28.4%). Lasts for 2 turns."
   },
   "skill3": {
-    "name": "Daybreak Shot",
+    "name": "Shot in the Dark",
     "element": "버프",
     "type": "보조",
     "sp": 26,
     "cool": 1,
-    "description": "Grant 1 ally (other than Shun) [Sheriff Badge] for 2 turns. Only 1 ally can have [Sheriff Badge] at a time.\nIncrease party's Attack (based on Shun's max HP, up to 29.3%/32.3%/31.1%/34.1% at 19520/21520/20720/22720 max HP). Also grant a shield to party equal to 24.8%/24.8%/26.3%/26.3% of Shun's max HP + 705/858/867/1020 and grant Shun a bonus shield equal to 24.8%/24.8%/26.3%/26.3% of Shun's max HP + 705/858/867/1020 for 2 turns."
+    "description": "Grant 1 Deputy's Badge to 1 selected ally besides Gunslinger Shun for 2 turns. Multiple allies cannot have Deputy's Badge at the same time.\nIncrease party's Attack based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 36.6%/40.4%/38.8%/42.6%) for 2 turns, and grant a shield equal to 24.8%/24.8%/26.3%/26.3% of Gunslinger Shun's max HP + 705/858/867/1020. Also grant Gunslinger Shun a shield equal to 24.8%/24.8%/26.3%/26.3% of max HP + 705/858/867/1020 for 2 turns."
   },
   "skill_highlight": {
     "element": "총격광역",
     "type": "광역피해",
     "cool": 4,
-    "description": "Deal Gun damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Shun's max HP. Increase party's damage for 4 turns (based on Shun's max HP, up to 34.2%/37.7%/36.3%/39.8% at 19520/21520/20720/22720 max HP)."
+    "description": "Deal Gun damage to all foes equal to 73.2%/80.7%/77.7%/85.2% of Gunslinger Shun's max HP. Increase party's damage dealt based on Gunslinger Shun's max HP (up to 19520/21520/20720/22720 of max HP, up to 34.2%/37.7%/36.3%/39.8%) for 4 turns."
   },
   "passive1": {
-    "name": "Sentry",
+    "name": "Indomitable Perseverance",
     "element": "패시브",
-    "description": "Increase shield by 9.0%.\nAfter a shield Shun granted to himself ends, restore Shun's HP by 500% of remaining shield."
+    "description": "Increase shield by 9.0%. When the shield effect on Gunslinger Shun ends, restore HP equal to 500% of the remaining shield.",
+    "cool": 0
   },
   "passive2": {
-    "name": "Valor",
+    "name": "Daredevil",
     "element": "패시브",
-    "description": "When dealing damage with a Ranged Attack, increase target's damage taken by 24.0% and Gun damage taken by 12.0% for 2 turns."
+    "description": "When dealing damage with a ranged attack, increase the target's damage taken by 24.0%, and also increase ranged attack damage taken by 12.0% for 2 turns.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["슌·프론티어"] = {
-  "name": "加納 駿・フロンティア",
+  "name": "駿・生命欲の暴走",
   "skill1": {
-    "name": "正義の銃撃",
+    "name": "決闘のテリトリー",
     "element": "총격광역",
     "type": "광역피해",
     "hp": 8,
     "cool": 0,
-    "description": "ランダムな敵に対して、最大HPの41.5%/45.7%/44.0%/48.3%に相当する『確定クリティカル』の銃撃ダメージを6回与える。可能な限り、このスキルでまだ攻撃されていない敵を優先して狙う。\n各ヒットは、対象の被ダメージを最大4.9%/5.4%/5.2%/5.7%増加させる（加納 駿・フロンティアの最大HP19520/21520/20720/22720まで計算）。効果は2ターン持続し、最大6スタックまで累積可能。\n同じ敵への後続ヒットは20%のダメージしか与えない。"
+    "description": "敵に最大ＨＰ41.5%/45.7%/44.0%/48.3%の銃撃属性ダメージを６回与える。この攻撃は必ずクリティカルが発生する。２回目以降の攻撃は新たな対象が優先され、同一の対象に命中した時、与ダメージが２０%になる。ダメージを与えるごとに、２ターンの間、対象の被ダメージが自身の最大ＨＰに応じて上昇する（最大ＨＰ19520/21520/20720/22720まで参照し、最大6.1%/6.7%/6.5%/7.1%まで）し、最大６つまで累積できる。"
   },
   "skill2": {
-    "name": "決戦の旗",
+    "name": "デュエルフラッグ",
     "element": "버프",
     "type": "보조",
     "sp": 23,
     "cool": 0,
-    "description": "味方全体の与ダメージを最大19.5%/21.5%/20.7%/22.7%増加させる（加納 駿・フロンティアの最大HP19520/21520/20720/22720まで計算）。効果は2ターン持続。\n敵が2体以上の場合、同じ与ダメージ増加効果が追加で2ターン付与される。"
+    "description": "２ターンの間、味方全体の与ダメージが駿・生命欲の暴走の最大ＨＰに応じて上昇する（最大ＨＰ19520/21520/20720/22720まで参照し、最大24.4%/26.9%/25.9%/28.4%まで）。敵が２体以上の時、追加で２ターンの間、味方全体の与ダメージが駿・生命欲の暴走の最大ＨＰに応じて上昇する（最大ＨＰ19520/21520/20720/22720まで参照し、最大24.4%/26.9%/25.9%/28.4%まで）。"
   },
   "skill3": {
-    "name": "闇を貫く銃声",
+    "name": "闇を払う銃声",
     "element": "버프",
     "type": "보조",
     "sp": 26,
     "cool": 1,
-    "description": "自分以外の味方1名に『錫星の徽章』を2ターン付与する。戦場には同時に1つの『錫星の徽章』しか存在できない。\n味方全体の攻撃力を最大29.3%/32.3%/31.1%/34.1%増加させ（加納 駿・フロンティアの最大HP19520/21520/20720/22720まで計算）、最大HPの24.8%/24.8%/26.3%/26.3% + 705/858/867/1020に相当するシールドを付与する。\n加納 駿・フロンティア自身は同量のシールドを追加で獲得する。効果は2ターン持続。"
+    "description": "２ターンの間、自身以外の選択した味方単体に『生命欲の守護』を付与する。複数の味方を同時に『生命欲の守護』状態にすることはできない。\n２ターンの間、味方全体の攻撃力が自身の最大ＨＰに応じて上昇し（最大ＨＰ19520/21520/20720/22720まで参照し、最大36.6%/40.4%/38.8%/42.6%まで）、最大ＨＰ24.8%/24.8%/26.3%/26.3%＋705/858/867/1020分のシールドを付与する。自身には追加で２ターンの間、最大ＨＰ24.8%/24.8%/26.3%/26.3%＋705/858/867/1020分のシールドを付与する。"
   },
   "skill_highlight": {
     "element": "총격광역",
     "type": "광역피해",
     "cool": 4,
-    "description": "全ての敵に最大HPの73.2%/80.7%/77.7%/85.2%の銃撃ダメージを与え、味方全体の与ダメージを最大34.2%/37.7%/36.3%/39.8%増加させる（加納 駿・フロンティアの最大HP19520/21520/20720/22720まで計算）。効果は4ターン持続。"
+    "description": "敵全体に最大ＨＰ73.2%/80.7%/77.7%/85.2%の銃撃属性ダメージを与え、４ターンの間、味方全体の与ダメージが自身の最大ＨＰに応じて上昇する（最大ＨＰ19520/21520/20720/22720まで参照し、最大34.2%/37.7%/36.3%/39.8%まで）。"
   },
   "passive1": {
-    "name": "守護",
+    "name": "堅忍不抜",
     "element": "패시브",
-    "description": "シールド効果量が9.0%上昇する。\n加納 駿・フロンティアが自身に付与したシールドが消失すると、その残量の500%に相当するHPを回復する。"
+    "description": "シールド量が9.0%上昇する。自身に付与したシールドの効果が終了した時、残っていたシールド量の５００%分ＨＰを回復する。",
+    "cool": 0
   },
   "passive2": {
-    "name": "勇猛",
+    "name": "勇猛果敢",
     "element": "패시브",
-    "description": "銃撃でダメージを与えると、対象の被ダメージが24.0%増加し、さらに被銃撃ダメージが12.0%増加する。効果は2ターン持続。"
+    "description": "遠隔攻撃でダメージを与えた時、２ターンの間、対象の被ダメージが24.0%上昇し、さらに遠隔攻撃の被ダメージが12.0%上昇する。",
+    "cool": 0
   }
 };
 

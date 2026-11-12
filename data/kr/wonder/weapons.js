@@ -429,13 +429,13 @@ window.matchWeapons = {
       {
         "order": 1,
         "name": "천명의 위엄",
-        "name_en": "Divine Might",
-        "name_jp": "天命の威光",
+        "name_en": "Imperial Annunciation",
+        "name_jp": "天威聖告",
         "stamp_img": "item-datu-302931.png",
         "stamp_icon": "weaponEngraving-icon-1.png",
         "effect": "임의 동료가 HP를 소모하여 스킬을 발동할 때, 해당 동료가 2턴 동안 지속되는 『오라클의 가호』를 획득한다. 『오라클의 가호』: 축복 속성 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. 축복 속성 대미지를 줄 때 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
-        "effect_en": "When an ally consumes HP to activate a skill, that ally gains Oracle’s Blessing for 2 turns.  Oracle’s Blessing: Bless damage is increased by 4.0% / 8.0% / 12.0% / 16.0%.  Critical Damage dealt with Bless attacks is increased by 2.5% / 5.0% / 7.5% / 10.0%.",
-        "effect_jp": "味方がHPを消費してスキルを発動した時、その味方に2ターン持続する『オラクルの加護』を付与する。『オラクルの加護』：祝福属性ダメージが4.0% / 8.0% / 12.0% / 16.0%上昰。祝福属性ダメージのCRT倍率が2.5% / 5.0% / 7.5% / 10.0%上昰。",
+        "effect_en": "When an ally spends their HP to use a skill, they enter the Revelation of Light state for 2 turns.\nRevelation of Light: Increase Bless damage by 4.0%/8.0%/12.0%/16.0%. Also, when dealing Bless damage, increase critical damage by 2.5%/5.0%/7.5%/10.0%.",
+        "effect_jp": "味方がスキルを使用して自身のＨＰが減少した時、２ターンの間、その対象を『光の託宣』状態にする。\n『光の託宣』：祝福属性ダメージが4.0%/8.0%/12.0%/16.0%上昇する。さらに祝福属性ダメージを与える時、クリティカルダメージが2.5%/5.0%/7.5%/10.0%上昇する。",
         "release": "쇼키·암야",
         "name_cn": "天命神威",
         "effect_cn": "任意同伴消耗生命值释放技能时，使该同伴获得持续2回合的『神谕加护』。『神谕加护』：祝福属性伤害提升4.0%/8.0%/12.0%/16.0%；造成祝福属性伤害时，暴击效果提升2.5%/5.0%/7.5%/10.0%。"

@@ -2352,7 +2352,7 @@ export class TacticUI {
         const isElucidator = actorName !== '원더'
             && (window.characterData || {})[actorName]?.position === '해명';
         const priorities = isElucidator
-            ? ['Theurgia', '스킬1']
+            ? ['스킬1', 'Theurgia']
             : ['HIGHLIGHT', 'Theurgia', '스킬1'];
         return priorities.find(value =>
             options.some(option => option.value === value)

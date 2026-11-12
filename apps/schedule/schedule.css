@@ -27,6 +27,16 @@
     text-decoration: underline;
 }
 
+.schedule-prediction-notice {
+    margin: 0 0 8px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.schedule-prediction-notice strong {
+    font-weight: 700;
+}
+
 .notice-text {
     margin: 0;
     font-size: 13px;

@@ -16,10 +16,10 @@ window.I18N_PAGE_WONDER_WEAPON_EN = {
     labelCharacters: 'Characters',
     labelShard: 'Shard',
     labelRelease: 'Released with',
-    labelLightningStamp: 'Lightning Stamp',
-    labelLightningStampDesc: 'Feature released in KR server v4.7.1 that further enhances weapons.',
+    labelLightningStamp: 'Engraving',
+    labelLightningStampDesc: 'Unlocks additional weapon skills using special materials. Available on EN/JP servers from v4.13; Glimmer is the first eligible weapon.',
     labelWeaponRelease: 'Weapon',
-    labelStampRelease: 'Lightning Stamp',
+    labelStampRelease: 'Engraving',
 
     // Sort buttons
     sortReleaseDesc: 'Release ↓',

@@ -2,7 +2,7 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["쇼키·암야"] = {
     "role": "저체력 유지 광역 딜러",
     "video": ["mcCiwdBWTMI"],
-    "video_en": [""],
+    "video_en": ["irioXl5sy2g"],
     "video_jp": [""],
     "main_revelation": ["돌파"],
     "sub_revelation": ["획득"],

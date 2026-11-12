@@ -1103,6 +1103,7 @@ class PullSimulator {
 
         const releases = this.parseScheduleData(scheduleData);
         this.scheduleReleases = releases;
+        this.reconcileRenamedTargets();
         this.reconcilePlannerPlaceholderTargets(releases);
 
         const today = this.getKSTToday();
@@ -1456,6 +1457,33 @@ class PullSimulator {
     getPlannerPlaceholderNote(release = null) {
         const key = release?.placeholderNoteKey || 'plannerPlaceholderUnconfirmed';
         return this.t(key, 'Unconfirmed planning slot');
+    }
+
+    reconcileRenamedTargets() {
+        if (!Array.isArray(this.targets)) return;
+
+        // Saved plans predate the Starlight character key rename.
+        const renamedCharacters = {
+            '렌·스타 나이트': '렌·댄싱 스타',
+            '모르가나·스타 나이트': '모르가나·댄싱 스타'
+        };
+        const canonicalTargets = new Set(this.targets
+            .filter(target => target && !renamedCharacters[target.name])
+            .map(target => JSON.stringify([target.name, target.date])));
+        let changed = false;
+        this.targets = this.targets.filter(target => {
+            const canonicalName = renamedCharacters[target?.name];
+            if (!canonicalName || !window.characterData?.[canonicalName]) return true;
+
+            changed = true;
+            const key = JSON.stringify([canonicalName, target.date]);
+            // Keep the current-key plan, including its settings, if both exist.
+            if (canonicalTargets.has(key)) return false;
+            target.name = canonicalName;
+            canonicalTargets.add(key);
+            return true;
+        });
+        if (changed) this.saveData();
     }
 
     reconcilePlannerPlaceholderTargets(releases = []) {

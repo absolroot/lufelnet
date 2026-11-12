@@ -981,7 +981,9 @@ const penetrateData = {
       "type_cn": "被动",
       "target_cn": "自身",
       "duration_cn": "-",
-      "options_cn": []
+      "options_cn": [],
+      "skillName_en": "Morning Starlight",
+      "skillName_jp": "暁の星明り"
     }
   ],
   "이치고": [
@@ -2481,7 +2483,7 @@ const defenseCalcData = {
       "defaultOption": "2중첩",
       "value": 80,
       "skillEffectAmpAffected": false,
-      "duration": "-",
+      "duration": "2턴",
       "note": "생명 20000 기준",
       "note_en": "20000 Max HP",
       "note_jp": "20000 Max HP",
@@ -2489,11 +2491,13 @@ const defenseCalcData = {
       "skillName_cn": "枪击",
       "type_cn": "意识0",
       "target_cn": "群体",
-      "duration_cn": "-",
+      "duration_cn": "2回合",
       "options_cn": [
         "1层",
         "2层"
-      ]
+      ],
+      "skillName_en": "Ranged Attack",
+      "skillName_jp": "遠隔攻撃"
     },
     {
       "id": "shun-frontier-2",
@@ -2528,7 +2532,9 @@ const defenseCalcData = {
         "改造1&2",
         "改造3&4",
         "改造5&6"
-      ]
+      ],
+      "skillName_en": "Exclusive Weapon",
+      "skillName_jp": "専用武器"
     }
   ],
   "미츠루": [

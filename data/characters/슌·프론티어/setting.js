@@ -2,7 +2,7 @@ window.characterSetting = window.characterSetting || {};
 window.characterSetting["슌·프론티어"] = {
     "role": "생명 대리 부담 탱커",
     "video": ["s7mkM21mF8M"],
-    "video_en": [""],
+    "video_en": ["zAsVb1aLb9c"],
     "video_jp": [""],
     "main_revelation": ["창조", "신뢰", "여정"],
     "sub_revelation": ["화해", "풍요", "주권"],

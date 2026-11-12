@@ -24,42 +24,42 @@ window.WeaponData["쇼키·암야"] = {
 };
 
 window.enCharacterWeaponData["쇼키·암야"] = {
-  "name": "Shoki·Notte",
+  "name": "Tenebre Shoki",
   "weapon4-1": {
-    "name": "Emperor's Will",
+    "name": "Spada Vendetta",
     "health": 1918,
     "attack": 602,
     "defense": 303,
-    "skill_name": "Chaos Ender",
+    "skill_name": "Blessed Blade",
     "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.When user gains [Night's Blessing], increase user's damage by 3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5% for 2 turns. Stacks up to 5 times."
   },
   "weapon5-1": {
-    "name": "Pantheon Court",
+    "name": "Spada della Vita",
     "health": 2398,
     "attack": 753,
     "defense": 379,
-    "skill_name": "Eternal Praise",
-    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%.When user has [Night's Contract], increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%.When spending HP to use skills, increase user's critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% for 2 turns."
+    "skill_name": "Vital Blade",
+    "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When Stellato has been gained, increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%.\nWhen Tenebre Shoki spends his own HP to use a skill, increase critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% for 2 turns."
   }
 };
 
 window.jpCharacterWeaponData["쇼키·암야"] = {
-  "name": "",
+  "name": "星輝・生命欲の暴走",
   "weapon4-1": {
-    "name": "衆王の意志",
+    "name": "スパーダベネデッタ",
     "health": 1918,
     "attack": 602,
     "defense": 303,
-    "skill_name": "",
+    "skill_name": "祝福の剣",
     "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。『暗夜の祝福』を獲得するたび、自身の与ダメージが3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5%上昇し、最大5スタック（2ターン持続）。"
   },
   "weapon5-1": {
-    "name": "諸神王庭",
+    "name": "スパーダデラヴィータ",
     "health": 2398,
     "attack": 753,
     "defense": 379,
-    "skill_name": "",
-    "description": "クリティカル効果が36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。『暗夜の契約』を保有している場合、攻撃力が42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%上昇する。\nスキル発動時に自身のHPを消費すると、クリティカル率が16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%上昇し、2ターン持続する。"
+    "skill_name": "生命の剣",
+    "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。『ステッラート』を獲得している時、攻撃力が42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%上昇する。\n自身のＨＰを消費してスキルを使用した時、２ターンの間、自身のクリティカル率が16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%上昇する。"
   }
 };
 

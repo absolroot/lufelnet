@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Spada della Vita",
+        "quality": 5,
+        "skill": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When Stellato has been gained, increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%.\nWhen Tenebre Shoki spends his own HP to use a skill, increase critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% for 2 turns.",
+        "stat": {
+          "attack": 753.13,
+          "defense": 378.78,
+          "hp": 2398.2
+        },
+        "user": "Tenebre Shoki"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Spada Vendetta",
+        "quality": 4,
+        "skill": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When gaining Nocturnal Blessing, increase Tenebre Shoki's damage by 3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5% for 2 turns. Stacks up to 5 times.",
+        "stat": {
+          "attack": 602.36,
+          "defense": 302.89,
+          "hp": 1918.23
+        },
+        "user": "Tenebre Shoki"
+      }
+    ],
+    "name": "Tenebre Shoki"
+  },
+  "msg": "OK",
+  "status": 0
+}

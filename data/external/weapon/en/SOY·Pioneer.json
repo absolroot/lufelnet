@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Frontier Justice",
+        "quality": 5,
+        "skill": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nWhen Gunslinger Shun grants a shield to himself, increase party's critical damage by 18.1%/23.5%/23.5%/28.9%/28.9%/34.3%/34.3% for 2 turns.\nWhen dealing Gun damage, decrease target's Defense by 15.8%/20.6%/20.6%/25.4%/25.4%/30.2%/30.2% for 2 turns.",
+        "stat": {
+          "attack": 561.56,
+          "defense": 383.2,
+          "hp": 2873.92
+        },
+        "user": "Gunslinger Shun"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Desperado's Toothpick",
+        "quality": 4,
+        "skill": "Increase shield by 8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%. When Gunslinger Shun grants a shield to himself, increase max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns.",
+        "stat": {
+          "attack": 449.24,
+          "defense": 306.25,
+          "hp": 2299.15
+        },
+        "user": "Gunslinger Shun"
+      }
+    ],
+    "name": "Gunslinger Shun"
+  },
+  "msg": "OK",
+  "status": 0
+}

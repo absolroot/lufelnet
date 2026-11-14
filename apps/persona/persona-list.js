@@ -914,7 +914,12 @@ async function initializePageContent() {
                 innateSkills.className = 'persona-innate-skills';
                 innateSkills.innerHTML = `<h3>${innateLabel}</h3><ul>` +
                     validSkills.map(skill => {
-                        const skillInfo = personaSkillList[skill.name] || {};
+                        // EN/JP innate skills can differ from the KR/CN skill in the same slot.
+                        const localizedNameKey = ['en', 'jp'].includes(currentLang) ? `name_${currentLang}` : null;
+                        const localizedSkillInfo = localizedNameKey && skill[localizedNameKey]
+                            ? Object.values(personaSkillList).find(info => info[localizedNameKey] === skill[localizedNameKey])
+                            : null;
+                        const skillInfo = localizedSkillInfo || personaSkillList[skill.name] || {};
                         let skillName = skill.name;
                         let skillDescription = skill.desc;
 

@@ -895,7 +895,9 @@
         // SKILLS (각 스킬별)
         const resolvedKey = resolveCharacterKey(characterName || (inputs && inputs.name) || '');
         const charMeta = (STATE.characterData?.[resolvedKey]) || {};
-        const skillItemIndex = Math.max(1, Math.min(6, Number(charMeta.skill_item || 1)));
+        const isGlobalServer = ['en', 'jp', 'sea'].includes(STATE.lang);
+        const skillItem = isGlobalServer ? (charMeta.skill_item_gl ?? charMeta.skill_item) : charMeta.skill_item;
+        const skillItemIndex = Math.max(1, Math.min(6, Number(skillItem || 1)));
         ['s1', 's2', 's3', 's4'].forEach((sk) => {
             for (let lv = inputs[`${sk}From`] + 1; lv <= inputs[`${sk}To`]; lv++) {
                 let row = costs.skills?.[lv];

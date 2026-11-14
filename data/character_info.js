@@ -573,6 +573,7 @@ Object.assign(window.characterData, {
         "name_tw": "佐原海夕·夏日",
         "codename": "PUPPET·Wavecatcher",
         "skill_item": 5,
+        "skill_item_gl": 2,
         "persona_cn": "涅墨耳忒斯"
     },
     "미나미·여름": {
@@ -594,6 +595,7 @@ Object.assign(window.characterData, {
         "name_cn": "宫下美波·夏日",
         "codename": "MARIAN·Beachflower",
         "skill_item": 5,
+        "skill_item_gl": 1,
         "persona_cn": "塔利亚"
     },
     "이치고": {

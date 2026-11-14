@@ -2592,6 +2592,190 @@ h2 {
     background: rgba(255, 255, 255, 0.05);
 }
 
+.review-content .shoki-stellato-chart {
+    margin: 22px 0 20px;
+    word-break: normal;
+    overflow-wrap: anywhere;
+}
+
+.review-content .shoki-stellato-chart h3 {
+    margin: 0 0 6px;
+    color: #ffdb70;
+    font-size: 16px;
+}
+
+.review-content .shoki-stellato-intro,
+.review-content .shoki-stellato-condition,
+.review-content .shoki-stellato-note p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.review-content .shoki-stellato-chart table {
+    table-layout: fixed;
+    word-break: normal;
+    margin: 12px 0 8px;
+}
+
+.review-content .shoki-stellato-chart th,
+.review-content .shoki-stellato-chart td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 8px;
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.review-content .shoki-stellato-chart thead th {
+    background: rgba(255, 219, 112, 0.07);
+}
+
+.review-content .shoki-stellato-chart th:first-child {
+    width: 16%;
+}
+
+.review-content .shoki-stellato-chart thead th:nth-child(2) {
+    width: 40%;
+}
+
+.review-content .shoki-stellato-chart tbody th {
+    background: rgba(255, 255, 255, 0.035);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.review-content .shoki-stellato-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-height: 34px;
+}
+.review-content .shoki-stellato-icons img,
+.review-content .shoki-stellato-bonus img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin: 0;
+}
+.review-content .shoki-stellato-plus {
+    color: #ffdb70;
+    font-size: 18px;
+}
+.review-content .shoki-stellato-stage {
+    display: block;
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12px;
+}
+.review-content .shoki-stellato-stage strong {
+    color: #ffdb70;
+    font-size: 18px;
+    font-variant-numeric: tabular-nums;
+}
+.review-content .shoki-stellato-mobile {
+    display: none;
+}
+.review-content .shoki-stellato-chart thead small {
+    display: block;
+    margin-top: 3px;
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.7);
+}
+.review-content .shoki-stellato-bonus {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #ffdb70;
+}
+.review-content .shoki-stellato-bonus strong {
+    margin-left: 5px;
+}
+
+.review-content .shoki-stellato-note {
+    margin-top: 14px;
+    padding-left: 12px;
+    border-left: 2px solid rgba(255, 219, 112, 0.6);
+}
+
+.review-content .shoki-stellato-note > strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #ffdb70;
+    font-size: 12px;
+}
+
+@media (max-width: 520px) {
+    .review-content .shoki-stellato-chart table,
+    .review-content .shoki-stellato-chart tbody {
+        display: block;
+    }
+
+    .review-content .shoki-stellato-chart thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .review-content .shoki-stellato-chart tbody tr {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-bottom: 10px;
+        background: none;
+    }
+
+    .review-content .shoki-stellato-chart tbody th {
+        grid-column: 1 / -1;
+        width: auto;
+        text-align: left;
+        padding: 7px 10px;
+        border-bottom: 0;
+    }
+
+    .review-content .shoki-stellato-chart td {
+        padding: 10px 4px;
+    }
+
+    .review-content .shoki-stellato-chart td + td {
+        border-left: 0;
+    }
+
+    .review-content .shoki-stellato-chart td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 7px;
+        font-size: 11px;
+        line-height: 1.5;
+        min-height: 33px;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .review-content .shoki-stellato-icons,
+    .review-content .shoki-stellato-stage {
+        display: none;
+    }
+
+    .review-content .shoki-stellato-mobile {
+        display: block;
+        font-size: 11px;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.75);
+    }
+
+    .review-content .shoki-stellato-mobile strong {
+        display: block;
+        margin-top: 3px;
+        font-size: 20px;
+        color: #ffdb70;
+    }
+
+}
+
 .review-content .miku-song-diagram {
     margin: 14px 0 18px;
     overflow-x: auto;

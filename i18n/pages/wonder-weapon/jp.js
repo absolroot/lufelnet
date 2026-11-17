@@ -17,7 +17,7 @@ window.I18N_PAGE_WONDER_WEAPON_JP = {
     labelShard: '破片',
     labelRelease: '実装時期',
     labelLightningStamp: '刻銘',
-    labelLightningStampDesc: '専用の育成素材で武器の新たなスキルを解放する機能です。EN/JPではv4.13から実装され、最初の対象武器は「グリッター」です。',
+    labelLightningStampDesc: '',
     labelWeaponRelease: '武器',
     labelStampRelease: '刻銘',
 

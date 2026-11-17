@@ -7,7 +7,7 @@
             wp_exp1: 0, wp_exp2: 0, wp_exp3: 0,
             wp_limit1: 0, wp_limit2: 0, wp_limit3: 0,
             skill_lv_1: 0, skill_lv_2: 0, skill_lv_3: 0, skill_rose: 0,
-            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0, skill_item6: 0,
+            skill_item1: 0, skill_item2: 0, skill_item3: 0, skill_item4: 0, skill_item5: 0, skill_item6: 0, skill_item7: 0, skill_item8: 0,
             konpaku_gem: 0,
             md_mercury: 0, md_bell: 0, md_stat1: 0, md_stat2: 0, md_skill1: 0, md_skill2: 0,
             mindscape_core: 0, emblem_5star: 0, innate_seed: 0
@@ -91,6 +91,8 @@
         skill_item4: '/apps/material-calc/img/skill_item4.png',
         skill_item5: '/apps/material-calc/img/skill_item5.png',
         skill_item6: '/apps/material-calc/img/skill_item6.png',
+        skill_item7: '/apps/material-calc/img/skill_item7.png',
+        skill_item8: '/apps/material-calc/img/skill_item8.png',
         mindscape_core: '/assets/img/character-detail/innate/core.png',
         emblem_5star: '/assets/img/character-detail/innate/emblem.png',
         innate_seed: '/assets/img/character-detail/innate/innate_seed.png'
@@ -897,7 +899,7 @@
         const charMeta = (STATE.characterData?.[resolvedKey]) || {};
         const isGlobalServer = ['en', 'jp', 'sea'].includes(STATE.lang);
         const skillItem = isGlobalServer ? (charMeta.skill_item_gl ?? charMeta.skill_item) : charMeta.skill_item;
-        const skillItemIndex = Math.max(1, Math.min(6, Number(skillItem || 1)));
+        const skillItemIndex = Math.max(1, Math.min(8, Number(skillItem || 1)));
         ['s1', 's2', 's3', 's4'].forEach((sk) => {
             for (let lv = inputs[`${sk}From`] + 1; lv <= inputs[`${sk}To`]; lv++) {
                 let row = costs.skills?.[lv];
@@ -1781,7 +1783,9 @@
                 { key: 'skill_item3', label: materialInfoFor('skill_item3').name, icon: MATERIAL_ICONS.skill_item3 },
                 { key: 'skill_item4', label: materialInfoFor('skill_item4').name, icon: MATERIAL_ICONS.skill_item4 },
                 { key: 'skill_item5', label: materialInfoFor('skill_item5').name, icon: MATERIAL_ICONS.skill_item5 },
-                { key: 'skill_item6', label: materialInfoFor('skill_item6').name, icon: MATERIAL_ICONS.skill_item6 }
+                { key: 'skill_item6', label: materialInfoFor('skill_item6').name, icon: MATERIAL_ICONS.skill_item6 },
+                { key: 'skill_item7', label: materialInfoFor('skill_item7').name, icon: MATERIAL_ICONS.skill_item7 },
+                { key: 'skill_item8', label: materialInfoFor('skill_item8').name, icon: MATERIAL_ICONS.skill_item8 }
             ];
         } else if (type === 'gem') {
             setModalTitle('inventoryKonpakuGem', 'Konpaku Gem');
@@ -2055,6 +2059,8 @@
         if (key === 'skill_item4') return 405;
         if (key === 'skill_item5') return 406;
         if (key === 'skill_item6') return 407;
+        if (key === 'skill_item7') return 408;
+        if (key === 'skill_item8') return 409;
         if (key === 'skill_rose') return 401;
         // mind order follows the in-game inventory: shard, bottles, gems, bell
         if (key === 'md_mercury') return 101;

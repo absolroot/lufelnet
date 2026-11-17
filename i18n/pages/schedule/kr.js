@@ -27,6 +27,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     nextRelease: '다음 출시',
     currentBanner: '현재 배너',
     noCharacters: '이 기간에 캐릭터가 없습니다',
+    kotoneWorldwideReleaseNote: '코토네는 전 서버에 동시 출시되어 앞선 일정에 표시되어 있습니다.',
     showReleased: '출시됨',
     hideReleased: '숨기기',
 
@@ -62,6 +63,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     summerEventTitle: '여름 이벤트 출시',
     summerEventDesc: '여름 이벤트',
     revelationSetEffectAdded: '세트 효과',
+    revelationSetEffectChanged: '4세트 효과 변경',
     limitTransitionTitle: '계약 상태 변경',
     limitTransitionLimitedToStandard: '한정 → 통상',
     limitStateLimited: '한정',

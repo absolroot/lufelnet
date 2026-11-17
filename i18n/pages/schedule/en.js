@@ -27,6 +27,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     nextRelease: 'Next Release',
     currentBanner: 'Current Banner',
     noCharacters: 'No characters in this period',
+    kotoneWorldwideReleaseNote: 'Kotone was released simultaneously on all servers and appears earlier in the schedule.',
     showReleased: 'Released',
     hideReleased: 'Hide',
 
@@ -62,6 +63,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     summerEventTitle: 'Summer Event Release',
     summerEventDesc: 'Summer Event',
     revelationSetEffectAdded: 'Set Effect',
+    revelationSetEffectChanged: '4-Set Effect Change',
     limitTransitionTitle: 'Contract Type Change',
     limitTransitionLimitedToStandard: 'Limited → Standard',
     limitStateLimited: 'Limited',

@@ -17,7 +17,7 @@ window.I18N_PAGE_WONDER_WEAPON_EN = {
     labelShard: 'Shard',
     labelRelease: 'Released with',
     labelLightningStamp: 'Engraving',
-    labelLightningStampDesc: 'Unlocks additional weapon skills using special materials. Available on EN/JP servers from v4.13; Glimmer is the first eligible weapon.',
+    labelLightningStampDesc: '',
     labelWeaponRelease: 'Weapon',
     labelStampRelease: 'Engraving',
 

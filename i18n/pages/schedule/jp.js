@@ -27,6 +27,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     nextRelease: '次のリリース',
     currentBanner: '現在のバナー',
     noCharacters: 'この期間にキャラクターはいません',
+    kotoneWorldwideReleaseNote: '琴音は全サーバーで同時に実装されたため、前のスケジュールに表示されています。',
     showReleased: 'リリース済み',
     hideReleased: '隠す',
 
@@ -62,6 +63,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     summerEventTitle: 'サマーイベント配信',
     summerEventDesc: 'サマーイベント',
     revelationSetEffectAdded: 'セット効果',
+    revelationSetEffectChanged: '4セット効果変更',
     limitTransitionTitle: '契約種別変更',
     limitTransitionLimitedToStandard: '限定 → 恒常',
     limitStateLimited: '限定',

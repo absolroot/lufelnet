@@ -3568,12 +3568,9 @@
         const container = document.getElementById('recommended-party-content');
         container.innerHTML = '';
 
-        // friends 여부에 따라 레이아웃 클래스 토글 (PC에서는 항상 2열, 모바일 1열)
-        if (hasFriends) {
-            container.classList.add('party-grid-layout');
-        } else {
-            container.classList.remove('party-grid-layout');
-        }
+        // 추천 동료 유무와 관계없이 PC에서는 2열로 표시한다.
+        container.classList.toggle('party-grid-layout', hasFriends);
+        container.classList.add('party-desktop-grid');
 
         // friends가 있을 경우 파티 리스트 위에 '파티' 라벨 추가 (다국어)
         if (hasFriends) {

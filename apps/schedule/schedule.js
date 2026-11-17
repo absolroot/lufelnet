@@ -421,6 +421,8 @@
                 translationData = window.enRevelationData;
             } else if (currentLang === 'jp' && window.jpRevelationData) {
                 translationData = window.jpRevelationData;
+            } else if (currentLang === 'cn' && window.cnRevelationData) {
+                translationData = window.cnRevelationData;
             }
 
             if (currentLang === 'en' && translationData && translationData.sub_effects) {
@@ -437,6 +439,13 @@
                     effectData = translationData.sub_effects[japaneseKey];
                     set2Text = effectData.set2;
                     set4Text = effectData.set4;
+                    setTypes = effectData.type;
+                }
+            } else if (currentLang === 'cn' && translationData && translationData.sub_effects) {
+                effectData = translationData.sub_effects[getLocalizedRevelationName(koreanName)];
+                if (effectData) {
+                    set2Text = effectData.set2.replace(/<[^>]*>/g, '');
+                    set4Text = effectData.set4.replace(/<[^>]*>/g, '');
                     setTypes = effectData.type;
                 }
             } else if (isKrLikeLang(currentLang) && typeof revelationData !== 'undefined' && revelationData.sub_effects && revelationData.sub_effects[koreanName]) {
@@ -471,6 +480,8 @@
                 translationData = window.enRevelationData;
             } else if (currentLang === 'jp' && window.jpRevelationData) {
                 translationData = window.jpRevelationData;
+            } else if (currentLang === 'cn' && window.cnRevelationData) {
+                translationData = window.cnRevelationData;
             }
 
             if (currentLang === 'en' && translationData && translationData.set_effects) {
@@ -483,6 +494,8 @@
                 if (translationData.set_effects[japaneseMainKey]) {
                     setEffectsData = translationData.set_effects[japaneseMainKey];
                 }
+            } else if (currentLang === 'cn' && translationData && translationData.set_effects) {
+                setEffectsData = translationData.set_effects[getLocalizedRevelationName(koreanName)];
             } else if (isKrLikeLang(currentLang) && typeof revelationData !== 'undefined' && revelationData.set_effects && revelationData.set_effects[koreanName]) {
                 setEffectsData = revelationData.set_effects[koreanName];
             }
@@ -495,7 +508,7 @@
                         let subTitle;
                         if (currentLang === 'en' && translationData) {
                             subTitle = subRevKey;
-                        } else if (currentLang === 'jp' && translationData) {
+                        } else if ((currentLang === 'jp' || currentLang === 'cn') && translationData) {
                             subTitle = subRevKey;
                         } else {
                             subTitle = getLocalizedRevelationName(subRevKey);
@@ -503,7 +516,7 @@
                         if (subTitle === 'type') {
                             return t('revelationNotReleased');
                         }
-                        return `[${mainTitle} - ${subTitle}]\n${effect}`;
+                        return `[${mainTitle} - ${subTitle}]\n${currentLang === 'cn' ? effect.replace(/<[^>]*>/g, '') : effect}`;
                     })
                     .join('\n\n');
 
@@ -555,12 +568,14 @@
                 stampEffectText = stampData.effect_en;
             } else if (lang === 'jp' && stampData.effect_jp) {
                 stampEffectText = stampData.effect_jp;
+            } else if (lang === 'cn' && stampData.effect_cn) {
+                stampEffectText = stampData.effect_cn;
             } else if (stampData.effect) {
                 stampEffectText = stampData.effect;
             }
 
             if (stampEffectText) {
-                const stampName = lang === 'en' ? stampData.name_en : (lang === 'jp' ? stampData.name_jp : stampData.name);
+                const stampName = lang === 'en' ? stampData.name_en : (lang === 'jp' ? stampData.name_jp : (lang === 'cn' ? stampData.name_cn : stampData.name));
                 const stampLabel = t('labelLightningStamp');
                 const stampIcon = hasStamp ? ` <img class="weapon-modal-stamp-icon" src="${BASE_URL}/assets/img/wonder-weapon/lightning_stamp.png" alt="${stampLabel}" title="${stampLabel}" style="width: 16px; vertical-align: middle; margin-left: 4px;">` : '';
                 effectText += `\n\n-\n[${stampName}]${stampIcon}\n${stampEffectText}`;
@@ -639,6 +654,7 @@
         const weapon = weaponsData[weaponName];
         if (lang === 'en' && weapon.name_en) return weapon.name_en;
         if (lang === 'jp' && weapon.name_jp) return weapon.name_jp;
+        if (lang === 'cn' && weapon.name_cn) return weapon.name_cn;
         return weaponName;
     }
 
@@ -864,6 +880,7 @@
                     characters: item.characters,
                     collaboration: item.collaboration,
                     note: item.note,
+                    noteKey: item.noteKey,
                     'main-story': item['main-story'],
                     schedulePending: pendingDate,
                     summer: item.summer,
@@ -873,6 +890,7 @@
                     goldTicketUnlocks: item.goldTicketUnlocks,
                     revelation: item.revelation,
                     rev_set: item.rev_set,
+                    revelation_rework: item.revelation_rework,
                     mindscape_core: item.mindscape_core,
                     mindscape_sync: item.mindscape_sync,
                     mindscape_nature: item.mindscape_nature,
@@ -1178,8 +1196,9 @@
             .map(char => renderCharacter(char, release.click_disable === true))
             .join('');
 
-        const noteHtml = release.note
-            ? `<div class="release-note">${release.note}</div>`
+        const noteText = release.noteKey ? t(release.noteKey) : release.note;
+        const noteHtml = noteText
+            ? `<div class="release-note">${noteText}</div>`
             : '';
 
         // 버전이 '?'이거나 없으면 버전 배지 숨김
@@ -1398,6 +1417,15 @@
             `;
         }
 
+        let revelationReworkHtml = '';
+        if (Array.isArray(release.revelation_rework) && release.revelation_rework.length > 0) {
+            const items = release.revelation_rework.map(name => renderRevelationItem(name, 'rev-set-item')).join('');
+            revelationReworkHtml = `<div class="content-badge rev-set-list" title="${t('revelationSetEffectChanged')}">
+                <span class="content-label rev-set-label">${t('revelationSetEffectChanged')}</span>
+                <div class="rev-set-items">${items}</div>
+            </div>`;
+        }
+
         // Mindscape Core 표시 (mindscape_core 필드 사용)
         let mindscapeCoreHtml = '';
         if (release.mindscape_core && Array.isArray(release.mindscape_core) && release.mindscape_core.length > 0) {
@@ -1570,6 +1598,7 @@
                             ${weaponHtml}
                             ${revelationHtml}
                             ${revelationSetHtml}
+                            ${revelationReworkHtml}
                             ${mindscapeCoreHtml}
                             ${mindscapeSyncHtml}
                             ${mindscapeNatureHtml}

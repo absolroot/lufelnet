@@ -23,7 +23,8 @@
       let loaded = 0;
       scripts.forEach(src => {
         const s = document.createElement('script');
-        s.src = src;
+        const hash = window.__WONDER_WEAPON_DATA_HASHES__?.[src];
+        s.src = `${BASE_URL}${src}${hash ? `?h=${encodeURIComponent(hash)}` : ''}`;
         s.onload = () => {
           loaded++;
           if (loaded === scripts.length) {

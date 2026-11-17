@@ -430,7 +430,8 @@
 
             const elementMatch = noElementFilter
                 || selectedElements.includes(element)
-                || (element === '질풍빙결' && (selectedElements.includes('질풍') || selectedElements.includes('빙결')));
+                || (element === '질풍빙결' && (selectedElements.includes('질풍') || selectedElements.includes('빙결')))
+                || (element === '축복주원' && (selectedElements.includes('축복') || selectedElements.includes('주원')));
             const positionMatch = noPositionFilter || selectedPositions.includes(position);
             const rarityMatch = noRarityFilter || selectedRarities.includes(rarity);
             const tagMatch = noTagFilter || selectedTags.every((tag) => hasTag(characterTags, tag, isPersona3, isPersona5, isP5D, isP5X, isLimited, isAsiaLimited, hasMindscapeCore));

@@ -4,7 +4,7 @@ window.characterList = window.characterList || {
     mainParty: [
         "나루미", "렌", "렌·댄싱 스타", "루우나", "루페르", "레오", "류지",
         "리코·매화", "마사키", "마유미", "마코토", "미나미", "미나미·여름", "미유·여름", "모르가나", "모르가나·댄싱 스타",
-        "모토하", "모토하·여름", "모토하·청광", "아란", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다", "쇼키", "쇼키·암야", "슌", "슌·프론티어",
+        "모토하", "모토하·여름", "모토하·청광", "아란", "아란·린화", "몽타뉴", "몽타뉴·백조", "미오", "미츠루", "사나다", "쇼키", "쇼키·암야", "슌", "슌·프론티어",
         "세이지", "안", "안·댄싱 스타", "아야카", "아야카·여름", "아이기스", "아케치", "야오링", "야오링·사자무",
         "원더", "유스케", "YUI", "YUI·스텔라", "유카리", "유키미", "유키 마코토", "이치고", "이치고·여름",
         "준페이", "코로마루", "코토네",
@@ -30,6 +30,29 @@ window.characterList = window.characterList || {
 
 window.characterData = window.characterData || {};
 Object.assign(window.characterData, {
+    "아란·린화": {
+        "limit": true,
+        "tag": "축복, 주원, 복합 속성, 실드, 흡수",
+        "tag_en": "",
+        "tag_jp": "",
+        "tag_cn": "",
+        "color": "#994fd6",
+        "element": "축복주원",
+        "rarity": 5,
+        "position": "반항",
+        "release_order": 57,
+        "persona": "젠틸레스키",
+        "persona_en": "Gentileschi",
+        "persona_jp": "ジェンティレスキ",
+        "persona_cn": "真蒂莱斯基",
+        "name": "히라노 아란·린화",
+        "name_en": "Anri.Lumina",
+        "name_jp": "平野亜蘭・凛華",
+        "name_cn": "平野亚兰·凛华",
+        "codename": "ANRI",
+        "codename_en": "Anri.Lumina",
+        "skill_item": 8
+    },
     "류지·댄싱 스타": {
         "limit": true,
         "tag": "",
@@ -942,6 +965,7 @@ Object.assign(window.characterData, {
     "후타바": {
         "limit": true,
         "persona5": true,
+        "has_innate": true,
         "tag": "적합성 저하, 방어력 감소, 공격력, 받는 대미지 증가, 크리티컬 확률, 실드",
         "color": "#32cd32",
         "element": "버프",

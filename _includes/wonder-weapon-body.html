@@ -1,3 +1,9 @@
+<script>
+  window.__WONDER_WEAPON_DATA_HASHES__ = Object.freeze({
+    '/data/kr/wonder/weapons.js': {{ site.data.asset_versions.files['/data/kr/wonder/weapons.js'] | jsonify }},
+    '/data/character_info.js': {{ site.data.asset_versions.files['/data/character_info.js'] | jsonify }}
+  });
+</script>
 {% if page.wonder_weapon_key %}
 <script>
   window.__WONDER_WEAPON_DEFAULT = {{ page.wonder_weapon_key | jsonify }};

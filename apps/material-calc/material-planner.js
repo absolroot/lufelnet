@@ -794,7 +794,7 @@
         if (MATERIAL_INFO_DATA) return MATERIAL_INFO_DATA;
         try {
             const baseUrl = `${BASE_URL}/apps/material-calc/data`;
-            const text = await fetch(`${baseUrl}/material_info.js?v=${APP_VERSION}`).then(r => r.text());
+            const text = await fetch(`${baseUrl}/material_info.js?h=${encodeURIComponent(window.materialInfoHash || '')}`).then(r => r.text());
             const box = {};
             new Function('out', `${text}; out.INFO = MATERIAL_INFO;`)(box);
             MATERIAL_INFO_DATA = box.INFO || {};

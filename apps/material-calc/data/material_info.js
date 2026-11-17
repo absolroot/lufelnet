@@ -225,7 +225,7 @@ const MATERIAL_INFO = {
     }
   },
   md_stat1: {
-    name: { kr: '명성 수정구·하급', en: 'Stardust Gem', jp: '星屑晶珠', cn: '明星水晶球·低阶' },
+    name: { kr: '별가루 병·하급', en: 'Stardust Bottle', jp: '星屑のボトル', cn: '星屑之瓶·低阶' },
     desc: {
       kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
       en: '',
@@ -234,7 +234,7 @@ const MATERIAL_INFO = {
     }
   },
   md_stat2: {
-    name: { kr: '명성 수정구·고급', en: 'Venus Gem', jp: '明星晶珠', cn: '明星水晶球·高阶' },
+    name: { kr: '별가루 병·고급', en: 'Venus Bottle', jp: '明星のボトル', cn: '星屑之瓶·高阶' },
     desc: {
       kr: '『괴도 심상·진급 강화』 육성에 사용되는 재료다.',
       en: '',
@@ -243,7 +243,7 @@ const MATERIAL_INFO = {
     }
   },
   md_skill1: {
-    name: { kr: '별가루 병·하급', en: 'Stardust Bottle', jp: '星屑のボトル', cn: '星屑之瓶·低阶' },
+    name: { kr: '명성 수정구·하급', en: 'Stardust Gem', jp: '星屑晶珠', cn: '明星水晶球·低阶' },
     desc: {
       kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
       en: '',
@@ -252,7 +252,7 @@ const MATERIAL_INFO = {
     }
   },
   md_skill2: {
-    name: { kr: '별가루 병·고급', en: 'Venus Bottle', jp: '明星のボトル', cn: '星屑之瓶·高阶' },
+    name: { kr: '명성 수정구·고급', en: 'Venus Gem', jp: '明星晶珠', cn: '明星水晶球·高阶' },
     desc: {
       kr: '『괴도 심상·스킬 깨달음』 육성에 사용되는 재료다.',
       en: '',

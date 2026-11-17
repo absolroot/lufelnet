@@ -331,6 +331,7 @@ const criticalBuffData = {
     },
     {
       "id": "wonder6",
+      "kotoneCopyEligible": false,
       "type": "페르소나",
       "type_en": "Persona",
       "type_jp": "ペルソナ",
@@ -383,6 +384,7 @@ const criticalBuffData = {
     },
     {
       "id": "wonder8",
+      "kotoneCopyEligible": false,
       "type": "페르소나",
       "type_en": "Persona",
       "type_jp": "ペルソナ",

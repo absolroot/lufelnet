@@ -580,10 +580,10 @@ export class NeedStatCardUI {
         if (!source) return 0;
         const items = category === 'critical' ? this.currentCriticalItems : this.currentPierceItems;
         const selected = category === 'critical' ? this.selectedItems : this.selectedPierceItems;
-        const sourceSum = items.filter(candidate => candidate.source === source && selected.has(String(candidate.id)) && !candidate.kotoneCopySkill3)
+        const sourceSum = items.filter(candidate => candidate.source === source && selected.has(String(candidate.id)) && !candidate.kotoneCopySkill3 && candidate.kotoneCopyEligible !== false)
             .reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0);
         const wonderSum = this.kotoneCopyState.awareness === 'r6'
-            ? items.filter(candidate => candidate.source === '원더' && selected.has(String(candidate.id))).reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0)
+            ? items.filter(candidate => candidate.source === '원더' && selected.has(String(candidate.id)) && candidate.kotoneCopyEligible !== false).reduce((sum, candidate) => sum + this.getEffectiveItemValue(candidate), 0)
             : 0;
         const baseMultiplier = Number(item.kotoneCopyMultiplier) || 0.3;
         const sourceMultiplier = this.kotoneCopyState.awareness === 'r0' ? baseMultiplier : baseMultiplier * 1.25;

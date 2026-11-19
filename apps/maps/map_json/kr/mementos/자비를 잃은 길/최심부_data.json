@@ -1,0 +1,25 @@
+{
+  "tiles": [
+    {
+      "image": "yxkj-zhuanhuanceng.png",
+      "position": [0, 0],
+      "ratio": 1,
+      "rotate": 0,
+      "rotate_pivot": [0.5, 0.5]
+    }
+  ],
+  "objects": [],
+  "enemies": [
+    {
+      "sn": 5549008,
+      "image": "yishijie-icon-boss03.png",
+      "position": [88, 421],
+      "ratio": 1.4,
+      "rotate": 0,
+      "rotate_pivot": [0.5, 0.5],
+      "enemy_data": null
+    }
+  ],
+  "rotate": 0,
+  "map_size": [179, 674]
+}

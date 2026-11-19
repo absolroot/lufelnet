@@ -460,7 +460,9 @@
                             font-weight: 600;
                             color: #fff;
                         `;
-                        nameSpan.textContent = `${this.getLocalizedField(enemy, 'name')} (Lv.${enemy.level})`;
+                        const levelText = enemy.level !== null && enemy.level !== undefined && enemy.level !== ''
+                            ? ` (Lv.${enemy.level})` : '';
+                        nameSpan.textContent = `${this.getLocalizedField(enemy, 'name')}${levelText}`;
                         infoRow.appendChild(nameSpan);
 
                         const hpSpan = document.createElement('span');
@@ -468,8 +470,10 @@
                             font-size: 14px;
                             color: #ccc;
                         `;
-                        hpSpan.textContent = `HP: ${Math.round(enemy.stat.HP).toLocaleString()}`;
-                        infoRow.appendChild(hpSpan);
+                        if (enemy.stat?.HP !== null && enemy.stat?.HP !== undefined && enemy.stat.HP !== '' && Number.isFinite(Number(enemy.stat.HP))) {
+                            hpSpan.textContent = `HP: ${Math.round(enemy.stat.HP).toLocaleString()}`;
+                            infoRow.appendChild(hpSpan);
+                        }
 
                         enemyDiv.appendChild(infoRow);
 

@@ -1943,7 +1943,96 @@
               "description": "",
               "description_en": "",
               "description_jp": ""
+            },
+            {
+              "id": "tower_group_0",
+              "name": "神之塔",
+              "name_cn": "神之塔",
+              "file": [],
+              "submaps": [
+                {
+                  "id": "tower_8911",
+                  "name": "神之塔·外部",
+                  "name_cn": "神之塔·外部",
+                  "file": [
+                    "palace/paradise_island_new/8911_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8906",
+                  "name": "神之塔·大厅",
+                  "name_cn": "神之塔·大厅",
+                  "file": [
+                    "palace/paradise_island_new/8906_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8901",
+                  "name": "神之塔·前侧",
+                  "name_cn": "神之塔·前侧",
+                  "file": [
+                    "palace/paradise_island_new/8901_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8902",
+                  "name": "神之塔·后侧",
+                  "name_cn": "神之塔·后侧",
+                  "file": [
+                    "palace/paradise_island_new/8902_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8912",
+                  "name": "神之塔·顶层通道",
+                  "name_cn": "神之塔·顶层通道",
+                  "file": [
+                    "palace/paradise_island_new/8912_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8907",
+                  "name": "神之塔·顶层",
+                  "name_cn": "神之塔·顶层",
+                  "file": [
+                    "palace/paradise_island_new/8907_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8910",
+                  "name": "崩塌的顶层",
+                  "name_cn": "崩塌的顶层",
+                  "file": [
+                    "palace/paradise_island_new/8910_data.json"
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "tower_group_1",
+              "name": "数据海",
+              "name_cn": "数据海",
+              "file": [],
+              "submaps": [
+                {
+                  "id": "tower_8903",
+                  "name": "数据海·浅层",
+                  "name_cn": "数据海·浅层",
+                  "file": [
+                    "palace/paradise_island_new/8903_data.json"
+                  ]
+                },
+                {
+                  "id": "tower_8904",
+                  "name": "数据海·深层",
+                  "name_cn": "数据海·深层",
+                  "file": [
+                    "palace/paradise_island_new/8904_data.json"
+                  ]
+                }
+              ]
             }
+
           ]
         }
       ]
@@ -2346,6 +2435,16 @@
               "description": "",
               "description_en": "",
               "description_jp": ""
+            },
+            {
+              "id": "depths",
+              "name": "최심부",
+              "name_en": "Depths",
+              "name_jp": "最深部",
+              "file": [
+                "mementos/자비를 잃은 길/최심부_data.json"
+              ],
+              "description": ""
             }
           ]
         }

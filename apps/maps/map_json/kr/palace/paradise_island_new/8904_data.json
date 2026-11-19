@@ -1,0 +1,1460 @@
+{
+  "tiles": [
+    {
+      "image": "sjh_A_04_01.png",
+      "position": [
+        1891,
+        2138
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_02.png",
+      "position": [
+        1788,
+        1986
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_03.png",
+      "position": [
+        1789,
+        1568
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_04.png",
+      "position": [
+        1974,
+        1304
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_05.png",
+      "position": [
+        2126,
+        848
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_06.png",
+      "position": [
+        2275,
+        402
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_07.png",
+      "position": [
+        2001,
+        214
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_08.png",
+      "position": [
+        2359,
+        50
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_09.png",
+      "position": [
+        21,
+        518
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_10.png",
+      "position": [
+        363,
+        508
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_11.png",
+      "position": [
+        540,
+        684
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_12.png",
+      "position": [
+        702,
+        1107
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_13.png",
+      "position": [
+        398,
+        1259
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_14.png",
+      "position": [
+        438,
+        9
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_15.png",
+      "position": [
+        813,
+        448
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_16.png",
+      "position": [
+        2444,
+        1170
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_17.png",
+      "position": [
+        1389,
+        1275
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_18.png",
+      "position": [
+        1701,
+        1036
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_19.png",
+      "position": [
+        1469,
+        806
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "sjh_A_04_20.png",
+      "position": [
+        1233,
+        1044
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "sn": 8904003,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        1706,
+        1516
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904025,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        116,
+        664
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904043,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        2035,
+        1432
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904044,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        1542,
+        881
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904045,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        2893,
+        1551
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904049,
+      "image": "yishijie-icon-men-danxiang.png",
+      "position": [
+        2594,
+        1376
+      ],
+      "ratio": 1.5588235294117647,
+      "rotate": 225.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904901,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        2291,
+        2404
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904902,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        1849,
+        2034
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904903,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        2420,
+        783
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904904,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        210,
+        1095
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904905,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        1294,
+        1095
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904906,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        1935,
+        1111
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904907,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        929,
+        858
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904908,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        938,
+        1197
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904909,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        2382,
+        612
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904910,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        2688,
+        709
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904911,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        1683,
+        899
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904912,
+      "image": "yishijie-icon-box-01-new.png",
+      "position": [
+        2609,
+        1260
+      ],
+      "ratio": 1.325,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904913,
+      "image": "yishijie-icon-box-suo-new.png",
+      "position": [
+        887,
+        123
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904914,
+      "image": "yishijie-icon-box-hexin-new.png",
+      "position": [
+        780,
+        448
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904915,
+      "image": "yishijie-icon-box-hexin-new.png",
+      "position": [
+        1707,
+        929
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904916,
+      "image": "yishijie-icon-box-hexin-new.png",
+      "position": [
+        1653,
+        875
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904917,
+      "image": "yishijie-icon-box-teshu-new.png",
+      "position": [
+        2573,
+        1441
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904918,
+      "image": "yishijie-icon-box-teshu-new.png",
+      "position": [
+        1015,
+        569
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89040101,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        2203,
+        2634
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89040390,
+      "image": "yishijie-icon-cybercube01.png",
+      "position": [
+        1885,
+        1719
+      ],
+      "ratio": 0.828125,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89040411,
+      "image": "yishijie-icon-overswitch.png",
+      "position": [
+        2224,
+        1445
+      ],
+      "ratio": 0.7361111111111112,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89040490,
+      "image": "yishijie-icon-cybercube01.png",
+      "position": [
+        2144,
+        1376
+      ],
+      "ratio": 0.828125,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89040523,
+      "image": "yishijie-icon-cyberbox01.png",
+      "position": [
+        2570,
+        1008
+      ],
+      "ratio": 0.8833333333333333,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89040702,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        2675,
+        219
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89041090,
+      "image": "yishijie-icon-cybercube01.png",
+      "position": [
+        592,
+        637
+      ],
+      "ratio": 0.828125,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89041301,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        557,
+        1564
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89041820,
+      "image": "yishijie-icon-wire01.png",
+      "position": [
+        1853,
+        1150
+      ],
+      "ratio": 0.7464788732394366,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89041821,
+      "image": "yishijie-icon-wire01.png",
+      "position": [
+        1853,
+        1234
+      ],
+      "ratio": 0.7464788732394366,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89041830,
+      "image": "yishijie-icon-overswitch.png",
+      "position": [
+        1888,
+        1213
+      ],
+      "ratio": 0.7361111111111112,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042010,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1355,
+        1185
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042011,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1376,
+        1205
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042012,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1397,
+        1226
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042013,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1373,
+        1167
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042014,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1408,
+        1202
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042015,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1327,
+        1212
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042016,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1348,
+        1233
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042017,
+      "image": "yishijie-icon-chargebase.png",
+      "position": [
+        1369,
+        1254
+      ],
+      "ratio": 0.6794871794871795,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042020,
+      "image": "yishijie-icon-chargecore.png",
+      "position": [
+        1327,
+        1212
+      ],
+      "ratio": 0.7066666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042021,
+      "image": "yishijie-icon-chargecore.png",
+      "position": [
+        1348,
+        1233
+      ],
+      "ratio": 0.7066666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042023,
+      "image": "yishijie-icon-chargecore.png",
+      "position": [
+        1369,
+        1254
+      ],
+      "ratio": 0.7066666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 89042030,
+      "image": "yishijie-icon-overswitch.png",
+      "position": [
+        1327,
+        1184
+      ],
+      "ratio": 0.7361111111111112,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904950,
+      "image": "breakable.png",
+      "position": [
+        5165,
+        -5107
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904951,
+      "image": "breakable.png",
+      "position": [
+        2302,
+        2399
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904952,
+      "image": "breakable.png",
+      "position": [
+        1837,
+        2030
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904953,
+      "image": "breakable.png",
+      "position": [
+        2432,
+        778
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904954,
+      "image": "breakable.png",
+      "position": [
+        198,
+        1091
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904955,
+      "image": "breakable.png",
+      "position": [
+        1306,
+        1090
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904956,
+      "image": "breakable.png",
+      "position": [
+        1923,
+        1106
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904957,
+      "image": "breakable.png",
+      "position": [
+        940,
+        853
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904958,
+      "image": "breakable.png",
+      "position": [
+        927,
+        1192
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904959,
+      "image": "breakable.png",
+      "position": [
+        2394,
+        607
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904960,
+      "image": "breakable.png",
+      "position": [
+        2676,
+        704
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904961,
+      "image": "breakable.png",
+      "position": [
+        1695,
+        894
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904962,
+      "image": "breakable.png",
+      "position": [
+        2597,
+        1255
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904963,
+      "image": "breakable.png",
+      "position": [
+        899,
+        118
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904964,
+      "image": "breakable.png",
+      "position": [
+        768,
+        443
+      ],
+      "ratio": 0.7,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    }
+  ],
+  "enemies": [
+    {
+      "sn": 8904001,
+      "image": "yishijie-icon-anquanwu-new.png",
+      "position": [
+        2175,
+        1028
+      ],
+      "ratio": 0.5888888888888889,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904002,
+      "image": "yishijie-icon-anquanwu-new.png",
+      "position": [
+        2740,
+        534
+      ],
+      "ratio": 0.5888888888888889,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": "npc_8904003",
+      "image": "yishijie-icon-anquanwu-new.png",
+      "position": [
+        243,
+        648
+      ],
+      "ratio": 0.5888888888888889,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904004,
+      "image": "yishijie-icon-anquanwu-new.png",
+      "position": [
+        976,
+        1374
+      ],
+      "ratio": 0.5888888888888889,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904005,
+      "image": "yishijie-icon-anquanwu-new.png",
+      "position": [
+        577,
+        305
+      ],
+      "ratio": 0.5888888888888889,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8904201,
+      "image": "yishijie-icon-xiaoguai-new.png",
+      "position": [
+        2151,
+        378
+      ],
+      "ratio": 0.7361111111111112,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": {
+        "instSn": 27805,
+        "enemies": [
+          [
+            {
+              "sn": 278051,
+              "name": "莫特",
+              "name_cn": "莫特",
+              "adapt": {
+                "Weak": [
+                  "Bless"
+                ],
+                "Resistant": [
+                  "Psychokinesis",
+                  "Nuclear",
+                  "Curse"
+                ],
+                "Nullify": [],
+                "Reflect": [],
+                "Absorb": []
+              },
+              "isDnmLv": false,
+              "realLv": null,
+              "level": 90
+            }
+          ],
+          [
+            {
+              "sn": 278042,
+              "name": "안즈",
+              "name_cn": "安祖",
+              "adapt": {
+                "Weak": [
+                  "Bless"
+                ],
+                "Resistant": [
+                  "Psychokinesis",
+                  "Curse"
+                ],
+                "Nullify": [],
+                "Reflect": [],
+                "Absorb": []
+              },
+              "isDnmLv": false,
+              "realLv": null,
+              "level": 90,
+              "name_en": "Anzu",
+              "name_jp": "アンズー"
+            }
+          ],
+          [
+            {
+              "sn": 278043,
+              "name": "파즈스",
+              "name_cn": "帕祖祖",
+              "adapt": {
+                "Weak": [],
+                "Resistant": [
+                  "Curse"
+                ],
+                "Nullify": [],
+                "Reflect": [],
+                "Absorb": []
+              },
+              "isDnmLv": false,
+              "realLv": null,
+              "level": 90,
+              "name_en": "Pazuzu",
+              "name_jp": "パズス"
+            }
+          ]
+        ],
+        "tutorial": {
+          "title": "莫特能力介绍",
+          "content": "1、战斗开始时，莫特召唤安祖和帕祖祖，会选择其中的一员将其标记为「祭品」并对其使用「献祭」，抽取其生命值。除「祭品」外，莫特与其余小怪拥有「亡者之帷幕」，受到的最终伤害降低80%。\n2、莫特每次使用「献祭」都会使「祭品」失去一定比例的生命，并获得2层「亡者之余烬」。第一只「祭品」被击败后，另一只存活的小怪单位会成为新的「祭品」。\n3、怪盗击败「祭品」时，莫特会对其发动「死亡宣告」，造成相当于该怪盗生命上限60%的伤害。若该怪盗在反击后存活，则夺取莫特身上的全部「亡者之余烬」。若其阵亡，则由己方攻击力最高的存活怪盗获得这些强化。\n4、「亡者之余烬」会提高持有者造成的伤害。若击败「祭品」的怪盗被「死亡宣告」击败，其预计夺取的「亡者之余烬」的也会转移给己方攻击力最高的存活怪盗。\n5、两只小怪均被击败后，莫特会在最后一次「死亡宣告」结算完毕后陷入眩晕，持续2回合。眩晕结束后，莫特会再次召唤安祖和帕祖祖，并重新选定「祭品」。"
+        }
+      }
+    },
+    {
+      "sn": 8904202,
+      "image": "yishijie-icon-xiaoguai-new.png",
+      "position": [
+        835,
+        174
+      ],
+      "ratio": 0.7361111111111112,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": {
+        "instSn": 27806,
+        "enemies": [
+          [
+            {
+              "sn": 278061,
+              "name": "莫特",
+              "name_cn": "莫特",
+              "adapt": {
+                "Weak": [
+                  "Bless"
+                ],
+                "Resistant": [
+                  "Psychokinesis",
+                  "Nuclear",
+                  "Curse"
+                ],
+                "Nullify": [],
+                "Reflect": [],
+                "Absorb": []
+              },
+              "isDnmLv": false,
+              "realLv": null,
+              "level": 90
+            }
+          ],
+          [
+            {
+              "sn": 278042,
+              "name": "안즈",
+              "name_cn": "安祖",
+              "adapt": {
+                "Weak": [
+                  "Bless"
+                ],
+                "Resistant": [
+                  "Psychokinesis",
+                  "Curse"
+                ],
+                "Nullify": [],
+                "Reflect": [],
+                "Absorb": []
+              },
+              "isDnmLv": false,
+              "realLv": null,
+              "level": 90,
+              "name_en": "Anzu",
+              "name_jp": "アンズー"
+            }
+          ],
+          [
+            {
+              "sn": 278043,
+              "name": "파즈스",
+              "name_cn": "帕祖祖",
+              "adapt": {
+                "Weak": [],
+                "Resistant": [
+                  "Curse"
+                ],
+                "Nullify": [],
+                "Reflect": [],
+                "Absorb": []
+              },
+              "isDnmLv": false,
+              "realLv": null,
+              "level": 90,
+              "name_en": "Pazuzu",
+              "name_jp": "パズス"
+            }
+          ]
+        ],
+        "tutorial": {
+          "title": "莫特能力介绍",
+          "content": "1、战斗开始时，莫特召唤安祖和帕祖祖，会选择其中的一员将其标记为「祭品」并对其使用「献祭」，抽取其生命值。除「祭品」外，莫特与其余小怪拥有「亡者之帷幕」，受到的最终伤害降低80%。\n2、莫特每次使用「献祭」都会使「祭品」失去一定比例的生命，并获得2层「亡者之余烬」。第一只「祭品」被击败后，另一只存活的小怪单位会成为新的「祭品」。\n3、怪盗击败「祭品」时，莫特会对其发动「死亡宣告」，造成相当于该怪盗生命上限60%的伤害。若该怪盗在反击后存活，则夺取莫特身上的全部「亡者之余烬」。若其阵亡，则由己方攻击力最高的存活怪盗获得这些强化。\n4、「亡者之余烬」会提高持有者造成的伤害。若击败「祭品」的怪盗被「死亡宣告」击败，其预计夺取的「亡者之余烬」的也会转移给己方攻击力最高的存活怪盗。\n5、两只小怪均被击败后，莫特会在最后一次「死亡宣告」结算完毕后陷入眩晕，持续2回合。眩晕结束后，莫特会再次召唤安祖和帕祖祖，并重新选定「祭品」。"
+        }
+      }
+    }
+  ],
+  "rotate": 0.0,
+  "map_size": [
+    3000,
+    2764
+  ]
+}

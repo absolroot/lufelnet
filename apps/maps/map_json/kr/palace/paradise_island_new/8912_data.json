@@ -1,0 +1,66 @@
+{
+  "tiles": [
+    {
+      "image": "szt_A_05_01.png",
+      "position": [
+        46,
+        412
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "szt_A_05_02.png",
+      "position": [
+        180,
+        221
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "image": "szt_A_05_03.png",
+      "position": [
+        -1,
+        0
+      ],
+      "ratio": 1,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "objects": [],
+  "enemies": [
+    {
+      "sn": 8912001,
+      "image": "yishijie-icon-anquanwu-new.png",
+      "position": [
+        119,
+        179
+      ],
+      "ratio": 0.5888888888888889,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    }
+  ],
+  "rotate": 0.0,
+  "map_size": [
+    494,
+    754
+  ]
+}

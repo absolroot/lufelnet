@@ -1,0 +1,85 @@
+{
+  "tiles": [
+    {
+      "image": "map_szt_C_ZT01.png",
+      "position": [
+        0,
+        0
+      ],
+      "ratio": 1,
+      "rotate": 0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "sn": 8906001,
+      "image": "yishijie-icon-wrist01.png",
+      "position": [
+        284,
+        476
+      ],
+      "ratio": 0.7794117647058824,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8906011,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        33,
+        125
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8906015,
+      "image": "yishijie-icon-cyberentry02.png",
+      "position": [
+        527,
+        125
+      ],
+      "ratio": 0.7162162162162162,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    },
+    {
+      "sn": 8906025,
+      "image": "yishijie-icon-box-teshu-new.png",
+      "position": [
+        464,
+        86
+      ],
+      "ratio": 1.1041666666666667,
+      "rotate": 0.0,
+      "rotate_pivot": [
+        0.5,
+        0.5
+      ],
+      "enemy_data": null
+    }
+  ],
+  "enemies": [],
+  "rotate": 0.0,
+  "map_size": [
+    568,
+    1116
+  ]
+}

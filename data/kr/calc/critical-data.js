@@ -1273,6 +1273,36 @@ const criticalSelfData = {
       ]
     }
   ],
+  "아란·린화": [
+    {
+      "id": "anri-lumina-weapon5-crit-rate",
+      "type": "전용무기",
+      "type_cn": "专属武器",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "target_cn": "自身",
+      "skillIcon": "/assets/img/character-weapon/아란·린화-5-01.png",
+      "skillName": "찰나의 거울꽃",
+      "skillName_en": "Exclusive Weapon",
+      "skillName_jp": "専用武器",
+      "skillName_cn": "刹那镜华",
+      "options": ["개조0&1", "개조2&3", "개조4&5", "개조6"],
+      "options_en": ["Modification 0&1", "Modification 2&3", "Modification 4&5", "Modification 6"],
+      "options_jp": ["改造0&1", "改造2&3", "改造4&5", "改造6"],
+      "options_cn": ["改造0&1", "改造2&3", "改造4&5", "改造6"],
+      "values": {"개조0&1": 18.1, "개조2&3": 23.5, "개조4&5": 28.9, "개조6": 34.3},
+      "defaultOption": "개조6",
+      "value": 34.3,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "duration_cn": "-",
+      "note": "",
+      "note_en": "",
+      "note_jp": "",
+      "note_cn": ""
+    }
+  ],
   "아야카·여름": [
     {
       "id": "chord-summer-weapon5-crit-rate",

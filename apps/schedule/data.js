@@ -106,7 +106,7 @@ window.ReleaseScheduleData = {
         { version: "5.3.1", characters: ["아야카·여름"], days: 14, "summer": true, mindscape_core: ["모토하·여름"], revelation: ["반성", "기쁨"],  rev_set:["자아","반성"], weapon:["속삭이는 자의 가시"]},
         { version: "5.3.2", characters: ["이치고·여름"], days: 14, "summer": true, mindscape_core: ["하루"], rev_set:["돌파","기쁨"]},
         { version: "5.4.2", characters: [], noteKey: "kotoneWorldwideReleaseNote", days: 14, limitTransitions: [{ from: true, to: false, characters: ["아야카", "마코토"] }]},
-        { version: "5.5.1", characters: ["아란·린화"], "main-story": "6-2", mindscape_core: ["후타바"], weapon_stamp: ["메커니컬 심판자"], rev_set: ["희망", "실망"], revelation_rework: ["실망"], days: 14 },
+        { version: "5.5.1", characters: ["아란·린화"], "main-story": "6-2", mindscape_core: ["후타바"], weapon_stamp: ["메커니컬 심판자"], persona: ["바알"], rev_set: ["희망", "실망"], revelation_rework: ["실망"], days: 14 },
         // --- 예정이지만 언제 나올지 모르는 것들 ---
         { version: "???", characters: ["아마다"], schedulePending: true, click_disable: true },
         { version: "???", characters: ["아라가키"], schedulePending: true, click_disable: true },

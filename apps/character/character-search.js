@@ -13,6 +13,8 @@
     });
 
     const nicknameMap = {
+        'Anri.Lumina': '아란·린화',
+        'Anri Lumina': '아란·린화',
         '유이': 'YUI',
         '라멘': '카노 슌',
         'Shun·Pioneer': '슌·프론티어',

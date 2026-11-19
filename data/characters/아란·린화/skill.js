@@ -12,7 +12,7 @@ window.characterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "적 1명에게 공격력 620.2%/683.8%/658.4%/721.9%의 축복·주원 복합 속성 대미지를 주고, 2턴 동안 자신의 크리티컬 효과를 117.1%/129.1%/124.3%/136.3% 증가시키며 『결단』을 획득한다."
+    "description": "적 1명에게 공격력 562.6%/620.2%/597.2%/654.8%의 축복·주원 복합 속성 대미지를 주고, 2턴 동안 자신의 크리티컬 효과를 117.1%/129.1%/124.3%/136.3% 증가시키며 『결단』을 획득한다."
   },
   "skill2": {
     "name": "구원의 거울 영역",
@@ -28,14 +28,14 @@ window.characterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 26,
     "cool": 1,
-    "description": "적 1명에게 공격력 1636.9%/1804.7%/1737.6%/1905.3%의 축복·주원 복합 속성 대미지를 준다.\n자신이 『결단』 상태라면 이번 스킬 대미지의 관통이 15%, 스킬 대미지가 50% 증가한다."
+    "description": "적 1명에게 공격력 906.5%/999.4%/962.2%/1055.1%의 축복·주원 복합 속성 대미지를 준다.\n자신이 『결단』 상태라면 이번 스킬 대미지의 관통이 15%, 스킬 대미지가 150% 증가한다."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "축복주원",
     "type": "단일피해",
     "cool": 4,
-    "description": "적 1명에게 공격력 1409.8%/1554.3%/1496.5%/1641.0%의 축복·주원 복합 속성 대미지를 주고, 3턴 동안 자신의 공격력이 48.8%/53.8%/51.8%/56.8% 증가한다.\n동료 전체에게 『시들지 않는 장막』을 부여한다."
+    "description": "적 1명에게 공격력 1297.7%/1430.6%/1377.5%/1510.4%의 축복·주원 복합 속성 대미지를 주고, 3턴 동안 자신의 공격력이 48.8%/53.8%/51.8%/56.8% 증가한다.\n동료 전체에게 『시들지 않는 장막』을 부여한다."
   },
   "passive1": {
     "name": "구세",
@@ -52,14 +52,14 @@ window.characterSkillsData["아란·린화"] = {
 };
 
 window.enCharacterSkillsData["아란·린화"] = {
-  "name": "Anri.Lumina",
+  "name": "Aran Hirano·Lumina",
   "skill1": {
     "name": "Mirror of Virtue and Sin",
     "element": "축복주원",
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "Deal dual attribute Bless/Curse damage to 1 foe equal to 620.2%/683.8%/658.4%/721.9% of Attack. Increase Aran's critical damage by 117.1%/129.1%/124.3%/136.3% for 2 turns, then grant Aran [Resolve].\n[Resolve]: Increase Attack by 60% and Weakness damage by 25% for 2 turns."
+    "description": "Deal dual attribute Bless/Curse damage to 1 foe equal to 562.6%/620.2%/597.2%/654.8% of Attack. Increase Aran's critical damage by 117.1%/129.1%/124.3%/136.3% for 2 turns, then grant Aran [Resolve].\n[Resolve]: Increase Attack by 60% and Weakness damage by 25% for 2 turns."
   },
   "skill2": {
     "name": "Mirror Dome",
@@ -75,14 +75,14 @@ window.enCharacterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 26,
     "cool": 1,
-    "description": "Deal dual attribute Bless/Curse damage to 1 foe equal to 1636.9%/1804.7%/1737.6%/1905.3% of Attack.\nWhen [Resolve] is active, increase this skill's Pierce by 15% and Skill Damage by 50%."
+    "description": "Deal dual attribute Bless/Curse damage to 1 foe equal to 906.5%/999.4%/962.2%/1055.1% of Attack.\nWhen [Resolve] is active, increase this skill's Pierce by 15% and Skill Damage by 150%."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "축복주원",
     "type": "단일피해",
     "cool": 4,
-    "description": "Deal dual attribute Bless/Curse damage to 1 foe equal to 1409.8%/1554.3%/1496.5%/1641.0% of Attack. Increase Aran's Attack by 48.8%/53.8%/51.8%/56.8% for 3 turns, then grant all allies [Everlasting Veil]."
+    "description": "Deal dual attribute Bless/Curse damage to 1 foe equal to 1297.7%/1430.6%/1377.5%/1510.4% of Attack. Increase Aran's Attack by 48.8%/53.8%/51.8%/56.8% for 3 turns, then grant all allies [Everlasting Veil]."
   },
   "passive1": {
     "name": "Salvation",
@@ -106,7 +106,7 @@ window.jpCharacterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "敵単体に攻撃力620.2%/683.8%/658.4%/721.9%の祝福・呪怨複合属性ダメージを与え、2ターンの間、自身のクリティカルダメージが117.1%/129.1%/124.3%/136.3%上昇し、『決断』を獲得する。"
+    "description": "敵単体に攻撃力562.6%/620.2%/597.2%/654.8%の祝福・呪怨複合属性ダメージを与え、2ターンの間、自身のクリティカルダメージが117.1%/129.1%/124.3%/136.3%上昇し、『決断』を獲得する。"
   },
   "skill2": {
     "name": "救済の鏡域",
@@ -122,14 +122,14 @@ window.jpCharacterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 26,
     "cool": 1,
-    "description": "敵単体に攻撃力1636.9%/1804.7%/1737.6%/1905.3%の祝福・呪怨複合属性ダメージを与える。\n自身が『決断』状態の場合、今回のスキルダメージの貫通が15%、スキルダメージが50%上昇する。"
+    "description": "敵単体に攻撃力906.5%/999.4%/962.2%/1055.1%の祝福・呪怨複合属性ダメージを与える。\n自身が『決断』状態の場合、今回のスキルダメージの貫通が15%、スキルダメージが150%上昇する。"
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "축복주원",
     "type": "단일피해",
     "cool": 4,
-    "description": "敵単体に攻撃力1409.8%/1554.3%/1496.5%/1641.0%の祝福・呪怨複合属性ダメージを与え、3ターンの間、自身の攻撃力が48.8%/53.8%/51.8%/56.8%上昇する。\n味方全体に『不凋の幕』を付与する。"
+    "description": "敵単体に攻撃力1297.7%/1430.6%/1377.5%/1510.4%の祝福・呪怨複合属性ダメージを与え、3ターンの間、自身の攻撃力が48.8%/53.8%/51.8%/56.8%上昇する。\n味方全体に『不凋の幕』を付与する。"
   },
   "passive1": {
     "name": "救世",
@@ -153,7 +153,7 @@ window.cnCharacterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "对1名敌人造成620.2%/683.8%/658.4%/721.9%攻击力的祝福诅咒双属性伤害，使自身暴击效果提升117.1%/129.1%/124.3%/136.3%，持续2回合，并使自身获得『决断』。"
+    "description": "对1名敌人造成562.6%/620.2%/597.2%/654.8%攻击力的祝福诅咒双属性伤害，使自身暴击效果提升117.1%/129.1%/124.3%/136.3%，持续2回合，并使自身获得『决断』。"
   },
   "skill2": {
     "name": "救赎镜域",
@@ -169,14 +169,14 @@ window.cnCharacterSkillsData["아란·린화"] = {
     "type": "단일피해",
     "sp": 26,
     "cool": 1,
-    "description": "对1名敌人造成1636.9%/1804.7%/1737.6%/1905.3%攻击力的祝福诅咒双属性伤害。\n若自身处于『决断』，本次技能伤害的穿透提升15%，且技能伤害提升50%。"
+    "description": "对1名敌人造成906.5%/999.4%/962.2%/1055.1%攻击力的祝福诅咒双属性伤害。\n若自身处于『决断』，本次技能伤害的穿透提升15%，且技能伤害提升150%。"
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "축복주원",
     "type": "단일피해",
     "cool": 4,
-    "description": "对1名敌人造成1409.8%/1554.3%/1496.5%/1641.0%攻击力的祝福诅咒双属性伤害，并使自身攻击力提升48.8%/53.8%/51.8%/56.8%，持续3回合。\n随后为我方所有同伴添加『不凋帷幕』。"
+    "description": "对1名敌人造成1297.7%/1430.6%/1377.5%/1510.4%攻击力的祝福诅咒双属性伤害，并使自身攻击力提升48.8%/53.8%/51.8%/56.8%，持续3回合。\n随后为我方所有同伴添加『不凋帷幕』。"
   },
   "passive1": {
     "name": "救世",

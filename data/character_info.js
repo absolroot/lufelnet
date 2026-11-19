@@ -46,11 +46,10 @@ Object.assign(window.characterData, {
         "persona_jp": "ジェンティレスキ",
         "persona_cn": "真蒂莱斯基",
         "name": "히라노 아란·린화",
-        "name_en": "Anri.Lumina",
+        "name_en": "Aran Hirano·Lumina",
         "name_jp": "平野亜蘭・凛華",
         "name_cn": "平野亚兰·凛华",
-        "codename": "ANRI",
-        "codename_en": "Anri.Lumina",
+        "codename": "ANRI·Lumina",
         "skill_item": 8
     },
     "류지·댄싱 스타": {

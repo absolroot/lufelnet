@@ -157,6 +157,56 @@ const penetrateData = {
       ]
     }
   ],
+  "아란·린화": [
+    {
+      "id": "anri-lumina-skill3-pierce",
+      "type": "스킬3",
+      "type_cn": "技能3",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "target_cn": "自身",
+      "skillIcon": "/assets/img/skill-element/축복주원.png",
+      "skillName": "명천의 유광",
+      "skillName_en": "Skill 3",
+      "skillName_jp": "スキル3",
+      "skillName_cn": "冥天流光",
+      "options": [],
+      "options_cn": [],
+      "value": 15,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "duration_cn": "-",
+      "note": "『결단』 보유 시 스킬3 한정",
+      "note_en": "Skill 3 only, while Resolve is active",
+      "note_jp": "『決断』状態のスキル3のみ",
+      "note_cn": "持有『决断』时，仅限技能3"
+    },
+    {
+      "id": "anri-lumina-ritual6-highlight-pierce",
+      "type": "의식6",
+      "type_cn": "意识6",
+      "target": "자신",
+      "target_en": "Self",
+      "target_jp": "自分",
+      "target_cn": "自身",
+      "skillIcon": "/assets/img/character-detail/ritual6.png",
+      "skillName": "의식6",
+      "skillName_en": "Awareness 6",
+      "skillName_jp": "意識6",
+      "skillName_cn": "意识6",
+      "options": [],
+      "options_cn": [],
+      "value": 15,
+      "skillEffectAmpAffected": false,
+      "duration": "-",
+      "duration_cn": "-",
+      "note": "HIGHLIGHT 한정",
+      "note_en": "HIGHLIGHT only",
+      "note_jp": "HIGHLIGHTのみ",
+      "note_cn": "仅限HIGHLIGHT"
+    }
+  ],
   "미쿠": [
     {
       "id": "miku-penetrate",

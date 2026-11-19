@@ -43,6 +43,7 @@
   function localizeCnServerLabel(text) {
     if (typeof text !== 'string' || !text) return text;
     return text
+      .replace(/\bKR\s*\/\s*CN\b/gi, 'CN')
       .replace(/\bKR\s+v(?=\d)/gi, 'CN v')
       .replace(/\bKR\s+V(?=\d)/g, 'CN V')
       .replace(/\bKR(?=\s+\d)/g, 'CN')

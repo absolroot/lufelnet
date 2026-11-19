@@ -8,8 +8,8 @@
     const POPULAR_CHARACTERS_OVERRIDE = { kr: null, en: null, jp: null };
     const POPULAR_CHARACTERS_FIXED = {
         kr: [
-            { name: '코토네', badge: 'NEW' },
             { name: '미쿠', badge: 'HOT' },
+            { name: '코토네', badge: 'HOT' },
         ],
         en: [
             { name: '쇼키·암야', badge: 'NEW' },
@@ -223,13 +223,21 @@
         });
     }
 
+    function sortByBadge(keys, badgeMap) {
+        const priority = { NEW: 0, HOT: 1 };
+        return keys.map((name, index) => ({ name, index }))
+            .sort((a, b) => (priority[badgeMap.get(a.name)] ?? 2) - (priority[badgeMap.get(b.name)] ?? 2) || a.index - b.index)
+            .map(item => item.name);
+    }
+
     function resolvePopularCharacters(listKey, releaseOrderCharacterData) {
         const langKey = POPULAR_CHARACTERS_FIXED[listKey] ? listKey : 'en';
         const overrideItems = normalizeItems(POPULAR_CHARACTERS_OVERRIDE[langKey]);
         if (overrideItems) {
+            const badgeMap = new Map(overrideItems.filter(x => x.badge).map(x => [x.name, x.badge]));
             return {
-                orderedKeys: overrideItems.map(x => x.name),
-                badgeMap: new Map(overrideItems.filter(x => x.badge).map(x => [x.name, x.badge])),
+                orderedKeys: sortByBadge(overrideItems.map(x => x.name), badgeMap),
+                badgeMap,
             };
         }
 
@@ -256,11 +264,12 @@
         const badgeMap = new Map();
         if (topAuto) badgeMap.set(topAuto, 'NEW');
         fixedItems.forEach(it => {
-            if (!it || !it.name || !it.badge) return;
-            badgeMap.set(it.name, it.badge);
+            if (!it || !it.name) return;
+            if (it.badge) badgeMap.set(it.name, it.badge);
+            else badgeMap.delete(it.name);
         });
 
-        return { orderedKeys: merged, badgeMap };
+        return { orderedKeys: sortByBadge(merged, badgeMap), badgeMap };
     }
 
     function renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData) {

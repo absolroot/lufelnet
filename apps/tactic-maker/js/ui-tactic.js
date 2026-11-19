@@ -145,6 +145,13 @@ export class TacticUI {
                 }
             });
         });
+        const repositionOpenDropdowns = () => {
+            document.querySelectorAll('.custom-select-options.show').forEach(menu => {
+                menu._positionDropdown?.();
+            });
+        };
+        document.addEventListener('scroll', repositionOpenDropdowns, true);
+        window.addEventListener('resize', repositionOpenDropdowns);
     }
 
     isEditMode() {
@@ -1181,6 +1188,27 @@ export class TacticUI {
         updateTrigger();
         renderOptions();
 
+        menu._positionDropdown = () => {
+            const rect = trigger.getBoundingClientRect();
+            const padding = 8;
+            const gap = 4;
+            const viewportWidth = document.documentElement.clientWidth;
+            const viewportHeight = document.documentElement.clientHeight;
+            menu.style.minWidth = `${Math.min(rect.width, viewportWidth - padding * 2)}px`;
+            menu.style.maxWidth = `${Math.max(0, Math.min(220, viewportWidth - padding * 2))}px`;
+            menu.style.maxHeight = '240px';
+            const desiredHeight = menu.offsetHeight;
+            const below = Math.max(0, viewportHeight - rect.bottom - gap - padding);
+            const above = Math.max(0, rect.top - gap - padding);
+            const openAbove = below < desiredHeight && above > below;
+            const available = openAbove ? above : below;
+            menu.style.maxHeight = `${Math.min(240, available)}px`;
+            const height = menu.offsetHeight;
+            const width = menu.offsetWidth;
+            menu.style.left = `${Math.max(padding, Math.min(rect.left, viewportWidth - width - padding))}px`;
+            menu.style.top = `${openAbove ? rect.top - gap - height : rect.bottom + gap}px`;
+        };
+
         trigger.addEventListener('click', (e) => {
             if (!document.body.classList.contains('tactic-edit-mode')) return;
             e.stopPropagation();
@@ -1189,9 +1217,7 @@ export class TacticUI {
                 if (el !== menu) el.classList.remove('show');
             });
             menu.classList.toggle('show');
-
-            // Adjust position if overflowing bottom of screen?
-            // For now CSS scrolling max-height handles it.
+            if (menu.classList.contains('show')) menu._positionDropdown();
         });
 
         // Close on outside click is handled by global listener in createActionItem or main setup...

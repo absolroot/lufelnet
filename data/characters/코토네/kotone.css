@@ -1,6 +1,6 @@
 
 body {
-    background-color: #fff9fb;
+    background-color: #f4edf0;
 }
 
 /* Keep the shared footer surface separate from Kotone's page background. */
@@ -45,7 +45,7 @@ h1.character-name::before,
 }
 
 .chracter-role {
-    background: #99414f;
+    background: #82414d;
 }
 
 /* Main character art only; the Persona carousel image remains unchanged. */
@@ -59,13 +59,13 @@ h1.character-name::before,
 }
 
 .card-style {
-    background: #99414f;
+    background: #82414d;
     border-bottom: 3px solid #ffd500;
 }
 
 .main-nav,
 .main-nav .logo-container {
-    background: #99414f;
+    background: #82414d;
 }
 
 .operation-settings .kotone-operation-tab.active {

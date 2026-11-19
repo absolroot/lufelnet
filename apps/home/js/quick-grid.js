@@ -5,9 +5,14 @@
     // New 배지를 표시할 아이템 목록
     const newItems = [
         'character',
+        'persona',
         'revelations',
-        'criticalCalc',
-        'gallery'
+        'wonderweapon',
+        'materialCalc',
+        'gallery',
+        'synergy',
+        'schedule',
+        'maps'
     ];
 
     const HOME_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];

@@ -39,6 +39,23 @@ class VersionChecker {
     static check() {
         // 로컬 스토리지에서 마지막으로 확인한 버전 가져오기
         const lastVersion = localStorage.getItem('appVersion');
+        const historyRevisionKey = 'lufelnetVersionHistoryRevision';
+        const historyRevision = localStorage.getItem(historyRevisionKey);
+        // 5.1.1 reorganizes the historical labels. Stored values without this
+        // marker refer to the original numbering, not the new display labels.
+        if (historyRevision !== '2' && this.compareVersions(APP_VERSION, '5.1.1') >= 0) {
+            if (lastVersion !== null && this.compareVersions(lastVersion, '5.1.4') <= 0) {
+                this.showUpdateNotification(lastVersion, APP_VERSION, true);
+            } else if (lastVersion === '5.2.0' && this.compareVersions(APP_VERSION, '5.1.1') > 0) {
+                this.showUpdateNotification('5.1.1', APP_VERSION);
+            } else if (lastVersion !== null && lastVersion !== '5.2.0' && this.compareVersions(lastVersion, APP_VERSION) > 0) {
+                console.warn('[VersionChecker] Ignored stale app version:', APP_VERSION, 'stored:', lastVersion);
+                return;
+            }
+            localStorage.setItem('appVersion', APP_VERSION);
+            localStorage.setItem(historyRevisionKey, '2');
+            return;
+        }
         //console.log('Current stored version:', lastVersion);
         //console.log('Current app version:', APP_VERSION);
         if (lastVersion === null) {
@@ -111,6 +128,19 @@ class VersionChecker {
             const res = await fetch(url, { cache: 'no-cache' });
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             const text = await res.text();
+            // Historical display versions were reorganized in 5.2.0. Retain the
+            // original release numbers when selecting updates for older clients.
+            let legacyVersions = {};
+            try {
+                const legacyPath = (typeof BASE_URL !== 'undefined' ? BASE_URL : '') + '/assets/version/legacy-versions.json';
+                const legacyUrl = (typeof window !== 'undefined' && window.VersionRuntime && typeof window.VersionRuntime.assetUrl === 'function')
+                    ? window.VersionRuntime.assetUrl(legacyPath)
+                    : `${legacyPath}?v=${APP_VERSION}`;
+                const legacyResponse = await fetch(legacyUrl, { cache: 'no-cache' });
+                if (legacyResponse.ok) legacyVersions = await legacyResponse.json();
+            } catch (error) {
+                console.warn('[VersionChecker] legacy version mapping unavailable:', error);
+            }
             const lines = text.split(/\r?\n/).filter(l => l.trim().length);
             if (!lines.length) return [];
             const body = lines.slice(1);
@@ -121,7 +151,8 @@ class VersionChecker {
                 const version = (parts[1] || '').trim();
                 const content = parts.slice(2).join(',').trim();
                 const contentPatched = content.replace(/\|/g, ', ');
-                return { date, version, content: contentPatched };
+                const hasLegacyVersion = Object.prototype.hasOwnProperty.call(legacyVersions, version);
+                return { date, version, content: contentPatched, legacyVersion: legacyVersions[version] || version, hasLegacyVersion };
             });
             return records;
         } catch (err) {
@@ -130,13 +161,15 @@ class VersionChecker {
         }
     }
 
-    static filterUpdatesBetween(updates, fromVer, toVer) {
+    static filterUpdatesBetween(updates, fromVer, toVer, useLegacyVersions = false) {
         const out = [];
         for (const u of updates) {
-            const v = u.version || '';
-            // CSV는 v 접두사가 포함될 수 있음 (예: v2.9.7)
-            const cmpFrom = this.compareVersions(fromVer, v);
-            const cmpTo = this.compareVersions(v, toVer);
+            if (useLegacyVersions && !u.hasLegacyVersion && this.compareVersions(u.version, '5.1.1') < 0) continue;
+            const v = useLegacyVersions && u.hasLegacyVersion ? u.legacyVersion : (u.version || '');
+            // Legacy entries are compared to the last original release; later
+            // entries use the new version sequence.
+            const cmpFrom = useLegacyVersions && !u.hasLegacyVersion ? -1 : this.compareVersions(fromVer, v);
+            const cmpTo = this.compareVersions(v, useLegacyVersions && u.hasLegacyVersion ? '5.1.4' : toVer);
             if (cmpFrom < 0 && cmpTo <= 0) {
                 out.push(u);
             }
@@ -146,7 +179,7 @@ class VersionChecker {
         return out;
     }
 
-    static async showUpdateNotification(oldVersion, newVersion) {
+    static async showUpdateNotification(oldVersion, newVersion, useLegacyVersions = false) {
         // 현재 언어 확인
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
 
@@ -154,21 +187,21 @@ class VersionChecker {
         const i18nTexts = {
             kr: {
                 title: "✨ 업데이트 안내",
-                message: `새로운 버전이 적용되었습니다. (v${oldVersion} → v${newVersion})`,
+                message: useLegacyVersions ? `새로운 버전이 적용되었습니다. (v${newVersion})` : `새로운 버전이 적용되었습니다. (v${oldVersion} → v${newVersion})`,
                 changes: "변경 사항",
                 reload: "새로고침",
                 close: "닫기"
             },
             en: {
                 title: "✨ Update Notice",
-                message: `A new version has been applied. (v${oldVersion} → v${newVersion})`,
+                message: useLegacyVersions ? `A new version has been applied. (v${newVersion})` : `A new version has been applied. (v${oldVersion} → v${newVersion})`,
                 changes: "Changes",
                 reload: "Refresh",
                 close: "Close"
             },
             jp: {
                 title: "✨ アップデート案内",
-                message: `新しいバージョンが適用されました。(v${oldVersion} → v${newVersion})`,
+                message: useLegacyVersions ? `新しいバージョンが適用されました。(v${newVersion})` : `新しいバージョンが適用されました。(v${oldVersion} → v${newVersion})`,
                 changes: "変更点",
                 reload: "更新",
                 close: "閉じる"
@@ -197,7 +230,7 @@ class VersionChecker {
         (async () => {
             try {
                 const all = await this.loadUpdatesCSV();
-                const between = this.filterUpdatesBetween(all, oldVersion, newVersion);
+                const between = this.filterUpdatesBetween(all, oldVersion, newVersion, useLegacyVersions);
                 const wrap = notification.querySelector('#update-changes');
                 if (wrap && between.length) {
                     const frag = document.createDocumentFragment();

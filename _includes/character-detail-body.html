@@ -2802,7 +2802,7 @@
         // 파티 유무 확인 (멤버가 하나라도 있는 경우만 사용)
         const hasParty = Array.isArray(data.party) && data.party.some(function (p) {
             return p && Array.isArray(p.members) && p.members.some(function (m) {
-                return typeof m === 'string' && m.trim().length > 0;
+                return getPartyMember(m).name.trim().length > 0;
             });
         });
 
@@ -3564,6 +3564,27 @@
         }
     }
 
+    function getPartyMember(member) {
+        if (typeof member === 'string') return { name: member };
+        return member && typeof member.name === 'string' ? member : { name: '' };
+    }
+
+    function appendPartyRoleIcon(container, member) {
+        if (member.name !== 'J&C') return;
+        const roleKeys = {
+            '구원': 'medic', '굴복': 'breaker', '반항': 'assassin', '방위': 'guardian',
+            '우월': 'striker', '지배': 'controller', '해명': 'navigator', '자율': 'autonomous'
+        };
+        const role = Object.prototype.hasOwnProperty.call(roleKeys, member.role) ? member.role : '우월';
+        const roleName = getCharacterI18nText(`positions.${roleKeys[role]}`, role);
+        const icon = document.createElement('img');
+        icon.className = 'party-role-icon';
+        icon.src = `{{ site.baseurl }}/assets/img/character-cards/직업_${role}.png`;
+        icon.alt = roleName;
+        icon.title = roleName;
+        container.appendChild(icon);
+    }
+
     function loadRecommendedParty(partyData, hasFriends) {
         const container = document.getElementById('recommended-party-content');
         container.innerHTML = '';
@@ -3618,12 +3639,14 @@
                 const isFiveMemberParty = totalMembers === 5;
 
                 for (let i = 0; i < totalMembers; i++) {
-                    const memberName = members[i];
+                    const member = getPartyMember(members[i]);
+                    const memberName = member.name;
                     if (!memberName) continue;
 
                     // Case: 4th member in a 5-member party -> Combine with 5th
                     if (isFiveMemberParty && i === 3) {
-                        const nextMemberName = members[i + 1];
+                        const nextMember = getPartyMember(members[i + 1]);
+                        const nextMemberName = nextMember.name;
                         if (nextMemberName) {
                             const memberItem = document.createElement('a');
                             memberItem.className = 'party-member';
@@ -3652,7 +3675,9 @@
                             img.src = `/assets/img/tier/${memberName}.webp`;
                             img.alt = memberName;
                             img.onerror = function () { this.style.display = 'none'; };
+                            link.className = 'party-portrait';
                             link.appendChild(img);
+                            appendPartyRoleIcon(link, member);
                             memberItem.appendChild(link);
 
                             // Sub Member Badge (5th member)
@@ -3665,6 +3690,7 @@
                             subImg.src = `/assets/img/tier/${nextMemberName}.webp`;
                             subImg.alt = nextMemberName;
                             subBadge.appendChild(subImg);
+                            appendPartyRoleIcon(subBadge, nextMember);
                             memberItem.appendChild(subBadge);
 
                             const name = document.createElement('span');
@@ -3714,7 +3740,9 @@
                     name.className = 'character-name';
                     name.textContent = getLocalizedCharacterName(memberName);
 
+                    link.className = 'party-portrait';
                     link.appendChild(img);
+                    appendPartyRoleIcon(link, member);
                     memberItem.appendChild(link);
                     memberItem.appendChild(name);
                     partyList.appendChild(memberItem);

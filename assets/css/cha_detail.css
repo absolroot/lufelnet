@@ -2093,6 +2093,31 @@ h2 {
     transition: filter 0.3s ease;
 }
 
+.party-portrait {
+    display: block;
+    position: relative;
+    line-height: 0;
+}
+
+.party-member .party-role-icon {
+    position: absolute;
+    right: 0;
+    bottom: 4px;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    object-fit: contain;
+    border-radius: 0;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+}
+
+.party-member .sub-member-badge .party-role-icon {
+    right: 0;
+    bottom: 0;
+    width: 12px;
+    height: 12px;
+}
+
 .party-member {
     display: flex;
     flex-direction: column;

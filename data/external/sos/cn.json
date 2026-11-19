@@ -1,5 +1,65 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Fire",
+                "Curse"
+              ],
+              "Weak": [
+                "Bless"
+              ]
+            },
+            "image": "B-guaiwutouxiang-baphomet.png",
+            "level": "89",
+            "name": "被操控的巴风特",
+            "skill": "103,81060,353,904",
+            "sn": 554101,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": 78401
+      },
+      {
+        "bonusRule": null,
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Psychokinesis"
+              ],
+              "Weak": [
+                "Wind"
+              ]
+            },
+            "image": "B-guaiwutouxiang-ookuni.png",
+            "level": "89",
+            "name": "被操控的大国主",
+            "skill": "1016,1021,1404",
+            "sn": 552111,
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": 78402
+      }
+    ],
+    "buff": "先民圣所: 造成弱点伤害时，获得『先祖赐福』，同时若造成的伤害为双属性伤害或追加伤害，增益效果强化为『先祖神佑』。『先祖赐福』：最终伤害提升20%，若强化为『先祖神佑』，最终伤害提升增加至40%，持续2回合。",
+    "endTime": "2026-12-10 06:30:00",
+    "startTime": "2026-11-19 07:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

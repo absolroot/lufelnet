@@ -13,7 +13,7 @@
   },
   "fixed_skill": {
     "cost": "SP 22",
-    "desc": "Deal Curse damage to all foes equal to 150.0%/157.5%/165.0% of Attack.\nIncrease all foes' damage taken by 12.0%/12.6%/13.2%, and also, when taking an attack from a Sweeper ally, increase critical damage taken by 10.0%/10.5%/11.0%. Lasts for 3 turns.",
+    "desc": "Deal Curse damage to all foes equal to 150.0%/157.5%/165.0% of Attack.\nIncrease all foes' damage taken by 12.0%/12.6%/13.2%, and also, when taking an attack from a Sweeper ally, increase critical taken rate by 10.0%/10.5%/11.0%. Lasts for 3 turns.",
     "level": "6/7/8",
     "name": "Sepulchral Scythe"
   },

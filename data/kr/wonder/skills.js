@@ -2703,11 +2703,11 @@ const personaSkillList = {
     },
     "그림자 새장": {
         "name_jp": "影の牢獄",
-        "name_en": "Shadow Cage",
+        "name_en": "Painted Cage",
         "name_cn": "涂影囚笼",
         "description": "3턴 동안 적 1명이 공격받을 때 해당 공격의 공격력이 18% 증가한다. 대상이 약점 대미지를 받으면 『저주의 그림』 상태가 되고, 약점이 아닌 대미지를 받으면 『그림자 속박』 상태가 된다.\n『저주의 그림』: 받는 총 대미지 증가 효과가 8% 증가하고, 약점 속성 공격으로 받는 크리티컬 효과가 30% 증가한다.\n『그림자 속박』: 공격력이 50% 감소하고, 받는 크리티컬 효과가 30% 증가한다.",
         "description_jp": "3ターンの間、敵1体が攻撃を受ける時、その攻撃の攻撃力が18%上昇する。弱点ダメージを受けると『呪画』状態に、弱点以外のダメージを受けると『影縛り』状態になる。\n『呪画』：被ダメージの総増幅が8%上昇し、弱点属性で受けるクリティカルダメージが30%上昇する。\n『影縛り』：攻撃力が50%低下し、受けるクリティカルダメージが30%上昇する。",
-        "description_en": "For 3 turns, increase the Attack of each attack against 1 foe by 18%. When the foe takes Weakness damage, inflict [Cursed Painting]; when they take non-Weakness damage, inflict [Shadow Bind].\n[Cursed Painting]: Increase total damage amplification received by 8% and CRIT DMG received from Weakness attributes by 30%.\n[Shadow Bind]: Decrease Attack by 50% and increase CRIT DMG received by 30%.",
+        "description_en": "Skill and status names are provisional. For 3 turns, increase the Attack of each attack against 1 foe by 18%. When the foe takes Weakness damage, change their state to [Cursed Paint]; when they take non-Weakness damage, change it to [Shadow Cage].\n[Cursed Paint]: Increase total damage taken amplification by 8% and CRIT DMG taken from Weakness attacks by 30%.\n[Shadow Cage]: Decrease Attack by 50% and increase CRIT DMG taken by 30%.",
         "description_cn": "使1名敌人受到攻击时该次攻击力提升18%，受到弱点伤害时状态转变为『咒绘』，受非弱点伤害时转变为『影囚』，持续3回合。\n『咒绘』：受总伤害增幅提升8%，受弱点属性的暴击效果提升30%。\n『影囚』：攻击力降低50%，受暴击效果提升30%。",
         "type": "지원",
         "target": "단일",

@@ -1,4 +1,23 @@
 window.I18N_PAGE_SYNERGY_KR = {
+    aranAlbumRewards: "조각 보상",
+    aranAlbumRewardTotal: "그림당 {each}개 · 전체 {total}개",
+    aranAlbumFragmentCount: "조각 {count}개",
+    aranAlbumCurrency: "이계 엠버",
+
+    aranAlbumPrevious: "이전 그림",
+    aranAlbumNext: "다음 그림",
+
+    synergyTypeLabel: "구분",
+    synergyTypeStandard: "협력자",
+    synergyTypeCyber: "동화자",
+
+    aranAlbumTitle: "아란의 화첩",
+    aranAlbumDescription: "도시 일정에서 그림 조각을 획득할 수 있습니다. 그림 한 장에 조각 15개가 필요하며, 3·6·9·12·15개를 모을 때마다 보상을 받습니다.",
+    aranAlbumSpoiler: "그림에는 스포일러가 포함되어 있습니다.",
+    aranAlbumPage: "그림 {number}",
+    aranAlbumUnlock: "협력자 랭크 {rank} 해금",
+    aranTranslationPending: "중국어 자료를 바탕으로 한 임시 번역입니다. 실제 출시 시 선택지와 선물 정보가 달라질 수 있습니다.",
+
     // Page metadata
     pageTitle: '협력자',
     pageDescription: '협력자별 선택지 정답, 선호 선물, 레벨별 효과를 확인합니다.',
@@ -12,7 +31,7 @@ window.I18N_PAGE_SYNERGY_KR = {
     filterEvening: '저녁',
     filterNight: '밤',
     filterAfternoon: '오후',
-    filterCyber: '사이버',
+    filterCyber: '동화자',
 
     // Search & UI
     searchPlaceholder: '캐릭터 검색...',

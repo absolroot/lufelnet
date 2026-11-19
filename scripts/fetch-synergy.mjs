@@ -39,7 +39,7 @@ const AUTO_MIN_SCAN_END = 33;
 const REQUEST_TIMEOUT_MS = 15000;
 const REQUEST_RETRIES = 1;
 const REQUEST_DELAY_MS = 600;
-const LOCAL_ONLY_DATA_KEYS = ['unlock_notes'];
+const LOCAL_ONLY_DATA_KEYS = ['unlock_notes', 'picture_album', 'picture_album_rewards'];
 const ALLOW_STRUCTURAL_SHRINK = process.env.SYNERGY_ALLOW_STRUCTURAL_SHRINK === '1';
 const KNOWN_BAD_PAYLOAD_STRINGS = [
   "'NoneType' object is not subscriptable",

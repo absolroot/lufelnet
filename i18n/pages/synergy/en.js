@@ -1,4 +1,23 @@
 window.I18N_PAGE_SYNERGY_EN = {
+    aranAlbumRewards: "Fragment rewards",
+    aranAlbumRewardTotal: "{each} per picture · {total} total",
+    aranAlbumFragmentCount: "{count} fragments",
+    aranAlbumCurrency: "Meta Jewel",
+
+    aranAlbumPrevious: "Previous picture",
+    aranAlbumNext: "Next picture",
+
+    synergyTypeLabel: "Synergy type",
+    synergyTypeStandard: "Synergy",
+    synergyTypeCyber: "Cyber",
+
+    aranAlbumTitle: "Aran's Album",
+    aranAlbumDescription: "Each picture has 15 fragments. Collect fragments through city activities to earn rewards at 3, 6, 9, 12, and 15 fragments.",
+    aranAlbumSpoiler: "The pictures contain spoilers.",
+    aranAlbumPage: "Picture {number}",
+    aranAlbumUnlock: "Unlocks at Synergy Rank {rank}",
+    aranTranslationPending: "Reward details are provisional translations. Dialogue and gift information will be added after verification.",
+
     // Page metadata
     pageTitle: 'Synergy',
     pageDescription: 'Check correct dialogue choices, preferred gifts, and level-up effects for each confidant.',

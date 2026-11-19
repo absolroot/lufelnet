@@ -1,4 +1,23 @@
 window.I18N_PAGE_SYNERGY_CN = {
+    aranAlbumRewards: "碎片奖励",
+    aranAlbumRewardTotal: "每幅{each}个 · 共{total}个",
+    aranAlbumFragmentCount: "{count}块碎片",
+    aranAlbumCurrency: "异界晶珀",
+
+    aranAlbumPrevious: "上一幅",
+    aranAlbumNext: "下一幅",
+
+    synergyTypeLabel: "类型",
+    synergyTypeStandard: "协同者",
+    synergyTypeCyber: "共叙者",
+
+    aranAlbumTitle: "亚兰的画册",
+    aranAlbumDescription: "每幅画有15块碎片。碎片可通过都市日程获得，收集3、6、9、12、15块时分别获得奖励。",
+    aranAlbumSpoiler: "画作包含剧透。",
+    aranAlbumPage: "画作 {number}",
+    aranAlbumUnlock: "协同等级 {rank} 解锁",
+    aranTranslationPending: "奖励信息为临时翻译，选项和礼物信息将在确认后补充。",
+
     "pageTitle": "协同者",
     "navCurrent": "协同者",
     "pageDescription": "查看各协同者的选项答案、偏好礼物与等级效果。",
@@ -7,7 +26,7 @@ window.I18N_PAGE_SYNERGY_CN = {
     "filterEvening": "傍晚",
     "filterNight": "夜晚",
     "filterAfternoon": "下午",
-    "filterCyber": "赛博",
+    "filterCyber": "共叙者",
     "searchPlaceholder": "搜索怪盗...",
     "labelShowSpoiler": "显示剧透",
     "noResults": "没有搜索结果",

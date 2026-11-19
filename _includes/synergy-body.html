@@ -17,6 +17,10 @@ window.LufelPageLifecycle?.hold('synergy');
 
     <!-- i18n 서비스 -->
     <script src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
+    <script src="{{ site.baseurl }}/i18n/pages/synergy/kr.js?h={{ site.data.asset_versions.files['/i18n/pages/synergy/kr.js'] }}"></script>
+    <script src="{{ site.baseurl }}/i18n/pages/synergy/en.js?h={{ site.data.asset_versions.files['/i18n/pages/synergy/en.js'] }}"></script>
+    <script src="{{ site.baseurl }}/i18n/pages/synergy/jp.js?h={{ site.data.asset_versions.files['/i18n/pages/synergy/jp.js'] }}"></script>
+    <script src="{{ site.baseurl }}/i18n/pages/synergy/cn.js?h={{ site.data.asset_versions.files['/i18n/pages/synergy/cn.js'] }}"></script>
     <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
     <div class="navigation-path">
@@ -32,6 +36,11 @@ window.LufelPageLifecycle?.hold('synergy');
         {% include nitro-ad.html id="synergy-header-banner" format="leaderboard" class="nitro-ad-container--header" %}
     </div>
 
+    <div class="synergy-type-switch" role="group" aria-label="Synergy type" data-i18n-aria="synergyTypeLabel" hidden>
+        <button type="button" class="synergy-type-btn active" data-synergy-type="standard" aria-pressed="true" data-i18n="synergyTypeStandard">협력자</button>
+        <button type="button" class="synergy-type-btn" data-synergy-type="cyber" aria-pressed="false" data-i18n="synergyTypeCyber">동화자</button>
+    </div>
+
     <!-- Filter section -->
     <div class="filter-section">
         <div class="filter-header">
@@ -40,7 +49,6 @@ window.LufelPageLifecycle?.hold('synergy');
                 <button class="time-filter-btn" data-time="After School" data-i18n="filterAfterSchool">방과 후</button>
                 <button class="time-filter-btn" data-time="Evening" data-i18n="filterEvening">저녁</button>
                 <button class="time-filter-btn" data-time="Night" data-i18n="filterNight">밤</button>
-                <button class="time-filter-btn" data-time="Cyber" data-i18n="filterCyber">사이버</button>
             </div>
             <div class="search-container">
                 <div class="search-icon">

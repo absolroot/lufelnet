@@ -11,6 +11,7 @@
     let mapNameTranslations = {};
     let currentLanguage = 'kr';
     let selectedCharacter = null;
+    let selectedSynergyType = 'standard';
     // 필터 변수는 synergy_search.js로 이동
     let hasKrFallback = false; // 한국어 폴백 사용 여부
 
@@ -167,10 +168,10 @@
     function getCyberTimeFallback() {
         const lang = currentLanguage || getCurrentLanguage();
         const labels = {
-            kr: '사이버',
+            kr: '동화자',
             en: 'Cyber',
             jp: 'サイバー',
-            cn: '赛博'
+            cn: '共叙者'
         };
         return labels[lang] || labels.en;
     }
@@ -930,6 +931,7 @@
             const tab = document.createElement('div');
             tab.className = 'character-tab synergy-tab-pending';
             tab.dataset.character = characterName;
+            tab.dataset.synergyType = char.cybercoop ? 'cyber' : 'standard';
 
             // 필터링용 데이터 속성 추가
             const timeValue = char.cybercoop ? 'Cyber' : (characterTime || char.time || char.appear || '');
@@ -1000,6 +1002,16 @@
         });
         await Promise.all(languageCheckPromises);
 
+        const typeSwitch = document.querySelector('.synergy-type-switch');
+        if (typeSwitch) {
+            const hasAvailableCyber = sortedCharacters.some(name => {
+                if (!characterList[name].cybercoop) return false;
+                const tab = document.querySelector(`.character-tab[data-character="${name}"]`);
+                return tab && tab.dataset.hasLanguageFile === 'true';
+            });
+            typeSwitch.hidden = !hasAvailableCyber;
+        }
+
         // 필터 적용
         applyFilters();
 
@@ -1045,11 +1057,11 @@
         const showSpoiler = window.synergySearch?.getShowSpoiler() || false;
 
         tabs.forEach(tab => {
-            let shouldShow = true;
+            let shouldShow = tab.dataset.synergyType === selectedSynergyType;
             const isSelectedTab = !!selectedCharacter && tab.dataset.character === selectedCharacter;
 
             // 1. 시간 필터
-            if (timeFilter !== 'all') {
+            if (shouldShow && timeFilter !== 'all') {
                 const tabTime = tab.dataset.characterTime || '';
                 const normalizedTime = normalizeTimeValue(tabTime);
                 if (normalizedTime !== timeFilter) {
@@ -1108,6 +1120,40 @@
     // applyFilters를 전역으로 노출
     window.applyFilters = applyFilters;
 
+    function setSynergyType(type, selectFirst = true) {
+        selectedSynergyType = type === 'cyber' ? 'cyber' : 'standard';
+        document.querySelectorAll('.synergy-type-btn').forEach(button => {
+            const active = button.dataset.synergyType === selectedSynergyType;
+            button.classList.toggle('active', active);
+            button.setAttribute('aria-pressed', String(active));
+        });
+        const timeFilter = document.querySelector('.time-filter');
+        if (timeFilter) timeFilter.hidden = selectedSynergyType === 'cyber';
+        document.querySelectorAll('.time-filter-btn').forEach(button => {
+            button.classList.toggle('active', button.dataset.time === 'all');
+        });
+        window.synergySearch?.setCurrentTimeFilter('all');
+        const search = document.getElementById('characterSearch');
+        if (search) search.value = '';
+        window.synergySearch?.setCurrentSearchQuery('');
+        applyFilters();
+        if (!selectFirst) return;
+        const first = document.querySelector('.character-tab:not([style*="display: none"])');
+        if (first) {
+            selectCharacter(first.dataset.character, true);
+        } else {
+            selectedCharacter = null;
+            setSynergyDetailContent(`<div class="detail-placeholder">${getI18nText('noResults')}</div>`);
+            syncSynergyEventsAd(false);
+        }
+    }
+
+    function setupSynergyTypes() {
+        document.querySelectorAll('.synergy-type-btn').forEach(button => {
+            button.addEventListener('click', () => setSynergyType(button.dataset.synergyType));
+        });
+    }
+
     const SYNERGY_EVENTS_AD_ID = 'synergy-events-banner';
     const SYNERGY_EVENTS_AD_MARKER = '<!-- synergy-events-ad -->';
 
@@ -1147,7 +1193,7 @@
     }
 
     // 캐릭터 선택 (전역으로 노출)
-    async function selectCharacter(characterName, forceLoad = false) {
+    async function selectCharacter(characterName, forceLoad = false, skipUrlUpdate = false) {
         if (!forceLoad && selectedCharacter === characterName) return;
 
         selectedCharacter = characterName;
@@ -1159,7 +1205,8 @@
         });
 
         // URL 파라미터 및 타이틀 업데이트
-        await updateURLAndTitle(characterName);
+        await updateURLAndTitle(characterName, skipUrlUpdate);
+        if (selectedCharacter !== characterName) return;
 
         // 상세 정보 로드 및 표시
         const detailContainer = document.getElementById('characterDetail');
@@ -1170,6 +1217,7 @@
         setSynergyDetailContent(`<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${loadingText}</div>`);
 
         const data = await loadCharacterData(characterName);
+        if (selectedCharacter !== characterName) return;
         if (!data) {
             const errorText = t('msgLoadError');
             setSynergyDetailContent(`<div style="padding: 40px; text-align: center; color: rgba(255,255,255,0.5);">${errorText}</div>`);
@@ -1198,7 +1246,7 @@
     window.selectCharacter = selectCharacter;
 
     // URL 파라미터 및 타이틀 업데이트
-    async function updateURLAndTitle(characterName) {
+    async function updateURLAndTitle(characterName, skipUrlUpdate = false) {
         // SEO 페이지 생성기와 같은 규칙으로 코드네임/영문 이름 슬러그 사용
         const charCodeName = getCharacterCodeName(characterName);
 
@@ -1230,10 +1278,11 @@
             }
         }
 
+        if (selectedCharacter !== characterName) return;
         // 경로 기반 URL 업데이트 (코드네임 사용)
         const langPrefix = currentLanguage === 'kr' ? '/kr' : `/${currentLanguage}`;
         const newPath = `${langPrefix}/synergy/${charCodeName}/`;
-        window.history.pushState({ character: characterName }, '', newPath);
+        if (!skipUrlUpdate) window.history.pushState({ character: characterName }, '', newPath);
 
         if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
             window.SeoEngine.setContextHint({
@@ -1245,6 +1294,79 @@
         } else if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
             window.SeoEngine.run();
         }
+    }
+
+    function setupAlbumGallery(container) {
+        const gallery = container.querySelector('.synergy-album');
+        if (!gallery) return;
+        const thumbs = Array.from(gallery.querySelectorAll('.synergy-album-thumb'));
+        const image = gallery.querySelector('.synergy-album-feature-image');
+        const label = gallery.querySelector('.synergy-album-feature-label');
+        const unlock = gallery.querySelector('.synergy-album-feature-unlock');
+        const position = gallery.querySelector('.synergy-album-position');
+        const rail = gallery.querySelector('.synergy-album-grid');
+        if (!thumbs.length || !image || !label || !unlock || !position) return;
+        let current = 0;
+        function show(index) {
+            current = (index + thumbs.length) % thumbs.length;
+            const item = thumbs[current];
+            image.src = item.dataset.albumSrc;
+            image.alt = item.dataset.albumLabel;
+            label.textContent = item.dataset.albumLabel;
+            unlock.textContent = item.dataset.albumUnlock;
+            position.textContent = `${current + 1} / ${thumbs.length}`;
+            thumbs.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === current);
+                thumb.setAttribute('aria-pressed', String(i === current));
+            });
+            if (rail && typeof rail.scrollBy === 'function') {
+                const railRect = rail.getBoundingClientRect();
+                const itemRect = item.getBoundingClientRect();
+                const delta = itemRect.left < railRect.left ? itemRect.left - railRect.left :
+                    itemRect.right > railRect.right ? itemRect.right - railRect.right : 0;
+                if (delta) rail.scrollBy({ left: delta, behavior: 'auto' });
+            }
+        }
+        thumbs.forEach((thumb, index) => thumb.addEventListener('click', () => show(index)));
+        gallery.querySelectorAll('[data-album-step]').forEach(button => {
+            button.addEventListener('click', () => show(current + Number(button.dataset.albumStep)));
+        });
+        if (!rail) return;
+        let drag = null;
+        let suppressClick = false;
+        rail.addEventListener('pointerdown', event => {
+            if (event.pointerType !== 'mouse' || event.button !== 0) return;
+            suppressClick = false;
+            drag = { id: event.pointerId, startX: event.clientX, scrollLeft: rail.scrollLeft, moved: false };
+        });
+        rail.addEventListener('pointermove', event => {
+            if (!drag || drag.id !== event.pointerId) return;
+            const delta = event.clientX - drag.startX;
+            if (!drag.moved && Math.abs(delta) > 5) {
+                drag.moved = true;
+                rail.classList.add('is-dragging');
+                rail.setPointerCapture(event.pointerId);
+            }
+            if (drag.moved) {
+                event.preventDefault();
+                rail.scrollLeft = drag.scrollLeft - delta;
+            }
+        });
+        function finishDrag(event) {
+            if (!drag || drag.id !== event.pointerId) return;
+            suppressClick = drag.moved;
+            drag = null;
+            rail.classList.remove('is-dragging');
+        }
+        rail.addEventListener('pointerup', finishDrag);
+        rail.addEventListener('pointercancel', finishDrag);
+        rail.addEventListener('lostpointercapture', finishDrag);
+        rail.addEventListener('click', event => {
+            if (!suppressClick) return;
+            suppressClick = false;
+            event.preventDefault();
+            event.stopPropagation();
+        }, true);
     }
 
     // 상세 정보 렌더링
@@ -1352,6 +1474,57 @@
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#39;');
+        }
+
+        if (data.translation_pending) {
+            html += `<p class="synergy-album-notice">${escapeHtml(t('aranTranslationPending'))}</p>`;
+        }
+
+        if (Array.isArray(data.picture_album) && data.picture_album.length) {
+            const pictures = data.picture_album.filter(picture => Number.isInteger(Number(picture.rank)) && /^yalancoop-wholepic-\d{2}\.webp$/.test(picture.image));
+            const albumCards = pictures.map((picture, index) => {
+                const rank = Number(picture.rank);
+                const label = t('aranAlbumPage').replace('{number}', String(index + 1));
+                const unlock = t('aranAlbumUnlock').replace('{rank}', String(rank));
+                return `<button type="button" class="synergy-album-thumb${index === 0 ? ' active' : ''}" data-album-index="${index}" data-album-src="${BASE_URL}/assets/img/synergy/aran-album/${picture.image}" data-album-label="${escapeHtml(label)}" data-album-unlock="${escapeHtml(unlock)}" aria-label="${escapeHtml(label + ', ' + unlock)}" aria-pressed="${index === 0}">
+                    <img src="${BASE_URL}/assets/img/synergy/aran-album/${picture.image}" alt="" loading="lazy" width="1200" height="655">
+                    <span class="synergy-album-thumb-caption"><span>${escapeHtml(label)}</span><span>${escapeHtml(unlock)}</span></span>
+                </button>`;
+            }).join('');
+            if (pictures.length) {
+                const firstLabel = t('aranAlbumPage').replace('{number}', '1');
+                const firstUnlock = t('aranAlbumUnlock').replace('{rank}', String(pictures[0].rank));
+                const reward = data.picture_album_rewards;
+                let rewardHtml = '';
+                if (reward && reward.currency === 'ember' && Number.isFinite(reward.amount) && reward.amount > 0 && Array.isArray(reward.milestones)) {
+                    const milestones = reward.milestones.filter(value => Number.isInteger(value) && value > 0);
+                    const each = milestones.length * reward.amount;
+                    const total = t('aranAlbumRewardTotal').replace('{each}', String(each)).replace('{total}', String(each * pictures.length));
+                    const cells = milestones.map(value => {
+                        const fragment = t('aranAlbumFragmentCount').replace('{count}', String(value));
+                        return `<div class="synergy-album-reward"><span>${escapeHtml(fragment)}</span><strong><img src="${BASE_URL}/assets/img/pay/이계 엠버.png" alt="${escapeHtml(t('aranAlbumCurrency'))}" width="18" height="18">${reward.amount}</strong></div>`;
+                    }).join('');
+                    rewardHtml = `<div class="synergy-album-rewards"><div class="synergy-album-rewards-heading"><strong>${escapeHtml(t('aranAlbumRewards'))}</strong><span>${escapeHtml(t('aranAlbumCurrency'))} · ${escapeHtml(total)}</span></div><div class="synergy-album-reward-grid">${cells}</div></div>`;
+                }
+                html += `<details class="synergy-album detail-section">
+                    <summary>
+                        <span class="synergy-album-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                        <span class="synergy-album-summary-text"><span class="synergy-album-summary-heading"><span>${escapeHtml(t('aranAlbumTitle'))}</span><span class="synergy-album-summary-count">${pictures.length}</span></span><span class="synergy-album-summary-spoiler">${escapeHtml(t('aranAlbumSpoiler'))}</span></span>
+                    </summary>
+                    <div class="synergy-album-content">
+                        <p class="synergy-album-description">${escapeHtml(t('aranAlbumDescription'))}</p>
+                        ${rewardHtml}
+                        <figure class="synergy-album-feature">
+                            <img class="synergy-album-feature-image" src="${BASE_URL}/assets/img/synergy/aran-album/${pictures[0].image}" alt="${escapeHtml(firstLabel)}" loading="lazy" width="1200" height="655">
+                            <figcaption class="synergy-album-feature-caption">
+                                <div aria-live="polite"><strong class="synergy-album-feature-label">${escapeHtml(firstLabel)}</strong><span class="synergy-album-feature-unlock">${escapeHtml(firstUnlock)}</span></div>
+                                <div class="synergy-album-controls"><button type="button" data-album-step="-1" aria-label="${escapeHtml(t('aranAlbumPrevious'))}">‹</button><span class="synergy-album-position">1 / ${pictures.length}</span><button type="button" data-album-step="1" aria-label="${escapeHtml(t('aranAlbumNext'))}">›</button></div>
+                            </figcaption>
+                        </figure>
+                        <div class="synergy-album-grid" aria-label="${escapeHtml(t('aranAlbumTitle'))}">${albumCards}</div>
+                    </div>
+                </details>`;
+            }
         }
 
         // unlock_cond에 아이콘 추가하는 함수 (텍스트를 아이콘으로 치환)
@@ -2205,6 +2378,8 @@
         setSynergyDetailContent(beforeAdHtml, afterAdHtml);
         syncSynergyEventsAd(hasEventsAd);
 
+        setupAlbumGallery(detailContainer);
+
         // 소울 메이트 표시 추가 (soulmate.js가 로드된 경우)
         if (window.addSoulmateIndicator) {
             setTimeout(() => {
@@ -2554,6 +2729,7 @@
 
         // 필터 설정
         setupFilters();
+        setupSynergyTypes();
 
         // UI 번역
         // UI 번역 (i18n 서비스가 자동 처리)
@@ -2587,11 +2763,29 @@
 
             if (foundCharacter && characterList[foundCharacter]) {
                 selectedCharacter = foundCharacter;
+                setSynergyType(characterList[foundCharacter].cybercoop ? 'cyber' : 'standard', false);
             }
         }
 
         // 탭 생성
         await createTabs();
+        window.addEventListener('popstate', () => {
+            const path = window.location.pathname.match(/\/synergy\/([^/?#]+)/);
+            const slug = new URLSearchParams(window.location.search).get('character') || (path && path[1]);
+            if (!slug) {
+                selectedCharacter = null;
+                setSynergyType('standard', false);
+                const first = document.querySelector('.character-tab:not([style*="display: none"])');
+                if (first) selectCharacter(first.dataset.character, true, true);
+                return;
+            }
+            const name = Object.keys(characterList).find(key => getCharacterCodeName(key) === slug.toLowerCase());
+            if (!name || characterList[name].inactive) return;
+            selectedCharacter = name;
+            setSynergyType(characterList[name].cybercoop ? 'cyber' : 'standard', false);
+            applyFilters();
+            selectCharacter(name, true, true);
+        });
         } finally {
             window.LufelPageLifecycle?.release('synergy');
         }

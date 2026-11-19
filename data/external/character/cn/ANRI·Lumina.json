@@ -1,0 +1,287 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "平野亚兰·凛华可以造成特殊的祝福诅咒双属性伤害。\n平野亚兰·凛华造成祝福诅咒双属性伤害时，视为造成弱点伤害，且必定触发除属性克制系数以外的全部弱点效果。\n平野亚兰·凛华进入战斗时将立即为所有同伴添加『不凋帷幕』。",
+        "name": "凝望光与暗",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "平野亚兰·凛华施放『救赎镜域』将不再消耗回合且不再消耗SP。\n且『决断』的叠加层数上限将提升至2层。",
+        "name": "我所描绘的",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "每层『决断』将额外提供20%暴击效果。\n施放『冥天流光』时每有1层『决断』，技能伤害都将提升25%。",
+        "name": "在一切褪色前",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『救赎镜域』、『冥天流光』的技能等级提升3级，至多提升至15级。",
+        "name": "于光影中落笔",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT效果提升：施放HIGHLIGHT后攻击力额外提升20%，且攻击力提高效果将可以叠加2层。",
+        "name": "爱会跨越时光",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『圣邪镜华』、『战斗技巧』的技能等级提升3级，至多提升至15级。",
+        "name": "向荒诞处着色",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "所有同伴的每层『不凋帷幕』被打破或持续时间结束时，平野亚兰·凛华的暴击效果都将提升10%，最多叠加8层。\n平野亚兰·凛华的HIGHLIGHT将可以暴击且穿透提升15%。平野亚兰·凛华施放『冥天流光』后将额外施放HIGHLIGHT，优先攻击最后被『冥天流光』伤害过的敌人。",
+        "name": "终将显现的理想国",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "对1名敌人造成1297.7%/1430.6%/1377.5%/1510.4%攻击力的祝福诅咒双属性伤害，并使自身攻击力提升48.8%/53.8%/51.8%/56.8%，持续3回合。\n随后为我方所有同伴添加『不凋帷幕』。",
+      "name": "HIGHLIGHT",
+      "nature": "Bless/Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 124252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/HL",
+      "S2/S3"
+    ],
+    "name": "平野亚兰·凛华",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "对1名敌人造成562.6%/620.2%/597.2%/654.8%攻击力的祝福诅咒双属性伤害，使自身暴击效果提升117.1%/129.1%/124.3%/136.3%，持续2回合，并使自身获得『决断』。",
+        "name": "圣邪镜华",
+        "nature": "Bless/Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 124211,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 22",
+        "desc": "为所有同伴添加『不凋帷幕』，并使自身获得『决断』。\n随后使所有同伴的全适应性变成“吸收”，并使吸收比例由20%提升至29.8%/30.8%/30.4%/31.4%，持续2回合；\n该效果将在吸收1次技能的全部伤害后消失。\n『不凋帷幕』：能够抵御2928/3228/3108/3408伤害。",
+        "name": "救赎镜域",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 124212,
+        "tags": [
+          "主动",
+          "护盾"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 26",
+        "desc": "对1名敌人造成906.5%/999.4%/962.2%/1055.1%攻击力的祝福诅咒双属性伤害。\n若自身处于『决断』，本次技能伤害的穿透提升15%，且技能伤害提升150%。",
+        "name": "冥天流光",
+        "nature": "Bless/Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 124213,
+        "tags": [
+          "主动",
+          "单伤"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "平野亚兰·凛华的祝福属性伤害提升36.0%，且『不凋帷幕』能抵御的伤害将受祝福属性伤害加成影响。",
+        "name": "救世",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124231,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "平野亚兰·凛华的诅咒属性伤害提升36.0%，且『救赎镜域』吸收比例超过20%的部分将受诅咒属性伤害加成影响。",
+        "name": "追忆",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124232,
+        "tags": [
+          "潜能"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2910.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

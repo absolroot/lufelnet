@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Mitsuru Kirijo",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Brilliant Executioner",
-        "startTime": "2026-10-23 10:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Mitsuru Kirijo",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Brilliant Executioner",
-        "startTime": "2026-10-23 10:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
         "endTime": "2026-12-04 09:59:59",
         "fiveStar": [
           {
@@ -106,6 +54,110 @@
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
+        "endTime": "2026-12-18 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Tenebre Shoki",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "To Thine Own Self Be True",
+        "startTime": "2026-11-20 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-18 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Tenebre Shoki",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "To Thine Own Self Be True",
+        "startTime": "2026-11-20 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-18 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Gunslinger Shun",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Locked 'n' Loaded",
+        "startTime": "2026-11-20 10:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-18 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Gunslinger Shun",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Locked 'n' Loaded",
+        "startTime": "2026-11-20 10:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
         "endTime": "2027-07-04 09:59:59",
         "fiveStar": [
           {
@@ -154,150 +206,11 @@
           }
         ],
         "name": "When Moon Reaches Stars",
-        "startTime": "2026-09-23 11:00:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Yukari Takeba",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Shot Through the Heart",
-        "startTime": "2026-09-23 11:00:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Yukari Takeba",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Shot Through the Heart",
-        "startTime": "2026-09-23 11:00:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Akihiko Sanada",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Fists of Thunder",
-        "startTime": "2026-09-23 11:00:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Akihiko Sanada",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lufel",
-            "type": "thief"
-          },
-          {
-            "name": "Kayo Tomiyama",
-            "type": "thief"
-          },
-          {
-            "name": "Seiji Shiratori",
-            "type": "thief"
-          }
-        ],
-        "name": "Fists of Thunder",
         "startTime": "2026-09-23 11:00:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Longinus",
-            "type": "weapon",
-            "user": "Mitsuru"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Emerald Charmer",
-            "type": "weapon",
-            "user": "Tomiyama"
-          },
-          {
-            "name": "Knight's Reward",
-            "type": "weapon",
-            "user": "Shiratori"
-          },
-          {
-            "name": "Rose Flamberge",
-            "type": "weapon",
-            "user": "Mitsuru"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-10-23 10:30:00",
-        "type": "Arms Deals"
-      },
       {
         "endTime": "2026-12-04 09:59:59",
         "fiveStar": [
@@ -334,6 +247,76 @@
         "type": "Arms Deals"
       },
       {
+        "endTime": "2026-12-18 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Spada della Vita",
+            "type": "weapon",
+            "user": "Tenebre Shoki"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          },
+          {
+            "name": "Spada Vendetta",
+            "type": "weapon",
+            "user": "Tenebre Shoki"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-20 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
+        "endTime": "2026-12-18 09:59:59",
+        "fiveStar": [
+          {
+            "name": "Frontier Justice",
+            "type": "weapon",
+            "user": "Gunslinger Shun"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Desperado's Toothpick",
+            "type": "weapon",
+            "user": "Gunslinger Shun"
+          },
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-20 10:30:00",
+        "type": "Arms Deals"
+      },
+      {
         "endTime": "2027-07-04 09:59:59",
         "fiveStar": [
           {
@@ -362,76 +345,6 @@
             "name": "Translucent Blade",
             "type": "weapon",
             "user": "Makoto"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-09-23 11:00:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Sarnga",
-            "type": "weapon",
-            "user": "Yukari"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Emerald Charmer",
-            "type": "weapon",
-            "user": "Tomiyama"
-          },
-          {
-            "name": "Knight's Reward",
-            "type": "weapon",
-            "user": "Shiratori"
-          },
-          {
-            "name": "Kishin Bow",
-            "type": "weapon",
-            "user": "Yukari"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-09-23 11:00:00",
-        "type": "Arms Deals"
-      },
-      {
-        "endTime": "2026-11-20 09:59:59",
-        "fiveStar": [
-          {
-            "name": "Sabazios",
-            "type": "weapon",
-            "user": "Sanada"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Lava Flame",
-            "type": "weapon",
-            "user": "Lufel"
-          },
-          {
-            "name": "Emerald Charmer",
-            "type": "weapon",
-            "user": "Tomiyama"
-          },
-          {
-            "name": "Knight's Reward",
-            "type": "weapon",
-            "user": "Shiratori"
-          },
-          {
-            "name": "Wicked Cestus",
-            "type": "weapon",
-            "user": "Sanada"
           }
         ],
         "name": "Silent Pistol",

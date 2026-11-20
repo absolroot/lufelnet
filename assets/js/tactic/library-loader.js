@@ -56,6 +56,7 @@
     }
 
     window.applyImportedData(payload, { keepUrl: true, titleOverride: data.title });
+    window.LufelPageEntrance?.finish();
 
     // library 로드 후 번역 적용
     const applyTranslationsAfterLibrary = () => {

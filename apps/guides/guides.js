@@ -259,6 +259,8 @@ const Guides = {
                     <div class="guides-empty-text">${this.getI18nText('noGuidesYet', 'No guides available yet')}</div>
                 </div>
             `;
+        } finally {
+            window.LufelPageEntrance?.finish();
         }
     },
 
@@ -621,6 +623,8 @@ const Guides = {
                     <div class="guides-empty-text">${this.getI18nText('guideNotFound', 'Guide not found')}</div>
                 </div>
             `;
+        } finally {
+            window.LufelPageEntrance?.finish();
         }
     },
 

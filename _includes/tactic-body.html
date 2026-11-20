@@ -50,6 +50,8 @@
 {% endif %}
 
 {% include supabase-config.html %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 
   <!-- 페르소나 순서 및 로더 (window.personaFiles 구성) -->
   <script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
@@ -65,12 +67,12 @@
 
     <div class="main-wrapper">
       <!-- navigation path -->
-      <div class="navigation-path">
+      <div class="navigation-path page-entrance-part">
         <script>document.write(`<a href="../../">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page">택틱 / 택틱 메이커</span>
     </div>
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
       <div class="logo-container-tactic"> <!-- link to current page -->
         <!--
         <a href="../index.html">
@@ -116,7 +118,7 @@
       <!-- tactic setting tab -->
       <div id="tactic" class="tab-pane active">
         <!-- top container: (1) wonder setting, (2) party selection -->
-        <div id="top-container">
+        <div id="top-container" class="page-entrance-part">
           <!-- wonder setting card -->
           <div class="card wonder-setting" id="wonder-config">
             <h2>원더 설정</h2>
@@ -1149,7 +1151,7 @@
               updateAutoActions();
               
             } 
-          });
+          }).finally(() => window.LufelPageEntrance?.finish());
         } else {
           setupWonderConfig();
           try {
@@ -1211,6 +1213,7 @@
             if (desktopToggleBtn) desktopToggleBtn.classList.remove('active');
             if (mobileToggleBtn) mobileToggleBtn.classList.remove('active');
             try { localStorage.setItem('uiHidden', false); } catch(_) {}
+            window.LufelPageEntrance?.finish();
           }
         }
 

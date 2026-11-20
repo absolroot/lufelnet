@@ -1,4 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Animate each detail card only when it first enters the viewport.
+    if ('IntersectionObserver' in window && Element.prototype.animate) {
+        const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const cards = document.querySelectorAll('.main-wrapper > .card-style');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                observer.unobserve(entry.target);
+                if (motionPreference.matches) return;
+                entry.target.animate([
+                    { opacity: 0, transform: 'translateY(16px)' },
+                    { opacity: 1, transform: 'translateY(0)' }
+                ], { duration: 380, easing: 'cubic-bezier(.16, 1, .3, 1)' });
+            });
+        }, { threshold: 0.01 });
+        cards.forEach(card => {
+            const rect = card.getBoundingClientRect();
+            if (card.getClientRects().length && rect.top < window.innerHeight && rect.bottom > 0) return;
+            observer.observe(card);
+        });
+    }
     // 안전 실행 유틸리티: 개별 블록에서 에러가 나도 이후 로직이 계속 진행되도록 보장
     const safeRun = (name, fn) => {
         try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); }
@@ -1024,6 +1045,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 raritySection.appendChild(limitImg);
             } catch (_) { }
         }
+        window.markCharacterHeaderReady?.('settings');
 
         // 속성 위치 계산
         function setElementPositions(elementType) {
@@ -1064,6 +1086,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const langForEl = getCurrentLanguage();
         const useTextBadge = (langForEl === 'en' || langForEl === 'jp' || langForEl === 'cn');
         const parentEl = (resistanceIcon && resistanceIcon.parentElement) || (weaknessIcon && weaknessIcon.parentElement) || null;
+        const elementList = value => (Array.isArray(value) ? value : [value]).filter(Boolean);
+        if (parentEl) parentEl.querySelectorAll('.char-element-extra-icon').forEach(n => n.remove());
         if (useTextBadge) {
             ensureCharElementStyles();
             // 기존 아이콘 숨기기
@@ -1081,22 +1105,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 const RES_TXT = t('characterElementBadgeRes', '내성');
                 const WK_TXT = t('characterElementBadgeWeak', '약점');
                 const mergedChar = { ...character, ...(characterName && window.characterSetting && window.characterSetting[characterName] ? window.characterSetting[characterName] : {}) };
-                if (mergedChar.element_resistance) {
+                elementList(mergedChar.element_resistance).forEach(element => {
                     const el = document.createElement('span');
                     el.className = 'char-el-badge res';
                     el.textContent = RES_TXT;
-                    el.style.left = (setElementPositions(mergedChar.element_resistance) + 10) + 'px'; // + 10px
+                    el.style.left = (setElementPositions(element) + 10) + 'px'; // + 10px
                     el.style.top = baseTop;
                     parentEl.appendChild(el);
-                }
-                if (mergedChar.element_weakness) {
+                });
+                elementList(mergedChar.element_weakness).forEach(element => {
                     const el = document.createElement('span');
                     el.className = 'char-el-badge weak';
                     el.textContent = WK_TXT;
-                    el.style.left = (setElementPositions(mergedChar.element_weakness) + 10) + 'px'; // + 10px
+                    el.style.left = (setElementPositions(element) + 10) + 'px'; // + 10px
                     el.style.top = baseTop;
                     parentEl.appendChild(el);
-                }
+                });
             }
         } else {
             // 한국어: 기존 아이콘 사용, 텍스트 배지 제거
@@ -1105,14 +1129,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const characterName3 = urlParams3.get('name') || window.__CHARACTER_DEFAULT || '';
             const setting3 = (characterName3 && window.characterSetting && window.characterSetting[characterName3]) ? window.characterSetting[characterName3] : {};
             const mergedChar3 = { ...character, ...setting3 };
-            if (resistanceIcon && mergedChar3.element_resistance) {
-                resistanceIcon.style.display = 'block';
-                resistanceIcon.style.left = setElementPositions(mergedChar3.element_resistance) + 'px';
-            }
-            if (weaknessIcon && mergedChar3.element_weakness) {
-                weaknessIcon.style.display = 'block';
-                weaknessIcon.style.left = setElementPositions(mergedChar3.element_weakness) + 'px';
-            }
+            const showElementIcons = (icon, value) => {
+                if (!icon) return;
+                const elements = elementList(value);
+                icon.style.display = elements.length ? 'block' : 'none';
+                elements.forEach((element, index) => {
+                    const target = index === 0 ? icon : icon.cloneNode(true);
+                    if (index > 0) {
+                        target.classList.add('char-element-extra-icon');
+                        icon.parentElement.appendChild(target);
+                    }
+                    target.style.left = setElementPositions(element) + 'px';
+                });
+            };
+            showElementIcons(resistanceIcon, mergedChar3.element_resistance);
+            showElementIcons(weaknessIcon, mergedChar3.element_weakness);
         }
 
         // 계시 툴팁 적용

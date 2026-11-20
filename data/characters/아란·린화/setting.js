@@ -25,7 +25,7 @@ window.characterSetting["아란·린화"] = {
     },
     "battle_plus_stats": "",
     "element_weakness": "",
-    "element_resistance": "",
+    "element_resistance": ["축복", "주원"],
     "skill1_lv": "MAX!",
     "skill2_lv": "8",
     "skill3_lv": "MAX!",

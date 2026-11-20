@@ -47,16 +47,18 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
     <div id="language-notice" class="language-notice" style="display: none;">
         <p id="language-notice-text"></p>
     </div>
 
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
     </div>
 
-    <div class="about-content">
+    <div class="about-content page-entrance-part">
         <div class="about-section">
             <h2 id="site-title">루페르넷 lufel.net</h2>
             <p id="site-description" class="korean-content">
@@ -736,6 +738,7 @@
         updateSEOContent();
         await updateLanguageContent();
         initializePageContent();
+        window.LufelPageEntrance?.finish();
     });
 
     function initializePageContent() {

@@ -41,6 +41,8 @@
 })();
 </script>
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/defense-calc/defense-calc.css?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.css'] }}">
 <script src="/apps/defense-calc/defense-calc.js?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.js'] }}"></script>
 
@@ -65,7 +67,7 @@
 <div class="main-wrapper">
     <!-- navigation path -->
     <div class="header-container header-container--with-ad">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <div class="navigation-path">
                 <a href="../../" id="nav-home">-</a>
                 <span class="separator">/</span>
@@ -84,7 +86,7 @@
     </div>
 
     <!-- top card container -->
-    <div class="top-cards">
+    <div class="top-cards page-entrance-part">
         <!-- Row 1: Boss card (좌측) and Final damage (우측) -->
         <div class="top-row-1">
             <div class="boss-card card-style">
@@ -253,7 +255,7 @@
     </div>
 
     <!-- table tabs -->
-    <div class="table-tabs card-style">
+    <div class="table-tabs card-style page-entrance-part">
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="penetrate">
                 <img src="{{ site.baseurl }}/assets/img/stat-icon/관통.png" alt="관통" class="tab-icon">

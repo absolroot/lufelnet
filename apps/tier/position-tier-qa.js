@@ -76,6 +76,21 @@ async function renderTierQa() {
 
         const answer = document.createElement('div');
         answer.className = 'tier-qa-answer';
+        let closing = false;
+        summary.addEventListener('click', event => {
+            event.preventDefault();
+            if (!details.open || closing) {
+                closing = false;
+                window.disclosureMotion?.cancel(answer);
+                details.open = true;
+                window.disclosureMotion?.reveal(answer);
+            } else {
+                closing = true;
+                const finish = () => { closing = false; details.open = false; };
+                if (window.disclosureMotion) window.disclosureMotion.collapse(answer, finish);
+                else finish();
+            }
+        });
 
         const lines = String(item.a || '').split('\n');
         lines.forEach((line) => {

@@ -16,6 +16,7 @@ window.WeaponData["아란·린화"] = {
   },
   "weapon5-1": {
     "name": "천 거울의 잔관",
+    "highlight": true,
     "health": 2338.77,
     "attack": 759.73,
     "defense": 396.41,

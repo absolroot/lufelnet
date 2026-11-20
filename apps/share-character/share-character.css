@@ -107,7 +107,7 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -4px);
     margin-top: 6px;
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.9);
@@ -118,12 +118,18 @@
     color: #fff;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s ease;
+    transition: opacity 140ms ease-out, transform 140ms ease-out;
     z-index: 30;
 }
 
-.sc-btn-icon-hover:hover::after {
+.sc-btn-icon-hover:hover::after,
+.sc-btn-icon-hover:focus-visible::after {
     opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sc-btn-icon-hover::after { transform: translateX(-50%); transition: none; }
 }
 
 .sc-action-popover.is-open .sc-btn-icon-hover::after {

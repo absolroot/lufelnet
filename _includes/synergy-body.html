@@ -5,6 +5,8 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('synergy');
 </script>
@@ -23,13 +25,13 @@ window.LufelPageLifecycle?.hold('synergy');
     <script src="{{ site.baseurl }}/i18n/pages/synergy/cn.js?h={{ site.data.asset_versions.files['/i18n/pages/synergy/cn.js'] }}"></script>
     <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <script>document.write(`<a href="../../" id="nav-home" data-i18n="nav.home">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
     </div>
     <div class="header-container header-container--with-ad">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <h1 id="page-title" data-i18n="pageTitle">-</h1>
             <p class="page-description" id="page-description" data-i18n="pageDescription"></p>
         </div>
@@ -42,7 +44,7 @@ window.LufelPageLifecycle?.hold('synergy');
     </div>
 
     <!-- Filter section -->
-    <div class="filter-section">
+    <div class="filter-section page-entrance-part">
         <div class="filter-header">
             <div class="time-filter">
                 <button class="time-filter-btn active" data-time="all" data-i18n="filterAll">전체</button>
@@ -75,19 +77,19 @@ window.LufelPageLifecycle?.hold('synergy');
 
     <!-- Tab section -->
     <div class="synergy-container">
-        <div class="character-tabs" id="characterTabs">
+        <div class="character-tabs page-entrance-part" id="characterTabs">
             <!-- 탭은 JavaScript로 동적 생성 -->
         </div>
 
         <!-- Detail section -->
         <div class="character-detail" id="characterDetail">
-            <div id="characterDetailBeforeAd" class="synergy-detail-content">
+            <div id="characterDetailBeforeAd" class="synergy-detail-content page-entrance-part">
                 <div class="detail-placeholder">
                     <div class="loading-spinner"></div>
                 </div>
             </div>
             <div id="synergy-detail-ad-mount" hidden></div>
-            <div id="characterDetailAfterAd" class="synergy-detail-content"></div>
+            <div id="characterDetailAfterAd" class="synergy-detail-content page-entrance-part"></div>
         </div>
     </div>
 

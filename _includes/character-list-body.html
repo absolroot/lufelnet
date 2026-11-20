@@ -5,6 +5,8 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('character-list');
 </script>
@@ -37,7 +39,7 @@ window.LufelPageLifecycle?.hold('character-list');
     </div>-->
 
     <div class="header-container character-list-header">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <div class="navigation-path">
                 <a href="../" id="nav-home">-</a>
                 <span class="separator">/</span>
@@ -47,7 +49,7 @@ window.LufelPageLifecycle?.hold('character-list');
         </div>
     </div>
     <!-- Filter section -->
-    <div class="filter-section">
+    <div class="filter-section page-entrance-part">
         <div class="filter-header">
             <button class="filter-toggle-btn">
                 <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
@@ -322,7 +324,7 @@ window.LufelPageLifecycle?.hold('character-list');
             }
         }
     </style>
-    <div class="character-cards character-cards--loading" id="characterCards">
+    <div class="character-cards character-cards--loading page-entrance-part" id="characterCards">
         {% for i in (1..12) %}
         <div class="card character-card-skeleton" aria-hidden="true">
             <img class="character-card-skeleton__image"
@@ -990,12 +992,11 @@ window.LufelPageLifecycle?.hold('character-list');
                     imageObserver.unobserve(img);
                 }
             });
-        }, { rootMargin: '200px' }) : null;
+        }, { rootMargin: '400px' }) : null;
 
         // Create card for each character using DocumentFragment (single reflow)
         const fragment = document.createDocumentFragment();
         const initialSkeletonTransition = cardsContainer.classList.contains('character-cards--loading');
-        const initialCardImageCount = 12;
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const spoilerEnabled = isSpoilerEnabled();
         const isKrLike = (typeof window.isKrLikeLanguage === 'function')
@@ -1003,7 +1004,7 @@ window.LufelPageLifecycle?.hold('character-list');
             : (currentLang === 'kr' || currentLang === 'cn');
         const originalCharacterList = (spoilerEnabled && !isKrLike) ? (window.originalLangCharacterList || []) : null;
 
-        sortedCharacters.forEach((characterName, index) => {
+        sortedCharacters.forEach((characterName) => {
 
             const charData = characterData[characterName];
             if (!charData) {
@@ -1121,19 +1122,7 @@ window.LufelPageLifecycle?.hold('character-list');
             fragment.appendChild(card);
 
             // Observe image for lazy loading
-            if (initialSkeletonTransition && index < initialCardImageCount) {
-                const realSrc = img.dataset.src;
-                const realImage = new Image();
-                realImage.onload = () => {
-                    img.src = realSrc;
-                    img.classList.add('loaded');
-                    delete img.dataset.src;
-                };
-                realImage.onerror = () => {
-                    delete img.dataset.src;
-                };
-                realImage.src = realSrc;
-            } else if (imageObserver) {
+            if (imageObserver) {
                 imageObserver.observe(img);
             } else {
                 // Fallback: load immediately if IntersectionObserver not supported
@@ -1170,6 +1159,7 @@ window.LufelPageLifecycle?.hold('character-list');
         cardsContainer.classList.remove('character-cards--loading');
         }
         window.LufelNitroAds?.recordDebugTiming?.('character-first-content', { source: currentLang });
+        window.LufelPageEntrance?.finish();
         releaseCharacterLifecycle();
 
         // 필터 및 검색 기능 초기화

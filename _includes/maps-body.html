@@ -46,6 +46,8 @@
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div id="map-container">
     <div id="loading">
         <img id="loading-gif" src="" alt="로딩 중">
@@ -53,7 +55,7 @@
     </div>
 
     <!-- 좌측 상단: 로고 컨테이너 -->
-    <div class="maps-logo-container"></div>
+    <div class="maps-logo-container page-entrance-part"></div>
 
     <!-- 좌측: 오브젝트 필터 패널 -->
     <div id="object-filter-panel" class="side-panel">

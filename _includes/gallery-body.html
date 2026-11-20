@@ -48,8 +48,10 @@
 {% endif %}
 
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div class="main-wrapper">
-  <div class="gallery-header">
+  <div class="gallery-header page-entrance-part">
     <div class="navigation-path">
       <a href="{{ site.baseurl }}/" id="nav-home" data-i18n="nav.home">-</a>
       <span class="separator">/</span>
@@ -65,12 +67,12 @@
     -->
   </div>
 
-  <div class="gallery-tabs" role="tablist" aria-label="Gallery content" data-i18n-aria="tabsLabel">
+  <div class="gallery-tabs page-entrance-part" role="tablist" aria-label="Gallery content" data-i18n-aria="tabsLabel">
     <button id="gallery-tab-illustrations" class="gallery-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="gallery-content" data-gallery-tab="illustrations" data-i18n="tabIllustrations">일러스트</button>
     <button id="gallery-tab-allout" class="gallery-tab" type="button" role="tab" aria-selected="false" aria-controls="gallery-content" data-gallery-tab="allout" data-i18n="tabAllOut" tabindex="-1">총공격</button>
   </div>
 
-  <div id="gallery-content" role="tabpanel" aria-labelledby="gallery-tab-illustrations">
+  <div id="gallery-content" class="page-entrance-part" role="tabpanel" aria-labelledby="gallery-tab-illustrations">
     <div class="gallery-toolbar">
       <div class="filters">
         <input id="search-input" style="display:none;" type="text" placeholder="검색..." aria-label="Search"

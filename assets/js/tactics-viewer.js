@@ -194,8 +194,8 @@ class TacticsViewer {
         this.initTabs();
         this.initSearch();
         this.initRanking();
-        this.renderTactics();
-        this.loadRanking();
+        Promise.allSettled([this.renderTactics(), this.loadRanking()])
+            .then(() => window.LufelPageEntrance?.finish());
     }
 
     t(key, fallback = '') {

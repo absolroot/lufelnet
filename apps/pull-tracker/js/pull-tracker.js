@@ -179,9 +179,13 @@
 
     // i18n 초기화 대기 후 이 코드가 실행되므로, DOMContentLoaded가 이미 끝났을 수 있다.
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', bindRuntimeUi, { once: true });
+        document.addEventListener('DOMContentLoaded', () => {
+            bindRuntimeUi();
+            window.LufelPageEntrance?.finish();
+        }, { once: true });
     } else {
         bindRuntimeUi();
+        window.LufelPageEntrance?.finish();
     }
 
     // --- Google Drive 로그인/동기화 ---

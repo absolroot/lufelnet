@@ -53,6 +53,15 @@ window.getHomeStaticAssetUrl = function (path) {
 };
 </script>
 <link rel="stylesheet" href="/apps/home/home.css?h={{ site.data.asset_versions.files['/apps/home/home.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const translation = window.__HOME_I18N_READY__ || Promise.resolve();
+    Promise.race([Promise.resolve(translation).catch(() => {}), new Promise(resolve => setTimeout(resolve, 700))])
+        .finally(() => window.LufelPageEntrance?.finish());
+}, { once: true });
+</script>
 <script src="/apps/home/js/home-section-state.js?h={{ site.data.asset_versions.files['/apps/home/js/home-section-state.js'] }}"></script>
 <script src="/apps/home/tactic-posts-home.js?h={{ site.data.asset_versions.files['/apps/home/tactic-posts-home.js'] }}"></script>
 <script src="/apps/home/js/popular-characters.js?h={{ site.data.asset_versions.files['/apps/home/js/popular-characters.js'] }}"></script>
@@ -104,7 +113,7 @@ window.getHomeStaticAssetUrl = function (path) {
     </div>
 
     <!-- Header (logo, etc.) -->
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
         <h1 id="site-title">P5X 루페르넷</h1> <span class="beta-text"></span>
         <div class="language-selector-container">
             <div class="custom-select">
@@ -143,7 +152,7 @@ window.getHomeStaticAssetUrl = function (path) {
 
 
     <!-- Carousel: inserted above menu-cards -->
-    <div id="home-carousel-root" data-home-section="carousel" aria-busy="true">
+    <div id="home-carousel-root" class="page-entrance-part" data-home-section="carousel" aria-busy="true">
         <div class="home-carousel-skeleton" aria-hidden="true">
             <div class="home-carousel-skeleton-stage">
                 <div class="home-carousel-skeleton-left">
@@ -164,7 +173,7 @@ window.getHomeStaticAssetUrl = function (path) {
 
     <!--<div class="separator-line"></div>-->
     <!-- Main content -->
-    <div class="main-content">
+    <div class="main-content page-entrance-part">
         <!-- Quick Launcher Grid -->
         <div class="quick-grid" id="quick-grid" data-home-section="quick-grid" aria-busy="true">
             {% for item in (1..18) %}<div class="quick-item home-quick-skeleton" aria-hidden="true"><span></span><i></i></div>{% endfor %}
@@ -172,7 +181,7 @@ window.getHomeStaticAssetUrl = function (path) {
         <div class="update-notice"></div>
     </div>
     <div class="separator-line"></div>
-    <div class="popular-content" data-max-count="10">
+    <div class="popular-content page-entrance-part" data-max-count="10">
         <div class="posts-header">
             <h2><a href="/character/" style="text-decoration: none; color: inherit;" id="popular-characters-title">인기
                     괴도</a></h2>
@@ -188,9 +197,9 @@ window.getHomeStaticAssetUrl = function (path) {
     </div>
     <!-- Guild Bosses Section -->
     {% include nitro-ad.html id="home-bosses-banner" format="banner" class="nitro-ad-container--home-bosses" placeholder=true %}
-    <div id="home-bosses-root" data-home-section="bosses" aria-busy="true"><div class="bosses-card home-boss-skeleton-card" aria-hidden="true"><div class="home-panel-skeleton bosses-loading-placeholder" aria-hidden="true"></div></div></div>
+    <div id="home-bosses-root" class="page-entrance-part" data-home-section="bosses" aria-busy="true"><div class="bosses-card home-boss-skeleton-card" aria-hidden="true"><div class="home-panel-skeleton bosses-loading-placeholder" aria-hidden="true"></div></div></div>
     <div class="separator-line"></div>
-    <div class="guides-container">
+    <div class="guides-container page-entrance-part">
         <div class="posts-header">
             <h2><a href="/article/" style="text-decoration: none; color: inherit;" id="guides-title">아티클</a></h2>
             <a href="/article/" class="show-more-characters-btn" style="text-decoration: none; color: inherit;"
@@ -202,7 +211,7 @@ window.getHomeStaticAssetUrl = function (path) {
         </div>
     </div>
 
-    <div class="posts-container" id="posts-container">
+    <div class="posts-container page-entrance-part" id="posts-container">
         <div class="posts-header">
             <h2><a href="./tactic/library" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
                     도서관 NEW</a></h2>

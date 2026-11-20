@@ -95,6 +95,8 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
 <script type="module" src="{{ site.baseurl }}/apps/tier/position-tiers.js?h={{ site.data.asset_versions.files['/apps/tier/position-tiers.js'] }}"></script>
@@ -108,12 +110,12 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>
 
     <!-- Navigation path -->
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <script>document.write(`<a href="{{ site.baseurl }}/" id="nav-home" data-i18n="nav.home">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
     </div>
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
         <div class="header-title">
             <h1 id="page-title" data-i18n="pageTitle">-</h1>
             <p class="page-description" id="page-description" data-i18n="pageDescription"></p>
@@ -125,7 +127,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>
 
     <!-- Filter section -->
-    <div class="filter-section">
+    <div class="filter-section page-entrance-part">
         <div class="filter-header">
             <button class="filter-toggle-btn">
                 <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="필터" />
@@ -310,7 +312,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>
 
     <!-- Position Tier Container -->
-    <div class="position-tiers-container">
+    <div class="position-tiers-container page-entrance-part">
         <!-- Header Row -->
         <div class="tier-header-cell">lufel.net</div>
         <!-- Position Headers will be populated by JavaScript -->
@@ -327,7 +329,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             <span class="spoiler-toggle-text" id="position-spoiler-text" data-i18n="showSpoilers">Show Spoilers</span>
         </label>
     </div>
-    <div class="cards container">
+    <div class="cards container page-entrance-part">
     </div>
 
     <!-- Q&A (tier list mode only) -->
@@ -747,8 +749,16 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         const tierCriteriaArrowIcon = document.querySelector('.tier-criteria-arrow i');
 
         if (tierCriteriaBtn && tierCriteriaContent) {
-            const setTierCriteriaState = (isOpen) => {
-                tierCriteriaContent.style.display = isOpen ? 'block' : 'none';
+            const setTierCriteriaState = (isOpen, animate = false) => {
+                window.disclosureMotion?.cancel(tierCriteriaContent);
+                if (isOpen) {
+                    tierCriteriaContent.style.display = 'block';
+                    if (animate) window.disclosureMotion?.reveal(tierCriteriaContent);
+                } else if (animate && window.disclosureMotion) {
+                    window.disclosureMotion.collapse(tierCriteriaContent, () => { tierCriteriaContent.style.display = 'none'; });
+                } else {
+                    tierCriteriaContent.style.display = 'none';
+                }
                 if (tierCriteriaArrowIcon) {
                     tierCriteriaArrowIcon.classList.toggle('bi-chevron-up', isOpen);
                     tierCriteriaArrowIcon.classList.toggle('bi-chevron-down', !isOpen);
@@ -759,8 +769,8 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
             setTierCriteriaState(tierCriteriaContent.style.display !== 'none');
 
             tierCriteriaBtn.addEventListener('click', function () {
-                const isVisible = tierCriteriaContent.style.display !== 'none';
-                setTierCriteriaState(!isVisible);
+                const isOpen = tierCriteriaBtn.getAttribute('aria-expanded') === 'true';
+                setTierCriteriaState(!isOpen, true);
             });
         }
     }
@@ -1064,6 +1074,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
                 if (typeof window.setTierSource === 'function') await window.setTierSource('kr_spoiler');
             });
         }
+        window.LufelPageEntrance?.finish();
     });
 
     // 추가 안전장치

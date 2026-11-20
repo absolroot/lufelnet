@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
   window.__WONDER_WEAPON_DATA_HASHES__ = Object.freeze({
     '/data/kr/wonder/weapons.js': {{ site.data.asset_versions.files['/data/kr/wonder/weapons.js'] | jsonify }},
@@ -32,14 +34,14 @@
     <p id="language-notice-text"></p>
   </div>-->
 
-  <div class="navigation-path">
+  <div class="navigation-path page-entrance-part">
     <script>document.write(`<a href="../../" id="nav-home" data-i18n="nav.home">-</a>`);</script>
     <span class="separator">/</span>
     <span class="current-page" id="nav-current" data-i18n="navCurrent">-</span>
   </div>
 
   <div class="header-container header-container--with-ad">
-    <div class="header-title">
+    <div class="header-title page-entrance-part">
       <h1 id="page-title" data-i18n="pageTitle">-</h1>
       <p class="page-description" id="page-description" data-i18n="pageDescription"></p>
     </div>
@@ -47,7 +49,7 @@
   </div>
 
   <!-- Filter section -->
-  <div class="filter-section">
+  <div class="filter-section page-entrance-part">
     <div class="filter-header">
       <div class="source-filter">
         <button class="source-filter-btn active" data-source="all" id="filter-all" data-i18n="filterAll">전체</button>
@@ -73,12 +75,12 @@
 
   <!-- Tab section -->
   <div class="weapon-container">
-    <div class="weapon-tabs" id="weaponTabs">
+    <div class="weapon-tabs page-entrance-part" id="weaponTabs">
       <!-- 탭은 JavaScript로 동적 생성 -->
     </div>
 
     <!-- Detail section -->
-    <div class="weapon-detail" id="weaponDetail">
+    <div class="weapon-detail page-entrance-part" id="weaponDetail">
       <div class="detail-placeholder">
         <div class="loading-spinner"></div>
       </div>

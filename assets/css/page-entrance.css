@@ -1,0 +1,35 @@
+html[data-page-entrance="waiting"] .page-entrance-part {
+    visibility: hidden;
+}
+
+/* Keep the first screen coherent while page data is prepared. */
+html[data-page-entrance="waiting"] .main-wrapper {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+html[data-page-entrance="waiting"] body:has(.main-wrapper)::after {
+    content: '';
+    position: fixed;
+    left: 50%;
+    top: 45%;
+    width: 32px;
+    height: 32px;
+    margin: -16px;
+    border: 3px solid rgba(255, 255, 255, 0.16);
+    border-top-color: #e12b32;
+    border-radius: 50%;
+    z-index: 1000;
+    pointer-events: none;
+    animation: page-entrance-spin 700ms linear infinite;
+}
+
+@keyframes page-entrance-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html[data-page-entrance="waiting"] body:has(.main-wrapper)::after {
+        animation: none;
+    }
+}

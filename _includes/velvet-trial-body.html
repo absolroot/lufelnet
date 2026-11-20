@@ -108,25 +108,27 @@
 </script>
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div id="nav-container"></div>
 
 <div class="main-wrapper velvet-trial-shell">
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <a href="{{ site.baseurl }}/" id="vt-nav-home">Home</a>
         <span class="separator">/</span>
         <span class="current-page" id="vt-nav-current">Velvet Trial</span>
     </div>
 
     <div class="header-container header-container--with-ad">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <h1 id="vt-page-title">Velvet Trial</h1>
             <p class="page-description" id="vt-page-description">View chapter and stage conditions with boss data.</p>
         </div>
         {% include nitro-ad.html id="velvet-trial-header-banner" format="leaderboard" class="nitro-ad-container--header" %}
     </div>
 
-    <div id="vt-chapter-tabs" class="vt-tabs"></div>
-    <section id="vt-content" class="vt-content"></section>
+    <div id="vt-chapter-tabs" class="vt-tabs page-entrance-part"></div>
+    <section id="vt-content" class="vt-content page-entrance-part"></section>
 </div>
 
 <script>

@@ -21,7 +21,7 @@ class CriticalCalc {
         this.initializeTabs();
         
         // 초기 렌더링
-        this.initializeTables();
+        this.initialTablesReady = this.initializeTables();
         this._lastViewportWidth = window.innerWidth;
         this._lastIsMobileLayout = window.innerWidth <= 1200;
 
@@ -750,11 +750,13 @@ class CriticalCalc {
     }
 
     initializeTables() {
-        if (this.buffTableBody) this.renderAccordion(this.buffTableBody, false);
-        if (this.selfTableBody) this.renderAccordion(this.selfTableBody, true);
+        const pending = [];
+        if (this.buffTableBody) pending.push(this.renderAccordion(this.buffTableBody, false));
+        if (this.selfTableBody) pending.push(this.renderAccordion(this.selfTableBody, true));
 
         this.autoSelectDefaults();
         this.updateTotal();
+        return Promise.allSettled(pending);
     }
 
     handleViewportResize() {
@@ -910,23 +912,19 @@ class CriticalCalc {
                     }
                 }
                 
-                items.forEach(it => {
-                    if (it.__rowEl) {
-                        if (newIsOpen) {
-                            // 모바일에서는 grid, 데스크탑에서는 인라인 스타일 제거하여 CSS 적용
-                            const isMobile = window.innerWidth <= 1200;
-                            if (isMobile) {
-                                it.__rowEl.style.setProperty('display', 'grid', 'important');
-                            } else {
-                                // 데스크탑에서는 인라인 스타일 제거
-                                it.__rowEl.style.removeProperty('display');
-                            }
-                        } else {
-                            // 모바일 CSS의 !important를 덮어쓰기 위해 !important 사용
-                            it.__rowEl.style.setProperty('display', 'none', 'important');
-                        }
-                    }
-                });
+                const rows = items.map(it => it.__rowEl).filter(Boolean);
+                rows.forEach(row => window.disclosureMotion?.cancel(row));
+                if (newIsOpen) {
+                    rows.forEach(row => {
+                        if (window.innerWidth <= 1200) row.style.setProperty('display', 'grid', 'important');
+                        else row.style.removeProperty('display');
+                    });
+                    window.disclosureMotion?.rows(rows);
+                } else {
+                    const hideRows = () => rows.forEach(row => row.style.setProperty('display', 'none', 'important'));
+                    if (window.disclosureMotion) window.disclosureMotion.rows(rows, true, hideRows);
+                    else hideRows();
+                }
             });
             
             // 초기 상태 클래스 설정

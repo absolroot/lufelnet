@@ -87,6 +87,7 @@
       }
     } finally {
       if (loadingEl) loadingEl.style.display = 'none';
+      window.LufelPageEntrance?.finish();
     }
   }
 

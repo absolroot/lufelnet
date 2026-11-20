@@ -227,6 +227,7 @@
     } else {
       applyListSeo();
     }
+    window.LufelPageEntrance?.finish();
 
     window.addEventListener('popstate', () => {
       applyRouteSelection('popstate');

@@ -41,6 +41,8 @@
 })();
 </script>
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/material-calc/material-planner.css?h={{ site.data.asset_versions.files['/apps/material-calc/material-planner.css'] }}">
 <script>window.materialInfoHash = {{ site.data.asset_versions.files['/apps/material-calc/data/material_info.js'] | jsonify }};</script>
 <script src="/apps/material-calc/material-planner.js?h={{ site.data.asset_versions.files['/apps/material-calc/material-planner.js'] }}"></script>
@@ -54,13 +56,13 @@
 {% endif %}
 
 <div class="main-wrapper">
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <a href="{{ site.baseurl }}/"><span data-i18n="nav.home">-</span></a>
         <span class="separator">/</span>
         <span class="current-page" data-i18n="navCurrent">-</span>
     </div>
 
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
         <h1 id="plannerTitle" data-i18n="pageTitle">-</h1>
         <div class="planner-toolbar">
             <button id="resetBtn" class="primary-btn" style="padding: 8px 10px;" data-i18n="reset">-</button>
@@ -77,7 +79,7 @@
     </div>
 
     <!-- 상단 합산 요약 -->
-    <section class="summary-card card-style">
+    <section class="summary-card card-style page-entrance-part">
         <div class="summary-header">
             <h2 data-i18n="materialSummary">-</h2>
             <button id="collapseSummary" aria-expanded="true" class="icon-btn" title="-" data-i18n-aria="summaryToggleTitle">▾</button>

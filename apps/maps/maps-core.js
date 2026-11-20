@@ -832,6 +832,11 @@
             return this.nonInteractiveIcons.includes(imageName);
         },
 
+        getPortraitColor(imageName) {
+            const match = /^yishijie-icon-cshx-(cyan|orange|blue|purple)[A-F]\.png$/.exec(imageName || '');
+            return match ? { cyan: 0x4bded7, orange: 0xffa343, blue: 0x629cff, purple: 0xd088f5 }[match[1]] : null;
+        },
+
         // 오브젝트 로드 및 배치
         // mapRotationDeg: 맵 회전 각도 (도 단위, 반시계 방향), 오브젝트는 역회전하여 원래 방향 유지
         async loadObjects(objects, mapRotationDeg = 0) {
@@ -844,6 +849,8 @@
                 try {
                     const texture = await this.loadTexture(`${ICON_PATH}${obj.image}`);
                     const sprite = new PIXI.Sprite(texture);
+                    const portraitColor = this.getPortraitColor(obj.image);
+                    if (portraitColor !== null) sprite.tint = portraitColor;
 
                     // JSON의 ratio를 scale로 사용
                     const finalRatio = obj.ratio || 1;
@@ -1357,6 +1364,7 @@
                 }
 
                 loadingEl.style.display = 'none';
+                window.LufelPageEntrance?.finish();
             } catch (error) {
                 console.error('맵 로드 실패:', error);
                 const loadingText = document.getElementById('loading-text');

@@ -915,6 +915,30 @@ body {
     white-space: pre-wrap;
     z-index: 2000;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    animation: lufel-tooltip-enter 140ms ease-out;
+}
+
+@keyframes lufel-tooltip-enter {
+    from { opacity: 0; transform: translateY(4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lufel-tooltip-centered-enter {
+    from { opacity: 0; transform: translate(-50%, 4px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes lufel-tooltip-opacity-enter {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.persona-tooltip {
+    animation: lufel-tooltip-centered-enter 140ms ease-out;
+}
+
+.chart-tip {
+    animation: lufel-tooltip-opacity-enter 140ms ease-out;
 }
 
 /* 『』 문자 간격 조정 */
@@ -947,7 +971,7 @@ body {
     max-width: 90%;
     text-align: left;
     font-size: 13px;
-    animation: fadeIn 0.3s ease-in-out;
+    animation: lufel-tooltip-banner-enter 180ms ease-out;
 }
 
 .tooltip-banner-close {
@@ -963,15 +987,24 @@ body {
     cursor: pointer;
 }
 
-@keyframes fadeIn {
+@keyframes lufel-tooltip-banner-enter {
     from {
         opacity: 0;
-        transform: translate(-50%, 20px);
+        transform: translate(-50%, 6px);
     }
 
     to {
         opacity: 1;
         transform: translate(-50%, 0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cursor-tooltip,
+    .tooltip-mobile-banner,
+    .persona-tooltip,
+    .chart-tip {
+        animation: none;
     }
 }
 
@@ -1120,4 +1153,39 @@ body.nav-locked {
 
 .drag-me:is(input, textarea) {
     caret-color: transparent !important;
+}
+/* Shared feedback for icon filters and newly revealed content. */
+@media (prefers-reduced-motion: no-preference) {
+    body .filter-options label {
+        transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+    }
+
+    body .filter-options label img,
+    body .filter-options label .star-container {
+        transition: scale 160ms ease, filter 160ms ease;
+    }
+
+    body .filter-options label:active { transform: scale(.94); }
+    body .filter-options input:checked + img,
+    body .filter-options input:checked + .star-container { scale: 1.08; }
+
+    body .persona-filter-options .persona-filter-label,
+    body .filter-item[data-checked] { transition: transform 150ms ease, background-color 150ms ease; }
+    body .persona-filter-options .persona-filter-label:active,
+    body .filter-item[data-checked]:active { transform: scale(.94); }
+    body .persona-filter-options .persona-filter-label img,
+    body .filter-item[data-checked] .filter-icon { transition: scale 160ms ease; }
+    body .persona-filter-options .persona-filter-label:has(input:checked) img,
+    body .filter-item[data-checked="true"] .filter-icon { scale: 1.08; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body .filter-options label,
+    body .filter-options label img,
+    body .filter-options label .star-container { transition: none; }
+    body .filter-options label:active { transform: none; }
+    body .persona-filter-options .persona-filter-label,
+    body .persona-filter-options .persona-filter-label img,
+    body .filter-item[data-checked],
+    body .filter-item[data-checked] .filter-icon { transition: none; }
 }

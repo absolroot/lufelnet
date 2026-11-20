@@ -47,13 +47,15 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/guides/guides.css?h={{ site.data.asset_versions.files['/apps/guides/guides.css'] }}">
 <script src="/apps/guides/guides.js?h={{ site.data.asset_versions.files['/apps/guides/guides.js'] }}"></script>
 
 <!-- main contents -->
 <div class="main-wrapper">
     <div class="header-container header-container--with-ad">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <div class="navigation-path">
                 <a href="/" id="nav-home" data-i18n="nav.home">-</a>
                 <span class="separator">/</span>
@@ -65,7 +67,7 @@
     </div>
 
     <!-- Guides List Container -->
-    <div class="guides-container" id="guides-container">
+    <div class="guides-container page-entrance-part" id="guides-container">
         <div class="guides-loading" data-i18n="loadingGuides">Loading guides...</div>
     </div>
 </div>

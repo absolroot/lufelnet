@@ -55,17 +55,19 @@
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/character.css?h={{ site.data.asset_versions.files['/assets/css/character.css'] }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/share-character/share-character.css?h={{ site.data.asset_versions.files['/apps/share-character/share-character.css'] }}">
 
 <div class="main-wrapper sc-page">
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <script>document.write(`<a href="${BASE_URL}/" data-i18n="nav_home">Home</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" data-i18n="nav_current">Share</span>
     </div>
 
-    <div class="header-container sc-header">
+    <div class="header-container sc-header page-entrance-part">
         <div class="sc-header-copy">
             <h1 data-i18n="page_title">Roster Share</h1>
             <p class="sc-page-description" data-i18n="page_description">Share your character roster with awareness and weapon progress.</p>
@@ -135,7 +137,7 @@
         </div>
     </div>
 
-    <div class="filter-section">
+    <div class="filter-section page-entrance-part">
         <div class="filter-header">
             <button class="filter-toggle-btn" id="scFilterToggleBtn">
                 <img src="{{ site.baseurl }}/assets/img/character-cards/filter.png" alt="Filter" style="width: 20px; height: 20px;" />
@@ -287,7 +289,7 @@
 
     <div class="separator-line"></div>
 
-    <div class="search-section">
+    <div class="search-section page-entrance-part">
         <div class="search-container">
             <div class="search-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -308,7 +310,7 @@
 
     <div id="scModalContainer" aria-live="polite"></div>
 
-    <section class="sc-grid-section">
+    <section class="sc-grid-section page-entrance-part">
         <div id="scCardGrid" class="sc-card-grid" aria-live="polite"></div>
         <div id="scEmptyState" class="sc-empty-state" hidden>
             <h2 data-i18n="empty_selection_title">Select a character</h2>

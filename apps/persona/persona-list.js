@@ -121,7 +121,7 @@ function initializePersonaLoadingProgress() {
 function showPersonaDetailSkeleton(detailPanel) {
     if (!detailPanel) return;
 
-    detailPanel.className = 'sticky-content';
+    detailPanel.className = 'sticky-content page-entrance-part';
     detailPanel.setAttribute('aria-busy', 'true');
     detailPanel.innerHTML = `
         <div class="detail-placeholder persona-detail-skeleton" aria-hidden="true">
@@ -233,51 +233,6 @@ async function initializePageContent() {
     // 대량 렌더링 최적화: 청크 단위로 분할 렌더링하여 메인 스레드 점유를 줄임
     const CHUNK_SIZE = 10;
     let currentIndex = 0;
-    let personaCardRevealQueue = Promise.resolve();
-    let hasRevealedPersonaCard = false;
-
-    function waitForPersonaCardImages(container) {
-        const images = Array.from(container.querySelectorAll('img'));
-
-        return Promise.all(images.map((image) => new Promise((resolve) => {
-            const finish = () => {
-                image.removeEventListener('load', finish);
-                image.removeEventListener('error', finish);
-                if (typeof image.decode === 'function') {
-                    image.decode().catch(() => {}).finally(resolve);
-                    return;
-                }
-                resolve();
-            };
-
-            if (image.complete) {
-                finish();
-                return;
-            }
-
-            image.addEventListener('load', finish, { once: true });
-            image.addEventListener('error', finish, { once: true });
-        })));
-    }
-
-    function queuePersonaCardReveal(container) {
-        personaCardRevealQueue = personaCardRevealQueue.then(async () => {
-            await waitForPersonaCardImages(container);
-            // Filters and search reveal matching cards immediately. Do not put an
-            // already-visible result back through the delayed entrance animation.
-            if (!container.isConnected || !container.classList.contains('persona-card-pending')) return;
-
-            if (hasRevealedPersonaCard) {
-                await new Promise((resolve) => setTimeout(resolve, 56));
-            }
-
-            if (!container.isConnected || !container.classList.contains('persona-card-pending')) return;
-            container.classList.remove('persona-card-pending');
-            container.classList.add('persona-card-enter');
-            hasRevealedPersonaCard = true;
-        });
-    }
-
     function renderChunk() {
         const fragment = document.createDocumentFragment();
         const renderedCards = [];
@@ -286,7 +241,7 @@ async function initializePageContent() {
             const personaName = sortedPersonas[currentIndex];
             const index = currentIndex;
             const detailContainer = document.createElement('div');
-            detailContainer.className = 'persona-detail-container persona-card-pending';
+            detailContainer.className = 'persona-detail-container';
             // Add data attributes for filtering
             detailContainer.dataset.element = personaSource[personaName].element;
             detailContainer.dataset.position = personaSource[personaName].position;
@@ -423,7 +378,6 @@ async function initializePageContent() {
         }
         // 청크 단위로 DOM 삽입
         cardsContainer.appendChild(fragment);
-        renderedCards.forEach(queuePersonaCardReveal);
         window.LufelPageLifecycle?.release('persona-list');
         containers = document.querySelectorAll('.persona-detail-container');
         // A filter or search may be applied before progressive rendering finishes.
@@ -1071,11 +1025,18 @@ async function initializePageContent() {
 
         // Clear previous content
         detailPanel.innerHTML = '';
-        detailPanel.className = 'sticky-content';
+        detailPanel.className = 'sticky-content page-entrance-part';
         detailPanel.removeAttribute('aria-busy');
 
         // Append to panel
         detailPanel.appendChild(infoSection);
+        const wasInitialEntrance = window.LufelPageEntrance?.finish();
+        if (!wasInitialEntrance && infoSection.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            infoSection.animate([
+                { opacity: 0, transform: 'translateY(6px)' },
+                { opacity: 1, transform: 'translateY(0)' }
+            ], { duration: 280, easing: 'cubic-bezier(.16, 1, .3, 1)' });
+        }
 
         // Re-bind tooltips and apply formatting (number highlighting)
         if (typeof addTooltips === 'function') {
@@ -1367,8 +1328,6 @@ async function initializePageContent() {
         }
         cardsContainer.innerHTML = ''; // Clear existing
         currentIndex = 0;
-        personaCardRevealQueue = Promise.resolve();
-        hasRevealedPersonaCard = false;
         if ('requestIdleCallback' in window) {
             requestIdleCallback(renderChunk, { timeout: 50 });
         } else {

@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('schedule');
 </script>
@@ -58,7 +60,7 @@ window.LufelPageLifecycle?.hold('schedule');
 <div class="main-wrapper schedule-page">
     <!-- Header -->
     <div class="header-container header-container--with-ad" id="schedule-header">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <div class="navigation-path">
                 <a href="../../" id="nav-home" data-i18n="nav.home">-</a>
                 <span class="separator">/</span>
@@ -70,7 +72,7 @@ window.LufelPageLifecycle?.hold('schedule');
     </div>
 
     <!-- Notice Banner -->
-    <div class="schedule-notice" id="schedule-notice">
+    <div class="schedule-notice page-entrance-part" id="schedule-notice">
         <p class="schedule-prediction-notice"><strong data-i18n="futureScheduleDisclaimer">Future schedules are not confirmed.</strong></p>
         <p class="notice-text" id="notice-text" data-i18n-html="noticeHtml">
             Be careful with spoilers.<br>
@@ -111,14 +113,14 @@ window.LufelPageLifecycle?.hold('schedule');
     </script>
 
     <!-- Current Release Banner -->
-    <div id="current-banner" class="current-banner">
+    <div id="current-banner" class="current-banner page-entrance-part">
         <div class="loading">
             <div class="loading-spinner"></div>
         </div>
     </div>
 
     <!-- Filter Section -->
-    <div class="filter-section">
+    <div class="filter-section page-entrance-part">
         <button class="filter-btn active" data-filter="all" id="filter-all" data-i18n="filterAll">All</button>
         <button class="filter-btn" data-filter="released" id="filter-released"
             data-i18n="filterReleased">Released</button>
@@ -129,7 +131,7 @@ window.LufelPageLifecycle?.hold('schedule');
     </div>
 
     <!-- Timeline -->
-    <div id="timeline-container" class="timeline-container">
+    <div id="timeline-container" class="timeline-container page-entrance-part">
         <div class="loading">
             <div class="loading-spinner"></div>
         </div>

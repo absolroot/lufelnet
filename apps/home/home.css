@@ -568,8 +568,8 @@
 .home-section-status { min-height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #aaa; text-align: center; padding: 20px; box-sizing: border-box; }
 .home-section-status--error { color: #f0b1b1; }
 .home-section-status--loading { color: #aaa; }
-.home-section-ready { animation: homeSectionReveal .22s ease-out both; }
-@keyframes homeSectionReveal { from { opacity: .35; } to { opacity: 1; } }
+.home-section-ready { animation: homeSectionReveal .38s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes homeSectionReveal { from { opacity: .2; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 .home-section-retry { min-height: 36px; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 6px; background: #282828; color: #fff; cursor: pointer; }
 .home-section-retry:hover, .home-section-retry:focus-visible { background: #3a3a3a; outline: 2px solid #d2ad76; outline-offset: 2px; }
 @media (max-width: 768px) { .home-quick-skeleton { min-height: 116px; } .character-cards .character-card { width: 80px; } .home-character-skeleton { width: 80px; min-width: 80px; } .home-character-skeleton span { width: 80px; height: 100px; } .home-character-skeleton i { width: 80px; height: 28.5px; } .home-panel-skeleton { min-height: 220px; } .bosses-card > .bosses-loading-placeholder { min-height: 1180px; } }
@@ -1136,4 +1136,84 @@
     .text-section h2 {
         font-size: 20px;
     }
+}
+/* Home interaction feedback stays local to the control being used. */
+@media (prefers-reduced-motion: no-preference) {
+    #quick-grid .quick-icon-wrap {
+        transition: transform 150ms ease, scale 110ms ease;
+    }
+
+    #quick-grid .quick-link:active .quick-icon-wrap { scale: .94; }
+    #quick-grid .quick-link:focus-visible .quick-icon-wrap { transform: scale(1.08); }
+
+    .popular-content .character-card-img { overflow: hidden; transition: background-color 180ms ease; }
+    .popular-content .character-card-img img { transition: scale 220ms cubic-bezier(.2, .7, .2, 1); }
+    .popular-content .character-card-text { transition: background-color 180ms ease; }
+    .popular-content .character-card:active .character-card-img img { scale: .97; }
+
+    #home-carousel-root .carousel-slide { transition: scale 240ms ease-out; }
+    #home-carousel-root .carousel-btn,
+    #home-carousel-root .carousel-dot,
+    #home-carousel-root .carousel-toolbar select {
+        transition: background-color 140ms ease, border-color 140ms ease, filter 140ms ease, scale 120ms ease;
+    }
+    #home-carousel-root .carousel-btn:active,
+    #home-carousel-root .carousel-dot:active { scale: .9; }
+    #home-carousel-root .carousel-dot.active { scale: 1.2; }
+    #home-carousel-root .carousel-btn svg { transition: translate 140ms ease; }
+
+    .guides-container .guide-thumbnail-container img { transition: scale 180ms ease; }
+    .guides-container .guide-home-item:active .guide-thumbnail-container img { scale: .97; }
+    .guides-container .guide-home-item h3 { transition: color 140ms ease; }
+
+    .posts-container .post-title svg,
+    .posts-header .show-more-characters-btn img,
+    .posts-header .show-more-posts-btn img { transition: translate 140ms ease, opacity 140ms ease; }
+    .posts-container .like-button img { transition: scale 120ms ease; }
+    .posts-container .like-button:active img { scale: .88; }
+    .posts-container .like-button.liked img { animation: home-like-confirm 260ms ease-out; }
+}
+
+@keyframes home-like-confirm {
+    0% { scale: .88; }
+    55% { scale: 1.12; }
+    100% { scale: 1; }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    #home-carousel-root .carousel-viewport:hover .carousel-slide { scale: 1.012; }
+    #home-carousel-root .carousel-toolbar select:hover { filter: brightness(1.25); }
+    #home-carousel-root .carousel-btn:hover { background-color: rgba(0, 0, 0, .65); border-color: #aaa; }
+    #home-carousel-root .carousel-btn:first-child:hover svg { translate: -2px 0; }
+    #home-carousel-root .carousel-btn:last-child:hover svg { translate: 2px 0; }
+    #home-carousel-root .carousel-dot:hover { scale: 1.2; }
+    .popular-content .character-card:hover:not(:active) .character-card-img img,
+    .popular-content .character-card:focus-within:not(:active) .character-card-img img {
+        scale: 1.065;
+        transition: scale 220ms cubic-bezier(.2, .7, .2, 1);
+    }
+    .popular-content .character-card:hover .character-card-text,
+    .popular-content .character-card:focus-within .character-card-text { background-color: rgba(0, 0, 0, .7); }
+    .guides-container .guide-home-item:hover .guide-thumbnail-container img { scale: 1.04; }
+    .guides-container .guide-home-item:hover h3 { color: #fff !important; }
+    .posts-container .post-title:hover svg,
+    .posts-header .show-more-characters-btn:hover img,
+    .posts-header .show-more-posts-btn:hover img { translate: 3px 0; opacity: 1 !important; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #quick-grid .quick-icon-wrap,
+    .popular-content .character-card-img,
+    .popular-content .character-card-img img,
+    .popular-content .character-card-text,
+    #home-carousel-root .carousel-slide,
+    #home-carousel-root .carousel-track,
+    #home-carousel-root .carousel-btn,
+    #home-carousel-root .carousel-dot,
+    .guides-container .guide-thumbnail-container img,
+    .posts-container .post-title svg,
+    .posts-container .like-button img { transition: none; animation: none; }
+    #quick-grid .quick-link:hover .quick-icon-wrap,
+    #quick-grid .quick-link:focus-visible .quick-icon-wrap { transform: none; }
+    .popular-content .character-card:hover .character-card-img img { scale: 1; }
 }

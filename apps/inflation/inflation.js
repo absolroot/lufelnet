@@ -67,6 +67,7 @@
       initEditMode();
     }
     render();
+    window.LufelPageEntrance?.finish();
   }
 
   async function initI18n() {

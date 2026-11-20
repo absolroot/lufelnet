@@ -676,42 +676,6 @@
         if (!tabsContainer) return;
 
         tabsContainer.innerHTML = '';
-        let tabRevealQueue = Promise.resolve();
-        let hasRevealedTab = false;
-
-        function waitForTabImages(tab) {
-            return Promise.all(Array.from(tab.querySelectorAll('img')).map((image) => new Promise((resolve) => {
-                const finish = () => {
-                    image.removeEventListener('load', finish);
-                    image.removeEventListener('error', finish);
-                    if (typeof image.decode === 'function') {
-                        image.decode().catch(() => {}).finally(resolve);
-                        return;
-                    }
-                    resolve();
-                };
-
-                if (image.complete) {
-                    finish();
-                    return;
-                }
-
-                image.addEventListener('load', finish, { once: true });
-                image.addEventListener('error', finish, { once: true });
-            })));
-        }
-
-        function queueTabReveal(tab) {
-            tabRevealQueue = tabRevealQueue.then(async () => {
-                await waitForTabImages(tab);
-                if (!tab.isConnected) return;
-                if (hasRevealedTab) await new Promise((resolve) => setTimeout(resolve, 36));
-                if (!tab.isConnected) return;
-                tab.classList.remove('synergy-tab-pending');
-                tab.classList.add('synergy-tab-enter');
-                hasRevealedTab = true;
-            });
-        }
 
         // 먼저 각 캐릭터의 time 값을 가져오기
         const characterTimeMap = {};
@@ -929,7 +893,7 @@
 
         characterNamesData.forEach(({ characterName, displayName, char, characterTime }, index) => {
             const tab = document.createElement('div');
-            tab.className = 'character-tab synergy-tab-pending';
+            tab.className = 'character-tab';
             tab.dataset.character = characterName;
             tab.dataset.synergyType = char.cybercoop ? 'cyber' : 'standard';
 
@@ -984,7 +948,6 @@
             });
 
             tabsContainer.appendChild(tab);
-            queueTabReveal(tab);
         });
 
         // 언어 파일 존재 여부 확인 (비동기, 필터링에 사용)
@@ -1226,6 +1189,7 @@
         }
 
         renderCharacterDetail(characterName, data);
+        window.LufelPageEntrance?.finish();
 
         // 모바일에서 detail까지 자동 스크롤 (초기 로드가 아닐 때만, 즉 사용자 클릭 시에만)
         if (!forceLoad && window.innerWidth <= 768) {
@@ -2529,15 +2493,24 @@
             if (!content) return;
 
             const chevron = title.querySelector('.section-chevron');
-            const isCollapsed = section.classList.contains('collapsed');
+            const isCollapsed = section.classList.contains('collapsed') || section.dataset.motionClosing === 'true';
 
             if (isCollapsed) {
+                delete section.dataset.motionClosing;
+                window.disclosureMotion?.cancel(content);
                 section.classList.remove('collapsed');
+                window.disclosureMotion?.reveal(content);
                 if (chevron) {
                     chevron.style.transform = 'rotate(90deg)'; // 아래 방향 (펼침)
                 }
             } else {
-                section.classList.add('collapsed');
+                section.dataset.motionClosing = 'true';
+                const finishClosing = () => {
+                    delete section.dataset.motionClosing;
+                    section.classList.add('collapsed');
+                };
+                if (window.disclosureMotion) window.disclosureMotion.collapse(content, finishClosing);
+                else finishClosing();
                 if (chevron) {
                     chevron.style.transform = 'rotate(-90deg)'; // 위 방향 (접힘)
                 }

@@ -50,16 +50,18 @@
 {% endif %}
 
 {% include supabase-config.html %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 
 <!-- 메인 컨텐츠 -->
 <div class="main-wrapper">
     <!-- 네비게이션 경로 -->
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <script>document.write(`<a id="nav-home" href="../../">홈</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">택틱 / 택틱 업로드</span>
     </div>
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
         <h1 id="page-title">택틱 업로드</h1>
     </div>
     <div id="userInfoBar" class="user-info-bar" style="display:none;">
@@ -69,7 +71,7 @@
     </div>
 
     <!-- 로그인 확인 메시지 -->
-    <div id="loginRequired" class="login-required" style="display: none;">
+    <div id="loginRequired" class="login-required page-entrance-part" style="display: none;">
         <div class="login-message">
             <h3 data-i18n="login_required">로그인이 필요합니다</h3>
             <p data-i18n="login_required_desc">택틱을 업로드하려면 로그인해주세요.</p>
@@ -78,7 +80,7 @@
     </div>
 
     <!-- 업로드 폼 -->
-    <div id="uploadForm" class="upload-container" style="display: none;">
+    <div id="uploadForm" class="upload-container page-entrance-part" style="display: none;">
         <form id="tacticUploadForm" class="tactic-upload-form">
             <div class="form-section">
                 <h3 data-i18n="tactic_data">택틱 데이터</h3>
@@ -589,6 +591,7 @@ class TacticUploader {
         this.initRegionDropdown();
         this.checkEditMode();
         this.checkFromMaker();
+        window.LufelPageEntrance?.finish();
     }
 
     /**

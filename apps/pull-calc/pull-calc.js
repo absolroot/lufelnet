@@ -2095,6 +2095,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const checkAndInit = () => {
         if (window.characterData && window.ReleaseScheduleData) {
             window.pullSimulator = new PullSimulator();
+            window.LufelPageEntrance?.finish();
         } else {
             setTimeout(checkAndInit, 100);
         }

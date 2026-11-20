@@ -838,6 +838,8 @@
     } catch(err){
       if (cardsWrap) cardsWrap.innerHTML = `<div class="global-card">${tr('global.status.loadFailed', 'Load failed')}</div>`;
       try { console.error('[global-stats]', err); } catch(_) {}
+    } finally {
+      window.LufelPageEntrance?.finish();
     }
   }
 

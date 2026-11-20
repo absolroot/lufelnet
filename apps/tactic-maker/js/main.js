@@ -13,6 +13,30 @@ import { ImportExport } from './import-export.js';
 import { TacticSettingsUI } from './ui-settings.js';
 import { CaptureUI } from './capture.js';
 
+window.revealTacticMakerIntro = (() => {
+    let revealed = false;
+    return () => {
+        if (revealed) return;
+        revealed = true;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const animate = element => element.animate([{ opacity: 0, translate: '0 12px' }, { opacity: 1, translate: '0 0' }],
+            { duration: 420, easing: 'cubic-bezier(.16, 1, .3, 1)' });
+        const observer = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                observer.unobserve(entry.target);
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) animate(entry.target);
+            });
+        }, { threshold: 0 }) : null;
+        document.querySelectorAll('.tactic-maker-page > .navigation-path, .tactic-maker-page > .header-container, .tactic-maker-page > .sheet-status, .tactic-maker-page > .tactic-input-group, .tactic-maker-page > .party-section, .tactic-maker-page > .tactic-board-section').forEach(element => {
+            if (!element.animate) return;
+            const rect = element.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) animate(element);
+            else if (observer && rect.top >= window.innerHeight && element.getClientRects().length) observer.observe(element);
+        });
+    };
+})();
+
 class TacticMakerApp {
     constructor() {
         this.init();
@@ -145,6 +169,7 @@ class TacticMakerApp {
             if (loadingOverlay) {
                 setTimeout(() => {
                     loadingOverlay.classList.add('hidden');
+                    window.revealTacticMakerIntro?.();
                     // Remove from DOM after transition
                     setTimeout(() => {
                         loadingOverlay.remove();

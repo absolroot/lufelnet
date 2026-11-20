@@ -704,4 +704,5 @@ class PayCalculator {
 
 document.addEventListener('DOMContentLoaded', () => {
     new PayCalculator();
-}); 
+    requestAnimationFrame(() => window.LufelPageEntrance?.finish());
+});

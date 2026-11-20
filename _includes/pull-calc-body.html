@@ -56,22 +56,24 @@
 {% endif %}
 
 <!-- Main Content -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div class="main-wrapper pull-calc-page">
     <!-- Navigation Path -->
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <script>document.write(`<a href="../../" id="nav-home">-</a>`);</script>
         <span class="separator">/</span>
         <span class="current-page" id="nav-current">-</span>
     </div>
 
     <!-- Header -->
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
         <h1 id="page-title">-</h1>
         <p class="page-description" id="page-description"></p>
     </div>
 
     <!-- Must Read Accordion -->
-    <div class="settings-container">
+    <div class="settings-container page-entrance-part">
         <div class="accordion-section" id="mustReadAccordion">
             <div class="accordion-header" data-target="mustReadContent">
                 <h3 id="mustReadTitle">계산기 기준 및 안내</h3>
@@ -91,7 +93,7 @@
     {% include nitro-ad.html id="pull-planner-settings-banner" format="banner" class="nitro-ad-container--section" placeholder=true %}
 
     <!-- Settings Accordions -->
-    <div class="settings-container settings-grid">
+    <div class="settings-container settings-grid page-entrance-part">
         <!-- Assets Accordion -->
         <div class="accordion-section expanded" id="assetsAccordion">
             <div class="accordion-header" data-target="assetsContent">

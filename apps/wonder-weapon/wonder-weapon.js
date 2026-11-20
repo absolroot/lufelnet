@@ -610,42 +610,6 @@
     if (!tabsContainer) return;
 
     tabsContainer.innerHTML = '';
-    let tabRevealQueue = Promise.resolve();
-    let hasRevealedTab = false;
-
-    function waitForTabImages(tab) {
-      return Promise.all(Array.from(tab.querySelectorAll('img')).map((image) => new Promise((resolve) => {
-        const finish = () => {
-          image.removeEventListener('load', finish);
-          image.removeEventListener('error', finish);
-          if (typeof image.decode === 'function') {
-            image.decode().catch(() => {}).finally(resolve);
-            return;
-          }
-          resolve();
-        };
-
-        if (image.complete) {
-          finish();
-          return;
-        }
-
-        image.addEventListener('load', finish, { once: true });
-        image.addEventListener('error', finish, { once: true });
-      })));
-    }
-
-    function queueTabReveal(tab) {
-      tabRevealQueue = tabRevealQueue.then(async () => {
-        await waitForTabImages(tab);
-        if (!tab.isConnected) return;
-        if (hasRevealedTab) await new Promise((resolve) => setTimeout(resolve, 36));
-        if (!tab.isConnected) return;
-        tab.classList.remove('weapon-tab-pending');
-        tab.classList.add('weapon-tab-enter');
-        hasRevealedTab = true;
-      });
-    }
 
     const lang = (typeof LanguageRouter !== 'undefined' && LanguageRouter) ? LanguageRouter.getCurrentLanguage() : 'kr';
     // const t = i18n[lang] || i18n.kr;
@@ -687,7 +651,7 @@
       }
 
       const tab = document.createElement('div');
-      tab.className = 'weapon-tab weapon-tab-pending';
+      tab.className = 'weapon-tab';
       tab.dataset.weapon = krName;
       tab.dataset.weaponNameKr = krName;
       tab.dataset.weaponNameEn = data.name_en || '';
@@ -755,7 +719,6 @@
 
       // 탭 생성 후 shard 아이콘 업데이트
       updateWeaponTabShardIcon(krName);
-      queueTabReveal(tab);
     });
 
     // 첫 번째 보이는 탭 선택 (비동기 처리로 탭이 완전히 렌더링된 후 선택)
@@ -1356,6 +1319,7 @@
     html += `</div></div>`; // section-content, detail-section 닫기
 
     detailContainer.innerHTML = html;
+    window.LufelPageEntrance?.finish();
 
     // Collapsible 섹션 초기화 (라이브러리 사용)
     if (typeof setupCollapsibleSections === 'function') {

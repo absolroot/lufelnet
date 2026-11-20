@@ -771,12 +771,14 @@
             await ensureCharacterData(50);
         } catch (_) {
             rootEl.innerHTML = `<div class="second-anniversary-loading">${escapeHtml(t('errors.characterData', 'Failed to load character data.'))}</div>`;
+            window.LufelPageEntrance?.finish();
             return;
         }
         characters = getCharacterEntries();
         pools = buildPools();
         await loadDataFiles();
         render();
+        window.LufelPageEntrance?.finish();
         scheduleTimedVisibilityRefresh();
         setSeoHint();
     }

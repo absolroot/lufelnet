@@ -39,6 +39,8 @@
 {% endfor %}
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/pay-calc/pay-calc.css?h={{ site.data.asset_versions.files['/apps/pay-calc/pay-calc.css'] }}">
 <script src="/apps/pay-calc/pay-calc.js?h={{ site.data.asset_versions.files['/apps/pay-calc/pay-calc.js'] }}"></script>
 
@@ -46,7 +48,7 @@
 <div class="main-wrapper">
     <!-- navigation path -->
     <div class="header-container header-container--with-ad">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <div class="navigation-path">
                 <script>document.write(`<a href="../../">홈</a>`);</script>
                 <span class="separator">/</span>
@@ -58,7 +60,7 @@
     </div>
 
     <!-- top cards -->
-    <div class="top-cards">
+    <div class="top-cards page-entrance-part">
         <!-- 총 구매 가격 -->
         <div class="total-card card-style">
             <div class="card-header">

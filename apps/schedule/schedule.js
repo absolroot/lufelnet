@@ -2028,6 +2028,7 @@
                 container.innerHTML = `<div class="empty-state">${t('loadScheduleFailed')}</div>`;
             }
         } finally {
+            window.LufelPageEntrance?.finish();
             window.LufelPageLifecycle?.release('schedule');
         }
     }

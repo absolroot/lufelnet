@@ -47,16 +47,18 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-tracker/pull-tracker.css?h={{ site.data.asset_versions.files['/apps/pull-tracker/pull-tracker.css'] }}">
 
 <div class="main-wrapper">
-  <div class="navigation-path">
+  <div class="navigation-path page-entrance-part">
     <a href="{{ site.baseurl }}/"><span data-lang-key="home" id="navhome">홈</span></a>
     <span class="separator">/</span>
     <span class="current-page" id="navCurrent">Global Stats</span>
   </div>
 
-  <div class="header-container">
+  <div class="header-container page-entrance-part">
     <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
       <h1 id="pageTitle">Global Stats</h1>
       <select id="globalRegion" class="url-input pull-tracker-region-select">
@@ -76,7 +78,7 @@
     </div>
   </div>
 
-  <section class="summary-cards" style="margin-top:8px;">
+  <section class="summary-cards page-entrance-part" style="margin-top:8px;">
     <div class="global-header">
       <span id="globalStatsNote" class="global-note"></span>
       <span id="gsStatus" style="opacity:.75; font-size:12px;"></span>
@@ -85,7 +87,7 @@
 
   <!-- Overview + Info cards + Chart 
        (moved from index, driven by global-stats.js) -->
-  <section class="summary-cards" style="margin-top:10px;">
+  <section class="summary-cards page-entrance-part" style="margin-top:10px;">
     <div id="globalInfoCards" class="info-cards-grid"></div>
   </section>
   <div class="card-style chart-card">

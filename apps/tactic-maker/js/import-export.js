@@ -1341,6 +1341,7 @@ export class ImportExport {
         const loadingOverlay = document.getElementById('tacticLoadingOverlay');
         if (loadingOverlay) {
             loadingOverlay.classList.add('hidden');
+            window.revealTacticMakerIntro?.();
             setTimeout(() => {
                 loadingOverlay.remove();
             }, 300);

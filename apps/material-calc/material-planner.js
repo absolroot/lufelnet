@@ -1622,6 +1622,7 @@
         recalcTotals();
         renderSummary();
         renderPlans();
+        window.LufelPageEntrance?.finish();
 
         // plan 길이가 0이고 ,인벤토리의 모든 값이 0인 경우 캐릭터 선택 모달 띄우기
         if (STATE.plans.length === 0 && Object.values(STATE.inventory).every(v => v === 0)) {

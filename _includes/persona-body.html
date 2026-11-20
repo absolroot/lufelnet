@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('persona-list');
 </script>
@@ -105,7 +107,7 @@ window.LufelPageLifecycle?.hold('persona-list');
     <script src="{{ site.baseurl }}/apps/persona/getfrom.js?h={{ site.data.asset_versions.files['/apps/persona/getfrom.js'] }}"></script>
 
     <div class="header-container header-container--with-ad">
-        <div class="header-title">
+        <div class="header-title page-entrance-part">
             <div class="navigation-path">
                 <script>document.write(`<a href="../../" id="nav-home" data-i18n="nav.home">-</a>`);</script>
                 <span class="separator">/</span>
@@ -123,7 +125,7 @@ window.LufelPageLifecycle?.hold('persona-list');
     <div class="split-view-container">
         <!-- Left Panel: Filter & List -->
         <div class="persona-list-column">
-            <div class="persona-list-panel">
+            <div class="persona-list-panel page-entrance-part">
                 <!-- Search & Sort Header Implementation -->
                 <div class="search-section filter-header-sticky">
                 <div class="search-sort-container"
@@ -187,7 +189,7 @@ window.LufelPageLifecycle?.hold('persona-list');
 
         <!-- Right Panel: Detail -->
         <div class="persona-detail-panel">
-            <div id="personaDetailContent" class="sticky-content" aria-busy="true">
+            <div id="personaDetailContent" class="sticky-content page-entrance-part" aria-busy="true">
                 <div class="detail-placeholder persona-detail-skeleton" aria-hidden="true">
                     <div class="persona-skeleton-header">
                         <div class="persona-skeleton-title-group">

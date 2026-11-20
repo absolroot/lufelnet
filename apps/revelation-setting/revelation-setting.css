@@ -2165,7 +2165,7 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -4px);
     margin-top: 6px;
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.9);
@@ -2176,7 +2176,7 @@
     color: #fff;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s ease;
+    transition: opacity 140ms ease-out, transform 140ms ease-out;
     z-index: 1000;
 }
 
@@ -2185,18 +2185,26 @@
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -4px);
     border: 5px solid transparent;
     border-bottom-color: rgba(0, 0, 0, 0.9);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.15s ease;
+    transition: opacity 140ms ease-out, transform 140ms ease-out;
     z-index: 1001;
 }
 
 .rs-btn-icon-hover:hover::after,
-.rs-btn-icon-hover:hover::before {
+.rs-btn-icon-hover:hover::before,
+.rs-btn-icon-hover:focus-visible::after,
+.rs-btn-icon-hover:focus-visible::before {
     opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rs-btn-icon-hover::after,
+    .rs-btn-icon-hover::before { transform: translateX(-50%); transition: none; }
 }
 
 .rs-download-btn:hover {

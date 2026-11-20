@@ -1275,6 +1275,7 @@
         }
         consumeShareNotice();
         ensureNavigationLoaded();
+        window.LufelPageEntrance?.finish();
     }
 
     document.addEventListener('DOMContentLoaded', init);

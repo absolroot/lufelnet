@@ -257,6 +257,11 @@
                     const icon = document.createElement('img');
                     icon.className = 'filter-icon';
                     const representativeImage = representativeImages[type] || '';
+                    const portraitColor = window.MapsCore?.getPortraitColor(representativeImage);
+                    if (portraitColor != null) {
+                        icon.style.backgroundColor = `#${portraitColor.toString(16).padStart(6, '0')}`;
+                        icon.style.borderRadius = '4px';
+                    }
                     const iconCandidates = this.buildFilterIconCandidates(type, representativeImage, ICON_PATH);
                     let iconCandidateIndex = 0;
 

@@ -393,6 +393,8 @@
     } catch (error) {
       console.error(error);
       gridEl.textContent = t('loadError', '갤러리 데이터를 불러오지 못했습니다.');
+    } finally {
+      window.LufelPageEntrance?.finish();
     }
   }
 

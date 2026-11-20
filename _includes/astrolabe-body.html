@@ -48,6 +48,8 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/astrolabe/css/style.css?h={{ site.data.asset_versions.files['/apps/astrolabe/css/style.css'] }}">
 
 <style>
@@ -69,7 +71,7 @@
     <!-- UI Overlay container (1200px centered) -->
 
     <!-- Mobile Breadcrumb (Map Style) -->
-    <div id="mobile-breadcrumb" class="mobile-breadcrumb">
+    <div id="mobile-breadcrumb" class="mobile-breadcrumb page-entrance-part">
         <div class="mobile-breadcrumb-logo" onclick="location.href='{{ site.baseurl }}/'">
             <img src="{{ site.baseurl }}/assets/img/logo/lufel.webp" alt="logo">
             <img src="{{ site.baseurl }}/assets/img/logo/lufelnet.png" alt="logo-text">
@@ -81,7 +83,7 @@
         </div>
     </div>
 
-    <div class="astrolabe-ui-container">
+    <div class="astrolabe-ui-container page-entrance-part">
         <!-- Navigation path -->
         <div class="astrolabe-nav-path">
             <script>document.write(`<a href="../../" id="nav-home">홈</a>`);</script>

@@ -74,8 +74,9 @@ class DefenseCalc {
         this._cnBossNameMap = null;
         this._cnBossNameLoadPromise = null;
         this.initializeBossSelect(); // 보스 선택 초기화를 먼저 실행
-        this.initializeTable(); // 그 다음 테이블 초기화
-        this.initializePenetrateTable(); // 관통 테이블 초기화
+        const defenseReady = this.initializeTable(); // 그 다음 테이블 초기화
+        const penetrateReady = this.initializePenetrateTable(); // 관통 테이블 초기화
+        this.initialTablesReady = Promise.allSettled([defenseReady, penetrateReady]);
         this.initializeMobileHeader();
         this.initializePenetrateInputs();
         this.initializeAccordionBulkToggles();
@@ -892,14 +893,16 @@ class DefenseCalc {
     }
 
     initializeTable() {
-        this.renderAccordion(this.tableBody, false);
+        const ready = this.renderAccordion(this.tableBody, false);
         // 초기 합계 계산
         this.updateTotal();
+        return ready;
     }
 
     initializePenetrateTable() {
-        this.renderAccordion(this.penetrateTableBody, true);
+        const ready = this.renderAccordion(this.penetrateTableBody, true);
         this.updatePenetrateTotal();
+        return ready;
     }
 
     // 데이터 -> 캐릭터별 그룹(등장 순서 유지)
@@ -1107,14 +1110,14 @@ class DefenseCalc {
                 const headers = Array.from(tbody.querySelectorAll('tr.group-header'));
                 if (headers.length === 0) return;
                 const shouldOpen = !headers.every(header => header.classList.contains('group-open'));
-                headers.forEach(header => this.setAccordionGroupOpen(header, shouldOpen));
+                headers.forEach(header => this.setAccordionGroupOpen(header, shouldOpen, false));
                 this.syncAccordionBulkToggle(tbody);
             });
         });
         this.syncAllAccordionBulkToggles();
     }
 
-    setAccordionGroupOpen(headerTr, isOpen) {
+    setAccordionGroupOpen(headerTr, isOpen, animate = true) {
         if (!headerTr) return;
         const groupName = headerTr.getAttribute('data-group') || '';
         const tbody = headerTr.closest('tbody');
@@ -1132,16 +1135,21 @@ class DefenseCalc {
 
         const rows = tbody.querySelectorAll(`tr.group-row[data-group="${this.escapeCssIdent(groupName)}"]`);
         rows.forEach(row => {
+            window.disclosureMotion?.cancel(row);
             if (isOpen) {
                 if (window.innerWidth <= 1200) {
                     row.style.setProperty('display', 'grid', 'important');
                 } else {
                     row.style.removeProperty('display');
                 }
-            } else {
-                row.style.setProperty('display', 'none', 'important');
             }
         });
+        if (isOpen && animate) window.disclosureMotion?.rows(Array.from(rows));
+        if (!isOpen) {
+            const hideRows = () => rows.forEach(row => row.style.setProperty('display', 'none', 'important'));
+            if (animate && window.disclosureMotion) window.disclosureMotion.rows(Array.from(rows), true, hideRows);
+            else hideRows();
+        }
     }
 
     getAccordionBulkText(isAllOpen) {
@@ -2200,6 +2208,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (_) { }
         window.defenseCalcInstance = new DefenseCalc();
+        window.defenseCalcInstance.initialTablesReady.finally(() => window.LufelPageEntrance?.finish());
     };
 
     if (typeof ensurePersonaFilesLoaded === 'function') {

@@ -47,8 +47,10 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div class="main-wrapper guide-page">
-  <div class="navigation-path">
+  <div class="navigation-path page-entrance-part">
     <a href="{{ site.baseurl }}/" id="navhome"><span data-lang-key="home">Home</span></a>
     <span class="separator">/</span>
     <a href="../"><span id="navBack">Pull Tracker</span></a>
@@ -56,11 +58,11 @@
     <span class="current-page" id="guideCurrent">URL Guide</span>
   </div>
 
-  <div class="header-container guide-header">
+  <div class="header-container guide-header page-entrance-part">
     <h1 id="pageTitle">URL Guide</h1>
   </div>
 
-  <div class="guide-shell">
+  <div class="guide-shell page-entrance-part">
     <div class="step-row">
       <div class="content guide-card" data-step="1">
         <p class="guide-text" id="s2intro">Windows instructions are currently available.</p>
@@ -752,5 +754,6 @@
     if (osIOS) osIOS.addEventListener('click', () => setOSTab('ios'));
     setOSTab('win');
     setTab(1);
+    window.LufelPageEntrance?.finish();
   });
 </script>

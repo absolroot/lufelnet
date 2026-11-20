@@ -3302,6 +3302,8 @@
         } catch (error) {
             console.error('[revelation-setting] init failed:', error);
             showError(t('msg_load_error_general', '데이터를 불러오는 중 오류가 발생했습니다. 페이지를 새로고침해주세요.'));
+        } finally {
+            window.LufelPageEntrance?.finish();
         }
     }
 

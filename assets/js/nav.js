@@ -419,6 +419,15 @@ class Navigation {
                 const items = section.querySelectorAll('.nav-section-item');
                 if (items.length <= 1) return;
 
+                const itemsContainer = section.querySelector('.nav-section-items');
+                if (itemsContainer) {
+                    const previousTransition = itemsContainer.style.transition;
+                    itemsContainer.style.transition = 'none';
+                    itemsContainer.style.setProperty('--nav-section-height', `${itemsContainer.scrollHeight}px`);
+                    void itemsContainer.offsetHeight;
+                    itemsContainer.style.transition = previousTransition;
+                    void itemsContainer.offsetHeight;
+                }
                 section.classList.toggle('collapsed');
                 const collapsed = [...document.querySelectorAll('.nav-section.collapsed')].map(el => el.dataset.section);
                 localStorage.setItem('navCollapsedSections', JSON.stringify(collapsed));
@@ -824,7 +833,7 @@ class Navigation {
                         e.stopImmediatePropagation();
                         const href = this.getAttribute('href');
 
-                        if (isPc()) {
+                        if (isPc() && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                             createSwordAnimation(this, href);
                         } else {
                             window.location.href = href;

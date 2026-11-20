@@ -1321,6 +1321,7 @@ h2 {
     padding: 6px 12px;
     font-size: 13px;
     cursor: pointer;
+    transition: border-color 160ms ease, background-color 160ms ease, color 160ms ease, transform 120ms ease;
 }
 
 .nature-skill-tab:hover,
@@ -1646,6 +1647,43 @@ h2 {
     color: rgba(255, 255, 255, 0.5);
     cursor: pointer;
     border-radius: 36px;
+    transition: background-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 120ms ease;
+}
+
+.enhancement-btn:active,
+.skill-level-btn:active,
+.sync-mindscape-btn:active,
+.nature-skill-tab:active,
+.nature-skill-slot:active {
+    transform: scale(0.97);
+}
+
+.enhancement-btn:focus-visible,
+.skill-level-btn:focus-visible,
+.sync-mindscape-btn:focus-visible,
+.nature-skill-tab:focus-visible {
+    outline: 2px solid #d2ad76;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .enhancement-btn,
+    .skill-level-btn,
+    .sync-mindscape-btn,
+    .nature-skill-tab,
+    .nature-skill-slot {
+        transition-duration: 0.01ms;
+    }
+
+    .enhancement-btn:active,
+    .skill-level-btn:active,
+    .sync-mindscape-btn:active,
+    .nature-skill-tab:active,
+    .nature-skill-slot:active,
+    .nature-skill-slot:hover,
+    .nature-skill-slot:focus-visible {
+        transform: none;
+    }
 }
 
 .enhancement-btn:hover,
@@ -3656,5 +3694,220 @@ html.skel .review-card .review-content {
 
     html.skel .review-card .review-content {
         min-height: 60px;
+    }
+}
+.character-header .thief-anim-wrapper {
+    opacity: 1;
+}
+
+.character-header .thief-image:not([data-loaded="true"]),
+.character-header .persona-image:not([data-loaded="true"]) {
+    visibility: hidden;
+}
+
+.character-header .thief-anim-wrapper[data-loaded="true"] {
+    animation: character-portrait-arrival 850ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.character-header .thief-image {
+    transition-duration: 850ms;
+    will-change: auto;
+}
+
+.character-header .name-row2 {
+    min-height: 36px;
+}
+
+html.character-header-loading .character-header {
+    position: relative;
+}
+
+html.character-header-loading .character-header::after {
+    content: '';
+    position: absolute;
+    top: 110px;
+    left: min(25%, 140px);
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(255, 255, 255, 0.16);
+    border-top-color: #e12b32;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: character-header-loading-spin 700ms linear infinite;
+}
+
+@keyframes character-header-loading-spin {
+    to { transform: rotate(360deg); }
+}
+
+html.character-header-loading .character-header .navigation-path,
+html.character-header-loading .character-header .name-section,
+html.character-header-loading .character-header .basic-info {
+    visibility: hidden;
+}
+
+.character-header.is-ready .navigation-path,
+.character-header.is-ready .name-section,
+.character-header.is-ready .basic-info {
+    animation: character-name-arrival 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes character-portrait-arrival {
+    from { opacity: 0; transform: translateX(36px) scale(1.025); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes character-name-arrival {
+    from { opacity: 0.25; transform: translateX(-16px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    .character-header .thief-anim-wrapper[data-loaded="true"] {
+        animation-name: character-mobile-portrait-arrival;
+    }
+
+    .character-header.is-ready .navigation-path,
+    .character-header.is-ready .name-section,
+    .character-header.is-ready .basic-info {
+        animation-name: character-mobile-info-arrival;
+    }
+}
+
+@keyframes character-mobile-portrait-arrival {
+    from { opacity: 0; transform: translateY(24px) scale(1.025); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes character-mobile-info-arrival {
+    from { opacity: 0.25; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .settings-card :is(.option-row, .stat-level, .skill-level, .stat-row, .skill-row, .operation-level, .operation-row) > :is(.label, .value, .priority, .skill-item),
+    .stats-card :is(.stat-row, .awake-row) > :is(.label, .value) {
+        transition: color 180ms ease;
+    }
+
+    .settings-card .revelation-value-item {
+        transition: color 180ms ease, background-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .settings-card :is(.option-row, .stat-level, .skill-level, .stat-row, .skill-row, .operation-level, .operation-row) > :is(.label, .value, .priority, .skill-item):hover,
+    .stats-card :is(.stat-row, .awake-row) > :is(.label, .value):hover {
+        color: #b9d7f4;
+        transition-duration: 60ms;
+    }
+
+    .settings-card .revelation-value-item:is(:hover, :focus-visible) {
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.075);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        transition-duration: 60ms;
+    }
+
+    .settings-card :is(.stat-row, .skill-row) > .value:hover,
+    .settings-card :is(.stat-row, .skill-row) > .value span:hover {
+        color: #fff !important;
+    }
+
+    .pros-cons-section,
+    .skills-grid .skill-card {
+        transition: background-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .pros-cons-section:hover,
+    .skills-grid .skill-card:hover {
+        background-color: rgba(255, 255, 255, 0.075);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+        transition-duration: 60ms;
+    }
+
+    .skills-grid .skill-name,
+    .ritual-item .ritual-title,
+    .ritual-item .ritual-image,
+    .ritual-item .ritual-description {
+        transition: color 180ms ease, opacity 180ms ease, transform 180ms ease;
+    }
+
+    .skills-grid .skill-card:hover .skill-name {
+        color: #fff;
+    }
+
+    .ritual-item .ritual-title:hover {
+        color: #b9d7f4;
+    }
+
+    .ritual-item .ritual-image:hover {
+        opacity: 1;
+    }
+
+    .ritual-item .ritual-description:hover {
+        color: rgba(255, 255, 255, 0.92);
+    }
+
+    .weapon-item[data-rarity="5"] .weapon-image,
+    .weapon-item[data-rarity="4"] .weapon-image {
+        transition: filter 260ms ease-out;
+    }
+
+    .weapon-item[data-rarity="5"]:hover .weapon-image {
+        filter: drop-shadow(0 0 3px rgba(196, 255, 255, 0.9)) drop-shadow(0 0 6px rgba(94, 135, 255, 0.48));
+        animation: weapon-glow-five 2.8s ease-in-out 260ms infinite alternate;
+    }
+
+    .weapon-item[data-rarity="4"]:hover .weapon-image {
+        filter: drop-shadow(0 0 3px rgba(255, 226, 153, 0.9)) drop-shadow(0 0 6px rgba(225, 163, 48, 0.45));
+        animation: weapon-glow-four 2.8s ease-in-out 260ms infinite alternate;
+    }
+
+    .skills-grid .skill-card:hover .skill-name,
+    .ritual-item .ritual-title:hover,
+    .ritual-item .ritual-image:hover,
+    .ritual-item .ritual-description:hover {
+        transition-duration: 60ms;
+    }
+}
+
+@keyframes weapon-glow-five {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(196, 255, 255, 0.9)) drop-shadow(0 0 6px rgba(94, 135, 255, 0.48)); }
+    35% { filter: drop-shadow(1px -1px 4px rgba(218, 204, 255, 0.95)) drop-shadow(-1px 1px 7px rgba(209, 153, 222, 0.5)); }
+    70% { filter: drop-shadow(1px 1px 3px rgba(202, 255, 255, 0.9)) drop-shadow(-1px -1px 6px rgba(98, 150, 255, 0.52)); }
+}
+
+@keyframes weapon-glow-four {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(255, 226, 153, 0.9)) drop-shadow(0 0 6px rgba(225, 163, 48, 0.45)); }
+    50% { filter: drop-shadow(1px -1px 4px rgba(255, 239, 191, 0.95)) drop-shadow(-1px 1px 7px rgba(255, 185, 66, 0.5)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .settings-card :is(.option-row, .stat-level, .skill-level, .stat-row, .skill-row, .operation-level, .operation-row) > :is(.label, .value, .priority, .skill-item),
+    .settings-card .revelation-value-item,
+    .stats-card :is(.stat-row, .awake-row) > :is(.label, .value) {
+        transition: none;
+    }
+
+    .character-header .thief-anim-wrapper[data-loaded="true"],
+    .character-header.is-ready .navigation-path,
+    .character-header.is-ready .name-section,
+    .character-header.is-ready .basic-info,
+    .character-header h1.character-name::before,
+    html.character-header-loading .character-header::after,
+    .ritual-item:last-child .ritual-title,
+    .weapon-item[data-rarity="5"]:hover .weapon-image,
+    .weapon-item[data-rarity="4"]:hover .weapon-image {
+        animation: none;
+    }
+
+    .character-header .thief-image,
+    .pros-cons-section,
+    .skills-grid .skill-card,
+    .skills-grid .skill-name,
+    .ritual-item .ritual-title,
+    .ritual-item .ritual-image,
+    .ritual-item .ritual-description,
+    .weapon-item .weapon-image {
+        transition: none;
     }
 }

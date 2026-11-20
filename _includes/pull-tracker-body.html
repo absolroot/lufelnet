@@ -49,14 +49,16 @@
 <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ page.alternate_urls['ko'] | default: page.alternate_urls.first[1] }}" />
 {% endif %}
 
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div class="main-wrapper">
-    <div class="navigation-path">
+    <div class="navigation-path page-entrance-part">
         <a href="../../" id="navhome">홈</a>
         <span class="separator">/</span>
         <span class="current-page" id="navCurrent">Pull Tracker</span>
     </div>
 
-    <div class="header-container">
+    <div class="header-container page-entrance-part">
         <h1 id="pageTitle">Pull Tracker</h1>
         <div class="pull-tracker-header-tools">
             <div id="pull-tracker-mode-tabs" class="pull-tracker-mode-tabs" role="tablist" aria-label="Pull tracker mode tabs">
@@ -77,7 +79,7 @@
         <span id="ptScopeNote" class="scope-note">※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.</span>
     </div>
 
-    <section class="card-style" style="padding:16px; position:relative;">
+    <section class="card-style page-entrance-part" style="padding:16px; position:relative;">
         <div style="display:flex; flex-direction:column; gap:12px; max-width:860px;">
             <div class="url-row" style="gap:8px;">
                 <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">

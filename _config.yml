@@ -84,6 +84,7 @@ include: ["assets"]
 
 # exclude files/folders
 exclude:
+  - AGENTS.md
   - ads_backup.txt
   - .git
   - .gitignore

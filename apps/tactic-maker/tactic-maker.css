@@ -71,6 +71,11 @@ body {
 /* ==========================================================================
    Global Layout
    ========================================================================== */
+/* Keep fixed action dropdowns positioned relative to the viewport. */
+.main-wrapper.tactic-maker-page {
+    transform: none;
+}
+
 .tactic-maker-page .header-container {
     padding: 0;
     margin-bottom: 12px;

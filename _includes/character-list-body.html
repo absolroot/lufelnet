@@ -619,13 +619,11 @@ window.LufelPageLifecycle?.hold('character-list');
     }
 
     // 언어별 캐릭터 데이터 로딩 및 병합
-    async function loadCharacterData() {
+    async function loadCharacterData(spoilerEnabled = isSpoilerEnabled()) {
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
         const isKrLike = (typeof window.isKrLikeLanguage === 'function')
             ? window.isKrLikeLanguage(currentLang)
             : (currentLang === 'kr' || currentLang === 'cn');
-        const spoilerEnabled = isSpoilerEnabled();
-
         // 스포일러 모드에서 미출시 캐릭터 감지를 위해 원본 언어별 캐릭터 리스트 저장
         let originalLangCharacterList = null;
 
@@ -741,6 +739,7 @@ window.LufelPageLifecycle?.hold('character-list');
                     mergedData[characterKey].limit_asia = krChar.limit;
                     mergedData[characterKey].limit_glb = langChar.limit !== undefined ? langChar.limit : krChar.limit;
                     mergedData[characterKey].limit = mergedData[characterKey].limit_glb;
+                    mergedData[characterKey].has_innate_glb = langChar.has_innate === true;
                 }
 
                 // name 처리: 현재 언어에 따라 적절한 이름 사용
@@ -916,6 +915,7 @@ window.LufelPageLifecycle?.hold('character-list');
 
     async function initializePageContent(options = {}) {
         const force = !!(options && options.force);
+        const spoilerEnabled = options.spoilerEnabled ?? isSpoilerEnabled();
         // 중복 실행 방지
         if (isInitializing || (isInitialized && !force)) {
             // console.log('initializePageContent already running or completed');
@@ -926,11 +926,15 @@ window.LufelPageLifecycle?.hold('character-list');
         // console.log('=== STARTING PAGE INITIALIZATION ===');
 
         // 캐릭터 데이터 로딩
-        const dataLoaded = await (options.dataPromise || loadCharacterData());
+        const dataLoaded = await (options.dataPromise || loadCharacterData(spoilerEnabled));
         if (!dataLoaded || typeof window.characterData === 'undefined') {
             console.error('characterData is not loaded');
             isInitializing = false;
             releaseCharacterLifecycle();
+            return;
+        }
+        if (force && spoilerEnabled !== isSpoilerEnabled()) {
+            isInitializing = false;
             return;
         }
 
@@ -998,7 +1002,6 @@ window.LufelPageLifecycle?.hold('character-list');
         const fragment = document.createDocumentFragment();
         const initialSkeletonTransition = cardsContainer.classList.contains('character-cards--loading');
         const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';
-        const spoilerEnabled = isSpoilerEnabled();
         const isKrLike = (typeof window.isKrLikeLanguage === 'function')
             ? window.isKrLikeLanguage(currentLang)
             : (currentLang === 'kr' || currentLang === 'cn');
@@ -1040,7 +1043,8 @@ window.LufelPageLifecycle?.hold('character-list');
             card.dataset.limit = glbLimit ? 'true' : 'false';
             card.dataset.limitAsia = asiaLimit ? 'true' : 'false';
             card.dataset.tags = charData.tag || '';
-            card.dataset.mindscapeCore = charData.has_innate === true ? 'true' : 'false';
+            const hasMindscapeCore = isGlobalLang && !spoilerEnabled ? charData.has_innate_glb : charData.has_innate;
+            card.dataset.mindscapeCore = String(hasMindscapeCore === true);
 
             // Create link wrapper - prefer slug-based detail URLs when available
             const link = document.createElement('a');
@@ -1341,12 +1345,18 @@ window.LufelPageLifecycle?.hold('character-list');
         });
     }
 
-    function refreshForSpoilerChange() {
+    async function refreshForSpoilerChange() {
         if (isApplyingSpoiler) return;
         isApplyingSpoiler = true;
-        return initializePageContent({ force: true }).finally(() => {
+        try {
+            let spoilerEnabled;
+            do {
+                spoilerEnabled = isSpoilerEnabled();
+                await initializePageContent({ force: true, spoilerEnabled });
+            } while (spoilerEnabled !== isSpoilerEnabled());
+        } finally {
             isApplyingSpoiler = false;
-        });
+        }
     }
 
     function initializeSpoilerToggle() {

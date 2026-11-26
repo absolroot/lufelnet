@@ -365,6 +365,22 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
 
 <!-- Scripts -->
+<script>
+    window.__TACTIC_CALC_ASSET_HASHES__ = {
+        'critical-data.js': '{{ site.data.asset_versions.files['/data/kr/calc/critical-data.js'] }}',
+        'boss.js': '{{ site.data.asset_versions.files['/data/kr/calc/boss.js'] }}',
+        'defense-data.js': '{{ site.data.asset_versions.files['/data/kr/calc/defense-data.js'] }}',
+        'defense-mutually-exclusive-rules.js': '{{ site.data.asset_versions.files['/data/kr/calc/defense-mutually-exclusive-rules.js'] }}'
+    };
+</script>
+<script type="importmap">
+    {
+        "imports": {
+            "{{ site.baseurl }}/apps/tactic-maker/js/data-loader.js": "{{ site.baseurl }}/apps/tactic-maker/js/data-loader.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/js/data-loader.js'] }}",
+            "{{ site.baseurl }}/apps/tactic-maker/js/need-stat-state.js": "{{ site.baseurl }}/apps/tactic-maker/js/need-stat-state.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/js/need-stat-state.js'] }}"
+        }
+    }
+</script>
 <script type="module" src="{{ site.baseurl }}/i18n/service/i18n-service.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-service.js'] }}"></script>
 <script type="module" src="{{ site.baseurl }}/apps/tactic-maker/js/main.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/js/main.js'] }}"></script>
 <script>

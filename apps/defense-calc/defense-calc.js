@@ -238,6 +238,8 @@ class DefenseCalc {
         try {
             const storageKey = isPenetrate ? 'defenseCalc_penetrateOptions' : 'defenseCalc_reduceOptions';
             const saved = JSON.parse(localStorage.getItem(storageKey) || '{}');
+            // Older Executor rows used LV2 for the 10% option.
+            if (isPenetrate && itemId === 'jc3' && saved[itemId] === 'LV2') return 'LV3';
             return saved[itemId] || null;
         } catch (_) { }
         return null;

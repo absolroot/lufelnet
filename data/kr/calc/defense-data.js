@@ -496,35 +496,38 @@ const penetrateData = {
     },
     {
       "id": "jc3",
-      "type": "패시브",
+      "type": "심상코어",
       "target": "광역",
-      "skillIcon": "/assets/img/skill-element/패시브.png",
+      "skillIcon": "/assets/img/character-detail/innate/core.png",
       "skillName": "집행",
-      "skillName_en": "Mindscape Core (ASIA only)",
-      "skillName_jp": "イメジャリー・コア (ASIA only)",
+      "skillName_en": "Executor",
+      "skillName_jp": "執行する者",
       "options": [
         "LV1",
-        "LV2"
+        "LV 2",
+        "LV3"
       ],
       "values": {
         "LV1": 5,
-        "LV2": 10
+        "LV 2": 7.5,
+        "LV3": 10
       },
-      "defaultOption": "LV2",
+      "defaultOption": "LV3",
       "value": 10,
       "skillEffectAmpAffected": false,
       "duration": "-",
-      "note": "심상 코어 - 구원/방위",
-      "note_en": "Medic/Defense",
-      "note_jp": "救済/防御",
+      "note": "구원/방위",
+      "note_en": "Medic/Guardian",
+      "note_jp": "救援/防衛",
       "skillName_cn": "执行",
-      "note_cn": "心象核心 - 救援/防护",
-      "type_cn": "被动",
+      "note_cn": "救援/防护",
+      "type_cn": "心象核心",
       "target_cn": "群体",
       "duration_cn": "-",
       "options_cn": [
         "LV1",
-        "LV2"
+        "LV 2",
+        "LV3"
       ]
     }
   ],
@@ -784,7 +787,7 @@ const penetrateData = {
       "skillIcon": "/assets/img/character-detail/innate/core.png",
       "skillName": "풍화",
       "skillName_en": "Mindscape Core",
-      "skillName_jp": "イメジャリー・コア",
+      "skillName_jp": "イメジャリーコア",
       "options": [
         "LV1",
         "LV2",
@@ -863,6 +866,8 @@ const penetrateData = {
       "target": "광역",
       "skillIcon": "/assets/img/character-detail/innate/core.png",
       "skillName": "타기",
+      "skillName_en": "Straight Up",
+      "skillName_jp": "ストレートアップ",
       "options": [
         "LV1:2",
         "LV2:2",

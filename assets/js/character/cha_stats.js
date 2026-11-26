@@ -224,7 +224,11 @@
       const lv80Title = document.querySelector('.lv80-stats-card .lv80-title');
       if (lv80Title) lv80Title.textContent = localizeLv80Title();
       const lv100Title = document.querySelector('.lv100-stats-card .lv80-title');
-      if (lv100Title) lv100Title.textContent = t('characterStatsLv100Title', 'Base Stats (LV 100)');
+      if (lv100Title) {
+        lv100Title.textContent = lv100Title.dataset.krCnPreview === 'true'
+          ? t('characterStatsLv100PreviewTitle', 'Base Stats (LV 100, KR/CN Preview)')
+          : t('characterStatsLv100Title', 'Base Stats (LV 100)');
+      }
       relocalizeLvStatsGrid('.lv80-stats-card .lv80-grid', lang);
       relocalizeLvStatsGrid('.lv100-stats-card .lv80-grid', lang);
       const awakeLabel = document.querySelector('.stats-awake .label');
@@ -532,7 +536,11 @@
 
         const title = document.createElement('h3');
         title.className = 'lv80-title';
-        title.textContent = t('characterStatsLv100Title', '기초 스탯 (LV 100)');
+        const isGlobalPreview = ['en', 'jp'].includes(lang) && window.characterData?.[krKey]?.has_innate_glb !== true;
+        title.dataset.krCnPreview = String(isGlobalPreview);
+        title.textContent = isGlobalPreview
+          ? t('characterStatsLv100PreviewTitle', 'Base Stats (LV 100, KR/CN Preview)')
+          : t('characterStatsLv100Title', '기초 스탯 (LV 100)');
         wrap.appendChild(title);
 
         const grid = document.createElement('div');

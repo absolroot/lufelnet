@@ -48,7 +48,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     revelationSet4: '4セット',
     revelationNotReleased: '#グローバルサーバーで未発表#',
     labelLightningStamp: '刻銘',
-    coreLabel: 'コア',
+    coreLabel: 'イメジャリーコア',
 
     // Badge labels
     collaboP5Title: 'P5 コラボレーション配信',

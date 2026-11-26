@@ -1311,6 +1311,7 @@
                     if (!target || !source) return;
                     if (source.limit !== undefined) target.limit = source.limit;
                     if (source.release_order !== undefined) target.release_order = source.release_order;
+                    target.has_innate_glb = source.has_innate === true;
                     if (source.tag) target.tag = source.tag;
                     if (source.role) target.role = source.role;
                 };

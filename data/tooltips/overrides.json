@@ -1,0 +1,66 @@
+[
+  {
+    "lang": "en",
+    "text": "At the start of battle, each ally of the same attribute other than Wonder grants 15.0%/22.5%/30.0% Attack to allies of that attribute. If there are 3 or 2 allies of that attribute, they also gain 10.0%/15.0%/20.0% or 4.0%/6.0%/8.0% Pierce, respectively.\nWhen Yumi gains a Cocktail, all allies gain the corresponding damage boost for 2 turns. This effect stacks up to 3 times.\nTailor-Made: +5.0%/7.5%/10.0%.\nStandard: +2.5%/3.8%/5.0%.\nBasic: +1.2%/1.9%/2.5%.",
+    "links": [
+      {
+        "id": 180,
+        "phrase": "Cocktail"
+      },
+      {
+        "id": 182,
+        "phrase": "Tailor-Made"
+      },
+      {
+        "id": 183,
+        "phrase": "Standard"
+      },
+      {
+        "id": 184,
+        "phrase": "Basic"
+      }
+    ]
+  },
+  {
+    "lang": "en",
+    "text": "Spending Tailor-Made boosts its skill effect by 1.5%/2.2%/3.0% + the user’s Awareness Level × 3%.",
+    "links": [
+      {
+        "id": 182,
+        "phrase": "Tailor-Made"
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "text": "戦闘開始時、主人公を除く同属性の味方１人につき、その属性の味方の攻撃力が15.0%/22.5%/30.0%上昇する。同属性の味方が３人／２人いる場合、その属性の味方の貫通がそれぞれ10.0%/15.0%/20.0%／4.0%/6.0%/8.0%上昇する。\n悠美が『カクテル』を獲得すると、味方全体の与ダメージが種類に応じて２ターンの間上昇する。最大３つまで累積する。\n『オーダーメイド』：5.0%/7.5%/10.0%上昇。\n『スタンダード』：2.5%/3.8%/5.0%上昇。\n『ベーシック』：1.2%/1.9%/2.5%上昇。",
+    "links": [
+      {
+        "id": 180,
+        "phrase": "『カクテル』"
+      },
+      {
+        "id": 182,
+        "phrase": "オーダーメイド"
+      },
+      {
+        "id": 183,
+        "phrase": "スタンダード"
+      },
+      {
+        "id": 184,
+        "phrase": "ベーシック"
+      }
+    ]
+  },
+  {
+    "lang": "jp",
+    "text": "『オーダーメイド』を消費した時、そのスキル効果が1.5%/2.2%/3.0%＋自身の意識レベル×3%上昇する。",
+    "links": [
+      {
+        "id": 182,
+        "phrase": "オーダーメイド"
+      }
+    ]
+  }
+]

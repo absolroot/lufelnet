@@ -199,16 +199,9 @@ export class DataLoader {
         if (this._criticalDataPromise) return this._criticalDataPromise;
 
         const baseUrl = window.BASE_URL || '';
-        const version = (typeof window.APP_VERSION !== 'undefined' && window.APP_VERSION)
-            ? `?v=${encodeURIComponent(String(window.APP_VERSION))}`
-            : '';
-        // Calc data is unified under data/kr/calc and carries en/jp/cn fields together.
-        const criticalSrc = `${baseUrl}/data/kr/calc/critical-data.js${version}`;
-        const bossSrc = `${baseUrl}/data/kr/calc/boss.js${version}`;
-        const defenseSrc = `${baseUrl}/data/kr/calc/defense-data.js${version}`;
-        const defenseMutualRulesSrc = `${baseUrl}/data/kr/calc/defense-mutually-exclusive-rules.js${version}`;
-
-        const loadScript = (src) => new Promise((resolve) => {
+        const loadScript = (file) => new Promise((resolve) => {
+            const hash = window.__TACTIC_CALC_ASSET_HASHES__?.[file];
+            const src = `${baseUrl}/data/kr/calc/${file}${hash ? `?h=${encodeURIComponent(hash)}` : ''}`;
             const script = document.createElement('script');
             script.src = src;
             script.async = true;
@@ -222,12 +215,12 @@ export class DataLoader {
 
         this._criticalDataPromise = Promise.all([
             // Check if already loaded, otherwise load
-            (window.criticalBuffData && window.criticalSelfData) ? Promise.resolve(true) : loadScript(criticalSrc),
-            window.bossData ? Promise.resolve(true) : loadScript(bossSrc),
-            (window.penetrateData && window.defenseCalcData) ? Promise.resolve(true) : loadScript(defenseSrc),
+            (window.criticalBuffData && window.criticalSelfData) ? Promise.resolve(true) : loadScript('critical-data.js'),
+            window.bossData ? Promise.resolve(true) : loadScript('boss.js'),
+            (window.penetrateData && window.defenseCalcData) ? Promise.resolve(true) : loadScript('defense-data.js'),
             (window.defenseMutuallyExclusiveRules || typeof defenseMutuallyExclusiveRules !== 'undefined')
                 ? Promise.resolve(true)
-                : loadScript(defenseMutualRulesSrc)
+                : loadScript('defense-mutually-exclusive-rules.js')
         ]).then(() => {
             // bossData is declared as const in boss.js, so we need to assign it to window
             if (typeof bossData !== 'undefined' && !window.bossData) {

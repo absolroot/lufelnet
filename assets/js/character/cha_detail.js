@@ -2262,20 +2262,24 @@ document.addEventListener('DOMContentLoaded', () => {
             if (grid.children.length > 0) {
                 card.style.display = '';
 
-                // EN/JP에서는 하단에 안내 문구 추가 (언어별 번역 포함)
-                if (currentLang === 'en' || currentLang === 'jp' || currentLang === 'cn') {
+                const isGlobalLang = currentLang === 'en' || currentLang === 'jp';
+                const isGlobalPreview = isGlobalLang && window.characterData?.[characterName]?.has_innate_glb !== true;
+                if (isGlobalLang || currentLang === 'cn') {
                     let note = card.querySelector('.innate-global-note');
-                    const noteText = t('characterInnateGlobalNote', '※ KR V4.7에 출시된 기능입니다. LV100은 해당 기능을 해금해야 달성할 수 있습니다.');
+                    const noteText = isGlobalPreview
+                        ? t('characterInnatePreviewNote', '이 캐릭터의 심상 코어와 LV100 정보는 KR/CN 서버 기준입니다. EN/JP에서는 아직 해금할 수 없습니다.')
+                        : t('characterInnateGlobalNote', 'LV100에 도달하려면 심상 코어를 해금해야 합니다.');
 
                     if (!note) {
                         note = document.createElement('div');
                         note.className = 'innate-global-note';
                         note.style.fontSize = '11px';
-                        note.style.opacity = '0.4';
-                        note.style.marginTop = '-4px';
+                        note.style.opacity = isGlobalPreview ? '0.8' : '0.4';
+                        note.style.margin = isGlobalPreview ? '0 0 12px' : '-4px 0 0';
                         note.style.textAlign = 'left';
                         note.textContent = noteText;
-                        card.appendChild(note);
+                        if (isGlobalPreview) grid.before(note);
+                        else card.appendChild(note);
                     } else {
                         note.textContent = noteText;
                     }

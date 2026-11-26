@@ -886,7 +886,7 @@ const criticalBuffData = {
       "skillIcon": "/assets/img/character-detail/innate/core.png",
       "skillName": "풍화",
       "skillName_en": "Mindscape Core",
-      "skillName_jp": "イメジャリー・コア",
+      "skillName_jp": "イメジャリーコア",
       "options": [
         "LV1",
         "LV2",

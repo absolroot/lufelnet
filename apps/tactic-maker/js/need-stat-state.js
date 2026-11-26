@@ -81,6 +81,8 @@ export function setGlobalItemOption(itemId, optionValue) {
 
 export function setGlobalItemOptions(options) {
     globalItemOptions = { ...options };
+    // Older Executor rows used LV2 for the 10% option.
+    if (globalItemOptions.pierce_jc3 === 'LV2') globalItemOptions.pierce_jc3 = 'LV3';
 }
 
 export function getGlobalItemOption(itemId) {

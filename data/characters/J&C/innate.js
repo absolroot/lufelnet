@@ -39,10 +39,10 @@ window.innateData["J&C"] = {
       "desc_cn": "自身『面具强度』提升25/37/50点。",
       "name": "형무",
       "desc": "자신의 『페르소나 성능』이 25/37/50포인트 증가한다.",
-      "name_en": "Incarceration",
-      "desc_en": "Increases own Desire Level by 50.",
-      "name_jp": "刑務",
-      "desc_jp": "自身の『看守の責務』が50増加する。"
+      "name_en": "Sentencer",
+      "desc_en": "Justine & Caroline gain 25/37/50 Desire Level.",
+      "name_jp": "刑務を課す者",
+      "desc_jp": "自身の『デザイアレベル』が25/37/50上昇する。"
     },
     {
       "ascend": "0",
@@ -55,11 +55,11 @@ window.innateData["J&C"] = {
       "name_cn": "执行",
       "desc_cn": "芮丝汀娜&卡萝莉娜在场时，所有同伴伤害提升15.0%/22.5%/30.0%。自身处于不同的职业定位时获得对应的额外效果。\n救援：所有同伴穿透提升5.0%/7.5%/10.0%，回合结束时恢复750/1125/1500点生命值。\n优越：所有同伴伤害提升10.0%/15.0%/20.0%。\n支配：自身人格面具技能的技能伤害提升17.5%/26.2%/35.0%。\n防护：所有同伴穿透提升5.0%/7.5%/10.0%。自身回合开始时，为所有同伴添加750/1125/1500点护盾，持续2回合。\n屈从：所有敌人受到伤害提升10.0%/15.0%/20.0%。\n反抗：自身人格面具技能的技能伤害提升17.5%/26.2%/35.0%。",
       "name": "집행",
-      "name_en": "Execution",
-      "name_jp": "執行",
+      "name_en": "Executor",
+      "name_jp": "執行する者",
       "desc": "쥐스틴&카롤린이 필드에 있을 때 아군 전체의 대미지가 15.0%/22.5%/30.0% 증가한다. 자신이 각기 다른 직업 포지션에 있을 때 해당하는 추가 효과를 획득한다.\n구원: 아군 전체의 관통이 5.0%/7.5%/10.0% 증가하고, 턴 종료 시 750/1125/1500의 생명을 회복한다.\n우월: 아군 전체의 대미지가 10.0%/15.0%/20.0% 증가한다.\n지배: 자신의 페르소나 스킬의 스킬 대미지가 17.5%/26.2%/35.0% 증가한다.\n실드: 아군 전체의 관통이 5.0%/7.5%/10.0% 증가한다. 2턴 동안 자신의 턴 시작 시 아군 전체에 750/1125/1500포인트 실드를 부여한다.\n굴복: 적 전체가 받는 대미지가 10.0%/15.0%/20.0% 증가한다.\n반항: 자신의 페르소나 스킬의 스킬 대미지가 17.5%/26.2%/35.0% 증가한다.",
-      "desc_en": "While Justine & Caroline are on the field, all allies’ damage is increased by 30.0%. Additional effects are granted based on the user’s role position.\nMedic: All allies’ Pierce increases by 10.0%, and at the end of each turn, recover 1500 HP.\nStrategist: All allies’ damage increases by 20.0%.\nSweeper: Your Persona skill damage increases by 35.0%.\nDefense: All allies’ Pierce increases by 10.0%. At the start of your turn, grant all allies a 1500-point shield that lasts for 2 turns.\nSaboteur: All enemies’ damage taken increases by 20.0%.\nAssassin: Your Persona skill damage increases by 35.0%.",
-      "desc_jp": "ジュスティーヌ＆カロリーヌがフィールドにいる間、味方全体の与ダメージが30.0%上昇する。自身の職業ポジションに応じて、以下の追加効果を獲得する。\n救済：味方全体の貫通が10.0%上昇し、ターン終了時にHPを1500回復する。\n優越：味方全体の与ダメージが20.0%上昇する。\n支配：自身のペルソナスキルのスキルダメージが35.0%上昇する。\n防衛：味方全体の貫通が10.0%上昇する。自身のターン開始時、味方全体に1500ポイントのシールドを付与し、2ターン持続する。\n屈服：敵全体の被ダメージが20.0%上昇する。\n反抗：自身のペルソナスキルのスキルダメージが35.0%上昇する。"
+      "desc_en": "While Justine & Caroline are on the field, all allies deal 15.0%/22.5%/30.0% more damage. The twins’ current role grants an additional effect.\nMedic: All allies gain 5.0%/7.5%/10.0% Pierce and recover 750/1125/1500 HP at the end of the turn.\nStrategist: All allies deal 10.0%/15.0%/20.0% more damage.\nSweeper or Assassin: Justine & Caroline deal 17.5%/26.2%/35.0% more skill damage.\nGuardian: All allies gain 5.0%/7.5%/10.0% Pierce. At the start of the twins’ turn, all allies gain a 750/1125/1500 HP shield for 2 turns.\nSaboteur: All enemies take 10.0%/15.0%/20.0% more damage.",
+      "desc_jp": "ジュスティーヌ＆カロリーヌが場にいる間、味方全体の与ダメージが15.0%/22.5%/30.0%上昇する。自身のロールに応じて追加効果を得る。\n『救援』：味方全体の貫通が5.0%/7.5%/10.0%上昇し、ターン終了時に味方全体のHPが750/1125/1500回復する。\n『優越』：味方全体の与ダメージが10.0%/15.0%/20.0%上昇する。\n『支配』『反抗』：自身のスキルダメージが17.5%/26.2%/35.0%上昇する。\n『防衛』：味方全体の貫通が5.0%/7.5%/10.0%上昇する。自身のターン開始時、味方全体に750/1125/1500のシールドを２ターン付与する。\n『屈従』：敵全体の被ダメージが10.0%/15.0%/20.0%上昇する。"
     }
   ]
 };

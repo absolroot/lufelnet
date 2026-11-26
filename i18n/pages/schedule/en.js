@@ -48,7 +48,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     revelationSet4: '4-Set',
     revelationNotReleased: '#NOT RELEASED IN GLOBAL SERVER#',
     labelLightningStamp: 'Engraving',
-    coreLabel: 'Core',
+    coreLabel: 'Mindscape Core',
 
     // Badge labels
     collaboP5Title: 'P5 Collaboration Release',

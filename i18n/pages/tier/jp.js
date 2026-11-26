@@ -33,7 +33,7 @@ window.I18N_PAGE_TIER_JP = {
 
     // Ritual modal
     ritualModalTitle: 'キャラクター強化要素',
-    ritualCoreTitle: 'イメジャリー・コア',
+    ritualCoreTitle: 'イメジャリーコア',
     ritualCoreActivate: 'コア活性化',
     ritualAwarenessTitle: '意識',
     ritualWeaponTitle: '専用武器改造',
@@ -58,7 +58,7 @@ window.I18N_PAGE_TIER_JP = {
         '競争コンテンツを中心に作成されており、バージョンアップデートによってティアは継続的に変動する可能性があります。',
         'グローバルサーバーは怪盗がバフされているため、KRティアとは異なる場合があります。',
         'J&Cは凸1を基準としてのみ作成されました。',
-        'KRティアは、韓国サーバーでイメジャリー・コア(V4.7)効果が適用されたティアです。'
+        'KRティアは、韓国サーバーでイメジャリーコア(V4.7)効果が適用されたティアです。'
     ],
 
     // Tier Q&A

@@ -1,5 +1,69 @@
 {
-  "data": null,
-  "msg": "SOS not found.",
-  "status": 100
+  "data": {
+    "boss": [
+      {
+        "bonusRule": "All ally Fire attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Electric",
+                "Nuclear",
+                "Bless",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire"
+              ]
+            },
+            "image": "B-guaiwutouxiang-lilith.png",
+            "level": "89",
+            "name": "リリス",
+            "skill": "607,603",
+            "sn": "541101",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 2.0,
+        "sn": "438401"
+      },
+      {
+        "bonusRule": "All ally Bless attack Score x 3",
+        "enemy": [
+          {
+            "adapt": {
+              "Absorb": [],
+              "Nullify": [],
+              "Reflect": [],
+              "Resistant": [
+                "Ice",
+                "Electric",
+                "Curse"
+              ],
+              "Weak": [
+                "Fire",
+                "Bless"
+              ]
+            },
+            "image": "B-guaiwutouxiang-chernobog.png",
+            "level": "89",
+            "name": "チェルノボグ",
+            "skill": "1016,1026",
+            "sn": "541111",
+            "stat": {}
+          }
+        ],
+        "scoreRatio": 1.0,
+        "sn": "438402"
+      }
+    ],
+    "buff": "底無しの闇: シールドが付与された時、自身は『第六感』を獲得する。\n『第六感』：2ターンの間、与える最終ダメージが４０%上昇する。",
+    "endTime": "2026-12-10 10:30:00",
+    "startTime": "2026-11-26 11:30:00"
+  },
+  "msg": "OK",
+  "status": 0
 }

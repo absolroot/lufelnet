@@ -2,58 +2,6 @@
   "data": {
     "thief": [
       {
-        "endTime": "2026-11-26 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Fuuka Yamagishi",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          },
-          {
-            "name": "Chizuko Nagao",
-            "type": "thief"
-          }
-        ],
-        "name": "All-Seeing Eye",
-        "startTime": "2026-10-29 11:30:00",
-        "type": "Targeted Most Wanted Idol Contracts"
-      },
-      {
-        "endTime": "2026-11-26 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Fuuka Yamagishi",
-            "type": "thief"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Shun Kano",
-            "type": "thief"
-          },
-          {
-            "name": "Toshiya Sumi",
-            "type": "thief"
-          },
-          {
-            "name": "Chizuko Nagao",
-            "type": "thief"
-          }
-        ],
-        "name": "All-Seeing Eye",
-        "startTime": "2026-10-29 11:30:00",
-        "type": "Chance Most Wanted Idol Contracts"
-      },
-      {
         "endTime": "2026-12-10 10:59:59",
         "fiveStar": [
           {
@@ -155,6 +103,58 @@
         ],
         "name": "Locked 'n' Loaded",
         "startTime": "2026-11-12 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Junpei Iori",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Bring the Heat",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Junpei Iori",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lufel",
+            "type": "thief"
+          },
+          {
+            "name": "Leo Kamiyama",
+            "type": "thief"
+          },
+          {
+            "name": "Seiji Shiratori",
+            "type": "thief"
+          }
+        ],
+        "name": "Bring the Heat",
+        "startTime": "2026-11-26 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       },
       {
@@ -311,45 +311,166 @@
         ],
         "name": "Iridescent Ocean Jewel",
         "startTime": "2026-11-19 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Justine & Caroline",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Road to Rehabilitation",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Justine & Caroline",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Riko Tanemura",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Toshiya Sumi",
+            "type": "thief"
+          }
+        ],
+        "name": "Road to Rehabilitation",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Seaside Tomoko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Summer Breeze",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Seaside Tomoko",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shun Kano",
+            "type": "thief"
+          },
+          {
+            "name": "Kiyoshi Kurotani",
+            "type": "thief"
+          },
+          {
+            "name": "Miyu Sahara",
+            "type": "thief"
+          }
+        ],
+        "name": "Summer Breeze",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Chance Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yusuke Kitagawa",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Art of the Fox",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Most Wanted Idol Contracts"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Yusuke Kitagawa",
+            "type": "thief"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Tomoko Noge",
+            "type": "thief"
+          },
+          {
+            "name": "Yukimi Fujikawa",
+            "type": "thief"
+          },
+          {
+            "name": "Kotone Montagne",
+            "type": "thief"
+          }
+        ],
+        "name": "Art of the Fox",
+        "startTime": "2026-11-26 11:30:00",
         "type": "Chance Most Wanted Idol Contracts"
       }
     ],
     "weapon": [
-      {
-        "endTime": "2026-11-26 10:59:59",
-        "fiveStar": [
-          {
-            "name": "Rainbow Relay",
-            "type": "weapon",
-            "user": "Fuuka"
-          }
-        ],
-        "fourStar": [
-          {
-            "name": "Demon's Bite",
-            "type": "weapon",
-            "user": "Shun"
-          },
-          {
-            "name": "Scarlet Scepter",
-            "type": "weapon",
-            "user": "Sumi"
-          },
-          {
-            "name": "Gravitational Force",
-            "type": "weapon",
-            "user": "Chizuko"
-          },
-          {
-            "name": "Dancer in Moonlight",
-            "type": "weapon",
-            "user": "Fuuka"
-          }
-        ],
-        "name": "Silent Pistol",
-        "startTime": "2026-10-29 11:30:00",
-        "type": "Arms Deals"
-      },
       {
         "endTime": "2026-12-10 10:59:59",
         "fiveStar": [
@@ -383,7 +504,7 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-11-12 11:30:00",
-        "type": "Arms Deals"
+        "type": "Chance Arms Deals"
       },
       {
         "endTime": "2026-12-10 10:59:59",
@@ -418,7 +539,77 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-11-12 11:30:00",
-        "type": "Arms Deals"
+        "type": "Chance Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Balmung",
+            "type": "weapon",
+            "user": "Junpei"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Elixir Sword",
+            "type": "weapon",
+            "user": "Junpei"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Balmung",
+            "type": "weapon",
+            "user": "Junpei"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Lava Flame",
+            "type": "weapon",
+            "user": "Lufel"
+          },
+          {
+            "name": "Justice Lance",
+            "type": "weapon",
+            "user": "Kamiyama"
+          },
+          {
+            "name": "Knight's Reward",
+            "type": "weapon",
+            "user": "Shiratori"
+          },
+          {
+            "name": "Elixir Sword",
+            "type": "weapon",
+            "user": "Junpei"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Chance Arms Deals"
       },
       {
         "endTime": "2027-06-26 10:59:59",
@@ -453,7 +644,7 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-09-15 12:00:00",
-        "type": "Arms Deals"
+        "type": "Chance Arms Deals"
       },
       {
         "endTime": "2026-12-03 10:59:59",
@@ -488,7 +679,7 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-11-19 11:30:00",
-        "type": "Arms Deals"
+        "type": "Chance Arms Deals"
       },
       {
         "endTime": "2026-12-03 10:59:59",
@@ -523,7 +714,217 @@
         ],
         "name": "Silent Pistol",
         "startTime": "2026-11-19 11:30:00",
-        "type": "Arms Deals"
+        "type": "Chance Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Warden's Judgement",
+            "type": "weapon",
+            "user": "Justine & Caroline"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Deliverance of Strength",
+            "type": "weapon",
+            "user": "Justine & Caroline"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Chance Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Bubble Babies",
+            "type": "weapon",
+            "user": "Tomoko"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Ocean's Tidings",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Chance Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Shadowkiller",
+            "type": "weapon",
+            "user": "Yusuke"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Jagato",
+            "type": "weapon",
+            "user": "Yusuke"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Chance Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Warden's Judgement",
+            "type": "weapon",
+            "user": "Justine & Caroline"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Moonlight Needle",
+            "type": "weapon",
+            "user": "Riko"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Scarlet Scepter",
+            "type": "weapon",
+            "user": "Sumi"
+          },
+          {
+            "name": "Deliverance of Strength",
+            "type": "weapon",
+            "user": "Justine & Caroline"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Bubble Babies",
+            "type": "weapon",
+            "user": "Tomoko"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Demon's Bite",
+            "type": "weapon",
+            "user": "Shun"
+          },
+          {
+            "name": "Ocean's Tidings",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Death Stinger",
+            "type": "weapon",
+            "user": "Kurotani"
+          },
+          {
+            "name": "Submarine Sonar",
+            "type": "weapon",
+            "user": "Miyu"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Arms Deals"
+      },
+      {
+        "endTime": "2026-12-10 10:59:59",
+        "fiveStar": [
+          {
+            "name": "Shadowkiller",
+            "type": "weapon",
+            "user": "Yusuke"
+          }
+        ],
+        "fourStar": [
+          {
+            "name": "Shadow Crowns",
+            "type": "weapon",
+            "user": "Tomoko"
+          },
+          {
+            "name": "Heavy Metal Pain",
+            "type": "weapon",
+            "user": "Yukimi"
+          },
+          {
+            "name": "Jagato",
+            "type": "weapon",
+            "user": "Yusuke"
+          },
+          {
+            "name": "Edelweiss",
+            "type": "weapon",
+            "user": "Kotone"
+          }
+        ],
+        "name": "Silent Pistol",
+        "startTime": "2026-11-26 11:30:00",
+        "type": "Targeted Arms Deals"
       }
     ]
   },

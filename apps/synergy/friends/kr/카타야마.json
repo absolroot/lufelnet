@@ -1195,45 +1195,41 @@
     ],
     "special_award": [
       {
-        "description": "학교 수업 시 더 많은 「인간 파라미터」 획득",
+        "description": "학교 수업 시 더 많은 「인간 파라미터」를 획득합니다.",
         "icon": "xielizhe-icon-pianshanjiuwei-01.png",
         "name": "수업을 잘 듣자",
         "rank": 1
       },
       {
-        "description": "「공부」에 관련된 도시 일정 진행 시 더 많은 「인간 파라미터」 획득",
+        "description": "「공부」에 관련된 도시 일정 진행 시 더 많은 「인간 파라미터」를 획득합니다.",
         "icon": "xielizhe-icon-pianshanjiuwei-02.png",
         "name": "공부할 때는 집중해야 해",
         "rank": 5
       },
       {
-        "description": "「동아리」에 관련된 도시 일정 진행 시 더 많은 「인간 파라미터」 획득",
+        "description": "「동아리」에 관련된 도시 일정 진행 시 더 많은 「인간 파라미터」를 획득합니다.",
         "icon": "xielizhe-icon-pianshanjiuwei-03.png",
         "name": "잊지 말고 청춘을 즐기자",
         "rank": 9
       },
       {
-        "description": "학교 수업 시 확률적으로 「체력」 또는 「행동력」 획득",
+        "description": "학교 수업 시 확률적으로 「체력」 또는 「행동력」을 획득합니다.",
         "icon": "xielizhe-icon-pianshanjiuwei-04.png",
         "name": "워라밸도 중요해",
         "rank": 13
       },
       {
-        "description": "「공부」에 관련된 도시 일정 진행 시 소량의 「경험치 재료」 획득",
+        "description": "「공부」에 관련된 도시 일정 진행 시 소량의 「경험치 재료」를 획득합니다.",
         "icon": "xielizhe-icon-pianshanjiuwei-05.png",
         "name": "네가 의지했으면 좋겠어",
         "rank": 17
       }
     ],
     "time": "방과 후",
-    "unlock_quest": {
-      "details": "어떤 방에서 한 남자가 아케시에게 전화를 걸었다.",
-      "name": "폭식자의 피날레"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "3장 엔딩 이후 개방"
+        "details": "어떤 방에서 한 남자가 아케시에게 전화를 걸었다.",
+        "name": "폭식자의 피날레"
       }
     ],
     "visit_dialog": [
@@ -1311,6 +1307,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3장 엔딩 이후 개방"
       }
     ]
   },

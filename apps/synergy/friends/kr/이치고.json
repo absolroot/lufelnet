@@ -1185,39 +1185,35 @@
         "rank": 1
       },
       {
-        "description": "캐릭터 음성 화면의 「육성」 부분 해제",
+        "description": "캐릭터 음성 화면의 「육성」 부분이 해제됩니다.",
         "icon": "xielizhe-icon-berry-01.png",
         "name": "매일 보고 싶어~",
         "rank": 5
       },
       {
-        "description": "캐릭터 음성 화면의 「탐색」 부분 해제",
+        "description": "캐릭터 음성 화면의 「탐색」 부분이 해제됩니다.",
         "icon": "xielizhe-icon-berry-04.png",
         "name": "어디를 가든 함께 하자~",
         "rank": 9
       },
       {
-        "description": "캐릭터 음성 화면의 「전투」 부분 해제",
+        "description": "캐릭터 음성 화면의 「전투」 부분이 해제됩니다.",
         "icon": "xielizhe-icon-berry-05.png",
         "name": "이렇게 물러설 수는 없어!",
         "rank": 13
       },
       {
-        "description": "캐릭터 음성 화면의 「스킬」 부분 해제",
+        "description": "캐릭터 음성 화면의 「스킬」 부분이 해제됩니다.",
         "icon": "xielizhe-icon-berry-02.png",
         "name": "역시 나의 왕자님이야~",
         "rank": 17
       }
     ],
     "time": "밤",
-    "unlock_quest": {
-      "details": "리코 선배도 페르소나가 각성할 줄은 몰랐어. 시부야에 데려다주고 나서 얘기하자.",
-      "name": "룰 브레이커를 위한 협주곡"
-    },
-    "unlock_notes": [
+    "unlock_quest": [
       {
-        "type": "story",
-        "text": "3장 진행 이후 개방"
+        "details": "리코 선배도 페르소나가 각성할 줄은 몰랐어. 시부야에 데려다주고 나서 얘기하자.",
+        "name": "룰 브레이커를 위한 협주곡"
       }
     ],
     "visit_dialog": [
@@ -1295,6 +1291,12 @@
             }
           ]
         ]
+      }
+    ],
+    "unlock_notes": [
+      {
+        "type": "story",
+        "text": "3장 진행 이후 개방"
       }
     ]
   },

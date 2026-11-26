@@ -1,70 +1,5 @@
 {
   "data": {
-    "name": "히라노 아란",
-    "time": "방과 후",
-    "can_romance": true,
-    "special_award": [
-      {
-        "rank": 1,
-        "icon": "xielizhe-icon-pingyeyalan-01.png",
-        "name": "너와 함께한 기억",
-        "description": "「아란의 그림책」을 획득합니다.\n원더, 루페르의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
-      },
-      {
-        "rank": 5,
-        "icon": "xielizhe-icon-pingyeyalan-02.png",
-        "name": "태양처럼 따스한",
-        "description": "아라이 모토하, 카노 슌의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
-      },
-      {
-        "rank": 9,
-        "icon": "xielizhe-icon-pingyeyalan-03.png",
-        "name": "보기 드문 광경이네요",
-        "description": "타네무라 리코의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
-      },
-      {
-        "rank": 13,
-        "icon": "xielizhe-icon-pingyeyalan-04.png",
-        "name": "이, 이게 인기 있다는 느낌인가요",
-        "description": "이케나미 쇼키의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
-      },
-      {
-        "rank": 17,
-        "icon": "xielizhe-icon-pingyeyalan-05.png",
-        "name": "절 찾아줘서 고마워요",
-        "description": "히라노 아란의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
-      }
-    ],
-    "picture_album": [
-      {
-        "image": "yalancoop-wholepic-01.webp",
-        "rank": 1
-      },
-      {
-        "image": "yalancoop-wholepic-05.webp",
-        "rank": 1
-      },
-      {
-        "image": "yalancoop-wholepic-07.webp",
-        "rank": 5
-      },
-      {
-        "image": "yalancoop-wholepic-04.webp",
-        "rank": 5
-      },
-      {
-        "image": "yalancoop-wholepic-03.webp",
-        "rank": 9
-      },
-      {
-        "image": "yalancoop-wholepic-02.webp",
-        "rank": 13
-      },
-      {
-        "image": "yalancoop-wholepic-06.webp",
-        "rank": 17
-      }
-    ],
     "advance_dialog": [
       {
         "good_answers": [
@@ -274,119 +209,7 @@
         "unlock_cond": "매력 Lv.17"
       }
     ],
-    "visit_dialog": [
-      {
-        "destination": "하라주쿠",
-        "good_answers": [
-          [
-            {
-              "content": "나도 똑같이 산책하러 와",
-              "reward": 60
-            },
-            {
-              "content": "이벤트가 있을 때 와",
-              "reward": 50
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "츠키시마",
-        "good_answers": [
-          [
-            {
-              "content": "모토하를 부르자",
-              "reward": 50
-            },
-            {
-              "content": "앞으로는 같이 오자",
-              "reward": 60
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "아키하바라",
-        "good_answers": [
-          [
-            {
-              "content": "대단하네",
-              "reward": 50
-            },
-            {
-              "content": "너무 무리하지 마",
-              "reward": 60
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "신주쿠",
-        "good_answers": [
-          [
-            {
-              "content": "스미 토시야…?",
-              "reward": 60
-            },
-            {
-              "content": "가리지 않고 다 읽어",
-              "reward": 50
-            }
-          ]
-        ]
-      },
-      {
-        "destination": "하라주쿠",
-        "good_answers": [
-          [
-            {
-              "content": "다음에 안내해 줘",
-              "reward": 60
-            },
-            {
-              "content": "괴도단 모두와 함께 가고 싶어",
-              "reward": 50
-            }
-          ]
-        ]
-      }
-    ],
-    "romance_dialog": [
-      {
-        "good_answers": [
-          [
-            {
-              "content": "오늘은 어쩌다 보니",
-              "reward": 40
-            },
-            {
-              "content": "가끔 어질러져 있기도 해",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "취재하는 거야?",
-              "reward": 40
-            },
-            {
-              "content": "또 만화 생각하네…",
-              "reward": 40
-            }
-          ],
-          [
-            {
-              "content": "귀여우니까 그대로도 괜찮아",
-              "reward": 50
-            },
-            {
-              "content": "앞으로도 나한테 상담해",
-              "reward": 60
-            }
-          ]
-        ]
-      }
-    ],
+    "can_romance": true,
     "friend_lover_dialog": [
       {
         "content": "동료로서 함께한다",
@@ -1328,6 +1151,189 @@
         "synergy": 999
       }
     ],
+    "name": "히라노 아란",
+    "romance_dialog": [
+      {
+        "good_answers": [
+          [
+            {
+              "content": "오늘은 어쩌다 보니",
+              "reward": 40
+            },
+            {
+              "content": "가끔 어질러져 있기도 해",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "취재하는 거야?",
+              "reward": 40
+            },
+            {
+              "content": "또 만화 생각하네…",
+              "reward": 40
+            }
+          ],
+          [
+            {
+              "content": "귀여우니까 그대로도 괜찮아",
+              "reward": 50
+            },
+            {
+              "content": "앞으로도 나한테 상담해",
+              "reward": 60
+            }
+          ]
+        ]
+      }
+    ],
+    "special_award": [
+      {
+        "description": "「아란의 그림책」을 획득합니다.\n원더, 루페르의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다.",
+        "icon": "xielizhe-icon-pingyeyalan-01.png",
+        "name": "너와 함께한 기억",
+        "rank": 1
+      },
+      {
+        "description": "아라이 모토하, 카노 슌의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다.",
+        "icon": "xielizhe-icon-pingyeyalan-02.png",
+        "name": "태양처럼 따스한",
+        "rank": 5
+      },
+      {
+        "description": "타네무라 리코의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다.",
+        "icon": "xielizhe-icon-pingyeyalan-03.png",
+        "name": "보기 드문 광경이네요",
+        "rank": 9
+      },
+      {
+        "description": "이케나미 쇼키의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다.",
+        "icon": "xielizhe-icon-pingyeyalan-04.png",
+        "name": "이, 이게 인기 있다는 느낌인가요",
+        "rank": 13
+      },
+      {
+        "description": "히라노 아란의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다.",
+        "icon": "xielizhe-icon-pingyeyalan-05.png",
+        "name": "절 찾아줘서 고마워요",
+        "rank": 17
+      }
+    ],
+    "time": "방과 후",
+    "unlock_quest": [
+      {
+        "details": "그 신비로운 방 안에서 누군가 의미심장한 미소를 짓고 있다...",
+        "name": "복수와 신념"
+      }
+    ],
+    "visit_dialog": [
+      {
+        "destination": "하라주쿠",
+        "good_answers": [
+          [
+            {
+              "content": "나도 똑같이 산책하러 와",
+              "reward": 60
+            },
+            {
+              "content": "이벤트가 있을 때 와",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "츠키시마",
+        "good_answers": [
+          [
+            {
+              "content": "모토하를 부르자",
+              "reward": 50
+            },
+            {
+              "content": "앞으로는 같이 오자",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "아키하바라",
+        "good_answers": [
+          [
+            {
+              "content": "대단하네",
+              "reward": 50
+            },
+            {
+              "content": "너무 무리하지 마",
+              "reward": 60
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "신주쿠",
+        "good_answers": [
+          [
+            {
+              "content": "스미 토시야…?",
+              "reward": 60
+            },
+            {
+              "content": "가리지 않고 다 읽어",
+              "reward": 50
+            }
+          ]
+        ]
+      },
+      {
+        "destination": "하라주쿠",
+        "good_answers": [
+          [
+            {
+              "content": "다음에 안내해 줘",
+              "reward": 60
+            },
+            {
+              "content": "괴도단 모두와 함께 가고 싶어",
+              "reward": 50
+            }
+          ]
+        ]
+      }
+    ],
+    "picture_album": [
+      {
+        "image": "yalancoop-wholepic-01.webp",
+        "rank": 1
+      },
+      {
+        "image": "yalancoop-wholepic-05.webp",
+        "rank": 1
+      },
+      {
+        "image": "yalancoop-wholepic-07.webp",
+        "rank": 5
+      },
+      {
+        "image": "yalancoop-wholepic-04.webp",
+        "rank": 5
+      },
+      {
+        "image": "yalancoop-wholepic-03.webp",
+        "rank": 9
+      },
+      {
+        "image": "yalancoop-wholepic-02.webp",
+        "rank": 13
+      },
+      {
+        "image": "yalancoop-wholepic-06.webp",
+        "rank": 17
+      }
+    ],
     "picture_album_rewards": {
       "milestones": [
         3,
@@ -1339,5 +1345,7 @@
       "currency": "ember",
       "amount": 20
     }
-  }
+  },
+  "msg": "OK",
+  "status": 0
 }

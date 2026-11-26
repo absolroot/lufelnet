@@ -1,4 +1,3 @@
-// KR names for unique skills and statuses are provisional translations of the CN source.
 window.personaFiles = window.personaFiles || {};
 window.personaFiles["바알"] = {
   "id": "270",
@@ -20,11 +19,11 @@ window.personaFiles["바알"] = {
   "wild_emblem_rainbow": true,
   "best_persona": true,
   "tier": "S",
-  "tier_desc": "반항 또는 자율 동료에게 「풍요의 선물」을 부여해 추가 스킬 대미지와 속성 대미지를 지원한다.",
+  "tier_desc": "반항 또는 자율 동료에게 「풍요의 축복」을 부여해 추가 스킬 대미지와 속성 대미지를 지원한다.",
   "tier_desc_en": "Grants [Gift of Abundance] (provisional name) to an Assassin or Virtuoso ally, supporting them with additional skill damage and attribute damage.",
   "tier_desc_jp": "反抗または自律ロールの味方に『豊穣の贈り物』（仮訳）を付与し、スキルダメージと属性ダメージを支援する。",
   "tier_desc_cn": "为反抗或自律同伴提供「丰穰之赐」，支援技能伤害和属性伤害。",
-  "comment": "「풍요의 선물」은 공격력이 가장 높은 반항 또는 자율 동료에게 부여된다. 추가 대미지는 원더의 공격력에 따라 증가한다.",
+  "comment": "「풍요의 축복」은 공격력이 가장 높은 반항 또는 자율 동료에게 부여된다. 추가 대미지는 원더의 공격력에 따라 증가한다.",
   "comment_en": "[Gift of Abundance] (provisional name) is granted to the Assassin or Virtuoso ally with the highest Attack. Its additional damage scales with WONDER's Attack.",
   "comment_jp": "『豊穣の贈り物』（仮訳）は攻撃力が最も高い反抗または自律の味方に付与される。追加ダメージはWONDERの攻撃力に応じて増加する。",
   "comment_cn": "「丰穰之赐」会赋予攻击力最高的反抗或自律同伴，追加伤害随WONDER的攻击力提升。",
@@ -35,29 +34,29 @@ window.personaFiles["바알"] = {
   "passive_priority": 3,
   "passive_skill": [
     {
-      "name": "대지에 돌아온 풍요의 주인",
+      "name": "대지에 재림한 풍요의 주인",
       "name_en": "Fertility Lord's Return (provisional)",
       "name_jp": "大地に帰還せし豊穣の主（仮訳）",
       "name_cn": "重临大地的丰主",
-      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시와 페르소나 스킬 사용 시 공격력이 가장 높은 반항 또는 자율 동료에게 「풍요의 선물」 1중첩을 부여한다. 동료가 「풍요의 선물」 2중첩을 소모하면 해당 동료의 적합성에 맞는 속성 대미지가 2턴 동안 25% 증가한다.\n「풍요의 선물」: 최대 4중첩. 대미지를 줄 때 1중첩을 소모하여 적 1명에게 주는 스킬 대미지를 증가시킨다. 원더의 공격력 중 2000을 초과하는 수치 100포인트마다 대미지가 200 증가하며 최대 16000까지 증가한다. 한 번의 공격이 여러 적에게 적중하면 적마다 1중첩을 소모한다.",
+      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시 및 페르소나 스킬 시전 시, 공격력이 가장 높은 반항/자율 아군에게 「풍요의 축복」을 1중첩 부여한다. 아군이 「풍요의 축복」을 2중첩 소모한 후, 2턴 동안 해당 아군의 적합성 속성에 따라 해당 속성 대미지가 25% 증가한다.\n「풍요의 축복」: 4회 중첩 가능. 대미지를 줄 때 스킬 대미지 보너스를 획득하며, 「풍요의 축복」을 1중첩 소모하여 적 1명에게 주는 대미지를 증가시킨다. 증가량은 원더의 공격력에서 2,000포인트를 초과한 부분에 대해 100포인트당 대미지가 200포인트씩, 최대 16,000포인트까지 증가한다. 동일한 공격이 여러 명의 적에게 명중할 때, 적 1명에게 대미지를 줄 때마다 1중첩씩 소모한다.",
       "desc_en": "Increase Attack by 29.1%. At the start of battle and when using a Persona skill, grant 1 stack of [Gift of Abundance] (provisional name) to the Assassin or Virtuoso ally with the highest Attack. After an ally spends 2 stacks, increase damage of their corresponding attribute by 25% for 2 turns.\n[Gift of Abundance]: Stacks up to 4 times. When dealing damage, spend 1 stack to increase skill damage against 1 foe by 200 for every 100 of WONDER's Attack above 2000, up to 16000. When an attack hits multiple foes, spend 1 stack for each foe damaged.",
       "desc_jp": "攻撃力が29.1%上昇する。戦闘開始時とペルソナスキル使用時、攻撃力が最も高い反抗または自律の味方に『豊穣の贈り物』（仮訳）を1つ付与する。味方が2つ消費すると、その味方の適性に対応する属性ダメージが2ターンの間25%上昇する。\n『豊穣の贈り物』は最大4つ。ダメージを与える時に1つ消費し、敵1体へのスキルダメージを上昇させる。WONDERの攻撃力が2000を超えた分の100ごとに200上昇し、最大16000。複数の敵に命中する場合、敵1体につき1つ消費する。",
       "desc_cn": "攻击力提升29.1%。\n战斗开始时及释放人格面具技能时，为攻击力最高的反抗/自律同伴添加1层「丰穰之赐」。同伴消耗2层「丰穰之赐」后，根据其适应性属性提升其相应属性伤害25%，持续2回合。\n「丰穰之赐」：可叠加4层。造成伤害时获得技能伤害加成，消耗1层「丰穰之赐」提升对1名敌人造成的伤害，提升值基于WONDER的攻击力超过2000点的部分，每100点提升200点伤害，最多提升16000点。同一次攻击命中多名敌人时，每对1名敌人造成伤害就消耗1层。"
     },
     {
-      "name": "대지에 돌아온 풍요의 주인Ⅰ",
+      "name": "대지에 재림한 풍요의 주인Ⅰ",
       "name_en": "Fertility Lord's Return I (provisional)",
       "name_jp": "大地に帰還せし豊穣の主Ⅰ（仮訳）",
       "name_cn": "重临大地的丰主Ⅰ",
-      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시와 페르소나 스킬 사용 시 공격력이 가장 높은 반항 또는 자율 동료에게 「풍요의 선물」 1중첩을 부여한다. 동료가 「풍요의 선물」 2중첩을 소모하면 해당 동료의 적합성에 맞는 속성 대미지가 2턴 동안 37.5% 증가한다.\n「풍요의 선물」: 최대 4중첩. 대미지를 줄 때 1중첩을 소모하여 적 1명에게 주는 스킬 대미지를 증가시킨다. 원더의 공격력 중 2000을 초과하는 수치 100포인트마다 대미지가 300 증가하며 최대 24000까지 증가한다. 한 번의 공격이 여러 적에게 적중하면 적마다 1중첩을 소모한다.",
+      "desc": "공격력이 29.1% 증가한다.\n전투 시작 시 및 페르소나 스킬 시전 시, 공격력이 가장 높은 반항/자율 아군에게 「풍요의 축복」을 1중첩 부여한다. 아군이 「풍요의 축복」을 2중첩 소모한 후, 2턴 동안 해당 아군의 적합성 속성에 따라 해당 속성 대미지가 37.5% 증가한다.\n「풍요의 축복」: 4회 중첩 가능. 대미지를 줄 때 스킬 대미지 보너스를 획득하며, 「풍요의 축복」을 1중첩 소모하여 적 1명에게 주는 대미지를 증가시킨다. 증가량은 원더의 공격력에서 2,000포인트를 초과한 부분에 대해 100포인트당 대미지가 300포인트씩, 최대 24,000포인트까지 증가한다. 동일한 공격이 여러 명의 적에게 명중할 때, 적 1명에게 대미지를 줄 때마다 1중첩씩 소모한다.",
       "desc_en": "Increase Attack by 29.1%. At the start of battle and when using a Persona skill, grant 1 stack of [Gift of Abundance] (provisional name) to the Assassin or Virtuoso ally with the highest Attack. After an ally spends 2 stacks, increase damage of their corresponding attribute by 37.5% for 2 turns.\n[Gift of Abundance]: Stacks up to 4 times. When dealing damage, spend 1 stack to increase skill damage against 1 foe by 300 for every 100 of WONDER's Attack above 2000, up to 24000. When an attack hits multiple foes, spend 1 stack for each foe damaged.",
       "desc_jp": "攻撃力が29.1%上昇する。戦闘開始時とペルソナスキル使用時、攻撃力が最も高い反抗または自律の味方に『豊穣の贈り物』（仮訳）を1つ付与する。味方が2つ消費すると、その味方の適性に対応する属性ダメージが2ターンの間37.5%上昇する。\n『豊穣の贈り物』は最大4つ。ダメージを与える時に1つ消費し、敵1体へのスキルダメージを上昇させる。WONDERの攻撃力が2000を超えた分の100ごとに300上昇し、最大24000。複数の敵に命中する場合、敵1体につき1つ消費する。",
       "desc_cn": "攻击力提升29.1%。\n战斗开始时及释放人格面具技能时，为攻击力最高的反抗/自律同伴添加1层「丰穰之赐」。同伴消耗2层「丰穰之赐」后，根据其适应性属性提升其相应属性伤害37.5%，持续2回合。\n「丰穰之赐」：可叠加4层。造成伤害时获得技能伤害加成，消耗1层「丰穰之赐」提升对1名敌人造成的伤害，提升值基于WONDER的攻击力超过2000点的部分，每100点提升300点伤害，最多提升24000点。同一次攻击命中多名敌人时，每对1名敌人造成伤害就消耗1层。"
     }
   ],
   "uniqueSkill": {
-    "name": "신림의 은위", "name_en": "Divine Providence (provisional)", "name_jp": "神臨の恩威（仮訳）", "name_cn": "神临的恩威",
-    "desc": "적 1명에게 공격력 100.0%/105.0%/110.0%의 물리 속성 대미지를 3회 준다.\n동료가 누적 소모한 「풍요의 선물」 1중첩마다 이번 스킬 대미지가 50.0%/52.5%/55.0% 증가하며, 최대 300.0%/315.0%/330.0%까지 증가한다.\n목표에게 「고갈의 징조」를 부여한다. 다음에 「풍요의 선물」을 보유한 괴도가 목표를 공격하면 바알이 추가 공격을 가하며, 대미지는 해당 괴도가 준 공격 대미지의 8%다.",
+    "name": "강림의 위광", "name_en": "Divine Providence (provisional)", "name_jp": "神臨の恩威（仮訳）", "name_cn": "神临的恩威",
+    "desc": "적 1명에게 공격력 100.0%/105.0%/110.0%의 물리 속성 대미지를 3회 준다.\n아군이 누적 소모한 「풍요의 축복」 중첩 수에 따라 이번 스킬의 대미지가 1중첩당 50.0%/52.5%/55.0%씩, 최대 300.0%/315.0%/330.0%까지 증가한다.\n목표를 「메마른 징조」 상태로 만든다: 다음에 「풍요의 축복」을 보유한 괴도의 공격을 받으면 바알이 추가 공격을 가하며, 대미지는 이번 괴도 공격 대미지의 8%이다.",
     "desc_en": "Deal Physical damage to 1 foe 3 times, each equal to 100.0%/105.0%/110.0% of Attack. Increase this skill's damage by 50.0%/52.5%/55.0% for each stack of [Gift of Abundance] (provisional name) consumed by allies, up to 300.0%/315.0%/330.0%. Inflict [Blight Omen] (provisional name): after the next attack from a Phantom Thief with [Gift of Abundance], Baal follows up for 8% of that attack's damage.",
     "desc_jp": "敵1体に攻撃力100.0%/105.0%/110.0%の物理属性ダメージを3回与える。味方が累計消費した『豊穣の贈り物』（仮訳）1つにつき、このスキルのダメージが50.0%/52.5%/55.0%上昇する。最大300.0%/315.0%/330.0%。対象に『枯渇の兆し』（仮訳）を付与し、次に『豊穣の贈り物』を持つ怪盗が攻撃すると、バアルがその攻撃ダメージの8%で追撃する。",
     "desc_cn": "对1名敌人造成3次100.0%/105.0%/110.0%攻击力的物理属性伤害。\n根据同伴累计消耗「丰穰之赐」的层数，提高本次技能的伤害，每层提高50.0%/52.5%/55.0%，上限300.0%/315.0%/330.0%。\n使目标陷入「枯兆」状态：下次受到带有「丰穰之赐」的怪盗攻击后，巴力进行追加攻击，伤害值为本次怪盗的攻击伤害的8%。",
@@ -65,7 +64,7 @@ window.personaFiles["바알"] = {
   },
   "highlight": {
     "name": "HIGHLIGHT", "name_en": "HIGHLIGHT", "name_jp": "HIGHLIGHT", "name_cn": "HIGHLIGHT",
-    "desc": "적 1명에게 공격력 180.0%/189.0%/198.0%의 질풍 속성 대미지를 주고, 3턴 동안 목표가 받는 크리티컬 효과를 18.0%/18.9%/19.8% 증가시킨다. 공격력이 가장 높은 반항 또는 자율 동료에게 「풍요의 선물」 2중첩을 부여한다.",
+    "desc": "적 1명에게 공격력 180.0%/189.0%/198.0%의 질풍 속성 대미지를 주고, 3턴 동안 목표가 받는 크리티컬 효과를 18.0%/18.9%/19.8% 증가시키며, 공격력이 가장 높은 반항/자율 아군에게 「풍요의 축복」을 2중첩 부여한다",
     "desc_en": "Deal Wind damage to 1 foe equal to 180.0%/189.0%/198.0% of Attack and increase its critical damage taken by 18.0%/18.9%/19.8% for 3 turns. Grant 2 stacks of [Gift of Abundance] (provisional name) to the Assassin or Virtuoso ally with the highest Attack.",
     "desc_jp": "敵1体に攻撃力180.0%/189.0%/198.0%の疾風属性ダメージを与え、3ターンの間、対象が受けるクリティカルダメージを18.0%/18.9%/19.8%上昇させる。攻撃力が最も高い反抗または自律の味方に『豊穣の贈り物』（仮訳）を2つ付与する。",
     "desc_cn": "对1名敌人造成180.0%/189.0%/198.0%攻击力的疾风属性伤害，使其受到暴击效果提升18.0%/18.9%/19.8%，持续3回合，并为攻击力最高的反抗/自律同伴添加2层「丰穰之赐」",

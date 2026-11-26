@@ -200,9 +200,9 @@
             <div class="accordion-content" id="pityContent">
                 <div class="input-row">
                     <div class="input-group">
-                        <label class="input-label">
+                        <label class="input-label" for="inputCharPity">
                             <img src="{{ site.baseurl }}/assets/img/pay/정해진 운명.png" alt="" class="input-icon">
-                            <span id="labelCharPity">캐릭터 진행 중</span>
+                            <span id="labelCharPity">캐릭터</span>
                             <span class="pity-max">/110</span>
                             <span class="tooltip-icon" data-i18n-tooltip="tooltipCharPity"
                                 data-tooltip="캐릭터 배너에서 마지막 5성을 뽑은 후 경과한 뽑기 수입니다. 110회는 하드 피티(천장 확정)입니다.">
@@ -220,9 +220,9 @@
                         <input type="number" id="inputCharPity" class="modal-input" value="0" min="0" max="110">
                     </div>
                     <div class="input-group">
-                        <label class="input-label">
+                        <label class="input-label" for="inputWeaponPity">
                             <img src="{{ site.baseurl }}/assets/img/pay/정해진 코인.png" alt="" class="input-icon">
-                            <span id="labelWeaponPity">무기 진행 중</span>
+                            <span id="labelWeaponPity">확률 보급</span>
                             <span class="pity-max">/70</span>
                             <span class="tooltip-icon" data-i18n-tooltip="tooltipWeaponPity"
                                 data-tooltip="무기 배너에서 마지막 5성을 뽑은 후 경과한 뽑기 수입니다. 70회는 하드 피티(천장)입니다.">
@@ -239,12 +239,20 @@
                         </label>
                         <input type="number" id="inputWeaponPity" class="modal-input" value="0" min="0" max="70">
                     </div>
+                    <div class="input-group" id="targetedWeaponPityGroup">
+                        <label class="input-label" for="inputTargetedWeaponPity">
+                            <img src="{{ site.baseurl }}/assets/img/pay/정해진 코인.png" alt="" class="input-icon">
+                            <span id="labelTargetedWeaponPity">확정 보급</span>
+                            <span class="pity-max">/95</span>
+                        </label>
+                        <input type="number" id="inputTargetedWeaponPity" class="modal-input" value="0" min="0" max="94">
+                    </div>
                 </div>
                 <div class="checkbox-row">
                     <div class="input-group checkbox-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="inputWeapon5050Failed">
-                            <span id="labelWeapon5050Failed">무기 50:50 실패</span>
+                            <span id="labelWeapon5050Failed">확률 보급 50:50 실패</span>
                             <span class="tooltip-icon" data-i18n-tooltip="tooltipWeapon5050Failed"
                                 data-tooltip="무기 배너에서 50% 확률로 한정 무기를 뽑지 못했는지 여부입니다. 실패 시 다음 5성은 반드시 픽업 무기입니다.">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
@@ -263,7 +271,7 @@
                 <div class="input-row">
                     <div class="input-group">
                         <label class="input-label">
-                            <span id="labelWeaponScenario">무기 계산 시나리오</span>
+                            <span id="labelWeaponScenario">확률 보급 시나리오</span>
                             <span class="tooltip-icon" data-i18n-tooltip="tooltipWeaponScenario"
                                 data-tooltip="무기 50:50의 운을 기준으로 필요 엠버량을 계산합니다. 최선: 모든 50:50 성공, 평균: 절반 성공, 최악: 모든 50:50 실패">
                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"

@@ -1,10 +1,10 @@
 window.characterSetting = window.characterSetting || {};
-window.characterSetting["아란·린화"] = {
+window.characterSetting["아란·서리꽃"] = {
     "role": "복합 속성 단일 딜러",
     "role_en": "Dual-attribute single-target damage dealer",
     "role_jp": "複合属性の単体アタッカー",
     "role_cn": "双属性单体输出",
-    "video": [],
+    "video": ["dihY-BW9u4Q"],
     "video_en": [],
     "video_jp": [],
     "main_revelation": ["희망"],

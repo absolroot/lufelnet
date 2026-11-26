@@ -1,0 +1,380 @@
+{
+  "284": {
+    "en": {
+      "description": "Each stack grants 5% final damage for 2 turns, up to 4 stacks. At 4 stacks, gain an additional 20% final damage.",
+      "phrases": [
+        "[Sixth Sense]"
+      ]
+    },
+    "jp": {
+      "description": "1スタックにつき最終ダメージが5%上昇する。2ターン持続し、最大4スタック。4スタックに達すると最終ダメージがさらに20%上昇する。",
+      "phrases": [
+        "『第六感』"
+      ]
+    }
+  },
+  "286": {
+    "en": {
+      "description": "Downgrades affinity as follows: Null, Repel, or Drain → Resist; Resist → Normal; Normal → Weak. If already Weak, increase weakness damage taken by 25%.",
+      "phrases": [
+        "[Attribute Downgrade]"
+      ]
+    },
+    "jp": {
+      "description": "属性相性が無効・反射・吸収なら耐性に、耐性なら等倍に、等倍なら弱点になる。すでに弱点の場合、受ける弱点ダメージが25%上昇する。",
+      "phrases": [
+        "『適応性降級』"
+      ]
+    }
+  },
+  "287": {
+    "en": {
+      "description": "If the Owner is a S.E.E.S. ally, they can order Koromaru to cast Persona skills using commands in the Assist Skill list. Other Assist Skills remain available under their usual rules. For a non-S.E.E.S. Owner, Koromaru automatically casts a Persona skill based on their element at the start of their turn. Once an Owner is chosen, Koromaru has no turn of his own. His turn-start and turn-end effects trigger at the start and end of the Owner's turn.",
+      "phrases": [
+        {
+          "phrase": "[Specific Conditions]",
+          "before": "based on"
+        }
+      ]
+    },
+    "jp": {
+      "description": "『主人』がS.E.E.S.メンバーの場合、サポートスキル欄の指令でコロマルにペルソナスキルを使わせることができる。その後も従来のルールに従って他のサポートスキルを使用できる。S.E.E.S.メンバー以外の場合、コロマルは『主人』のターン開始時に、その属性に応じたペルソナスキルを自動で発動する。『主人』を選択するとコロマル自身のターンはなくなり、ターン開始・終了時の効果は『主人』のターンに発動する。",
+      "phrases": [
+        "『特定ルール』"
+      ]
+    }
+  },
+  "288": {
+    "en": {
+      "description": "Motoha's special HIGHLIGHT can score critical hits, spends no HIGHLIGHT Energy, and can stock multiple uses with no cooldown. Using it requires at least 3 combined Light and Shadow stacks.",
+      "phrases": [
+        "[Twilight Radiance]"
+      ]
+    },
+    "jp": {
+      "description": "素羽・晴光の特殊HIGHLIGHT。クリティカルが発生し、HIGHLIGHTエネルギーを消費せず、クールタイムなしで複数回分をストックできる。発動には『光』と『影』が合計3スタック以上必要。",
+      "phrases": [
+        "『黄昏の余暉』"
+      ]
+    }
+  },
+  "289": {
+    "en": {
+      "description": "Motoha gains 1 Light at the start of her turn and gains Light or Shadow when using certain Persona skills. They stack up to 6 in total. Twilight Radiance spends 3 combined stacks and triggers effects based on the stacks spent. Each Light spent increases Attack when casting Spear of Light. Each Shadow spent grants all allies a Shield.",
+      "phrases": [
+        "[Light]/[Shadow]",
+        "[Light] and [Shadow]",
+        "[Light]",
+        "[Shadow]"
+      ]
+    },
+    "jp": {
+      "description": "素羽・晴光はターン開始時に『光』を1つ獲得し、特定のペルソナスキルで『光』または『影』を獲得する。合計6スタックまで蓄積できる。『黄昏の余暉』で合計3スタックを消費し、消費した種類に応じて追加効果が発動する。『光』1つにつき『光の槍』発動時の攻撃力が上昇し、『影』1つにつき味方全体にシールドを付与する。",
+      "phrases": [
+        "『光』と『影』",
+        "『光』または『影』",
+        "『光』",
+        "『影』"
+      ]
+    }
+  },
+  "290": {
+    "en": {
+      "description": "While Motoha is in Resolute Maiden, her HIGHLIGHT skill multiplier increases.",
+      "phrases": [
+        "[Resolute Maiden]"
+      ]
+    },
+    "jp": {
+      "description": "素羽・晴光が『決意の少女』状態の間、HIGHLIGHTのスキル倍率が上昇する。",
+      "phrases": [
+        "『決意の少女』"
+      ]
+    }
+  },
+  "291": {
+    "en": {
+      "description": "Spending Flowing Light with Twilight Radiance triggers the effects of spending Light and Shadow simultaneously.",
+      "phrases": [
+        "[Flowing Light]"
+      ]
+    },
+    "jp": {
+      "description": "『黄昏の余暉』で『光影流転』を消費すると、『光』と『影』の消費効果が同時に発動する。",
+      "phrases": [
+        "『光影流転』"
+      ]
+    }
+  },
+  "292": {
+    "en": {
+      "description": "Amplifies final damage dealt by a HIGHLIGHT.",
+      "phrases": [
+        "HIGHLIGHT Damage Amplification"
+      ]
+    },
+    "jp": {
+      "description": "HIGHLIGHTで与える最終ダメージを増幅する。",
+      "phrases": [
+        "ハイライトダメージ増幅"
+      ]
+    }
+  },
+  "293": {
+    "en": {
+      "description": "A debuff Motoha inflicts when actively casting her lightning spear skill. It increases damage taken.",
+      "phrases": [
+        "[Flashover]"
+      ]
+    },
+    "jp": {
+      "description": "素羽・晴光が雷の槍のスキルを能動的に発動した時に付与する弱体効果。対象の被ダメージが上昇する。",
+      "phrases": [
+        "『閃絡』"
+      ]
+    }
+  },
+  "294": {
+    "en": {
+      "description": "Fixed damage is unaffected by damage modifiers such as damage bonuses, Attack bonuses, or critical rate.",
+      "phrases": [
+        "fixed damage"
+      ]
+    },
+    "jp": {
+      "description": "固定値のダメージ。与ダメージボーナス、攻撃力ボーナス、クリティカル率などの効果を受けない。",
+      "phrases": [
+        "固定ダメージ"
+      ]
+    }
+  },
+  "295": {
+    "en": {
+      "description": "Grants immunity to mental ailments, control effects, and Down Gauge damage for 2 turns. Phantom Form ends if Ren is the only ally on the field who can act.",
+      "phrases": [
+        "[Phantom Form]"
+      ]
+    },
+    "jp": {
+      "description": "2ターンの間、精神異常、行動制御効果、ダウン値へのダメージを無効にする。雨宮 蓮・スターナイトだけが行動可能な場合、『ファントムフォーム』は解除される。",
+      "phrases": [
+        "『ファントムフォーム』"
+      ]
+    }
+  },
+  "296": {
+    "en": {
+      "description": "Uses the highest Attack, damage bonus, critical rate, and critical damage among the other allies, excluding the caster.",
+      "phrases": [
+        {
+          "phrase": "[Coordinated Damage]",
+          "before": "Almighty"
+        }
+      ]
+    },
+    "jp": {
+      "description": "発動者以外の味方の攻撃力、与ダメージボーナス、CRT発生率、CRT倍率のそれぞれの最高値を参照する。",
+      "phrases": [
+        {
+          "phrase": "『協力ダメージ』",
+          "before": "万能属性"
+        }
+      ]
+    }
+  },
+  "297": {
+    "en": {
+      "description": "Starlight characters share this combat resource and spend it to boost skills. Each Starlight character restores 1 Rhapsodic Beat at the start of their turn, up to 8.",
+      "phrases": [
+        "[Rhapsodic Beat]"
+      ]
+    },
+    "jp": {
+      "description": "スターナイトのキャラクター間で共有し、スキルの強化に消費する。スターナイトのキャラクターはターン開始時に『ラプソディビート』を1ポイント回復する。最大8ポイント。",
+      "phrases": [
+        "『ラプソディビート』"
+      ]
+    }
+  },
+  "298": {
+    "en": {
+      "description": "Counts as All-Out Attack damage and benefits from the caster's All-Out Attack damage bonus. It consists of base and Coordinated Damage. It cannot crit, but critical rate and critical damage are converted to final damage bonuses. Damage increases by 25% for each foe fewer than 5.",
+      "phrases": [
+        {
+          "phrase": "[Coordinated Strike]",
+          "before": "do a"
+        }
+      ]
+    },
+    "jp": {
+      "description": "総攻撃ダメージとして扱い、発動者の総攻撃ダメージボーナスが適用される。基本ダメージと協力ダメージで構成され、クリティカルは発生しない。CRT発生率とCRT倍率は最終ダメージボーナスに変換される。敵が5体より1体少ないごとにダメージが25%上昇する。",
+      "phrases": [
+        "『協力攻撃』"
+      ]
+    }
+  },
+  "299": {
+    "en": {
+      "description": "A damage bonus applied when dealing All-Out Attack damage. It is calculated separately from other bonuses.",
+      "phrases": [
+        "All-Out Attack damage"
+      ]
+    },
+    "jp": {
+      "description": "総攻撃ダメージを与える時に適用されるボーナス。他のボーナスとは別に計算される。",
+      "phrases": [
+        "総攻撃ダメージ"
+      ]
+    }
+  },
+  "300": {
+    "en": {
+      "description": "Reduces total Defense by 10% for 1 turn, up to 10 stacks. Counts as Windswept.",
+      "phrases": [
+        "[Windworn]"
+      ]
+    },
+    "jp": {
+      "description": "1ターンの間、総防御力が10%低下する。最大10スタック。風襲として扱う。",
+      "phrases": [
+        "『風竭』"
+      ]
+    }
+  },
+  "303": {
+    "en": {
+      "description": "Ann's special sequence arranges 3 types of Step skills in order. It can contain several stages and counts as one complete Persona skill when cast.",
+      "phrases": [
+        "[Heat Score]"
+      ]
+    },
+    "jp": {
+      "description": "杏の特殊なスキルシーケンス。3種類のダンスステップを順番に組み込む。複数段で構成でき、発動時は1回のペルソナスキルとして扱う。",
+      "phrases": [
+        "『熱力ダンススコア』"
+      ]
+    }
+  },
+  "304": {
+    "en": {
+      "description": "Ann's special combat resource. Spend 4 Cheer stacks to cast her special finale once.",
+      "phrases": [
+        "[Cheer]"
+      ]
+    },
+    "jp": {
+      "description": "杏の特殊な戦闘リソース。『歓声』を4スタック消費して、特殊フィナーレを1回発動できる。",
+      "phrases": [
+        "『歓声』"
+      ]
+    }
+  },
+  "305": {
+    "en": {
+      "description": "Spends HIGHLIGHT Energy or the corresponding combat resource.",
+      "phrases": [
+        "normal means"
+      ]
+    },
+    "jp": {
+      "description": "HIGHLIGHTエネルギー、または対応する戦闘リソースを消費する。",
+      "phrases": [
+        "通常の手段"
+      ]
+    }
+  },
+  "306": {
+    "en": {
+      "description": "On boarding, the Berry craft's current and maximum HP become the sum of all allies' current and maximum HP, respectively. Then all allies' HP drops to 1 and they gain immunity to instant death. The craft receives all damage and healing in their place. Ichigo is defeated if the craft reaches 0 HP.",
+      "phrases": [
+        "Specific Rules"
+      ]
+    },
+    "jp": {
+      "description": "搭乗時、ベリー号の現在HPと最大HPは、それぞれ味方全員の現在HPと最大HPの合計になる。その後、味方全員のHPが1になり、即死無効を得る。味方全員が受けるダメージと回復はベリー号が肩代わりする。ベリー号のHPが0になると鹿野いちごは戦闘不能になる。",
+      "phrases": [
+        "特定ルール"
+      ]
+    }
+  },
+  "309": {
+    "en": {
+      "description": "Immediately Downs the target without reducing its Down Gauge.",
+      "phrases": [
+        "instantly Down",
+        "immediately Down"
+      ]
+    },
+    "jp": {
+      "description": "ダウン値を減少させる処理を経ず、対象を即座にダウンさせる。",
+      "phrases": [
+        "即座にダウン",
+        "即時ダウン"
+      ]
+    }
+  },
+  "312": {
+    "en": {
+      "description": "Calculates weakness resistance using the weaker of the target's two affinities. Buffs and debuffs for both affinities are applied, except weakness effects and weakness resistance.",
+      "phrases": [
+        "dual attribute Bless/Curse damage",
+        "dual attribute damage"
+      ]
+    },
+    "jp": {
+      "description": "命中した対象の2つの属性相性のうち、弱い方を基準に弱点耐性を計算する。両属性に関連するバフとデバフを適用する。ただし弱点効果と弱点耐性を除く。",
+      "phrases": [
+        "祝福・呪怨複合属性ダメージ",
+        "複合属性ダメージ"
+      ]
+    }
+  },
+  "313": {
+    "en": {
+      "description": "A Shield that blocks damage for 2 turns. Can stack.",
+      "phrases": [
+        "[Everlasting Veil]"
+      ]
+    },
+    "jp": {
+      "description": "2ターンの間、一定量のダメージを防ぐシールド。重ねがけできる。",
+      "phrases": [
+        "『不凋の幕』"
+      ]
+    }
+  },
+  "314": {
+    "en": {
+      "description": "Increases Attack by 60% and weakness damage by 25% for 2 turns.",
+      "phrases": [
+        "[Resolve]",
+        {
+          "phrase": "Resolve",
+          "before": "after gaining"
+        }
+      ]
+    },
+    "jp": {
+      "description": "2ターンの間、攻撃力が60%、弱点ダメージが25%上昇する。",
+      "phrases": [
+        "『決断』"
+      ]
+    }
+  },
+  "315": {
+    "en": {
+      "description": "A flat amount added after multiplying Attack by the damage multiplier. Damage modifiers, Defense, and critical damage are applied after this addition.",
+      "phrases": [
+        "Skill Damage Bonus",
+        "increase skill damage against 1 foe"
+      ]
+    },
+    "jp": {
+      "description": "攻撃力にダメージ倍率を掛けた値に加算される固定値。その加算後にダメージ増減、防御力、クリティカル効果などを乗算する。",
+      "phrases": [
+        "スキルダメージボーナス",
+        "敵1体へのスキルダメージを上昇させる"
+      ]
+    }
+  }
+}

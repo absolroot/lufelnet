@@ -53,12 +53,13 @@ window.I18N_PAGE_PULL_CALC_KR = {
     // 피티 관련
     charPity: '캐릭터 피티',
     weaponPity: '무기 피티',
-    weapon5050Failed: '무기 50:50 실패',
-    charPityProgress: '캐릭터 진행 중',
-    weaponPityProgress: '무기 진행 중',
+    weapon5050Failed: '확률 보급 50:50 실패',
+    charPityProgress: '캐릭터',
+    weaponPityProgress: '확률 보급',
+    targetedWeaponPityProgress: '확정 보급',
 
     // 무기 시나리오
-    weaponScenario: '무기 계산 시나리오',
+    weaponScenario: '확률 보급 시나리오',
     weaponScenarioBest: '최선 (모든 50:50 성공)',
     weaponScenarioAverage: '평균 (절반 성공)',
     weaponScenarioWorst: '최악 (모든 50:50 실패)',
@@ -79,6 +80,13 @@ window.I18N_PAGE_PULL_CALC_KR = {
     chartEmpty: '타임라인에서 캐릭터를 선택하세요',
     charTarget: '캐릭터 목표',
     weaponTarget: '무기 목표',
+    weaponBanner: '무기 보급 방식',
+    weaponBannerChance: '확률 보급 (70회)',
+    weaponBannerTargeted: '확정 보급 (95회)',
+    targetedWeaponPulls: '픽업 무기 확정까지 최대 {count}회',
+    targetedWeaponCoins: '코인 {count}개 사용',
+    targetedWeaponCurrency: '엠버 {count}개 필요',
+    targetedWeaponMaterials: '추가 5성 개조 재료 {count}개 별도',
     pulls: '회',
     tickets: '장',
     extraPurchase: '추가 구매',
@@ -133,8 +141,10 @@ window.I18N_PAGE_PULL_CALC_KR = {
 - 확정 계약은 110회마다 픽업 캐릭터를 100% 확정 획득합니다.
 - 운을 배제하고, 픽업 1명당 110회(약 16,500 엠버)가 필요하다고 가정합니다.
 
-**3. 무기 뽑기 (시나리오)**
-- 무기는 70회마다 5성을 확정 획득하지만, 픽업 확률은 50%입니다.
+**3. 무기 보급**
+- 무기 목표마다 보급 방식을 선택할 수 있습니다. 두 방식의 천장 진행도는 각각 해당 방식의 첫 목표에 반영됩니다.
+- 확정 보급: 선택한 픽업 무기 1개당 최대 95회로 계산합니다. 추가 5성 개조 재료는 별도로 표시합니다.
+- 확률 보급: 70회 이내에 5성 무기가 나오며, 첫 5성의 픽업 확률은 50%입니다.
 - 최선(Best): 50:50을 한 번에 성공한다고 가정합니다. (70회 이내)
 - 평균(Average): 실제 유저 통계의 중간값(Median)과 50% 확률을 반영합니다.
 - 최악(Worst): 50:50 실패(픽뚫) 후 천장을 친다고 가정합니다. (최대 140회)
@@ -142,7 +152,7 @@ window.I18N_PAGE_PULL_CALC_KR = {
 **4. 인지 결정 재귀 변환 (페이백)**
 - 옵션 활성화 시, **"모든 4성 캐릭터 풀돌(A6)"** 상태를 가정하여 계산합니다.
 - 캐릭터: 5성 획득 시의 환급은 배제하고(첫 획득 가정), 오직 4성 중복 획득 확률(약 13.1%)만을 반영하여 보수적으로 계산합니다. (1회당 약 13% 할인 효과)
-- 무기: 5성(2.3%) 및 4성(14.5%) 종합 확률을 반영하여 계산합니다.
+- 확률 보급은 5성(2.3%) 및 4성(14.5%) 종합 확률을 반영합니다. 확정 보급 비용에는 예상 환급을 반영하지 않습니다.
 
 ---
 

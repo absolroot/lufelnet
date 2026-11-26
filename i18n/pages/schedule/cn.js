@@ -20,6 +20,7 @@ window.I18N_PAGE_SCHEDULE_CN = {
     "nextRelease": "下次上线",
     "currentBanner": "当前卡池",
     "noCharacters": "本期间没有角色",
+    "worldwideSimultaneousRelease": "(预测) 全服务器同步上线",
     "kotoneWorldwideReleaseNote": "琴音已在全服务器同步上线，因此显示在之前的日程中。",
     "showReleased": "已上线",
     "hideReleased": "隐藏",

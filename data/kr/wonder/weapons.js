@@ -212,17 +212,17 @@ window.matchWeapons = {
     "lightning_stamp": [
       {
         "order": 7,
-        "name": "한계 초월 화력",
+        "name": "한계 돌파 화력",
         "name_en": "Limitless Firepower",
         "name_jp": "限界突破火力",
         "name_cn": "超限火力",
         "stamp_img": "item-datu-302940.png",
         "stamp_icon": "weaponEngraving-icon-7.png",
-        "effect": "임의의 동료의 턴이 시작되거나 페르소나를 교체할 때, 해당 동료의 현재 페르소나 속성에 따라 해당 속성 대미지가 3.0%/6.0%/9.0%/12.0% 증가하고, 해당 속성 대미지를 줄 때 크리티컬 효과가 2.0%/4.0%/6.0%/8.0% 증가한다.",
+        "effect": "임의의 아군 턴 시작 시 또는 페르소나 교체 시, 해당 아군의 현재 페르소나 속성에 따라 해당 속성 대미지가 3.0%/6.0%/9.0%/12.0% 증가하고, 해당 속성 대미지를 줄 때의 크리티컬 효과가 2.0%/4.0%/6.0%/8.0% 증가한다.",
         "effect_en": "At the start of an ally's turn or when they change Personas, increase their damage of their current Persona's attribute by 3.0%/6.0%/9.0%/12.0%, and increase critical damage dealt with that attribute by 2.0%/4.0%/6.0%/8.0%.",
         "effect_jp": "味方のターン開始時またはペルソナ切り替え時、現在のペルソナの属性に応じて、その味方の該当属性の与ダメージが3.0%/6.0%/9.0%/12.0%上昇し、該当属性でダメージを与える時のクリティカルダメージが2.0%/4.0%/6.0%/8.0%上昇する。",
         "effect_cn": "任意同伴回合开始时或切换人格面具时，根据该同伴当前的人格面具属性，使其相应属性的伤害提升3.0%/6.0%/9.0%/12.0%、造成相应属性伤害时的暴击效果提升2.0%/4.0%/6.0%/8.0%。",
-        "release": "아란·린화"
+        "release": "아란·서리꽃"
       }
     ],
     "shard": [

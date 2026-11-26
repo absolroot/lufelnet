@@ -3,37 +3,36 @@
     "name": "히라노 아란",
     "time": "방과 후",
     "can_romance": true,
-    "translation_pending": true,
     "special_award": [
       {
         "rank": 1,
         "icon": "xielizhe-icon-pingyeyalan-01.png",
-        "name": "너와 함께한 추억",
-        "description": "아란의 화첩을 획득하고 원더와 루페르의 페이지가 열립니다. 도시 일정에서 조각을 얻을 수 있습니다."
+        "name": "너와 함께한 기억",
+        "description": "「아란의 그림책」을 획득합니다.\n원더, 루페르의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
       },
       {
         "rank": 5,
         "icon": "xielizhe-icon-pingyeyalan-02.png",
-        "name": "태양처럼 따뜻하게",
-        "description": "모토하와 슌의 페이지가 열리고 도시 일정에서 조각을 얻을 수 있습니다."
+        "name": "태양처럼 따스한",
+        "description": "아라이 모토하, 카노 슌의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
       },
       {
         "rank": 9,
         "icon": "xielizhe-icon-pingyeyalan-03.png",
-        "name": "좀처럼 보기 힘든 모습이네",
-        "description": "리코의 페이지가 열리고 도시 일정에서 조각을 얻을 수 있습니다."
+        "name": "보기 드문 광경이네요",
+        "description": "타네무라 리코의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
       },
       {
         "rank": 13,
         "icon": "xielizhe-icon-pingyeyalan-04.png",
-        "name": "이, 이게 인기가 많다는 느낌인가요",
-        "description": "쇼키의 페이지가 열리고 도시 일정에서 조각을 얻을 수 있습니다."
+        "name": "이, 이게 인기 있다는 느낌인가요",
+        "description": "이케나미 쇼키의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
       },
       {
         "rank": 17,
         "icon": "xielizhe-icon-pingyeyalan-05.png",
-        "name": "나를 찾아줘서 고마워",
-        "description": "아란의 페이지가 열리고 도시 일정에서 조각을 얻을 수 있습니다."
+        "name": "절 찾아줘서 고마워요",
+        "description": "히라노 아란의 그림책 페이지 개방 및 도시 일정 내 조각 드롭이 해제됩니다."
       }
     ],
     "picture_album": [
@@ -71,15 +70,15 @@
         "good_answers": [
           [
             {
-              "content": "말할 때는 상대방을 바라봐",
+              "content": "얼굴 보고 말해야지",
               "reward": 60
             },
             {
-              "content": "스케치북은 사용 금지",
+              "content": "스케치북 금지",
               "reward": 50
             },
             {
-              "content": "시이나에게 대신 사과해",
+              "content": "시이나에게 사과한다",
               "reward": 40
             }
           ]
@@ -94,15 +93,15 @@
         "good_answers": [
           [
             {
-              "content": "그럼 차분하게 취재하자",
+              "content": "그러면 차분하게 취재하자",
               "reward": 60
             },
             {
-              "content": "나츠카와에게 질문을 부탁할까?",
+              "content": "나츠카와 씨한테 질문을 받아볼까?",
               "reward": 50
             },
             {
-              "content": "스케치북은 봉인하자",
+              "content": "스케치북을 봉인하자",
               "reward": 40
             }
           ]
@@ -117,15 +116,15 @@
         "good_answers": [
           [
             {
-              "content": "전혀 이상하지 않아",
+              "content": "이상하지 않아",
               "reward": 60
             },
             {
-              "content": "히나도 그렇게 생각하지 않을 거야",
+              "content": "하루나는 그렇게 생각하지 않을 거야",
               "reward": 50
             },
             {
-              "content": "때로는 거짓말도 필요해……",
+              "content": "거짓말도 때로는 필요하다고 하잖아…",
               "reward": 40
             }
           ]
@@ -140,15 +139,15 @@
         "good_answers": [
           [
             {
-              "content": "그리고 싶다면 그려 봐",
+              "content": "그리고 싶다면 계속 그리면 돼",
               "reward": 40
             },
             {
-              "content": "만화를 그리는 게 괴로워?",
+              "content": "그리는 게 힘들어?",
               "reward": 50
             },
             {
-              "content": "네 만화를 더 보고 싶어",
+              "content": "나는 아란의 만화를 계속 보고 싶어",
               "reward": 60
             }
           ]
@@ -163,11 +162,11 @@
         "good_answers": [
           [
             {
-              "content": "나도 잘 모르겠어",
+              "content": "나는 모르겠네",
               "reward": 60
             },
             {
-              "content": "분명 기뻐할 거야",
+              "content": "분명 좋아할 거야",
               "reward": 40
             },
             {
@@ -186,7 +185,7 @@
         "good_answers": [
           [
             {
-              "content": "그 작품을 정말 좋아하나 봐?",
+              "content": "작품을 사랑해 주는 것 같아?",
               "reward": 60
             },
             {
@@ -194,7 +193,7 @@
               "reward": 50
             },
             {
-              "content": "평범한 팬 같아?",
+              "content": "1호 팬 같아?",
               "reward": 40
             }
           ]
@@ -209,15 +208,15 @@
         "good_answers": [
           [
             {
-              "content": "그럼 자유롭게 이야기하자!",
+              "content": "잔뜩 말해줄게!",
               "reward": 60
             },
             {
-              "content": "다들 편하게 말해 줘",
+              "content": "다들 거리낌 없이 의견 내 봐",
               "reward": 50
             },
             {
-              "content": "의견이 떠오르지 않아……!",
+              "content": "개선할 점이 떠오르지 않아…!",
               "reward": 40
             }
           ]
@@ -232,15 +231,15 @@
         "good_answers": [
           [
             {
-              "content": "히나도 분명 기뻐할 거야",
+              "content": "하루나도 분명 좋아할 거야",
               "reward": 50
             },
             {
-              "content": "나한테도 물어봐 줬으면 좋겠어",
+              "content": "나한테도 말해줘",
               "reward": 60
             },
             {
-              "content": "리코에게 물어보는 것도 좋겠어",
+              "content": "리코한테 물어보는 것도 좋을 거야",
               "reward": 40
             }
           ]
@@ -255,15 +254,15 @@
         "good_answers": [
           [
             {
-              "content": "다들 열심히 이야기하네",
+              "content": "열정적으로 의견을 나누고 있네",
               "reward": 60
             },
             {
-              "content": "생각을 말할 수 있어서 멋져",
+              "content": "제대로 의견을 말하다니 대단해",
               "reward": 50
             },
             {
-              "content": "많이 성장했구나……",
+              "content": "어른이 됐구나…",
               "reward": 40
             }
           ]
@@ -281,11 +280,11 @@
         "good_answers": [
           [
             {
-              "content": "나도 산책할 때 와",
+              "content": "나도 똑같이 산책하러 와",
               "reward": 60
             },
             {
-              "content": "행사가 있을 때 와",
+              "content": "이벤트가 있을 때 와",
               "reward": 50
             }
           ]
@@ -296,11 +295,11 @@
         "good_answers": [
           [
             {
-              "content": "모토하를 초대하자",
+              "content": "모토하를 부르자",
               "reward": 50
             },
             {
-              "content": "나중에 같이 오자",
+              "content": "앞으로는 같이 오자",
               "reward": 60
             }
           ]
@@ -326,11 +325,11 @@
         "good_answers": [
           [
             {
-              "content": "멀리오……?",
+              "content": "스미 토시야…?",
               "reward": 60
             },
             {
-              "content": "뭐든 읽어",
+              "content": "가리지 않고 다 읽어",
               "reward": 50
             }
           ]
@@ -341,7 +340,7 @@
         "good_answers": [
           [
             {
-              "content": "다음에 데려가 줘",
+              "content": "다음에 안내해 줘",
               "reward": 60
             },
             {
@@ -357,11 +356,11 @@
         "good_answers": [
           [
             {
-              "content": "오늘은 우연이야",
+              "content": "오늘은 어쩌다 보니",
               "reward": 40
             },
             {
-              "content": "어질러져 있을 때도 있어",
+              "content": "가끔 어질러져 있기도 해",
               "reward": 40
             }
           ],
@@ -371,17 +370,17 @@
               "reward": 40
             },
             {
-              "content": "또 만화 생각을 하고 있구나……",
+              "content": "또 만화 생각하네…",
               "reward": 40
             }
           ],
           [
             {
-              "content": "귀여우니까 이대로 있자",
+              "content": "귀여우니까 그대로도 괜찮아",
               "reward": 50
             },
             {
-              "content": "앞으로도 나한테 상담해 줘",
+              "content": "앞으로도 나한테 상담해",
               "reward": 60
             }
           ]
@@ -390,11 +389,11 @@
     ],
     "friend_lover_dialog": [
       {
-        "content": "동료로서 곁에 있을게",
+        "content": "동료로서 함께한다",
         "is_romance": false
       },
       {
-        "content": "연인으로서 곁에 있을게",
+        "content": "연인으로서 곁에 있는다",
         "is_romance": true
       }
     ],
@@ -760,7 +759,7 @@
         "bonus_synergy": 15,
         "compound": [],
         "image": "item-480001.png",
-        "name": "수채화 펜 세트",
+        "name": "케이스 수채화 붓펜 세트",
         "new_gift_synergy": 30,
         "seed": [],
         "shop": [
@@ -785,7 +784,7 @@
         "bonus_synergy": 7,
         "compound": [],
         "image": "item-480002.png",
-        "name": "단편 만화 모음집",
+        "name": "클래식 단편 만화 모음집",
         "new_gift_synergy": 14,
         "seed": [],
         "shop": [
@@ -810,7 +809,7 @@
         "bonus_synergy": 52,
         "compound": [],
         "image": "item-480003.png",
-        "name": "온열 눈 마사지기",
+        "name": "온열 공기압 눈 마사지기",
         "new_gift_synergy": 104,
         "seed": [],
         "shop": [

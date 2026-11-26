@@ -1,5 +1,5 @@
 window.operationData = window.operationData || {};
-window.operationData["아란·린화"] = {
+window.operationData["아란·서리꽃"] = {
     "basic": [
         { "label": "의식 0", "value": "1 › 3 › 2 › 3 › 1 › 3" },
         { "label": "의식 1 이상", "value": "2+1 › 3 › 2+1 › 3 › 2+1 › 3" }

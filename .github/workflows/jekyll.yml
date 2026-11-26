@@ -51,11 +51,14 @@ jobs:
 
     - name: Test independent per-file asset hashes
       run: npm run assets:hashes:test && npm run assets:cache-policy:test
+
+    - name: Validate committed skill tooltip data
+      run: npm run tooltips:validate
     
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.3'
+        ruby-version: '3.3.14'
         bundler-cache: true
         working-directory: .
     

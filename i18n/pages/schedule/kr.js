@@ -27,6 +27,7 @@ window.I18N_PAGE_SCHEDULE_KR = {
     nextRelease: '다음 출시',
     currentBanner: '현재 배너',
     noCharacters: '이 기간에 캐릭터가 없습니다',
+    worldwideSimultaneousRelease: '(예상) 전 서버 동시 출시',
     kotoneWorldwideReleaseNote: '코토네는 전 서버에 동시 출시되어 앞선 일정에 표시되어 있습니다.',
     showReleased: '출시됨',
     hideReleased: '숨기기',

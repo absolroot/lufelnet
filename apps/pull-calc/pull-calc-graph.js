@@ -429,6 +429,8 @@
      */
     PullSimulator.prototype.renderChart = function () {
         //console.log('[Graph] renderChart called');
+        const renderId = Symbol();
+        this.chartRenderId = renderId;
         const canvas = document.getElementById('balanceChart');
         const emptyEl = document.getElementById('chartEmpty');
         if (!canvas) {
@@ -454,7 +456,10 @@
         // This ensures smooth curve connection and prevents connection bugs
         const allData = this.balanceHistory.map(h => h.balance);
 
-        if (this.chart) this.chart.destroy();
+        if (this.chart) {
+            this.chart.destroy();
+            this.chart = null;
+        }
 
         // Preload character and weapon images for pins
         const BASE_URL = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
@@ -566,14 +571,10 @@
             const charPromises = Array.from(charNamesToLoad).map(name => loadImage(name));
             const awakeningPromises = Array.from(awakeningLevelsToLoad).map(level => loadAwakeningIcon(level));
             const refinementPromises = Array.from(refinementLevelsToLoad).map(level => loadRefinementIcon(level));
-            Promise.all([...charPromises, ...awakeningPromises, ...refinementPromises]).then(() => {
-                // Images loaded, continue with chart creation
-                //console.log('[Graph] All images loaded, creating chart');
-                this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
-            }).catch(() => {
-                // Even if some images fail, create chart anyway
-                //console.log('[Graph] Some images failed to load, creating chart anyway');
-                this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
+            Promise.allSettled([...charPromises, ...awakeningPromises, ...refinementPromises]).then(() => {
+                if (this.chartRenderId === renderId) {
+                    this.createChartWithImages(ctx, labels, allData, imageCache, BASE_URL);
+                }
             });
         }
     };

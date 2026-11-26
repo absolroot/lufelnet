@@ -157,7 +157,7 @@ const penetrateData = {
       ]
     }
   ],
-  "아란·린화": [
+  "아란·서리꽃": [
     {
       "id": "anri-lumina-skill3-pierce",
       "type": "스킬3",
@@ -167,7 +167,7 @@ const penetrateData = {
       "target_jp": "自分",
       "target_cn": "自身",
       "skillIcon": "/assets/img/skill-element/축복주원.png",
-      "skillName": "명천의 유광",
+      "skillName": "어두운 하늘의 빛",
       "skillName_en": "Skill 3",
       "skillName_jp": "スキル3",
       "skillName_cn": "冥天流光",
@@ -3007,7 +3007,7 @@ const defenseCalcData = {
       "type": "스킬1",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/버프.png",
-      "skillName": "소리없는 침습 (약점)",
+      "skillName": "소리 없는 침습 (약점)",
       "skillName_en": "Skill1 (Weakness)",
       "skillName_jp": "スキル1 (弱体)",
       "options": [
@@ -3086,7 +3086,7 @@ const defenseCalcData = {
       "type": "스킬1",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/버프.png",
-      "skillName": "소리없는 침습",
+      "skillName": "소리 없는 침습",
       "options": [
         "LV10",
         "LV10+심상5",

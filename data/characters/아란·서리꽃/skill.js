@@ -1,18 +1,18 @@
-// KR, EN and JP names are provisional translations; CN source: character 1242.
+// EN and JP names are provisional translations; CN source: character 1242.
 window.characterSkillsData = window.characterSkillsData || {};
 window.enCharacterSkillsData = window.enCharacterSkillsData || {};
 window.jpCharacterSkillsData = window.jpCharacterSkillsData || {};
 window.cnCharacterSkillsData = window.cnCharacterSkillsData || {};
 
-window.characterSkillsData["아란·린화"] = {
-  "name": "히라노 아란·린화",
+window.characterSkillsData["아란·서리꽃"] = {
+  "name": "히라노 아란·서리꽃",
   "skill1": {
-    "name": "성사의 거울꽃",
+    "name": "선악의 거울꽃",
     "element": "축복주원",
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "적 1명에게 공격력 562.6%/620.2%/597.2%/654.8%의 축복·주원 복합 속성 대미지를 주고, 2턴 동안 자신의 크리티컬 효과를 117.1%/129.1%/124.3%/136.3% 증가시키며 『결단』을 획득한다."
+    "description": "적 1명에게 공격력 562.6%/620.2%/597.2%/654.8%의 축복 주원 이중 속성 대미지를 주고, 2턴 동안 자신의 크리티컬 효과가 117.1%/129.1%/124.3%/136.3% 증가하며, 『결단』을 획득한다."
   },
   "skill2": {
     "name": "구원의 거울 영역",
@@ -20,38 +20,38 @@ window.characterSkillsData["아란·린화"] = {
     "type": "보조",
     "sp": 22,
     "cool": 1,
-    "description": "동료 전체에게 『시들지 않는 장막』을 부여하고 자신은 『결단』을 획득한다.\n동료 전체의 모든 적합성을 흡수로 변경하고 흡수 비율을 20%에서 29.8%/30.8%/30.4%/31.4%로 증가시킨다. 2턴 동안 지속되며 스킬 1회의 전체 대미지를 흡수하면 사라진다.\n『시들지 않는 장막』: 2928/3228/3108/3408의 대미지를 막는다."
+    "description": "아군 전체에 『불멸의 장막』을 부여하고, 자신은 『결단』을 획득한다.\n이후 2턴 동안 아군 전체의 모든 적합성을 “흡수”로 변경하고, 흡수 비율을 20%에서 29.8%/30.8%/30.4%/31.4%로 증가시킨다.\n해당 효과는 스킬 1회의 모든 대미지를 흡수한 후 사라진다.\n『불멸의 장막』: 2928/3228/3108/3408의 대미지를 막아낼 수 있다."
   },
   "skill3": {
-    "name": "명천의 유광",
+    "name": "어두운 하늘의 빛",
     "element": "축복주원",
     "type": "단일피해",
     "sp": 26,
     "cool": 1,
-    "description": "적 1명에게 공격력 906.5%/999.4%/962.2%/1055.1%의 축복·주원 복합 속성 대미지를 준다.\n자신이 『결단』 상태라면 이번 스킬 대미지의 관통이 15%, 스킬 대미지가 150% 증가한다."
+    "description": "적 1명에게 공격력 906.5%/999.4%/962.2%/1055.1%의 축복 주원 이중 속성 대미지를 준다.\n자신이 『결단』 상태일 경우, 이번 스킬 대미지의 관통이 15% 증가하고 스킬 대미지가 150% 증가한다."
   },
   "skill_highlight": {
     "name": "HIGHLIGHT",
     "element": "축복주원",
     "type": "단일피해",
     "cool": 4,
-    "description": "적 1명에게 공격력 1297.7%/1430.6%/1377.5%/1510.4%의 축복·주원 복합 속성 대미지를 주고, 3턴 동안 자신의 공격력이 48.8%/53.8%/51.8%/56.8% 증가한다.\n동료 전체에게 『시들지 않는 장막』을 부여한다."
+    "description": "적 1명에게 공격력 1297.7%/1430.6%/1377.5%/1510.4%의 축복 주원 이중 속성 대미지를 주고, 3턴 동안 자신의 공격력이 48.8%/53.8%/51.8%/56.8% 증가한다.\n이후 아군 전체에 『불멸의 장막』을 부여한다."
   },
   "passive1": {
     "name": "구세",
     "element": "패시브",
     "cool": 0,
-    "description": "아란·린화의 축복 속성 대미지가 36.0% 증가한다. 『시들지 않는 장막』이 막을 수 있는 대미지는 축복 속성 대미지 보너스의 영향을 받는다."
+    "description": "히라노 아란·서리꽃의 축복 속성 대미지가 36.0% 증가하고, 『불멸의 장막』이 막아낼 수 있는 대미지는 축복 속성 대미지 보너스의 영향을 받는다."
   },
   "passive2": {
     "name": "추억",
     "element": "패시브",
     "cool": 0,
-    "description": "아란·린화의 주원 속성 대미지가 36.0% 증가한다. 『구원의 거울 영역』의 흡수 비율 중 20%를 초과하는 부분은 주원 속성 대미지 보너스의 영향을 받는다."
+    "description": "히라노 아란·서리꽃의 주원 속성 대미지가 36.0% 증가하고, 『구원의 거울 영역』의 흡수 비율 중 20%를 초과하는 부분은 주원 속성 대미지 보너스의 영향을 받는다."
   }
 };
 
-window.enCharacterSkillsData["아란·린화"] = {
+window.enCharacterSkillsData["아란·서리꽃"] = {
   "name": "Aran Hirano·Lumina",
   "skill1": {
     "name": "Mirror of Virtue and Sin",
@@ -98,7 +98,7 @@ window.enCharacterSkillsData["아란·린화"] = {
   }
 };
 
-window.jpCharacterSkillsData["아란·린화"] = {
+window.jpCharacterSkillsData["아란·서리꽃"] = {
   "name": "平野亜蘭・凛華",
   "skill1": {
     "name": "聖邪の鏡華",
@@ -145,7 +145,7 @@ window.jpCharacterSkillsData["아란·린화"] = {
   }
 };
 
-window.cnCharacterSkillsData["아란·린화"] = {
+window.cnCharacterSkillsData["아란·서리꽃"] = {
   "name": "平野亚兰·凛华",
   "skill1": {
     "name": "圣邪镜华",

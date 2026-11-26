@@ -3,7 +3,7 @@ window.characterSetting["슌·프론티어"] = {
     "role": "생명 대리 부담 탱커",
     "video": ["s7mkM21mF8M"],
     "video_en": ["zAsVb1aLb9c"],
-    "video_jp": [""],
+    "video_jp": ["i3qqIYC9Itc","t-0pcBtTIhQ"],
     "main_revelation": ["창조", "신뢰", "여정"],
     "sub_revelation": ["화해", "풍요", "주권"],
     "sub_revel2": ["생명", "대미지 보너스"],

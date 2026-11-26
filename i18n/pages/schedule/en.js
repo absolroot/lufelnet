@@ -27,6 +27,7 @@ window.I18N_PAGE_SCHEDULE_EN = {
     nextRelease: 'Next Release',
     currentBanner: 'Current Banner',
     noCharacters: 'No characters in this period',
+    worldwideSimultaneousRelease: '(Predict) Worldwide Simultaneous Release',
     kotoneWorldwideReleaseNote: 'Kotone was released simultaneously on all servers and appears earlier in the schedule.',
     showReleased: 'Released',
     hideReleased: 'Hide',

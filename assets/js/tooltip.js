@@ -177,17 +177,27 @@ function bindTooltipElement(el) {
 }
 
 // 툴팁 기능 추가
+const skillTooltipRuns = new WeakMap();
+
+function skillTooltipLanguage() {
+    return window.LanguageRouter?.getCurrentLanguage() || window.getCurrentLanguage?.() || 'kr';
+}
+
 function addTooltips() {
+    const lang = skillTooltipLanguage();
+    const module = window.ConfigTooltips;
+    const pack = module?.load(lang);
+    const legacy = lang === 'en' && typeof tooltip_en !== 'undefined' ? tooltip_en
+        : lang === 'kr' && typeof tooltip !== 'undefined' ? tooltip : null;
     const descriptions = document.querySelectorAll('.ritual-description, .weapon-skill p, .skill-description, .set-desc, .persona-tier-info p, .persona-instinct-info p, .persona-unique-skill-info p, .persona-highlight-info p');
     
     descriptions.forEach(desc => {
+        for (const span of desc.querySelectorAll('[data-skill-tooltip]')) {
+            span.replaceWith(...span.childNodes);
+        }
+        desc.normalize();
         let html = desc.innerHTML;
-        
-        // 기존에 생성된 tooltip wrapper를 제거하여 중첩 생성을 방지
-        // 예: <span class="tooltip-text" ...>Blessing</span> -> Blessing
-        html = html.replace(/<span\s+class=["']tooltip-text["'][^>]*>([\s\S]*?)<\/span>/g, '$1');
-        
-        
+
         // 숫자와 퍼센트 처리 (소수점 포함)
         html = html.replace(/(\d+\.?\d*%?)(?![^<]*>)/g, (match, p1, offset, string) => {
             // 전체 문맥을 체크하기 위해 앞뒤 텍스트를 가져옴
@@ -271,111 +281,16 @@ function addTooltips() {
         });
 
         
-        // 언어별 툴팁 처리
-        const getLang = () => {
-            try { return (typeof window !== 'undefined' && typeof window.getCurrentLanguage === 'function') ? window.getCurrentLanguage() : null; } catch (e) { return null; }
-        };
-        const currentLang = getLang() || (new URLSearchParams(window.location.search).get('lang') || 'kr');
+        if (html !== desc.innerHTML) desc.innerHTML = html;
+        if (!pack) return;
 
-        // 유틸: 정규식 이스케이프
-        const escapeRegExp = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-        if (currentLang === 'en' && typeof tooltip_en !== 'undefined') {
-            const specialKeywords=['Chosen One','Beat','Affection','Memory','Inspiration','Imagination','Creation','Standard','Basic','Tailor-Made']
-            // EN: []로 감싸진 키워드를 tooltip_en으로 매칭 (없으면 아무 것도 하지 않음)
-            const dict = tooltip_en;
-            const sortedKeys = Object.keys(dict).filter(k => k).sort((a, b) => b.length - a.length);
-            let counter = 0;
-            const replacements = new Map();
-
-            sortedKeys.forEach(key => {
-                if (!specialKeywords.includes(key)) {
-                    // 대소문자 구분 안함
-                    const keyEsc = escapeRegExp(key);
-                    const regex = new RegExp(`${keyEsc}(?![^<]*>)`, 'gi');
-                    html = html.replace(regex, (match) => {
-                        const marker = `###TOOLTIP${counter}###`;
-                        replacements.set(marker, `<span class="tooltip-text" data-tooltip="${dict[key]}">${match}</span>`);
-                        counter++;
-                        return marker;
-                    });
-                }
-                else{
-                    const keyEsc = escapeRegExp(key);
-                    const regex = new RegExp(`\\[${keyEsc}\\](?![^<]*>)`, 'gi');
-                    html = html.replace(regex, () => {
-                        const marker = `###TOOLTIP${counter}###`;
-                        replacements.set(marker, `[<span class="tooltip-text" data-tooltip="${dict[key]}">${key}</span>]`);
-                        counter++;
-                        return marker;
-                    });
-                }
-            });
-
-            // 적용
-            replacements.forEach((value, marker) => { html = html.replace(marker, value); });
-            desc.innerHTML = html;
-            // EN에서는 『』 장식 처리하지 않음
-        } else if (typeof tooltip !== 'undefined') {
-            // KR: 기존 『』 매칭 유지
-            const sortedKeys = Object.keys(tooltip)
-                .filter(key => key)
-                .sort((a, b) => b.length - a.length);
-            
-            const specialKeywords = ['추가 효과', '동결', '감전', '풍습', '화상', '정신 이상', '망각', '절망', '수면', '현기증', '광노', '도발', '화염 속성 TECHNICAL', '핵열 속성 TECHNICAL', '스킬 마스터','빙결 속성 TECHNICAL','TECH 이상'];
-            const specialEffectKeywords = ['주원', '축복'];
-            
-            let counter = 0;
-            const replacements = new Map();
-            
-            sortedKeys.forEach(key => {
-                let replacedForKey = false;
-                const keyEsc = escapeRegExp(key);
-                if (specialKeywords.includes(key)) {
-                    const regex = new RegExp(`${keyEsc}(?![^<]*>)`, 'g');
-                    html = html.replace(regex, (match) => {
-                        const marker = `###TOOLTIP${counter}###`;
-                        replacements.set(marker, `<span class="tooltip-text" data-tooltip="${tooltip[key]}">${match}</span>`);
-                        counter++;
-                        replacedForKey = true;
-                        return marker;
-                    });
-                } else if (specialEffectKeywords.includes(key)) {
-                    const regex = new RegExp(`${keyEsc} 효과(?![^<]*>)`, 'g');
-                    html = html.replace(regex, (match) => {
-                        const marker = `###TOOLTIP${counter}###`;
-                        replacements.set(marker, `<span class="tooltip-text" data-tooltip="${tooltip[key]}">${key}</span> 효과`);
-                        counter++;
-                        replacedForKey = true;
-                        return marker;
-                    });
-                } else {
-                    const regex = new RegExp(`『${keyEsc}』(?![^<]*>)`, 'g');
-                    html = html.replace(regex, () => {
-                        const marker = `###TOOLTIP${counter}###`;
-                        replacements.set(marker, `『<span class="tooltip-text" data-tooltip="${tooltip[key]}">${key}</span>』`);
-                        counter++;
-                        replacedForKey = true;
-                        return marker;
-                    });
-                }
-                // if (replacedForKey) matchedKeys.push(key);
-            });
-            
-            // 임시 마커를 실제 툴팁으로 교체
-            replacements.forEach((value, marker) => { html = html.replace(marker, value); });
-            
-            desc.innerHTML = html;
-
-            // 『』 장식 처리 (KR 전용)
-            /*
-            if (!html.includes('class="bracket-left"') && !html.includes('class="bracket-right"')) {
-                html = html.replace(/『(?![^<]*>)/g, '<span class="bracket-left">『</span>');
-                html = html.replace(/』(?![^<]*>)/g, '<span class="bracket-right">』</span>');
-                
-                desc.innerHTML = html;
-            }*/
-        }
+        const run = {};
+        skillTooltipRuns.set(desc, run);
+        pack.then(data => {
+            if (desc.isConnected && skillTooltipRuns.get(desc) === run && skillTooltipLanguage() === lang) {
+                module.add(desc, data, legacy, lang, bindTooltipElement);
+            }
+        });
     });
 
     // 번역/치환이 끝난 후 현재 존재하는 모든 툴팁 요소에 리스너 바인딩

@@ -40,6 +40,16 @@ h1.character-name::before,
     color: rgb(255 255 255 / 1) !important;
 }
 
+[data-skill-tooltip].tooltip-text {
+    color: #ffd5dd;
+    text-decoration: underline dotted;
+    text-underline-offset: 0.2em;
+}
+
+[data-skill-tooltip].tooltip-text:hover {
+    color: #fff0f3;
+}
+
 .skill-name {
     color: #ffffff !important;
 }

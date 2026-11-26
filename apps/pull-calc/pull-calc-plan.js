@@ -297,7 +297,7 @@
     /**
      * Render the pull plan list
      */
-    PullSimulator.prototype.renderPlanList = function () {
+    PullSimulator.prototype.renderPlanList = function (targetCosts) {
         const container = document.getElementById('planList');
         const countEl = document.getElementById('planCount');
 
@@ -384,28 +384,10 @@
         incomeEvents.sort((a, b) => a.date - b.date);
         let incomeEventIndex = 0;
 
-        // Find first character (A0+) and first weapon (not None) to apply pity
-        let firstCharFound = false;
-        let firstWeaponFound = false;
-
         let html = '';
         this.targets.forEach((target, index) => {
             // [FIX] Use parseGameDate to ensure UTC comparison matches income events
             const targetDate = this.parseGameDate(target.date);
-
-            // Check if this is the first character (A0+)
-            const isFirstChar = !firstCharFound && target.characterTarget !== undefined &&
-                parseInt(target.characterTarget.replace('A', '')) >= 0;
-            if (isFirstChar) {
-                firstCharFound = true;
-            }
-
-            // Check if this is the first weapon (not None)
-            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined &&
-                target.weaponTarget !== 'None';
-            if (isFirstWeapon) {
-                firstWeaponFound = true;
-            }
 
             // Apply all income events up to this target date
             while (incomeEventIndex < incomeEvents.length && incomeEvents[incomeEventIndex].date <= targetDate) {
@@ -518,7 +500,8 @@
             const walletBefore = currentWallet.clone();
 
             // Simulate spending with wallet system
-            const spendResult = this.simulateWalletSpend(currentWallet, target, isFirstChar, isFirstWeapon);
+            const costs = targetCosts[index];
+            const spendResult = this.simulateWalletSpend(currentWallet, costs);
             const isSafe = spendResult.success;
 
             // Update wallet to remaining state AFTER pull
@@ -526,38 +509,26 @@
             const walletAfter = currentWallet;
 
             const displayName = this.getCharacterName(target.name);
-            const ticketCount = Math.ceil(target.cost / 150);
-
-            // Calculate individual costs and required tickets
-            const charCost = spendResult.character.cost;
-            const weaponCost = spendResult.weapon.cost;
-            const charTicketsNeeded = Math.ceil(charCost / 150);
-            const weaponTicketsNeeded = Math.ceil(weaponCost / 100);
-
-            // Generate detailed breakdown HTML
-            let breakdownHtml = '';
-
-            if (charCost > 0) {
-                const charResult = spendResult.character.result;
-                const charSuccess = charResult && charResult.success;
-                breakdownHtml += `
-                    <div class="cost-breakdown-row ${charSuccess ? 'success' : 'warning'}">
-                        <span class="cost-label">${charSuccess ? '✓' : '⚠'} ${this.t('charTarget')}:</span>
-                        <span class="cost-value">${this.formatNumber(charCost)}</span>
-                    </div>`;
+            const weaponTarget = target.weaponTarget || 'None';
+            const isTargeted = costs.weaponBanner === 'targeted';
+            const charTicketsNeeded = Math.ceil(costs.charCost / 150);
+            const weaponTicketsNeeded = Math.ceil(costs.weaponCost / 100);
+            const weaponBudget = [];
+            const weaponResult = spendResult.weapon.result;
+            if (isTargeted && weaponResult) {
+                const coinsUsed = Math.max(0, weaponResult.used.weaponTicket);
+                const remainingCost = costs.weaponCost - coinsUsed * 100;
+                weaponBudget.push(this.t('targetedWeaponPulls').replace('{count}', this.formatNumber(weaponTicketsNeeded)));
+                if (coinsUsed > 0) {
+                    weaponBudget.push(this.t('targetedWeaponCoins').replace('{count}', this.formatNumber(coinsUsed)));
+                }
+                if (remainingCost > 0) {
+                    weaponBudget.push(this.t('targetedWeaponCurrency').replace('{count}', this.formatNumber(remainingCost)));
+                }
+                if (costs.weaponMaterials > 0) {
+                    weaponBudget.push(this.t('targetedWeaponMaterials').replace('{count}', costs.weaponMaterials));
+                }
             }
-
-            if (weaponCost > 0) {
-                const weaponResult = spendResult.weapon.result;
-                const weaponSuccess = weaponResult && weaponResult.success;
-                breakdownHtml += `
-                    <div class="cost-breakdown-row ${weaponSuccess ? 'success' : 'warning'}">
-                        <span class="cost-label">${weaponSuccess ? '✓' : '⚠'} ${this.t('weaponTarget')}:</span>
-                        <span class="cost-value">${this.formatNumber(weaponCost)}</span>
-                    </div>`;
-            }
-
-            const balanceAfter = currentWallet.getTotalEmber();
 
             let metaHtml = '';
             const charData = window.characterData?.[target.name] || {};
@@ -608,24 +579,29 @@
                                     </div>
                                     <div class="target-dropdown" data-index="${index}" data-type="weapon">
                                         <button class="target-dropdown-btn">
-                                            ${target.weaponTarget !== 'None' ? `<img src="${BASE_URL}/assets/img/ritual/${target.weaponTarget.toLowerCase()}.png" alt="${target.weaponTarget}">` : '<span class="weapon-none-badge">✕</span>'}
+                                            ${weaponTarget !== 'None' ? `<img src="${BASE_URL}/assets/img/ritual/${weaponTarget.toLowerCase()}.png" alt="${weaponTarget}">` : '<span class="weapon-none-badge">✕</span>'}
                                             <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                 <polyline points="6 9 12 15 18 9"></polyline>
                                             </svg>
                                         </button>
                                         <div class="target-dropdown-menu">
-                                            <button class="target-dropdown-item ${target.weaponTarget === 'None' ? 'selected' : ''}" data-value="None">
+                                            <button class="target-dropdown-item ${weaponTarget === 'None' ? 'selected' : ''}" data-value="None">
                                                 <span class="none-icon">✕</span>
                                                 <span>${this.t('noneLabel')}</span>
                                             </button>
                                             ${['R0', 'R1', 'R2', 'R3', 'R4', 'R5', 'R6'].map(opt =>
-                `<button class="target-dropdown-item ${target.weaponTarget === opt ? 'selected' : ''}" data-value="${opt}">
+                `<button class="target-dropdown-item ${weaponTarget === opt ? 'selected' : ''}" data-value="${opt}">
                                                     <img src="${BASE_URL}/assets/img/ritual/${opt.toLowerCase()}.png" alt="${opt}">
                                                     <span>${opt}</span>
                                                 </button>`
             ).join('')}
                                         </div>
                                     </div>
+                                    ${weaponTarget !== 'None' && !this.isSeaServer ? `
+                                        <select class="modal-input plan-weapon-banner" data-index="${index}" aria-label="${this.t('weaponBanner')}">
+                                            <option value="chance" ${isTargeted ? '' : 'selected'}>${this.t('weaponBannerChance')}</option>
+                                            <option value="targeted" ${isTargeted ? 'selected' : ''}>${this.t('weaponBannerTargeted')}</option>
+                                        </select>` : ''}
                                 </div>
                             </div>
                             <div class="plan-item-info-col2">
@@ -652,6 +628,7 @@
                             <button class="plan-item-remove" data-index="${index}">&times;</button>
                         </div>
                     </div>
+                    ${weaponBudget.length ? `<div class="plan-weapon-budget">${weaponBudget.map(item => `<span>${item}</span>`).join('')}</div>` : ''}
                     <div class="plan-item-status-bar">
                         <div class="status-row-container">
                             <div class="status-column status-column-before">
@@ -754,6 +731,16 @@
                     this.recalculate();
                     menu.classList.remove('active');
                 });
+            });
+        });
+
+        container.querySelectorAll('.plan-weapon-banner').forEach(select => {
+            select.addEventListener('change', () => {
+                const { index } = select.dataset;
+                this.targets[index].weaponBanner = select.value;
+                this.saveData();
+                this.recalculate();
+                container.querySelector(`.plan-weapon-banner[data-index="${index}"]`)?.focus({ preventScroll: true });
             });
         });
 

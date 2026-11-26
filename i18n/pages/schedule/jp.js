@@ -27,6 +27,7 @@ window.I18N_PAGE_SCHEDULE_JP = {
     nextRelease: '次のリリース',
     currentBanner: '現在のバナー',
     noCharacters: 'この期間にキャラクターはいません',
+    worldwideSimultaneousRelease: '(予測) 全サーバー同時実装',
     kotoneWorldwideReleaseNote: '琴音は全サーバーで同時に実装されたため、前のスケジュールに表示されています。',
     showReleased: 'リリース済み',
     hideReleased: '隠す',

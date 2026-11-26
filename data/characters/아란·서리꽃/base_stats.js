@@ -1,7 +1,7 @@
 // KR names are provisional translations; CN source: character 1242.
 window.basicStatsData = window.basicStatsData || {};
 
-window.basicStatsData["아란·린화"] = {
+window.basicStatsData["아란·서리꽃"] = {
   "a0_lv1": {
     "HP": 283.2,
     "SP": 100,

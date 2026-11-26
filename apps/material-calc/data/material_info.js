@@ -209,7 +209,7 @@ const MATERIAL_INFO = {
   skill_item7: {
     name: { kr: '회안향', en: 'Painted Visage Incense', jp: '彩顔の霊香', cn: '绘颜香' },
     desc: {
-      kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
+      kr: '아련한 향을 풍기는 향환. 스킬 레벨을 Lv.7~Lv.10으로 올리는 데 사용된다.',
       en: 'Raises an ally’s skill level (up to 10).',
       jp: '主人公以外の味方のスキルレベルを上げる(最大10まで)',
       cn: '散发出缥缈气味的香丸，可用于提升技能等级至Lv.7-Lv.10。'
@@ -218,7 +218,7 @@ const MATERIAL_INFO = {
   skill_item8: {
     name: { kr: '옥대향', en: 'Jade Terrace Incense', jp: '玉台の霊香', cn: '玉台香' },
     desc: {
-      kr: '스킬 레벨을 LV7-10으로 올리는 데 사용된다.',
+      kr: '짙고 그윽한 향을 풍기는 향환. 스킬 레벨을 Lv.7~Lv.10으로 올리는 데 사용된다.',
       en: 'Raises an ally’s skill level (up to 10).',
       jp: '主人公以外の味方のスキルレベルを上げる(最大10まで)',
       cn: '散发出馥郁气味的香丸，可用于提升技能等级至Lv.7-Lv.10。'

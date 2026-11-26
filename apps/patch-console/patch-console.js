@@ -2954,6 +2954,7 @@ function normalizeDiffEntry(entry) {
     path: String(entry?.path || '').trim(),
     before: entry?.before ?? null,
     after: entry?.after ?? null,
+    tooltipReview: Boolean(entry?.tooltipReview),
     sampleOnly: Boolean(entry?.sampleOnly)
   };
 }
@@ -3259,6 +3260,7 @@ function renderDetail() {
               <label class="diff-checkline">
                 <input type="checkbox" class="diff-path-checkbox" data-diff-key="${escapeHtml(diffKey)}" ${checked}>
                 <code>${escapeHtml(entry.path)}</code>
+                ${entry.tooltipReview ? '<span class="chip">툴팁 재확인</span>' : ''}
               </label>
               ${meta}
               ${diffColumns}

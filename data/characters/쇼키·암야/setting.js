@@ -3,7 +3,7 @@ window.characterSetting["쇼키·암야"] = {
     "role": "저체력 유지 광역 딜러",
     "video": ["mcCiwdBWTMI"],
     "video_en": ["irioXl5sy2g"],
-    "video_jp": [""],
+    "video_jp": ["jV9myiVLy9s","xSuTGpti1tU"],
     "main_revelation": ["돌파"],
     "sub_revelation": ["획득"],
     "sub_revel2": ["공격력, 대미지 보너스"],

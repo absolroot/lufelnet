@@ -53,12 +53,13 @@ window.I18N_PAGE_PULL_CALC_EN = {
     // Pity related
     charPity: 'Character Pity Progress',
     weaponPity: 'Weapon Pity Progress',
-    weapon5050Failed: 'Weapon 50:50 Failed',
-    charPityProgress: 'Character Progress',
-    weaponPityProgress: 'Weapon Progress',
+    weapon5050Failed: 'Chance Arms Deal 50:50 Lost',
+    charPityProgress: 'Character',
+    weaponPityProgress: 'Chance',
+    targetedWeaponPityProgress: 'Targeted',
 
     // Weapon scenarios
-    weaponScenario: 'Weapon Calculation Scenario',
+    weaponScenario: 'Chance Arms Deal Scenario',
     weaponScenarioBest: 'Best (All 50:50 Won)',
     weaponScenarioAverage: 'Average (Half Won)',
     weaponScenarioWorst: 'Worst (All 50:50 Lost)',
@@ -79,6 +80,13 @@ window.I18N_PAGE_PULL_CALC_EN = {
     chartEmpty: 'Select characters from the timeline',
     charTarget: 'Character Target',
     weaponTarget: 'Weapon Target',
+    weaponBanner: 'Arms Deal Type',
+    weaponBannerChance: 'Chance (70)',
+    weaponBannerTargeted: 'Targeted (95)',
+    targetedWeaponPulls: 'Up to {count} pulls for the featured weapon',
+    targetedWeaponCoins: '{count} coins used',
+    targetedWeaponCurrency: '{count} Meta Jewels needed',
+    targetedWeaponMaterials: '{count} additional 5★ refinement materials needed',
     pulls: 'pulls',
     tickets: 'tickets',
     extraPurchase: 'Extra Purchase',
@@ -133,8 +141,10 @@ This calculator follows the **'Targeted Contract'** system for characters.
 - Guarantees the banner 5★ character every 110 pulls.
 - Assumes 110 pulls (approx. 16,500 Jewels) are required for one copy.
 
-**3. Weapon Banner (Scenarios)**
-- Guarantees a 5★ weapon every 70 pulls with a 50% pickup chance.
+**3. Arms Deals**
+- Choose one Arms Deal type per weapon target. Each pity counter applies to the first target of its type.
+- Targeted: Budget up to 95 pulls for each copy of the selected weapon. Additional 5★ refinement materials are listed separately.
+- Chance: A 5★ weapon appears within 70 pulls, with a 50% chance for the first one to be the featured weapon.
 - Best: Assumes winning the 50:50 immediately. (Within 70 pulls).
 - Average: Calculates based on statistical median and 50% probability.
 - Worst: Assumes losing the 50:50 and hitting hard pity. (Up to 140 pulls).
@@ -142,7 +152,7 @@ This calculator follows the **'Targeted Contract'** system for characters.
 **4. Cognigem Recursive Conversion (Payback)**
 - When enabled, assumes **ALL 4★ characters are at Max Awareness (A6)**.
 - Character: Excludes 5★ refund (assuming first copy) and calculates conservatively based only on 4★ consolidated rates (~13.1%). (Approx. 13% discount per pull).
-- Weapon: Includes consolidated rates for both 5★ (2.3%) and 4★ (14.5%).
+- Chance Arms Deals use the consolidated 5★ (2.3%) and 4★ (14.5%) rates. Targeted budgets exclude estimated rebates.
 
 ---
 

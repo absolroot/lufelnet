@@ -1,31 +1,31 @@
-// KR, EN and JP names are provisional translations; CN source: character 1242.
+// EN and JP names are provisional translations; CN source: character 1242.
 window.WeaponData = window.WeaponData || {};
 window.enCharacterWeaponData = window.enCharacterWeaponData || {};
 window.jpCharacterWeaponData = window.jpCharacterWeaponData || {};
 window.cnCharacterWeaponData = window.cnCharacterWeaponData || {};
 
-window.WeaponData["아란·린화"] = {
-  "name": "히라노 아란·린화",
+window.WeaponData["아란·서리꽃"] = {
+  "name": "히라노 아란·서리꽃",
   "weapon4-1": {
-    "name": "성스러운 가호의 마음",
+    "name": "가호의 심장",
     "health": 1870.83,
     "attack": 607.79,
     "defense": 317.1,
-    "skill_name": "복액의 명문",
-    "description": "공격력이 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0% 증가한다.\n『결단』 획득 후 주는 대미지가 영구적으로 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% 증가하며 최대 2회 중첩된다."
+    "skill_name": "화복의 각인",
+    "description": "공격력이 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0% 증가한다.\n『결단』 획득 후 주는 대미지가 영구적으로 8.8%/11.6%/11.6%/14.4%/14.4%/17.2%/17.2% 증가한다(2회 중첩 가능)."
   },
   "weapon5-1": {
-    "name": "천 거울의 잔관",
+    "name": "천 개의 거울 왕관",
     "highlight": true,
     "health": 2338.77,
     "attack": 759.73,
     "defense": 396.41,
     "skill_name": "찰나의 거울꽃",
-    "description": "크리티컬 확률이 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3% 증가한다.\n실드를 제공한 후 4턴 동안 자신의 크리티컬 효과가 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8% 증가한다.\n약점 효과 발동 시 해당 대미지의 약점 대미지가 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 증가한다."
+    "description": "크리티컬 확률이 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3% 증가한다.\n실드 부여 후, 4턴 동안 자신의 크리티컬 효과가 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8% 증가한다.\n약점 효과 발동 시, 해당 대미지의 약점 대미지가 10.0%/13.0%/13.0%/16.0%/16.0%/19.0%/19.0% 증가한다."
   }
 };
 
-window.enCharacterWeaponData["아란·린화"] = {
+window.enCharacterWeaponData["아란·서리꽃"] = {
   "name": "Aran Hirano·Lumina",
   "weapon4-1": {
     "name": "Heart of Sacred Protection",
@@ -45,7 +45,7 @@ window.enCharacterWeaponData["아란·린화"] = {
   }
 };
 
-window.jpCharacterWeaponData["아란·린화"] = {
+window.jpCharacterWeaponData["아란·서리꽃"] = {
   "name": "平野亜蘭・凛華",
   "weapon4-1": {
     "name": "聖なる加護の心",
@@ -65,7 +65,7 @@ window.jpCharacterWeaponData["아란·린화"] = {
   }
 };
 
-window.cnCharacterWeaponData["아란·린화"] = {
+window.cnCharacterWeaponData["아란·서리꽃"] = {
   "name": "平野亚兰·凛华",
   "weapon4-1": {
     "name": "圣佑之心",

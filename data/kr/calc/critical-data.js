@@ -1273,7 +1273,7 @@ const criticalSelfData = {
       ]
     }
   ],
-  "아란·린화": [
+  "아란·서리꽃": [
     {
       "id": "anri-lumina-weapon5-crit-rate",
       "type": "전용무기",
@@ -1282,7 +1282,7 @@ const criticalSelfData = {
       "target_en": "Self",
       "target_jp": "自分",
       "target_cn": "自身",
-      "skillIcon": "/assets/img/character-weapon/아란·린화-5-01.png",
+      "skillIcon": "/assets/img/character-weapon/아란·서리꽃-5-01.png",
       "skillName": "찰나의 거울꽃",
       "skillName_en": "Exclusive Weapon",
       "skillName_jp": "専用武器",

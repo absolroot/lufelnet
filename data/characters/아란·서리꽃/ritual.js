@@ -1,28 +1,28 @@
-// KR, EN and JP names are provisional translations; CN source: character 1242.
+// EN and JP names are provisional translations; CN source: character 1242.
 window.ritualData = window.ritualData || {};
 window.enCharacterRitualData = window.enCharacterRitualData || {};
 window.jpCharacterRitualData = window.jpCharacterRitualData || {};
 window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 
-window.ritualData["아란·린화"] = {
-  "name": "히라노 아란·린화",
-  "r0": "빛과 어둠을 바라보며",
-  "r0_detail": "아란·린화는 특수한 축복·주원 복합 속성 대미지를 줄 수 있다.\n이 대미지는 약점 대미지로 간주하며, 속성 상성 계수를 제외한 모든 약점 효과가 반드시 발동한다.\n전투에 진입할 때 동료 전체에게 즉시 『시들지 않는 장막』을 부여한다.",
-  "r1": "내가 그린 것",
-  "r1_detail": "『구원의 거울 영역』을 시전할 때 턴과 SP를 소모하지 않는다. 『결단』의 최대 중첩 수가 2회로 증가한다.",
+window.ritualData["아란·서리꽃"] = {
+  "name": "히라노 아란·서리꽃",
+  "r0": "빛과 어둠의 응시",
+  "r0_detail": "히라노 아란·서리꽃은 특수한 축복 주원 이중 속성 대미지를 줄 수 있다.\n히라노 아란·서리꽃이 축복 주원 이중 속성 대미지를 줄 때 약점 대미지를 준 것으로 간주하며, 속성 상극 계수를 제외한 모든 약점 효과를 반드시 발동한다.\n히라노 아란·서리꽃이 전투 진입 시 즉시 아군 전체에 『불멸의 장막』을 부여한다.",
+  "r1": "내가 그려 내는 것",
+  "r1_detail": "히라노 아란·서리꽃이 『구원의 거울 영역』 시전 시 더 이상 턴과 SP를 소모하지 않는다.\n또한 『결단』의 중첩 상한이 2회로 증가한다.",
   "r2": "모든 것이 바래기 전에",
-  "r2_detail": "『결단』 1중첩마다 크리티컬 효과가 추가로 20% 증가한다.\n『명천의 유광』을 시전할 때 『결단』 1중첩마다 스킬 대미지가 25% 증가한다.",
-  "r3": "빛과 그림자 속에 그리다",
-  "r3_detail": "『구원의 거울 영역』과 『명천의 유광』의 스킬 레벨이 3 증가하며, 최대 15레벨까지 증가한다.",
+  "r2_detail": "『결단』 1중첩당 추가로 20%의 크리티컬 효과를 제공한다.\n『어두운 하늘의 빛』 시전 시 보유한 『결단』 1중첩당 스킬 대미지가 25%씩 증가한다.",
+  "r3": "빛과 그림자 속에 내린 붓끝",
+  "r3_detail": "『구원의 거울 영역』, 『어두운 하늘의 빛』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r4": "사랑은 시간을 넘어",
-  "r4_detail": "HIGHLIGHT 효과 증가: HIGHLIGHT 시전 후 공격력이 추가로 20% 증가하며, 공격력 증가 효과가 2회까지 중첩된다.",
-  "r5": "부조리에 색을 입히다",
-  "r5_detail": "『성사의 거울꽃』과 『전투 기술』의 스킬 레벨이 3 증가하며, 최대 15레벨까지 증가한다.",
+  "r4_detail": "HIGHLIGHT 효과 증가: HIGHLIGHT 시전 후 공격력이 추가로 20% 증가하며, 공격력 증가 효과는 2회까지 중첩된다.",
+  "r5": "부조리한 곳에 입히는 색",
+  "r5_detail": "『선악의 거울꽃』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r6": "마침내 드러날 이상향",
-  "r6_detail": "동료의 『시들지 않는 장막』이 한 겹 파괴되거나 지속 시간이 끝날 때마다 아란·린화의 크리티컬 효과가 10% 증가하며 최대 8회 중첩된다.\nHIGHLIGHT에 크리티컬이 발생할 수 있고 관통이 15% 증가한다. 『명천의 유광』 시전 후 HIGHLIGHT를 추가로 시전하며, 해당 스킬로 마지막에 대미지를 준 적을 우선 공격한다."
+  "r6_detail": "아군 전체의 『불멸의 장막』 중첩이 파괴되거나 지속 시간이 끝날 때마다 히라노 아란·서리꽃의 크리티컬 효과가 10%씩 증가한다(8회 중첩 가능).\n히라노 아란·서리꽃의 HIGHLIGHT에 크리티컬이 발동할 수 있으며 관통이 15% 증가한다. 히라노 아란·서리꽃이 『어두운 하늘의 빛』을 시전한 후 추가로 HIGHLIGHT를 시전하며, 마지막으로 『어두운 하늘의 빛』에 대미지를 입은 적을 우선 공격한다."
 };
 
-window.enCharacterRitualData["아란·린화"] = {
+window.enCharacterRitualData["아란·서리꽃"] = {
   "name": "Aran Hirano·Lumina",
   "r0": "Gaze of Light and Darkness",
   "r0_detail": "Aran can deal special dual attribute Bless/Curse damage. This counts as Weakness damage and triggers all Weakness effects except the affinity multiplier.\nAt the start of battle, immediately grant all allies [Everlasting Veil].\nDual attribute damage: Calculate the Weakness coefficient using the target's weaker affinity, then apply buffs and debuffs for both attributes, excluding Weakness damage and Weakness resistance.\n[Everlasting Veil]: A Shield that blocks damage. Lasts for 2 turns and can stack.",
@@ -40,7 +40,7 @@ window.enCharacterRitualData["아란·린화"] = {
   "r6_detail": "When an ally's [Everlasting Veil] stack breaks or expires, increase Aran's critical damage by 10%, up to 8 stacks.\nAran's HIGHLIGHT can deal critical hits and gains 15% Pierce. After using [Light of Dawn], activate a HIGHLIGHT, prioritizing the last foe damaged by [Light of Dawn]."
 };
 
-window.jpCharacterRitualData["아란·린화"] = {
+window.jpCharacterRitualData["아란·서리꽃"] = {
   "name": "平野亜蘭・凛華",
   "r0": "光と闇を見つめて",
   "r0_detail": "特殊な祝福・呪怨複合属性ダメージを与えられる。\nこのダメージは弱点ダメージとして扱われ、属性相性の倍率を除くすべての弱点効果が必ず発動する。\n戦闘開始時、味方全体に直ちに『不凋の幕』を付与する。",
@@ -58,7 +58,7 @@ window.jpCharacterRitualData["아란·린화"] = {
   "r6_detail": "味方の『不凋の幕』が1つ破壊されるか持続時間が終了するたび、自身のクリティカルダメージが10%上昇する。最大8つまで累積できる。\n自身のHIGHLIGHTにクリティカルが発生するようになり、貫通が15%上昇する。『冥天の流光』使用後、HIGHLIGHTを追加で使用し、『冥天の流光』で最後にダメージを与えた敵を優先する。"
 };
 
-window.cnCharacterRitualData["아란·린화"] = {
+window.cnCharacterRitualData["아란·서리꽃"] = {
   "name": "平野亚兰·凛华",
   "r0": "凝望光与暗",
   "r0_detail": "平野亚兰·凛华可以造成特殊的祝福诅咒双属性伤害。\n平野亚兰·凛华造成祝福诅咒双属性伤害时，视为造成弱点伤害，且必定触发除属性克制系数以外的全部弱点效果。\n平野亚兰·凛华进入战斗时将立即为所有同伴添加『不凋帷幕』。",

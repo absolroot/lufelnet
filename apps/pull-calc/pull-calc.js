@@ -4,6 +4,16 @@
  */
 
 const PITY_EN_URL = 'https://raw.githubusercontent.com/iantCode/P5X_Gacha_Statistics/refs/heads/main/pity/pity_en.json';
+const TARGETED_WEAPON_PITY = 95;
+const WEAPON_REFINEMENT_REQUIREMENTS = {
+    R0: { limited: 1, additional: 0 },
+    R1: { limited: 2, additional: 0 },
+    R2: { limited: 2, additional: 1 },
+    R3: { limited: 3, additional: 1 },
+    R4: { limited: 3, additional: 2 },
+    R5: { limited: 4, additional: 2 },
+    R6: { limited: 4, additional: 3 }
+};
 
 // i18n is provided by i18n/service/i18n-service.js + i18n-adapter.js
 
@@ -378,6 +388,7 @@ class PullSimulator {
         this.pity = {
             charPity: 0,
             weaponPity: 0,
+            targetedWeaponPity: 0,
             weapon5050Failed: false,
             weaponScenario: 'average'  // 'best', 'average', or 'worst'
         };
@@ -574,8 +585,9 @@ class PullSimulator {
             ['labelVersionIncome', 'versionIncome'], ['labelBattlePass', 'battlePass'],
             ['labelRecursive', 'recursive'], ['labelSeaServer', 'labelSeaServer'],
             ['labelShowSpoilers', 'showSpoilers'],
-            ['labelCharPity', 'charPity'],
-            ['labelWeaponPity', 'weaponPity'], ['labelWeapon5050Failed', 'weapon5050Failed'],
+            ['labelCharPity', 'charPityProgress'],
+            ['labelWeaponPity', 'weaponPityProgress'], ['labelWeapon5050Failed', 'weapon5050Failed'],
+            ['labelTargetedWeaponPity', 'targetedWeaponPityProgress'],
             ['labelWeaponScenario', 'weaponScenario'], ['labelScheduleScenario', 'scheduleScenario']
         ];
         labels.forEach(([id, key]) => {
@@ -584,12 +596,6 @@ class PullSimulator {
         });
 
         // Additional labels
-        const labelCharPityEl = document.getElementById('labelCharPity');
-        if (labelCharPityEl) labelCharPityEl.textContent = t('charPityProgress');
-
-        const labelWeaponPityEl = document.getElementById('labelWeaponPity');
-        if (labelWeaponPityEl) labelWeaponPityEl.textContent = t('weaponPityProgress');
-
         const labelMonthlySubEl = document.getElementById('labelMonthlySub');
         if (labelMonthlySubEl) labelMonthlySubEl.textContent = t('monthlySubPerDay');
 
@@ -718,7 +724,7 @@ class PullSimulator {
             }
 
             const savedPity = localStorage.getItem('pullCalc_pity');
-            if (savedPity) this.pity = JSON.parse(savedPity);
+            if (savedPity) this.pity = { ...this.pity, ...JSON.parse(savedPity) };
 
             const savedTargets = localStorage.getItem('pullCalc_targets');
             if (savedTargets) this.targets = JSON.parse(savedTargets);
@@ -927,6 +933,13 @@ class PullSimulator {
             weaponPityInput.addEventListener('change', () => this.handlePityChange());
         }
 
+        const targetedWeaponPityInput = document.getElementById('inputTargetedWeaponPity');
+        if (targetedWeaponPityInput) {
+            targetedWeaponPityInput.value = this.getTargetedWeaponPity();
+            targetedWeaponPityInput.addEventListener('change', () => this.handlePityChange());
+        }
+        this.updateTargetedWeaponSettings();
+
         const weapon5050El = document.getElementById('inputWeapon5050Failed');
         if (weapon5050El) {
             weapon5050El.checked = this.pity.weapon5050Failed;
@@ -982,11 +995,21 @@ class PullSimulator {
     handlePityChange() {
         this.pity.charPity = parseInt(document.getElementById('inputCharPity')?.value) || 0;
         this.pity.weaponPity = parseInt(document.getElementById('inputWeaponPity')?.value) || 0;
+        const targetedWeaponPityInput = document.getElementById('inputTargetedWeaponPity');
+        if (targetedWeaponPityInput) {
+            this.pity.targetedWeaponPity = this.getTargetedWeaponPity(targetedWeaponPityInput.value);
+            targetedWeaponPityInput.value = this.pity.targetedWeaponPity;
+        }
         this.pity.weapon5050Failed = document.getElementById('inputWeapon5050Failed')?.checked || false;
         this.pity.weaponScenario = document.getElementById('inputWeaponScenario')?.value || 'average';
 
         this.saveData();
         this.recalculate();
+    }
+
+    updateTargetedWeaponSettings() {
+        const settings = document.getElementById('targetedWeaponPityGroup');
+        if (settings) settings.hidden = this.isSeaServer;
     }
 
     handleServerChange() {
@@ -1009,6 +1032,7 @@ class PullSimulator {
 
         // User confirmed - apply changes
         this.isSeaServer = newValue;
+        this.updateTargetedWeaponSettings();
 
         // Apply server delay to data
         applyServerDelayToData(this.isSeaServer);
@@ -1022,7 +1046,6 @@ class PullSimulator {
         // Rebuild schedule and recalculate
         this.buildSchedule();
         this.recalculate();
-        this.renderPlanList();
     }
 
 
@@ -1812,35 +1835,37 @@ class PullSimulator {
 
         this.extraIncomeRows = this.extraIncomeManager ? this.extraIncomeManager.getRows() : [];
 
-        this.calculateTargetCosts();
+        const targetCosts = this.calculateTargetCosts();
         this.calculateRunningBalance();
-        this.renderPlanList();
+        this.renderPlanList(targetCosts);
         this.renderChart();
     }
 
     calculateTargetCosts() {
-        // Find first character (A0+) and first weapon (not None) to apply pity
         let firstCharFound = false;
-        let firstWeaponFound = false;
+        const usedWeaponPity = new Set();
 
-        this.targets.forEach(target => {
-            // Check if this is the first character (A0+)
+        return this.targets.map(target => {
             const isFirstChar = !firstCharFound && target.characterTarget !== undefined &&
                 parseInt(target.characterTarget.replace('A', '')) >= 0;
             if (isFirstChar) {
                 firstCharFound = true;
             }
 
-            // Check if this is the first weapon (not None)
-            const isFirstWeapon = !firstWeaponFound && target.weaponTarget !== undefined &&
-                target.weaponTarget !== 'None';
+            const weaponTarget = target.weaponTarget || 'None';
+            const weaponBanner = !this.isSeaServer && target.weaponBanner === 'targeted' ? 'targeted' : 'chance';
+            const isFirstWeapon = weaponTarget !== 'None' && !usedWeaponPity.has(weaponBanner);
             if (isFirstWeapon) {
-                firstWeaponFound = true;
+                usedWeaponPity.add(weaponBanner);
             }
 
             const charCost = this.calculateCharacterCost(target.characterTarget, isFirstChar);
-            const weaponCost = this.calculateWeaponCost(target.weaponTarget, isFirstWeapon);
+            const weaponCost = this.calculateWeaponCost(weaponTarget, isFirstWeapon, weaponBanner);
+            const weaponMaterials = weaponBanner === 'targeted'
+                ? WEAPON_REFINEMENT_REQUIREMENTS[weaponTarget]?.additional || 0
+                : 0;
             target.cost = charCost + weaponCost;
+            return { charCost, weaponCost, weaponBanner, weaponMaterials };
         });
     }
 
@@ -1848,22 +1873,14 @@ class PullSimulator {
      * Simulate spending from a wallet for a specific target
      * Returns detailed breakdown of what was spent and any shortages
      */
-    simulateWalletSpend(wallet, target, isFirstChar = false, isFirstWeapon = false) {
+    simulateWalletSpend(wallet, { charCost, weaponCost }) {
         const testWallet = wallet.clone();
         const result = {
             success: true,
-            totalCost: target.cost,
-            character: { cost: 0, result: null },
-            weapon: { cost: 0, result: null },
+            character: { result: null },
+            weapon: { result: null },
             totalShortage: 0
         };
-
-        // Calculate individual costs
-        const charCost = this.calculateCharacterCost(target.characterTarget, isFirstChar);
-        const weaponCost = this.calculateWeaponCost(target.weaponTarget, isFirstWeapon);
-
-        result.character.cost = charCost;
-        result.weapon.cost = weaponCost;
 
         // Spend for character first
         if (charCost > 0) {
@@ -1939,10 +1956,20 @@ class PullSimulator {
         return Math.ceil(baseCost * this.getRecursiveMultiplier('character'));
     }
 
-    calculateWeaponCost(targetLevel, usePity = false) {
+    getTargetedWeaponPity(value = this.pity.targetedWeaponPity) {
+        return Math.min(TARGETED_WEAPON_PITY - 1, Math.max(0, parseInt(value, 10) || 0));
+    }
+
+    calculateWeaponCost(targetLevel, usePity = false, weaponBanner = 'chance') {
         // Handle 'None' - user doesn't want to pull for weapon
         if (targetLevel === 'None') {
             return 0;
+        }
+
+        const req = WEAPON_REFINEMENT_REQUIREMENTS[targetLevel || 'R0'] || { limited: 0, additional: 0 };
+        if (weaponBanner === 'targeted') {
+            const progress = usePity ? this.getTargetedWeaponPity() : 0;
+            return Math.max(0, req.limited * TARGETED_WEAPON_PITY - progress) * 100;
         }
 
         const medianPity = this.weaponPityStats.median || 70;
@@ -1995,18 +2022,6 @@ class PullSimulator {
             // Apply recursive payback if enabled
             return Math.ceil(baseCost * this.getRecursiveMultiplier('weapon'));
         }
-
-        const refinementReqs = {
-            'R0': { limited: 1, additional: 0 },
-            'R1': { limited: 2, additional: 0 },
-            'R2': { limited: 2, additional: 1 },
-            'R3': { limited: 3, additional: 1 },
-            'R4': { limited: 3, additional: 2 },
-            'R5': { limited: 4, additional: 2 },
-            'R6': { limited: 4, additional: 3 }
-        };
-
-        const req = refinementReqs[targetLevel] || { limited: 0, additional: 0 };
 
         // Calculate expected pity cycles needed based on scenario
         // Best case (multiplier 1.0): Win all 50:50s, get exactly N limited weapons in N pities

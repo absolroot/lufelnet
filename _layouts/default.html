@@ -421,6 +421,16 @@
 
     // 페이지별 JS 파일 로드
     {% if page.custom_js %}
+    {% if page.custom_js contains 'tooltip' %}
+    window.__CONFIG_TOOLTIP_URLS__ = {
+      {% assign tooltip_langs = 'kr,en,jp,cn' | split: ',' %}
+      {% for tooltip_lang in tooltip_langs %}
+      {% capture tooltip_pack %}/data/tooltips/{{ tooltip_lang }}.json{% endcapture %}
+      '{{ tooltip_lang }}': '{{ site.baseurl }}{{ tooltip_pack }}?h={{ site.data.asset_versions.files[tooltip_pack] }}'{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    };
+    document.write('<script src="{{ site.baseurl }}/assets/js/config-tooltips.js?h={{ site.data.asset_versions.files['/assets/js/config-tooltips.js'] }}"><\/script>');
+    {% endif %}
     {% for js_file in page.custom_js %}
     {% capture js_asset_path %}/assets/js/{{ js_file }}.js{% endcapture %}
     {% assign js_asset_hash = site.data.asset_versions.files[js_asset_path] %}

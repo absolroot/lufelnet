@@ -11,7 +11,7 @@ window.I18N_PAGE_SYNERGY_KR = {
     synergyTypeStandard: "협력자",
     synergyTypeCyber: "동화자",
 
-    aranAlbumTitle: "아란의 화첩",
+    aranAlbumTitle: "아란의 그림책",
     aranAlbumDescription: "도시 일정에서 그림 조각을 획득할 수 있습니다. 그림 한 장에 조각 15개가 필요하며, 3·6·9·12·15개를 모을 때마다 보상을 받습니다.",
     aranAlbumSpoiler: "그림에는 스포일러가 포함되어 있습니다.",
     aranAlbumPage: "그림 {number}",

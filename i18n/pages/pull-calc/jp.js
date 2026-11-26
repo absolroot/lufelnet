@@ -53,12 +53,13 @@ window.I18N_PAGE_PULL_CALC_JP = {
     // 進捗度関連
     charPity: 'キャラクタ 進捗度',
     weaponPity: '武器 進捗度',
-    weapon5050Failed: '武器50:50失敗',
-    charPityProgress: 'キャラクター 進捗中',
-    weaponPityProgress: '武器 進捗中',
+    weapon5050Failed: 'CHANCEのピックアップすり抜け',
+    charPityProgress: 'キャラクター',
+    weaponPityProgress: 'CHANCE',
+    targetedWeaponPityProgress: 'TARGET',
 
     // 武器シナリオ
-    weaponScenario: '武器計算シナリオ',
+    weaponScenario: 'CHANCEの計算条件',
     weaponScenarioBest: '最善 (全50:50成功)',
     weaponScenarioAverage: '平均 (半分成功)',
     weaponScenarioWorst: '最悪 (全50:50失敗)',
@@ -79,6 +80,13 @@ window.I18N_PAGE_PULL_CALC_JP = {
     chartEmpty: 'タイムラインからキャラクターを選択してください',
     charTarget: 'キャラクター目標',
     weaponTarget: '武器目標',
+    weaponBanner: '武器補給の方式',
+    weaponBannerChance: 'CHANCE（70回）',
+    weaponBannerTargeted: 'TARGET（95回）',
+    targetedWeaponPulls: 'ピックアップ武器確定まで最大{count}回',
+    targetedWeaponCoins: 'コインを{count}枚使用',
+    targetedWeaponCurrency: '自在結晶が{count}個必要',
+    targetedWeaponMaterials: '別途必要な★5改造素材 {count}個',
     pulls: '回',
     tickets: '枚',
     extraPurchase: '追加購入',
@@ -133,8 +141,10 @@ window.I18N_PAGE_PULL_CALC_JP = {
 - 110回ごとにピックアップキャラクターが100%確定で排出されます。
 - 運の要素を排除し、1体につき110回（約16,500 異界琥珀）が必要と仮定します。
 
-**3. 武器ガチャ（シナリオ別）**
-- 70回ごとに★5確定ですが、ピックアップ確率は50%です。
+**3. 武器補給**
+- 武器目標ごとに補給方式を選択できます。抽選回数は各方式の最初の目標に反映されます。
+- TARGETでは選択した武器1個につき最大95回で計算します。追加で必要な★5改造素材は別途表示します。
+- CHANCEでは70回以内に★5武器が出現し、最初の★5武器がピックアップ対象になる確率は50%です。
 - 最善 (Best): 50:50に一発で成功すると仮定します。（70回以内）
 - 普通 (Average): 実際の統計データの中央値(Median)と50%の確率を反映します。
 - 最悪 (Worst): 50:50に失敗（すり抜け）し、天井まで引くと仮定します。（最大140回）
@@ -142,7 +152,7 @@ window.I18N_PAGE_PULL_CALC_JP = {
 **4. 認知の結晶 再帰変換（ペイバック）**
 - 有効にすると、**「全★4キャラを完凸(A6)している」**と仮定して計算します。
 - キャラクター: ★5獲得時の還元は除外し（初獲得を仮定）、★4の総合確率（約13.1%）のみを反映して保守的に計算します。（1回あたり約13%の割引効果）
-- 武器: ★5（2.3%）および★4（14.5%）の総合確率を反映して計算します。
+- CHANCEでは★5（2.3%）と★4（14.5%）の総合提供割合を使います。TARGETの必要数に見込みの還元分は含めません。
 
 ---
 

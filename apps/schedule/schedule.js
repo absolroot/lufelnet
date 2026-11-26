@@ -882,6 +882,7 @@
                     note: item.note,
                     noteKey: item.noteKey,
                     'main-story': item['main-story'],
+                    mainStoryNames: item.mainStoryNames,
                     schedulePending: pendingDate,
                     summer: item.summer,
                     persona: item.persona,
@@ -1268,10 +1269,12 @@
         let mainStoryHtml = '';
         const mainStoryValue = release['main-story'] || release.main_story;
         if (mainStoryValue) {
+            const mainStoryName = release.mainStoryNames?.[getScheduleLang()];
+            const mainStoryLabel = `${t('mainStoryPrefix')} ${mainStoryValue}`;
             mainStoryHtml = `
                 <div class="content-badge main-story-badge">
                     <img class="content-icon" src="${BASE_URL}/apps/schedule/palace.png" alt="Main Story" title="${t('mainStoryTitle')}">
-                    <span class="content-label">${t('mainStoryPrefix')} ${mainStoryValue}</span>
+                    <span class="content-label">${mainStoryName ? `${mainStoryLabel} · ${mainStoryName}` : mainStoryLabel}</span>
                 </div>
             `;
         }

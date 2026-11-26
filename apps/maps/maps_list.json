@@ -1946,13 +1946,13 @@
             },
             {
               "id": "tower_group_0",
-              "name": "神之塔",
+              "name": "신의 탑",
               "name_cn": "神之塔",
               "file": [],
               "submaps": [
                 {
                   "id": "tower_8911",
-                  "name": "神之塔·外部",
+                  "name": "신의 탑·외부",
                   "name_cn": "神之塔·外部",
                   "file": [
                     "palace/paradise_island_new/8911_data.json"
@@ -1960,7 +1960,7 @@
                 },
                 {
                   "id": "tower_8906",
-                  "name": "神之塔·大厅",
+                  "name": "신의 탑·입구",
                   "name_cn": "神之塔·大厅",
                   "file": [
                     "palace/paradise_island_new/8906_data.json"
@@ -1968,7 +1968,7 @@
                 },
                 {
                   "id": "tower_8901",
-                  "name": "神之塔·前侧",
+                  "name": "신의 탑·앞편",
                   "name_cn": "神之塔·前侧",
                   "file": [
                     "palace/paradise_island_new/8901_data.json"
@@ -1976,7 +1976,7 @@
                 },
                 {
                   "id": "tower_8902",
-                  "name": "神之塔·后侧",
+                  "name": "신의 탑·뒤편",
                   "name_cn": "神之塔·后侧",
                   "file": [
                     "palace/paradise_island_new/8902_data.json"
@@ -1984,7 +1984,7 @@
                 },
                 {
                   "id": "tower_8912",
-                  "name": "神之塔·顶层通道",
+                  "name": "신의 탑·통로",
                   "name_cn": "神之塔·顶层通道",
                   "file": [
                     "palace/paradise_island_new/8912_data.json"
@@ -1992,7 +1992,7 @@
                 },
                 {
                   "id": "tower_8907",
-                  "name": "神之塔·顶层",
+                  "name": "신의 탑·최상층",
                   "name_cn": "神之塔·顶层",
                   "file": [
                     "palace/paradise_island_new/8907_data.json"
@@ -2000,7 +2000,7 @@
                 },
                 {
                   "id": "tower_8910",
-                  "name": "崩塌的顶层",
+                  "name": "붕괴된 최상층",
                   "name_cn": "崩塌的顶层",
                   "file": [
                     "palace/paradise_island_new/8910_data.json"
@@ -2010,13 +2010,13 @@
             },
             {
               "id": "tower_group_1",
-              "name": "数据海",
+              "name": "데이터의 바다",
               "name_cn": "数据海",
               "file": [],
               "submaps": [
                 {
                   "id": "tower_8903",
-                  "name": "数据海·浅层",
+                  "name": "데이터의 바다·표층",
                   "name_cn": "数据海·浅层",
                   "file": [
                     "palace/paradise_island_new/8903_data.json"
@@ -2024,7 +2024,7 @@
                 },
                 {
                   "id": "tower_8904",
-                  "name": "数据海·深层",
+                  "name": "데이터의 바다·심층",
                   "name_cn": "数据海·深层",
                   "file": [
                     "palace/paradise_island_new/8904_data.json"

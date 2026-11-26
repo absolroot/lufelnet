@@ -14,7 +14,7 @@ window.revelationCharacterIndex = {
   ],
   "희망": [
     "마나카",
-    "아란·린화",
+    "아란·서리꽃",
     "유키 마코토",
     "카타야마",
     "코로마루",
@@ -33,7 +33,7 @@ window.revelationCharacterIndex = {
   ],
   "실망": [
     "렌·댄싱 스타",
-    "아란·린화",
+    "아란·서리꽃",
     "아케치",
     "J&C"
   ],

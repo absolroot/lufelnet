@@ -21,6 +21,7 @@ import {
   tokenizeDiffPath
 } from './lib/patch-console-shared.mjs';
 import { buildCharacterInnatePayload } from '../../scripts/shared/character-innate.mjs';
+import tooltipText from '../../assets/js/config-tooltips.js';
 
 const recast = recastImport.default || recastImport;
 const b = recast.types.builders;
@@ -1501,6 +1502,19 @@ async function runPatch(options) {
   }
 }
 
+const tooltipFieldsByLang = new Map();
+function needsTooltipReview(lang, before, after) {
+  if (typeof before !== 'string' || typeof after !== 'string') return false;
+  if (!tooltipFieldsByLang.has(lang)) {
+    const file = path.join(PROJECT_ROOT, 'data', 'tooltips', `${lang}.json`);
+    tooltipFieldsByLang.set(lang, fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')).fields : {});
+  }
+  const fields = tooltipFieldsByLang.get(lang);
+  const first = fields[tooltipText.signature(before)];
+  const next = fields[tooltipText.signature(after)];
+  return Boolean(first?.length && !next?.length);
+}
+
 function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig) {
   const windowName = resolveWindowName(part, lang);
   if (!windowName) return null;
@@ -1547,7 +1561,8 @@ function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig)
     return {
       path: pathText,
       before: beforeRaw === undefined ? null : clone(beforeRaw),
-      after: afterRaw === undefined ? null : clone(afterRaw)
+      after: afterRaw === undefined ? null : clone(afterRaw),
+      ...(needsTooltipReview(lang, beforeRaw, afterRaw) ? { tooltipReview: true } : {})
     };
   });
   return {

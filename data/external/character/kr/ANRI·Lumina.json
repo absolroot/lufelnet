@@ -1,0 +1,287 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "히라노 아란·서리꽃은 특수한 축복 주원 이중 속성 대미지를 줄 수 있다.\n히라노 아란·서리꽃이 축복 주원 이중 속성 대미지를 줄 때 약점 대미지를 준 것으로 간주하며, 속성 상극 계수를 제외한 모든 약점 효과를 반드시 발동한다.\n히라노 아란·서리꽃이 전투 진입 시 즉시 아군 전체에 『불멸의 장막』을 부여한다.",
+        "name": "빛과 어둠의 응시",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124240,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "히라노 아란·서리꽃이 『구원의 거울 영역』 시전 시 더 이상 턴과 SP를 소모하지 않는다.\n또한 『결단』의 중첩 상한이 2회로 증가한다.",
+        "name": "내가 그려 내는 것",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124241,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『결단』 1중첩당 추가로 20%의 크리티컬 효과를 제공한다.\n『어두운 하늘의 빛』 시전 시 보유한 『결단』 1중첩당 스킬 대미지가 25%씩 증가한다.",
+        "name": "모든 것이 바래기 전에",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124242,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『구원의 거울 영역』, 『어두운 하늘의 빛』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "빛과 그림자 속에 내린 붓끝",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124243,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "HIGHLIGHT 효과 증가: HIGHLIGHT 시전 후 공격력이 추가로 20% 증가하며, 공격력 증가 효과는 2회까지 중첩된다.",
+        "name": "사랑은 시간을 넘어",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124244,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "『선악의 거울꽃』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
+        "name": "부조리한 곳에 입히는 색",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124245,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "아군 전체의 『불멸의 장막』 중첩이 파괴되거나 지속 시간이 끝날 때마다 히라노 아란·서리꽃의 크리티컬 효과가 10%씩 증가한다(8회 중첩 가능).\n히라노 아란·서리꽃의 HIGHLIGHT에 크리티컬이 발동할 수 있으며 관통이 15% 증가한다. 히라노 아란·서리꽃이 『어두운 하늘의 빛』을 시전한 후 추가로 HIGHLIGHT를 시전하며, 마지막으로 『어두운 하늘의 빛』에 대미지를 입은 적을 우선 공격한다.",
+        "name": "마침내 드러날 이상향",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124246,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [],
+    "final_innate": [],
+    "highlight_skill": {
+      "ascend": "0/5/0/5",
+      "auto_select": "AICondition (Based on Unknown)",
+      "cooldown": 4,
+      "cost": "",
+      "desc": "적 1명에게 공격력 1297.7%/1430.6%/1377.5%/1510.4%의 축복 주원 이중 속성 대미지를 주고, 3턴 동안 자신의 공격력이 48.8%/53.8%/51.8%/56.8% 증가한다.\n이후 아군 전체에 『불멸의 장막』을 부여한다.",
+      "name": "HIGHLIGHT",
+      "nature": "Bless/Curse",
+      "skill_lv": "10/10/13/13",
+      "sn": 124252,
+      "tags": [
+        null
+      ],
+      "target": "Alive Enemy",
+      "target_count": 1
+    },
+    "innate": {
+      "Crit Mult.": "0.24",
+      "Damage Mult.": "0.16"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S1/HL",
+      "S2/S3"
+    ],
+    "name": "히라노 아란·서리꽃",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 22",
+        "desc": "적 1명에게 공격력 562.6%/620.2%/597.2%/654.8%의 축복 주원 이중 속성 대미지를 주고, 2턴 동안 자신의 크리티컬 효과가 117.1%/129.1%/124.3%/136.3% 증가하며, 『결단』을 획득한다.",
+        "name": "선악의 거울꽃",
+        "nature": "Bless/Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 124211,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 22",
+        "desc": "아군 전체에 『불멸의 장막』을 부여하고, 자신은 『결단』을 획득한다.\n이후 2턴 동안 아군 전체의 모든 적합성을 “흡수”로 변경하고, 흡수 비율을 20%에서 29.8%/30.8%/30.4%/31.4%로 증가시킨다.\n해당 효과는 스킬 1회의 모든 대미지를 흡수한 후 사라진다.\n『불멸의 장막』: 2928/3228/3108/3408의 대미지를 막아낼 수 있다.",
+        "name": "구원의 거울 영역",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 124212,
+        "tags": [
+          "액티브",
+          "실드"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 1,
+        "cost": "SP 26",
+        "desc": "적 1명에게 공격력 906.5%/999.4%/962.2%/1055.1%의 축복 주원 이중 속성 대미지를 준다.\n자신이 『결단』 상태일 경우, 이번 스킬 대미지의 관통이 15% 증가하고 스킬 대미지가 150% 증가한다.",
+        "name": "어두운 하늘의 빛",
+        "nature": "Bless/Curse",
+        "skill_lv": "10/10/13/13",
+        "sn": 124213,
+        "tags": [
+          "액티브",
+          "단일피해"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "히라노 아란·서리꽃의 축복 속성 대미지가 36.0% 증가하고, 『불멸의 장막』이 막아낼 수 있는 대미지는 축복 속성 대미지 보너스의 영향을 받는다.",
+        "name": "구세",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124231,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "히라노 아란·서리꽃의 주원 속성 대미지가 36.0% 증가하고, 『구원의 거울 영역』의 흡수 비율 중 20%를 초과하는 부분은 주원 속성 대미지 보너스의 영향을 받는다.",
+        "name": "추억",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 124232,
+        "tags": [
+          "잠재력"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Attack": 2910.0,
+      "Crit Mult.": 2.15,
+      "Crit Rate": 0.55,
+      "Damage Mult.": 0.18
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1150.02 / 1170.82 / 1191.62 / 1212.42 / 1233.22 / 1253.22 / 1274.02",
+      "Attack Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "599.98 / 611.18 / 621.58 / 632.78 / 643.18 / 654.38 / 664.78",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "3539.98 / 3603.98 / 3667.18 / 3731.18 / 3795.18 / 3858.38 / 3922.38",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0 / 95.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": []
+  },
+  "msg": "OK",
+  "status": 0
+}

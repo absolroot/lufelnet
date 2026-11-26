@@ -1,0 +1,302 @@
+{
+  "data": {
+    "ascend_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the end of an ally's action, Junpei gains 1 Vigor stack. Vigor stacks up to 15 times, and gain the following effects based on the number of stacks.\n10: Increase party's Attack by 20% and Fire damage dealt by 25%.\n15: Increase Junpei's damage reduction by 5%. Increase party's Attack 20% more and Fire damage dealt 25% more.\nAlso, gain 1 Batter Up stack every 2 turns. When taking damage other than continuous damage, spend Batter Up, and activate Batter Up on the attacker.\nBatter Up: Deal Physical damage to 1 foe equal to 42.2% of max HP, and inflict Clean Hit on all foes for 2 turns. This attack is counted as a Resonance, and deals a guaranteed critical. Also, grant all allies a shield equal to 12% of Junpei's max HP for 3 turns, and gain 6 Vigor stacks.\nClean Hit: When attacking a foe in this state with Scorching Strike or Razorwing Slash, spend all Clean Hit on the field and activate additional effects for each skill. When a foe in this state is KO'd, transfer to the foe with the highest current HP.",
+        "name": "Heroic Ambition",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147140,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the start of battle, gain 15 Vigor stacks. Also, the maximum number of Vigor stacks becomes 30, and gain the following effects based on the number of stacks.\n25: Increase party's critical damage by 20%. Increase Fire Sweeper or Assassin allies' critical damage by 40% more.\n30: Increase party's Attack by 20%. Increase Fire Sweeper or Assassin allies' Attack by 40% more.",
+        "name": "Life of the Party",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147141,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Batter Up is activated, permanently increase party's damage dealt by 25%. Stacks up to 3 times.",
+        "name": "Abandoning Doubts",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147142,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill levels of All Eyes on Me and Combat Tactics by 3.",
+        "name": "Easygoing Partner",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147143,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When activating a Theurgy, fully restore Junpei's HP.",
+        "name": "Weight of Life",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147144,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase the skill level of Scorching Strike and Razorwing Slash by 3.",
+        "name": "I'll Protect You!",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147145,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "For every 15 Vigor stacks gained, melee attacks evolve to Batter Up, and can be used without spending a turn. This Batter Up can inflict Clean Hit on all foes, and if the target already has Clean Hit, evolve to Perfect Hit for 2 turns. When attacking foes with Perfect Hit with Scorching Strike or Razorwing Slash, spend all Perfect Hit and Clean Hit on the field and increase foes' damage taken while downed by 20% and Fire damage taken by 80% for 1 turn. Also, increase Fire Sweeper or Assassin allies' damage dealt to downed foes by 20% for 1 turn.\nAlso, even if there are no Fire Sweeper or Assassin allies in the party at the start of battle, double Junpei's Theurgy gauge increase rate.",
+        "name": "Unknown Potential",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147146,
+        "tags": [
+          null
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "assist_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Grant all allies a shield equal to 10% of Junpei's max HP for 3 turns.",
+        "name": "Assist",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 147171,
+        "tags": [
+          null
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      }
+    ],
+    "final_innate": [],
+    "highlight_skill": null,
+    "innate": {
+      "Damage Down": "0.16",
+      "HP": "0.2"
+    },
+    "innate_awake_skill": [],
+    "innate_skill_type": [
+      "S3/HL",
+      "S1/S2"
+    ],
+    "name": "Junpei Iori",
+    "normal_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 23",
+        "desc": "Deal Fire damage to 1 foe equal to 77.1%/85.0%/81.8%/89.7% of Junpei's max HP.\nIf the target has Clean Hit, spend all Clean Hit on the field and deal Fire damage to all foes equal to 38.6%/42.5%/40.9%/44.9% of Junpei's max HP. Also, decrease all foes' Defense by 7.8%/8.6%/8.3%/9.1%, and decrease more based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 31.2%/34.4%/33.2%/36.4%) for 2 turns. Also, increase party's Fire damage by 18.7%/20.7%/19.9%/21.8%, and increase more based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 75.0%/82.6%/79.6%/87.2%) for 2 turns.",
+        "name": "Scorching Strike",
+        "nature": "Fire",
+        "skill_lv": "10/10/13/13",
+        "sn": 147111,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "체력 8.0%",
+        "desc": "Deal Physical damage to 1 foe equal to 41.9%/46.2%/44.4%/48.7% of Junpei's max HP.\nIf the target has Clean Hit, spend all Clean Hit on the field and this damage is a guaranteed critical. Also, decrease the target's Defense by 7.8%/8.6%/8.3%/9.1%, and decrease more based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 31.2%/34.4%/33.2%/36.4%) for 2 turns. Also, increase party's damage dealt by 7.8%/8.6%/8.3%/9.1%, and increase more based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 31.2%/34.4%/33.2%/36.4%) for 2 turns.",
+        "name": "Razorwing Slash",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 147112,
+        "tags": [
+          "Single-Target"
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "SP 26",
+        "desc": "Gain Center of Attention state for 2 turns, taunting all foes.\nAlso, increase party's critical damage by 5.9%/6.5%/6.2%/6.8%, and increase more based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 23.4%/25.8%/24.9%/27.3%) for 2 turns. Also, increase Fire Sweeper or Assassin allies' critical damage by 14.1%/15.5%/14.9%/16.4%, and increase more based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 56.2%/62.0%/59.7%/65.4%) for 2 turns.\nCenter of Attention: Null Down and spiritual ailments, and take 40% of damage in place of all allies. When allies take damage other than continuous damage, based on the number of targets (1/2/3/4), decrease damage taken to a certain percentage (75%/55%/45%/40%, respectively). When Junpei takes damage other than continuous damage, inflict Burn on the attacker. Also, if no damage is taken for 1 turn excluding continuous damage, and Batter Up can be activated, activate Batter Up.",
+        "name": "All Eyes on Me",
+        "nature": null,
+        "skill_lv": "10/10/13/13",
+        "sn": 147113,
+        "tags": [
+          "Buff"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "passive_skill": [
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When Junpei is present, increase party's Attack by 30.0%.\nAt the start of battle, if the party includes Fire Sweeper or Assassin allies, increase party's damage dealt by 12.0%.",
+        "name": "Serious Heat",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147131,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Alive Ally",
+        "target_count": "All"
+      },
+      {
+        "ascend": "0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "At the end of the action, restore Junpei's HP by 6.0%.\nWhen any ally's remaining HP is below 30%, restore all allies' HP by 6.0% of Junpei's max HP. This effect can be activated each time All Eyes on Me is used.",
+        "name": "Uplifting Justice",
+        "nature": null,
+        "skill_lv": "3",
+        "sn": 147132,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
+    "rating": {
+      "Defense": 1200.0,
+      "HP": 20000.0,
+      "Unknown Attr": 0.0
+    },
+    "stat": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "800.02 / 814.42 / 828.82 / 843.22 / 857.62 / 872.02 / 886.42",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "606.64 / 617.84 / 628.24 / 639.44 / 650.64 / 661.04 / 672.24",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4440.02 / 4520.02 / 4600.02 / 4680.02 / 4760.02 / 4840.02 / 4919.22",
+      "HP Increase": "29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0% / 29.0%",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0 / 103.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
+    "stat_100": null,
+    "sync_normal_skill": [],
+    "theurgia_skill": [
+      {
+        "ascend": "0/5/0/5",
+        "auto_select": "AICondition (Based on AAAAAA==)",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Can be activated when Theurgy gauge is at 140. Deal Physical damage to 1 foe equal to 138.3%/152.5%/146.8%/161.0% of Junpei's max HP, and decrease Down Points by 4 ignoring affinities. After target is knocked down, decrease other foes' Down Points based on the number of excess Down Points (if the target is defeated, this effect will not activate).\nGrant Voltage Up to all allies for 4 turns: Increase Attack based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 19.5%/21.5%/20.7%/22.7%), and increase critical damage based on Junpei's max HP (up to 19520/21520/20720/22720 of max HP, up to 14.6%/16.1%/15.5%/17.0%). Stacks up to 2 times.\nIf there are Fire Sweeper or Assassin allies in the party at the start of battle, double Junpei's Theurgy gauge increase rate.",
+        "name": "Hack n' Blast",
+        "nature": "Phys",
+        "skill_lv": "10/10/13/13",
+        "sn": 147152,
+        "tags": [
+          null
+        ],
+        "target": "Alive Enemy",
+        "target_count": 1
+      }
+    ]
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -115,7 +115,27 @@
       }
     ],
     "assist_skill": [],
-    "final_innate": [],
+    "final_innate": [
+      [
+        {
+          "attr": "Final Damage Mult.",
+          "nature": "Ice",
+          "value": "0.02"
+        }
+      ],
+      [
+        {
+          "attr": "Ice Boost",
+          "nature": "Ice",
+          "value": "0.08"
+        },
+        {
+          "attr": "Ice Damage Taken",
+          "nature": "Ice",
+          "value": "-0.1"
+        }
+      ]
+    ],
     "highlight_skill": {
       "ascend": "0/5/0/5",
       "auto_select": "AICondition (Based on AAAAAA==)",
@@ -136,7 +156,40 @@
       "Crit Rate": "0.12",
       "Damage Mult.": "0.16"
     },
-    "innate_awake_skill": [],
+    "innate_awake_skill": [
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "Increase Defense by 45.0%/67.5%/90.0% of Attack. Increase the skill damage of the next Inspiration or Imagination by 37.5%/56.2%/75.0%.",
+        "name": "Passionate Brushstroke",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 116171,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      },
+      {
+        "ascend": "0/0/0",
+        "auto_select": "Default",
+        "cooldown": 0,
+        "cost": "",
+        "desc": "When user or an ally deals Ice damage with a skill, Resonance, Highlight, or Theurgy, user gains 1 Snow Flower stack for 2 turns. Stacks up to 20 times.\nAt the start of the turn, activate the following effects based on the number of stacks, lasting until the start of user's next turn.\n10: Increase damage dealt by Ice allies by 20.0%/30.0%/40.0% + user's Awareness Level x 7.5%, and increase critical damage by 20.0%/30.0%/40.0% + user's Awareness Level x 7.5%\nIncrease Ice allies' final damage amplification by 10.0%/15.0%/20.0% + user's Awareness Level x 6%",
+        "name": "Rokka Ryouran",
+        "nature": null,
+        "skill_lv": "1/2/3",
+        "sn": 116172,
+        "tags": [
+          "Talent"
+        ],
+        "target": "Myself",
+        "target_count": 1
+      }
+    ],
     "innate_skill_type": [
       "S3/HL",
       "S1/S2"
@@ -275,7 +328,49 @@
       "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
       "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
     },
-    "stat_100": null,
+    "stat_100": {
+      "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
+      "Ailment Acc.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ailment Resist.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Almighty Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Attack": "1014.47 / 1032.47 / 1051.47 / 1069.47 / 1088.47 / 1106.47 / 1125.47",
+      "Bless Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Bless Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Crit Mult.": "150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0% / 150.0%",
+      "Crit Rate": "5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0% / 5.0%",
+      "Curse Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Curse Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Down": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Defense": "989.74 / 1007.74 / 1025.74 / 1043.74 / 1061.74 / 1079.74 / 1097.74",
+      "Defense Increase": "56.1% / 56.1% / 56.1% / 56.1% / 56.1% / 56.1% / 56.1%",
+      "Down Points": "0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0 / 0.0",
+      "Electric Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Electric Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Final Damage Mult.": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Fire Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Gun Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "HP": "4602.21 / 4686.21 / 4769.21 / 4853.21 / 4937.21 / 5021.21 / 5104.21",
+      "Ice Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Ice Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Nuclear Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Phys Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Pierce Rate": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Psychokinesis Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "SP": "100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0 / 100.0",
+      "SP Recovery": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Shield Effect": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Speed": "102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0 / 102.0",
+      "Wind Boost": "0% / 0% / 0% / 0% / 0% / 0% / 0%",
+      "Wind Damage Taken": "0% / 0% / 0% / 0% / 0% / 0% / 0%"
+    },
     "sync_normal_skill": [],
     "theurgia_skill": []
   },

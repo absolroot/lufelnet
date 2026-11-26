@@ -1,0 +1,33 @@
+{
+  "data": {
+    "fiveStar": [
+      {
+        "name": "Balmung",
+        "quality": 5,
+        "skill": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nAfter using All Eyes on Me, increase Junpei's damage reduction by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8% for 2 turns.\nAfter using Batter Up, increase party's critical damage by 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% for 2 turns.",
+        "stat": {
+          "attack": 528.55,
+          "defense": 400.84,
+          "hp": 2933.35
+        },
+        "user": "Junpei"
+      }
+    ],
+    "fourStar": [
+      {
+        "name": "Elixir Sword",
+        "quality": 4,
+        "skill": "Increase max HP by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter dealing damage, increase Junpei's max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns.",
+        "stat": {
+          "attack": 422.82,
+          "defense": 320.45,
+          "hp": 2346.55
+        },
+        "user": "Junpei"
+      }
+    ],
+    "name": "Junpei"
+  },
+  "msg": "OK",
+  "status": 0
+}

@@ -10,21 +10,18 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Ice",
-                "Electric",
-                "Wind",
-                "Bless",
+                "Fire",
                 "Curse"
               ],
               "Weak": [
-                "Fire"
+                "Bless"
               ]
             },
-            "image": "B-guaiwutouxiang-lilith.png",
+            "image": "B-guaiwutouxiang-baphomet.png",
             "level": "89",
-            "name": "조종당한 릴리스",
-            "skill": "607,603",
-            "sn": 553101,
+            "name": "조종당하는 바포멧",
+            "skill": "103,81060,353,904",
+            "sn": 554101,
             "stat": {}
           }
         ],
@@ -40,18 +37,18 @@
               "Nullify": [],
               "Reflect": [],
               "Resistant": [
-                "Wind",
-                "Bless"
+                "Electric",
+                "Psychokinesis"
               ],
               "Weak": [
-                "Psychokinesis"
+                "Wind"
               ]
             },
-            "image": "B-guaiwutouxiang-quetzalcoatl.png",
+            "image": "B-guaiwutouxiang-ookuni.png",
             "level": "89",
-            "name": "케찰코아틀",
-            "skill": "406,403",
-            "sn": 553111,
+            "name": "조종당하는 오오쿠니누시",
+            "skill": "1016,1021,1404",
+            "sn": 552111,
             "stat": {}
           }
         ],
@@ -59,9 +56,9 @@
         "sn": 78402
       }
     ],
-    "buff": "비옥한 지맥: 약점 대미지를 줄 때 자신에게 『넘치는 생기』를 부여한다. 『넘치는 생기』: 2턴 동안 주는 최종 대미지가 20% 증가한다(2회 중첩 가능).",
-    "endTime": "2026-11-26 07:30:00",
-    "startTime": "2026-10-29 08:30:00"
+    "buff": "선조의 성소: 약점 대미지를 줄 때 『선조의 축복』을 획득하며, 준 대미지가 이중 속성 또는 추가 대미지일 경우 『선조의 가호』로 강화된다. 『선조의 축복』: 2턴 동안 최종 대미지가 20% 증가하며, 『선조의 가호』로 강화되면 최종 대미지가 40%까지 증가한다.",
+    "endTime": "2026-12-17 07:30:00",
+    "startTime": "2026-11-26 08:30:00"
   },
   "msg": "OK",
   "status": 0

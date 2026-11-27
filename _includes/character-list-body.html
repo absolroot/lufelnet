@@ -6,6 +6,7 @@
 {% endif %}
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<script defer src="{{ site.baseurl }}/assets/js/character/character-prefetch.js?h={{ site.data.asset_versions.files['/assets/js/character/character-prefetch.js'] }}"></script>
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('character-list');
@@ -1060,6 +1061,7 @@ window.LufelPageLifecycle?.hold('character-list');
 
             // Create link wrapper - prefer slug-based detail URLs when available
             const link = document.createElement('a');
+            link.dataset.characterPrefetch = characterName;
             if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
                 link.href = LanguageRouter.buildCharacterDetailUrl(characterName, currentLang);
             } else {

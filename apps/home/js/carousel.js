@@ -12,6 +12,7 @@
   const ROOT_ID = 'home-carousel-root';
   const REGIONS = ['cn', 'tw', 'sea', 'kr', 'en', 'jp'];
   const REGION_BASE_UTC = { cn: 8, tw: 8, sea: 8, kr: 9, en: 9, jp: 9 };
+  const FIRST_SLIDE_INTERVAL_MS = 5000;
   const SLIDE_INTERVAL_MS = 6000;
   const COUNTDOWN_INTERVAL_MS = 1000;
   const LCP_PRELOAD_LINK_ID = 'home-carousel-lcp-preload';
@@ -359,7 +360,8 @@
         delete img.dataset.deferredSrc;
       });
       slideEl.querySelectorAll('.slide-bg[data-deferred-custom-background]').forEach(bg => {
-        applyCustomSlideBackground(bg, bg.__homeSlide, bg.__homeIsMobileBackground);
+        const prioritize = slideEl.dataset.slideIndex === String(state.currentIndex);
+        applyCustomSlideBackground(bg, bg.__homeSlide, bg.__homeIsMobileBackground, prioritize);
         delete bg.dataset.deferredCustomBackground;
         delete bg.__homeSlide;
         delete bg.__homeIsMobileBackground;
@@ -420,29 +422,37 @@
     bg.appendChild(video);
     if (isMobileBg) {
       const overlay = document.createElement('div');
-      overlay.className = 'slide-bg-video-overlay';
+      overlay.className = 'slide-bg-overlay';
       bg.appendChild(overlay);
     }
     return true;
   }
 
-  function applyCustomSlideBackground(bg, slide, isMobileBg) {
-    if (!bg || !slide || !slide.customBgImage) return;
+  function applyCustomSlideBackground(bg, slide, isMobileBg, prioritize) {
     if (applyCustomSlideVideoBackground(bg, slide, isMobileBg)) return;
-    let bgImageCss = `url(${slide.customBgImage})`;
-    if (isMobileBg) bgImageCss = `linear-gradient(180deg, #1111118c 0%, transparent 50%), ${bgImageCss}`;
-    bg.style.backgroundImage = bgImageCss;
-    bg.style.backgroundRepeat = 'no-repeat';
-    bg.style.backgroundSize = 'cover';
     if (Number.isFinite(slide.customBgScale) && slide.customBgScale !== 1) {
       bg.style.transform = `scale(${slide.customBgScale})`;
     }
     const { offsetX, offsetY } = getCoverOffsets(
       (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset
     );
-    bg.style.backgroundPosition = `calc(50% + ${offsetX}px) calc(50% + ${offsetY}px)`;
-    bg.style.backgroundPositionX = `calc(50% + ${offsetX}px)`;
-    bg.style.backgroundPositionY = `calc(50% + ${offsetY}px)`;
+    const img = document.createElement('img');
+    img.className = 'slide-bg-image';
+    img.alt = '';
+    img.style.objectPosition = `calc(50% + ${offsetX}px) calc(50% + ${offsetY}px)`;
+    setImageLoadingPriority(img, prioritize && !slide.customImage, true);
+    img.addEventListener('error', () => { bg.dataset.mediaState = 'failed'; }, { once: true });
+    img.addEventListener('load', async () => {
+      if (img.decode) await img.decode().catch(() => {});
+      bg.dataset.mediaState = 'ready';
+    }, { once: true });
+    img.src = slide.customBgImage;
+    bg.appendChild(img);
+    if (isMobileBg) {
+      const overlay = document.createElement('div');
+      overlay.className = 'slide-bg-overlay';
+      bg.appendChild(overlay);
+    }
   }
 
   function updateLcpPreload(url) {
@@ -973,7 +983,7 @@
       .carousel-dot.active { background: #fff; }
       .slide-bg { position: absolute; inset: 0; background: radial-gradient(120% 120% at 80% 100%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, rgba(0,0,0,0) 100%); }
       .slide-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-      .slide-bg-video-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, #1111118c 0%, transparent 50%); pointer-events: none; }
+      .slide-bg-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, #1111118c 0%, transparent 50%); pointer-events: none; }
       .slide-bg.slide-bg-diamond::after { content: ''; position: absolute; inset: 0; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='45'%3E%3Cpolygon points='15,0 30,22.5 15,45 0,22.5' fill='%23ffffff'/%3E%3C/svg%3E"); background-size: 24px 36px; background-repeat: repeat; pointer-events: none; opacity: 0.01; }
       .slide-link { position: absolute; inset: 0; z-index: 6; text-decoration: none; pointer-events: auto; }
       .slide-left, .slide-right { position: relative; z-index: 4; }
@@ -1085,44 +1095,21 @@
     // custom background image takes precedence
     if (slide.kind === 'custom' && slide.customBgImage) {
       const isMobileBg = window.matchMedia && window.matchMedia('(max-width: 768px)').matches;
+      if (!isVideoAssetUrl(slide.customBgImage)) {
+        const placeholder = document.createElement('div');
+        placeholder.className = 'slide-bg-placeholder';
+        placeholder.setAttribute('aria-hidden', 'true');
+        const color = parseHexColor(slide.customColor);
+        if (color) placeholder.style.setProperty('--carousel-placeholder-accent', rgba(color, 0.36));
+        bg.dataset.mediaState = 'loading';
+        bg.appendChild(placeholder);
+      }
       if (deferSlideMedia) {
         bg.dataset.deferredCustomBackground = 'true';
         bg.__homeSlide = slide;
         bg.__homeIsMobileBackground = isMobileBg;
       } else {
-      if (applyCustomSlideVideoBackground(bg, slide, isMobileBg)) {
-        // video backgrounds are rendered with a dedicated media element
-      } else {
-        let bgImageCss = `url(${slide.customBgImage})`;
-      // 모바일 커스텀 슬라이드에는 반투명 그라디언트 오버레이 추가
-      if (isMobileBg) {
-        // 상단 50% 정도까지만 그라디언트가 보이도록 중간에 투명 처리
-        bgImageCss = `linear-gradient(180deg, #1111118c 0%, transparent 50%), ${bgImageCss}`;
-      }
-      bg.style.backgroundImage = bgImageCss;
-      bg.style.backgroundRepeat = 'no-repeat';
-      bg.style.backgroundSize = 'cover';
-      if (Number.isFinite(slide.customBgScale) && slide.customBgScale !== 1) {
-        bg.style.transform = `scale(${slide.customBgScale})`;
-      }
-      // Support JSON-driven bg offset with top/right/bottom/left (px)
-      let offsetX = 0, offsetY = 0;
-      const offsetSource = (isMobileBg && slide.customBgOffsetMobile) ? slide.customBgOffsetMobile : slide.customBgOffset;
-      if (offsetSource) {
-        const o = offsetSource;
-        const r = Number.isFinite(o.right) ? o.right : 0;
-        const l = Number.isFinite(o.left) ? o.left : 0;
-        const b = Number.isFinite(o.bottom) ? o.bottom : 0;
-        const t = Number.isFinite(o.top) ? o.top : 0;
-        // Positive right pushes to the right, positive bottom pushes downward
-        offsetX = r - l;
-        offsetY = b - t;
-      }
-      bg.style.backgroundPosition = `calc(50% + ${offsetX}px) calc(50% + ${offsetY}px)`;
-      // Set axis-specific properties as well for broader browser consistency
-      bg.style.backgroundPositionX = `calc(50% + ${offsetX}px)`;
-      bg.style.backgroundPositionY = `calc(50% + ${offsetY}px)`;
-      }
+        applyCustomSlideBackground(bg, slide, isMobileBg, isPrioritySlide);
       }
     } else {
       // color-based gradient if available
@@ -1380,6 +1367,7 @@
   }
 
   function render(root) {
+    window.LufelCarouselMotion?.cancel();
     root.innerHTML = '';
     injectStyles(root);
     const container = document.createElement('div');
@@ -1479,6 +1467,9 @@
   function updateTrackPosition(track) {
     const offsetX = -state.currentIndex * 100;
     track.style.transform = `translateX(${offsetX}%)`;
+    Array.from(track.children).forEach((slide, index) => {
+      slide.classList.toggle('carousel-slide--active', index === state.currentIndex);
+    });
     // Update dots active
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
@@ -1487,26 +1478,30 @@
     dots.forEach((d, i) => d.classList.toggle('active', i === state.currentIndex));
   }
 
-  function goTo(i) {
+  function goTo(i, direction = i - state.currentIndex) {
+    const previous = state.currentIndex;
     state.currentIndex = clamp(i, 0, Math.max(0, state.slides.length - 1));
     updateLcpPreload(getLcpCandidateImageUrl(state.slides[state.currentIndex]));
     const root = document.getElementById(ROOT_ID);
     if (!root) return;
     activateDeferredMedia(root, state.currentIndex);
     const track = root.querySelector('.carousel-track');
-    if (track) updateTrackPosition(track);
+    if (!track) return;
+    const motion = window.LufelCarouselMotion;
+    if (motion) motion.transition(track, previous, state.currentIndex, direction, () => updateTrackPosition(track));
+    else updateTrackPosition(track);
   }
 
   function prevSlide() {
     const i = (state.currentIndex - 1 + state.slides.length) % state.slides.length;
-    goTo(i);
+    goTo(i, -1);
     // extend delay to 20s after manual navigation
     scheduleNextSlide(20000);
   }
 
   function nextSlide() {
     const i = (state.currentIndex + 1) % state.slides.length;
-    goTo(i);
+    goTo(i, 1);
     scheduleNextSlide(SLIDE_INTERVAL_MS);
   }
 
@@ -1518,7 +1513,7 @@
   function startTimers(track) {
     stopTimers();
     state.countdownTimer = setInterval(refreshTimeDisplays, COUNTDOWN_INTERVAL_MS);
-    scheduleNextSlide(SLIDE_INTERVAL_MS);
+    scheduleNextSlide(FIRST_SLIDE_INTERVAL_MS);
   }
 
   function stopTimers() {

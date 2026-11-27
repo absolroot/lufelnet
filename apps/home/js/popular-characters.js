@@ -284,6 +284,7 @@
             if (badge === 'HOT') card.classList.add('hot');
 
             const link = document.createElement('a');
+            link.dataset.characterPrefetch = characterKey;
             if (window.LanguageRouter && typeof window.LanguageRouter.buildCharacterDetailUrl === 'function') {
                 link.href = window.LanguageRouter.buildCharacterDetailUrl(characterKey, lang);
             } else {
@@ -363,6 +364,18 @@
         }
 
         renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
+        window.LufelCharacterPrefetch?.prepareHomeRoster(async () => {
+            const globalRoster = lang === 'en' || lang === 'jp';
+            const roster = globalRoster ? (glb || await fetchCharactersData(staticAssetUrl('/data/character_info_glb.js'))) : kr;
+            if (!roster) return [];
+
+            const { mainParty = [], supportParty = [] } = roster.characterList || {};
+            const { characterData: rosterData = {} } = roster;
+            const order = key => rosterData[key].release_order ?? krCharacterData[key].release_order ?? 0;
+            return [...mainParty, ...supportParty]
+                .filter(key => key !== '원더' && krCharacterData[key] && rosterData[key])
+                .sort((a, b) => order(b) - order(a) || krCharacterData[b].rarity - krCharacterData[a].rarity);
+        });
         return { empty: orderedKeys.length === 0 };
     }
 

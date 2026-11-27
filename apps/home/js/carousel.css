@@ -302,3 +302,74 @@
   right: 30%;
   scale: 1.2182;
 }
+#home-carousel-root .carousel-track--instant {
+  transition: none;
+}
+
+#home-carousel-root .carousel-viewport {
+  isolation: isolate;
+}
+
+#home-carousel-root .carousel-nav {
+  z-index: 3;
+}
+
+#home-carousel-root .slide-bg-image,
+#home-carousel-root .slide-bg-placeholder {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#home-carousel-root .slide-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#home-carousel-root .slide-bg-placeholder {
+  z-index: 1;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 76% 58%, var(--carousel-placeholder-accent, rgba(164, 48, 71, .32)), transparent 66%),
+    linear-gradient(115deg, #17141c, #27202e 68%, #17141c);
+}
+
+#home-carousel-root .slide-bg[data-media-state="ready"] .slide-bg-placeholder {
+  opacity: 0;
+  visibility: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #home-carousel-root .slide-bg-placeholder {
+    transition: opacity 260ms ease-out, visibility 0s linear 260ms;
+  }
+
+  #home-carousel-root .carousel-track .carousel-slide--active [data-media-state="loading"] .slide-bg-placeholder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(112deg, transparent 24%, rgba(255, 222, 232, .14) 49%, transparent 73%);
+    animation: carousel-background-shimmer 2.4s ease-in-out .15s 2 alternate both;
+  }
+}
+
+@keyframes carousel-background-shimmer {
+  from { transform: translateX(-58%); }
+  to { transform: translateX(58%); }
+}
+
+#home-carousel-root .carousel-transition-snapshot {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-transition-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

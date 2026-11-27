@@ -266,8 +266,10 @@ class Navigation {
                         <div class="nav-section-items">
                             ${visibleItems.map(item => `
                                 <a href="${BASE_URL}${item.url}" class="nav-section-item" data-nav="${item.key}">
-                                    <img src="${BASE_URL}/assets/img/nav/${item.icon}" alt="" class="nav-item-icon" />
-                                    <span>${texts[item.textKey] || (item.key === 'pullTracker' ? pullTrackerFallbackText : item.textKey)}</span>
+                                    <span class="nav-item-art">
+                                        <img src="${BASE_URL}/assets/img/nav/${item.icon}" alt="" class="nav-item-icon" />
+                                    </span>
+                                    <span class="nav-item-label">${texts[item.textKey] || (item.key === 'pullTracker' ? pullTrackerFallbackText : item.textKey)}</span>
                                 </a>
                             `).join('')}
                         </div>
@@ -337,6 +339,7 @@ class Navigation {
             // Prevent first-paint layout shift before nav CSS applies.
             mainNavEl.style.position = 'fixed';
             mainNavEl.style.top = '0';
+            this.initNavHoverMotion(mainNavEl);
         }
         this.initNavScrollThumb();
 
@@ -788,6 +791,73 @@ class Navigation {
         const query = currentParams.toString();
         const hash = currentUrl.hash || '';
         window.location.href = `${nextPath}${query ? `?${query}` : ''}${hash}`;
+    }
+
+    static initNavHoverMotion(nav) {
+        const motion = matchMedia('(any-hover: hover) and (any-pointer: fine) and (prefers-reduced-motion: no-preference)');
+        let hovered;
+        let animation;
+
+        function reset() {
+            animation?.context.revert();
+            animation = null;
+        }
+
+        nav.addEventListener('pointerover', async event => {
+            if (!motion.matches || event.pointerType !== 'mouse') return;
+            const row = event.target.closest('.nav-section-item, .logo-container');
+            if (!row || row === hovered) return;
+            hovered = row;
+            const gsap = await window.loadLufelGSAP?.();
+            if (!gsap || !motion.matches || hovered !== row || !nav.isConnected) return;
+            reset();
+
+            const [art, label] = row.children;
+            let timeline;
+            const context = gsap.context(() => {
+                timeline = gsap.timeline({ defaults: { ease: 'power2.out' } });
+                if (row.matches('.logo-container')) {
+                    timeline
+                        .to(art, { y: -5, rotation: -8, scale: 1.06, duration: .16 }, 0)
+                        .to(label, { x: 6, duration: .21 }, .055)
+                        .to(art, { y: -1, rotation: -2, scale: 1.02, duration: .24 }, .16)
+                        .to(label, { x: 2, duration: .16 }, .265);
+                    return;
+                }
+                timeline
+                    .addLabel('compress')
+                    .to(art, { x: 4, scaleX: .8, scaleY: .95, duration: .11 }, 'compress')
+                    .to(label, { x: -2, duration: .11 }, 'compress')
+                    .addLabel('release')
+                    .to(art, { x: 8, scaleX: 1.08, scaleY: 1.04, rotation: -5, duration: .12 }, 'release')
+                    .to(label, { x: 4, duration: .12 }, 'release')
+                    .addLabel('settle')
+                    .to(art, { x: 3, scaleX: 1, scaleY: 1, rotation: 0, duration: .17 }, 'settle')
+                    .to(label, { x: 2, duration: .17 }, 'settle');
+            });
+            animation = {
+                context,
+                exit() {
+                    timeline.pause();
+                    context.add(() => {
+                        gsap.timeline({ onComplete: reset })
+                            .to([art, label], { x: 0, y: 0, scaleX: 1, scaleY: 1, rotation: 0, duration: .15, ease: 'power2.out' });
+                    });
+                }
+            };
+        });
+
+        nav.addEventListener('pointerout', event => {
+            if (event.pointerType !== 'mouse' || !hovered ||
+                !hovered.contains(event.target) || hovered.contains(event.relatedTarget)) return;
+            hovered = null;
+            animation?.exit();
+        });
+
+        motion.addEventListener('change', () => {
+            hovered = null;
+            reset();
+        });
     }
 
     static initSwordAnimation() {

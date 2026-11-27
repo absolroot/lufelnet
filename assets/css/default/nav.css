@@ -127,7 +127,7 @@
     }
 
     @media (hover: hover) and (pointer: fine) {
-        :is(.logo-container, .mobile-logo-container):hover img:first-child {
+        .mobile-logo-container:hover img:first-child {
             scale: 1.08;
             rotate: -5deg;
         }
@@ -239,18 +239,23 @@
 }
 
 /* 아이템 아이콘 */
-.nav-item-icon {
+.nav-item-art {
     width: 22px;
     height: 22px;
-    object-fit: contain;
     flex-shrink: 0;
     margin-right: 10px;
+}
+
+.nav-item-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     opacity: 0.85;
     transition: opacity 90ms ease, translate 90ms ease;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .nav-section-item:hover .nav-item-icon,
     .nav-section-item:focus-visible .nav-item-icon {
         translate: 3px 0;
     }
@@ -277,7 +282,7 @@
     opacity: 1;
 }
 
-.nav-section-item span {
+.nav-section-item .nav-item-label {
     font-size: 12px;
     font-weight: 400;
     white-space: nowrap;
@@ -300,7 +305,7 @@
     animation: subtle-liquid 2s infinite linear;
 }
 
-.nav-section-item.active span {
+.nav-section-item.active .nav-item-label {
     color: #ffffff;
     font-weight: 700;
 }
@@ -497,18 +502,12 @@
         justify-content: flex-start;
     }
 
-    .nav-item-icon {
-        width: 22px;
-        height: 22px;
-        margin-right: 10px;
-    }
-
     .main-nav:hover .nav-section-item {
         padding: 9px 24px 9px 29px !important;
     }
 
     /* 텍스트 - 축소 시 숨김 */
-    .nav-section-item span {
+    .nav-section-item .nav-item-label {
         opacity: 0;
         visibility: hidden;
         max-width: 0;
@@ -516,7 +515,7 @@
         transition: opacity 0.15s ease, visibility 0.15s ease, max-width 0.3s ease;
     }
 
-    .main-nav:hover .nav-section-item span {
+    .main-nav:hover .nav-section-item .nav-item-label {
         opacity: 1;
         visibility: visible;
         max-width: 200px;
@@ -770,7 +769,7 @@
         max-height: 0 !important;
     }
 
-    .main-nav.nav-pinned .nav-section-item span {
+    .main-nav.nav-pinned .nav-section-item .nav-item-label {
         opacity: 1;
         visibility: visible;
         max-width: 200px;
@@ -1169,7 +1168,7 @@
     .main-nav .nav-section-items,
     .main-nav .nav-section-chevron,
     .main-nav .nav-section-item,
-    .main-nav .nav-section-item span,
+    .main-nav .nav-section-item .nav-item-label,
     .main-nav .nav-item-icon,
     .main-nav .selected-option,
     .main-nav .options-container {

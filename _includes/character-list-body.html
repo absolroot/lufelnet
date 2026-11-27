@@ -330,6 +330,7 @@ window.LufelPageLifecycle?.hold('character-list');
             <img class="character-card-skeleton__image"
                 src="{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp"
                 alt="" width="560" height="932">
+            <span class="character-portrait-spinner" aria-hidden="true"></span>
         </div>
         {% endfor %}
     </div>
@@ -978,22 +979,32 @@ window.LufelPageLifecycle?.hold('character-list');
         searchCount.textContent = `${countText} ${sortedCharacters.length}${countUnit}`;
 
 
+        function loadCardImage(img) {
+            const realSrc = img.dataset.src;
+            if (!realSrc) return;
+            delete img.dataset.src;
+
+            const spinner = document.createElement('span');
+            spinner.className = 'character-portrait-spinner';
+            spinner.setAttribute('aria-hidden', 'true');
+            img.after(spinner);
+
+            const realImage = new Image();
+            realImage.onload = () => {
+                img.src = realSrc;
+                img.classList.add('loaded');
+                spinner.remove();
+            };
+            realImage.onerror = () => spinner.remove();
+            realImage.src = realSrc;
+        }
+
         // IntersectionObserver for lazy image loading
         const imageObserver = ('IntersectionObserver' in window) ? new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const img = entry.target;
-                    const realSrc = img.dataset.src;
-                    if (realSrc) {
-                        const realImage = new Image();
-                        realImage.onload = () => {
-                            img.src = realSrc;
-                            img.classList.add('loaded');
-                        };
-                        realImage.src = realSrc;
-                        delete img.dataset.src;
-                    }
-                    imageObserver.unobserve(img);
+                    loadCardImage(entry.target);
+                    imageObserver.unobserve(entry.target);
                 }
             });
         }, { rootMargin: '400px' }) : null;
@@ -1129,10 +1140,7 @@ window.LufelPageLifecycle?.hold('character-list');
             if (imageObserver) {
                 imageObserver.observe(img);
             } else {
-                // Fallback: load immediately if IntersectionObserver not supported
-                const realImage = new Image();
-                realImage.onload = () => { img.src = img.dataset.src; img.classList.add('loaded'); };
-                realImage.src = img.dataset.src;
+                loadCardImage(img);
             }
         });
         if (initialSkeletonTransition) {

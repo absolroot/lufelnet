@@ -25,12 +25,12 @@ window.WeaponData["준페이"] = {
 window.enCharacterWeaponData["준페이"] = {
   "name": "Junpei Iori",
   "weapon4-1": {
-    "name": "Buster Blade",
+    "name": "Elixir Sword",
     "health": 2346.55,
     "attack": 422.82,
     "defense": 320.45,
     "skill_name": "Oath of Protection",
-    "description": "Increase max HP by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter user deals damage, increase user's max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%. Lasts for 2 turns."
+    "description": "Increase max HP by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.\nAfter dealing damage, increase Junpei's max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
   },
   "weapon5-1": {
     "name": "Balmung",
@@ -38,19 +38,19 @@ window.enCharacterWeaponData["준페이"] = {
     "attack": 528.55,
     "defense": 400.84,
     "skill_name": "Hero's Sword",
-    "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nAfter activating [Hero Focus], increase user's damage down by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8%. Lasts for 2 turns.\nAfter activating [Power Swing], increase party's critical damage by 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%. Lasts for 2 turns."
+    "description": "Increase max HP by 30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%.\nAfter using All Eyes on Me, increase Junpei's damage reduction by 12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8% for 2 turns.\nAfter using Batter Up, increase party's critical damage by 30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2% for 2 turns."
   }
 };
 
 window.jpCharacterWeaponData["준페이"] = {
   "name": "伊織順平",
   "weapon4-1": {
-    "name": "聖霊の剣",
+    "name": "エリクシルソード",
     "health": 2346.55,
     "attack": 422.82,
     "defense": 320.45,
     "skill_name": "固有効果",
-    "description": "最大HPが12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。 伊織順平がダメージを与えた後、自身の最大HPが22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する（2ターン継続）。"
+    "description": "最大ＨＰが12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。\nダメージを与えた後、２ターンの間、自身の最大ＨＰが22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する。"
   },
   "weapon5-1": {
     "name": "バルムンク",
@@ -58,7 +58,7 @@ window.jpCharacterWeaponData["준페이"] = {
     "attack": 528.55,
     "defense": 400.84,
     "skill_name": "固有効果",
-    "description": "最大HPが30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。 『英雄集中』使用後、自身のダメージ軽減が12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8%上昇する（2ターン継続）。 『全力スイング』発動後、味方全体のCRT倍率が30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%上昇する（2ターン継続）。"
+    "description": "最大ＨＰが30.0%/30.0%/39.0%/39.0%/48.0%/48.0%/57.0%上昇する。\n『フォーカスヒーロー』を使用した後、２ターンの間、自身のダメージ軽減が12.0%/15.6%/15.6%/19.2%/19.2%/22.8%/22.8%上昇する。\n『フルスイング』を発動した後、２ターンの間、味方全体のクリティカルダメージが30.6%/39.8%/39.8%/49.0%/49.0%/58.2%/58.2%上昇する。"
   }
 };
 

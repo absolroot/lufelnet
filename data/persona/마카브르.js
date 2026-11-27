@@ -76,7 +76,7 @@ window.personaFiles["마카브르"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 1.5%.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時『死想』を３つ獲得する。各味方がスキルでダメージを与えた時『死想』を１つ獲得する。『死想』は最大３つまで累積できる。これらの効果は控えにいる場合でも発動する。\n自身が敵を対象にスキルを使用した時、３ターンの間、敵全体の被クリティカルダメージが１５%上昇する。この時『死想』を３つ消費して３ターンの間、対象が支配ロールの味方から攻撃を受けた時、最終被ダメージ増幅が１.５%上昇する。",
       "name_cn": "勿忘人终有一死",
-      "desc_cn": "攻击力提升29.1%。\n战斗开始时，自身获得3层「亡灵舞步」。友方同伴释放人格面具技能造成伤害后，自身获得1层「亡灵舞步」，上限3层。\n自身对敌人释放人格面具技能后，使所有敌人受到暴击效果提升15%，持续3回合。\n若「亡灵舞步」达到3层，则消耗所有「亡灵舞步」，使目标受到支配角色攻击时，受到总伤害增幅提升1.5%，持续3回合。"
+      "desc_cn": "攻击力提升29.1%。\n战斗开始时，自身获得3层「亡灵舞步」。友方同伴释放人格面具技能造成伤害后，自身获得1层「亡灵舞步」，上限3层。（处于后台时也能生效）\n自身对敌人释放人格面具技能后，使所有敌人受到暴击效果提升15%，持续3回合。\n若「亡灵舞步」达到3层，则消耗所有「亡灵舞步」，使目标受到支配角色攻击时，受到总伤害增幅提升1.5%，持续3回合。"
     },
     {
       "name": "죽음은 누구에게 찾아옴을 기억하라 I",
@@ -86,7 +86,7 @@ window.personaFiles["마카브르"] = {
       "desc_en": "Increase Attack by 29.1%.\nAt the start of battle, gain 3 Morbidity stacks. Gain 1 Morbidity stack when any ally deals damage with a skill. Morbidity stacks up to 3 times. These effects activate even in reserve.\nWhen the user targets a foe with a skill, increase all foes' critical damage taken by 15% for 3 turns. At that time, spend 3 Morbidity stacks, and for 3 turns, when the target takes damage from a Sweeper ally, increase final damage taken amplification by 3%.",
       "desc_jp": "攻撃力が２９.１%上昇する。\n戦闘開始時『死想』を３つ獲得する。各味方がスキルでダメージを与えた時『死想』を１つ獲得する。『死想』は最大３つまで累積できる。これらの効果は控えにいる場合でも発動する。\n自身が敵を対象にスキルを使用した時、３ターンの間、敵全体の被クリティカルダメージが１５%上昇する。この時『死想』を３つ消費して３ターンの間、対象が支配ロールの味方から攻撃を受けた時、最終被ダメージ増幅が３%上昇する。",
       "name_cn": "勿忘人终有一死Ⅰ",
-      "desc_cn": "攻击力提升29.1%。\n战斗开始时，自身获得3层「亡灵舞步」。友方同伴释放人格面具技能造成伤害后，自身获得1层「亡灵舞步」，上限3层。\n自身对敌人释放人格面具技能后，使所有敌人受到暴击效果提升15%，持续3回合。\n若「亡灵舞步」达到3层，则消耗所有「亡灵舞步」，使目标受到支配角色攻击时，受到总伤害增幅提升3%，持续3回合。"
+      "desc_cn": "攻击力提升29.1%。\n战斗开始时，自身获得3层「亡灵舞步」。友方同伴释放人格面具技能造成伤害后，自身获得1层「亡灵舞步」，上限3层。（处于后台时也能生效）\n自身对敌人释放人格面具技能后，使所有敌人受到暴击效果提升15%，持续3回合。\n若「亡灵舞步」达到3层，则消耗所有「亡灵舞步」，使目标受到支配角色攻击时，受到总伤害增幅提升3%，持续3回合。"
     }
   ],
   "uniqueSkill": {

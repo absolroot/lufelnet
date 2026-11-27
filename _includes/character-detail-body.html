@@ -16,6 +16,10 @@
   window.__CHARACTER_RESOURCE_HASHES = {
     "코토네": {
       kotone_theme: {{ site.data.asset_versions.files['/data/characters/코토네/kotone_theme.js'] | jsonify }}
+    },
+    "YUI·스텔라": {
+      skill: {{ site.data.asset_versions.files['/data/characters/YUI·스텔라/skill.js'] | jsonify }},
+      ritual: {{ site.data.asset_versions.files['/data/characters/YUI·스텔라/ritual.js'] | jsonify }}
     }
   };
 </script>
@@ -217,11 +221,11 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="thief-anim-wrapper">
-                            <img src="" alt="괴도 이미지" class="thief-image">
+                            <img alt="괴도 이미지" class="thief-image" fetchpriority="high" decoding="sync">
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img src="" alt="페르소나 이미지" class="persona-image">
+                        <img alt="페르소나 이미지" class="persona-image" fetchpriority="low" decoding="async">
                     </div>
                 </div>
                 <div class="carousel-dots">
@@ -231,6 +235,46 @@
             </div>
         </div>
     </div>
+
+    <script>
+        (async function loadCharacterPortraits() {
+            const characterName = new URLSearchParams(window.location.search).get('name') || window.__CHARACTER_DEFAULT;
+            const character = window.characterData?.[characterName];
+            if (!character) return;
+
+            const imagePath = '{{ site.baseurl }}/assets/img/character-detail/';
+            const fallbackSrc = `${imagePath}character_bg.png`;
+            const thiefImage = document.querySelector('.thief-image');
+            const personaImage = document.querySelector('.persona-image');
+
+            function loadPortrait(image, file, wrapper) {
+                image.dataset.character = characterName;
+                if (file) image.dataset.imageFile = file;
+
+                return new Promise(resolve => {
+                    image.addEventListener('load', () => {
+                        image.dataset.loaded = 'true';
+                        if (wrapper) wrapper.dataset.loaded = 'true';
+                        resolve();
+                    }, { once: true });
+                    image.addEventListener('error', () => {
+                        if (!file) {
+                            resolve();
+                            return;
+                        }
+                        image.addEventListener('error', resolve, { once: true });
+                        image.src = fallbackSrc;
+                    }, { once: true });
+                    image.src = file ? `${imagePath}${encodeURIComponent(file)}` : fallbackSrc;
+                });
+            }
+
+            await loadPortrait(thiefImage, `${characterName}.webp`, thiefImage.parentElement);
+            const personaName = character.persona;
+            if (personaName) personaImage.dataset.persona = personaName;
+            loadPortrait(personaImage, personaName ? `${characterName} - ${personaName}.webp` : '');
+        })();
+    </script>
 
 
     <!-- 리뷰 섹션 -->
@@ -962,86 +1006,6 @@
         // Get character name from URL
         const urlParams = new URLSearchParams(window.location.search);
         const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
-        // 이미지 로딩 완료 시에만 표시되도록 data-loaded 세팅
-        try {
-            const fallbackSrc = `{{ site.baseurl }}/assets/img/character-detail/character_bg.png`;
-            const thiefImg = document.querySelector('.thief-image');
-            const personaImg = document.querySelector('.persona-image');
-
-            const wireImage = (imgEl) => {
-                if (!imgEl) return;
-                try {
-                    if (imgEl.classList.contains('thief-image') && characterName) {
-                        imgEl.setAttribute('data-character', characterName);
-                        imgEl.setAttribute('data-image-file', `${characterName}.webp`);
-                    }
-                    if (imgEl.classList.contains('persona-image') && characterName) {
-                        const personaName = (characterData && characterData[characterName] && characterData[characterName].persona) ? characterData[characterName].persona : '';
-                        if (personaName) {
-                            imgEl.setAttribute('data-character', characterName);
-                            imgEl.setAttribute('data-persona', personaName);
-                            imgEl.setAttribute('data-image-file', `${characterName} - ${personaName}.webp`);
-                        }
-                    }
-                } catch (_) { }
-                // 로딩 우선순위 및 디코딩 힌트
-                try { imgEl.setAttribute('loading', 'eager'); } catch (_) { }
-                try { imgEl.setAttribute('decoding', 'sync'); } catch (_) { }
-                try { imgEl.setAttribute('fetchpriority', 'high'); } catch (_) { }
-                imgEl.addEventListener('load', () => {
-                    try {
-                        imgEl.setAttribute('data-loaded', 'true');
-                        if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
-                            imgEl.parentElement.setAttribute('data-loaded', 'true');
-                        }
-                    } catch (_) { }
-                });
-                imgEl.addEventListener('error', () => {
-                    try {
-                        if (imgEl.dataset.fallbackAttempted === 'true') return;
-                        imgEl.dataset.fallbackAttempted = 'true';
-                        imgEl.removeAttribute('data-loaded');
-                        imgEl.src = fallbackSrc;
-                    } catch (_) { }
-                });
-                // 캐시된 이미지 즉시 처리
-                if (imgEl.complete && imgEl.naturalWidth > 0) {
-                    imgEl.setAttribute('data-loaded', 'true');
-                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
-                        imgEl.parentElement.setAttribute('data-loaded', 'true');
-                    }
-                }
-                // 최종 보증: 비동기 프리페치 후 DOM에 재주입 (레이스 대비)
-                setTimeout(() => {
-                    try {
-                        if (imgEl.naturalWidth === 0) {
-                            const tmp = new Image();
-                            tmp.onload = () => {
-                                try {
-                                    imgEl.src = tmp.src;
-                                    imgEl.setAttribute('data-loaded', 'true');
-                                    if (imgEl.parentElement && imgEl.parentElement.classList.contains('thief-anim-wrapper')) {
-                                        imgEl.parentElement.setAttribute('data-loaded', 'true');
-                                    }
-                                } catch (_) { }
-                            };
-                            tmp.onerror = () => {
-                                try {
-                                    if (imgEl.dataset.fallbackAttempted === 'true') return;
-                                    imgEl.dataset.fallbackAttempted = 'true';
-                                    imgEl.removeAttribute('data-loaded');
-                                    imgEl.src = fallbackSrc;
-                                } catch (_) { }
-                            };
-                            tmp.src = imgEl.currentSrc || imgEl.src;
-                        }
-                    } catch (_) { }
-                }, 800);
-            };
-
-            wireImage(thiefImg);
-            wireImage(personaImg);
-        } catch (_) { }
 
         // 언어별 데이터 파일 동적 로드
         // 통합 per-character 로더 (review / base_stats / operation / party)
@@ -1339,42 +1303,6 @@
             return;
         }
 
-        // 이미지 우선 로딩: 다국어 데이터 로드와 상관없이 즉시 표시되도록 선행 주입
-        try {
-            const basicCharacter = characterData[characterName];
-            const thiefEl = document.querySelector('.thief-image');
-            const personaEl = document.querySelector('.persona-image');
-            const thiefFile = `${characterName}.webp`;
-            const personaFile = `${characterName} - ${basicCharacter.persona}.webp`;
-            const thiefSrc = `{{ site.baseurl }}/assets/img/character-detail/${thiefFile}`;
-            const personaSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-            if (thiefEl) {
-                thiefEl.setAttribute('src', thiefSrc);
-                thiefEl.setAttribute('fetchpriority', 'high');
-                thiefEl.setAttribute('loading', 'eager');
-                thiefEl.setAttribute('data-character', characterName);
-                thiefEl.setAttribute('data-image-file', thiefFile);
-            }
-            if (personaEl) {
-                personaEl.setAttribute('src', personaSrc);
-                personaEl.setAttribute('fetchpriority', 'high');
-                personaEl.setAttribute('loading', 'eager');
-                personaEl.setAttribute('data-character', characterName);
-                personaEl.setAttribute('data-persona', basicCharacter.persona);
-                personaEl.setAttribute('data-image-file', personaFile);
-            }
-            const preload1 = document.createElement('link');
-            preload1.rel = 'preload';
-            preload1.as = 'image';
-            preload1.href = thiefSrc;
-            document.head.appendChild(preload1);
-            const preload2 = document.createElement('link');
-            preload2.rel = 'preload';
-            preload2.as = 'image';
-            preload2.href = personaSrc;
-            document.head.appendChild(preload2);
-        } catch (e) { console.warn('[SAFE:early-image-load]', e); }
-
         // 언어별 데이터 로드 후 캐릭터 정보 설정
         await safeAwait('loadLanguageData', loadLanguageData());
         // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
@@ -1648,20 +1576,6 @@
             }
         } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
 
-
-        // 이미지 설정은 상단 early-image-load 블록에서 이미 수행됨 (fetchpriority=high, preload)
-        // 페르소나 이미지만 언어별 데이터 로드 후 갱신 필요 시 보정
-        try {
-            const personaImgEl = document.querySelector('.persona-image');
-            if (personaImgEl && character && character.persona) {
-                const personaFile = `${characterName} - ${character.persona}.webp`;
-                const expectedSrc = `{{ site.baseurl }}/assets/img/character-detail/${personaFile}`;
-                const encodedPersonaFile = encodeURIComponent(personaFile);
-                if (personaImgEl.src !== expectedSrc && !personaImgEl.src.endsWith(personaFile) && !personaImgEl.src.endsWith(encodedPersonaFile)) {
-                    personaImgEl.setAttribute('src', expectedSrc);
-                }
-            }
-        } catch (e) { console.warn('[SAFE:set-images]', e); }
 
         // Set character name (en에서는 로딩 전에 skeleton 사용)
         try {

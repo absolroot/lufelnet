@@ -128,7 +128,7 @@ window.personaFiles["바스키"] = {
       "name_cn": "玛翰玛翁",
       "desc_cn": "对所有敌人造成45.0/49.3/53.6%攻击力的祝福属性伤害，对50%生命值以下的敌人附加低几率祝福属性即死效果，生命值越低概率越高。",
       "name_en": "Mahamaon",
-      "desc_en": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_en": "Deal Bless damage to all foes equal to 45.0/49.3/53.6% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "name_jp": "マハンマオン",
       "desc_jp": "敵全体に攻撃力45.0/49.3/53.6%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。"
     },

@@ -253,6 +253,7 @@ const dom = {
   btnIantIsProdSubmit: document.getElementById('btn-iant-is-prod-submit'),
   reportSourceLabel: document.getElementById('report-source-label'),
   reportSourceStatus: document.getElementById('report-source-status'),
+  characterPatchDisplayNote: document.getElementById('character-patch-display-note'),
   btnUnignoreSelected: document.getElementById('btn-unignore-selected'),
   newApi: document.getElementById('new-api'),
   newLocal: document.getElementById('new-local'),
@@ -2591,6 +2592,7 @@ function domainSupports(feature) {
 
 function updateDomainDependentUi() {
   if (dom.currentDomain) dom.currentDomain.textContent = state.domain;
+  dom.characterPatchDisplayNote?.classList.toggle('hidden', state.domain !== 'character');
   syncViewTabsForDomain();
   if (dom.addCharacterGroup) {
     dom.addCharacterGroup.classList.toggle('hidden', state.domain !== 'character');

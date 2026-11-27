@@ -20,7 +20,7 @@ window.personaFiles["서큐버스"] = {
   "comment": "리벨리온의 최대 효과를 위해 크리티컬 확률 패시브를 챙긴다. 설명은 10% 단위지만 0.1% 단위로도 효과가 적용된다.",
   "comment_en": "Take the Crit Rate passive to maximize Rebellion's effect. The description is written in 10% units, but the effect is actually applied in 0.1% units.",
   "comment_jp": "リベリオンの最大効果を得るために、クリティカル率パッシブを採用する。説明は10%単位だが、効果自体は0.1%単位で適用される。",
-    "comment_cn": "为了吃满反叛的最大收益，需要携带暴击率被动。说明虽然以10%为单位记载，但0.1%为单位也会生效。",
+  "comment_cn": "为了吃满反叛的最大收益，需要携带暴击率被动。说明虽然以10%为单位记载，但0.1%为单位也会生效。",
   "added": "",
   "cost": {
     "blue": true,
@@ -96,7 +96,7 @@ window.personaFiles["서큐버스"] = {
       "name_en": "Mudo",
       "name_jp": "ムド",
       "desc": "1명의 적에게 공격력 79.2/87.3/95.4%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률로 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
-      "desc_en": "Deal Curse damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_en": "Deal Curse damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "desc_jp": "敵単体に攻撃力79.2/87.3/95.4%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
       "cost": "SP 19",
       "level": "6/7/8",

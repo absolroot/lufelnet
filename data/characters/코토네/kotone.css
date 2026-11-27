@@ -42,8 +42,6 @@ h1.character-name::before,
 
 [data-skill-tooltip].tooltip-text {
     color: #ffd5dd;
-    text-decoration: underline dotted;
-    text-underline-offset: 0.2em;
 }
 
 [data-skill-tooltip].tooltip-text:hover {

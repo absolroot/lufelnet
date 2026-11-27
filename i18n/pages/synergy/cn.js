@@ -13,7 +13,6 @@ window.I18N_PAGE_SYNERGY_CN = {
 
     aranAlbumTitle: "亚兰的画册",
     aranAlbumDescription: "每幅画有15块碎片。碎片可通过都市日程获得，收集3、6、9、12、15块时分别获得奖励。",
-    aranAlbumSpoiler: "画作包含剧透。",
     aranAlbumPage: "画作 {number}",
     aranAlbumUnlock: "协同等级 {rank} 解锁",
     aranTranslationPending: "奖励信息为临时翻译，选项和礼物信息将在确认后补充。",

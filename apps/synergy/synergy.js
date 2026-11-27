@@ -1265,18 +1265,16 @@
         if (!gallery) return;
         const thumbs = Array.from(gallery.querySelectorAll('.synergy-album-thumb'));
         const image = gallery.querySelector('.synergy-album-feature-image');
-        const label = gallery.querySelector('.synergy-album-feature-label');
         const unlock = gallery.querySelector('.synergy-album-feature-unlock');
         const position = gallery.querySelector('.synergy-album-position');
         const rail = gallery.querySelector('.synergy-album-grid');
-        if (!thumbs.length || !image || !label || !unlock || !position) return;
+        if (!thumbs.length || !image || !unlock || !position) return;
         let current = 0;
         function show(index) {
             current = (index + thumbs.length) % thumbs.length;
             const item = thumbs[current];
             image.src = item.dataset.albumSrc;
             image.alt = item.dataset.albumLabel;
-            label.textContent = item.dataset.albumLabel;
             unlock.textContent = item.dataset.albumUnlock;
             position.textContent = `${current + 1} / ${thumbs.length}`;
             thumbs.forEach((thumb, i) => {
@@ -1444,6 +1442,7 @@
             html += `<p class="synergy-album-notice">${escapeHtml(t('aranTranslationPending'))}</p>`;
         }
 
+        let albumHtml = '';
         if (Array.isArray(data.picture_album) && data.picture_album.length) {
             const pictures = data.picture_album.filter(picture => Number.isInteger(Number(picture.rank)) && /^yalancoop-wholepic-\d{2}\.webp$/.test(picture.image));
             const albumCards = pictures.map((picture, index) => {
@@ -1452,7 +1451,7 @@
                 const unlock = t('aranAlbumUnlock').replace('{rank}', String(rank));
                 return `<button type="button" class="synergy-album-thumb${index === 0 ? ' active' : ''}" data-album-index="${index}" data-album-src="${BASE_URL}/assets/img/synergy/aran-album/${picture.image}" data-album-label="${escapeHtml(label)}" data-album-unlock="${escapeHtml(unlock)}" aria-label="${escapeHtml(label + ', ' + unlock)}" aria-pressed="${index === 0}">
                     <img src="${BASE_URL}/assets/img/synergy/aran-album/${picture.image}" alt="" loading="lazy" width="1200" height="655">
-                    <span class="synergy-album-thumb-caption"><span>${escapeHtml(label)}</span><span>${escapeHtml(unlock)}</span></span>
+                    <span class="synergy-album-thumb-caption">${escapeHtml(unlock)}</span>
                 </button>`;
             }).join('');
             if (pictures.length) {
@@ -1468,26 +1467,26 @@
                         const fragment = t('aranAlbumFragmentCount').replace('{count}', String(value));
                         return `<div class="synergy-album-reward"><span>${escapeHtml(fragment)}</span><strong><img src="${BASE_URL}/assets/img/pay/이계 엠버.png" alt="${escapeHtml(t('aranAlbumCurrency'))}" width="18" height="18">${reward.amount}</strong></div>`;
                     }).join('');
-                    rewardHtml = `<div class="synergy-album-rewards"><div class="synergy-album-rewards-heading"><strong>${escapeHtml(t('aranAlbumRewards'))}</strong><span>${escapeHtml(t('aranAlbumCurrency'))} · ${escapeHtml(total)}</span></div><div class="synergy-album-reward-grid">${cells}</div></div>`;
-                }
-                html += `<details class="synergy-album detail-section">
-                    <summary>
-                        <span class="synergy-album-chevron" aria-hidden="true"><svg viewBox="0 0 16 16" width="16" height="16"><path d="M6 3.5 10.5 8 6 12.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-                        <span class="synergy-album-summary-text"><span class="synergy-album-summary-heading"><span>${escapeHtml(t('aranAlbumTitle'))}</span><span class="synergy-album-summary-count">${pictures.length}</span></span><span class="synergy-album-summary-spoiler">${escapeHtml(t('aranAlbumSpoiler'))}</span></span>
-                    </summary>
-                    <div class="synergy-album-content">
+                    rewardHtml = `<div class="synergy-album-rewards">
+                        <div class="synergy-album-rewards-heading">
+                            <strong>${escapeHtml(t('aranAlbumRewards'))}</strong>
+                            <span>${escapeHtml(t('aranAlbumCurrency'))} · ${escapeHtml(total)}</span>
+                        </div>
+                        <div class="synergy-album-reward-grid">${cells}</div>
                         <p class="synergy-album-description">${escapeHtml(t('aranAlbumDescription'))}</p>
-                        ${rewardHtml}
-                        <figure class="synergy-album-feature">
-                            <img class="synergy-album-feature-image" src="${BASE_URL}/assets/img/synergy/aran-album/${pictures[0].image}" alt="${escapeHtml(firstLabel)}" loading="lazy" width="1200" height="655">
-                            <figcaption class="synergy-album-feature-caption">
-                                <div aria-live="polite"><strong class="synergy-album-feature-label">${escapeHtml(firstLabel)}</strong><span class="synergy-album-feature-unlock">${escapeHtml(firstUnlock)}</span></div>
-                                <div class="synergy-album-controls"><button type="button" data-album-step="-1" aria-label="${escapeHtml(t('aranAlbumPrevious'))}">‹</button><span class="synergy-album-position">1 / ${pictures.length}</span><button type="button" data-album-step="1" aria-label="${escapeHtml(t('aranAlbumNext'))}">›</button></div>
-                            </figcaption>
-                        </figure>
-                        <div class="synergy-album-grid" aria-label="${escapeHtml(t('aranAlbumTitle'))}">${albumCards}</div>
-                    </div>
-                </details>`;
+                    </div>`;
+                }
+                albumHtml = `<section class="synergy-album" aria-label="${escapeHtml(t('aranAlbumTitle'))}">
+                    <figure class="synergy-album-feature">
+                        <img class="synergy-album-feature-image" src="${BASE_URL}/assets/img/synergy/aran-album/${pictures[0].image}" alt="${escapeHtml(firstLabel)}" loading="lazy" width="1200" height="655">
+                        <figcaption class="synergy-album-feature-caption">
+                            <span class="synergy-album-feature-unlock" aria-live="polite">${escapeHtml(firstUnlock)}</span>
+                            <div class="synergy-album-controls"><button type="button" data-album-step="-1" aria-label="${escapeHtml(t('aranAlbumPrevious'))}">‹</button><span class="synergy-album-position">1 / ${pictures.length}</span><button type="button" data-album-step="1" aria-label="${escapeHtml(t('aranAlbumNext'))}">›</button></div>
+                        </figcaption>
+                    </figure>
+                    <div class="synergy-album-grid">${albumCards}</div>
+                    ${rewardHtml}
+                </section>`;
             }
         }
 
@@ -1638,29 +1637,10 @@
         }
 
         // 1. 협력 보상 (Special Award)
-        if (data.special_award && data.special_award.length > 0) {
-            // recommend_num 가져오기
-            const char = characterList[characterName];
-            const recommendNums = char && char.recommend_num ? char.recommend_num : [];
-
-            html += `
-                <div class="detail-section">
-                    <h3 class="detail-section-title collapsible">
-                        <span>${t('labelSpecialAward')}</span>
-                        ${chevronSvg}
-                    </h3>
-                    <div class="section-content">
-                        <table class="award-table">
-                        <thead>
-                            <tr>
-                                <th>${t('labelRank')}</th>
-                                <th class="award-name-header">${t('labelName')}</th>
-                                <th class="award-reward-header">${t('labelReward')}</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-            `;
-            data.special_award.forEach(award => {
+        const awards = data.special_award || [];
+        if (awards.length || albumHtml) {
+            const recommendNums = char.recommend_num || [];
+            const awardRows = awards.map(award => {
                 // recommend_num에 해당하는 랭크인지 확인
                 const isRecommended = recommendNums.includes(award.rank);
                 const nameClass = isRecommended ? 'award-name-recommended' : '';
@@ -1672,7 +1652,7 @@
                     nameHtml = `<img src="${iconSrc}" alt="${award.name}" class="award-icon" onerror="this.onerror=null; this.style.display='none';">${award.name}`;
                 }
 
-                html += `
+                return `
                     <tr>
                         <td>${award.rank}</td>
                         <td>
@@ -1685,10 +1665,28 @@
                         <td class="award-description-desktop">${award.description || '-'}</td>
                     </tr>
                 `;
-            });
+            }).join('');
+            const awardTable = awardRows ? `
+                <table class="award-table">
+                    <thead>
+                        <tr>
+                            <th>${t('labelRank')}</th>
+                            <th class="award-name-header">${t('labelName')}</th>
+                            <th class="award-reward-header">${t('labelReward')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>${awardRows}</tbody>
+                </table>
+            ` : '';
             html += `
-                        </tbody>
-                    </table>
+                <div class="detail-section">
+                    <h3 class="detail-section-title collapsible">
+                        <span>${t('labelSpecialAward')}</span>
+                        ${chevronSvg}
+                    </h3>
+                    <div class="section-content">
+                        ${awardTable}
+                        ${albumHtml}
                     </div>
                 </div>
             `;

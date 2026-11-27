@@ -30,7 +30,7 @@ window.enCharacterWeaponData["슌·프론티어"] = {
     "attack": 449.24,
     "defense": 306.25,
     "skill_name": "Combat Axe",
-    "description": "Increase shield by 8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%.When Shun gains a shield, increase user's max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
+    "description": "Increase shield by 8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%. When Gunslinger Shun grants a shield to himself, increase max HP by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
   },
   "weapon5-1": {
     "name": "Frontier Justice",
@@ -49,7 +49,7 @@ window.jpCharacterWeaponData["슌·프론티어"] = {
     "health": 2299.15,
     "attack": 449.24,
     "defense": 306.25,
-    "description": "シールド効果が8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%上昇する。駿・生命欲の暴走がシールドを獲得すると、自身の最大HPが22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%増加し、効果は2ターン持続する。",
+    "description": "シールド量が8.8%/8.8%/11.4%/11.4%/14.0%/14.0%/16.6%上昇する。自身にシールドが付与された時、２ターンの間、自身の最大ＨＰが22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0%上昇する。",
     "skill_name": "戦角斧"
   },
   "weapon5-1": {

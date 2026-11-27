@@ -27,17 +27,17 @@ window.enCharacterWeaponData["쇼키·암야"] = {
   "name": "Tenebre Shoki",
   "weapon4-1": {
     "name": "Spada Vendetta",
-    "health": 1918,
-    "attack": 602,
-    "defense": 303,
+    "health": 1918.23,
+    "attack": 602.36,
+    "defense": 302.89,
     "skill_name": "Blessed Blade",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%.When user gains [Night's Blessing], increase user's damage by 3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5% for 2 turns. Stacks up to 5 times."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. When gaining Nocturnal Blessing, increase Tenebre Shoki's damage by 3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5% for 2 turns. Stacks up to 5 times."
   },
   "weapon5-1": {
     "name": "Spada della Vita",
-    "health": 2398,
-    "attack": 753,
-    "defense": 379,
+    "health": 2398.2,
+    "attack": 753.13,
+    "defense": 378.78,
     "skill_name": "Vital Blade",
     "description": "Increase critical damage by 36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%. When Stellato has been gained, increase Attack by 42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%.\nWhen Tenebre Shoki spends his own HP to use a skill, increase critical rate by 16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4% for 2 turns."
   }
@@ -47,17 +47,17 @@ window.jpCharacterWeaponData["쇼키·암야"] = {
   "name": "星輝・生命欲の暴走",
   "weapon4-1": {
     "name": "スパーダベネデッタ",
-    "health": 1918,
-    "attack": 602,
-    "defense": 303,
+    "health": 1918.23,
+    "attack": 602.36,
+    "defense": 302.89,
     "skill_name": "祝福の剣",
-    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。『暗夜の祝福』を獲得するたび、自身の与ダメージが3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5%上昇し、最大5スタック（2ターン持続）。"
+    "description": "攻撃力が12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%上昇する。『生命欲の祝印』を獲得した時、２ターンの間、自身の与ダメージが3.5%/4.5%/4.5%/5.5%/5.5%/6.5%/6.5%上昇する。最大５つまで累積できる。"
   },
   "weapon5-1": {
     "name": "スパーダデラヴィータ",
-    "health": 2398,
-    "attack": 753,
-    "defense": 379,
+    "health": 2398.2,
+    "attack": 753.13,
+    "defense": 378.78,
     "skill_name": "生命の剣",
     "description": "クリティカルダメージが36.3%/36.3%/47.2%/47.2%/58.1%/58.1%/69.0%上昇する。『ステッラート』を獲得している時、攻撃力が42.5%/55.0%/55.0%/67.5%/67.5%/80.0%/80.0%上昇する。\n自身のＨＰを消費してスキルを使用した時、２ターンの間、自身のクリティカル率が16.4%/21.4%/21.4%/26.4%/26.4%/31.4%/31.4%上昇する。"
   }

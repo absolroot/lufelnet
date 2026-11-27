@@ -226,7 +226,7 @@
       }
     ],
     "rating": {
-      "Attack": 2960.0,
+      "Attack": 2960,
       "Crit Mult.": 2.45,
       "Crit Rate": 0.37,
       "SP Recovery": 2.8
@@ -276,6 +276,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

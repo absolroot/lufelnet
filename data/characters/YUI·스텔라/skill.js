@@ -11,7 +11,7 @@ window.characterSkillsData["YUI·스텔라"] = {
     "type": "단일 피해",
     "sp": 22,
     "cool": 0,
-    "description": "1명의 적에게 공격력 120.8%/133.2%/128.3%/140.6%의 핵열 속성 대미지를 주고, 자신이 『원동력』을 3포인트 획득하며, 다음 턴 종료 시까지 『대난투』 상태에 진입한다.\n『대난투』: 자신의 턴 종료 시 추가 효과 『베지나이츠·출격』을 발동해 모든 베지나이츠를 소집하고, 랜덤 적 1명에게 공격력 93.5%/103.1%/99.2%/108.8%의 핵열 속성 대미지를 준다. 또한 현재 색깔 상태에 따라 아래 효과를 추가로 발동한다.\n『<span style='color:rgb(184, 33, 214);'>보라 가지</span>』 상태가 되면 『원동력』을 1포인트 획득한다.\n『<span style='color:#C7BE5A;'>노란 감자</span>』 상태가 되면 자신이 『줄기의 힘』을 획득해 3턴 동안 『총공격 대미지』가 14.6%/16.1%/15.5%/17.0% 증가한다.\n『<span style='color:rgb(254, 149, 244);'>분홍 버섯</span>』 상태가 되면 스킬 목표가 『버섯 포자』를 획득해 2턴 동안 받는 대미지가 19.5%/21.5%/20.7%/22.7% 증가한다.\n『<span style='color:rgb(11, 190, 11);'>초록 아스파라거스</span>』 상태가 되면 생명이 가장 낮은 동료의 생명을 976/1076/1036/1136포인트 회복한다.\n해당 스킬 시전 후 자신이 감자 나이트를 보유한 경우, 턴 종료 시 자동으로 『<span style='color:#C7BE5A;'>노란 감자</span>』 상태가 된다."
+    "description": "1명의 적에게 공격력 120.8%/133.2%/128.3%/140.6%의 핵열 속성 대미지를 주고, 자신이 『원동력』을 3포인트 획득하며, 다음 턴 종료 시까지 『대난투』 상태에 진입한다.\n『대난투』: 자신의 턴 종료 시 추가 효과 『베지나이츠·출격』을 발동해 모든 베지나이츠를 소집하고, 랜덤 적 1명에게 공격력 93.5%/103.1%/99.2%/108.8%의 핵열 속성 대미지를 준다. 또한 현재 색깔 상태에 따라 아래 효과를 추가로 발동한다.\n『보라 가지』 상태가 되면 『원동력』을 1포인트 획득한다.\n『노란 감자』 상태가 되면 자신이 『줄기의 힘』을 획득해 3턴 동안 『총공격 대미지』가 14.6%/16.1%/15.5%/17.0% 증가한다.\n『분홍 버섯』 상태가 되면 스킬 목표가 『버섯 포자』를 획득해 2턴 동안 받는 대미지가 19.5%/21.5%/20.7%/22.7% 증가한다.\n『초록 아스파라거스』 상태가 되면 생명이 가장 낮은 동료의 생명을 976/1076/1036/1136포인트 회복한다.\n해당 스킬 시전 후 자신이 감자 나이트를 보유한 경우, 턴 종료 시 자동으로 『노란 감자』 상태가 된다."
   },
   "skill2": {
     "name": "베지나이츠·집합",
@@ -27,7 +27,7 @@ window.characterSkillsData["YUI·스텔라"] = {
     "type": "단일 피해",
     "sp": 23,
     "cool": 0,
-    "description": "1명의 적에게 공격력 130.2%/143.5%/138.2%/151.5%의 핵열 속성 대미지를 준다. 보유한 베지나이츠 1개마다 추가로 공격력 29.3%/32.3%/31.1%/34.1%의 핵열 속성 대미지를 1회 준다. 감자 나이트를 2개 이상 보유 시, 초과된 감자 나이트를 소모하며, 소모된 감자 나이트 1개마다 추가로 공격력 24.4%/26.9%/25.9%/28.4%의 핵열 속성 대미지를 1회 준다. 해당 스킬 대미지는 총공격 대미지로 간주한다. 액티브로 해당 스킬 시전 시 자신은 『원동력』을 2포인트 획득한다.\n패시브: 『원동력』이 7포인트에 도달하면 모든 『원동력』을 소모하여 적에게 『베지나이츠·총동원』의 대미지 효과를 준다. 해당 대미지는 적 전체가 분담하며, 페르소나 스킬 대미지로 간주하지 않는다.\n해당 스킬 시전 후 자신이 가지 나이트를 보유한 경우, 턴 종료 시 자동으로 『<span style='color:rgb(184, 33, 214);'>보라 가지</span>』 상태가 된다.\n\n<table border='1' cellspacing='0' cellpadding='5'><thead><tr><th>베지 나이츠</th><th>1기</th><th>2기</th><th>3기</th><th>4기</th></tr></thead><tbody><tr><td>스킬 계수</td><td>159.5%/175.8%/169.3%/185.6%</td><td>188.8%/208.1%/200.4%/219.7%</td><td>218.1%/240.4%/231.5%/253.8%</td><td>247.4%/272.7%/262.6%/287.9%</td></tr></tbody><thead><tr><th>베지 나이츠</th><th>5기</th><th>6기</th><th>7기</th><th>8기</th></tr></thead><tbody><tr><td>스킬 계수</td><td>301.1%/331.9%/319.6%/350.4%</td><td>354.8%/391.1%/376.6%/412.9%</td><td>408.5%/450.3%/433.6%/475.4%</td><td>462.2%/509.5%/490.6%/537.9%</td></tr></tbody></table>"
+    "description": "1명의 적에게 공격력 130.2%/143.5%/138.2%/151.5%의 핵열 속성 대미지를 준다. 보유한 베지나이츠 1개마다 추가로 공격력 29.3%/32.3%/31.1%/34.1%의 핵열 속성 대미지를 1회 준다. 감자 나이트를 2개 이상 보유 시, 초과된 감자 나이트를 소모하며, 소모된 감자 나이트 1개마다 추가로 공격력 24.4%/26.9%/25.9%/28.4%의 핵열 속성 대미지를 1회 준다. 해당 스킬 대미지는 총공격 대미지로 간주한다. 액티브로 해당 스킬 시전 시 자신은 『원동력』을 2포인트 획득한다.\n패시브: 『원동력』이 7포인트에 도달하면 모든 『원동력』을 소모하여 적에게 『베지나이츠·총동원』의 대미지 효과를 준다. 해당 대미지는 적 전체가 분담하며, 페르소나 스킬 대미지로 간주하지 않는다.\n해당 스킬 시전 후 자신이 가지 나이트를 보유한 경우, 턴 종료 시 자동으로 『보라 가지』 상태가 된다.\n\n<table border='1' cellspacing='0' cellpadding='5'><thead><tr><th>베지 나이츠</th><th>1기</th><th>2기</th><th>3기</th><th>4기</th></tr></thead><tbody><tr><td>스킬 계수</td><td>159.5%/175.8%/169.3%/185.6%</td><td>188.8%/208.1%/200.4%/219.7%</td><td>218.1%/240.4%/231.5%/253.8%</td><td>247.4%/272.7%/262.6%/287.9%</td></tr></tbody><thead><tr><th>베지 나이츠</th><th>5기</th><th>6기</th><th>7기</th><th>8기</th></tr></thead><tbody><tr><td>스킬 계수</td><td>301.1%/331.9%/319.6%/350.4%</td><td>354.8%/391.1%/376.6%/412.9%</td><td>408.5%/450.3%/433.6%/475.4%</td><td>462.2%/509.5%/490.6%/537.9%</td></tr></tbody></table>"
   },
   "skill_highlight": {
     "element": "핵열",
@@ -57,7 +57,7 @@ window.enCharacterSkillsData["YUI·스텔라"] = {
     "type": "단일피해",
     "sp": 22,
     "cool": 0,
-    "description": "Deal Nuclear damage to 1 foe equal to 120.8%/133.2%/128.3%/140.6% of Attack, gain 3 Veggie Energy stacks, and enter Huge Harvest state until the end of her next turn.\nIf Potato Knight is present when this skill is used, automatically change to <span style='color:#C7BE5A;'>Potato Yellow</span> at the end of the turn.\nHuge Harvest: At the end of Cosmic Yui's action, activate the Resonance Harvest Havoc, dealing Nuclear damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack. Also, based on the current state, activate the following effects.\n<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>: Gain 1 Veggie Energy.\n<span style='color:#C7BE5A;'>Potato Yellow</span>: Gain Potato Power, and increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\n<span style='color:rgb(254, 149, 244);'>Mushroom Red</span>: Inflict Shroom Spores on the target, and increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\n<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>: Restore 976/1076/1036/1136 HP to the ally with the lowest remaining HP."
+    "description": "Deal Nuclear damage to 1 foe equal to 120.8%/133.2%/128.3%/140.6% of Attack, gain 3 Veggie Energy stacks, and enter Huge Harvest state until the end of her next turn.\nIf Potato Knight is present when this skill is used, automatically change to Potato Yellow at the end of the turn.\nHuge Harvest: At the end of Cosmic Yui's action, activate the Resonance Harvest Havoc, dealing Nuclear damage to 1 random foe equal to 93.5%/103.1%/99.2%/108.8% of Attack. Also, based on the current state, activate the following effects.\nEggplant Purple: Gain 1 Veggie Energy.\nPotato Yellow: Gain Potato Power, and increase All-Out Attack damage by 14.6%/16.1%/15.5%/17.0% for 3 turns.\nMushroom Red: Inflict Shroom Spores on the target, and increase damage taken by 19.5%/21.5%/20.7%/22.7% for 2 turns.\nAsparagus Green: Restore 976/1076/1036/1136 HP to the ally with the lowest remaining HP."
   },
   "skill2": {
     "name": "Veggie Knights, Go!",
@@ -73,7 +73,7 @@ window.enCharacterSkillsData["YUI·스텔라"] = {
     "type": "단일피해",
     "sp": 23,
     "cool": 0,
-    "description": "Deal Nuclear damage to 1 foe equal to 130.2%/143.5%/138.2%/151.5% of Attack, and for each Veggie Knight present, deal 1 more hit of Nuclear damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. Also, if 2 or more Potato Knights are present, spend all but 1 Potato Knight, and for each Potato Knight spent, deal 1 more hit of Nuclear damage equal to 24.4%/26.9%/25.9%/28.4% of Attack. This skill's damage is counted as an All-Out Attack.\nWhen this skill is selected and used, gain 2 Veggie Energy stacks.\nIf Eggplant Knight is present after activating this skill, automatically change to <span style='color:rgb(184, 33, 214);'>Eggplant Purple</span> state at the end of the turn.\nPassive: At 7 Veggie Energy stacks, able to spend all Veggie Energy stacks to activate damage effect of Veg-Out Attack. Damage is distributed equally among all foes. This is not treated as normal skill damage."
+    "description": "Deal Nuclear damage to 1 foe equal to 130.2%/143.5%/138.2%/151.5% of Attack, and for each Veggie Knight present, deal 1 more hit of Nuclear damage equal to 29.3%/32.3%/31.1%/34.1% of Attack. Also, if 2 or more Potato Knights are present, spend all but 1 Potato Knight, and for each Potato Knight spent, deal 1 more hit of Nuclear damage equal to 24.4%/26.9%/25.9%/28.4% of Attack. This skill's damage is counted as an All-Out Attack.\nWhen this skill is selected and used, gain 2 Veggie Energy stacks.\nIf Eggplant Knight is present after activating this skill, automatically change to Eggplant Purple state at the end of the turn.\nPassive: At 7 Veggie Energy stacks, able to spend all Veggie Energy stacks to activate damage effect of Veg-Out Attack. Damage is distributed equally among all foes. This is not treated as normal skill damage."
   },
   "skill_highlight": {
     "element": "핵열",
@@ -145,6 +145,13 @@ function colorizeYuiSkillTerms(data, terms) {
     }
   }
 }
+
+colorizeYuiSkillTerms(window.characterSkillsData["YUI·스텔라"], [
+  ["보라 가지", "rgb(184, 33, 214)"],
+  ["노란 감자", "#C7BE5A"],
+  ["분홍 버섯", "rgb(254, 149, 244)"],
+  ["초록 아스파라거스", "rgb(11, 190, 11)"]
+]);
 
 colorizeYuiSkillTerms(window.enCharacterSkillsData["YUI·스텔라"], [
   ["Eggplant Purple", "rgb(184, 33, 214)"],

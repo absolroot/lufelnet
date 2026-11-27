@@ -74,7 +74,7 @@ window.personaFiles["아크엔젤"] = {
       "name_en": "Hama",
       "name_jp": "ハマ",
       "desc": "1명의 적에게 공격력 79.2/87.3/95.4%의 축복 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률의 축복 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
-      "desc_en": "Deal Bless damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_en": "Deal Bless damage to 1 foe equal to 79.2/87.3/95.4% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "desc_jp": "敵単体に攻撃力79.2/87.3/95.4%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
       "cost": "SP 19",
       "level": "6/7/8",

@@ -276,6 +276,33 @@
     transform: scale(1);
 }
 
+.character-portrait-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    box-sizing: border-box;
+    width: 26px;
+    height: 26px;
+    border: 2px solid rgb(255 255 255 / 35%);
+    border-top-color: #fff;
+    border-radius: 50%;
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 3;
+    animation: character-portrait-spin 0.9s linear infinite;
+}
+
+@keyframes character-portrait-spin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .character-portrait-spinner {
+        animation: none;
+    }
+}
+
 .element-icon {
     width: 11% !important;
     height: auto !important;

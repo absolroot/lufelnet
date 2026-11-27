@@ -23,38 +23,38 @@ window.ritualData["준페이"] = {
 
 window.enCharacterRitualData["준페이"] = {
   "name": "Junpei Iori",
-  "r0": "Wannabe Hero",
-  "r0_detail": "At the end of any ally's turn, Junpei gains 1 [Competitive Heart] stack. Stacks up to 15 times.\nWhen [Competitive Heart] reaches 10 stacks, increase party's Attack by 20% and Fire damage dealt by 20%.\nWhen [Competitive Heart] reaches 15 stacks, increase Junpei's damage down by 5%, increase party's Attack by 20% and Fire damage dealt by 20%.\nJunpei gains 1 Charge stack every 2 turns, when taking non Damage Over Time damage, use [Power Swing] on the attacker then gain 6 [Competitive Heart] stacks.\n[Power Swing]: Deal guaranteed Critical Physical damage to all foes equal to 42.2% of Junpei's max HP. Also inflict [Fever Pitch] on all foes, and grant the party a Shield equal to 12% of Junpei's max HP for 3 turns. When using [Blazing Strike]/[Sunder Strike] to attack foes with [Fever Pitch], activate bonus effects. When a foe with [Fever Pitch] is defeated, transfer [Fever Pitch] to the foe with the highest HP. [Power Swing] counts as a Resonance.",
-  "r1": "Mood Maker",
-  "r1_detail": "At the start of battle, gain 15 [Competitive Heart] stacks. Increase the maximum number of [Competitive Heart] stacks to 30.\nWhen [Competitive Heart] reaches 25 stacks, increase party's critical damage by 20%, increase Fire Assassins or Sweepers' critical damage by 20% more.\nWhen [Competitive Heart] reaches 30 stacks, increase party's Attack by 20%, increase Fire Assassins or Sweepers' Attack by 20% more.",
-  "r2": "End of Inferiority",
-  "r2_detail": "When activating [Power Swing], permanently increase party's damage by 15%. Stacks up to 3 times.",
-  "r3": "Energetic Partner",
-  "r3_detail": "Increase the skill levels of [Hero Focus] and [Thief Tactics] by 3.",
+  "r0": "Heroic Ambition",
+  "r0_detail": "At the end of an ally's action, Junpei gains 1 Vigor stack. Vigor stacks up to 15 times, and gain the following effects based on the number of stacks.\n10: Increase party's Attack by 20% and Fire damage dealt by 25%.\n15: Increase Junpei's damage reduction by 5%. Increase party's Attack 20% more and Fire damage dealt 25% more.\nAlso, gain 1 Batter Up stack every 2 turns. When taking damage other than continuous damage, spend Batter Up, and activate Batter Up on the attacker.\nBatter Up: Deal Physical damage to 1 foe equal to 42.2% of max HP, and inflict Clean Hit on all foes for 2 turns. This attack is counted as a Resonance, and deals a guaranteed critical. Also, grant all allies a shield equal to 12% of Junpei's max HP for 3 turns, and gain 6 Vigor stacks.\nClean Hit: When attacking a foe in this state with Scorching Strike or Razorwing Slash, spend all Clean Hit on the field and activate additional effects for each skill. When a foe in this state is KO'd, transfer to the foe with the highest current HP.",
+  "r1": "Life of the Party",
+  "r1_detail": "At the start of battle, gain 15 Vigor stacks. Also, the maximum number of Vigor stacks becomes 30, and gain the following effects based on the number of stacks.\n25: Increase party's critical damage by 20%. Increase Fire Sweeper or Assassin allies' critical damage by 40% more.\n30: Increase party's Attack by 20%. Increase Fire Sweeper or Assassin allies' Attack by 40% more.",
+  "r2": "Abandoning Doubts",
+  "r2_detail": "When Batter Up is activated, permanently increase party's damage dealt by 25%. Stacks up to 3 times.",
+  "r3": "Easygoing Partner",
+  "r3_detail": "Increase the skill levels of All Eyes on Me and Combat Tactics by 3.",
   "r4": "Weight of Life",
-  "r4_detail": "When using Theurgy, fully restore user's HP.",
-  "r5": "On My Life!",
-  "r5_detail": "Increase the skill levels of [Blazing Strike] and [Sunder Strike] by 3.",
-  "r6": "Unknown Possibilities",
-  "r6_detail": "When gaining 15 [Competitive Heart] stacks, Junpei can upgrade his Melee Attack to [Power Swing], and this [Power Swing] does not consume his turn.\nThis [Power Swing] can inflict [Fever Pitch] on all foes or upgrade the target's [Fever Pitch] to [Fever Pitch: Improved]. When using [Blazing Strike]/[Sunder Strike] while any foe is afflicted with [Fever Pitch: Improved], increase all foes' downed damage taken by 20% and Fire damage taken by 60%. Also increase Fire Assassins or Sweepers' downed damage by 10%. Lasts for 1 turn.\nAt the start of battle, double Junpei's base Theurgy Energy recovery."
+  "r4_detail": "When activating a Theurgy, fully restore Junpei's HP.",
+  "r5": "I'll Protect You!",
+  "r5_detail": "Increase the skill level of Scorching Strike and Razorwing Slash by 3.",
+  "r6": "Unknown Potential",
+  "r6_detail": "For every 15 Vigor stacks gained, melee attacks evolve to Batter Up, and can be used without spending a turn. This Batter Up can inflict Clean Hit on all foes, and if the target already has Clean Hit, evolve to Perfect Hit for 2 turns. When attacking foes with Perfect Hit with Scorching Strike or Razorwing Slash, spend all Perfect Hit and Clean Hit on the field and increase foes' damage taken while downed by 20% and Fire damage taken by 80% for 1 turn. Also, increase Fire Sweeper or Assassin allies' damage dealt to downed foes by 20% for 1 turn.\nAlso, even if there are no Fire Sweeper or Assassin allies in the party at the start of battle, double Junpei's Theurgy gauge increase rate."
 };
 
 window.jpCharacterRitualData["준페이"] = {
-  "name": "伊織順平",
-  "r0": "英雄への渇望",
-  "r0_detail": "任意の味方ターン終了時、伊織順平は『勝負心』を1スタック獲得する（最大15スタック）。\n『勝負心』が10スタックに達すると、味方全体の攻撃力が20%上昇し、与える火炎ダメージが20%上昇する。\n『勝負心』が15スタックに達すると、伊織順平のダメージ軽減が5%上昇し、味方全体の攻撃力がさらに20%上昇、与える火炎ダメージがさらに20%上昇する。\n伊織順平は2ターンごとに1回チャージを獲得し、継続ダメージ以外のダメージを受けた時、攻撃者に『全力スイング』を放ち『勝負心』を6スタック獲得できる。\n『全力スイング』：敵全体に『確定CRT』の最大HP42.2%の物理属性ダメージを与え、『狂熱球』を付与し、味方全体に伊織順平の最大HP12%相当のシールドを付与する（3ターン継続）。\n『輝く空』/『翼を砕く』で『狂熱球』状態の敵を攻撃すると、使用したスキルに応じて追加効果が異なる。\n『狂熱球』状態の敵が戦闘不能になると、『狂熱球』は最もHPの高い敵へ移る。\n『全力スイング』は追加効果として扱う。",
+  "name": "伊織 順平",
+  "r0": "ヒーローへの渇望",
+  "r0_detail": "順平は味方の行動終了時に『気勢』を１つ獲得する。『気勢』は最大１５個まで累積でき、累積数に応じて以下の効果を獲得する。\n「１０：味方全体の攻撃力が２０%上昇し、火炎属性の与ダメージが２５%上昇」\n「１５：自身のダメージ軽減が５%上昇。味方全体の攻撃力が追加で２０%上昇し、火炎属性の与ダメージが追加で２５%上昇」\nまた、２ターンごとに『フルスイング』を１つ獲得する。持続ダメージを除くダメージを受けた時に『フルスイング』を消費し、攻撃した対象に『フルスイング』を発動する。\n『フルスイング』：敵単体に最大ＨＰ４２.２%の物理属性ダメージを与え、２ターンの間、敵全体を『ジャストミート』状態にする。この攻撃は意識奏功として扱い、必ずクリティカルが発生する。さらに３ターンの間、味方全体に順平の最大ＨＰ１２%分のシールドを付与し、『気勢』を６つ獲得する。\n『ジャストミート』：この状態の対象を『煌天撃』／『鋭翼の斬撃』で攻撃した時、敵全体の『ジャストミート』を消費し、それぞれのスキルに応じた追加効果が発動する。この状態の敵が戦闘不能になると、ＨＰが最も高い敵に『ジャストミート』が転移する。",
   "r1": "ムードメーカー",
-  "r1_detail": "戦闘開始時『勝負心』を15スタック獲得し、『勝負心』の上限が30スタックに増加する。\n『勝負心』が25スタックに達すると：味方全体のCRT倍率が20%上昇し、火炎属性の反抗または支配の味方はCRT倍率がさらに20%上昇する。\n『勝負心』が30スタックに達すると：味方全体の攻撃力が20%上昇し、火炎属性の反抗または支配の味方は攻撃力がさらに20%上昇する。",
-  "r2": "劣等感の果て",
-  "r2_detail": "『全力スイング』発動時、味方全体の与えるダメージが恒久的に15%上昇する。最大3回まで累積。",
-  "r3": "元気な相棒",
-  "r3_detail": "『英雄集中』と『戦闘技術』のスキルレベルが3上昇し、最大15まで上昇する。",
+  "r1_detail": "戦闘開始時、『気勢』を１５個獲得する。また、『気勢』が最大３０個まで累積できるようになり、累積数に応じて以下の効果を獲得する。\n「２５：味方全体のクリティカルダメージが２０%上昇。火炎属性の支配／反抗ロールの味方は追加でクリティカルダメージが４０%上昇」\n「３０：味方全体の攻撃力が２０%上昇。火炎属性の支配／反抗ロールの味方は追加で攻撃力が４０%上昇」",
+  "r2": "劣等感の先に",
+  "r2_detail": "『フルスイング』を発動した時、味方全体の与ダメージが永続的に２５%上昇する。最大３つまで累積できる。",
+  "r3": "お調子者の相棒",
+  "r3_detail": "『フォーカスヒーロー』／『戦術技能』のスキルレベルが３上昇する。",
   "r4": "命の重み",
-  "r4_detail": "テウルギア発動時、自身のHPを全回復する。",
-  "r5": "命懸けで守る！",
-  "r5_detail": "『輝く空』と『翼を砕く』のスキルレベルが3上昇し、最大15まで上昇する。",
-  "r6": "未知の可能性",
-  "r6_detail": "『勝負心』を15スタック獲得するたび、通常攻撃を『全力スイング』に強化できる。この『全力スイング』はターンを消費しない。\nこの『全力スイング』は敵全体に『狂熱球』を付与するか、対象の『狂熱球』を『狂熱球・改』へ強化できる。\n『輝く空』/『翼を砕く』使用時、『狂熱球・改』状態の敵が1体でも存在するなら、敵全体のダウン脆弱が20%上昇し、受ける火炎ダメージが60%上昇、火炎属性の反抗または支配の味方のダウンダメージが10%上昇する（1ターン継続）。\n戦闘開始時に火炎属性の反抗または支配の味方がいるかどうかに関わらず、自身のテウルギアエネルギー基本回復量が2倍になる。"
+  "r4_detail": "テウルギアを発動した時、自身のＨＰを全回復する。",
+  "r5": "死んでも守る！",
+  "r5_detail": "『煌天撃』／『鋭翼の斬撃』のスキルレベルが３上昇する。",
+  "r6": "未知なる可能性",
+  "r6_detail": "『気勢』を１５個獲得するごとに近接攻撃を『フルスイング』に強化し、使用してもターンを消費しない。この『フルスイング』は敵全体を『ジャストミート』状態にし、対象がすでに『ジャストミート』状態の場合は２ターンの間、『クリーンヒット』状態に強化する。『煌天撃』／『鋭翼の斬撃』で攻撃する時、『クリーンヒット』状態の敵がいる場合、敵全体の『ジャストミート』と『クリーンヒット』を消費して１ターンの間、敵全体のダウン状態被ダメージが２０%上昇し、火炎属性の被ダメージが８０%上昇する。さらに１ターンの間、火炎属性の支配／反抗ロールの味方のダウン状態与ダメージが２０%上昇する。\nまた、戦闘開始時の編成に火炎属性の支配／反抗ロールの味方を含まなくても、自身のテウルギアゲージの増加量が２倍になる。"
 };
 
 window.cnCharacterRitualData["준페이"] = {

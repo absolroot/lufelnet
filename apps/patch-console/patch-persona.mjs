@@ -17,6 +17,7 @@ import {
   stableStringify,
   tokenizeDiffPath
 } from './lib/patch-console-shared.mjs';
+import { isPercentageSeriesFormattingDiff } from './patch-text-diff.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -81,7 +82,7 @@ function parseCli(argv) {
 }
 
 function mergePatch(base, patch) {
-  if (patch === undefined) return clone(base);
+  if (patch === undefined || isPercentageSeriesFormattingDiff(base, patch)) return clone(base);
 
   if (Array.isArray(patch)) {
     const out = Array.isArray(base) ? clone(base) : [];

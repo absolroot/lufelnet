@@ -48,7 +48,7 @@ window.personaFiles["누에"] = {
       "name_en": "Mamudo",
       "name_jp": "マハムド",
       "desc": "모든 적에게 공격력 39.9/44.0/48.1%의 주원 속성 대미지를 주고, 생명이 50% 이하인 적에게 낮은 확률의 주원 속성 즉사 효과를 추가하며 생명이 낮을수록 확률이 높아진다.",
-      "desc_en": "Deal Curse damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_en": "Deal Curse damage to all foes equal to 39.9/44.0/48.1% of Attack. Low chance to deal Curse insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "desc_jp": "敵全体に攻撃力39.9/44.0/48.1%の呪怨属性ダメージを与える。ＨＰ５０%以下の敵に低確率で呪怨属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
       "cost": "SP 19",
       "level": "6/7/8",

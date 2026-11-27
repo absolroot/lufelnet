@@ -6,6 +6,16 @@
 const HOME_GUIDE_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 const HOME_GUIDE_GLOBAL_REGIONS = new Set(['en', 'jp', 'sea']);
 const HOME_GUIDE_PINNED_GLOBAL_ARTICLE_ID = 'theurgy';
+const HOME_GUIDE_FEATURED_ARTICLE_IDS = ['permanent-food', 'lv100'];
+const HOME_GUIDE_COMBAT_ARTICLE_IDS = ['theurgy', 'speed-order'];
+
+function getHomeGuidePinnedIds(rawLang) {
+    if (rawLang === 'en' || rawLang === 'jp') {
+        return [...HOME_GUIDE_FEATURED_ARTICLE_IDS, ...HOME_GUIDE_COMBAT_ARTICLE_IDS];
+    }
+    if (rawLang === 'kr') return HOME_GUIDE_COMBAT_ARTICLE_IDS;
+    return shouldPinHomeGuideArticle(rawLang) ? [HOME_GUIDE_PINNED_GLOBAL_ARTICLE_ID] : [];
+}
 
 function shouldShowHomeGuides(rawLang) {
     return String(rawLang || '').toLowerCase() !== 'cn';
@@ -75,27 +85,14 @@ function shouldPinHomeGuideArticle(rawLang) {
 
 function sortHomeGuides(guides, rawLang) {
     const sortedGuides = [...guides];
+    const pinnedIds = getHomeGuidePinnedIds(rawLang);
+    const rank = guide => {
+        if (guide.category === 'notice') return 0;
+        const index = pinnedIds.indexOf(guide.id);
+        return index === -1 ? pinnedIds.length + 1 : index + 1;
+    };
 
-    // Keep the same ordering rule as the article list page:
-    // notice first, then newest first within each group.
-    sortedGuides.sort((a, b) => {
-        const aNotice = a.category === 'notice' ? 0 : 1;
-        const bNotice = b.category === 'notice' ? 0 : 1;
-        if (aNotice !== bNotice) return aNotice - bNotice;
-        return new Date(b.date) - new Date(a.date);
-    });
-
-    if (!shouldPinHomeGuideArticle(rawLang)) {
-        return sortedGuides;
-    }
-
-    const pinnedIndex = sortedGuides.findIndex(guide => guide.id === HOME_GUIDE_PINNED_GLOBAL_ARTICLE_ID);
-    if (pinnedIndex === -1) return sortedGuides;
-
-    const [pinnedGuide] = sortedGuides.splice(pinnedIndex, 1);
-    const firstNonNoticeIndex = sortedGuides.findIndex(guide => guide.category !== 'notice');
-    const insertIndex = firstNonNoticeIndex === -1 ? sortedGuides.length : firstNonNoticeIndex;
-    sortedGuides.splice(insertIndex, 0, pinnedGuide);
+    sortedGuides.sort((a, b) => rank(a) - rank(b) || new Date(b.date) - new Date(a.date));
     return sortedGuides;
 }
 
@@ -147,10 +144,8 @@ async function loadHomeGuidesOnce(currentLang) {
             return { empty: true };
         }
 
-        // Render guides
         recentGuides.forEach((guide, index) => {
-            const item = createGuideItem(guide, rawLang, index, recentGuides.length);
-            container.appendChild(item);
+            container.appendChild(createGuideItem(guide, rawLang, index, recentGuides.length));
         });
         return { empty: false };
 

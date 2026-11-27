@@ -22,6 +22,7 @@ import {
 } from './lib/patch-console-shared.mjs';
 import { buildCharacterInnatePayload } from '../../scripts/shared/character-innate.mjs';
 import tooltipText from '../../assets/js/config-tooltips.js';
+import { isPercentageSeriesFormattingDiff } from './patch-text-diff.mjs';
 
 const recast = recastImport.default || recastImport;
 const b = recast.types.builders;
@@ -445,6 +446,17 @@ function loadWindowObject(filePath) {
 }
 
 function readWindowEntry(filePath, windowName, charKey) {
+  if (charKey === 'YUI·스텔라' && ['skill.js', 'ritual.js'].includes(path.basename(filePath)) && fs.existsSync(filePath)) {
+    // Read BUI PRISM's source object before the browser-only color effects are applied.
+    const code = fs.readFileSync(filePath, 'utf8');
+    const statement = parseAst(code).program.body.find(node =>
+      node.type === 'ExpressionStatement' && isWindowKeyAssignment(node.expression, windowName, charKey)
+    );
+    if (!statement) return {};
+    const source = recast.print(statement.expression.right).code;
+    return vm.runInNewContext(`(${source})`, {}, { timeout: 3000 });
+  }
+
   const win = loadWindowObject(filePath);
   const table = win[windowName];
   if (!table || typeof table !== 'object') return {};
@@ -505,7 +517,6 @@ function isIgnoredSkillFieldDiff(part, pathText) {
 }
 
 function applyPartPatchPolicy(part, existingValue, nextValue) {
-  if (part !== 'skill') return nextValue;
   const changedPaths = diffPaths(existingValue, nextValue).filter(Boolean);
   if (changedPaths.length === 0) return nextValue;
 
@@ -513,7 +524,7 @@ function applyPartPatchPolicy(part, existingValue, nextValue) {
   for (const pathText of changedPaths) {
     const before = getValueAtDiffPath(existingValue, pathText);
     const after = getValueAtDiffPath(adjusted, pathText);
-    if (isIgnoredSkillFieldDiff(part, pathText)) {
+    if (isPercentageSeriesFormattingDiff(before, after) || isIgnoredSkillFieldDiff(part, pathText)) {
       adjusted = setValueAtDiffPath(adjusted, pathText, before);
       continue;
     }

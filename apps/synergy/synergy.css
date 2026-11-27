@@ -1394,52 +1394,19 @@ tr:hover .item-source-icon {
     line-height: 1.6;
 }
 
-.synergy-album summary {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 1.15rem;
-    font-weight: 700;
-    padding: 12px 0;
-    list-style: none;
-}
-.synergy-album summary::-webkit-details-marker { display: none; }
-
-.synergy-album-chevron {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 16px;
-    height: 1.5rem;
-    color: #d4a3a3;
-}
-.synergy-album-chevron svg {
-    display: block;
-    transition: transform 0.2s ease;
-}
-
-.synergy-album[open] .synergy-album-chevron svg { transform: rotate(90deg); }
-.synergy-album-summary-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
-.synergy-album-summary-heading { display: flex; align-items: baseline; gap: 10px; line-height: 1.5rem; }
-.synergy-album-summary-count { color: #b9a5a5; font-size: 0.8rem; font-weight: 400; }
-.synergy-album-summary-spoiler { color: #c8b4b5; font-size: 0.8rem; font-weight: 400; line-height: 1.4; }
-.synergy-album-content { padding-top: 2px; }
-
-.synergy-album summary:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 4px;
+.award-table + .synergy-album {
+    margin-top: clamp(32px, 3.5vw, 48px);
 }
 
 .synergy-album-description {
+    margin: 12px 0 0;
+    font-size: 0.85rem;
     line-height: 1.6;
     color: #ddd;
 }
 
-.synergy-album-description { margin-bottom: 16px; }
-
 .synergy-album-rewards {
-    margin: 0 0 20px;
+    margin-top: 16px;
     padding: 12px;
     border: 1px solid #44383a;
     border-radius: 6px;
@@ -1491,8 +1458,6 @@ tr:hover .item-source-icon {
     gap: 12px;
     padding: 13px 16px;
 }
-.synergy-album-feature-caption > div:first-child { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 12px; min-width: 0; }
-.synergy-album-feature-label { color: #fff; font-size: 0.95rem; }
 .synergy-album-feature-unlock { color: #cbb8b9; font-size: 0.82rem; }
 .synergy-album-controls { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .synergy-album-controls button {
@@ -1559,14 +1524,12 @@ tr:hover .item-source-icon {
 }
 
 .synergy-album-thumb-caption {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
+    display: block;
     padding: 7px 8px;
+    color: #c9b6b8;
     font-size: 0.75rem;
     line-height: 1.3;
 }
-.synergy-album-thumb-caption span:last-child { color: #c9b6b8; }
 
 @media (max-width: 768px) {
     .synergy-album-feature { width: 100%; }
@@ -1574,7 +1537,6 @@ tr:hover .item-source-icon {
     .synergy-album-feature-caption { padding: 10px 12px; }
 }
 
-@media (prefers-reduced-motion: reduce) { .synergy-album-chevron svg { transition: none; } }
 @media (prefers-reduced-motion: no-preference) {
     .character-tab-image { transition: scale 180ms ease; }
     .character-tab:active, .time-filter-btn:active { scale: .97; }

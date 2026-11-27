@@ -13,7 +13,6 @@ window.I18N_PAGE_SYNERGY_JP = {
 
     aranAlbumTitle: "亜蘭の画册",
     aranAlbumDescription: "各作品は15個のピースで構成されます。都市の日程でピースを集め、3・6・9・12・15個ごとに報酬を獲得できます。",
-    aranAlbumSpoiler: "作品にはネタバレが含まれます。",
     aranAlbumPage: "作品 {number}",
     aranAlbumUnlock: "シナジーランク{rank}で解放",
     aranTranslationPending: "報酬情報は暫定訳です。選択肢とプレゼントの情報は確認後に追加します。",

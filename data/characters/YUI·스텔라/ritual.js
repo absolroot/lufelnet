@@ -6,9 +6,9 @@ window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 window.ritualData["YUI·스텔라"] = {
   "name": "YUI·스텔라",
   "r0": "두근두근 새싹 군단",
-  "r0_detail": "YUI·스텔라는 전투 중 가지, 감자, 버섯, 아스파라거스 4종의 베지나이츠를 소환하고 『원동력』을 누적한다. 『원동력』이 충분히 누적되면 YUI·스텔라는 베지나이츠에게 명령을 내려 적에게 『베지나이츠·총동원』을 발동할 수 있다. 해당 스킬 대미지는 총공격 대미지로 간주한다.\nYUI·스텔라는 각기 다른 베지나이츠를 보유했을 때, 턴 시작 시 괴도복을 해당 나이트의 색깔로 바꾸고 그에 맞는 능력 보너스를 획득한다.\n\n『<span style='color:rgb(184, 33, 214);'>보라 가지</span>』: 페르소나 스킬 시전 후, 추가로 『원동력』을 1포인트 획득한다.\n『<span style='color:#C7BE5A;'>노란 감자</span>』: 자신의 총공격 대미지가 15% 증가한다.\n『<span style='color:rgb(254, 149, 244);'>분홍 버섯</span>』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 4.5%의 기본 확률로 스킬 목표를 1턴 동안 세뇌 상태에 빠트린다.\n『<span style='color:rgb(11, 190, 11);'>초록 아스파라거스</span>』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 해당 대미지의 1%만큼 자신의 생명을 회복한다(1회 상한 1,000포인트).",
+  "r0_detail": "YUI·스텔라는 전투 중 가지, 감자, 버섯, 아스파라거스 4종의 베지나이츠를 소환하고 『원동력』을 누적한다. 『원동력』이 충분히 누적되면 YUI·스텔라는 베지나이츠에게 명령을 내려 적에게 『베지나이츠·총동원』을 발동할 수 있다. 해당 스킬 대미지는 총공격 대미지로 간주한다.\nYUI·스텔라는 각기 다른 베지나이츠를 보유했을 때, 턴 시작 시 괴도복을 해당 나이트의 색깔로 바꾸고 그에 맞는 능력 보너스를 획득한다.\n\n『보라 가지』: 페르소나 스킬 시전 후, 추가로 『원동력』을 1포인트 획득한다.\n『노란 감자』: 자신의 총공격 대미지가 15% 증가한다.\n『분홍 버섯』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 4.5%의 기본 확률로 스킬 목표를 1턴 동안 세뇌 상태에 빠트린다.\n『초록 아스파라거스』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 해당 대미지의 1%만큼 자신의 생명을 회복한다(1회 상한 1,000포인트).",
   "r1": "심우주 방어전",
-  "r1_detail": "전투 시작 시 YUI·스텔라가 즉시 각기 다른 4종의 베지나이츠를 소환하며, 『원동력』을 최대 중첩으로 획득한다.\n베지나이츠를 1개 보유할 때마다 YUI·스텔라의 크리티컬 효과가 8% 증가하고, 최대 5개의 베지나이츠까지 적용된다.\n전투 시작 시 YUI·스텔라가 『<span style='color:#C7BE5A;'>노란 감자</span>』 상태이면 자신의 첫 턴 시작 시 자동으로 『<span style='color:rgb(184, 33, 214);'>보라 가지</span>』 상태로 전환된다.",
+  "r1_detail": "전투 시작 시 YUI·스텔라가 즉시 각기 다른 4종의 베지나이츠를 소환하며, 『원동력』을 최대 중첩으로 획득한다.\n베지나이츠를 1개 보유할 때마다 YUI·스텔라의 크리티컬 효과가 8% 증가하고, 최대 5개의 베지나이츠까지 적용된다.\n전투 시작 시 YUI·스텔라가 『노란 감자』 상태이면 자신의 첫 턴 시작 시 자동으로 『보라 가지』 상태로 전환된다.",
   "r2": "마지막 감자",
   "r2_detail": "YUI·스텔라가 소모되지 않는 감자 나이트를 1개 추가로 보유할 때마다, 추가 효과 『베지나이츠·출격』으로 발동하는 『줄기의 힘』 효과가 추가로 10% 증가한다. 전투 시작 시 『줄기의 힘』을 획득하며, 2턴 동안 지속된다.",
   "r3": "어둠의 밭 규칙",
@@ -18,15 +18,15 @@ window.ritualData["YUI·스텔라"] = {
   "r5": "초시공 함대",
   "r5_detail": "『우주 대난투』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r6": "은하 축제",
-  "r6_detail": "『<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>스텔라 윙</span>』 상태를 추가로 해제한다. 괴도복이 스텔라 형태로 변경되며, 동시에 『<span style='color:rgb(184, 33, 214);'>보라 가지</span>』, 『<span style='color:#C7BE5A;'>노란 감자</span>』, 『<span style='color:rgb(254, 149, 244);'>분홍 버섯</span>』, 『<span style='color:rgb(11, 190, 11);'>초록 아스파라거스</span>』의 능력을 획득한다.\n전투 시작 시 『대난투』 상태에 진입한다(해당 전투에서 영구 적용).\n『대난투』 효과 조정: 모든 동료의 턴이 끝날 때마다 추가 효과 『베지나이츠·출격』을 발동한다. 액티브로 『베지나이츠·집합』 시전 시 감자 나이트를 1개 추가로 소환한다."
+  "r6_detail": "『스텔라 윙』 상태를 추가로 해제한다. 괴도복이 스텔라 형태로 변경되며, 동시에 『보라 가지』, 『노란 감자』, 『분홍 버섯』, 『초록 아스파라거스』의 능력을 획득한다.\n전투 시작 시 『대난투』 상태에 진입한다(해당 전투에서 영구 적용).\n『대난투』 효과 조정: 모든 동료의 턴이 끝날 때마다 추가 효과 『베지나이츠·출격』을 발동한다. 액티브로 『베지나이츠·집합』 시전 시 감자 나이트를 1개 추가로 소환한다."
 };
 
 window.enCharacterRitualData["YUI·스텔라"] = {
   "name": "Cosmic Yui",
   "r0": "Vegetable Avatar",
-  "r0_detail": "Cosmic Yui can summon 4 types of Veggie Knights during battle, and can stack Veggie Energy. When Veggie Energy is stacked, Cosmic Yui can activate Veg-Out Attack. This skill's damage is counted as All-Out Attack damage.\nAt the start of the turn, gain abilities based on Veggie Knights gained, and change the color of Cosmic Yui's Phantom Thief Attire.\n<span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>: When using a skill, gain 1 more stack of Veggie Energy.\n<span style='color:#C7BE5A;'>Potato Yellow</span>: Increase Cosmic Yui's All-Out Attack damage by 15%.\n<span style='color:rgb(254, 149, 244);'>Mushroom Red</span>: When dealing damage with a skill or All-Out Attack, 4.5% chance to inflict Brainwash on the target for 1 turn.\n<span style='color:rgb(11, 190, 11);'>Asparagus Green</span>: When dealing damage with a skill or All-Out Attack, restore Cosmic Yui's HP by 1% of the damage dealt (up to a maximum of 1000 at once).",
+  "r0_detail": "Cosmic Yui can summon 4 types of Veggie Knights during battle, and can stack Veggie Energy. When Veggie Energy is stacked, Cosmic Yui can activate Veg-Out Attack. This skill's damage is counted as All-Out Attack damage.\nAt the start of the turn, gain abilities based on Veggie Knights gained, and change the color of Cosmic Yui's Phantom Thief Attire.\nEggplant Purple: When using a skill, gain 1 more stack of Veggie Energy.\nPotato Yellow: Increase Cosmic Yui's All-Out Attack damage by 15%.\nMushroom Red: When dealing damage with a skill or All-Out Attack, 4.5% chance to inflict Brainwash on the target for 1 turn.\nAsparagus Green: When dealing damage with a skill or All-Out Attack, restore Cosmic Yui's HP by 1% of the damage dealt (up to a maximum of 1000 at once).",
   "r1": "Veggie Knight Rounds",
-  "r1_detail": "At the start of battle, Cosmic Yui immediately summons all 4 types of Veggie Knights and gains the maximum number of Veggie Energy stacks.\nFor each Veggie Knight gained, increase Cosmic Yui's critical damage by 8% (up to 5 Veggie Knights).\nAt the start of battle, Cosmic Yui changes to <span style='color:#C7BE5A;'>Potato Yellow</span> state, and at the start of her first turn, automatically change to <span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>.",
+  "r1_detail": "At the start of battle, Cosmic Yui immediately summons all 4 types of Veggie Knights and gains the maximum number of Veggie Energy stacks.\nFor each Veggie Knight gained, increase Cosmic Yui's critical damage by 8% (up to 5 Veggie Knights).\nAt the start of battle, Cosmic Yui changes to Potato Yellow state, and at the start of her first turn, automatically change to Eggplant Purple.",
   "r2": "Seed Potato Knight",
   "r2_detail": "Gain 1 more Potato Knight that will not be spent.\nWhen activating the Resonance Harvest Havoc, increase Potato Power effects by 10% more.\nAt the start of battle, gain Potato Power for 2 turns.",
   "r3": "Veggie Knight Master",
@@ -36,7 +36,7 @@ window.enCharacterRitualData["YUI·스텔라"] = {
   "r5": "Starlight Fest",
   "r5_detail": "Increase the skill levels of Harvest Fest and Thief Tactics by 3.",
   "r6": "Prismatic Vegetables",
-  "r6_detail": "Unlock Prismatic state. Change Cosmic Yui's Phantom Thief Attire to Prismatic Color, and simultaneously gain abilities from <span style='color:rgb(184, 33, 214);'>Eggplant Purple</span>, <span style='color:#C7BE5A;'>Potato Yellow</span>, <span style='color:rgb(254, 149, 244);'>Mushroom Red</span>, and <span style='color:rgb(11, 190, 11);'>Asparagus Green</span>.\nAt the start of battle, permanently enter Huge Harvest state, and change the following effects.\nWhen an ally ends their action, activate the Resonance Harvest Havoc.\nWhen using Veggie Knights, Go!, summon 1 more Potato Knight."
+  "r6_detail": "Unlock Prismatic state. Change Cosmic Yui's Phantom Thief Attire to Prismatic Color, and simultaneously gain abilities from Eggplant Purple, Potato Yellow, Mushroom Red, and Asparagus Green.\nAt the start of battle, permanently enter Huge Harvest state, and change the following effects.\nWhen an ally ends their action, activate the Resonance Harvest Havoc.\nWhen using Veggie Knights, Go!, summon 1 more Potato Knight."
 };
 
 window.jpCharacterRitualData["YUI·스텔라"] = {
@@ -64,6 +64,19 @@ function colorizeYuiRitualTerms(data, terms) {
       data[key] = data[key].replaceAll(term, `<span style='color:${color};'>${term}</span>`);
     }
   }
+}
+
+{
+  const stellaRitual = window.ritualData["YUI·스텔라"];
+  colorizeYuiRitualTerms(stellaRitual, [
+    ["보라 가지", "rgb(184, 33, 214)"],
+    ["노란 감자", "#C7BE5A"],
+    ["분홍 버섯", "rgb(254, 149, 244)"],
+    ["초록 아스파라거스", "rgb(11, 190, 11)"]
+  ]);
+  stellaRitual.r6_detail = stellaRitual.r6_detail.replace(/스텔라 ?윙/g, term =>
+    `<span style='background:linear-gradient(to right,rgb(184, 33, 214), #C7BE5A,rgb(254, 149, 244),rgb(11, 190, 11)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; color:transparent;'>${term}</span>`
+  );
 }
 
 colorizeYuiRitualTerms(window.enCharacterRitualData["YUI·스텔라"], [

@@ -20,7 +20,7 @@ window.personaFiles["멜키세덱"] = {
   "comment": "",
   "comment_en": "",
   "comment_jp": "",
-    "comment_cn": "",
+  "comment_cn": "",
   "added": "KR v1.3.1",
   "cost": {
     "blue": 0,
@@ -141,7 +141,7 @@ window.personaFiles["멜키세덱"] = {
       "name_en": "Hamaon",
       "name_jp": "ハマオン",
       "desc": "모든 적에게 공격력 53.1/55.8/58.4%의 빙결 속성 대미지를 주고, 29.5/31.0/32.4%의 기본 확률로 적을 2턴 동안 동결 상태에 빠뜨린다.",
-      "desc_en": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's missing HP.",
+      "desc_en": "Deal Bless damage to 1 foe equal to 90.6/99.3/108.0% of Attack. Low chance to deal a Bless insta-kill effect to foes with 50% or less HP. Increase chance based on foe's lost HP.",
       "desc_jp": "敵単体に攻撃力90.6/99.3/108.0%の祝福属性ダメージを与える。ＨＰ５０%以下の敵に低確率で祝福属性の即死効果を与える。敵のＨＰが低いほど確率が上がる。",
       "cost": "SP 19",
       "level": "6/7/8",

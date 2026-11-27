@@ -226,10 +226,10 @@
       }
     ],
     "rating": {
-      "Attack": 2770.0,
+      "Attack": 2770,
       "Crit Mult.": 1.77,
       "Crit Rate": 0.37,
-      "HP": 12500.0
+      "HP": 12500
     },
     "stat": {
       "Accuracy": "100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0% / 100.0%",
@@ -277,6 +277,6 @@
     "stat_100": null,
     "theurgia_skill": []
   },
-  "msg": "OK",
+  "msg": "TESTING",
   "status": 0
 }

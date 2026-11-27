@@ -72,8 +72,11 @@
         <p class="page-description" id="page-description"></p>
     </div>
 
+    <div class="page-entrance-part"
+        data-page-entrance-stagger=":scope > .settings-container > .accordion-section, :scope > .timeline-section, :scope > .chart-section, :scope > .plan-section"
+        data-page-entrance-stagger-scroll>
     <!-- Must Read Accordion -->
-    <div class="settings-container page-entrance-part">
+    <div class="settings-container">
         <div class="accordion-section" id="mustReadAccordion">
             <div class="accordion-header" data-target="mustReadContent">
                 <h3 id="mustReadTitle">계산기 기준 및 안내</h3>
@@ -93,7 +96,7 @@
     {% include nitro-ad.html id="pull-planner-settings-banner" format="banner" class="nitro-ad-container--section" placeholder=true %}
 
     <!-- Settings Accordions -->
-    <div class="settings-container settings-grid page-entrance-part">
+    <div class="settings-container settings-grid">
         <!-- Assets Accordion -->
         <div class="accordion-section expanded" id="assetsAccordion">
             <div class="accordion-header" data-target="assetsContent">
@@ -488,6 +491,7 @@
             <!-- Plan items will be rendered here -->
         </div>
     </section>
+    </div>
 </div>
 
 <!-- Chart.js CDN -->

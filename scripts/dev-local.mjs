@@ -7,6 +7,7 @@ import readline from 'readline';
 import { spawn } from 'child_process';
 import { fileURLToPath } from 'url';
 import { generateAssetVersions } from './build/generate-asset-versions.mjs';
+import { generateSocialImages } from './build/generate-social-images.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -197,16 +198,17 @@ function logDevError(message) {
   writePrefixed('dev', message, 'stderr');
 }
 
-function refreshAssetVersions() {
-  const result = generateAssetVersions();
+async function refreshBuildAssets() {
+  const social = await generateSocialImages();
+  const assets = generateAssetVersions();
   const metadataPath = path.join(PROJECT_ROOT, '.jekyll-metadata');
-  const manifestMtime = fs.statSync(result.outputPath).mtimeMs;
+  const manifestMtime = Math.max(fs.statSync(assets.outputPath).mtimeMs, fs.statSync(social.outputPath).mtimeMs);
   const metadataMtime = fs.existsSync(metadataPath) ? fs.statSync(metadataPath).mtimeMs : 0;
   if (manifestMtime > metadataMtime && fs.existsSync(metadataPath)) {
     fs.rmSync(metadataPath, { force: true });
     logDev('cleared stale Jekyll incremental metadata');
   }
-  if (result.changed) {
+  if (assets.changed) {
     logDev('asset content hashes updated');
   }
 }
@@ -541,7 +543,7 @@ async function stopManagedProcess(proc) {
   await proc.stopPromise;
 }
 
-function startJekyllProcess() {
+async function startJekyllProcess() {
   const proc = runtime.processes.jekyll;
   if (proc.state === PROCESS_STATE.STARTING || proc.state === PROCESS_STATE.RUNNING) {
     logDev('jekyll is already running');
@@ -551,7 +553,7 @@ function startJekyllProcess() {
     logDev('jekyll is stopping; try again in a moment');
     return;
   }
-  refreshAssetVersions();
+  await refreshBuildAssets();
   const args = buildJekyllServeArgs();
   launchManagedProcess(proc, BUNDLE_CMD, args, { detached: process.platform !== 'win32' });
   logDev(`jekyll start requested (mode=${runtime.currentMode})`);
@@ -570,7 +572,7 @@ async function stopJekyllProcess() {
 async function restartJekyllProcess() {
   await stopManagedProcess(runtime.processes.jekyll);
   if (!runtime.shuttingDown) {
-    startJekyllProcess();
+    await startJekyllProcess();
   }
 }
 
@@ -606,7 +608,7 @@ async function restartPatchProcess() {
   }
 }
 
-function startBuildProcess(modeName) {
+async function startBuildProcess(modeName) {
   const proc = runtime.processes.build;
   if (proc.state === PROCESS_STATE.STARTING || proc.state === PROCESS_STATE.RUNNING) {
     logDev('build already in progress; request rejected');
@@ -617,7 +619,7 @@ function startBuildProcess(modeName) {
     logDev("build mode must be 'full' or 'fast'");
     return;
   }
-  refreshAssetVersions();
+  await refreshBuildAssets();
   const args = buildJekyllBuildArgs(mode);
   launchManagedProcess(proc, BUNDLE_CMD, args, { detached: false });
   logDev(`build started (${mode})`);
@@ -762,7 +764,7 @@ async function handleServiceCommand(serviceRaw, actionRaw) {
 
   if (service === 'jekyll') {
     if (action === 'start') {
-      startJekyllProcess();
+      await startJekyllProcess();
       return;
     }
     if (action === 'stop') {
@@ -817,7 +819,7 @@ async function handleCleanCommand() {
   }
 
   if (wasJekyllRunning && !runtime.shuttingDown) {
-    startJekyllProcess();
+    await startJekyllProcess();
   }
 }
 
@@ -849,7 +851,7 @@ async function executeCommand(line) {
     return;
   }
   if (cmd === 'build') {
-    startBuildProcess(rest[0]);
+    await startBuildProcess(rest[0]);
     return;
   }
   if (cmd === 'jekyll') {
@@ -999,7 +1001,7 @@ function bootstrap() {
   setupReadline();
 
   enqueueOperation('startup', async () => {
-    startJekyllProcess();
+    await startJekyllProcess();
     if (runtime.config.patch.enabledOnStart) {
       startPatchProcess();
     } else {

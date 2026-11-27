@@ -1001,25 +1001,36 @@ async function initializePageContent() {
         }
     }
 
+    let detailRequest;
+
     async function renderDetailInPanel(sourceContainer) {
         const detailPanel = document.getElementById('personaDetailContent');
         const sourceName = sourceContainer.dataset.name;
 
-        if (!detailPanel) return;
+        if (!detailPanel || detailRequest?.source === sourceContainer) return;
+        const request = { source: sourceContainer };
+        detailRequest = request;
         showPersonaDetailSkeleton(detailPanel);
         try {
             if (typeof window.loadPersonaFile === 'function') await window.loadPersonaFile(sourceName);
         } catch (error) {
+            if (detailRequest !== request) return;
+            detailRequest = null;
             console.error('Failed to load persona detail:', error);
             detailPanel.removeAttribute('aria-busy');
             detailPanel.textContent = '';
             return;
         }
-        if (!sourceContainer.classList.contains('selected')) return;
+        if (detailRequest !== request) return;
+        if (!sourceContainer.isConnected || !sourceContainer.classList.contains('selected')) {
+            detailRequest = null;
+            return;
+        }
 
         // Generate content dynamically
         const infoSection = generatePersonaDetail(sourceName);
         if (!infoSection) {
+            detailRequest = null;
             return;
         }
 
@@ -1030,12 +1041,8 @@ async function initializePageContent() {
 
         // Append to panel
         detailPanel.appendChild(infoSection);
-        const wasInitialEntrance = window.LufelPageEntrance?.finish();
-        if (!wasInitialEntrance && infoSection.animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            infoSection.animate([
-                { opacity: 0, transform: 'translateY(6px)' },
-                { opacity: 1, transform: 'translateY(0)' }
-            ], { duration: 280, easing: 'cubic-bezier(.16, 1, .3, 1)' });
+        if (!window.LufelPageEntrance?.finish()) {
+            window.LufelPageEntrance?.stagger?.(detailPanel);
         }
 
         // Re-bind tooltips and apply formatting (number highlighting)

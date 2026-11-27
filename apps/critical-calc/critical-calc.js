@@ -10,8 +10,10 @@ class CriticalCalc {
         this.selectedBuffItems = new Set();
         this.selectedSelfItems = new Set();
         this.skillEffectAmpState = this.loadSkillEffectAmpState();
-        this.mikuSkillEffectAmpValue = this.loadMikuSkillEffectAmpValue();
-        this.kotoneSkillEffectAmpValue = this.loadKotoneSkillEffectAmpValue();
+        this.characterPresets = new CalculatorPresets({
+            getLang: () => this.getCurrentLang(),
+            onChange: () => this.updateTotal()
+        });
         this.kotoneCopyState = this.loadKotoneCopyState();
         this.syncI18nServiceLanguage();
 
@@ -61,8 +63,6 @@ class CriticalCalc {
         this.scheduleTranslateCharacterNames();
         this.scheduleI18nReadyRefresh();
 
-        // J&C 로드 (중복 렌더링 방지 로직 적용됨)
-        try { this.ensureJCCalcLoadedAndAttach(); } catch(_) {}
     }
 
     applyHardcodedI18n() {
@@ -295,26 +295,8 @@ class CriticalCalc {
         } catch (_) {}
     }
 
-    loadMikuSkillEffectAmpValue() {
-        try {
-            const saved = localStorage.getItem('calcMikuSkillEffectAmpValueV1');
-            const parsed = parseFloat(saved);
-            return isFinite(parsed) ? Math.max(0, parsed) : 0;
-        } catch (_) {
-            return 0;
-        }
-    }
-
-    loadKotoneSkillEffectAmpValue() { try { const value = parseFloat(localStorage.getItem('calcKotoneSkillEffectAmpValueV1')); return isFinite(value) ? Math.max(0, value) : 0; } catch (_) { return 0; } }
-    saveKotoneSkillEffectAmpValue() { try { localStorage.setItem('calcKotoneSkillEffectAmpValueV1', String(this.kotoneSkillEffectAmpValue)); } catch (_) {} }
     loadKotoneCopyState() { try { const saved = JSON.parse(localStorage.getItem('criticalCalc_kotoneCopyStateV1') || '{}'); return { source: String(saved.source || ''), awareness: ['r0','r2','r6'].includes(saved.awareness) ? saved.awareness : 'r0' }; } catch (_) { return { source: '', awareness: 'r0' }; } }
     saveKotoneCopyState() { try { localStorage.setItem('criticalCalc_kotoneCopyStateV1', JSON.stringify(this.kotoneCopyState)); } catch (_) {} }
-
-    saveMikuSkillEffectAmpValue() {
-        try {
-            localStorage.setItem('calcMikuSkillEffectAmpValueV1', String(this.mikuSkillEffectAmpValue));
-        } catch (_) {}
-    }
 
     setItemBaseValue(item, value) {
         if (!item) return 0;
@@ -334,22 +316,8 @@ class CriticalCalc {
         return isFinite(rawValue) ? rawValue : 0;
     }
 
-    getSkillEffectAmpMultiplier(item) {
-        if (!item || item.skillEffectAmpAffected !== true) return 1;
-        const isMikuSkillEffect = item.mikuSkillEffectAmpAffected === true;
-        const globalValue = !isMikuSkillEffect && this.skillEffectAmpState && this.skillEffectAmpState.enabled
-            ? this.skillEffectAmpState.value
-            : 0;
-        const mikuValue = isMikuSkillEffect
-            ? this.mikuSkillEffectAmpValue
-            : 0;
-        const kotoneValue = item.kotoneSkillEffectAmpAffected === true ? this.kotoneSkillEffectAmpValue : 0;
-        const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue) + Math.max(0, kotoneValue);
-        return 1 + (totalValue / 100);
-    }
-
     getEffectiveItemValue(item) {
-        return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+        return this.characterPresets.getEffectiveValue(item, this.getBaseItemValue(item), this.skillEffectAmpState);
     }
 
     formatDisplayValue(value) {
@@ -533,57 +501,6 @@ class CriticalCalc {
         tryTranslate();
     }
 
-    getMikuSkillEffectAmpLabel() {
-        const lang = this.getCurrentLang();
-        if (lang === 'en') return 'Skill Amplification';
-        if (lang === 'jp') return 'スキル成長効果';
-        if (lang === 'cn') return '技能效果增幅';
-        return '스킬 효과 증폭';
-    }
-
-    attachMikuSkillEffectAmpControl(headerTr) {
-        if (!headerTr) return;
-        try {
-            const infoWrap = headerTr.querySelector('.group-info');
-            if (!infoWrap || headerTr.querySelector('.miku-skill-effect-amp-container')) return;
-
-            const container = document.createElement('span');
-            container.className = 'jc-desire-container miku-skill-effect-amp-container';
-            container.addEventListener('click', (e) => e.stopPropagation());
-
-            const label = document.createElement('span');
-            label.className = 'jc-desire-label';
-            label.textContent = this.getMikuSkillEffectAmpLabel();
-
-            const input = document.createElement('input');
-            input.type = 'number';
-            input.inputMode = 'decimal';
-            input.className = 'jc-desire-input miku-skill-effect-amp-input';
-            input.min = '0';
-            input.step = '0.1';
-            input.value = String(this.mikuSkillEffectAmpValue);
-            input.addEventListener('click', (e) => e.stopPropagation());
-            input.addEventListener('input', () => {
-                const rawValue = input.value;
-                const parsed = parseFloat(rawValue);
-                this.mikuSkillEffectAmpValue = isFinite(parsed) ? Math.max(0, parsed) : 0;
-                this.saveMikuSkillEffectAmpValue();
-                document.querySelectorAll('.miku-skill-effect-amp-input').forEach(el => {
-                    if (el !== input) el.value = rawValue;
-                });
-                this.refreshDisplayedValues();
-                this.updateTotal();
-            });
-            input.addEventListener('blur', () => {
-                input.value = String(this.mikuSkillEffectAmpValue);
-            });
-
-            container.appendChild(label);
-            container.appendChild(input);
-            infoWrap.appendChild(container);
-        } catch (_) {}
-    }
-
     getKotoneCopyCandidates(awareness = this.kotoneCopyState.awareness) {
         return Object.keys(this.buffGroups || {}).filter(name => {
             if (['공통', '속성 심상', '계시', '미쿠', '코토네'].includes(name)) return false;
@@ -607,14 +524,6 @@ class CriticalCalc {
         const sourceMultiplier = this.kotoneCopyState.awareness === 'r0' ? baseMultiplier : baseMultiplier * 1.25;
         return (sourceSum + wonderSum) * sourceMultiplier;
     }
-    attachKotoneSkillEffectAmpControl(headerTr) {
-        if (!headerTr || headerTr.querySelector('.kotone-skill-effect-amp-container')) return; const infoWrap = headerTr.querySelector('.group-info'); if (!infoWrap) return;
-        const container = document.createElement('span'); container.className = 'jc-desire-container kotone-skill-effect-amp-container'; container.addEventListener('click', e => e.stopPropagation());
-        const label = document.createElement('span'); label.className = 'jc-desire-label'; label.textContent = this.getMikuSkillEffectAmpLabel();
-        const input = document.createElement('input'); input.type = 'number'; input.min = '0'; input.step = '0.1'; input.className = 'jc-desire-input'; input.value = String(this.kotoneSkillEffectAmpValue);
-        input.addEventListener('input', () => { this.kotoneSkillEffectAmpValue = Math.max(0, parseFloat(input.value) || 0); this.saveKotoneSkillEffectAmpValue(); this.refreshDisplayedValues(); this.updateTotal(); }); input.addEventListener('blur', () => { input.value = String(this.kotoneSkillEffectAmpValue); });
-        container.append(label, input); infoWrap.appendChild(container);
-    }
     createKotoneCharacterDropdown(selectedValue, onChange, awareness = this.kotoneCopyState.awareness) {
         const wrap = document.createElement('div'); wrap.className = 'kotone-character-select'; wrap.dataset.value = selectedValue || '';
         const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'kotone-character-trigger'; const menu = document.createElement('div'); menu.className = 'kotone-character-menu';
@@ -627,44 +536,6 @@ class CriticalCalc {
         if (!data.kotoneCopySkill3) return; let source;
         const awareness = document.createElement('select'); ['r0','r2','r6'].forEach(value => { if (value !== 'r6' || (this.buffGroups['원더'] || []).length) awareness.append(new Option(this.getKotoneAwarenessLabel(value),value)); }); awareness.value = this.kotoneCopyState.awareness;
         const update = () => { const sourceValue = awareness.value === 'r6' && source.dataset.value === '원더' ? '' : source.dataset.value || ''; this.kotoneCopyState = { source: sourceValue, awareness: awareness.value }; this.saveKotoneCopyState(); source = this.createKotoneCharacterDropdown(sourceValue, update, awareness.value); const oldSource = optionCell.querySelector('.kotone-character-select'); if (oldSource) oldSource.replaceWith(source); this.renderItemValue(data,valueCell); this.updateTotal(); }; source = this.createKotoneCharacterDropdown(this.kotoneCopyState.source, update, awareness.value); awareness.addEventListener('change',update); optionCell.append(source,awareness);
-    }
-
-    ensureJCCalcLoadedAndAttach() {
-        // [수정] 이미 로드되어 있다면, initializeTables에서 renderAccordion이 실행될 때
-        // 자동으로 JCCalc를 감지하고 부착하므로 여기서 아무것도 하지 않습니다. (중복 렌더링 방지)
-        if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
-            return; 
-        }
-
-        if (this._jcCalcLoadPromise) return this._jcCalcLoadPromise;
-        
-        const url = `${BASE_URL}/data/characters/J&C/JC_calc.js?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
-        this._jcCalcLoadPromise = new Promise((resolve) => {
-            try {
-                const script = document.createElement('script');
-                script.src = url;
-                script.async = true;
-                script.onload = () => {
-                    // 스크립트가 로드되면 J&C 컨트롤을 부착하고 테이블을 리로드하여 아이템을 등록합니다.
-                    try {
-                        if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
-                            document.querySelectorAll('tr.group-header[data-group="J&C"]').forEach(tr => {
-                                JCCalc.attachDesireControl(tr, this, 'crit');
-                            });
-                            if (typeof this.initializeTables === 'function') {
-                                this.initializeTables();
-                            }
-                        }
-                    } catch(_) {}
-                    resolve();
-                };
-                script.onerror = () => resolve();
-                document.head.appendChild(script);
-            } catch(_) {
-                resolve();
-            }
-        });
-        return this._jcCalcLoadPromise;
     }
 
     buildDatasets() {
@@ -872,15 +743,7 @@ class CriticalCalc {
             fullTd.appendChild(inner);
             headerTr.appendChild(fullTd);
 
-            // J&C 전용 Desire 레벨 컨트롤 추가 (renderAccordion 실행 시점에 JCCalc가 있으면 자동 부착)
-            if (groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.attachDesireControl) {
-                JCCalc.attachDesireControl(headerTr, this, 'crit');
-            }
-
-            if (groupName === '미쿠') {
-                this.attachMikuSkillEffectAmpControl(headerTr);
-            }
-            if (groupName === '코토네') this.attachKotoneSkillEffectAmpControl(headerTr);
+            this.characterPresets.attach(headerTr, groupName, 'critical', nameSpan.textContent);
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
@@ -1185,12 +1048,6 @@ class CriticalCalc {
                 if (data.values && data.values[selectedOption] != null) {
                     this.setItemBaseValue(data, data.values[selectedOption]);
 
-                    const isJC = groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged;
-                    if (isJC && data.id !== 'jc2') {
-                        JCCalc.onOptionChanged(data, valueCell, 'crit', this);
-                        return;
-                    }
-
                     this.renderItemValue(data, valueCell);
                     const set = isSelf ? this.selectedSelfItems : this.selectedBuffItems;
                     if (set.has(data.id)) this.updateTotal();
@@ -1201,12 +1058,7 @@ class CriticalCalc {
         row.appendChild(optionCell);
         this.attachKotoneCopyControl(optionCell, data, valueCell);
         
-        const isJCRegistered = groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem;
-        if (isJCRegistered && data.id !== 'jc2') {
-            JCCalc.registerItem(data, valueCell, 'crit', this);
-        } else {
-            this.renderItemValue(data, valueCell);
-        }
+        this.renderItemValue(data, valueCell);
         row.appendChild(valueCell);
         
         const durationCell = document.createElement('td');

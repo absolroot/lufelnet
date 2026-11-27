@@ -88,6 +88,7 @@ exclude:
   - ads_backup.txt
   - .git
   - .gitignore
+  - _private
   - node_modules
   - vendor
   - Gemfile

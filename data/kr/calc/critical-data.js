@@ -1648,6 +1648,7 @@ const criticalSelfData = {
   "J&C": [
     {
       "id": "jc1",
+      "jcPersonaPerformance": "critical",
       "type": "스킬2",
       "target": "자신",
       "target_en": "자신",

@@ -113,7 +113,8 @@ window.LufelPageLifecycle?.hold('schedule');
     </script>
 
     <!-- Current Release Banner -->
-    <div id="current-banner" class="current-banner page-entrance-part">
+    <div id="current-banner" class="current-banner page-entrance-part"
+        data-page-entrance-stagger=":scope > .banner-item" data-page-entrance-stagger-scroll>
         <div class="loading">
             <div class="loading-spinner"></div>
         </div>
@@ -131,7 +132,8 @@ window.LufelPageLifecycle?.hold('schedule');
     </div>
 
     <!-- Timeline -->
-    <div id="timeline-container" class="timeline-container page-entrance-part">
+    <div id="timeline-container" class="timeline-container page-entrance-part"
+        data-page-entrance-stagger=":scope > .release-card" data-page-entrance-stagger-scroll>
         <div class="loading">
             <div class="loading-spinner"></div>
         </div>
@@ -251,7 +253,6 @@ window.LufelPageLifecycle?.hold('schedule');
             updateOGTag('og:url', currentUrl);
             updateOGTag('og:locale', seoOgLocale);
             updateOGTag('og:type', 'website');
-            updateOGTag('og:image', `${baseUrl}/assets/img/home/SEO.png`);
 
             // Update Twitter Card tags
             function updateTwitterTag(name, content) {
@@ -267,7 +268,6 @@ window.LufelPageLifecycle?.hold('schedule');
             updateTwitterTag('twitter:card', 'summary_large_image');
             updateTwitterTag('twitter:title', seoTitle);
             updateTwitterTag('twitter:description', seoDescription);
-            updateTwitterTag('twitter:image', `${baseUrl}/assets/img/home/SEO.png`);
 
             // Update canonical URL
             let canonical = document.querySelector('link[rel="canonical"]');

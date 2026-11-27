@@ -35,6 +35,9 @@ jobs:
       with:
         node-version: 20
 
+    - name: Install Node dependencies
+      run: npm ci
+
     - name: Check all generated SEO pages (PR only)
       if: github.event_name == 'pull_request'
       run: npm run seo:all:check
@@ -45,6 +48,9 @@ jobs:
 
     - name: Generate all SEO pages
       run: npm run seo:all:generate
+
+    - name: Generate social share images
+      run: npm run seo:images:generate
 
     - name: Generate asset content hashes
       run: npm run assets:hashes:generate

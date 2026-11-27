@@ -125,7 +125,8 @@ window.LufelPageLifecycle?.hold('persona-list');
     <div class="split-view-container">
         <!-- Left Panel: Filter & List -->
         <div class="persona-list-column">
-            <div class="persona-list-panel page-entrance-part">
+            <div class="persona-list-panel page-entrance-part"
+                data-page-entrance-stagger=".persona-cards > .persona-detail-container">
                 <!-- Search & Sort Header Implementation -->
                 <div class="search-section filter-header-sticky">
                 <div class="search-sort-container"
@@ -189,7 +190,9 @@ window.LufelPageLifecycle?.hold('persona-list');
 
         <!-- Right Panel: Detail -->
         <div class="persona-detail-panel">
-            <div id="personaDetailContent" class="sticky-content page-entrance-part" aria-busy="true">
+            <div id="personaDetailContent" class="sticky-content page-entrance-part" aria-busy="true"
+                data-page-entrance-stagger=".persona-tier-info, .persona-instinct-info, .persona-unique-skill-info, .persona-highlight-info, .persona-recommended-skills, .persona-innate-skills"
+                data-page-entrance-stagger-all>
                 <div class="detail-placeholder persona-detail-skeleton" aria-hidden="true">
                     <div class="persona-skeleton-header">
                         <div class="persona-skeleton-title-group">

@@ -44,7 +44,7 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/critical-calc/critical-calc.css?h={{ site.data.asset_versions.files['/apps/critical-calc/critical-calc.css'] }}">
-<script src="/apps/critical-calc/table-renderer.js?h={{ site.data.asset_versions.files['/apps/critical-calc/table-renderer.js'] }}"></script>
+{% include calculator-presets.html %}
 <script src="/apps/critical-calc/critical-calc.js?h={{ site.data.asset_versions.files['/apps/critical-calc/critical-calc.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
@@ -83,8 +83,11 @@
         {% include nitro-ad.html id="critical-header-banner" format="leaderboard" class="nitro-ad-container--header" %}
     </div>
 
+    <div class="page-entrance-part"
+        data-page-entrance-stagger=":scope > .top-cards > .card-style, :scope > .table-tabs"
+        data-page-entrance-stagger-scroll>
     <!-- 상단 카드 컨테이너 -->
-    <div class="top-cards page-entrance-part">
+    <div class="top-cards">
         <!-- 크리티컬 입력 카드 -->
         <div class="stat-card card-style">
             <div class="critical-input-container">
@@ -156,7 +159,7 @@
     </div>
 
     <!-- 데이터 테이블 -->
-    <div class="table-tabs card-style page-entrance-part">
+    <div class="table-tabs card-style">
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="buff" id="tabBuff">버프</button>
             <button class="tab-button" data-tab="self" id="tabSelf">자신</button>
@@ -203,6 +206,7 @@
                 </tbody>
             </table>
         </div>
+    </div>
     </div>
     <!-- 광고 -->
     <!--

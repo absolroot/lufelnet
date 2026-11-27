@@ -272,7 +272,7 @@ const Guides = {
         if (!container) return;
 
         const lang = this.currentLang;
-        this.updateMeta('', '');
+        this.updateMeta();
         this.updateLanguageTexts();
 
         const searchPlaceholder = this.getI18nText('searchPlaceholder', 'Search...');
@@ -656,8 +656,7 @@ const Guides = {
             }
         }
 
-        const fullThumb = thumbnail && thumbnail.startsWith('/') ? window.location.origin + thumbnail : thumbnail;
-        this.updateMeta('', '', fullThumb || null);
+        this.updateMeta();
 
         const { tocHtml, contentWithAnchors } = this.buildToc(content);
 
@@ -745,7 +744,7 @@ const Guides = {
     /**
      * Update SEO meta tags dynamically
      */
-    updateMeta(title, description, image) {
+    updateMeta() {
         const guideId = this.getGuideIdFromUrl();
         const mode = guideId ? 'detail' : 'list';
         const hint = {
@@ -755,16 +754,12 @@ const Guides = {
         };
 
         if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
-            window.SeoEngine.setContextHint(hint, { rerun: true }).then(() => {
-                if (image && window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-                    window.SeoEngine.run({ override: { image: image } });
-                }
-            });
+            window.SeoEngine.setContextHint(hint, { rerun: true });
             return;
         }
 
         if (window.SeoEngine && typeof window.SeoEngine.run === 'function') {
-            window.SeoEngine.run({ hint: hint, override: image ? { image: image } : null });
+            window.SeoEngine.run({ hint });
         }
     },
 

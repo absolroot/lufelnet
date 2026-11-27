@@ -34,9 +34,10 @@
   <meta property="og:type" content="website">
   <meta id="og-url" property="og:url" content="{{ site.url }}{{ page.url | replace: 'index.html', '' }}">
   <meta property="og:site_name" content="Lufelnet">
+  {% include social-image-meta.html %}
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
   <meta id="twitter-title" name="twitter:title" content="{% if lang == 'en' %}P5X Maps - Lufelnet{% elsif lang == 'jp' %}P5X マップス - ルフェルネット{% else %}P5X 맵스 - 루페르넷{% endif %}">
   <meta id="twitter-description" name="twitter:description" content="{% if lang == 'en' %}Explore all P5X Palaces and Mementos.{% elsif lang == 'jp' %}P5X マップビューアー{% else %}P5X 맵 뷰어{% endif %}">
 

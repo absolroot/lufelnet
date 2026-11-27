@@ -52,8 +52,13 @@ class DefenseCalc {
         this.pierceSecondSum = document.getElementById('pierceSecondSum');
         this.pierceSecondTarget = document.getElementById('pierceSecondTarget');
         this.skillEffectAmpState = this.loadSkillEffectAmpState();
-        this.mikuSkillEffectAmpValue = this.loadMikuSkillEffectAmpValue();
-        this.kotoneSkillEffectAmpValue = this.loadKotoneSkillEffectAmpValue();
+        this.characterPresets = new CalculatorPresets({
+            getLang: () => this.getCurrentLang(),
+            onChange: () => {
+                this.updatePenetrateTotal();
+                this.updateTotal();
+            }
+        });
         this.kotoneCopyState = this.loadKotoneCopyState();
         // order-switch 제거됨
         this.isPierceFirst = true; // 기본 순서: 관통 -> 방어력 감소 (계산용으로만 사용)
@@ -119,9 +124,6 @@ class DefenseCalc {
 
         // 캐릭터 이름 번역이 늦게 로드되는 경우 대비해 후처리 스케줄링
         this.scheduleTranslateCharacterNames();
-
-        // J&C 전용 추가 계산 스크립트가 분리되어 있으므로, 동적으로 로드 후 헤더에 컨트롤 부착
-        try { this.ensureJCCalcLoadedAndAttach(); } catch (_) { }
 
         if (this.getCurrentLang() === 'cn') {
             this.ensureCnBossNameMapLoaded().then(() => {
@@ -274,24 +276,6 @@ class DefenseCalc {
         } catch (_) { }
     }
 
-    loadMikuSkillEffectAmpValue() {
-        try {
-            const saved = localStorage.getItem('calcMikuSkillEffectAmpValueV1');
-            const parsed = parseFloat(saved);
-            return isFinite(parsed) ? Math.max(0, parsed) : 0;
-        } catch (_) {
-            return 0;
-        }
-    }
-
-    loadKotoneSkillEffectAmpValue() {
-        try { const value = parseFloat(localStorage.getItem('calcKotoneSkillEffectAmpValueV1')); return isFinite(value) ? Math.max(0, value) : 0; } catch (_) { return 0; }
-    }
-
-    saveKotoneSkillEffectAmpValue() {
-        try { localStorage.setItem('calcKotoneSkillEffectAmpValueV1', String(this.kotoneSkillEffectAmpValue)); } catch (_) {}
-    }
-
     loadKotoneCopyState() {
         try {
             const saved = JSON.parse(localStorage.getItem('defenseCalc_kotoneCopyStateV1') || '{}');
@@ -301,12 +285,6 @@ class DefenseCalc {
 
     saveKotoneCopyState() {
         try { localStorage.setItem('defenseCalc_kotoneCopyStateV1', JSON.stringify(this.kotoneCopyState)); } catch (_) {}
-    }
-
-    saveMikuSkillEffectAmpValue() {
-        try {
-            localStorage.setItem('calcMikuSkillEffectAmpValueV1', String(this.mikuSkillEffectAmpValue));
-        } catch (_) { }
     }
 
     setItemBaseValue(item, value) {
@@ -325,20 +303,6 @@ class DefenseCalc {
 
         const rawValue = Number(item.value);
         return isFinite(rawValue) ? rawValue : 0;
-    }
-
-    getSkillEffectAmpMultiplier(item) {
-        if (!item || item.skillEffectAmpAffected !== true) return 1;
-        const isMikuSkillEffect = item.mikuSkillEffectAmpAffected === true;
-        const globalValue = !isMikuSkillEffect && this.skillEffectAmpState && this.skillEffectAmpState.enabled
-            ? this.skillEffectAmpState.value
-            : 0;
-        const mikuValue = isMikuSkillEffect
-            ? this.mikuSkillEffectAmpValue
-            : 0;
-        const kotoneValue = item.kotoneSkillEffectAmpAffected === true ? this.kotoneSkillEffectAmpValue : 0;
-        const totalValue = Math.max(0, globalValue) + Math.max(0, mikuValue) + Math.max(0, kotoneValue);
-        return 1 + (totalValue / 100);
     }
 
     getKotoneCopyCandidates() {
@@ -370,7 +334,7 @@ class DefenseCalc {
     }
 
     getEffectiveItemValue(item) {
-        return this.getBaseItemValue(item) * this.getSkillEffectAmpMultiplier(item);
+        return this.characterPresets.getEffectiveValue(item, this.getBaseItemValue(item), this.skillEffectAmpState);
     }
 
     isTotalDefenseReductionItem(item) {
@@ -736,69 +700,6 @@ class DefenseCalc {
         tryTranslate();
     }
 
-    getMikuSkillEffectAmpLabel() {
-        const lang = this.getCurrentLang();
-        if (lang === 'en') return 'Skill Amplification';
-        if (lang === 'jp') return 'スキル成長効果';
-        if (lang === 'cn') return '技能效果增幅';
-        return '스킬 효과 증폭';
-    }
-
-    attachMikuSkillEffectAmpControl(headerTr) {
-        if (!headerTr) return;
-        try {
-            const infoWrap = headerTr.querySelector('.group-info');
-            if (!infoWrap || headerTr.querySelector('.miku-skill-effect-amp-container')) return;
-
-            const container = document.createElement('span');
-            container.className = 'jc-desire-container miku-skill-effect-amp-container';
-            container.addEventListener('click', (e) => e.stopPropagation());
-
-            const label = document.createElement('span');
-            label.className = 'jc-desire-label';
-            label.textContent = this.getMikuSkillEffectAmpLabel();
-
-            const input = document.createElement('input');
-            input.type = 'number';
-            input.inputMode = 'decimal';
-            input.className = 'jc-desire-input miku-skill-effect-amp-input';
-            input.min = '0';
-            input.step = '0.1';
-            input.value = String(this.mikuSkillEffectAmpValue);
-            input.addEventListener('click', (e) => e.stopPropagation());
-            input.addEventListener('input', () => {
-                const rawValue = input.value;
-                const parsed = parseFloat(rawValue);
-                this.mikuSkillEffectAmpValue = isFinite(parsed) ? Math.max(0, parsed) : 0;
-                this.saveMikuSkillEffectAmpValue();
-                document.querySelectorAll('.miku-skill-effect-amp-input').forEach(el => {
-                    if (el !== input) el.value = rawValue;
-                });
-                this.refreshDisplayedValues();
-                this.updatePenetrateTotal();
-                this.updateTotal();
-            });
-            input.addEventListener('blur', () => {
-                input.value = String(this.mikuSkillEffectAmpValue);
-            });
-
-            container.appendChild(label);
-            container.appendChild(input);
-            infoWrap.appendChild(container);
-        } catch (_) { }
-    }
-
-    attachKotoneSkillEffectAmpControl(headerTr) {
-        if (!headerTr || headerTr.querySelector('.kotone-skill-effect-amp-container')) return;
-        const infoWrap = headerTr.querySelector('.group-info'); if (!infoWrap) return;
-        const container = document.createElement('span'); container.className = 'jc-desire-container kotone-skill-effect-amp-container'; container.addEventListener('click', e => e.stopPropagation());
-        const label = document.createElement('span'); label.className = 'jc-desire-label'; label.textContent = this.getMikuSkillEffectAmpLabel();
-        const input = document.createElement('input'); input.type = 'number'; input.min = '0'; input.step = '0.1'; input.className = 'jc-desire-input'; input.value = String(this.kotoneSkillEffectAmpValue);
-        input.addEventListener('input', () => { this.kotoneSkillEffectAmpValue = Math.max(0, parseFloat(input.value) || 0); this.saveKotoneSkillEffectAmpValue(); this.refreshDisplayedValues(); this.updatePenetrateTotal(); });
-        input.addEventListener('blur', () => { input.value = String(this.kotoneSkillEffectAmpValue); });
-        container.append(label, input); infoWrap.appendChild(container);
-    }
-
     createKotoneCharacterDropdown(selectedValue, onChange) {
         const wrap = document.createElement('div'); wrap.className = 'kotone-character-select'; wrap.dataset.value = selectedValue || '';
         const trigger = document.createElement('button'); trigger.type = 'button'; trigger.className = 'kotone-character-trigger';
@@ -821,41 +722,6 @@ class DefenseCalc {
         awareness.addEventListener('change', update); optionCell.append(source, awareness);
     }
 
-    ensureJCCalcLoadedAndAttach() {
-        // 이미 로드된 경우 바로 부착
-        if (typeof JCCalc !== 'undefined' && JCCalc && typeof JCCalc.attachDesireControl === 'function') {
-            // 이미 로드되어 있다면 initializeTable 등은 생성자에서 실행되었을 것이므로 헤더만 붙이면 됨 (renderAccordion 내부에서 자동 수행됨)
-            // 중복 렌더링 방지: 이미 렌더링된 경우 재렌더링하지 않음
-            return;
-        }
-
-        if (this._jcCalcLoadPromise) return this._jcCalcLoadPromise;
-
-        const url = `${BASE_URL}/data/characters/J&C/JC_calc.js?v=${typeof APP_VERSION !== 'undefined' ? APP_VERSION : '1'}`;
-        this._jcCalcLoadPromise = new Promise((resolve) => {
-            try {
-                const script = document.createElement('script');
-                script.src = url;
-                script.async = true;
-                script.onload = () => {
-                    // [중요] 스크립트 로드 완료 시 테이블을 강제로 다시 그려야
-                    // J&C 아이템들이 registerItem을 통해 등록됩니다.
-                    try {
-                        // 중복 렌더링 방지: 이미 초기화된 경우 재렌더링하지 않음
-                        // initializeTable과 initializePenetrateTable은 생성자에서 이미 호출되었으므로 여기서는 호출하지 않음
-                    } catch (_) { }
-                    resolve();
-                };
-                script.onerror = () => resolve();
-                document.head.appendChild(script);
-            } catch (_) {
-                resolve();
-            }
-        });
-        return this._jcCalcLoadPromise;
-    }
-
-    // 새 데이터 포맷(객체) 지원: 그룹 오브젝트, 플랫 배열, id 인덱스 구성
     buildDatasets() {
         // 전역 상수 penetrateData / defenseCalcData 가 객체라고 가정 (키=그룹명, 값=아이템 배열)
         this.penetrateGroups = (typeof penetrateData === 'object' && !Array.isArray(penetrateData)) ? penetrateData : {};
@@ -1024,24 +890,7 @@ class DefenseCalc {
             fullTd.appendChild(inner);
             headerTr.appendChild(fullTd);
 
-            // J&C 전용 Desire 레벨 입력 컨트롤 추가 (DOM 구조 구성 후)
-            // jc1(관통 테이블)과 jc2(방어력 감소 테이블)에 각각 별도의 페르소나 성능 입력 필드 부착
-            try {
-                if (groupName === 'J&C' && typeof JCCalc !== 'undefined') {
-                    if (isPenetrate && JCCalc.attachJC1Control) {
-                        // 관통 테이블: jc1 전용 컨트롤 (공식: value/2 + value/2 * N/100)
-                        JCCalc.attachJC1Control(headerTr, this);
-                    } else if (!isPenetrate && JCCalc.attachJC2Control) {
-                        // 방어력 감소 테이블: jc2 전용 컨트롤 (공식: value/2 + value/2 * N/100)
-                        JCCalc.attachJC2Control(headerTr, this);
-                    }
-                }
-            } catch (_) { }
-
-            if (groupName === '미쿠') {
-                this.attachMikuSkillEffectAmpControl(headerTr);
-            }
-            if (groupName === '코토네') this.attachKotoneSkillEffectAmpControl(headerTr);
+            this.characterPresets.attach(headerTr, groupName, isPenetrate ? 'pierce' : 'defense', nameSpan.textContent);
 
             // 토글 동작: 같은 그룹의 데이터 행 show/hide
             headerTr.addEventListener('click', () => {
@@ -1411,27 +1260,7 @@ class DefenseCalc {
                     nextValue = valuesBase[selectedBase];
                 }
                 if (nextValue !== null && nextValue !== undefined) {
-                    // J&C 전용: 기본값을 갱신한 뒤 Desire 보정 적용
-                    // 예외 아이템은 Desire 보정 제외
-                    const isExcluded = (String(data.id) === 'jc3');
                     this.setItemBaseValue(data, nextValue);
-
-                    if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.onOptionChanged) {
-                        try {
-                            data.__jcBaseValue = nextValue;
-                            // jc1과 jc2에 각각 별도 타입 사용
-                            let jcType;
-                            if (String(data.id) === 'jc1') {
-                                jcType = 'jc1_penetrate';
-                            } else if (String(data.id) === 'jc2') {
-                                jcType = 'jc2_def';
-                            } else {
-                                jcType = isPenetrate ? 'penetrate' : 'def';
-                            }
-                            JCCalc.onOptionChanged(data, valueCell, jcType, this);
-                            return;
-                        } catch (_) { }
-                    }
                     this.renderItemValue(data, valueCell);
                     if (isPenetrate) {
                         this.updatePenetrateTotal();
@@ -1447,31 +1276,7 @@ class DefenseCalc {
         row.appendChild(optionCell);
         this.attachKotoneCopyControl(optionCell, data, valueCell);
 
-        // J&C 전용 페르소나 성능 보정
-        // id가 'jc3' 인 경우는 보정 제외 
-        const isExcluded = (String(data.id) === 'jc3');
-
-        if (!isExcluded && groupName === 'J&C' && typeof JCCalc !== 'undefined' && JCCalc.registerItem) {
-            try {
-                // jc1(관통 테이블)과 jc2(방어력 감소 테이블)에 각각 별도 타입 사용
-                // jc1: 공식 value/2 + value/2 * N/100
-                // jc2: 공식 value/2 + value/2 * N/100
-                let type;
-                if (String(data.id) === 'jc1') {
-                    type = 'jc1_penetrate';
-                } else if (String(data.id) === 'jc2') {
-                    type = 'jc2_def';
-                } else {
-                    // 기타 J&C 아이템은 기존 로직 유지
-                    type = isPenetrate ? 'penetrate' : 'def';
-                }
-                JCCalc.registerItem(data, valueCell, type, this);
-            } catch (_) {
-                this.renderItemValue(data, valueCell);
-            }
-        } else {
-            this.renderItemValue(data, valueCell);
-        }
+        this.renderItemValue(data, valueCell);
         row.appendChild(valueCell);
 
         // 지속시간 열

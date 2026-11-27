@@ -3,6 +3,11 @@
 
   const RETRY_DELAY_MS = 2000;
   const RETRY_LIMIT = 1;
+  const staggerSelectors = {
+    'quick-grid': '.quick-item',
+    'popular-characters': '.character-card'
+  };
+  const staggeredSections = new WeakSet();
 
   function getLang() {
     try {
@@ -34,6 +39,34 @@
     root.appendChild(live);
   }
 
+  function staggerItems(root, selector) {
+    if (staggeredSections.has(root) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    staggeredSections.add(root);
+
+    const reveal = () => {
+      root.classList.remove('home-stagger-pending');
+      const items = root.querySelectorAll(selector);
+      if (!items.length) staggeredSections.delete(root);
+      items.forEach((item, index) => {
+        item.style.setProperty('--home-item-entrance-delay', `${index * 30}ms`);
+        item.classList.add('home-stagger-item');
+      });
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      reveal();
+      return;
+    }
+
+    root.classList.add('home-stagger-pending');
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      observer.disconnect();
+      reveal();
+    });
+    observer.observe(root);
+  }
+
   function setState(id, state, options) {
     const root = rootFor(id);
     if (!root) return;
@@ -56,7 +89,9 @@
 
     if (state === 'ready') {
       root.classList.remove('home-section-ready');
-      window.requestAnimationFrame(() => root.classList.add('home-section-ready'));
+      const selector = staggerSelectors[id];
+      if (selector) staggerItems(root, selector);
+      else window.requestAnimationFrame(() => root.classList.add('home-section-ready'));
       announce(root, text('home_section_ready', 'Content loaded.'));
       return;
     }

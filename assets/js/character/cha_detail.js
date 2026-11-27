@@ -1565,12 +1565,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // 전역 노출: characterSetting 로드 후 재호출 가능하도록
         window.fillRoleAndTag = fillRoleAndTag;
 
-        safeRun('applyCharacterVideo', () => {
-            if (typeof window.applyCharacterVideo === 'function') {
-                window.applyCharacterVideo(characterName, character);
-            }
-        });
-
     }
 
 

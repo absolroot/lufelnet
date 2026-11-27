@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/calculator-presets.css?h={{ site.data.asset_versions.files['/assets/css/calculator-presets.css'] }}">
+<script src="{{ site.baseurl }}/i18n/pages/calculator-presets.js?h={{ site.data.asset_versions.files['/i18n/pages/calculator-presets.js'] }}"></script>
+<script src="{{ site.baseurl }}/assets/js/calculator-presets.js?h={{ site.data.asset_versions.files['/assets/js/calculator-presets.js'] }}"></script>
+
+<template id="calculator-preset-template">
+    <dialog class="calculator-preset-dialog" aria-labelledby="calculator-preset-title calculator-preset-stat">
+        <form>
+            <header class="calculator-preset-heading">
+                <img alt="" width="48" height="48">
+                <div>
+                    <h2 id="calculator-preset-title" tabindex="-1" autofocus></h2>
+                    <p id="calculator-preset-stat" data-stat-label></p>
+                </div>
+            </header>
+            <div class="calculator-preset-body">
+                <div class="calculator-preset-modes" role="radiogroup" aria-label="">
+                    <label class="calculator-preset-mode">
+                        <input type="radio" name="mode" value="preset">
+                        <span data-label="preset"></span>
+                    </label>
+                    <label class="calculator-preset-mode">
+                        <input type="radio" name="mode" value="manual">
+                        <span data-label="manual"></span>
+                    </label>
+                </div>
+                <div data-mode="preset" class="calculator-preset-fields">
+                    <label class="calculator-preset-number" data-character="jc">
+                        <span>
+                            <span data-label="base"></span>
+                            <small id="calculator-preset-base-hint" data-label="baseHint"></small>
+                        </span>
+                        <input name="base" type="number" inputmode="decimal" min="25" max="100" step="any" required aria-describedby="calculator-preset-base-hint">
+                    </label>
+                    <fieldset data-character="jc">
+                        <legend data-label="core"></legend>
+                        <div class="calculator-preset-choices" data-choices="core"></div>
+                    </fieldset>
+                    <div class="calculator-preset-check-group" data-character="jc miku">
+                        <label class="calculator-preset-check">
+                            <span data-awareness-label></span>
+                            <input name="awareness" type="checkbox">
+                        </label>
+                        <label class="calculator-preset-check" data-character="jc">
+                            <span data-label="birthPower"></span>
+                            <input name="birthPower" type="checkbox">
+                        </label>
+                    </div>
+                    <fieldset>
+                        <legend><span data-label="weapon"></span> <span class="calculator-preset-forge" data-label="forge"></span></legend>
+                        <p class="calculator-preset-note calculator-preset-weapon-note" data-character="miku" data-label="concertOnly" hidden></p>
+                        <div class="calculator-preset-choices calculator-preset-choices--forge" data-choices="weapon"></div>
+                        <label class="calculator-preset-check" data-character="kotone miku">
+                            <span data-condition-label></span>
+                            <input name="condition" type="checkbox">
+                        </label>
+                    </fieldset>
+                </div>
+                <label data-mode="manual" class="calculator-preset-number">
+                    <span data-stat-label></span>
+                    <input name="manual" type="number" inputmode="decimal" min="0" step="any" required>
+                </label>
+                <p class="calculator-preset-note" data-label="kotoneCritical" hidden></p>
+            </div>
+            <footer class="calculator-preset-footer">
+                <div class="calculator-preset-preview">
+                    <div>
+                        <span data-preview-label></span>
+                        <output name="preview"></output>
+                    </div>
+                    <div data-weapon-preview hidden>
+                        <span data-weapon-preview-label></span>
+                        <output name="weaponPreview"></output>
+                    </div>
+                </div>
+                <div class="calculator-preset-actions">
+                    <button type="button" data-label="cancel" data-cancel></button>
+                    <button type="submit" data-label="apply"></button>
+                </div>
+            </footer>
+        </form>
+    </dialog>
+</template>

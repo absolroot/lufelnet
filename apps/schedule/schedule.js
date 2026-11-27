@@ -1838,7 +1838,8 @@
                         <span class="toggle-count">${totalReleasedCount}</span>
                         <span class="toggle-icon">+</span>
                     </button>
-                    <div class="released-content" id="released-content">
+                    <div class="released-content" id="released-content"
+                        data-page-entrance-stagger=":scope > .release-card" data-page-entrance-stagger-scroll>
             `;
 
             // Combine released releases and released anniversaries, sort by date
@@ -1915,6 +1916,7 @@
             toggleIcon.textContent = '+';
         } else {
             content.classList.add('expanded');
+            window.LufelPageEntrance?.stagger?.(content);
             btn.classList.add('expanded');
             toggleText.textContent = t('hideReleased');
             toggleIcon.textContent = '−';

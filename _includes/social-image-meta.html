@@ -1,0 +1,12 @@
+{%- assign social_images = site.data.social_images -%}
+{%- assign social_image = social_images.files[page.image] | default: social_images.default -%}
+{%- assign social_image_path = social_image.url | default: '/assets/img/home/SEO.png' -%}
+{%- assign social_image_url = social_image_path | absolute_url -%}
+<meta property="og:image" content="{{ social_image_url | escape }}">
+<meta property="og:image:width" content="{{ social_image.width | default: 1200 }}">
+<meta property="og:image:height" content="{{ social_image.height | default: 630 }}">
+{% if social_image.url -%}
+<meta property="og:image:type" content="image/jpeg">
+{% endif -%}
+<meta property="og:image:alt" content="{{ page.title | default: 'Lufelnet' | escape }}">
+<meta name="twitter:image" content="{{ social_image_url | escape }}">

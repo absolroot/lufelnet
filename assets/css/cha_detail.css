@@ -1686,12 +1686,6 @@ h2 {
     }
 }
 
-.enhancement-btn:hover,
-.skill-level-btn:hover,
-.sync-mindscape-btn:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
 .enhancement-btn.active,
 .skill-level-btn.active {
     box-shadow: 0 0 0 1px rgba(255, 0, 0, 0.5) inset;
@@ -1703,6 +1697,20 @@ h2 {
     box-shadow: 0 0 0 1px rgba(80, 210, 255, 0.7) inset;
     background: rgba(80, 210, 255, 0.12);
     color: #d8f6ff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :is(.enhancement-btn, .skill-level-btn, .sync-mindscape-btn):hover:not(:disabled) {
+        background-color: rgba(185, 215, 244, 0.2);
+    }
+
+    :is(.enhancement-btn, .skill-level-btn, .sync-mindscape-btn):hover:not(.active, :disabled) {
+        color: #b9d7f4;
+    }
+
+    .sync-mindscape-btn.active:hover:not(:disabled) {
+        background-color: rgba(80, 210, 255, 0.22);
+    }
 }
 
 .skill-description .sync-mindscape-value,
@@ -3773,14 +3781,26 @@ html.character-header-loading .character-header::after {
 
 html.character-header-loading .character-header .navigation-path,
 html.character-header-loading .character-header .name-section,
-html.character-header-loading .character-header .basic-info {
+html.character-header-loading .character-header .basic-info,
+html.character-header-loading .character-header .character-video {
     visibility: hidden;
 }
 
-.character-header.is-ready .navigation-path,
-.character-header.is-ready .name-section,
-.character-header.is-ready .basic-info {
-    animation: character-name-arrival 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+@media (prefers-reduced-motion: no-preference) {
+    .character-header.is-ready :is(
+        .navigation-path, .name-row, .name-row2, .sub-info > p,
+        .basic-info > .info-row, .chracter-tag:not(:empty), .character-video
+    ) {
+        animation: character-header-part-arrival 240ms cubic-bezier(0.16, 1, 0.3, 1)
+            var(--character-header-part-delay, 0ms) backwards;
+    }
+
+    .character-header .name-row { --character-header-part-delay: 30ms; }
+    .character-header .name-row2 { --character-header-part-delay: 60ms; }
+    .character-header .code-name { --character-header-part-delay: 90ms; }
+    .character-header :is(.sees, .persona-name) { --character-header-part-delay: 120ms; }
+    .character-header .basic-info > .info-row { --character-header-part-delay: 150ms; }
+    .character-header :is(.chracter-tag, .character-video) { --character-header-part-delay: 180ms; }
 }
 
 @keyframes character-portrait-arrival {
@@ -3788,31 +3808,20 @@ html.character-header-loading .character-header .basic-info {
     to { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes character-name-arrival {
-    from { opacity: 0.25; transform: translateX(-16px); }
-    to { opacity: 1; transform: translateX(0); }
+@keyframes character-header-part-arrival {
+    from { opacity: 0; translate: 0 8px; }
+    to { opacity: 1; translate: 0 0; }
 }
 
 @media (max-width: 768px) {
     .character-header .thief-anim-wrapper[data-loaded="true"] {
         animation-name: character-mobile-portrait-arrival;
     }
-
-    .character-header.is-ready .navigation-path,
-    .character-header.is-ready .name-section,
-    .character-header.is-ready .basic-info {
-        animation-name: character-mobile-info-arrival;
-    }
 }
 
 @keyframes character-mobile-portrait-arrival {
     from { opacity: 0; transform: translateY(24px) scale(1.025); }
     to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes character-mobile-info-arrival {
-    from { opacity: 0.25; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -3920,9 +3929,6 @@ html.character-header-loading .character-header .basic-info {
     }
 
     .character-header .thief-anim-wrapper[data-loaded="true"],
-    .character-header.is-ready .navigation-path,
-    .character-header.is-ready .name-section,
-    .character-header.is-ready .basic-info,
     .character-header h1.character-name::before,
     html.character-header-loading .character-header::after,
     .ritual-item:last-child .ritual-title,

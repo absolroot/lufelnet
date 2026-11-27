@@ -16,7 +16,7 @@
     "persona:index:check": "node scripts/build/generate-persona-list-index.mjs --check",
     "revelation:index:generate": "node scripts/build/generate-revelation-character-index.mjs",
     "revelation:index:check": "node scripts/build/generate-revelation-character-index.mjs --check",
-    "site:build": "npm run tooltips:validate && npm run persona:index:generate && npm run revelation:index:generate && npm run assets:hashes:generate && bundle exec jekyll build --config _config.yml,_config.full-build.yml",
+    "site:build": "npm run tooltips:validate && npm run persona:index:generate && npm run revelation:index:generate && npm run seo:images:generate && npm run assets:hashes:generate && bundle exec jekyll build --config _config.yml,_config.full-build.yml",
     "dev:local": "node scripts/dev-local.mjs",
     "gallery:allout:generate": "node scripts/gallery/generate-allout-assets.mjs",
     "gallery:allout:check": "node scripts/gallery/generate-allout-assets.mjs --check",
@@ -25,6 +25,7 @@
     "inflation:validate": "node apps/inflation/validate-inflation-data.mjs",
     "inflation:scan-candidates": "node apps/inflation/scan-score-candidates.mjs",
     "seo:synergy:generate": "node scripts/seo/generate-synergy-pages.mjs",
+    "seo:images:generate": "node scripts/build/generate-social-images.mjs",
     "seo:synergy:check": "node scripts/seo/generate-synergy-pages.mjs --check",
     "seo:wonder-weapon:generate": "node scripts/seo/generate-wonder-weapon-pages.mjs",
     "seo:wonder-weapon:check": "node scripts/seo/generate-wonder-weapon-pages.mjs --check",
@@ -107,7 +108,9 @@
   "devDependencies": {
     "@babel/parser": "^7.28.5",
     "prettier": "^3.6.2",
-    "recast": "^0.23.11"
+    "recast": "^0.23.11",
+    "sharp": "^0.35.5",
+    "yaml": "^2.9.1"
   },
   "repository": {
     "type": "git",

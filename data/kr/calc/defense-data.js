@@ -459,6 +459,7 @@ const penetrateData = {
   "J&C": [
     {
       "id": "jc1",
+      "jcPersonaPerformance": "pierce",
       "type": "스킬2",
       "target": "단일",
       "skillIcon": "/assets/img/skill-element/염동핵열.png",
@@ -2484,6 +2485,7 @@ const defenseCalcData = {
   "J&C": [
     {
       "id": "jc2",
+      "jcPersonaPerformance": "defense",
       "type": "스킬3",
       "target": "광역",
       "skillIcon": "/assets/img/skill-element/만능.png",

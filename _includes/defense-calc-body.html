@@ -44,9 +44,9 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/defense-calc/defense-calc.css?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.css'] }}">
+{% include calculator-presets.html %}
 <script src="/apps/defense-calc/defense-calc.js?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.js'] }}"></script>
 
-<script src="{{ site.baseurl }}/data/characters/J&C/JC_calc.js?h={{ site.data.asset_versions.files['/data/characters/J&C/JC_calc.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/order.js?h={{ site.data.asset_versions.files['/data/persona/order.js'] }}"></script>
 <script src="{{ site.baseurl }}/assets/js/persona-loader.js?h={{ site.data.asset_versions.files['/assets/js/persona-loader.js'] }}"></script>
@@ -85,8 +85,11 @@
         {% include nitro-ad.html id="defense-header-banner" format="leaderboard" class="nitro-ad-container--header" %}
     </div>
 
+    <div class="page-entrance-part"
+        data-page-entrance-stagger=":scope > .top-cards > .top-row-1 > .card-style, :scope > .table-tabs"
+        data-page-entrance-stagger-scroll>
     <!-- top card container -->
-    <div class="top-cards page-entrance-part">
+    <div class="top-cards">
         <!-- Row 1: Boss card (좌측) and Final damage (우측) -->
         <div class="top-row-1">
             <div class="boss-card card-style">
@@ -255,7 +258,7 @@
     </div>
 
     <!-- table tabs -->
-    <div class="table-tabs card-style page-entrance-part">
+    <div class="table-tabs card-style">
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="penetrate">
                 <img src="{{ site.baseurl }}/assets/img/stat-icon/관통.png" alt="관통" class="tab-icon">
@@ -385,6 +388,7 @@
                 </table>
             </div>
         </div>
+    </div>
     </div>
     <!-- 광고 -->
     <!--

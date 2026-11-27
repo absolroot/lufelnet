@@ -23,6 +23,7 @@ wheels/
 *.egg
 .claude/
 .codex/
+/_private/
 /.codex-temp/
 .tmp/
 .tmp/**/*
@@ -113,6 +114,8 @@ apps/article-editor/**
 # Generated reports
 reports/
 scripts/reports/
+/_data/social_images.json
+/social-preview/
 apps/patch-console/state/
 .playwright-mcp/
 .seo-cache/

@@ -1,6 +1,8 @@
 (function () {
     'use strict';
 
+    let mountedVideo;
+
     function getCurrentLanguage() {
         const urlParams = new URLSearchParams(window.location.search);
         const langParam = urlParams.get('lang');
@@ -106,14 +108,6 @@
         return normalizeYoutubeIdList(mergedCharacter.video);
     }
 
-    function removeExistingVideo(tagEl) {
-        try {
-            document.querySelectorAll('.character-video').forEach(n => {
-                try { n.remove(); } catch (_) { }
-            });
-        } catch (_) { }
-    }
-
     function buildArrowSvg(direction) {
         if (direction === 'prev') {
             return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6L9 12L15 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
@@ -146,13 +140,18 @@
         const tagEl = document.querySelector('.chracter-tag');
         if (!tagEl) return;
 
-        removeExistingVideo(tagEl);
-
         const currentLang = getCurrentLanguage();
-        const hideTagByLanguage = shouldHideTagByLanguage(currentLang);
         const videoIds = resolveVideoIds(character, characterName);
-        if (!videoIds || videoIds.length === 0) {
-            tagEl.style.display = hideTagByLanguage ? 'none' : '';
+        const key = JSON.stringify([characterName, currentLang, videoIds]);
+        if (mountedVideo?.key === key && mountedVideo.element.isConnected) {
+            tagEl.style.display = 'none';
+            return;
+        }
+
+        mountedVideo?.element.remove();
+        mountedVideo = undefined;
+        if (!videoIds.length) {
+            tagEl.style.display = shouldHideTagByLanguage(currentLang) ? 'none' : '';
             return;
         }
 
@@ -331,6 +330,7 @@
             tagEl.parentNode.insertBefore(wrap, tagEl);
         }
         tagEl.style.display = 'none';
+        mountedVideo = { key, element: wrap };
     }
 
     function getCharacterFromUrl() {
@@ -352,36 +352,4 @@
             console.warn('[cha_video] applyCharacterVideo failed', e);
         }
     };
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const safeApply = () => {
-            if (typeof window.applyCharacterVideo === 'function') {
-                const { name, character } = getCharacterFromUrl();
-                window.applyCharacterVideo(name, character);
-            }
-        };
-
-        const tagEl = document.querySelector('.chracter-tag');
-        if (!tagEl) {
-            setTimeout(safeApply, 100);
-            return;
-        }
-
-        const maybeApply = () => {
-            safeApply();
-        };
-
-        const obs = new MutationObserver(() => maybeApply());
-        try {
-            obs.observe(tagEl, { childList: true, subtree: true, characterData: true });
-        } catch (_) { }
-
-        setTimeout(maybeApply, 0);
-        setTimeout(maybeApply, 200);
-        setTimeout(maybeApply, 800);
-
-        window.addEventListener('languageDetected', () => {
-            setTimeout(maybeApply, 0);
-        });
-    });
 })();

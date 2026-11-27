@@ -97,11 +97,7 @@
   {% endif %}
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ site.url }}{{ current_url }}{{ canonical_params }}">
-  {% if page.image %}
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}{{ page.image }}">
-  {% else %}
-  <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/logo/lufel.png">
-  {% endif %}
+  {% include social-image-meta.html %}
   <meta property="og:site_name" content="P5X Lufelnet">
   {% if page.language == 'kr' %}
   <meta property="og:locale" content="ko_KR">
@@ -125,12 +121,6 @@
   {% else %}
   <meta name="twitter:description" content="Persona 5X Strategy and Information Site">
   {% endif %}
-  {% if page.image %}
-  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}{{ page.image }}">
-  {% else %}
-  <meta name="twitter:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/home/seo.png">
-  {% endif %}
-
   <!-- Firebase SDK -->
   <!--
   <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>

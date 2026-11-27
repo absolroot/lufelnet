@@ -1141,7 +1141,8 @@
             const tasks = [
                 loadPerCharacterResource(name, { fileBase: 'review', globalVarName: 'characterReview', scanPrefixes: ['characterReview_'] }),
                 loadPerCharacterResource(name, { fileBase: 'base_stats', globalVarName: 'basicStatsData' }),
-                loadPerCharacterResource(name, { fileBase: 'setting', globalVarName: 'characterSetting' }),
+                loadPerCharacterResource(name, { fileBase: 'setting', globalVarName: 'characterSetting' })
+                    .then(() => window.applyCharacterVideo?.(name, characterData[name])),
                 loadPerCharacterResource(name, { fileBase: 'operation', globalVarName: 'operationData' }),
                 loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
                 loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
@@ -2498,7 +2499,6 @@
         const metaDescription = document.querySelector('meta[name="description"]');
         const ogTitle = document.querySelector('meta[property="og:title"]');
         const ogDescription = document.querySelector('meta[property="og:description"]');
-        const ogImage = document.querySelector('meta[property="og:image"]');
         const ogUrl = document.querySelector('meta[property="og:url"]');
         const canonicalLink = document.getElementById('canonical-link');
 
@@ -2506,7 +2506,6 @@
             if (metaDescription) metaDescription.setAttribute('content', description);
             if (ogTitle) ogTitle.setAttribute('content', `${characterDisplayName} - ${currentSiteInfo.siteName}`);
             if (ogDescription) ogDescription.setAttribute('content', description);
-            if (ogImage) ogImage.setAttribute('content', `${baseUrl}/img/character-detail/${characterName}.webp`);
             if (ogUrl) ogUrl.setAttribute('content', `${baseUrl}/${currentLang}/character/character.html?name=${characterName}`);
             if (canonicalLink) {
                 const canonicalUrl = `https://lufel.net/${currentLang}/character/character.html?name=${characterName}`;

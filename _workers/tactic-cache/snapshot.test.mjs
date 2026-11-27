@@ -31,11 +31,12 @@ function setup(rows) {
   const sql = new DatabaseSync(':memory:');
   sql.exec(schema);
   const pending = [];
-  const state = { rows, requests: [], pending };
+  const state = { rows, requests: [], writes: [], pending };
   globalThis.fetch = async (input, options) => {
     const request = new Request(input, options);
     const url = new URL(request.url);
     if (request.method !== 'GET' || url.pathname !== '/rest/v1/tactic_library_public') {
+      if (request.method !== 'GET') state.writes.push(request);
       return new Response(null, { status: request.method === 'POST' ? 201 : 204 });
     }
     state.requests.push(request);
@@ -48,7 +49,13 @@ function setup(rows) {
       bind: (...args) => prepare(query, args),
       async first() { return statement.get(...parameters) ?? null; },
       async all() { return { results: statement.all(...parameters) }; },
-      async run() { return { meta: statement.run(...parameters) }; }
+      async run() {
+        const meta = statement.run(...parameters);
+        if (query.startsWith('UPDATE cache_versions') && parameters[0] === 'tactics') {
+          await state.afterTacticVersionBump?.();
+        }
+        return { meta };
+      }
     };
   }
   const database = {
@@ -93,6 +100,19 @@ async function ids(response) {
   assert.equal(response.status, 200);
   const { tactics } = await response.json();
   return tactics.map(row => row.id);
+}
+
+function holdSnapshotSource(state) {
+  let start;
+  let release;
+  const started = new Promise(resolve => { start = resolve; });
+  const held = new Promise(resolve => { release = resolve; });
+  state.reply = async (url, headers) => {
+    start();
+    await held;
+    return rangeResponse(state.rows, url, headers);
+  };
+  return { started, release };
 }
 
 test('uses one anonymous snapshot for the library and each localized home', async () => {
@@ -153,6 +173,68 @@ test('refreshes tactic writes promptly and coalesces count updates', async () =>
   const after = await state.handle('/v1/tactics/home?lang=kr');
   assert.equal((await after.json()).tactics[0].likes, 8);
   assert.equal(state.requests.length, 3);
+});
+
+test('upload waits through a slow source read before a separate viewer loads the new tactic', async () => {
+  const state = setup([tactic(1, 'kr')]);
+  await state.handle('/v1/tactics/library');
+  const source = holdSnapshotSource(state);
+  state.rows = [tactic(2, 'kr'), tactic(1, 'kr')];
+  let response;
+  const write = state.handle('/rest/v1/tactics', 'POST', { Authorization: 'Bearer uploader-session' })
+    .then(result => { response = result; });
+  await source.started;
+  await new Promise(resolve => setTimeout(resolve, 900));
+  assert.equal(response, undefined, 'upload should still be waiting after the previous reader wait window');
+  source.release();
+  await write;
+  assert.equal(response.status, 201);
+  assert.equal(state.writes.length, 1);
+  assert.deepEqual(await ids(await state.handle('/v1/tactics/library')), [2, 1]);
+  assert.deepEqual(await ids(await state.handle('/v1/tactics/home?lang=kr')), [2, 1]);
+  await state.settle();
+});
+
+test('upload waits for a concurrent reader that claimed the new revision', async () => {
+  const state = setup([tactic(1, 'kr')]);
+  await state.handle('/v1/tactics/library');
+  const source = holdSnapshotSource(state);
+  state.rows = [tactic(2, 'kr')];
+  let read;
+  state.afterTacticVersionBump = async () => {
+    read = state.handle('/v1/tactics/library');
+    await source.started;
+  };
+  let response;
+  const write = state.handle('/rest/v1/tactics', 'POST').then(result => { response = result; });
+  await source.started;
+  await new Promise(resolve => setTimeout(resolve, 900));
+  assert.equal(response, undefined, 'upload should join the in-flight refresh');
+  source.release();
+  assert.deepEqual(await ids(await read), [2]);
+  await write;
+  assert.equal(response.status, 201);
+  assert.deepEqual(await ids(await state.handle('/v1/tactics/home?lang=kr')), [2]);
+  assert.equal(state.requests.length, 2);
+  assert.equal(state.writes.length, 1);
+  await state.settle();
+});
+
+test('an upload that reaches the publication deadline stays committed and refresh continues', async () => {
+  const state = setup([tactic(1, 'kr')]);
+  await state.handle('/v1/tactics/library');
+  const source = holdSnapshotSource(state);
+  state.rows = [tactic(2, 'kr')];
+  const start = performance.now();
+  const saved = await state.handle('/rest/v1/tactics', 'POST');
+  assert.ok(performance.now() - start >= 2900);
+  assert.equal(saved.status, 201);
+  assert.equal(state.writes.length, 1);
+  assert.equal(state.pending.length, 1);
+  source.release();
+  await state.settle();
+  assert.deepEqual(await ids(await state.handle('/v1/tactics/library')), [2]);
+  assert.equal(state.writes.length, 1);
 });
 
 test('prevents an older refresh from publishing over a newer tactic write', async () => {

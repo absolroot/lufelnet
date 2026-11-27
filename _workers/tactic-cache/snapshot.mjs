@@ -4,6 +4,8 @@ const RECONCILE_MS = 5 * 60_000;
 const LIKE_BATCH_MS = 60_000;
 const LEASE_MS = 25_000;
 const ORIGIN_BUDGET_MS = 10_000;
+const WRITE_SNAPSHOT_WAIT_MS = 3_000;
+const WRITE_LEASE_POLL_MS = 200;
 const RETRY_MS = 2 * 60_000;
 const HOME_LANGS = ['kr', 'en', 'jp', 'cn'];
 const PUBLIC_COLUMNS = 'id,title,author,comment,created_at,url,region,tactic_type,tactic_version,party,likes';
@@ -188,8 +190,39 @@ function reportRefreshError(error) {
   return false;
 }
 
-export function refreshSnapshotAfterWrite(env, ctx) {
-  ctx.waitUntil(refreshTacticSnapshot(env).catch(reportRefreshError));
+function queueSnapshotRefresh(env, ctx) {
+  const refresh = refreshTacticSnapshot(env).catch(reportRefreshError);
+  ctx.waitUntil(refresh);
+  return refresh;
+}
+
+async function waitForActiveTacticRefresh(db, isWaiting) {
+  while (isWaiting()) {
+    const active = await db.prepare(`
+      SELECT lease_until FROM tactic_snapshot_state
+      WHERE id = 1 AND tactics_version != ${TACTICS_VERSION}
+        AND lease_version = ${TACTICS_VERSION} AND lease_until > ?
+    `).bind(Date.now()).first();
+    if (!active || !isWaiting()) return;
+    await new Promise(resolve => setTimeout(resolve, WRITE_LEASE_POLL_MS));
+  }
+}
+
+export async function waitForTacticSnapshotAfterWrite(env, ctx) {
+  const refresh = queueSnapshotRefresh(env, ctx);
+  let waiting = true;
+  let timer;
+  const deadline = new Promise(resolve => { timer = setTimeout(resolve, WRITE_SNAPSHOT_WAIT_MS); });
+  const ready = refresh.then(published => {
+    if (!published) return waitForActiveTacticRefresh(env.CACHE_STATE, () => waiting);
+  }).catch(reportRefreshError);
+  try {
+    await Promise.race([ready, deadline]);
+  } finally {
+    // The queued refresh can still finish when a committed write reaches the deadline.
+    waiting = false;
+    clearTimeout(timer);
+  }
 }
 
 function unavailable(cors) {
@@ -225,7 +258,7 @@ export async function serveTacticSnapshot(request, url, env, ctx, cors) {
           }
         }
       } else if (canRefresh(snapshot.state, Date.now())) {
-        refreshSnapshotAfterWrite(env, ctx);
+        queueSnapshotRefresh(env, ctx);
       }
     }
     if (!snapshot.parts.length) return unavailable(cors);

@@ -1,4 +1,4 @@
-import { isSnapshotPath, refreshSnapshotAfterWrite, serveTacticSnapshot } from './snapshot.mjs';
+import { isSnapshotPath, serveTacticSnapshot, waitForTacticSnapshotAfterWrite } from './snapshot.mjs';
 
 const TABLES = new Set(['tactics', 'tactic_likes']);
 const METHODS = new Set(['GET', 'HEAD', 'POST', 'PATCH', 'DELETE']);
@@ -129,7 +129,7 @@ export default {
       if (upstream.ok && request.method !== 'GET' && request.method !== 'HEAD') {
         try {
           await env.CACHE_STATE.prepare('UPDATE cache_versions SET version = version + 1 WHERE table_name = ?').bind(table).run();
-          if (snapshotsEnabled && table === 'tactics') refreshSnapshotAfterWrite(env, ctx);
+          if (snapshotsEnabled && table === 'tactics') await waitForTacticSnapshotAfterWrite(env, ctx);
         } catch (error) {
           // The write has already succeeded. Return that result rather than making
           // the browser retry a possibly non-idempotent database operation.

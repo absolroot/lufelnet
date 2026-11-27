@@ -65,7 +65,7 @@ window.enCharacterSkillsData["슌"] = {
     "type": "단일 피해",
     "hp": 6,
     "cool": 0,
-    "description": "Deal Physical damage to 1 foe equal to 56.9%/62.7%/59.2%/65.1% of Shun's max HP. Decrease Defense by 30.0%/30.0%/31.2%/31.2% for 2 turns.When Desperado is active, increase effect by 59.9%/59.9%/62.4%/62.4%."
+    "description": "Deal Physical damage to 1 foe equal to 56.9%/62.7%/59.2%/65.1% of Shun's max HP. Decrease Defense by 30.0%/30.0%/31.2%/31.2% for 2 turns. When Desperado is active, increase effect by 59.9%/59.9%/62.4%/62.4%."
   },
   "skill3": {
     "name": "Icy Defense",

@@ -44,7 +44,7 @@ window.characterSkillsData["YUI·스텔라"] = {
   "passive2": {
     "name": "찬란",
     "element": "패시브",
-    "description": "총공격 대미지가 15.0% 증가한다.\n총공격 참여 시, 해당 회차 총공격 대미지는 YUI·스텔라가 보유한 베지나이츠 총 수량에 기반하여 추가로 증가한다.",
+    "description": "『총공격 대미지』가 15.0% 증가한다.\n총공격 참여 시, 해당 회차 총공격 대미지는 YUI·스텔라가 보유한 베지나이츠 총 수량에 기반하여 추가로 증가한다.",
     "cool": 0
   }
 };
@@ -78,22 +78,25 @@ window.enCharacterSkillsData["YUI·스텔라"] = {
   "skill_highlight": {
     "element": "핵열",
     "type": "단일피해",
-    "description": "Deal Nuclear damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack. Also, according to specific rules, activate Harvest Havoc on the target."
+    "description": "Deal Nuclear damage to 1 foe equal to 439.2%/484.2%/466.2%/511.2% of Attack. Also, according to specific rules, activate Harvest Havoc on the target.",
+    "cool": 4
   },
   "passive1": {
     "name": "Veggie Satellite",
     "element": "패시브",
-    "description": "During battle, for each Veggie Knight gained, increase Cosmic Yui's damage by 8.1% (up to 4 Veggie Knights)."
+    "description": "During battle, for each Veggie Knight gained, increase Cosmic Yui's damage by 8.1% (up to 4 Veggie Knights).",
+    "cool": 0
   },
   "passive2": {
     "name": "Mixed Vegetables",
     "element": "패시브",
-    "description": "Increase All-Out Attack damage by 15.0%. When participating in an All-Out Attack, increase that damage more based on the total number of Veggie Knights Cosmic Yui has gained."
+    "description": "Increase All-Out Attack damage by 15.0%. When participating in an All-Out Attack, increase that damage more based on the total number of Veggie Knights Cosmic Yui has gained.",
+    "cool": 0
   }
 };
 
 window.jpCharacterSkillsData["YUI·스텔라"] = {
-  "name": "YUI·MUSUBI",
+  "name": "ＹＵＩ・ＭＵＳＵＢＩ",
   "skill1": {
     "name": "ハーベストフェスタ！",
     "element": "핵열",
@@ -108,7 +111,7 @@ window.jpCharacterSkillsData["YUI·스텔라"] = {
     "type": "버프",
     "sp": 0,
     "cool": 1,
-    "description": "２ターンの間、自身の攻撃力が29.3%/32.3%/31.1%/34.1%、クリティカル率が11.7%/12.9%/12.4%/13.6%上昇する。さらに特定の順序で『ベジナイツ』を１体召喚する。このスキルを使用後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとして扱わない）。\n自動効果：自身の行動開始時、自動で特定の順序に従って『ベジナイツ』を１体召喚する。『ナスナイト』、『キノコナイト』、『アスパラナイト』は最大１体まで、『ポテトナイト』は最大４体まで獲得できる。"
+    "description": "２ターンの間、自身の攻撃力が29.3%/32.3%/31.1%/34.1%、クリティカル率が11.7%/12.9%/12.4%/13.6%上昇する。さらに特定の順序で『ベジナイツ』を１体召喚する。\nこのスキルを使用後も同ターン内に他のスキルを使用できる（このスキルは通常のスキルとして扱わない）。\n自動効果：自身の行動開始時、自動で特定の順序に従って『ベジナイツ』を１体召喚する。『ナスナイト』、『キノコナイト』、『アスパラナイト』は最大１体まで、『ポテトナイト』は最大４体まで獲得できる。"
   },
   "skill3": {
     "name": "ベジナイツアタック！",
@@ -116,22 +119,25 @@ window.jpCharacterSkillsData["YUI·스텔라"] = {
     "type": "단일피해",
     "sp": 23,
     "cool": 0,
-    "description": "敵単体に攻撃力130.2%/143.5%/138.2%/151.5%の核熱属性ダメージを与え、所持している『ベジナイツ』１体ごとに、追加で攻撃力29.3%/32.3%/31.1%/34.1%の核熱属性ダメージを１回与える。さらに『ポテトナイト』を２体以上所持している場合、１体を残して『ポテトナイト』を消費し、消費した『ポテトナイト』１体ごとに、追加で攻撃力24.4%/26.9%/25.9%/28.4%の核熱属性ダメージを１回与える。このスキルのダメージは総攻撃のダメージとして扱われる。\nこのスキルを選択して使用した場合、『ベジエナジー』を２つ獲得する。\nこのスキルの発動後に『ナスナイト』を所持している場合、ターン終了時に自動で『ＮＳパープル』状態になる。\n自動効果：『ベジエナジー』が７つの時、すべての『ベジエナジー』を消費して『ベジナイツアタック！』のダメージ効果を発動することができる。このダメージはすべての敵で均等に分配され、通常のスキルダメージとして扱わない。"
+    "description": "敵単体に攻撃力130.2%/143.5%/138.2%/151.5%の核熱属性ダメージを与え、所持している『ベジナイツ』１体ごとに、追加で攻撃力29.3%/32.3%/31.1%/34.1%の核熱属性ダメージを１回与える。さらに『ポテトナイト』を２体以上所持している場合、１体を残して『ポテトナイト』を消費し、消費した『ポテトナイト』１体ごとに、追加で攻撃力24.4%/26.9%/25.9%/28.4%の核熱属性ダメージを１回与える。このスキルのダメージは総攻撃のダメージとして扱う。\nこのスキルを選択して使用した場合、『ベジエナジー』を２つ獲得する。\nこのスキルの発動後に『ナスナイト』を所持している場合、ターン終了時に自動で『ＮＳパープル』状態になる。\n自動効果：『ベジエナジー』が７つの時、すべての『ベジエナジー』を消費して『ベジナイツアタック！』のダメージ効果を発動することができる。このダメージはすべての敵で均等に分配され、通常のスキルダメージとして扱わない。"
   },
   "skill_highlight": {
     "element": "핵열",
     "type": "단일피해",
-    "description": "敵単体に攻撃力439.2%/484.2%/466.2%/511.2%の核熱属性ダメージを与える。さらに特定のルールに従って、対象に『ベジタブルストライク』を発動する。"
+    "description": "敵単体に攻撃力439.2%/484.2%/466.2%/511.2%の核熱属性ダメージを与える。さらに特定のルールに従って、対象に『ベジタブルストライク』を発動する。",
+    "cool": 4
   },
   "passive1": {
     "name": "ベジサテライツ",
     "element": "패시브",
-    "description": "戦闘中、獲得している『ベジナイツ』１体ごとに、ＹＵＩ・ＭＵＳＵＢＩの与ダメージが8.1%上昇する（最大４体分まで）。"
+    "description": "戦闘中、獲得している『ベジナイツ』１体ごとに、ＹＵＩ・ＭＵＳＵＢＩの与ダメージが8.1%上昇する（最大４体分まで）。",
+    "cool": 0
   },
   "passive2": {
     "name": "ミックスベジタブル",
     "element": "패시브",
-    "description": "総攻撃ダメージが15.0%上昇する。総攻撃に参加した時、その総攻撃ダメージはＹＵＩ・ＭＵＳＵＢＩが獲得している『ベジナイツ』の合計数に応じて追加で上昇する。"
+    "description": "総攻撃ダメージが15.0%上昇する。総攻撃に参加した時、その総攻撃ダメージはＹＵＩ・ＭＵＳＵＢＩが獲得している『ベジナイツ』の合計数に応じて追加で上昇する。",
+    "cool": 0
   }
 };
 

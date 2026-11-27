@@ -17,7 +17,7 @@ import {
   stableStringify,
   tokenizeDiffPath
 } from './lib/patch-console-shared.mjs';
-import { isPercentageSeriesFormattingDiff } from './patch-text-diff.mjs';
+import { mergeExternalPatch } from './patch-text-diff.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -79,30 +79,6 @@ function parseCli(argv) {
     }
   }
   return { command, args };
-}
-
-function mergePatch(base, patch) {
-  if (patch === undefined || isPercentageSeriesFormattingDiff(base, patch)) return clone(base);
-
-  if (Array.isArray(patch)) {
-    const out = Array.isArray(base) ? clone(base) : [];
-    for (let i = 0; i < patch.length; i += 1) {
-      if (patch[i] === undefined) continue;
-      out[i] = mergePatch(out[i], patch[i]);
-    }
-    return out;
-  }
-
-  if (isPlainObject(patch)) {
-    const out = isPlainObject(base) ? clone(base) : {};
-    for (const [key, value] of Object.entries(patch)) {
-      if (value === undefined) continue;
-      out[key] = mergePatch(out[key], value);
-    }
-    return out;
-  }
-
-  return clone(patch);
 }
 
 function parseLangs(input) {
@@ -659,7 +635,7 @@ function buildPartDiff({ part, patchValue, localData }) {
   const current = part === 'profile'
     ? (isPlainObject(localData) ? localData : {})
     : localData?.[part];
-  const nextValue = mergePatch(current, patchValue);
+  const nextValue = mergeExternalPatch(current, patchValue);
   const changed = diffPaths(current, nextValue).filter(Boolean);
   if (changed.length === 0) return null;
   const valueDiffs = changed.map((pathText) => ({
@@ -750,7 +726,7 @@ function applyPartsToPersona({ row, lang, parts, ext, baseData, selectedPathsByP
     const currentPart = part === 'profile'
       ? (isPlainObject(nextData) ? nextData : {})
       : nextData?.[part];
-    const fullNextPart = mergePatch(currentPart, patchValue);
+    const fullNextPart = mergeExternalPatch(currentPart, patchValue);
     const changedRelPaths = diffPaths(currentPart, fullNextPart).filter(Boolean);
     if (changedRelPaths.length === 0) {
       skippedParts.push(part);
@@ -773,7 +749,7 @@ function applyPartsToPersona({ row, lang, parts, ext, baseData, selectedPathsByP
 
     if (!(selectedPathsByPart instanceof Map)) {
       if (part === 'profile') {
-        nextData = mergePatch(nextData, patchValue);
+        nextData = mergeExternalPatch(nextData, patchValue);
       } else {
         if (!isPlainObject(nextData) && !Array.isArray(nextData)) nextData = {};
         nextData[part] = fullNextPart;

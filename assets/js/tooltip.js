@@ -1,6 +1,230 @@
+const contextTooltipHover = window.matchMedia('(min-width: 1201px) and (any-hover: hover)');
+let contextTooltipPanel;
+let activeContextTooltip;
+let contextTooltipFrame;
+let hideHoveredContextTooltip;
+
+contextTooltipHover.addEventListener('change', () => {
+    if (!contextTooltipHover.matches) hideHoveredContextTooltip?.();
+});
+
+function closeContextTooltip(restoreFocus = false) {
+    if (!activeContextTooltip) return;
+    const { trigger } = activeContextTooltip;
+    activeContextTooltip = null;
+    trigger.setAttribute('aria-expanded', 'false');
+    contextTooltipPanel.hidden = true;
+    if (restoreFocus && trigger.isConnected) trigger.focus({ preventScroll: true });
+}
+
+function positionContextTooltip() {
+    if (!activeContextTooltip) return;
+    const { trigger, line } = activeContextTooltip;
+    const rects = trigger.getClientRects();
+    const rect = rects[Math.min(line, rects.length - 1)];
+    const viewport = window.visualViewport;
+    const left = viewport?.offsetLeft ?? 0;
+    const top = viewport?.offsetTop ?? 0;
+    const width = viewport?.width ?? document.documentElement.clientWidth;
+    const height = viewport?.height ?? window.innerHeight;
+    const panel = contextTooltipPanel;
+    const style = getComputedStyle(panel);
+    const safeInset = side => parseFloat(style.getPropertyValue('--tooltip-safe-' + side)) || 0;
+    const gutter = 14;
+    const gap = 8;
+    const headerBottom = document.querySelector('.mobile-header')?.getBoundingClientRect().bottom ?? 0;
+    let minX = left + Math.max(gutter, safeInset('left'));
+    let maxX = left + width - Math.max(gutter, safeInset('right'));
+    const minY = Math.max(top + Math.max(gutter, safeInset('top')), headerBottom + gap);
+    const maxY = top + height - Math.max(gutter, safeInset('bottom'));
+    if (!rect || rect.bottom <= minY - gap || rect.top >= maxY + gap) {
+        closeContextTooltip();
+        return;
+    }
+
+    const card = width <= 768 ? trigger.closest('.card-style') : null;
+    if (card) {
+        const bounds = card.getBoundingClientRect();
+        const cardStyle = getComputedStyle(card);
+        const contentLeft = Math.max(minX, bounds.left + parseFloat(cardStyle.paddingLeft));
+        const contentRight = Math.min(maxX, bounds.right - parseFloat(cardStyle.paddingRight));
+        if (contentRight - contentLeft >= 240) {
+            minX = contentLeft;
+            maxX = contentRight;
+        }
+    }
+    const panelWidth = Math.min(320, maxX - minX);
+    const termBounds = trigger.getBoundingClientRect();
+    const above = Math.max(0, termBounds.top - gap - minY);
+    const below = Math.max(0, maxY - termBounds.bottom - gap);
+    panel.style.width = panelWidth + 'px';
+    const placeBelow = below >= panel.firstElementChild.scrollHeight || below >= above;
+    panel.style.maxHeight = (placeBelow ? below : above) + 'px';
+    const anchorX = (rect.left + rect.right) / 2;
+    const panelLeft = Math.min(maxX - panelWidth, Math.max(minX, anchorX - panelWidth / 2));
+    panel.style.left = panelLeft + 'px';
+    panel.style.top = (placeBelow ? termBounds.bottom + gap : termBounds.top - gap - panel.offsetHeight) + 'px';
+    panel.style.setProperty('--tooltip-anchor-x', Math.min(panelWidth - 16, Math.max(16, anchorX - panelLeft)) + 'px');
+    panel.dataset.placement = placeBelow ? 'below' : 'above';
+}
+
+function createContextTooltipPanel() {
+    const panel = document.createElement('div');
+    panel.className = 'tooltip-panel';
+    panel.id = 'tooltip-panel';
+    panel.hidden = true;
+    panel.tabIndex = -1;
+    panel.setAttribute('role', 'dialog');
+    panel.setAttribute('aria-labelledby', 'tooltip-panel-title');
+    panel.setAttribute('aria-describedby', 'tooltip-panel-description');
+    panel.innerHTML = '<div class="tooltip-panel-surface">'
+        + '<div class="tooltip-panel-heading"><strong id="tooltip-panel-title"></strong>'
+        + '<button type="button" class="tooltip-panel-close"></button></div>'
+        + '<div id="tooltip-panel-description" class="tooltip-panel-description"></div></div>';
+    const close = panel.querySelector('button');
+    close.addEventListener('click', () => closeContextTooltip(true));
+    panel.addEventListener('keydown', event => {
+        if (event.key === 'Tab' && (event.shiftKey || event.target === close)) {
+            closeContextTooltip(true);
+        }
+    });
+    document.addEventListener('pointerdown', event => {
+        if (activeContextTooltip && !panel.contains(event.target) && !activeContextTooltip.trigger.contains(event.target)) {
+            closeContextTooltip();
+        }
+    });
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && activeContextTooltip) closeContextTooltip(panel.contains(document.activeElement));
+    });
+    const schedulePosition = () => {
+        if (!activeContextTooltip || contextTooltipFrame) return;
+        contextTooltipFrame = requestAnimationFrame(() => {
+            contextTooltipFrame = 0;
+            positionContextTooltip();
+        });
+    };
+    window.addEventListener('scroll', schedulePosition, { passive: true, capture: true });
+    window.addEventListener('resize', schedulePosition);
+    window.visualViewport?.addEventListener('resize', schedulePosition);
+    window.visualViewport?.addEventListener('scroll', schedulePosition);
+    document.body.append(panel);
+    return panel;
+}
+
+function renderContextTooltip(panel, node) {
+    let title = node.dataset.tooltipTitle || (node.querySelector('.tooltip-text-label') ?? node).textContent.trim();
+    const description = panel.querySelector('.tooltip-panel-description');
+    const content = node.dataset.tooltip;
+    if (node.classList.contains('revelation-value-item')) {
+        const effects = content.trim().split(/\r?\n\r?\n/);
+        const headingPattern = /^\[([^\]\r\n]+)\]\r?\n/;
+        const heading = effects.length === 1 && effects[0].match(headingPattern);
+        if (heading) title = heading[1];
+        description.replaceChildren(...effects.map(effect => {
+            const block = document.createElement('div');
+            const effectHeading = effect.match(headingPattern);
+            if (!heading && effectHeading) {
+                const label = document.createElement('strong');
+                label.textContent = effectHeading[1];
+                block.append(label);
+            }
+            block.append(effectHeading ? effect.slice(effectHeading[0].length) : effect);
+            return block;
+        }));
+    } else if (node.hasAttribute('data-skill-tooltip')) {
+        description.innerHTML = content;
+    } else {
+        description.textContent = content;
+    }
+    panel.querySelector('#tooltip-panel-title').textContent = title;
+}
+
+function bindContextTooltip(node) {
+    node.tabIndex = 0;
+    node.setAttribute('role', 'button');
+    node.setAttribute('aria-haspopup', 'dialog');
+    node.setAttribute('aria-expanded', 'false');
+    bindCursorTooltip(node, event => event.pointerType === 'mouse'
+        && contextTooltipHover.matches && !activeContextTooltip, true);
+
+    node.addEventListener('click', event => {
+        if (activeContextTooltip?.trigger === node) {
+            closeContextTooltip(true);
+            return;
+        }
+        const content = node.dataset.tooltip;
+        if (!content) return;
+        closeContextTooltip();
+        const panel = contextTooltipPanel ??= createContextTooltipPanel();
+        renderContextTooltip(panel, node);
+        const close = panel.querySelector('button');
+        close.setAttribute('aria-label', window.I18nService?.t('common.close', 'Close') || 'Close');
+        const line = event.detail ? Array.from(node.getClientRects())
+            .findIndex(rect => event.clientY >= rect.top && event.clientY <= rect.bottom) : 0;
+        activeContextTooltip = { trigger: node, line: Math.max(0, line) };
+        node.setAttribute('aria-controls', panel.id);
+        node.setAttribute('aria-expanded', 'true');
+        hideHoveredContextTooltip?.();
+        panel.hidden = false;
+        panel.firstElementChild.scrollTop = 0;
+        positionContextTooltip();
+        if (!panel.hidden) panel.focus({ preventScroll: true });
+    });
+    node.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        if (!event.repeat) node.click();
+    });
+}
+
+function bindCursorTooltip(node, shouldShow = () => true, trackContext = false) {
+    let floating;
+    const move = event => {
+        if (!floating) return;
+        const offset = 16;
+        const gutter = 8;
+        const { clientX: x, clientY: y } = event;
+        const { offsetWidth: width, offsetHeight: height } = floating;
+        floating.style.left = Math.max(gutter, x + offset + width + gutter > window.innerWidth ? x - width - offset : x + offset) + 'px';
+        floating.style.top = Math.max(gutter, y + offset + height + gutter > window.innerHeight ? y - height - offset : y + offset) + 'px';
+    };
+    const enter = event => {
+        const content = node.dataset.tooltip;
+        if (!content || !shouldShow(event)) return;
+        floating = document.getElementById('cursor-tooltip');
+        if (!floating) {
+            floating = document.createElement('div');
+            floating.id = 'cursor-tooltip';
+            floating.className = 'cursor-tooltip';
+            document.body.appendChild(floating);
+        }
+        node.classList.add('js-tooltip-active');
+        floating.innerHTML = content;
+        floating.style.display = 'block';
+        if (trackContext) hideHoveredContextTooltip = hide;
+        move(event);
+    };
+    node.addEventListener('pointermove', move);
+    const hide = () => {
+        if (!floating) return;
+        floating.style.display = 'none';
+        floating = null;
+        if (hideHoveredContextTooltip === hide) hideHoveredContextTooltip = null;
+        node.classList.remove('js-tooltip-active');
+    };
+    node.addEventListener('pointerenter', enter);
+    node.addEventListener('pointerleave', hide);
+}
+
 // 내부 유틸: 단일 요소에 툴팁 리스너 바인딩 (중복 방지)
 function bindTooltipElement(el) {
     if (!el || el.dataset.tooltipBound === '1') return;
+    if (el.matches('.help-icon[data-help-type], .revelation-value-item') && !el.dataset.tooltip) return;
+    if (el.hasAttribute('data-skill-tooltip') || el.hasAttribute('data-tooltip-title')) {
+        bindContextTooltip(el);
+        el.dataset.tooltipBound = '1';
+        return;
+    }
     const viewportWidth = window.innerWidth;
     let node = el;
 
@@ -22,38 +246,7 @@ function bindTooltipElement(el) {
             // 이미 데스크톱 모드면 계속 진행 (이전 바인딩이 제거되었을 수 있으므로 재검사)
         }
 
-        // PC: 커서 추종 툴팁 컨테이너 준비
-        const floating = document.getElementById('cursor-tooltip') || (function() {
-            const el = document.createElement('div');
-            el.id = 'cursor-tooltip';
-            el.className = 'cursor-tooltip';
-            document.body.appendChild(el);
-            return el;
-        })();
-
-        const showFloating = (el, content) => { if (!content) return; el.innerHTML = content; el.style.display = 'block'; };
-        const hideFloating = (el) => { el.style.display = 'none'; };
-        const moveFloating = (el, e) => {
-            const offset = 16;
-            let x = e.clientX + offset;
-            let y = e.clientY + offset;
-            const vw = window.innerWidth; const vh = window.innerHeight;
-            if (el.style.display !== 'block') { el.style.display = 'block'; }
-            const ttW = el.offsetWidth; const ttH = el.offsetHeight;
-            if (x + ttW + 8 > vw) x = e.clientX - ttW - offset;
-            if (y + ttH + 8 > vh) y = e.clientY - ttH - offset;
-            el.style.left = x + 'px'; el.style.top = y + 'px';
-        };
-
-        node.addEventListener('mouseenter', function(e) {
-            try {
-                const content = this.getAttribute('data-tooltip');
-                this.classList.add('js-tooltip-active');
-                showFloating(floating, content); moveFloating(floating, e);
-            } catch (_) {}
-        });
-        node.addEventListener('mousemove', function(e) { try { moveFloating(floating, e); } catch (_) {} });
-        node.addEventListener('mouseleave', function() { try { hideFloating(floating); this.classList.remove('js-tooltip-active'); } catch (_) {} });
+        bindCursorTooltip(node);
 
         // 중복 바인딩 방지 플래그
         node.dataset.tooltipBound = '1';
@@ -300,6 +493,7 @@ function addTooltips() {
     try {
         if (!window.__tooltipObserver) {
             const observer = new MutationObserver((mutations) => {
+                if (activeContextTooltip && !activeContextTooltip.trigger.isConnected) closeContextTooltip();
                 for (const m of mutations) {
                     if (m.type === 'childList') {
                         m.addedNodes && m.addedNodes.forEach(node => {

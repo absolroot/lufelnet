@@ -109,8 +109,9 @@
             const help = getHelpContent(helpType);
             const tooltip = help.content || help.title || '';
             el.classList.add('tooltip-text');
+            el.dataset.tooltipTitle = help.title;
             el.setAttribute('data-tooltip', tooltip);
-            el.setAttribute('aria-label', tooltip);
+            el.setAttribute('aria-label', help.title);
             if (typeof window.bindTooltipElement === 'function') {
                 window.bindTooltipElement(el);
             } else if (typeof bindTooltipElement === 'function') {

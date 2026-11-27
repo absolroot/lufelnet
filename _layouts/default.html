@@ -4,6 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  {% if page.character_kr_name %}
+  <script>
+    (function () {
+      if (new URLSearchParams(location.search).get('name')) return;
+      const characterName = {{ page.character_kr_name | jsonify }};
+      const portrait = document.createElement('link');
+      portrait.rel = 'preload';
+      portrait.as = 'image';
+      portrait.setAttribute('fetchpriority', 'high');
+      portrait.href = '{{ site.baseurl }}/assets/img/character-detail/' + encodeURIComponent(characterName + '.webp');
+      document.head.appendChild(portrait);
+    })();
+  </script>
+  {% endif %}
   {% if page.preload_character_skeleton %}
   <link rel="preload" as="image" href="{{ site.baseurl }}/assets/img/character-cards/card_skeleton.webp" fetchpriority="high">
   {% endif %}

@@ -31,7 +31,7 @@ window.enCharacterWeaponData["YUI·스텔라"] = {
     "attack": 618.71,
     "defense": 306.25,
     "skill_name": "",
-    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After activating a Resonance, increase Attack when using [Veg-Out Attack] by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
+    "description": "Increase Attack by 12.0%/12.0%/16.0%/16.0%/20.0%/20.0%/24.0%. After activating a Resonance, increase Attack when using Veg-Out Attack by 22.0%/29.0%/29.0%/36.0%/36.0%/43.0%/43.0% for 2 turns."
   },
   "weapon5-1": {
     "name": "Starlight Decimators",
@@ -39,7 +39,7 @@ window.enCharacterWeaponData["YUI·스텔라"] = {
     "attack": 773.01,
     "defense": 383.2,
     "skill_name": "",
-    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When Veggie Knights are summoned, increase Cosmic Yui's Attack by 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%. This effect is permanent and stacks up to 4 times.\nWhen using [Veg-Out Attack], increase critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%."
+    "description": "Increase critical rate by 18.1%/18.1%/23.5%/23.5%/28.9%/28.9%/34.3%. When Veggie Knights are summoned, increase Cosmic Yui's Attack by 10.7%/13.8%/13.8%/16.9%/16.9%/20.0%/20.0%. This effect is permanent and stacks up to 4 times.\nWhen using Veg-Out Attack, increase critical damage by 32.8%/42.8%/42.8%/52.8%/52.8%/62.8%/62.8%."
   }
 };
 

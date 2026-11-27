@@ -1,26 +1,30 @@
 window.innateData = window.innateData || {};
 window.innateData["후타바"] = {
   "final_innate": [
-    [{
-      "attr": "Attack",
-      "nature": "Support",
-      "value": "0.1",
-      "type": "버프",
-      "desc": "모든 해명 괴도의 공격력 증가",
-      "desc_en": "All Elucidator Phantom Thieves' Attack Increase",
-      "desc_jp": "解明者ゴーストシーフ全員の攻撃力上昇",
-      "desc_cn": "所有解明怪盗的攻击力提升"
-    }],
-    [{
-      "attr": "Crit Mult.",
-      "nature": "Support",
-      "value": "0.12",
-      "type": "버프",
-      "desc": "모든 해명 괴도의 크리티컬 효과 증가",
-      "desc_en": "All Elucidator Phantom Thieves' CRIT Mult Increase",
-      "desc_jp": "解明者ゴーストシーフ全員のCRT倍率上昇",
-      "desc_cn": "所有解明怪盗的暴击效果提升"
-    }]
+    [
+      {
+        "attr": "Attack",
+        "nature": "Support",
+        "value": "0.1",
+        "type": "버프",
+        "desc": "모든 해명 괴도의 공격력 증가",
+        "desc_en": "All Elucidator Phantom Thieves' Attack Increase",
+        "desc_jp": "解明者ゴーストシーフ全員の攻撃力上昇",
+        "desc_cn": "所有解明怪盗的攻击力提升"
+      }
+    ],
+    [
+      {
+        "attr": "Crit Mult.",
+        "nature": "Support",
+        "value": "0.12",
+        "type": "버프",
+        "desc": "모든 해명 괴도의 크리티컬 효과 증가",
+        "desc_en": "All Elucidator Phantom Thieves' CRIT Mult Increase",
+        "desc_jp": "解明者ゴーストシーフ全員のCRT倍率上昇",
+        "desc_cn": "所有解明怪盗的暴击效果提升"
+      }
+    ]
   ],
   "innate_awake_skill": [
     {
@@ -52,7 +56,7 @@ window.innateData["후타바"] = {
       "name_en": "Sky Net",
       "name_jp": "天網",
       "name_cn": "天网",
-      "desc": "아군의 첫 번째 턴 시작 시 자동으로 『소리 없는 침습』을 시전한다.\n『해킹 완료』 상태에서 동일한 팀원이 페르소나 스킬을 사용해 누적 2가지 속성의 대미지를 줄 때마다, 2턴 동안 아군 전체의 총대미지 증폭이 3.0%/4.5%/6.0%+의식 레벨*4%, 공격력이 6.0%/9.0%/12.0%+의식 레벨*8% 증가한다(2회 중첩 가능).",
+      "desc": "아군의 첫 번째 턴 시작 시 자동으로 『소리 없는 침입』을 시전한다.\n『해킹 완료』 상태에서 동일한 팀원이 페르소나 스킬을 사용해 누적 2가지 속성의 대미지를 줄 때마다, 2턴 동안 아군 전체의 총대미지 증폭이 3.0%/4.5%/6.0%+의식 레벨*4%, 공격력이 6.0%/9.0%/12.0%+의식 레벨*8% 증가한다(2회 중첩 가능).",
       "desc_en": "At the start of the allies' first turn, automatically use Pentest Complete!.\nWhile Data Storm is active, each time the same ally deals 2 different attributes of damage with Persona skills, increase all allies' total damage amplification by 3.0%/4.5%/6.0% + Awareness level × 4% and Attack by 6.0%/9.0%/12.0% + Awareness level × 8% for 2 turns, up to 2 stacks.",
       "desc_jp": "味方の最初のターン開始時、『セキュリティバイバイ』を自動で使用する。\n『データ掌握』状態の時、同じ味方がペルソナスキルで累計2種類の属性ダメージを与えるたび、味方全体の総ダメージ増幅が3.0%/4.5%/6.0%＋意識レベル×4%、攻撃力が6.0%/9.0%/12.0%＋意識レベル×8%上昇する。2ターン持続し、最大2つまで累積できる。",
       "desc_cn": "友方的首个回合开始时，自动释放『无声侵袭』；\n『骇入完成』状态下，同一个队员使用人格面具技能每累计造成2种属性的伤害时，使所有同伴总伤害增幅提升3.0%/4.5%/6.0%+意识等级*4%、攻击力提升6.0%/9.0%/12.0%+意识等级*8%，持续2回合，最多可叠加2层。"

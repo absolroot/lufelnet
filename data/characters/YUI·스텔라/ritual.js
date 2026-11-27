@@ -6,7 +6,7 @@ window.cnCharacterRitualData = window.cnCharacterRitualData || {};
 window.ritualData["YUI·스텔라"] = {
   "name": "YUI·스텔라",
   "r0": "두근두근 새싹 군단",
-  "r0_detail": "YUI·스텔라는 전투 중 가지, 감자, 버섯, 아스파라거스 4종의 베지나이츠를 소환하고 『원동력』을 누적한다. 『원동력』이 충분히 누적되면 YUI·스텔라는 베지나이츠에게 명령을 내려 적에게 『베지나이츠·총동원』을 발동할 수 있다. 해당 스킬 대미지는 총공격 대미지로 간주한다.\nYUI·스텔라는 각기 다른 베지나이츠를 보유했을 때, 턴 시작 시 괴도복을 해당 나이트의 색깔로 바꾸고 그에 맞는 능력 보너스를 획득한다.\n\n『보라 가지』: 페르소나 스킬 시전 후, 추가로 『원동력』을 1포인트 획득한다.\n『노란 감자』: 자신의 총공격 대미지가 15% 증가한다.\n『분홍 버섯』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 4.5%의 기본 확률로 스킬 목표를 1턴 동안 세뇌 상태에 빠트린다.\n『초록 아스파라거스』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 해당 대미지의 1%만큼 자신의 생명을 회복한다(1회 상한 1,000포인트).",
+  "r0_detail": "YUI·스텔라는 전투 중 가지, 감자, 버섯, 아스파라거스 4종의 베지나이츠를 소환하고 『원동력』을 모을 수 있다. 『원동력』이 모이면 YUI·스텔라는 베지나이츠에게 명령을 내려 적에게 『베지나이츠·총동원』을 발동할 수 있다. 해당 스킬 대미지는 총공격 대미지로 간주한다.\nYUI·스텔라는 각기 다른 베지나이츠를 보유했을 때, 턴 시작 시 괴도복을 해당 나이트의 색깔로 바꾸고 그에 맞는 능력 보너스를 획득한다.\n『보라 가지』: 페르소나 스킬 시전 후, 추가로 『원동력』을 1포인트 획득한다.\n『노란 감자』: 자신의 『총공격 대미지』가 15% 증가한다.\n『분홍 버섯』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 4.5%의 기본 확률로 스킬 목표를 1턴 동안 세뇌 상태에 빠트린다.\n『초록 아스파라거스』: 페르소나 스킬 대미지 및 총공격 대미지를 줄 때, 해당 대미지의 1%만큼 자신의 생명을 회복한다(1회 상한 1,000포인트).",
   "r1": "심우주 방어전",
   "r1_detail": "전투 시작 시 YUI·스텔라가 즉시 각기 다른 4종의 베지나이츠를 소환하며, 『원동력』을 최대 중첩으로 획득한다.\n베지나이츠를 1개 보유할 때마다 YUI·스텔라의 크리티컬 효과가 8% 증가하고, 최대 5개의 베지나이츠까지 적용된다.\n전투 시작 시 YUI·스텔라가 『노란 감자』 상태이면 자신의 첫 턴 시작 시 자동으로 『보라 가지』 상태로 전환된다.",
   "r2": "마지막 감자",
@@ -18,7 +18,7 @@ window.ritualData["YUI·스텔라"] = {
   "r5": "초시공 함대",
   "r5_detail": "『우주 대난투』, 『전투 기술』의 스킬 레벨이 3레벨 증가하고, 최대 15레벨까지 증가한다.",
   "r6": "은하 축제",
-  "r6_detail": "『스텔라 윙』 상태를 추가로 해제한다. 괴도복이 스텔라 형태로 변경되며, 동시에 『보라 가지』, 『노란 감자』, 『분홍 버섯』, 『초록 아스파라거스』의 능력을 획득한다.\n전투 시작 시 『대난투』 상태에 진입한다(해당 전투에서 영구 적용).\n『대난투』 효과 조정: 모든 동료의 턴이 끝날 때마다 추가 효과 『베지나이츠·출격』을 발동한다. 액티브로 『베지나이츠·집합』 시전 시 감자 나이트를 1개 추가로 소환한다."
+  "r6_detail": "『스텔라윙』 상태를 추가로 해제한다. 괴도복이 스텔라 형태로 변경되며, 동시에 『보라 가지』, 『노란 감자』, 『분홍 버섯』, 『초록 아스파라거스』의 능력을 획득한다.\n전투 시작 시 『대난투』 상태에 진입한다(해당 전투에서 영구 적용).\n『대난투』 효과 조정: 모든 동료의 턴이 끝날 때마다 추가 효과 『베지나이츠·출격』을 발동한다.\n액티브로 『베지나이츠·집합』 시전 시 감자 나이트를 1개 추가로 소환한다."
 };
 
 window.enCharacterRitualData["YUI·스텔라"] = {
@@ -36,11 +36,11 @@ window.enCharacterRitualData["YUI·스텔라"] = {
   "r5": "Starlight Fest",
   "r5_detail": "Increase the skill levels of Harvest Fest and Thief Tactics by 3.",
   "r6": "Prismatic Vegetables",
-  "r6_detail": "Unlock Prismatic state. Change Cosmic Yui's Phantom Thief Attire to Prismatic Color, and simultaneously gain abilities from Eggplant Purple, Potato Yellow, Mushroom Red, and Asparagus Green.\nAt the start of battle, permanently enter Huge Harvest state, and change the following effects.\nWhen an ally ends their action, activate the Resonance Harvest Havoc.\nWhen using Veggie Knights, Go!, summon 1 more Potato Knight."
+  "r6_detail": "Unlock the Prismatic state. Change Cosmic Yui's Phantom Thief Attire to Prismatic Color, and simultaneously gain abilities from Eggplant Purple, Potato Yellow, Mushroom Red, and Asparagus Green.\nAt the start of battle, permanently enter Huge Harvest state, and change the following effects.\nWhen an ally ends their action, activate the Resonance Harvest Havoc.\nWhen using Veggie Knights, Go!, summon 1 more Potato Knight."
 };
 
 window.jpCharacterRitualData["YUI·스텔라"] = {
-  "name": "YUI·MUSUBI",
+  "name": "ＹＵＩ・ＭＵＳＵＢＩ",
   "r0": "ベジタブルアバター",
   "r0_detail": "ＹＵＩ・ＭＵＳＵＢＩは戦闘中に４種類の『ベジナイツ』を召喚し、『ベジエナジー』を累積することができる。『ベジエナジー』が累積すると、ＹＵＩ・ＭＵＳＵＢＩは『ベジナイツアタック！』を発動することができる。このスキルのダメージは総攻撃のダメージとして扱う。\nターン開始時、獲得している『ベジナイツ』に対応する能力を獲得し、怪盗服の色を変化させることができる。\n「『ＮＳパープル』状態：スキルを使用した時、追加で『ベジエナジー』を１つ獲得する」\n「『ＰＴＴイエロー』状態：自身の総攻撃ダメージが１５%上昇する」\n「『ＫＮＫレッド』状態：スキルダメージおよび総攻撃のダメージを与えた時、４.５%の確率で対象を１ターンの間、洗脳状態にする」\n「『ＡＳＰＲグリーン』状態：スキルダメージおよび総攻撃のダメージを与えた時、自身のＨＰをそのダメージの１%分回復する（１回につき最大１０００まで）」",
   "r1": "ベジナイトラウンズ",

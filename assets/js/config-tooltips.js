@@ -32,6 +32,32 @@
         '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
     })[value]);
 
+    function appendBracketedLabel(tooltip, contents, skipOpening, skipClosing) {
+        const document = tooltip.ownerDocument;
+        const nodes = document.createTreeWalker(contents, 4);
+        const first = nodes.nextNode();
+        const range = document.createRange();
+        let closing;
+        if (skipClosing) {
+            let last = first;
+            for (let node = nodes.nextNode(); node; node = nodes.nextNode()) last = node;
+            range.selectNodeContents(contents);
+            range.setStart(last, last.length - 1);
+            closing = range.extractContents();
+        }
+        if (skipOpening) {
+            range.selectNodeContents(contents);
+            range.setEnd(first, 1);
+            tooltip.append(range.extractContents());
+        }
+        const label = document.createElement('span');
+        label.className = 'tooltip-text-label';
+        label.append(contents);
+        tooltip.append(label);
+        if (closing) tooltip.append(closing);
+        tooltip.classList.add('tooltip-text--bracketed');
+    }
+
     function add(element, pack, legacy, lang, bind) {
         const document = element.ownerDocument;
         const nodes = document.createTreeWalker(element, 4);
@@ -81,7 +107,14 @@
             const label = provisional ? (lang === 'jp' ? '暫定訳' : 'Provisional translation') : '';
             span.dataset.tooltip = (label ? `<strong>${label}</strong><br>` : '')
                 + escapeHtml(description).replace(/\r?\n/g, '<br>');
-            span.append(range.extractContents());
+            const contents = range.extractContents();
+            const skipOpening = text[start] === '『';
+            const skipClosing = text[start + length - 1] === '』';
+            if ((skipOpening || skipClosing) && length > Number(skipOpening) + Number(skipClosing)) {
+                appendBracketedLabel(span, contents, skipOpening, skipClosing);
+            } else {
+                span.append(contents);
+            }
             range.insertNode(span);
             bind(span);
             nextStart = start;

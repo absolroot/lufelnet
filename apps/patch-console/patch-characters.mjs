@@ -22,7 +22,7 @@ import {
 } from './lib/patch-console-shared.mjs';
 import { buildCharacterInnatePayload } from '../../scripts/shared/character-innate.mjs';
 import tooltipText from '../../assets/js/config-tooltips.js';
-import { isPercentageSeriesFormattingDiff } from './patch-text-diff.mjs';
+import { expandPercentageSeries, isUnavailablePatchValue, mergeExternalPatch } from './patch-text-diff.mjs';
 
 const recast = recastImport.default || recastImport;
 const b = recast.types.builders;
@@ -53,6 +53,14 @@ const IANT_SERVER_TO_LOCAL_LANG = {
   sea: 'en'
 };
 const CHARACTER_PATCH_LANG_EXCEPTIONS = new Map();
+// ConfThiefInnate 1212 encodes Wind and Ice in separate comma-delimited entries.
+const MONT_FROSTGALE_INNATE_MISMATCHES = new Map([
+  ['final_innate[0][0].value', ['0.02', '0.02,4']],
+  ['final_innate[0][1].nature', ['Ice', 'Wind']],
+  ['final_innate[1][1].value', ['-0.1', '-0.1,4']],
+  ['final_innate[1][2].nature', ['Ice', 'Wind']],
+  ['final_innate[1][3].nature', ['Ice', 'Wind']]
+]);
 
 const WINDOW_NAME_MAP = {
   ritual: {
@@ -465,21 +473,6 @@ function readWindowEntry(filePath, windowName, charKey) {
   return value;
 }
 
-function deepMerge(base, patch) {
-  if (!isPlainObject(base)) return clone(patch);
-  if (!isPlainObject(patch)) return clone(patch);
-  const out = { ...base };
-  for (const [key, value] of Object.entries(patch)) {
-    if (value === undefined) continue;
-    if (isPlainObject(value) && isPlainObject(out[key])) {
-      out[key] = deepMerge(out[key], value);
-    } else {
-      out[key] = clone(value);
-    }
-  }
-  return out;
-}
-
 function normalizeNoSpaceText(value) {
   return String(value || '').replace(/\s+/g, '').trim();
 }
@@ -516,7 +509,13 @@ function isIgnoredSkillFieldDiff(part, pathText) {
   return /(^|\.)(element|type)$/i.test(path);
 }
 
-function applyPartPatchPolicy(part, existingValue, nextValue) {
+function isMontFrostgaleInnateMismatch(characterKey, part, pathText, before, after) {
+  if (characterKey !== '몽타뉴·백조' || part !== 'innate') return false;
+  const values = MONT_FROSTGALE_INNATE_MISMATCHES.get(pathText);
+  return Boolean(values && before === values[0] && after === values[1]);
+}
+
+function applyPartPatchPolicy(characterKey, part, existingValue, nextValue) {
   const changedPaths = diffPaths(existingValue, nextValue).filter(Boolean);
   if (changedPaths.length === 0) return nextValue;
 
@@ -524,12 +523,17 @@ function applyPartPatchPolicy(part, existingValue, nextValue) {
   for (const pathText of changedPaths) {
     const before = getValueAtDiffPath(existingValue, pathText);
     const after = getValueAtDiffPath(adjusted, pathText);
-    if (isPercentageSeriesFormattingDiff(before, after) || isIgnoredSkillFieldDiff(part, pathText)) {
+    if (isIgnoredSkillFieldDiff(part, pathText) || isMontFrostgaleInnateMismatch(characterKey, part, pathText, before, after)) {
       adjusted = setValueAtDiffPath(adjusted, pathText, before);
       continue;
     }
     if (isIgnoredSkillElementAoeDiff(part, pathText, before, after)) {
       adjusted = setValueAtDiffPath(adjusted, pathText, before);
+    }
+    if (characterKey === 'YUI·스텔라' && part === 'skill' && pathText === 'skill3.description'
+        && typeof before === 'string' && typeof after === 'string' && !/<table\b/i.test(after)) {
+      const supplementalTable = before.match(/\n\n<table\b[\s\S]*<\/table>\s*$/i)?.[0];
+      if (supplementalTable) adjusted = setValueAtDiffPath(adjusted, pathText, after + supplementalTable);
     }
   }
   return adjusted;
@@ -986,8 +990,8 @@ function transformSkillItem(item, options = {}) {
 
 function extractSyncHighlightValues(normalDesc, syncDesc) {
   const numberPattern = /\d+(?:\.\d+)?%?(?:\/\d+(?:\.\d+)?%?){0,6}/g;
-  const normalValues = String(normalDesc || '').match(numberPattern) || [];
-  const syncValues = String(syncDesc || '').match(numberPattern) || [];
+  const normalValues = expandPercentageSeries(normalDesc).match(numberPattern) || [];
+  const syncValues = expandPercentageSeries(syncDesc).match(numberPattern) || [];
   const changed = [];
   const seen = new Set();
 
@@ -1005,9 +1009,10 @@ function extractSyncHighlightValues(normalDesc, syncDesc) {
 function applySyncNormalSkill(transformed, normalItem, syncItem) {
   if (!transformed || !normalItem || !syncItem) return transformed;
   if (String(normalItem.sn || '') !== String(syncItem.sn || '')) return transformed;
-  if (!hasText(syncItem.desc)) return transformed;
+  if (typeof syncItem.desc !== 'string' || isUnavailablePatchValue(syncItem.desc)) return transformed;
 
   transformed.sync_description = syncItem.desc;
+  if (typeof normalItem.desc !== 'string' || isUnavailablePatchValue(normalItem.desc)) return transformed;
   const highlightValues = extractSyncHighlightValues(normalItem.desc, syncItem.desc);
   if (highlightValues.length > 0) {
     transformed.sync_highlight_values = highlightValues;
@@ -1106,6 +1111,7 @@ function buildRitualPayload(external) {
 }
 
 function toNumberOrKeep(value) {
+  if (isUnavailablePatchValue(value)) return undefined;
   const n = Number(value);
   return Number.isFinite(n) ? n : value;
 }
@@ -1464,8 +1470,8 @@ async function runPatch(options) {
           row.skippedParts.push(`${part}:empty_payload`);
           continue;
         }
-        const mergedValue = deepMerge(existing, payload);
-        const policyValue = applyPartPatchPolicy(part, existing, mergedValue);
+        const mergedValue = mergeExternalPatch(existing, payload);
+        const policyValue = applyPartPatchPolicy(characterKey, part, existing, mergedValue);
         const krSkillValue = (part === 'skill' && sourceLocalLang === 'cn')
           ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
           : null;
@@ -1548,8 +1554,8 @@ function buildDiffRecord(entry, characterKey, lang, part, sources, sourceConfig)
   sources.characterKey = characterKey;
   const payload = createPatchPayload(part, lang, sources, current);
   if (!payload || Object.keys(payload).length === 0) return null;
-  const mergedValue = deepMerge(current, payload);
-  const policyValue = applyPartPatchPolicy(part, current, mergedValue);
+  const mergedValue = mergeExternalPatch(current, payload);
+  const policyValue = applyPartPatchPolicy(characterKey, part, current, mergedValue);
   const krSkillValue = (part === 'skill' && lang === 'cn')
     ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
     : null;
@@ -1880,8 +1886,8 @@ async function runApplyDiffJson(options) {
         row.skippedParts.push(`${part}:empty_payload`);
         continue;
       }
-      const mergedValue = deepMerge(existing, partPayload);
-      const policyValue = applyPartPatchPolicy(part, existing, mergedValue);
+      const mergedValue = mergeExternalPatch(existing, partPayload);
+      const policyValue = applyPartPatchPolicy(characterKey, part, existing, mergedValue);
       const krSkillValue = (part === 'skill' && lang === 'cn')
         ? readWindowEntry(filePath, WINDOW_NAME_MAP.skill.kr, characterKey)
         : null;

@@ -1905,6 +1905,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             item.appendChild(text);
             item.appendChild(icon);
+            if (item.hasAttribute('data-tooltip')) {
+                item.dataset.tooltipTitle = item.dataset.revelationName;
+                item.setAttribute('aria-label', item.dataset.tooltipTitle);
+            }
             container.appendChild(item);
         });
 

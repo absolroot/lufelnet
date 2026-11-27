@@ -5,7 +5,7 @@ import path from 'path';
 import vm from 'vm';
 import { fileURLToPath } from 'url';
 import { clone, isPlainObject, parseCsv, parseRangeSet } from './lib/patch-console-shared.mjs';
-import { isPercentageSeriesFormattingDiff } from './patch-text-diff.mjs';
+import { isUnavailablePatchValue, mergeExternalPatch } from './patch-text-diff.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -493,7 +493,7 @@ function buildPartDiff({ row, lang, part, localData, compareByLang }) {
     }
     const field = NAME_FIELD_BY_LANG[lang];
     const after = normalizeName(external.name);
-    if (!after) return { part, reason: 'empty_external', diffCount: 0, samplePaths: [], valueDiffs: [] };
+    if (isUnavailablePatchValue(after)) return { part, reason: 'empty_external', diffCount: 0, samplePaths: [], valueDiffs: [] };
     const before = localEntry && Object.prototype.hasOwnProperty.call(localEntry, field) ? localEntry[field] : null;
     if (String(before ?? '') !== String(after ?? '')) {
       valueDiffs.push({
@@ -504,10 +504,11 @@ function buildPartDiff({ row, lang, part, localData, compareByLang }) {
     }
   } else if (part === 'effect') {
     const field = EFFECT_FIELD_BY_LANG[lang];
-    const after = normalizeEffect(external.skill);
-    if (!after) return { part, reason: 'empty_external', diffCount: 0, samplePaths: [], valueDiffs: [] };
+    const effect = normalizeEffect(external.skill);
+    if (isUnavailablePatchValue(effect)) return { part, reason: 'empty_external', diffCount: 0, samplePaths: [], valueDiffs: [] };
     const before = localEntry && Object.prototype.hasOwnProperty.call(localEntry, field) ? localEntry[field] : null;
-    if (String(before ?? '') !== String(after ?? '') && !isPercentageSeriesFormattingDiff(before, after)) {
+    const after = mergeExternalPatch(before, effect);
+    if (String(before ?? '') !== String(after ?? '')) {
       valueDiffs.push({
         path: field,
         before: before ?? null,

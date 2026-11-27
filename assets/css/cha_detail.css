@@ -2330,6 +2330,37 @@ h2 {
         height: 45px;
     }
 
+    #recommended-party-content .party-list:has(> .party-member:nth-child(4):last-child) {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        min-width: 0;
+    }
+
+    #recommended-party-content .party-list:has(> .party-member:nth-child(4):last-child) > .party-member {
+        width: auto;
+        min-width: 0;
+        padding-inline: 4px;
+    }
+
+    #recommended-party-content .party-list:has(> .party-member:nth-child(4):last-child) .party-portrait {
+        max-width: 100%;
+    }
+
+    #recommended-party-content .party-list:has(> .party-member:nth-child(4):last-child) .party-portrait > img:first-child {
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    #recommended-party-content .party-list:has(> .party-member:nth-child(4):last-child) .party-member .character-name {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     .sub-member-badge {
         width: 22px;
         height: 22px;
@@ -3800,7 +3831,7 @@ html.character-header-loading .character-header .basic-info {
         transition-duration: 60ms;
     }
 
-    .settings-card .revelation-value-item:is(:hover, :focus-visible) {
+    .settings-card .revelation-value-item:not([aria-expanded="true"]):is(:hover, :focus-visible) {
         color: #fff;
         background-color: rgba(255, 255, 255, 0.075);
         box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);

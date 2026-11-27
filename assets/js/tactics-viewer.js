@@ -156,6 +156,18 @@ async function ensureCharacterDataLoaded() {
     return true;
 }
 
+async function readTacticRows(query) {
+    const pageSize = 500;
+    const rows = [];
+
+    for (;;) {
+        const { data, error } = await query.range(rows.length, rows.length + pageSize - 1);
+        if (error) throw error;
+        rows.push(...data);
+        if (data.length < pageSize) return rows;
+    }
+}
+
 class TacticsViewer {
     constructor() {
         this.currentPage = 1;
@@ -173,8 +185,9 @@ class TacticsViewer {
         this.currentUser = null;
         this.selectedCharacters = [];
         this.isApplyingSpoiler = false;
-        this.queryCache = new Map();
-        this.renderVersion = 0;
+        this.ownedTacticIds = new Set();
+        this.isLoadingTactics = false;
+        this.tacticLoadFailed = false;
 
         this.init();
     }
@@ -182,20 +195,20 @@ class TacticsViewer {
     async init() {
         // 캐릭터 데이터를 먼저 로드 (언어별 병합 포함)
         await ensureCharacterDataLoaded();
-        await this.getUserIP();
-        await this.checkAuth();
         this.initRegionFilters();
         this.initTypeFilters();
         this.initCharacterFilter();
         this.initMobileCollapsibles();
         this.initLanguageTexts();
         this.initSpoilerToggle();
-        await this.loadTactics();
         this.initTabs();
         this.initSearch();
         this.initRanking();
-        Promise.allSettled([this.renderTactics(), this.loadRanking()])
-            .then(() => window.LufelPageEntrance?.finish());
+        void this.checkAuth().then(() => {
+            if (this.ownedTacticIds.size > 0) this.renderTactics();
+        });
+        await this.loadTactics();
+        window.LufelPageEntrance?.finish();
     }
 
     t(key, fallback = '') {
@@ -276,207 +289,58 @@ class TacticsViewer {
         });
     }
 
+    async fetchPublicTactics() {
+        if (window.location.origin === 'https://lufel.net') {
+            const response = await fetch('https://api.lufel.net/v1/tactics/library', { credentials: 'omit' });
+            if (!response.ok) throw new Error(`Tactic library HTTP ${response.status}`);
+            const { tactics } = await response.json();
+            if (!Array.isArray(tactics)) throw new Error('Invalid tactic library response');
+            return tactics;
+        }
+
+        return readTacticRows(supabase
+            .from('tactic_library_public')
+            .select('id,title,author,comment,created_at,url,region,tactic_type,tactic_version,party,likes')
+            .order('created_at', { ascending: false })
+            .order('id', { ascending: false }));
+    }
+
     async loadTactics() {
+        if (this.isLoadingTactics) return;
+        this.isLoadingTactics = true;
+        const postsList = document.getElementById('postsList');
+        postsList.setAttribute('aria-busy', 'true');
+        const status = document.getElementById('tacticLibraryEmpty');
+        if (status) status.replaceChildren();
+        else if (this.tacticLoadFailed) postsList.replaceChildren();
+
         try {
-            let query = supabase
-                .from('tactics')
-                .select('id,title,author,comment,created_at,url,region,tactic_type,user_id,tactic_version')
-                .order('created_at', { ascending: false });
-
-            if (this.currentRegion && this.currentRegion !== 'ALL') {
-                if (this.currentRegion === 'GLB') {
-                    query = query.in('region', ['en', 'sea']);
-                } else if (this.currentRegion === 'CN') {
-                    query = query.eq('region', 'cn');
-                } else if (this.currentRegion === 'JP') {
-                    query = query.eq('region', 'jp');
-                } else if (this.currentRegion === 'KR') {
-                    query = query.eq('region', 'kr');
-                }
-            }
-            if (this.currentType && this.currentType !== 'ALL') {
-                query = query.eq('tactic_type', this.currentType);
-            }
-
-            const { data, error } = await query;
-            if (error) {
-                console.error('데이터 로드 오류:', error);
-                return;
-            }
-
-            const tacticIds = (data || []).map(t => String(t.id));
-            const [likesMap, partyMap] = await Promise.all([
-                this.loadLikesMap(tacticIds),
-                this.loadPartyProjection(tacticIds)
-            ]);
-
-            this.allTactics = (data || []).map(tactic => {
-                const tacticId = String(tactic.id);
-                const cachedQuery = this.queryCache.get(tacticId) || null;
-                const projectedParty = partyMap[tacticId];
-                const party = Array.isArray(projectedParty)
-                    ? projectedParty
-                    : (Array.isArray(cachedQuery?.party) ? cachedQuery.party : []);
-                return {
-                    id: tactic.id,
-                    title: tactic.title,
-                    author: tactic.author,
-                    comment: tactic.comment,
-                    likes: likesMap[tacticId]?.likes || 0,
-                    createdAt: new Date(tactic.created_at),
-                    query: cachedQuery,
-                    party,
-                    url: tactic.url,
-                    region: tactic.region || null,
-                    tactic_type: tactic.tactic_type || null,
-                    user_id: tactic.user_id || null,
-                    tactic_version: this.resolveTacticVersion(tactic.tactic_version, cachedQuery)
-                };
-            });
-
+            const tactics = await this.fetchPublicTactics();
+            this.allTactics = tactics.map(tactic => ({
+                id: tactic.id,
+                title: tactic.title,
+                author: tactic.author,
+                comment: tactic.comment,
+                likes: Number(tactic.likes) || 0,
+                createdAt: new Date(tactic.created_at),
+                party: Array.isArray(tactic.party) ? tactic.party : [],
+                url: tactic.url,
+                region: tactic.region || null,
+                tactic_type: tactic.tactic_type || null,
+                tactic_version: tactic.tactic_version || 'legacy'
+            }));
+            this.tacticLoadFailed = false;
             this.applyFilters();
         } catch (error) {
+            this.tacticLoadFailed = true;
             console.error('택틱 로드 실패:', error);
-        }
-    }
-
-    async loadLikesMap(tacticIds) {
-        const result = {};
-        if (!tacticIds || tacticIds.length === 0) return result;
-        const { data, error } = await supabase
-            .from('tactic_likes')
-            .select('tactic_id,likes')
-            .in('tactic_id', tacticIds);
-        if (error) {
-            console.error('likes 로드 실패:', error);
-            return result;
-        }
-        (data || []).forEach(row => {
-            result[String(row.tactic_id)] = {
-                likes: row.likes || 0
-            };
-        });
-        return result;
-    }
-
-    async loadPartyProjection(tacticIds) {
-        const result = {};
-        if (!tacticIds || tacticIds.length === 0) return result;
-        const { data, error } = await supabase
-            .from('tactics')
-            .select('id,party:query->party')
-            .in('id', tacticIds);
-
-        if (error) {
-            console.error('party projection 로드 실패:', error);
-            return this.loadPartyProjectionFallback(tacticIds);
+        } finally {
+            this.isLoadingTactics = false;
+            postsList.removeAttribute('aria-busy');
         }
 
-        (data || []).forEach(row => {
-            result[String(row.id)] = Array.isArray(row.party) ? row.party : [];
-        });
-        return result;
-    }
-
-    async loadPartyProjectionFallback(tacticIds) {
-        const result = {};
-        if (!tacticIds || tacticIds.length === 0) return result;
-        const { data, error } = await supabase
-            .from('tactics')
-            .select('id,query')
-            .in('id', tacticIds);
-
-        if (error) {
-            console.error('party fallback 로드 실패:', error);
-            return result;
-        }
-
-        (data || []).forEach(row => {
-            const parsedQuery = this.parseTacticQuery(row.query);
-            const party = Array.isArray(parsedQuery?.party) ? parsedQuery.party : [];
-            result[String(row.id)] = party;
-            this.queryCache.set(String(row.id), parsedQuery);
-        });
-
-        return result;
-    }
-
-    parseTacticQuery(rawQuery) {
-        if (!rawQuery) return null;
-        if (typeof rawQuery === 'object') return rawQuery;
-        if (typeof rawQuery !== 'string') return null;
-        if (!rawQuery.trim().startsWith('{')) return null;
-        try {
-            return JSON.parse(rawQuery);
-        } catch (_) {
-            return null;
-        }
-    }
-
-    resolveTacticVersion(tacticVersion, parsedQuery) {
-        let resolvedVersion = tacticVersion || 'legacy';
-        if (resolvedVersion === 'legacy' && parsedQuery && parsedQuery['tactic-maker-ver']) {
-            const parsedVersion = parseFloat(parsedQuery['tactic-maker-ver']);
-            if (!Number.isNaN(parsedVersion) && parsedVersion >= 3.0) {
-                resolvedVersion = 'v3';
-            }
-        }
-        return resolvedVersion;
-    }
-
-    async ensureQueriesLoaded(tactics) {
-        if (!Array.isArray(tactics) || tactics.length === 0) return;
-        const missingIds = [];
-
-        tactics.forEach(tactic => {
-            const tacticId = String(tactic.id);
-            if (this.queryCache.has(tacticId)) {
-                const cachedQuery = this.queryCache.get(tacticId) || null;
-                tactic.query = cachedQuery;
-                tactic.tactic_version = this.resolveTacticVersion(tactic.tactic_version, cachedQuery);
-                if (!Array.isArray(tactic.party) && Array.isArray(cachedQuery?.party)) {
-                    tactic.party = cachedQuery.party;
-                }
-            } else {
-                missingIds.push(tacticId);
-            }
-        });
-
-        if (missingIds.length === 0) return;
-
-        const { data, error } = await supabase
-            .from('tactics')
-            .select('id,query')
-            .in('id', missingIds);
-
-        if (error) {
-            console.error('query 로드 실패:', error);
-            return;
-        }
-
-        const loadedIds = new Set();
-        (data || []).forEach(row => {
-            const tacticId = String(row.id);
-            const parsedQuery = this.parseTacticQuery(row.query);
-            this.queryCache.set(tacticId, parsedQuery);
-            loadedIds.add(tacticId);
-        });
-
-        missingIds.forEach(tacticId => {
-            if (!loadedIds.has(tacticId)) {
-                this.queryCache.set(tacticId, null);
-            }
-        });
-
-        tactics.forEach(tactic => {
-            const tacticId = String(tactic.id);
-            const parsedQuery = this.queryCache.get(tacticId) || null;
-            tactic.query = parsedQuery;
-            tactic.tactic_version = this.resolveTacticVersion(tactic.tactic_version, parsedQuery);
-            if (!Array.isArray(tactic.party) && Array.isArray(parsedQuery?.party)) {
-                tactic.party = parsedQuery.party;
-            }
-        });
+        this.renderTactics();
+        await this.loadRanking();
     }
 
     applyFilters() {
@@ -548,23 +412,40 @@ class TacticsViewer {
         this.currentPage = 1;
     }
 
-    async renderTactics() {
-        const currentRenderVersion = ++this.renderVersion;
+    renderTactics() {
+        if (this.isLoadingTactics) return;
+        const postsList = document.getElementById('postsList');
+        const status = document.getElementById('tacticLibraryEmpty');
         const startIndex = (this.currentPage - 1) * this.postsPerPage;
         const endIndex = startIndex + this.postsPerPage;
         const tacticsToShow = this.filteredTactics.slice(startIndex, endIndex);
-        await this.ensureQueriesLoaded(tacticsToShow);
-        if (currentRenderVersion !== this.renderVersion) return;
 
-        const postsList = document.getElementById('postsList');
-        postsList.innerHTML = '';
+        status?.replaceChildren();
+        postsList.replaceChildren(...tacticsToShow.map(tactic => this.createPostElement(tactic)));
+        if (this.tacticLoadFailed || tacticsToShow.length === 0) {
+            const message = status || document.createElement('p');
+            if (!status) {
+                message.className = 'no-results';
+                message.setAttribute('role', 'status');
+                postsList.appendChild(message);
+            }
+            this.renderTacticListStatus(message);
+        }
 
-        tacticsToShow.forEach(tactic => {
-            const postElement = this.createPostElement(tactic);
-            postsList.appendChild(postElement);
-        });
-
+        window.LufelPageEntrance?.stagger(postsList);
         this.updatePaginationButtons();
+    }
+
+    renderTacticListStatus(message) {
+        if (this.tacticLoadFailed) {
+            const retry = document.createElement('button');
+            retry.type = 'button';
+            retry.textContent = this.t('tactic_load_retry', '다시 시도');
+            retry.addEventListener('click', () => this.loadTactics(), { once: true });
+            message.append(this.t('tactic_load_failed', '택틱을 불러오지 못했습니다.'), ' ', retry);
+        } else {
+            message.textContent = this.t('no_tactics_found', '표시할 택틱이 없습니다.');
+        }
     }
 
     createPostElement(tactic) {
@@ -575,7 +456,7 @@ class TacticsViewer {
         postDiv.className = 'post-item';
         postDiv.setAttribute('data-post-id', tactic.id);
 
-        const canEdit = !!(this.currentUser && tactic.user_id && this.currentUser.id === tactic.user_id);
+        const canEdit = this.ownedTacticIds.has(String(tactic.id));
         const editSvg = canEdit ? `
         <svg class="edit-icon" data-edit-id="${tactic.id}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 6px;cursor:pointer;vertical-align:middle;">
             <path d="M12 20h9"/>
@@ -628,8 +509,7 @@ class TacticsViewer {
     `;
 
         // 택틱 프리뷰 생성
-        const previewQuery = tactic.query || this.queryCache.get(String(tactic.id)) || null;
-        this.addTacticPreview(postDiv, previewQuery);
+        this.addTacticPreview(postDiv, tactic);
 
         // 편집 아이콘 클릭 처리
         if (canEdit) {
@@ -651,6 +531,8 @@ class TacticsViewer {
             if (session && session.user) {
                 this.currentUser = session.user;
                 this.showUserInfoBar();
+                const owned = await readTacticRows(supabase.from('my_tactic_ids').select('id').order('id'));
+                this.ownedTacticIds = new Set(owned.map(tactic => String(tactic.id)));
             }
         } catch (e) { /* ignore */ }
     }

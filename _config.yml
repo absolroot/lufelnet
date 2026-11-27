@@ -101,6 +101,7 @@ exclude:
   - .jekyll-metadata
   - data/external/before
   - config_db
+  - supabase
   - "apps/patch-console/**"
 
 keep_files:

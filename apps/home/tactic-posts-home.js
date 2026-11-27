@@ -1,5 +1,5 @@
 // =====================
-// Supabase 기반 홈 택틱 로더
+// 홈 공개 택틱 로더
 // =====================
 const HOME_TACTIC_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 
@@ -40,14 +40,6 @@ function formatTemplate(template, value) {
   return String(template || '').replace(/\{value\}/g, String(value));
 }
 
-function getHomeTacticParty(tactic) {
-  if (Array.isArray(tactic?.party)) return tactic.party;
-  const parsed = typeof tactic?.query === 'string'
-    ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null)
-    : tactic?.query;
-  return Array.isArray(parsed?.party) ? parsed.party : [];
-}
-
 function getHomeTacticCharacterImageUrl(name) {
   return `${BASE_URL}/assets/img/character-half/${encodeURIComponent(name)}.webp`;
 }
@@ -56,7 +48,7 @@ function preloadHomeTacticPortraits(tactics) {
   const names = new Set();
   (tactics || []).forEach(tactic => {
     try {
-      normalizeHomePreviewParty(getHomeTacticParty(tactic)).forEach(member => {
+      normalizeHomePreviewParty(tactic.party).forEach(member => {
         if (member?.name && member.name !== '원더' && member.name !== 'Wonder') names.add(member.name);
       });
     } catch (_) { }
@@ -89,62 +81,54 @@ async function ensureHomePublicIp() {
   return window.__HOME_IP;
 }
 
+async function fetchPublicHomeTactics(rawLang) {
+  if (window.location.origin === 'https://lufel.net') {
+    // TW and SEA use the same unfiltered selection as CN.
+    const lang = rawLang === 'tw' || rawLang === 'sea' ? 'cn' : rawLang;
+    const response = await fetch(`https://api.lufel.net/v1/tactics/home?lang=${lang}`, { credentials: 'omit' });
+    if (!response.ok) throw new Error(`Home tactics HTTP ${response.status}`);
+    const { tactics } = await response.json();
+    if (!Array.isArray(tactics)) throw new Error('Invalid home tactics response');
+    return tactics;
+  }
+
+  const latestTactics = () => supabase.from('tactic_library_public')
+    .select('id,title,author,comment,created_at,url,party,likes')
+    .order('created_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(3);
+  let query = latestTactics();
+  if (rawLang === 'kr' || rawLang === 'jp') query = query.eq('region', rawLang);
+  else if (rawLang === 'en') query = query.in('region', ['en', 'sea']);
+
+  let { data, error } = await query;
+  if (!error && !data.length && rawLang === 'jp') {
+    ({ data, error } = await latestTactics().in('region', ['en', 'sea']));
+  }
+  if (error) throw error;
+  return data;
+}
+
 async function loadHomeTacticsOnce(currentLang) {
   try {
     await waitHomeTacticI18nReady();
     const postsListEl = document.getElementById('postsList');
-    if (!postsListEl || typeof supabase === 'undefined') return { empty: true };
+    if (!postsListEl) return { empty: true };
     const rawLang = HOME_TACTIC_RAW_LANGS.includes(String(currentLang || '').toLowerCase())
       ? String(currentLang).toLowerCase()
       : detectHomeTacticRawLang();
     window.__HOME_LANG__ = rawLang || 'kr';
 
-    const tacticSelectColumns = 'id,title,author,comment,created_at,url,region,tactic_version,party:query->party';
-    let query = supabase.from('tactics').select(tacticSelectColumns).order('created_at', { ascending: false }).limit(3);
-    if (rawLang === 'kr') query = query.eq('region', 'kr');
-    else if (rawLang === 'jp') query = query.eq('region', 'jp');
-    else if (rawLang === 'en') query = query.in('region', ['en', 'sea']);
-
-    let { data, error } = await query;
-    if (!error && data && data.length === 0 && (rawLang === 'en' || rawLang === 'jp')) {
-      const { data: fallbackData, error: fallbackError } = await supabase
-        .from('tactics')
-        .select(tacticSelectColumns)
-        .in('region', ['en', 'sea'])
-        .order('created_at', { ascending: false })
-        .limit(3);
-      if (fallbackError) throw fallbackError;
-      data = fallbackData || [];
-    }
-    if (error) throw error;
-    preloadHomeTacticPortraits(data);
-    // IP verification is only needed when a visitor presses Like. Do not hold
-    // the lower-page previews (and their character images) behind that request.
-    void ensureHomePublicIp();
-    window.__HOME_LIKES_MAP = {};
-    try {
-      const ids = (data || []).map(t => String(t.id));
-      if (ids.length > 0) {
-        const { data: likeRows } = await supabase
-          .from('tactic_likes')
-          .select('tactic_id,likes')
-          .in('tactic_id', ids);
-        (likeRows || []).forEach(row => {
-          window.__HOME_LIKES_MAP[String(row.tactic_id)] = {
-            likes: row.likes || 0
-          };
-        });
-      }
-    } catch (_) { }
+    const tactics = await fetchPublicHomeTactics(rawLang);
+    preloadHomeTacticPortraits(tactics);
 
     postsListEl.innerHTML = '';
-    data.forEach(t => {
+    tactics.forEach(t => {
       const libraryLink = t.url ? `${BASE_URL}/tactic-maker/?library=${encodeURIComponent(t.url)}` : null;
       const item = document.createElement('div');
       item.className = 'post-item';
       item.setAttribute('data-post-id', String(t.id));
-      const likeRow = window.__HOME_LIKES_MAP[String(t.id)] || null;
-      const likeCount = likeRow?.likes || 0;
+      const likeCount = Number(t.likes) || 0;
       item.innerHTML = `
         <div class="post-header">
           <h3>
@@ -172,13 +156,12 @@ async function loadHomeTacticsOnce(currentLang) {
       postsListEl.appendChild(item);
       // 파티 프리뷰 렌더링
       try {
-        const party = getHomeTacticParty(t);
-        const previewEl = createHomePreviewFromParty(party);
+        const previewEl = createHomePreviewFromParty(t.party);
         const container = item.querySelector('.tactic-preview-container');
         if (container && previewEl) container.appendChild(previewEl);
       } catch (_) { }
     });
-    return { empty: !data || data.length === 0 };
+    return { empty: tactics.length === 0 };
   } catch (e) { throw e; }
 }
 

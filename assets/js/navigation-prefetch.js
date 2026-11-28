@@ -12,6 +12,7 @@
     const documentLimit = 2;
     const automaticTierLimit = 2;
     const homePreviewCount = 3;
+    const homeRosterCardCount = 4;
 
     const characters = new Set();
     const portraits = new Set();
@@ -77,11 +78,10 @@
             [...cards.querySelectorAll(characterSelector)].slice(0, homePreviewCount).forEach(link => {
                 if (destination(link)) warmCharacter(link.dataset.characterPrefetch);
             });
-            if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
             try {
                 const names = await read();
                 if (!canPrefetch()) return;
-                for (const name of names.slice(0, homePreviewCount)) {
+                for (const name of names.slice(0, homeRosterCardCount)) {
                     const image = new Image();
                     image.fetchPriority = 'low';
                     image.src = basePath + '/assets/img/character-cards/' + name + '.webp';

@@ -130,6 +130,13 @@
   top: 7%;
 }
 
+@media (max-width: 768px) {
+  .char-img.single-banner[src*="%EB%AF%B8%EC%9C%A0%C2%B7%EC%97%AC%EB%A6%84"] {
+    top: 77%;
+    transform: translateY(-60%) scale(1.65) !important;
+  }
+}
+
 /* 하루 */
 .char-img.single-banner[src*="%ED%95%98%EB%A3%A8"]{
   top: 110%;

@@ -395,12 +395,8 @@
         const staticAssetUrl = (path) => window.getHomeStaticAssetUrl
             ? window.getHomeStaticAssetUrl(path)
             : `${window.BASE_URL || ''}${path}`;
-        const existingKr = (window.characterData && Object.keys(window.characterData).length)
-            ? { characterList: window.characterList, characterData: window.characterData }
-            : null;
-
         const [kr, glb] = await Promise.all([
-            existingKr || fetchCharactersData(staticAssetUrl('/data/character_info.js')),
+            fetchCharactersData(staticAssetUrl('/data/character_info.js')),
             shouldUseGlbReleaseOrder(selectedRegion)
                 ? fetchCharactersData(staticAssetUrl('/data/character_info_glb.js'))
                 : Promise.resolve(null)
@@ -429,7 +425,12 @@
 
         renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
         window.LufelNavigationPrefetch?.prepareHomePrefetch(container, async () => {
-            const globalRoster = lang === 'en' || lang === 'jp';
+            let spoilerEnabled = false;
+            try {
+                spoilerEnabled = window.SpoilerState?.get() ?? (localStorage.getItem('spoilerToggle') === 'true');
+            } catch (_) { }
+
+            const globalRoster = (lang === 'en' || lang === 'jp') && !spoilerEnabled;
             const roster = globalRoster ? (glb || await fetchCharactersData(staticAssetUrl('/data/character_info_glb.js'))) : kr;
             if (!roster) return [];
 

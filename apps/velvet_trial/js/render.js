@@ -9,7 +9,8 @@ const VelvetTrialRenderer = (function () {
     base: { characters: [], personas: [] },
     nameSources: { characters: {}, personas: {} },
     chapters: {},
-    partyExamples: {}
+    partyExamples: {},
+    thiefTags: {}
   };
   let recommendationIndex = null;
   const personaMetaBySlug = new Map();
@@ -20,7 +21,6 @@ const VelvetTrialRenderer = (function () {
   let releasedCharacterListLoaded = false;
   let selectionChangeHandler = null;
 
-  const ELEMENT_ORDER = ['Phys', 'Gun', 'Fire', 'Ice', 'Electric', 'Wind', 'Psychokinesis', 'Nuclear', 'Bless', 'Curse'];
   const ELEMENT_ID_BY_KEY = {
     Phys: 1,
     Gun: 2,
@@ -31,8 +31,10 @@ const VelvetTrialRenderer = (function () {
     Psychokinesis: 7,
     Nuclear: 8,
     Bless: 9,
-    Curse: 10
+    Curse: 10,
+    Almighty: 11
   };
+  const ELEMENT_ORDER = Object.keys(ELEMENT_ID_BY_KEY);
   const ELEMENT_KEY_BY_ID = Object.fromEntries(Object.entries(ELEMENT_ID_BY_KEY).map(([k, v]) => [v, k]));
   const EN_TO_KR_ELEMENT = {
     Phys: '\uBB3C\uB9AC',
@@ -44,7 +46,8 @@ const VelvetTrialRenderer = (function () {
     Psychokinesis: '\uC5FC\uB3D9',
     Nuclear: '\uD575\uC5F4',
     Bless: '\uCD95\uBCF5',
-    Curse: '\uC8FC\uC6D0'
+    Curse: '\uC8FC\uC6D0',
+    Almighty: '만능'
   };
   const COMBINED_ELEMENT_ICON_BY_KEYSET = {
     'Ice|Wind': '\uC9C8\uD48D\uBE59\uACB0'
@@ -59,13 +62,15 @@ const VelvetTrialRenderer = (function () {
     Psychokinesis: ['Psychokinesis', 'Psy', '\uC5FC\uB3D9'],
     Nuclear: ['Nuclear', 'Nuke', '\uD575\uC5F4'],
     Bless: ['Bless', '\uCD95\uBCF5'],
-    Curse: ['Curse', '\uC8FC\uC6D0']
+    Curse: ['Curse', '\uC8FC\uC6D0'],
+    Almighty: ['Almighty', '만능', '万能', '萬能']
   };
 
   const RECOMMEND_TYPE = {
     CHARACTER: 'character',
     PERSONA: 'persona'
   };
+  const ALL_OUT_RECOMMENDED_CHARACTER = '렌·댄싱 스타';
   const ROLE_KEYS = ['medic', 'saboteur', 'assassin', 'guardian', 'strategist', 'sweeper', 'elucidator', 'virtuoso', 'other'];
   const ROLE_TO_KR = {
     medic: '\uAD6C\uC6D0',
@@ -354,6 +359,14 @@ const VelvetTrialRenderer = (function () {
     levelTitle.textContent = `${tSafe('level_label', null, 'Stage')} ${level.levelNum}`;
     header.appendChild(levelTitle);
 
+    const releaseNote = getChapterReleaseNote(chapter);
+    if (releaseNote) {
+      const notice = document.createElement('p');
+      notice.className = 'vt-release-note';
+      notice.textContent = releaseNote;
+      header.appendChild(notice);
+    }
+
     const effectDesc = String(chapter?.effect?.desc || '').trim();
     if (effectDesc && effectDesc !== 'AAAAAA==') {
       const effect = document.createElement('p');
@@ -407,23 +420,36 @@ const VelvetTrialRenderer = (function () {
       scoreGrid.appendChild(item);
     }
 
-    card.appendChild(scoreGrid);
+    if (scores.length) card.appendChild(scoreGrid);
 
     const conditions = document.createElement('section');
     conditions.className = 'vt-conditions';
 
     const condList = document.createElement('ul');
     condList.className = 'vt-condition-list';
-    [formatRule1(level?.conditions?.rule1), formatRule2(level?.conditions?.rule2), formatRule3(level?.conditions?.rule3), formatRule4(level?.conditions?.rule4)]
-      .filter((text) => text)
-      .forEach((text) => {
+    const rules = level?.conditions || {};
+    [
+      [formatRule1(rules.rule1), rules.rule1],
+      [formatRule2(rules.rule2), rules.rule2],
+      [formatRule3(rules.rule3), rules.rule3],
+      [formatRule4(rules.rule4), rules.rule4]
+    ].filter(([text]) => text).forEach(([text, rule]) => {
         const li = document.createElement('li');
-        li.textContent = text;
+        li.textContent = chapter.tagRosterVersion && Number.isFinite(rule?.score) && rule?.type !== 'one_more_bonus'
+          ? VelvetTrialI18n.t('tag_chapter_condition_points', { condition: text, points: formatScore(rule.score) })
+          : text;
         condList.appendChild(li);
       });
 
     conditions.appendChild(condList);
-    card.appendChild(conditions);
+    if (condList.childElementCount) {
+      card.appendChild(conditions);
+    } else if (chapter.tagRosterVersion && !level.conditions) {
+      const note = document.createElement('p');
+      note.className = 'vt-level-effect';
+      note.textContent = VelvetTrialI18n.t('tag_chapter_stage_data_note');
+      card.appendChild(note);
+    }
 
     const phasesWrap = document.createElement('div');
     phasesWrap.className = 'vt-phases';
@@ -435,10 +461,18 @@ const VelvetTrialRenderer = (function () {
     const partyExSection = buildLevelPartyExamplesSection(chapter, level);
     if (partyExSection) card.appendChild(partyExSection);
 
-    const levelRec = buildLevelRecommendationSection(chapter, level);
+    const levelRec = chapter.tagRosterVersion
+      ? buildTagRosterSection(chapter, level)
+      : buildLevelRecommendationSection(chapter, level);
     if (levelRec) card.appendChild(levelRec);
 
     return card;
+  }
+
+  function getChapterReleaseNote(chapter) {
+    const lang = VelvetTrialI18n.getLang();
+    if (!chapter.provisionalNames || (lang !== 'en' && lang !== 'jp')) return '';
+    return VelvetTrialI18n.t('release_note_tag_chapter_preview');
   }
 
   function buildPhaseSection(chapter, level, phase) {
@@ -447,7 +481,7 @@ const VelvetTrialRenderer = (function () {
 
     const phaseTitle = document.createElement('h4');
     phaseTitle.className = 'vt-phase-title';
-    phaseTitle.textContent = `${tSafe('phase_label', null, 'Phase')} ${phase.phase}`;
+    phaseTitle.textContent = getPhaseTitle(chapter, phase);
     section.appendChild(phaseTitle);
 
     const monsters = Array.isArray(phase.monsters) ? phase.monsters : [];
@@ -515,7 +549,7 @@ const VelvetTrialRenderer = (function () {
     return wrap;
   }
 
-  function buildRecommendationGroup(title, items, type) {
+  function buildRecommendationGroup(title, items, type, { respectSpoilers = true } = {}) {
     const group = document.createElement('div');
     group.className = 'vt-recommend-group';
 
@@ -524,7 +558,7 @@ const VelvetTrialRenderer = (function () {
     const list = document.createElement('div');
     list.className = 'vt-recommend-list';
     list.classList.add('is-roster-list');
-    const filteredItems = normalizedType === RECOMMEND_TYPE.CHARACTER
+    const filteredItems = respectSpoilers && normalizedType === RECOMMEND_TYPE.CHARACTER
       ? filterCharacterItemsBySpoiler(items)
       : items;
     filteredItems.forEach((item) => list.appendChild(buildRecommendationChip(item, normalizedType || type)));
@@ -791,6 +825,7 @@ const VelvetTrialRenderer = (function () {
       id: item.id || `${type}:${source.id}`,
       name: useSourceName ? (localizedName || item.name || item.lookupName || '') : (item.name || localizedName || item.lookupName || ''),
       role: normalizedRole,
+      releaseOrder: source.releaseOrder,
       positionKr,
       elementKeys: normalizedElementKeys,
       elementKey: item.elementKey || normalizedElementKeys[0] || source.primaryElement || '',
@@ -1481,7 +1516,8 @@ const VelvetTrialRenderer = (function () {
           : {}
       },
       chapters,
-      partyExamples: (raw?.partyExamples && typeof raw.partyExamples === 'object') ? raw.partyExamples : {}
+      partyExamples: (raw?.partyExamples && typeof raw.partyExamples === 'object') ? raw.partyExamples : {},
+      thiefTags: (raw?.thiefTags && typeof raw.thiefTags === 'object') ? raw.thiefTags : {}
     };
   }
 
@@ -1602,11 +1638,12 @@ const VelvetTrialRenderer = (function () {
       const kr = pickName(names.kr, names.ko, entry?.name, entry?.label);
       const en = pickName(names.en, kr);
       const jp = pickName(names.jp, names.ja, kr);
-      return { kr, en, jp };
+      const cn = pickName(names.cn, kr);
+      return { kr, en, jp, cn };
     }
 
     const baseName = pickName(entry?.name, entry?.label, entry?.key, entry?.id);
-    return { kr: baseName, en: baseName, jp: baseName };
+    return { kr: baseName, en: baseName, jp: baseName, cn: baseName };
   }
 
   function normalizeRole(value) {
@@ -1787,18 +1824,12 @@ const VelvetTrialRenderer = (function () {
         .sort(sortElementKeys);
     }
 
-    if (rule1?.type === 'weak_allout') {
-      const phases = Array.isArray(level.phases) ? level.phases : [];
-      const allMonsters = phases.flatMap((p) => Array.isArray(p.monsters) ? p.monsters : []);
-      const weaknessCounts = collectWeaknessCounts(allMonsters);
-      return Array.from(weaknessCounts.keys()).sort(sortElementKeys);
-    }
-
-    return [];
+    return getLevelNavIcons(level);
   }
 
   function getLevelNavIcons(level) {
-    return getLevelWeaknessKeys(level);
+    const monsters = (level?.phases || []).flatMap((phase) => phase.monsters || []);
+    return Array.from(collectWeaknessCounts(monsters).keys()).sort(sortElementKeys);
   }
 
   function getExclusionsForLevel(chapterSn, levelSn) {
@@ -1810,17 +1841,20 @@ const VelvetTrialRenderer = (function () {
     };
   }
 
-  function getUniversalRecommendations(chapterSn, levelSn) {
+  function getUniversalRecommendations(chapterSn, level) {
     const base = recommendationData.base;
     const universal = (base.universal && typeof base.universal === 'object') ? base.universal : {};
     const chars = Array.isArray(universal.characters) ? universal.characters : [];
     const personas = Array.isArray(universal.personas) ? universal.personas : [];
-    const exclusions = getExclusionsForLevel(chapterSn, levelSn);
+    const orderedChars = level?.conditions?.rule1?.type === 'weak_allout'
+      ? [...chars.filter((name) => name !== ALL_OUT_RECOMMENDED_CHARACTER), ALL_OUT_RECOMMENDED_CHARACTER]
+      : chars;
+    const exclusions = getExclusionsForLevel(chapterSn, level?.sn);
     const excludeChars = new Set(exclusions.characters.map((c) => String(c).trim().toLowerCase()));
     const excludePersonas = new Set(exclusions.personas.map((p) => String(p).trim().toLowerCase()));
     return {
       characters: normalizeManualRecommendationList(
-        chars.filter((c) => !excludeChars.has(String(c).trim().toLowerCase())),
+        orderedChars.filter((c) => !excludeChars.has(String(c).trim().toLowerCase())),
         RECOMMEND_TYPE.CHARACTER
       ),
       personas: normalizeManualRecommendationList(
@@ -1857,6 +1891,43 @@ const VelvetTrialRenderer = (function () {
         RECOMMEND_TYPE.PERSONA
       )
     };
+  }
+
+  function getPhaseTitle(chapter, phase) {
+    if (chapter.tagRosterVersion) {
+      return VelvetTrialI18n.t(phase.phase === 1 ? 'tag_chapter_first_half' : 'tag_chapter_second_half');
+    }
+    return `${tSafe('phase_label', null, 'Phase')} ${phase.phase}`;
+  }
+
+  function buildTagRosterSection(chapter, level) {
+    const tags = recommendationData.thiefTags;
+    const categories = level?.conditions?.rule1?.categories || Object.keys(tags);
+    const groups = categories.map((id) => ({
+      id,
+      items: normalizeManualRecommendationList(tags[id], RECOMMEND_TYPE.CHARACTER)
+        .filter((item) => item.role && item.role !== 'elucidator')
+        .sort((a, b) => b.releaseOrder - a.releaseOrder)
+    })).filter(({ items }) => items.length);
+    if (!groups.length) return null;
+
+    const section = document.createElement('section');
+    section.className = 'vt-level-recommend vt-tag-roster';
+    groups.forEach(({ id, items }) => {
+      const group = document.createElement('div');
+      group.className = 'vt-tag-roster-group';
+      const heading = document.createElement('h4');
+      heading.className = 'vt-level-recommend-title';
+      heading.textContent = VelvetTrialI18n.t('tag_category_' + id);
+      group.appendChild(heading);
+      group.appendChild(buildRecommendationGroup('', items, RECOMMEND_TYPE.CHARACTER, { respectSpoilers: false }));
+      section.appendChild(group);
+    });
+    const note = document.createElement('p');
+    note.className = 'vt-party-examples-disclaimer';
+    note.textContent = VelvetTrialI18n.t('tag_roster_version_note', { version: chapter.tagRosterVersion });
+    section.appendChild(note);
+    return section;
   }
 
   function buildLevelPartyExamplesSection(chapter, level) {
@@ -2091,7 +2162,7 @@ const VelvetTrialRenderer = (function () {
     const chapterSn = Number(chapter?.sn);
     const levelSn = Number(level?.sn);
     const weaknessKeys = getLevelWeaknessKeys(level);
-    const universalRec = getUniversalRecommendations(chapterSn, levelSn);
+    const universalRec = getUniversalRecommendations(chapterSn, level);
     const elementRecs = weaknessKeys.map((key) => ({
       key,
       ...getElementOnlyRecommendations(chapterSn, levelSn, key)
@@ -2184,6 +2255,11 @@ const VelvetTrialRenderer = (function () {
         ? rule.elements.map((id) => VelvetTrialI18n.getElementName(id)).filter(Boolean).join(' / ')
         : '';
       return tSafe('condition_rule1_element_score', { elements: elements || '-', multiplier: rule.multiplier }, '{elements} element score multiplier X{multiplier}');
+    }
+
+    if (rule?.type === 'category_score') {
+      const categories = rule.categories.map((id) => VelvetTrialI18n.t('tag_category_' + id)).join(' / ');
+      return VelvetTrialI18n.t('condition_rule1_category_score', { categories, multiplier: rule.multiplier });
     }
 
     return '';

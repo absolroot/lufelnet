@@ -82,6 +82,14 @@
     window.BASE_URL = "{{ site.baseurl }}";
     window.SITE_BASEURL = "{{ site.baseurl }}";
     window.APP_VERSION = window.APP_VERSION || "{{ site.time | date: '%s' }}";
+    window.__VELVET_TRIAL_ASSET_HASHES__ = {
+        "/apps/velvet_trial/data/kr.json": {{ site.data.asset_versions.files['/apps/velvet_trial/data/kr.json'] | jsonify }},
+        "/apps/velvet_trial/data/cn.json": {{ site.data.asset_versions.files['/apps/velvet_trial/data/cn.json'] | jsonify }},
+        "/apps/velvet_trial/data/en.json": {{ site.data.asset_versions.files['/apps/velvet_trial/data/en.json'] | jsonify }},
+        "/apps/velvet_trial/data/jp.json": {{ site.data.asset_versions.files['/apps/velvet_trial/data/jp.json'] | jsonify }},
+        "/apps/velvet_trial/data/recommendations/thief-tags.json": {{ site.data.asset_versions.files['/apps/velvet_trial/data/recommendations/thief-tags.json'] | jsonify }},
+        "/data/character_info.js": {{ site.data.asset_versions.files['/data/character_info.js'] | jsonify }}
+    };
 </script>
 {% if site.data.character_slugs %}
 <script>

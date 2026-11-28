@@ -14,7 +14,7 @@
 /* Tabs Resembling Synergy .character-tab */
 .vt-tabs {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   gap: 8px;
   margin-bottom: 20px;
 }
@@ -193,9 +193,10 @@
 
 .vt-level-chip-icons {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: flex-end;
   gap: 4px;
-  flex-shrink: 0;
 }
 
 .vt-level-chip-icon {
@@ -793,6 +794,30 @@
 
 .vt-level-recommend .vt-level-recommend-group + .vt-level-recommend-head {
   margin-top: 12px;
+}
+
+.vt-tag-roster {
+  gap: 10px;
+}
+
+.vt-tag-roster-group {
+  display: grid;
+  gap: 6px;
+}
+
+.vt-tag-roster-group + .vt-tag-roster-group {
+  margin-block-start: 14px;
+}
+
+.vt-release-note {
+  align-self: stretch;
+  margin: 0;
+  padding: 8px 10px;
+  border-left: 2px solid var(--vt-accent);
+  background: var(--vt-card-2);
+  color: var(--vt-text);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .vt-level-recommend-title-row {

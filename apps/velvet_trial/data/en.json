@@ -8247,6 +8247,540 @@
               ]
             }
           ]
+        },
+        {
+          "sn": 426,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 426,
+              "instSn": 71426,
+              "monsterGroup": 71426,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714261,
+                  "name": "Jack Frost",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-jackfrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714262,
+                  "name": "Jack Frost",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-jackfrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 714263,
+                  "name": "Slime",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-slime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 714264,
+                  "name": "Slime",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-slime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 427,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 427,
+              "instSn": 71427,
+              "monsterGroup": 71427,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714271,
+                  "name": "Setanta",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-setanta.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714272,
+                  "name": "Setanta",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-setanta.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 714273,
+                  "name": "Ame-no-Uzume",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-amenouzume.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 428,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 428,
+              "instSn": 71428,
+              "monsterGroup": 71428,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714281,
+                  "name": "Belphegor",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-belphegor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714282,
+                  "name": "Byakko",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-byako.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 429,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 429,
+              "instSn": 71429,
+              "monsterGroup": 71429,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714291,
+                  "name": "Arahabaki",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714292,
+                  "name": "Arahabaki",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 714293,
+                  "name": "Thoth",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-tooto.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Nuclear",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 430,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                3,
+                7
+              ],
+              "multiplier": 6,
+              "raw": "12,3:7,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 430,
+              "instSn": 71430,
+              "monsterGroup": 71430,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 714301,
+                  "name": "Vishnu",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-vishnu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 714302,
+                  "name": "Thor",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-thor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Electric",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -10468,6 +11002,539 @@
                   "sn": 715251,
                   "name": "Futsunushi",
                   "level": 85,
+                  "image": "B-guaiwutouxiang-futunusi.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 526,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 526,
+              "instSn": 71526,
+              "monsterGroup": 71526,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715261,
+                  "name": "Pixie",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715262,
+                  "name": "Pixie",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 715263,
+                  "name": "Jack-o'-Lantern",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 715264,
+                  "name": "Jack-o'-Lantern",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 527,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 527,
+              "instSn": 71527,
+              "monsterGroup": 71527,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715271,
+                  "name": "High Pixie",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715272,
+                  "name": "High Pixie",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 715273,
+                  "name": "Bugs",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-bugs.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 528,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 528,
+              "instSn": 71528,
+              "monsterGroup": 71528,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715281,
+                  "name": "Moloch",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-moloch.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Electric",
+                      "Wind",
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715282,
+                  "name": "Mada",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-mada.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 529,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 529,
+              "instSn": 71529,
+              "monsterGroup": 71529,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715291,
+                  "name": "Okuninushi",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715292,
+                  "name": "Okuninushi",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 715293,
+                  "name": "Kaiwan",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-kiun.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 530,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                4,
+                8
+              ],
+              "multiplier": 6,
+              "raw": "12,4:8,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 530,
+              "instSn": 71530,
+              "monsterGroup": 71530,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 715301,
+                  "name": "Surt",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-surtr.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 715302,
+                  "name": "Futsunushi",
+                  "level": 90,
                   "image": "B-guaiwutouxiang-futunusi.png",
                   "imageMissing": false,
                   "isBoss": 0,
@@ -12751,6 +13818,530 @@
               ]
             }
           ]
+        },
+        {
+          "sn": 626,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 626,
+              "instSn": 71626,
+              "monsterGroup": 71626,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716261,
+                  "name": "Obariyon",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-obariyon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716262,
+                  "name": "Obariyon",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-obariyon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 716263,
+                  "name": "Nekomata",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 716264,
+                  "name": "Nekomata",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 627,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 627,
+              "instSn": 71627,
+              "monsterGroup": 71627,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716271,
+                  "name": "Incubus",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716272,
+                  "name": "Incubus",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 716273,
+                  "name": "Succubus",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-succubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 628,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 628,
+              "instSn": 71628,
+              "monsterGroup": 71628,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716281,
+                  "name": "Lachesis",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-lachesis.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716282,
+                  "name": "Mitra",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-mitra.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 629,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 629,
+              "instSn": 71629,
+              "monsterGroup": 71629,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716291,
+                  "name": "Ose",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716292,
+                  "name": "Ose",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 716293,
+                  "name": "Pale Rider",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-palerider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 630,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                5,
+                9
+              ],
+              "multiplier": 6,
+              "raw": "12,5:9,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 630,
+              "instSn": 71630,
+              "monsterGroup": 71630,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 716301,
+                  "name": "Baphomet",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-baphomet.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 716302,
+                  "name": "Cu Chulainn",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-cuchulainn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -15001,8 +16592,4127 @@
               ]
             }
           ]
+        },
+        {
+          "sn": 726,
+          "levelNum": 26,
+          "phaseCount": 1,
+          "starScores": [
+            16000000,
+            23000000,
+            31000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8000000,
+              "raw": "1,20,8000000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8000000,
+              "raw": "6,0,8000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 726,
+              "instSn": 71726,
+              "monsterGroup": 71726,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717261,
+                  "name": "Saki Mitama",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717262,
+                  "name": "Saki Mitama",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 717263,
+                  "name": "Inugami",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-inugami.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 717264,
+                  "name": "Inugami",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-inugami.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 727,
+          "levelNum": 27,
+          "phaseCount": 1,
+          "starScores": [
+            17000000,
+            26000000,
+            34000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 600000,
+              "raw": "5,600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 8500000,
+              "raw": "1,20,8500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 8500000,
+              "raw": "6,0,8500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 727,
+              "instSn": 71727,
+              "monsterGroup": 71727,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717271,
+                  "name": "Unicorn",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-unicorn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717272,
+                  "name": "Unicorn",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-unicorn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 717273,
+                  "name": "Principality",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 728,
+          "levelNum": 28,
+          "phaseCount": 1,
+          "starScores": [
+            29000000,
+            44000000,
+            59000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1000000,
+              "raw": "5,1000000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 14500000,
+              "raw": "1,20,14500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 14500000,
+              "raw": "6,0,14500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 728,
+              "instSn": 71728,
+              "monsterGroup": 71728,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717281,
+                  "name": "Zouchouten",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-zouchouten.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717282,
+                  "name": "Okuninushi",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 729,
+          "levelNum": 29,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            64000000,
+            86000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 729,
+              "instSn": 71729,
+              "monsterGroup": 71729,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717291,
+                  "name": "Archangel",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717292,
+                  "name": "Archangel",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 717293,
+                  "name": "Vasuki",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-vasuki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 730,
+          "levelNum": 30,
+          "phaseCount": 1,
+          "starScores": [
+            43000000,
+            66000000,
+            88000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "element_score",
+              "elements": [
+                6,
+                10
+              ],
+              "multiplier": 6,
+              "raw": "12,6:10,6"
+            },
+            "rule2": {
+              "type": "one_more_bonus",
+              "score": 1600000,
+              "raw": "5,1600000"
+            },
+            "rule3": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 21500000,
+              "raw": "1,20,21500000"
+            },
+            "rule4": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 21500000,
+              "raw": "6,0,21500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 730,
+              "instSn": 71730,
+              "monsterGroup": 71730,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 717301,
+                  "name": "Daisoujou",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-daisoujou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 717302,
+                  "name": "Melchizedek",
+                  "level": 90,
+                  "image": "/assets/img/tactic-persona/멜키세덱.webp",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
         }
       ]
+    },
+    {
+      "sn": 6,
+      "name": "A Thousand Faces",
+      "effect": {
+        "sn": 4008,
+        "name": "Faces of the Many",
+        "desc": "Thieves who share a category deal 20% more damage while on the field together. Bonuses from multiple categories do not stack."
+      },
+      "images": {
+        "chapterNameRes": "shilian-qianmianfuguang02-i18n.png",
+        "chapterNameBgRes": "shilian-qianmianfuguang01-i18n.png",
+        "chapterImg": "shilian-tu08.png",
+        "chapterNameResPath": null,
+        "chapterNameBgResPath": null,
+        "chapterImgPath": "/apps/velvet_trial/img/shilian-tu08.png",
+        "resolvedPath": "/apps/velvet_trial/img/shilian-tu08.png",
+        "missing": false
+      },
+      "levels": [
+        {
+          "sn": 801,
+          "levelNum": 1,
+          "phaseCount": 2,
+          "starScores": [
+            27000000,
+            41000000,
+            55000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 15500000,
+              "raw": "1,20,15500000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 15500000,
+              "raw": "6,0,15500000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 801,
+              "instSn": 71801,
+              "monsterGroup": 71801,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718011,
+                  "name": "Greedy Incubus",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718012,
+                  "name": "Greedy Incubus",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718013,
+                  "name": "Greedy Hua Po",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-kahaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718014,
+                  "name": "Greedy Hua Po",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-kahaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718015,
+                  "name": "Greedy Hua Po",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-kahaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 901,
+              "instSn": 71901,
+              "monsterGroup": 71901,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719011,
+                  "name": "Greedy Mothman",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-mothman.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 802,
+          "levelNum": 2,
+          "phaseCount": 2,
+          "starScores": [
+            34000000,
+            51000000,
+            68000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "phantom_thieves"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,11,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 19000000,
+              "raw": "1,20,19000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 19000000,
+              "raw": "6,0,19000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 802,
+              "instSn": 71802,
+              "monsterGroup": 71802,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718021,
+                  "name": "Greedy Shiki-Ouji",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-shikiouji.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 902,
+              "instSn": 71902,
+              "monsterGroup": 71902,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719021,
+                  "name": "Greedy High Pixie",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719022,
+                  "name": "Greedy High Pixie",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719023,
+                  "name": "Greedy Pixie",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719024,
+                  "name": "Greedy Pixie",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719025,
+                  "name": "Greedy Pixie",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 803,
+          "levelNum": 3,
+          "phaseCount": 2,
+          "starScores": [
+            40000000,
+            60000000,
+            81000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 22000000,
+              "raw": "1,20,22000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 22000000,
+              "raw": "6,0,22000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 803,
+              "instSn": 71803,
+              "monsterGroup": 71803,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718031,
+                  "name": "Greedy Jack-o'-Lantern",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718032,
+                  "name": "Greedy Jack-o'-Lantern",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718033,
+                  "name": "Greedy Agathion",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-agation.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718034,
+                  "name": "Greedy Agathion",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-agation.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 903,
+              "instSn": 71903,
+              "monsterGroup": 71903,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719031,
+                  "name": "Greedy Eligor",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-erigor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719032,
+                  "name": "Greedy Nue",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-nue.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 804,
+          "levelNum": 4,
+          "phaseCount": 2,
+          "starScores": [
+            45000000,
+            68000000,
+            91000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves_of_hearts",
+                "phantom_thieves"
+              ],
+              "multiplier": 6,
+              "raw": "15,9,11,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 25000000,
+              "raw": "1,20,25000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 25000000,
+              "raw": "6,0,25000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 804,
+              "instSn": 71804,
+              "monsterGroup": 71804,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718041,
+                  "name": "Greedy Kelpie",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-kelpie.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718042,
+                  "name": "Greedy Mokoi",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-mokoi.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 904,
+              "instSn": 71904,
+              "monsterGroup": 71904,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719041,
+                  "name": "Greedy Koppa Tengu",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-koppatengu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719042,
+                  "name": "Greedy Koppa Tengu",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-koppatengu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719043,
+                  "name": "Greedy Kodama",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-kodama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719044,
+                  "name": "Greedy Kodama",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-kodama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 805,
+          "levelNum": 5,
+          "phaseCount": 2,
+          "starScores": [
+            52000000,
+            78000000,
+            100000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "sees",
+                "swimsuit"
+              ],
+              "multiplier": 6,
+              "raw": "15,10,17,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 29000000,
+              "raw": "1,20,29000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 29000000,
+              "raw": "6,0,29000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 805,
+              "instSn": 71805,
+              "monsterGroup": 71805,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718051,
+                  "name": "Greedy Apsaras",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-apsaras.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718052,
+                  "name": "Greedy Koropokguru",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-korpokkur.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718053,
+                  "name": "Greedy Koropokguru",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-korpokkur.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 905,
+              "instSn": 71905,
+              "monsterGroup": 71905,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719051,
+                  "name": "Greedy Nekomata",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719052,
+                  "name": "Greedy Yaksini",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-yakusni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719053,
+                  "name": "Greedy Succubus",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-succubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 806,
+          "levelNum": 6,
+          "phaseCount": 2,
+          "starScores": [
+            58000000,
+            87000000,
+            110000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 32000000,
+              "raw": "1,30,32000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 32000000,
+              "raw": "6,0,32000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 806,
+              "instSn": 71806,
+              "monsterGroup": 71806,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718061,
+                  "name": "Greedy Black Ooze",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-blackooze.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718062,
+                  "name": "Greedy Black Ooze",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-blackooze.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718063,
+                  "name": "Greedy Onmoraki",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-onmoraki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718064,
+                  "name": "Greedy Onmoraki",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-onmoraki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 906,
+              "instSn": 71906,
+              "monsterGroup": 71906,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719061,
+                  "name": "Greedy Anzu",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-anzu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719062,
+                  "name": "Greedy Andras",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-andras.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 807,
+          "levelNum": 7,
+          "phaseCount": 2,
+          "starScores": [
+            64000000,
+            97000000,
+            120000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "sees"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,10,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 36000000,
+              "raw": "1,30,36000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 36000000,
+              "raw": "6,0,36000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 807,
+              "instSn": 71807,
+              "monsterGroup": 71807,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718071,
+                  "name": "Greedy Sui-Ki",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-suiki-i18n.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718072,
+                  "name": "Greedy Oni",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-oni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [],
+                    "Resistant": [
+                      "Phys",
+                      "Gun"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 907,
+              "instSn": 71907,
+              "monsterGroup": 71907,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719071,
+                  "name": "Greedy Nigi Mitama",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-nigimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719072,
+                  "name": "Greedy Nigi Mitama",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-nigimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719073,
+                  "name": "Greedy Saki Mitama",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719074,
+                  "name": "Greedy Saki Mitama",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 808,
+          "levelNum": 8,
+          "phaseCount": 2,
+          "starScores": [
+            70000000,
+            100000000,
+            140000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 39000000,
+              "raw": "1,30,39000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 39000000,
+              "raw": "6,0,39000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 808,
+              "instSn": 71808,
+              "monsterGroup": 71808,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718081,
+                  "name": "Greedy Rakshasa",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-rakshasa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718082,
+                  "name": "Greedy Naga",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-naga.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718083,
+                  "name": "Greedy Naga",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-naga.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 908,
+              "instSn": 71908,
+              "monsterGroup": 71908,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719081,
+                  "name": "Greedy Flauros",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-flauros.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Wind",
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719082,
+                  "name": "Greedy Orobas",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-orobas.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719083,
+                  "name": "Greedy Matador",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-matador-i18n.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 809,
+          "levelNum": 9,
+          "phaseCount": 2,
+          "starScores": [
+            76000000,
+            110000000,
+            150000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves",
+                "sees"
+              ],
+              "multiplier": 6,
+              "raw": "15,11,10,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 42000000,
+              "raw": "1,30,42000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 42000000,
+              "raw": "6,0,42000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 809,
+              "instSn": 71809,
+              "monsterGroup": 71809,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718091,
+                  "name": "Greedy Take-Minakata",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-takeminakata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 909,
+              "instSn": 71909,
+              "monsterGroup": 71909,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719091,
+                  "name": "Greedy Phoenix",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-houou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719092,
+                  "name": "Greedy Phoenix",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-houou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719093,
+                  "name": "Greedy Barong",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-barong.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719094,
+                  "name": "Greedy Barong",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-barong.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719095,
+                  "name": "Greedy Barong",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-barong.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 810,
+          "levelNum": 10,
+          "phaseCount": 2,
+          "starScores": [
+            82000000,
+            120000000,
+            160000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves_of_hearts",
+                "p5r"
+              ],
+              "multiplier": 6,
+              "raw": "15,9,5,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 46000000,
+              "raw": "1,30,46000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 46000000,
+              "raw": "6,0,46000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 810,
+              "instSn": 71810,
+              "monsterGroup": 71810,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718101,
+                  "name": "Greedy Hell Biker",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-hells_angel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718102,
+                  "name": "Greedy Archangel",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718103,
+                  "name": "Greedy Archangel",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718104,
+                  "name": "Greedy Archangel",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718105,
+                  "name": "Greedy Archangel",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 910,
+              "instSn": 71910,
+              "monsterGroup": 71910,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719101,
+                  "name": "Greedy Moloch",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-moloch.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Electric",
+                      "Wind",
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 811,
+          "levelNum": 11,
+          "phaseCount": 2,
+          "starScores": [
+            89000000,
+            130000000,
+            170000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 49000000,
+              "raw": "1,40,49000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 49000000,
+              "raw": "6,0,49000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 811,
+              "instSn": 71811,
+              "monsterGroup": 71811,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718111,
+                  "name": "Greedy Belphegor",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-belphegor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718112,
+                  "name": "Greedy Arahabaki",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718113,
+                  "name": "Greedy Arahabaki",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718114,
+                  "name": "Greedy Ame-no-Uzume",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-amenouzume.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 911,
+              "instSn": 71911,
+              "monsterGroup": 71911,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719111,
+                  "name": "Greedy Mithras",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-mithras.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Fire",
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719112,
+                  "name": "Greedy Lachesis",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-lachesis.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 812,
+          "levelNum": 12,
+          "phaseCount": 2,
+          "starScores": [
+            94000000,
+            140000000,
+            180000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "phantom_thieves_of_hearts"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,9,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 52000000,
+              "raw": "1,40,52000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 52000000,
+              "raw": "6,0,52000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 812,
+              "instSn": 71812,
+              "monsterGroup": 71812,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718121,
+                  "name": "Greedy Kin-Ki",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-kinki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718122,
+                  "name": "Greedy Fuu-Ki",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-fuuki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718123,
+                  "name": "Greedy Obariyon",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-obariyon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 912,
+              "instSn": 71912,
+              "monsterGroup": 71912,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719121,
+                  "name": "Greedy Isis",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-isis.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719122,
+                  "name": "Greedy Sandman",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-zandmann.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719123,
+                  "name": "Greedy Sandman",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-zandmann.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 813,
+          "levelNum": 13,
+          "phaseCount": 2,
+          "starScores": [
+            100000000,
+            150000000,
+            200000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 56000000,
+              "raw": "1,40,56000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 56000000,
+              "raw": "6,0,56000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 813,
+              "instSn": 71813,
+              "monsterGroup": 71813,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718131,
+                  "name": "Greedy Atropos",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-atropos.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 913,
+              "instSn": 71913,
+              "monsterGroup": 71913,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719131,
+                  "name": "Greedy Bugs",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-bugs.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719132,
+                  "name": "Greedy Shiisaa",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719133,
+                  "name": "Greedy Shiisaa",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719134,
+                  "name": "Greedy Shiisaa",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719135,
+                  "name": "Greedy Shiisaa",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 814,
+          "levelNum": 14,
+          "phaseCount": 2,
+          "starScores": [
+            100000000,
+            160000000,
+            210000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "sees",
+                "phantom_thieves_of_hearts"
+              ],
+              "multiplier": 6,
+              "raw": "15,10,9,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 59000000,
+              "raw": "1,40,59000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 59000000,
+              "raw": "6,0,59000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 814,
+              "instSn": 71814,
+              "monsterGroup": 71814,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718141,
+                  "name": "Greedy Principality",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718142,
+                  "name": "Greedy Principality",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718143,
+                  "name": "Greedy Principality",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718144,
+                  "name": "Greedy Power",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-power.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718145,
+                  "name": "Greedy Power",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-power.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 914,
+              "instSn": 71914,
+              "monsterGroup": 71914,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719141,
+                  "name": "Greedy Yamata-no-Orochi",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-yamatano_orochi.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 815,
+          "levelNum": 15,
+          "phaseCount": 2,
+          "starScores": [
+            110000000,
+            170000000,
+            220000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "sees",
+                "survival_instinct"
+              ],
+              "multiplier": 6,
+              "raw": "15,10,15,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 63000000,
+              "raw": "1,40,63000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 63000000,
+              "raw": "6,0,63000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 815,
+              "instSn": 71815,
+              "monsterGroup": 71815,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718151,
+                  "name": "Greedy Lilith",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-lilith.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718152,
+                  "name": "Greedy Hecatoncheires",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-hekatoncheir.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 915,
+              "instSn": 71915,
+              "monsterGroup": 71915,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719151,
+                  "name": "Greedy Lilith",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-lilith.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719152,
+                  "name": "Greedy Lilith",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-lilith.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719153,
+                  "name": "Greedy Oberon",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-oberon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719154,
+                  "name": "Greedy Oberon",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-oberon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 816,
+          "levelNum": 16,
+          "phaseCount": 2,
+          "starScores": [
+            110000000,
+            170000000,
+            230000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 66000000,
+              "raw": "1,40,66000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 66000000,
+              "raw": "6,0,66000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 816,
+              "instSn": 71816,
+              "monsterGroup": 71816,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718161,
+                  "name": "Greedy Black Rider",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-blackrider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718162,
+                  "name": "Greedy Red Rider",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-redrider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718163,
+                  "name": "Greedy White Rider",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-whiterider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 916,
+              "instSn": 71916,
+              "monsterGroup": 71916,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719161,
+                  "name": "Greedy Queen Mab",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-queenMab.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719162,
+                  "name": "Greedy Daisoujou",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-daisoujou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719163,
+                  "name": "Greedy Okuninushi",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 817,
+          "levelNum": 17,
+          "phaseCount": 2,
+          "starScores": [
+            120000000,
+            180000000,
+            250000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "swimsuit"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,17,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 69000000,
+              "raw": "1,40,69000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 69000000,
+              "raw": "6,0,69000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 817,
+              "instSn": 71817,
+              "monsterGroup": 71817,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718171,
+                  "name": "Greedy Thor",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-thor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Electric",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 917,
+              "instSn": 71917,
+              "monsterGroup": 71917,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719171,
+                  "name": "Greedy Ose",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719172,
+                  "name": "Greedy Ose",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719173,
+                  "name": "Greedy Nekomata",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719174,
+                  "name": "Greedy Nekomata",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719175,
+                  "name": "Greedy Nekomata",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 818,
+          "levelNum": 18,
+          "phaseCount": 2,
+          "starScores": [
+            130000000,
+            190000000,
+            260000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 73000000,
+              "raw": "1,40,73000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 73000000,
+              "raw": "6,0,73000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 818,
+              "instSn": 71818,
+              "monsterGroup": 71818,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718181,
+                  "name": "Greedy Garuda",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-garuda.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718182,
+                  "name": "Greedy Kumbhanda",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kubhanda.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718183,
+                  "name": "Greedy Kumbhanda",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kubhanda.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718184,
+                  "name": "Greedy Kikuri-Hime",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kikurihime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718185,
+                  "name": "Greedy Kikuri-Hime",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kikurihime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 918,
+              "instSn": 71918,
+              "monsterGroup": 71918,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719181,
+                  "name": "Greedy Beelzebub",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-beelzebub.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 819,
+          "levelNum": 19,
+          "phaseCount": 2,
+          "starScores": [
+            130000000,
+            200000000,
+            270000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves",
+                "p5r"
+              ],
+              "multiplier": 6,
+              "raw": "15,11,5,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 76000000,
+              "raw": "1,40,76000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 76000000,
+              "raw": "6,0,76000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 819,
+              "instSn": 71819,
+              "monsterGroup": 71819,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718191,
+                  "name": "Greedy Girimehkala",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-girimekara.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718192,
+                  "name": "Greedy Horus",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-horus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 919,
+              "instSn": 71919,
+              "monsterGroup": 71919,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719191,
+                  "name": "Greedy Baphomet",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-baphomet.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719192,
+                  "name": "Greedy Baphomet",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-baphomet.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719193,
+                  "name": "Greedy Black Frost",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-jaakufrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [],
+                    "Resistant": [
+                      "Fire",
+                      "Ice",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719194,
+                  "name": "Greedy Black Frost",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-jaakufrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [],
+                    "Resistant": [
+                      "Fire",
+                      "Ice",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "sn": 820,
+          "levelNum": 20,
+          "phaseCount": 2,
+          "starScores": [
+            140000000,
+            210000000,
+            280000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves_of_hearts",
+                "survival_instinct"
+              ],
+              "multiplier": 6,
+              "raw": "15,9,15,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 80000000,
+              "raw": "1,40,80000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 80000000,
+              "raw": "6,0,80000000"
+            }
+          },
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": 820,
+              "instSn": 71820,
+              "monsterGroup": 71820,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718201,
+                  "name": "Greedy Seiryu",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-seiryu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718202,
+                  "name": "Greedy Genbu",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-genbu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718203,
+                  "name": "Greedy Suzaku",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-suzaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718204,
+                  "name": "Greedy Byakko",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-byako.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": 920,
+              "instSn": 71920,
+              "monsterGroup": 71920,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719201,
+                  "name": "Greedy Cu Chulainn",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-cuchulainn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719202,
+                  "name": "Greedy Nebiros",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nebiros.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tagRosterVersion": "5.5.1",
+      "provisionalNames": true
     }
   ]
 }

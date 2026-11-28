@@ -39,6 +39,29 @@ window.I18N_PAGE_VELVET_TRIAL_CN = {
   condition_rule3_turn_limit: '{maxActions}次行动内获胜',
   condition_rule3_death_limit: '阵亡人数不超过{maxDeaths}人',
   condition_rule4_death_limit: '阵亡人数不超过{maxDeaths}人',
+  tag_roster_version_note: '怪盗分类以 CN/KR/TW {version} 为基准。后续版本请根据游戏内的分类和关卡条件调整队伍。',
+  tag_chapter_stage_data_note: '星级分数和额外条件请在游戏内查看。',
+  tag_chapter_first_half: '上半场',
+  tag_chapter_second_half: '下半场',
+  tag_category_sees: 'S.E.E.S.',
+  tag_category_dancing_star: '星舞',
+  tag_category_phantom_thieves_of_hearts: '心之怪盗团',
+  tag_category_phantom_thieves: '怪盗团',
+  tag_category_phantom_idol: '怪盗偶像',
+  tag_category_velvet_resident: '天鹅绒居民',
+  tag_category_special_collaboration: '特殊联动',
+  tag_category_survival_instinct: '暴走的生存欲',
+  tag_category_virtual: '虚拟',
+  tag_category_swimsuit: '泳装',
+  tag_category_male: '男性',
+  tag_category_female: '女性',
+  tag_category_p5x: 'P5X',
+  tag_category_p5: 'P5',
+  tag_category_p5r: 'P5R',
+  tag_category_p3r: 'P3R',
+  tag_category_p3p: 'P3P',
+  condition_rule1_category_score: '{categories}分类怪盗的积分倍率 ×{multiplier}',
+  tag_chapter_condition_points: '{condition}（+{points}分）',
   adaptLabels: {
     Weak: { text: '弱', cls: 'weak' },
     Resistant: { text: '耐', cls: 'res' },
@@ -59,6 +82,7 @@ window.I18N_PAGE_VELVET_TRIAL_CN = {
     7: '念动',
     8: '核热',
     9: '祝福',
-    10: '诅咒'
+    10: '诅咒',
+    11: '万能'
   }
 };

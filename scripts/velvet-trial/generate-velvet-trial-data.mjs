@@ -8,12 +8,49 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
+const TRIAL_DATA_DIR = path.join(ROOT, 'apps', 'velvet_trial', 'data');
+const TAG_CHAPTER = {
+  sn: 6,
+  effectSn: 4008,
+  levelCount: 20,
+  nameByLang: { kr: '다채로운 빛', cn: '千面浮光', en: 'A Thousand Faces', jp: '千面の光' },
+  recommendationVersion: '5.5.1',
+  image: 'shilian-tu08.png',
+  battleStarts: [71801, 71901]
+};
+const THIEF_TAG_IDS = [
+  null, 'male', 'female', 'p5x', 'p5', 'p5r', 'dancing_star', 'p3r', 'p3p',
+  'phantom_thieves_of_hearts', 'sees', 'phantom_thieves', 'velvet_resident',
+  'phantom_idol', 'special_collaboration', 'survival_instinct', 'virtual', 'swimsuit'
+];
+const GLOBAL_TAG_TEXT = {
+  en: {
+    effect: {
+      name: 'Faces of the Many',
+      desc: 'Thieves who share a category deal 20% more damage while on the field together. Bonuses from multiple categories do not stack.'
+    },
+    enemyPrefix: 'Greedy ',
+    personaFallbacks: { takeminakata: 'Take-Minakata', beelzebub: 'Beelzebub' }
+  },
+  jp: {
+    effect: {
+      name: '衆生の相',
+      desc: '同じカテゴリーの怪盗が同時にフィールドにいると、該当する怪盗の与ダメージが20%上昇する。複数のカテゴリーによる効果は重複しない。'
+    },
+    enemyPrefix: '貪欲な',
+    personaFallbacks: { takeminakata: 'タケミナカタ', beelzebub: 'ベルゼブブ' }
+  }
+};
+const ENEMY_IMAGE_ALIASES = {
+  matador: 'B-guaiwutouxiang-matador-i18n.png',
+  suiki: 'B-guaiwutouxiang-suiki-i18n.png'
+};
 
 const LANG_CONFIGS = [
-  { lang: 'kr', sourceRoot: 'KR_Config', baseDir: path.join(ROOT, '_config', 'Config_KR'), maxVisibleLevel: 30 },
-  { lang: 'en', sourceRoot: 'EN_Config', baseDir: path.join(ROOT, '_config', 'Config_EN'), maxVisibleLevel: 25, limitedChapterSns: [2, 3, 4, 5] },
-  { lang: 'jp', sourceRoot: 'JP_Config', baseDir: path.join(ROOT, '_config', 'Config_JP'), maxVisibleLevel: 25, limitedChapterSns: [2, 3, 4, 5] },
-  { lang: 'cn', sourceRoot: 'Config_CN', baseDir: path.join(ROOT, '_config', 'Config_CN'), maxVisibleLevel: 30 }
+  { lang: 'kr', sourceRoot: 'KR_Config', baseDir: path.join(ROOT, '_config', 'Config_KR') },
+  { lang: 'en', sourceRoot: 'EN_Config', baseDir: path.join(ROOT, '_config', 'Config_EN') },
+  { lang: 'jp', sourceRoot: 'JP_Config', baseDir: path.join(ROOT, '_config', 'Config_JP') },
+  { lang: 'cn', sourceRoot: 'Config_CN', baseDir: path.join(ROOT, '_config', 'Config_CN') }
 ];
 
 const ELEMENT_BY_ID = {
@@ -58,12 +95,13 @@ function normalizeNewline(text) {
 function parseArgs(argv) {
   const args = new Set(argv.slice(2));
   for (const arg of args) {
-    if (arg !== '--check') {
+    if (arg !== '--check' && arg !== '--expanded-stages') {
       throw new Error(`Unknown argument: ${arg}`);
     }
   }
   return {
-    check: args.has('--check')
+    check: args.has('--check'),
+    expandedStages: args.has('--expanded-stages')
   };
 }
 
@@ -246,6 +284,14 @@ function parseRule1(token) {
     }
   }
 
+  if (code === 15 && parts.length >= 3) {
+    const categories = parts.slice(1, -1).map((id) => THIEF_TAG_IDS[Number(id)]);
+    const multiplier = Number(parts.at(-1));
+    if (categories.every(Boolean) && Number.isFinite(multiplier)) {
+      return { type: 'category_score', categories, multiplier, raw };
+    }
+  }
+
   return {
     type: 'raw',
     raw
@@ -334,7 +380,7 @@ function parseConditions(bonusRule) {
   };
 }
 
-function buildMonsterImageName(model, enemyImageSet) {
+function buildMonsterImageName(model, enemyImageSet, indexedImages) {
   if (isPlaceholder(model)) {
     return { image: '', imageMissing: true };
   }
@@ -346,6 +392,12 @@ function buildMonsterImageName(model, enemyImageSet) {
   if (enemyImageSet.has(webpName)) {
     return { image: webpName, imageMissing: false };
   }
+  const alias = ENEMY_IMAGE_ALIASES[model];
+  if (enemyImageSet.has(alias)) {
+    return { image: alias, imageMissing: false };
+  }
+  const fallback = model === 'melkisedec' && resolveImagePath('멜키세덱.webp', indexedImages);
+  if (fallback) return { image: fallback, imageMissing: false };
   return { image: pngName, imageMissing: true };
 }
 
@@ -387,27 +439,17 @@ function loadTranslationTables(baseDir, lang) {
   };
 }
 
-function buildLanguageData({ lang, sourceRoot, baseDir, maxVisibleLevel, limitedChapterSns = [] }, ctx) {
+function createPhaseBuilder(baseDir, translation, ctx) {
   const read = (relativePath) => readJson(path.join(baseDir, relativePath));
-
-  const confTrial = read('default/ConfVelvetTrial.json');
-  const confLevel = read('default/ConfVelvetTrialLevel.json');
-  const confBattle = read('default/ConfVelvetTrialBattle.json');
   const confInst = read('battle/ConfInst.json');
   const confZhanDou = read('battle/ConfZhanDou.json');
   const confGuaiWu = read('text/ConfGuaiWu.json');
   const confGuaiWuAdapt = read('text/ConfGuaiWuAdapt.json');
-  const confSkillAffix = read('default/ConfSkillAffix.json');
-  const confSkillNatureResist = read('default/ConfSkillNatureResist.json');
-  const translation = loadTranslationTables(baseDir, lang);
-
-  const chapterBySn = new Map(confTrial.map((row) => [Number(row.sn), row]));
-  const levelBySn = new Map(confLevel.map((row) => [Number(row.sn), row]));
-  const battleBySn = new Map(confBattle.map((row) => [Number(row.sn), row]));
+  const resistPath = path.join(baseDir, 'default/ConfSkillNatureResist.json');
+  const resistCodeToCategory = buildResistCodeMap(fs.existsSync(resistPath) ? readJson(resistPath) : []);
   const instBySn = new Map(confInst.map((row) => [Number(row.sn), row]));
   const monsterBySn = new Map(confGuaiWu.map((row) => [Number(row.sn), row]));
   const adaptBySn = new Map(confGuaiWuAdapt.map((row) => [Number(row.sn), row]));
-  const affixBySn = new Map(confSkillAffix.map((row) => [Number(row.sn), row]));
 
   const zhanDouByGroup = new Map();
   for (const row of confZhanDou) {
@@ -424,15 +466,51 @@ function buildLanguageData({ lang, sourceRoot, baseDir, maxVisibleLevel, limited
     });
   }
 
-  const krChapterBySn = ctx.krChapterBySn;
-  const krMonsterBySn = ctx.krMonsterBySn;
-  const krAffixBySn = ctx.krAffixBySn;
-  const enemyImageSet = ctx.enemyImageSet;
-  const indexedImages = ctx.indexedImages;
-  const resistCodeToCategory = buildResistCodeMap(confSkillNatureResist);
+  const { krMonsterBySn, enemyImageSet, indexedImages } = ctx;
+  return (phase, instSn, battleSn = null) => {
+    const instRow = instBySn.get(instSn);
+    if (!instRow) return null;
+    const monsterGroup = Number(instRow.monsterGroup);
+    const monsters = (zhanDouByGroup.get(monsterGroup) || []).map((groupRow) => {
+      const monsterSn = Number(groupRow.monster);
+      const monster = monsterBySn.get(monsterSn);
+      const krMonster = krMonsterBySn.get(monsterSn);
+      const monsterName = pickLocalizedName(
+        translation.monsterNameBySn.get(monsterSn),
+        monster?.name,
+        krMonster?.name
+      );
+      const imageInfo = buildMonsterImageName(monster?.model, enemyImageSet, indexedImages);
+      return {
+        position: Number(groupRow.position),
+        sn: monsterSn,
+        name: monsterName,
+        level: parseIntSafe(monster?.lv),
+        image: imageInfo.image,
+        imageMissing: imageInfo.imageMissing,
+        isBoss: Number(monster?.isBoss || 0),
+        adapt: buildAdaptObject(adaptBySn.get(Number(monster?.adaptSN)), resistCodeToCategory)
+      };
+    });
+    return { phase, battleSn, instSn, monsterGroup, monsters };
+  };
+}
+
+function buildLanguageData({ lang, sourceRoot, baseDir }, ctx, includeChapter = () => true) {
+  const read = (relativePath) => readJson(path.join(baseDir, relativePath));
+  const confTrial = read('default/ConfVelvetTrial.json');
+  const confLevel = read('default/ConfVelvetTrialLevel.json');
+  const confBattle = read('default/ConfVelvetTrialBattle.json');
+  const confSkillAffix = read('default/ConfSkillAffix.json');
+  const translation = loadTranslationTables(baseDir, lang);
+  const buildPhase = createPhaseBuilder(baseDir, translation, ctx);
+  const levelBySn = new Map(confLevel.map((row) => [Number(row.sn), row]));
+  const battleBySn = new Map(confBattle.map((row) => [Number(row.sn), row]));
+  const affixBySn = new Map(confSkillAffix.map((row) => [Number(row.sn), row]));
+  const { krChapterBySn, krAffixBySn, indexedImages } = ctx;
 
   const chapters = confTrial
-    .slice()
+    .filter(includeChapter)
     .sort((a, b) => Number(a.sn) - Number(b.sn))
     .map((chapterRow) => {
       const chapterSn = Number(chapterRow.sn);
@@ -465,12 +543,7 @@ function buildLanguageData({ lang, sourceRoot, baseDir, maxVisibleLevel, limited
         krChapterAffix?.desc
       );
 
-      const levelList = parseCsvNumbers(chapterRow.levelList)
-        .filter((levelSn) => {
-          const levelRow = levelBySn.get(levelSn);
-          const isLimitedChapter = limitedChapterSns.includes(chapterSn);
-          return levelRow && (!isLimitedChapter || Number(levelRow.levelNum) <= maxVisibleLevel);
-        });
+      const levelList = parseCsvNumbers(chapterRow.levelList);
 
       const levels = levelList.map((levelSn) => {
         const levelRow = levelBySn.get(levelSn);
@@ -480,43 +553,7 @@ function buildLanguageData({ lang, sourceRoot, baseDir, maxVisibleLevel, limited
         const phases = battleSns.map((battleSn, phaseIndex) => {
           const battleRow = battleBySn.get(battleSn);
           if (!battleRow) return null;
-          const instSn = Number(battleRow.instSN);
-          const instRow = instBySn.get(instSn);
-          if (!instRow) return null;
-          const monsterGroup = Number(instRow.monsterGroup);
-
-          const monsters = (zhanDouByGroup.get(monsterGroup) || []).map((groupRow) => {
-            const monsterSn = Number(groupRow.monster);
-            const monster = monsterBySn.get(monsterSn);
-            const krMonster = krMonsterBySn.get(monsterSn);
-            const monsterName = pickLocalizedName(
-              translation.monsterNameBySn.get(monsterSn),
-              monster?.name,
-              krMonster?.name
-            );
-            const level = parseIntSafe(monster?.lv);
-            const adaptRow = adaptBySn.get(Number(monster?.adaptSN));
-            const adapt = buildAdaptObject(adaptRow, resistCodeToCategory);
-            const imageInfo = buildMonsterImageName(monster?.model, enemyImageSet);
-            return {
-              position: Number(groupRow.position),
-              sn: monsterSn,
-              name: monsterName,
-              level,
-              image: imageInfo.image,
-              imageMissing: imageInfo.imageMissing,
-              isBoss: Number(monster?.isBoss || 0),
-              adapt
-            };
-          });
-
-          return {
-            phase: phaseIndex + 1,
-            battleSn,
-            instSn,
-            monsterGroup,
-            monsters
-          };
+          return buildPhase(phaseIndex + 1, Number(battleRow.instSN), battleSn);
         }).filter(Boolean);
 
         return {
@@ -561,14 +598,108 @@ function buildLanguageData({ lang, sourceRoot, baseDir, maxVisibleLevel, limited
   };
 }
 
-function buildExpectedOutput() {
+function buildTagChapter({ lang, baseDir }, ctx, sourceChapter) {
+  const name = TAG_CHAPTER.nameByLang[lang];
+  if (sourceChapter) {
+    return {
+      ...sourceChapter,
+      sn: TAG_CHAPTER.sn,
+      name,
+      tagRosterVersion: TAG_CHAPTER.recommendationVersion,
+      levels: sourceChapter.levels.filter((level) => level.levelNum <= TAG_CHAPTER.levelCount)
+    };
+  }
+
+  // The partial KR/CN exports contain both battles for each stage.
+  const buildPhase = createPhaseBuilder(baseDir, loadTranslationTables(baseDir, lang), ctx);
+  const effect = readJson(path.join(baseDir, 'default/ConfSkillAffix.json'))
+    .find((row) => Number(row.sn) === TAG_CHAPTER.effectSn);
+  if (!effect) throw new Error('Missing tag chapter effect for ' + lang);
+
+  const chapterImg = TAG_CHAPTER.image;
+  const chapterImgPath = resolveImagePath(chapterImg, ctx.indexedImages);
+  const levels = Array.from({ length: TAG_CHAPTER.levelCount }, (_, index) => {
+    const phases = TAG_CHAPTER.battleStarts.map((start, phaseIndex) => buildPhase(phaseIndex + 1, start + index));
+    if (phases.some((phase) => !phase?.monsters.length)) {
+      throw new Error('Missing tag chapter battle for ' + lang + ' stage ' + (index + 1));
+    }
+    return { sn: phases[0].instSn, levelNum: index + 1, phaseCount: phases.length, phases };
+  });
+
+  return {
+    sn: TAG_CHAPTER.sn,
+    name,
+    tagRosterVersion: TAG_CHAPTER.recommendationVersion,
+    effect: { sn: TAG_CHAPTER.effectSn, name: effect.name, desc: effect.desc },
+    images: { chapterImg, chapterImgPath, resolvedPath: chapterImgPath, missing: !chapterImgPath },
+    levels
+  };
+}
+
+function localizeTagChapter(chapter, { lang, baseDir }, krMonsterBySn) {
+  const { effect, enemyPrefix, personaFallbacks } = GLOBAL_TAG_TEXT[lang];
+  const folder = 'conftranslation' + lang;
+  const suffix = lang.toUpperCase();
+  const translations = readJson(path.join(baseDir, folder, 'ConfPersona_' + suffix + '.json'));
+  const personaNameBySn = new Map(translations.map((row) => [Number(row.sn), row.name]));
+  const personas = readJson(path.join(baseDir, 'develop/ConfPersona.json'));
+  const nameByModel = new Map(Object.entries(personaFallbacks));
+  for (const persona of personas) {
+    const name = pickLocalizedName(personaNameBySn.get(Number(persona.sn)));
+    if (name && !nameByModel.has(persona.model)) nameByModel.set(persona.model, name);
+  }
+  const { monsterNameBySn } = loadTranslationTables(baseDir, lang);
+  const levels = chapter.levels.map((level) => ({
+    ...level,
+    phases: level.phases.map((phase) => ({
+      ...phase,
+      monsters: phase.monsters.map((monster) => {
+        const model = krMonsterBySn.get(monster.sn)?.model;
+        const personaName = nameByModel.get(model);
+        const name = pickLocalizedName(monsterNameBySn.get(monster.sn), personaName && enemyPrefix + personaName);
+        if (!name) throw new Error('Missing ' + lang + ' name for tag chapter enemy ' + monster.sn);
+        return { ...monster, name };
+      })
+    }))
+  }));
+  return {
+    ...chapter,
+    name: TAG_CHAPTER.nameByLang[lang],
+    provisionalNames: true,
+    effect: { sn: TAG_CHAPTER.effectSn, ...effect },
+    levels
+  };
+}
+
+function findTagChapter(data) {
+  return data.chapters.find((chapter) => chapter.effect?.sn === TAG_CHAPTER.effectSn && chapter.levels.length);
+}
+
+function copyTagStageRules(chapter, sourceChapter) {
+  if (!sourceChapter) return;
+  const byNumber = new Map(sourceChapter.levels.map((level) => [level.levelNum, level]));
+  for (const level of chapter.levels) {
+    const source = byNumber.get(level.levelNum);
+    if (level.starScores?.length || !source?.starScores?.length) continue;
+    if (source.phases.length !== level.phases.length
+      || source.phases.some((phase, index) => phase.instSn !== level.phases[index].instSn)) {
+      throw new Error('Tag chapter battles differ for stage ' + level.levelNum);
+    }
+    level.sn = source.sn;
+    level.starScores = source.starScores;
+    level.conditions = source.conditions;
+  }
+}
+
+function buildExpectedOutput({ expandedStages }) {
   const indexedImages = indexImageFiles();
   const enemyImageDir = path.join(ROOT, 'assets', 'img', 'enemy');
   const enemyImageSet = fs.existsSync(enemyImageDir)
     ? new Set(fs.readdirSync(enemyImageDir))
     : new Set();
 
-  const krChapterRows = readJson(path.join(ROOT, '_config', 'Config_KR', 'default', 'ConfVelvetTrial.json'));
+  const krChapterPath = path.join(ROOT, '_config', 'Config_KR', 'default', 'ConfVelvetTrial.json');
+  const krChapterRows = expandedStages && !fs.existsSync(krChapterPath) ? [] : readJson(krChapterPath);
   const krMonsterRows = readJson(path.join(ROOT, '_config', 'Config_KR', 'text', 'ConfGuaiWu.json'));
   const krAffixRows = readJson(path.join(ROOT, '_config', 'Config_KR', 'default', 'ConfSkillAffix.json'));
 
@@ -594,7 +725,7 @@ function buildExpectedOutput() {
   ];
 
   const generatedAtBySource = {};
-  for (const langConfig of LANG_CONFIGS) {
+  for (const langConfig of expandedStages ? [] : LANG_CONFIGS) {
     const sourceRoot = langConfig.sourceRoot;
     const baseDir = langConfig.baseDir;
     let maxMtime = 0;
@@ -626,14 +757,55 @@ function buildExpectedOutput() {
   };
 
   const expected = new Map();
+  const krConfig = LANG_CONFIGS.find((config) => config.lang === 'kr');
+  let krTagChapter;
 
   for (const langConfig of LANG_CONFIGS) {
-    const data = buildLanguageData(langConfig, ctx);
+    const dataPath = path.join(TRIAL_DATA_DIR, langConfig.lang + '.json');
+    const isGlobal = Object.hasOwn(GLOBAL_TAG_TEXT, langConfig.lang);
+    let data;
+
+    if (expandedStages) {
+      data = readJson(dataPath);
+      if (isGlobal) {
+        const elemental = buildLanguageData(langConfig, ctx, (row) => Number(row.sn) >= 2 && Number(row.sn) <= 5);
+        const updates = new Map(elemental.chapters.map((chapter) => [chapter.sn, chapter]));
+        data.chapters = data.chapters.map((chapter) => {
+          const updated = updates.get(chapter.sn);
+          if (!updated) return chapter;
+          const published = chapter.levels.filter((level) => level.levelNum <= 25);
+          const added = updated.levels.filter((level) => level.levelNum > 25 && level.levelNum <= 30);
+          if (added.length !== 5 || added.some((level) => !level.phases.length)) {
+            throw new Error('Missing stages 26 through 30 for ' + langConfig.lang + ' chapter ' + chapter.sn);
+          }
+          return { ...chapter, levels: [...published, ...added] };
+        });
+      }
+    } else {
+      data = buildLanguageData(langConfig, ctx);
+    }
+
+    let sourceChapter = findTagChapter(data);
+    if (expandedStages && sourceInputFiles.slice(0, 3).every((file) => fs.existsSync(path.join(langConfig.baseDir, file)))) {
+      const native = buildLanguageData(langConfig, ctx, (row) => Number(row.skillAffix) === TAG_CHAPTER.effectSn);
+      sourceChapter = findTagChapter(native) || sourceChapter;
+    }
+    const hasNativeLevels = sourceChapter?.levels.some((level) => level.starScores?.length);
+    const isOfficialGlobal = isGlobal && hasNativeLevels && !sourceChapter.tagRosterVersion;
+    const chapter = isGlobal && !isOfficialGlobal
+      ? localizeTagChapter(krTagChapter || buildTagChapter(krConfig, ctx), langConfig, ctx.krMonsterBySn)
+      : buildTagChapter(langConfig, ctx, hasNativeLevels ? sourceChapter : null);
+    if (isOfficialGlobal) chapter.name = sourceChapter.name || chapter.name;
+    if (langConfig.lang === 'kr') {
+      krTagChapter = chapter;
+    } else if (langConfig.lang === 'cn') {
+      copyTagStageRules(chapter, krTagChapter);
+    }
+    data.chapters = data.chapters.filter((entry) => entry.effect?.sn !== TAG_CHAPTER.effectSn);
+    data.chapters.push(chapter);
+
     const content = `${normalizeNewline(JSON.stringify(data, null, 2))}\n`.replace(/\n/g, '\r\n');
-    expected.set(
-      path.join(ROOT, 'apps', 'velvet_trial', 'data', `${langConfig.lang}.json`),
-      content
-    );
+    expected.set(dataPath, content);
   }
 
   return expected;
@@ -684,7 +856,7 @@ function runGenerate(expectedFiles) {
 
 function main() {
   const mode = parseArgs(process.argv);
-  const expected = buildExpectedOutput();
+  const expected = buildExpectedOutput(mode);
 
   if (mode.check) {
     runCheck(expected);

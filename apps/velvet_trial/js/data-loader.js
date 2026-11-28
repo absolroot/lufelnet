@@ -23,13 +23,14 @@ const VelvetTrialDataLoader = (function () {
     Psychokinesis: ['Psychokinesis', 'Psy', '\uC5FC\uB3D9'],
     Nuclear: ['Nuclear', 'Nuke', '\uD575\uC5F4'],
     Bless: ['Bless', '\uCD95\uBCF5'],
-    Curse: ['Curse', '\uC8FC\uC6D0']
+    Curse: ['Curse', '\uC8FC\uC6D0'],
+    Almighty: ['Almighty', '만능', '万能', '萬能']
   };
   const ELEMENT_KEYS = Object.keys(ELEMENT_ALIASES);
 
   async function fetchJson(url, options = {}) {
     const { optional = false } = options;
-    const response = await fetch(url, { cache: 'no-store' });
+    const response = await fetch(url, { cache: url.includes('?h=') ? 'default' : 'no-store' });
     if (!response.ok) {
       if (optional) return null;
       throw new Error(`Failed to load velvet trial data: ${response.status}`);
@@ -196,11 +197,12 @@ const VelvetTrialDataLoader = (function () {
 
     const uniqueChapterSns = Array.from(new Set(
       chapters
+        .filter((chapter) => !chapter?.tagRosterVersion)
         .map((chapter) => Number(chapter?.sn))
         .filter((sn) => Number.isFinite(sn))
     ));
 
-    const [characterData, baseJson, exclusionFiles, partyExampleFiles] = await Promise.all([
+    const [characterData, baseJson, exclusionFiles, partyExampleFiles, thiefTags] = await Promise.all([
       ensureCharacterInfoLoaded(),
       fetchJson(VelvetTrialConfig.getRecommendBaseUrl(), { optional: true }).then((r) => r || {}),
       Promise.all(uniqueChapterSns.map((sn) =>
@@ -208,7 +210,10 @@ const VelvetTrialDataLoader = (function () {
       )),
       Promise.all(uniqueChapterSns.map((sn) =>
         fetchJson(VelvetTrialConfig.getPartyExamplesUrl(sn), { optional: true })
-      ))
+      )),
+      chapters.some((chapter) => chapter?.tagRosterVersion)
+        ? fetchJson(VelvetTrialConfig.getThiefTagsUrl(), { optional: true })
+        : null
     ]);
 
     const characters = buildCharacterCandidates(characterData);
@@ -239,7 +244,8 @@ const VelvetTrialDataLoader = (function () {
       base,
       nameSources,
       chapters: chapterRecommendations,
-      partyExamples
+      partyExamples,
+      thiefTags
     };
 
     cache.set(key, payload);

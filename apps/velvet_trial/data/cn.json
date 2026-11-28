@@ -17729,6 +17729,3591 @@
           ]
         }
       ]
+    },
+    {
+      "sn": 6,
+      "name": "千面浮光",
+      "tagRosterVersion": "5.5.1",
+      "effect": {
+        "sn": 4008,
+        "name": "众生之相",
+        "desc": "有属于<color=#ff3b37>相同『分类』</color>的角色同时在场时，这些角色造成的伤害增加20%（多种分类不可叠加）"
+      },
+      "images": {
+        "chapterImg": "shilian-tu08.png",
+        "chapterImgPath": "/apps/velvet_trial/img/shilian-tu08.png",
+        "resolvedPath": "/apps/velvet_trial/img/shilian-tu08.png",
+        "missing": false
+      },
+      "levels": [
+        {
+          "sn": 801,
+          "levelNum": 1,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71801,
+              "monsterGroup": 71801,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718011,
+                  "name": "贪婪的男梦魔",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718012,
+                  "name": "贪婪的男梦魔",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-incubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718013,
+                  "name": "贪婪的花魄",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-kahaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718014,
+                  "name": "贪婪的花魄",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-kahaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718015,
+                  "name": "贪婪的花魄",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-kahaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71901,
+              "monsterGroup": 71901,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719011,
+                  "name": "贪婪的天蛾人",
+                  "level": 60,
+                  "image": "B-guaiwutouxiang-mothman.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            27000000,
+            41000000,
+            55000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 15500000,
+              "raw": "1,20,15500000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 15500000,
+              "raw": "6,0,15500000"
+            }
+          }
+        },
+        {
+          "sn": 802,
+          "levelNum": 2,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71802,
+              "monsterGroup": 71802,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718021,
+                  "name": "贪婪的式王子",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-shikiouji.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71902,
+              "monsterGroup": 71902,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719021,
+                  "name": "贪婪的高等皮克希",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719022,
+                  "name": "贪婪的高等皮克希",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-high_pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719023,
+                  "name": "贪婪的皮克希",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719024,
+                  "name": "贪婪的皮克希",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719025,
+                  "name": "贪婪的皮克希",
+                  "level": 62,
+                  "image": "B-guaiwutouxiang-pixy.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            34000000,
+            51000000,
+            68000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "phantom_thieves"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,11,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 19000000,
+              "raw": "1,20,19000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 19000000,
+              "raw": "6,0,19000000"
+            }
+          }
+        },
+        {
+          "sn": 803,
+          "levelNum": 3,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71803,
+              "monsterGroup": 71803,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718031,
+                  "name": "贪婪的杰克灯笼",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718032,
+                  "name": "贪婪的杰克灯笼",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-rantan.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718033,
+                  "name": "贪婪的阿珈席翁",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-agation.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718034,
+                  "name": "贪婪的阿珈席翁",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-agation.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71903,
+              "monsterGroup": 71903,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719031,
+                  "name": "贪婪的埃力格",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-erigor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719032,
+                  "name": "贪婪的奴延",
+                  "level": 64,
+                  "image": "B-guaiwutouxiang-nue.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            40000000,
+            60000000,
+            81000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 22000000,
+              "raw": "1,20,22000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 22000000,
+              "raw": "6,0,22000000"
+            }
+          }
+        },
+        {
+          "sn": 804,
+          "levelNum": 4,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71804,
+              "monsterGroup": 71804,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718041,
+                  "name": "贪婪的凯尔皮",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-kelpie.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718042,
+                  "name": "贪婪的莫克伊",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-mokoi.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71904,
+              "monsterGroup": 71904,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719041,
+                  "name": "贪婪的木叶天狗",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-koppatengu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719042,
+                  "name": "贪婪的木叶天狗",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-koppatengu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719043,
+                  "name": "贪婪的木灵",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-kodama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719044,
+                  "name": "贪婪的木灵",
+                  "level": 66,
+                  "image": "B-guaiwutouxiang-kodama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            45000000,
+            68000000,
+            91000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves_of_hearts",
+                "phantom_thieves"
+              ],
+              "multiplier": 6,
+              "raw": "15,9,11,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 25000000,
+              "raw": "1,20,25000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 25000000,
+              "raw": "6,0,25000000"
+            }
+          }
+        },
+        {
+          "sn": 805,
+          "levelNum": 5,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71805,
+              "monsterGroup": 71805,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718051,
+                  "name": "贪婪的飞天",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-apsaras.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718052,
+                  "name": "贪婪的克鲁波克鲁",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-korpokkur.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718053,
+                  "name": "贪婪的克鲁波克鲁",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-korpokkur.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71905,
+              "monsterGroup": 71905,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719051,
+                  "name": "贪婪的猫又",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719052,
+                  "name": "贪婪的母夜叉",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-yakusni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719053,
+                  "name": "贪婪的女梦魔",
+                  "level": 68,
+                  "image": "B-guaiwutouxiang-succubus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            52000000,
+            78000000,
+            100000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "sees",
+                "swimsuit"
+              ],
+              "multiplier": 6,
+              "raw": "15,10,17,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 20,
+              "score": 29000000,
+              "raw": "1,20,29000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 29000000,
+              "raw": "6,0,29000000"
+            }
+          }
+        },
+        {
+          "sn": 806,
+          "levelNum": 6,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71806,
+              "monsterGroup": 71806,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718061,
+                  "name": "贪婪的黑软泥怪",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-blackooze.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718062,
+                  "name": "贪婪的黑软泥怪",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-blackooze.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Psychokinesis",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718063,
+                  "name": "贪婪的阴魔罗鬼",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-onmoraki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718064,
+                  "name": "贪婪的阴魔罗鬼",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-onmoraki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71906,
+              "monsterGroup": 71906,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719061,
+                  "name": "贪婪的安祖",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-anzu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719062,
+                  "name": "贪婪的安德拉斯",
+                  "level": 70,
+                  "image": "B-guaiwutouxiang-andras.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            58000000,
+            87000000,
+            110000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 32000000,
+              "raw": "1,30,32000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 32000000,
+              "raw": "6,0,32000000"
+            }
+          }
+        },
+        {
+          "sn": 807,
+          "levelNum": 7,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71807,
+              "monsterGroup": 71807,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718071,
+                  "name": "贪婪的水鬼",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-suiki-i18n.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718072,
+                  "name": "贪婪的鬼",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-oni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [],
+                    "Resistant": [
+                      "Phys",
+                      "Gun"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71907,
+              "monsterGroup": 71907,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719071,
+                  "name": "贪婪的和魂",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-nigimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719072,
+                  "name": "贪婪的和魂",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-nigimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719073,
+                  "name": "贪婪的幸魂",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719074,
+                  "name": "贪婪的幸魂",
+                  "level": 72,
+                  "image": "B-guaiwutouxiang-sakimitama.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            64000000,
+            97000000,
+            120000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "sees"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,10,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 36000000,
+              "raw": "1,30,36000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 36000000,
+              "raw": "6,0,36000000"
+            }
+          }
+        },
+        {
+          "sn": 808,
+          "levelNum": 8,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71808,
+              "monsterGroup": 71808,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718081,
+                  "name": "贪婪的罗刹",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-rakshasa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718082,
+                  "name": "贪婪的那伽",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-naga.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718083,
+                  "name": "贪婪的那伽",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-naga.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71908,
+              "monsterGroup": 71908,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719081,
+                  "name": "贪婪的佛劳洛斯",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-flauros.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Wind",
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719082,
+                  "name": "贪婪的欧若博司",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-orobas.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719083,
+                  "name": "贪婪的斗牛士",
+                  "level": 74,
+                  "image": "B-guaiwutouxiang-matador-i18n.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            70000000,
+            100000000,
+            140000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 39000000,
+              "raw": "1,30,39000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 39000000,
+              "raw": "6,0,39000000"
+            }
+          }
+        },
+        {
+          "sn": 809,
+          "levelNum": 9,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71809,
+              "monsterGroup": 71809,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718091,
+                  "name": "贪婪的建御名方",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-takeminakata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71909,
+              "monsterGroup": 71909,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719091,
+                  "name": "贪婪的凤凰",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-houou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719092,
+                  "name": "贪婪的凤凰",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-houou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719093,
+                  "name": "贪婪的巴隆",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-barong.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719094,
+                  "name": "贪婪的巴隆",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-barong.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719095,
+                  "name": "贪婪的巴隆",
+                  "level": 76,
+                  "image": "B-guaiwutouxiang-barong.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            76000000,
+            110000000,
+            150000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves",
+                "sees"
+              ],
+              "multiplier": 6,
+              "raw": "15,11,10,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 42000000,
+              "raw": "1,30,42000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 42000000,
+              "raw": "6,0,42000000"
+            }
+          }
+        },
+        {
+          "sn": 810,
+          "levelNum": 10,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71810,
+              "monsterGroup": 71810,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718101,
+                  "name": "贪婪的地狱天使",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-hells_angel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718102,
+                  "name": "贪婪的大天使",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718103,
+                  "name": "贪婪的大天使",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718104,
+                  "name": "贪婪的大天使",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718105,
+                  "name": "贪婪的大天使",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-archangel.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71910,
+              "monsterGroup": 71910,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719101,
+                  "name": "贪婪的摩洛",
+                  "level": 78,
+                  "image": "B-guaiwutouxiang-moloch.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Electric",
+                      "Wind",
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            82000000,
+            120000000,
+            160000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves_of_hearts",
+                "p5r"
+              ],
+              "multiplier": 6,
+              "raw": "15,9,5,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 30,
+              "score": 46000000,
+              "raw": "1,30,46000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 46000000,
+              "raw": "6,0,46000000"
+            }
+          }
+        },
+        {
+          "sn": 811,
+          "levelNum": 11,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71811,
+              "monsterGroup": 71811,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718111,
+                  "name": "贪婪的贝尔芬格",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-belphegor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Electric",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718112,
+                  "name": "贪婪的荒霸吐",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718113,
+                  "name": "贪婪的荒霸吐",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-arahabaki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718114,
+                  "name": "贪婪的天钿女",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-amenouzume.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Fire"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71911,
+              "monsterGroup": 71911,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719111,
+                  "name": "贪婪的米特拉斯",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-mithras.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Fire",
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719112,
+                  "name": "贪婪的拉刻西斯",
+                  "level": 80,
+                  "image": "B-guaiwutouxiang-lachesis.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            89000000,
+            130000000,
+            170000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 49000000,
+              "raw": "1,40,49000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 49000000,
+              "raw": "6,0,49000000"
+            }
+          }
+        },
+        {
+          "sn": 812,
+          "levelNum": 12,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71812,
+              "monsterGroup": 71812,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718121,
+                  "name": "贪婪的金鬼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-kinki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718122,
+                  "name": "贪婪的风鬼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-fuuki.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718123,
+                  "name": "贪婪的背背鬼",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-obariyon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71912,
+              "monsterGroup": 71912,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719121,
+                  "name": "贪婪的伊西斯",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-isis.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719122,
+                  "name": "贪婪的睡魔",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-zandmann.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719123,
+                  "name": "贪婪的睡魔",
+                  "level": 82,
+                  "image": "B-guaiwutouxiang-zandmann.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            94000000,
+            140000000,
+            180000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "phantom_thieves_of_hearts"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,9,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 52000000,
+              "raw": "1,40,52000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 52000000,
+              "raw": "6,0,52000000"
+            }
+          }
+        },
+        {
+          "sn": 813,
+          "levelNum": 13,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71813,
+              "monsterGroup": 71813,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718131,
+                  "name": "贪婪的阿特罗波斯",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-atropos.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Wind"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71913,
+              "monsterGroup": 71913,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719131,
+                  "name": "贪婪的巴古斯",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-bugs.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719132,
+                  "name": "贪婪的狮爷",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719133,
+                  "name": "贪婪的狮爷",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719134,
+                  "name": "贪婪的狮爷",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719135,
+                  "name": "贪婪的狮爷",
+                  "level": 84,
+                  "image": "B-guaiwutouxiang-sisa.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            100000000,
+            150000000,
+            200000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 56000000,
+              "raw": "1,40,56000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 56000000,
+              "raw": "6,0,56000000"
+            }
+          }
+        },
+        {
+          "sn": 814,
+          "levelNum": 14,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71814,
+              "monsterGroup": 71814,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718141,
+                  "name": "贪婪的权天使",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718142,
+                  "name": "贪婪的权天使",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718143,
+                  "name": "贪婪的权天使",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-principality.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718144,
+                  "name": "贪婪的能天使",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-power.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718145,
+                  "name": "贪婪的能天使",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-power.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71914,
+              "monsterGroup": 71914,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719141,
+                  "name": "贪婪的八岐大蛇",
+                  "level": 86,
+                  "image": "B-guaiwutouxiang-yamatano_orochi.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            100000000,
+            160000000,
+            210000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "sees",
+                "phantom_thieves_of_hearts"
+              ],
+              "multiplier": 6,
+              "raw": "15,10,9,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 59000000,
+              "raw": "1,40,59000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 59000000,
+              "raw": "6,0,59000000"
+            }
+          }
+        },
+        {
+          "sn": 815,
+          "levelNum": 15,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71815,
+              "monsterGroup": 71815,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718151,
+                  "name": "贪婪的莉莉丝",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-lilith.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718152,
+                  "name": "贪婪的百臂巨人",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-hekatoncheir.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Gun",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71915,
+              "monsterGroup": 71915,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719151,
+                  "name": "贪婪的莉莉丝",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-lilith.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719152,
+                  "name": "贪婪的莉莉丝",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-lilith.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719153,
+                  "name": "贪婪的奥伯隆",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-oberon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719154,
+                  "name": "贪婪的奥伯隆",
+                  "level": 88,
+                  "image": "B-guaiwutouxiang-oberon.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            110000000,
+            170000000,
+            220000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "sees",
+                "survival_instinct"
+              ],
+              "multiplier": 6,
+              "raw": "15,10,15,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 63000000,
+              "raw": "1,40,63000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 63000000,
+              "raw": "6,0,63000000"
+            }
+          }
+        },
+        {
+          "sn": 816,
+          "levelNum": 16,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71816,
+              "monsterGroup": 71816,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718161,
+                  "name": "贪婪的黑骑士",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-blackrider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718162,
+                  "name": "贪婪的红骑士",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-redrider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718163,
+                  "name": "贪婪的白骑士",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-whiterider.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71916,
+              "monsterGroup": 71916,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719161,
+                  "name": "贪婪的妖精女王",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-queenMab.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Electric"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719162,
+                  "name": "贪婪的大僧正",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-daisoujou.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Curse"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719163,
+                  "name": "贪婪的大国主",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-ookuni.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Wind",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            110000000,
+            170000000,
+            230000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "female"
+              ],
+              "multiplier": 6,
+              "raw": "15,2,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 66000000,
+              "raw": "1,40,66000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 66000000,
+              "raw": "6,0,66000000"
+            }
+          }
+        },
+        {
+          "sn": 817,
+          "levelNum": 17,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71817,
+              "monsterGroup": 71817,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718171,
+                  "name": "贪婪的托尔",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-thor.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Psychokinesis"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Electric",
+                      "Bless",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71917,
+              "monsterGroup": 71917,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719171,
+                  "name": "贪婪的欧赛",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719172,
+                  "name": "贪婪的欧赛",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-ose.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719173,
+                  "name": "贪婪的猫怪",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719174,
+                  "name": "贪婪的猫怪",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 719175,
+                  "name": "贪婪的猫怪",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nekomata.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            120000000,
+            180000000,
+            250000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "male",
+                "swimsuit"
+              ],
+              "multiplier": 6,
+              "raw": "15,1,17,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 69000000,
+              "raw": "1,40,69000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 69000000,
+              "raw": "6,0,69000000"
+            }
+          }
+        },
+        {
+          "sn": 818,
+          "levelNum": 18,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71818,
+              "monsterGroup": 71818,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718181,
+                  "name": "贪婪的迦楼罗",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-garuda.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Gun"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718182,
+                  "name": "贪婪的鸠盘荼",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kubhanda.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718183,
+                  "name": "贪婪的鸠盘荼",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kubhanda.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718184,
+                  "name": "贪婪的菊理媛",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kikurihime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 5,
+                  "sn": 718185,
+                  "name": "贪婪的菊理媛",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-kikurihime.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71918,
+              "monsterGroup": 71918,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719181,
+                  "name": "贪婪的别西卜",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-beelzebub.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            130000000,
+            190000000,
+            260000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_idol"
+              ],
+              "multiplier": 6,
+              "raw": "15,13,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 73000000,
+              "raw": "1,40,73000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 73000000,
+              "raw": "6,0,73000000"
+            }
+          }
+        },
+        {
+          "sn": 819,
+          "levelNum": 19,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71819,
+              "monsterGroup": 71819,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718191,
+                  "name": "贪婪的基力梅卡拉",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-girimekara.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718192,
+                  "name": "贪婪的荷鲁斯",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-horus.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire"
+                    ],
+                    "Resistant": [
+                      "Electric",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71919,
+              "monsterGroup": 71919,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719191,
+                  "name": "贪婪的巴风特",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-baphomet.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719192,
+                  "name": "贪婪的巴风特",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-baphomet.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 719193,
+                  "name": "贪婪的邪恶霜精",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-jaakufrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [],
+                    "Resistant": [
+                      "Fire",
+                      "Ice",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 719194,
+                  "name": "贪婪的邪恶霜精",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-jaakufrost.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [],
+                    "Resistant": [
+                      "Fire",
+                      "Ice",
+                      "Nuclear",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            130000000,
+            200000000,
+            270000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves",
+                "p5r"
+              ],
+              "multiplier": 6,
+              "raw": "15,11,5,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 76000000,
+              "raw": "1,40,76000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 76000000,
+              "raw": "6,0,76000000"
+            }
+          }
+        },
+        {
+          "sn": 820,
+          "levelNum": 20,
+          "phaseCount": 2,
+          "phases": [
+            {
+              "phase": 1,
+              "battleSn": null,
+              "instSn": 71820,
+              "monsterGroup": 71820,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 718201,
+                  "name": "贪婪的青龙",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-seiryu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 718202,
+                  "name": "贪婪的玄武",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-genbu.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Psychokinesis"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 3,
+                  "sn": 718203,
+                  "name": "贪婪的朱雀",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-suzaku.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Ice"
+                    ],
+                    "Resistant": [
+                      "Fire",
+                      "Nuclear"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 4,
+                  "sn": 718204,
+                  "name": "贪婪的白虎",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-byako.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Fire",
+                      "Nuclear"
+                    ],
+                    "Resistant": [
+                      "Ice",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            },
+            {
+              "phase": 2,
+              "battleSn": null,
+              "instSn": 71920,
+              "monsterGroup": 71920,
+              "monsters": [
+                {
+                  "position": 1,
+                  "sn": 719201,
+                  "name": "贪婪的库夫林",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-cuchulainn.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Electric"
+                    ],
+                    "Resistant": [
+                      "Phys",
+                      "Gun",
+                      "Wind",
+                      "Bless"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                },
+                {
+                  "position": 2,
+                  "sn": 719202,
+                  "name": "贪婪的奈比洛斯",
+                  "level": 90,
+                  "image": "B-guaiwutouxiang-nebiros.png",
+                  "imageMissing": false,
+                  "isBoss": 0,
+                  "adapt": {
+                    "Weak": [
+                      "Bless"
+                    ],
+                    "Resistant": [
+                      "Psychokinesis",
+                      "Curse"
+                    ],
+                    "Nullify": [],
+                    "Reflect": [],
+                    "Absorb": []
+                  }
+                }
+              ]
+            }
+          ],
+          "starScores": [
+            140000000,
+            210000000,
+            280000000
+          ],
+          "conditions": {
+            "rule1": {
+              "type": "category_score",
+              "categories": [
+                "phantom_thieves_of_hearts",
+                "survival_instinct"
+              ],
+              "multiplier": 6,
+              "raw": "15,9,15,6"
+            },
+            "rule2": {
+              "type": "turn_limit",
+              "maxActions": 40,
+              "score": 80000000,
+              "raw": "1,40,80000000"
+            },
+            "rule3": {
+              "type": "death_limit",
+              "maxDeaths": 0,
+              "score": 80000000,
+              "raw": "6,0,80000000"
+            }
+          }
+        }
+      ]
     }
   ]
 }

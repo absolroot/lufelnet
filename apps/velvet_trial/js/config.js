@@ -1,6 +1,12 @@
 const VelvetTrialConfig = (function () {
   const BASE = (typeof window !== 'undefined' && (window.BASE_URL || window.SITE_BASEURL)) || '';
   const APP_VER = (typeof window !== 'undefined' && window.APP_VERSION) || '';
+  const hashes = (typeof window !== 'undefined' && window.__VELVET_TRIAL_ASSET_HASHES__) || {};
+
+  function getHashedUrl(path) {
+    const hash = hashes[path];
+    return BASE + path + (hash ? '?h=' + hash : '');
+  }
 
   return {
     BASE,
@@ -8,7 +14,11 @@ const VelvetTrialConfig = (function () {
     SUPPORTED_LANGS: ['kr', 'en', 'jp', 'cn'],
 
     getDataUrl(lang) {
-      return `${BASE}/apps/velvet_trial/data/${lang}.json${APP_VER ? `?v=${APP_VER}` : ''}`;
+      return getHashedUrl('/apps/velvet_trial/data/' + lang + '.json');
+    },
+
+    getThiefTagsUrl() {
+      return getHashedUrl('/apps/velvet_trial/data/recommendations/thief-tags.json');
     },
 
     getRecommendRoundUrl(chapterSn, levelSn, phaseNo) {
@@ -28,7 +38,7 @@ const VelvetTrialConfig = (function () {
     },
 
     getCharacterInfoUrl() {
-      return `${BASE}/data/character_info.js${APP_VER ? `?v=${APP_VER}` : ''}`;
+      return getHashedUrl('/data/character_info.js');
     },
 
     getChapterImageUrl(filename) {
@@ -36,6 +46,7 @@ const VelvetTrialConfig = (function () {
     },
 
     getEnemyImageUrl(filename) {
+      if (filename.startsWith('/')) return BASE + filename;
       return `${BASE}/assets/img/enemy/${filename}`;
     }
   };

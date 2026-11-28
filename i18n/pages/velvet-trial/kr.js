@@ -39,6 +39,29 @@ window.I18N_PAGE_VELVET_TRIAL_KR = {
   condition_rule3_turn_limit: '{maxActions}회 행동 내 승리',
   condition_rule3_death_limit: '사망자 수 {maxDeaths}명 이하',
   condition_rule4_death_limit: '사망자 수 {maxDeaths}명 이하',
+  tag_roster_version_note: '괴도 분류는 CN/KR/TW {version} 기준입니다. 이후 버전에서는 현재 게임의 분류와 스테이지 조건에 맞춰 편성해 주세요.',
+  tag_chapter_stage_data_note: '별 점수와 추가 조건은 게임 내에서 확인해 주세요.',
+  tag_chapter_first_half: '전반',
+  tag_chapter_second_half: '후반',
+  tag_category_sees: 'S.E.E.S.',
+  tag_category_dancing_star: '댄싱 스타',
+  tag_category_phantom_thieves_of_hearts: '마음의 괴도단',
+  tag_category_phantom_thieves: '괴도단',
+  tag_category_phantom_idol: '괴도 아이돌',
+  tag_category_velvet_resident: '벨벳 주민',
+  tag_category_special_collaboration: '특수 콜라보',
+  tag_category_survival_instinct: '폭주하는 생존 욕구',
+  tag_category_virtual: '가상',
+  tag_category_swimsuit: '수영복',
+  tag_category_male: '남성',
+  tag_category_female: '여성',
+  tag_category_p5x: 'P5X',
+  tag_category_p5: 'P5',
+  tag_category_p5r: 'P5R',
+  tag_category_p3r: 'P3R',
+  tag_category_p3p: 'P3P',
+  condition_rule1_category_score: '{categories} 분류 괴도 점수 배율 ×{multiplier}',
+  tag_chapter_condition_points: '{condition} (+{points}점)',
   adaptLabels: {
     Weak: { text: '약', cls: 'weak' },
     Resistant: { text: '내', cls: 'res' },
@@ -59,6 +82,7 @@ window.I18N_PAGE_VELVET_TRIAL_KR = {
     7: '염동',
     8: '핵열',
     9: '축복',
-    10: '주원'
+    10: '주원',
+    11: '만능'
   }
 };

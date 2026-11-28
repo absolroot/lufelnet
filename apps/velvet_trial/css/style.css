@@ -27,7 +27,7 @@
   border: 0px solid var(--vt-border);
   background: var(--vt-card);
   color: var(--vt-text);
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s ease;
   min-height: 60px;
@@ -117,8 +117,7 @@
 .vt-level-nav {
   position: sticky;
   top: 76px;
-  background: var(--vt-card);
-  border-radius: 12px;
+  --section-card-fill: var(--vt-card);
   padding: 16px;
   max-height: 720px;
   display: flex;
@@ -131,7 +130,8 @@
   font-weight: 600;
   color: var(--vt-text);
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--vt-accent);
+  background: var(--section-divider-paint);
+  background-position-y: bottom, bottom, bottom 1px;
   flex-shrink: 0;
 }
 
@@ -167,7 +167,7 @@
   border: 1px solid var(--vt-border);
   background: var(--vt-card);
   color: #ccc;
-  border-radius: 6px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 12px;
   font-weight: 400;
@@ -210,8 +210,7 @@
 
 /* Level Card Resembling synergy .character-detail */
 .vt-level-card {
-  background: var(--vt-card);
-  border-radius: 12px;
+  --section-card-fill: var(--vt-card);
   padding: 24px;
 }
 
@@ -222,7 +221,8 @@
   gap: 6px;
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--vt-border);
+  background: var(--section-divider-paint);
+  background-position-y: bottom, bottom, bottom 1px;
 }
 
 .vt-level-title {
@@ -249,7 +249,7 @@
 .vt-score-item {
   padding: 12px 16px;
   background: var(--vt-card-2);
-  border-radius: 6px;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -300,7 +300,7 @@
   color: #ccc;
   padding: 10px 16px;
   background: var(--vt-card-2);
-  border-radius: 6px;
+  border-radius: 0;
   display: flex;
   align-items: center;
 }
@@ -342,7 +342,7 @@
 .vt-monster-card {
   padding: 12px;
   background: var(--vt-card-2);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .vt-monster-layout {
@@ -354,7 +354,7 @@
 .vt-monster-image-wrap {
   width: 60px;
   height: 60px;
-  border-radius: 8px;
+  border-radius: 0;
   background: #1a1a1a;
   position: relative;
   display: flex;
@@ -419,7 +419,7 @@
   text-align: center;
   color: var(--vt-sub);
   background: var(--vt-card-2);
-  border-radius: 8px;
+  border-radius: 0;
   font-size: 14px;
 }
 
@@ -542,7 +542,8 @@
   display: flex;
   align-items: center;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--vt-accent);
+  background: var(--section-divider-paint);
+  background-position-y: bottom, bottom, bottom 1px;
 }
 
 .vt-party-examples-title {
@@ -575,7 +576,7 @@
 .vt-ext-link-modal {
   background: #1e1e1e;
   border: 1px solid var(--vt-border);
-  border-radius: 12px;
+  border-radius: 0;
   padding: 24px 28px;
   width: min(420px, 90vw);
   display: grid;
@@ -594,7 +595,7 @@
   color: var(--vt-sub);
   word-break: break-all;
   background: #111;
-  border-radius: 6px;
+  border-radius: 0;
   padding: 8px 10px;
 }
 
@@ -608,7 +609,7 @@
 .vt-ext-link-cancel,
 .vt-ext-link-open {
   padding: 7px 18px;
-  border-radius: 6px;
+  border-radius: 0;
   border: none;
   font-size: 13px;
   font-weight: 600;
@@ -705,7 +706,7 @@
 
 .vt-party-example {
   flex: 0 0 300px;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -811,7 +812,7 @@
 
 .vt-level-recommend-group {
   background: #161616;
-  border-radius: 10px;
+  border-radius: 0;
   padding: 14px 16px;
   display: grid;
   gap: 12px;
@@ -891,7 +892,7 @@
 
 .vt-rec-roster-item {
   padding: 6px 8px;
-  border-radius: 8px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
   font-size: 12px;
@@ -921,7 +922,7 @@
 .vt-rec-roster-thumb-wrap {
   width: 24px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
@@ -933,7 +934,7 @@
 .vt-rec-roster-thumb {
   width: 24px;
   height: 32px;
-  border-radius: 6px;
+  border-radius: 0;
   object-fit: cover;
   background: rgba(255, 255, 255, 0.08);
 }
@@ -1018,7 +1019,7 @@
   flex-direction: column;
   gap: 6px;
   padding: 6px;
-  border-radius: 6px;
+  border-radius: 0;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-sizing: border-box;
@@ -1031,7 +1032,7 @@
 .vt-rec-thumb-wrap {
   width: 100%;
   aspect-ratio: 2 / 3;
-  border-radius: 6px;
+  border-radius: 0;
   overflow: hidden;
   background: #111;
   position: relative;

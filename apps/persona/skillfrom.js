@@ -248,7 +248,7 @@
     modal.className = 'skill-source-modal hidden';
     modal.innerHTML = `
       <div class="skill-source-backdrop" data-close="1"></div>
-      <div class="skill-source-dialog" role="dialog" aria-modal="true">
+      <div class="skill-source-dialog section-card-cut" role="dialog" aria-modal="true" aria-labelledby="skillSourceTitle">
         <div class="skill-source-header">
           <div class="skill-source-title-wrap">
             <div class="skill-source-title-row">
@@ -311,16 +311,10 @@
     const container = document.body;
 
     container.addEventListener('click', async (e) => {
-      const target = e.target;
-      // Accept clicks on the name container or anything inside it (icon, name text)
-      const nameContainer = target.closest('.skill-name-container');
-      if (!nameContainer) return;
+      const row = e.target.closest('.persona-recommended-skills .recommended-skill-trigger');
+      if (!row) return;
 
-      // Exclude Innate Skills (획득 스킬) from being clickable
-      if (nameContainer.closest('.persona-innate-skills')) return;
-
-      // Find the actual skill-name element within the container to read attributes/text
-      const nameEl = nameContainer.querySelector('.skill-name');
+      const nameEl = row.querySelector('.skill-name');
       if (!nameEl) return;
 
       const currentLang = typeof LanguageRouter !== 'undefined' ? LanguageRouter.getCurrentLanguage() : 'kr';

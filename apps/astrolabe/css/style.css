@@ -232,11 +232,6 @@
   border-color: var(--astro-accent);
 }
 
-.region-selector option {
-  background: #1a2030;
-  color: var(--astro-text);
-}
-
 /* Canvas Container - full screen */
 .canvas-container {
   position: absolute;

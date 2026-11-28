@@ -1,4 +1,6 @@
 (function(){
+  let isCapturing = false;
+
   const tierText = (key, fallback = '') => {
     if (typeof window.t === 'function') {
       return window.t(key, fallback);
@@ -19,13 +21,18 @@
 
   async function capturePositionTiers(){
     const el = document.querySelector('.position-tiers-container');
-    if (!el) return;
-    await ensureHtmlToImage();
-
+    if (!el || isCapturing) return;
     const bodyBg = getComputedStyle(document.body).backgroundColor || '#000';
     const pixelRatio = Math.min(3, (window.devicePixelRatio || 1) * 2);
+    const adSlots = Array.from(el.querySelectorAll('.tier-mobile-inline-ad'));
+    const previousDisplays = adSlots.map(slot => slot.style.display);
 
+    isCapturing = true;
     try {
+      await ensureHtmlToImage();
+
+      // Exclude the mobile ad before html-to-image measures the board.
+      adSlots.forEach(slot => { slot.style.display = 'none'; });
       const dataUrl = await htmlToImage.toPng(el, {
         backgroundColor: bodyBg,
         pixelRatio
@@ -38,6 +45,9 @@
       a.remove();
     } catch (err) {
       console.error('[position-tiers capture] failed:', err);
+    } finally {
+      adSlots.forEach((slot, index) => { slot.style.display = previousDisplays[index]; });
+      isCapturing = false;
     }
   }
 

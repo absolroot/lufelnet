@@ -1,5 +1,5 @@
 // =====================
-// Supabase 기반 홈 택틱 로더
+// 홈 공개 택틱 로더
 // =====================
 const HOME_TACTIC_RAW_LANGS = ['kr', 'en', 'jp', 'cn', 'tw', 'sea'];
 
@@ -40,23 +40,15 @@ function formatTemplate(template, value) {
   return String(template || '').replace(/\{value\}/g, String(value));
 }
 
-function getHomeTacticParty(tactic) {
-  if (Array.isArray(tactic?.party)) return tactic.party;
-  const parsed = typeof tactic?.query === 'string'
-    ? (tactic.query.startsWith('{') ? JSON.parse(tactic.query) : null)
-    : tactic?.query;
-  return Array.isArray(parsed?.party) ? parsed.party : [];
-}
-
 function getHomeTacticCharacterImageUrl(name) {
-  return `${BASE_URL}/assets/img/character-half/${encodeURIComponent(name)}.webp`;
+  return `${BASE_URL}/assets/img/tier/${encodeURIComponent(name)}.webp`;
 }
 
 function preloadHomeTacticPortraits(tactics) {
   const names = new Set();
   (tactics || []).forEach(tactic => {
     try {
-      normalizeHomePreviewParty(getHomeTacticParty(tactic)).forEach(member => {
+      normalizeHomePreviewParty(tactic.party).forEach(member => {
         if (member?.name && member.name !== '원더' && member.name !== 'Wonder') names.add(member.name);
       });
     } catch (_) { }
@@ -89,75 +81,68 @@ async function ensureHomePublicIp() {
   return window.__HOME_IP;
 }
 
+async function fetchPublicHomeTactics(rawLang) {
+  if (window.location.origin === 'https://lufel.net') {
+    // TW and SEA use the same unfiltered selection as CN.
+    const lang = rawLang === 'tw' || rawLang === 'sea' ? 'cn' : rawLang;
+    const response = await fetch(`https://api.lufel.net/v1/tactics/home?lang=${lang}`, { credentials: 'omit' });
+    if (!response.ok) throw new Error(`Home tactics HTTP ${response.status}`);
+    const { tactics } = await response.json();
+    if (!Array.isArray(tactics)) throw new Error('Invalid home tactics response');
+    return tactics;
+  }
+
+  const latestTactics = () => supabase.from('tactic_library_public')
+    .select('id,title,author,comment,created_at,url,party,likes')
+    .order('created_at', { ascending: false })
+    .order('id', { ascending: false })
+    .limit(3);
+  let query = latestTactics();
+  if (rawLang === 'kr' || rawLang === 'jp') query = query.eq('region', rawLang);
+  else if (rawLang === 'en') query = query.in('region', ['en', 'sea']);
+
+  let { data, error } = await query;
+  if (!error && !data.length && rawLang === 'jp') {
+    ({ data, error } = await latestTactics().in('region', ['en', 'sea']));
+  }
+  if (error) throw error;
+  return data;
+}
+
 async function loadHomeTacticsOnce(currentLang) {
   try {
     await waitHomeTacticI18nReady();
     const postsListEl = document.getElementById('postsList');
-    if (!postsListEl || typeof supabase === 'undefined') return { empty: true };
+    if (!postsListEl) return { empty: true };
     const rawLang = HOME_TACTIC_RAW_LANGS.includes(String(currentLang || '').toLowerCase())
       ? String(currentLang).toLowerCase()
       : detectHomeTacticRawLang();
     window.__HOME_LANG__ = rawLang || 'kr';
 
-    const tacticSelectColumns = 'id,title,author,comment,created_at,url,region,tactic_version,party:query->party';
-    let query = supabase.from('tactics').select(tacticSelectColumns).order('created_at', { ascending: false }).limit(3);
-    if (rawLang === 'kr') query = query.eq('region', 'kr');
-    else if (rawLang === 'jp') query = query.eq('region', 'jp');
-    else if (rawLang === 'en') query = query.in('region', ['en', 'sea']);
-
-    let { data, error } = await query;
-    if (!error && data && data.length === 0 && (rawLang === 'en' || rawLang === 'jp')) {
-      const { data: fallbackData, error: fallbackError } = await supabase
-        .from('tactics')
-        .select(tacticSelectColumns)
-        .in('region', ['en', 'sea'])
-        .order('created_at', { ascending: false })
-        .limit(3);
-      if (fallbackError) throw fallbackError;
-      data = fallbackData || [];
-    }
-    if (error) throw error;
-    preloadHomeTacticPortraits(data);
-    // IP verification is only needed when a visitor presses Like. Do not hold
-    // the lower-page previews (and their character images) behind that request.
-    void ensureHomePublicIp();
-    window.__HOME_LIKES_MAP = {};
-    try {
-      const ids = (data || []).map(t => String(t.id));
-      if (ids.length > 0) {
-        const { data: likeRows } = await supabase
-          .from('tactic_likes')
-          .select('tactic_id,likes')
-          .in('tactic_id', ids);
-        (likeRows || []).forEach(row => {
-          window.__HOME_LIKES_MAP[String(row.tactic_id)] = {
-            likes: row.likes || 0
-          };
-        });
-      }
-    } catch (_) { }
+    const tactics = await fetchPublicHomeTactics(rawLang);
+    preloadHomeTacticPortraits(tactics);
 
     postsListEl.innerHTML = '';
-    data.forEach(t => {
+    tactics.forEach(t => {
       const libraryLink = t.url ? `${BASE_URL}/tactic-maker/?library=${encodeURIComponent(t.url)}` : null;
       const item = document.createElement('div');
-      item.className = 'post-item';
+      item.className = libraryLink ? 'post-item section-row-motion tactic-post-motion' : 'post-item';
       item.setAttribute('data-post-id', String(t.id));
-      const likeRow = window.__HOME_LIKES_MAP[String(t.id)] || null;
-      const likeCount = likeRow?.likes || 0;
+      const likeCount = Number(t.likes) || 0;
+      const title = `<span class="post-title-text section-row-copy">${escapeHtml(t.title || '')}</span>`;
       item.innerHTML = `
         <div class="post-header">
           <h3>
-            ${libraryLink ? `<a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">${escapeHtml(t.title || '')}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path></svg></a>` : `<span class="post-title">${escapeHtml(t.title || '')}</span>`}
+            ${libraryLink ? `<a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">${title}</a>` : `<span class="post-title">${title}</span>`}
           </h3>
           <div class="post-meta">
             <span class="post-author">${escapeHtml(t.author || '')}</span>
-            <span class="separator">|</span>
+            <span class="separator" aria-hidden="true">|</span>
             <span class="post-date">${formatHomeDate(new Date(t.created_at))}</span>
           </div>
-          ${t.comment ? `<div class="post-comment">${escapeHtml(t.comment)}</div>` : ''}
+          ${t.comment ? `<div class="post-comment section-row-copy">${escapeHtml(t.comment)}</div>` : ''}
         </div>
-        <div class="tactic-preview-container" style="margin-left: auto; margin-right: 20px;"></div>
+        <div class="post-content"><div class="tactic-preview-container"></div></div>
         <div class="post-footer">
           <div class="likes-section">
             <button onclick="homeHandleLike('${String(t.id)}')" class="like-button">
@@ -172,13 +157,12 @@ async function loadHomeTacticsOnce(currentLang) {
       postsListEl.appendChild(item);
       // 파티 프리뷰 렌더링
       try {
-        const party = getHomeTacticParty(t);
-        const previewEl = createHomePreviewFromParty(party);
+        const previewEl = createHomePreviewFromParty(t.party);
         const container = item.querySelector('.tactic-preview-container');
         if (container && previewEl) container.appendChild(previewEl);
       } catch (_) { }
     });
-    return { empty: !data || data.length === 0 };
+    return { empty: tactics.length === 0 };
   } catch (e) { throw e; }
 }
 
@@ -305,25 +289,20 @@ function createHomePreviewFromParty(party) {
 
   orderedParty.forEach(member => {
     if (member.name === '\uC6D0\uB354' || member.name === 'Wonder') return;
+    if (typeof characterData === 'undefined' || !characterData[member.name]) return;
 
     const container = document.createElement('div');
-    if (typeof characterData !== 'undefined' && characterData[member.name]) {
-      container.className = 'character-container';
+    container.className = 'character-container';
 
-      const charImg = document.createElement('img');
-      charImg.className = 'character-img';
-      charImg.alt = member.name;
-      charImg.title = member.name;
-      // The home shows only three Tactic Library previews. These are the
-      // visible result of the card, so do not make pointer proximity decide
-      // when their character portraits begin downloading.
-      charImg.loading = 'eager';
-      charImg.decoding = 'async';
-      charImg.setAttribute('fetchpriority', 'high');
-      // Set src last: browsers decide lazy eligibility when src is assigned.
-      charImg.src = getHomeTacticCharacterImageUrl(member.name);
-      container.appendChild(charImg);
-    }
+    const charImg = document.createElement('img');
+    charImg.className = 'character-img';
+    charImg.alt = member.name;
+    charImg.title = member.name;
+    charImg.loading = 'eager';
+    charImg.decoding = 'async';
+    charImg.setAttribute('fetchpriority', 'high');
+    charImg.src = getHomeTacticCharacterImageUrl(member.name);
+    container.appendChild(charImg);
 
     const ritualLevel = parseInt(member.ritual);
     if (ritualLevel >= 1 && ritualLevel <= 6) {
@@ -341,6 +320,7 @@ function createHomePreviewFromParty(party) {
     partyImagesDiv.appendChild(container);
   });
 
+  if (!partyImagesDiv.childElementCount) return null;
   partyImagesContainer.appendChild(partyImagesDiv);
   previewDiv.appendChild(partyImagesContainer);
   return previewDiv;

@@ -97,6 +97,8 @@ window.I18N_PAGE_HOME_JP = {
     carousel_error: 'カルーセルデータを読み込めませんでした。',
     carousel_nav_prev_aria: 'Prev',
     carousel_nav_next_aria: 'Next',
+    carousel_region_aria: 'サーバー',
+    carousel_timezone_aria: 'タイムゾーン',
     carousel_maintenance_title: 'メンテナンス中',
     carousel_maintenance_body: 'メンテナンス中です。',
 

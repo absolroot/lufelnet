@@ -68,78 +68,6 @@
     return '';
   }
 
-  function ensureStyles() {
-    if (document.getElementById('character-calc-base-style')) return;
-
-    var style = document.createElement('style');
-    style.id = 'character-calc-base-style';
-    style.textContent = [
-      '.character-calc-card{background:var(--calc-card-bg,var(--card-background));border-bottom:3px solid var(--calc-border-color,var(--calc-accent,#d11f1f));border-radius:16px;padding:20px 32px 24px;margin:20px 0;box-shadow:var(--calc-shadow,0 4px 6px rgba(0,0,0,.2))}',
-      '.character-calc-title{font-size:20px;color:#fff;margin:0px 0 14px;font-weight:600;letter-spacing:.5px;display:flex;align-items:center;gap:8px}',
-      '.character-calc-title-icon{width:22px;height:22px;object-fit:contain;opacity:.95}',
-      '.character-calc-title.is-collapsible{cursor:pointer;user-select:none}',
-      '.character-calc-title.is-collapsible:hover{opacity:.8}',
-      '.character-calc-title-copy{flex:1;min-width:0}',
-      '.character-calc-title.is-collapsible:focus-visible{outline:2px solid var(--calc-active-border,rgba(209,31,31,.65));outline-offset:2px}',
-      '.character-calc-chevron{width:8px;height:8px;margin-right:4px;border-right:2px solid rgba(255,255,255,.6);border-bottom:2px solid rgba(255,255,255,.6);transform:rotate(45deg) translate(-1px,-1px);transition:transform .2s ease,border-color .2s ease;flex-shrink:0}',
-      '.character-calc-title.is-collapsible:hover .character-calc-chevron{border-color:rgba(255,255,255,.9)}',
-      '.character-calc-card.is-collapsed .character-calc-chevron{transform:rotate(-45deg) translate(-1px,-1px)}',
-      '.character-calc-body[hidden]{display:none}',
-      '.character-calc-goal-section{margin-bottom:20px}',
-      '.character-calc-goal-label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}',
-      '.character-calc-goal-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px}',
-      '.character-calc-goal-btn{background:var(--calc-goal-bg,rgba(0,0,0,.25));border:1px solid rgba(255,255,255,.12);border-radius:8px;color:rgba(255,255,255,.75);cursor:pointer;padding:10px 8px;font-size:13px;font-weight:500;text-align:center;transition:all .2s ease-out;user-select:none}',
-      '.character-calc-goal-btn:hover{background:rgba(255,255,255,.06);border-color:var(--calc-hover-border,rgba(255,255,255,.25))}',
-      '.character-calc-goal-btn.active{box-shadow:0 0 0 .5px var(--calc-active-border,rgba(209,31,31,.5)) inset,0 0 12px var(--calc-active-shadow,rgba(209,31,31,.15));background:var(--calc-active-bg,rgba(209,31,31,.18));border-color:var(--calc-active-border,rgba(209,31,31,.5));color:#fff;font-weight:600}',
-      '.character-calc-content{display:flex;flex-direction:column;gap:16px}',
-      '.character-calc-section{background:var(--calc-section-bg,rgba(0,0,0,.18));border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px 20px}',
-      '.character-calc-section-header{display:flex;align-items:center;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12)}',
-      '.character-calc-section-label{font-size:14px;font-weight:600;color:#fff;letter-spacing:.4px}',
-      '.character-calc-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:28px;row-gap:6px}',
-      '.character-calc-row{display:flex;align-items:center;justify-content:space-between;padding:4px 6px;margin:0 -6px;border-radius:6px;min-height:30px;transition:all .2s}',
-      '.character-calc-row[hidden]{display:none}',
-      '.character-calc-row.is-disabled{opacity:.4;filter:grayscale(60%)}',
-      '.character-calc-row:hover{background:rgba(255,255,255,.03)}',
-      '.character-calc-check-wrap{display:flex;align-items:center;gap:8px;flex:1;min-width:0}',
-      '.character-calc-check{margin:0;accent-color:var(--calc-accent,#d11f1f);cursor:pointer;flex-shrink:0}',
-      '.character-calc-rev-icon{width:16px;height:16px;object-fit:contain;opacity:.85;flex-shrink:0}',
-      '.character-calc-label{font-size:12px;color:rgba(255,255,255,.86);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}',
-      '.character-calc-value{font-size:13px;color:var(--calc-muted-value-color,rgba(255,255,255,.45));font-variant-numeric:tabular-nums;white-space:nowrap;min-width:48px;text-align:right;font-weight:500}',
-      '.character-calc-value.accent{color:var(--calc-value-color,#b39ddb);font-style:italic}',
-      '.character-calc-input-wrap,.character-calc-select-wrap{display:flex;align-items:center;gap:6px;flex-shrink:0}',
-      '.character-calc-segmented-control{display:flex;gap:3px;padding:2px;background:rgba(0,0,0,.32);border:1px solid rgba(255,255,255,.12);border-radius:7px}',
-      '.character-calc-segmented-option{border:1px solid transparent;border-radius:4px;background:transparent;color:rgba(255,255,255,.6);cursor:pointer;font:inherit;font-size:11px;font-weight:600;padding:4px 8px;transition:background .18s ease,color .18s ease,border-color .18s ease}',
-      '.character-calc-segmented-option:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.05)}',
-      '.character-calc-segmented-option.active{color:#fff;background:var(--calc-active-bg,rgba(209,31,31,.18));border-color:var(--calc-active-border,rgba(209,31,31,.5))}',
-      '.character-calc-input,.character-calc-select{background:rgba(0,0,0,.42);border:1px solid rgba(255,255,255,.15);border-radius:6px;color:#fff;font-size:12px;padding:3px 6px;min-width:50px;width:60px;text-align:right;transition:all .2s}',
-      '.character-calc-select{text-align:left;min-width:78px;width:auto;cursor:pointer}',
-      '.character-calc-input:focus,.character-calc-select:focus{outline:none;border-color:var(--calc-input-focus-border,var(--calc-active-border,rgba(209,31,31,.5)));background:rgba(255,255,255,.09);box-shadow:none}',
-      '.character-calc-select option{background:#1f1f1f;color:#fff}',
-      '.character-calc-unit{font-size:11px;color:rgba(255,255,255,.45)}',
-      '.character-calc-summary{margin-top:20px;padding-top:16px;border-top:2px solid rgba(255,255,255,.15);display:flex;justify-content:space-between;align-items:center;gap:16px}',
-      '.character-calc-target{font-size:13px;color:rgba(255,255,255,.7);font-weight:500;display:flex;align-items:center;gap:6px}',
-      '.character-calc-target-value{color:#fff;font-weight:600}',
-      '.character-calc-target-note{font-size:12px;color:var(--calc-note-color,var(--calc-accent,#d11f1f));font-weight:600;margin-left:2px;white-space:nowrap}',
-      '.character-calc-total-wrap{display:flex;align-items:center;gap:14px}',
-      '.character-calc-total-label{font-size:14px;color:#fff;font-weight:600}',
-      '.character-calc-total-right{display:flex;align-items:center;gap:6px}',
-      '.character-calc-total-value{font-size:16px;color:#fff;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:.5px}',
-      '.character-calc-diff{font-size:12px;font-weight:700;padding:4px 8px;border-radius:6px;margin-left:2px}',
-      '.character-calc-diff.deficit{color:#ff6b6b;background:rgba(255,107,107,.15)}',
-      '.character-calc-diff.surplus{color:#51cf66;background:rgba(81,207,102,.15)}',
-      '.character-calc-diff.match{color:rgba(255,255,255,.7);background:rgba(255,255,255,.1);font-weight:500}',
-      '@media(max-width:768px){',
-      '  .character-calc-card{padding:16px 20px}',
-      '  .character-calc-grid{grid-template-columns:1fr;row-gap:8px}',
-      '  .character-calc-summary{flex-direction:column;align-items:flex-start}',
-      '  .character-calc-target{flex-wrap:wrap}',
-      '  .character-calc-total-wrap{width:100%;justify-content:space-between}',
-      '}'
-    ].join('\n');
-
-    document.head.appendChild(style);
-  }
-
   function makeRevelationIcon(slot, className) {
     var suffix = SLOT_ICON_MAP[slot];
     if (!suffix) return null;
@@ -239,10 +167,8 @@
     if (theme.goalBackground) card.style.setProperty('--calc-goal-bg', theme.goalBackground);
     if (theme.mutedValueColor) card.style.setProperty('--calc-muted-value-color', theme.mutedValueColor);
     if (theme.valueColor) card.style.setProperty('--calc-value-color', theme.valueColor);
-    if (theme.shadow) card.style.setProperty('--calc-shadow', theme.shadow);
     if (theme.goalActiveBackground) card.style.setProperty('--calc-active-bg', theme.goalActiveBackground);
     if (theme.goalActiveBorder) card.style.setProperty('--calc-active-border', theme.goalActiveBorder);
-    if (theme.goalActiveShadow) card.style.setProperty('--calc-active-shadow', theme.goalActiveShadow);
     if (theme.hoverBorder) card.style.setProperty('--calc-hover-border', theme.hoverBorder);
     if (theme.inputFocusBorder) card.style.setProperty('--calc-input-focus-border', theme.inputFocusBorder);
     if (theme.noteColor) card.style.setProperty('--calc-note-color', theme.noteColor);
@@ -278,7 +204,6 @@
     if (!config || !config.characterName || !config.goals || !config.goals.length) return;
     if (getCurrentCharacterName() !== config.characterName) return;
 
-    ensureStyles();
 
     var sections = config.sections || [];
     var rows = [];
@@ -538,6 +463,7 @@
       var input = document.createElement('input');
       input.type = 'number';
       input.className = 'character-calc-input';
+      input.setAttribute('aria-label', resolveValue(row.label, { state: state, row: row }));
       input.step = typeof row.step !== 'undefined' ? String(row.step) : '0.1';
       input.value = num(state[row.stateKey]).toFixed(1);
       input.addEventListener('input', function () {
@@ -563,6 +489,7 @@
       if (row.presentation === 'segmented') {
         var segmented = el('div', 'character-calc-segmented-control');
         segmented.setAttribute('role', 'group');
+        segmented.setAttribute('aria-label', resolveValue(row.label, { state: state, row: row }));
         for (var segmentIndex = 0; segmentIndex < options.length; segmentIndex++) {
           (function (optionData) {
             var optionLabel = resolveValue(optionData.label, { state: state, row: row, option: optionData });
@@ -588,6 +515,8 @@
       } else {
         var select = document.createElement('select');
         select.className = 'character-calc-select';
+        select.dataset.selectDensity = 'compact';
+        select.setAttribute('aria-label', resolveValue(row.label, { state: state, row: row }));
         for (var optionIndex = 0; optionIndex < options.length; optionIndex++) {
           var optionData = options[optionIndex];
           var option = document.createElement('option');
@@ -630,7 +559,7 @@
     }
 
     function buildCard() {
-      var card = el('div', 'character-calc-card card-style ' + (config.cardClass || ''));
+      var card = el('div', 'character-calc-card card-style section-card-cut ' + (config.cardClass || ''));
       applyTheme(card, config.theme);
 
       var title = el('h2', 'character-calc-title');
@@ -673,11 +602,14 @@
         var button = el('button', 'character-calc-goal-btn' + (state.selectedGoal === goal.id ? ' active' : ''), resolveValue(goal.label, { state: state, goal: goal }));
         button.type = 'button';
         button.dataset.goalId = goal.id;
+        button.setAttribute('aria-pressed', String(state.selectedGoal === goal.id));
         button.addEventListener('click', function () {
           state.selectedGoal = this.dataset.goalId;
           var buttons = goalGrid.querySelectorAll('.character-calc-goal-btn');
           for (var buttonIndex = 0; buttonIndex < buttons.length; buttonIndex++) {
-            buttons[buttonIndex].classList.toggle('active', buttons[buttonIndex].dataset.goalId === state.selectedGoal);
+            var active = buttons[buttonIndex].dataset.goalId === state.selectedGoal;
+            buttons[buttonIndex].classList.toggle('active', active);
+            buttons[buttonIndex].setAttribute('aria-pressed', String(active));
           }
           saveState();
           recalculate();
@@ -776,7 +708,6 @@
     num: num,
     formatValue: formatValue,
     getCurrentCharacterName: getCurrentCharacterName,
-    ensureStyles: ensureStyles,
     makeRevelationIcon: makeRevelationIcon,
     makeStatIcon: makeStatIcon,
     mountCard: mountCard,

@@ -186,6 +186,10 @@
         return `${BASE_URL}/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
     }
 
+    function characterDetailAttributes(charName) {
+        return `href="${escapeAttribute(buildCharacterDetailUrl(charName))}" data-character-prefetch="${escapeAttribute(charName)}"`;
+    }
+
     function buildWonderWeaponUrl(weaponName) {
         const lang = getScheduleLang();
         const safeWeaponName = String(weaponName || '').trim();
@@ -1080,9 +1084,8 @@
 
             const characterIconsHtml = transition.characters.map((charName) => {
                 const displayName = getCharacterName(charName);
-                const charUrl = buildCharacterDetailUrl(charName);
                 return `
-                    <a href="${charUrl}" class="limit-transition-character-link" onclick="event.stopPropagation();" title="${displayName}">
+                    <a ${characterDetailAttributes(charName)} class="limit-transition-character-link" onclick="event.stopPropagation();" title="${displayName}">
                         <img
                             class="limit-transition-character-icon"
                             src="${BASE_URL}/assets/img/tier/${charName}.webp"
@@ -1137,18 +1140,16 @@
             ? '<span class="rarity-star star5-limit">★★★★★</span>'
             : `<span class="rarity-star">${'★'.repeat(rarity)}</span>`;
 
-        // Character page URL
-        const charUrl = buildCharacterDetailUrl(charName);
-
         // Codename HTML (작고 흐리게)
         const codenameHtml = codename
             ? `<span class="character-codename">${codename}</span>`
             : '';
         const disabledClass = clickDisabled ? ' click-disabled' : '';
-        const clickAttr = clickDisabled ? '' : ` onclick="window.location.href='${charUrl}'"`;
+        const tag = clickDisabled ? 'div' : 'a';
+        const linkAttrs = clickDisabled ? '' : ` ${characterDetailAttributes(charName)}`;
 
         return `
-            <div class="character-item${disabledClass}"${clickAttr} title="${displayName}">
+            <${tag} class="character-item${disabledClass}"${linkAttrs} title="${displayName}">
                 <img 
                     class="character-avatar" 
                     src="${BASE_URL}/assets/img/tier/${charName}.webp" 
@@ -1164,7 +1165,7 @@
                         ${starHtml}
                     </div>
                 </div>
-            </div>
+            </${tag}>
         `;
     }
 
@@ -1307,7 +1308,7 @@
             // codename으로 캐릭터 찾기
             const charData = window.characterData || {};
             // 첫 번째 캐릭터의 URL을 뱃지 전체 링크로 사용
-            let firstCharUrl = '';
+            let firstCharName = '';
 
             const characterIcons = release.goldTicketUnlocks.map(codename => {
                 // codename으로 캐릭터 찾기
@@ -1320,11 +1321,7 @@
                 }
 
                 if (charName) {
-                    const charUrl = buildCharacterDetailUrl(charName);
-
-                    if (!firstCharUrl) {
-                        firstCharUrl = charUrl;
-                    }
+                    firstCharName ||= charName;
 
                     // 뱃지 전체가 링크이므로 내부는 이미지 태그만 반환 (a 태그 제거)
                     return `<img class="gold-ticket-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${codename}" title="${codename}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">`;
@@ -1333,10 +1330,10 @@
             }).filter(icon => icon).join('');
 
             // 첫 번째 캐릭터 URL이 있으면 a 태그로, 없으면 div 태그 사용
-            const badgeTag = firstCharUrl ? 'a' : 'div';
-            const badgeHref = firstCharUrl ? `href="${firstCharUrl}"` : '';
-            const badgeClick = firstCharUrl ? `onclick="event.stopPropagation();"` : '';
-            const badgeStyle = firstCharUrl ? 'style="text-decoration: none; color: inherit; cursor: pointer;"' : '';
+            const badgeTag = firstCharName ? 'a' : 'div';
+            const badgeHref = firstCharName ? characterDetailAttributes(firstCharName) : '';
+            const badgeClick = firstCharName ? `onclick="event.stopPropagation();"` : '';
+            const badgeStyle = firstCharName ? 'style="text-decoration: none; color: inherit; cursor: pointer;"' : '';
 
             goldTicketHtml = `
                 <${badgeTag} ${badgeHref} class="content-badge gold-ticket-badge" ${badgeClick} ${badgeStyle}>
@@ -1436,10 +1433,8 @@
                 const charData = window.characterData?.[charName];
                 const displayName = charData?.name || charName;
 
-                const charUrl = buildCharacterDetailUrl(charName);
-
                 return `
-                    <a href="${charUrl}" class="mindscape-core-item" style="cursor: pointer;" onclick="event.stopPropagation();">
+                    <a ${characterDetailAttributes(charName)} class="mindscape-core-item" style="cursor: pointer;" onclick="event.stopPropagation();">
                         <img class="mindscape-core-icon" src="${BASE_URL}/assets/img/character-detail/innate/core.png" alt="${t('coreLabel')}" title="${t('coreLabel')}">
                         <img class="mindscape-core-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
                         <span class="mindscape-core-label">LV100</span>
@@ -1460,10 +1455,8 @@
             const syncMindscapeLabel = t('gameTerms.syncMindscape', t('characterSyncMindscapeButton', '싱크로 심상'));
             const mindscapeSyncListHtml = release.mindscape_sync.map(charName => {
                 const displayName = getCharacterName(charName);
-                const charUrl = buildCharacterDetailUrl(charName);
-
                 return `
-                    <a href="${charUrl}" class="mindscape-sync-character-link" onclick="event.stopPropagation();" title="${displayName}">
+                    <a ${characterDetailAttributes(charName)} class="mindscape-sync-character-link" onclick="event.stopPropagation();" title="${displayName}">
                         <img class="mindscape-sync-character-icon" src="${BASE_URL}/assets/img/tier/${charName}.webp" alt="${displayName}" title="${displayName}" onerror="this.src='${BASE_URL}/assets/img/character-cards/card_skeleton.webp'">
                         <span class="mindscape-sync-character-name">${displayName}</span>
                     </a>
@@ -1580,7 +1573,7 @@
         return `
             <div class="release-card status-${status}" data-status="${status}">
                 <div class="timeline-node"></div>
-                <div class="card-content">
+                <div class="card-content section-card-cut">
                     <div class="card-header">
                         <div class="version-info">
                             ${versionBadgeHtml}
@@ -1645,7 +1638,7 @@
         return `
             <div class="release-card status-${getStatus(event.date)}" data-status="${getStatus(event.date)}">
                 <div class="timeline-node"></div>
-                <div class="card-content">
+                <div class="card-content section-card-cut">
                     <div class="card-header">
                         <div class="version-info">
                             <span class="release-date">${formatDate(event.date)} · ${daysText}</span>
@@ -1833,12 +1826,12 @@
 
             html += `
                 <div class="released-section">
-                    <button class="released-toggle-btn" onclick="toggleReleasedSection(this)">
+                    <button class="released-toggle-btn" type="button" aria-controls="released-content" aria-expanded="false" onclick="toggleReleasedSection(this)">
                         <span class="toggle-text">${t('showReleased')}</span>
                         <span class="toggle-count">${totalReleasedCount}</span>
                         <span class="toggle-icon">+</span>
                     </button>
-                    <div class="released-content" id="released-content"
+                    <div class="released-content" id="released-content" inert
                         data-page-entrance-stagger=":scope > .release-card" data-page-entrance-stagger-scroll>
             `;
 
@@ -1906,6 +1899,8 @@
         if (!content) return;
 
         const isExpanded = content.classList.contains('expanded');
+        content.inert = isExpanded;
+        btn.setAttribute('aria-expanded', String(!isExpanded));
         const toggleText = btn.querySelector('.toggle-text');
         const toggleIcon = btn.querySelector('.toggle-icon');
 
@@ -1929,8 +1924,11 @@
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
+                filterBtns.forEach(button => {
+                    const selected = button === btn;
+                    button.classList.toggle('active', selected);
+                    button.setAttribute('aria-pressed', String(selected));
+                });
 
                 const filter = btn.dataset.filter;
                 renderTimeline(releases, filter);

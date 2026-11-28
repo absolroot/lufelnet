@@ -25,6 +25,7 @@ window.I18N_PAGE_PULL_TRACKER_EN = {
     pageDescription: 'Analyze your gacha history and check how many pulls remain until pity.',
     cardsTitle: 'Stats (Last 90 Days)',
     inputLabel: 'How to get URL',
+    "entry": {"url": "Contract history URL", "backup": "Record backup", "backupNote": "Export a copy of your existing records before adding another URL.", "retention": "Imports the last 90 days. Get a new URL if yours has expired."},
     placeholder: 'Paste the link here...',
     labels: {
       debugExample: 'DEBUG Example:'
@@ -179,6 +180,7 @@ window.I18N_PAGE_PULL_TRACKER_EN = {
         percent: '%'
       },
       more: 'More',
+      less: 'Show less',
       titles: {
         limited: '5★ Limited List',
         standard: '5★ Standard List',
@@ -192,12 +194,12 @@ window.I18N_PAGE_PULL_TRACKER_EN = {
       w9: '9 Weeks'
     },
     pity: {
-      legendChance: 'Chance %',
-      legendTotal5: 'Total Pull 5★'
+      legendChance: 'Cumulative %',
+      legendTotal5: '5★ count'
     },
     hover: {
       daily: '{date}\nTotal 5★: {count}',
-      pity: 'Pity {pity}\nChance%: {chance}\nTotal Pull 5★: {count}'
+      pity: 'Pity {pity}\nCumulative: {chance}%\n5★ count: {count}'
     },
     status: {
       loadFailed: 'Load failed'
@@ -213,10 +215,12 @@ window.I18N_PAGE_PULL_TRACKER_EN = {
       current: 'URL Guide'
     },
     pageTitle: 'URL Guide',
-    introWindows: 'Windows, iOS, and Linux/Steam Deck methods are available.',
+    "introWindows": "This guide covers Windows and iOS.",
     s1: 'Check the FAQ.',
     s2: 'Choose your OS. (Android steps welcome)',
-    s3: 'Choose a method. Use the program / Direct URL extraction',
+    "s3": "Choose how to get the URL.",
+    "methodProgram": "Helper program",
+    "methodDirect": "Direct extraction",
     m1s1: 'Run P5X on your PC.',
     m1s2: 'Download P5X_Gacha_Tools from the link, unzip, and run.',
     m1s3: 'Open the gacha history in P5X. Errors are expected.',
@@ -229,7 +233,7 @@ window.I18N_PAGE_PULL_TRACKER_EN = {
     troubleshootButton: 'Troubleshooting',
     downloadLabel: 'Program Link',
     sourceCode: 'source code',
-    goBack: 'Go Back',
+    "goBack": "Return to tracker to paste URL",
     os: {
       win: 'Windows',
       ios: 'iOS',
@@ -351,7 +355,7 @@ C:\\Windows\\System32\\drivers\\etc\\hosts and delete the following entries, the
       failed: 'Export failed.'
     },
     import: {
-      label: 'Import',
+      label: "Import file",
       imported: 'Imported from file.',
       failed: 'Import failed.'
     },

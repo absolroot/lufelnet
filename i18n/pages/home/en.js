@@ -96,6 +96,8 @@ window.I18N_PAGE_HOME_EN = {
     carousel_error: 'Failed to load carousel data.',
     carousel_nav_prev_aria: 'Prev',
     carousel_nav_next_aria: 'Next',
+    carousel_region_aria: 'Server',
+    carousel_timezone_aria: 'Time zone',
     carousel_maintenance_title: 'Under Maintenance',
     carousel_maintenance_body: 'Under maintenance.',
 

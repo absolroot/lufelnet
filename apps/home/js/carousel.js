@@ -947,7 +947,9 @@
         filter: invert(1);
     }
 
-      .carousel-toolbar select { background:rgba(31, 31, 31, 0.5); color: #fff; border: none; border-radius: 6px; padding: 6px 8px; font-size: 11px; }
+      .carousel-toolbar select { background-color: rgba(31, 18, 20, .58); color: #fff; border: 1px solid rgba(255, 235, 239, .12); border-radius: 8px; height: 34px; padding: 0 10px; font-size: 12px; font-weight: 400; line-height: 16px; }
+      .carousel-toolbar select:first-child { inline-size: 58px; }
+      .carousel-toolbar select + select { --select-menu-min-width: 128px; inline-size: 98px; font-variant-numeric: tabular-nums; }
       .carousel-viewport { position: relative; width: 100%; height: 300px; }
       @media (min-width: 1200px) { .carousel-viewport { height: 280px; } }
       .carousel-track { position: absolute; top: 0; left: 0; height: 100%; width: 100%; display: flex; transition: transform 450ms ease; }
@@ -976,11 +978,8 @@
       .slide-right.three-characters .char-img.middle { right: 16%; }
       .slide-right.three-characters .char-img.trio-left { right: 36%; }
       .slide-right.three-characters .char-img.trio-right { right: 10%; }
-      .carousel-nav { position: absolute; top: 50%; transform: translateY(-100%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
-      .carousel-btn { pointer-events: auto; background: rgba(0,0,0,0.35); color: #fff; border: 1px solid #444; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-      .carousel-dots { position: absolute; top: 45%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 6px; justify-content: center; z-index: 2; }
-      .carousel-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.5); cursor: pointer; }
-      .carousel-dot.active { background: #fff; }
+      .carousel-nav { position: absolute; top: calc(50% - 4px); transform: translateY(-100%); width: calc(100% - 16px); display: flex; justify-content: space-between; padding: 0 8px; pointer-events: none; }
+      .carousel-btn { pointer-events: auto; background: transparent; color: #fff; border: 0; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
       .slide-bg { position: absolute; inset: 0; background: radial-gradient(120% 120% at 80% 100%, rgba(255,255,255,0.08), rgba(255,255,255,0.02) 60%, rgba(0,0,0,0) 100%); }
       .slide-bg-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
       .slide-bg-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, #1111118c 0%, transparent 50%); pointer-events: none; }
@@ -1014,9 +1013,11 @@
   function buildToolbar(region, utcOffsetMin) {
     const wrap = document.createElement('div');
     wrap.className = 'carousel-toolbar';
+    const lang = detectLang();
 
     // Region select
     const regionSelect = document.createElement('select');
+    regionSelect.setAttribute('aria-label', t('carousel_region_aria', '서버', lang));
     REGIONS.forEach(r => {
       const opt = document.createElement('option');
       opt.value = r; opt.textContent = r.toUpperCase();
@@ -1026,6 +1027,7 @@
 
     // UTC select
     const utcSelect = document.createElement('select');
+    utcSelect.setAttribute('aria-label', t('carousel_timezone_aria', '시간대', lang));
     const utcOptions = buildUtcOptions();
     utcOptions.forEach(o => {
       const opt = document.createElement('option');
@@ -1035,8 +1037,10 @@
       utcSelect.appendChild(opt);
     });
 
-    wrap.appendChild(regionSelect);
-    wrap.appendChild(utcSelect);
+    const controls = document.createElement('div');
+    controls.className = 'carousel-toolbar-controls';
+    controls.append(regionSelect, utcSelect);
+    wrap.appendChild(controls);
 
     regionSelect.addEventListener('change', () => {
       const newRegion = regionSelect.value;
@@ -1282,14 +1286,25 @@
         link.className = 'slide-link';
         link.href = slide.customLink;
         if (slide.customLink.startsWith('#')) {
+          const modalId = slide.customLink.substring(1);
+          const modal = document.getElementById(modalId);
+          if (modal instanceof HTMLDialogElement) {
+            link.setAttribute('aria-haspopup', 'dialog');
+            link.setAttribute('aria-controls', modalId);
+            const title = document.getElementById(modal.getAttribute('aria-labelledby'));
+            if (title) link.setAttribute('aria-label', title.textContent.trim());
+          }
           link.addEventListener('click', (e) => {
             e.preventDefault();
-            const modalId = slide.customLink.substring(1);
-            const modal = document.getElementById(modalId);
-            if (modal) modal.style.display = 'block';
+            if (modal instanceof HTMLDialogElement) {
+              if (!modal.open) modal.showModal();
+            } else if (modal) {
+              modal.style.display = 'block';
+            }
           });
+        } else {
+          link.target = slide.customLinkTarget;
         }
-        link.target = slide.customLinkTarget;
       }
     } else {
       const names = (slide.fiveStar || []).map(x => x.name).filter(Boolean);
@@ -1315,8 +1330,14 @@
     const wrap = document.createElement('div');
     wrap.className = 'carousel-dots';
     for (let i = 0; i < count; i++) {
-      const dot = document.createElement('div');
-      dot.className = 'carousel-dot' + (i === state.currentIndex ? ' active' : '');
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'carousel-dot';
+      dot.setAttribute('aria-label', `${i + 1}/${count} ${state.slides[i].name || ''}`.trim());
+      const fill = document.createElement('span');
+      fill.className = 'carousel-dot-fill';
+      fill.setAttribute('aria-hidden', 'true');
+      dot.appendChild(fill);
       dot.addEventListener('click', () => goTo(i));
       wrap.appendChild(dot);
     }
@@ -1412,18 +1433,7 @@
     // toolbar at bottom
     const toolbar = buildToolbar(state.region, state.utcOffsetMin);
     container.appendChild(toolbar);
-    // place dots inside toolbar; left-aligned on mobile, centered on larger screens
-    dots.style.position = 'absolute';
-    const mobileQuery = window.matchMedia && window.matchMedia('(max-width: 520px)').matches;
-    if (mobileQuery) {
-      dots.style.left = '12px';
-      dots.style.transform = 'translateY(-50%)';
-    } else {
-      dots.style.left = '50%';
-      dots.style.transform = 'translate(-50%, -50%)';
-    }
-    toolbar.style.position = 'relative';
-    toolbar.appendChild(dots);
+    toolbar.prepend(dots);
     // Toolbar moved to bottom
     root.appendChild(container);
     activateDeferredMedia(root, state.currentIndex);
@@ -1475,7 +1485,11 @@
     if (!root) return;
     syncSlideVideoPlayback(root);
     const dots = root.querySelectorAll('.carousel-dot');
-    dots.forEach((d, i) => d.classList.toggle('active', i === state.currentIndex));
+    dots.forEach((dot, index) => {
+      const active = index === state.currentIndex;
+      dot.classList.toggle('active', active);
+      dot.setAttribute('aria-current', String(active));
+    });
   }
 
   function goTo(i, direction = i - state.currentIndex) {

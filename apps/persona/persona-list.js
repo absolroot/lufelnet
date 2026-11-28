@@ -159,8 +159,42 @@ function showPersonaDetailSkeleton(detailPanel) {
         <div id="personaLoadingProgress" class="loading-progress" aria-live="polite" hidden></div>`;
 }
 
+function initializePersonaScrollFog() {
+    const cards = document.getElementById('personaCards');
+    const panel = cards?.closest('.persona-list-panel');
+    if (!panel) return;
+
+    const header = panel.querySelector('.filter-header-sticky');
+    const fadeDistance = 24;
+    let frame = 0;
+
+    const updateFog = () => {
+        frame = 0;
+        const maxScroll = Math.max(0, panel.scrollHeight - panel.clientHeight);
+        const scrollTop = Math.min(maxScroll, Math.max(0, panel.scrollTop));
+        const opacity = (distance) => Math.min(1, Math.max(0, distance - 1) / fadeDistance);
+
+        panel.style.setProperty('--persona-fog-top', opacity(scrollTop));
+        panel.style.setProperty('--persona-fog-bottom', opacity(maxScroll - scrollTop));
+    };
+
+    const scheduleUpdate = () => {
+        if (!frame) frame = requestAnimationFrame(updateFog);
+    };
+
+    panel.addEventListener('scroll', scheduleUpdate, { passive: true });
+    const resizeObserver = new ResizeObserver(scheduleUpdate);
+    resizeObserver.observe(panel);
+    resizeObserver.observe(cards);
+    resizeObserver.observe(header);
+    scheduleUpdate();
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        personaSkillValueAnimation = window.createSkillValueAnimation?.('.skill-level-values');
+        personaSkillValueAnimation?.warmWhenNear(document.getElementById('personaDetailContent'));
+        initializePersonaScrollFog();
         showPersonaDetailSkeleton(document.getElementById('personaDetailContent'));
         // 1. Initialize i18n
         if (typeof initPageI18n === 'function') {
@@ -197,17 +231,48 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// 공용: LV6/LV7/LV8/ALL 버튼으로 "/" 구분 3단 수치를 필터링하는 헬퍼
-function filterDescByLevel(originalText, levelIndex) {
-    if (levelIndex === null || levelIndex === undefined) return originalText;
+function renderPersonaSkillDescription(element, level = globalSkillLevel) {
+    const original = element.dataset.originalText;
+    if (level === null) {
+        element.textContent = original;
+        return;
+    }
+
     // "150.0%/157.5%/165.0%" 또는 "1471 / 1854 / 2275" 형태를 개별 값으로 치환 (공백 허용)
     const tripleRegex = /(\d+(?:\.\d+)?)(%?)\s*\/\s*(\d+(?:\.\d+)?)(%?)\s*\/\s*(\d+(?:\.\d+)?)(%?)/g;
-    return originalText.replace(tripleRegex, (match, n1, u1, n2, u2, n3, u3) => {
-        const variants = [`${n1}${u1}`, `${n2}${u2}`, `${n3}${u3}`];
-        return variants[levelIndex] || variants[0];
-    });
+    const text = document.createDocumentFragment();
+    let end = 0;
+    for (const match of original.matchAll(tripleRegex)) {
+        const [series, n1, u1, n2, u2, n3, u3] = match;
+        const values = [`${n1}${u1}`, `${n2}${u2}`, `${n3}${u3}`];
+        const span = document.createElement('span');
+        span.className = 'skill-level-values';
+        const value = values[level] || values[0];
+        span.textContent = value + (u3 === '%' && !value.endsWith('%') ? '%' : '');
+        text.append(original.slice(end, match.index), span);
+        end = match.index + series.length;
+    }
+    text.append(original.slice(end));
+    element.replaceChildren(text);
 }
 
+function initializePersonaSkillDescription(element, original = element.textContent || '') {
+    element.dataset.originalText = original;
+    renderPersonaSkillDescription(element);
+}
+
+function appendTierParagraphs(container, text, className) {
+    for (const line of text.split(/\r?\n/)) {
+        const paragraph = line.trim();
+        if (!paragraph) continue;
+        const element = document.createElement('p');
+        element.className = className;
+        element.textContent = paragraph;
+        container.appendChild(element);
+    }
+}
+
+let personaSkillValueAnimation;
 // Global variable for skill level (0: LV6, 1: LV7, 2: LV8, null: ALL)
 let globalSkillLevel = 0;
 
@@ -565,10 +630,10 @@ async function initializePageContent() {
                     </span>
                 </div>
                 <div class="skill-level-buttons skill-level-buttons-global">
-                    <button type="button" class="${btnClass(0)}" data-level="0">6</button>
-                    <button type="button" class="${btnClass(1)}" data-level="1">7</button>
-                    <button type="button" class="${btnClass(2)}" data-level="2">8</button>
-                    <button type="button" class="${btnClass('ALL')}" data-level="ALL">ALL</button>
+                    <button type="button" class="${btnClass(0)}" data-level="0" aria-pressed="${lvl === 0}">6</button>
+                    <button type="button" class="${btnClass(1)}" data-level="1" aria-pressed="${lvl === 1}">7</button>
+                    <button type="button" class="${btnClass(2)}" data-level="2" aria-pressed="${lvl === 2}">8</button>
+                    <button type="button" class="${btnClass('ALL')}" data-level="ALL" aria-pressed="${lvl === 'ALL'}">ALL</button>
                 </div>
             </div>
         `;
@@ -586,8 +651,10 @@ async function initializePageContent() {
         const tier = persona.tier ? String(persona.tier).trim().toUpperCase() : '';
         if (tier) {
             const tierInfo = document.createElement('div');
-            tierInfo.className = 'persona-tier-info';
+            tierInfo.className = 'persona-tier-info page-entrance-part';
             tierInfo.dataset.tier = tier.toLowerCase();
+            tierInfo.dataset.pageEntranceStagger = '.persona-tier-header, .persona-tier-desc, .persona-tier-tip-label, .persona-tier-tip-text';
+            tierInfo.setAttribute('data-page-entrance-stagger-scroll', '');
 
             const tierHeader = document.createElement('div');
             tierHeader.className = 'persona-tier-header';
@@ -603,12 +670,7 @@ async function initializePageContent() {
             tierHeader.appendChild(tierBadge);
             tierInfo.appendChild(tierHeader);
 
-            if (tierDesc && tierDesc.trim() !== '') {
-                const tierDescP = document.createElement('p');
-                tierDescP.className = 'persona-tier-desc';
-                tierDescP.textContent = tierDesc;
-                tierInfo.appendChild(tierDescP);
-            }
+            if (tierDesc) appendTierParagraphs(tierInfo, tierDesc, 'persona-tier-desc');
 
             if (comment && comment.trim() !== '') {
                 const tipWrap = document.createElement('div');
@@ -618,12 +680,8 @@ async function initializePageContent() {
                 tipLabel.className = 'persona-tier-tip-label';
                 tipLabel.textContent = window.t('tipLabel', 'TIP');
 
-                const tipText = document.createElement('p');
-                tipText.className = 'persona-tier-tip-text';
-                tipText.textContent = comment;
-
                 tipWrap.appendChild(tipLabel);
-                tipWrap.appendChild(tipText);
+                appendTierParagraphs(tipWrap, comment, 'persona-tier-tip-text');
                 tierInfo.appendChild(tipWrap);
             }
 
@@ -753,12 +811,7 @@ async function initializePageContent() {
         uniqueHeader.appendChild(uniqueTitle);
 
         const uniqueDescP = document.createElement('p');
-        uniqueDescP.dataset.originalText = uniqueSkillEffect;
-        if (typeof globalSkillLevel === 'number' && typeof filterDescByLevel === 'function') {
-            uniqueDescP.textContent = filterDescByLevel(uniqueSkillEffect, globalSkillLevel);
-        } else {
-            uniqueDescP.textContent = uniqueSkillEffect;
-        }
+        initializePersonaSkillDescription(uniqueDescP, uniqueSkillEffect);
         uniqueSkillInfo.appendChild(uniqueHeader);
         uniqueSkillInfo.appendChild(uniqueDescP);
         skillContainer.appendChild(uniqueSkillInfo);
@@ -776,12 +829,7 @@ async function initializePageContent() {
         highlightHeader.appendChild(highlightTitle);
 
         const highlightDescP = document.createElement('p');
-        highlightDescP.dataset.originalText = highlightEffect;
-        if (typeof globalSkillLevel === 'number' && typeof filterDescByLevel === 'function') {
-            highlightDescP.textContent = filterDescByLevel(highlightEffect, globalSkillLevel);
-        } else {
-            highlightDescP.textContent = highlightEffect;
-        }
+        initializePersonaSkillDescription(highlightDescP, highlightEffect);
         highlightInfo.appendChild(highlightHeader);
         highlightInfo.appendChild(highlightDescP);
         skillContainer.appendChild(highlightInfo);
@@ -793,7 +841,9 @@ async function initializePageContent() {
             const recommendedSkillLabel = window.t('recommendedSkills', '추천 스킬');
 
             const recommendedSkills = document.createElement('div');
-            recommendedSkills.className = 'persona-recommended-skills';
+            recommendedSkills.className = 'persona-recommended-skills page-entrance-part';
+            recommendedSkills.dataset.pageEntranceStagger = ':scope > h3, :scope > ul > li';
+            recommendedSkills.setAttribute('data-page-entrance-stagger-scroll', '');
             recommendedSkills.innerHTML = `<h3>${recommendedSkillLabel}</h3><ul>` +
                 persona.recommendSkill.map(skill => {
                     const skillInfo = personaSkillList[skill.name];
@@ -814,8 +864,8 @@ async function initializePageContent() {
 
                     const isPassive = skillInfo.type === "패시브";
                     return `<li data-priority="${skill.priority}">
-                                <div class="skill-info">
-                                    <div class="skill-name-container">
+                                <button type="button" class="skill-info recommended-skill-trigger" aria-haspopup="dialog">
+                                    <span class="skill-name-container">
                                         ${(function () {
                             const pMap = { '3': '1st', '2': '2nd', '1': '3rd', '0': '4th' };
                             const cMap = {
@@ -832,9 +882,9 @@ async function initializePageContent() {
                                         <span class="skill-name-wrap">
                                             <span class="skill-name" data-skill-kor-full="${skill.name}">${skillName}</span>
                                         </span>
-                                    </div>
+                                    </span>
                     <span class="skill-description" ${isPassive ? 'data-passive="true"' : ''}>${skillDescription}</span>
-                </div>
+                </button>
             </li>`;
                 }).join('') + `</ul>`;
 
@@ -843,11 +893,7 @@ async function initializePageContent() {
             recommendedDescSpans.forEach((span) => {
                 // type 이 "패시브" 인 추천 스킬은 스킬 레벨 토글의 영향을 받지 않는다.
                 if (span.dataset.passive === 'true') return;
-                const original = span.textContent || '';
-                span.dataset.originalText = original;
-                if (typeof globalSkillLevel === 'number' && typeof filterDescByLevel === 'function') {
-                    span.textContent = filterDescByLevel(original, globalSkillLevel);
-                }
+                initializePersonaSkillDescription(span);
             });
             infoSection.appendChild(recommendedSkills);
         }
@@ -903,6 +949,7 @@ async function initializePageContent() {
                                 </li>`;
                     }).join('') + `</ul>`;
 
+                innateSkills.querySelectorAll('.skill-description').forEach(span => initializePersonaSkillDescription(span));
                 infoSection.appendChild(innateSkills);
             }
         }
@@ -1010,6 +1057,7 @@ async function initializePageContent() {
         if (!detailPanel || detailRequest?.source === sourceContainer) return;
         const request = { source: sourceContainer };
         detailRequest = request;
+        personaSkillValueAnimation?.finish();
         showPersonaDetailSkeleton(detailPanel);
         try {
             if (typeof window.loadPersonaFile === 'function') await window.loadPersonaFile(sourceName);
@@ -1041,8 +1089,10 @@ async function initializePageContent() {
 
         // Append to panel
         detailPanel.appendChild(infoSection);
-        if (!window.LufelPageEntrance?.finish()) {
-            window.LufelPageEntrance?.stagger?.(detailPanel);
+        const entrance = window.LufelPageEntrance;
+        if (entrance && !entrance.finish()) {
+            entrance.stagger(detailPanel);
+            infoSection.querySelectorAll('[data-page-entrance-stagger]').forEach(part => entrance.stagger(part));
         }
 
         // Re-bind tooltips and apply formatting (number highlighting)
@@ -1375,39 +1425,17 @@ async function initializePageContent() {
 // ----------------------------------------------------
 
 function setupGlobalSkillLevelSelector() {
-    // const buttons = document.querySelectorAll('.skill-level-buttons-global .skill-level-btn');
-    // if (!buttons.length) return; Remove this check to allow delegation for future elements
-
     function applyGlobalSkillLevel(level) {
-        // console.log("Applying level", level);
+        const descriptions = document.querySelectorAll('#personaDetailContent [data-original-text]');
+        const isSingleLevelChange = globalSkillLevel !== null && level !== null && globalSkillLevel !== level;
+        const animateValues = personaSkillValueAnimation?.prepare(descriptions, isSingleLevelChange);
         globalSkillLevel = level;
-        const applyTo = (p) => {
-            const original = p.dataset.originalText || p.textContent || '';
-            if (level === null) {
-                p.textContent = original;
-            } else {
-                p.textContent = filterDescByLevel(original, level);
-            }
-        };
-        const uniqueParas = document.querySelectorAll('.persona-unique-skill-info p');
-        const highlightParas = document.querySelectorAll('.persona-highlight-info p');
-        uniqueParas.forEach(applyTo);
-        highlightParas.forEach(applyTo);
-        // 추천 스킬(description)에도 동일한 스킬 레벨 필터 적용
-        const recommendedParas = document.querySelectorAll('.persona-recommended-skills .skill-description');
-        recommendedParas.forEach((p) => {
-            // type 이 "패시브" 인 추천 스킬은 스킬 레벨 토글의 영향을 받지 않는다.
-            if (p.dataset.passive === 'true') return;
-            if (p.dataset.passive === 'true') return;
-            applyTo(p);
-        });
-        // 획득 스킬에도 동일한 필터 적용
-        const innateParas = document.querySelectorAll('.persona-innate-skills .skill-description');
-        innateParas.forEach(applyTo);
+        descriptions.forEach(description => renderPersonaSkillDescription(description, level));
 
         if (typeof addTooltips === 'function') {
             try { addTooltips(); } catch (_) { /* noop */ }
         }
+        animateValues?.();
     }
 
     // Use Event Delegation for dynamic buttons
@@ -1417,8 +1445,6 @@ function setupGlobalSkillLevelSelector() {
 
         e.preventDefault();
         const levelAttr = btn.dataset.level;
-        // alert('Debug: Clicked ' + levelAttr);
-        // console.log("Clicked level btn", levelAttr);
         const level = levelAttr === 'ALL' ? null : parseInt(levelAttr, 10);
 
         // Update ALL buttons on the page (since we might have multiple if cached/etc, but mainly the one in detail)
@@ -1432,7 +1458,4 @@ function setupGlobalSkillLevelSelector() {
 
         applyGlobalSkillLevel(level);
     });
-
-    // 초기 상태(LV6) 전역 적용
-    applyGlobalSkillLevel(0);
 }

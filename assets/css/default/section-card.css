@@ -1,0 +1,121 @@
+:root {
+    --section-divider-color: rgb(255 255 255 / 12%);
+    --section-divider-paint:
+        radial-gradient(circle closest-side, var(--section-divider-color) 90%, transparent) left center / 3px 3px no-repeat,
+        radial-gradient(circle closest-side, var(--section-divider-color) 90%, transparent) right center / 3px 3px no-repeat,
+        linear-gradient(var(--section-divider-color) 0 0) center / calc(100% - 16px) 1px no-repeat;
+    --section-card-tail-size: 8px;
+    --section-card-tail-shape: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - var(--section-card-tail-size)),
+        calc(100% - var(--section-card-tail-size)) 100%,
+        0 100%
+    );
+}
+
+:where(.section-card-cut) {
+    position: relative;
+}
+
+.section-card-cut {
+    isolation: isolate;
+    background: transparent;
+    border-bottom-color: transparent;
+    border-radius: 0;
+}
+
+.section-card-cut::after {
+    position: absolute;
+    z-index: -1;
+    inset: var(--section-card-paint-inset, 0);
+    content: "";
+    pointer-events: none;
+    background: var(--section-card-fill, var(--card-background));
+    border-bottom: 3px solid var(--section-card-accent, var(--border-red));
+}
+
+.section-card-tail {
+    border-radius: 0;
+    clip-path: var(--section-card-tail-shape);
+}
+
+.section-row-motion:focus-within {
+    background-color: var(--section-row-hover, rgb(255 255 255 / 2%));
+}
+
+.post-item.tactic-post-motion:focus-within {
+    background-color: #2a2324;
+    box-shadow: inset 0 0 0 1px #a35c63;
+}
+
+.tactic-post-motion .section-row-arrow { flex-shrink: 0; }
+
+.tactic-post-motion .tactic-preview .character-container .character-img {
+    transform: none;
+    transition: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .section-row-motion:hover {
+        background-color: var(--section-row-hover, rgb(255 255 255 / 2%));
+    }
+
+    .post-item.tactic-post-motion:hover {
+        background-color: #2a2324;
+        box-shadow: inset 0 0 0 1px #a35c63;
+    }
+
+    .tactic-post-motion .like-button:hover:not(:disabled) { filter: brightness(1.18); }
+    .tactic-post-motion .tactic-preview .character-container:hover .character-img { filter: brightness(1.12); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .section-row-motion {
+        transition: background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .section-row-copy,
+    .section-row-arrow {
+        transition: translate 180ms cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .section-row-image { transition: scale 180ms ease; }
+
+    .post-item.tactic-post-motion {
+        transition: background-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .tactic-post-motion .tactic-preview .character-container .character-img {
+        transition: scale 180ms ease, filter 180ms ease;
+    }
+
+    .posts-container .like-button img { transition: scale 120ms ease; }
+    .posts-container .like-button:active:not(:disabled) img { scale: .88; }
+    .posts-container .like-button.liked img { animation: section-like-confirm 260ms ease-out; }
+
+    .section-row-motion:focus-within .section-row-copy { translate: 4px 0; }
+    .section-row-motion:focus-within .section-row-image { scale: 1.04; }
+    .section-row-motion :focus-visible .section-row-arrow { translate: 3px 0; }
+
+    @media (hover: hover) and (pointer: fine) {
+        .section-row-motion:hover .section-row-copy { translate: 4px 0; }
+        .section-row-motion:hover .section-row-image { scale: 1.04; }
+        .section-row-motion a:hover .section-row-arrow { translate: 3px 0; }
+        .tactic-post-motion .tactic-preview .character-container:hover .character-img { scale: 1.04; }
+    }
+
+    .section-row-motion:active .section-row-image { scale: .97; }
+}
+
+@keyframes section-like-confirm {
+    0% { scale: .88; }
+    55% { scale: 1.12; }
+    100% { scale: 1; }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --section-card-tail-size: 6px;
+    }
+}

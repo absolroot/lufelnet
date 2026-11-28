@@ -105,35 +105,10 @@
 .extra-income-add-inline {
     width: 22px;
     height: 22px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.85);
-    cursor: pointer;
     font-size: 16px;
     line-height: 1;
     padding: 0;
     margin-left: 8px;
-}
-
-.extra-income-add-inline:hover {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.extra-income-add {
-    width: 28px;
-    height: 28px;
-    border-radius: 6px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(0, 0, 0, 0.2);
-    color: rgba(255, 255, 255, 0.85);
-    cursor: pointer;
-    font-size: 18px;
-    line-height: 1;
-}
-
-.extra-income-add:hover {
-    background: rgba(255, 255, 255, 0.05);
 }
 
 .extra-income-rows {
@@ -148,7 +123,7 @@
     align-items: center;
     gap: 10px;
     padding: 0px;
-    border-radius: 8px;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -158,14 +133,9 @@
     padding: 8px 10px;
     background: none;
     border: none;
-    border-radius: 6px;
+    border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 13px;
-}
-
-.extra-income-frequency option {
-    background: #1f1f1f;
-    color: rgba(255, 255, 255, 0.92);
 }
 
 .extra-income-resources {
@@ -194,7 +164,7 @@
     padding: 6px 8px;
     background: none;
     border: none;
-    border-radius: 6px;
+    border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 13px;
     text-align: right;
@@ -204,7 +174,7 @@
 .extra-income-delete {
     width: 28px;
     height: 28px;
-    border-radius: 6px;
+    border-radius: 0;
     border: none;
     background: transparent;
     color: rgba(255, 255, 255, 0.45);
@@ -218,9 +188,8 @@
 }
 
 .accordion-section {
-    background: var(--card-background, #232323);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
+    border-bottom: 0;
     overflow: hidden;
     box-sizing: border-box;
 }
@@ -270,6 +239,36 @@
 .accordion-section.expanded .accordion-content {
     display: block;
     min-height: 193.71px
+}
+
+#mustReadAccordion .accordion-header {
+    width: 100%;
+    justify-content: space-between;
+    border: 0;
+    background-color: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: start;
+}
+
+#mustReadAccordion .accordion-header:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+#mustReadAccordion .accordion-header[aria-expanded="false"] .accordion-chevron {
+    transform: none;
+}
+
+#mustReadContent {
+    min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #mustReadAccordion .accordion-chevron {
+        transition: none;
+    }
 }
 
 /* Must Read Content */
@@ -371,7 +370,7 @@
    ======================================== */
 .schedule-notice {
     background: var(--card-background, #232323);
-    border-radius: 6px;
+    border-radius: 0;
     padding: 16px;
     margin: 0 0px 16px 0px;
 }
@@ -469,11 +468,6 @@
     margin-left: 6px;
 }
 
-.modal-input option {
-    background: #1f1f1f;
-    color: rgba(255, 255, 255, 0.92);
-}
-
 .notice-text {
     margin: 0 0 12px 0;
     font-size: 12px;
@@ -494,8 +488,6 @@
 }
 
 .timeline-container {
-    background: var(--card-background, #232323);
-    border-radius: 8px;
     padding: 16px;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -523,7 +515,7 @@
 
 .version-header {
     background: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
+    border-radius: 0;
     padding: 8px 12px;
     margin-bottom: 10px;
     text-align: center;
@@ -563,7 +555,7 @@
 .char-card {
     background: rgba(0, 0, 0, 0.2);
     border: none;
-    border-radius: 8px;
+    border-radius: 0;
     padding: 10px;
     cursor: pointer;
     transition: all 0.2s;
@@ -611,7 +603,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.58);
     color: rgba(255, 255, 255, 0.86);
     font-size: 12px;
@@ -624,7 +616,7 @@
 .char-avatar {
     width: 48px;
     height: 48px;
-    border-radius: 6px;
+    border-radius: 0;
     object-fit: cover;
     background: rgba(255, 255, 255, 0.05);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -808,8 +800,6 @@
    ======================================== */
 .chart-section {
     margin: 0 0px 20px 0px;
-    background: var(--card-background, #232323);
-    border-radius: 8px;
     padding: 16px;
 }
 
@@ -818,6 +808,9 @@
     align-items: center;
     gap: 8px;
     margin-bottom: 12px;
+    padding-bottom: 10px;
+    background: var(--section-divider-paint);
+    background-position: left bottom, right bottom, center bottom 1px;
 }
 
 .section-header h2 {
@@ -854,8 +847,6 @@
    ======================================== */
 .plan-section {
     margin: 0 0px 20px 0px;
-    background: var(--card-background, #232323);
-    border-radius: 8px;
     padding: 16px;
 }
 
@@ -881,7 +872,7 @@
 .plan-item {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
+    border-radius: 0;
     overflow: visible;
 }
 
@@ -916,7 +907,7 @@
 .plan-item-avatar {
     width: 40px;
     height: 40px;
-    border-radius: 6px;
+    border-radius: 0;
     object-fit: cover;
     flex-shrink: 0;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -1003,7 +994,7 @@ select.modal-input.plan-weapon-banner {
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -1024,20 +1015,20 @@ select.modal-input.plan-weapon-banner {
     flex-shrink: 0;
 }
 
-.target-dropdown:has(.target-dropdown-menu.active) .dropdown-chevron {
+.target-dropdown:has(.target-dropdown-menu:popover-open) .dropdown-chevron {
     transform: rotate(180deg);
 }
 
 .target-dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    margin-top: 4px;
+    position: fixed;
+    inset: auto;
+    margin: 0;
+    box-sizing: border-box;
     background: var(--card-background, #232323);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    border-radius: 0;
     padding: 4px;
-    min-width: 120px;
+    min-width: min(120px, calc(100vw - 16px));
     max-height: 300px;
     overflow-y: auto;
     z-index: 10000;
@@ -1045,7 +1036,7 @@ select.modal-input.plan-weapon-banner {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-.target-dropdown-menu.active {
+.target-dropdown-menu:popover-open {
     display: block;
 }
 
@@ -1057,7 +1048,7 @@ select.modal-input.plan-weapon-banner {
     padding: 8px 10px;
     background: transparent;
     border: none;
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     color: rgba(255, 255, 255, 0.8);
     font-size: 13px;
@@ -1102,7 +1093,7 @@ select.modal-input.plan-weapon-banner {
     font-weight: bold;
     color: rgba(255, 255, 255, 0.3);
     background: none;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 /* r0 ~ r6: 파일 이름이 r0.png ~ r6.png 인 img에 scale 0.9 적용 */
@@ -1163,7 +1154,7 @@ img[src$="r6.png"] {
     gap: 8px;
     padding: 10px 12px;
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
+    border-radius: 0;
     min-width: 0;
 }
 
@@ -1237,7 +1228,7 @@ img[src$="r6.png"] {
     align-items: center;
     padding: 6px 8px;
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 .status-row-before {
@@ -1310,7 +1301,7 @@ img[src$="r6.png"] {
     padding: 8px;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 13px;
 }
@@ -1328,7 +1319,7 @@ img[src$="r6.png"] {
     padding: 2px;
     background: rgba(0, 0, 0, 0.2);
     border: 2px solid transparent;
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     opacity: 0.5;
     transition: all 0.15s;
@@ -1406,7 +1397,7 @@ img[src$="r6.png"] {
     padding: 5px 8px;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 12px;
     text-align: right;
@@ -1473,33 +1464,10 @@ img[src$="r6.png"] {
     padding: 10px 12px;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
+    border-radius: 0;
     color: rgba(255, 255, 255, 0.9);
     font-size: 14px;
     box-sizing: border-box;
-}
-
-/* Select chevron positioning (native arrows can ignore padding in some browsers) */
-select.modal-input {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.55)' d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: calc(100% - 4px) 50%;
-    padding-right: 32px;
-}
-
-select.extra-income-frequency {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='rgba(255,255,255,0.55)' d='M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: calc(100% - 4px) 50%;
-    padding-right: 32px;
 }
 
 .modal-input:focus {
@@ -1577,10 +1545,6 @@ select.extra-income-frequency {
         grid-template-columns: 1fr;
     }
 
-    .accordion-section {
-        border-radius: 0;
-    }
-
     .schedule-notice {
         margin: 0 0 12px 0;
     }
@@ -1589,13 +1553,8 @@ select.extra-income-frequency {
         margin: 0 0 16px 0;
     }
 
-    .timeline-container {
-        border-radius: 0;
-    }
-
     .chart-section {
         margin: 0 0 16px 0;
-        border-radius: 0;
     }
 
     .chart-container {
@@ -1604,7 +1563,6 @@ select.extra-income-frequency {
 
     .plan-section {
         margin: 0 0 16px 0;
-        border-radius: 0;
     }
 
     .version-column {

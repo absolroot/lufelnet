@@ -978,6 +978,7 @@ body {
     --tooltip-safe-bottom: env(safe-area-inset-bottom, 0px);
     --tooltip-safe-left: env(safe-area-inset-left, 0px);
     --tooltip-surface: #101010;
+    --tooltip-panel-fade: 120ms;
     position: fixed;
     z-index: 2000;
     box-sizing: border-box;
@@ -986,7 +987,14 @@ body {
     box-shadow: 0 4px 8px rgb(0 0 0 / 36%);
     font-size: 14px;
     line-height: 1.55;
-    animation: lufel-tooltip-opacity-enter 120ms ease-out;
+    transition: opacity var(--tooltip-panel-fade) ease-out, visibility 0s;
+}
+
+.tooltip-panel[inert] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 0s, var(--tooltip-panel-fade);
 }
 
 .tooltip-panel::before {
@@ -1009,6 +1017,25 @@ body {
     clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
+.tooltip-panel[data-linked]:is([data-placement="above"], [data-placement="below"])::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    height: 8px;
+}
+
+.tooltip-panel[data-linked][data-placement="below"]::after {
+    bottom: 100%;
+}
+
+.tooltip-panel[data-linked][data-placement="above"]::after {
+    top: 100%;
+}
+
+.tooltip-panel[data-placement="sheet"]::before {
+    display: none;
+}
+
 .tooltip-panel-surface {
     max-height: inherit;
     overflow: auto;
@@ -1016,6 +1043,47 @@ body {
     border-radius: inherit;
     background: var(--tooltip-surface);
     overflow-wrap: anywhere;
+}
+
+.tooltip-panel[data-linked] .tooltip-panel-surface {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 30%);
+}
+
+.tooltip-panel[data-linked] .tooltip-panel-heading {
+    flex: none;
+}
+
+.tooltip-panel-tabs:not([hidden]) {
+    display: flex;
+    flex: none;
+    gap: 4px;
+    margin: 0 12px 8px;
+    border-bottom: 1px solid rgb(255 255 255 / 20%);
+}
+
+.tooltip-panel-tabs button {
+    min-height: 44px;
+    padding: 4px 8px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: #ddd;
+    font: inherit;
+    cursor: pointer;
+}
+
+.tooltip-panel-tabs button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
+.tooltip-panel-tabs button[aria-selected="true"] {
+    border-bottom-color: currentColor;
+    color: #f1d4ff;
 }
 
 .tooltip-panel-heading {
@@ -1083,6 +1151,36 @@ body {
     color: #d6d6d6;
 }
 
+.tooltip-panel[data-linked] .tooltip-panel-description {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding-bottom: 4px;
+}
+
+.tooltip-panel[data-placement="sheet"] .tooltip-panel-description {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.tooltip-panel-link:not([hidden]) {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    flex: none;
+    min-height: 44px;
+    margin-inline: 8px;
+    padding-inline: 4px;
+    color: #d9b9f4;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.tooltip-panel-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+}
+
 /* Mobile tooltip banner */
 .tooltip-mobile-banner {
     position: fixed;
@@ -1128,11 +1226,14 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
     .cursor-tooltip,
-    .tooltip-panel,
     .tooltip-mobile-banner,
     .persona-tooltip,
     .chart-tip {
         animation: none;
+    }
+
+    .tooltip-panel {
+        --tooltip-panel-fade: 0s;
     }
 }
 
@@ -1191,6 +1292,45 @@ body {
 }
 
 
+
+.filter-options label {
+    --filter-icon-corner: 32px;
+}
+
+.filter-options img:is([src$="속성_물리.png"], [src$="속성_핵열.png"], [src$="속성_만능.png"]) {
+    transform: scale(.95);
+}
+
+.filter-options label:has(> img) {
+    position: relative;
+    isolation: isolate;
+    background: transparent !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.filter-options label:has(> img)::before {
+    content: "";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    z-index: -1;
+    height: 100%;
+    aspect-ratio: 1;
+    translate: -50% -50%;
+    pointer-events: none;
+    background: var(--card-background, #292929);
+    border-radius: 50%;
+}
+
+@media (hover: hover) {
+    .filter-options label:has(> img):hover::before {
+        background: #454545;
+    }
+}
+
+.filter-options label:has(> img):has(> input:checked)::before {
+    background: #632d32;
+}
 
 /* PC 환경에서만 호버 효과 적용 */
 @media (hover: hover) and (pointer: fine) {

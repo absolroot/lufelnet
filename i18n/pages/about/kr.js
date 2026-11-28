@@ -2,12 +2,12 @@ window.I18N_PAGE_ABOUT_KR = {
     // Page titles
     siteTitle: '루페르넷 lufel.net',
     contactTitle: '문의 및 피드백',
-    thanksTitle: 'Thanks To',
+    thanksTitle: '감사 인사',
     recentUpdatesTitle: '최신 업데이트',
 
     // Buttons
-    donateButton: '서포트 | Support',
-    supportersButton: '감사한 분들',
+    donateButton: '지원하기',
+    supportersButton: '함께해 주신 분들',
     supportersModalTitle: '서포터 목록',
     showMoreButton: '더보기',
 
@@ -23,9 +23,7 @@ window.I18N_PAGE_ABOUT_KR = {
 보다 많은 사람들이 P5X를 즐겼으면 좋겠다는 마음가짐에서 시작했습니다.`,
 
     // Contact description
-    contactDescription: `버그, 잘못된 데이터를 발견하거나 피드백이 있으실 경우 
-<a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span class="discord-icon"></span>디스코드</a> 또는 
-<a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>로 문의주세요.`,
+    contactDescription: '버그나 잘못된 정보를 발견했거나 의견이 있다면 알려주세요.',
 
     // Donation message
     donationMessage: `감사합니다. P5X를 분석하길 좋아하는 유저로서 지속적으로 업데이트하고 있습니다.<br>

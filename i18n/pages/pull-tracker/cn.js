@@ -25,6 +25,7 @@ window.I18N_PAGE_PULL_TRACKER_CN = {
         "pageDescription": "记录 P5X 契约抽卡记录并查看统计数据。",
         "cardsTitle": "统计卡片（最近 90 天）",
         "inputLabel": "URL 获取方法",
+        "entry": {"url": "契约记录 URL", "backup": "记录备份", "backupNote": "添加新 URL 前，请先将现有记录导出为文件。", "retention": "可导入最近 90 天的记录。URL 过期后请重新获取。"},
         "placeholder": "请在此粘贴链接...",
         "labels": {
             "debugExample": "DEBUG 示例:"
@@ -179,6 +180,7 @@ window.I18N_PAGE_PULL_TRACKER_CN = {
                 "percent": "%"
             },
             "more": "查看更多",
+            "less": "收起",
             "titles": {
                 "limited": "5★ 限定列表",
                 "standard": "5★ 普通列表",
@@ -192,12 +194,12 @@ window.I18N_PAGE_PULL_TRACKER_CN = {
             "w9": "9周"
         },
         "pity": {
-            "legendChance": "概率 %",
-            "legendTotal5": "累计 5★ 抽数"
+            "legendChance": "累计比例 (%)",
+            "legendTotal5": "5★获取次数"
         },
         "hover": {
             "daily": "{date}\n5★ 总数：{count}",
-            "pity": "保底 {pity}\n概率%：{chance}\n累计 5★ 抽数：{count}"
+            "pity": "第 {pity} 抽\n累计比例: {chance}%\n5★获取次数: {count}"
         },
         "status": {
             "loadFailed": "加载失败"
@@ -213,10 +215,12 @@ window.I18N_PAGE_PULL_TRACKER_CN = {
             "current": "URL 指南"
         },
         "pageTitle": "URL 指南",
-        "introWindows": "目前提供 PC Windows 与 iOS 的方法。",
+        "introWindows": "本指南介绍 Windows 和 iOS 的 URL 获取方法。",
         "s1": "请先查看 FAQ。",
         "s2": "请选择你正在使用的操作系统。（欢迎补充 Android 方法）",
-        "s3": "请选择你想使用的方法：使用现成程序 / 手动提取 URL",
+        "s3": "请选择获取 URL 的方式。",
+        "methodProgram": "专用工具",
+        "methodDirect": "直接提取 URL",
         "m1s1": "请先在 PC 上启动 P5X。",
         "m1s2": "请通过下方链接下载 P5X_Gacha_Tools，解压后运行。",
         "m1s3": "在 P5X 中打开契约记录。※ 出现报错属于正常现象。",
@@ -229,7 +233,7 @@ window.I18N_PAGE_PULL_TRACKER_CN = {
         "troubleshootButton": "故障排查",
         "downloadLabel": "程序下载链接",
         "sourceCode": "源代码",
-        "goBack": "返回",
+        "goBack": "返回追踪器填写 URL",
         "os": {
             "win": "Windows",
             "ios": "iOS",
@@ -316,7 +320,7 @@ window.I18N_PAGE_PULL_TRACKER_CN = {
             "failed": "导出失败。"
         },
         "import": {
-            "label": "导入",
+            "label": "导入文件",
             "imported": "已从文件导入。",
             "failed": "导入失败。"
         },

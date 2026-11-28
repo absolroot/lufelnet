@@ -3,6 +3,22 @@
   window.__CHARACTER_DEFAULT = {{ page.character_kr_name | jsonify }};
 </script>
 {% endif %}
+{% include character-initial-resource-hashes.html %}
+<script>
+  (function preloadInitialCharacterData() {
+    const name = new URLSearchParams(location.search).get('name') || window.__CHARACTER_DEFAULT;
+    const hashes = window.__CHARACTER_INITIAL_RESOURCE_HASHES[name];
+    if (!hashes) return;
+    for (const [file, hash] of Object.entries(hashes)) {
+      const link = document.createElement('link');
+      link.rel = 'preload';
+      link.as = 'script';
+      link.fetchPriority = file === 'setting' ? 'auto' : 'low';
+      link.href = `{{ site.baseurl }}/data/characters/${encodeURIComponent(name)}/${file}.js?h=${hash}`;
+      document.head.appendChild(link);
+    }
+  })();
+</script>
 {% if site.data.character_slugs %}
 <script>
   window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
@@ -10,17 +26,25 @@
 {% endif %}
 <script>
   window.__CHARACTER_STYLE_HASHES = {
-    kotone: {{ site.data.asset_versions.files['/data/characters/코토네/kotone.css'] | jsonify }}
+    kotone: {{ site.data.asset_versions.files['/data/characters/코토네/kotone.css'] | jsonify }},
+    persona3r: {{ site.data.asset_versions.files['/assets/css/persona3r.css'] | jsonify }}
   };
   // Keep runtime-selected character resources small and independently cacheable.
   window.__CHARACTER_RESOURCE_HASHES = {
     "코토네": {
-      kotone_theme: {{ site.data.asset_versions.files['/data/characters/코토네/kotone_theme.js'] | jsonify }}
+      kotone_theme: {{ site.data.asset_versions.files['/data/characters/코토네/kotone_theme.js'] | jsonify }},
+      kotone_calc: {{ site.data.asset_versions.files['/data/characters/코토네/kotone_calc.js'] | jsonify }}
     },
     "YUI·스텔라": {
       skill: {{ site.data.asset_versions.files['/data/characters/YUI·스텔라/skill.js'] | jsonify }},
       ritual: {{ site.data.asset_versions.files['/data/characters/YUI·스텔라/ritual.js'] | jsonify }}
-    }
+    },
+    {%- assign character_calculators = '리코·매화:riko_calc|코로마루:koromaru_calc|아란:aran_calc|안·댄싱 스타:ann_calc|마유미:mayumi_calc|카타야마:katayama_calc|아야카·여름:ayaka_summer_calc|이치고·여름:ichigo_summer_calc|미쿠:miku_calc' | split: '|' %}
+    {%- for calculator in character_calculators %}
+      {%- assign calculator_entry = calculator | split: ':' %}
+      {%- assign calculator_path = '/data/characters/' | append: calculator_entry[0] | append: '/' | append: calculator_entry[1] | append: '.js' %}
+    {{ calculator_entry[0] | jsonify }}: { {{ calculator_entry[1] }}: {{ site.data.asset_versions.files[calculator_path] | jsonify }} },
+    {%- endfor %}
   };
 </script>
 <script>
@@ -32,6 +56,11 @@
   })();
 </script>
 <script src="{{ site.baseurl }}/assets/js/character/character-calc-base.js?h={{ site.data.asset_versions.files['/assets/js/character/character-calc-base.js'] }}"></script>
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/character-calc.css?h={{ site.data.asset_versions.files['/assets/css/character-calc.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/skill-value-animation.css?h={{ site.data.asset_versions.files['/assets/css/skill-value-animation.css'] }}">
+<script defer src="{{ site.baseurl }}/assets/js/gsap-loader.js?h={{ site.data.asset_versions.files['/assets/js/gsap-loader.js'] }}" data-gsap-src="{{ site.baseurl }}/assets/js/gsap.min.js?h={{ site.data.asset_versions.files['/assets/js/gsap.min.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/assets/js/SplitText.min.js?h={{ site.data.asset_versions.files['/assets/js/SplitText.min.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/assets/js/skill-value-animation.js?h={{ site.data.asset_versions.files['/assets/js/skill-value-animation.js'] }}"></script>
 
 <!-- URL rewrite: /character.html?name=X&lang=Y → /{lang}/character/{slug}/ -->
 <script>
@@ -101,12 +130,103 @@
 (function(){
     var root = document.documentElement;
     var headerParts = { detail: false, settings: false };
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const nameSelector = '.character-header .character-name-text';
+    let nameEntrance;
+
+    window.setCharacterHeaderName = function(value) {
+        const name = document.querySelector(nameSelector);
+        const text = String(value ?? '');
+        if (!name || name.textContent === text) return;
+        nameEntrance?.progress(1);
+        name.textContent = text;
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!motionPreference.matches) window.loadLufelGSAP?.();
+    }, { once: true });
+
+    function animateCharacterName(header) {
+        const name = header.querySelector('.name-row > h1.character-name:not(.skeleton) > .character-name-text');
+        const original = name?.firstChild;
+        const { gsap, SplitText } = window;
+        if (original?.nodeType !== Node.TEXT_NODE || !original.data.trim() || motionPreference.matches || !gsap || !SplitText) return;
+
+        gsap.registerPlugin(SplitText);
+        const heading = name.parentElement;
+        const layer = document.createElement('span');
+        layer.className = 'character-name-animation';
+        layer.setAttribute('aria-hidden', 'true');
+        layer.textContent = original.data;
+        heading.appendChild(layer);
+
+        const usesCjk = /[\p{Script=Han}\p{Script=Hangul}\p{Script=Hiragana}\p{Script=Katakana}]/u.test(original.data);
+        const split = SplitText.create(layer, {
+            type: usesCjk ? 'chars' : 'words,chars',
+            mask: 'chars',
+            tag: 'span',
+            aria: 'none',
+            charsClass: 'character-name-letter',
+            wordsClass: 'character-name-word'
+        });
+        if (!split.chars.length) {
+            layer.remove();
+            return;
+        }
+
+        header.classList.add('has-name-entrance');
+        // Splitting breaks font kerning. Match each mask to the original text run before moving its letter vertically.
+        const range = document.createRange();
+        const offsets = [];
+        let from = 0;
+        for (const letter of split.chars) {
+            const index = original.data.indexOf(letter.textContent, from);
+            if (index < 0) {
+                layer.remove();
+                header.classList.remove('has-name-entrance');
+                return;
+            }
+            from = index + letter.textContent.length;
+            range.setStart(original, index);
+            range.setEnd(original, from);
+            const target = range.getBoundingClientRect();
+            range.selectNodeContents(letter);
+            const initial = range.getBoundingClientRect();
+            offsets.push({ x: target.left - initial.left, y: target.top - initial.top });
+        }
+        split.masks.forEach((mask, index) => gsap.set(mask, offsets[index]));
+        gsap.set(split.chars, { yPercent: 110, opacity: 0 });
+
+        const finish = () => nameEntrance?.progress(1);
+        const finishOnReducedMotion = event => {
+            if (event.matches) finish();
+        };
+        nameEntrance = gsap.to(split.chars, {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.31,
+            ease: 'power2.out',
+            stagger: { amount: 0.21 },
+            onComplete() {
+                layer.remove();
+                nameEntrance = null;
+                window.removeEventListener('resize', finish);
+                motionPreference.removeEventListener('change', finishOnReducedMotion);
+            }
+        });
+        window.addEventListener('resize', finish);
+        motionPreference.addEventListener('change', finishOnReducedMotion);
+    }
+
     root.classList.add('character-header-loading');
     window.markCharacterHeaderReady = function(part) {
         headerParts[part] = true;
         if (!headerParts.detail || !headerParts.settings) return;
+        const header = document.querySelector('.character-header');
+        const firstReveal = header && !header.classList.contains('is-ready') && root.classList.contains('character-header-loading');
         root.classList.remove('character-header-loading');
-        document.querySelector('.character-header')?.classList.add('is-ready');
+        header?.classList.add('is-ready');
+        if (firstReveal) animateCharacterName(header);
     };
     setTimeout(function(){ root.classList.remove('character-header-loading'); }, 3500);
     var p = new URLSearchParams(window.location.search).get('lang');
@@ -177,7 +297,7 @@
             </div>
             <div class="name-section">
                 <div class="name-row">
-                    <h1 class="character-name p5-layer-box">Character Name</h1>
+                    <h1 class="character-name p5-layer-box"><span class="character-name-text">Character Name</span></h1>
                     <div class="icon-group">
                         <div class="element-icons"></div>
                         <div class="position-icon"></div>
@@ -190,7 +310,7 @@
                 <div class="sub-info">
                     <p class="code-name">{% if page.language == 'cn' %}代号: {% else %}코드네임: {% endif %}</p>
                     <p class="sees" style="font-weight: bold; display: none;">S.E.E.S</p>
-                    <p class="persona-name">{% if page.language == 'cn' %}人格面具: {% else %}페르소나: {% endif %}</p>
+                    <p class="persona-name"><span class="label">{% unless page.permalink == '/character.html' %}{% case page.language %}{% when 'en' %}Persona{% when 'jp' %}ペルソナ{% when 'cn' %}人格面具{% else %}페르소나{% endcase %} {% endunless %}</span></p>
                 </div>
             </div>
             <div class="basic-info">
@@ -278,15 +398,15 @@
 
 
     <!-- 리뷰 섹션 -->
-    <div class="review-card card-style">
-        <h2>{% if page.language == 'cn' %}怪盗评测{% else %}리뷰{% endif %}</h2>
+    <div class="review-card card-style section-card-cut">
+        <h2>{% unless page.permalink == '/character.html' %}{% case page.language %}{% when 'en' %}Character Review{% when 'jp' %}キャラクター レビュー{% when 'cn' %}怪盗评测{% else %}캐릭터 리뷰{% endcase %}{% endunless %}</h2>
         <div class="review-content" id="character-review">
             <!-- 리뷰 내용이 여기에 동적으로 로드됩니다 -->
         </div>
     </div>
 
     <!-- 세팅 섹션 -->
-    <div class="settings-card card-style">
+    <div class="settings-card card-style section-card-cut">
         <h2>{% if page.language == 'cn' %}推荐配置{% else %}추천 세팅{% endif %}</h2>
         <div class="settings-content">
 
@@ -491,14 +611,14 @@
     </div>
 
     <!-- 스킬 섹션 -->
-    <div class="skills-card card-style drag-me">
+    <div class="skills-card card-style section-card-cut drag-me">
         <h2>{% if page.language == 'cn' %}技能{% else %}스킬{% endif %}</h2>
         <div class="skills-grid">
         </div>
     </div>
 
     <!-- 의식 섹션 -->
-    <div class="ritual-card card-style drag-me">
+    <div class="ritual-card card-style section-card-cut drag-me">
         <div class="ritual-header">
             <h2>{% if page.language == 'cn' %}意识{% else %}의식{% endif %}</h2>
         </div>
@@ -565,7 +685,7 @@
 
 
     <!-- 스텟 섹션 -->
-    <div class="stats-card card-style">
+    <div class="stats-card card-style section-card-cut">
         <h2>스탯</h2>
         <div class="setting-group stats-settings" style="display:flex; gap:40px; align-items:stretch;">
             <!-- 기초 스탯 (왼쪽 3/4) -->
@@ -607,19 +727,21 @@
     </div>
 
     <!-- 무기 섹션 -->
-    <div class="weapons-card card-style drag-me">
+    <div class="weapons-card card-style section-card-cut drag-me">
         <h2>{% if page.language == 'cn' %}专属武器{% else %}전용 무기{% endif %}</h2>
-        <div class="weapon-enhancement-buttons">
-            <button class="enhancement-btn active" data-stage="mixed">5성 개조0 / 4성 개조6</button>
-            <button class="enhancement-btn" data-stage="all">전체</button>
-            <div class="enhancement-stages">
-                <button class="enhancement-btn" data-stage="0">0</button>
-                <button class="enhancement-btn" data-stage="1">1</button>
-                <button class="enhancement-btn" data-stage="2">2</button>
-                <button class="enhancement-btn" data-stage="3">3</button>
-                <button class="enhancement-btn" data-stage="4">4</button>
-                <button class="enhancement-btn" data-stage="5">5</button>
-                <button class="enhancement-btn" data-stage="6">6</button>
+        <div class="weapon-enhancement-buttons character-segmented-strip">
+            <div class="character-segmented-group">
+                <button class="enhancement-btn active" data-stage="mixed" aria-pressed="true">5성 개조0 / 4성 개조6</button>
+                <button class="enhancement-btn" data-stage="all" aria-pressed="false">전체</button>
+            </div>
+            <div class="character-segmented-group enhancement-stages">
+                <button class="enhancement-btn" data-stage="0" aria-pressed="false">0</button>
+                <button class="enhancement-btn" data-stage="1" aria-pressed="false">1</button>
+                <button class="enhancement-btn" data-stage="2" aria-pressed="false">2</button>
+                <button class="enhancement-btn" data-stage="3" aria-pressed="false">3</button>
+                <button class="enhancement-btn" data-stage="4" aria-pressed="false">4</button>
+                <button class="enhancement-btn" data-stage="5" aria-pressed="false">5</button>
+                <button class="enhancement-btn" data-stage="6" aria-pressed="false">6</button>
             </div>
         </div>
         <div class="weapons-container">
@@ -655,7 +777,7 @@
     </div>
 
     <!-- 속성 심상 섹션 (KR 우선 적용, 기본 숨김) -->
-    <div id="nature-skill-card" class="nature-skill-card card-style drag-me" style="display:none;">
+    <div id="nature-skill-card" class="nature-skill-card card-style section-card-cut drag-me" style="display:none;">
         <div class="nature-skill-header">
             <h2 data-nature-skill-label="title">속성 심상</h2>
             <p id="nature-skill-global-note" class="nature-skill-global-note" style="display:none;"></p>
@@ -665,7 +787,7 @@
     </div>
 
     <!-- 심상 코어 섹션 (innate.js 존재 캐릭터 전용, 기본 숨김) -->
-    <div class="innate-card card-style drag-me" style="display:none;">
+    <div class="innate-card card-style section-card-cut drag-me" style="display:none;">
         <h2>심상 코어</h2>
         <div class="skills-grid innate-grid">
             <!-- 심상 코어 카드들이 동적으로 추가됨 -->
@@ -676,7 +798,7 @@
     <!-- 추천 페르소나와 파티 섹션 -->
     <div id="recommended-sections" style="display: none;">
         <!-- 추천 페르소나 -->
-        <div class="recommended-persona-card card-style">
+        <div class="recommended-persona-card card-style section-card-cut">
             <h2>{% if page.language == 'cn' %}推荐装配{% else %}추천 조합{% endif %}</h2>
             <div id="recommended-persona-content" class="recommended-persona-content">
                 <!-- 페르소나 내용이 여기에 동적으로 추가됨 -->
@@ -684,7 +806,7 @@
         </div>
 
         <!-- 추천 파티 -->
-        <div class="recommended-party-card card-style">
+        <div class="recommended-party-card card-style section-card-cut">
             <h2>{% if page.language == 'cn' %}推荐队伍示例{% else %}추천 파티{% endif %}</h2>
             <p id="recommended-party-note" class="recommended-party-note" style="display:none;"></p>
             <div id="recommended-party-content" class="recommended-party-content">
@@ -696,7 +818,7 @@
 
     <!-- 택틱 예시 섹션 -->
     <!--
-    <div id="character-tactic-examples" class="card-style" style="display:block;">
+    <div id="character-tactic-examples" class="card-style section-card-cut" style="display:block;">
         <div class="card-title-row">
             <h2 id="tactic-examples-title" style="margin:0;">택틱 예시</h2>
             <!-- 원래 카드 내 3개 프리뷰 로딩은 egress 비용 때문에 비활성화 -->
@@ -977,6 +1099,21 @@
 
         const pageLang = getCurrentLanguage();
         const currentLang = pageLang;
+        const characterName = new URLSearchParams(location.search).get('name') || window.__CHARACTER_DEFAULT || '';
+        const character = window.characterData?.[characterName];
+        if (!character) {
+            console.error('Character not found');
+            return;
+        }
+
+        const settingReady = loadPerCharacterResource(characterName, { fileBase: 'setting', globalVarName: 'characterSetting' });
+        const statsReady = window.ensureCharacterBasicStats?.() || loadPerCharacterResource(characterName, { fileBase: 'base_stats', globalVarName: 'basicStatsData' });
+        const reviewReady = loadPerCharacterResource(characterName, {
+            fileBase: 'review', globalVarName: 'characterReview', scanPrefixes: ['characterReview_']
+        });
+        const languageReady = safeAwait('loadLanguageData', loadLanguageData());
+        const revelationReady = safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
+
         try {
             if (window.I18nService && typeof window.I18nService.init === 'function') {
                 await window.I18nService.init('character', pageLang);
@@ -1003,11 +1140,6 @@
         safeRun('Navigation.load', () => Navigation.load('character', 1));
         safeRun('VersionChecker.check', () => VersionChecker.check());
 
-        // Get character name from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
-
-        // 언어별 데이터 파일 동적 로드
         // 통합 per-character 로더 (review / base_stats / operation / party)
         async function loadPerCharacterResource(name, opts) {
             const {
@@ -1020,7 +1152,8 @@
                 window[globalVarName] = window[globalVarName] || {};
                 const _BASE = (typeof window !== 'undefined' && window.BASE_URL) ? window.BASE_URL : '';
                 const resourceHashes = window.__CHARACTER_RESOURCE_HASHES && window.__CHARACTER_RESOURCE_HASHES[name];
-                const contentHash = resourceHashes && resourceHashes[fileBase];
+                const contentHash = window.__CHARACTER_INITIAL_RESOURCE_HASHES[name]?.[fileBase]
+                    || resourceHashes?.[fileBase];
                 const cacheQuery = contentHash ? `h=${encodeURIComponent(contentHash)}` : `v=${encodeURIComponent(APP_VERSION)}`;
                 const baseJs = `${_BASE}/data/characters/${encodeURIComponent(name)}/${fileBase}.js?${cacheQuery}`;
 
@@ -1139,10 +1272,6 @@
 
         async function loadCharacterDataAll(name) {
             const tasks = [
-                loadPerCharacterResource(name, { fileBase: 'review', globalVarName: 'characterReview', scanPrefixes: ['characterReview_'] }),
-                loadPerCharacterResource(name, { fileBase: 'base_stats', globalVarName: 'basicStatsData' }),
-                loadPerCharacterResource(name, { fileBase: 'setting', globalVarName: 'characterSetting' })
-                    .then(() => window.applyCharacterVideo?.(name, characterData[name])),
                 loadPerCharacterResource(name, { fileBase: 'operation', globalVarName: 'operationData' }),
                 loadPerCharacterResource(name, { fileBase: 'party', globalVarName: 'recommendParty' }),
                 loadPerCharacterResource(name, { fileBase: 'skill', globalVarName: 'characterSkillsData' }),
@@ -1299,306 +1428,11 @@
             }
         }
 
-        if (!characterName || !characterData[characterName]) {
-            console.error('Character not found');
-            return;
-        }
-
-        // 언어별 데이터 로드 후 캐릭터 정보 설정
-        await safeAwait('loadLanguageData', loadLanguageData());
-        // 계시 다국어 데이터도 먼저 로드 (EN/JP에서 최초 렌더부터 번역 적용)
-        await safeAwait('loadRevelationDataByLanguage', loadRevelationDataByLanguage());
-        safeRun('refreshRevelationDisplay', () => setTimeout(refreshRevelationDisplay, 100));
-
-        const character = characterData[characterName];
-
-        // 언어별 데이터 로드 (영어/일본어가 있는 경우 우선 사용)
-        // per-character 데이터 선 로드 (review/base_stats/operation/party)
-        await safeAwait('loadCharacterDataAll', loadCharacterDataAll(characterName));
-        // characterSetting 로드 후 fillSettingsInfo, fillRoleAndTag, applySkillPriorityBadges 재호출
-        safeRun('fillSettingsInfo-after-load', () => {
-            if (typeof window.fillSettingsInfo === 'function' && character) {
-                window.fillSettingsInfo(character);
-            }
-            if (typeof window.fillRoleAndTag === 'function') {
-                window.fillRoleAndTag();
-            }
-            if (typeof applySkillPriorityBadges === 'function') {
-                applySkillPriorityBadges();
-            }
+        safeRun('set-name', () => {
+            const names = { en: character.name_en, jp: character.name_jp, cn: character.name_cn };
+            window.setCharacterHeaderName(currentLang === 'cn' ? (names.cn || '') : (names[currentLang] || character.name || characterName));
         });
-        // 기본 스탯 렌더
-        safeRun('fillBasicStats', () => fillBasicStats(characterName));
-        // 운영 즉시 렌더 (함수 노출 이후 재호출 가능)
-        safeRun('fillOperationInfo-immediate', () => {
-            if (typeof window.fillOperationInfo === 'function') {
-                window.fillOperationInfo(characterName);
-            }
-        });
-        // 스킬 정보 렌더는 per-character skill 로드 이후에 호출 (언어별 분기 포함)
-        safeRun('fillSkillsInfo', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
-        // 심상 코어(innate) 정보 렌더
-        safeRun('fillInnateInfo', () => { if (typeof fillInnateInfo === 'function') { fillInnateInfo(characterName); } });
 
-        // per-character 의식/스킬/무기(기본 KR) 준비
-        const ritual = (window.ritualData && window.ritualData[characterName]) ? window.ritualData[characterName] : {};
-
-        let localizedSkills = null;
-        let localizedRitual = null;
-        let localizedWeapon = null;
-
-        if (currentLang !== 'kr') {
-            // 언어별 데이터 파일 동적 로드
-            try {
-                if (currentLang === 'en') {
-                    // 영어 데이터는 window 객체에서 직접 접근
-                    if (window.enCharacterSkillsData && window.enCharacterSkillsData[characterName]) {
-                        localizedSkills = window.enCharacterSkillsData[characterName];
-                    }
-                    if (window.enCharacterRitualData && window.enCharacterRitualData[characterName]) {
-                        localizedRitual = window.enCharacterRitualData[characterName];
-                    }
-                    if (window.enCharacterWeaponData && window.enCharacterWeaponData[characterName]) {
-                        localizedWeapon = window.enCharacterWeaponData[characterName];
-                    }
-                } else if (currentLang === 'jp') {
-                    // 일본어 데이터는 window 객체에서 직접 접근
-                    if (window.jpCharacterSkillsData && window.jpCharacterSkillsData[characterName]) {
-                        localizedSkills = window.jpCharacterSkillsData[characterName];
-                    }
-                    if (window.jpCharacterRitualData && window.jpCharacterRitualData[characterName]) {
-                        localizedRitual = window.jpCharacterRitualData[characterName];
-                    }
-                    if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
-                        localizedWeapon = window.jpCharacterWeaponData[characterName];
-                    }
-                } else if (currentLang === 'cn') {
-                    if (window.cnCharacterSkillsData && window.cnCharacterSkillsData[characterName]) {
-                        localizedSkills = window.cnCharacterSkillsData[characterName];
-                    }
-                    if (window.cnCharacterRitualData && window.cnCharacterRitualData[characterName]) {
-                        localizedRitual = window.cnCharacterRitualData[characterName];
-                    }
-                    if (window.cnCharacterWeaponData && window.cnCharacterWeaponData[characterName]) {
-                        localizedWeapon = window.cnCharacterWeaponData[characterName];
-                    }
-                }
-
-                /*console.log('언어별 데이터 로드 결과:', {
-                    lang: currentLang,
-                    skills: !!localizedSkills,
-                    ritual: !!localizedRitual,
-                    weapon: !!localizedWeapon
-                });*/
-            } catch (e) {
-                console.log('언어별 데이터 로드 실패:', e);
-            }
-        }
-
-        // 캐릭터 리뷰 렌더링 함수
-
-        // 안전하게 리뷰 + Pros/Cons 렌더링
-        try {
-            const reviewContainer = document.getElementById('character-review');
-            if (!reviewContainer) throw new Error('reviewContainer not found');
-            const ReviewCard = document.querySelector('.review-card');
-            const characterReviewData = characterReview[characterName] || {};
-            const getLocalizedField = (baseKey) => {
-                if (currentLang === 'en' && typeof characterReviewData[`${baseKey}_en`] !== 'undefined') {
-                    return characterReviewData[`${baseKey}_en`];
-                } else if (currentLang === 'jp' && typeof characterReviewData[`${baseKey}_jp`] !== 'undefined') {
-                    return characterReviewData[`${baseKey}_jp`];
-                } else if (currentLang === 'cn') {
-                    if (typeof characterReviewData[`${baseKey}_cn`] !== 'undefined') {
-                        return characterReviewData[`${baseKey}_cn`];
-                    }
-                    return '';
-                }
-                return characterReviewData[baseKey];
-            };
-
-            // 리뷰 본문 처리
-            let currentReview = getLocalizedField('review');
-            let hasReview = !!(currentReview && String(currentReview).trim().length > 0);
-            if (hasReview) {
-                const normalized = String(currentReview)
-                    .replace(/\uFF0A/g, '*')
-                    .replace(/\u2217/g, '*')
-                    .replace(/[\u200B-\u200D\uFEFF]/g, '')
-                    .replace(/[\u200E\u200F]/g, '')
-                    .replace(/[\u202A-\u202E]/g, '')
-                    .replace(/\u00AD/g, '')
-                    .replace(/\u2060/g, '')
-                    .replace(/\u00A0/g, ' ');
-
-                let htmlContent = marked.parse(normalized);
-                if (htmlContent.includes('**')) {
-                    htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-                }
-                reviewContainer.innerHTML = htmlContent;
-                reviewContainer.style.display = '';
-            } else {
-                reviewContainer.innerHTML = '';
-                reviewContainer.style.display = 'none';
-            }
-
-            // Pros/Cons 처리
-            const rawPros = getLocalizedField('pros');
-            const rawCons = getLocalizedField('cons');
-            const normalizeListItems = (val) => {
-                if (!val) return [];
-                if (Array.isArray(val)) {
-                    return val.map((s) => String(s).trim()).filter((s) => s.length > 0);
-                }
-                return String(val)
-                    .split(/\r?\n/)
-                    .map((line) => line.trim().replace(/^[-*•]\s*/, ''))
-                    .filter((line) => line.length > 0);
-            };
-            const prosItems = normalizeListItems(rawPros);
-            const consItems = normalizeListItems(rawCons);
-            const hasProsOrCons = prosItems.length > 0 || consItems.length > 0;
-
-            // 라벨 (다국어)
-            const labelMap = {
-                'kr': { pros: '장점', cons: '단점' },
-                'en': { pros: 'Pros', cons: 'Cons' },
-                'jp': { pros: '長所', cons: '短所' },
-                'cn': { pros: '优点', cons: '缺点' }
-            };
-            const labels = labelMap[currentLang] || labelMap['kr'];
-
-            // 기존 Pros/Cons 섹션 제거 후 다시 생성 (중복 방지)
-            const existingPC = document.querySelector('.pros-cons-group');
-            if (existingPC && existingPC.parentNode) {
-                existingPC.parentNode.removeChild(existingPC);
-            }
-
-            if (hasProsOrCons && ReviewCard) {
-                const pcGroup = document.createElement('div');
-                pcGroup.className = 'setting-group pros-cons-group';
-
-                const makeSection = (title, items, type) => {
-                    const sec = document.createElement('div');
-                    sec.className = 'setting-section pros-cons-section';
-
-                    const h3 = document.createElement('h3');
-                    h3.className = `pros-cons-title ${type === 'pros' ? 'pros-title' : 'cons-title'}`;
-                    h3.textContent = title;
-                    sec.appendChild(h3);
-
-                    const listWrap = document.createElement('div');
-                    listWrap.className = 'pros-cons-list';
-                    const ul = document.createElement('ul');
-                    items.forEach((it) => {
-                        const li = document.createElement('li');
-                        li.textContent = it;
-                        ul.appendChild(li);
-                    });
-                    listWrap.appendChild(ul);
-                    sec.appendChild(listWrap);
-                    return sec;
-                };
-
-                if (prosItems.length > 0) {
-                    pcGroup.appendChild(makeSection(labels.pros, prosItems, 'pros'));
-                }
-                if (consItems.length > 0) {
-                    pcGroup.appendChild(makeSection(labels.cons, consItems, 'cons'));
-                }
-
-                // 리뷰 유무에 따라 pros/cons 상단 여백 조정
-                try {
-                    pcGroup.style.marginTop = hasReview ? '24px' : '0px';
-                } catch (_) { }
-
-                ReviewCard.appendChild(pcGroup);
-                ReviewCard.style.display = '';
-            } else {
-                if (!hasReview && ReviewCard) {
-                    ReviewCard.style.display = 'none';
-                }
-            }
-
-            // Give newly populated review content a short entrance when the card is visible.
-            if (ReviewCard && ReviewCard.getBoundingClientRect().top < window.innerHeight &&
-                ReviewCard.getBoundingClientRect().bottom > 0 &&
-                !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-                const reviewParts = [hasReview ? reviewContainer : null, ReviewCard.querySelector('.pros-cons-group')];
-                reviewParts.filter(Boolean).forEach(part => {
-                    if (!part.animate) return;
-                    part.animate([
-                        { opacity: 0, transform: 'translateY(6px)' },
-                        { opacity: 1, transform: 'translateY(0)' }
-                    ], { duration: 320, easing: 'cubic-bezier(.16, 1, .3, 1)' });
-                });
-            }
-
-            window.syncCharacterReviewMobileAd = () => {
-                const adId = 'character-review-mobile-rectangle';
-                const existingAdContainer = document.getElementById(adId)?.closest('.character-review-mobile-ad');
-                const shouldShow = window.matchMedia('(max-width: 768px)').matches
-                    && !!ReviewCard
-                    && (hasReview || hasProsOrCons);
-
-                if (!shouldShow) {
-                    if (existingAdContainer) existingAdContainer.hidden = true;
-                    return;
-                }
-
-                let adContainer = existingAdContainer;
-                if (!adContainer) {
-                    adContainer = document.createElement('div');
-                    adContainer.className = 'nitro-ad-container nitro-ad-container--rectangle character-review-mobile-ad';
-
-                    const adSlot = document.createElement('div');
-                    adSlot.id = adId;
-                    adSlot.className = 'nitro-ad-slot';
-                    adSlot.dataset.nitroAd = '';
-                    adSlot.dataset.nitroFormat = 'rectangle';
-                    adSlot.dataset.nitroRenderVisibleOnly = 'true';
-                    adSlot.dataset.nitroVisibleMargin = '2400';
-                    adSlot.dataset.nitroMediaQuery = '(max-width: 768px)';
-                    adContainer.appendChild(adSlot);
-                }
-
-                adContainer.hidden = false;
-                ReviewCard.parentNode.insertBefore(adContainer, ReviewCard);
-
-                if (typeof window.LufelNitroAds?.initializePlacements === 'function') {
-                    window.LufelNitroAds.initializePlacements();
-                }
-            };
-
-            window.syncCharacterReviewMobileAd();
-            if (!window.characterReviewMobileAdResizeBound) {
-                window.addEventListener('resize', () => window.syncCharacterReviewMobileAd?.(), { passive: true });
-                window.characterReviewMobileAdResizeBound = true;
-            }
-        } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
-
-
-        // Set character name (en에서는 로딩 전에 skeleton 사용)
-        try {
-            const nameElement = document.querySelector('.character-name');
-            if (nameElement) {
-                if (currentLang === 'en') {
-                    nameElement.classList.add('skeleton');
-                    requestAnimationFrame(() => {
-                        try { nameElement.textContent = character.name_en || characterName; } catch (_) { }
-                        nameElement.classList.remove('skeleton');
-                    });
-                } else if (currentLang === 'jp' && character.name_jp) {
-                    nameElement.textContent = character.name_jp;
-                } else if (currentLang === 'cn') {
-                    nameElement.textContent = character.name_cn || '';
-                } else {
-                    nameElement.textContent = character.name;
-                }
-            }
-        } catch (e) { console.warn('[SAFE:set-name]', e); }
-
-        // 코드네임 설정
         try {
             const codeNameLabel = `${getCharacterI18nText('characterDetailCodeName', '코드네임')} `;
             const codeEl = document.querySelector('.code-name');
@@ -1607,7 +1441,10 @@
                     <span class="label">${codeNameLabel}</span><span class="value">${(window.CharacterDataUtils && typeof window.CharacterDataUtils.getDisplayCodename === 'function') ? window.CharacterDataUtils.getDisplayCodename(character, currentLang) : ((currentLang === 'en' && character.codename_en) ? character.codename_en : (character.codename || ''))}</span>
                 `;
             }
-            const personaLabel = `${getCharacterI18nText('characterDetailPersona', '페르소나')} `;
+            const personaLabels = { kr: '페르소나', en: 'Persona', jp: 'ペルソナ', cn: '人格面具' };
+            const personaFallback = personaLabels[currentLang] || personaLabels.kr;
+            const translatedPersonaLabel = getCharacterI18nText('characterDetailPersona', personaFallback);
+            const personaLabel = translatedPersonaLabel === personaLabels.kr ? personaFallback : translatedPersonaLabel;
             const personaValue = currentLang === 'en' && character.persona_en ? character.persona_en :
                 currentLang === 'jp' && character.persona_jp ? character.persona_jp :
                     currentLang === 'cn' ? (character.persona_cn || '') :
@@ -1619,7 +1456,7 @@
                     personaEl.style.display = 'none';
                 } else {
                     personaEl.innerHTML = `
-                        <span class="label">${personaLabel}</span><span class="value">${personaValue}</span>
+                        <span class="label">${personaLabel} </span><span class="value">${personaValue}</span>
                     `;
                     if (currentLang === 'cn' && !personaValue) {
                         personaEl.style.display = 'none';
@@ -1700,8 +1537,259 @@
         } catch (e) { console.warn('[SAFE:stat-grid]', e); }
 
 
-        // 스킬 설정은 cha_detail.js에서 자동 처리됨
-        // 스킬 우선순위 뱃지 적용
+        window.markCharacterHeaderReady?.('detail');
+        document.documentElement.classList.remove('skel');
+
+        const headerReady = Promise.all([settingReady, languageReady, revelationReady]).then(() => {
+            safeRun('fillSettingsInfo-after-load', () => window.fillSettingsInfo?.(character));
+            safeRun('fillRoleAndTag', () => window.fillRoleAndTag?.());
+            safeRun('applyCharacterVideo', () => window.applyCharacterVideo?.(characterName, character));
+        });
+        const basicStatsReady = statsReady.then(() => safeRun('fillBasicStats', () => fillBasicStats(characterName)));
+        const renderedReview = reviewReady.then(renderCharacterReview);
+
+        await Promise.all([
+            headerReady, basicStatsReady, renderedReview,
+            safeAwait('loadCharacterDataAll', loadCharacterDataAll(characterName))
+        ]);
+        safeRun('fillOperationInfo-immediate', () => {
+            if (typeof window.fillOperationInfo === 'function') {
+                window.fillOperationInfo(characterName);
+            }
+        });
+        // 스킬 정보 렌더는 per-character skill 로드 이후에 호출 (언어별 분기 포함)
+        safeRun('fillSkillsInfo', () => { if (typeof fillSkillsInfo === 'function') { fillSkillsInfo(characterName); } });
+        // 심상 코어(innate) 정보 렌더
+        safeRun('fillInnateInfo', () => { if (typeof fillInnateInfo === 'function') { fillInnateInfo(characterName); } });
+
+        // per-character 의식/스킬/무기(기본 KR) 준비
+        const ritual = (window.ritualData && window.ritualData[characterName]) ? window.ritualData[characterName] : {};
+
+        let localizedSkills = null;
+        let localizedRitual = null;
+        let localizedWeapon = null;
+
+        if (currentLang !== 'kr') {
+            // 언어별 데이터 파일 동적 로드
+            try {
+                if (currentLang === 'en') {
+                    // 영어 데이터는 window 객체에서 직접 접근
+                    if (window.enCharacterSkillsData && window.enCharacterSkillsData[characterName]) {
+                        localizedSkills = window.enCharacterSkillsData[characterName];
+                    }
+                    if (window.enCharacterRitualData && window.enCharacterRitualData[characterName]) {
+                        localizedRitual = window.enCharacterRitualData[characterName];
+                    }
+                    if (window.enCharacterWeaponData && window.enCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.enCharacterWeaponData[characterName];
+                    }
+                } else if (currentLang === 'jp') {
+                    // 일본어 데이터는 window 객체에서 직접 접근
+                    if (window.jpCharacterSkillsData && window.jpCharacterSkillsData[characterName]) {
+                        localizedSkills = window.jpCharacterSkillsData[characterName];
+                    }
+                    if (window.jpCharacterRitualData && window.jpCharacterRitualData[characterName]) {
+                        localizedRitual = window.jpCharacterRitualData[characterName];
+                    }
+                    if (window.jpCharacterWeaponData && window.jpCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.jpCharacterWeaponData[characterName];
+                    }
+                } else if (currentLang === 'cn') {
+                    if (window.cnCharacterSkillsData && window.cnCharacterSkillsData[characterName]) {
+                        localizedSkills = window.cnCharacterSkillsData[characterName];
+                    }
+                    if (window.cnCharacterRitualData && window.cnCharacterRitualData[characterName]) {
+                        localizedRitual = window.cnCharacterRitualData[characterName];
+                    }
+                    if (window.cnCharacterWeaponData && window.cnCharacterWeaponData[characterName]) {
+                        localizedWeapon = window.cnCharacterWeaponData[characterName];
+                    }
+                }
+
+                /*console.log('언어별 데이터 로드 결과:', {
+                    lang: currentLang,
+                    skills: !!localizedSkills,
+                    ritual: !!localizedRitual,
+                    weapon: !!localizedWeapon
+                });*/
+            } catch (e) {
+                console.log('언어별 데이터 로드 실패:', e);
+            }
+        }
+
+        // 캐릭터 리뷰 렌더링 함수
+
+        // 안전하게 리뷰 + Pros/Cons 렌더링
+        function renderCharacterReview() {
+            try {
+                const reviewContainer = document.getElementById('character-review');
+                if (!reviewContainer) throw new Error('reviewContainer not found');
+                const ReviewCard = document.querySelector('.review-card');
+                const characterReviewData = characterReview[characterName] || {};
+                const getLocalizedField = (baseKey) => {
+                    if (currentLang === 'en' && typeof characterReviewData[`${baseKey}_en`] !== 'undefined') {
+                        return characterReviewData[`${baseKey}_en`];
+                    } else if (currentLang === 'jp' && typeof characterReviewData[`${baseKey}_jp`] !== 'undefined') {
+                        return characterReviewData[`${baseKey}_jp`];
+                    } else if (currentLang === 'cn') {
+                        if (typeof characterReviewData[`${baseKey}_cn`] !== 'undefined') {
+                            return characterReviewData[`${baseKey}_cn`];
+                        }
+                        return '';
+                    }
+                    return characterReviewData[baseKey];
+                };
+
+                // 리뷰 본문 처리
+                let currentReview = getLocalizedField('review');
+                let hasReview = !!(currentReview && String(currentReview).trim().length > 0);
+                if (hasReview) {
+                    const normalized = String(currentReview)
+                        .replace(/\uFF0A/g, '*')
+                        .replace(/\u2217/g, '*')
+                        .replace(/[\u200B-\u200D\uFEFF]/g, '')
+                        .replace(/[\u200E\u200F]/g, '')
+                        .replace(/[\u202A-\u202E]/g, '')
+                        .replace(/\u00AD/g, '')
+                        .replace(/\u2060/g, '')
+                        .replace(/\u00A0/g, ' ');
+
+                    let htmlContent = marked.parse(normalized);
+                    if (htmlContent.includes('**')) {
+                        htmlContent = htmlContent.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                    }
+                    reviewContainer.innerHTML = htmlContent;
+                    reviewContainer.style.display = '';
+                } else {
+                    reviewContainer.innerHTML = '';
+                    reviewContainer.style.display = 'none';
+                }
+
+                // Pros/Cons 처리
+                const rawPros = getLocalizedField('pros');
+                const rawCons = getLocalizedField('cons');
+                const normalizeListItems = (val) => {
+                    if (!val) return [];
+                    if (Array.isArray(val)) {
+                        return val.map((s) => String(s).trim()).filter((s) => s.length > 0);
+                    }
+                    return String(val)
+                        .split(/\r?\n/)
+                        .map((line) => line.trim().replace(/^[-*•]\s*/, ''))
+                        .filter((line) => line.length > 0);
+                };
+                const prosItems = normalizeListItems(rawPros);
+                const consItems = normalizeListItems(rawCons);
+                const hasProsOrCons = prosItems.length > 0 || consItems.length > 0;
+
+                // 라벨 (다국어)
+                const labelMap = {
+                    'kr': { pros: '장점', cons: '단점' },
+                    'en': { pros: 'Pros', cons: 'Cons' },
+                    'jp': { pros: '長所', cons: '短所' },
+                    'cn': { pros: '优点', cons: '缺点' }
+                };
+                const labels = labelMap[currentLang] || labelMap['kr'];
+
+                // 기존 Pros/Cons 섹션 제거 후 다시 생성 (중복 방지)
+                const existingPC = document.querySelector('.pros-cons-group');
+                if (existingPC && existingPC.parentNode) {
+                    existingPC.parentNode.removeChild(existingPC);
+                }
+
+                if (hasProsOrCons && ReviewCard) {
+                    const pcGroup = document.createElement('div');
+                    pcGroup.className = 'setting-group pros-cons-group';
+
+                    const makeSection = (title, items, type) => {
+                        const sec = document.createElement('div');
+                        sec.className = 'setting-section pros-cons-section';
+
+                        const h3 = document.createElement('h3');
+                        h3.className = `pros-cons-title ${type === 'pros' ? 'pros-title' : 'cons-title'}`;
+                        h3.textContent = title;
+                        sec.appendChild(h3);
+
+                        const listWrap = document.createElement('div');
+                        listWrap.className = 'pros-cons-list';
+                        const ul = document.createElement('ul');
+                        items.forEach((it) => {
+                            const li = document.createElement('li');
+                            li.textContent = it;
+                            ul.appendChild(li);
+                        });
+                        listWrap.appendChild(ul);
+                        sec.appendChild(listWrap);
+                        return sec;
+                    };
+
+                    if (prosItems.length > 0) {
+                        pcGroup.appendChild(makeSection(labels.pros, prosItems, 'pros'));
+                    }
+                    if (consItems.length > 0) {
+                        pcGroup.appendChild(makeSection(labels.cons, consItems, 'cons'));
+                    }
+
+                    // 리뷰 유무에 따라 pros/cons 상단 여백 조정
+                    try {
+                        pcGroup.style.marginTop = hasReview ? '24px' : '0px';
+                    } catch (_) { }
+
+                    ReviewCard.appendChild(pcGroup);
+                    ReviewCard.style.display = '';
+                } else {
+                    if (!hasReview && ReviewCard) {
+                        ReviewCard.style.display = 'none';
+                    }
+                }
+
+                window.stageCharacterReview?.(reviewContainer, ReviewCard?.querySelector('.pros-cons-group'));
+
+                window.syncCharacterReviewMobileAd = () => {
+                    const adId = 'character-review-mobile-rectangle';
+                    const existingAdContainer = document.getElementById(adId)?.closest('.character-review-mobile-ad');
+                    const shouldShow = window.matchMedia('(max-width: 768px)').matches
+                        && !!ReviewCard
+                        && (hasReview || hasProsOrCons);
+
+                    if (!shouldShow) {
+                        if (existingAdContainer) existingAdContainer.hidden = true;
+                        return;
+                    }
+
+                    let adContainer = existingAdContainer;
+                    if (!adContainer) {
+                        adContainer = document.createElement('div');
+                        adContainer.className = 'nitro-ad-container nitro-ad-container--rectangle character-review-mobile-ad';
+
+                        const adSlot = document.createElement('div');
+                        adSlot.id = adId;
+                        adSlot.className = 'nitro-ad-slot';
+                        adSlot.dataset.nitroAd = '';
+                        adSlot.dataset.nitroFormat = 'rectangle';
+                        adSlot.dataset.nitroRenderVisibleOnly = 'true';
+                        adSlot.dataset.nitroVisibleMargin = '2400';
+                        adSlot.dataset.nitroMediaQuery = '(max-width: 768px)';
+                        adContainer.appendChild(adSlot);
+                    }
+
+                    adContainer.hidden = false;
+                    ReviewCard.parentNode.insertBefore(adContainer, ReviewCard);
+
+                    if (typeof window.LufelNitroAds?.initializePlacements === 'function') {
+                        window.LufelNitroAds.initializePlacements();
+                    }
+                };
+
+                window.syncCharacterReviewMobileAd();
+                if (!window.characterReviewMobileAdResizeBound) {
+                    window.addEventListener('resize', () => window.syncCharacterReviewMobileAd?.(), { passive: true });
+                    window.characterReviewMobileAdResizeBound = true;
+                }
+            } catch (e) { console.warn('[SAFE:render-review+proscons]', e); }
+        }
+
+
         function applySkillPriorityBadges() {
             try {
                 const baseData = characterData && characterData[characterName];
@@ -2195,33 +2283,24 @@
 
         // 수치 패턴 변환 함수
         function transformEnhancementValues(description, stage, weaponStars) {
-            if (stage === 'all') {
-                return description.replace(
-                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
-                    '<span class="enhancement-values">$1</span>/<span class="enhancement-values">$2</span>/<span class="enhancement-values">$3</span>/<span class="enhancement-values">$4</span>/<span class="enhancement-values">$5</span>/<span class="enhancement-values">$6</span>/<span class="enhancement-values">$7</span>'
-                );
-            } else if (stage === 'mixed') {
-                return description.replace(
-                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
-                    (match, s0, s1, s2, s3, s4, s5, s6) => {
-                        return `<span class="enhancement-values">${weaponStars === 5 ? s0 : s6}</span>`;
-                    }
-                );
-            } else {
-                const stageNum = parseInt(stage);
-                return description.replace(
-                    /(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)\/(\d+\.?\d*%?)/g,
-                    (match, s0, s1, s2, s3, s4, s5, s6) => {
-                        const values = [s0, s1, s2, s3, s4, s5, s6];
-                        return `<span class="enhancement-values">${values[stageNum]}</span>`;
-                    }
-                );
-            }
+            const index = stage === 'mixed' ? (weaponStars === 5 ? 0 : 6) : Number(stage);
+            const wrap = value => `<span class="enhancement-values">${value}</span>`;
+            return description.replace(/\d+\.?\d*%?(?:\/\d+\.?\d*%?){6}/g, series => {
+                const values = series.split('/');
+                if (stage === 'all') return values.map(wrap).join('/');
+
+                const value = values[index];
+                const suffix = series.endsWith('%') && !value.endsWith('%') ? '%' : '';
+                return wrap(value + suffix);
+            });
         }
 
+        const weaponsContainer = document.querySelector('.weapons-container');
+        const weaponValueAnimation = window.createSkillValueAnimation?.('.enhancement-values');
+
         // 무기 설정 함수 수정
-        async function loadWeapons(characterName, stage = 'mixed') {
-            const weaponsContainer = document.querySelector('.weapons-container');
+        function loadWeapons(characterName, stage = 'mixed', animateStage = false) {
+            const animateValues = weaponValueAnimation?.prepare(weaponsContainer.querySelectorAll('.weapon-skill p'), animateStage);
             weaponsContainer.innerHTML = '';
 
             // 언어별 무기 데이터 우선 사용
@@ -2395,12 +2474,14 @@
             scheduleTranslate(document.querySelector('.weapons-card') || document);
 
             addTooltips();
-
+            animateValues?.(weaponsContainer.querySelectorAll('.weapon-skill p'));
         }
 
         // 무기 섹션은 idle 시점에 지연 렌더
         runWhenIdle(() => {
-            try { if (characterName && characterData[characterName]) { loadWeapons(characterName, 'mixed'); } } catch (e) { console.warn('[SAFE:loadWeapons-init]', e); }
+            try {
+                if (!weaponsContainer.childElementCount && characterName && characterData[characterName]) loadWeapons(characterName);
+            } catch (e) { console.warn('[SAFE:loadWeapons-init]', e); }
         });
 
         // 글로벌 서버 캐릭터 목록/출시 상태를 먼저 반영
@@ -2426,11 +2507,17 @@
             try {
                 button.addEventListener('click', () => {
                     try {
-                        enhancementButtons.forEach(btn => btn.classList.remove('active'));
-                        button.classList.add('active');
+                        const previous = document.querySelector('.enhancement-btn.active');
+                        enhancementButtons.forEach(btn => {
+                            const selected = btn === button;
+                            btn.classList.toggle('active', selected);
+                            btn.setAttribute('aria-pressed', String(selected));
+                        });
                         const urlParams = new URLSearchParams(window.location.search);
                         const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
-                        loadWeapons(characterName, button.dataset.stage);
+                        const animateStage = previous && previous !== button && previous.dataset.stage !== 'all' && button.dataset.stage !== 'all';
+                        loadWeapons(characterName, button.dataset.stage, animateStage);
+                        window.animateCharacterSegment?.(previous, button);
                     } catch (e) { console.warn('[SAFE:enhancement-click-inner]', e); }
                 });
             } catch (e) { console.warn('[SAFE:enhancement-click]', e); }
@@ -2514,7 +2601,7 @@
         } catch (e) { console.warn('[SAFE:seo-meta]', e); }
 
         // 번역 적용 (캐릭터 데이터 로드 후)
-        try { applyTranslations(); } catch (e) { console.warn('[SAFE:applyTranslations]', e); }
+        safeRun('applyTranslations', () => applyTranslations());
 
         // 번역 적용 후 레이아웃 재계산
         setTimeout(() => {
@@ -2659,47 +2746,6 @@
         });
     }
 
-    // 계시 데이터 로드 완료 후 캐릭터 정보 다시 렌더링
-    function refreshRevelationDisplay() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const characterName = urlParams.get('name') || window.__CHARACTER_DEFAULT || '';
-
-        if (!characterName) return;
-
-        // characterData 준비 전이면 재시도
-        if (typeof characterData === 'undefined' || !characterData[characterName]) {
-            setTimeout(refreshRevelationDisplay, 100);
-            return;
-        }
-
-        // cha_detail.js 의 createRevelationValue 준비 전이면 재시도
-        if (typeof window.createRevelationValue !== 'function') {
-            setTimeout(refreshRevelationDisplay, 100);
-            return;
-        }
-
-        const character = characterData[characterName];
-
-        // 계시 부분만 다시 렌더링
-        const mainRevelationValue = document.querySelector('.main-revelation .value');
-        const subRevelationValue = document.querySelector('.sub-revelation .value');
-
-        // characterSetting에서 계시 데이터 병합
-        const setting = (characterName && window.characterSetting && window.characterSetting[characterName]) ? window.characterSetting[characterName] : {};
-        const mergedCharacter = { ...character, ...setting };
-
-        // 서브 계시 설정
-        if (mergedCharacter.sub_revelation && Array.isArray(mergedCharacter.sub_revelation)) {
-            subRevelationValue.textContent = '';
-            subRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.sub_revelation, false));
-        }
-
-        // 서브 계시를 먼저 표시해야 메인 계시가 실제 조합 효과를 찾을 수 있다.
-        if (mergedCharacter.main_revelation && Array.isArray(mergedCharacter.main_revelation)) {
-            mainRevelationValue.textContent = '';
-            mainRevelationValue.appendChild(window.createRevelationValue(mergedCharacter.main_revelation, true));
-        }
-    }
 
     // 공통 번역 유틸로 적용 함수 위임 (중복 로직 제거)
     try {
@@ -2942,6 +2988,47 @@
         return `/character.html?name=${encodeURIComponent(safeName)}&lang=${lang}`;
     }
 
+    function formatRecommendedWeaponEffect(effect, levelCount) {
+        return effect.replace(/\d+(?:\.\d+)?%?(?:[^\S\r\n]*\/[^\S\r\n]*\d+(?:\.\d+)?%?)+/g, values => {
+            const levels = values.split('/');
+            if (levels.length % levelCount !== 0) return values;
+            return levels.filter((_, index) => (index + 1) % levelCount === 0)
+                .map(value => value.trim()).join('/');
+        });
+    }
+
+    function buildRecommendedWeaponTabs(weapon, lang, weaponItem) {
+        if (!weapon?.lightning_stamp?.length) return;
+        const inKrCnGroup = lang === 'kr' || lang === 'cn';
+        const { mainParty, supportParty } = currentLangCharacterList;
+        const stamps = weapon.lightning_stamp
+            .filter(stamp => stamp && (inKrCnGroup || mainParty.includes(stamp.release) || supportParty.includes(stamp.release)))
+            .sort((a, b) => Number(b.order || 0) - Number(a.order || 0));
+        if (!stamps.length) return;
+
+        const engravingLabel = getCharacterI18nText('characterRecommendedWeaponEngraving', 'Engraving');
+        const badge = document.createElement('img');
+        badge.className = 'recommended-weapon-engraving';
+        badge.src = '/assets/img/wonder-weapon/lightning_stamp.png';
+        badge.alt = engravingLabel;
+        weaponItem.append(badge);
+
+        const content = document.createDocumentFragment();
+        stamps.forEach(stamp => {
+            const entry = document.createElement('div');
+            const name = document.createElement('strong');
+            name.textContent = `${stamp[`name_${lang}`] || stamp.name} (Ⅳ)`;
+            const effect = stamp[`effect_${lang}`] || stamp.effect || '';
+            entry.append(name, formatRecommendedWeaponEffect(effect, 4));
+            content.append(entry);
+        });
+
+        return [
+            { label: getCharacterI18nText('characterRecommendedWeaponEffect', 'Weapon Effect'), content: weaponItem.dataset.tooltip },
+            { label: engravingLabel, content }
+        ];
+    }
+
     function loadRecommendedPersona(personaData) {
         const container = document.getElementById('recommended-persona-content');
         container.innerHTML = '';
@@ -2963,48 +3050,40 @@
             const weaponList = document.createElement('div');
             weaponList.className = 'persona-list';
 
-            (window.recommendParty && window.recommendParty[characterName]?.weapon || []).forEach(weaponName => {
-                const weaponItem = document.createElement('div');
-                weaponItem.className = 'persona-item';
-                // 이름 끝의 ! 표시 여부에 따라 하이라이트 적용
-                const hasHighlight = /!+$/.test(weaponName);
-                if (hasHighlight) weaponItem.classList.add('super-highlight');
-                weaponItem.style.cursor = 'pointer';
-                weaponName = weaponName.replace(/!+$/, '');
+            window.recommendParty[characterName].weapon.forEach(recommendation => {
+                const weaponId = recommendation.replace(/!+$/, '');
+                const weapon = matchWeapons?.[weaponId];
+                const weaponName = weapon?.[`name_${currentLang}`] || weaponId;
+                const weaponItem = document.createElement('button');
+                weaponItem.type = 'button';
+                weaponItem.className = 'persona-item recommended-weapon';
+                if (recommendation !== weaponId) weaponItem.classList.add('super-highlight');
 
                 const img = document.createElement('img');
-                const imgSrc = `/assets/img/wonder-weapon/${weaponName}.webp`;
-                img.src = imgSrc;
-                img.alt = weaponName;
+                img.src = `/assets/img/wonder-weapon/${weaponId}.webp`;
+                img.alt = '';
                 img.onerror = function () {
                     this.onerror = null;
                     this.src = '/assets/img/placeholder.png';
                 };
 
                 const name = document.createElement('span');
-                // Get localized weapon name from matchWeapons if available
-                let weaponNameText = currentLang === 'cn' ? '' : weaponName;
-                if (matchWeapons && matchWeapons[weaponName]) {
-                    if (currentLang === 'en' && matchWeapons[weaponName].name_en) {
-                        weaponNameText = matchWeapons[weaponName].name_en;
-                    } else if (currentLang === 'jp' && matchWeapons[weaponName].name_jp) {
-                        weaponNameText = matchWeapons[weaponName].name_jp;
-                    } else if (currentLang === 'cn' && matchWeapons[weaponName].name_cn) {
-                        weaponNameText = matchWeapons[weaponName].name_cn;
-                    }
-                }
-                // 표시 텍스트에서는 ! 제거
-                name.textContent = weaponNameText.replace(/!+$/, '');
+                name.textContent = weaponName;
 
-                // Add click handler to show weapon effect
-                weaponItem.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showWeaponEffect(weaponName, imgSrc, weaponNameText);
-                });
+                const slug = window.__WONDER_WEAPON_SLUG_MAP?.[weaponId]?.slug;
+                const rankLabel = getCharacterI18nText('characterRecommendedWeaponRank6', '+6');
+                weaponItem.dataset.tooltipTitle = `${weaponName} (${rankLabel})`;
+                const effect = weapon?.[`effect_${currentLang}`]
+                    || (currentLang === 'cn' ? '' : weapon?.effect)
+                    || getCharacterI18nText('characterWeaponNoEffect', 'No effect information available.');
+                weaponItem.dataset.tooltip = formatRecommendedWeaponEffect(effect, 7);
+                weaponItem.dataset.tooltipLink = `/${currentLang}/wonder-weapon/${slug ? slug + '/' : ''}`;
+                weaponItem.dataset.tooltipLinkLabel = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
 
-                weaponItem.appendChild(img);
-                weaponItem.appendChild(name);
-                weaponList.appendChild(weaponItem);
+                weaponItem.append(img, name);
+                const tabs = buildRecommendedWeaponTabs(weapon, currentLang, weaponItem);
+                bindContextTooltip(weaponItem, tabs);
+                weaponList.append(weaponItem);
             });
 
             weaponSection.appendChild(weaponList);
@@ -3693,98 +3772,12 @@
         });
     }
 
-    // Weapon Effect Modal Functions
-    function showWeaponEffect(weaponId, imageUrl, weaponName) {
-        const currentLang = getCurrentLanguage();
-        const modal = document.getElementById('weapon-effect-modal');
-        const modalImage = document.getElementById('weapon-effect-image');
-        const modalTitle = document.getElementById('weapon-effect-title');
-        const modalDescription = document.getElementById('weapon-effect-description');
-
-        // Set the weapon image and name
-        modalImage.src = imageUrl;
-        modalImage.alt = weaponName;
-        modalTitle.textContent = weaponName;
-
-        // Get the effect text based on current language
-        let effectText = getCharacterI18nText('characterWeaponNoEffect', '暂无效果信息。');
-        if (matchWeapons && matchWeapons[weaponId]) {
-            if (currentLang === 'en' && matchWeapons[weaponId].effect_en) {
-                effectText = matchWeapons[weaponId].effect_en;
-            } else if (currentLang === 'jp' && matchWeapons[weaponId].effect_jp) {
-                effectText = matchWeapons[weaponId].effect_jp;
-            } else if (currentLang === 'cn' && matchWeapons[weaponId].effect_cn) {
-                effectText = matchWeapons[weaponId].effect_cn;
-            } else if (currentLang !== 'cn' && matchWeapons[weaponId].effect) {
-                effectText = matchWeapons[weaponId].effect; // Default to Korean
-            }
-        }
-
-        // Set the effect text with proper line breaks
-        modalDescription.innerHTML = effectText.replace(/\n/g, '<br>');
-
-        // modaDescription에 <br> 추가
-        const br = document.createElement('br');
-        modalDescription.appendChild(br);
-
-        // modalDescription에 아래 'Detail' 추가하고 링크 걸기 /wonder-weapon
-        const detailLink = document.createElement('a');
-        detailLink.href = `/${currentLang}/wonder-weapon/`;
-        detailLink.textContent = getCharacterI18nText('characterDetailLinkLabel', 'Detail →');
-        detailLink.target = '_blank';
-        modalDescription.appendChild(detailLink);
-
-        // Show the modal
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
-    }
-
-    // Close modal when clicking the close button
-    document.addEventListener('click', function (e) {
-        if (e.target.closest('.weapon-effect-close')) {
-            closeWeaponEffectModal();
-            return;
-        }
-
-        // Close modal when clicking outside the modal content
-        const modal = document.getElementById('weapon-effect-modal');
-        const modalContent = document.querySelector('.weapon-effect-modal-content');
-        if (modal.classList.contains('show') && !e.target.closest('.weapon-effect-modal-content') && !e.target.closest('.persona-item')) {
-            closeWeaponEffectModal();
-        }
-    });
-
-    // Close modal with Escape key
-    document.addEventListener('keydown', function (e) {
-        const modal = document.getElementById('weapon-effect-modal');
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            closeWeaponEffectModal();
-        }
-    });
-
-    function closeWeaponEffectModal() {
-        const modal = document.getElementById('weapon-effect-modal');
-        modal.classList.remove('show');
-        document.body.style.overflow = '';
-    }
     // 실수로 포커스가 들어오면 즉시 떼기(드래그는 유지됨)
     document.querySelectorAll('.drag-me').forEach(el => {
         el.addEventListener('focus', () => el.blur());
     });
 
 </script>
-
-<!-- Weapon Effect Modal -->
-<div id="weapon-effect-modal" class="weapon-effect-modal">
-    <div class="weapon-effect-modal-content">
-        <span class="weapon-effect-close">&times;</span>
-        <div class="weapon-effect-header">
-            <img id="weapon-effect-image" src="" alt="Weapon" class="weapon-effect-image">
-            <h3 id="weapon-effect-title"></h3>
-        </div>
-        <div id="weapon-effect-description" class="weapon-effect-description"></div>
-    </div>
-</div>
 
 <!-- Help Modal -->
 <div id="help-modal" class="weapon-effect-modal">

@@ -44,6 +44,8 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/critical-calc/critical-calc.css?h={{ site.data.asset_versions.files['/apps/critical-calc/critical-calc.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/calculator-interactions.css?h={{ site.data.asset_versions.files['/assets/css/calculator-interactions.css'] }}">
+<script defer src="{{ site.baseurl }}/assets/js/calculator-interactions.js?h={{ site.data.asset_versions.files['/assets/js/calculator-interactions.js'] }}"></script>
 {% include calculator-presets.html %}
 <script src="/apps/critical-calc/critical-calc.js?h={{ site.data.asset_versions.files['/apps/critical-calc/critical-calc.js'] }}"></script>
 <script src="{{ site.baseurl }}/data/persona/index.js?h={{ site.data.asset_versions.files['/data/persona/index.js'] }}"></script>
@@ -89,7 +91,7 @@
     <!-- 상단 카드 컨테이너 -->
     <div class="top-cards">
         <!-- 크리티컬 입력 카드 -->
-        <div class="stat-card card-style">
+        <div class="stat-card card-style section-card-cut">
             <div class="critical-input-container">
                 <div class="critical-input-group">
                     <label id="revelationSumLabel">
@@ -122,7 +124,7 @@
         </div>
 
         <!-- 크리티컬 확률 합계 카드 -->
-        <div class="stat-card card-style">
+        <div class="stat-card card-style section-card-cut">
             <div class="critical-sum-stats">
                 <div class="critical-sum-total">
                     <div class="critical-sum-total-label">
@@ -159,7 +161,7 @@
     </div>
 
     <!-- 데이터 테이블 -->
-    <div class="table-tabs card-style">
+    <div class="table-tabs card-style section-card-cut">
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="buff" id="tabBuff">버프</button>
             <button class="tab-button" data-tab="self" id="tabSelf">자신</button>

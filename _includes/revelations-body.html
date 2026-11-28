@@ -189,14 +189,7 @@
     <!-- Search section -->
     <div class="search-section">
         <div class="search-container">
-            <div class="search-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
-                        fill="rgba(255, 255, 255, 0.6)" />
-                </svg>
-            </div>
-            <input type="text" id="revelationSearch" data-i18n-placeholder="search_placeholder" placeholder="계시 검색..."
+            <input type="text" id="revelationSearch" data-lufel-search data-i18n-placeholder="search_placeholder" placeholder="계시 검색..."
                 autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
@@ -208,7 +201,7 @@
     {% include nitro-ad.html id="revelations-search-banner" format="banner" class="nitro-ad-container--section" placeholder=true %}
 
     <!-- Revelation Stats (Accordion) -->
-    <div id="revelation-stats" class="rev-stats-section">
+    <div id="revelation-stats" class="rev-stats-section section-card-cut">
         <button class="rev-accordion" id="rev-accordion-btn" type="button" aria-expanded="false" aria-controls="rev-panel">
             <span class="rev-accordion-copy">
                 <span id="rev-stats-title" class="rev-stats-title" data-i18n="stats_title">계시 스탯</span>
@@ -1012,7 +1005,7 @@
         // Create card for each revelation
         allRevelations.forEach((revelation, index) => {
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'card section-card-cut';
             card.dataset.type = revelation.type;
             card.dataset.name = revelation.name;
             card.dataset.searchText = buildSearchText(revelation);
@@ -1224,7 +1217,7 @@
             }
 
             const accordion = document.createElement('div');
-            accordion.className = 'accordion';
+            accordion.className = 'accordion section-card-tail';
             const header = document.createElement('div');
             header.className = 'accordion-header';
             header.setAttribute('aria-expanded', 'false');

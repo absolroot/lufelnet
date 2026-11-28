@@ -1,0 +1,18 @@
+<svg width="{{ include.size | default: 16 }}" height="{{ include.size | default: 16 }}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    {%- case include.name -%}
+    {%- when 'reset' -%}
+        <path d="M20 7v5h-5M4 17v-5h5"/>
+        <path d="M20 12a8 8 0 0 0-13.66-5.66L4 8M4 12a8 8 0 0 0 13.66 5.66L20 16"/>
+    {%- when 'download' -%}
+        <path d="M12 3v12m-5-5 5 5 5-5M5 16v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/>
+    {%- when 'upload' -%}
+        <path d="M12 15V3m-5 5 5-5 5 5M5 16v4a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-4"/>
+    {%- when 'user-plus' -%}
+        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2m18-13v6m-3-3h6"/>
+        <circle cx="9" cy="7" r="4"/>
+    {%- when 'chevron-down' -%}
+        <path d="m6 9 6 6 6-6"/>
+    {%- when 'sliders' -%}
+        <path d="M4 7h5m4 0h7M4 17h9m4 0h3M9 4v6m4 4v6"/>
+    {%- endcase -%}
+</svg>

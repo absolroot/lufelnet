@@ -27,6 +27,7 @@
   let modalIndex = -1;
   let visibleCount = PAGE_SIZE;
   let ioLoadMore = null;
+  let loadMoreTimer;
 
   function getLang() {
     try {
@@ -306,32 +307,27 @@
     document.getElementById('modal-next').addEventListener('click', () => moveModal(1));
   }
 
-  function ensureSentinel() {
-    let sentinel = document.getElementById('gallery-sentinel');
-    if (!sentinel) {
-      sentinel = document.createElement('div');
-      sentinel.id = 'gallery-sentinel';
-      sentinel.style.height = '1px';
-      gridEl.after(sentinel);
-    }
-    return sentinel;
-  }
-
   function setupInfiniteScroll() {
-    const sentinel = ensureSentinel();
+    const loader = document.getElementById('gallery-loader');
+    window.clearTimeout(loadMoreTimer);
+    gridEl.removeAttribute('aria-busy');
     if (ioLoadMore) ioLoadMore.disconnect();
-    ioLoadMore = new IntersectionObserver((entries) => {
-      if (!entries.some((entry) => entry.isIntersecting) || visibleCount >= filteredList.length) return;
-      const loader = document.getElementById('gallery-loader');
-      if (loader) loader.style.display = 'flex';
-      window.setTimeout(() => {
+    loader.hidden = visibleCount >= filteredList.length;
+    loader.classList.remove('is-loading');
+    if (loader.hidden) return;
+    ioLoadMore = new IntersectionObserver((entries, observer) => {
+      if (observer !== ioLoadMore || loader.hidden || !entries.some((entry) => entry.isIntersecting)) return;
+      observer.disconnect();
+      loader.classList.add('is-loading');
+      gridEl.setAttribute('aria-busy', 'true');
+      loadMoreTimer = window.setTimeout(() => {
         const nextCount = Math.min(visibleCount + PAGE_SIZE, filteredList.length);
         render(filteredList.slice(visibleCount, nextCount), true);
         visibleCount = nextCount;
-        if (loader) loader.style.display = 'none';
+        setupInfiniteScroll();
       }, 250);
-    }, { rootMargin: '400px' });
-    ioLoadMore.observe(sentinel);
+    });
+    ioLoadMore.observe(loader);
   }
 
   function update() {

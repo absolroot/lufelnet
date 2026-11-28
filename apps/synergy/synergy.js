@@ -1367,7 +1367,7 @@
         // CN/KR fallback notice
         const fallbackNoticeText = getI18nText('msgKrFallbackNotice', '');
         const fallbackNotice = (currentLanguage !== 'kr' && hasKrFallback && fallbackNoticeText) ? `
-            <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; border-radius: 4px; user-select: text;">
+            <div class="fallback-notice" style="padding: 12px; background: #1e1b1b; border-left: 3px solid #730000; margin-bottom: 20px; user-select: text;">
                 ${fallbackNoticeText}
             </div>
         ` : '';
@@ -1405,7 +1405,7 @@
                 }
 
                 tipHtml = `
-                    <div class="character-tip" style="padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #730000; margin: 0px 0 32px 0; border-radius: 4px; line-height: 1.6; font-size:13px; color: rgba(255, 255, 255, 0.7);">
+                    <div class="character-tip" style="padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-left: 3px solid #730000; margin: 0px 0 32px 0; line-height: 1.6; font-size:13px; color: rgba(255, 255, 255, 0.7);">
                         ${processedTip}
                     </div>
                 `;
@@ -1626,7 +1626,7 @@
                         <span>${t('labelUnlockQuest')}</span>
                     </h3>
                     <div class="section-content">
-                        <div class="unlock-quest-content ${spoilerClass}" data-character="${characterName}" style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(0, 0, 0, 0.2); border-radius: 4px; margin-bottom: 12px; position: relative; cursor: pointer;">
+                        <div class="unlock-quest-content ${spoilerClass}" data-character="${characterName}" style="display: flex; flex-direction: column; gap: 8px; padding: 12px 16px; background: rgba(0, 0, 0, 0.2); margin-bottom: 12px; position: relative; cursor: pointer;">
                             ${unlockQuestItemsHtml}
                             <div style="font-size: 12px; color: rgba(255, 255, 255, 0.6); font-style: italic;">${t('labelQuestUnlockNotice')}</div>
                             ${renderUnlockNotes(data.unlock_notes)}

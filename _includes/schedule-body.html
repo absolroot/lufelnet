@@ -1,3 +1,4 @@
+{% include character-initial-resource-hashes.html %}
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
@@ -54,6 +55,7 @@ window.LufelPageLifecycle?.hold('schedule');
 {% endif %}
 
 <!-- Schedule Page CSS -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/toolbar-action.css?h={{ site.data.asset_versions.files['/assets/css/default/toolbar-action.css'] }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/schedule/schedule.css?h={{ site.data.asset_versions.files['/apps/schedule/schedule.css'] }}">
 
 <!-- Main content -->
@@ -113,7 +115,7 @@ window.LufelPageLifecycle?.hold('schedule');
     </script>
 
     <!-- Current Release Banner -->
-    <div id="current-banner" class="current-banner page-entrance-part"
+    <div id="current-banner" class="current-banner section-card-cut page-entrance-part"
         data-page-entrance-stagger=":scope > .banner-item" data-page-entrance-stagger-scroll>
         <div class="loading">
             <div class="loading-spinner"></div>
@@ -122,13 +124,13 @@ window.LufelPageLifecycle?.hold('schedule');
 
     <!-- Filter Section -->
     <div class="filter-section page-entrance-part">
-        <button class="filter-btn active" data-filter="all" id="filter-all" data-i18n="filterAll">All</button>
-        <button class="filter-btn" data-filter="released" id="filter-released"
+        <button type="button" class="filter-btn toolbar-action active" aria-pressed="true" data-filter="all" id="filter-all" data-i18n="filterAll">All</button>
+        <button type="button" class="filter-btn toolbar-action" aria-pressed="false" data-filter="released" id="filter-released"
             data-i18n="filterReleased">Released</button>
-        <button class="filter-btn" data-filter="current" id="filter-current" data-i18n="filterCurrent">Current</button>
-        <button class="filter-btn" data-filter="upcoming" id="filter-upcoming"
+        <button type="button" class="filter-btn toolbar-action" aria-pressed="false" data-filter="current" id="filter-current" data-i18n="filterCurrent">Current</button>
+        <button type="button" class="filter-btn toolbar-action" aria-pressed="false" data-filter="upcoming" id="filter-upcoming"
             data-i18n="filterUpcoming">Upcoming</button>
-        <button class="filter-btn" data-filter="future" id="filter-future" data-i18n="filterFuture">Future</button>
+        <button type="button" class="filter-btn toolbar-action" aria-pressed="false" data-filter="future" id="filter-future" data-i18n="filterFuture">Future</button>
     </div>
 
     <!-- Timeline -->

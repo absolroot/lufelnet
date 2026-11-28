@@ -1,0 +1,324 @@
+:root {
+    --select-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23c7c4cc' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    --select-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-width='1.65' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m3.5 8 3 3 6-6'/%3E%3C/svg%3E");
+    --select-menu-bg: #222124;
+    --select-menu-border: rgb(255 255 255 / .09);
+    --select-open-ring: rgb(255 255 255 / .05);
+    --select-menu-text: #f4f2f5;
+    --select-menu-hover: #39363c;
+    --select-menu-selected: #44292f;
+    --select-menu-selected-text: #ffd8df;
+    --select-menu-focus: #ef9eaa;
+    --select-menu-shadow: 0 7px 18px rgb(0 0 0 / .26);
+    --select-menu-padding: 4px;
+    --select-menu-gap: 6px;
+    --select-menu-min-width: 0px;
+    --select-menu-max-height: min(18rem, 52dvh);
+    --select-menu-font-size: .8125rem;
+    --select-option-height: 34px;
+    --select-option-padding: 9px;
+    --select-option-end-padding: 30px;
+}
+
+/* `data-native-select` reserves selects that back an existing custom control. */
+select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select]) {
+    box-sizing: border-box;
+    align-items: center;
+    appearance: none !important;
+    border-radius: 0 !important;
+    background-image: var(--select-trigger-icon, var(--select-chevron)) !important;
+    background-repeat: no-repeat !important;
+    background-position: right var(--select-icon-inset, 8px) center !important;
+    background-size: var(--select-icon-size, 14px) !important;
+    padding-inline-end: var(--select-end-padding, 28px) !important;
+    cursor: pointer;
+    text-overflow: ellipsis;
+}
+
+select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select]):dir(rtl) {
+    background-position: left var(--select-icon-inset, 8px) center !important;
+}
+
+select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select]):focus-visible {
+    outline: 2px solid var(--select-menu-focus) !important;
+    outline-offset: 2px;
+}
+
+select:not([multiple], [data-native-select]):disabled {
+    cursor: default;
+}
+
+select[data-select-open] {
+    box-shadow: inset 0 0 0 1px var(--select-open-ring);
+}
+
+[data-select-density="compact"] {
+    --select-icon-size: 12px;
+    --select-icon-inset: 6px;
+    --select-end-padding: 22px;
+    --select-menu-border: transparent;
+    --select-open-ring: transparent;
+    --select-menu-gap: 4px;
+    --select-menu-font-size: .75rem;
+    --select-option-height: 28px;
+    --select-option-padding: 7px;
+    --select-option-end-padding: 24px;
+}
+
+select[data-select-density="compact"] {
+    min-block-size: 28px;
+    padding: 3px 7px;
+    color: #e5e0e6;
+    background-color: rgb(0 0 0 / .16);
+    border: 1px solid transparent;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.25;
+}
+
+.site-select-popup {
+    position: fixed;
+    margin: 0;
+    inset: auto;
+    z-index: 10000;
+    box-sizing: border-box;
+    inline-size: max-content;
+    min-inline-size: min(max(var(--select-menu-min-width), var(--select-anchor-width)), var(--select-available-width));
+    max-inline-size: var(--select-available-width);
+    max-block-size: var(--select-menu-max-height);
+    padding: var(--select-menu-padding);
+    overflow: auto;
+    overscroll-behavior: contain;
+    color-scheme: dark;
+    scrollbar-width: thin;
+    scrollbar-color: #645d68 transparent;
+    background: var(--select-menu-bg);
+    color: var(--select-menu-text);
+    font-size: min(var(--select-trigger-font-size, 1em), var(--select-menu-font-size));
+    font-weight: 400;
+    line-height: 1.35;
+    border: 1px solid var(--select-menu-border);
+    border-radius: 0;
+    box-shadow: var(--select-menu-shadow);
+    outline: none;
+    user-select: none;
+}
+
+.site-select-popup [role="option"] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-block-size: var(--select-option-height);
+    padding: 4px var(--select-option-padding);
+    padding-inline-end: var(--select-option-end-padding);
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow-wrap: anywhere;
+}
+
+.site-select-popup [aria-selected="true"] {
+    background: var(--select-menu-selected);
+    color: var(--select-menu-selected-text);
+}
+
+.site-select-popup [role="option"][aria-selected="true"]::after {
+    content: "";
+    position: absolute;
+    inset-inline-end: var(--select-option-padding);
+    inset-block-start: 50%;
+    translate: 0 -50%;
+    inline-size: 14px;
+    block-size: 14px;
+    background: currentColor;
+    mask: var(--select-check) center / contain no-repeat;
+}
+
+.site-select-popup [data-active]:not([aria-selected="true"]) {
+    background: var(--select-menu-hover);
+}
+
+.site-select-popup [data-active] {
+    outline: 1px solid var(--select-menu-border);
+    outline-offset: -1px;
+}
+
+.site-select-popup [aria-disabled="true"] {
+    opacity: .5;
+    cursor: default;
+}
+
+.site-select-popup [role="group"] + [role="group"] {
+    border-block-start: 1px solid var(--select-menu-border);
+    margin-block-start: 4px;
+    padding-block-start: 4px;
+}
+
+.site-select-popup [data-group-label] {
+    padding: 6px 9px 4px;
+    color: #c1bbc5;
+    font-size: .88em;
+}
+
+.site-action-dropdown {
+    --select-anchor-width: 0px;
+    --select-menu-min-width: 128px;
+}
+
+.site-action-dropdown [role="menuitem"] {
+    display: block;
+    width: 100%;
+    min-height: var(--select-option-height);
+    padding: 4px var(--select-option-padding);
+    border: 0;
+    background: transparent;
+    color: inherit;
+    text-align: start;
+    font: inherit;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+
+.site-action-dropdown [role="menuitem"]:is(:hover, :focus-visible) {
+    background: var(--select-menu-hover);
+}
+
+.site-action-dropdown [data-danger] {
+    color: var(--select-menu-selected-text);
+}
+
+@media (pointer: coarse) {
+    .site-action-dropdown [role="menuitem"] {
+        min-height: 44px;
+    }
+}
+
+@supports (appearance: base-select) and selector(::picker(select)) {
+    select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select]),
+    select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select])::picker(select) {
+        appearance: base-select !important;
+    }
+
+    select:not([multiple], [data-native-select])::picker-icon {
+        display: none;
+    }
+
+    select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select])::picker(select) {
+        position-area: block-end span-inline-end;
+        position-try-order: normal;
+        position-try-fallbacks: flip-inline, flip-block, flip-block flip-inline;
+        margin-block: var(--select-menu-gap);
+        min-inline-size: min(max(var(--select-menu-min-width), anchor-size(width)), calc(100dvw - 16px));
+        max-inline-size: min(24rem, calc(100dvw - 16px));
+        max-block-size: min(var(--select-menu-max-height), calc(100% - 12px));
+        padding: var(--select-menu-padding);
+        overflow: auto;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
+        scrollbar-color: #645d68 transparent;
+        background: var(--select-menu-bg);
+        color: var(--select-menu-text);
+        border: 1px solid var(--select-menu-border);
+        border-radius: 0;
+        box-shadow: var(--select-menu-shadow);
+        font-family: inherit;
+        font-size: min(1em, var(--select-menu-font-size));
+        font-weight: 400;
+        line-height: 1.35;
+    }
+
+    select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select]):open {
+        box-shadow: inset 0 0 0 1px var(--select-open-ring);
+    }
+
+    select:not([multiple], [data-native-select]) option {
+        position: relative;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        min-block-size: var(--select-option-height);
+        min-inline-size: 0;
+        padding: 4px var(--select-option-padding);
+        padding-inline-end: var(--select-option-end-padding);
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    select:not([multiple], [data-native-select]) option:checked {
+        background: var(--select-menu-selected);
+        color: var(--select-menu-selected-text);
+    }
+
+    select:not([multiple], [data-native-select]) option::checkmark {
+        content: "";
+        position: absolute;
+        inset-inline-end: var(--select-option-padding);
+        inset-block-start: 50%;
+        translate: 0 -50%;
+        inline-size: 14px;
+        block-size: 14px;
+        background: currentColor;
+        mask: var(--select-check) center / contain no-repeat;
+    }
+
+    select:not([multiple], [data-native-select]) option:is(:hover, :focus-visible):not(:checked, :disabled) {
+        background: var(--select-menu-hover);
+    }
+
+    select:not([multiple], [data-native-select]) option:focus-visible:not(:disabled) {
+        outline: 1px solid var(--select-menu-border);
+        outline-offset: -1px;
+    }
+
+    select:not([multiple], [data-native-select]) option:disabled {
+        opacity: .5;
+        cursor: default;
+    }
+}
+
+@keyframes site-select-reveal {
+    from { opacity: .18; scale: 1 .7; }
+    to { opacity: 1; scale: 1 1; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .site-select-popup[data-positioned] {
+        transform-origin: center top;
+        animation: site-select-reveal 180ms cubic-bezier(.16, 1, .3, 1) both;
+    }
+
+    @supports (appearance: base-select) and selector(::picker(select)) {
+        select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select])::picker(select) {
+            transform-origin: center top;
+            opacity: 1;
+            scale: 1;
+            transition: opacity 180ms cubic-bezier(.16, 1, .3, 1), scale 180ms cubic-bezier(.16, 1, .3, 1);
+        }
+
+        @starting-style {
+            select:not([multiple], [size]:not([size="0"], [size="1"]), [data-native-select]):open::picker(select) {
+                opacity: .18;
+                scale: 1 .7;
+            }
+        }
+    }
+}
+
+@media (pointer: coarse) {
+    :root { --select-option-height: 40px; }
+    [data-select-density="compact"] { --select-option-height: 36px; }
+}
+
+@media (forced-colors: active) {
+    select:not([multiple], [data-native-select]) {
+        appearance: auto !important;
+        background-image: none !important;
+        padding-inline-end: revert !important;
+    }
+
+    .site-select-popup [role="option"][data-active] {
+        outline-color: Highlight;
+    }
+}

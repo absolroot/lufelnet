@@ -903,9 +903,6 @@
     const effectText = getLocalizedEffect(krName, lang);
     const sourceText = getLocalizedSource(krName, lang);
 
-    // 섹션 chevron SVG
-    const chevronSvg = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" class="section-chevron"><path d="M4 2L8 6L4 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-
     // 효과 렌더링 헬퍼 함수
     const sevenSplitReplace = /(\d+(?:\.\d+)?%?)(?:\s*\/\s*(\d+(?:\.\d+)?%?)){6}/g;
     function renderEffectHTML(src, idx) {
@@ -940,14 +937,9 @@
       </div>
     `;
 
-    // 1. 효과 섹션 (collapsible)
+    // 1. 효과 섹션
     html += `
       <div class="detail-section">
-        <h3 class="detail-section-title collapsible">
-          <span>${t('labelEffect')}</span>
-          ${chevronSvg}
-        </h3>
-        <div class="section-content">
     `;
 
     // 레벨 컨트롤 (7레벨 분할이 있는 경우) - 상자 밖에 배치
@@ -961,7 +953,7 @@
 
     // 효과 텍스트 (상자 안에)
     html += `<div class="effect-text-wrapper"><div class="effect-text" id="effect-text">${renderEffectHTML(effectText || '', 6)}</div></div>`;
-    html += `</div></div>`; // section-content, detail-section 닫기
+    html += `</div>`;
 
     // lightning_stamp 효과 블록
     if (data && Array.isArray(data.lightning_stamp) && data.lightning_stamp.length) {
@@ -987,9 +979,8 @@
 
       html += `
         <div class="detail-section">
-          <h3 class="detail-section-title collapsible">
+          <h3 class="detail-section-title">
             <span>${lightningStampTitle}</span>
-            ${chevronSvg}
           </h3>
           <div class="section-content">
             ${lightningStampDesc ? `<div class="lightning-stamp-description">${lightningStampDesc}</div>` : ''}
@@ -1042,13 +1033,12 @@
       `;
     }
 
-    // 3. 주요 괴도 섹션 (collapsible)
+    // 3. 주요 괴도 섹션
     const users = findUsersOfWeapon(krName);
     html += `
       <div class="detail-section">
-        <h3 class="detail-section-title collapsible">
+        <h3 class="detail-section-title">
           <span>${t('labelCharacters')}</span>
-          ${chevronSvg}
         </h3>
         <div class="section-content">
     `;
@@ -1090,7 +1080,7 @@
 
     html += `</div></div>`; // section-content, detail-section 닫기
 
-    // 3.5. 수정(Shard) 섹션 (collapsible)
+    // 3.5. 수정(Shard) 섹션
     if (data && Array.isArray(data.shard) && data.shard.length > 0) {
       // desc 텍스트에서 {}로 묶인 이미지 처리 및 볼드 처리 함수
       function renderShardDesc(desc) {
@@ -1166,9 +1156,8 @@
 
       html += `
         <div class="detail-section">
-          <h3 class="detail-section-title collapsible">
+          <h3 class="detail-section-title">
             <span>${t('labelShard')}</span>
-            ${chevronSvg}
           </h3>
           <div class="section-content">
             <div class="shard-grid">
@@ -1217,12 +1206,11 @@
       `;
     }
 
-    // 4. 출시 시점 섹션 (collapsible) - dialog-choice 스타일
+    // 4. 출시 시점 섹션 - dialog-choice 스타일
     html += `
       <div class="detail-section">
-        <h3 class="detail-section-title collapsible">
+        <h3 class="detail-section-title">
           <span>${t('labelRelease')}</span>
-          ${chevronSvg}
         </h3>
         <div class="section-content">
           <div class="release-container">

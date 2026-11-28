@@ -48,6 +48,7 @@
 {% endif %}
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/support-dialog.css?h={{ site.data.asset_versions.files['/assets/css/default/support-dialog.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <div class="main-wrapper">
     <!-- 언어 안내 메시지 -->
@@ -55,153 +56,107 @@
         <p id="language-notice-text"></p>
     </div>
 
-    <div class="header-container page-entrance-part">
-    </div>
-
+    {% capture about_kofi_link %}{% include support-kofi-link.html %}{% endcapture %}
     <div class="about-content page-entrance-part">
-        <div class="about-section">
-            <h2 id="site-title">루페르넷 lufel.net</h2>
+        <div class="about-overview section-card-cut">
+        <div class="about-section about-intro">
+            <h1 id="site-title">
+                <span class="korean-content">&#47336;&#54168;&#47476;&#45367;</span>
+                <span class="english-content" style="display: none;">LufelNet</span>
+                <span class="japanese-content" style="display: none;">LufelNet</span>
+                <span class="chinese-content" style="display: none;">&#36335;&#33778;&#23572;&#32593;</span>
+            </h1>
             <p id="site-description" class="korean-content">
                 루페르넷은 '페르소나5 더 팬텀 X' 플레이어를 위해 개인이 만든 비공식 정보 사이트입니다.
                 <br>
                 보다 많은 사람들이 P5X를 즐겼으면 좋겠다는 마음가짐에서 시작했습니다.
             </p>
             <p id="site-description-en" class="english-content" style="display: none;">
-                Lufel.net is an unofficial information site created by an individual for Persona 5 The Phantom X
-                players.
-                <br>
-                It started with the hope that more people would enjoy P5X.
-                <br><br>
-                <strong>The strategy information provided on this site is contributed by top-ranking players from the
-                    Korean server.</strong>
+                LufelNet is an independent fan site for Persona 5: The Phantom X. I started it to help more people enjoy the game.
             </p>
+            <p class="about-intro-note english-content" style="display: none;">Top players on the Korean server contribute to our strategy guides.</p>
             <p id="site-description-jp" class="japanese-content" style="display: none;">
-                Lufel.netは「ペルソナ5 ザ ファントム X」プレイヤーのために個人が作成した非公式情報サイトです。
+                LufelNetは『ペルソナ5 ザ ファントム X』のプレイヤーに向けた、個人運営の非公式情報サイトです。
                 <br>
-                より多くの人がP5Xを楽しんでくれればという気持ちから始まりました。
-                <br><br>
-                <strong>このサイトで提供される攻略情報は、韓国サーバーの上位ランカーによって提供されています。</strong>
+                より多くの方にP5Xを楽しんでいただきたいという思いで、このサイトを立ち上げました。
             </p>
+            <p class="about-intro-note japanese-content" style="display: none;">韓国サーバーの上位プレイヤーが攻略情報の制作に協力しています。</p>
             <p id="site-description-cn" class="chinese-content" style="display: none;">
-                路菲尔网是由个人创建的《女神异闻录5：夜幕魅影》非官方资讯站，希望能让更多人更轻松地享受 P5X。
+                路菲尔网是由个人创建的《女神异闻录5：夜幕魅影》非官方资讯站。建站的初衷是希望更多玩家能享受 P5X 的乐趣。
             </p>
         </div>
 
-        <div class="about-section">
-            <h2 id="contact-title">문의 및 피드백</h2>
-            <p id="contact-description" class="korean-content">
-                버그, 잘못된 데이터를 발견하거나 피드백이 있으실 경우
-                <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span
-                        class="discord-icon"></span>디스코드</a> 또는
-                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>로 문의주세요.
-            </p>
-            <p id="contact-description-en" class="english-content" style="display: none;">
-                If you find bugs, incorrect data, or have feedback, please contact us via
-                <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span
-                        class="discord-icon"></span>Discord</a> or
-                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>.
-            </p>
-            <p id="contact-description-jp" class="japanese-content" style="display: none;">
-                バグや間違ったデータを発見したり、フィードバックがある場合は
-                <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span
-                        class="discord-icon"></span>Discord</a> または
-                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>までお問い合わせください。
-            </p>
-            <p id="contact-description-cn" class="chinese-content" style="display: none;">
-                如果你发现 bug、错误数据，或有任何反馈，欢迎通过
-                <a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span
-                        class="discord-icon"></span>Discord</a> 或
-                <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a> 联系。
-            </p>
-            <a href="https://x.com/Absolroot" target="_blank" class="twitter-link"
-                style="text-decoration: none; font-weight: bold;"><span class="twitter-icon"></span>Twitter
-                @absolroot</a>
+        <div class="about-community">
+            <div class="about-section about-contact">
+                <h2 id="contact-title">문의 및 피드백</h2>
+                <p class="korean-content">버그나 잘못된 정보를 발견했거나 의견이 있다면 알려주세요.</p>
+                <p class="english-content" style="display: none;">Found a bug or incorrect information? Send us your feedback.</p>
+                <p class="japanese-content" style="display: none;">不具合や情報の誤りにお気づきの際は、お知らせください。ご意見もお待ちしています。</p>
+                <p class="chinese-content" style="display: none;">如果发现网站故障或信息有误，或有任何建议，欢迎联系我们。</p>
+                <div class="about-contact-links">
+                    <a href="https://discord.gg/8S8pnv2MsH" target="_blank" rel="noopener" class="discord-link">
+                        <span class="discord-icon" aria-hidden="true"></span>Discord
+                    </a>
+                    <a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>
+                    <a href="https://x.com/Absolroot" target="_blank" rel="noopener" class="twitter-link">
+                        <span class="twitter-icon" aria-hidden="true"></span>@absolroot
+                    </a>
+                </div>
 
-        </div>
-
-        <!--
-        <div class="about-section" id="exchange-code-section">
-            <button id="exchangeCodeButton" class="donate-button">KR 교환코드 (v4.4.1)</button>
-        </div>
-        -->
-
-        <div class="about-section">
-            <button id="donateButton" class="donate-button" data-kr="서포트 | Donate" data-en="Support | Donate"
-                data-jp="サポート | 寄付">서포트 | Donate</button>
-            <p id="donate-description" class="korean-content">
-                루페르넷은 오로지 여러분의 지원을 통해서만 운영됩니다.
-            </p>
-            <p id="donate-description-en" class="english-content" style="display: none;">LufelNet is made possible
-                entirely by your support.</p>
-            <p id="donate-description-jp" class="japanese-content" style="display: none;">ルフェルネットは、皆様のご支援によってのみ運営されています。
-            </p>
-            <p id="donate-description-cn" class="chinese-content" style="display: none;">路菲尔网仅依靠大家的支持运营。</p>
-        </div>
-
-        <!-- Inline donate (EN/JP only) -->
-        <div class="about-section" id="donate-inline" style="display: none;">
-            <div id="donation-inline-text"></div>
-
-            <!-- JP: Fanbox Button -->
-            <div id="fanbox-inline-container" style="display: none; margin-bottom: 12px;">
-                <a href="https://absolroot.fanbox.cc/plans" target="_blank" class="fanbox-button" style="
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    background-color: #F5F5F5;
-                    color: #333;
-                    text-decoration: none;
-                    font-weight: bold;
-                    padding: 10px 20px;
-                    border-radius: 8px;
-                    border: 1px solid #ddd;
-                    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-                    transition: all 0.2s;
-                 ">
-                    <img src="https://img.icons8.com/color/48/pixiv.png" alt="pixiv" style="width: 24px; height: 24px;">
-                    <span>pixivFANBOXで支援する</span>
-                </a>
             </div>
 
-            <div class="kofi-inline" id="kofiInline"></div>
-        </div>
+            <!--
+            <div class="about-section section-card-cut" id="exchange-code-section">
+                <button id="exchangeCodeButton" class="donate-button">KR 교환코드 (v4.4.1)</button>
+            </div>
+            -->
 
-        <div class="about-section">
-            <h2 id="thanks-title">Thanks To</h2>
-            <p id="thanks-description" class="korean-content">
-                <button class="show-supporters-btn" onclick="showSupporters()">감사한 분들</button>
-            </p>
-            <p id="thanks-description-en" class="english-content" style="display: none;">
-                <button class="show-supporters-btn" onclick="showSupporters()">Supporters</button>
-            </p>
-            <p id="thanks-description-jp" class="japanese-content" style="display: none;">
-                <button class="show-supporters-btn" onclick="showSupporters()">サポーターリスト</button>
-            </p>
-            <p id="thanks-description-cn" class="chinese-content" style="display: none;">
-                <button class="show-supporters-btn" onclick="showSupporters()">支持者名单</button>
-            </p>
-        </div>
+            <div class="about-support">
+                <div class="about-section about-support-actions">
+                    <h2>
+                        <span class="korean-content">지원</span>
+                        <span class="english-content" style="display: none;">Support</span>
+                        <span class="japanese-content" style="display: none;">サイトへのご支援</span>
+                        <span class="chinese-content" style="display: none;">&#25903;&#25345;&#26412;&#31449;</span>
+                    </h2>
+                    <p id="donate-description" class="korean-content">{% include support-intro.html lang="kr" %}</p>
+                    <p class="english-content" style="display: none;">{% include support-intro.html lang="en" %}</p>
+                    <p class="japanese-content" style="display: none;">{% include support-intro.html lang="jp" %}</p>
+                    <p id="donate-description-cn" class="chinese-content" style="display: none;">{% include support-intro.html lang="cn" %}</p>
+                    <button type="button" id="donateButton" class="donate-button">
+                        <span class="korean-content">지원하기</span>
+                        <span class="chinese-content" style="display: none;">支持本站</span>
+                    </button>
+                    <div class="support-inline-methods" id="donate-inline" hidden>
+                        {{ about_kofi_link }}
+                        <a id="fanbox-inline-container" href="https://absolroot.fanbox.cc/plans" target="_blank" rel="noopener" class="support-method" hidden>pixivFANBOX</a>
+                    </div>
+                </div>
 
-        <!-- 후원자 목록 모달 -->
-        <div id="supporters-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-modal">&times;</span>
-                <h3 id="supporters-title">서포터 목록</h3>
-                <div class="supporters-list">
+                <div class="about-section about-thanks">
+                    <h2 id="thanks-title">Thanks To</h2>
+                    <button type="button" id="about-supporters-toggle" aria-expanded="false" aria-controls="about-supporters">
+                        <span class="show-supporters-btn">함께해 주신 분들</span>
+                        {% include action-icon.html name="chevron-down" size=14 %}
+                    </button>
+                </div>
+                <div id="about-supporters" class="supporters-list" hidden>
                     <div class="supporter-tier">
-                        <h4>Special Thanks</h4>
+                        <h4 data-about-thanks-label="specialThanksTitle">Special Thanks</h4>
                         <ul>
                             <li style="color:#ffd34e; font-weight:700;">Data/Pull Tracker : Iant</li>
                             <li>Translation : RedHarv (EN)</li>
                             <li>Translation : Em (EN)</li>
                             <li>Translation : kai (JP)</li>
+                            <li>카이류</li>
+                            <li>Sages</li>
                         </ul>
                     </div>
                     <div class="supporter-tier">
-                        <h4>Supporters</h4>
+                        <h4 data-about-thanks-label="supportersListTitle">Supporters</h4>
                         <ul>
                             {% for supporter in site.data.supporters %}
-                            <li{% case supporter.highlight %}{% when 'gold' %} style="color:#ffd34e; font-weight:700;"{% when 'cream' %} style="color:#fff8e1"{% when 'bronze' %} style="color:#ad7326"{% endcase %}>{{ supporter.name | escape }}</li>
+                            <li{% case supporter.highlight %}{% when 'gold' %} style="color:#ffd34e; font-weight:700;"{% when 'cream' %} style="color:#fff8e1"{% when 'bronze' %} style="color:#c38d54"{% endcase %}>{{ supporter.name | escape }}</li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -209,166 +164,26 @@
             </div>
         </div>
 
-        <style>
-            .show-supporters-btn {
-                background-color: var(--card-background);
-                color: rgba(255, 255, 255, 0.9);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                padding: 5px 10px;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 14px;
-                transition: background-color 0.2s;
-            }
+        </div>
 
-            .show-supporters-btn:hover {
-                background-color: #4a3a3a;
-            }
-
-            .modal {
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                align-items: center;
-                justify-content: center;
-                padding: 24px;
-                overflow-y: auto;
-                background-color: rgba(0, 0, 0, 0.7);
-                z-index: 1000;
-                box-sizing: border-box;
-            }
-
-            .modal-content {
-                position: relative;
-                background-color: #2a2a2a;
-                margin: 0;
-                padding: 20px;
-                width: min(80%, 600px);
-                max-height: calc(100vh - 48px);
-                overflow-y: auto;
-                border-radius: 8px;
-                color: #fff;
-                box-sizing: border-box;
-            }
-
-            .close-modal {
-                position: absolute;
-                right: 20px;
-                top: 10px;
-                font-size: 28px;
-                font-weight: bold;
-                color: #aaa;
-                cursor: pointer;
-            }
-
-            .close-modal:hover {
-                color: #fff;
-            }
-
-            .supporters-list {
-                margin-top: 20px;
-            }
-
-            .supporter-tier {
-                margin-bottom: 20px;
-            }
-
-            .supporter-tier h4 {
-                color: rgba(255, 255, 255, 0.9);
-                margin-bottom: 10px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-                padding-bottom: 5px;
-            }
-
-            .supporter-tier ul {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-
-            .supporter-tier li {
-                background: rgba(255, 255, 255, 0.1);
-                padding: 5px 10px;
-                border-radius: 4px;
-                font-size: 14px;
-            }
-
-            .discord-link {
-                display: inline-flex;
-                align-items: center;
-                gap: 5px;
-                text-decoration: none;
-                color: #6f84f8 !important;
-            }
-
-            .discord-icon {
-                width: 20px;
-                height: 20px;
-                display: inline-block;
-                background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127.14 96.36"><path fill="%23fff" d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"/></svg>');
-                background-size: contain;
-                background-repeat: no-repeat;
-                vertical-align: middle;
-            }
-
-            @media (max-width: 1200px) {
-                .modal {
-                    padding: 16px;
-                }
-
-                .modal-content {
-                    width: 90%;
-                    max-height: calc(100vh - 32px);
-                    padding: 15px;
-                }
-            }
-        </style>
-
-        <script>
-            function showSupporters() {
-                const modal = document.getElementById('supporters-modal');
-                modal.style.display = 'flex';
-
-                // i18n 키로 모달 타이틀 갱신
-                const title = document.getElementById('supporters-title');
-                if (title) {
-                    title.textContent = getI18nText('supportersModalTitle', title.textContent || '');
-                }
-            }
-
-            // 모달 닫기 버튼 이벤트
-            document.querySelector('.close-modal').addEventListener('click', function () {
-                document.getElementById('supporters-modal').style.display = 'none';
-            });
-
-            // 모달 외부 클릭 시 닫기
-            window.addEventListener('click', function (event) {
-                const modal = document.getElementById('supporters-modal');
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        </script>
-
-        <div class="about-section recent-update-content drag-me">
+        <div class="about-section recent-update-content section-card-cut">
             <h2 id="recent-updates-title">최신 업데이트</h2>
             <div id="recent-update-list"></div>
-            <button id="show-more-updates-btn" class="show-more-updates-btn" style="display: none;"
-                data-text-more="더보기">더보기</button>
+            <details class="about-disclosure" id="about-update-history" hidden>
+                <summary><span id="show-more-updates-btn">&#45908;&#48372;&#44592;</span>{% include action-icon.html name="chevron-down" size=14 %}</summary>
+                <div id="about-update-rest" class="about-disclosure-content"></div>
+            </details>
         </div>
     </div>
 </div>
 
 <!-- 후원 모달 -->
-<div id="donateModal" class="modal">
-    <div class="modal-content">
-        <span class="close-button">&times;</span>
+<dialog id="donateModal" class="support-dialog" aria-labelledby="donateModalTitle">
+    <div class="modal-content support-panel section-card-cut">
+        <header class="support-header">
+            <h2 id="donateModalTitle">지원</h2>
+            <button type="button" class="support-close" aria-label="닫기" autofocus>&times;</button>
+        </header>
         <p id="donation-message-kr" class="donation-message korean-content">
             감사합니다. P5X를 분석하길 좋아하는 유저로서 지속적으로 업데이트하고 있습니다.
             <br>
@@ -386,35 +201,32 @@
             あなたの寄付はサイトを改善する大きな原動力になります。<br>
             ルフェルネットは、皆様のご支援によってのみ運営されています。心から感謝いたします。
         </p>
+        <p class="donation-message chinese-content" style="display: none;">
+            感谢你的支持。作为一名喜欢研究 P5X 的玩家，我会持续更新这个网站。<br>
+            你的支持会帮助网站继续改进。
+        </p>
 
         <div class="donation-methods">
-            <div class="kofi-container">
-                <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
-                <script
-                    type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'S6S11F0PUN'); kofiwidget2.draw();</script>
-            </div>
-
-            <!--
-                    <div class="bmc-container">
-                        <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="absol" data-color="#FFDD00" data-emoji="☕" data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff"></script>
-                    </div>-->
-
+            {{ about_kofi_link }}
             <div class="kakao-pay-container" id="kakao-pay-container">
-                <button id="kakaoPayButton" class="kakao-pay-button">Kakaopay</button>
+                <button type="button" id="kakaoPayButton" class="support-method kakao-pay-button" aria-haspopup="dialog">카카오페이</button>
             </div>
         </div>
     </div>
-</div>
+</dialog>
 
 <!-- 카카오페이 QR 모달 -->
-<div id="kakaoPayModal" class="modal">
-    <div class="modal-content kakao-modal">
-        <span class="close-button">&times;</span>
+<dialog id="kakaoPayModal" class="support-dialog kakao-modal" aria-labelledby="kakaoPayTitle">
+    <div class="modal-content support-panel section-card-cut">
+        <header class="support-header">
+            <h2 id="kakaoPayTitle">카카오페이</h2>
+            <button type="button" class="support-close" aria-label="닫기" autofocus>&times;</button>
+        </header>
         <div class="kakao-qr-container">
             <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR" class="kakao-qr">
         </div>
     </div>
-</div>
+</dialog>
 
 <!-- 교환코드 모달 -->
 <div id="exchangeCodeModal" class="modal">
@@ -492,27 +304,16 @@
         };
 
         // 제목 업데이트
-        const siteTitle = document.getElementById('site-title');
         const contactTitle = document.getElementById('contact-title');
         const thanksTitle = document.getElementById('thanks-title');
         const donateButton = document.getElementById('donateButton');
         const recentUpdatesTitle = document.getElementById('recent-updates-title');
         const showMoreUpdatesBtn = document.getElementById('show-more-updates-btn');
         const supportersButtons = document.querySelectorAll('.show-supporters-btn');
-        const supportersTitle = document.getElementById('supporters-title');
-        const siteDescription = document.getElementById('site-description');
-        const contactDescription = document.getElementById('contact-description');
-        const donateDescription = document.getElementById('donate-description');
-        const siteDescriptionCn = document.getElementById('site-description-cn');
-        const contactDescriptionCn = document.getElementById('contact-description-cn');
-        const donateDescriptionCn = document.getElementById('donate-description-cn');
-        const donationMessageKr = document.getElementById('donation-message-kr');
         const languageNoticeText = document.getElementById('language-notice-text');
 
-        if (siteTitle) siteTitle.textContent = aboutText('siteTitle', siteTitle.textContent || '');
         if (contactTitle) contactTitle.textContent = aboutText('contactTitle', contactTitle.textContent || '');
         if (thanksTitle) thanksTitle.textContent = aboutText('thanksTitle', thanksTitle.textContent || '');
-        if (donateButton) donateButton.textContent = aboutText('donateButton', donateButton.textContent || '');
         if (recentUpdatesTitle) recentUpdatesTitle.textContent = aboutText('recentUpdatesTitle', recentUpdatesTitle.textContent || '');
         if (showMoreUpdatesBtn) showMoreUpdatesBtn.textContent = aboutText('showMoreButton', showMoreUpdatesBtn.textContent || '');
         if (supportersButtons.length > 0) {
@@ -523,9 +324,10 @@
                 });
             }
         }
-        if (supportersTitle) {
-            supportersTitle.textContent = aboutText('supportersModalTitle', supportersTitle.textContent || '');
-        }
+
+        document.querySelectorAll('[data-about-thanks-label]').forEach((heading) => {
+            heading.textContent = aboutText(heading.dataset.aboutThanksLabel, heading.textContent);
+        });
 
         const notice = document.getElementById('language-notice');
         if (languageNoticeText) {
@@ -533,16 +335,6 @@
         }
         if (notice) {
             notice.style.display = 'none';
-        }
-
-        if (currentLang === 'cn') {
-            if (siteDescription) siteDescription.innerHTML = aboutText('siteDescription', siteDescription.innerHTML || '');
-            if (contactDescription) contactDescription.innerHTML = aboutText('contactDescription', contactDescription.innerHTML || '');
-            if (donateDescription) donateDescription.innerHTML = aboutText('donateDescription', donateDescription.innerHTML || '');
-            if (siteDescriptionCn) siteDescriptionCn.innerHTML = aboutText('siteDescription', siteDescriptionCn.innerHTML || '');
-            if (contactDescriptionCn) contactDescriptionCn.innerHTML = aboutText('contactDescription', contactDescriptionCn.innerHTML || '');
-            if (donateDescriptionCn) donateDescriptionCn.innerHTML = aboutText('donateDescription', donateDescriptionCn.innerHTML || '');
-            if (donationMessageKr) donationMessageKr.innerHTML = aboutText('donationMessage', donationMessageKr.innerHTML || '');
         }
 
         // 언어별 콘텐츠 표시/숨김
@@ -558,7 +350,7 @@
         chineseContent.forEach(el => el.style.display = 'none');
 
         // 현재 언어 콘텐츠만 표시
-        if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
+        if (currentLang === 'kr') {
             koreanContent.forEach(el => el.style.display = 'block');
         } else if (currentLang === 'en') {
             englishContent.forEach(el => el.style.display = 'block');
@@ -572,41 +364,14 @@
         const exchangeCodeSection = document.getElementById('exchange-code-section');
         const kakaoPayContainer = document.getElementById('kakao-pay-container');
         const donateInline = document.getElementById('donate-inline');
-        const inlineText = document.getElementById('donation-inline-text');
-        const donateButtonSection = donateButton ? donateButton.closest('.about-section') : null;
         const fanboxContainer = document.getElementById('fanbox-inline-container');
 
-        if (!((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr')) {
-            if (exchangeCodeSection) {
-                exchangeCodeSection.style.display = 'none';
-            }
-            if (kakaoPayContainer) {
-                kakaoPayContainer.style.display = 'none';
-            }
-            if (donateInline) {
-                donateInline.style.display = 'block';
-            }
-            if (donateButton) {
-                donateButton.style.display = 'none';
-            }
-            if (donateButtonSection) {
-                donateButtonSection.style.display = 'none';
-            }
-
-            if (inlineText) {
-                inlineText.innerHTML = getI18nText('donationInlineText', inlineText.innerHTML || '');
-            }
-            if (fanboxContainer) {
-                fanboxContainer.style.display = currentLang === 'jp' ? 'block' : 'none';
-            }
-        } else {
-            if (exchangeCodeSection) exchangeCodeSection.style.display = '';
-            if (kakaoPayContainer) kakaoPayContainer.style.display = currentLang === 'cn' ? 'none' : '';
-            if (donateInline) donateInline.style.display = 'none';
-            if (donateButton) donateButton.style.display = '';
-            if (donateButtonSection) donateButtonSection.style.display = '';
-            if (fanboxContainer) fanboxContainer.style.display = 'none';
-        }
+        const usesSupportDialog = (window.isKrLikeLanguage?.(currentLang) || currentLang === 'kr');
+        if (exchangeCodeSection) exchangeCodeSection.hidden = !usesSupportDialog;
+        if (kakaoPayContainer) kakaoPayContainer.style.display = usesSupportDialog && currentLang !== 'cn' ? '' : 'none';
+        if (donateInline) donateInline.hidden = usesSupportDialog;
+        if (donateButton) donateButton.hidden = !usesSupportDialog;
+        if (fanboxContainer) fanboxContainer.hidden = currentLang !== 'jp';
     }
 
     // 언어별 SEO 설정 함수
@@ -756,12 +521,12 @@
         // 모달 관련 기능 (KR 전용)
         const donateModal = document.getElementById('donateModal');
         const donateBtn = document.getElementById('donateButton');
-        const donateCloseButton = document.querySelector('#donateModal .close-button');
+        const donateCloseButton = document.querySelector('#donateModal .support-close');
 
         // 카카오페이 모달 관련 기능
         const kakaoPayModal = document.getElementById('kakaoPayModal');
         const kakaoPayBtn = document.getElementById('kakaoPayButton');
-        const kakaoCloseButton = document.querySelector('#kakaoPayModal .close-button');
+        const kakaoCloseButton = document.querySelector('#kakaoPayModal .support-close');
 
         // 교환코드 모달 관련 기능
         const exchangeCodeModal = document.getElementById('exchangeCodeModal');
@@ -776,36 +541,31 @@
         if ((window.isKrLikeLanguage && window.isKrLikeLanguage(currentLang)) || currentLang === 'kr') {
             if (donateBtn && donateModal) {
                 donateBtn.onclick = function () {
-                    donateModal.style.display = 'flex';
+                    donateModal.showModal();
                 }
             }
-        } else {
-            // EN/JP: 인라인 Ko-fi 렌더링 (필요 시 스크롤)
-            renderKoFiInline();
-            if (donateBtn) {
-                donateBtn.onclick = function () {
-                    const inline = document.getElementById('donate-inline');
-                    if (inline) inline.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }
+        }
+
+        if (donateModal && currentLang === 'cn') {
+            document.getElementById('donateModalTitle').textContent = '支持本站';
+            donateCloseButton?.setAttribute('aria-label', '关闭');
         }
 
         if (donateCloseButton && donateModal) {
             donateCloseButton.onclick = function () {
-                donateModal.style.display = 'none';
+                donateModal.close();
             }
         }
 
-        if (kakaoPayBtn && donateModal && kakaoPayModal) {
+        if (kakaoPayBtn && kakaoPayModal) {
             kakaoPayBtn.onclick = function () {
-                donateModal.style.display = 'none';
-                kakaoPayModal.style.display = 'flex';
+                kakaoPayModal.showModal();
             }
         }
 
         if (kakaoCloseButton && kakaoPayModal) {
             kakaoCloseButton.onclick = function () {
-                kakaoPayModal.style.display = 'none';
+                kakaoPayModal.close();
             }
         }
 
@@ -828,134 +588,93 @@
 
         window.onclick = function (event) {
             if (donateModal && event.target == donateModal) {
-                donateModal.style.display = 'none';
+                donateModal.close();
             }
             if (kakaoPayModal && event.target == kakaoPayModal) {
-                kakaoPayModal.style.display = 'none';
+                kakaoPayModal.close();
             }
             if (exchangeCodeModal && event.target == exchangeCodeModal) {
                 exchangeCodeModal.style.display = 'none';
             }
         }
 
-        // Ko-fi 인라인 렌더링 (스크립트 로드 금지: body 덮어쓰는 문제 방지)
-        function renderKoFiInline() {
-            const container = document.getElementById('kofiInline');
-            if (!container) return;
-            container.innerHTML = `
-                        <div class="btn-container">
-                            <a title="Support me on ko-fi.com" class="kofi-button" style="background-color:#72a4f2; display:inline-block; padding:8px 12px; border-radius:6px; color:#fff; text-decoration:none; font-weight:600;"
-                               href="https://ko-fi.com/S6S11F0PUN" target="_blank" rel="noopener">
-                                <span class="kofitext" style="display:inline-flex; align-items:center; gap:6px;">
-                                    <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi donations" class="kofiimg" style="height:18px; vertical-align:middle;">
-                                    Support me on Ko-fi
-                                </span>
-                            </a>
-                        </div>`;
+        function createUpdateRow(update) {
+            const row = document.createElement('div');
+            row.className = 'recent-update-content-text';
+            const meta = document.createElement('div');
+            meta.className = 'about-update-meta';
+            const date = document.createElement('span');
+            date.className = 'date';
+            date.textContent = String(update.date || '').replace(/^20/, '');
+            const version = document.createElement('span');
+            version.className = 'version';
+            version.textContent = update.version || '';
+            const content = document.createElement('p');
+            content.className = 'content';
+            content.textContent = String(update.content).replaceAll('\\n', '\n');
+            meta.append(date, version);
+            row.append(meta, content);
+            return row;
         }
 
-        let allUpdates = [];
-        const MAX_TOTAL_LINES = 10;
-
         async function loadUpdates() {
-            const updateList = document.getElementById('recent-update-list');
-            const showMoreBtn = document.getElementById('show-more-updates-btn');
-            if (!updateList || !showMoreBtn) return;
-
+            const list = document.getElementById('recent-update-list');
+            const history = document.getElementById('about-update-history');
+            const rest = document.getElementById('about-update-rest');
             try {
                 const updates = (typeof VersionChecker !== 'undefined' && typeof VersionChecker.loadUpdatesCSV === 'function')
                     ? await VersionChecker.loadUpdatesCSV()
                     : [];
-                allUpdates = (Array.isArray(updates) ? updates : [])
-                    .filter(update => update && update.content)
-                    .map(update => {
-                        // content가 undefined이거나 비어있는 경우 처리
-                        if (!update.content) return null;
-
-                        return {
-                            date: String(update.date || '').replace(/^20/, ''),
-                            version: String(update.version || ''),
-                            content: String(update.content || '')
-                        };
-                    })
-                    .filter(item => item !== null);
-
-                if (!allUpdates.length) {
-                    updateList.innerHTML = '';
-                    showMoreBtn.style.display = 'none';
-                    return;
-                }
-
-                showMoreUpdates();
-
-                showMoreBtn.style.display = 'block';
-                showMoreBtn.addEventListener('click', () => {
-                    showMoreBtn.style.display = 'none';
-                    showAllUpdates();
-                }, { once: true });
+                const valid = (Array.isArray(updates) ? updates : []).filter(update => update?.content);
+                list.replaceChildren(...valid.slice(0, 3).map(createUpdateRow));
+                history.hidden = valid.length <= 3;
+                history.addEventListener('toggle', () => {
+                    if (history.open && !rest.childElementCount) {
+                        rest.append(...valid.slice(3).map(createUpdateRow));
+                    }
+                });
             } catch (error) {
-                updateList.innerHTML = '';
-                showMoreBtn.style.display = 'none';
+                history.hidden = true;
                 console.error('Failed to load update history:', error);
             }
         }
 
-        function showAllUpdates() {
-            const updateList = document.getElementById('recent-update-list');
-            if (!updateList) return;
-            updateList.innerHTML = '';
-
-            allUpdates.forEach(update => {
-                const updateElement = document.createElement('div');
-                updateElement.className = 'recent-update-content-text';
-
-                const contentLines = update.content.split('\\n').join('<br>');
-                updateElement.innerHTML = `
-                            <div class="date">${update.date}</div>
-                            <div class="version">${update.version}</div>
-                            <div class="content"><p>${contentLines}</p></div>
-                        `;
-                updateList.appendChild(updateElement);
-            });
-        }
-
-        function showMoreUpdates() {
-            const updateList = document.getElementById('recent-update-list');
-            if (!updateList) return;
-            updateList.innerHTML = '';
-            let totalLines = 0;
-
-            for (const update of allUpdates) {
-                const lines = update.content.split('\\n');
-                if (totalLines + lines.length > MAX_TOTAL_LINES) {
-                    const remainingLines = MAX_TOTAL_LINES - totalLines;
-                    if (remainingLines > 0) {
-                        const updateElement = document.createElement('div');
-                        updateElement.className = 'recent-update-content-text';
-                        const visibleContent = lines.slice(0, remainingLines).join('<br>');
-                        updateElement.innerHTML = `
-                                    <div class="date">${update.date}</div>
-                                    <div class="version">${update.version}</div>
-                                    <div class="content"><p>${visibleContent} ...</p></div>
-                                `;
-                        updateList.appendChild(updateElement);
-                    }
-                    break;
-                }
-
-                const updateElement = document.createElement('div');
-                updateElement.className = 'recent-update-content-text';
-                updateElement.innerHTML = `
-                            <div class="date">${update.date}</div>
-                            <div class="version">${update.version}</div>
-                            <div class="content"><p>${lines.join('<br>')}</p></div>
-                        `;
-                updateList.appendChild(updateElement);
-                totalLines += lines.length;
-                if (totalLines >= MAX_TOTAL_LINES) break;
+        const supportersToggle = document.getElementById('about-supporters-toggle');
+        const supporters = document.getElementById('about-supporters');
+        supportersToggle.addEventListener('click', () => {
+            const open = supportersToggle.getAttribute('aria-expanded') !== 'true';
+            const motion = window.disclosureMotion;
+            supportersToggle.setAttribute('aria-expanded', String(open));
+            supporters.inert = !open;
+            if (open) {
+                supporters.hidden = false;
+                motion?.reveal(supporters);
+            } else if (motion) {
+                motion.collapse(supporters, () => { supporters.hidden = true; });
+            } else {
+                supporters.hidden = true;
             }
-        }
+        });
 
+        document.querySelectorAll('.about-disclosure').forEach(details => {
+            const summary = details.querySelector('summary');
+            const content = details.querySelector('.about-disclosure-content');
+            summary.addEventListener('click', event => {
+                const motion = window.disclosureMotion;
+                if (!motion) return;
+                event.preventDefault();
+                if (!details.open || content.inert) {
+                    details.open = true;
+                    content.inert = false;
+                    requestAnimationFrame(() => {
+                        if (details.open && !content.inert) motion.reveal(content);
+                    });
+                } else {
+                    content.inert = true;
+                    motion.collapse(content, () => { details.open = false; });
+                }
+            });
+        });
         loadUpdates();
     } // initializePageContent 함수 종료
 </script>

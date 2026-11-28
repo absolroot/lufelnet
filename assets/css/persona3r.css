@@ -23,9 +23,18 @@
 @media screen and (max-width: 1200px) { .container { background: linear-gradient(to bottom, rgb(90, 173, 237,0.3), rgb(5, 21, 166, 0.3)), linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), linear-gradient(-45deg, transparent 48%, rgba(255, 255, 255, 0.04) 49%, rgba(255, 255, 255, 0.04) 51%, transparent 52%), #111; background-size: 100% 100%, 30px 30px, 30px 30px; background-attachment: scroll, scroll, scroll; background-position: 0 0, 0 0, 0 0; }
 }
 
+:root { --character-nature-hover: #85baff; }
+
 .rh { background-color: #393f4b !important; }
 
-.card-style { background: #393f4b; border-bottom: 3px solid rgb(40 48 77);  }
+.main-wrapper {
+    --character-card-fill: #393f4b;
+    --character-card-accent: #28304d;
+    --character-segmented-theme-fill: #303643;
+    --character-segmented-theme-hover: #364357;
+    --character-segmented-theme-active: #243b5c;
+    --character-segmented-theme-text: #d4eeff;
+}
 
 .main-nav { background-color: #2e3142; }
 
@@ -44,7 +53,5 @@
 .selected-option:hover { background-color:  rgb(0,0,0,0.1); border-color: rgba(255, 255, 255, 0.4); }
 
 .nav-link.active {background-color: rgba(0, 0, 0, 0.3);}
-
-.enhancement-btn.active, .skill-level-btn.active { box-shadow: 0 0 0 1px rgba(0, 102, 255, 0.5) inset; }
 
 h1.character-name::before { background-color: #2e71a1; }

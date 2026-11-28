@@ -1174,6 +1174,7 @@ function enhanceRevSelectSimple(select) {
   if (!select || select.closest('.rev-select-wrap')) return;
   const group = select.closest('.input-group') || select.parentElement;
   if (!group) return;
+  select.setAttribute('data-native-select', '');
   const BASE = (typeof BASE_URL !== 'undefined' && BASE_URL) ? BASE_URL : '';
   function getRevDisplayText(v) { try { return (typeof getRevelationDisplayName === 'function') ? getRevelationDisplayName(v) : v; } catch (_) { return v; } }
   const wrap = document.createElement('div');

@@ -6,7 +6,9 @@
 {% endif %}
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
-<script defer src="{{ site.baseurl }}/assets/js/character/character-prefetch.js?h={{ site.data.asset_versions.files['/assets/js/character/character-prefetch.js'] }}"></script>
+{% include character-initial-resource-hashes.html %}
+<script defer src="{{ site.baseurl }}/assets/js/character/character-card-hover.js?h={{ site.data.asset_versions.files['/assets/js/character/character-card-hover.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/assets/js/gsap-loader.js?h={{ site.data.asset_versions.files['/assets/js/gsap-loader.js'] }}" data-gsap-src="{{ site.baseurl }}/assets/js/gsap.min.js?h={{ site.data.asset_versions.files['/assets/js/gsap.min.js'] }}"></script>
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('character-list');
@@ -229,14 +231,7 @@ window.LufelPageLifecycle?.hold('character-list');
     <!-- Search section below filter section -->
     <div class="search-section">
         <div class="search-container">
-            <div class="search-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5c0-3.59-2.91-6.5-6.5-6.5S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.27v.79L19 20.49 20.49 19 15.5 14zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-                        fill="rgba(255, 255, 255, 0.6)" />
-                </svg>
-            </div>
-            <input type="text" id="characterSearch" placeholder="캐릭터 검색..." autocomplete="off">
+            <input type="text" id="characterSearch" data-lufel-search data-lufel-search-results="searchDropdown" placeholder="캐릭터 검색..." autocomplete="off">
             <div id="searchDropdown" class="search-dropdown"></div>
         </div>
         <div class="search-count"></div>
@@ -1040,7 +1035,7 @@ window.LufelPageLifecycle?.hold('character-list');
             }
 
             const card = document.createElement('div');
-            card.className = 'card';
+            card.className = 'card character-tile character-tile--portrait';
             card.dataset.element = element || 'undefined';
             card.dataset.position = position || 'undefined';
             card.dataset.rarity = rarity || 'undefined';
@@ -1062,6 +1057,7 @@ window.LufelPageLifecycle?.hold('character-list');
             // Create link wrapper - prefer slug-based detail URLs when available
             const link = document.createElement('a');
             link.dataset.characterPrefetch = characterName;
+            link.setAttribute('data-character-prefetch-portrait', '');
             if (typeof LanguageRouter !== 'undefined' && typeof LanguageRouter.buildCharacterDetailUrl === 'function') {
                 link.href = LanguageRouter.buildCharacterDetailUrl(characterName, currentLang);
             } else {
@@ -1411,10 +1407,15 @@ window.LufelPageLifecycle?.hold('character-list');
         }
     }
 
+    const cardEntranceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const entranceGrid = document.getElementById('characterCards');
+    if (entranceGrid) window.LufelPageEntrance?.setCardStaggerEffect?.(entranceGrid);
+
     const initialCharacterDataPromise = loadCharacterData();
 
     document.addEventListener('DOMContentLoaded', async () => {
         domInitializationStarted = true;
+        if (!cardEntranceMotion.matches) window.loadLufelGSAP?.();
         try {
         Navigation.load('character'); // nav active
         VersionChecker.check();

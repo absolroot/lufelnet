@@ -44,7 +44,7 @@
     width: 200px;
     height: 6px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 3px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -52,7 +52,7 @@
     width: 0%;
     height: 100%;
     background: linear-gradient(90deg, var(--accent-color), #ff6b6b);
-    border-radius: 3px;
+    border-radius: 0;
     transition: width 0.1s ease-out;
 }
 
@@ -74,6 +74,18 @@ body {
 /* Keep fixed action dropdowns positioned relative to the viewport. */
 .main-wrapper.tactic-maker-page {
     transform: none;
+}
+
+/* Keep editor dropdowns in the page stacking order, above adjacent panels. */
+.tactic-maker-page :is(.roster-container, .wonder-config-panel, .tactic-board-section).section-card-cut {
+    isolation: auto;
+    background:
+        linear-gradient(var(--section-card-accent, var(--border-red)) 0 0) bottom / 100% 3px no-repeat,
+        var(--section-card-fill, var(--card-background));
+}
+
+.tactic-maker-page :is(.roster-container, .wonder-config-panel, .tactic-board-section).section-card-cut::after {
+    content: none;
 }
 
 .tactic-maker-page .header-container {
@@ -108,9 +120,9 @@ body {
     flex-direction: column;
     gap: 12px;
     margin-bottom: 12px;
-    background: #1f1f1f;
+    --section-card-fill: #1f1f1f;
     padding: 16px 16px 12px 16px;
-    border-radius: 12px;
+    border-radius: 0;
 }
 
 .tactic-input-group .tactic-title-container,
@@ -177,7 +189,7 @@ body:not(.tactic-edit-mode) #btnImport {
     padding: 6px 12px;
     background: #2a2a2a;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 0;
     color: #fff;
     cursor: pointer;
     font-size: 13px;
@@ -213,7 +225,7 @@ body:not(.tactic-edit-mode) #btnImport {
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.9);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    border-radius: 0;
     font-size: 11px;
     white-space: nowrap;
     color: #fff;
@@ -317,7 +329,7 @@ body:not(.tactic-edit-mode) #btnImport {
     width: 100%;
     background: #1a1a1a;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 0;
     padding: 12px 14px;
     font-size: 0.9rem;
     color: #ccc;
@@ -369,14 +381,14 @@ body:not(.tactic-edit-mode) .tactic-memo-input {
 
 .party-slots-wrapper {
     background: var(--card-background);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 16px;
 }
 
 /* Non-edit mode: connected with wonder-config-panel */
 body:not(.tactic-edit-mode) .party-slots-wrapper {
-    border-radius: 12px 12px 0px 0px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: var(--section-divider-paint), var(--card-background);
+    background-position-y: bottom, bottom, bottom 1px, center;
 }
 
 .party-slots-container {
@@ -424,7 +436,7 @@ body:not(.tactic-edit-mode) .slot-card.empty {
 
 .slot-card {
     border: 1px dashed var(--border-color);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 12px;
     background: rgba(0, 0, 0, 0.2);
     display: flex;
@@ -542,7 +554,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .slot-char-img {
     width: 42px;
     height: 48px;
-    border-radius: 8px;
+    border-radius: 0;
     object-fit: cover;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -672,7 +684,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .target-dropdown-btn {
     width: 100%;
     padding: 6px 8px;
-    border-radius: 6px;
+    border-radius: 0;
     border: 1px solid var(--border-color);
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
@@ -701,7 +713,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     width: 100%;
     background: #1f1f1f;
     border: 1px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     z-index: 50;
     max-height: 200px;
@@ -787,7 +799,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     flex: 0 0 auto;
     padding: 2px 5px;
     border: 1px solid rgba(158, 255, 255, 0.45);
-    border-radius: 4px;
+    border-radius: 0;
     background: rgba(67, 204, 204, 0.16);
     color: #cfffff;
     font-size: 10px;
@@ -819,7 +831,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     overflow-y: auto;
     background: var(--card-background);
     border-bottom: 3px solid var(--border-red);
-    border-radius: 12px;
+    border-radius: 0;
     padding: 24px;
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
 }
@@ -827,7 +839,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .tactic-nature-skill-modal .skill-card {
     background: rgba(0, 0, 0, 0.15);
     padding: 20px 16px 12px 16px;
-    border-radius: 8px;
+    border-radius: 0;
 }
 
 .nature-skill-modal-close {
@@ -1031,7 +1043,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
 .revelation-button {
     width: 100%;
     padding: 6px 8px;
-    border-radius: 8px;
+    border-radius: 0;
     border: 0px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.3);
     color: #fff;
@@ -1078,7 +1090,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     top: calc(100% + 4px);
     background: #1b1b1b;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    border-radius: 0;
     padding: 4px;
     z-index: 2000;
     max-height: 200px;
@@ -1097,7 +1109,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     background: rgba(255, 255, 255, 0.04);
     color: #fff;
     font-size: 12px;
-    border-radius: 6px;
+    border-radius: 0;
     padding: 6px 8px;
     display: flex;
     align-items: center;
@@ -1138,7 +1150,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
@@ -1160,7 +1172,7 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
     border: 1px solid var(--border-color);
     background: rgba(0, 0, 0, 0.3);
     color: var(--text-secondary);
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     font-size: 0.8rem;
 }
@@ -1192,24 +1204,19 @@ body:not(.tactic-edit-mode) .ritual-mod-wrapper {
    Roster & Wonder Container (Bottom Panel)
    ========================================================================== */
 .roster-container {
-    background: var(--card-background);
-    border-radius: 12px;
-    border-bottom: 3px solid var(--border-red);
     padding: 20px;
     margin-top: 20px;
     display: none;
 }
 
 .wonder-config-panel {
-    background: var(--card-background);
-    border-radius: 12px;
     padding: 16px;
     margin-top: 16px;
 }
 
 /* Non-edit mode: connected with party-slots-wrapper */
 body:not(.tactic-edit-mode) .wonder-config-panel {
-    border-radius: 0px 0px 12px 12px;
+    border-radius: 0;
     margin-top: 0;
 }
 
@@ -1246,21 +1253,6 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
 
 .roster-filter-search {
     margin-bottom: 12px;
-}
-
-.roster-search-input {
-    width: 100%;
-    padding: 8px 12px;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 13px;
-    box-sizing: border-box;
-}
-
-.roster-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.4);
 }
 
 .roster-filter-groups {
@@ -1331,7 +1323,7 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
     display: inline-flex;
     align-items: center;
     padding: 4px;
-    border-radius: 4px;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: pointer;
@@ -1374,7 +1366,7 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
 
 .roster-item {
     padding: 6px 8px;
-    border-radius: 8px;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 12px;
@@ -1395,7 +1387,7 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
 .roster-thumb {
     width: 24px;
     height: 24px;
-    border-radius: 6px;
+    border-radius: 0;
     object-fit: cover;
     background: rgba(255, 255, 255, 0.08);
 }
@@ -1469,7 +1461,7 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
     padding: 10px 12px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 0;
     color: #fff;
     cursor: pointer;
 }
@@ -1483,7 +1475,7 @@ body:not(.tactic-edit-mode) .wonder-config-panel {
     overflow-y: auto;
     background: #1f1f1f;
     border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 0;
     z-index: 100;
     margin-top: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
@@ -1553,7 +1545,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
     cursor: pointer;
     transition: filter 0.1s;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0;
 }
 
 .card:hover {
@@ -1568,7 +1560,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 0;
     z-index: 2;
     isolation: isolate;
     mask-image: radial-gradient(white, black);
@@ -1581,7 +1573,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
     width: 100%;
     height: 100%;
     z-index: 1;
-    border-radius: 10px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -1734,6 +1726,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
     align-items: center;
     justify-content: center;
     padding: 16px;
+    box-sizing: border-box;
 }
 
 .modal[hidden] {
@@ -1753,7 +1746,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
     max-height: 85vh;
     background: #1b1b1b;
     border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
+    border-radius: 0;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
@@ -1820,7 +1813,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
 .input-select,
 .input-text {
     width: 100%;
-    border-radius: 8px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: #111;
     color: #fff;
@@ -1838,7 +1831,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
 .btn-secondary,
 .btn-danger {
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 8px;
+    border-radius: 0;
     padding: 8px 12px;
     cursor: pointer;
     font-size: 13px;
@@ -1881,7 +1874,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
 .action-type-toggle button {
     flex: 1;
     height: 32px;
-    border-radius: 8px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.18);
     background: rgba(0, 0, 0, 0.18);
     color: rgba(255, 255, 255, 0.85);
@@ -1930,7 +1923,7 @@ body:not(.tactic-edit-mode) .stamp-type-dropdown .revelation-button[data-tooltip
 
 .mini-persona {
     aspect-ratio: 1/1.67;
-    border-radius: 4px;
+    border-radius: 0;
     object-fit: cover;
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: rgba(0, 0, 0, 0.3);
@@ -1970,7 +1963,7 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
 .wonder-persona-card {
     background: rgba(255, 255, 255, 0.09);
     border: 0px solid var(--border-color);
-    border-radius: 8px;
+    border-radius: 0;
     overflow: visible;
     transition: all 0.2s;
     display: grid;
@@ -2010,7 +2003,7 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
 }
 
 .wp-img-wrapper .card {
-    border-radius: 4px;
+    border-radius: 0;
     overflow: hidden;
 }
 
@@ -2019,7 +2012,7 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
 .empty-wp {
     width: 64px;
     aspect-ratio: 1/1.67;
-    border-radius: 10px;
+    border-radius: 0;
     background: repeating-linear-gradient(45deg,
             #222,
             #222 10px,
@@ -2103,7 +2096,7 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid transparent;
-    border-radius: 4px;
+    border-radius: 0;
     color: #ccc;
     padding: 6px 8px;
     font-size: 0.8rem;
@@ -2157,7 +2150,7 @@ body:not(.tactic-edit-mode) .wonder-personas-grid {
 .ws-char-img {
     width: 42px;
     height: 48px;
-    border-radius: 8px;
+    border-radius: 0;
     object-fit: cover;
     background: rgba(0, 0, 0, 0.3);
 }
@@ -2236,13 +2229,15 @@ body:not(.tactic-edit-mode) .ws-details {
 }
 
 .styled-select {
-    width: 24px;
+    width: 40px;
     padding: 4px 8px;
     background: #1f1f1f;
     border: 0px solid var(--border-color);
-    border-radius: 6px;
+    border-radius: 0;
     color: #fff;
-    appearance: none;
+    --select-icon-size: 12px;
+    --select-icon-inset: 4px;
+    --select-end-padding: 17px;
     cursor: pointer;
     font-size: 12px;
     text-align: center;
@@ -2251,14 +2246,6 @@ body:not(.tactic-edit-mode) .ws-details {
 .styled-select:focus {
     border-color: var(--accent-color);
     outline: none;
-}
-
-/* Wider dropdown options for ritual/mod/order selects (only affects expanded options) */
-.ritual-select option,
-.mod-select option,
-.order-select option {
-    min-width: 80px;
-    padding: 4px 12px;
 }
 
 /* Preset Icons */
@@ -2277,7 +2264,7 @@ body:not(.tactic-edit-mode) .ws-details {
     z-index: 2;
     margin-left: 0;
     padding: 1px 2px;
-    border-radius: 999px;
+    border-radius: 0;
     background: rgba(10, 14, 24, 0.82);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
     pointer-events: none;
@@ -2353,7 +2340,7 @@ body:not(.tactic-edit-mode) .ws-details {
     position: relative;
     width: 90px;
     aspect-ratio: 1/1.67;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
     transition: filter 0.2s, box-shadow 0.2s;
     background: #111;
@@ -2423,7 +2410,7 @@ body:not(.tactic-edit-mode) .ws-details {
     gap: 4px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    border-radius: 0;
     padding: 2px 6px;
     margin-left: 8px;
     cursor: pointer;
@@ -2469,7 +2456,7 @@ body:not(.tactic-edit-mode) .ws-details {
     overflow-y: auto;
     background: #1b1b1b;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
+    border-radius: 0;
     display: none;
 }
 
@@ -2486,7 +2473,7 @@ body:not(.tactic-edit-mode) .ws-details {
     padding: 8px 12px;
     background: transparent;
     border: none;
-    border-radius: 4px;
+    border-radius: 0;
     color: #ccc;
     cursor: pointer;
     transition: background 0.2s;
@@ -2501,7 +2488,7 @@ body:not(.tactic-edit-mode) .ws-details {
 .target-dropdown-item img {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -2580,10 +2567,8 @@ body:not(.tactic-edit-mode) .btn-remove-slot {
 
 /* Hide dropdown arrows in non-edit mode for cleaner look */
 body:not(.tactic-edit-mode) .styled-select {
-    appearance: none;
-    background-image: none;
-    padding-right: 6px;
-    /* Remove space for arrow */
+    --select-trigger-icon: none;
+    --select-end-padding: 6px;
     text-align: center;
 }
 
@@ -2626,7 +2611,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .critical-card-accordion,
 .need-stat-card-accordion {
     background: rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
+    border-radius: 0;
     margin-top: 0;
     overflow: hidden;
 }
@@ -2634,7 +2619,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 /* Need Stat Container - styled like roster-container */
 .need-stat-container {
     background: var(--card-background);
-    border-radius: 12px;
+    border-radius: 0;
     border-bottom: 3px solid var(--border-red);
     padding: 12px 16px 12px 16px;
     margin-top: 16px;
@@ -2666,7 +2651,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     margin-bottom: 12px;
     padding: 8px 10px;
     background: rgba(255, 255, 255, 0.03);
-    border-radius: 6px;
+    border-radius: 0;
 }
 
 .need-stat-rev-sum-field {
@@ -2692,7 +2677,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    border-radius: 0;
     color: #fff;
     font-size: 12px;
     text-align: center;
@@ -2712,7 +2697,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     padding: 4px 6px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    border-radius: 0;
     color: #fff;
     font-size: 11px;
     text-align: center;
@@ -2728,7 +2713,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     padding: 4px 6px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    border-radius: 0;
     color: #fff;
     font-size: 11px;
     text-align: center;
@@ -2785,7 +2770,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     padding: 4px 6px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    border-radius: 0;
     color: #fff;
     font-size: 11px;
     text-align: center;
@@ -2853,7 +2838,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     padding: 1px 6px;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+    border-radius: 0;
     color: #a4a4a4;
     font-size: 12px;
     font-weight: 600;
@@ -2945,7 +2930,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     padding: 8px 12px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
+    border-radius: 0;
     color: #fff;
     font-size: 14px;
     text-align: center;
@@ -2967,7 +2952,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 /* Trigger: Need Stat title + 2 rows (Critical/Pierce) */
 .need-stat-trigger {
     background: rgba(0, 0, 0, 0.25);
-    border-radius: 6px;
+    border-radius: 0;
     margin-top: 10px;
     margin-bottom: auto; /* Push to top, not bottom */
     overflow: hidden;
@@ -3132,7 +3117,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-boss-row {
     padding: 8px;
     background: rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
+    border-radius: 0;
     margin-top: 8px;
     display: flex;
     flex-direction: column;
@@ -3155,7 +3140,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     font-size: 10px;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 4px;
+    border-radius: 0;
     color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
     transition: all 0.2s;
@@ -3210,7 +3195,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-boss-btn-icon {
     width: 20px;
     height: 20px;
-    border-radius: 3px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -3231,7 +3216,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
 .need-stat-boss-option-icon {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -3252,7 +3237,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     font-size: 11px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 4px;
+    border-radius: 0;
     color: white;
     text-align: center;
     box-sizing: border-box;
@@ -3270,7 +3255,7 @@ body:not(.tactic-edit-mode) .wp-skill-input:placeholder-shown {
     gap: 6px;
     padding: 4px 8px;
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 4px;
+    border-radius: 0;
     margin-bottom: 6px;
     font-size: 10px;
 }
@@ -3401,7 +3386,7 @@ img[src*="주원.png"] {
     height: 18px;
     object-fit: contain;
     flex-shrink: 0;
-    border-radius: 3px;
+    border-radius: 0;
 }
 
 span.crit-icon,
@@ -3464,7 +3449,7 @@ span.need-stat-icon {
     padding: 2px 4px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 3px;
+    border-radius: 0;
     color: #fff;
     font-size: 10px;
     text-align: center;
@@ -3483,7 +3468,7 @@ span.need-stat-icon {
     padding: 2px 4px;
     background: rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 3px;
+    border-radius: 0;
     color: #fff;
     font-size: 10px;
     cursor: pointer;

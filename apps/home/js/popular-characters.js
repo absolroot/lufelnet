@@ -272,11 +272,69 @@
         return { orderedKeys: sortByBadge(merged, badgeMap), badgeMap };
     }
 
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function finishPopularCard(card) {
+        card.classList.remove('popular-card-pending');
+        card.querySelector('.home-character-skeleton')?.remove();
+        card.style.removeProperty('--popular-card-loading-opacity');
+    }
+
+    async function revealPopularCards(cards) {
+        const pending = cards.filter(card => card.classList.contains('popular-card-pending'));
+        if (!pending.length) return;
+
+        // Keep the slot filled until its portrait is paintable, with a ceiling for slow requests.
+        let deadline;
+        await Promise.race([
+            Promise.allSettled(pending.map(card => card.querySelector('img')?.decode?.())),
+            new Promise(resolve => { deadline = window.setTimeout(resolve, 650); })
+        ]);
+        window.clearTimeout(deadline);
+
+        const ready = pending.filter(card => card.isConnected && card.classList.contains('popular-card-pending'));
+        if (!ready.length) return;
+        if (reducedMotion.matches) {
+            ready.forEach(finishPopularCard);
+            return;
+        }
+
+        const interval = Math.min(0.034, 0.18 / Math.max(1, ready.length - 1));
+        if (window.gsap) {
+            window.gsap.fromTo(ready, { '--popular-card-loading-opacity': 1 }, {
+                '--popular-card-loading-opacity': 0,
+                duration: 0.28,
+                ease: 'power1.inOut',
+                stagger: interval,
+                onComplete: () => ready.forEach(finishPopularCard)
+            });
+            return;
+        }
+
+        ready.forEach((card, index) => {
+            const options = { duration: 280, delay: index * interval * 1000, easing: 'ease-in-out', fill: 'both' };
+            const content = card.querySelector('.character-card-content');
+            const placeholder = card.querySelector('.home-character-skeleton');
+            const animations = [
+                content.animate([{ opacity: 0 }, { opacity: 1 }], options),
+                placeholder.animate([{ opacity: 1 }, { opacity: 0 }], options)
+            ];
+            Promise.allSettled(animations.map(animation => animation.finished)).then(() => {
+                finishPopularCard(card);
+                animations.forEach(animation => animation.cancel());
+            });
+        });
+    }
+
     function renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData) {
         if (!container) return;
-        container.innerHTML = '';
+        const cards = document.createDocumentFragment();
+        const placeholders = !reducedMotion.matches && container.animate && 'IntersectionObserver' in window &&
+            window.LufelPageEntrance?.setStaggerEffect
+            ? container.querySelectorAll(':scope > .home-character-skeleton')
+            : [];
 
-        orderedKeys.slice(0, maxCount).forEach(characterKey => {
+        orderedKeys.slice(0, maxCount).forEach((characterKey, index) => {
             const card = document.createElement('div');
             card.className = 'character-card';
             const badge = (badgeMap && badgeMap.get) ? badgeMap.get(characterKey) : null;
@@ -285,6 +343,7 @@
 
             const link = document.createElement('a');
             link.dataset.characterPrefetch = characterKey;
+            link.setAttribute('data-character-prefetch-portrait', '');
             if (window.LanguageRouter && typeof window.LanguageRouter.buildCharacterDetailUrl === 'function') {
                 link.href = window.LanguageRouter.buildCharacterDetailUrl(characterKey, lang);
             } else {
@@ -312,21 +371,26 @@
             p.textContent = buildNameForLang(characterKey, lang, krCharacterData);
             textWrap.appendChild(p);
 
-            card.appendChild(link);
-            card.appendChild(textWrap);
-            container.appendChild(card);
+            const content = document.createElement('div');
+            content.className = 'character-card-content';
+            content.append(link, textWrap);
+            card.appendChild(content);
+            if (placeholders[index]) {
+                card.classList.add('popular-card-pending');
+                card.appendChild(placeholders[index]);
+            }
+            cards.appendChild(card);
         });
+        container.replaceChildren(cards);
     }
 
-    async function loadPopularCharacters() {
+    async function loadPopularCharacters(lang, selectedRegion) {
         const popularRoot = document.querySelector('.popular-content');
         const container = document.getElementById('popular-character-cards');
         if (!popularRoot || !container) return;
 
         bindMouseDragScroll(container);
 
-        const lang = getCurrentLang();
-        const selectedRegion = loadRegion();
         const maxCount = getMaxCountFromDom(popularRoot);
         const staticAssetUrl = (path) => window.getHomeStaticAssetUrl
             ? window.getHomeStaticAssetUrl(path)
@@ -364,7 +428,7 @@
         }
 
         renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
-        window.LufelCharacterPrefetch?.prepareHomeRoster(async () => {
+        window.LufelNavigationPrefetch?.prepareHomePrefetch(container, async () => {
             const globalRoster = lang === 'en' || lang === 'jp';
             const roster = globalRoster ? (glb || await fetchCharactersData(staticAssetUrl('/data/character_info_glb.js'))) : kr;
             if (!roster) return [];
@@ -379,12 +443,40 @@
         return { empty: orderedKeys.length === 0 };
     }
 
+    let activeLoad;
+    let loadedSelection;
+
     async function initPopularCharacters() {
-        if (window.HomeSectionState) return window.HomeSectionState.run('popular-characters', loadPopularCharacters);
-        return loadPopularCharacters();
+        while (activeLoad) await activeLoad;
+
+        const lang = getCurrentLang();
+        const region = loadRegion();
+        const selection = `${lang}:${getPopularListKey(region)}`;
+        if (selection === loadedSelection) return;
+
+        const load = () => loadPopularCharacters(lang, region);
+        activeLoad = window.HomeSectionState
+            ? window.HomeSectionState.run('popular-characters', load)
+            : load();
+        try {
+            if (await activeLoad) loadedSelection = selection;
+        } finally {
+            activeLoad = null;
+        }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('popular-character-cards');
+        if (container) {
+            window.LufelPageEntrance?.setStaggerEffect?.(container, cards => {
+                revealPopularCards(cards);
+                return true;
+            });
+            reducedMotion.addEventListener('change', event => {
+                if (event.matches) container.querySelectorAll('.popular-card-pending').forEach(finishPopularCard);
+            });
+            if (!reducedMotion.matches) window.loadLufelGSAP?.();
+        }
         initPopularCharacters();
         window.addEventListener('languageDetected', initPopularCharacters);
     });

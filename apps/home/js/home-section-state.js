@@ -4,8 +4,7 @@
   const RETRY_DELAY_MS = 2000;
   const RETRY_LIMIT = 1;
   const staggerSelectors = {
-    'quick-grid': '.quick-item',
-    'popular-characters': '.character-card'
+    'quick-grid': '.quick-item'
   };
   const staggeredSections = new WeakSet();
 
@@ -90,7 +89,8 @@
     if (state === 'ready') {
       root.classList.remove('home-section-ready');
       const selector = staggerSelectors[id];
-      if (selector) staggerItems(root, selector);
+      if (root.dataset.pageEntranceStagger) window.LufelPageEntrance?.stagger(root);
+      else if (selector) staggerItems(root, selector);
       else window.requestAnimationFrame(() => root.classList.add('home-section-ready'));
       announce(root, text('home_section_ready', 'Content loaded.'));
       return;

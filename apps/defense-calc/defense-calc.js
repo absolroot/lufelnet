@@ -714,7 +714,9 @@ class DefenseCalc {
     attachKotoneCopyControl(optionCell, data, valueCell) {
         if (!data.kotoneCopySkill3) return;
         let source;
-        const awareness = document.createElement('select'); awareness.className = 'kotone-copy-awareness';
+        const awareness = document.createElement('select');
+        awareness.className = 'kotone-copy-awareness';
+        awareness.dataset.selectDensity = 'compact';
         ['r0', 'r2', 'r6'].forEach(value => { if (value !== 'r6' || (this.penetrateGroups['원더'] || []).length) awareness.append(new Option(this.getKotoneAwarenessLabel(value), value)); });
         awareness.value = this.kotoneCopyState.awareness;
         const update = () => { this.kotoneCopyState = { source: source.dataset.value || '', awareness: awareness.value }; this.saveKotoneCopyState(); this.renderItemValue(data, valueCell); this.updatePenetrateTotal(); };
@@ -835,10 +837,12 @@ class DefenseCalc {
             const inner = document.createElement('div');
             inner.className = 'group-header-inner';
 
-            const caret = document.createElement('span');
+            const caret = document.createElement('button');
+            caret.type = 'button';
             caret.className = 'accordion-caret';
             const initiallyOpen = groupName === '계시';
             caret.classList.toggle('open', initiallyOpen);
+            caret.setAttribute('aria-expanded', String(initiallyOpen));
 
             // SVG chevron 생성
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -846,6 +850,7 @@ class DefenseCalc {
             svg.setAttribute('height', '16');
             svg.setAttribute('viewBox', '0 0 16 16');
             svg.setAttribute('fill', 'none');
+            svg.setAttribute('aria-hidden', 'true');
             svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
 
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -885,6 +890,7 @@ class DefenseCalc {
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';
             nameSpan.textContent = this.getGroupDisplayName(groupName);
+            caret.setAttribute('aria-label', nameSpan.textContent);
             infoWrap.appendChild(nameSpan);
             inner.appendChild(infoWrap);
             fullTd.appendChild(inner);
@@ -974,12 +980,15 @@ class DefenseCalc {
         const tbody = headerTr.closest('tbody');
         if (!tbody || !groupName) return;
         const caret = headerTr.querySelector('.accordion-caret');
-        if (caret) caret.classList.toggle('open', isOpen);
+        if (caret) {
+            caret.classList.toggle('open', isOpen);
+            caret.setAttribute('aria-expanded', String(isOpen));
+        }
 
         headerTr.classList.toggle('group-open', isOpen);
         headerTr.classList.toggle('group-closed', !isOpen);
 
-        const path = headerTr.querySelector('.accordion-caret svg path');
+        const path = caret?.querySelector('svg path');
         if (path) {
             path.setAttribute('d', isOpen ? 'M4 6L8 10L12 6' : 'M6 4L10 8L6 12');
         }
@@ -1197,6 +1206,8 @@ class DefenseCalc {
         data.__valueCell = valueCell;
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
+            select.dataset.selectDensity = 'compact';
+            select.setAttribute('aria-label', skillNameCell.textContent.trim());
 
             // 표시 라벨/값/기본값/수치 매핑의 언어별 동작
             const lang = this.getCurrentLang();
@@ -1304,6 +1315,11 @@ class DefenseCalc {
         }
 
         row.appendChild(noteCell);
+        const labels = window.DefenseI18N?.getDefenseTexts(lang);
+        window.CalculatorInteractions?.enhanceRow(row, durationCell, noteCell, {
+            duration: labels?.th_duration,
+            note: labels?.th_note
+        });
 
         return row;
     }

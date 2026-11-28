@@ -1,0 +1,33 @@
+:is(.skill-level-values, .enhancement-values, .stats-card .value) {
+    font-variant-numeric: tabular-nums;
+}
+
+:is(.skill-level-values, .enhancement-values, .stats-card .value).is-counting {
+    display: inline-grid;
+    white-space: nowrap;
+}
+
+:is(.skill-level-values, .enhancement-values, .stats-card .value).is-counting > span,
+.skill-level-count-preview::before,
+.skill-level-count-preview::after {
+    grid-area: 1 / 1;
+}
+
+.skill-level-count-target {
+    opacity: 0;
+}
+
+.skill-level-count-preview {
+    display: grid;
+    pointer-events: none;
+    user-select: none;
+}
+
+.skill-level-count-preview::before {
+    content: attr(data-value);
+}
+
+.skill-level-count-preview::after {
+    content: attr(data-sizing-value);
+    visibility: hidden;
+}

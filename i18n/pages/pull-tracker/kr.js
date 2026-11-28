@@ -25,6 +25,7 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
     pageDescription: '내 가챠 기록을 분석하고 천장까지 남은 개수와 통계를 확인합니다.',
     cardsTitle: '요약 카드 (최근 90일)',
     inputLabel: 'URL 획득 방법',
+    "entry": {"url": "계약 기록 URL", "backup": "기록 백업", "backupNote": "새 URL을 추가하기 전에 기존 기록을 파일로 내보내 보관하세요.", "retention": "최근 90일 기록을 가져옵니다. URL이 만료되면 다시 획득하세요."},
     placeholder: '여기에 주소를 붙여넣기...',
     labels: {
       debugExample: 'DEBUG 예시:'
@@ -69,7 +70,7 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
       deleteDriveFailed: '클라우드(Drive) 삭제에 실패했습니다.',
       allDeleted: '브라우저에 저장된 데이터를 삭제했습니다.',
       driveForbidden: 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.',
-      driveNeedConsent: '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.',
+      driveNeedConsent: '드라이브 접근 권한이 필요합니다. 로그인 버튼을 눌러 권한을 승인해 주세요.',
       driveNoData: '드라이브에 저장된 데이터가 없습니다.',
       noData: '저장된 데이터가 없습니다.',
       driveQuotaExceeded: 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.',
@@ -179,6 +180,7 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
         percent: '%'
       },
       more: '더보기',
+      less: '접기',
       titles: {
         limited: '5★ 한정 리스트',
         standard: '5★ 통상 리스트',
@@ -192,12 +194,12 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
       w9: '9주'
     },
     pity: {
-      legendChance: 'Chance %',
-      legendTotal5: 'Total Pull 5★'
+      legendChance: '누적 비율 (%)',
+      legendTotal5: '5★ 획득 건수'
     },
     hover: {
       daily: '{date}\nTotal 5★: {count}',
-      pity: 'Pity {pity}\nChance%: {chance}\nTotal Pull 5★: {count}'
+      pity: '{pity}회차\n누적 비율: {chance}%\n5★ 획득: {count}건'
     },
     status: {
       loadFailed: 'Load failed'
@@ -213,10 +215,12 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
       current: 'URL 가이드'
     },
     pageTitle: 'URL 가이드',
-    introWindows: '현재는 Windows, iOS, Linux/Steam Deck 방법을 제공하고 있습니다.',
+    "introWindows": "Windows와 iOS에서 URL을 얻는 방법을 안내합니다.",
     s1: 'FAQ를 확인하세요.',
     s2: '사용 중인 운영체제를 선택하세요. (안드로이드 방법을 제보 받습니다)',
-    s3: '원하는 방법을 선택하세요. 제작된 프로그램 사용 / 직접 URL 추출',
+    "s3": "URL 획득 방법을 선택하세요.",
+    "methodProgram": "전용 프로그램",
+    "methodDirect": "직접 URL 추출",
     m1s1: 'PC에서 P5X을 실행하세요.',
     m1s2: '다음 링크에서 P5X_Gacha_Tools를 다운받아 압축을 풀고 실행하세요.',
     m1s3: 'P5X에서 계약 기록을 확인하세요. ※ 오류가 나는 것은 정상입니다.',
@@ -229,7 +233,7 @@ window.I18N_PAGE_PULL_TRACKER_KR = {
     troubleshootButton: '문제 해결 방법',
     downloadLabel: '프로그램 제공 링크',
     sourceCode: 'source code',
-    goBack: 'Go Back',
+    "goBack": "트래커로 돌아가 URL 입력",
     os: {
       win: 'Windows',
       ios: 'iOS',
@@ -349,7 +353,7 @@ C:\\Windows\\System32\\drivers\\etc\\hosts 파일을 직접 열어 아래 내용
       failed: '내보내기에 실패했습니다.'
     },
     import: {
-      label: '가져오기',
+      label: "파일 가져오기",
       imported: '파일에서 가져왔습니다.',
       failed: '가져오기에 실패했습니다.'
     },
@@ -360,7 +364,7 @@ C:\\Windows\\System32\\drivers\\etc\\hosts 파일을 직접 열어 아래 내용
       loadedOk: '드라이브에서 불러왔습니다.',
       loadedNone: '드라이브에 저장된 데이터가 없습니다.',
       noLocal: '저장할 로컬 데이터가 없습니다.',
-      needLogin: '먼저 상단 로그인 버튼으로 Google Drive에 로그인해 주세요.',
+      needLogin: '먼저 로그인 버튼으로 Google Drive에 로그인해 주세요.',
       failed: '작업에 실패했습니다. 잠시 후 다시 시도해 주세요.'
     }
   }

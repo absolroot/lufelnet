@@ -518,29 +518,6 @@
     margin-bottom: 10px;
 }
 
-.rs-character-search-input {
-    width: 100%;
-    min-height: 36px;
-    border-radius: 6px;
-    border: 1px solid var(--rs-border);
-    background: var(--rs-bg-card);
-    color: var(--rs-text);
-    padding: 8px 12px;
-    font-size: 13px;
-    line-height: 1.5;
-    transition: border-color 0.2s ease;
-}
-
-.rs-character-search-input:focus {
-    outline: none;
-    border-color: var(--rs-accent);
-    background: var(--rs-bg-card-inner);
-}
-
-.rs-character-search-input::placeholder {
-    color: var(--rs-text-muted);
-}
-
 .rs-filter-group {
     display: flex;
     flex-wrap: wrap;

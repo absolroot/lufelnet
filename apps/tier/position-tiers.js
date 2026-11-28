@@ -282,7 +282,7 @@ const wrapCharacterImage = (img) => {
   }
 
   const wrapper = document.createElement('div');
-  wrapper.className = 'character-wrapper';
+  wrapper.className = 'character-wrapper character-tile character-tile--compact';
   wrapper.draggable = true;
 
   syncWrapperDatasetFromImage(img, wrapper);
@@ -356,6 +356,7 @@ const syncCharacterDetailAnchorForMode = (element) => {
 
   if (currentParent && currentParent.matches && currentParent.matches(`a.${TIER_CHARACTER_DETAIL_ANCHOR_CLASS}`)) {
     currentParent.href = href;
+    currentParent.dataset.characterPrefetch = targetImage.alt;
     currentParent.draggable = false;
     return;
   }
@@ -365,6 +366,7 @@ const syncCharacterDetailAnchorForMode = (element) => {
   const anchor = document.createElement('a');
   anchor.className = TIER_CHARACTER_DETAIL_ANCHOR_CLASS;
   anchor.href = href;
+  anchor.dataset.characterPrefetch = targetImage.alt;
   anchor.draggable = false;
   anchor.addEventListener('dragstart', (event) => event.preventDefault());
   currentParent.insertBefore(anchor, targetImage);
@@ -1880,6 +1882,9 @@ const loadTierDataFromURL = (tierData) => {
         }
 
         if (positionCell && characters) {
+          if (isTierListMode && ['T0', 'T0.5', 'T1'].includes(tierInfo.label)) {
+            positionCell.setAttribute('data-tier-prefetch', '');
+          }
           characters.forEach(charData => {
             // 캐릭터 데이터가 문자열인지 객체인지 확인 (하위 호환성)
             const charName = typeof charData === 'string' ? charData : charData.name;
@@ -2010,6 +2015,9 @@ const loadTierDataFromURL = (tierData) => {
 
   // 티어 데이터 로딩 완료
   isTierDataLoading = false;
+  if (isTierListMode) {
+    window.LufelNavigationPrefetch?.observeTopTierCharacters(document.querySelector('.position-tiers-container'));
+  }
 };
 
 // 포지션별 티어 메이커 초기화 함수 (전역에서 접근 가능하도록)

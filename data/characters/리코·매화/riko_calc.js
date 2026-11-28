@@ -290,82 +290,84 @@
     var s = document.createElement('style');
     s.id = 'riko-calc-style';
     s.textContent = [
-      '.riko-calc-card{background:var(--card-background,#1f1f1f);border-bottom:3px solid var(--border-red,#d11f1f);border-radius:16px;padding:10px 35px 20px 35px;margin:20px 0;box-shadow:0 4px 6px rgba(0,0,0,.1)}',
+      '.riko-calc-card{--section-card-paint-inset:0 0 -3px;border-bottom:3px solid transparent;padding:10px 35px 20px 35px;margin:20px 0}',
       '.riko-calc-card h2{font-size:20px;color:#fff;margin:10px 0 14px 0;font-weight:600;letter-spacing:.5px}',
 
       /* goal section */
       '.riko-goal-section{margin-bottom:16px}',
-      '.riko-goal-label{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}',
-      '.riko-goal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:10px}',
-      '.riko-goal-btn{background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.12);border-radius:8px;color:rgba(255,255,255,.75);cursor:pointer;padding:10px 4px;font-size:12px;font-weight:500;text-align:center;transition:all .18s ease-out;user-select:none}',
-      '.riko-goal-btn:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}',
-      '.riko-goal-btn.active{box-shadow:0 0 0 0.5px rgba(209,31,31,.6) inset,0 0 12px rgba(209,31,31,.15);background:rgba(209,31,31,.18);border-color:rgba(209,31,31,.5);color:#fff;font-weight:600}',
+      '.riko-goal-label{font-size:11px;color:rgba(255,255,255,.58);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}',
+      '.riko-goal-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}',
+      ':is(.riko-goal-btn,.riko-star-btn){min-height:36px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.12);border-radius:0;cursor:pointer;user-select:none}',
+      '.riko-goal-btn{color:rgba(255,255,255,.75);padding:8px 4px;font:inherit;font-size:12px;font-weight:500;text-align:center;overflow-wrap:anywhere}',
+      ':is(.riko-goal-btn,.riko-star-btn).active{background:rgba(209,31,31,.18);border-color:rgba(209,31,31,.5)}',
+      '.riko-goal-btn.active{color:#fff;font-weight:600}',
 
       /* weapon star selector — under crit column header */
-      '.riko-star-selector{display:grid;grid-template-columns: repeat(2, 1fr);gap:6px;margin-bottom:10px}',
-      '.riko-star-btn{display:flex;align-items:center;justify-content: center;gap:1px;background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.12);border-radius:6px;cursor:pointer;padding:8px 8px;transition:all .18s ease-out;user-select:none}',
-      '.riko-star-btn:hover{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}',
-      '.riko-star-btn.active{box-shadow:0 0 0 0.5px rgba(209,31,31,.6) inset,0 0 12px rgba(209,31,31,.15);background:rgba(209,31,31,.18);border-color:rgba(209,31,31,.5)}',
-      '.riko-star-btn img{width:14px;height:14px;object-fit:contain}',
+      '.riko-star-selector{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-bottom:10px}',
+      '.riko-star-btn{display:flex;align-items:center;justify-content:center;gap:1px;padding:8px 4px}',
+      '.riko-star-btn img{width:14px;min-width:0;height:14px;object-fit:contain}',
 
       /* weapon dropdown selects */
-      '.riko-weapon-select-wrap{display:flex;align-items:center;gap:4px;flex-shrink:0}',
-      '.riko-weapon-select-label{color:rgba(255,255,255,.45);font-size:10px;white-space:nowrap}',
-      '.riko-weapon-select{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:5px;color:#fff;padding:2px 4px;font-size:11px;cursor:pointer;transition:border-color .15s}',
-      '.riko-weapon-select:focus{border-color:rgba(209,31,31,.6);outline:none;background:rgba(255,255,255,.09)}',
-      '.riko-weapon-select option{background:#2a2a2a;color:#fff}',
+      '.riko-weapon-select-wrap{display:flex;align-items:center;gap:4px;max-width:100%}',
+      '.riko-weapon-select-label{color:rgba(255,255,255,.58);font-size:11px;overflow-wrap:anywhere}',
+      '.riko-weapon-select{max-width:100%}',
 
       /* weapon stat row */
       '.riko-weapon-row{display:flex;align-items:center;padding:3px 0;font-size:12px;min-height:26px;gap:6px;flex-wrap:wrap}',
-      '.riko-weapon-label{color:rgba(255,255,255,.6);white-space:nowrap;margin-right:4px}',
-      '.riko-weapon-value{color:#b39ddb;font-weight:500;font-style:italic;min-width:50px;text-align:right;font-size:12px;font-variant-numeric:tabular-nums;margin-left:auto}',
+      '.riko-weapon-label{color:rgba(255,255,255,.65);margin-right:4px;overflow-wrap:anywhere}',
+      '.riko-weapon-value{color:#b39ddb;font-weight:500;font-style:italic;min-width:50px;text-align:right;font-size:12px;font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}',
 
       /* stat icons */
       '.riko-stat-icon{width:16px;height:16px;object-fit:contain;vertical-align:middle;flex-shrink:0}',
       '.riko-col-header .riko-stat-icon{width:18px;height:18px}',
 
       /* two columns */
-      '.riko-calc-columns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}',
-      '.riko-calc-column{background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:14px 14px 10px 14px}',
-      '.riko-col-header{font-size:14px;font-weight:600;color:#fff;margin:0 0 10px 0;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12);display:flex;align-items:center;gap:6px}',
+      '.riko-calc-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:4px}',
+      '.riko-calc-column{min-width:0;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.08);padding:14px 14px 10px 14px}',
+      '.riko-calc-columns>.riko-calc-column:last-child{clip-path:var(--section-card-tail-shape)}',
+      '.riko-col-header{font-size:14px;font-weight:600;color:#fff;margin:0 0 10px;padding-bottom:9px;display:flex;align-items:center;gap:6px;overflow-wrap:anywhere}',
       '.riko-col-header-goal{margin-left:auto;font-size:12px;font-weight:600;color:rgba(255,255,255,0.9);white-space:nowrap;letter-spacing:.3px}',
+      ':is(.riko-col-header,.riko-charpage-total){background:var(--section-divider-paint)}',
+      '.riko-col-header{background-position-y:bottom,bottom,bottom 1px}',
 
       /* section labels */
-      '.riko-section-label{font-size:10px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px;margin:10px 0 6px 0;padding-top:8px;border-top:1px dashed rgba(255,255,255,.1)}',
+      '.riko-section-label{font-size:10px;color:rgba(255,255,255,.58);text-transform:uppercase;letter-spacing:.8px;margin:10px 0 6px 0;padding-top:8px;border-top:1px dashed rgba(255,255,255,.1)}',
       '.riko-section-label:first-child{border-top:none;margin-top:0;padding-top:0}',
 
       /* revelation icons */
       '.riko-rev-icon{width:14px;height:14px;object-fit:contain;vertical-align:middle;margin-right:4px;flex-shrink:0;opacity:.7}',
 
       /* stat rows */
-      '.riko-stat-row{display:flex;justify-content:space-between;align-items:center;padding:3px 0;font-size:12px;min-height:26px}',
-      '.riko-stat-label{color:rgba(255,255,255,.6);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-right:8px;display:flex;align-items:center}',
-      '.riko-stat-value{color:rgba(255,255,255,.45);font-weight:500;min-width:60px;text-align:right;font-size:12px;font-variant-numeric:tabular-nums}',
+      '.riko-stat-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:3px 0;font-size:12px;min-height:26px}',
+      '.riko-stat-label{color:rgba(255,255,255,.65);min-width:0;overflow-wrap:anywhere;line-height:1.4}',
+      '.riko-stat-value{color:rgba(255,255,255,.58);font-weight:500;min-width:60px;text-align:right;font-size:12px;font-variant-numeric:tabular-nums;white-space:nowrap}',
       '.riko-stat-value.calculated{color:#b39ddb;font-style:italic}',
 
       /* passive formula - sits inside label area */
-      '.riko-passive-formula{font-size:10px;color:rgba(179,157,219,.55);font-style:italic;margin-left:4px;white-space:nowrap}',
+      '.riko-passive-formula{font-size:10px;color:#b39ddb;font-style:italic;margin-left:4px}',
 
       /* inputs */
-      '.riko-input-wrap{display:flex;align-items:center;gap:2px}',
-      '.riko-stat-input{width:62px;background:rgba(255,255,255,.0);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:#fff;text-align:right;padding:3px 6px;font-size:12px;font-variant-numeric:tabular-nums;transition:border-color .15s}',
-      '.riko-stat-input:focus{border-color:rgba(209,31,31,.6);outline:none;background:rgba(255,255,255,.09)}',
+      '.riko-input-wrap{display:flex;align-items:center;gap:4px;flex-shrink:0}',
+      '.riko-stat-input{box-sizing:border-box;width:68px;min-height:28px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.18);border-radius:0;color:#fff;text-align:right;padding:3px 6px;font-size:12px;font-variant-numeric:tabular-nums}',
+      '.riko-stat-input:focus{border-color:rgba(209,31,31,.6);background:rgba(255,255,255,.09)}',
+      ':is(.riko-goal-btn,.riko-star-btn,.riko-stat-input):focus-visible{outline:2px solid var(--select-menu-focus,#ef9eaa);outline-offset:2px}',
       '.riko-stat-input::-webkit-inner-spin-button,.riko-stat-input::-webkit-outer-spin-button{opacity:1;height:16px}',
-      '.riko-input-unit{color:rgba(255,255,255,.35);font-size:11px}',
+      '.riko-input-unit{color:rgba(255,255,255,.58);font-size:11px}',
 
       /* char page subtotal row — sits under the thick border, before total */
-      '.riko-charpage-total{display:flex;justify-content:space-between;align-items:center;padding:8px 0 2px 0;margin-top:8px;border-top:2px solid rgba(255,255,255,.15);font-size:12px}',
+      '.riko-charpage-total{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0 2px;margin-top:8px;background-position-y:top,top,1px;font-size:12px}',
       '.riko-charpage-total .riko-total-label{color:rgba(255,255,255,.5);font-weight:500}',
       '.riko-charpage-total .riko-total-value{color:rgba(255,255,255,.5);font-size:12px}',
 
       /* total row — follows charpage subtotal, no border */
-      '.riko-total-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0 4px 0;font-size:13px;font-weight:600}',
-      '.riko-total-label{color:#fff}',
-      '.riko-total-right{display:flex;align-items:center;gap:6px}',
-      '.riko-total-value{color:#fff;font-size:14px;font-variant-numeric:tabular-nums}',
+      '.riko-total-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 0;font-size:13px;font-weight:600}',
+      '.riko-total-label{color:#fff;min-width:0;overflow-wrap:anywhere}',
+      '.riko-total-right{display:flex;align-items:center;gap:6px;flex-shrink:0}',
+      '.riko-total-value{color:#fff;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}',
 
       /* diff badges */
-      '.riko-diff{font-size:11px;font-weight:700;padding:2px 6px;border-radius:4px}',
+      '.riko-diff{font-size:11px;font-weight:700;padding:2px 6px;font-variant-numeric:tabular-nums;white-space:nowrap}',
+      '.riko-diff:empty{display:none}',
       '.riko-diff.deficit{color:#ff5252;background:rgba(255,82,82,.12)}',
       '.riko-diff.surplus-sp{color:#ff9800;background:rgba(255,152,0,.12)}',
       '.riko-diff.surplus-crit{color:#4caf50;background:rgba(76,175,80,.12)}',
@@ -373,14 +375,23 @@
       /* sp over-cap warning */
       '.riko-sp-warn{margin-top:6px;padding:4px 0;font-size:11px;color:rgba(255,152,0,.65);line-height:1.4}',
 
+      '@media(hover:hover) and (pointer:fine){',
+      '  :is(.riko-goal-btn,.riko-star-btn):hover:not(.active){background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.25)}',
+      '}',
+      '@media(prefers-reduced-motion:no-preference){',
+      '  :is(.riko-goal-btn,.riko-star-btn,.riko-stat-input){transition:background-color 150ms ease,border-color 150ms ease}',
+      '}',
+      '@media(pointer:coarse){',
+      '  :is(.riko-goal-btn,.riko-star-btn){min-height:44px}',
+      '}',
+
       /* responsive */
       '@media(max-width:768px){',
-      '  .riko-calc-card{padding:8px 15px 16px 15px;border-radius:10px}',
-      '  .riko-goal-grid{grid-template-columns:repeat(2,1fr)}',
-      '  .riko-calc-columns{grid-template-columns:1fr}',
+      '  .riko-calc-card{padding:8px 15px 16px 15px}',
+      '  .riko-goal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}',
+      '  .riko-calc-columns{grid-template-columns:minmax(0,1fr)}',
       '  .riko-calc-card h2{font-size:18px}',
       '  .riko-passive-formula{display:none}',
-      '  .riko-weapon-row{flex-wrap:wrap}',
       '}'
     ].join('\n');
     document.head.appendChild(s);
@@ -448,6 +459,7 @@
       var input = document.createElement('input');
       input.type = 'number';
       input.className = 'riko-stat-input';
+      input.setAttribute('aria-label', label);
       input.step = '0.1';
       input.value = state[opts.inputKey];
       input.addEventListener('input', function () {
@@ -469,11 +481,13 @@
   }
 
   /* ── Dropdown builder ───────────────────────────── */
-  function createLabeledSelect(labelText, options, activeValue, onChange) {
+  function createLabeledSelect(labelText, options, activeValue, onChange, accessibleLabel) {
     var wrap = el('div', 'riko-weapon-select-wrap');
-    wrap.appendChild(el('span', 'riko-weapon-select-label', labelText));
+    if (labelText) wrap.appendChild(el('span', 'riko-weapon-select-label', labelText));
     var select = document.createElement('select');
     select.className = 'riko-weapon-select';
+    select.dataset.selectDensity = 'compact';
+    select.setAttribute('aria-label', accessibleLabel || labelText);
     options.forEach(function (opt) {
       var option = document.createElement('option');
       option.value = opt.value;
@@ -547,13 +561,18 @@
   /* ── Star selector builder ──────────────────────── */
   function buildStarSelector() {
     var wrap = el('div', 'riko-star-selector');
+    wrap.setAttribute('role', 'group');
+    wrap.setAttribute('aria-label', t('weapon'));
 
     [4, 5].forEach(function (star) {
-      var btn = el('div', 'riko-star-btn' + (state.weapon_star === star ? ' active' : ''));
+      var btn = el('button', 'riko-star-btn' + (state.weapon_star === star ? ' active' : ''));
+      btn.type = 'button';
+      btn.setAttribute('aria-label', star + '★');
+      btn.setAttribute('aria-pressed', String(state.weapon_star === star));
       for (var i = 0; i < star; i++) {
         var img = document.createElement('img');
         img.src = BASE + '/assets/img/character-detail/star' + star + '.png';
-        img.alt = '\u2605';
+        img.alt = '';
         btn.appendChild(img);
       }
       btn.dataset.star = star;
@@ -561,7 +580,9 @@
         state.weapon_star = star;
         saveState();
         wrap.querySelectorAll('.riko-star-btn').forEach(function (b) {
-          b.classList.toggle('active', Number(b.dataset.star) === star);
+          var selected = Number(b.dataset.star) === star;
+          b.classList.toggle('active', selected);
+          b.setAttribute('aria-pressed', String(selected));
         });
         updateWeaponVisibility();
         recalculate();
@@ -573,7 +594,7 @@
   }
 
   function buildCard() {
-    var card = el('div', 'riko-calc-card');
+    var card = el('div', 'riko-calc-card section-card-cut');
 
     /* title */
     card.appendChild(el('h2', null, t('cardTitle')));
@@ -583,15 +604,20 @@
     goalSec.appendChild(el('div', 'riko-goal-label', t('goalLabel')));
 
     var goalGrid = el('div', 'riko-goal-grid');
+    goalGrid.setAttribute('role', 'group');
+    goalGrid.setAttribute('aria-label', t('goalLabel'));
     GOALS.forEach(function (g) {
       var btn = el('button', 'riko-goal-btn' + (state.selectedGoal === g.id ? ' active' : ''), t(g.labelKey));
       btn.type = 'button';
       btn.dataset.goalId = g.id;
+      btn.setAttribute('aria-pressed', String(state.selectedGoal === g.id));
       btn.addEventListener('click', function () {
         state.selectedGoal = g.id;
         saveState();
-        document.querySelectorAll('.riko-goal-btn').forEach(function (b) {
-          b.classList.toggle('active', b.dataset.goalId === g.id);
+        goalGrid.querySelectorAll('.riko-goal-btn').forEach(function (b) {
+          var selected = b.dataset.goalId === g.id;
+          b.classList.toggle('active', selected);
+          b.setAttribute('aria-pressed', String(selected));
         });
         recalculate();
       });
@@ -675,7 +701,7 @@
       state.crit_mindscape = Number(val);
       saveState();
       recalculate();
-    });
+    }, t('mindscape'));
     mindscapeRow.appendChild(msSel);
     elMindscapeVal = el('span', 'riko-weapon-value');
     mindscapeRow.appendChild(elMindscapeVal);

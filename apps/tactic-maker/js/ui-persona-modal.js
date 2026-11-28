@@ -55,13 +55,8 @@ export class PersonaModal extends EventEmitter {
                     <div class="persona-filter-header">
                         <div class="persona-search-sort-container">
                             <div class="persona-search-container">
-                                <div class="persona-search-icon">
-                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z" fill="rgba(255, 255, 255, 0.6)"/>
-                                    </svg>
-                                </div>
-                                <input type="text" class="persona-search-input" placeholder="${window.I18nService ? window.I18nService.t('common.search') : '검색...'}" autocomplete="off">
-                                <button class="persona-search-clear" style="display: none;">
+                                <input type="text" data-lufel-search="clear" class="persona-search-input" placeholder="${window.I18nService ? window.I18nService.t('common.search') : '검색...'}" autocomplete="off">
+                                <button type="button" data-lufel-search-action="clear" class="persona-search-clear" style="display: none;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <circle cx="12" cy="12" r="10"/>
                                         <path d="m15 9-6 6"/>
@@ -701,45 +696,6 @@ export class PersonaModal extends EventEmitter {
                 position: relative;
                 display: flex;
                 align-items: center;
-            }
-
-            .persona-search-icon {
-                position: absolute;
-                left: 8px;
-                pointer-events: none;
-                display: flex;
-                align-items: center;
-            }
-
-            .persona-search-input {
-                width: 100%;
-                padding: 10px 32px 10px 32px;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
-                border-radius: 6px;
-                color: #fff;
-                font-size: 14px;
-            }
-
-            .persona-search-input:focus {
-                outline: none;
-                border-color: rgba(255, 255, 255, 0.3);
-            }
-
-            .persona-search-clear {
-                position: absolute;
-                right: 8px;
-                background: none;
-                border: none;
-                cursor: pointer;
-                color: #999;
-                padding: 0;
-                display: flex;
-                align-items: center;
-            }
-
-            .persona-search-clear:hover {
-                color: #fff;
             }
 
             .persona-sort-container {

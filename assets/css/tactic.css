@@ -44,7 +44,7 @@ input[type="text"] {
   color: rgba(255, 255, 255, 0.9) !important;
   background-color: rgba(0, 0, 0, 0.15);
   border: none;
-  border-radius: 3px;
+  border-radius: 0;
   padding: 8px;
   font-size: 13px;
   transition: border-color 0.2s ease;
@@ -76,9 +76,7 @@ input[type="text"]:focus {
 }
 
 .card {
-  background: linear-gradient(to bottom, rgb(109, 30, 37) 40px, var(--card-background) 24px);
-  border-radius: 2px;
-  box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25);
+
   padding: 16px 24px 20px 24px;
   /* 상우하좌 */
   height: 100%;
@@ -95,8 +93,11 @@ input[type="text"]:focus {
 
 .card h2 {
   font-size: 15px;
-  margin-top: -7px;
-  margin-bottom: 8px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  background: var(--section-divider-paint);
+  background-position-y: bottom, bottom, bottom 1px;
   color: #FFFFFF;
   font-weight: 500;
 }
@@ -117,7 +118,7 @@ input[type="text"]:focus {
 
 .turn-container {
   background: linear-gradient(to top, rgb(109, 30, 37) 2px, var(--card-background) 2px);
-  border-radius: 2px;
+  border-radius: 0;
   box-shadow: 0 1px 1px rgba(9, 30, 66, 0.25);
   padding: 12px 16px 0px 16px;
   margin-bottom: 0px;
@@ -158,7 +159,7 @@ input[type="text"]:focus {
   cursor: grab;
   padding: 2px;
   border: 1px solid rgb(255, 255, 255, 0);
-  border-radius: 3px;
+  border-radius: 0;
   margin-bottom: 4px;
   display: grid;
   grid-template-columns: 0.6fr 0.6fr minmax(0, 1fr) auto;
@@ -209,7 +210,7 @@ input[type="text"]:focus {
 .menu-btn {
   background: transparent;
   border: 0;
-  border-radius: 6px;
+  border-radius: 0;
   color: #fff;
   padding: 2px 0px 0px 0px;
   cursor: pointer;
@@ -226,7 +227,7 @@ input[type="text"]:focus {
   top: 36px;
   background: rgba(0, 0, 0, .9);
   border: 1px solid rgba(255, 255, 255, .15);
-  border-radius: 8px;
+  border-radius: 0;
   display: none;
   flex-direction: column;
   min-width: 60px;
@@ -252,7 +253,7 @@ input[type="text"]:focus {
 
 .skill-group {
   padding: 8px;
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 12px;
 }
 
@@ -268,7 +269,7 @@ input[type="text"]:focus {
 .action-memo {
   width: 160px;
   padding: 8px 12px;
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 14px;
   transition: all 0.2s ease;
   background-color: transparent !important;
@@ -350,7 +351,7 @@ input[type="text"]:focus {
 .party-name-input {
   width: 84px;
   padding: 8px;
-  border-radius: 3px;
+  border-radius: 0;
   border: none;
   background-color: rgba(0, 0, 0, 0.15);
   font-size: 14px;
@@ -399,7 +400,7 @@ input[type="text"]:focus {
   color: #eee;
   /* border removed to blend with UI */
   padding: 8px 8px;
-  border-radius: 3px;
+  border-radius: 0;
   cursor: pointer;
   user-select: none;
 }
@@ -408,7 +409,7 @@ input[type="text"]:focus {
   width: 20px;
   height: 20px;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .rev-display span {
@@ -432,7 +433,7 @@ input[type="text"]:focus {
   background: var(--card-background);
   z-index: 1000;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  border-radius: 0;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -457,7 +458,7 @@ input[type="text"]:focus {
   width: 20px;
   height: 20px;
   object-fit: cover;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .rev-option span {
@@ -478,7 +479,7 @@ input[type="text"]:focus {
   overflow-y: auto;
   background: var(--card-background);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 3px;
+  border-radius: 0;
   z-index: 1000;
   width: 100%;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
@@ -612,7 +613,7 @@ input[type="text"]:focus {
   padding: 8px 12px;
   background: rgba(0, 0, 0, 0.9);
   color: white;
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 14px;
   white-space: pre-line;
   z-index: 1000;
@@ -668,7 +669,7 @@ input[type="text"]:focus {
   width: 100%;
   padding: 6px !important;
   border: 1px solid rgb(255, 255, 255, 0.5);
-  border-radius: 2px !important;
+  border-radius: 0 !important;
   box-sizing: border-box;
   font-size: 11px;
   background-position: right 1px center !important;
@@ -714,7 +715,7 @@ input[type="text"]:focus {
 .wonder-weapon-input {
   width: 240px;
   padding: 8px;
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 14px;
 }
 
@@ -946,14 +947,6 @@ select:disabled {
   padding: 8px;
   font-size: 13px;
   color: inherit;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 16px;
-  padding-right: 24px;
   min-width: 0;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -1005,7 +998,7 @@ select:disabled {
   font-size: 13px;
   /*background: url("{{ site.baseurl }}/assets/img/ui/newstab.png") no-repeat center center; background-size: cover; width: 135px;*/
   background: #552429;
-  border-radius: 36px;
+  border-radius: 0;
   width: fit-content;
   height: auto;
 }
@@ -1026,7 +1019,7 @@ select:disabled {
   /* 60px에서 48px로 축소 */
   height: 24px;
   /* 30px에서 24px로 축소 */
-  border-radius: 12px;
+  border-radius: 0;
   /* height의 절반으로 조정 */
   background: #7e1822;
   border: 1px solid #ffffff;
@@ -1244,19 +1237,11 @@ select:disabled {
   opacity: 1;
 }
 
-/* 공통 셀렉트 박스 스타일 */
 .party-ritual,
-.party-order,
-.main-revelation,
-.sub-revelation {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgba(0,0,0,0.2)' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 16px;
-  padding-right: 24px;
+.party-order {
+  --select-icon-size: 12px;
+  --select-icon-inset: 5px;
+  --select-end-padding: 19px;
 }
 
 /* 기존 너비 유지 */
@@ -1296,7 +1281,7 @@ select:disabled {
   width: 16px !important;
   height: 16px !important;
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 3px;
+  border-radius: 0;
   position: relative;
   transition: all 0.2s ease;
   background: transparent;
@@ -1411,7 +1396,7 @@ select:disabled {
   padding: 8px 16px;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 13px;
   background: url("/assets/img/ui/newstab.png") no-repeat center center;
@@ -1486,7 +1471,7 @@ input[list] {
   position: relative;
   padding: 8px 10px 8px 30px;
   /* 왼쪽에 아이콘 공간 확보 */
-  border-radius: 2px;
+  border-radius: 0;
 
   background: #808080;
   /* 기본 회색 */
@@ -1540,7 +1525,7 @@ input[list] {
     align-items: center;
     position: relative;
     padding: 8px 10px 8px 30px !important;
-    border-radius: 2px;
+    border-radius: 0;
     background: #808080;
     border: none;
     cursor: pointer;
@@ -1643,7 +1628,7 @@ input[list] {
   padding: 8px 12px;
   background: rgba(0, 0, 0, 0.9);
   color: white;
-  border-radius: 6px;
+  border-radius: 0;
   font-size: 14px;
   white-space: pre-line;
   z-index: 100;
@@ -1682,7 +1667,7 @@ input[list] {
   padding: 6px 10px;
   background: rgba(0, 0, 0, 0.9);
   color: white;
-  border-radius: 6px;
+  border-radius: 0;
   font-size: 12px;
   white-space: nowrap;
   z-index: 2000;
@@ -1771,7 +1756,7 @@ input[list] {
     padding: 0px;
     /* 내부 패딩 추가 */
     /* background: #f8f9fa;  */
-    border-radius: 4px;
+    border-radius: 0;
     min-width: auto !important;
   }
 
@@ -1978,7 +1963,7 @@ input[list] {
 
   /* 폰트 크기 증가 */
   select,
-  input[type="text"]:not(.title-input) {
+  input[type="text"]:not(.title-input, [data-lufel-search]) {
     font-size: 12px !important;
     /* 모바일에서 기본 폰트 크기 */
     padding: 10px !important;
@@ -2020,21 +2005,6 @@ input[list] {
   .card h2 {
     font-size: 14px !important;
   }
-
-  /* 드롭다운 화살표 크기 조정 */
-  .action-character,
-  .action-skill,
-  .wonder-persona-select,
-  .party-ritual,
-  .party-order,
-  .main-revelation,
-  .sub-revelation {
-    background-size: 20px !important;
-    background-position: right 10px center !important;
-    padding-right: 32px !important;
-  }
-
-
 
   .delete-action {
     font-size: 24px !important;
@@ -2085,30 +2055,6 @@ input[list] {
   }
 }
 
-/* 드롭다운 옵션 스타일 수정 */
-select option {
-  background-color: var(--card-background) !important;
-  color: rgba(255, 255, 255, 0.9) !important;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-/* iOS에서 선택된 옵션 스타일 */
-select:active,
-select:focus {
-  color: rgba(255, 255, 255, 0.9) !important;
-  background-color: transparent !important;
-}
-
-/* iOS에서 드롭다운 메뉴 스타일 */
-@supports (-webkit-touch-callout: none) {
-  select {
-    color-scheme: dark;
-    -webkit-text-fill-color: rgba(255, 255, 255, 0.9);
-  }
-}
-
 @media screen and (max-width: 1200px) {
 
   .wonder-weapon-input~.clear-input,
@@ -2125,7 +2071,7 @@ select:focus {
 
 .action-memo-display {
   padding: 8px 12px;
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 13px;
   transition: all 0.2s ease;
   color: rgba(255, 255, 255, 0.9);
@@ -2159,7 +2105,7 @@ select:focus {
   background-color: var(--card-background);
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 0;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   z-index: 1000;
   display: flex;
@@ -2170,7 +2116,7 @@ select:focus {
 .modal-memo-input {
   padding: 10px 12px;
   border: none;
-  border-radius: 3px;
+  border-radius: 0;
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0.15);
   color: rgba(255, 255, 255, 0.9);
@@ -2196,7 +2142,7 @@ select:focus {
   background-color: #b42f1d;
   color: white;
   border: none;
-  border-radius: 36px;
+  border-radius: 0;
   cursor: pointer;
   font-size: 13px;
   align-self: center;

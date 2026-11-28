@@ -1161,6 +1161,7 @@
     var wrap = el('label', 'ayaka-control');
     wrap.appendChild(el('span', null, label));
     var select = document.createElement('select');
+    select.dataset.selectDensity = 'compact';
     select.setAttribute('data-ayaka-control', key);
     options.forEach(function (item) {
       select.appendChild(option(item[0], item[1], item[0] === selected));
@@ -1317,6 +1318,7 @@
   function renderBaseSelect(turnIndex, slotIndex, actionIndex, action) {
     var wrap = el('label', 'ayaka-mini-control');
     var select = document.createElement('select');
+    select.dataset.selectDensity = 'compact';
     select.setAttribute('data-ayaka-action-field', 'baseMode');
     select.title = t('baseGain');
     setActionDataset(select, turnIndex, slotIndex, actionIndex);
@@ -1330,6 +1332,7 @@
   function renderActionTypeSelect(turnIndex, slotIndex, actionIndex, action, types) {
     var wrap = el('label', 'ayaka-mini-control ayaka-type-control');
     var select = document.createElement('select');
+    select.dataset.selectDensity = 'compact';
     select.setAttribute('data-ayaka-action-field', 'type');
     select.title = getSkillName(action.type);
     setActionDataset(select, turnIndex, slotIndex, actionIndex);
@@ -1563,30 +1566,36 @@
     var style = document.createElement('style');
     style.id = 'ayaka-summer-operation-style';
     style.textContent = [
-      '.ayaka-sim-card{display:none;background:var(--card-background);border-bottom:3px solid var(--border-red,#d11f1f);border-radius:16px;padding:20px 28px 24px;margin:20px 0;box-shadow:0 4px 6px rgba(0,0,0,.2)}',
-      '.ayaka-sim-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;padding:0 0 14px;border-bottom:1px solid rgba(255,255,255,.14)}',
-      '.ayaka-sim-card.is-collapsed .ayaka-sim-header{margin-bottom:0;padding-bottom:0;border-bottom:0}',
+      '.ayaka-sim-card{--section-card-paint-inset:0 0 -3px;border-bottom:3px solid transparent;display:none;padding:20px 28px 24px;margin:20px 0}',
+      '.ayaka-sim-header{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 14px;padding:0 0 14px}',
+      '.ayaka-sim-header::after{position:absolute;inset:auto 0 0;height:3px;background:var(--section-divider-paint);pointer-events:none;content:""}',
+      '.ayaka-sim-card.is-collapsed .ayaka-sim-header{margin-bottom:0;padding-bottom:0}',
+      '.ayaka-sim-card.is-collapsed .ayaka-sim-header::after{content:none}',
       '.ayaka-sim-title{font-size:20px;color:#fff;margin:0;font-weight:650;border:0!important;padding:0!important;width:auto!important;line-height:1.35}',
-      '.ayaka-sim-reset,.ayaka-remove,.ayaka-slot-tool,.ayaka-collapse-toggle{border:1px solid rgba(255,255,255,0);background:rgba(0,0,0,.24);color:rgba(255,255,255,.78);border-radius:8px;cursor:pointer;transition:background .16s,border-color .16s,color .16s}',
+      '.ayaka-sim-title::after{content:none}',
+      '.ayaka-sim-reset,.ayaka-remove,.ayaka-slot-tool,.ayaka-collapse-toggle{border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18);color:rgba(255,255,255,.78);border-radius:0;cursor:pointer}',
       '.ayaka-sim-reset{padding:7px 12px;font-size:12px;white-space:nowrap}',
       '.ayaka-control-reset{height:100%;min-height:36px;align-self:stretch}',
       '.ayaka-collapse-toggle{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;flex:0 0 auto}',
-      '.ayaka-collapse-toggle svg{display:block;transition:transform .16s;transform:rotate(90deg)}',
+      '.ayaka-collapse-toggle svg{display:block;transform:rotate(90deg)}',
       '.ayaka-sim-card.is-collapsed .ayaka-collapse-toggle svg{transform:rotate(0deg)}',
-      '.ayaka-sim-reset:hover,.ayaka-remove:hover,.ayaka-slot-tool:hover,.ayaka-collapse-toggle:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);color:#fff}',
+      ':is(.ayaka-sim-reset,.ayaka-remove,.ayaka-slot-tool,.ayaka-collapse-toggle,.ayaka-drag-handle,.ayaka-mini-control input):focus-visible{outline:2px solid #9bdfee;outline-offset:2px}',
+      '@media(hover:hover) and (pointer:fine){:is(.ayaka-sim-reset,.ayaka-remove,.ayaka-slot-tool,.ayaka-collapse-toggle,.ayaka-drag-handle):hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);color:#fff}}',
+      '@media(prefers-reduced-motion:no-preference){:is(.ayaka-sim-reset,.ayaka-remove,.ayaka-slot-tool,.ayaka-collapse-toggle,.ayaka-drag-handle){transition:background-color .16s ease,border-color .16s ease,color .16s ease}.ayaka-collapse-toggle svg{transition:transform .16s ease}}',
       '.ayaka-sim-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:10px;margin-bottom:12px}',
-      '.ayaka-control{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,0);border-radius:8px;padding:8px 10px;min-width:0}',
+      '.ayaka-control{display:flex;align-items:center;justify-content:space-between;gap:10px;background:rgba(0,0,0,.18);border:1px solid transparent;padding:8px 10px;min-width:0}',
       '.ayaka-control span{font-size:12px;color:rgba(255,255,255,.68);white-space:nowrap}',
-      '.ayaka-control select,.ayaka-mini-control select,.ayaka-mini-control input{background:rgba(0,0,0,.36);border:1px solid rgba(255,255,255,0);border-radius:6px;color:#fff;font-size:12px;padding:4px 6px;min-width:58px}',
-      '.ayaka-mini-control input{width:58px;text-align:right}',
+      '.ayaka-control select,.ayaka-mini-control select{min-width:58px;max-width:100%}',
+      '.ayaka-mini-control input{box-sizing:border-box;width:58px;min-height:28px;padding:3px 6px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.12);border-radius:0;color:#fff;font-size:12px;text-align:right}',
       '.ayaka-repeat-control input{width:42px;min-width:42px}',
       '.ayaka-turn-grid{display:flex;flex-direction:column;gap:10px}',
-      '.ayaka-turn{background:rgba(0,0,0,.14);border:1px solid rgba(255,255,255,0);border-radius:10px;padding:10px}',
+      '.ayaka-turn{background:rgba(0,0,0,.14);border:1px solid rgba(255,255,255,0);padding:10px}',
+      '.ayaka-turn-grid>.ayaka-turn:last-child{clip-path:var(--section-card-tail-shape)}',
       '.ayaka-turn-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;color:#fff;font-size:13px;font-weight:700}',
       '.ayaka-turn-state{font-size:12px;color:rgba(255,255,255,.5);font-weight:600;font-variant-numeric:tabular-nums}',
       '.ayaka-slot-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}',
-      '.ayaka-slot{min-width:0;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,0);border-radius:8px;padding:8px}',
-      '.ayaka-slot-own{box-shadow:0 0 0 1px rgba(54,178,216,.18) inset}',
+      '.ayaka-slot{min-width:0;background:rgba(0,0,0,.18);border:1px solid transparent;padding:8px}',
+      '.ayaka-slot-own{border-color:rgba(54,178,216,.22)}',
       '.ayaka-slot-header{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:6px;width:100%;border:0;background:transparent;color:#fff;padding:0;margin:0 0 7px;text-align:left;font-size:12px;font-weight:700}',
       '.ayaka-slot-label{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
       '.ayaka-slot-hl{color:rgba(255,255,255,.48);font-size:11px;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}',
@@ -1594,28 +1603,27 @@
       '.ayaka-slot-tool{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:24px;padding:0 6px;font-size:11px;font-weight:800;line-height:1}',
       '.ayaka-action-list{display:flex;flex-direction:column;gap:6px}',
       '.ayaka-empty{color:rgba(255,255,255,.36);font-size:12px;min-height:26px;display:flex;align-items:center}',
-      '.ayaka-action{display:flex;align-items:center;gap:4px;flex-wrap:wrap;border:1px solid rgba(255,255,255,0);border-radius:7px;background:rgba(0,0,0,.2);padding:6px;min-width:0}',
+      '.ayaka-action{display:flex;align-items:center;gap:4px;flex-wrap:wrap;border:1px solid transparent;background:rgba(0,0,0,.2);padding:6px;min-width:0}',
       '.ayaka-action.is-invalid{border-color:rgba(255,107,107,.45);background:rgba(255,107,107,.07)}',
       '.ayaka-action-auto{border-color:rgba(54,178,216,.25);background:rgba(54,178,216,.08);gap:8px}',
       '.ayaka-action.is-dragging{opacity:.55}',
       '.ayaka-action.is-drag-over{border-color:rgba(54,178,216,.65);background:rgba(54,178,216,.1)}',
-      '.ayaka-drag-handle{display:inline-flex;align-items:center;justify-content:center;width:14px;height:20px;border-radius:5px;color:rgba(255,255,255,.38);font-size:10px;font-weight:900;line-height:1;cursor:grab;user-select:none;flex:0 0 auto}',
-      '.ayaka-drag-handle:hover{background:rgba(255,255,255,.07);color:rgba(255,255,255,.78)}',
+      '.ayaka-drag-handle{display:inline-flex;align-items:center;justify-content:center;width:14px;height:20px;color:rgba(255,255,255,.38);font-size:10px;font-weight:900;line-height:1;cursor:grab;user-select:none;flex:0 0 auto}',
       '.ayaka-drag-handle:active{cursor:grabbing}',
       '.ayaka-action-main{display:flex;align-items:center;gap:6px;min-width:0}',
-      '.ayaka-action-name{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:22px;border-radius:6px;background:rgba(255,255,255,.08);color:#fff;font-size:11px;font-weight:800;white-space:nowrap}',
+      '.ayaka-action-name{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:22px;background:rgba(255,255,255,.08);color:#fff;font-size:11px;font-weight:800;white-space:nowrap}',
       '.ayaka-invalid{color:#ff8c8c;font-size:11px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
       '.ayaka-action-controls{display:flex;flex:1 1 auto;flex-wrap:wrap;align-items:center;gap:4px;min-width:0}',
       '.ayaka-mini-control{display:flex;align-items:center;gap:4px;color:rgba(255,255,255,.5);font-size:10px;white-space:nowrap}',
       '.ayaka-auto-title{display:inline-flex;align-items:center;gap:4px;color:#fff;font-size:11px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
       '.ayaka-auto-event{color:rgba(255,255,255,.58);font-size:10px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}',
-      '.ayaka-remove{display:inline-flex;align-items:center;justify-content:center;flex:0 0 20px;width:20px;height:20px;padding:0;font-size:11px;line-height:1;margin-left:auto;border-radius:6px}',
+      '.ayaka-remove{display:inline-flex;align-items:center;justify-content:center;flex:0 0 20px;width:20px;height:20px;padding:0;font-size:11px;line-height:1;margin-left:auto}',
       '.ayaka-remove svg{display:block;width:11px;height:11px}',
       '.ayaka-action-events,.ayaka-slot-events{display:flex;flex:0 0 100%;flex-wrap:wrap;gap:4px;margin-top:5px}',
       '.ayaka-slot-events{margin-left:6px;width:calc(100% - 6px)}',
       '.ayaka-action-events-inline{flex:1 1 180px;margin-top:0;min-width:120px}',
-      '.ayaka-action-events span,.ayaka-slot-events span{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:rgba(255,255,255,.56);background:rgba(255,255,255,.05);border-radius:5px;padding:2px 5px}',
-      '.ayaka-event-chevron{background:transparent!important;border-radius:0!important;padding:0!important;color:rgba(255,255,255,.34)!important;font-size:12px!important;font-weight:800}',
+      '.ayaka-action-events span,.ayaka-slot-events span{display:inline-flex;align-items:center;gap:3px;font-size:10px;color:rgba(255,255,255,.56);background:rgba(255,255,255,.05);padding:2px 5px}',
+      '.ayaka-event-chevron{background:transparent!important;padding:0!important;color:rgba(255,255,255,.34)!important;font-size:12px!important;font-weight:800}',
       '.ayaka-starwish-icon{display:inline-block;width:13px;height:13px;object-fit:contain;flex:0 0 auto}',
       '.ayaka-time-concerto-icon{display:inline-block;width:16px;height:16px;object-fit:contain;flex:0 0 auto}',
       '.ayaka-operation-concerto-icon{display:inline-block;width:12px;height:16px;object-fit:contain;vertical-align:-4px;margin:0 1px}',
@@ -1629,7 +1637,7 @@
     ensureStyles();
     loadState();
 
-    var card = el('div', 'ayaka-sim-card card-style');
+    var card = el('div', 'ayaka-sim-card card-style section-card-cut');
     bindEvents(card);
 
     function mounted() {

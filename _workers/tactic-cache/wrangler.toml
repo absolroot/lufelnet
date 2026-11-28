@@ -14,5 +14,6 @@ database_id = "fc859bab-0859-4ac7-bb63-f9449b27066d"
 
 [vars]
 ALLOWED_ORIGIN = "https://lufel.net"
+TACTIC_SNAPSHOTS = "enabled"
 SUPABASE_URL = "https://ipdkvuybgxczqwwmrqsw.supabase.co"
 SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Hk_7I7kkgaAKrPLQz_sdUA_XvrKoJbI"

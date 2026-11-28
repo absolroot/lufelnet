@@ -53,474 +53,132 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 
-<!-- 메인 컨텐츠 -->
-<div class="main-wrapper">
-    <!-- 네비게이션 경로 -->
-    <div class="navigation-path page-entrance-part">
-        <script>document.write(`<a id="nav-home" href="../../">홈</a>`);</script>
-        <span class="separator">/</span>
-        <span class="current-page" id="nav-current">택틱 / 택틱 업로드</span>
-    </div>
-    <div class="header-container page-entrance-part">
-        <h1 id="page-title">택틱 업로드</h1>
-    </div>
-    <div id="userInfoBar" class="user-info-bar" style="display:none;">
-        <span class="user-label" data-i18n="signed_in_as">로그인:</span>
-        <span id="userDisplayName"></span>
-        <button id="logoutButton" class="logout-btn" data-i18n="logout">로그아웃</button>
-    </div>
+<div class="main-wrapper tactic-upload-page">
+    <div class="tactic-upload-shell">
+        <div class="navigation-path page-entrance-part">
+            <a id="nav-home" href="../../">홈</a>
+            <span class="separator" aria-hidden="true">/</span>
+            <span class="current-page" id="nav-current" aria-current="page">택틱 / 택틱 업로드</span>
+        </div>
+        <header class="header-container tactic-upload-header page-entrance-part">
+            <h1 id="page-title">택틱 업로드</h1>
+            <div id="userInfoBar" class="tactic-upload-account" hidden>
+                <span class="tactic-upload-identity">
+                    <span data-i18n="signed_in_as">로그인:</span>
+                    <strong id="userDisplayName"></strong>
+                </span>
+                <button type="button" id="logoutButton" class="tactic-upload-button" data-i18n="logout">로그아웃</button>
+            </div>
+        </header>
 
-    <!-- 로그인 확인 메시지 -->
-    <div id="loginRequired" class="login-required page-entrance-part" style="display: none;">
-        <div class="login-message">
-            <h3 data-i18n="login_required">로그인이 필요합니다</h3>
+        <section id="loginRequired" class="tactic-upload-panel section-card-cut page-entrance-part" hidden>
+            <h2 data-i18n="login_required">로그인이 필요합니다</h2>
             <p data-i18n="login_required_desc">택틱을 업로드하려면 로그인해주세요.</p>
-            <button id="loginButton" class="login-btn" data-i18n="login">로그인하기</button>
-        </div>
-    </div>
+            <button type="button" id="loginButton" class="tactic-upload-button tactic-upload-button--primary" data-i18n="login">로그인하기</button>
+        </section>
 
-    <!-- 업로드 폼 -->
-    <div id="uploadForm" class="upload-container page-entrance-part" style="display: none;">
-        <form id="tacticUploadForm" class="tactic-upload-form">
-            <div class="form-section">
-                <h3 data-i18n="tactic_data">택틱 데이터</h3>
-                
-                <!-- JSON 파일 업로드 -->
-                <div class="form-group">
-                    <label for="jsonFile" data-i18n="json_file">택틱 JSON 파일 *</label>
-                    <input type="file" id="jsonFile" name="jsonFile" accept=".json" required>
-                    <small data-i18n="json_file_desc">택틱 메이커에서 내보낸 JSON 파일을 업로드해주세요.</small>
+        <div id="uploadForm" class="page-entrance-part" hidden>
+            <form id="tacticUploadForm" class="tactic-upload-panel section-card-cut">
+                <section class="tactic-upload-section" aria-labelledby="tacticDataHeading">
+                    <h2 id="tacticDataHeading" data-i18n="tactic_data">택틱 데이터</h2>
+                    <div id="tacticFileGroup" class="tactic-upload-field">
+                        <label for="jsonFile" data-i18n="json_file">택틱 JSON 파일 *</label>
+                        <div class="tactic-upload-file">
+                            <span class="tactic-upload-file-action" data-i18n="choose_file" aria-hidden="true">파일 선택</span>
+                            <span id="tacticFileName" class="tactic-upload-file-name" aria-hidden="true"></span>
+                            <input type="file" id="jsonFile" name="jsonFile" accept=".json" aria-describedby="tacticFileHelp tacticFileError" required>
+                        </div>
+                        <div class="tactic-upload-file-help">
+                            <small id="tacticFileHelp" data-i18n="json_file_desc">택틱 메이커에서 내보낸 JSON 파일을 선택하세요.</small>
+                            <a id="tacticMakerLink" href="/tactic-maker/" target="_blank" rel="noopener" data-i18n="open_maker">택틱 메이커 열기</a>
+                        </div>
+                        <p id="tacticFileError" class="tactic-upload-error" role="alert"></p>
+                    </div>
+                    <p id="tacticMakerStatus" class="tactic-upload-file-status" data-i18n="from_maker_loaded" hidden>택틱 메이커에서 데이터를 불러왔습니다</p>
+                    <div id="jsonPreview" class="tactic-upload-summary" hidden>
+                        <h3 data-i18n="data_preview">데이터 미리보기</h3>
+                        <div id="previewContent"></div>
+                    </div>
+                </section>
+
+                <section class="tactic-upload-section" aria-labelledby="tacticInfoHeading">
+                    <h2 id="tacticInfoHeading" data-i18n="tactic_info">택틱 정보</h2>
+                    <div class="tactic-upload-fields">
+                        <div class="tactic-upload-field">
+                            <label for="tacticRegion" data-i18n="region">지역 *</label>
+                            <select id="tacticRegion" name="tacticRegion" required>
+                                <option value="kr" data-i18n="lang_kr">한국 (KR)</option>
+                                <option value="cn" data-i18n="lang_cn">중국 (CN)</option>
+                                <option value="en" data-i18n="lang_en">글로벌 (EN)</option>
+                                <option value="jp" data-i18n="lang_jp">일본 (JP)</option>
+                                <option value="sea" data-i18n="lang_sea">동남아 (SEA)</option>
+                            </select>
+                        </div>
+                        <div class="tactic-upload-field">
+                            <label for="tacticType" data-i18n="tactic_type">택틱 타입 *</label>
+                            <select id="tacticType" name="tacticType" required>
+                                <option value="" data-i18n="select_please">선택해주세요</option>
+                                <option value="흉몽" data-i18n="nightmare">흉몽</option>
+                                <option value="바다" data-i18n="sea">바다</option>
+                                <option value="이벤트" data-i18n="event">이벤트</option>
+                                <option value="기타" data-i18n="other">기타</option>
+                            </select>
+                        </div>
+                        <div class="tactic-upload-field">
+                            <label for="tacticTitle" data-i18n="title">제목 *</label>
+                            <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="보스 이름 (점수)" aria-describedby="tacticTitleHelp" required>
+                            <small id="tacticTitleHelp" data-i18n="title_example">예: 쿠 훌린 (1.4억)</small>
+                        </div>
+                        <div class="tactic-upload-field">
+                            <label for="tacticAuthor" data-i18n="author">작성자 *</label>
+                            <input type="text" id="tacticAuthor" name="tacticAuthor" required>
+                        </div>
+                        <div class="tactic-upload-field tactic-upload-field--wide">
+                            <label for="tacticComment" data-i18n="optional_comment">코멘트 (선택)</label>
+                            <textarea id="tacticComment" name="tacticComment" rows="3" data-i18n-placeholder="comment_placeholder" placeholder="참고 사항, 메모 등"></textarea>
+                        </div>
+                    </div>
+                </section>
+
+                <p id="tacticFormError" class="tactic-upload-error" role="alert"></p>
+                <div class="tactic-upload-actions">
+                    <button type="button" id="previewButton" class="tactic-upload-button" data-i18n="preview">미리보기</button>
+                    <button type="submit" id="submitButton" class="tactic-upload-button tactic-upload-button--primary" data-i18n="upload">업로드</button>
                 </div>
-
-                <!-- JSON 데이터 미리보기 -->
-                <div id="jsonPreview" class="json-preview" style="display: none;">
-                    <h4 data-i18n="data_preview">데이터 미리보기</h4>
-                    <div id="previewContent"></div>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <h3 data-i18n="tactic_info">택틱 정보</h3>
-                
-                <!-- 지역 -->
-                <div class="form-group">
-                    <label for="tacticRegion" data-i18n="region">지역 *</label>
-                    <select id="tacticRegion" name="tacticRegion" required>
-                        <option value="kr" data-i18n="lang_kr">한국 (KR)</option>
-                        <option value="cn" data-i18n="lang_cn">중국 (CN)</option>
-                        <option value="en" data-i18n="lang_en">글로벌 (EN)</option>
-                        <option value="jp" data-i18n="lang_jp">일본 (JP)</option>
-                        <option value="sea" data-i18n="lang_sea">동남아 (SEA)</option>
-                    </select>
-                </div>
-
-                <!-- 택틱 타입 -->
-                <div class="form-group">
-                    <label for="tacticType" data-i18n="tactic_type">택틱 타입 *</label>
-                    <select id="tacticType" name="tacticType" required>
-                        <option value="" data-i18n="select_please">선택해주세요</option>
-                        <option value="흉몽" data-i18n="nightmare">흉몽</option>
-                        <option value="바다" data-i18n="sea">바다</option>
-                        <option value="이벤트" data-i18n="event">이벤트</option>
-                        <option value="기타" data-i18n="other">기타</option>
-                    </select>
-                </div>
-
-                <!-- 제목 -->
-                <div class="form-group">
-                    <label for="tacticTitle" data-i18n="title">제목 *</label>
-                    <input type="text" id="tacticTitle" name="tacticTitle" data-i18n-placeholder="title_placeholder" placeholder="보스 이름 (점수)" required style="width: 90%;">
-                    <small data-i18n="title_example">예: 쿠 훌린 (1.4억)</small>
-                </div>
-
-                <!-- 작성자 -->
-                <div class="form-group">
-                    <label for="tacticAuthor" data-i18n="author">작성자 *</label>
-                    <input type="text" id="tacticAuthor" name="tacticAuthor" required>
-                </div>
-            </div>
-
-            <div class="form-section">
-                <h3 data-i18n="additional_info">추가 정보 (선택사항)</h3>
-                
-                <!-- 코멘트 -->
-                <div class="form-group">
-                    <label for="tacticComment" data-i18n="comment">코멘트</label>
-                    <textarea id="tacticComment" name="tacticComment" rows="4" data-i18n-placeholder="comment_placeholder" placeholder="참고 사항, 메모 등" style="width: 90%;"></textarea>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <button type="button" id="previewButton" class="preview-btn" data-i18n="preview">미리보기</button>
-                <button type="submit" id="submitButton" class="submit-btn" data-i18n="upload">업로드</button>
-            </div>
-        </form>
-        <!-- 업로드 결과 표시 -->
-        <div id="uploadSuccessBox" class="upload-success" style="display:none; margin-top:16px;"></div>
-    </div>
-
-    <!-- 미리보기 모달 -->
-    <div id="previewModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 data-i18n="tactic_preview">택틱 미리보기</h3>
-                <button class="modal-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="modalPreviewContent"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-close-btn" data-i18n="close">닫기</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 업로드 성공 모달 -->
-    <div id="successModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="successModalTitle" data-i18n="success_upload_completed">업로드 완료</h3>
-                <button class="modal-close success-close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p id="successMessageText" data-i18n="success_upload">택틱이 성공적으로 업로드되었습니다!</p>
-                <div class="success-row">
-                    <span class="label" id="accessLabel" data-i18n="success_access_label">다음 주소로 접근할 수 있습니다:</span>
-                    <a id="publicLinkEl" class="link" href="#" target="_blank" rel="noopener noreferrer"></a>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="modal-close-btn success-close" data-i18n="close">닫기</button>
-                <button id="copyUrlBtnModal" class="modal-close-btn" data-i18n="success_copy_url">URL 복사</button>
-                <button id="goListBtnModal" class="modal-close-btn" data-i18n="success_go_list">목록으로</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- 로딩 오버레이 -->
-    <div id="loadingOverlay" class="loading-overlay" style="display: none;">
-        <div class="loading-spinner">
-            <div class="spinner"></div>
-            <p data-i18n="uploading">업로드 중...</p>
+            </form>
         </div>
     </div>
 </div>
 
-<style>
-.login-required {
-    text-align: center;
-    padding: 60px 20px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    margin: 40px auto;
-    max-width: 500px;
-}
+<dialog id="previewModal" class="tactic-upload-dialog" aria-labelledby="tacticPreviewHeading">
+    <h2 id="tacticPreviewHeading" data-i18n="tactic_preview">택틱 미리보기</h2>
+    <div id="modalPreviewContent" class="tactic-upload-dialog-body" role="region" aria-labelledby="tacticPreviewHeading" tabindex="0"></div>
+    <form method="dialog" class="tactic-upload-dialog-actions">
+        <button class="tactic-upload-button" data-i18n="close" autofocus>닫기</button>
+    </form>
+</dialog>
 
-.login-message h3 {
-    color: #fff;
-    margin-bottom: 15px;
-}
+<dialog id="successModal" class="tactic-upload-dialog" aria-labelledby="successModalTitle">
+    <h2 id="successModalTitle" data-i18n="success_upload_completed">업로드 완료</h2>
+    <div class="tactic-upload-dialog-body">
+        <p id="successMessageText" data-i18n="success_upload">택틱이 성공적으로 업로드되었습니다!</p>
+        <p class="tactic-upload-success-link">
+            <span id="accessLabel" data-i18n="success_access_label">다음 주소로 접근할 수 있습니다:</span>
+            <a id="publicLinkEl" href="#" target="_blank" rel="noopener noreferrer"></a>
+        </p>
+        <p id="tacticCopyStatus" role="status"></p>
+    </div>
+    <form method="dialog" class="tactic-upload-dialog-actions">
+        <button class="tactic-upload-button" data-i18n="close" autofocus>닫기</button>
+        <button type="button" id="copyUrlBtnModal" class="tactic-upload-button" data-i18n="success_copy_url">URL 복사</button>
+        <button type="button" id="goListBtnModal" class="tactic-upload-button tactic-upload-button--primary" data-i18n="success_go_list">목록으로</button>
+    </form>
+</dialog>
 
-.login-message p {
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 25px;
-}
-
-.login-btn {
-    background: #6d0303;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.login-btn:hover {
-    transform: translateY(-2px);
-}
-
-.upload-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 0px;    
-}
-
-@media (max-width: 1200px) {
-    .upload-container {
-        padding: 0;
-    }
-}
-
-.tactic-upload-form {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
-    padding: 30px;
-}
-
-.form-section {
-    margin-bottom: 40px;
-}
-
-.form-section h3 {
-    color: #fff;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    color: #fff;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    font-size: 14px;
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-.form-group small {
-    display: block;
-    color: rgba(255, 255, 255, 0.6);
-    margin-top: 5px;
-    font-size: 12px;
-}
-
-.json-preview {
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 15px;
-    margin-top: 15px;
-}
-
-.json-preview h4 {
-    color: #fff;
-    margin-bottom: 10px;
-    margin-top: 0;
-}
-
-.form-actions {
-    display: flex;
-    gap: 15px;
-    justify-content: flex-end;
-    margin-top: 30px;
-}
-
-.preview-btn,
-.submit-btn {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.preview-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.preview-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.submit-btn {
-    background:#6d0303;
-    color: white;
-}
-
-.submit-btn:hover {
-    transform: translateY(-1px);
-}
-
-.submit-btn:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background: #1a1a2e;
-    border-radius: 15px;
-    max-width: 90%;
-    max-height: 90%;
-    overflow: hidden;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.modal-header h3 {
-    color: #fff;
-    margin: 0;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.modal-body {
-    padding: 20px;
-    max-height: 60vh;
-    overflow-y: auto;
-}
-
-.modal-footer {
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: right;
-}
-
-.modal-close-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #fff;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.loading-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 2000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.loading-spinner {
-    text-align: center;
-    color: #fff;
-}
-
-.spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid rgba(255, 255, 255, 0.3);
-    border-top: 4px solid #667eea;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 0 auto 20px;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* 사용자 정보 바 */
-.user-info-bar {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin: 8px 20px 16px 20px;
-    padding: 10px 14px;
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-}
-.user-info-bar .user-label {
-    color: rgba(255,255,255,0.85);
-}
-.logout-btn {
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.35);
-    padding: 6px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-.logout-btn:hover {
-    background: rgba(255,255,255,0.1);
-}
-
-/* 업로드 성공 박스 */
-.upload-success {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 10px;
-    padding: 16px;
-}
-.upload-success .success-title {
-    color: #fff;
-    margin: 0 0 8px 0;
-}
-.upload-success .success-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-}
-.upload-success .label {
-    color: rgba(255,255,255,0.8);
-}
-.upload-success .link {
-    color: #7fc8ff;
-    text-decoration: underline;
-    word-break: break-all;
-}
-.upload-success .btns {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-}
-.upload-success .btn {
-    background: rgba(255,255,255,0.1);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-</style>
+<dialog id="loadingOverlay" class="tactic-upload-dialog tactic-upload-loading" aria-labelledby="tacticLoadingText">
+    <span class="tactic-upload-spinner" aria-hidden="true"></span>
+    <p id="tacticLoadingText" data-i18n="uploading">업로드 중...</p>
+</dialog>
 
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script>
@@ -539,10 +197,13 @@ class TacticUploader {
         this.currentUser = null;
         this.tacticData = null;
         this.tacticVersion = 'legacy'; // 'v3' or 'legacy'
-        this.tacticPreview = new TacticPreview();
         this.currentLang = this.getCurrentLanguage();
         this.editMode = false;
         this.editPostId = null;
+        this.originalEditData = null;
+        this.fileTitle = '';
+        this.fileReading = false;
+        this.publicLink = '';
         
         this.init();
     }
@@ -584,13 +245,15 @@ class TacticUploader {
             await window.I18nService.init('tactic-upload', this.currentLang);
         }
 
-        await this.checkAuth();
         this.initLanguage();
         this.updateLanguageTextsAndSEO();
         this.initEventListeners();
-        this.initRegionDropdown();
-        this.checkEditMode();
-        this.checkFromMaker();
+        if (await this.checkAuth()) {
+            this.initRegionDropdown();
+            await this.checkEditMode();
+            if (!this.editMode) this.checkFromMaker();
+            this.showUploadForm();
+        }
         window.LufelPageEntrance?.finish();
     }
 
@@ -607,30 +270,13 @@ class TacticUploader {
 
             const tacticData = JSON.parse(storedData);
             
-            // Set tactic data and version
             this.tacticData = tacticData;
             this.tacticVersion = this.detectTacticVersion(tacticData);
-            
-            // Remove required attribute from file input since data is loaded from sessionStorage
-            const jsonFileInput = document.getElementById('jsonFile');
-            if (jsonFileInput) {
-                jsonFileInput.removeAttribute('required');
-                // Hide the file upload section and show a loaded indicator
-                const fileGroup = jsonFileInput.closest('.form-group');
-                if (fileGroup) {
-                    fileGroup.innerHTML = `
-                        <label data-i18n="json_file">택틱 JSON 파일</label>
-                        <div class="data-loaded-indicator">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2">
-                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                                <polyline points="22 4 12 14.01 9 11.01"/>
-                            </svg>
-                            <span>${this.i18n('from_maker_loaded', '택틱 메이커에서 데이터를 불러왔습니다')}</span>
-                        </div>
-                    `;
-                }
-            }
-            
+
+            document.getElementById('jsonFile').required = false;
+            document.getElementById('tacticFileGroup').hidden = true;
+            document.getElementById('tacticMakerStatus').hidden = false;
+
             // Show preview
             this.showJsonPreview(tacticData);
             
@@ -644,7 +290,9 @@ class TacticUploader {
             sessionStorage.removeItem('tacticUploadData');
 
             // Clean URL
-            window.history.replaceState({}, document.title, window.location.pathname);
+            urlParams.delete('fromMaker');
+            const query = urlParams.toString();
+            window.history.replaceState({}, document.title, window.location.pathname + (query ? '?' + query : '') + window.location.hash);
 
             console.log('[TacticUploader] Loaded data from tactic-maker');
         } catch (error) {
@@ -653,23 +301,20 @@ class TacticUploader {
     }
 
     initLanguage() {
-        document.querySelectorAll('[data-i18n]').forEach(element => {
+        document.querySelectorAll('.tactic-upload-page [data-i18n], .tactic-upload-dialog [data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (!key) return;
             element.textContent = getI18nText(key, element.textContent || '');
         });
 
-        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+        document.querySelectorAll('.tactic-upload-page [data-i18n-placeholder]').forEach(element => {
             const key = element.getAttribute('data-i18n-placeholder');
             if (!key) return;
             element.placeholder = getI18nText(key, element.placeholder || '');
         });
 
-        document.querySelectorAll('option[data-i18n]').forEach(element => {
-            const key = element.getAttribute('data-i18n');
-            if (!key) return;
-            element.textContent = getI18nText(key, element.textContent || '');
-        });
+        this.setFileName();
+        document.getElementById('tacticMakerLink').href = '/' + this.currentLang + '/tactic-maker/';
 
         const navHome = document.getElementById('nav-home');
         const navCurrent = document.getElementById('nav-current');
@@ -701,65 +346,32 @@ class TacticUploader {
 
     async checkAuth() {
         try {
-            // 먼저 현재 세션 확인
-            const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-            
-            if (sessionError) {
-                console.error('세션 확인 실패:', sessionError);
-                this.showLoginRequired();
-                return;
-            }
-
-            if (session && session.user) {
+            const { data: { session }, error } = await supabase.auth.getSession();
+            if (error) throw error;
+            if (session?.user) {
                 this.currentUser = session.user;
-                this.showUploadForm();
                 this.updateUserInfoBar();
-                
-                // 작성자 필드에 사용자 이름 자동 입력
-                const authorInput = document.getElementById('tacticAuthor');
-                const displayName = session.user.user_metadata?.display_name || 
-                                   session.user.user_metadata?.full_name || 
-                                   session.user.email || '';
-                authorInput.value = displayName;
-                
-                //console.log('사용자 인증 확인됨:', displayName);
-            } else {
-                // 세션이 없으면 로컬 스토리지도 확인
-                const localUser = localStorage.getItem('user');
-                if (localUser) {
-                    try {
-                        const userData = JSON.parse(localUser);
-                        // 로컬 스토리지에 사용자 정보가 있지만 세션이 없는 경우
-                        // 세션을 다시 확인하거나 로그인 필요
-                        this.showLoginRequired();
-                    } catch (e) {
-                        this.showLoginRequired();
-                    }
-                } else {
-                    this.showLoginRequired();
-                }
+                document.getElementById('tacticAuthor').value = document.getElementById('userDisplayName').textContent;
+                return true;
             }
         } catch (error) {
             console.error('인증 확인 실패:', error);
-            this.showLoginRequired();
         }
+        this.showLoginRequired();
+        return false;
     }
 
     showLoginRequired() {
         try {
-            const currentUrl = window.location.href;
-            // 즉시 로그인 페이지로 리다이렉트 (사용자 상호작용 없이)
-            window.location.replace(this.getLoginUrl(currentUrl));
-        } catch (e) {
-            // 혹시 실패 시 기존 안내 UI 노출 (폴백)
-            document.getElementById('loginRequired').style.display = 'block';
-            document.getElementById('uploadForm').style.display = 'none';
+            window.location.replace(this.getLoginUrl(window.location.href));
+        } catch (_) {
+            document.getElementById('loginRequired').hidden = false;
         }
     }
 
     showUploadForm() {
-        document.getElementById('loginRequired').style.display = 'none';
-        document.getElementById('uploadForm').style.display = 'block';
+        document.getElementById('loginRequired').hidden = true;
+        document.getElementById('uploadForm').hidden = false;
     }
 
     updateUserInfoBar() {
@@ -770,7 +382,8 @@ class TacticUploader {
                            this.currentUser.user_metadata?.full_name ||
                            this.currentUser.email || '';
         nameEl.textContent = displayName;
-        bar.style.display = 'flex';
+        nameEl.title = displayName;
+        bar.hidden = false;
     }
 
     initEventListeners() {
@@ -810,14 +423,7 @@ class TacticUploader {
             this.handleSubmit();
         });
 
-        // 모달 닫기
-        document.querySelectorAll('.modal-close, .modal-close-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                document.getElementById('previewModal').style.display = 'none';
-            });
-        });
-
-        // 택틱 타입 변경 시 제목 자동 접두어 추가는 사용하지 않음
+        document.getElementById('loadingOverlay').addEventListener('cancel', event => event.preventDefault());
     }
 
     getUrlParams() {
@@ -860,9 +466,12 @@ class TacticUploader {
             if (data.tactic_type) document.getElementById('tacticType').value = data.tactic_type;
             try {
                 this.tacticData = typeof data.query === 'string' ? JSON.parse(data.query) : data.query;
-                // Set tactic version from DB or detect from data
                 this.tacticVersion = data.tactic_version || this.detectTacticVersion(this.tacticData);
+                this.originalEditData = this.tacticData;
                 this.showJsonPreview(this.tacticData);
+                document.getElementById('jsonFile').required = false;
+                document.querySelector('label[for="jsonFile"]').textContent = this.i18n('replace_file', '택틱 JSON 파일 교체 (선택)');
+                this.setFileName();
             } catch (_) {}
             this.enableEditUI();
         } catch (e) {
@@ -876,12 +485,12 @@ class TacticUploader {
         if (pageTitle) pageTitle.textContent = this.i18n('edit_page_title', '택틱 수정');
         const navCurrent = document.getElementById('nav-current');
         if (navCurrent) navCurrent.textContent = this.i18n('edit_nav_current', '택틱 / 수정');
-        const actions = document.querySelector('.form-actions');
+        const actions = document.querySelector('.tactic-upload-actions');
         if (actions) {
             actions.innerHTML = `
-                <button type="button" id="saveButton" class="submit-btn">${this.i18n('edit_save', '저장')}</button>
-                <button type="button" id="deleteButton" class="preview-btn" style="border-color:#ff6b6b;color:#ff6b6b;">${this.i18n('edit_delete', '삭제')}</button>
-                <button type="button" id="cancelButton" class="preview-btn">${this.i18n('edit_cancel', '취소')}</button>
+                <button type="button" id="deleteButton" class="tactic-upload-button tactic-upload-button--danger">${this.i18n('edit_delete', '삭제')}</button>
+                <button type="button" id="cancelButton" class="tactic-upload-button">${this.i18n('edit_cancel', '취소')}</button>
+                <button type="button" id="saveButton" class="tactic-upload-button tactic-upload-button--primary">${this.i18n('edit_save', '저장')}</button>
             `;
             document.getElementById('saveButton').onclick = () => this.saveEdit();
             document.getElementById('deleteButton').onclick = () => this.deleteEdit();
@@ -890,8 +499,8 @@ class TacticUploader {
     }
 
     async saveEdit() {
-        if (!this.editMode || !this.editPostId) return;
-        const formData = this.getFormData(false);
+        if (!this.editMode || !this.editPostId || this.fileReading || !document.getElementById('tacticUploadForm').reportValidity()) return;
+        const formData = this.getFormData();
         this.showLoading(true, 'save');
         try {
             const { error } = await supabase
@@ -907,13 +516,14 @@ class TacticUploader {
                 .eq('id', this.editPostId)
                 .eq('user_id', this.currentUser.id);
             if (error) throw error;
-            alert(this.i18n('alert_saved', '저장되었습니다.'));
-            window.location.href = this.getTacticLibraryUrl();
         } catch (e) {
-            alert(this.i18n('alert_save_failed', '저장에 실패했습니다.'));
-        } finally {
-            this.showLoading(false, 'save');
+            this.showLoading(false);
+            this.showError(this.i18n('alert_save_failed', '저장에 실패했습니다.'));
+            return;
         }
+        this.showLoading(false);
+        alert(this.i18n('alert_saved', '저장되었습니다.'));
+        window.location.href = this.getTacticLibraryUrl();
     }
 
     async deleteEdit() {
@@ -928,13 +538,14 @@ class TacticUploader {
                 .eq('id', this.editPostId)
                 .eq('user_id', this.currentUser.id);
             if (error) throw error;
-            alert(this.i18n('alert_deleted', '삭제되었습니다.'));
-            window.location.href = this.getTacticLibraryUrl();
         } catch (e) {
-            alert(this.i18n('alert_delete_failed', '삭제에 실패했습니다.'));
-        } finally {
-            this.showLoading(false, 'delete');
+            this.showLoading(false);
+            this.showError(this.i18n('alert_delete_failed', '삭제에 실패했습니다.'));
+            return;
         }
+        this.showLoading(false);
+        alert(this.i18n('alert_deleted', '삭제되었습니다.'));
+        window.location.href = this.getTacticLibraryUrl();
     }
 
     // 제목 자동 접두어 추가 기능 제거
@@ -962,61 +573,71 @@ class TacticUploader {
         return 'unknown';
     }
 
+    setFileName(name) {
+        const label = document.getElementById('tacticFileName');
+        label.textContent = name || (this.originalEditData
+            ? this.i18n('existing_file', '기존 택틱 파일 사용 중')
+            : this.i18n('no_file', '선택한 파일 없음'));
+        label.title = name || '';
+    }
+
+    updateFileTitle(value = '') {
+        const title = document.getElementById('tacticTitle');
+        if (title.value.trim() && title.value !== this.fileTitle) return;
+        this.fileTitle = typeof value === 'string' ? value : '';
+        title.value = this.fileTitle;
+    }
+
     async handleFileUpload(event) {
-        const file = event.target.files[0];
+        const input = event.target;
+        const file = input.files[0];
         if (!file) return;
 
+        const errorMessage = document.getElementById('tacticFileError');
+        errorMessage.textContent = '';
+        input.removeAttribute('aria-invalid');
+        this.showError('');
+        this.fileReading = true;
+        this.setFileName(file.name);
+
         try {
-            const text = await file.text();
-            const data = JSON.parse(text);
-            
-            // Detect and store format version
-            this.tacticVersion = this.detectTacticVersion(data);
+            const data = JSON.parse(await file.text());
+            if (input.files[0] !== file) return;
+            const version = data && typeof data === 'object' ? this.detectTacticVersion(data) : 'unknown';
+            if (version === 'unknown') throw new Error('Unsupported tactic JSON');
+
+            this.tacticVersion = version;
             this.tacticData = data;
             this.showJsonPreview(data);
-            
-            // 제목이 비어있으면 파일의 제목 사용
-            const titleInput = document.getElementById('tacticTitle');
-            if (!titleInput.value.trim() && data.title) {
-                titleInput.value = data.title;
-            }
-            
+            if (!this.editMode) this.updateFileTitle(data.title);
         } catch (error) {
-            alert(this.i18n('error_json_read_failed', 'JSON 파일을 읽는데 실패했습니다. 올바른 형식인지 확인해주세요.'));
-            console.error('JSON 파싱 오류:', error);
+            if (input.files[0] !== file) return;
+            this.tacticData = this.originalEditData;
+            this.tacticVersion = this.tacticData ? this.detectTacticVersion(this.tacticData) : 'legacy';
+            this.showJsonPreview(this.tacticData);
+            if (!this.editMode) this.updateFileTitle();
+            this.setFileName();
+            input.value = '';
+            input.setAttribute('aria-invalid', 'true');
+            errorMessage.textContent = this.i18n('error_json_read_failed', '택틱 JSON 파일을 읽을 수 없습니다. 파일을 다시 선택해 주세요.');
+        } finally {
+            if (!input.files.length || input.files[0] === file) this.fileReading = false;
         }
     }
 
     showJsonPreview(data) {
-        const previewDiv = document.getElementById('jsonPreview');
-        const contentDiv = document.getElementById('previewContent');
-        
-        // v3 format has party array with possible null values
-        const hasParty = data.party && Array.isArray(data.party) && 
-            data.party.some(m => m && m.name);
-        
-        if (hasParty) {
-            const preview = this.createTacticPreview(data);
-            contentDiv.innerHTML = '';
-            if (preview) {
-                contentDiv.appendChild(preview);
-            }
-        }
-        
-        previewDiv.style.display = 'block';
+        const content = document.getElementById('previewContent');
+        const preview = this.createTacticPreview(data);
+        content.replaceChildren();
+        if (preview) content.append(preview);
+        document.getElementById('jsonPreview').hidden = !preview;
     }
 
     createTacticPreview(tacticData) {
-        if (!tacticData || !tacticData.party) return null;
-
-        const previewDiv = document.createElement('div');
-        previewDiv.className = 'tactic-preview';
-
-        const partyImagesContainer = document.createElement('div');
-        partyImagesContainer.className = 'party-images-container';
+        if (!Array.isArray(tacticData?.party)) return null;
 
         const partyImagesDiv = document.createElement('div');
-        partyImagesDiv.className = 'party-images';
+        partyImagesDiv.className = 'tactic-upload-party';
 
         // Filter out null/empty members and sort by order
         const orderedParty = tacticData.party
@@ -1028,24 +649,22 @@ class TacticUploader {
             });
 
         orderedParty.forEach(member => {
-            if (member.name === "원더" || member.name === "Wonder") return;
-            
-            const container = document.createElement('div');
-            if (characterData[member.name]) {
-                container.className = 'character-container';
+            if (member.name === "원더" || member.name === "Wonder" || !Object.hasOwn(characterData, member.name)) return;
 
-                const charImg = document.createElement('img');
-                charImg.className = 'character-img';
-                charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
-                charImg.alt = member.name;
-                charImg.title = member.name;
-                container.appendChild(charImg);
-            }
+            const container = document.createElement('div');
+            container.className = 'tactic-upload-character character-tile character-tile--compact';
+
+            const charImg = document.createElement('img');
+            charImg.className = 'character-img';
+            charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
+            charImg.alt = member.name;
+            charImg.title = member.name;
+            container.appendChild(charImg);
 
             const ritualLevel = parseInt(member.ritual);
             if (ritualLevel >= 1 && ritualLevel <= 6) {
                 const ritualImg = document.createElement('img');
-                ritualImg.className = 'ritual-img';
+                ritualImg.className = 'tactic-upload-ritual';
                 ritualImg.src = `${BASE_URL}/assets/img/ritual/num${ritualLevel}.png`;
                 ritualImg.alt = this.i18n('ritual_alt', `의식 ${ritualLevel}`).replace('{value}', String(ritualLevel));
                 container.appendChild(ritualImg);
@@ -1054,79 +673,37 @@ class TacticUploader {
             partyImagesDiv.appendChild(container);
         });
 
-        partyImagesContainer.appendChild(partyImagesDiv);
-        previewDiv.appendChild(partyImagesContainer);
-        
-        return previewDiv;
+        return partyImagesDiv.childElementCount ? partyImagesDiv : null;
     }
 
     showPreview() {
+        if (this.fileReading) return;
+        this.showError('');
         if (!this.tacticData) {
-            this.showError(this.i18n('error_upload_json_first', '먼저 JSON 파일을 업로드해주세요.'));
+            const file = document.getElementById('jsonFile');
+            const errorMessage = document.getElementById('tacticFileError');
+            if (!errorMessage.textContent) {
+                errorMessage.textContent = this.i18n('error_upload_json_first', '먼저 JSON 파일을 선택해 주세요.');
+            }
+            file.focus();
             return;
         }
-        
-        // JSON 데이터에 캐릭터가 있는지 확인
-        try {
-            const tacticObj = typeof this.tacticData === 'string' ? JSON.parse(this.tacticData) : this.tacticData;
-            if (!tacticObj.party || !Array.isArray(tacticObj.party) || tacticObj.party.length === 0) {
-                throw new Error('No character data found in JSON');
-            }
-        } catch (error) {
-            console.error('Invalid tactic data:', error);
+
+        if (!Array.isArray(this.tacticData.party) || !this.tacticData.party.some(member => member?.name)) {
             this.showError(this.i18n('error_invalid_tactic_data', '유효하지 않은 택틱 데이터입니다. 캐릭터 정보를 찾을 수 없습니다.'));
             return;
         }
 
-        const modal = document.getElementById('previewModal');
-        const modalContent = document.getElementById('modalPreviewContent');
-        
-        // 폼 데이터 수집
-        const formData = this.getFormData(true);
-        
-        // 미리보기 생성 - 버전에 따라 적절한 URL 사용
-        const tacticVersion = this.tacticVersion || 'legacy';
-        const tacticUrl = tacticVersion === 'v3' 
-            ? `https://lufel.net/tactic-maker/?library=${formData.url}`
-            : `https://lufel.net/tactic/?library=${formData.url}`;
-        const previewHtml = `
-            <div class="tactic-post">
-                <div class="post-header">
-                    <h3 class="post-title-wrapper">
-                        <a href="${tacticUrl}" target="_blank" rel="noopener noreferrer" class="post-title">
-                            ${formData.title}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
-                            </svg>
-                        </a>
-                    </h3>
-                    <div class="post-meta">
-                        <span class="post-author">${formData.author}</span>
-                        <span class="separator">|</span>
-                        <span class="post-date">${this.i18n('preview_now', '방금 전')}</span>
-                    </div>
-                    ${formData.comment ? `<div class="post-comment">${formData.comment}</div>` : ''}
-                </div>
-                
-                <div class="post-content">
-                    <div class="post-link">
-                        <a href="${tacticUrl}" target="_blank" rel="noopener noreferrer">${this.i18n('view_tactic', '택틱 보기')}</a>
-                    </div>
-                    <div class="tactic-preview-container"></div>
-                </div>
-            </div>
+        const { title, author, comment } = this.getFormData();
+        const content = document.getElementById('modalPreviewContent');
+        content.innerHTML = `
+            <h3>${this.escapeHtml(title || this.i18n('title_placeholder', '보스 이름 (점수)'))}</h3>
+            <p class="tactic-upload-preview-meta">${this.escapeHtml(author)}</p>
+            ${comment ? `<p class="tactic-upload-preview-comment">${this.escapeHtml(comment)}</p>` : ''}
         `;
-        
-        modalContent.innerHTML = previewHtml;
-        
-        // 택틱 프리뷰 추가
-        const previewContainer = modalContent.querySelector('.tactic-preview-container');
-        const tacticPreview = this.createTacticPreview(this.tacticData);
-        if (tacticPreview) {
-            previewContainer.appendChild(tacticPreview);
-        }
-        
-        modal.style.display = 'flex';
+        const party = this.createTacticPreview(this.tacticData);
+        if (party) content.append(party);
+        document.getElementById('previewModal').showModal();
     }
 
     generateRandomCode() {
@@ -1138,51 +715,44 @@ class TacticUploader {
         return result;
     }
 
-    getFormData(forPreviewOrUpload = false) {
-        const type = document.getElementById('tacticType').value;
-        let title = document.getElementById('tacticTitle').value;
-        
-        // 제목에 타입 자동 포함하지 않음 (tactics에서 타입 배지로 표기)
-        
+    getFormData() {
         return {
-            type: type,
-            title: title,
-            originalTitle: document.getElementById('tacticTitle').value, // 원본 제목 유지
+            type: document.getElementById('tacticType').value,
+            title: document.getElementById('tacticTitle').value,
             author: document.getElementById('tacticAuthor').value,
             comment: document.getElementById('tacticComment').value,
-            region: document.getElementById('tacticRegion').value,
-            url: this.generateRandomCode()
+            region: document.getElementById('tacticRegion').value
         };
     }
 
     async handleSubmit() {
+        if (this.fileReading || !this.currentUser || this.publicLink) return;
+        this.showError('');
         if (!this.tacticData) {
-            alert(this.i18n('error_upload_json_required', 'JSON 파일을 업로드해주세요.'));
+            this.showError(this.i18n('error_upload_json_required', 'JSON 파일을 업로드해주세요.'));
             return;
         }
 
-        const formData = this.getFormData(true);
+        const formData = this.getFormData();
         
         // 유효성 검사 (URL은 자동 생성되므로 제외)
-        const originalTitle = document.getElementById('tacticTitle').value;
-        if (!formData.type || !originalTitle || !formData.author || !formData.region) {
-            alert(this.i18n('error_required_fields', '필수 항목을 모두 입력해주세요.'));
+        if (!formData.type || !formData.title.trim() || !formData.author.trim() || !formData.region) {
+            this.showError(this.i18n('error_required_fields', '필수 항목을 모두 입력해주세요.'));
             return;
         }
 
+        const urlCode = this.generateRandomCode();
+        const tacticVersion = this.tacticVersion || 'legacy';
         this.showLoading(true);
 
         try {
-            // Determine tactic version for storage and link generation
-            const tacticVersion = this.tacticVersion || 'legacy';
-            
             const { data, error } = await supabase
                 .from('tactics')
                 .insert([{
                     title: formData.title,
                     author: formData.author,
                     comment: formData.comment || null,
-                    url: formData.url || null,
+                    url: urlCode,
                     query: this.tacticData,
                     tactic_type: formData.type,
                     region: formData.region,
@@ -1206,81 +776,59 @@ class TacticUploader {
                 }
             }
 
-            const successMessage = this.i18n('success_upload', '택틱이 성공적으로 업로드되었습니다!');
-            // 성공 팝업(모달)로 URL 안내 표시 - v3는 새 택틱 메이커로, legacy는 기존 택틱 메이커로
-            const urlCode = formData.url;
-            const publicLink = tacticVersion === 'v3' 
-                ? `https://lufel.net/tactic-maker/?library=${encodeURIComponent(urlCode)}`
-                : `https://lufel.net/tactic/?library=${encodeURIComponent(urlCode)}`;
-            const modal = document.getElementById('successModal');
-            const msgEl = document.getElementById('successMessageText');
-            const linkEl = document.getElementById('publicLinkEl');
-            const accessLabel = document.getElementById('accessLabel');
-            const titleEl = document.getElementById('successModalTitle');
-            const copyBtnM = document.getElementById('copyUrlBtnModal');
-            const goListBtnM = document.getElementById('goListBtnModal');
-            const closeBtnM = modal ? modal.querySelector('.modal-footer .success-close') : document.querySelector('.modal-footer .success-close');
-
-            if (titleEl) titleEl.textContent = this.i18n('success_upload_completed', '업로드 완료');
-            if (msgEl) msgEl.textContent = successMessage;
-            if (accessLabel) accessLabel.textContent = this.i18n('success_access_label', '다음 주소로 접근할 수 있습니다:');
-            if (linkEl) { linkEl.href = publicLink; linkEl.textContent = publicLink; }
-            // 닫기 버튼 (footer) 텍스트 설정
-            if (closeBtnM) {
-                closeBtnM.textContent = this.i18n('close', '닫기');
-            }
-            if (copyBtnM) {
-                copyBtnM.textContent = this.i18n('success_copy_url', 'URL 복사');
-                copyBtnM.onclick = async () => {
-                    try { await navigator.clipboard.writeText(publicLink); alert(this.i18n('success_copied', '복사되었습니다!')); } catch(_) {}
-                };
-            }
-            if (goListBtnM) {
-                goListBtnM.textContent = this.i18n('success_go_list', '목록으로');
-                goListBtnM.onclick = () => { window.location.href = this.getTacticLibraryUrl(); };
-            }
-            document.querySelectorAll('.success-close').forEach(el => el.onclick = () => { modal.style.display = 'none'; });
-            // 모달 표시 직전, 혹시 다른 처리에서 텍스트가 바뀌었을 수 있으므로 다시 한 번 보장
-            if (modal) {
-                const footerCloseBtns = modal.querySelectorAll('.modal-footer .success-close');
-                footerCloseBtns.forEach(btn => {
-                    btn.textContent = this.i18n('close', '닫기');
-                });
-                modal.style.display = 'flex';
-            }
-            
         } catch (error) {
-            console.error('업로드 실패:', error);
-            alert(this.i18n('error_upload_failed', '업로드 중 오류가 발생했습니다. 다시 시도해주세요.'));
-        } finally {
             this.showLoading(false);
+            console.error('업로드 실패:', error);
+            this.showError(this.i18n('error_upload_failed', '업로드 중 오류가 발생했습니다. 다시 시도해주세요.'));
+            return;
         }
+        this.showLoading(false);
+        const path = tacticVersion === 'v3' ? '/tactic-maker/' : '/tactic/';
+        const publicLink = new URL(path, 'https://lufel.net');
+        publicLink.searchParams.set('library', urlCode);
+        this.publicLink = publicLink.href;
+
+        const submitButton = document.getElementById('submitButton');
+        submitButton.type = 'button';
+        submitButton.textContent = this.i18n('view_upload_result', '업로드 결과 보기');
+        submitButton.onclick = () => this.showSuccess(this.publicLink);
+        this.showSuccess(this.publicLink);
+    }
+
+    showSuccess(publicLink) {
+        const modal = document.getElementById('successModal');
+        const link = document.getElementById('publicLinkEl');
+        const copyStatus = document.getElementById('tacticCopyStatus');
+        link.href = publicLink;
+        link.textContent = publicLink;
+        copyStatus.textContent = '';
+        document.getElementById('copyUrlBtnModal').onclick = async () => {
+            try {
+                await navigator.clipboard.writeText(publicLink);
+                copyStatus.textContent = this.i18n('success_copied', '복사되었습니다!');
+            } catch (_) {
+                copyStatus.textContent = this.i18n('copy_failed', 'URL을 복사하지 못했습니다. 링크를 직접 복사해 주세요.');
+            }
+        };
+        document.getElementById('goListBtnModal').onclick = () => { window.location.href = this.getTacticLibraryUrl(); };
+        modal.showModal();
     }
 
     showLoading(show, mode = 'upload') {
-        const overlay = document.getElementById('loadingOverlay');
-        if (overlay) overlay.style.display = show ? 'flex' : 'none';
-        // 텍스트 교체 (업로드/저장/삭제)
-        const p = overlay ? overlay.querySelector('p[data-i18n="uploading"]') : null;
-        if (overlay && p) {
-            const uploadingText = getI18nText('uploading', '업로드 중...');
-            const savingText = getI18nText('saving', uploadingText);
-            const deletingText = getI18nText('deleting', uploadingText);
-            if (mode === 'save') p.textContent = savingText;
-            else if (mode === 'delete') p.textContent = deletingText;
-            else p.textContent = uploadingText;
+        const loading = document.getElementById('loadingOverlay');
+        if (show) {
+            const fallback = this.i18n('uploading', '업로드 중...');
+            document.getElementById('tacticLoadingText').textContent = mode === 'upload'
+                ? fallback
+                : this.i18n(mode === 'save' ? 'saving' : 'deleting', fallback);
+            loading.showModal();
+        } else {
+            loading.close();
         }
-        // 버튼 비활성화 (업로드 버튼이 없는 편집 모드 대비 안전 가드)
-        const submitBtn = document.getElementById('submitButton');
-        if (submitBtn) submitBtn.disabled = show;
-        const saveBtn = document.getElementById('saveButton');
-        if (saveBtn) saveBtn.disabled = show;
-        const deleteBtn = document.getElementById('deleteButton');
-        if (deleteBtn) deleteBtn.disabled = show;
     }
 
     showError(message) {
-        alert(message);
+        document.getElementById('tacticFormError').textContent = message;
     }
 
     escapeHtml(text) {

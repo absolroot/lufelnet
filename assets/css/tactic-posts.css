@@ -65,9 +65,10 @@
 
 .post-title:hover { color: var(--accent-color); }
 
-.post-title svg { fill: rgb(255, 255, 255, 0.7); transition: transform 0.3s; }
+.post-title svg { fill: rgb(255, 255, 255, 0.7); }
+.post-title svg:not(.section-row-arrow) { transition: transform 0.3s; }
 
-.post-title:hover svg { transform: translateX(4px); }
+.post-title:hover svg:not(.section-row-arrow) { transform: translateX(4px); }
 
 .post-title svg path { transition: fill 0.2s; }
 

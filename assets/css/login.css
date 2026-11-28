@@ -1,0 +1,107 @@
+.login-shell {
+    width: min(100%, 448px);
+    margin: clamp(24px, 6vh, 64px) auto 0;
+}
+
+.login-header {
+    padding-bottom: 8px;
+}
+
+.login-panel {
+    padding: clamp(16px, 4vw, 28px);
+    padding-bottom: calc(clamp(16px, 4vw, 28px) + 3px);
+}
+
+#loginDescription {
+    color: rgb(255 255 255 / 75%);
+    font-size: 14px;
+    margin: 0 0 16px;
+}
+
+.login-provider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 46px;
+    padding: 9px 14px;
+    border: 1px solid rgb(255 255 255 / 20%);
+    background: rgb(255 255 255 / 6%);
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.login-provider:hover:not(:disabled) {
+    border-color: rgb(255 255 255 / 42%);
+    background: rgb(255 255 255 / 11%);
+}
+
+.login-provider:disabled {
+    cursor: progress;
+}
+
+.login-provider-icon,
+.login-provider-spinner {
+    flex: 0 0 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.login-provider-spinner {
+    box-sizing: border-box;
+    display: none;
+    border: 2px solid rgb(255 255 255 / 30%);
+    border-top-color: var(--label-red);
+    border-radius: 50%;
+}
+
+.login-provider:disabled .login-provider-icon { display: none; }
+.login-provider:disabled .login-provider-spinner { display: inline-block; }
+
+.login-status,
+.login-error {
+    margin: 10px 0 0;
+    font-size: 13px;
+}
+
+.login-status { color: rgb(255 255 255 / 75%); }
+.login-error { color: #ff9fa9; }
+.login-status:empty,
+.login-error:empty { margin: 0; }
+
+.login-return:not([hidden]) {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 44px;
+    margin-top: 8px;
+    color: rgb(255 255 255 / 78%);
+    font-size: 13px;
+    text-underline-offset: 3px;
+}
+
+.login-return:hover { color: #fff; }
+
+.login-shell :is(button, a):focus-visible {
+    outline: 2px solid var(--select-menu-focus);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .login-provider {
+        transition: background-color 150ms ease, border-color 150ms ease;
+    }
+
+    .login-provider-spinner {
+        animation: login-spin 850ms linear infinite;
+    }
+}
+
+@keyframes login-spin {
+    to { transform: rotate(1turn); }
+}

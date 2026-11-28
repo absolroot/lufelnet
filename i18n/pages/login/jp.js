@@ -1,7 +1,11 @@
 window.I18N_PAGE_LOGIN_JP = {
     title: 'ログイン',
     button: 'Googleでログイン',
-    loading: '<span class="loading-spinner"></span> Googleでログイン中...',
-    confirm: 'Google認証ページに移動します。\n\n※ 認証中に表示される supabase リンクは正常です。',
-    error: 'ログイン処理中にエラーが発生しました。',
+    loading: 'Googleの認証ページに移動中…',
+    confirm: 'Googleの認証ページに移動します。',
+    error: 'ログインできませんでした。もう一度お試しください。',
+    tactic_upload_description: 'タクティックをアップロードするにはログインしてください。',
+    tactic_edit_description: 'タクティックを編集するにはログインしてください。',
+    back_to_maker: 'タクティックメーカーに戻る',
+    back_to_library: 'タクティックライブラリーに戻る',
 };

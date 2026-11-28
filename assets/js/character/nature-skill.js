@@ -172,6 +172,7 @@
     let krSkills = [];
     let currentCharacterName = '';
     let activeNature = '';
+    let independentNatureSelection = false;
     let detectedNatures = [];
     let selectedType = null;
     let activeLang = 'kr';
@@ -532,30 +533,29 @@
         return recommendation ? recommendation.entry : null;
     }
 
-    function hasValidSavedSkill(state, type) {
+    function getSavedSkill(state, type) {
         const sn = type === TYPE_SYNERGY ? state.synergySn : state.combatSn;
         const entry = findSkill(sn);
-        return !!(entry && entry.nature === activeNature && entry.innateType === type);
+        const allowedNatures = independentNatureSelection ? detectedNatures : [activeNature];
+        return entry && entry.innateType === type && allowedNatures.includes(entry.nature) ? entry : null;
     }
 
     function applyRecommendedDefaults(state) {
         const nextState = { ...(state || {}), nature: activeNature };
-        if (!hasValidSavedSkill(nextState, TYPE_SYNERGY)) {
-            const recommended = getFirstRecommendedSkill(TYPE_SYNERGY, activeNature);
+        const defaultNature = independentNatureSelection ? undefined : activeNature;
+        if (!getSavedSkill(nextState, TYPE_SYNERGY)) {
+            const recommended = getFirstRecommendedSkill(TYPE_SYNERGY, defaultNature);
             nextState.synergySn = recommended ? Number(recommended.skill.sn) : '';
         }
-        if (!hasValidSavedSkill(nextState, TYPE_COMBAT)) {
-            const recommended = getFirstRecommendedSkill(TYPE_COMBAT, activeNature);
+        if (!getSavedSkill(nextState, TYPE_COMBAT)) {
+            const recommended = getFirstRecommendedSkill(TYPE_COMBAT, defaultNature);
             nextState.combatSn = recommended ? Number(recommended.skill.sn) : '';
         }
         return nextState;
     }
 
     function getSelectedSkill(type) {
-        const saved = readSavedState();
-        const sn = type === TYPE_SYNERGY ? saved.synergySn : saved.combatSn;
-        const entry = findSkill(sn);
-        return entry && entry.nature === activeNature && entry.innateType === type ? entry : null;
+        return getSavedSkill(readSavedState(), type);
     }
 
     function createRecommendedBadge() {
@@ -588,8 +588,9 @@
         slot.setAttribute('aria-label', `${typeLabel} ${displayName} ${selected ? text('clickChange') : text('clickSelect')}`);
 
         const icon = document.createElement('img');
-        icon.src = getNatureIconPath(activeNature);
-        icon.alt = getNatureLabel(activeNature);
+        const iconNature = selected?.nature || activeNature;
+        icon.src = getNatureIconPath(iconNature);
+        icon.alt = getNatureLabel(iconNature);
         icon.className = 'skill-icon nature-skill-icon';
 
         const info = document.createElement('span');
@@ -639,12 +640,11 @@
         return slot;
     }
 
-    function renderTabs() {
-        const tabs = document.getElementById('nature-skill-tabs');
+    function renderTabs(tabs, currentNature, visible, onChange) {
         if (!tabs) return;
         tabs.innerHTML = '';
 
-        if (detectedNatures.length <= 1) {
+        if (!visible || detectedNatures.length <= 1) {
             tabs.style.display = 'none';
             return;
         }
@@ -653,14 +653,17 @@
         detectedNatures.forEach((nature) => {
             const tab = document.createElement('button');
             tab.type = 'button';
-            tab.className = `nature-skill-tab${nature === activeNature ? ' active' : ''}`;
+            tab.className = `nature-skill-tab${nature === currentNature ? ' active' : ''}`;
+            tab.setAttribute('aria-pressed', String(nature === currentNature));
             tab.dataset.nature = nature;
             tab.textContent = getNatureLabel(nature);
             tab.addEventListener('click', () => {
-                activeNature = nature;
-                const saved = readSavedState();
-                writeSavedState(applyRecommendedDefaults({ ...saved, nature: activeNature }));
-                render();
+                for (const button of tabs.children) {
+                    const active = button === tab;
+                    button.classList.toggle('active', active);
+                    button.setAttribute('aria-pressed', String(active));
+                }
+                onChange(nature);
             });
             tabs.appendChild(tab);
         });
@@ -684,9 +687,17 @@
         }
 
         slots.innerHTML = '';
-        renderTabs();
-        slots.appendChild(createSlot(TYPE_SYNERGY));
-        slots.appendChild(createSlot(TYPE_COMBAT));
+        renderTabs(document.getElementById('nature-skill-tabs'), activeNature, !independentNatureSelection, (nature) => {
+            activeNature = nature;
+            writeSavedState(applyRecommendedDefaults(readSavedState()));
+            render();
+        });
+        for (const type of [TYPE_SYNERGY, TYPE_COMBAT]) {
+            const stack = document.createElement('div');
+            stack.className = 'nature-skill-slot-stack';
+            stack.appendChild(createSlot(type));
+            slots.appendChild(stack);
+        }
         card.style.display = '';
     }
 
@@ -699,12 +710,14 @@
         modal.className = 'nature-skill-modal';
         modal.setAttribute('role', 'dialog');
         modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('aria-labelledby', 'nature-skill-modal-title');
         modal.innerHTML = [
             '<div class="nature-skill-modal-content">',
             '  <button type="button" class="nature-skill-modal-close" aria-label=""></button>',
             '  <div class="nature-skill-modal-header">',
             '    <h3 id="nature-skill-modal-title"></h3>',
             '  </div>',
+            '  <div class="nature-skill-tabs"></div>',
             '  <div id="nature-skill-modal-list" class="nature-skill-modal-list"></div>',
             '</div>'
         ].join('');
@@ -726,13 +739,24 @@
         const list = document.getElementById('nature-skill-modal-list');
         const close = modal.querySelector('.nature-skill-modal-close');
         const typeLabel = type === TYPE_SYNERGY ? text('synergy') : text('combat');
+        const initialNature = getSelectedSkill(type)?.nature || activeNature;
 
         close.textContent = '×';
         close.setAttribute('aria-label', text('close'));
         title.textContent = `${typeLabel} ${text('selectSkill')}`;
+        renderTabs(modal.querySelector('.nature-skill-tabs'), initialNature, independentNatureSelection, (nature) => {
+            renderModalSkills(list, type, nature);
+        });
+        renderModalSkills(list, type, initialNature);
+
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function renderModalSkills(list, type, nature) {
         list.innerHTML = '';
 
-        const skills = getSkillsFor(type, activeNature);
+        const skills = getSkillsFor(type, nature);
         if (!skills.length) {
             const empty = document.createElement('p');
             empty.className = 'nature-skill-modal-empty';
@@ -742,8 +766,6 @@
             skills.forEach((entry) => list.appendChild(createModalOption(entry)));
         }
 
-        modal.classList.add('show');
-        document.body.style.overflow = 'hidden';
     }
 
     function createModalOption(entry) {
@@ -870,6 +892,7 @@
             return;
         }
         await loadCharacterSetting();
+        independentNatureSelection = getCharacterSetting().nature_skill_independent_elements === true;
         detectedNatures = applyNatureSkillOrder(detectedNatures);
         buildActiveRecommendations();
 

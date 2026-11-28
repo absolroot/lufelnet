@@ -90,6 +90,8 @@ window.I18N_PAGE_HOME_CN = {
     "carousel_error": "无法加载轮播图数据。",
     "carousel_nav_prev_aria": "上一张",
     "carousel_nav_next_aria": "下一张",
+    "carousel_region_aria": "服务器",
+    "carousel_timezone_aria": "时区",
     "carousel_maintenance_title": "横幅维护中",
     "carousel_maintenance_body": "正在处理。",
     "notfound_seo_title": "404 - 找不到页面 | P5X 路菲尔网",

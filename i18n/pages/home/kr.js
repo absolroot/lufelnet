@@ -97,6 +97,8 @@ window.I18N_PAGE_HOME_KR = {
     carousel_error: '캐러셀 데이터를 불러오지 못했습니다.',
     carousel_nav_prev_aria: 'Prev',
     carousel_nav_next_aria: 'Next',
+    carousel_region_aria: '서버',
+    carousel_timezone_aria: '시간대',
     carousel_maintenance_title: '배너 점검 중',
     carousel_maintenance_body: '조치 중입니다.',
 

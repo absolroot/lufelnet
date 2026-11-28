@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
     // Animate each detail card only when it first enters the viewport.
     if ('IntersectionObserver' in window && Element.prototype.animate) {
-        const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-        const cards = document.querySelectorAll('.main-wrapper > .card-style');
+        const cards = document.querySelectorAll('.main-wrapper > .card-style:not(.review-card)');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
@@ -20,6 +21,125 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(card);
         });
     }
+
+    window.stageCharacterReview = function (review, prosCons) {
+        if (motionPreference.matches || !Element.prototype.animate) return;
+
+        // Keep Markdown paragraphs separate while treating lists, tables and diagrams as one block each.
+        const blocks = Array.from(review.children).filter(block => !block.matches('br, hr') &&
+            (block.textContent.trim() || block.matches('img, video') || block.querySelector('img, video')));
+        if (prosCons) blocks.push(prosCons);
+
+        const animateBatch = items => {
+            const step = Math.min(48, 216 / Math.max(1, items.length - 1));
+            items.forEach((item, index) => {
+                item.animate([
+                    { opacity: 0, translate: '0 8px' },
+                    { opacity: 1, translate: '0 0' }
+                ], { duration: 300, delay: index * step, easing: 'cubic-bezier(.16, 1, .3, 1)', fill: 'backwards' });
+            });
+        };
+
+        const visible = blocks.filter(block => {
+            const { top, bottom, height } = block.getBoundingClientRect();
+            return height > 0 && top < window.innerHeight && bottom > 0;
+        });
+        animateBatch(visible);
+
+        if (!('IntersectionObserver' in window)) return;
+        const pending = new Set(blocks.filter(block => !visible.includes(block)));
+        if (!pending.size) return;
+        const observer = new IntersectionObserver(entries => {
+            if (motionPreference.matches) {
+                observer.disconnect();
+                return;
+            }
+            const entering = new Set();
+            entries.forEach(({ target, isIntersecting }) => {
+                if (!isIntersecting) return;
+                observer.unobserve(target);
+                pending.delete(target);
+                entering.add(target);
+            });
+            animateBatch(blocks.filter(block => entering.has(block)));
+            if (!pending.size) observer.disconnect();
+        });
+        pending.forEach(block => observer.observe(block));
+    };
+
+    const segmentTransitions = new WeakMap();
+
+    function getSegmentShape(button, row) {
+        const rect = button.getBoundingClientRect();
+        const rowRect = row.getBoundingClientRect();
+        const background = getComputedStyle(button, '::before');
+        // Match the skew and end extensions of the button's resting background.
+        const skew = new DOMMatrixReadOnly(background.transform).c * rect.height / 2;
+        const left = rect.left - rowRect.left + parseFloat(background.left);
+        const right = rect.right - rowRect.left - parseFloat(background.right);
+        return `polygon(${left - skew}px 0, ${right - skew}px 0, ${right + skew}px 100%, ${left + skew}px 100%)`;
+    }
+
+    window.animateCharacterSegment = function (previous, selected) {
+        if (!previous || !selected || previous === selected || motionPreference.matches || !Element.prototype.animate) return;
+
+        const strip = selected.closest('.character-segmented-strip');
+        const fromRow = previous.offsetParent;
+        const toRow = selected.offsetParent;
+        if (!strip || !fromRow || !toRow) return;
+
+        // The strip is one clipping region on desktop and two independent rows on mobile.
+        const running = segmentTransitions.get(strip);
+        running?.listeners.abort();
+        const layers = running?.layers || new Map();
+        const listeners = new AbortController();
+        segmentTransitions.set(strip, { layers, listeners });
+
+        function addLayer(row, clipPath, opacity) {
+            const indicator = document.createElement('span');
+            indicator.className = 'character-segmented-indicator';
+            indicator.setAttribute('aria-hidden', 'true');
+            indicator.style.clipPath = clipPath;
+            indicator.style.opacity = opacity;
+            row.append(indicator);
+            layers.set(row, indicator);
+        }
+
+        if (!layers.size) addLayer(fromRow, getSegmentShape(previous, fromRow), 1);
+        const destination = getSegmentShape(selected, toRow);
+        if (!layers.has(toRow)) addLayer(toRow, destination, 0);
+        strip.classList.add('is-transitioning');
+
+        function clearTransition() {
+            if (listeners.signal.aborted) return;
+            listeners.abort();
+            layers.forEach(layer => layer.remove());
+            segmentTransitions.delete(strip);
+            strip.classList.remove('is-transitioning');
+        }
+
+        window.addEventListener('resize', clearTransition, { signal: listeners.signal });
+        motionPreference.addEventListener('change', clearTransition, { signal: listeners.signal });
+
+        layers.forEach((layer, row) => {
+            const style = getComputedStyle(layer);
+            const start = { clipPath: style.clipPath, opacity: style.opacity };
+            layer.getAnimations().forEach(animation => animation.cancel());
+
+            const arriving = row === toRow;
+            const morphing = arriving && fromRow === toRow;
+            const animation = layer.animate([start, {
+                clipPath: arriving ? destination : start.clipPath,
+                opacity: arriving ? 1 : 0
+            }], {
+                duration: morphing ? 240 : (arriving ? 170 : 140),
+                easing: 'cubic-bezier(.22, 1, .36, 1)',
+                fill: 'both'
+            });
+            if (arriving) animation.onfinish = clearTransition;
+        });
+    };
+
     // 안전 실행 유틸리티: 개별 블록에서 에러가 나도 이후 로직이 계속 진행되도록 보장
     const safeRun = (name, fn) => {
         try { return fn && fn(); } catch (e) { console.warn(`[SAFE:${name}]`, e); }
@@ -147,6 +267,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return formatted;
     }
+
+    const skillValueAnimation = window.createSkillValueAnimation?.('.skill-level-values, .report-link');
+    skillValueAnimation?.warmWhenNear(document.querySelector('.skills-card'), document.querySelector('.weapons-card'));
 
     function containsHangul(text) {
         return /[가-힣]/.test(String(text || ''));
@@ -1334,7 +1457,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (characterName !== '코토네') {
                     const link = document.createElement('link');
                     link.rel = 'stylesheet';
-                    link.href = `${BASE_URL}/assets/css/persona3r.css`;
+                    const hash = window.__CHARACTER_STYLE_HASHES?.persona3r;
+                    link.href = `${BASE_URL}/assets/css/persona3r.css${hash ? `?h=${encodeURIComponent(hash)}` : ''}`;
                     document.head.appendChild(link);
                 }
                 const codeNameEl = document.querySelector('.code-name');
@@ -1359,48 +1483,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // 주요 데이터 렌더링 호출들을 안전 실행으로 래핑
-        // 계시 이름 번역 데이터(en/jp)가 준비된 이후에 fillSettingsInfo 를 실행하도록 대기
-        safeRun('fillSettingsInfo', () => {
-            const lang = getCurrentLanguage();
-
-            if (lang === 'kr') {
-                fillSettingsInfo(character);
-                return;
-            }
-
-            const isReady = () => {
-                if (lang === 'en') return typeof window.enRevelationData !== 'undefined';
-                if (lang === 'jp') return typeof window.jpRevelationData !== 'undefined';
-                if (lang === 'cn') return typeof window.cnRevelationData !== 'undefined';
-                return true;
-            };
-
-            if (isReady()) {
-                fillSettingsInfo(character);
-                return;
-            }
-
-            // EN/JP 이지만 아직 번역 데이터가 안 들어온 경우: 최대 2초까지 재시도
-            let attempts = 0;
-            const maxAttempts = 40; // 40 * 50ms = 2000ms
-
-            const tick = () => {
-                if (isReady() || attempts++ >= maxAttempts) {
-                    // 준비되었거나 타임아웃이면 일단 렌더 (타임아웃이면 한국어 이름일 수 있음)
-                    fillSettingsInfo(character);
-                } else {
-                    setTimeout(tick, 50);
-                }
-            };
-
-            tick();
-        });
         safeRun('fillOperationInfo', () => fillOperationInfo(characterName));
         safeRun('updateSkillLevelItems', updateSkillLevelItems);
         safeRun('updateMindItems', updateMindItems);
         const currentPage = document.querySelector('.current-page');
-        const headerNameEl = document.querySelector('.character-name');
 
         const getLocalizedCharacterDisplayName = () => {
             const lang = getCurrentLanguage();
@@ -1422,7 +1508,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const applyHeaderNames = () => {
             const name = getLocalizedCharacterDisplayName();
             try { if (currentPage) currentPage.textContent = name; } catch (_) { }
-            try { if (headerNameEl) headerNameEl.textContent = name; } catch (_) { }
+            try { window.setCharacterHeaderName?.(name); } catch (_) { }
         };
 
         const waitForLocalizedNameAndApply = () => {
@@ -1961,7 +2047,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toolbar.className = 'skill-level-toolbar';
 
         const buttonContainer = document.createElement('div');
-        buttonContainer.className = 'skill-level-buttons';
+        buttonContainer.className = 'skill-level-buttons character-segmented-strip';
 
         // characterData에서 rarity 확인
         const characterInfo = characterData[characterName];
@@ -1987,14 +2073,21 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const levels = levelTexts[currentLang] || levelTexts.kr;
+        const levelGroups = [document.createElement('div'), document.createElement('div')];
+        for (const group of levelGroups) {
+            group.className = 'character-segmented-group';
+            buttonContainer.appendChild(group);
+        }
 
         levels.forEach((level, index) => {
             const button = document.createElement('button');
+            button.type = 'button';
             button.className = 'skill-level-btn' + (index === 0 ? ' active' : '');
+            button.setAttribute('aria-pressed', String(index === 0));
             button.textContent = level;
             button.dataset.level = index - 1; // 전체는 -1, 나머지는 0,1,2
-            button.onclick = () => window.updateSkillDescriptions(button.dataset.level, characterName);
-            buttonContainer.appendChild(button);
+            button.onclick = () => window.updateSkillDescriptions(button.dataset.level, characterName, true);
+            levelGroups[index < 3 ? 0 : 1].appendChild(button);
         });
 
         toolbar.appendChild(buttonContainer);
@@ -2302,12 +2395,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    window.updateSkillDescriptions = function (levelIndex, characterName) {
+    window.updateSkillDescriptions = function (levelIndex, characterName, animateSelection = false) {
         // 버튼 상태 업데이트
+        let previousButton;
+        let selectedButton;
         document.querySelectorAll('.skill-level-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.level === levelIndex.toString());
+            const selected = btn.dataset.level === String(levelIndex);
+            if (btn.classList.contains('active')) previousButton = btn;
+            if (selected) selectedButton = btn;
+            btn.classList.toggle('active', selected);
+            btn.setAttribute('aria-pressed', String(selected));
         });
-
         // 현재 언어 확인
         const currentLang = getCurrentLanguage();
 
@@ -2350,6 +2448,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const skillDescriptionElements = skillsGrid
             ? skillsGrid.querySelectorAll('.skill-card[data-skill-type] .skill-description')
             : [];
+        const isSingleLevelChange = animateSelection &&
+            previousButton && selectedButton && previousButton !== selectedButton &&
+            previousButton.dataset.level !== '-1' && selectedButton.dataset.level !== '-1';
+        const animateValues = skillValueAnimation?.prepare(skillDescriptionElements, isSingleLevelChange);
+
         skillDescriptionElements.forEach((descElement) => {
             const skillCard = descElement.closest('.skill-card');
             const skill = skillCard ? character[skillCard.dataset.skillType] : null;
@@ -2363,6 +2466,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 descElement.innerHTML = description;
             }
         });
+        if (animateSelection) window.animateCharacterSegment(previousButton, selectedButton);
 
         // 툴팁 다시 적용
         if (typeof addTooltips === 'function') {
@@ -2385,6 +2489,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (e) {
             console.warn('[SAFE:applyJCIcons]', e);
         }
+        animateValues?.();
     };
 
     // 운영 정보 채우기

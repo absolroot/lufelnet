@@ -49,7 +49,13 @@
                 }
             };
 
-            set('.review-card h2', 'characterDetailReview', { kr: '캐릭터 리뷰', en: 'Character Review', jp: '怪盗レビュー', cn: '怪盗评测' });
+            const reviewTitle = document.querySelector('.review-card h2');
+            if (reviewTitle) {
+                const reviewLabels = { kr: '캐릭터 리뷰', en: 'Character Review', jp: 'キャラクター レビュー', cn: '怪盗评测' };
+                const fallback = fallbackByLang(reviewLabels);
+                const translation = tx('characterDetailReview', fallback);
+                reviewTitle.textContent = translation === reviewLabels.kr ? fallback : translation;
+            }
             set('.settings-card h2', 'characterDetailRecommendedSetup', { kr: '추천 세팅', en: 'Recommended Setup', jp: 'おすすめ設定', cn: '推荐配置' });
             set('.skills-card h2', 'characterDetailSkills', { kr: '스킬', en: 'Skills', jp: 'スキル', cn: '技能' });
             set('.ritual-card h2', 'characterDetailRitual', { kr: '의식', en: 'Awareness', jp: '意識', cn: '意识' });

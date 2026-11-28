@@ -1,3 +1,5 @@
+import { isSnapshotPath, serveTacticSnapshot, waitForTacticSnapshotAfterWrite } from './snapshot.mjs';
+
 const TABLES = new Set(['tactics', 'tactic_likes']);
 const METHODS = new Set(['GET', 'HEAD', 'POST', 'PATCH', 'DELETE']);
 const CACHE_SECONDS = 300;
@@ -14,7 +16,7 @@ function corsHeaders(origin, allowedOrigin) {
     headers.set('Access-Control-Allow-Origin', origin);
     headers.set('Access-Control-Allow-Methods', 'GET, HEAD, POST, PATCH, DELETE, OPTIONS');
     headers.set('Access-Control-Allow-Headers', 'apikey, authorization, content-type, x-client-info, prefer, accept-profile, content-profile, range, range-unit');
-    headers.set('Access-Control-Expose-Headers', 'content-range, range-unit, preference-applied, x-tactic-cache');
+    headers.set('Access-Control-Expose-Headers', 'content-range, range-unit, preference-applied, x-tactic-cache, x-tactic-snapshot, x-tactic-snapshot-generation, x-tactic-snapshot-at');
     headers.set('Access-Control-Max-Age', '86400');
   }
   return headers;
@@ -63,6 +65,7 @@ export default {
     const allowedOrigin = env.ALLOWED_ORIGIN || 'https://lufel.net';
     const cors = corsHeaders(origin, allowedOrigin);
     const table = tableFromPath(url.pathname);
+    const snapshotsEnabled = env.TACTIC_SNAPSHOTS === 'enabled';
 
     if (origin && origin !== allowedOrigin) return new Response('Forbidden origin', { status: 403, headers: cors });
     if (url.pathname === '/health' && request.method === 'GET') {
@@ -74,6 +77,15 @@ export default {
         console.error('Tactic cache health check failed', error);
         return new Response('unavailable', { status: 503, headers: cors });
       }
+    }
+    if (snapshotsEnabled && isSnapshotPath(url.pathname)) {
+      if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
+      if (request.method !== 'GET' && request.method !== 'HEAD') {
+        const headers = new Headers(cors);
+        headers.set('Allow', 'GET, HEAD, OPTIONS');
+        return new Response('Method not allowed', { status: 405, headers });
+      }
+      return serveTacticSnapshot(request, url, env, ctx, cors);
     }
     if (!table) return new Response('Not found', { status: 404, headers: cors });
     if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: cors });
@@ -117,6 +129,7 @@ export default {
       if (upstream.ok && request.method !== 'GET' && request.method !== 'HEAD') {
         try {
           await env.CACHE_STATE.prepare('UPDATE cache_versions SET version = version + 1 WHERE table_name = ?').bind(table).run();
+          if (snapshotsEnabled && table === 'tactics') await waitForTacticSnapshotAfterWrite(env, ctx);
         } catch (error) {
           // The write has already succeeded. Return that result rather than making
           // the browser retry a possibly non-idempotent database operation.

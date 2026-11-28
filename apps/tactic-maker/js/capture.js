@@ -8,6 +8,7 @@ export class CaptureUI {
         this.store = store;
         this.btnCapture = document.getElementById('btnCapture');
         this.baseUrl = window.BASE_URL || '';
+        this.isCapturing = false;
 
         this.init();
     }
@@ -85,6 +86,8 @@ export class CaptureUI {
     }
 
     async captureAndDownload() {
+        if (this.isCapturing) return;
+
         // Check if html-to-image is loaded
         if (typeof htmlToImage === 'undefined') {
             const message = (window.I18nService && window.I18nService.t)
@@ -101,6 +104,7 @@ export class CaptureUI {
         }
 
         const loading = this.showLoading(window.I18nService?.t('capturing') || 'Capturing...');
+        this.isCapturing = true;
 
         // Store original states
         const wasEditMode = document.body.classList.contains('tactic-edit-mode');
@@ -176,7 +180,6 @@ export class CaptureUI {
             const opts = {
                 backgroundColor: bodyBg,
                 pixelRatio: Math.min(3, (window.devicePixelRatio || 1) * 2),
-                skipAutoScale: true,
                 filter: (node) => {
                     try {
                         if (!(node instanceof Element)) return true;
@@ -261,6 +264,8 @@ export class CaptureUI {
             document.body.classList.add('tactic-edit-mode');
             document.dispatchEvent(new CustomEvent('editModeChange', { detail: { enabled: true } }));
         }
+
+        this.isCapturing = false;
 
         // Remove loading overlay after delay
         setTimeout(() => {

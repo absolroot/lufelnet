@@ -296,7 +296,7 @@
     color: rgba(255,255,255,0.7);
     margin-bottom: 6px;
 }
-.me-field input, .me-field select {
+.me-field input:not([data-lufel-search]), .me-field select {
     width: 100%;
     padding: 10px 12px;
     border-radius: 8px;
@@ -306,11 +306,11 @@
     font-size: 14px;
     box-sizing: border-box;
 }
-.me-field input:disabled, .me-field select:disabled {
+.me-field input:not([data-lufel-search]):disabled, .me-field select:disabled {
     opacity: 0.5;
     cursor: not-allowed;
 }
-.me-field input:focus, .me-field select:focus {
+.me-field input:not([data-lufel-search]):focus, .me-field select:focus {
     outline: none;
     border-color: rgba(255,255,255,0.4);
 }
@@ -436,16 +436,6 @@
 .me-selector-search {
     padding: 8px;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.me-selector-search input {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: #1a1a1a;
-    color: #fff;
-    font-size: 13px;
-    box-sizing: border-box;
 }
 .me-selector-list {
     flex: 1;
@@ -642,7 +632,7 @@
 
             const searchBox = document.createElement('div');
             searchBox.className = 'me-selector-search';
-            searchBox.innerHTML = `<input type="text" placeholder="${t('search')}">`;
+            searchBox.innerHTML = `<input type="text" data-lufel-search placeholder="${t('search')}">`;
             dropdown.appendChild(searchBox);
 
             const list = document.createElement('div');

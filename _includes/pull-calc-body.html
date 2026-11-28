@@ -1,3 +1,4 @@
+{% include character-initial-resource-hashes.html %}
 <script>
 (function () {
     var params = new URLSearchParams(window.location.search || '');
@@ -42,6 +43,7 @@
 </script>
 
 <!-- Pull Calc CSS -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/toolbar-action.css?h={{ site.data.asset_versions.files['/assets/css/default/toolbar-action.css'] }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/apps/pull-calc/pull-calc.css?h={{ site.data.asset_versions.files['/apps/pull-calc/pull-calc.css'] }}">
 
 <!-- Schedule Data -->
@@ -77,14 +79,14 @@
         data-page-entrance-stagger-scroll>
     <!-- Must Read Accordion -->
     <div class="settings-container">
-        <div class="accordion-section" id="mustReadAccordion">
-            <div class="accordion-header" data-target="mustReadContent">
-                <h3 id="mustReadTitle">계산기 기준 및 안내</h3>
+        <div class="accordion-section section-card-cut" id="mustReadAccordion">
+            <button type="button" class="accordion-header" data-target="mustReadContent" aria-controls="mustReadContent" aria-expanded="false">
+                <span id="mustReadTitle">계산기 기준 및 안내</span>
                 <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2">
                     <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
-            </div>
+            </button>
             <div class="accordion-content" id="mustReadContent">
                 <div class="mustread-content" id="mustReadText">
                     <!-- Content will be populated by JavaScript based on language -->
@@ -98,7 +100,7 @@
     <!-- Settings Accordions -->
     <div class="settings-container settings-grid">
         <!-- Assets Accordion -->
-        <div class="accordion-section expanded" id="assetsAccordion">
+        <div class="accordion-section section-card-cut expanded" id="assetsAccordion">
             <div class="accordion-header" data-target="assetsContent">
                 <h3 id="assetsTitle">보유 자산</h3>
                 <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -187,7 +189,7 @@
         </div>
 
         <!-- Pity Accordion -->
-        <div class="accordion-section expanded" id="pityAccordion">
+        <div class="accordion-section section-card-cut expanded" id="pityAccordion">
             <div class="accordion-header" data-target="pityContent">
                 <h3 id="pityTitle">피티 설정</h3>
                 <div class="pity-summary">
@@ -305,7 +307,7 @@
         </div>
 
         <!-- Income Accordion -->
-        <div class="accordion-section expanded" id="incomeAccordion">
+        <div class="accordion-section section-card-cut expanded" id="incomeAccordion">
             <div class="accordion-header" data-target="incomeContent">
                 <h3 id="incomeTitle">수입 설정</h3>
                 <svg class="accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none"
@@ -416,11 +418,11 @@
         </div>
 
         <!-- Extra Income Accordion -->
-        <div class="accordion-section expanded" id="extraIncomeAccordion">
+        <div class="accordion-section section-card-cut expanded" id="extraIncomeAccordion">
             <div class="accordion-header" data-target="extraIncomeContent">
                 <h3>
                     <span id="extraIncomeTitle">추가 수입</span>
-                    <button type="button" class="extra-income-add-inline" id="extraIncomeAddBtn">+</button>
+                    <button type="button" class="extra-income-add-inline toolbar-action" id="extraIncomeAddBtn">+</button>
                     <span class="tooltip-icon" data-i18n-tooltip="tooltipExtraIncome"
                         data-tooltip="Weekly income counts Mondays, and Monthly income counts the 1st day of the month between the current and next banner.">
                         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -445,7 +447,7 @@
     </div>
 
     <!-- Timeline Section -->
-    <section class="timeline-section">
+    <section class="timeline-section section-card-cut">
         <div class="timeline-container" id="timelineContainer">
             <!-- Timeline will be rendered here -->
             <div class="timeline-loading">
@@ -455,7 +457,7 @@
     </section>
 
     <!-- Balance Chart Section -->
-    <section class="chart-section">
+    <section class="chart-section section-card-cut">
         <div class="section-header">
             <h2 id="chartTitle">재화 변화 그래프</h2>
             <span class="tooltip-icon" data-i18n-tooltip="tooltipChart"
@@ -479,7 +481,7 @@
     </section>
 
     <!-- Plan Section -->
-    <section class="plan-section">
+    <section class="plan-section section-card-cut">
         <div class="section-header">
             <h2 id="planTitle">뽑기 계획</h2>
             <span class="plan-count" id="planCount">(0)</span>

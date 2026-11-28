@@ -43,7 +43,7 @@ body {
   grid-template-columns: repeat(2, auto);
   gap: 0;
   border: 1px solid #3b3b3b;
-  border-radius: 4px;
+  border-radius: 0;
   overflow: hidden;
   background: #171717;
   box-shadow: inset 0 -1px 0 #0d0d0d;
@@ -90,20 +90,59 @@ body {
 /* Clickable character styles for tier list mode */
 .clickable-character {
   cursor: pointer !important;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .character-detail-anchor {
+  position: relative;
   display: block;
   line-height: 0;
   text-decoration: none;
 }
 
-.clickable-character:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
-  z-index: 10;
-  position: relative;
+.character-detail-anchor::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 38%);
+  background: linear-gradient(var(--label-red), var(--label-red)) left bottom / 0 2px no-repeat;
+}
+
+.tier-list-mode .character-detail-anchor:focus-visible {
+  outline: 2px solid var(--label-red);
+  outline-offset: -2px;
+}
+
+.character-detail-anchor:focus-visible::after {
+  opacity: 1;
+  background-size: 100% 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .character-detail-anchor:hover::after {
+    opacity: 1;
+    background-size: 100% 2px;
+  }
+
+  .character-detail-anchor:hover .character-img {
+    filter: brightness(1.13);
+  }
+}
+
+.character-detail-anchor:active .character-img {
+  filter: brightness(1.05);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .character-detail-anchor::after {
+    transition: opacity 140ms ease, background-size 200ms cubic-bezier(.16, 1, .3, 1);
+  }
+
+  .character-detail-anchor .character-img {
+    transition: filter 160ms ease;
+  }
 }
 
 /* Hide move buttons in tier list mode */
@@ -243,7 +282,7 @@ button {
   color: #fff;
   opacity: 0.75;
   padding: 2px;
-  border-radius: 2px;
+  border-radius: 0;
   border: none;
   cursor: pointer;
 }
@@ -272,7 +311,7 @@ button {
   left: 50%;
   transform: translate(-50%, -50%);
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -327,7 +366,7 @@ button {
 
 .tier-label {
   border: 1px solid lightgray;
-  border-radius: 0.25rem;
+  border-radius: 0;
   outline-color: var(--border-color);
   padding: 0.5rem;
   resize: none;
@@ -336,7 +375,7 @@ button {
 .settings-modal button {
   text-wrap: nowrap;
   padding: 0.25rem 0.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0;
   color: #000;
   font-size: 0.875rem;
 }
@@ -427,7 +466,7 @@ button {
   justify-content: center;
   color: #fff;
   cursor: pointer;
-  border-radius: 32px;
+  border-radius: var(--filter-icon-corner);
   padding: 0px 6px 0px 6px;
   transition: all 0s;
   background-color: var(--card-background);
@@ -609,7 +648,7 @@ button {
     background: var(--tier-bg-color);
     border: 2px solid var(--border-color);
     margin: 0 8px 16px 8px;
-    border-radius: 8px;
+    border-radius: 0;
     overflow: hidden;
   }
 
@@ -713,7 +752,7 @@ button {
   .settings-cell button {
     padding: 4px 6px;
     font-size: 0.7rem;
-    border-radius: 4px;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -816,7 +855,7 @@ button {
   color: white;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border-radius: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -861,7 +900,7 @@ button {
   margin: 32px 0 20px 0;
   padding: 15px;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  border-radius: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
 }
@@ -927,7 +966,7 @@ button {
 .position-cell .character-img.star4,
 .position-cell img.star4 {
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0;
   box-sizing: border-box;
   position: relative !important;
   z-index: 1;
@@ -943,7 +982,7 @@ button {
   right: 0;
   bottom: 0;
   height: 3px;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0;
   pointer-events: none;
   z-index: 2;
   background: linear-gradient(to right, #f2d231 0%, #f2d231 100%);
@@ -955,7 +994,7 @@ button {
 .position-cell .character-img.star5,
 .position-cell img.star5 {
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 0;
   box-sizing: border-box;
   position: relative !important;
   z-index: 1;
@@ -971,7 +1010,7 @@ button {
   right: 0;
   bottom: 0;
   height: 3px;
-  border-radius: 0 0 4px 4px;
+  border-radius: 0;
   pointer-events: none;
   z-index: 2;
   background: linear-gradient(to right,
@@ -992,7 +1031,7 @@ button {
 /* Ritual Modal Styles */
 .ritual-modal {
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   background: var(--tier-bg-color);
   color: white;
   padding: 0;
@@ -1039,7 +1078,7 @@ button {
 
 .ritual-modal-close:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  border-radius: 0;
 }
 
 .ritual-options {
@@ -1055,7 +1094,7 @@ button {
   justify-content: center;
   padding: 0px;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s ease;
   background: var(--tier-control-bg-color);
@@ -1091,7 +1130,7 @@ button {
   justify-content: center;
   padding: 0px;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s ease;
   background: var(--tier-control-bg-color);
@@ -1123,7 +1162,7 @@ button {
   gap: 10px;
   padding: 12px;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.2s ease;
   background: var(--tier-control-bg-color);
@@ -1208,20 +1247,8 @@ button {
 
 /* Wrapper for character images with ritual icons */
 .character-wrapper {
-  position: relative;
-  display: inline-block;
   width: var(--card-size);
   height: var(--card-size);
-  flex-shrink: 0;
-}
-
-.character-wrapper .character-img {
-  display: block;
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 /* Ensure character images have relative positioning for ritual icon */
@@ -1235,7 +1262,7 @@ button {
   margin: 20px auto;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  border-radius: 0;
   overflow: hidden;
 }
 
@@ -1299,7 +1326,7 @@ button {
   padding: 16px;
   background: rgba(33, 33, 33);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 .tier-qa-title {
@@ -1318,7 +1345,7 @@ button {
   padding: 8px 12px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .tier-qa-item[open] {

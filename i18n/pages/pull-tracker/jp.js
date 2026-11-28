@@ -25,6 +25,7 @@ window.I18N_PAGE_PULL_TRACKER_JP = {
     pageDescription: 'ガチャ履歴を分析し、天井まで残りの回数と統計を確認できます。',
     cardsTitle: '統計（直近90日）',
     inputLabel: 'URL取得方法',
+    "entry": {"url": "契約履歴のURL", "backup": "履歴のバックアップ", "backupNote": "新しいURLを追加する前に、現在の履歴をファイルに書き出してください。", "retention": "直近90日間の履歴を取得します。期限が切れたURLは再取得してください。"},
     placeholder: 'ここにリンクを貼り付けてください...',
     labels: {
       debugExample: 'DEBUG サンプル:'
@@ -179,6 +180,7 @@ window.I18N_PAGE_PULL_TRACKER_JP = {
         percent: '%'
       },
       more: 'もっと見る',
+      less: '閉じる',
       titles: {
         limited: '★5 限定リスト',
         standard: '★5 通常リスト',
@@ -192,12 +194,12 @@ window.I18N_PAGE_PULL_TRACKER_JP = {
       w9: '9週'
     },
     pity: {
-      legendChance: 'Chance %',
-      legendTotal5: 'Total Pull 5★'
+      legendChance: '累積割合 (%)',
+      legendTotal5: '★5獲得件数'
     },
     hover: {
       daily: '{date}\nTotal 5★: {count}',
-      pity: 'Pity {pity}\nChance%: {chance}\nTotal Pull 5★: {count}'
+      pity: '{pity}回目\n累積割合: {chance}%\n★5獲得: {count}件'
     },
     status: {
       loadFailed: 'Load failed'
@@ -213,10 +215,12 @@ window.I18N_PAGE_PULL_TRACKER_JP = {
       current: 'URL ガイド'
     },
     pageTitle: 'URL ガイド',
-    introWindows: '現在は Windows / iOS / Linux / Steam Deck 向けの方法を提供しています。',
+    "introWindows": "WindowsとiOSでのURL取得方法を案内します。",
     s1: 'FAQ を確認してください。',
     s2: 'ご利用のOSを選択してください。（Android の方法の情報を募集しています）',
-    s3: '次の2つからURL取得方法を選択: 専用プログラム / 直接抽出',
+    "s3": "URLの取得方法を選択してください。",
+    "methodProgram": "専用プログラム",
+    "methodDirect": "URLを直接抽出",
     m1s1: 'PC で P5X を起動します。',
     m1s2: 'リンクから P5X_Gacha_Tools をダウンロード/解凍して起動。',
     m1s3: 'P5X でガチャ履歴を開きます。エラー表示は想定内です。',
@@ -229,7 +233,7 @@ window.I18N_PAGE_PULL_TRACKER_JP = {
     troubleshootButton: 'トラブルシューティング',
     downloadLabel: 'プログラムをダウンロード',
     sourceCode: 'source code',
-    goBack: 'Go Back',
+    "goBack": "トラッカーに戻ってURLを入力",
     os: {
       win: 'Windows',
       ios: 'iOS',
@@ -349,7 +353,7 @@ C:\\Windows\\System32\\drivers\\etc\\hosts を開き、以下の内容を削除�
       failed: 'エクスポートに失敗しました。'
     },
     import: {
-      label: 'インポート',
+      label: "ファイルを読み込む",
       imported: 'ファイルから読み込みました。',
       failed: 'インポートに失敗しました。'
     },

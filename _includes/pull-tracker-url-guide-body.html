@@ -63,48 +63,51 @@
   </div>
 
   <div class="guide-shell page-entrance-part">
-    <div class="step-row">
-      <div class="content guide-card" data-step="1">
-        <p class="guide-text" id="s2intro">Windows instructions are currently available.</p>
-      </div>
-    </div>
-
-    <div class="step-row">
-      <div class="content guide-card" data-step="2">
-        <p class="guide-text" id="s1">Check the FAQ first.</p>
-        <button id="openFaq" class="btn-outline" type="button" data-i18n="btnFaq">FAQ</button>
-      </div>
-    </div>
-
-    <div class="step-row">
-      <div class="content guide-card" data-step="3">
-        <p class="guide-text" id="s2">Select your device platform.</p>
-        <div class="pill-row">
-          <button class="pill active" id="osWin" type="button" aria-pressed="true">Windows</button>
-          <button class="pill" id="osIOS" type="button" aria-pressed="false">iOS</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-row" id="methodStep">
-      <div class="content guide-card" data-step="4">
-        <p class="guide-text" id="s3">Select a method.</p>
-        <div class="pill-row" id="methodPills">
-          <button class="pill active" id="m1" type="button" aria-pressed="true">1</button>
-          <button class="pill" id="m2" type="button" aria-pressed="false">2</button>
-        </div>
-      </div>
-    </div>
-
-    <div id="m1block">
+    <div class="guide-setup section-card-cut">
       <div class="step-row">
-        <div class="content guide-card" data-step="5">
+        <div class="content guide-card guide-option">
+          <p class="guide-text" id="s2intro">Windows instructions are currently available.</p>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card guide-option">
+          <p class="guide-text" id="s1">Check the FAQ first.</p>
+          <button id="openFaq" class="btn-outline" type="button" data-i18n="btnFaq">FAQ</button>
+        </div>
+      </div>
+
+      <div class="step-row">
+        <div class="content guide-card guide-option">
+          <p class="guide-text" id="s2">Select your device platform.</p>
+          <div class="pill-row">
+            <button class="pill active" id="osWin" type="button" aria-pressed="true">Windows</button>
+            <button class="pill" id="osIOS" type="button" aria-pressed="false">iOS</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row" id="methodStep">
+        <div class="content guide-card guide-option">
+          <p class="guide-text" id="s3">Select a method.</p>
+          <div class="pill-row" id="methodPills">
+            <button class="pill active" id="m1" type="button" aria-pressed="true">Helper program</button>
+            <button class="pill" id="m2" type="button" aria-pressed="false">Direct extraction</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="m1block" class="guide-instructions section-card-cut">
+      <div class="step-row">
+        <div class="content guide-card" data-step="1">
           <p class="guide-text" id="m1s1">Open P5X on your PC.</p>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="6">
+        <div class="content guide-card" data-step="2">
           <p class="guide-text" id="m1s2">Download and run the helper program.</p>
           <div class="pill-row">
             <a class="pill" id="downloadBtn" href="https://github.com/iantCode/P5X_Gacha_Link/releases" target="_blank"
@@ -118,51 +121,51 @@
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="7">
+        <div class="content guide-card" data-step="3">
           <p class="guide-text" id="m1s3">Open your pull history in-game. Some delay is normal.</p>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="8">
+        <div class="content guide-card" data-step="4">
           <p class="guide-text" id="m1s4">Select your region, run "Try Find URL", then copy the URL.</p>
           <img src="{{ site.baseurl }}/apps/pull-tracker/program.png" alt="Program Screenshot" class="guide-image">
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="9">
+        <div class="content guide-card" data-step="5">
           <p class="guide-text" id="m1s5">Close the helper program.</p>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="10">
+        <div class="content guide-card" data-step="6">
           <p class="guide-text" id="m1s6">Paste the copied URL into Pull Tracker.</p>
           <a class="pill" id="goInput1" href="../">Go Back</a>
         </div>
       </div>
     </div>
 
-    <div id="m2block" style="display: none;">
+    <div id="m2block" class="guide-instructions section-card-cut" style="display: none;">
       <div class="step-row">
-        <div class="content guide-card" data-step="5">
+        <div class="content guide-card" data-step="1">
           <p class="guide-text" id="m2s1">Follow the external method guide.</p>
           <a class="pill" href="https://github.com/mpvio/p5xsummons" target="_blank" rel="noopener noreferrer">p5xsummons</a>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="6">
+        <div class="content guide-card" data-step="2">
           <p class="guide-text" id="m2s2">Paste the copied URL into Pull Tracker.</p>
           <a class="pill" id="goInput2" href="../">Go Back</a>
         </div>
       </div>
     </div>
 
-    <div id="iosBlock" style="display: none;">
+    <div id="iosBlock" class="guide-instructions section-card-cut" style="display: none;">
       <div class="step-row">
-        <div class="content guide-card" data-step="5">
+        <div class="content guide-card" data-step="1">
           <p class="guide-text" id="ios1">Install Stream from the App Store.</p>
           <a class="pill" id="streamBtn" href="https://apps.apple.com/hk/app/stream/id1312141691" target="_blank"
             rel="noopener noreferrer">Stream Install Page</a>
@@ -175,19 +178,19 @@
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="6">
+        <div class="content guide-card" data-step="2">
           <p class="guide-text" id="ios2">Tap Sniff Now in Stream and allow VPN/CA setup.</p>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="7">
+        <div class="content guide-card" data-step="3">
           <p class="guide-text" id="ios3">Open the pull history page in P5X.</p>
         </div>
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="8">
+        <div class="content guide-card" data-step="4">
           <p class="guide-text multiline" id="ios4">Find the matching request in Sniff History and copy the full URL.
 (KR) nsywl-krcard.wmupd.com
 (CN) nsywl-gfcard.wmupd.com
@@ -199,7 +202,7 @@
       </div>
 
       <div class="step-row">
-        <div class="content guide-card" data-step="9">
+        <div class="content guide-card" data-step="5">
           <p class="guide-text" id="ios5">Paste the copied URL into Pull Tracker.</p>
           <a class="pill" id="goInputIOS" href="../">Go Back</a>
         </div>
@@ -218,7 +221,7 @@
   .guide-shell {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 20px;
     margin-bottom: 12px;
   }
 
@@ -234,22 +237,40 @@
     margin: 0;
   }
 
-  .guide-card {
-    position: relative;
-    background: var(--card-background);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 12px 12px 12px 46px;
+  .guide-setup,
+  .guide-instructions {
+    padding: 12px 0;
   }
 
-  .guide-card::before {
+  .guide-setup .step-row + .step-row,
+  .guide-instructions .step-row + .step-row {
+    background: var(--section-divider-paint);
+    background-position-y: top, top, top 1px;
+    margin-inline: 16px;
+  }
+
+  .guide-setup .step-row,
+  .guide-instructions .step-row {
+    margin-inline: 16px;
+  }
+
+  .guide-card.guide-option {
+    padding-left: 0;
+  }
+
+  .guide-card {
+    position: relative;
+    padding: 12px 0 12px 34px;
+  }
+
+  .guide-card[data-step]::before {
     content: attr(data-step);
     position: absolute;
-    left: 12px;
+    left: 0;
     top: 11px;
     width: 22px;
     height: 22px;
-    border-radius: 999px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.3);
     color: rgba(255, 255, 255, 0.92);
     display: flex;
@@ -298,7 +319,7 @@
     min-height: 34px;
     padding: 7px 11px;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.15);
     color: #fff;
     text-decoration: none;
@@ -326,7 +347,7 @@
   }
 
   .pill {
-    border-radius: 999px;
+    border-radius: 0;
   }
 
   #methodPills .pill {
@@ -353,7 +374,7 @@
     max-height: 220px;
     margin-top: 8px;
     object-fit: contain;
-    border-radius: 10px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(0, 0, 0, 0.3);
     padding: 4px;
@@ -368,10 +389,17 @@
     text-decoration: underline;
   }
 
-  .guide-modal-overlay {
+  .guide-modal-overlay[open] {
     position: fixed;
     inset: 0;
-    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    box-sizing: border-box;
+    margin: 0;
+    border: 0;
+    color: inherit;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -381,7 +409,7 @@
 
   .guide-modal {
     width: min(100%, 800px);
-    border-radius: 10px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.12);
     background: #171717;
     box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
@@ -405,7 +433,7 @@
   .guide-modal-close {
     color: #fff;
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    border-radius: 0;
     padding: 5px 10px;
     background: rgba(255, 255, 255, 0.04);
     cursor: pointer;
@@ -432,11 +460,11 @@
 
   @media (max-width: 768px) {
     .guide-card {
-      padding: 10px 10px 10px 40px;
+      padding: 10px 0 10px 30px;
     }
 
-    .guide-card::before {
-      left: 10px;
+    .guide-card[data-step]::before {
+      left: 0;
       top: 10px;
       width: 20px;
       height: 20px;
@@ -514,19 +542,21 @@
       .replace(/(https?:\/\/[^\s<]+)/g, '<a class="link" href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
 
     const openModal = ({ title, bodyHtml, maxWidth = '720px', bodyStyle = '' }) => {
-      const overlay = document.createElement('div');
+      const overlay = document.createElement('dialog');
       overlay.className = 'guide-modal-overlay';
+      overlay.setAttribute('aria-labelledby', 'guideModalTitle');
 
       const modal = document.createElement('div');
       modal.className = 'guide-modal';
       modal.style.maxWidth = maxWidth;
 
       const closeLabel = tr('guide.modal.close', 'Close');
-      modal.innerHTML = `<div class="guide-modal-head"><h3 class="guide-modal-title">${title}</h3><button id="guideModalClose" class="guide-modal-close" type="button">${closeLabel}</button></div><div id="guideModalBody" class="guide-modal-body"></div>`;
+      modal.innerHTML = `<div class="guide-modal-head"><h3 class="guide-modal-title" id="guideModalTitle">${title}</h3><button id="guideModalClose" class="guide-modal-close" type="button" autofocus>${closeLabel}</button></div><div id="guideModalBody" class="guide-modal-body"></div>`;
       overlay.appendChild(modal);
       document.body.appendChild(overlay);
 
-      const close = () => { try { overlay.remove(); } catch (_) { } };
+      const close = () => overlay.close();
+      overlay.addEventListener('close', () => overlay.remove(), { once: true });
       overlay.addEventListener('click', (e) => { if (e.target === overlay) close(); });
       const closeBtn = modal.querySelector('#guideModalClose');
       if (closeBtn) closeBtn.addEventListener('click', close);
@@ -535,6 +565,7 @@
         if (bodyStyle) body.style.cssText = bodyStyle;
         body.innerHTML = bodyHtml;
       }
+      overlay.showModal();
     };
 
     try {
@@ -590,6 +621,8 @@
       setText('s1', tr('guide.s1'));
       setText('s2', tr('guide.s2'));
       setText('s3', tr('guide.s3'));
+      setText('m1', tr('guide.methodProgram'));
+      setText('m2', tr('guide.methodDirect'));
       setText('m1s1', tr('guide.m1s1'));
       setText('m1s2', tr('guide.m1s2'));
       setText('m1s3', tr('guide.m1s3'));
@@ -659,7 +692,7 @@
         const raw = tr('guide.troubleshoot.body');
         const html = linkify(escapeHtml(raw))
           .replace(/(C:\\Windows\\System32\\drivers\\etc\\hosts)/g, '<span style="color:#ffcc88">$1</span>')
-          .replace(/(127\.0\.0\.1[\s\S]*web\.p5x-sea\.com)/, '<pre style="background:#0f0d0b;border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:8px;white-space:pre-line">$1</pre>');
+          .replace(/(127\.0\.0\.1[\s\S]*web\.p5x-sea\.com)/, '<pre style="background:#0f0d0b;border:1px solid rgba(255,255,255,.18);border-radius: 0;padding:8px;white-space:pre-line">$1</pre>');
         openModal({
           title: tr('guide.troubleshoot.title', tr('guide.modal.troubleshootTitle', 'Troubleshooting')),
           bodyHtml: html,
@@ -709,36 +742,17 @@
     function setOSTab(which) {
       try {
         [osWin, osIOS].forEach((b) => { if (b) b.classList.remove('active'); });
-        const method = document.getElementById('methodPills');
         const methodStep = document.getElementById('methodStep');
         if (which === 'win') {
           if (osWin) osWin.classList.add('active');
-          if (method) method.style.display = '';
           if (methodStep) methodStep.style.display = '';
-          const steps = [5, 6, 7, 8, 9];
-          ['ios1', 'ios2', 'ios3', 'ios4', 'ios5'].forEach((id, idx) => {
-            const el = document.getElementById(id);
-            if (el) {
-              const card = el.closest('.content');
-              if (card) card.setAttribute('data-step', String(steps[idx]));
-            }
-          });
           const showMethod2 = !!(b2 && b2.classList.contains('active'));
           if (blk1) blk1.style.display = showMethod2 ? 'none' : '';
           if (blk2) blk2.style.display = showMethod2 ? '' : 'none';
           if (blkIOS) blkIOS.style.display = 'none';
         } else {
           if (osIOS) osIOS.classList.add('active');
-          if (method) method.style.display = 'none';
           if (methodStep) methodStep.style.display = 'none';
-          const steps = [4, 5, 6, 7, 8];
-          ['ios1', 'ios2', 'ios3', 'ios4', 'ios5'].forEach((id, idx) => {
-            const el = document.getElementById(id);
-            if (el) {
-              const card = el.closest('.content');
-              if (card) card.setAttribute('data-step', String(steps[idx]));
-            }
-          });
           if (blk1) blk1.style.display = 'none';
           if (blk2) blk2.style.display = 'none';
           if (blkIOS) blkIOS.style.display = '';

@@ -3,6 +3,7 @@
     const easing = 'cubic-bezier(.16, 1, .3, 1)';
     const staggeredContent = new WeakSet();
     const observedStaggerParts = new WeakSet();
+    const staggerEffects = new WeakMap();
     let completed = false;
     let finishing = false;
     let timer;
@@ -38,7 +39,8 @@
         });
     }
 
-    function animateStaggerBatch(items) {
+    function animateStaggerBatch(items, effect) {
+        if (items.length && effect?.(items)) return;
         const step = Math.min(30, 510 / Math.max(1, items.length - 1));
         items.forEach((item, index) => {
             item.animate([
@@ -48,7 +50,47 @@
         });
     }
 
-    function observeRemainingStaggerItems(items) {
+    function setStaggerEffect(part, effect) {
+        staggerEffects.set(part, effect);
+    }
+
+    function setCardStaggerEffect(part) {
+        const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        setStaggerEffect(part, cards => {
+            const gsap = window.gsap;
+            if (!gsap || motion.matches) return false;
+
+            const stagger = { each: Math.min(0.042, 0.24 / Math.max(1, cards.length - 1)) };
+            const finish = () => entrance.progress(1);
+            const finishOnReducedMotion = event => {
+                if (event.matches) finish();
+            };
+            const entrance = gsap.timeline({
+                onComplete() {
+                    part.removeEventListener('focusin', finish);
+                    motion.removeEventListener('change', finishOnReducedMotion);
+                }
+            });
+            entrance.fromTo(cards, {
+                '--character-card-arrival-translate': '0px 22px',
+                '--character-card-arrival-scale': 0.96
+            }, {
+                '--character-card-arrival-translate': '0px 0px',
+                '--character-card-arrival-scale': 1,
+                duration: 0.44,
+                ease: 'power2.inOut',
+                stagger,
+                clearProps: '--character-card-arrival-translate,--character-card-arrival-scale'
+            }, 0).fromTo(cards, { opacity: 0 }, {
+                opacity: 1, duration: 0.34, ease: 'power1.out', stagger, clearProps: 'opacity'
+            }, 0);
+            part.addEventListener('focusin', finish);
+            motion.addEventListener('change', finishOnReducedMotion);
+            return true;
+        });
+    }
+
+    function observeRemainingStaggerItems(items, effect) {
         if (!items.length) return;
         const remaining = new Set(items);
         const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -64,7 +106,7 @@
                 remaining.delete(target);
                 if (target.isConnected) entering.add(target);
             });
-            animateStaggerBatch(items.filter(item => entering.has(item)));
+            animateStaggerBatch(items.filter(item => entering.has(item)), effect);
             if (!remaining.size) observer.disconnect();
         });
         items.forEach(item => observer.observe(item));
@@ -81,15 +123,37 @@
         const animatedItems = all && visible.length ? items : visible;
         if (!animatedItems.length && !onScroll) return false;
         staggeredContent.add(items[0]);
-        animateStaggerBatch(animatedItems);
+        const effect = staggerEffects.get(part);
+        animateStaggerBatch(animatedItems, effect);
         if (onScroll) {
             const animated = new Set(animatedItems);
-            observeRemainingStaggerItems(items.filter(item => !animated.has(item)));
+            observeRemainingStaggerItems(items.filter(item => !animated.has(item)), effect);
         }
         return true;
     }
 
+    function animateFilterRows(part) {
+        const rows = Array.from(part.querySelectorAll('.filter-group'))
+            .filter(row => row.animate && row.getClientRects().length &&
+                getComputedStyle(row).visibility === 'visible');
+        if (!rows.length) return false;
+
+        rows.forEach((row, index) => {
+            row.animate([
+                { translate: '-10px 0', opacity: 0.42 },
+                { translate: '0 0', opacity: 1 }
+            ], {
+                duration: 170,
+                delay: Math.min(index, 2) * 54 + Math.max(0, index - 2) * 28,
+                easing,
+                fill: 'backwards'
+            });
+        });
+        return true;
+    }
+
     function animatePart(part) {
+        if (part.matches('.filter-section') && animateFilterRows(part)) return;
         if (!part.animate) return;
         part.animate([
             { opacity: 0, translate: '0 12px' },
@@ -192,6 +256,11 @@
     }
 
     root.setAttribute('data-page-entrance', 'waiting');
-    window.LufelPageEntrance = { finish, stagger };
+    window.LufelPageEntrance = {
+        finish,
+        stagger,
+        setStaggerEffect,
+        setCardStaggerEffect
+    };
     timer = setTimeout(show, 3500);
 })();

@@ -84,7 +84,18 @@ textarea {
     min-width: 0;
 }
 
+.persona-list-frame,
+.persona-detail-panel {
+    --section-card-fill: #222;
+}
+
+.persona-list-frame {
+    width: 100%;
+    padding-bottom: 3px;
+}
+
 .persona-list-panel {
+    --persona-fog-size: 46px;
     flex: 0 0 auto;
     width: 100%;
     min-width: 0;
@@ -92,9 +103,39 @@ textarea {
     max-height: 80vh;
     overflow-y: auto;
     padding: 0 20px;
-    background: #222;
-    border-radius: 8px;
     box-sizing: border-box;
+}
+
+.persona-list-panel::after,
+.persona-list-panel .filter-header-sticky::after {
+    content: "";
+    display: block;
+    height: var(--persona-fog-size);
+    pointer-events: none;
+}
+
+.persona-list-panel::after {
+    position: sticky;
+    bottom: 0;
+    z-index: 90;
+    margin-top: calc(-1 * var(--persona-fog-size));
+    background: linear-gradient(to top, var(--section-card-fill) 18%, transparent);
+    opacity: var(--persona-fog-bottom, 0);
+}
+
+.persona-list-panel .filter-header-sticky::after {
+    position: absolute;
+    top: 100%;
+    inset-inline: 0;
+    background: linear-gradient(to bottom, var(--section-card-fill) 18%, transparent);
+    opacity: var(--persona-fog-top, 0);
+}
+
+@media (forced-colors: active) {
+    .persona-list-panel::after,
+    .persona-list-panel .filter-header-sticky::after {
+        display: none;
+    }
 }
 
 .nitro-ad-container--persona-list {
@@ -105,34 +146,26 @@ textarea {
 .persona-detail-panel {
     flex: 1;
     min-width: 0;
-    background: #222;
-    border-radius: 8px;
-    overflow-y: auto;
     box-sizing: border-box;
     width: 100%;
     user-select: text;
     -webkit-user-select: text;
 }
 
-/* Panel specific scrollbar override */
-.persona-list-panel::-webkit-scrollbar,
-.persona-detail-panel::-webkit-scrollbar {
+.persona-list-panel::-webkit-scrollbar {
     width: 6px;
 }
 
-.persona-list-panel::-webkit-scrollbar-track,
-.persona-detail-panel::-webkit-scrollbar-track {
+.persona-list-panel::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.1);
 }
 
-.persona-list-panel::-webkit-scrollbar-thumb,
-.persona-detail-panel::-webkit-scrollbar-thumb {
+.persona-list-panel::-webkit-scrollbar-thumb {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 3px;
 }
 
-.persona-list-panel::-webkit-scrollbar-thumb:hover,
-.persona-detail-panel::-webkit-scrollbar-thumb:hover {
+.persona-list-panel::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.3);
 }
 
@@ -193,7 +226,6 @@ textarea {
     flex-direction: column;
     gap: 10px;
     padding: 16px;
-    border-radius: 8px;
     background: rgba(0, 0, 0, 0.15);
 }
 
@@ -386,7 +418,7 @@ textarea {
     justify-content: center;
     color: #fff;
     cursor: pointer;
-    border-radius: 32px;
+    border-radius: var(--filter-icon-corner);
     padding: 0px 6px;
     transition: all 0s;
     background-color: var(--card-background);
@@ -469,68 +501,6 @@ textarea {
     color: rgba(255, 255, 255, 0.4);
     font-size: 12px;
     white-space: nowrap;
-}
-
-.search-icon {
-    position: absolute;
-    left: 0px;
-    top: 50%;
-    transform: translateY(-40%);
-    pointer-events: none;
-}
-
-#personaSearch {
-    width: 100%;
-    padding: 10px 16px 10px 32px;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-#personaSearch:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.search-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(30, 30, 30, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    margin-top: 4px;
-    max-height: 300px;
-    overflow-y: auto;
-    display: none;
-    z-index: 1000;
-}
-
-.search-dropdown::-webkit-scrollbar {
-    width: 8px;
-}
-
-.search-dropdown::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.search-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-}
-
-.dropdown-item {
-    padding: 10px 16px;
-    font-size: 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.1);
 }
 
 /* Sort & Expand Controls */
@@ -921,7 +891,13 @@ textarea {
 .persona-innate-skills {
     background: rgba(0, 0, 0, 0.15);
     padding: 16px;
-    border-radius: 8px;
+}
+
+/* Resolve the last filled box after optional skills and acquisition info render. */
+#personaDetailContent .persona-info-section > :nth-last-child(1 of .persona-tier-info, .persona-instinct-info, .skill-highlight-container, .persona-recommended-skills, .persona-innate-skills, .persona-acq-info):not(.skill-highlight-container),
+#personaDetailContent .persona-info-section > :last-child.skill-highlight-container > :last-child,
+.persona-detail-skeleton > .persona-skeleton-block:last-child {
+    clip-path: var(--section-card-tail-shape);
 }
 
 .persona-info-section h3 {
@@ -1093,7 +1069,6 @@ textarea {
 .persona-unique-skill-info,
 .persona-highlight-info {
     padding: 15px;
-    border-radius: 8px;
 }
 
 .persona-unique-skill-info h3 {
@@ -1141,6 +1116,10 @@ textarea {
     background: rgba(0, 0, 0, 0.8);
 }
 
+#personaDetailContent .skill-level-values {
+    color: #c0a0a0;
+}
+
 .persona-grade-img {
     height: 16px;
     width: auto;
@@ -1180,24 +1159,39 @@ textarea {
     color: #888;
 }
 
-.persona-recommended-skills .skill-name-container {
+:where(.persona-recommended-skills) .recommended-skill-trigger {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: start;
     cursor: pointer;
-    transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 
-.persona-recommended-skills .skill-name-container:hover {
-    background: rgba(255, 255, 255, 0.06);
-    box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.04);
+@media (hover: hover) {
+    .persona-recommended-skills .recommended-skill-trigger:hover {
+        background-color: rgb(255 255 255 / 6%);
+    }
+}
+
+.persona-recommended-skills .recommended-skill-trigger:focus-visible {
+    background-color: rgb(255 255 255 / 6%);
+    outline: 1px solid rgb(255 255 255 / 45%);
+    outline-offset: -1px;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .persona-info-section :is(.persona-tier-info, .persona-instinct-info, .persona-unique-skill-info, .persona-highlight-info) :is(h3, p),
-    .persona-info-section :is(.persona-recommended-skills, .persona-innate-skills) :is(.skill-name, .skill-description) {
+    .persona-info-section .persona-innate-skills :is(.skill-name, .skill-description) {
         transition: color 180ms ease;
     }
 
     .persona-info-section :is(.persona-tier-info, .persona-instinct-info, .persona-unique-skill-info, .persona-highlight-info) :is(h3, p):hover,
-    .persona-info-section :is(.persona-recommended-skills, .persona-innate-skills) :is(.skill-name, .skill-description):hover {
+    .persona-info-section .persona-innate-skills :is(.skill-name, .skill-description):hover {
         color: #b9d7f4;
         transition-duration: 60ms;
     }
@@ -1205,7 +1199,7 @@ textarea {
 
 @media (prefers-reduced-motion: reduce) {
     .persona-info-section :is(.persona-tier-info, .persona-instinct-info, .persona-unique-skill-info, .persona-highlight-info) :is(h3, p),
-    .persona-info-section :is(.persona-recommended-skills, .persona-innate-skills) :is(.skill-name, .skill-description) {
+    .persona-info-section .persona-innate-skills :is(.skill-name, .skill-description) {
         transition: none;
     }
 }
@@ -1324,7 +1318,6 @@ textarea {
 .persona-acq-info {
     padding: 12px 16px;
     background: rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
     display: flex;
     gap: 16px;
     align-items: center;
@@ -1661,7 +1654,7 @@ textarea {
     }
 
     .sticky-content {
-        padding: 0 16px;
+        padding: 0 16px 16px;
     }
 
     .detail-placeholder.persona-detail-skeleton {
@@ -1802,9 +1795,9 @@ textarea {
     transform: translate(-50%, -50%);
     width: min(400px, 90vw);
     max-height: 80vh;
-    background: #1a1a1a;
+    --section-card-fill: #1a1a1a;
     color: #fff;
-    border-radius: 12px;
+    border-radius: 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
@@ -1856,7 +1849,7 @@ textarea {
 
 .filter-action-btn {
     border: none;
-    border-radius: 6px;
+    border-radius: 0;
     padding: 8px 16px;
     font-size: 13px;
     cursor: pointer;
@@ -1918,7 +1911,6 @@ textarea {
     cursor: pointer;
     background: rgba(255, 255, 255, 0.05);
     padding: 6px 10px;
-    border-radius: 6px;
     border: 1px solid transparent;
     transition: all 0.2s;
     box-sizing: border-box;

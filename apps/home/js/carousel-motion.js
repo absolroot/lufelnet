@@ -62,8 +62,9 @@
         }
 
         const snapshot = captureSlide(outgoing);
+        const forward = direction > 0;
         // Move both ends of the diagonal by the same distance, including outside the viewport.
-        const [start, end] = direction > 0
+        const [start, end] = forward
             ? ['polygon(-20% 0%,120% 0%,120% 100%,0% 100%)', 'polygon(100% 0%,120% 0%,120% 100%,120% 100%)']
             : ['polygon(-20% 0%,120% 0%,100% 100%,-20% 100%)', 'polygon(-20% 0%,0% 0%,-20% 100%,-20% 100%)'];
 
@@ -71,6 +72,9 @@
         track.parentElement.append(snapshot);
         const title = incoming.querySelector('.slide-left');
         const portraits = incoming.querySelector('.slide-right .char-img')?.parentElement;
+        const fills = track.closest('.carousel-container')?.querySelectorAll('.carousel-dot-fill');
+        const previousFill = fills?.[previousIndex];
+        const nextFill = fills?.[nextIndex];
         const wipeDuration = .47;
         let context;
         const finish = () => {
@@ -87,6 +91,15 @@
                 ease: 'power1.inOut',
                 onComplete: () => snapshot.remove()
             });
+            if (previousFill && nextFill) {
+                const [revealStart, revealEnd] = forward
+                    ? ['polygon(-20% 0%,-20% 0%,0% 100%,-20% 100%)', 'polygon(-20% 0%,100% 0%,120% 100%,-20% 100%)']
+                    : ['polygon(120% 0%,120% 0%,120% 100%,100% 100%)', 'polygon(0% 0%,120% 0%,120% 100%,-20% 100%)'];
+                gsap.set(previousFill, { opacity: 1, clipPath: start });
+                gsap.set(nextFill, { clipPath: revealStart });
+                timeline.to(previousFill, { clipPath: end, duration: .2, ease: 'power1.inOut' }, .025);
+                timeline.to(nextFill, { clipPath: revealEnd, duration: .22, ease: 'power1.inOut' }, .14);
+            }
             if (title) timeline.fromTo(title, { opacity: .55, y: 6 }, { opacity: 1, y: 0, duration: .24 }, .065);
             if (portraits) timeline.to(portraits, { opacity: 1, x: 0, duration: .26 }, wipeDuration);
         });

@@ -2,7 +2,7 @@ window.I18N_PAGE_ABOUT_EN = {
     // Page titles
     siteTitle: 'Lufelnet lufel.net',
     contactTitle: 'Contact & Feedback',
-    thanksTitle: 'Thanks To',
+    thanksTitle: 'Acknowledgments',
     recentUpdatesTitle: 'Recent Updates',
 
     // Buttons
@@ -24,9 +24,7 @@ It started with the hope that more people would enjoy P5X.<br><br>
 <strong>The strategy information provided on this site is contributed by top-ranking players from the Korean server.</strong>`,
 
     // Contact description
-    contactDescription: `If you find bugs, incorrect data, or have feedback, please contact us via
-<a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span class="discord-icon"></span>Discord</a> or
-<a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>.`,
+    contactDescription: 'Found a bug or incorrect information? Send us your feedback.',
 
     // Donation message
     donationMessage: `As a user who truly loves P5X, I am continuously managing lufel.net.<br>

@@ -59,19 +59,22 @@
     }
   
     // basicStatsData 로더
+    let basicStatsPromise;
     function ensureBasicStatsLoaded() {
-      return new Promise((resolve) => {
-        if (window.basicStatsData) return resolve(true);
+      return basicStatsPromise ??= new Promise((resolve) => {
 
         const ver = (typeof APP_VERSION !== 'undefined') ? APP_VERSION : Date.now();
         const charName = getCharacterNameFromURL();
+        if (!charName || window.basicStatsData?.[charName]) return resolve(!!charName);
+        const hash = window.__CHARACTER_INITIAL_RESOURCE_HASHES?.[charName]?.base_stats;
+        const query = hash ? `h=${hash}` : `v=${ver}`;
         const basePath = `${window.BASE_URL || ''}/data/characters/${encodeURIComponent(charName)}`;
 
         // 1) per-character JS ?선 ?도
         const tryPerCharacterJs = () => new Promise((res) => {
           try {
             const s = document.createElement('script');
-            s.src = `${basePath}/base_stats.js?v=${ver}`;
+            s.src = `${basePath}/base_stats.js?${query}`;
             s.onload = () => {
               try {
                 if (window.basicStatsData && window.basicStatsData[charName]) return res(true);
@@ -172,6 +175,47 @@
     function setValueRow(baseSelector, idx, v) {
       const row = document.querySelector(`${baseSelector} .stat-row:nth-child(${idx}) .value`);
       if (row) row.textContent = (v ?? '') + '';
+    }
+
+    function stageStatNumbers(section) {
+      const createAnimation = window.createSkillValueAnimation;
+      if (!section || !('IntersectionObserver' in window) ||
+          !createAnimation ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      createAnimation('.value').warmWhenNear(section);
+      let started = false;
+      const threshold = 0.5;
+      const observer = new IntersectionObserver(entries => {
+        const visible = [];
+        for (const entry of entries) {
+          if (entry.intersectionRatio < threshold) continue;
+          observer.unobserve(entry.target);
+          visible.push(entry.target);
+        }
+        if (!visible.length) return;
+        started = true;
+        createAnimation('.value').countUp(visible);
+      }, { threshold });
+      section.querySelectorAll('.value').forEach(value => observer.observe(value));
+
+      return () => {
+        observer.disconnect();
+        return started;
+      };
+    }
+
+    function mountStatsGrid(grid, renderWide, renderNarrow) {
+      const wide = window.matchMedia('(min-width: 1200px)');
+      const render = () => wide.matches ? renderWide() : renderNarrow();
+      render();
+      let stopStaging = stageStatNumbers(grid);
+
+      wide.addEventListener('change', () => {
+        const started = stopStaging?.();
+        render();
+        if (!started) stopStaging = stageStatNumbers(grid);
+      });
     }
   
     function localizeAwakeTitle() {
@@ -491,19 +535,13 @@
           });
         }
 
-        function applyLayout() {
-          const wide = window.innerWidth >= 1200;
-          if (wide) renderWide(); else renderNarrow();
-        }
-
         // ?입 ??용
         if (settingsWrap.nextSibling) {
           cardRoot.insertBefore(wrap, settingsWrap.nextSibling);
         } else {
           cardRoot.appendChild(wrap);
         }
-        applyLayout();
-        window.addEventListener('resize', applyLayout);
+        mountStatsGrid(grid, renderWide, renderNarrow);
       } catch (e) {
         console.warn('[cha_stats] renderLv80BaseStats error', e);
       }
@@ -649,22 +687,18 @@
           });
         }
 
-        function applyLayout() {
-          const wide = window.innerWidth >= 1200;
-          if (wide) renderWide(); else renderNarrow();
-        }
-
         if (lv80Card.nextSibling) {
           statsCard.insertBefore(wrap, lv80Card.nextSibling);
         } else {
           statsCard.appendChild(wrap);
         }
-        applyLayout();
-        window.addEventListener('resize', applyLayout);
+        mountStatsGrid(grid, renderWide, renderNarrow);
       } catch (e) {
         console.warn('[cha_stats] renderLv100BaseStatsFromBasicStats error', e);
       }
     };
+
+    window.ensureCharacterBasicStats = ensureBasicStatsLoaded;
 
     async function init() {
       // DOM 준?
@@ -724,6 +758,7 @@
 
       // Re-apply localized labels after LV80/LV100 cards are rendered.
       localizeStatsCardTexts();
+      stageStatNumbers(qs('.stats-card .stats-settings'));
     }
   
     // ?행

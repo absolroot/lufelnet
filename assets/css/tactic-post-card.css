@@ -1,0 +1,146 @@
+.home-tactic-posts { gap: 8px; cursor: auto; }
+
+:is(.tactic-library-results, .home-tactic-posts) .post-item {
+    display: grid;
+    grid-template-areas: "header footer" "content content";
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 8px 6px;
+    padding: 10px 12px;
+    border: 1px solid var(--library-line, var(--section-divider-color));
+    border-radius: 0;
+    background: var(--card-background);
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-header {
+    grid-area: header;
+    min-width: 0;
+    transform: none;
+    justify-content: flex-start;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-header h3 { margin: 0 0 4px; }
+
+:is(.tactic-library-results, .home-tactic-posts) .post-title {
+    gap: 4px;
+    min-height: 26px;
+    font-size: 16px;
+    line-height: 1.3;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-title-text {
+    display: -webkit-box;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-meta {
+    flex-wrap: wrap;
+    gap: 3px 6px;
+    height: auto;
+    min-width: 0;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-meta .separator {
+    height: auto;
+    line-height: 1;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-meta :is(.type-badge, .region-badge) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 1px 4px;
+    line-height: 1.4;
+    text-align: center;
+    background: rgb(255 255 255 / 6%);
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-meta :is(.post-author, .post-date) {
+    font-size: 12px;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-author {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(255 255 255 / 90%);
+    white-space: nowrap;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-date {
+    color: var(--library-muted, rgb(255 255 255 / 67%));
+    white-space: nowrap;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-comment {
+    max-width: none;
+    margin: 6px 0 0;
+    padding: 0;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .post-content { grid-area: content; margin: 0; }
+:is(.tactic-library-results, .home-tactic-posts) .post-content:not(:has(.tactic-preview-container > *)) { display: none; }
+:is(.tactic-library-results, .home-tactic-posts) .post-footer { grid-area: footer; align-self: start; }
+:is(.tactic-library-results, .home-tactic-posts) .likes-section { flex-direction: row; }
+
+:is(.tactic-library-results, .home-tactic-posts) .like-button {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .like-button img { width: 31px; height: 31px; }
+:is(.tactic-library-results, .home-tactic-posts) .likes-count { font-size: 12px; font-variant-numeric: tabular-nums; }
+
+:is(.tactic-library-results, .home-tactic-posts) .party-images-container,
+:is(.tactic-library-results, .home-tactic-posts) .party-images {
+    justify-content: flex-start;
+    margin: 0;
+    gap: 6px;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .party-images-container { flex-direction: row; }
+:is(.tactic-library-results, .home-tactic-posts) .party-images { flex-wrap: wrap; }
+
+:is(.tactic-library-results, .home-tactic-posts) .character-container {
+    width: clamp(38px, 12vw, 52px);
+    height: clamp(38px, 12vw, 52px);
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .character-img {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+:is(.tactic-library-results, .home-tactic-posts) .ritual-img {
+    width: 23px;
+    height: 23px;
+    bottom: 0;
+    left: 0;
+    filter:
+        drop-shadow(1px 0 0 #fff)
+        drop-shadow(-1px 0 0 #fff)
+        drop-shadow(0 1px 0 #fff)
+        drop-shadow(0 -1px 0 #fff);
+}
+
+@media (min-width: 1280px) {
+    :is(.tactic-library-results, .home-tactic-posts) .post-item {
+        grid-template-areas: "header content footer";
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        align-items: center;
+    }
+    :is(.tactic-library-results, .home-tactic-posts) .post-content { max-width: 285px; }
+    :is(.tactic-library-results, .home-tactic-posts) .post-footer { align-self: center; }
+}

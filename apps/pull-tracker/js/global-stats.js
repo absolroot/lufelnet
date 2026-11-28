@@ -289,7 +289,7 @@
     head.className='rank-row rank-head';
     head.innerHTML = `<div>${tr('global.list.header.name', 'Name')}</div><div style="text-align:right">${tr('global.list.header.total', 'Total')}</div><div style="text-align:right">${tr('global.list.header.percent', '%')}</div>`;
     card.appendChild(head);
-    const renderRow = (it)=>{
+    const renderRow = (it, host = card)=>{
       const row = document.createElement('div'); row.className='rank-row';
       const left = document.createElement('div'); left.className='rank-name';
       const thumb = (type==='weapon') ? weaponThumbFor(it.name) : characterThumbFor(it.name);
@@ -306,20 +306,35 @@
       row.style.setProperty('--ratio', String(ratio));
       row.classList.add('has-bar');
       row.appendChild(left); row.appendChild(mid); row.appendChild(right);
-      card.appendChild(row);
+      host.appendChild(row);
     };
     const initial = (typeof limit==='number' && limit>0) ? entries.slice(0, limit) : entries;
-    initial.forEach(renderRow);
+    initial.forEach(item => renderRow(item));
     if (entries.length > initial.length){
       const foot = document.createElement('div'); foot.className='rank-more';
-      const btn = document.createElement('button'); btn.className='more-btn';
-      const text = tr('global.list.more', 'More');
-      btn.innerHTML = `${text} <svg viewBox="0 0 18 18" width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      const extra = document.createElement('div');
+      extra.hidden = true;
+      const btn = document.createElement('button'); btn.className='more-btn'; btn.type = 'button';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.innerHTML = '<span></span> <svg aria-hidden="true" viewBox="0 0 18 18" width="16" height="16"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      const label = btn.querySelector('span');
+      label.textContent = tr('global.list.more', 'More');
       btn.addEventListener('click', ()=>{
-        for (const it of entries.slice(initial.length)) renderRow(it);
-        foot.remove();
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(open));
+        label.textContent = open ? tr('global.list.less', 'Show less') : tr('global.list.more', 'More');
+        const motion = window.disclosureMotion;
+        if (open) {
+          if (!extra.childElementCount) entries.slice(initial.length).forEach(item => renderRow(item, extra));
+          extra.hidden = false;
+          motion?.reveal(extra);
+        } else if (motion) {
+          motion.collapse(extra, () => { extra.hidden = true; });
+        } else {
+          extra.hidden = true;
+        }
       });
-      foot.appendChild(btn); card.appendChild(foot);
+      foot.appendChild(btn); card.append(extra, foot);
     }
     return card;
   }
@@ -498,11 +513,11 @@
     ctx.lineTo(padL + W, padT + H);
     ctx.lineTo(padL, padT + H);
     ctx.closePath();
-    ctx.fillStyle = 'rgba(77,163,255,0.15)';
+    ctx.fillStyle = 'rgba(255,126,143,0.14)';
     ctx.fill();
   
     // line (선도 우측 끝까지 수평 연장)
-    ctx.strokeStyle = '#4da3ff'; ctx.lineWidth = 2.5;
+    ctx.strokeStyle = '#ff7e8f'; ctx.lineWidth = 2.5;
     ctx.beginPath();
     for (let i = 1; i <= maxX; i++) {
       const x = px(i), y = pyLine(acc[i - 1] || 0);
@@ -512,7 +527,7 @@
     ctx.stroke();
   
     // dots
-    ctx.fillStyle = '#4da3ff';
+    ctx.fillStyle = '#ff7e8f';
     const dotStep = Math.max(1, Math.round(maxX / 24));
     for (let i = 1; i <= maxX; i += dotStep) {
       const x = px(i), y = pyLine(acc[i - 1] || 0);
@@ -552,14 +567,15 @@
     }
   
     // ---- legend (겹침 방지) ----
-    const legendY = 10; let lx = 48;
-    const legend = (color, text, offset=72) => {
-      ctx.fillStyle = color; ctx.fillRect(lx, legendY, 20, 10);
-      ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillText(text, lx + offset, legendY + 9);
-      lx += ctx.measureText(text).width + 72;
+    const legendY = 10; let lx = padL;
+    ctx.textAlign = 'left';
+    const legend = (color, text) => {
+      ctx.fillStyle = color; ctx.fillRect(lx, legendY, 12, 8);
+      ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.fillText(text, lx + 18, legendY + 8);
+      lx += ctx.measureText(text).width + 34;
     };
-    legend('#4da3ff', tr('global.pity.legendChance', 'Chance %'));
-    legend('#ffdd6b', tr('global.pity.legendTotal5', 'Total Pull 5★'), 84);
+    legend('#ff7e8f', tr('global.pity.legendChance', 'Cumulative %'));
+    legend('#ffdd6b', tr('global.pity.legendTotal5', '5★ count'));
     // cache for hover
     pityRenderCache = { kind, maxX, bars, acc, padL, padR, padT, padB, cssW, cssH };
   }
@@ -567,16 +583,22 @@
   
   
   async function refreshPity(){
+    const request = beginChartLoad(pityCanvas);
     try {
       const region = regionEl?regionEl.value:'KR';
-      pityDataCache = await fetchPity(region);
+      const data = await fetchPity(region);
+      if (request !== chartRequests.get(pityCanvas)) return;
+      pityDataCache = data;
       drawPityChart(pityDataCache);
-    } catch(_){}
+      revealChart(pityCanvas);
+    } catch(_){} finally {
+      finishChartLoad(pityCanvas, request);
+    }
   }
 
   function makeGlobalCard(kind, obj){
     const el = document.createElement('div');
-    el.className = 'global-card';
+    el.className = 'global-card section-card-cut';
     const avg = obj && obj.avg_pity!=null ? Number(obj.avg_pity) : null;
     const cnt = obj && obj.count!=null ? Number(obj.count) : null;
     const lose = (kind==='Fortune' || kind==='Weapon') && obj && obj.lose_5050_rate!=null ? (Number(obj.lose_5050_rate)) : null;
@@ -754,7 +776,7 @@
 
     // legend
     const legendText = LABELS.pullsByDay;
-    ctx.fillStyle = '#8fd9ff';
+    ctx.fillStyle = '#ff7e8f';
     ctx.globalAlpha = 1; ctx.fillRect(padL + 8, 8, 28, 12);
     ctx.fillStyle = 'rgba(255,255,255,0.9)'; ctx.font = '12px sans-serif'; ctx.fillText(legendText, padL + 44, 18);
 
@@ -780,7 +802,7 @@
 
     // line
     const points = values.map((v,i)=>({ x: px(i), y: py(v) }));
-    ctx.strokeStyle = '#8fd9ff';
+    ctx.strokeStyle = '#ff7e8f';
     ctx.lineWidth = 2.5;
     drawSmoothLine(ctx, points);
     // no dots (요청 사항)
@@ -826,12 +848,37 @@
     return __weaponAllPromise;
   }
 
+  const chartRequests = new WeakMap();
+  function beginChartLoad(canvas){
+    const request = {};
+    if (canvas) {
+      chartRequests.set(canvas, request);
+      if (!canvas.dataset.revealed) canvas.closest('.chart-card')?.setAttribute('aria-busy', 'true');
+    }
+    return request;
+  }
+
+  function finishChartLoad(canvas, request){
+    if (canvas && chartRequests.get(canvas) === request) canvas.closest('.chart-card')?.removeAttribute('aria-busy');
+  }
+
+  function revealChart(canvas){
+    if (!canvas || canvas.dataset.revealed) return;
+    canvas.dataset.revealed = 'true';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    canvas.animate?.([{ opacity: 0.35 }, { opacity: 1 }], { duration: 220, easing: 'ease-out' });
+  }
+
   async function refreshAll(){
+    const request = beginChartLoad(chartCanvas);
     try {
       const region = regionEl ? regionEl.value : 'KR';
       const [summary, daily] = await Promise.all([ fetchSummary(region), fetchDaily(region, 30) ]);
+      if (request !== chartRequests.get(chartCanvas)) return;
       renderInfoCards(summary);
       drawDailyChart(daily);
+      revealChart(chartCanvas);
+      finishChartLoad(chartCanvas, request);
       renderCards(summary);
       await ensureWeaponsLoaded();
       await renderThreeLists(region);
@@ -839,6 +886,7 @@
       if (cardsWrap) cardsWrap.innerHTML = `<div class="global-card">${tr('global.status.loadFailed', 'Load failed')}</div>`;
       try { console.error('[global-stats]', err); } catch(_) {}
     } finally {
+      finishChartLoad(chartCanvas, request);
       window.LufelPageEntrance?.finish();
     }
   }
@@ -892,7 +940,7 @@
         pityTipEl.style.display='block';
         const chance = acc[idx-1]||0;
         const cnt = bars[idx-1]||0;
-        pityTipEl.textContent = format(tr('global.hover.pity', 'Pity {pity}\nChance%: {chance}\nTotal Pull 5★: {count}'), {
+        pityTipEl.textContent = format(tr('global.hover.pity', 'Pity {pity}\nCumulative: {chance}%\n5★ count: {count}'), {
           pity: idx,
           chance: numberFmt(chance, 2),
           count: numberFmt(cnt)

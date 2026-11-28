@@ -1135,15 +1135,16 @@ export class ImportExport {
 
             const { data: { session } } = await supabase.auth.getSession();
             
-            if (!session || !session.user) {
-                // Not logged in - redirect to login page with return URL
-                const returnUrl = encodeURIComponent('/tactic/tactic-upload.html?fromMaker=1');
-                window.location.href = `/login/?redirect=${returnUrl}`;
+            const lang = window.LanguageRouter?.getCurrentLanguage() || 'kr';
+            const uploadUrl = `/${lang}/tactic/tactic-upload.html?fromMaker=1`;
+            if (!session?.user) {
+                const params = new URLSearchParams({ lang, redirect: uploadUrl });
+                window.location.href = `/login/?${params}`;
                 return;
             }
 
             // Logged in - redirect to upload page
-            window.location.href = '/tactic/tactic-upload.html?fromMaker=1';
+            window.location.href = uploadUrl;
 
         } catch (error) {
             console.error('[ImportExport] Upload failed:', error);

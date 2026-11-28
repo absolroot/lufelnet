@@ -280,10 +280,7 @@ const Guides = {
 
         let html = `
             <div class="guides-search">
-                <svg class="guides-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-                </svg>
-                <input type="text" class="guides-search-input" id="guides-search-input"
+                <input type="text" data-lufel-search class="guides-search-input" id="guides-search-input"
                        placeholder="${searchPlaceholder}"
                        value="${this.searchQuery}">
             </div>
@@ -670,7 +667,7 @@ const Guides = {
                 <span>${backToList}</span>
             </a>
 
-            <article class="guide-article">
+            <article class="guide-article section-card-cut">
                 <header class="guide-header">
                     <span class="guide-category${guide.category ? ` cat-${guide.category}` : ''}">${categoryLabel}</span>
                     <h1 class="guide-title">${title}</h1>

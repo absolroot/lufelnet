@@ -296,7 +296,7 @@
       .acq-totals .acq-emblem-num {font-size: 14px;}
       .acq-totals .acq-icons { gap: 16px; }
       .acq-node .acq-text {font-size:14px;}
-      .acq-node .acq-item {background: rgba(255, 255, 255, 0.07); padding: 4px 8px 4px 4px; border-radius: 4px;}
+      .acq-node .acq-item {background: rgba(255, 255, 255, 0.07); padding: 4px 8px 4px 4px; border-radius: 0;}
     `;
     document.head.appendChild(style);
   }
@@ -559,7 +559,7 @@
     modal.className = 'skill-source-modal hidden';
     modal.innerHTML = `
       <div class="skill-source-backdrop" data-close="1"></div>
-      <div class="skill-source-dialog" role="dialog" aria-modal="true">
+      <div class="skill-source-dialog section-card-cut" role="dialog" aria-modal="true" aria-labelledby="acqModalTitle">
         <div class="skill-source-header">
           <div class="skill-source-title-wrap">
             <div class="skill-source-title-row">

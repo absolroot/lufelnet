@@ -2,6 +2,10 @@
   top: 98%;
 }
 
+.char-img.single-banner[src$="/%EC%9C%A0%EC%8A%A4%EC%BC%80.webp"] {
+  top: 95%;
+}
+
 .char-img.single-banner[src*="%EC%95%84%EB%9E%80%C2%B7%EC%84%9C%EB%A6%AC%EA%BD%83.webp"] {
   top: 100%;
 }
@@ -312,6 +316,92 @@
 
 #home-carousel-root .carousel-nav {
   z-index: 3;
+}
+
+#home-carousel-root .carousel-toolbar-controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+#home-carousel-root .carousel-dots {
+  position: absolute;
+  /* Center on the visible toolbar, which retains 85% of its height at the midpoint. */
+  inset-block-start: 42.5%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  min-block-size: 34px;
+  z-index: 2;
+}
+
+#home-carousel-root .carousel-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  inline-size: 24px;
+  block-size: 28px;
+  flex: none;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+#home-carousel-root .carousel-dot::before,
+#home-carousel-root .carousel-dot-fill::before {
+  content: '';
+  inline-size: 9px;
+  block-size: 9px;
+  transform: rotate(45deg);
+}
+
+#home-carousel-root .carousel-dot::before {
+  background: rgba(255, 255, 255, .46);
+}
+
+#home-carousel-root .carousel-dot:hover::before {
+  background: rgba(255, 255, 255, .7);
+}
+
+#home-carousel-root .carousel-dot:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -3px;
+}
+
+#home-carousel-root .carousel-dot-fill {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: grid;
+  place-items: center;
+  inline-size: 16px;
+  block-size: 16px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#home-carousel-root .carousel-dot-fill::before {
+  background: #fff;
+}
+
+#home-carousel-root .carousel-dot.active .carousel-dot-fill {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  #home-carousel-root .carousel-toolbar {
+    flex-wrap: wrap;
+    column-gap: 4px;
+  }
+
+  #home-carousel-root .carousel-dots {
+    position: static;
+    transform: translateY(6px);
+    flex-wrap: wrap;
+    margin-inline-end: auto;
+  }
 }
 
 #home-carousel-root .slide-bg-image,

@@ -1,24 +1,34 @@
 ---
 layout: default
+custom_css: [login]
 title: 로그인
 language: kr
 permalink: /login/index.html
 ---
-<link rel="stylesheet" href="/apps/login/login.css?h={{ site.data.asset_versions.files['/apps/login/login.css'] }}">
 {% include supabase-config.html %}
 
-<div class="main-wrapper">
-  <div class="auth-container">
-    <div class="auth-box">
-      <h2>로그인</h2>
-      <div class="social-login">
-        <button id="googleLogin" class="google-btn">
-          <img src="https://www.google.com/favicon.ico" alt="Google" width="20">
-          Google로 로그인
-        </button>
-      </div>
+<div class="main-wrapper login-page">
+  <section class="login-shell" aria-labelledby="loginTitle">
+    <header class="header-container login-header">
+      <h1 id="loginTitle">로그인</h1>
+    </header>
+    <div class="login-panel section-card-cut">
+      <p id="loginDescription" hidden></p>
+      <button type="button" id="googleLogin" class="login-provider">
+        <svg class="login-provider-icon" width="18" height="18" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#4285F4" d="M43.61 24.46c0-1.36-.12-2.66-.34-3.92H24v7.42h11a9.4 9.4 0 0 1-4.07 6.18v5.12h6.59c3.86-3.56 6.09-8.78 6.09-14.8Z"/>
+          <path fill="#34A853" d="M24 44c5.5 0 10.12-1.82 13.52-4.74l-6.59-5.12c-1.82 1.21-4.16 1.93-6.93 1.93-5.32 0-9.84-3.59-11.45-8.42H5.76v5.28A20 20 0 0 0 24 44Z"/>
+          <path fill="#FBBC05" d="M12.55 27.65A12.03 12.03 0 0 1 11.92 24c0-1.27.22-2.5.63-3.65v-5.28H5.76A20 20 0 0 0 4 24c0 3.21.76 6.25 2.12 8.93l6.43-5.28Z"/>
+          <path fill="#EA4335" d="M24 11.93c3.01 0 5.69 1.03 7.82 3.04l5.86-5.86A19.2 19.2 0 0 0 24 4 20 20 0 0 0 5.76 15.07l6.79 5.28c1.61-4.83 6.13-8.42 11.45-8.42Z"/>
+        </svg>
+        <span class="login-provider-spinner" aria-hidden="true"></span>
+        <span id="loginProviderLabel">Google로 로그인</span>
+      </button>
+      <p id="loginStatus" class="login-status" role="status"></p>
+      <p id="loginError" class="login-error" role="alert"></p>
+      <a id="loginReturn" class="login-return" hidden></a>
     </div>
-  </div>
+  </section>
 </div>
 
 <script defer src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
@@ -52,10 +62,6 @@ function getLang() {
   return 'kr';
 }
 
-function getButtonLabelHTML(lang) {
-  const label = getI18nText('button', 'Google로 로그인');
-  return `<img src="https://www.google.com/favicon.ico" alt="Google" width="20"> ${label}`;
-}
 
 function syncLoginSeoMeta(lang) {
   const effectiveLang = String(lang || 'kr').toLowerCase();
@@ -88,9 +94,9 @@ function syncLoginSeoMeta(lang) {
 }
 
 function applyLoginTexts(lang) {
-  const titleText = getI18nText('title', '로그인');
-  const titleEl = document.querySelector('.auth-box h2');
-  if (titleEl) titleEl.textContent = titleText;
+  document.getElementById('loginTitle').textContent = getI18nText('title', '로그인');
+  document.getElementById('loginProviderLabel').textContent = getI18nText('button', 'Google로 로그인');
+  applyTacticContext(lang);
   syncLoginSeoMeta(lang);
 
   if (window.SeoEngine && typeof window.SeoEngine.setContextHint === 'function') {
@@ -106,9 +112,6 @@ function applyLoginTexts(lang) {
       .catch(() => {})
       .finally(() => syncLoginSeoMeta(lang));
   }
-
-  const btn = document.getElementById('googleLogin');
-  if (btn) btn.innerHTML = getButtonLabelHTML(lang);
 }
 
 function getRedirectUrl() {
@@ -116,57 +119,61 @@ function getRedirectUrl() {
   return urlParams.get('redirect') || '/';
 }
 
-document.getElementById('googleLogin').addEventListener('click', async (e) => {
+function applyTacticContext(lang) {
+  let target;
   try {
-    const button = e.currentTarget;
-    const lang = getLang();
-    const originalText = getButtonLabelHTML(lang);
-    button.disabled = true;
-    button.innerHTML = getI18nText('loading', '<span class="loading-spinner"></span> 구글 로그인 중...');
+    target = new URL(getRedirectUrl(), window.location.origin);
+  } catch (_) {
+    return;
+  }
+  const route = target.pathname.match(/^\/(?:(kr|en|jp|cn)\/)?tactic\/tactic-upload(?:\.html)?\/?$/i);
+  if (target.origin !== window.location.origin || !route) return;
 
-    const redirectUrl = getRedirectUrl();
-    sessionStorage.setItem('auth_redirect', redirectUrl);
+  const targetLang = route[1]?.toLowerCase() || lang;
+  const fromMaker = target.searchParams.get('fromMaker') === '1';
+  const description = document.getElementById('loginDescription');
+  description.textContent = target.searchParams.get('edit') === '1'
+    ? getI18nText('tactic_edit_description', '택틱을 수정하려면 로그인하세요.')
+    : getI18nText('tactic_upload_description', '택틱을 업로드하려면 로그인하세요.');
+  description.hidden = false;
 
-    const confirmMessage = getI18nText('confirm', '구글 로그인을 위해 인증 페이지로 이동합니다.\n\n※ 구글 인증 과정에서 나타나는 supabase 링크는 정상입니다.');
+  const returnLink = document.getElementById('loginReturn');
+  returnLink.href = fromMaker ? '/' + targetLang + '/tactic-maker/' : '/' + targetLang + '/tactic/library/';
+  returnLink.textContent = fromMaker
+    ? getI18nText('back_to_maker', '택틱 메이커로 돌아가기')
+    : getI18nText('back_to_library', '택틱 도서관으로 돌아가기');
+  returnLink.hidden = false;
+}
 
-    if (window.confirm(confirmMessage)) {
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
-        options: {
-          redirectTo: 'https://lufel.net/auth/callback',
-          queryParams: { prompt: 'consent', access_type: 'offline' }
-        }
-      });
-      if (error) throw error;
-    } else {
-      button.disabled = false;
-      button.innerHTML = originalText;
-      sessionStorage.removeItem('auth_redirect');
-    }
+document.getElementById('googleLogin').addEventListener('click', async (event) => {
+  const button = event.currentTarget;
+  const status = document.getElementById('loginStatus');
+  const errorMessage = document.getElementById('loginError');
+  errorMessage.textContent = '';
+  const confirmMessage = getI18nText('confirm', 'Google 인증 페이지로 이동합니다.');
+  if (!window.confirm(confirmMessage)) return;
+
+  button.disabled = true;
+  status.textContent = getI18nText('loading', 'Google 인증 페이지로 이동 중…');
+  try {
+    sessionStorage.setItem('auth_redirect', getRedirectUrl());
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: 'https://lufel.net/auth/callback',
+        queryParams: { prompt: 'consent', access_type: 'offline' }
+      }
+    });
+    if (error) throw error;
   } catch (error) {
     console.error('로그인 에러:', error);
-    alert(getI18nText('error', '로그인 처리 중 문제가 발생했습니다.'));
-    const button = document.getElementById('googleLogin');
     button.disabled = false;
-    button.innerHTML = getButtonLabelHTML(getLang());
+    status.textContent = '';
+    errorMessage.textContent = getI18nText('error', '로그인 처리 중 문제가 발생했습니다. 다시 시도해 주세요.');
+    button.focus();
     sessionStorage.removeItem('auth_redirect');
   }
 });
-
-async function checkLoginStatus() {
-  const { data, error } = await supabase.auth.getSession();
-  if (error) {
-    console.error('세션 확인 에러:', error);
-    return false;
-  }
-  if (data.session) {
-    console.log('로그인 상태:', data.session.user);
-    return true;
-  } else {
-    console.log('로그인 안됨');
-    return false;
-  }
-}
 
 document.addEventListener('DOMContentLoaded', async () => {
   Navigation.load('');
@@ -181,6 +188,5 @@ document.addEventListener('DOMContentLoaded', async () => {
     await window.I18nService.init('login', currentLang);
   }
   applyLoginTexts(getLang());
-  checkLoginStatus();
 });
 </script>

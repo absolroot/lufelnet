@@ -122,8 +122,6 @@ input[type="checkbox"]:hover { opacity: 0.8; }
 
 .option-select:focus { outline: none; border-color: #ffd700; box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2); }
 
-.option-select option { background-color: #2a2a2a; color: #fff; padding: 8px; }
-
 /* 반응형 디자인 */
 @media (max-width: 1200px) { .top-cards { flex-direction: column; }
     

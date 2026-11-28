@@ -534,7 +534,9 @@ class CriticalCalc {
     }
     attachKotoneCopyControl(optionCell, data, valueCell) {
         if (!data.kotoneCopySkill3) return; let source;
-        const awareness = document.createElement('select'); ['r0','r2','r6'].forEach(value => { if (value !== 'r6' || (this.buffGroups['원더'] || []).length) awareness.append(new Option(this.getKotoneAwarenessLabel(value),value)); }); awareness.value = this.kotoneCopyState.awareness;
+        const awareness = document.createElement('select');
+        awareness.dataset.selectDensity = 'compact';
+        ['r0','r2','r6'].forEach(value => { if (value !== 'r6' || (this.buffGroups['원더'] || []).length) awareness.append(new Option(this.getKotoneAwarenessLabel(value),value)); }); awareness.value = this.kotoneCopyState.awareness;
         const update = () => { const sourceValue = awareness.value === 'r6' && source.dataset.value === '원더' ? '' : source.dataset.value || ''; this.kotoneCopyState = { source: sourceValue, awareness: awareness.value }; this.saveKotoneCopyState(); source = this.createKotoneCharacterDropdown(sourceValue, update, awareness.value); const oldSource = optionCell.querySelector('.kotone-character-select'); if (oldSource) oldSource.replaceWith(source); this.renderItemValue(data,valueCell); this.updateTotal(); }; source = this.createKotoneCharacterDropdown(this.kotoneCopyState.source, update, awareness.value); awareness.addEventListener('change',update); optionCell.append(source,awareness);
     }
 
@@ -682,13 +684,15 @@ class CriticalCalc {
             const inner = document.createElement('div');
             inner.className = 'group-header-inner';
 
-            const caret = document.createElement('span');
+            const caret = document.createElement('button');
+            caret.type = 'button';
             caret.className = 'accordion-caret';
             // 버프 탭은 '원더/공통/속성 심상', 자신 탭은 '계시/원더/공통/속성 심상'만 열림
             const initiallyOpen = !isSelf 
                 ? (groupName === '원더' || groupName === '공통' || groupName === '속성 심상')
                 : (groupName === '계시' || groupName === '원더' || groupName === '공통' || groupName === '속성 심상');
             caret.classList.toggle('open', initiallyOpen);
+            caret.setAttribute('aria-expanded', String(initiallyOpen));
             
             // SVG chevron 생성
             const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -696,6 +700,7 @@ class CriticalCalc {
             svg.setAttribute('height', '16');
             svg.setAttribute('viewBox', '0 0 16 16');
             svg.setAttribute('fill', 'none');
+            svg.setAttribute('aria-hidden', 'true');
             svg.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
             
             const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -738,6 +743,7 @@ class CriticalCalc {
             const nameSpan = document.createElement('span');
             nameSpan.className = 'group-name';
             nameSpan.textContent = this.getGroupDisplayName(groupName);
+            caret.setAttribute('aria-label', nameSpan.textContent);
             infoWrap.appendChild(nameSpan);
             inner.appendChild(infoWrap);
             fullTd.appendChild(inner);
@@ -750,6 +756,7 @@ class CriticalCalc {
                 const isOpen = caret.classList.contains('open');
                 const newIsOpen = !isOpen;
                 caret.classList.toggle('open', newIsOpen);
+                caret.setAttribute('aria-expanded', String(newIsOpen));
                 
                 // 그룹 헤더의 열림/닫힘 상태 클래스 업데이트
                 if (newIsOpen) {
@@ -1006,6 +1013,8 @@ class CriticalCalc {
 
         if (data.options && data.options.length > 0) {
             const select = document.createElement('select');
+            select.dataset.selectDensity = 'compact';
+            select.setAttribute('aria-label', skillNameCell.textContent.trim());
             select.setAttribute('data-id', data.id);
             const baseOptions = data.options;
             let labelOptions = baseOptions;
@@ -1085,6 +1094,11 @@ class CriticalCalc {
         }
         
         row.appendChild(noteCell);
+        const labels = this.getCriticalPagePack(lang);
+        window.CalculatorInteractions?.enhanceRow(row, durationCell, noteCell, {
+            duration: labels?.thDuration,
+            note: labels?.thNote
+        });
         
         return row;
     }

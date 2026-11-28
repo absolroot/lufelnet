@@ -452,14 +452,8 @@ function ensureGlobalPortal() {
   const search = document.createElement('input');
   search.type = 'text';
   search.className = 'portal-search-input';
-  search.style.width = '100%';
-  search.style.boxSizing = 'border-box';
+  search.setAttribute('data-lufel-search', '');
   search.style.marginBottom = '6px';
-  search.style.padding = '6px 8px';
-  search.style.borderRadius = '6px';
-  search.style.border = '1px solid rgba(255,255,255,0.2)';
-  search.style.background = '#2a2a2a';
-  search.style.color = '#fff';
   portal.appendChild(search);
 
   const list = document.createElement('div');

@@ -162,8 +162,8 @@ window.loadHomeGuides = async function (currentLang) {
 };
 
 function createGuideItem(guide, rawLang, index = 0, total = 1) {
-    const item = document.createElement('div');
-    item.className = 'post-item guide-home-item'; // Reuse post-item for similar styling if compatible, add guide-home-item for overrides
+    const item = document.createElement('a');
+    item.className = 'post-item guide-home-item section-row-motion';
 
     // Data extraction
     const title = guide.titles?.[rawLang] || guide.titles?.kr || guide.title || homeGuideT('guides_untitled', 'Untitled', rawLang);
@@ -179,6 +179,7 @@ function createGuideItem(guide, rawLang, index = 0, total = 1) {
     const url = guide.hasPage !== false
         ? `${baseUrl}/${pathLang}/article/${guideId}/`
         : `${baseUrl}/article/view/?id=${guideId}`;
+    item.href = url;
 
     // Styling overrides for guide items to distinguish or fit better
     item.style.cursor = 'pointer';
@@ -188,28 +189,10 @@ function createGuideItem(guide, rawLang, index = 0, total = 1) {
     item.style.alignItems = 'flex-start';
     item.style.padding = '15px';
     item.style.borderBottom = '1px solid rgba(255, 255, 255, 0.05)';
-    item.style.transition = 'background-color 0.2s';
 
-    // Make the 5 guide rows look connected in one stack.
-    const isFirst = index === 0;
-    const isLast = index === total - 1;
-    if (total <= 1) {
-        item.style.borderRadius = '8px';
-    } else if (isFirst) {
-        item.style.borderRadius = '8px 8px 0 0';
-    } else if (isLast) {
-        item.style.borderRadius = '0 0 8px 8px';
+    if (total > 1 && index === total - 1) {
         item.style.borderBottom = 'none';
-    } else {
-        item.style.borderRadius = '0';
     }
-
-    // Hover effect handled by CSS injected in createGuideItem
-
-    item.onclick = (e) => {
-        // Prevent redirect if clicking specific interactive elements if any
-        window.location.href = url;
-    };
 
     // Thumbnail HTML
     let thumbnailHtml = '';
@@ -218,8 +201,8 @@ function createGuideItem(guide, rawLang, index = 0, total = 1) {
         const optimizedThumb = getOptimizedThumbnail(thumbnail, 240);
         const optimizedThumbLarge = getOptimizedThumbnail(thumbnail, 360);
         thumbnailHtml = `
-            <div class="guide-thumbnail-container" style="flex-shrink: 0; width: 100px; height: 65px; border-radius: 6px; overflow: hidden; background: #222;">
-                <img src="${optimizedThumb}" srcset="${optimizedThumbSmall} 160w, ${optimizedThumb} 240w, ${optimizedThumbLarge} 360w" sizes="(max-width: 768px) 42vw, 100px" alt="${title}" width="100" height="65" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" fetchpriority="low">
+            <div class="guide-thumbnail-container" style="flex-shrink: 0; width: 100px; height: 65px; overflow: hidden; background: #222;">
+                <img class="section-row-image" src="${optimizedThumb}" srcset="${optimizedThumbSmall} 160w, ${optimizedThumb} 240w, ${optimizedThumbLarge} 360w" sizes="(max-width: 768px) 42vw, 100px" alt="${title}" width="100" height="65" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async" fetchpriority="low">
             </div>
         `;
     }
@@ -232,12 +215,12 @@ function createGuideItem(guide, rawLang, index = 0, total = 1) {
             : '\uacf5\uc9c0';
     const noticeBadgeText = homeGuideT('guides_badge_notice', defaultNoticeBadge, rawLang);
     const noticeBadge = guide.category === 'notice'
-        ? `<span style="background: #442bbc; color: white; font-size: 8px; padding: 2px 5px; border-radius: 4px; margin-right: 6px; vertical-align: middle;">${noticeBadgeText}</span>`
+        ? `<span style="background: #442bbc; color: white; font-size: 8px; padding: 2px 5px; margin-right: 6px; vertical-align: middle;">${noticeBadgeText}</span>`
         : '';
 
     const isNew = (Date.now() - new Date(guide.date).getTime()) < (3 * 24 * 60 * 60 * 1000);
     const newBadgeText = homeGuideT('guides_badge_new', 'NEW', rawLang);
-    const newBadge = isNew ? `<span style="background: #d32f2f; color: white; font-size: 8px; padding: 2px 5px; border-radius: 4px; margin-right: 6px; vertical-align: middle;">${newBadgeText}</span>` : '';
+    const newBadge = isNew ? `<span style="background: #d32f2f; color: white; font-size: 8px; padding: 2px 5px; margin-right: 6px; vertical-align: middle;">${newBadgeText}</span>` : '';
 
     item.innerHTML = `
         ${thumbnailHtml}
@@ -245,11 +228,11 @@ function createGuideItem(guide, rawLang, index = 0, total = 1) {
             <div class="guide-header-line" style="display: flex; align-items: center; margin-bottom: 6px;">
                 ${noticeBadge}
                 ${newBadge}
-                <h3 style="margin: 0; font-size: 16px; font-weight: 600; color: #ececec; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;">
+                <h3 class="section-row-copy" style="margin: 0; font-size: 16px; font-weight: 600; color: #ececec; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; line-height: 1.2;">
                     ${title}
                 </h3>
             </div>
-            <p style="margin: 0 0 6px 0; font-size: 13px; color: #a0a0a0; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5;">
+            <p class="section-row-copy" style="margin: 0 0 6px 0; font-size: 13px; color: #a0a0a0; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; line-height: 1.5;">
                 ${excerpt}
             </p>
             <div class="guide-meta" style="font-size: 12px; color: #666;">
@@ -264,12 +247,6 @@ function createGuideItem(guide, rawLang, index = 0, total = 1) {
         const style = document.createElement('style');
         style.id = 'guide-home-styles';
         style.innerHTML = `
-            .guide-home-item {
-                transition: background-color 0.2s;
-            }
-            .guide-home-item:hover {
-                background-color: rgba(255, 255, 255, 0.02) !important;
-            }
             @media (max-width: 670px) {
                 #guides-list .guide-home-item .guide-header-line {
                     margin-bottom: 4px !important;

@@ -154,7 +154,7 @@
                 event.stopPropagation();
                 const name = header.querySelector('.group-name').textContent;
                 const portrait = header.querySelector('.group-avatar').src;
-                this.open(group, context, name, portrait);
+                this.open(group, context, name, portrait, event.detail > 0 ? button : null);
             });
             header.classList.add('group-header--with-preset');
             header.querySelector('.group-header-inner').append(button);
@@ -171,7 +171,7 @@
             this.onChange();
         }
 
-        open(group, context, name, fallbackPortrait) {
+        open(group, context, name, fallbackPortrait, pointerTrigger) {
             const character = groups[group];
             const labels = this.labels;
             const statLabel = labels[character === 'jc' ? 'performance' : 'amplification'];
@@ -251,7 +251,12 @@
                 this.refresh();
             });
             dialog.querySelector('[data-cancel]').addEventListener('click', () => dialog.close());
-            dialog.addEventListener('close', () => dialog.remove(), { once: true });
+            dialog.addEventListener('close', () => {
+                dialog.remove();
+                if (pointerTrigger && document.activeElement === pointerTrigger) {
+                    pointerTrigger.blur();
+                }
+            }, { once: true });
             updatePreview();
             document.body.append(dialog);
             dialog.showModal();

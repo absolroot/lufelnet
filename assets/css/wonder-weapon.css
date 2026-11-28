@@ -56,7 +56,6 @@
     background: rgba(0, 0, 0, 0.4); 
     color: rgba(255,255,255,0.95); 
     padding: 12px; 
-    border-radius: 8px; 
     font-size: 14px; 
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -108,8 +107,8 @@
 
 /* Utilities */
 .separator-line {
-    height: 1px;
-    background: #333;
+    height: 3px;
+    background: var(--section-divider-paint);
     margin: 20px 0;
 }
 
@@ -192,9 +191,13 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #333;
+}
+
+:is(.detail-header, .detail-section-title, .lightning-stamp-header, .release-column-title) {
+    background: var(--section-divider-paint);
+    background-position-y: bottom, bottom, bottom 1px;
 }
 
 @media (max-width: 768px) {
@@ -263,55 +266,16 @@
 }
 
 /* Detail Sections (synergy style) */
-.detail-section {
-    margin-bottom: 60px;
+.detail-section + .detail-section {
+    margin-top: 36px;
 }
 
 .detail-section-title {
     font-size: 18px;
     font-weight: 600;
     color: #fff;
-    margin-bottom: 16px;
+    margin: 0 0 16px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #730000;
-}
-
-.detail-section-title.collapsible {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    cursor: pointer;
-    transition: opacity 0.2s ease;
-}
-
-.detail-section-title.collapsible:hover {
-    opacity: 0.8;
-}
-
-.detail-section-title.collapsible span {
-    flex: 1;
-}
-
-.section-chevron {
-    width: 12px;
-    height: 12px;
-    color: rgba(255, 255, 255, 0.6);
-    transition: transform 0.3s ease, color 0.2s ease;
-    flex-shrink: 0;
-    transform: rotate(90deg); /* 초기 상태: 아래 방향 (펼침) */
-}
-
-.detail-section-title.collapsible:hover .section-chevron {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-.section-content {
-    overflow: hidden;
-    transition: max-height 0.3s ease, opacity 0.3s ease;
-    max-height: 10000px;
-    opacity: 1;
-    padding-top: 8px;
 }
 
 /* Effect text wrapper - 상자 스타일 */
@@ -320,7 +284,6 @@
     flex-direction: column;
     padding: 16px 20px;
     background: rgba(0, 0, 0, 0.25);
-    border-radius: 8px;
     margin-top: 0;
 }
 
@@ -337,16 +300,6 @@
 
 .detail-section .effect-text .num {
     font-weight: 600;
-}
-
-.detail-section.collapsed {
-    margin-bottom: 24px;
-}
-
-.detail-section.collapsed .section-content {
-    max-height: 0;
-    opacity: 0;
-    margin-bottom: 0;
 }
 
 /* Filter Section */
@@ -372,7 +325,6 @@
     border: 1px solid #333;
     background: var(--card-background);
     color: #ccc;
-    border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     transition: all 0.2s ease;
@@ -396,40 +348,6 @@
     max-width: 400px;
     display: flex;
     align-items: center;
-}
-
-.search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.search-container input {
-    width: 100%;
-    padding: 8px 16px 8px 40px;
-    border: 1px solid #333;
-    background: var(--card-background);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-    box-sizing: border-box;
-    height: 36px;
-}
-
-.search-container input:focus {
-    outline: none;
-    border-color: #730000;
-    background: #1a1a1a;
-}
-
-.search-container input::placeholder {
-    color: #666;
 }
 
 /* Main Container */
@@ -463,7 +381,6 @@
     padding: 12px 8px;
     border: 1px solid #333;
     background: var(--card-background);
-    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
@@ -644,8 +561,6 @@
 .weapon-detail {
     flex: 1;
     min-width: 0;
-    background: var(--card-background);
-    border-radius: 12px;
     padding: 24px;
     user-select: text;
 }
@@ -687,7 +602,6 @@
     margin-bottom: 24px;
     padding: 16px;
     background: #1a1a1a;
-    border-radius: 8px;
     border: 0px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -700,7 +614,6 @@
     align-items: center;
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #333;
 }
 
 .lightning-stamp-name {
@@ -767,7 +680,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 24px;
-    margin-top: 8px;
 }
 
 .release-column {
@@ -777,7 +689,6 @@
     margin-bottom: 0;
     padding: 16px;
     background: #1a1a1a;
-    border-radius: 8px;
 }
 
 .release-column-title {
@@ -785,7 +696,6 @@
     font-weight: 600;
     color: rgba(255, 255, 255, 0.9);
     padding-bottom: 8px;
-    border-bottom: 1px solid #333;
 }
 
 .detail-section-title .detail-section-icon {
@@ -812,7 +722,6 @@
 .dialog-choice {
     padding: 10px 12px;
     background: #0f0f0f;
-    border-radius: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -822,8 +731,8 @@
     transition: background 0.2s ease;
 }
 
-.dialog-choice:hover {
-    background: #1a1a1a;
+.release-container a.dialog-choice:is(:hover, :focus-visible) {
+    background-color: #292929;
 }
 
 .dialog-choice-content {
@@ -852,7 +761,6 @@
     color: rgba(255, 255, 255, 0.8);
     padding: 6px 12px;
     background: rgba(0, 0, 0, 0);
-    border-radius: 6px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 4px;
 }
@@ -864,12 +772,15 @@
     line-height: 1.6;
     padding: 12px 16px;
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 6px;
     margin-bottom: 16px;
     border-left: 3px solid rgba(115, 0, 0, 0.5);
 }
 
 @media (max-width: 768px) {
+    .detail-section + .detail-section {
+        margin-top: 28px;
+    }
+
     .release-container {
         grid-template-columns: 1fr;
         gap: 20px;
@@ -883,9 +794,7 @@
 /* 수정(Shard) 섹션 스타일 */
 .shard-grid {
     width: 100%;
-    margin-top: 8px;
     background: #1a1a1a;
-    border-radius: 8px;
     overflow: hidden;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -929,7 +838,6 @@
     width: 64px;
     height: 64px;
     object-fit: contain;
-    border-radius: 12px;
     background: rgba(0, 0, 0, 0.2);
     padding: 4px;
     transition: opacity 0.2s ease, filter 0.2s ease;

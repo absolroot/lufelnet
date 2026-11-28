@@ -1,0 +1,91 @@
+/* The page owns card size and interaction. Badges, labels and status overlays are optional. */
+.character-tile {
+    position: relative;
+}
+
+.character-tile .character-img {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+}
+
+.character-tile--compact {
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.character-tile--compact .character-img {
+    z-index: 1;
+}
+
+.character-tile--portrait .character-img {
+    box-shadow: 0 4px 8px rgb(255 255 255 / 5%);
+}
+
+button.character-tile:focus-visible,
+.character-tile > a:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.character-tile--portrait .element-icon {
+    width: 11% !important;
+    height: auto !important;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.character-tile--portrait .element-icon[src*="속성_주원.png"] {
+    width: 9% !important;
+}
+
+.character-tile--portrait .position-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.character-tile--portrait .position-icon {
+    width: 60% !important;
+    height: auto !important;
+    object-fit: contain !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%);
+}
+
+.character-tile--portrait .name-text {
+    position: absolute;
+    display: block;
+    font-size: 13px;
+    color: #fff;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to bottom, #610000, #5a0000);
+    padding: 5px 10px;
+    border-radius: 0;
+    clip-path: var(--section-card-tail-shape);
+    transition: background 0.5s;
+    /* 배경색 전환 효과 추가 */
+}

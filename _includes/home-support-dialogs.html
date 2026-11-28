@@ -1,0 +1,67 @@
+{% assign support_languages = 'kr,jp,cn' | split: ',' %}
+{% for support_lang in support_languages %}
+    {% case support_lang %}
+        {% when 'jp' %}
+            {% assign support_id = 'supportModalJP' %}
+            {% assign support_title = 'サイトへのご支援' %}
+            {% assign support_close = '閉じる' %}
+        {% when 'cn' %}
+            {% assign support_id = 'supportModalCN' %}
+            {% assign support_title = '支持本站' %}
+            {% assign support_close = '关闭' %}
+        {% else %}
+            {% assign support_id = 'supportModalKR' %}
+            {% assign support_title = '지원' %}
+            {% assign support_close = '닫기' %}
+    {% endcase %}
+    <dialog id="{{ support_id }}" class="support-dialog home-support-dialog"
+        aria-labelledby="{{ support_id }}Title" aria-describedby="{{ support_id }}Intro">
+        <div class="support-panel section-card-cut">
+            <header class="support-header">
+                <h2 id="{{ support_id }}Title">{{ support_title }}</h2>
+                <form method="dialog">
+                    <button class="support-close" aria-label="{{ support_close }}" autofocus>&times;</button>
+                </form>
+            </header>
+            <p id="{{ support_id }}Intro" class="donation-message">{% include support-intro.html lang=support_lang %}</p>
+            <div class="donation-methods">
+                {% if support_lang == 'kr' %}
+                    <button type="button" id="homeKakaoPayButton" class="support-method kakao-pay-button"
+                        aria-haspopup="dialog" aria-controls="kakaoPayModalHome">카카오페이</button>
+                {% elsif support_lang == 'jp' %}
+                    <a href="https://absolroot.fanbox.cc/plans" target="_blank" rel="noopener" class="support-method">pixivFANBOX</a>
+                {% endif %}
+                {% include support-kofi-link.html %}
+            </div>
+        </div>
+    </dialog>
+{% endfor %}
+
+<dialog id="kakaoPayModalHome" class="support-dialog home-support-dialog kakao-modal"
+    aria-labelledby="homeKakaoPayTitle" aria-describedby="homeKakaoPayHelp">
+    <div class="support-panel section-card-cut">
+        <header class="support-header">
+            <h2 id="homeKakaoPayTitle">카카오페이</h2>
+            <form method="dialog">
+                <button class="support-close" aria-label="닫기" autofocus>&times;</button>
+            </form>
+        </header>
+        <div class="kakao-qr-container">
+            <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR 코드"
+                class="kakao-qr" loading="lazy" decoding="async">
+        </div>
+        <p id="homeKakaoPayHelp" class="support-qr-help">스마트폰 카메라나 카카오톡으로 QR 코드를 스캔해 주세요.</p>
+    </div>
+</dialog>
+
+<script>
+    document.getElementById('homeKakaoPayButton').addEventListener('click', () => {
+        document.getElementById('kakaoPayModalHome').showModal();
+    });
+
+    document.querySelectorAll('.home-support-dialog').forEach(dialog => {
+        dialog.addEventListener('click', event => {
+            if (event.target === dialog) dialog.close();
+        });
+    });
+</script>

@@ -3,6 +3,7 @@ let contextTooltipPanel;
 let activeContextTooltip;
 let contextTooltipFrame;
 let hideHoveredContextTooltip;
+let linkedTooltipCloseTimer;
 
 contextTooltipHover.addEventListener('change', () => {
     if (!contextTooltipHover.matches) hideHoveredContextTooltip?.();
@@ -12,14 +13,28 @@ function closeContextTooltip(restoreFocus = false) {
     if (!activeContextTooltip) return;
     const { trigger } = activeContextTooltip;
     activeContextTooltip = null;
+    clearTimeout(linkedTooltipCloseTimer);
     trigger.setAttribute('aria-expanded', 'false');
-    contextTooltipPanel.hidden = true;
+    contextTooltipPanel.inert = true;
     if (restoreFocus && trigger.isConnected) trigger.focus({ preventScroll: true });
+}
+
+function scheduleLinkedTooltipClose() {
+    const tooltip = activeContextTooltip;
+    const hasKeyboardFocus = () => contextTooltipPanel.contains(document.activeElement)
+        && document.activeElement.matches(':focus-visible');
+    if (!tooltip?.hover || hasKeyboardFocus()) return;
+    clearTimeout(linkedTooltipCloseTimer);
+    linkedTooltipCloseTimer = setTimeout(() => {
+        if (activeContextTooltip === tooltip && !hasKeyboardFocus()) {
+            closeContextTooltip(contextTooltipPanel.contains(document.activeElement));
+        }
+    }, 250);
 }
 
 function positionContextTooltip() {
     if (!activeContextTooltip) return;
-    const { trigger, line } = activeContextTooltip;
+    const { trigger, line, sheet } = activeContextTooltip;
     const rects = trigger.getClientRects();
     const rect = rects[Math.min(line, rects.length - 1)];
     const viewport = window.visualViewport;
@@ -42,6 +57,16 @@ function positionContextTooltip() {
         return;
     }
 
+    if (sheet) {
+        const panelWidth = Math.min(400, maxX - minX);
+        panel.dataset.placement = 'sheet';
+        panel.style.width = panelWidth + 'px';
+        panel.style.maxHeight = Math.min(maxY - minY, Math.round(height * 0.6)) + 'px';
+        panel.style.left = (minX + (maxX - minX - panelWidth) / 2) + 'px';
+        panel.style.top = (maxY - panel.offsetHeight) + 'px';
+        return;
+    }
+
     const card = width <= 768 ? trigger.closest('.card-style') : null;
     if (card) {
         const bounds = card.getBoundingClientRect();
@@ -53,12 +78,15 @@ function positionContextTooltip() {
             maxX = contentRight;
         }
     }
-    const panelWidth = Math.min(320, maxX - minX);
+    const linked = panel.hasAttribute('data-linked');
+    const panelWidth = Math.min(linked ? 400 : 320, maxX - minX);
     const termBounds = trigger.getBoundingClientRect();
     const above = Math.max(0, termBounds.top - gap - minY);
     const below = Math.max(0, maxY - termBounds.bottom - gap);
     panel.style.width = panelWidth + 'px';
-    const placeBelow = below >= panel.firstElementChild.scrollHeight || below >= above;
+    const description = panel.querySelector('.tooltip-panel-description');
+    const clippedText = linked ? description.scrollHeight - description.clientHeight : 0;
+    const placeBelow = below >= panel.firstElementChild.scrollHeight + clippedText || below >= above;
     panel.style.maxHeight = (placeBelow ? below : above) + 'px';
     const anchorX = (rect.left + rect.right) / 2;
     const panelLeft = Math.min(maxX - panelWidth, Math.max(minX, anchorX - panelWidth / 2));
@@ -72,7 +100,7 @@ function createContextTooltipPanel() {
     const panel = document.createElement('div');
     panel.className = 'tooltip-panel';
     panel.id = 'tooltip-panel';
-    panel.hidden = true;
+    panel.inert = true;
     panel.tabIndex = -1;
     panel.setAttribute('role', 'dialog');
     panel.setAttribute('aria-labelledby', 'tooltip-panel-title');
@@ -80,11 +108,28 @@ function createContextTooltipPanel() {
     panel.innerHTML = '<div class="tooltip-panel-surface">'
         + '<div class="tooltip-panel-heading"><strong id="tooltip-panel-title"></strong>'
         + '<button type="button" class="tooltip-panel-close"></button></div>'
-        + '<div id="tooltip-panel-description" class="tooltip-panel-description"></div></div>';
+        + '<div class="tooltip-panel-tabs" role="tablist" aria-labelledby="tooltip-panel-title" hidden></div>'
+        + '<div id="tooltip-panel-description" class="tooltip-panel-description"></div>'
+        + '<a class="tooltip-panel-link" target="_blank" rel="noopener" hidden></a></div>';
     const close = panel.querySelector('button');
+    const link = panel.querySelector('a');
     close.addEventListener('click', () => closeContextTooltip(true));
+    link.addEventListener('click', () => closeContextTooltip(true));
+    panel.addEventListener('pointerenter', () => clearTimeout(linkedTooltipCloseTimer));
+    panel.addEventListener('pointerleave', event => {
+        if (event.pointerType === 'mouse' && !activeContextTooltip?.trigger.contains(event.relatedTarget)) {
+            scheduleLinkedTooltipClose();
+        }
+    });
     panel.addEventListener('keydown', event => {
-        if (event.key === 'Tab' && (event.shiftKey || event.target === close)) {
+        if (event.key !== 'Tab') return;
+        if (panel.hasAttribute('data-linked')) {
+            const goingBack = event.shiftKey && (event.target === panel || event.target === close);
+            if (goingBack || (!event.shiftKey && event.target === link)) {
+                closeContextTooltip(true);
+                if (goingBack) event.preventDefault();
+            }
+        } else if (event.shiftKey || event.target === close) {
             closeContextTooltip(true);
         }
     });
@@ -139,37 +184,119 @@ function renderContextTooltip(panel, node) {
     panel.querySelector('#tooltip-panel-title').textContent = title;
 }
 
-function bindContextTooltip(node) {
-    node.tabIndex = 0;
-    node.setAttribute('role', 'button');
+function renderContextTooltipTabs(panel, tabs) {
+    const tabList = panel.querySelector('.tooltip-panel-tabs');
+    const description = panel.querySelector('.tooltip-panel-description');
+    tabList.replaceChildren();
+    tabList.hidden = !tabs?.length;
+    if (tabList.hidden) {
+        description.removeAttribute('role');
+        description.removeAttribute('aria-labelledby');
+        description.removeAttribute('tabindex');
+        return;
+    }
+
+    const buttons = tabs.map(({ label }, index) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.id = `tooltip-panel-tab-${index}`;
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-controls', description.id);
+        button.textContent = label;
+        tabList.append(button);
+        return button;
+    });
+    description.setAttribute('role', 'tabpanel');
+    description.tabIndex = 0;
+
+    const select = index => {
+        buttons.forEach((button, i) => {
+            button.setAttribute('aria-selected', String(i === index));
+            button.tabIndex = i === index ? 0 : -1;
+        });
+        description.setAttribute('aria-labelledby', buttons[index].id);
+        const { content } = tabs[index];
+        description.replaceChildren(typeof content === 'string' ? content : content.cloneNode(true));
+        description.scrollTop = 0;
+    };
+    buttons.forEach((button, index) => {
+        button.addEventListener('click', () => {
+            select(index);
+            positionContextTooltip();
+        });
+        button.addEventListener('keydown', event => {
+            const last = buttons.length - 1;
+            const next = { ArrowLeft: index ? index - 1 : last, ArrowRight: index < last ? index + 1 : 0, Home: 0, End: last }[event.key];
+            if (next === undefined) return;
+            event.preventDefault();
+            buttons[next].click();
+            buttons[next].focus({ preventScroll: true });
+        });
+    });
+    select(0);
+}
+
+function openContextTooltip(node, { line = 0, hover = false, touch = false, tabs } = {}) {
+    closeContextTooltip();
+    const panel = contextTooltipPanel ??= createContextTooltipPanel();
+    renderContextTooltip(panel, node);
+    renderContextTooltipTabs(panel, tabs);
+    const link = panel.querySelector('a');
+    const href = node.dataset.tooltipLink;
+    panel.toggleAttribute('data-linked', Boolean(href));
+    link.hidden = !href;
+    if (href) {
+        link.href = href;
+        link.textContent = node.dataset.tooltipLinkLabel;
+    }
+    panel.querySelector('button').setAttribute('aria-label', window.I18nService?.t('common.close', 'Close') || 'Close');
+    const sheet = Boolean(href) && !hover && (touch || window.matchMedia('(hover: none)').matches);
+    activeContextTooltip = { trigger: node, line, hover, sheet };
+    node.setAttribute('aria-controls', panel.id);
+    node.setAttribute('aria-expanded', 'true');
+    hideHoveredContextTooltip?.();
+    panel.firstElementChild.scrollTop = 0;
+    panel.querySelector('.tooltip-panel-description').scrollTop = 0;
+    positionContextTooltip();
+    panel.inert = !activeContextTooltip;
+    return panel;
+}
+
+function bindContextTooltip(node, tabs) {
+    const linked = Boolean(node.dataset.tooltipLink);
+    if (node.tagName !== 'BUTTON') {
+        node.tabIndex = 0;
+        node.setAttribute('role', 'button');
+    }
     node.setAttribute('aria-haspopup', 'dialog');
     node.setAttribute('aria-expanded', 'false');
-    bindCursorTooltip(node, event => event.pointerType === 'mouse'
-        && contextTooltipHover.matches && !activeContextTooltip, true);
+    if (linked) {
+        node.addEventListener('pointerenter', event => {
+            if (event.pointerType !== 'mouse') return;
+            if (activeContextTooltip?.trigger === node) clearTimeout(linkedTooltipCloseTimer);
+            else if (node.dataset.tooltip) openContextTooltip(node, { hover: true, tabs });
+        });
+        node.addEventListener('pointerleave', event => {
+            if (event.pointerType === 'mouse' && activeContextTooltip?.trigger === node
+                && !contextTooltipPanel.contains(event.relatedTarget)) scheduleLinkedTooltipClose();
+        });
+    } else {
+        bindCursorTooltip(node, event => event.pointerType === 'mouse'
+            && contextTooltipHover.matches && !activeContextTooltip, true);
+    }
 
     node.addEventListener('click', event => {
-        if (activeContextTooltip?.trigger === node) {
+        if (activeContextTooltip?.trigger === node && !activeContextTooltip.hover) {
             closeContextTooltip(true);
             return;
         }
-        const content = node.dataset.tooltip;
-        if (!content) return;
-        closeContextTooltip();
-        const panel = contextTooltipPanel ??= createContextTooltipPanel();
-        renderContextTooltip(panel, node);
-        const close = panel.querySelector('button');
-        close.setAttribute('aria-label', window.I18nService?.t('common.close', 'Close') || 'Close');
+        if (!node.dataset.tooltip) return;
         const line = event.detail ? Array.from(node.getClientRects())
             .findIndex(rect => event.clientY >= rect.top && event.clientY <= rect.bottom) : 0;
-        activeContextTooltip = { trigger: node, line: Math.max(0, line) };
-        node.setAttribute('aria-controls', panel.id);
-        node.setAttribute('aria-expanded', 'true');
-        hideHoveredContextTooltip?.();
-        panel.hidden = false;
-        panel.firstElementChild.scrollTop = 0;
-        positionContextTooltip();
-        if (!panel.hidden) panel.focus({ preventScroll: true });
+        const panel = openContextTooltip(node, { line: Math.max(0, line), touch: event.pointerType === 'touch', tabs });
+        if (!panel.inert) panel.focus({ preventScroll: true });
     });
+    if (node.tagName === 'BUTTON') return;
     node.addEventListener('keydown', event => {
         if (event.key !== 'Enter' && event.key !== ' ') return;
         event.preventDefault();

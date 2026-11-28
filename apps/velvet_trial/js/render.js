@@ -292,7 +292,7 @@ const VelvetTrialRenderer = (function () {
 
   function buildLevelNav(chapter, levels, activeLevel) {
     const nav = document.createElement('aside');
-    nav.className = 'vt-level-nav';
+    nav.className = 'vt-level-nav section-card-cut';
 
     const navTitle = document.createElement('h3');
     navTitle.className = 'vt-level-nav-title';
@@ -344,7 +344,7 @@ const VelvetTrialRenderer = (function () {
 
   function buildLevelCard(chapter, level) {
     const card = document.createElement('article');
-    card.className = 'vt-level-card';
+    card.className = 'vt-level-card section-card-cut';
 
     const header = document.createElement('header');
     header.className = 'vt-level-head';

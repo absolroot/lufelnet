@@ -147,7 +147,7 @@
         }
 
         searchInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) {
                 e.preventDefault();
                 const value = searchInput.value.trim().toLowerCase();
                 clearTimeout(searchDebounceTimer);

@@ -118,8 +118,13 @@ scripts/reports/
 /social-preview/
 apps/patch-console/state/
 .playwright-mcp/
+/.impeccable/
 .seo-cache/
 /inflation-*.png
+
+# Supabase CLI local state
+/supabase/.temp/
+/supabase/.branches/
 
 # Local-only Home Carousel Studio draft
 /apps/home/js/carousel-preview.local.json

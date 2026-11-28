@@ -2,12 +2,14 @@ window.I18N_PAGE_ABOUT_JP = {
     // Page titles
     siteTitle: 'Lufelnet lufel.net',
     contactTitle: 'お問い合わせ・フィードバック',
-    thanksTitle: 'Thanks To',
+    thanksTitle: '謝辞',
     recentUpdatesTitle: '最新アップデート',
 
     // Buttons
     donateButton: 'サポート | 寄付',
-    supportersButton: 'サポーターリスト',
+    supportersButton: 'ご協力・ご支援いただいた皆さま',
+    specialThanksTitle: '制作協力',
+    supportersListTitle: 'ご支援いただいた皆さま',
     supportersModalTitle: 'サポーターリスト',
     showMoreButton: 'もっと見る',
 
@@ -19,14 +21,12 @@ window.I18N_PAGE_ABOUT_JP = {
     languageNotice: '🌍 日本語翻訳は進行中です。一部のコンテンツは韓国語のままの場合があります。',
 
     // Site description
-    siteDescription: `Lufel.netは「ペルソナ5 ザ ファントム X」プレイヤーのために個人が作成した非公式情報サイトです。<br>
-より多くの人がP5Xを楽しんでくれればという気持ちから始まりました。<br><br>
-<strong>このサイトで提供される攻略情報は、韓国サーバーの上位ランカーによって提供されています。</strong>`,
+    siteDescription: `LufelNetは『ペルソナ5 ザ ファントム X』のプレイヤーに向けた、個人運営の非公式情報サイトです。<br>
+より多くの方にP5Xを楽しんでいただきたいという思いで、このサイトを立ち上げました。<br><br>
+<strong>韓国サーバーの上位プレイヤーが攻略情報の制作に協力しています。</strong>`,
 
     // Contact description
-    contactDescription: `バグや間違ったデータを発見したり、フィードバックがある場合は
-<a href="https://discord.gg/8S8pnv2MsH" target="_blank" class="discord-link"><span class="discord-icon"></span>Discord</a> または
-<a href="mailto:superphil722@gmail.com" class="email-link">superphil722@gmail.com</a>までお問い合わせください。`,
+    contactDescription: '不具合や情報の誤りにお気づきの際は、お知らせください。ご意見もお待ちしています。',
 
     // Donation message
     donationMessage: `P5Xを愛するユーザーとして、lufel.netを継続的に管理しています。<br>

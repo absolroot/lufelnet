@@ -1,0 +1,389 @@
+.tactic-upload-shell,
+.tactic-upload-dialog {
+    --upload-muted: rgb(255 255 255 / 72%);
+    --upload-border: rgb(255 255 255 / 34%);
+    --upload-control: rgb(0 0 0 / 20%);
+    --upload-error: #ff9fa9;
+    color-scheme: dark;
+}
+
+.tactic-upload-shell {
+    max-width: 880px;
+}
+
+.tactic-upload-header,
+.tactic-upload-account {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+}
+
+.tactic-upload-header {
+    justify-content: space-between;
+    padding-bottom: 16px;
+}
+
+.tactic-upload-header h1 {
+    margin: 0;
+}
+
+.tactic-upload-account {
+    gap: 6px 12px;
+    min-width: 0;
+    max-width: 60%;
+    flex-wrap: nowrap;
+    font-size: 13px;
+    color: var(--upload-muted);
+}
+
+.tactic-upload-account[hidden] {
+    display: none;
+}
+
+.tactic-upload-identity {
+    display: flex;
+    gap: 4px;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+.tactic-upload-identity strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(255 255 255 / 90%);
+    font-weight: 600;
+}
+
+.tactic-upload-panel {
+    --upload-inset: clamp(16px, 3vw, 28px);
+    padding: var(--upload-inset);
+    padding-bottom: calc(var(--upload-inset) + 3px);
+}
+
+.tactic-upload-section + .tactic-upload-section {
+    margin-top: 22px;
+    padding-top: 22px;
+    background: var(--section-divider-paint);
+    background-position-y: top 1px, top 1px, top 2px;
+}
+
+.tactic-upload-panel h2,
+.tactic-upload-dialog h2 {
+    margin: 0 0 14px;
+    font-size: 17px;
+    line-height: 1.4;
+}
+
+.tactic-upload-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.tactic-upload-field { min-width: 0; }
+.tactic-upload-field--wide { grid-column: 1 / -1; }
+
+.tactic-upload-field label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tactic-upload-field :is(input[type="text"], select, textarea),
+.tactic-upload-file {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--upload-border);
+    border-radius: 0;
+    background: var(--upload-control);
+    color: #fff;
+    font: inherit;
+    font-size: 14px;
+}
+
+.tactic-upload-field :is(input[type="text"], select, textarea) {
+    padding: 8px 10px;
+}
+
+.tactic-upload-field textarea {
+    display: block;
+    resize: vertical;
+}
+
+.tactic-upload-field :is(input, textarea)::placeholder {
+    color: var(--upload-muted);
+}
+
+.tactic-upload-field small,
+.tactic-upload-file-help a,
+.tactic-upload-file-name {
+    color: var(--upload-muted);
+    font-size: 13px;
+}
+
+.tactic-upload-field > small {
+    display: block;
+    margin-top: 6px;
+}
+
+.tactic-upload-file {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    width: min(100%, 480px);
+}
+
+.tactic-upload-file-action {
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    padding: 7px 12px;
+    border-inline-end: 1px solid var(--upload-border);
+    background: rgb(255 255 255 / 7%);
+    font-weight: 600;
+}
+
+.tactic-upload-file-name {
+    align-self: center;
+    min-width: 0;
+    padding: 0 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tactic-upload-file input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.tactic-upload-file:hover .tactic-upload-file-action {
+    background: rgb(255 255 255 / 13%);
+}
+
+.tactic-upload-file:has([aria-invalid="true"]) {
+    border-color: var(--upload-error);
+}
+
+.tactic-upload-file-help {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 2px 10px;
+    margin-top: 6px;
+}
+
+.tactic-upload-file-help a,
+.tactic-upload-success-link a {
+    text-underline-offset: 3px;
+}
+
+.tactic-upload-file-help a:hover { color: #fff; }
+
+.tactic-upload-error {
+    color: var(--upload-error);
+    font-size: 13px;
+    margin: 8px 0 0;
+}
+
+.tactic-upload-error:empty { margin: 0; }
+
+.tactic-upload-file-status {
+    color: var(--upload-muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.tactic-upload-summary {
+    margin-top: 12px;
+}
+
+.tactic-upload-summary h3 {
+    color: var(--upload-muted);
+    font-size: 13px;
+    margin: 0 0 8px;
+}
+
+.tactic-upload-party {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tactic-upload-character {
+    width: clamp(44px, 10vw, 64px);
+    aspect-ratio: 1;
+    background: var(--upload-control);
+}
+
+.tactic-upload-ritual {
+    position: absolute;
+    z-index: 1;
+    inset: auto auto 0 0;
+    width: 44%;
+    pointer-events: none;
+    filter: drop-shadow(0 1px 2px #000);
+}
+
+.tactic-upload-actions,
+.tactic-upload-dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.tactic-upload-button {
+    min-height: 44px;
+    padding: 8px 14px;
+    border: 1px solid var(--upload-border);
+    border-radius: 0;
+    background: rgb(255 255 255 / 5%);
+    color: #fff;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.tactic-upload-account .tactic-upload-button {
+    flex: 0 0 auto;
+    padding-inline: 10px;
+    font-weight: 500;
+}
+
+.tactic-upload-button:hover { background: rgb(255 255 255 / 13%); }
+
+.tactic-upload-button--primary {
+    background: #80161d;
+    border-color: #aa4b51;
+}
+
+.tactic-upload-button--primary:hover { background: #a22229; }
+.tactic-upload-button--danger { color: var(--upload-error); }
+
+.tactic-upload-shell :is(button, a, input, textarea):focus-visible,
+.tactic-upload-dialog :is(button, a, [tabindex]):focus-visible,
+.tactic-upload-file:has(:focus-visible) {
+    outline: 2px solid var(--select-menu-focus);
+    outline-offset: 2px;
+}
+
+.tactic-upload-file input:focus-visible { outline: none; }
+
+.tactic-upload-dialog {
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), 560px);
+    max-height: calc(100% - 32px);
+    max-height: calc(100dvh - 32px);
+    overflow: hidden;
+    padding: clamp(16px, 4vw, 24px);
+    border: 1px solid var(--upload-border);
+    border-bottom: 3px solid var(--border-red);
+    background: var(--card-background);
+    color: #fff;
+    overflow-wrap: anywhere;
+}
+
+.tactic-upload-dialog::backdrop { background: rgb(0 0 0 / 74%); }
+
+.tactic-upload-dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+.tactic-upload-dialog-body {
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.tactic-upload-dialog-body:focus-visible { outline-offset: -2px; }
+.tactic-upload-dialog-actions { flex-shrink: 0; }
+
+.tactic-upload-dialog-body h3 {
+    font-size: 16px;
+    margin: 0 0 4px;
+}
+
+.tactic-upload-dialog-body p {
+    font-size: 14px;
+    margin: 0 0 8px;
+}
+
+.tactic-upload-preview-meta,
+#tacticCopyStatus { color: var(--upload-muted); }
+.tactic-upload-preview-comment { white-space: pre-wrap; }
+
+.tactic-upload-success-link {
+    display: grid;
+    gap: 4px;
+}
+
+.tactic-upload-success-link a { color: #ffc1c8; }
+#tacticCopyStatus:empty { margin: 0; }
+
+.tactic-upload-dialog-actions {
+    padding-top: 12px;
+    background: var(--section-divider-paint);
+    background-position-y: top 1px, top 1px, top 2px;
+}
+
+.tactic-upload-loading[open] {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    width: fit-content;
+}
+
+.tactic-upload-loading p { margin: 0; }
+
+.tactic-upload-spinner {
+    flex: 0 0 20px;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--upload-border);
+    border-top-color: var(--label-red);
+    border-radius: 50%;
+}
+
+@media (max-width: 560px) {
+    .tactic-upload-fields { gap: 14px 12px; }
+    .tactic-upload-fields > :nth-child(n + 3) { grid-column: 1 / -1; }
+    .tactic-upload-header { row-gap: 6px; }
+    .tactic-upload-account {
+        flex-basis: 100%;
+        justify-content: space-between;
+        max-width: 100%;
+    }
+    .tactic-upload-field :is(input[type="text"], select, textarea) { font-size: 16px; }
+    .tactic-upload-actions > .tactic-upload-button { flex: 1 1 auto; }
+}
+
+@media (max-width: 360px) {
+    .tactic-upload-fields { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .tactic-upload-button,
+    .tactic-upload-file-action {
+        transition: background-color 150ms ease, border-color 150ms ease;
+    }
+
+    .tactic-upload-spinner { animation: tactic-upload-spin 850ms linear infinite; }
+}
+
+@keyframes tactic-upload-spin {
+    to { transform: rotate(1turn); }
+}

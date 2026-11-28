@@ -474,7 +474,7 @@ export class WonderUI extends EventEmitter {
                         ${hasLightningStamp ? `
                         <div class="slot-option-group">
                             <label style="font-size: 11px; opacity: 0.7; margin-bottom: 2px; display: block;">${window.I18nService ? window.I18nService.t('stampLabel') || '인장' : '인장'}</label>
-                            <select class="styled-select stamp-select ws-weapon-stamp-select" style="width:28px;">
+                            <select class="styled-select stamp-select ws-weapon-stamp-select">
                                 <option value="-" ${currentStamp === '-' ? 'selected' : ''}>-</option>
                                 ${[1,2,3,4].map(n => `<option value="${n}" ${currentStamp == n ? 'selected' : ''}>${romanNumerals[n]}</option>`).join('')}
                             </select>
@@ -888,7 +888,7 @@ export class WonderUI extends EventEmitter {
         return `
             <div class="wonder-persona-card" data-index="${index}">
                 <div class="wp-header" data-action="select-persona">
-                    <div class="wp-img-wrapper" ${escapedTooltip ? `data-tooltip="${escapedTooltip}"` : ''}>
+                    <div class="wp-img-wrapper" ${escapedTooltip ? `data-tooltip="${escapedTooltip}" data-tooltip-mobile="longpress"` : ''}>
                          ${cardContent}
                     </div>
                     <div class="wp-name-row">
@@ -1054,9 +1054,7 @@ export class WonderUI extends EventEmitter {
             const search = document.createElement('input');
             search.type = 'text';
             search.placeholder = (window.I18nService && window.I18nService.t('common.search')) || '검색...';
-            search.className = 'input-text';
-            search.style.minHeight = 'unset';
-            search.style.height = '32px';
+            search.setAttribute('data-lufel-search', '');
             search.style.marginBottom = '6px';
             menu.appendChild(search);
 

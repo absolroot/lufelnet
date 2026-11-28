@@ -156,10 +156,22 @@ async function ensureCharacterDataLoaded() {
     return true;
 }
 
+async function readTacticRows(query) {
+    const pageSize = 500;
+    const rows = [];
+
+    for (;;) {
+        const { data, error } = await query.range(rows.length, rows.length + pageSize - 1);
+        if (error) throw error;
+        rows.push(...data);
+        if (data.length < pageSize) return rows;
+    }
+}
+
 class TacticsViewer {
     constructor() {
         this.currentPage = 1;
-        this.postsPerPage = 5;
+        this.postsPerPage = 8;
         this.currentView = 'all';
         this.searchKeyword = '';
         this.currentRankingPeriod = 'weekly';
@@ -173,8 +185,9 @@ class TacticsViewer {
         this.currentUser = null;
         this.selectedCharacters = [];
         this.isApplyingSpoiler = false;
-        this.queryCache = new Map();
-        this.renderVersion = 0;
+        this.ownedTacticIds = new Set();
+        this.isLoadingTactics = false;
+        this.tacticLoadFailed = false;
 
         this.init();
     }
@@ -182,20 +195,20 @@ class TacticsViewer {
     async init() {
         // 캐릭터 데이터를 먼저 로드 (언어별 병합 포함)
         await ensureCharacterDataLoaded();
-        await this.getUserIP();
-        await this.checkAuth();
         this.initRegionFilters();
         this.initTypeFilters();
         this.initCharacterFilter();
-        this.initMobileCollapsibles();
+        this.initMobileCharacterFilter();
         this.initLanguageTexts();
         this.initSpoilerToggle();
-        await this.loadTactics();
         this.initTabs();
         this.initSearch();
         this.initRanking();
-        Promise.allSettled([this.renderTactics(), this.loadRanking()])
-            .then(() => window.LufelPageEntrance?.finish());
+        void this.checkAuth().then(() => {
+            if (this.ownedTacticIds.size > 0) this.renderTactics();
+        });
+        await this.loadTactics();
+        window.LufelPageEntrance?.finish();
     }
 
     t(key, fallback = '') {
@@ -206,277 +219,87 @@ class TacticsViewer {
         return formatI18nTemplate(this.t(key, fallback), replacements);
     }
 
-    // 모바일에서 Ranking/캐릭터 필터 접기/펼치기
-    initMobileCollapsibles() {
-        const apply = () => {
-            const isMobile = window.innerWidth <= 640;
-            const ranking = document.querySelector('.ranking-container');
-            const rankingHeader = ranking?.querySelector('.ranking-header');
-            const charCard = document.querySelector('.character-filter-card');
-            const charHeader = charCard?.querySelector('.card-header');
+    initMobileCharacterFilter() {
+        const trigger = document.getElementById('mobileCharacterFilter');
+        const dialog = document.getElementById('characterFilterDialog');
+        const card = document.getElementById('characterFilterCard');
+        const desktopHost = card.parentElement;
+        const mobileLayout = window.matchMedia('(width < 960px)');
 
-            const ensureCaret = (headerEl) => {
-                if (!headerEl) return null;
-                let caret = headerEl.querySelector('.collapse-caret');
-                if (!caret) {
-                    caret = document.createElement('span');
-                    caret.className = 'collapse-caret';
-                    caret.textContent = '▼';
-                    headerEl.appendChild(caret);
-                }
-                return caret;
-            };
-
-            if (isMobile) {
-                if (ranking && rankingHeader) {
-                    ranking.classList.add('collapsible', 'collapsed');
-                    const caret = ensureCaret(rankingHeader);
-                    rankingHeader.style.cursor = 'pointer';
-                    rankingHeader.onclick = () => {
-                        ranking.classList.toggle('collapsed');
-                        caret.textContent = ranking.classList.contains('collapsed') ? '▶' : '▼';
-                    };
-                    // 초기 화살표 상태
-                    if (caret) caret.textContent = '▶';
-                }
-                if (charCard && charHeader) {
-                    charCard.classList.add('collapsible', 'collapsed');
-                    const caret2 = ensureCaret(charHeader);
-                    charHeader.style.cursor = 'pointer';
-                    charHeader.onclick = () => {
-                        charCard.classList.toggle('collapsed');
-                        caret2.textContent = charCard.classList.contains('collapsed') ? '▶' : '▼';
-                    };
-                    if (caret2) caret2.textContent = '▶';
-                }
-            } else {
-                // 데스크탑: 항상 펼침, 이벤트 제거
-                if (ranking && rankingHeader) {
-                    ranking.classList.remove('collapsed');
-                    rankingHeader.style.cursor = '';
-                    const caret = rankingHeader.querySelector('.collapse-caret');
-                    if (caret) caret.remove();
-                    rankingHeader.onclick = null;
-                }
-                if (charCard && charHeader) {
-                    charCard.classList.remove('collapsed');
-                    charHeader.style.cursor = '';
-                    const caret2 = charHeader.querySelector('.collapse-caret');
-                    if (caret2) caret2.remove();
-                    charHeader.onclick = null;
-                }
-            }
-        };
-
-        // 적용 및 리사이즈 감지
-        apply();
-        window.addEventListener('resize', () => {
-            // 성능 보호: 리사이즈마다 재적용
-            apply();
+        trigger.addEventListener('click', () => {
+            dialog.prepend(card);
+            dialog.showModal();
         });
+
+        dialog.addEventListener('close', () => {
+            if (!dialog.open) desktopHost.append(card);
+        });
+        mobileLayout.addEventListener('change', event => {
+            if (!event.matches && dialog.open) dialog.close();
+        });
+    }
+
+    updateMobileCharacterFilterCount() {
+        const trigger = document.getElementById('mobileCharacterFilter');
+        const badge = document.getElementById('mobileCharacterFilterCount');
+        const count = this.selectedCharacters.length;
+        badge.hidden = count === 0;
+        badge.textContent = count || '';
+        trigger.classList.toggle('has-selection', count > 0);
+    }
+
+    async fetchPublicTactics() {
+        if (window.location.origin === 'https://lufel.net') {
+            const response = await fetch('https://api.lufel.net/v1/tactics/library', { credentials: 'omit' });
+            if (!response.ok) throw new Error(`Tactic library HTTP ${response.status}`);
+            const { tactics } = await response.json();
+            if (!Array.isArray(tactics)) throw new Error('Invalid tactic library response');
+            return tactics;
+        }
+
+        return readTacticRows(supabase
+            .from('tactic_library_public')
+            .select('id,title,author,comment,created_at,url,region,tactic_type,tactic_version,party,likes')
+            .order('created_at', { ascending: false })
+            .order('id', { ascending: false }));
     }
 
     async loadTactics() {
+        if (this.isLoadingTactics) return;
+        this.isLoadingTactics = true;
+        const postsList = document.getElementById('postsList');
+        postsList.setAttribute('aria-busy', 'true');
+        const status = document.getElementById('tacticLibraryEmpty');
+        if (status) status.replaceChildren();
+        else if (this.tacticLoadFailed) postsList.replaceChildren();
+
         try {
-            let query = supabase
-                .from('tactics')
-                .select('id,title,author,comment,created_at,url,region,tactic_type,user_id,tactic_version')
-                .order('created_at', { ascending: false });
-
-            if (this.currentRegion && this.currentRegion !== 'ALL') {
-                if (this.currentRegion === 'GLB') {
-                    query = query.in('region', ['en', 'sea']);
-                } else if (this.currentRegion === 'CN') {
-                    query = query.eq('region', 'cn');
-                } else if (this.currentRegion === 'JP') {
-                    query = query.eq('region', 'jp');
-                } else if (this.currentRegion === 'KR') {
-                    query = query.eq('region', 'kr');
-                }
-            }
-            if (this.currentType && this.currentType !== 'ALL') {
-                query = query.eq('tactic_type', this.currentType);
-            }
-
-            const { data, error } = await query;
-            if (error) {
-                console.error('데이터 로드 오류:', error);
-                return;
-            }
-
-            const tacticIds = (data || []).map(t => String(t.id));
-            const [likesMap, partyMap] = await Promise.all([
-                this.loadLikesMap(tacticIds),
-                this.loadPartyProjection(tacticIds)
-            ]);
-
-            this.allTactics = (data || []).map(tactic => {
-                const tacticId = String(tactic.id);
-                const cachedQuery = this.queryCache.get(tacticId) || null;
-                const projectedParty = partyMap[tacticId];
-                const party = Array.isArray(projectedParty)
-                    ? projectedParty
-                    : (Array.isArray(cachedQuery?.party) ? cachedQuery.party : []);
-                return {
-                    id: tactic.id,
-                    title: tactic.title,
-                    author: tactic.author,
-                    comment: tactic.comment,
-                    likes: likesMap[tacticId]?.likes || 0,
-                    createdAt: new Date(tactic.created_at),
-                    query: cachedQuery,
-                    party,
-                    url: tactic.url,
-                    region: tactic.region || null,
-                    tactic_type: tactic.tactic_type || null,
-                    user_id: tactic.user_id || null,
-                    tactic_version: this.resolveTacticVersion(tactic.tactic_version, cachedQuery)
-                };
-            });
-
+            const tactics = await this.fetchPublicTactics();
+            this.allTactics = tactics.map(tactic => ({
+                id: tactic.id,
+                title: tactic.title,
+                author: tactic.author,
+                comment: tactic.comment,
+                likes: Number(tactic.likes) || 0,
+                createdAt: new Date(tactic.created_at),
+                party: Array.isArray(tactic.party) ? tactic.party : [],
+                url: tactic.url,
+                region: tactic.region || null,
+                tactic_type: tactic.tactic_type || null,
+                tactic_version: tactic.tactic_version || 'legacy'
+            }));
+            this.tacticLoadFailed = false;
             this.applyFilters();
         } catch (error) {
+            this.tacticLoadFailed = true;
             console.error('택틱 로드 실패:', error);
-        }
-    }
-
-    async loadLikesMap(tacticIds) {
-        const result = {};
-        if (!tacticIds || tacticIds.length === 0) return result;
-        const { data, error } = await supabase
-            .from('tactic_likes')
-            .select('tactic_id,likes')
-            .in('tactic_id', tacticIds);
-        if (error) {
-            console.error('likes 로드 실패:', error);
-            return result;
-        }
-        (data || []).forEach(row => {
-            result[String(row.tactic_id)] = {
-                likes: row.likes || 0
-            };
-        });
-        return result;
-    }
-
-    async loadPartyProjection(tacticIds) {
-        const result = {};
-        if (!tacticIds || tacticIds.length === 0) return result;
-        const { data, error } = await supabase
-            .from('tactics')
-            .select('id,party:query->party')
-            .in('id', tacticIds);
-
-        if (error) {
-            console.error('party projection 로드 실패:', error);
-            return this.loadPartyProjectionFallback(tacticIds);
+        } finally {
+            this.isLoadingTactics = false;
+            postsList.removeAttribute('aria-busy');
         }
 
-        (data || []).forEach(row => {
-            result[String(row.id)] = Array.isArray(row.party) ? row.party : [];
-        });
-        return result;
-    }
-
-    async loadPartyProjectionFallback(tacticIds) {
-        const result = {};
-        if (!tacticIds || tacticIds.length === 0) return result;
-        const { data, error } = await supabase
-            .from('tactics')
-            .select('id,query')
-            .in('id', tacticIds);
-
-        if (error) {
-            console.error('party fallback 로드 실패:', error);
-            return result;
-        }
-
-        (data || []).forEach(row => {
-            const parsedQuery = this.parseTacticQuery(row.query);
-            const party = Array.isArray(parsedQuery?.party) ? parsedQuery.party : [];
-            result[String(row.id)] = party;
-            this.queryCache.set(String(row.id), parsedQuery);
-        });
-
-        return result;
-    }
-
-    parseTacticQuery(rawQuery) {
-        if (!rawQuery) return null;
-        if (typeof rawQuery === 'object') return rawQuery;
-        if (typeof rawQuery !== 'string') return null;
-        if (!rawQuery.trim().startsWith('{')) return null;
-        try {
-            return JSON.parse(rawQuery);
-        } catch (_) {
-            return null;
-        }
-    }
-
-    resolveTacticVersion(tacticVersion, parsedQuery) {
-        let resolvedVersion = tacticVersion || 'legacy';
-        if (resolvedVersion === 'legacy' && parsedQuery && parsedQuery['tactic-maker-ver']) {
-            const parsedVersion = parseFloat(parsedQuery['tactic-maker-ver']);
-            if (!Number.isNaN(parsedVersion) && parsedVersion >= 3.0) {
-                resolvedVersion = 'v3';
-            }
-        }
-        return resolvedVersion;
-    }
-
-    async ensureQueriesLoaded(tactics) {
-        if (!Array.isArray(tactics) || tactics.length === 0) return;
-        const missingIds = [];
-
-        tactics.forEach(tactic => {
-            const tacticId = String(tactic.id);
-            if (this.queryCache.has(tacticId)) {
-                const cachedQuery = this.queryCache.get(tacticId) || null;
-                tactic.query = cachedQuery;
-                tactic.tactic_version = this.resolveTacticVersion(tactic.tactic_version, cachedQuery);
-                if (!Array.isArray(tactic.party) && Array.isArray(cachedQuery?.party)) {
-                    tactic.party = cachedQuery.party;
-                }
-            } else {
-                missingIds.push(tacticId);
-            }
-        });
-
-        if (missingIds.length === 0) return;
-
-        const { data, error } = await supabase
-            .from('tactics')
-            .select('id,query')
-            .in('id', missingIds);
-
-        if (error) {
-            console.error('query 로드 실패:', error);
-            return;
-        }
-
-        const loadedIds = new Set();
-        (data || []).forEach(row => {
-            const tacticId = String(row.id);
-            const parsedQuery = this.parseTacticQuery(row.query);
-            this.queryCache.set(tacticId, parsedQuery);
-            loadedIds.add(tacticId);
-        });
-
-        missingIds.forEach(tacticId => {
-            if (!loadedIds.has(tacticId)) {
-                this.queryCache.set(tacticId, null);
-            }
-        });
-
-        tactics.forEach(tactic => {
-            const tacticId = String(tactic.id);
-            const parsedQuery = this.queryCache.get(tacticId) || null;
-            tactic.query = parsedQuery;
-            tactic.tactic_version = this.resolveTacticVersion(tactic.tactic_version, parsedQuery);
-            if (!Array.isArray(tactic.party) && Array.isArray(parsedQuery?.party)) {
-                tactic.party = parsedQuery.party;
-            }
-        });
+        this.renderTactics();
+        await this.loadRanking();
     }
 
     applyFilters() {
@@ -548,23 +371,40 @@ class TacticsViewer {
         this.currentPage = 1;
     }
 
-    async renderTactics() {
-        const currentRenderVersion = ++this.renderVersion;
+    renderTactics() {
+        if (this.isLoadingTactics) return;
+        const postsList = document.getElementById('postsList');
+        const status = document.getElementById('tacticLibraryEmpty');
         const startIndex = (this.currentPage - 1) * this.postsPerPage;
         const endIndex = startIndex + this.postsPerPage;
         const tacticsToShow = this.filteredTactics.slice(startIndex, endIndex);
-        await this.ensureQueriesLoaded(tacticsToShow);
-        if (currentRenderVersion !== this.renderVersion) return;
 
-        const postsList = document.getElementById('postsList');
-        postsList.innerHTML = '';
+        status?.replaceChildren();
+        postsList.replaceChildren(...tacticsToShow.map(tactic => this.createPostElement(tactic)));
+        if (this.tacticLoadFailed || tacticsToShow.length === 0) {
+            const message = status || document.createElement('p');
+            if (!status) {
+                message.className = 'no-results';
+                message.setAttribute('role', 'status');
+                postsList.appendChild(message);
+            }
+            this.renderTacticListStatus(message);
+        }
 
-        tacticsToShow.forEach(tactic => {
-            const postElement = this.createPostElement(tactic);
-            postsList.appendChild(postElement);
-        });
-
+        window.LufelPageEntrance?.stagger(postsList);
         this.updatePaginationButtons();
+    }
+
+    renderTacticListStatus(message) {
+        if (this.tacticLoadFailed) {
+            const retry = document.createElement('button');
+            retry.type = 'button';
+            retry.textContent = this.t('tactic_load_retry', '다시 시도');
+            retry.addEventListener('click', () => this.loadTactics(), { once: true });
+            message.append(this.t('tactic_load_failed', '택틱을 불러오지 못했습니다.'), ' ', retry);
+        } else {
+            message.textContent = this.t('no_tactics_found', '표시할 택틱이 없습니다.');
+        }
     }
 
     createPostElement(tactic) {
@@ -572,10 +412,10 @@ class TacticsViewer {
         const tacticPath = tactic.tactic_version === 'v3' ? '/tactic-maker/' : '/tactic/';
         const libraryLink = tactic.url ? `${tacticPath}?library=${encodeURIComponent(tactic.url)}` : null;
         const postDiv = document.createElement('div');
-        postDiv.className = 'post-item';
+        postDiv.className = libraryLink ? 'post-item section-row-motion tactic-post-motion' : 'post-item';
         postDiv.setAttribute('data-post-id', tactic.id);
 
-        const canEdit = !!(this.currentUser && tactic.user_id && this.currentUser.id === tactic.user_id);
+        const canEdit = this.ownedTacticIds.has(String(tactic.id));
         const editSvg = canEdit ? `
         <svg class="edit-icon" data-edit-id="${tactic.id}" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 6px;cursor:pointer;vertical-align:middle;">
             <path d="M12 20h9"/>
@@ -587,23 +427,20 @@ class TacticsViewer {
             <h3>
                 ${libraryLink ? `
                     <a href="${libraryLink}" target="_blank" rel="noopener noreferrer" class="post-title">
-                        ${this.renderRegionBadge(tactic.region)} ${this.renderTypeBadge(tactic.tactic_type)} 
-                        <span class="post-title-text">${this.escapeHtml(tactic.title)}</span>
+                        <span class="post-title-text section-row-copy">${this.escapeHtml(tactic.title)}</span>
                         ${editSvg}
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M8.59 16.59L13.17 12L8.59 7.41L10 6L16 12L10 18L8.59 16.59Z" fill="rgba(255, 255, 255, 0.6)"></path>
-                        </svg>
                     </a>
                 ` : `
-                    <span class="post-title">${this.renderTypeBadge(tactic.tactic_type)}<span class="post-title-text">${this.escapeHtml(tactic.title)}</span>${editSvg}</span>
+                    <span class="post-title"><span class="post-title-text">${this.escapeHtml(tactic.title)}</span>${editSvg}</span>
                 `}
             </h3>
             <div class="post-meta">
+                ${this.renderRegionBadge(tactic.region)} ${this.renderTypeBadge(tactic.tactic_type)}
                 <span class="post-author">${this.escapeHtml(tactic.author)}</span>
-                <span class="separator">|</span>
+                <span class="separator" aria-hidden="true">|</span>
                 <span class="post-date">${this.formatDate(tactic.createdAt)}</span>
             </div>
-            ${tactic.comment ? `<div class="post-comment">${this.escapeHtml(tactic.comment)}</div>` : ''}
+            ${tactic.comment ? `<div class="post-comment section-row-copy">${this.escapeHtml(tactic.comment)}</div>` : ''}
         </div>
         
                 <div class="post-content">
@@ -628,8 +465,7 @@ class TacticsViewer {
     `;
 
         // 택틱 프리뷰 생성
-        const previewQuery = tactic.query || this.queryCache.get(String(tactic.id)) || null;
-        this.addTacticPreview(postDiv, previewQuery);
+        this.addTacticPreview(postDiv, tactic);
 
         // 편집 아이콘 클릭 처리
         if (canEdit) {
@@ -651,6 +487,8 @@ class TacticsViewer {
             if (session && session.user) {
                 this.currentUser = session.user;
                 this.showUserInfoBar();
+                const owned = await readTacticRows(supabase.from('my_tactic_ids').select('id').order('id'));
+                this.ownedTacticIds = new Set(owned.map(tactic => String(tactic.id)));
             }
         } catch (e) { /* ignore */ }
     }
@@ -676,7 +514,7 @@ class TacticsViewer {
         if (tactic.url) params.set('library', tactic.url);
         params.set('edit', '1');
         params.set('id', tactic.id);
-        window.location.href = `/tactic/tactic-upload.html?${params.toString()}`;
+        window.location.href = `/${this.currentLang}/tactic/tactic-upload.html?${params.toString()}`;
     }
 
     renderTypeBadge(type) {
@@ -855,7 +693,7 @@ class TacticsViewer {
 
                 const charImg = document.createElement('img');
                 charImg.className = 'character-img';
-                charImg.src = `${BASE_URL}/assets/img/character-half/${member.name}.webp`;
+                charImg.src = `${BASE_URL}/assets/img/tier/${member.name}.webp`;
 
                 // 언어별 번역된 이름 사용 (window.characterData는 이미 병합되어 name 필드에 올바른 언어가 들어있음)
                 const ch = charData[member.name];
@@ -932,7 +770,12 @@ class TacticsViewer {
             const likesCount = document.querySelector(`[data-post-id="${tacticId}"] .likes-count`);
             if (likeButton) likeButton.classList.add('liked');
             if (likeButton) likeButton.disabled = true;
-            if (likesCount) likesCount.textContent = likes;
+            if (likesCount) {
+                likesCount.textContent = likes;
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    likesCount.animate?.([{ scale: 1 }, { scale: 1.18 }, { scale: 1 }], { duration: 220, easing: 'ease-out' });
+                }
+            }
 
             const tactic = this.allTactics.find(t => String(t.id) === String(tacticId));
             if (tactic) {
@@ -945,27 +788,52 @@ class TacticsViewer {
 
     updatePaginationButtons() {
         const totalPages = Math.ceil(this.filteredTactics.length / this.postsPerPage);
+        const pagination = document.getElementById('tacticPagination');
         const prevButton = document.getElementById('prevPage');
         const nextButton = document.getElementById('nextPage');
-        const currentPageSpan = document.getElementById('currentPage');
+        const numbers = document.getElementById('tacticPageNumbers');
+        const restoreFocus = pagination.contains(document.activeElement);
+        pagination.hidden = totalPages <= 1;
+        pagination.setAttribute('aria-label', this.t('pagination_label', 'Pagination'));
+        prevButton.disabled = this.currentPage <= 1;
+        nextButton.disabled = this.currentPage >= totalPages;
 
-        prevButton.disabled = this.currentPage === 1;
-        nextButton.disabled = this.currentPage === totalPages || totalPages === 0;
-        currentPageSpan.textContent = this.currentPage;
-
-        prevButton.onclick = () => {
-            if (this.currentPage > 1) {
-                this.currentPage--;
-                this.renderTactics();
-            }
+        const goTo = page => {
+            if (page === this.currentPage || page < 1 || page > totalPages || pagination.hasAttribute('aria-busy')) return;
+            this.currentPage = page;
+            this.renderTactics();
         };
+        prevButton.onclick = () => goTo(this.currentPage - 1);
+        nextButton.onclick = () => goTo(this.currentPage + 1);
+        numbers.replaceChildren();
+        if (pagination.hidden) return;
 
-        nextButton.onclick = () => {
-            if (this.currentPage < totalPages) {
-                this.currentPage++;
-                this.renderTactics();
+        const windowStart = Math.max(2, Math.min(this.currentPage - 1, totalPages - 3));
+        const windowEnd = Math.min(totalPages - 1, windowStart + 2);
+        const pages = totalPages <= 7
+            ? Array.from({ length: totalPages }, (_, index) => index + 1)
+            : [1, ...Array.from({ length: windowEnd - windowStart + 1 }, (_, index) => windowStart + index), totalPages];
+        let currentButton;
+        pages.forEach((page, index) => {
+            if (index > 0 && page - pages[index - 1] > 1) {
+                const gap = document.createElement('span');
+                gap.className = 'tactic-page-gap';
+                gap.setAttribute('aria-hidden', 'true');
+                gap.textContent = '…';
+                numbers.append(gap);
             }
-        };
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.textContent = page;
+            button.setAttribute('aria-label', formatI18nTemplate(this.t('page_number', 'Page {page}'), { page }));
+            if (page === this.currentPage) {
+                button.setAttribute('aria-current', 'page');
+                currentButton = button;
+            }
+            button.onclick = () => goTo(page);
+            numbers.append(button);
+        });
+        if (restoreFocus) currentButton?.focus({ preventScroll: true });
     }
 
     initRegionFilters() {
@@ -974,8 +842,10 @@ class TacticsViewer {
         container.addEventListener('click', (e) => {
             const item = e.target.closest('.tab-button');
             if (!item) return;
-            container.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
-            item.classList.add('active');
+            container.querySelectorAll('.tab-button').forEach(button => {
+                button.classList.toggle('active', button === item);
+                button.setAttribute('aria-pressed', String(button === item));
+            });
             this.currentRegion = item.dataset.region;
             // 렌더 시점에서 region-badge는 renderRegionBadge에서 조건부 렌더링함
             this.applyFilters();
@@ -995,8 +865,10 @@ class TacticsViewer {
         container.addEventListener('click', (e) => {
             const item = e.target.closest('.filter-item');
             if (!item) return;
-            container.querySelectorAll('.filter-item').forEach(b => b.classList.remove('active'));
-            item.classList.add('active');
+            container.querySelectorAll('.filter-item').forEach(button => {
+                button.classList.toggle('active', button === item);
+                button.setAttribute('aria-pressed', String(button === item));
+            });
             this.currentType = item.dataset.type;
             this.applyFilters();
             this.renderTactics();
@@ -1054,11 +926,13 @@ class TacticsViewer {
             img.dataset.name = name;
 
             // 래퍼 생성 (배지 렌더링을 위한 컨테이너)
-            const wrap = document.createElement('div');
+            const wrap = document.createElement('button');
+            wrap.type = 'button';
+            wrap.setAttribute('aria-pressed', 'false');
             wrap.className = 'char-face-wrap';
             wrap.appendChild(img);
 
-            img.addEventListener('click', () => {
+            wrap.addEventListener('click', () => {
                 const selected = this.selectedCharacters;
                 const idx = selected.indexOf(name);
                 if (idx >= 0) {
@@ -1071,7 +945,7 @@ class TacticsViewer {
                         grid.querySelectorAll(`img[data-name="${CSS.escape(oldest)}"]`).forEach(el => {
                             el.classList.remove('selected');
                             el.removeAttribute('data-order');
-                            const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.remove('selected'); pw.removeAttribute('data-order'); }
+                            const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.setAttribute('aria-pressed', 'false'); pw.classList.remove('selected'); pw.removeAttribute('data-order'); }
                         });
                     }
                     selected.push(name);
@@ -1082,17 +956,18 @@ class TacticsViewer {
                     if (!selected.includes(el.dataset.name)) {
                         el.classList.remove('selected');
                         el.removeAttribute('data-order');
-                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.remove('selected'); pw.removeAttribute('data-order'); }
+                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.setAttribute('aria-pressed', 'false'); pw.classList.remove('selected'); pw.removeAttribute('data-order'); }
                     }
                 });
                 selected.forEach((n, i) => {
                     grid.querySelectorAll(`img[data-name="${CSS.escape(n)}"]`).forEach(el => {
                         el.classList.add('selected');
                         el.setAttribute('data-order', String(i + 1));
-                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.add('selected'); pw.setAttribute('data-order', String(i + 1)); }
+                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.setAttribute('aria-pressed', 'true'); pw.classList.add('selected'); pw.setAttribute('data-order', String(i + 1)); }
                     });
                 });
 
+                this.updateMobileCharacterFilterCount();
                 this.applyFilters();
                 this.renderTactics();
                 // URL 상태 동기화 (CSV)
@@ -1118,13 +993,14 @@ class TacticsViewer {
                     grid.querySelectorAll(`img[data-name="${CSS.escape(n)}"]`).forEach(el => {
                         el.classList.add('selected');
                         el.setAttribute('data-order', String(i + 1));
-                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.classList.add('selected'); pw.setAttribute('data-order', String(i + 1)); }
+                        const pw = el.parentElement; if (pw && pw.classList.contains('char-face-wrap')) { pw.setAttribute('aria-pressed', 'true'); pw.classList.add('selected'); pw.setAttribute('data-order', String(i + 1)); }
                     });
                 });
                 this.applyFilters();
                 this.renderTactics();
             }
         } catch (_) { }
+        this.updateMobileCharacterFilterCount();
     }
 
     // 언어별 UI 텍스트 초기화
@@ -1193,8 +1069,8 @@ class TacticsViewer {
         };
 
         searchButton.addEventListener('click', performSearch);
-        searchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.isComposing && e.keyCode !== 229) {
                 performSearch();
             }
         });
@@ -1204,8 +1080,10 @@ class TacticsViewer {
         const rankingTabs = document.querySelectorAll('.ranking-tab');
         rankingTabs.forEach(tab => {
             tab.addEventListener('click', () => {
-                rankingTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
+                rankingTabs.forEach(button => {
+                    button.classList.toggle('active', button === tab);
+                    button.setAttribute('aria-pressed', String(button === tab));
+                });
                 this.currentRankingPeriod = tab.dataset.period;
                 this.loadRanking();
             });
@@ -1335,6 +1213,7 @@ class TacticsViewer {
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', async () => {
     const currentLang = getCurrentLanguage();
+    document.getElementById('uploadButton').href = `/${currentLang}/tactic/tactic-upload.html`;
     if (typeof initPageI18n === 'function') {
         await initPageI18n('tactics');
         if (typeof setLang === 'function') {

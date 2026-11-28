@@ -17,7 +17,7 @@
       loadedOk: tr('io.drive.loadedOk', '드라이브에서 불러왔습니다.'),
       loadedNone: tr('io.drive.loadedNone', '드라이브에 저장된 데이터가 없습니다.'),
       noLocal: tr('io.drive.noLocal', '저장할 로컬 데이터가 없습니다.'),
-      needLogin: tr('io.drive.needLogin', '먼저 상단 로그인 버튼으로 Google Drive에 로그인해 주세요.'),
+      needLogin: tr('io.drive.needLogin', '먼저 로그인 버튼으로 Google Drive에 로그인해 주세요.'),
       failed: tr('io.drive.failed', '작업에 실패했습니다. 잠시 후 다시 시도해 주세요.')
     };
   }

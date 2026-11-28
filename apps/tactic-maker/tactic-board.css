@@ -3,6 +3,7 @@
    ========================================================================== */
 .tactic-board-section {
     margin-top: 40px;
+    padding-bottom: 3px;
 }
 
 .tactic-table-container {
@@ -82,7 +83,7 @@
 .header-char-img {
     width: 32px;
     height: 32px;
-    border-radius: 6px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -106,7 +107,7 @@
 .cell-char-img {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
+    border-radius: 0;
     object-fit: cover;
 }
 
@@ -145,7 +146,7 @@
     padding: 2px 8px;
     font-size: 0.65rem;
     border: none;
-    border-radius: 3px;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.15s ease;
 }
@@ -227,17 +228,6 @@ td.col-turn {
 
 .tactic-cell:hover {
     background: rgba(255, 255, 255, 0.03);
-}
-
-.col-turn .btn-remove-turn {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-}
-
-.col-turn:hover .btn-remove-turn {
-    opacity: 1;
-    pointer-events: auto;
 }
 
 .action-list {
@@ -365,7 +355,7 @@ body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
     padding: 3px 4px;
     background: #1a1a1a;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
+    border-radius: 0;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
     white-space: nowrap;
 }
@@ -452,7 +442,7 @@ body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
     width: 16px;
     height: auto;
     object-fit: cover;
-    border-radius: 2px;
+    border-radius: 0;
     flex-shrink: 0;
 }
 
@@ -488,7 +478,7 @@ body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
     max-width: 220px;
     background: #1f1f1f;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    border-radius: 0;
     margin-top: 0;
     z-index: 1000;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
@@ -531,7 +521,7 @@ body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
     width: 20px;
     height: 20px;
     object-fit: cover;
-    border-radius: 3px;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.3);
 }
 
@@ -539,7 +529,7 @@ body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
     width: 22px;
     height: 22px;
     padding: 0;
-    border-radius: 6px;
+    border-radius: 0;
     border: 1px solid rgba(255, 255, 255, 0.16);
     background: rgba(0, 0, 0, 0.35);
     color: rgba(255, 255, 255, 0.85);
@@ -590,7 +580,7 @@ body:not(.tactic-edit-mode) .turn-row.selected-turn .cell-char-header {
 .action-persona-icon {
     width: 24px;
     height: 24px;
-    border-radius: 4px;
+    border-radius: 0;
     margin-bottom: 4px;
     object-fit: cover;
 }
@@ -649,7 +639,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
 .action-type-badge {
     font-size: 0.65rem;
     padding: 2px 4px;
-    border-radius: 3px;
+    border-radius: 0;
     background: rgba(255, 255, 255, 0.1);
     align-self: flex-start;
 }
@@ -682,7 +672,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     width: 100%;
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid transparent;
-    border-radius: 3px;
+    border-radius: 0;
     color: #ccc;
     font-size: 0.75rem;
     font-style: italic;
@@ -762,7 +752,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     border: 1px dashed rgba(255, 255, 255, 0.1);
     background: transparent;
     color: rgba(255, 255, 255, 0.2);
-    border-radius: 6px;
+    border-radius: 0;
     cursor: pointer;
     transition: all 0.2s;
     font-size: 1.2rem;
@@ -808,7 +798,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     padding: 12px;
     background: transparent;
     border: 1px dashed rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
+    border-radius: 0;
     color: var(--text-secondary);
     font-size: 1rem;
     font-weight: 500;
@@ -928,14 +918,14 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     width: 18px;
     height: 18px;
     object-fit: contain;
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 .action-item .miku-music-dropdown .custom-option-icon {
     width: 18px;
     height: 18px;
     object-fit: contain;
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 .action-item .miku-music-dropdown.miku-music-fixed .custom-select-trigger {
@@ -985,7 +975,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     height: 36px;
     padding: 5px 8px;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 6px;
+    border-radius: 0;
     background: rgba(0, 0, 0, 0.3);
     color: rgba(255, 255, 255, 0.82);
     cursor: pointer;
@@ -1035,7 +1025,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
 .action-item .action-dropdown .custom-select-icon {
     width: 16px;
     height: 16px;
-    border-radius: 2px;
+    border-radius: 0;
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -1044,7 +1034,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     width: 18px;
     height: 18px;
     object-fit: contain;
-    border-radius: 2px;
+    border-radius: 0;
 }
 
 /* ==========================================================================
@@ -1111,7 +1101,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
 .action-drop-indicator {
     height: 2px;
     background: var(--accent-color, #d11f1f);
-    border-radius: 1px;
+    border-radius: 0;
     margin: 2px 0;
     opacity: 0.8;
 }
@@ -1152,11 +1142,20 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     display: flex;
     gap: 4px;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.15s ease;
 }
 
-.tactic-edit-mode .col-turn:hover .turn-actions {
+.tactic-edit-mode .col-turn:is(:hover, :focus-within) .turn-actions {
     opacity: 1;
+    pointer-events: auto;
+}
+
+@media (hover: none) {
+    .tactic-edit-mode .col-turn .turn-actions {
+        opacity: 1;
+        pointer-events: auto;
+    }
 }
 
 .btn-turn-action {
@@ -1166,7 +1165,7 @@ body:not(.tactic-edit-mode) .action-dropdown .custom-select-val[data-tooltip] {
     border: 1px solid rgba(255, 255, 255, 0.15);
     background: rgba(0, 0, 0, 0.3);
     color: rgba(255, 255, 255, 0.7);
-    border-radius: 4px;
+    border-radius: 0;
     cursor: pointer;
     display: flex;
     align-items: center;

@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/skill-value-animation.css?h={{ site.data.asset_versions.files['/assets/css/skill-value-animation.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/assets/js/gsap-loader.js?h={{ site.data.asset_versions.files['/assets/js/gsap-loader.js'] }}" data-gsap-src="{{ site.baseurl }}/assets/js/gsap.min.js?h={{ site.data.asset_versions.files['/assets/js/gsap.min.js'] }}"></script>
+<script defer src="{{ site.baseurl }}/assets/js/skill-value-animation.js?h={{ site.data.asset_versions.files['/assets/js/skill-value-animation.js'] }}"></script>
 <script>
 window.LufelPageLifecycle?.hold('persona-list');
 </script>
@@ -125,73 +128,66 @@ window.LufelPageLifecycle?.hold('persona-list');
     <div class="split-view-container">
         <!-- Left Panel: Filter & List -->
         <div class="persona-list-column">
-            <div class="persona-list-panel page-entrance-part"
-                data-page-entrance-stagger=".persona-cards > .persona-detail-container">
-                <!-- Search & Sort Header Implementation -->
-                <div class="search-section filter-header-sticky">
-                <div class="search-sort-container"
-                    style="display: flex; gap: 8px; align-items: center; justify-content: space-between;">
-                    <div class="search-container" style="flex: 1; position: relative;">
-                        <div class="search-icon">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14ZM9.5 14C7.01 14 5 11.99 5 9.5C5 7.01 7.01 5 9.5 5C11.99 5 14 7.01 14 9.5C14 11.99 11.99 14 9.5 14Z"
-                                    fill="rgba(255, 255, 255, 0.6)" />
-                            </svg>
+            <div class="persona-list-frame section-card-cut">
+                <div class="persona-list-panel page-entrance-part"
+                    data-page-entrance-stagger=".persona-cards > .persona-detail-container">
+                    <!-- Search & Sort Header Implementation -->
+                    <div class="search-section filter-header-sticky">
+                    <div class="search-sort-container"
+                        style="display: flex; gap: 8px; align-items: center; justify-content: space-between;">
+                        <div class="search-container" style="flex: 1; position: relative;">
+                            <input type="text" id="personaSearch" data-lufel-search="clear" data-lufel-search-results="searchDropdown" placeholder="Search..." autocomplete="off"
+                                data-i18n-placeholder="searchPlaceholder">
+                            <button id="searchClearBtn" class="search-clear-btn" type="button" data-lufel-search-action="clear" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <path d="m15 9-6 6" />
+                                    <path d="m9 9 6 6" />
+                                </svg>
+                            </button>
+                            <div id="searchDropdown" class="search-dropdown"></div>
                         </div>
-                        <input type="text" id="personaSearch" placeholder="Search..." autocomplete="off"
-                            data-i18n-placeholder="searchPlaceholder" style="padding-right: 30px;">
-                        <button id="searchClearBtn" class="search-clear-btn"
-                            style="display: none; position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: #999; padding: 0;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="lucide lucide-circle-x-icon lucide-circle-x">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="m15 9-6 6" />
-                                <path d="m9 9 6 6" />
+                        <div class="sort-container">
+                            <select id="sortSelect" class="sort-select">
+                                <option value="tier" data-i18n="sortTier">티어 순</option>
+                                <option value="rarity" data-i18n="sortRarity">희귀도 순</option>
+                                <option value="name" data-i18n="sortName">이름 순</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- Filtered Count & Filter Button -->
+                    <div class="search-status-row"
+                        style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; width:100%;">
+                        <div class="search-count" style="font-size: 12px; color: #aaa;">
+                            <span id="filteredCount" data-i18n="filteredCount"></span>
+                        </div>
+                        <button id="filterOpenBtn" class="filter-open-btn" aria-label="필터" data-i18n-aria="common.filter">
+                            <span data-i18n="common.filter"
+                                style="margin-right: 6px; font-size: 11px; font-weight: 400; color: #aaa;">필터</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
+                                fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-funnel-icon lucide-funnel">
+                                <path
+                                    d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
                             </svg>
                         </button>
-                        <div id="searchDropdown" class="search-dropdown"></div>
                     </div>
-                    <div class="sort-container">
-                        <select id="sortSelect" class="sort-select">
-                            <option value="tier" data-i18n="sortTier">티어 순</option>
-                            <option value="rarity" data-i18n="sortRarity">희귀도 순</option>
-                            <option value="name" data-i18n="sortName">이름 순</option>
-                        </select>
+                    <div id="activeFilters" class="active-filters-container"></div>
                     </div>
-                </div>
-                <!-- Filtered Count & Filter Button -->
-                <div class="search-status-row"
-                    style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; width:100%;">
-                    <div class="search-count" style="font-size: 12px; color: #aaa;">
-                        <span id="filteredCount" data-i18n="filteredCount"></span>
+                    <div class="persona-cards drag-me" id="personaCards">
+                        <!-- Dynamically generated by JavaScript -->
                     </div>
-                    <button id="filterOpenBtn" class="filter-open-btn" aria-label="필터" data-i18n-aria="common.filter">
-                        <span data-i18n="common.filter"
-                            style="margin-right: 6px; font-size: 11px; font-weight: 400; color: #aaa;">필터</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24"
-                            fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" class="lucide lucide-funnel-icon lucide-funnel">
-                            <path
-                                d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z" />
-                        </svg>
-                    </button>
-                </div>
-                <div id="activeFilters" class="active-filters-container"></div>
-                </div>
-                <div class="persona-cards drag-me" id="personaCards">
-                    <!-- Dynamically generated by JavaScript -->
                 </div>
             </div>
             {% include nitro-ad.html id="persona-list-banner" format="rectangle" class="nitro-ad-container--persona-list" lazy=true placeholder=true %}
         </div>
 
         <!-- Right Panel: Detail -->
-        <div class="persona-detail-panel">
+        <div class="persona-detail-panel section-card-cut">
             <div id="personaDetailContent" class="sticky-content page-entrance-part" aria-busy="true"
-                data-page-entrance-stagger=".persona-tier-info, .persona-instinct-info, .persona-unique-skill-info, .persona-highlight-info, .persona-recommended-skills, .persona-innate-skills"
+                data-page-entrance-stagger=".persona-instinct-info, .persona-unique-skill-info, .persona-highlight-info, .persona-innate-skills"
                 data-page-entrance-stagger-all>
                 <div class="detail-placeholder persona-detail-skeleton" aria-hidden="true">
                     <div class="persona-skeleton-header">
@@ -250,7 +246,7 @@ window.LufelPageLifecycle?.hold('persona-list');
 <!-- Filter Modal Structure (Hidden by default) -->
 <div id="filterModal" class="filter-modal hidden">
     <div class="filter-backdrop"></div>
-    <div class="filter-dialog">
+    <div class="filter-dialog section-card-cut">
         <div class="filter-header">
             <h3 data-i18n="common.filter">필터</h3>
             <button class="filter-close-btn">×</button>

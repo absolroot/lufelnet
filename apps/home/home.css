@@ -6,7 +6,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 8px 14px;
 }
 
 .header-container .nitro-ad-container--header {
@@ -39,7 +39,8 @@
 }
 
 .header-container h1 {
-    font-size: 32px;
+    font-size: clamp(24px, 8vw, 32px);
+    margin: 0;
     filter: drop-shadow(0px 1px rgb(0, 0, 0, 0.5)) drop-shadow(1px 0px rgb(0, 0, 0, 0.5)) drop-shadow(-1px 0px rgb(0, 0, 0, 0.5));
     font-weight: 900;
     background: #eeeeee;
@@ -65,12 +66,6 @@
     }
 }
 
-
-.beta-text {
-    font-size: 16px;
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.5);
-}
 
 .music-control {
     margin-left: 10px;
@@ -555,7 +550,7 @@
 .home-character-skeleton { width: 98px; min-width: 98px; display: flex; flex-direction: column; }
 .home-character-skeleton span, .home-character-skeleton i { display: block; background: linear-gradient(105deg, rgba(255,255,255,.045) 35%, rgba(255,255,255,.12) 50%, rgba(255,255,255,.045) 65%); background-size: 220% 100%; animation: homeSectionShimmer 1.35s ease-in-out infinite; }
 .home-character-skeleton span { width: 98px; height: 140px; border-radius: 8px 8px 0 0; }
-.home-character-skeleton i { width: 98px; height: 28.5px; border-radius: 0 0 8px 8px; margin-top: 0; }
+.home-character-skeleton i { width: 98px; height: var(--popular-card-caption-height); border-radius: 0 0 8px 8px; margin-top: 0; }
 .home-panel-skeleton { min-height: 250px; border-radius: 10px; }
 .home-boss-skeleton-card { box-sizing: border-box; width: 100%; max-width: 1200px; margin: 24px auto 0; padding: 20px; background: var(--card-background); border-bottom: 3px solid var(--border-red); border-radius: 10px; }
 .bosses-update-pending { margin: 16px 0 4px; color: #aaa; }
@@ -564,7 +559,10 @@
 .home-row-skeleton { min-height: 95px; display: flex; gap: 15px; align-items: center; padding: 15px; box-sizing: border-box; border-bottom: 1px solid rgba(255,255,255,.05); }
 .home-row-skeleton i { display: block; flex: 0 0 100px; width: 100px; height: 65px; border-radius: 6px; background: rgba(255,255,255,.1); }
 .home-row-skeleton span { width: min(56%, 420px); height: 48px; border-radius: 6px; background: rgba(255,255,255,.1); }
-.home-row-skeleton--tactic { min-height: 150px; }
+.home-row-skeleton--tactic { min-height: 124px; }
+@media (min-width: 1280px) {
+    .home-row-skeleton--tactic { min-height: 74px; }
+}
 .home-section-status { min-height: 96px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: #aaa; text-align: center; padding: 20px; box-sizing: border-box; }
 .home-section-status--error { color: #f0b1b1; }
 .home-section-status--loading { color: #aaa; }
@@ -572,7 +570,7 @@
 @keyframes homeSectionReveal { from { opacity: .2; translate: 0 8px; } to { opacity: 1; translate: 0 0; } }
 
 @media (prefers-reduced-motion: no-preference) {
-    .home-stagger-pending > :is(.quick-item, .character-card) { opacity: 0; }
+    .home-stagger-pending > .quick-item { opacity: 0; }
 
     html:not([data-page-entrance="waiting"]) .home-stagger-item {
         animation: home-item-entrance 240ms cubic-bezier(.16, 1, .3, 1) var(--home-item-entrance-delay) backwards;
@@ -585,7 +583,7 @@
 }
 .home-section-retry { min-height: 36px; padding: 7px 12px; border: 1px solid rgba(255,255,255,.28); border-radius: 6px; background: #282828; color: #fff; cursor: pointer; }
 .home-section-retry:hover, .home-section-retry:focus-visible { background: #3a3a3a; outline: 2px solid #d2ad76; outline-offset: 2px; }
-@media (max-width: 768px) { .home-quick-skeleton { min-height: 116px; } .character-cards .character-card { width: 80px; } .home-character-skeleton { width: 80px; min-width: 80px; } .home-character-skeleton span { width: 80px; height: 100px; } .home-character-skeleton i { width: 80px; height: 28.5px; } .home-panel-skeleton { min-height: 220px; } .bosses-card > .bosses-loading-placeholder { min-height: 1180px; } }
+@media (max-width: 768px) { .home-quick-skeleton { min-height: 116px; } .character-cards .character-card { width: 80px; } .home-character-skeleton { width: 80px; min-width: 80px; } .home-character-skeleton span { width: 80px; height: 100px; } .home-character-skeleton i { width: 80px; } .home-panel-skeleton { min-height: 220px; } .bosses-card > .bosses-loading-placeholder { min-height: 1180px; } }
 @media (prefers-reduced-motion: reduce) { .home-quick-skeleton span, .home-quick-skeleton i, .home-character-skeleton span, .home-character-skeleton i, .home-panel-skeleton, .home-row-skeleton, .home-section-ready { animation: none; } }
 
 .nitro-ad-container--home-bosses {
@@ -772,6 +770,7 @@
 }
 
 .character-cards {
+    --popular-card-caption-height: 28.5px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -804,6 +803,26 @@
     width: 98px;
 }
 
+.popular-card-pending > .character-card-content {
+    opacity: calc(1 - var(--popular-card-loading-opacity, 1));
+}
+
+.popular-card-pending > .home-character-skeleton {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: var(--popular-card-loading-opacity, 1);
+}
+
+.popular-card-pending:focus-within > .character-card-content {
+    opacity: 1 !important;
+}
+
+.popular-card-pending:focus-within > .home-character-skeleton {
+    visibility: hidden;
+}
+
 .character-card-img {
     width: 98px;
     height: 140px;
@@ -822,7 +841,8 @@
 
 .character-card-text {
     width: 100%;
-    height: 100%;
+    min-height: var(--popular-card-caption-height);
+    box-sizing: border-box;
     background: rgba(0, 0, 0, 0.5);
     border-radius: 0px 0px 8px 8px;
     text-align: center;
@@ -834,7 +854,7 @@
     text-overflow: ellipsis;
 }
 
-.character-card.new::after {
+.character-card.new .character-card-content::after {
     content: 'NEW';
     position: absolute;
     top: 8px;
@@ -849,7 +869,7 @@
     z-index: 2;
 }
 
-.character-card.hot::after {
+.character-card.hot .character-card-content::after {
     content: 'HOT';
     position: absolute;
     top: 8px;
@@ -1151,6 +1171,16 @@
     }
 }
 /* Home interaction feedback stays local to the control being used. */
+.guides-container .guide-home-item {
+    color: inherit;
+    text-decoration: none;
+}
+
+.guides-container .guide-home-item:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     #quick-grid .quick-icon-wrap {
         transition: transform 150ms ease, scale 110ms ease;
@@ -1166,40 +1196,28 @@
 
     #home-carousel-root .carousel-slide { transition: scale 240ms ease-out; }
     #home-carousel-root .carousel-btn,
-    #home-carousel-root .carousel-dot,
     #home-carousel-root .carousel-toolbar select {
         transition: background-color 140ms ease, border-color 140ms ease, filter 140ms ease, scale 120ms ease;
     }
-    #home-carousel-root .carousel-btn:active,
-    #home-carousel-root .carousel-dot:active { scale: .9; }
-    #home-carousel-root .carousel-dot.active { scale: 1.2; }
+    #home-carousel-root .carousel-btn:active { scale: .9; }
     #home-carousel-root .carousel-btn svg { transition: translate 140ms ease; }
 
-    .guides-container .guide-thumbnail-container img { transition: scale 180ms ease; }
-    .guides-container .guide-home-item:active .guide-thumbnail-container img { scale: .97; }
-    .guides-container .guide-home-item h3 { transition: color 140ms ease; }
-
-    .posts-container .post-title svg,
+    .posts-container .post-title svg:not(.section-row-arrow),
     .posts-header .show-more-characters-btn img,
     .posts-header .show-more-posts-btn img { transition: translate 140ms ease, opacity 140ms ease; }
-    .posts-container .like-button img { transition: scale 120ms ease; }
-    .posts-container .like-button:active img { scale: .88; }
-    .posts-container .like-button.liked img { animation: home-like-confirm 260ms ease-out; }
 }
 
-@keyframes home-like-confirm {
-    0% { scale: .88; }
-    55% { scale: 1.12; }
-    100% { scale: 1; }
+@media (hover: hover) and (pointer: fine) {
+    .guides-container .guide-home-item:hover h3 { color: #fff !important; }
 }
+
+.guides-container .guide-home-item:focus-visible h3 { color: #fff !important; }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
     #home-carousel-root .carousel-viewport:hover .carousel-slide { scale: 1.012; }
     #home-carousel-root .carousel-toolbar select:hover { filter: brightness(1.25); }
-    #home-carousel-root .carousel-btn:hover { background-color: rgba(0, 0, 0, .65); border-color: #aaa; }
     #home-carousel-root .carousel-btn:first-child:hover svg { translate: -2px 0; }
     #home-carousel-root .carousel-btn:last-child:hover svg { translate: 2px 0; }
-    #home-carousel-root .carousel-dot:hover { scale: 1.2; }
     .popular-content .character-card:hover:not(:active) .character-card-img img,
     .popular-content .character-card:focus-within:not(:active) .character-card-img img {
         scale: 1.065;
@@ -1207,9 +1225,7 @@
     }
     .popular-content .character-card:hover .character-card-text,
     .popular-content .character-card:focus-within .character-card-text { background-color: rgba(0, 0, 0, .7); }
-    .guides-container .guide-home-item:hover .guide-thumbnail-container img { scale: 1.04; }
-    .guides-container .guide-home-item:hover h3 { color: #fff !important; }
-    .posts-container .post-title:hover svg,
+    .posts-container .post-title:hover svg:not(.section-row-arrow),
     .posts-header .show-more-characters-btn:hover img,
     .posts-header .show-more-posts-btn:hover img { translate: 3px 0; opacity: 1 !important; }
 }
@@ -1222,11 +1238,56 @@
     #home-carousel-root .carousel-slide,
     #home-carousel-root .carousel-track,
     #home-carousel-root .carousel-btn,
-    #home-carousel-root .carousel-dot,
-    .guides-container .guide-thumbnail-container img,
     .posts-container .post-title svg,
     .posts-container .like-button img { transition: none; animation: none; }
     #quick-grid .quick-link:hover .quick-icon-wrap,
     #quick-grid .quick-link:focus-visible .quick-icon-wrap { transform: none; }
     .popular-content .character-card:hover .character-card-img img { scale: 1; }
+}
+
+
+#home-carousel-root .carousel-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+.main-wrapper :is(.section-card-cut, .bosses-card, .home-anniversary-banner, .menu-card) {
+    border-radius: 0;
+}
+
+.main-wrapper .section-card-cut {
+    --section-card-paint-inset: 0 0 -3px;
+    background: transparent;
+    border-bottom-color: transparent;
+    overflow: visible;
+}
+
+#home-bosses-root.section-card-cut {
+    --section-card-paint-inset: 0;
+    max-width: 1200px;
+    margin-inline: auto;
+}
+
+#home-bosses-root > .bosses-card {
+    margin-top: 0;
+    background: transparent;
+    border-bottom-color: transparent;
+}
+
+.main-wrapper :is(.character-card, .home-character-skeleton),
+.main-wrapper .guides-list > :nth-last-child(1 of .guide-home-item, .home-row-skeleton),
+#home-bosses-root .bosses-card > :nth-last-child(1 of :has(> .bosses-list > .boss-item)) > .bosses-list > .boss-item:last-child {
+    border-radius: 0;
+    clip-path: var(--section-card-tail-shape);
+}
+
+.main-wrapper :is(.quick-link, .guides-list, .guide-card, .post-item, .boss-item, .affix-chip, .character-card-img, .character-card-img img, .character-card-text, .home-character-skeleton span, .home-character-skeleton i, .home-panel-skeleton, .show-more-characters-btn, .show-more-posts-btn, .view-more, .home-anniversary-banner-cta, .home-anniversary-banner-faces img) {
+    border-radius: 0;
+}
+
+#home-carousel-root :is(.carousel-container, .home-carousel-skeleton-stage, .home-carousel-skeleton-select) {
+    border-radius: 0;
+}
+
+.main-wrapper :is(.character-card, .guide-card, .home-anniversary-banner, .menu-card):focus-visible,
+.main-wrapper :is(.guide-card, .post-item):focus-within {
+    outline: 2px solid #d2ad76;
+    outline-offset: -3px;
 }

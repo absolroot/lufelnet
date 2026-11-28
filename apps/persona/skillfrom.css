@@ -29,9 +29,9 @@
   transform: translate(-50%, -50%);
   width: min(768px, 92vw);
   max-height: 80vh;
-  background: rgba(25, 25, 25, 1);
+  --section-card-fill: #191919;
   color: #fff;
-  border-radius: 12px;
+  border-radius: 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
@@ -43,8 +43,8 @@
   align-items: flex-start;
   justify-content: space-between;
   padding: 16px 20px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06));
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--section-divider-paint);
+  background-position-y: bottom, bottom, bottom 1px;
 }
 
 .skill-source-header h3 {
@@ -55,6 +55,7 @@
 .skill-source-close {
   background: transparent;
   border: none;
+  border-radius: 0;
   color: #fff;
   font-size: 20px;
   cursor: pointer;
@@ -75,7 +76,7 @@
   gap: 16px;
   padding: 12px 12px;
   background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
+  border-radius: 0;
 }
 
 .skill-source-group .group-title {

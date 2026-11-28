@@ -817,6 +817,7 @@ class PullSimulator {
         if (!hasClosedMustRead) {
             // First visit: open it
             mustReadAccordion.classList.add('expanded');
+            mustReadAccordion.querySelector('.accordion-header').setAttribute('aria-expanded', 'true');
         }
         // If hasClosedMustRead exists, leave it closed (default state)
     }
@@ -826,12 +827,22 @@ class PullSimulator {
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
                 const section = header.closest('.accordion-section');
-                const isExpanded = section.classList.contains('expanded');
-                section.classList.toggle('expanded');
+                if (section.id !== 'mustReadAccordion') {
+                    section.classList.toggle('expanded');
+                    return;
+                }
 
-                // If mustRead accordion is being closed, save to localStorage
-                if (section.id === 'mustReadAccordion' && isExpanded) {
+                const content = document.getElementById(header.getAttribute('aria-controls'));
+                const closing = header.getAttribute('aria-expanded') === 'true';
+                header.setAttribute('aria-expanded', String(!closing));
+                if (closing) {
                     localStorage.setItem('pullCalc_mustReadClosed', 'true');
+                    const finish = () => section.classList.remove('expanded');
+                    if (window.disclosureMotion) window.disclosureMotion.collapse(content, finish);
+                    else finish();
+                } else {
+                    section.classList.add('expanded');
+                    window.disclosureMotion?.reveal(content);
                 }
             });
         });
@@ -1768,6 +1779,7 @@ class PullSimulator {
             if (!link || link.dataset.characterLinkBound === 'true') return;
 
             link.classList.add('character-detail-link');
+            link.dataset.characterPrefetch = link.dataset.character;
 
             link.addEventListener('click', (e) => {
                 if (e.button !== 0) return;

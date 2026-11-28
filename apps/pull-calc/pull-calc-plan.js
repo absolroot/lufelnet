@@ -22,6 +22,41 @@
         return normalizeReleaseVersion(a) === normalizeReleaseVersion(b);
     }
 
+    function positionTargetMenu(menu, button) {
+        const rect = button.getBoundingClientRect();
+        const viewport = window.visualViewport;
+        const top = viewport?.offsetTop ?? 0;
+        const left = viewport?.offsetLeft ?? 0;
+        const bottom = top + (viewport?.height ?? document.documentElement.clientHeight);
+        const right = left + (viewport?.width ?? document.documentElement.clientWidth);
+        if (rect.bottom <= top || rect.top >= bottom || rect.right <= left || rect.left >= right) {
+            menu.hidePopover();
+            return;
+        }
+        const edge = 8;
+        const gap = 4;
+        const below = bottom - rect.bottom - gap - edge;
+        const above = rect.top - top - gap - edge;
+        menu.style.maxHeight = '';
+        menu.style.maxWidth = `${right - left - edge * 2}px`;
+        const upward = menu.offsetHeight > below && above > below;
+        menu.style.maxHeight = `${Math.max(0, Math.min(300, upward ? above : below))}px`;
+        menu.style.left = `${Math.max(left + edge, Math.min(rect.left, right - edge - menu.offsetWidth))}px`;
+        menu.style.top = `${upward ? rect.top - gap - menu.offsetHeight : rect.bottom + gap}px`;
+    }
+
+    function repositionOpenTargetMenu() {
+        const menu = document.querySelector('.target-dropdown-menu:popover-open');
+        if (menu) positionTargetMenu(menu, menu.previousElementSibling);
+    }
+
+    window.addEventListener('resize', repositionOpenTargetMenu);
+    window.visualViewport?.addEventListener('resize', repositionOpenTargetMenu);
+    window.visualViewport?.addEventListener('scroll', repositionOpenTargetMenu);
+    document.addEventListener('scroll', event => {
+        if (!event.target.closest?.('.target-dropdown-menu')) repositionOpenTargetMenu();
+    }, { capture: true, passive: true });
+
     /**
      * Calculate income for a character card (daily + version + battle pass)
      * This is used by both timeline cards and pull plan
@@ -562,13 +597,13 @@
                                 </div>
                                 <div class="plan-item-targets">
                                     <div class="target-dropdown" data-index="${index}" data-type="character">
-                                        <button class="target-dropdown-btn">
+                                        <button type="button" class="target-dropdown-btn" popovertarget="pull-character-target-${index}">
                                             <img src="${BASE_URL}/assets/img/ritual/${target.characterTarget.toLowerCase()}.png" alt="${target.characterTarget}">
                                             <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                 <polyline points="6 9 12 15 18 9"></polyline>
                                             </svg>
                                         </button>
-                                        <div class="target-dropdown-menu">
+                                        <div class="target-dropdown-menu" id="pull-character-target-${index}" popover="auto">
                                             ${['A0', 'A1', 'A2', 'A3', 'A4', 'A5', 'A6'].map(opt =>
                 `<button class="target-dropdown-item ${target.characterTarget === opt ? 'selected' : ''}" data-value="${opt}">
                                                     <img src="${BASE_URL}/assets/img/ritual/${opt.toLowerCase()}.png" alt="${opt}">
@@ -578,13 +613,13 @@
                                         </div>
                                     </div>
                                     <div class="target-dropdown" data-index="${index}" data-type="weapon">
-                                        <button class="target-dropdown-btn">
+                                        <button type="button" class="target-dropdown-btn" popovertarget="pull-weapon-target-${index}">
                                             ${weaponTarget !== 'None' ? `<img src="${BASE_URL}/assets/img/ritual/${weaponTarget.toLowerCase()}.png" alt="${weaponTarget}">` : '<span class="weapon-none-badge">✕</span>'}
                                             <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                                 <polyline points="6 9 12 15 18 9"></polyline>
                                             </svg>
                                         </button>
-                                        <div class="target-dropdown-menu">
+                                        <div class="target-dropdown-menu" id="pull-weapon-target-${index}" popover="auto">
                                             <button class="target-dropdown-item ${weaponTarget === 'None' ? 'selected' : ''}" data-value="None">
                                                 <span class="none-icon">✕</span>
                                                 <span>${this.t('noneLabel')}</span>
@@ -709,13 +744,8 @@
             const idx = parseInt(dropdown.dataset.index);
             const type = dropdown.dataset.type;
 
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // Close other dropdowns
-                container.querySelectorAll('.target-dropdown-menu').forEach(m => {
-                    if (m !== menu) m.classList.remove('active');
-                });
-                menu.classList.toggle('active');
+            menu.addEventListener('toggle', () => {
+                if (menu.matches(':popover-open')) positionTargetMenu(menu, btn);
             });
 
             menu.querySelectorAll('.target-dropdown-item').forEach(item => {
@@ -728,8 +758,11 @@
                         this.targets[idx].weaponTarget = value;
                     }
                     this.saveData();
+                    const restoreFocus = e.detail === 0;
+                    const trigger = btn.getAttribute('popovertarget');
+                    menu.hidePopover();
                     this.recalculate();
-                    menu.classList.remove('active');
+                    if (restoreFocus) container.querySelector(`[popovertarget="${trigger}"]`)?.focus({ preventScroll: true });
                 });
             });
         });
@@ -742,15 +775,6 @@
                 this.recalculate();
                 container.querySelector(`.plan-weapon-banner[data-index="${index}"]`)?.focus({ preventScroll: true });
             });
-        });
-
-        // Close dropdowns when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.target-dropdown')) {
-                container.querySelectorAll('.target-dropdown-menu').forEach(menu => {
-                    menu.classList.remove('active');
-                });
-            }
         });
 
         container.querySelectorAll('.plan-resource-input input').forEach(input => {

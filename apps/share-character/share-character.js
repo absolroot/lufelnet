@@ -726,7 +726,7 @@
         const entry = getRosterEntry(character.key);
         const owned = !!entry;
         const selected = !!opts.selected;
-        const classes = ['card', 'sc-share-card', owned ? 'is-owned' : 'is-unowned', selected ? 'is-selected' : '', opts.capture ? 'is-capture' : ''].filter(Boolean).join(' ');
+        const classes = ['card', 'character-tile', 'character-tile--portrait', 'sc-share-card', owned ? 'is-owned' : 'is-unowned', selected ? 'is-selected' : '', opts.capture ? 'is-capture' : ''].filter(Boolean).join(' ');
         const displayName = getCardDisplayName(character);
         const imageLoading = opts.capture ? 'eager' : 'lazy';
         return `
@@ -828,7 +828,7 @@
 
         modalContainer.innerHTML = `
             <div class="sc-modal-overlay is-open" id="scModalOverlay">
-                <section class="sc-editor-panel" role="dialog" aria-modal="true" aria-labelledby="scModalTitle">
+                <section class="sc-editor-panel section-card-cut" role="dialog" aria-modal="true" aria-labelledby="scModalTitle">
                     <button type="button" class="sc-modal-close" id="scModalClose" aria-label="${escapeHtml(t('action_close', 'Close'))}">×</button>
                     <div class="sc-editor-shell">
                         <div class="sc-editor-identity">

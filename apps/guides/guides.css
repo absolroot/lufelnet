@@ -86,39 +86,6 @@
     margin-bottom: var(--guide-space-md);
 }
 
-.guides-search-icon {
-    position: absolute;
-    left: var(--guide-space-md);
-    top: 50%;
-    transform: translateY(-50%);
-    width: 18px;
-    height: 18px;
-    color: var(--guide-text-tertiary);
-    pointer-events: none;
-}
-
-.guides-search-input {
-    width: 100%;
-    padding: var(--guide-space-md) var(--guide-space-md) var(--guide-space-md) 44px;
-    background: var(--guide-bg-secondary);
-    border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
-    color: var(--guide-text-primary);
-    font-size: var(--guide-text-base);
-    outline: none;
-    transition: border-color var(--guide-transition-fast), box-shadow var(--guide-transition-fast);
-    box-sizing: border-box;
-}
-
-.guides-search-input::placeholder {
-    color: var(--guide-text-muted);
-}
-
-.guides-search-input:focus {
-    border-color: var(--guide-accent-gold);
-    box-shadow: 0 0 0 3px var(--guide-accent-gold-glow);
-}
-
 /* ============================================
    Category Tabs
    ============================================ */
@@ -140,7 +107,6 @@
     padding: var(--guide-space-sm) var(--guide-space-md);
     background: var(--guide-bg-secondary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 8px;
     color: var(--guide-text-secondary);
     font-size: var(--guide-text-sm);
     font-weight: 500;
@@ -208,7 +174,6 @@
     position: relative;
     background: var(--guide-bg-secondary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
     overflow: hidden;
     text-decoration: none;
     color: inherit;
@@ -223,7 +188,22 @@
 .guide-card:hover {
     background: var(--guide-bg-tertiary);
     border-color: var(--guide-border-default);
-    box-shadow: inset 3px 0 0 var(--guide-accent-gold), var(--guide-shadow-md);
+    box-shadow: var(--guide-shadow-md);
+}
+
+.guide-card:focus-visible {
+    outline: 2px solid var(--guide-accent-gold);
+    outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .guide-card :is(.guide-card-title, .guide-card-excerpt) {
+        transition: translate 180ms cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .guide-card:is(:hover, :focus-visible) :is(.guide-card-title, .guide-card-excerpt) {
+        translate: 4px 0;
+    }
 }
 
 .guide-card-thumbnail {
@@ -378,19 +358,28 @@
 
 /* Article Container */
 .guide-article {
-    background: var(--guide-bg-secondary);
+    --section-card-fill: var(--guide-bg-secondary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 16px;
+    border-bottom: 0;
     overflow: hidden;
 }
 
 /* Guide Header */
 .guide-header {
+    position: relative;
     padding: var(--guide-space-2xl) var(--guide-space-2xl) var(--guide-space-xl);
-    border-bottom: 1px solid var(--guide-border-subtle);
     background: linear-gradient(180deg,
             var(--guide-bg-tertiary) 0%,
             var(--guide-bg-secondary) 100%);
+}
+
+.guide-header::after {
+    position: absolute;
+    inset: auto 0 0;
+    height: 3px;
+    background: var(--section-divider-paint);
+    pointer-events: none;
+    content: "";
 }
 
 .guide-category {
@@ -445,7 +434,6 @@
 .guide-thumbnail {
     width: 100%;
     margin-top: var(--guide-space-xl);
-    border-radius: 12px;
     border: 1px solid var(--guide-border-subtle);
 }
 
@@ -459,7 +447,6 @@
     background: var(--guide-bg-primary);
     border: 1px solid var(--guide-border-subtle);
     border-left: 3px solid var(--guide-accent-gold);
-    border-radius: 0 8px 8px 0;
 }
 
 .guide-toc-list {
@@ -630,7 +617,6 @@
     padding: var(--guide-space-lg) var(--guide-space-xl);
     background: var(--guide-bg-tertiary);
     border-left: 3px solid var(--guide-accent-gold);
-    border-radius: 0 8px 8px 0;
     color: var(--guide-text-secondary);
     font-style: italic;
 }
@@ -680,7 +666,6 @@ html[data-lang="jp"] .guide-content code {
     padding: var(--guide-space-lg);
     background: var(--guide-bg-primary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
     overflow-x: auto;
 }
 
@@ -697,19 +682,14 @@ html[data-lang="jp"] .guide-content code {
 .guide-content hr {
     margin: var(--guide-space-2xl) 0;
     border: none;
-    height: 1px;
-    background: linear-gradient(90deg,
-            transparent,
-            var(--guide-border-default) 20%,
-            var(--guide-border-default) 80%,
-            transparent);
+    height: 3px;
+    background: var(--section-divider-paint);
 }
 
 /* Images */
 .guide-content img {
     max-width: 100%;
     height: auto;
-    border-radius: 8px;
     margin: var(--guide-space-lg) 0;
 }
 
@@ -730,7 +710,6 @@ html[data-lang="jp"] .guide-content code {
     font-size: var(--guide-text-sm);
     background: var(--guide-bg-tertiary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -774,7 +753,6 @@ html[data-lang="jp"] .guide-content code {
     width: auto;
     margin: 0;
     vertical-align: middle;
-    border-radius: 4px;
 }
 
 /* Sea fishing: keep the six king-fish routes readable before the full tables. */
@@ -788,7 +766,6 @@ html[data-lang="jp"] .guide-content code {
 .guide-content .sea-fishing-mechanic-card {
     padding: var(--guide-space-lg);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
     background: var(--guide-bg-tertiary);
 }
 
@@ -848,7 +825,6 @@ html[data-lang="jp"] .guide-content code {
     padding: var(--guide-space-md);
     background: linear-gradient(135deg, rgba(232, 184, 101, 0.14), var(--guide-bg-tertiary));
     border: 1px solid rgba(232, 184, 101, 0.35);
-    border-radius: 10px;
 }
 
 .guide-content .sea-fishing-king-fish-visual,
@@ -899,7 +875,6 @@ html[data-lang="jp"] .guide-content code {
     min-width: 0;
     padding: var(--guide-space-sm);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 10px;
     background: var(--guide-bg-tertiary);
 }
 
@@ -1013,7 +988,6 @@ html[data-lang="jp"] .guide-content code {
     padding: var(--guide-space-lg) var(--guide-space-xl);
     background: var(--guide-accent-blue-dim);
     border: 1px solid rgba(92, 158, 255, 0.2);
-    border-radius: 10px;
     color: var(--guide-text-secondary);
 }
 
@@ -1053,7 +1027,6 @@ html[data-lang="jp"] .guide-content code {
     padding: var(--guide-space-4xl) var(--guide-space-xl);
     background: var(--guide-bg-secondary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 16px;
 }
 
 .guides-empty-icon {
@@ -1142,10 +1115,6 @@ html[data-lang="jp"] .guide-content code {
     .guide-card-author::before {
         width: 2px;
         height: 2px;
-    }
-
-    .guide-article {
-        border-radius: 12px;
     }
 
     .guide-header {
@@ -1250,6 +1219,10 @@ html[data-lang="jp"] .guide-content code {
         box-shadow: none;
     }
 
+    .guide-article.section-card-cut::after {
+        content: none;
+    }
+
     .guide-content {
         color: #333;
     }
@@ -1275,7 +1248,6 @@ html[data-lang="jp"] .guide-content code {
     padding: var(--guide-space-4xl) var(--guide-space-xl);
     background: var(--guide-bg-secondary);
     border: 1px solid var(--guide-border-subtle);
-    border-radius: 16px;
 }
 
 .guides-empty-icon {
@@ -1364,10 +1336,6 @@ html[data-lang="jp"] .guide-content code {
     .guide-card-author::before {
         width: 2px;
         height: 2px;
-    }
-
-    .guide-article {
-        border-radius: 12px;
     }
 
     .guide-header {
@@ -1487,7 +1455,6 @@ html[data-lang="jp"] .guide-content code {
 .book-card {
     background: rgba(30, 30, 30, 0.6);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
     padding: 1.25rem;
     display: flex;
     flex-direction: column;
@@ -1562,7 +1529,6 @@ html[data-lang="jp"] .guide-content code {
 
 .book-row-2 {
     background: rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
     padding: 0.75rem 1rem;
     font-size: 0.95rem;
     color: var(--text-normal);
@@ -1620,7 +1586,6 @@ html[data-lang="jp"] .guide-content code {
 
 .intro-section img {
     object-fit: contain;
-    border-radius: 8px;
     background: rgba(255, 255, 255, 0.05);
     padding: 4px;
     border: 1px solid var(--guide-border-subtle);

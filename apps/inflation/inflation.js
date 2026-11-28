@@ -1348,7 +1348,7 @@
             </div>
             <button type="button" class="inflation-edit-picker-close" data-edit-action="close-character-picker" aria-label="${escapeHtml(t('editClosePicker', 'Close'))}">×</button>
           </div>
-          <input type="search" class="inflation-edit-picker-search" data-edit-picker-search placeholder="${escapeHtml(t('editCharacterSearch', 'Search character'))}">
+          <input type="search" data-lufel-search class="inflation-edit-picker-search" data-edit-picker-search placeholder="${escapeHtml(t('editCharacterSearch', 'Search character'))}">
           <div class="inflation-edit-picker-grid">
             ${cards}
           </div>

@@ -13,8 +13,8 @@ window.characterSetting["아란·서리꽃"] = {
     "sub_revel3": [ "크리티컬 확률", "크리티컬 효과"],
     "sub_revel4": ["공격력"],
     "sub_option1": ["크리티컬 확률"],
-    "sub_option2": ["관통", "크리티컬 효과"],
-    "sub_option3": ["대미지 보너스", "공격력"],
+    "sub_option2": ["크리티컬 효과", "대미지 보너스"],
+    "sub_option3": ["관통", "공격력"],
     "minimum_stats": {
         "LV10": false,
         "LV10+5": false,
@@ -26,6 +26,11 @@ window.characterSetting["아란·서리꽃"] = {
     "battle_plus_stats": "",
     "element_weakness": "",
     "element_resistance": ["축복", "주원"],
+    "nature_skill_independent_elements": true,
+    "nature_skill_recommend": {
+        "Bless": { "501": [70902] },
+        "Curse": { "501": [71002] }
+    },
     "skill1_lv": "MAX!",
     "skill2_lv": "8",
     "skill3_lv": "MAX!",

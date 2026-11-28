@@ -1,0 +1,191 @@
+:is(.critical-table, .defense-table, .penetrate-table) tbody > .group-header {
+    --calc-row-highlight: rgba(255, 255, 255, .10);
+    cursor: pointer;
+}
+
+:is(.critical-table, .defense-table, .penetrate-table) tbody > .group-row {
+    --calc-row-highlight: rgba(255, 255, 255, .06);
+    cursor: pointer;
+}
+
+:is(.critical-table, .defense-table, .penetrate-table) tbody > .group-row.selected {
+    --calc-row-highlight: rgba(221, 132, 132, .18);
+}
+
+:is(.critical-table, .defense-table, .penetrate-table) .accordion-caret {
+    appearance: none;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+:is(.critical-table, .defense-table, .penetrate-table) tbody > :is(.group-header, .group-row):has(:focus-visible),
+:is(.critical-table, .defense-table, .penetrate-table) tbody > :is(.group-header, .group-row):active {
+    background-color: var(--calc-row-highlight);
+}
+
+:is(.critical-table, .defense-table, .penetrate-table) .accordion-caret:focus-visible {
+    color: #fff;
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    :is(.critical-table, .defense-table, .penetrate-table) tbody > :is(.group-header, .group-row):hover {
+        background-color: var(--calc-row-highlight);
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) .group-header:hover .accordion-caret {
+        color: #fff;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    :is(.critical-table, .defense-table, .penetrate-table) tbody > :is(.group-header, .group-row) {
+        transition: background-color 150ms ease;
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) .accordion-caret svg {
+        transition: translate 150ms ease;
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) .group-header:hover .accordion-caret svg {
+        translate: 2px 0;
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) .group-header:hover .accordion-caret.open svg {
+        translate: 0 2px;
+    }
+}
+
+.calc-row-details-cell,
+.calc-mobile-duration,
+.calc-mobile-detail-label {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+    :is(.critical-table, .defense-table, .penetrate-table) tbody > .group-header:not(:first-child) {
+        margin-block-start: 14px;
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) tbody > .group-row.calc-mobile-row {
+        grid-template-areas: "check skill-icon skill-name skill-name value details";
+        grid-template-columns: 20px 24px minmax(0, max-content) minmax(0, 1fr) max-content 44px;
+        grid-template-rows: minmax(36px, auto);
+        align-items: center;
+        gap: 4px 6px;
+        padding-block: 8px;
+        border-top: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .calc-mobile-row > .check-column {
+        margin-top: 0;
+    }
+
+    .calc-mobile-row > .skill-name-column {
+        display: block;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .calc-mobile-row > .skill-name-column .skill-type-label {
+        color: rgba(255, 255, 255, .58);
+    }
+
+    .calc-mobile-row > .option-column {
+        grid-area: 2 / 4 / auto / -1;
+        min-width: 0;
+    }
+
+    .calc-mobile-row:has(> .target-column:is(:empty, [data-target="-"])) > .option-column {
+        grid-column-start: 3;
+    }
+
+    .calc-mobile-row > .option-column select[data-select-density="compact"] {
+        min-inline-size: min(4.5rem, 100%);
+        max-inline-size: 100%;
+    }
+
+    .calc-mobile-row > .target-column {
+        grid-area: 2 / 3 / auto / 4;
+        max-width: 75px;
+        color: rgba(255, 255, 255, .62);
+        overflow-wrap: anywhere;
+    }
+
+    .calc-mobile-row > .target-column[data-target="광역"] {
+        color: rgba(221, 132, 132, .88);
+    }
+
+    .calc-mobile-row > .target-column[data-target="단일"] {
+        color: rgba(208, 221, 132, .72);
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) .calc-mobile-row >
+        :is(.duration-column, .target-column:empty, .target-column[data-target="-"], .option-column:empty, .note-column) {
+        display: none;
+    }
+
+    :is(.critical-table, .defense-table, .penetrate-table) .calc-mobile-row.calc-details-open > .note-column {
+        display: grid;
+        grid-area: auto / 3 / auto / -1;
+        grid-template-columns: max-content minmax(0, 1fr);
+        align-items: baseline;
+        gap: 4px 10px;
+        padding: 6px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, .12) !important;
+        color: rgba(255, 255, 255, .82);
+        overflow-wrap: anywhere;
+    }
+
+    .calc-mobile-row > .note-column::before {
+        content: none !important;
+    }
+
+    .calc-mobile-duration {
+        display: contents;
+    }
+
+    .calc-mobile-detail-label {
+        display: block;
+        color: rgba(255, 255, 255, .58);
+    }
+
+    .calc-row-details-cell {
+        grid-area: details;
+        display: block;
+    }
+
+    .calc-row-details-toggle {
+        display: grid;
+        place-items: center;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0;
+        color: rgba(255, 255, 255, .7);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .calc-row-details-toggle::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(-45deg);
+    }
+
+    .calc-row-details-toggle[aria-expanded="true"]::before {
+        transform: rotate(45deg);
+    }
+
+    .calc-row-details-toggle:focus-visible {
+        color: #fff;
+        outline: 2px solid currentColor;
+        outline-offset: -3px;
+    }
+}

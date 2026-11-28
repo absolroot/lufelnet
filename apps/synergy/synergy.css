@@ -91,17 +91,6 @@
     align-items: center;
 }
 
-.search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .spoiler-checkbox-container {
     display: flex;
     align-items: center;
@@ -128,32 +117,9 @@
     font-size: 14px;
 }
 
-.search-container input {
-    width: 100%;
-    padding: 8px 16px 8px 40px;
-    border: 1px solid #333;
-    background: var(--card-background);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.5;
-    box-sizing: border-box;
-    height: 36px;
-}
-
-.search-container input:focus {
-    outline: none;
-    border-color: #730000;
-    background: #1a1a1a;
-}
-
-.search-container input::placeholder {
-    color: #666;
-}
-
 .separator-line {
-    height: 1px;
-    background: #333;
+    height: 3px;
+    background: var(--section-divider-paint);
     margin: 20px 0;
 }
 
@@ -244,7 +210,6 @@
     padding: 10px 8px;
     border: 1px solid #333;
     background: var(--card-background);
-    border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
     position: relative;
@@ -360,8 +325,6 @@
 .character-detail {
     flex: 1;
     min-width: 0;
-    background: var(--card-background);
-    border-radius: 12px;
     padding: 24px;
     user-select: text;
 }
@@ -403,7 +366,8 @@
     gap: 16px;
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 1px solid #333;
+    background: var(--section-divider-paint);
+    background-position: left bottom, right bottom, center calc(100% - 1px);
 }
 
 .detail-header-image {
@@ -455,7 +419,8 @@
     color: #fff;
     margin-bottom: 16px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #730000;
+    background: var(--section-divider-paint);
+    background-position: left bottom, right bottom, center calc(100% - 1px);
 }
 
 .detail-section-title.collapsible {
@@ -645,7 +610,6 @@
     margin-bottom: 0;
     padding: 16px;
     background: #1a1a1a;
-    border-radius: 8px;
     /* border-left: 3px solid #730000; */
 }
 
@@ -721,7 +685,6 @@
 .dialog-empty-state {
     padding: 10px 12px;
     background: #0f0f0f;
-    border-radius: 6px;
     color: #999;
     font-size: 13px;
     line-height: 1.5;
@@ -736,7 +699,6 @@
 .dialog-choice {
     padding: 10px 12px;
     background: #0f0f0f;
-    border-radius: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -792,7 +754,6 @@
     margin-bottom: 0;
     padding: 16px;
     background: #1a1a1a;
-    border-radius: 8px;
     /* border-left: 3px solid #0096ff; */
 }
 
@@ -1126,7 +1087,6 @@ tr:hover .item-source-icon {
 .item-from-modal {
     background: #1a1a1a;
     border: 1px solid #333;
-    border-radius: 8px;
     max-width: 600px;
     max-height: 80vh;
     width: 100%;
@@ -1140,7 +1100,8 @@ tr:hover .item-source-icon {
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    border-bottom: 1px solid #333;
+    background: var(--section-divider-paint);
+    background-position: left bottom, right bottom, center calc(100% - 1px);
 }
 
 .item-from-modal-header h3 {
@@ -1390,7 +1351,6 @@ tr:hover .item-source-icon {
     padding: 12px 16px;
     color: #f5ddb5;
     background: #30261f;
-    border-radius: 6px;
     line-height: 1.6;
 }
 
@@ -1409,7 +1369,6 @@ tr:hover .item-source-icon {
     margin-top: 16px;
     padding: 12px;
     border: 1px solid #44383a;
-    border-radius: 6px;
     background: #1c191a;
 }
 .synergy-album-rewards-heading {
@@ -1430,7 +1389,6 @@ tr:hover .item-source-icon {
     gap: 5px;
     min-width: 0;
     padding: 8px 2px;
-    border-radius: 4px;
     background: #2a2325;
     color: #d8cacc;
     font-size: 0.75rem;
@@ -1446,7 +1404,6 @@ tr:hover .item-source-icon {
     overflow: hidden;
     background: #171416;
     border: 1px solid #4a3a3d;
-    border-radius: 8px;
 }
 
 .synergy-album-feature-image { display: block; width: 100%; height: auto; }
@@ -1505,7 +1462,6 @@ tr:hover .item-source-icon {
     min-width: 0;
     overflow: hidden;
     border: 1px solid #4b4144;
-    border-radius: 5px;
     background: #201b1d;
     color: #fff;
     text-align: left;

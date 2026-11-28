@@ -81,13 +81,8 @@ Tempest Riko (Wind·Tempest) - Skill 1 expands from Wind-only to all elements. S
 Justine & Caroline (J&C) - Skill 3 triggers automatically, reducing its cycle from 3 to 2 turns. Its duration is 2 turns, and the exclusive weapon's buff doesn’t stack unless Skill 3 is used, making A0 an incomplete form and hard to compare in tiers.`
         },
         {
-            q: 'Q. Why are some characters listed at A6?',
-            a: `YUI (BUI) - YUI's skill scaling jumps drastically from A6 (80→110), allowing AOE attacks and opening up new damage potential. She occasionally excels in boss modes without Electric resistance and appears in ranking content.
-    Akechi (Crow) - From A6, Akechi's damage storage multiplier increases by 1.5x, delivering significant impact. Below A6, his storage ratio is too low compared to other buffers and lacks effectiveness.`
-        },
-        {
             q: 'Q. What is the triangular item at the bottom left of the character?',
-            a: 'It represents materials for the Mindscape Core added in the KR V4.7.1 update, allowing expansion up to Level 100. Acquiring additional Passives may lead to Tier changes.'
+            a: 'It indicates a material used for the Mindscape Core, which lets the character reach level 100. The character’s tier may change after unlocking additional passives.'
         }
     ],
 

@@ -38,8 +38,6 @@
         get placeholder() { return tr('individual.placeholder', '여기에 주소를 붙여넣기...'); },
         get start() { return tr('individual.buttons.start', '가져오기'); },
         get clear() { return tr('individual.buttons.clear', '초기화'); },
-        get infoReady() { return tr('individual.info.ready', '가챠 기록 URL을 입력하고 가져오기를 누르세요.'); },
-        get infoNotice() { return tr('individual.info.notice'); },
         get loadingTitle() { return tr('individual.loading.title', '서버에서 기록을 조회 중입니다...'); },
         get loadingDetail() { return tr('individual.loading.detail'); },
         get noticeLong() { return tr('individual.loading.noticeLong'); },
@@ -60,7 +58,7 @@
         get deleteDriveFailed() { return tr('individual.status.deleteDriveFailed', '클라우드(Drive) 삭제에 실패했습니다.'); },
         get allDeleted() { return tr('individual.status.allDeleted', '브라우저에 저장된 데이터를 삭제했습니다.'); },
         get driveForbidden() { return tr('individual.status.driveForbidden', 'Google Drive 접근이 거부되었습니다. (403) 권한 또는 설정을 확인하세요.'); },
-        get driveNeedConsent() { return tr('individual.status.driveNeedConsent', '드라이브 접근 권한이 필요합니다. 상단 로그인 버튼을 눌러 권한을 승인해 주세요.'); },
+        get driveNeedConsent() { return tr('individual.status.driveNeedConsent', '드라이브 접근 권한이 필요합니다. 로그인 버튼을 눌러 권한을 승인해 주세요.'); },
         get driveNoData() { return tr('individual.status.driveNoData', '드라이브에 저장된 데이터가 없습니다.'); },
         get noData() { return tr('individual.status.noData', '저장된 데이터가 없습니다.'); },
         get driveQuotaExceeded() { return tr('individual.status.driveQuotaExceeded', 'Google 드라이브 저장 용량이 초과되었습니다. 공간을 확보해주세요.'); },
@@ -115,13 +113,17 @@
         if (pageDesc) pageDesc.textContent = tr('individual.pageDescription', '');
         const guideBtn = document.getElementById('openGuideBtn');
         if (guideBtn) {
-            const svg = '<span class="help-icon" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1" fill="rgba(255,255,255,0.05)"/><path d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.3"/></svg></span>';
-            guideBtn.innerHTML = svg + '<span style="margin-left:6px;">' + t.inputLabel + '</span>';
+            guideBtn.querySelector('span').textContent = t.inputLabel;
+            const targetLang = ['kr', 'en', 'jp', 'cn'].includes(lang) ? lang : 'kr';
+            guideBtn.href = `${window.BASE_URL || ''}/${targetLang}/pull-tracker/url-guide/`;
         }
+        document.getElementById('trackerUrlLabel').textContent = tr('individual.entry.url');
+        document.getElementById('trackerBackupLabel').textContent = tr('individual.entry.backup');
+        document.getElementById('trackerBackupNote').textContent = tr('individual.entry.backupNote');
         if (els.input) els.input.setAttribute('placeholder', t.placeholder);
         if (els.start) els.start.textContent = t.start;
         if (els.clear) els.clear.textContent = t.clear;
-        if (els.info) els.info.innerHTML = `${t.infoReady}<br>${t.infoNotice}`;
+        if (els.info) els.info.textContent = tr('individual.entry.retention');
         const hide4 = document.getElementById('hide4Label');
         if (hide4) hide4.textContent = t.hideUnder4;
         if (els.cardsTitle) els.cardsTitle.textContent = t.cardsTitle;
@@ -140,15 +142,6 @@
 
     function bindRuntimeUi() {
         try {
-            // URL 가이드 버튼 이동
-            const gbtn = document.getElementById('openGuideBtn');
-            if (gbtn) {
-                gbtn.addEventListener('click', () => {
-                    const base = (typeof window.BASE_URL !== 'undefined') ? window.BASE_URL : '';
-                    const targetLang = ['kr', 'en', 'jp', 'cn'].includes(lang) ? lang : 'kr';
-                    location.href = `${base}/${targetLang}/pull-tracker/url-guide/`;
-                });
-            }
             const box = document.getElementById('debugExamples');
             if (!box) return;
             if (DEBUG) box.style.display = 'flex';
@@ -588,7 +581,7 @@
 
             const makeCard = (key, title, data, ExtraRow = null, titleIcon = null) => {
                 const el = document.createElement('div');
-                el.className = 'overview-card';
+                el.className = 'overview-card section-card-cut';
                 // title with right-side icon (like stat-cards)
                 const titleWrap = document.createElement('div');
                 titleWrap.className = 'h3-row';
@@ -1127,7 +1120,7 @@
             const win5050Avg = (win5050 && win5050 > 0) ? (adjustedEffectiveTotal / win5050) : null;
 
             const card = document.createElement('div');
-            card.className = 'stat-card';
+            card.className = 'stat-card section-card-cut';
 
             const titleWrap = document.createElement('div');
             titleWrap.className = 'h3-row';
@@ -1296,7 +1289,7 @@
                         const tag = document.createElement('span');
                         tag.className = 'five-manual-tag';
                         tag.textContent = t.manualTag;
-                        tag.style.cssText = 'font-size:10px; padding:2px 6px; background:rgba(100,200,100,0.2); color:#8f8; border-radius:4px; margin-left:6px;';
+                        tag.style.cssText = 'font-size:10px; padding:2px 6px; background:rgba(100,200,100,0.2); color:#8f8; margin-left:6px;';
                         left.appendChild(tag);
                     }
 

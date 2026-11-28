@@ -263,11 +263,16 @@
     }
 
     // 모달 유틸
+    let restoreSetupFocus;
     function openModal(id) {
         document.getElementById(id).setAttribute('aria-hidden', 'false');
     }
     function closeModal(id) {
         document.getElementById(id).setAttribute('aria-hidden', 'true');
+        if (id === 'characterSetupModal') {
+            restoreSetupFocus?.()?.focus({ preventScroll: true });
+            restoreSetupFocus = null;
+        }
     }
 
     // 보조: 캐릭터 키 정규화 (KR 키로 정규화)
@@ -366,6 +371,9 @@
 
     // 설정 모달 시작
     function startSetupFor(name, editingId) {
+        const setupModal = document.getElementById('characterSetupModal');
+        restoreSetupFocus = () => [...document.querySelectorAll('.menu-btn[data-plan-id]')]
+            .find(button => button.dataset.planId === String(editingId)) || document.getElementById('addCharacterBtn');
         const title = document.getElementById('setupModalTitle');
 
         const modalHeader = document.querySelector('#characterSetupModal .modal-header');
@@ -389,6 +397,8 @@
         title.textContent = `${displayName}`;
         // 초기화 값 유지(기본 채움)
         openModal('characterSetupModal');
+        setupModal.querySelector('.modal-body').scrollTop = 0;
+        setupModal.querySelector('.modal-header [data-close]').focus({ preventScroll: true });
         // 지원 파티 여부 판단 및 현재 모달 상태 플래그 저장 (KR 리스트의 support_party 기준)
         const isSupport = (() => {
             const sp = (STATE.krCharacterList?.supportParty || []).map(resolveCharacterKey);
@@ -398,6 +408,12 @@
         // 저장 핸들러 바인딩
         const saveBtn = document.getElementById('savePlanBtn');
         saveBtn.onclick = () => {
+            const invalid = [...setupModal.querySelectorAll('.dual-wrapper')]
+                .map(row => row.validateRange()).find(Boolean);
+            if (invalid) {
+                invalid.focus();
+                return;
+            }
             const inputs = collectInputs();
             // 지원 파티는 S4를 1로 고정
             if (STATE._currentIsSupport) {
@@ -463,21 +479,20 @@
         const mindscapeEnabled = document.getElementById('mindscapeEnabled');
         const mindscapeOptions = document.getElementById('mindscapeOptions');
         if (mindscapeEnabled && mindscapeOptions) {
-            const toggleMindscapeOptions = (enabled) => {
+            const toggleMindscapeOptions = (enabled, animate = false) => {
                 const inputs = mindscapeOptions.querySelectorAll('input');
                 inputs.forEach(input => {
                     input.disabled = !enabled;
                 });
-                // 슬라이더도 활성화/비활성화
-                const sliders = mindscapeOptions.querySelectorAll('input[type="range"]');
-                sliders.forEach(slider => {
-                    slider.disabled = !enabled;
-                });
-                mindscapeOptions.style.display = enabled ? 'block' : 'none';
+                if (animate) {
+                    animateDisclosure(mindscapeOptions, enabled);
+                } else {
+                    window.disclosureMotion?.cancel(mindscapeOptions);
+                    mindscapeOptions.inert = !enabled;
+                    mindscapeOptions.style.display = enabled ? '' : 'none';
+                }
             };
-            mindscapeEnabled.addEventListener('change', (e) => {
-                toggleMindscapeOptions(e.target.checked);
-            });
+            mindscapeEnabled.onchange = () => toggleMindscapeOptions(mindscapeEnabled.checked, true);
             // 초기 상태 설정
             if (editingId) {
                 const plan = STATE.plans.find(pl => pl.id === editingId);
@@ -485,6 +500,7 @@
                 mindscapeEnabled.checked = enabled;
                 toggleMindscapeOptions(enabled);
             } else {
+                mindscapeEnabled.checked = false;
                 toggleMindscapeOptions(false);
             }
         }
@@ -634,6 +650,13 @@
 
     // 설정 슬라이더(듀얼 레이아웃: 라벨 / 숫자입력 / 슬라이더)
     function attachSliders() {
+        const controls = document.getElementById('setupRangeControls').content;
+        const groupStarts = ['lvFrom', 's1From', 'mindStat1From', 'mindscapeLevelFrom'];
+        const collapseSliders = sliderRow => {
+            window.disclosureMotion?.cancel(sliderRow);
+            sliderRow.inert = true;
+            sliderRow.style.display = 'none';
+        };
         const getRowByInput = (id) => { const el = document.getElementById(id); return el ? el.closest('.setting-row') : null; };
         const makeDual = (row, fromId, toId, min, max) => {
             if (!row) return;
@@ -644,6 +667,9 @@
             if (row.dataset.dualAttached) {
                 const sliderRow = row.querySelector('.dual-slider-row');
                 if (sliderRow) {
+                    collapseSliders(sliderRow);
+                    row.querySelector('.setup-range-toggle').setAttribute('aria-expanded', 'false');
+                    row.querySelector('.dual-wrapper').resetRangeError();
                     const sliders = sliderRow.querySelectorAll('input[type="range"]');
                     const slL = sliders[0];
                     const slR = sliders[1];
@@ -657,42 +683,109 @@
 
             row.dataset.dualAttached = '1';
             const existingLabel = row.querySelector('label');
-            const labelText = existingLabel ? existingLabel.textContent : '';
-
-            // 컨테이너
             const wrapper = document.createElement('div'); wrapper.className = 'dual-wrapper';
-            const title = document.createElement('div'); title.className = 'row-title'; title.textContent = labelText; wrapper.appendChild(title);
+            const title = document.createElement('div');
+            title.className = 'row-title';
+            title.id = `${fromId}Title`;
+            title.append(...existingLabel.childNodes);
+            if (existingLabel.dataset.i18n) title.dataset.i18n = existingLabel.dataset.i18n;
+            wrapper.appendChild(title);
 
-            // 숫자 입력 행: 기존 input을 이동하여 유지
-            const numberRow = document.createElement('div'); numberRow.className = 'dual-number-row';
-            const arrow1 = document.createElement('div'); arrow1.className = 'arrow big'; arrow1.textContent = '→';
-            numberRow.appendChild(from);
-            numberRow.appendChild(arrow1);
-            numberRow.appendChild(to);
+            if (groupStarts.includes(fromId)) {
+                const headings = controls.querySelector('.setup-value-headings').cloneNode(true);
+                headings.querySelector('.setup-from-heading').textContent = t('current2');
+                headings.querySelector('.setup-to-heading').textContent = t('target');
+                if (fromId === 'lvFrom' || fromId === 's1From') {
+                    const heading = row.closest('.setup-section').querySelector('h4');
+                    heading.before(headings);
+                    headings.removeAttribute('aria-hidden');
+                    headings.prepend(heading);
+                } else {
+                    row.before(headings);
+                }
+            }
 
             // 슬라이더 행
             const sliderRow = document.createElement('div'); sliderRow.className = 'dual-slider-row';
+            sliderRow.id = `${fromId}Sliders`;
+            collapseSliders(sliderRow);
             const slL = document.createElement('input'); slL.type = 'range'; slL.min = String(min); slL.max = String(max); slL.step = '1'; slL.value = from.value;
             const slR = document.createElement('input'); slR.type = 'range'; slR.min = String(min); slR.max = String(max); slR.step = '1'; slR.value = to.value;
             sliderRow.appendChild(slL); sliderRow.appendChild(slR);
+            [[from, slL, 'current2'], [to, slR, 'target']].forEach(([input, slider, key]) => {
+                input.setAttribute('inputmode', 'numeric');
+                const label = document.createElement('span');
+                label.id = `${input.id}Label`;
+                label.hidden = true;
+                label.dataset.i18n = key;
+                label.textContent = t(key);
+                for (const control of [input, slider]) {
+                    control.setAttribute('aria-labelledby', `${title.id} ${label.id}`);
+                }
+                wrapper.appendChild(label);
+            });
+            const toggle = controls.querySelector('.setup-range-toggle').cloneNode(true);
+            const toggleLabel = document.createElement('span');
+            toggleLabel.id = `${sliderRow.id}Label`;
+            toggleLabel.hidden = true;
+            toggleLabel.dataset.i18n = 'rangeControls';
+            toggleLabel.textContent = t('rangeControls');
+            toggle.setAttribute('aria-labelledby', `${title.id} ${toggleLabel.id}`);
+            toggle.setAttribute('aria-controls', sliderRow.id);
+            toggle.onclick = () => {
+                const show = toggle.getAttribute('aria-expanded') !== 'true';
+                const previous = row.closest('.setup-grid').querySelector('.setup-range-toggle[aria-expanded="true"]');
+                if (show && previous) {
+                    previous.setAttribute('aria-expanded', 'false');
+                    animateDisclosure(document.getElementById(previous.getAttribute('aria-controls')), false);
+                }
+                toggle.setAttribute('aria-expanded', String(show));
+                animateDisclosure(sliderRow, show);
+            };
 
             // 동기화
-            const normalize = () => {
-                const fv = Number(from.value);
-                let tv = Number(to.value);
-                if (tv < fv) { tv = fv; to.value = String(tv); slR.value = String(tv); }
+            const error = document.createElement('div');
+            error.className = 'setup-range-error';
+            error.id = `${fromId}Error`;
+            error.hidden = true;
+            error.setAttribute('aria-live', 'polite');
+            wrapper.resetRangeError = () => {
+                error.hidden = true;
+                error.textContent = '';
+                for (const input of [from, to]) {
+                    input.removeAttribute('aria-invalid');
+                    input.removeAttribute('aria-describedby');
+                }
             };
-            slL.addEventListener('input', () => { from.value = slL.value; normalize(); });
-            slR.addEventListener('input', () => { to.value = slR.value; normalize(); });
-            from.addEventListener('input', () => { slL.value = from.value; normalize(); });
-            from.addEventListener('change', () => { slL.value = from.value; normalize(); });
-            to.addEventListener('input', () => { slR.value = to.value; normalize(); });
-            to.addEventListener('change', () => { slR.value = to.value; normalize(); });
+            wrapper.validateRange = () => {
+                wrapper.resetRangeError();
+                if (from.disabled) return null;
+                const outOfBounds = [from, to].find(input => !input.value || !input.validity.valid);
+                const invalid = outOfBounds || (from.valueAsNumber > to.valueAsNumber ? to : null);
+                if (invalid) {
+                    error.hidden = false;
+                    error.textContent = outOfBounds
+                        ? t('rangeBounds').replace('{min}', invalid.min).replace('{max}', invalid.max)
+                        : t('rangeOrder');
+                    invalid.setAttribute('aria-invalid', 'true');
+                    invalid.setAttribute('aria-describedby', error.id);
+                }
+                return invalid;
+            };
+            for (const [input, slider] of [[from, slL], [to, slR]]) {
+                input.addEventListener('input', () => {
+                    if (input.value && input.validity.valid) slider.value = input.value;
+                });
+                input.addEventListener('change', wrapper.validateRange);
+                slider.addEventListener('input', () => {
+                    input.value = slider.value;
+                    wrapper.validateRange();
+                });
+            }
 
             // 기존 행 정리: 라벨 제거, 새 구조 삽입
             row.innerHTML = '';
-            wrapper.appendChild(numberRow);
-            wrapper.appendChild(sliderRow);
+            wrapper.append(from, to, toggle, toggleLabel, sliderRow, error);
             row.appendChild(wrapper);
         };
         makeDual(getRowByInput('lvFrom'), 'lvFrom', 'lvTo', 1, 80);
@@ -1174,6 +1267,7 @@
 
     // 렌더: 계획 카드들
     function renderPlans() {
+        window.actionDropdown.close();
         const root = document.getElementById('plansContainer');
         if (!root) return;
         const frag = document.createDocumentFragment();
@@ -1245,11 +1339,11 @@
             }
         });
         sorted.forEach(p => {
-            const card = document.createElement('div'); card.className = 'plan-card'; card.style.position = 'relative';
+            const card = document.createElement('div'); card.className = 'plan-card section-card-cut';
             // 오버레이 요소 생성 (include가 false일 때 표시)
             const overlay = document.createElement('div');
             overlay.className = 'plan-overlay';
-            overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);pointer-events:none;z-index:10;border-radius:inherit;';
+            overlay.style.cssText = 'position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);pointer-events:none;z-index:10;';
             overlay.style.display = p.include === false ? 'block' : 'none';
             const header = document.createElement('div'); header.className = 'plan-header'; header.style.position = 'relative';
             const title = document.createElement('div'); title.className = 'plan-title';
@@ -1287,28 +1381,17 @@
             title.appendChild(right);
             const actions = document.createElement('div'); actions.className = 'plan-actions';
             const menuBtn = document.createElement('button'); menuBtn.className = 'menu-btn'; menuBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>';
-            const menu = document.createElement('div'); menu.className = 'menu';
-            const editBtn = document.createElement('button'); editBtn.textContent = t('edit');
-            const deleteBtn = document.createElement('button'); deleteBtn.textContent = t('remove'); deleteBtn.style.color = 'tomato';
-            menu.appendChild(editBtn); menu.appendChild(deleteBtn);
-            actions.appendChild(menuBtn);
-            header.appendChild(title); header.appendChild(actions); header.appendChild(menu); card.appendChild(header);
-            // 메뉴 토글 + 바깥 클릭 시 닫기
-            menu.addEventListener('click', (e) => e.stopPropagation());
-            menuBtn.onclick = (e) => {
-                e.stopPropagation();
-                const opened = menu.classList.toggle('show');
-                if (opened) {
-                    const onDocClick = (ev) => {
-                        if (!menu.contains(ev.target) && ev.target !== menuBtn) {
-                            menu.classList.remove('show');
-                            document.removeEventListener('click', onDocClick);
-                        }
-                    };
-                    // 다음 틱에 등록해 현재 클릭으로 바로 닫히지 않게 함
-                    setTimeout(() => document.addEventListener('click', onDocClick), 0);
-                }
-            };
+            menuBtn.type = 'button';
+            menuBtn.dataset.planId = p.id;
+            menuBtn.setAttribute('aria-label', t('planActions'));
+            menuBtn.firstElementChild.setAttribute('aria-hidden', 'true');
+            const menu = document.createElement('div');
+            const editBtn = document.createElement('button'); editBtn.type = 'button'; editBtn.textContent = t('edit');
+            const deleteBtn = document.createElement('button'); deleteBtn.type = 'button'; deleteBtn.textContent = t('remove'); deleteBtn.dataset.danger = '';
+            menu.append(editBtn, deleteBtn);
+            actions.append(menuBtn, menu);
+            header.append(title, actions); card.appendChild(header);
+            window.actionDropdown.bind(menuBtn, menu);
             deleteBtn.onclick = () => {
                 const title = t('deleteConfirmTitle');
                 const msg = t('deleteConfirmMessage');
@@ -1426,6 +1509,7 @@
             const detailBtn = document.createElement('button'); detailBtn.className = 'mini-btn'; detailBtn.textContent = t('viewDetails');
             actions.insertBefore(detailBtn, menuBtn);
             const details = document.createElement('div'); details.className = 'plan-details'; details.style.display = 'none';
+            details.inert = true;
             const mindBaseProgress = getMindBaseProgress(p.inputs);
             details.innerHTML = `
                 <div class="row"><label>${t('level')}</label><div>${p.inputs.lvFrom}</div><div>→</div><div>${p.inputs.lvTo}</div></div>
@@ -1449,9 +1533,8 @@
             detailBtn.onclick = () => {
                 // 모든 카드 상세를 동시에 토글
                 const all = document.querySelectorAll('.plan-details');
-                const show = details.style.display === 'none';
-                const display = show ? 'block' : 'none';
-                all.forEach(d => d.style.display = display);
+                const show = details.inert;
+                all.forEach(panel => animateDisclosure(panel, show));
             };
 
             card.appendChild(matGrid);
@@ -1466,6 +1549,19 @@
         if (filterResetBtn) {
             const anyOn = (fElement.length + fPosition.length + fRarity.length) > 0;
             filterResetBtn.style.display = anyOn ? '' : 'none';
+        }
+    }
+
+    function animateDisclosure(panel, show, hide = () => { panel.style.display = 'none'; }) {
+        const motion = window.disclosureMotion;
+        panel.inert = !show;
+        if (show) {
+            panel.style.display = '';
+            motion?.reveal(panel);
+        } else if (motion) {
+            motion.collapse(panel, hide);
+        } else {
+            hide();
         }
     }
 
@@ -1537,7 +1633,6 @@
 
         const resetBtn = document.getElementById('resetBtn');
         if (resetBtn) {
-            resetBtn.textContent = t('reset');
             resetBtn.onclick = () => {
                 const title = t('resetConfirmTitle');
                 const msg = t('resetConfirmMessage');
@@ -1554,30 +1649,54 @@
         }
 
         document.querySelectorAll('[data-close]').forEach(btn => btn.addEventListener('click', e => {
-            const modal = e.target.closest('.modal'); if (modal) modal.setAttribute('aria-hidden', 'true');
+            const modal = e.currentTarget.closest('.modal'); if (modal) closeModal(modal.id);
         }));
+        document.getElementById('characterSetupModal').addEventListener('keydown', event => {
+            if (event.isComposing) return;
+            if (event.key === 'Escape') {
+                event.preventDefault();
+                closeModal('characterSetupModal');
+            } else if (event.key === 'Tab') {
+                const controls = [...event.currentTarget.querySelectorAll('button:not(:disabled), input:not(:disabled)')]
+                    .filter(control => control.getClientRects().length && !control.closest('[inert]'));
+                const first = controls[0], last = controls.at(-1);
+                if (event.shiftKey ? document.activeElement === first : document.activeElement === last) {
+                    event.preventDefault();
+                    (event.shiftKey ? last : first).focus();
+                }
+            }
+        });
         const collapse = document.getElementById('collapseSummary');
         const summaryHeader = document.querySelector('.summary-header');
-        if (collapse && summaryHeader) {
+        const summaryContent = document.getElementById('summaryContent');
+        if (collapse && summaryHeader && summaryContent) {
             summaryHeader.onclick = () => {
-                const grid = document.getElementById('summaryGrid');
-                const open = collapse.getAttribute('aria-expanded') === 'true';
-                collapse.setAttribute('aria-expanded', String(!open));
-                grid.style.display = open ? 'none' : 'grid';
-                collapse.textContent = open ? '▸' : '▾';
+                const show = collapse.getAttribute('aria-expanded') !== 'true';
+                collapse.setAttribute('aria-expanded', String(show));
+                animateDisclosure(summaryContent, show);
+            };
+        }
+        const extraSection = document.getElementById('extraMaterialsSection');
+        const extraToggle = extraSection?.querySelector('summary');
+        const extraGrid = document.getElementById('extraMaterialsGrid');
+        if (extraToggle && extraGrid) {
+            extraToggle.onclick = event => {
+                event.preventDefault();
+                const show = !extraSection.open || extraGrid.inert;
+                if (show) extraSection.open = true;
+                animateDisclosure(extraGrid, show, () => { extraSection.open = false; });
             };
         }
         // 필터 토글 버튼 (#plannerFilterToggle)과 내용 영역 (#plannerFilterContent)
         const filterToggleBtn = document.getElementById('plannerFilterToggle');
         const filterContent = document.getElementById('plannerFilterContent');
         if (filterToggleBtn && filterContent) {
-            filterToggleBtn.setAttribute('aria-expanded', String(false));
             filterContent.style.display = 'none';
+            filterContent.inert = true;
             filterToggleBtn.onclick = () => {
-                const open = filterContent.style.display !== 'none';
-                const next = open ? 'none' : 'block';
-                filterContent.style.display = next;
-                filterToggleBtn.setAttribute('aria-expanded', String(next === 'block'));
+                const show = filterToggleBtn.getAttribute('aria-expanded') !== 'true';
+                filterToggleBtn.setAttribute('aria-expanded', String(show));
+                animateDisclosure(filterContent, show);
             };
         }
 

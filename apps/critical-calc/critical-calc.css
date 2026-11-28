@@ -70,9 +70,6 @@ input[type="checkbox"]:hover {
 .stat-card {
     padding: 20px 24px;
     text-align: left;
-    background-color: var(--card-background);
-    border-radius: 10px;
-    border-bottom: 3px solid var(--border-red);
     display: flex;
     align-items: center;
 }
@@ -107,7 +104,6 @@ input[type="checkbox"]:hover {
     gap: 8px;
     background: #191919;
     padding: 16px;
-    border-radius: 12px;
 }
 
 .critical-sum-total-label {
@@ -183,7 +179,6 @@ input[type="checkbox"]:hover {
     background-color: var(--card-background);
     color: rgb(255, 255, 255, 0.8);
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     width: 100%;
     padding: 8px 4px !important;
@@ -215,7 +210,6 @@ input[type="checkbox"]:hover {
     overflow-x: auto;
     margin: 0 20px;
     padding: 20px 20px 30px 20px;
-    border-radius: 10px;
     background-color: var(--card-background);
 }
 
@@ -308,51 +302,22 @@ input[type="checkbox"]:hover {
 }
 
 
-.option-column select {
-    font-size: 12px;
-    background-color: rgb(0, 0, 0, 0.1);
-    color: rgb(255, 255, 255, 0.4);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.option-column select[data-select-density="compact"] {
     width: fit-content;
-    padding: 8px 4px !important;
 }
 
 /* Kotone Skill 3: portrait character selector and awareness spacing */
 .option-column:has(.kotone-character-select) { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .option-column .kotone-character-select { position: relative; display: inline-block; min-width: 112px; margin-right: 0; vertical-align: middle; }
-.option-column .kotone-character-trigger, .option-column .kotone-character-option { display: flex; align-items: center; gap: 6px; width: 100%; border: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
-.option-column .kotone-character-trigger { min-height: 28px; padding: 3px 7px; background: rgba(0,0,0,.18); border-radius: 5px; }
+.option-column .kotone-character-trigger, .option-column .kotone-character-option { display: flex; align-items: center; gap: 6px; width: 100%; border: 0; border-radius: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.option-column .kotone-character-trigger { min-height: 28px; padding: 3px 7px; background: rgba(0,0,0,.18); }
 .option-column .kotone-character-trigger:hover { background: rgba(0,0,0,.28); }
-.option-column .kotone-character-trigger img, .option-column .kotone-character-option img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
-.option-column .kotone-character-menu { display: none; position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; min-width: 160px; max-height: 240px; overflow-y: auto; padding: 4px; background: #252525; border: 1px solid rgba(255,255,255,.2); border-radius: 6px; box-shadow: 0 8px 20px rgba(0,0,0,.35); }
+.option-column .kotone-character-trigger img, .option-column .kotone-character-option img { width: 22px; height: 22px; border-radius: 0; object-fit: cover; }
+.option-column .kotone-character-menu { display: none; position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; min-width: 160px; max-height: 240px; overflow-y: auto; padding: 4px; border-radius: 0; background: #252525; border: 1px solid rgba(255,255,255,.2); box-shadow: 0 8px 20px rgba(0,0,0,.35); }
 .option-column .kotone-character-menu.show { display: block; }
-.option-column .kotone-character-option { padding: 5px 7px; background: rgba(0,0,0,.18); border-radius: 4px; }
+.option-column .kotone-character-option { padding: 5px 7px; background: rgba(0,0,0,.18); }
 .option-column .kotone-character-option:hover { background: rgba(0,0,0,.28); }
 .option-column .kotone-copy-awareness { margin-left: 0; vertical-align: middle; }
-
-/* 옵션 스타일링 */
-select option {
-    background-color: var(--card-background);
-    color: rgb(255, 255, 255, 0.8);
-}
-
-/* 선택된 옵션 스타일링 */
-select option:checked {
-    background-color: #4d3e3e;
-}
-
-/* 호버 상태 스타일링 */
-select option:hover {
-    background-color: #4d3e3e;
-}
-
-/* Firefox에서 옵션 배경색 강제 적용 */
-select:-moz-focusring {
-    color: transparent;
-    text-shadow: 0 0 0 rgb(255, 255, 255, 0.8);
-}
 
 .critical-table td {
     vertical-align: middle;
@@ -436,7 +401,7 @@ select:-moz-focusring {
     padding: 5px 10px;
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
+    border-radius: 0;
     color: #dd8484;
     font-size: 14px;
     text-align: right;
@@ -504,14 +469,13 @@ select:-moz-focusring {
 /* 탭 스타일 */
 .table-tabs {
     margin: 0 0px;
-    background-color: var(--card-background);
-    border-radius: 10px;
 }
 
 .tab-buttons {
     display: flex;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0 0px;
+    padding-bottom: 3px;
+    background: var(--section-divider-paint);
+    background-position-y: bottom, bottom, bottom 1px;
 }
 
 .tab-button {
@@ -698,13 +662,12 @@ img[src*="item-mind_stat2.png"] {
     }
 
     .table-tabs {
+        --section-card-fill: transparent;
         margin: 0;
-        background-color: transparent;
         padding: 0;
     }
 
     .tab-buttons {
-        padding: 0;
         margin-bottom: 10px;
     }
 
@@ -748,13 +711,11 @@ img[src*="item-mind_stat2.png"] {
         padding: 12px 12px 12px 12px;
         margin: 0 0 0px 0px;
         background: transparent;
-        border-radius: 0;
     }
 
     /* 그룹 헤더가 아닌 일반 row는 배경색 유지 (그룹에 속하지 않은 경우) */
     .critical-table tr:not(.group-header):not(.group-row) {
         background: rgb(62 62 62);
-        border-radius: 8px;
         margin: 0 0 8px 0px;
     }
 
@@ -871,22 +832,12 @@ img[src*="item-mind_stat2.png"] {
         align-items: center;
         gap: 8px;
         padding: 12px;
-        margin: 10px 0 0 0;
         background: var(--card-background);
-        border-radius: 10px;
         position: relative;
         z-index: 1;
     }
 
-    /* 그룹 헤더가 닫혀있을 때는 전체 라운드 */
-    .critical-table tr.group-header.group-closed {
-        border-radius: 10px;
-        margin-bottom: 10px;
-    }
-
-    /* 그룹 헤더가 열려있을 때는 상단만 라운드 */
     .critical-table tr.group-header.group-open {
-        border-radius: 10px 10px 0 0;
         background: #292929;
     }
 
@@ -899,7 +850,6 @@ img[src*="item-mind_stat2.png"] {
         margin-left: 0;
         margin-top: 0;
         margin-bottom: 0;
-        border-radius: 0;
         background: var(--card-background);
     }
 
@@ -908,16 +858,8 @@ img[src*="item-mind_stat2.png"] {
         margin-top: 0;
     }
 
-    /* 같은 그룹의 마지막 row는 하단 라운드 처리 (표시 중인 경우만) */
     .critical-table tr.group-row.group-last-row:not([style*="display: none"]) {
-        border-radius: 0 0 10px 10px;
-        margin-bottom: 10px;
         padding-bottom: 12px;
-    }
-
-    /* 그룹 헤더 다음에 다른 그룹 헤더가 오는 경우 */
-    .critical-table tr.group-header+tr.group-header {
-        margin-top: 10px;
     }
 
     /* 그룹 row들 사이의 간격 제거 */
@@ -934,12 +876,6 @@ img[src*="item-mind_stat2.png"] {
     /* 빈 캐릭터 행 스타일 */
     .critical-table tr.empty-char {
         padding-top: 8px;
-    }
-
-    /* 옵션 선택 스타일 */
-    .option-column select {
-        width: 100%;
-        padding: 4px !important;
     }
 
     /* note-column에 텍스트가 없으면 display: none; */
@@ -1046,14 +982,6 @@ img[src*="item-mind_stat2.png"] {
     .group-row[data-group] {
         margin-left: 8px;
     }
-
-    .group-header+.group-row {
-        border-top-left-radius: 6px;
-    }
-
-    .group-row:last-child {
-        border-bottom-left-radius: 6px;
-    }
 }
 
 /* PC 열 별 크기 지정 (defense-calc와 동일) */
@@ -1092,4 +1020,8 @@ img[src*="item-mind_stat2.png"] {
         min-width: 270px;
         box-sizing: border-box;
     }
+}
+
+.skill-effect-amp-group :is(input[type="number"], .skill-effect-amp-checkbox-frame) {
+    border-radius: 0;
 }

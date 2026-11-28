@@ -175,7 +175,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     </div>
 
     <!-- Title/Memo Input -->
-    <div class="tactic-input-group">
+    <div class="tactic-input-group section-card-cut">
         <!-- Title Input -->
         <div class="tactic-title-container">
             <input type="text" id="tacticTitle" class="tactic-title-input" placeholder="택틱 제목을 입력하세요"
@@ -231,14 +231,14 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
         </div>
 
         <!-- Roster (Expandable) -->
-        <div class="roster-container" id="rosterContainer">
+        <div class="roster-container section-card-cut" id="rosterContainer">
             <div class="roster-content" id="rosterList">
                 <!-- Character icons will be injected here -->
             </div>
         </div>
         <div class="need-stat-container" id="needStatContainer" hidden></div>
         <!-- Wonder Config Panel (below party slots) -->
-        <div class="wonder-config-panel" id="wonderConfigContainer">
+        <div class="wonder-config-panel section-card-cut" id="wonderConfigContainer">
             <!-- Wonder Config injected here -->
         </div>
 
@@ -249,7 +249,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
     <!-- <div class="wonder-trigger-container">...</div> -->
 
     <!-- Tactic Board -->
-    <section class="tactic-board-section">
+    <section class="tactic-board-section section-card-cut">
         <div class="tactic-table-container">
             <table class="tactic-table" id="tacticTable">
                 <thead>
@@ -376,6 +376,7 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 <script type="importmap">
     {
         "imports": {
+            "{{ site.baseurl }}/apps/tactic-maker/js/capture.js": "{{ site.baseurl }}/apps/tactic-maker/js/capture.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/js/capture.js'] }}",
             "{{ site.baseurl }}/apps/tactic-maker/js/data-loader.js": "{{ site.baseurl }}/apps/tactic-maker/js/data-loader.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/js/data-loader.js'] }}",
             "{{ site.baseurl }}/apps/tactic-maker/js/need-stat-state.js": "{{ site.baseurl }}/apps/tactic-maker/js/need-stat-state.js?h={{ site.data.asset_versions.files['/apps/tactic-maker/js/need-stat-state.js'] }}"
         }

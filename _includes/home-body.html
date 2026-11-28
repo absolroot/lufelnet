@@ -53,6 +53,8 @@ window.getHomeStaticAssetUrl = function (path) {
 };
 </script>
 <link rel="stylesheet" href="/apps/home/home.css?h={{ site.data.asset_versions.files['/apps/home/home.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/tactic-post-card.css?h={{ site.data.asset_versions.files['/assets/css/tactic-post-card.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/support-dialog.css?h={{ site.data.asset_versions.files['/assets/css/default/support-dialog.css'] }}">
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <script>
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 <script src="/apps/home/js/home-section-state.js?h={{ site.data.asset_versions.files['/apps/home/js/home-section-state.js'] }}"></script>
 <script src="/apps/home/tactic-posts-home.js?h={{ site.data.asset_versions.files['/apps/home/tactic-posts-home.js'] }}"></script>
-<script defer src="{{ site.baseurl }}/assets/js/character/character-prefetch.js?h={{ site.data.asset_versions.files['/assets/js/character/character-prefetch.js'] }}"></script>
+{% include character-initial-resource-hashes.html %}
 <script src="/apps/home/js/popular-characters.js?h={{ site.data.asset_versions.files['/apps/home/js/popular-characters.js'] }}"></script>
 <script src="/apps/home/js/guides-home.js?h={{ site.data.asset_versions.files['/apps/home/js/guides-home.js'] }}"></script>
 
@@ -80,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <style>
     .header-container .language-selector-container {
         max-width: 120px;
-        margin: 0 0 4px 4px;
+        margin: 0;
         padding: 0;
         z-index: 1000;
         display: flex;
@@ -115,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!-- Header (logo, etc.) -->
     <div class="header-container page-entrance-part">
-        <h1 id="site-title">P5X 루페르넷</h1> <span class="beta-text"></span>
+        <h1 id="site-title">P5X 루페르넷</h1>
         <div class="language-selector-container">
             <div class="custom-select">
                 <div class="selected-option">
@@ -174,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     <!--<div class="separator-line"></div>-->
     <!-- Main content -->
-    <div class="main-content page-entrance-part">
+    <div class="main-content page-entrance-part section-card-cut">
         <!-- Quick Launcher Grid -->
         <div class="quick-grid" id="quick-grid" data-home-section="quick-grid" aria-busy="true">
             {% for item in (1..18) %}<div class="quick-item home-quick-skeleton" aria-hidden="true"><span></span><i></i></div>{% endfor %}
@@ -182,8 +184,9 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="update-notice"></div>
     </div>
     <div class="separator-line"></div>
-    <div class="popular-content page-entrance-part" data-max-count="10">
-        <div class="posts-header">
+    {% assign popular_character_count = 10 %}
+    <div class="popular-content section-card-cut" data-max-count="{{ popular_character_count }}">
+        <div class="posts-header page-entrance-part">
             <h2><a href="/character/" style="text-decoration: none; color: inherit;" id="popular-characters-title">인기
                     괴도</a></h2>
             <a href="/character/" class="show-more-characters-btn" style="text-decoration: none; color: inherit;"
@@ -192,15 +195,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 max-height: 11px; opacity: 0.75;
             "></a>
         </div>
-        <div class="character-cards" id="popular-character-cards" data-home-section="popular-characters" aria-busy="true">
-            {% for item in (1..5) %}<div class="home-character-skeleton" aria-hidden="true"><span></span><i></i></div>{% endfor %}
+        <div class="character-cards page-entrance-part" id="popular-character-cards" data-home-section="popular-characters" aria-busy="true"
+            data-page-entrance-stagger=":scope > .character-card" data-page-entrance-stagger-scroll>
+            {% for item in (1..popular_character_count) %}<div class="home-character-skeleton" aria-hidden="true"><span></span><i></i></div>{% endfor %}
         </div>
     </div>
     <!-- Guild Bosses Section -->
     {% include nitro-ad.html id="home-bosses-banner" format="banner" class="nitro-ad-container--home-bosses" placeholder=true %}
-    <div id="home-bosses-root" class="page-entrance-part" data-home-section="bosses" aria-busy="true"><div class="bosses-card home-boss-skeleton-card" aria-hidden="true"><div class="home-panel-skeleton bosses-loading-placeholder" aria-hidden="true"></div></div></div>
+    <div id="home-bosses-root" class="page-entrance-part section-card-cut" data-home-section="bosses" aria-busy="true"><div class="bosses-card home-boss-skeleton-card" aria-hidden="true"><div class="home-panel-skeleton bosses-loading-placeholder" aria-hidden="true"></div></div></div>
     <div class="separator-line"></div>
-    <div class="guides-container page-entrance-part">
+    <div class="guides-container page-entrance-part section-card-cut">
         <div class="posts-header">
             <h2><a href="/article/" style="text-decoration: none; color: inherit;" id="guides-title">아티클</a></h2>
             <a href="/article/" class="show-more-characters-btn" style="text-decoration: none; color: inherit;"
@@ -212,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
     </div>
 
-    <div class="posts-container page-entrance-part" id="posts-container">
+    <div class="posts-container page-entrance-part section-card-cut" id="posts-container">
         <div class="posts-header">
             <h2><a href="./tactic/library" style="text-decoration: none; color: inherit;" id="tactic-workshop-title">택틱
                     도서관 NEW</a></h2>
@@ -221,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 max-height: 11px; opacity: 0.75;
             "></a>
         </div>
-        <div class="posts-list" id="postsList" data-home-section="tactics" aria-busy="true">
+        <div class="posts-list home-tactic-posts" id="postsList" data-home-section="tactics" aria-busy="true">
             {% for item in (1..3) %}<div class="home-row-skeleton home-row-skeleton--tactic" aria-hidden="true"><i></i><span></span></div>{% endfor %}
         </div>
     </div>
@@ -269,186 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </div>
 
-<!-- Support Modal Styles for Mobile Centering -->
-<style>
-    @media (min-width: 769px) {
-
-        #supportModalJP .modal-content,
-        #supportModalKR .modal-content,
-        #supportModalCN .modal-content,
-        #kakaoPayModalHome .modal-content {
-            margin: 0 !important;
-            position: absolute;
-            top: 50%;
-            left: calc(50% + 120px);
-            transform: translate(-50%, -50%);
-        }
-    }
-
-    @media (max-width: 768px) {
-
-        #supportModalJP .modal-content,
-        #supportModalKR .modal-content,
-        #supportModalCN .modal-content,
-        #kakaoPayModalHome .modal-content {
-            margin: 0 !important;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-    }
-</style>
-
-<!-- Support Modal for JP -->
-<div id="supportModalJP" class="modal"
-    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-    <div class="modal-content"
-        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
-        <span class="close-button" onclick="document.getElementById('supportModalJP').style.display='none'"
-            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">サポート</h3>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <a href="https://absolroot.fanbox.cc/plans" target="_blank" style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    background-color: #F5F5F5;
-                    color: #333;
-                    text-decoration: none;
-                    font-weight: bold;
-                    padding: 15px;
-                    border-radius: 8px;
-                    transition: transform 0.2s;
-                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="https://img.icons8.com/color/48/pixiv.png" alt="pixiv" loading="lazy" decoding="async" style="width: 32px; height: 32px;">
-                <span style="font-size: 1.1em;">pixivFANBOXで支援する</span>
-            </a>
-
-            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    background-color: #72a4f2;
-                    color: white;
-                    text-decoration: none;
-                    font-weight: bold;
-                    padding: 15px;
-                    border-radius: 8px;
-                    transition: transform 0.2s;
-                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" loading="lazy" decoding="async" style="width: 32px; height: auto;">
-                <span style="font-size: 1.1em;">Ko-fiで支援する</span>
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Support Modal for CN -->
-<div id="supportModalCN" class="modal"
-    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-    <div class="modal-content"
-        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
-        <span class="close-button" onclick="document.getElementById('supportModalCN').style.display='none'"
-            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">支持</h3>
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    background-color: #72a4f2;
-                    color: white;
-                    text-decoration: none;
-                    font-weight: bold;
-                    padding: 15px;
-                    border-radius: 8px;
-                    transition: transform 0.2s;
-                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" loading="lazy" decoding="async" style="width: 32px; height: auto;">
-                <span style="font-size: 1.1em;">通过 Ko-fi 支持</span>
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- Support Modal for KR -->
-<div id="supportModalKR" class="modal"
-    style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-    <div class="modal-content"
-        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px; color: white;">
-        <span class="close-button" onclick="document.getElementById('supportModalKR').style.display='none'"
-            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-        <h3 style="margin-top: 0; margin-bottom: 20px; text-align: center;">서포트</h3>
-        <!-- <p style="text-align: center; margin-bottom: 20px; word-break: keep-all;">
-            루페르넷은 여러분의 후원으로만 운영됩니다.<br>
-        </p>-->
-        <div style="display: flex; flex-direction: column; gap: 15px;">
-            <!-- KakaoPay Button -->
-            <button
-                onclick="document.getElementById('supportModalKR').style.display='none'; document.getElementById('kakaoPayModalHome').style.display='block';"
-                style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    background-color: #ffeb00;
-                    color: #000;
-                    border: none;
-                    font-weight: bold;
-                    padding: 15px;
-                    border-radius: 8px;
-                    cursor: pointer;
-                    width: 100%;
-                    font-size: 1rem;
-                    transition: transform 0.2s;
-                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="{{ site.baseurl }}/assets/img/logo/kakaopay-logo.png" alt="kakaopay" loading="lazy" decoding="async"
-                    style="height: 24px; vertical-align: middle;">
-                <span>카카오페이</span>
-            </button>
-
-            <!-- Ko-fi Button -->
-            <a href="https://ko-fi.com/S6S11F0PUN" target="_blank" style="
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    gap: 10px;
-                    background-color: #72a4f2;
-                    color: white;
-                    text-decoration: none;
-                    font-weight: bold;
-                    padding: 15px;
-                    border-radius: 8px;
-                    transition: transform 0.2s;
-                " onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <img src="https://storage.ko-fi.com/cdn/cup-border.png" alt="Ko-fi" loading="lazy" decoding="async" style="width: 32px; height: auto;">
-                <span style="font-size: 1.1em;">Support me on Ko-fi</span>
-            </a>
-        </div>
-    </div>
-</div>
-
-<!-- KakaoPay QR Modal (Home) -->
-<div id="kakaoPayModalHome" class="modal"
-    style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);">
-    <div class="modal-content"
-        style="background-color: #2a2a2a; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 400px; border-radius: 8px; color: white; text-align: center;">
-        <span class="close-button" onclick="document.getElementById('kakaoPayModalHome').style.display='none'"
-            style="color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-        <h3 style="margin-top: 0; margin-bottom: 20px;">KakaoPay QR</h3>
-        <div style="background: white; padding: 20px; border-radius: 8px; display: inline-block;">
-            <img src="{{ site.baseurl }}/assets/img/logo/kakaopay.png" alt="카카오페이 QR" loading="lazy" decoding="async"
-                style="width: 100%; max-width: 250px; height: auto;">
-        </div>
-        <p style="margin-top: 15px; color: #ccc; font-size: 0.9em;">
-            스마트폰 카메라 또는 카카오톡으로 스캔해주세요.
-        </p>
-    </div>
-</div>
+{% include home-support-dialogs.html %}
 
 <!-- Home i18n bootstrap -->
 {% assign home_ui_lang = page.language | default: 'kr' %}
@@ -463,6 +288,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="{{ site.baseurl }}/i18n/service/i18n-adapter.js?h={{ site.data.asset_versions.files['/i18n/service/i18n-adapter.js'] }}"></script>
 <script src="/apps/home/js/home-i18n.js?h={{ site.data.asset_versions.files['/apps/home/js/home-i18n.js'] }}"></script>
 <!-- Carousel JS -->
+<script defer src="{{ site.baseurl }}/assets/js/gsap-loader.js?h={{ site.data.asset_versions.files['/assets/js/gsap-loader.js'] }}" data-gsap-src="{{ site.baseurl }}/assets/js/gsap.min.js?h={{ site.data.asset_versions.files['/assets/js/gsap.min.js'] }}"></script>
 <script defer src="/apps/home/js/carousel-motion.js?h={{ site.data.asset_versions.files['/apps/home/js/carousel-motion.js'] }}"></script>
 <script src="/apps/home/js/carousel.js?h={{ site.data.asset_versions.files['/apps/home/js/carousel.js'] }}"></script>
 <!-- Tooltip (for affix hover) -->

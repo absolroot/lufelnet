@@ -229,7 +229,7 @@
     padding: 20px 0;
     pointer-events: none;
     opacity: 1;
-    transition: opacity 0.7s ease-in-out;
+    transition: opacity 0.32s ease-out;
     z-index: 10;
 }
 
@@ -247,8 +247,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 4.375% / 2.63%;
-    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
     outline: none;
     user-select: none;
     -webkit-user-select: none;
@@ -256,10 +254,12 @@
     -ms-user-select: none;
 }
 
+.card:not(:where(.character-tile)) img {
+    border-radius: 4.375% / 2.63%;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.05);
+}
+
 .character-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     transition: all 0.7s ease-in-out;
     position: relative;
 }
@@ -303,55 +303,10 @@
     }
 }
 
-.element-icon {
-    width: 11% !important;
-    height: auto !important;
-    position: absolute;
-    top: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    object-fit: contain !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-}
-
-/* 특정 속성 아이콘들은 더 크게 표시 */
-.element-icon img[src*="속성_축복.png"],
-.element-icon img[src*="속성_빙결.png"],
-.element-icon img[src*="속성_질풍빙결.png"] {
-    width: 12% !important;
-}
-
-.element-icon[src*="속성_주원.png"] {
-    width: 9% !important;
-}
-
 .filter-options img[src*="속성_주원.png"] {
     width: 16px !important;
     height: 16px !important;
     padding: 2px;
-}
-
-.position-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-}
-
-.position-icon {
-    width: 60% !important;
-    height: auto !important;
-    object-fit: contain !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    filter: sepia(100%) saturate(100%) hue-rotate(359deg) brightness(100%);
 }
 
 .card:nth-child(odd) {
@@ -362,15 +317,7 @@
     transform: rotate(-2deg) translateY(10px);
 }
 
-/* 실제 호버를 지원하는 환경에서만 카드 호버 효과 적용 */
 @media (hover: hover) and (pointer: fine) {
-    /* 호버 시 카드 이미지 색이 빛나는 효과 */
-    .card:hover {
-        filter: brightness(1.1);
-        transform: rotate(-1deg) translateY(0px);
-        z-index: 1;
-    }
-
     /* 카드 호버 시 이름표 배경색 변경 */
     .card:hover .name-text {
         background: linear-gradient(to bottom, #8e222d, #841f28);
@@ -407,6 +354,72 @@
     }
 }
 
+.character-card-art-window {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* Trace the inside edge of the frame in the original card bitmap. */
+    clip-path: polygon(
+        5.6% 9%, 6% 5%, 9% 3.4%, 19% 3.4%, 25% 4.8%, 33% 6.9%,
+        42% 8.2%, 47% 9%, 50% 9.8%, 53% 9%, 58% 8.2%, 67% 6.9%,
+        75% 4.8%, 81% 3.4%, 91% 3.4%, 94% 5%, 94.4% 9%, 94.4% 89.7%,
+        88% 90.6%, 77% 88.1%, 68% 86.5%, 60% 86.4%, 54% 87.4%, 50% 84.3%,
+        46% 87.4%, 40% 86.4%, 32% 86.5%, 23% 88.1%, 12% 90.6%, 5.6% 89.7%
+    );
+}
+
+.card[data-rarity="4"] .character-card-art-window {
+    clip-path: polygon(
+        5.5% 8%, 6.1% 4.8%, 8.6% 3.3%, 21% 3.3%, 30% 5.2%, 39% 6.6%,
+        45% 7.1%, 50% 7.4%, 55% 7.1%, 61% 6.6%, 70% 5.2%, 79% 3.3%,
+        91.4% 3.3%, 93.9% 4.8%, 94.5% 8%, 94.5% 89.8%, 91% 90.8%,
+        86% 90.7%, 76% 88.9%, 65% 87.1%, 58% 87.2%, 53% 88%, 50% 88.7%,
+        47% 88%, 42% 87.2%, 35% 87.1%, 24% 88.9%, 14% 90.7%, 9% 90.8%, 5.5% 89.8%
+    );
+}
+
+.character-card-art-zoom {
+    position: absolute;
+    inset: 0;
+    background: center / cover no-repeat;
+    scale: 1;
+    transition: scale 220ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.character-card-art-window.is-zoomed > .character-card-art-zoom {
+    scale: 1.03;
+}
+
+.character-card-art-light {
+    position: absolute;
+    inset: -28%;
+    background: radial-gradient(ellipse closest-side, rgb(255 255 255 / 16%), rgb(255 255 255 / 6%) 45%, transparent 86%);
+    opacity: 0;
+    translate: var(--reflection-position, 0 0);
+    transition: opacity 200ms ease-out, translate 330ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.character-card-art-window.is-zoomed > .character-card-art-light {
+    opacity: 1;
+}
+
+@starting-style {
+    .character-card-art-window.is-zoomed > .character-card-art-zoom {
+        scale: 1;
+    }
+
+    .character-card-art-window.is-zoomed > .character-card-art-light {
+        opacity: 0;
+        translate: 0 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .character-card-art-window {
+        display: none;
+    }
+}
+
 
 
 
@@ -419,27 +432,6 @@
     height: auto !important;
     object-fit: contain !important;
     z-index: 1 !important;
-}
-
-.name-text {
-    position: absolute;
-    display: block;
-    font-size: 13px;
-    color: #fff;
-    bottom: -18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 20px);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    background: linear-gradient(to bottom, #610000, #5a0000);
-    padding: 5px 10px;
-    border-radius: 0 0 5% 5% / 0 0 25% 25%;
-    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.05);
-    transition: background 0.5s;
-    /* 배경색 전환 효과 추가 */
 }
 
 /* 필터 섹션 스타일 */
@@ -534,7 +526,7 @@
     position: relative;
     color: #fff;
     cursor: pointer;
-    border-radius: 32px;
+    border-radius: var(--filter-icon-corner);
     padding: 0px 6px 0px 6px;
     transition: background-color 160ms ease, box-shadow 160ms ease, transform 120ms ease;
     background-color: var(--card-background);
@@ -572,25 +564,12 @@
     transition: opacity 140ms ease-out, transform 140ms ease-out, visibility 0s linear 140ms;
 }
 
-.filter-options label[data-tooltip]::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% + 1px);
-    transform: translate(-50%, 4px);
-    z-index: 31;
-    border: 5px solid transparent;
-    border-top-color: rgba(8, 10, 14, 0.95);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 140ms ease-out, transform 140ms ease-out, visibility 0s linear 140ms;
+.filter-options label[data-tooltip]:is(:hover, :has(input:focus-visible)) {
+    z-index: 2;
 }
 
 .filter-options label[data-tooltip]:hover::after,
-.filter-options label[data-tooltip]:hover::before,
-.filter-options label[data-tooltip]:has(input:focus-visible)::after,
-.filter-options label[data-tooltip]:has(input:focus-visible)::before {
+.filter-options label[data-tooltip]:has(input:focus-visible)::after {
     opacity: 1;
     visibility: visible;
     transform: translate(-50%, 0);
@@ -598,8 +577,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .filter-options label[data-tooltip]::after,
-    .filter-options label[data-tooltip]::before {
+    .filter-options label[data-tooltip]::after {
         transform: translateX(-50%);
         transition: none;
     }
@@ -667,6 +645,8 @@
 }
 
 #characterCards > .card:not(.character-card-skeleton) {
+    translate: var(--character-card-arrival-translate, none);
+    scale: var(--character-card-arrival-scale, none);
     transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1), filter 180ms ease;
 }
 
@@ -944,69 +924,4 @@ textarea {
     }
 }
 
-.search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-45%);
-    pointer-events: none;
-}
-
-#characterSearch {
-    width: 100%;
-    padding: 10px 16px 10px 44px;
-    border: none;
-    border-radius: 32px;
-    background: var(--card-background);
-    color: #fff;
-    font-size: 14px;
-    box-sizing: border-box;
-}
-
-#characterSearch:focus {
-    outline: none;
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.search-dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(30, 30, 30, 0.95);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    margin-top: 4px;
-    max-height: 300px;
-    overflow-y: auto;
-    display: none;
-    z-index: 1000;
-}
-
-.dropdown-item {
-    padding: 12px 16px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.dropdown-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-}
-
 /* 스크롤바 스타일링 */
-.search-dropdown::-webkit-scrollbar {
-    width: 8px;
-}
-
-.search-dropdown::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.search-dropdown::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-}
-
-.search-dropdown::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.4);
-}

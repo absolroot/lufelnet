@@ -656,7 +656,7 @@ export class PartyUI {
 
         bar.innerHTML = `
             <div class="roster-filter-search">
-                <input type="text" class="roster-search-input" placeholder="${window.I18nService ? window.I18nService.t('searchPlaceholder') : '캐릭터 검색...'}" autocomplete="off">
+                <input type="text" data-lufel-search class="roster-search-input" placeholder="${window.I18nService ? window.I18nService.t('searchPlaceholder') : '캐릭터 검색...'}" autocomplete="off">
             </div>
 
             <div class="roster-filter-groups">

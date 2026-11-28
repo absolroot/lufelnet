@@ -69,36 +69,23 @@
     </div>
 
     <!-- User Bar -->
-    <div id="ptUserBar" class="user-info-bar" style="display:none;">
-        <img src="{{ site.baseurl }}/apps/pull-tracker/Google_Drive_Logo.png" alt="Google Drive"
-            class="google-drive-logo" style="height:18px;">
-        <span class="user-label" id="ptUserSignedAs">로그인:</span>
-        <span id="ptUserName"></span>
-        <button id="ptLoginBtn" class="auth-btn">로그인</button>
-        <button id="ptLogoutBtn" class="auth-btn" style="display:none;">로그아웃</button>
-        <span id="ptScopeNote" class="scope-note">※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.</span>
-    </div>
-
-    <section class="card-style page-entrance-part" style="padding:16px; position:relative;">
-        <div style="display:flex; flex-direction:column; gap:12px; max-width:860px;">
-            <div class="url-row" style="gap:8px;">
-                <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
-                    <button id="openGuideBtn" class="url-btn"><span class="help-icon"><svg viewBox="0 0 18 18"
-                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle cx="9" cy="9" r="8.5" stroke="currentColor" stroke-opacity="0.1"
-                                    fill="rgba(255,255,255,0.05)" />
-                                <path
-                                    d="M7.2 7.2C7.2 6.32 7.92 5.6 8.8 5.6H9.2C10.08 5.6 10.8 6.32 10.8 7.2C10.8 7.84 10.48 8.4 9.96 8.68L9.6 8.88C9.28 9.04 9.2 9.2 9.2 9.6V10.4M9 12.4V13.2"
-                                    stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-opacity="0.3" />
-                            </svg></span><span style="margin-left:6px;">URL 획득방법</span></button>
-                </div>
-                <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
-                    <input id="sourceUrl" type="url" inputmode="url" placeholder="https://..." class="url-input">
-                    <button id="startBtn" class="url-btn primary">가져오기</button>
-                    <button id="clearBtn" class="url-btn secondary">초기화</button>
-                </div>
+    <section class="card-style section-card-cut tracker-import page-entrance-part">
+        <div class="tracker-import-fields">
+            <div class="tracker-import-heading">
+                <label id="trackerUrlLabel" for="sourceUrl">계약 기록 URL</label>
+                {% assign guide_language = page.language | default: 'kr' %}
+                <a id="openGuideBtn" class="url-btn secondary tracker-guide-btn" href="{{ site.baseurl }}/{{ guide_language }}/pull-tracker/url-guide/">
+                    <span>URL 획득 방법</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+                </a>
             </div>
+            <div class="tracker-import-controls">
+                <input id="sourceUrl" type="url" inputmode="url" placeholder="https://..." class="url-input" aria-describedby="info">
+                <button id="startBtn" class="url-btn primary" type="button">가져오기</button>
+                <button id="clearBtn" class="url-btn secondary" type="button">초기화</button>
+            </div>
+            <div id="info" class="url-info"></div>
+            <div id="status" class="url-status" role="status"></div>
             <!-- DEBUG 전용 예시 적용 -->
             <div id="debugExamples" style="display:none; align-items:center; gap:8px;">
                 <label for="exampleSelect" style="opacity:.85; font-size:13px;">DEBUG 예시:</label>
@@ -112,18 +99,26 @@
                 </select>
                 <button id="applyExampleBtn" class="url-btn">예시 적용</button>
             </div>
-            <!-- Drive / Import / Export Row -->
-            <div class="url-row" style="gap:8px;">
-                <div style="display:flex;gap:8px;align-items:center;flex-wrap: wrap;">
-                    <button id="driveSaveBtn" class="url-btn secondary"></button>
-                    <button id="driveLoadBtn" class="url-btn secondary"></button>
-                    <button id="exportBtn" class="url-btn secondary"></button>
-                    <button id="importBtn" class="url-btn secondary"></button>
-                    <input id="importFile" type="file" accept="application/json" style="display:none;" />
+            <div class="tracker-backup">
+                <h2 id="trackerBackupLabel">기록 백업</h2>
+                <p id="trackerBackupNote"></p>
+                <div class="tracker-backup-actions">
+                    <button id="exportBtn" class="url-btn secondary" type="button"></button>
+                    <button id="importBtn" class="url-btn secondary" type="button"></button>
+                    <button id="driveSaveBtn" class="url-btn secondary" type="button"></button>
+                    <button id="driveLoadBtn" class="url-btn secondary" type="button"></button>
+                    <input id="importFile" type="file" accept="application/json" hidden />
                 </div>
+                <div id="ptUserBar" class="user-info-bar" style="display:none;">
+        <img src="{{ site.baseurl }}/apps/pull-tracker/Google_Drive_Logo.png" alt="Google Drive"
+            class="google-drive-logo" style="height:18px;">
+        <span class="user-label" id="ptUserSignedAs">로그인:</span>
+        <span id="ptUserName"></span>
+        <button id="ptLoginBtn" class="auth-btn">로그인</button>
+        <button id="ptLogoutBtn" class="auth-btn" style="display:none;">로그아웃</button>
+        <span id="ptScopeNote" class="scope-note">※ 이 사이트에서 생성한 파일만 읽고 쓸 수 있습니다.</span>
+    </div>
             </div>
-            <div id="info" class="url-info"></div>
-            <div id="status" class="url-status"></div>
             <pre id="result" class="raw-response" style="display:none;"></pre>
         </div>
     </section>

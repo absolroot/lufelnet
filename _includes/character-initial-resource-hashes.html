@@ -1,0 +1,17 @@
+{%- assign initial_resource_files = 'setting,base_stats,review' | split: ',' %}
+<script>
+  window.__CHARACTER_INITIAL_RESOURCE_HASHES = {
+    {%- for entry in site.data.character_slugs -%}
+      {%- assign initial_character_name = entry[0] -%}
+      {%- if page.character_kr_name == nil or page.character_kr_name == initial_character_name -%}
+        {{ initial_character_name | jsonify }}: {
+          {%- for file in initial_resource_files -%}
+            {%- assign resource_path = '/data/characters/' | append: initial_character_name | append: '/' | append: file | append: '.js' -%}
+            {%- assign resource_hash = site.data.asset_versions.files[resource_path] -%}
+            {%- if resource_hash -%}{{ file }}: {{ resource_hash | jsonify }},{%- endif -%}
+          {%- endfor -%}
+        },
+      {%- endif -%}
+    {%- endfor -%}
+  };
+</script>

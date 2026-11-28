@@ -44,6 +44,8 @@
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/page-entrance.css?h={{ site.data.asset_versions.files['/assets/css/page-entrance.css'] }}">
 <script src="{{ site.baseurl }}/assets/js/page-entrance.js?h={{ site.data.asset_versions.files['/assets/js/page-entrance.js'] }}"></script>
 <link rel="stylesheet" href="/apps/defense-calc/defense-calc.css?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.css'] }}">
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/calculator-interactions.css?h={{ site.data.asset_versions.files['/assets/css/calculator-interactions.css'] }}">
+<script defer src="{{ site.baseurl }}/assets/js/calculator-interactions.js?h={{ site.data.asset_versions.files['/assets/js/calculator-interactions.js'] }}"></script>
 {% include calculator-presets.html %}
 <script src="/apps/defense-calc/defense-calc.js?h={{ site.data.asset_versions.files['/apps/defense-calc/defense-calc.js'] }}"></script>
 
@@ -92,7 +94,7 @@
     <div class="top-cards">
         <!-- Row 1: Boss card (좌측) and Final damage (우측) -->
         <div class="top-row-1">
-            <div class="boss-card card-style">
+            <div class="boss-card card-style section-card-cut">
                 <div class="boss-select-container">
                     <div class="boss-type-tabs">
                         <button class="boss-type-tab active" data-type="sea" id="bossTypeSea">
@@ -125,7 +127,7 @@
                     <!-- 기본 최종 대미지 배수는 4행으로 이동 -->
                 </div>
             </div>
-            <div class="unified-stats-card card-style">
+            <div class="unified-stats-card card-style section-card-cut">
                 <!-- 1행: 관통 (합계/목표/남은 수치를 3열로) -->
                 <div class="unified-stat-row" id="cardPierce">
                     <h2 id="penetrate-total-title">
@@ -258,7 +260,7 @@
     </div>
 
     <!-- table tabs -->
-    <div class="table-tabs card-style">
+    <div class="table-tabs card-style section-card-cut">
         <div class="tab-buttons">
             <button class="tab-button active" data-tab="penetrate">
                 <img src="{{ site.baseurl }}/assets/img/stat-icon/관통.png" alt="관통" class="tab-icon">

@@ -120,7 +120,7 @@
         <!-- top container: (1) wonder setting, (2) party selection -->
         <div id="top-container" class="page-entrance-part">
           <!-- wonder setting card -->
-          <div class="card wonder-setting" id="wonder-config">
+          <div class="card wonder-setting section-card-cut" id="wonder-config">
             <h2>원더 설정</h2>
             <div class="weapon-container">
               <label>무기
@@ -163,7 +163,7 @@
           </div>
           
           <!-- party selection card -->
-          <div class="card" id="party-selection">
+          <div class="card section-card-cut" id="party-selection">
             <h2>괴도단</h2>
             <div class="party-member" data-index="0">
               <div class="input-group">
@@ -1396,6 +1396,7 @@
 
           function enhanceSelect(select){
             if (!select || select.closest('.rev-select-wrap')) return; // 중복 방지
+            select.setAttribute('data-native-select', '');
             const group = select.closest('.input-group') || select.parentElement;
             if (!group) return;
 

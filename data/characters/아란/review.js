@@ -18,7 +18,7 @@ Skill 1 stacks [Sinful Karma] on enemies marked with [Sin] and copies it to othe
 
 As a result, she plays more like a hybrid support who simultaneously provides **Defense Down, increased HIGHLIGHT damage taken, Attack buffs, and reflect-based utility**.
 
-She also pairs especially well with Motoha·Astra, who naturally targets 2 enemies and can make strong use of [Sin] propagation.`,
+She also pairs especially well with Radiance Motoha, who naturally targets 2 enemies and can make strong use of [Sin] propagation.`,
         review_jp: `4★呪怨デバッファーで、敵2体に『罪』を指定し、その対象を起点に『罪業』と各種弱体効果を広げていく構造を持つ。
 
 スキル3はターンを消費せず毎ターン1回使用できるため、戦闘中を通して2体対象ベースのデバフ運用を非常に安定して維持できる。

@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/spoiler-checkbox.css?h={{ site.data.asset_versions.files['/assets/css/default/spoiler-checkbox.css'] }}">
 {% if page.alternate_urls %}
 {% for alt in page.alternate_urls %}
 <link rel="alternate" hreflang="{{ alt[0] }}" href="{{ site.url }}{{ alt[1] }}" />
@@ -379,41 +380,7 @@ window.LufelPageLifecycle?.hold('character-list');
     }
 
     .spoiler-toggle-checkbox {
-        appearance: none;
-        width: 20px !important;
-        height: 20px !important;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        border-radius: 3px;
-        position: relative;
-        transition: all 0.2s ease;
-        background: transparent;
-        background-image: none !important;
-        margin-right: 4px !important;
-    }
-
-    .spoiler-toggle-checkbox:checked {
-        background: #a90505b7;
-        border-color: #a90505b7;
-        background-image: none !important;
-        width: 20px !important;
-        height: 20px !important;
-        margin-right: 4px !important;
-    }
-
-    /* 체크 표시가 박스 가운데에 있을 수 있도록 */
-    .spoiler-toggle-checkbox:checked::after {
-        content: '✓';
-        position: absolute;
-        top: -2px;
-        left: 1px;
-        color: white;
-        font-size: 12px;
-        font-weight: bold;
-        padding: 2px 0 0 2px;
-    }
-
-    .spoiler-toggle-checkbox:hover {
-        border-color: rgba(255, 255, 255, 0.5);
+        --spoiler-checkbox-radius: 3px;
     }
 
     .spoiler-toggle-text {

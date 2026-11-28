@@ -8,7 +8,7 @@
         searchIndex: {},
         setDataset: null,
         refresh: null,
-        cachedCards: null,       // cached .card NodeList
+        cachedCards: null,
         debounceTimer: null      // debounce timer for search input
     });
 
@@ -220,7 +220,7 @@
 
     function getCachedCards() {
         if (!state.cachedCards || state.cachedCards.length === 0) {
-            state.cachedCards = Array.from(document.querySelectorAll('.card'));
+            state.cachedCards = Array.from(document.querySelectorAll('#characterCards > .character-tile--portrait'));
         }
         return state.cachedCards;
     }

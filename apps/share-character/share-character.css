@@ -242,39 +242,6 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.spoiler-toggle-checkbox {
-    appearance: none;
-    width: 20px !important;
-    height: 20px !important;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 0;
-    position: relative;
-    transition: all 0.2s ease;
-    background: transparent;
-    background-image: none !important;
-    margin-right: 4px !important;
-}
-
-.spoiler-toggle-checkbox:checked {
-    background: #a90505b7;
-    border-color: #a90505b7;
-}
-
-.spoiler-toggle-checkbox:checked::after {
-    content: '\2713';
-    position: absolute;
-    top: -2px;
-    left: 1px;
-    color: #fff;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 2px 0 0 2px;
-}
-
-.spoiler-toggle-checkbox:hover {
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
 .spoiler-toggle-text {
     font-weight: 500;
 }

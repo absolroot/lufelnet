@@ -10,8 +10,9 @@
     padding: 10px 12px;
     border: 1px solid var(--library-line, var(--section-divider-color));
     border-radius: 0;
-    background: var(--card-background);
 }
+
+.tactic-library-results .post-item { background: var(--card-background); }
 
 :is(.tactic-library-results, .home-tactic-posts) .post-header {
     grid-area: header;

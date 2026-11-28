@@ -85,7 +85,7 @@ window.recommendParty["모토하·청광"] = {
         {
             "name": "아야카",
             "comment": "모토하·청광의 HIGHLIGHT 비중이 매우 높아 아야카가 핵심 파티원으로 자리잡는다. 스킬3을 통해 HIGHLIGHT를 사용해도 스택이 사라지지 않고, 심상 강화를 통해 모토하의 대미지를 크게 증폭시키는 패시브를 가지고 있다.",
-            "comment_en": "Motoha·Astra's damage is heavily centered around HIGHLIGHT, making Ayaka a core party member. Using Skill 3 does not remove her stacks even when HIGHLIGHT is used, and she also has a passive that greatly amplifies Motoha's damage.",
+            "comment_en": "Radiance Motoha's damage is heavily centered around HIGHLIGHT, making Ayaka a core party member. Using Skill 3 does not remove her stacks even when HIGHLIGHT is used, and she also has a passive that greatly amplifies Motoha's damage.",
             "comment_jp": "モトハ・晴光はHIGHLIGHT比重が非常に高いため、綾香は中核となるパーティメンバーになる。スキル3でHIGHLIGHTを使ってもスタックが消えず、さらにモトハのダメージを大きく増幅するパッシブも持っている。",
             "comment_cn": "新井素羽·晴光的伤害构成中HIGHLIGHT占比极高，因此绫香会成为核心队友。通过技能3使用HIGHLIGHT时层数不会消失，而且她还拥有能大幅放大素羽伤害的被动效果。"
         },
@@ -115,7 +115,7 @@ window.recommendParty["모토하·청광"] = {
         {
             "name": "카타야마",
             "comment": "광역 방어력 감소와 다운 관련 보조를 통해 모토하·청광의 전체 화력을 높여줄 수 있다.",
-            "comment_en": "Can raise Motoha·Astra's overall damage through AoE DEF reduction and Down-related support.",
+            "comment_en": "Can raise Radiance Motoha's overall damage through AoE DEF reduction and Down-related support.",
             "comment_jp": "範囲防御力低下とDOWN関連の補助を通じて、モトハ・晴光の全体火力を高められる。",
             "comment_cn": "可通过范围防御力降低与DOWN相关辅助来提高新井素羽·晴光的整体火力。"
         },

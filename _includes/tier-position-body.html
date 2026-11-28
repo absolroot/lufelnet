@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/default/spoiler-checkbox.css?h={{ site.data.asset_versions.files['/assets/css/default/spoiler-checkbox.css'] }}">
 {% unless page.tier_mode == 'maker' %}
 {% include character-initial-resource-hashes.html %}
 {% endunless %}
@@ -464,43 +465,6 @@ window.__CHARACTER_SLUG_MAP = {{ site.data.character_slugs | jsonify }};
 
         .spoiler-toggle-label:hover {
             color: rgba(255, 255, 255, 1);
-        }
-
-        .spoiler-toggle-checkbox {
-            appearance: none;
-            width: 20px !important;
-            height: 20px !important;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 0;
-            position: relative;
-            transition: all 0.2s ease;
-            background: transparent;
-            background-image: none !important;
-            margin-right: 4px !important;
-        }
-
-        .spoiler-toggle-checkbox:checked {
-            background: #a90505b7;
-            border-color: #a90505b7;
-            background-image: none !important;
-            width: 20px !important;
-            height: 20px !important;
-            margin-right: 4px !important;
-        }
-
-        .spoiler-toggle-checkbox:checked::after {
-            content: '✓';
-            position: absolute;
-            top: -2px;
-            left: 1px;
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-            padding: 2px 0 0 2px;
-        }
-
-        .spoiler-toggle-checkbox:hover {
-            border-color: rgba(255, 255, 255, 0.5);
         }
 
         .spoiler-toggle-text {

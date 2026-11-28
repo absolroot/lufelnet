@@ -74,8 +74,8 @@ window.I18N_PAGE_MATERIAL_CALC_EN = {
     inventorySkills: 'Skills',
     inventoryKonpakuGem: 'Konpaku Gem',
     inventoryGem: 'Gem',
-    mindscapeCoreItem: 'Mindscape Core',
-    emblem5StarItem: 'Emblem ★5',
+    mindscapeCoreItem: 'Select Fractal Set 5★',
+    emblem5StarItem: 'Heartfelt Alloy 5★',
     innateSeedItem: 'Fragrant Seed',
     seoKeywords: 'P5X, Persona 5X, progression calculator, material calculator, character progression',
     seoOgLocale: 'en_US'

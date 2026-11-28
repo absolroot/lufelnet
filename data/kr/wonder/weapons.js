@@ -481,12 +481,12 @@ window.matchWeapons = {
     "lightning_stamp": [
       {
         "order": 3,
-        "name": "펄스 전격",
+        "name": "펄스 스파크",
         "name_en": "Pulse Shock",
         "name_jp": "パルス電撃",
         "stamp_img": "item-datu-302936.png",
         "stamp_icon": "weaponEngraving-icon-4.png",
-        "effect": "임의의 동료가 스킬을 사용해 전격 속성 대미지를 줄 때, 해당 동료가 2턴 동안 『뇌문 격동』을 획득한다.\n『뇌문 격동』: HIGHLIGHT/테우르기아가 주는 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. HIGHLIGHT/테우르기아의 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
+        "effect": "임의의 동료가 스킬을 사용해 전격 속성 대미지를 줄 때, 해당 동료가 2턴 동안 『격동하는 천둥』을 획득한다.\n『격동하는 천둥』: HIGHLIGHT/테우르기아가 주는 대미지가 4.0%/8.0%/12.0%/16.0% 증가한다. HIGHLIGHT/테우르기아의 크리티컬 효과가 2.5%/5.0%/7.5%/10.0% 증가한다.",
         "effect_en": "When any ally deals Electric damage with a skill, that ally gains [Thundercrest Surge] for 2 turns.\n[Thundercrest Surge]: Damage dealt by HIGHLIGHT/Theurgy is increased by 4.0%/8.0%/12.0%/16.0%. Critical Damage of HIGHLIGHT/Theurgy is increased by 2.5%/5.0%/7.5%/10.0%.",
         "effect_jp": "味方の誰かがスキルで電撃属性ダメージを与えた時、その味方は2ターンの間『雷紋激蕩』を獲得する。\n『雷紋激蕩』：HIGHLIGHT/テウルギアによる与ダメージが4.0%/8.0%/12.0%/16.0%上昇する。HIGHLIGHT/テウルギアのクリティカル効果が2.5%/5.0%/7.5%/10.0%上昇する。",
         "name_cn": "脉冲电击",

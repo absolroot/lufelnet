@@ -74,9 +74,9 @@ window.I18N_PAGE_MATERIAL_CALC_JP = {
     inventorySkills: 'スキル',
     inventoryKonpakuGem: '魂魄石',
     inventoryGem: '魂魄石',
-    mindscapeCoreItem: 'イメジャリーコア',
-    emblem5StarItem: 'エンブレム ★5',
-    innateSeedItem: '香りの種',
+    mindscapeCoreItem: '★５共鳴結晶選択箱',
+    emblem5StarItem: '心選の合金★５',
+    innateSeedItem: '芳草の種',
     seoKeywords: 'P5X, ペルソナ5X, 育成計算機, 素材計算機, キャラクター育成',
     seoOgLocale: 'ja_JP'
 };

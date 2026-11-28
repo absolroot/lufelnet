@@ -129,10 +129,7 @@ async function loadHomeTacticsOnce(currentLang) {
       item.className = libraryLink ? 'post-item section-row-motion tactic-post-motion' : 'post-item';
       item.setAttribute('data-post-id', String(t.id));
       const likeCount = Number(t.likes) || 0;
-<<<<<<< HEAD
       const title = `<span class="post-title-text section-row-copy">${escapeHtml(t.title || '')}</span>`;
-=======
->>>>>>> d5eadc942ab47cdab90bd0db5916e3d8e270391a
       item.innerHTML = `
         <div class="post-header">
           <h3>

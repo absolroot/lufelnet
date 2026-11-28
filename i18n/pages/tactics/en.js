@@ -12,14 +12,10 @@ window.I18N_PAGE_TACTICS_EN = {
     character_filter_short: 'Filter',
     character_filter_done: 'Done',
     spoiler_toggle: 'Show Spoilers',
-<<<<<<< HEAD
     search_placeholder: 'Title or author…',
     region_filter_label: 'Region',
     type_filter_label: 'Tactic type',
     ranking_period_label: 'Ranking period',
-=======
-    search_placeholder: 'Search by title or author...',
->>>>>>> d5eadc942ab47cdab90bd0db5916e3d8e270391a
     no_tactics_found: 'No tactics to display.',
     tactic_load_failed: 'Could not load tactics.',
     tactic_load_retry: 'Try again',

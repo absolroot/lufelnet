@@ -264,22 +264,6 @@ class TacticsViewer {
             .order('id', { ascending: false }));
     }
 
-    async fetchPublicTactics() {
-        if (window.location.origin === 'https://lufel.net') {
-            const response = await fetch('https://api.lufel.net/v1/tactics/library', { credentials: 'omit' });
-            if (!response.ok) throw new Error(`Tactic library HTTP ${response.status}`);
-            const { tactics } = await response.json();
-            if (!Array.isArray(tactics)) throw new Error('Invalid tactic library response');
-            return tactics;
-        }
-
-        return readTacticRows(supabase
-            .from('tactic_library_public')
-            .select('id,title,author,comment,created_at,url,region,tactic_type,tactic_version,party,likes')
-            .order('created_at', { ascending: false })
-            .order('id', { ascending: false }));
-    }
-
     async loadTactics() {
         if (this.isLoadingTactics) return;
         this.isLoadingTactics = true;

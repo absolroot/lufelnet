@@ -67,7 +67,7 @@
         <div class="header-title page-entrance-part">
             <div class="tactic-library-title-row">
                 <h1 id="page-title" data-i18n="page_title">택틱 도서관</h1>
-                <a href="/{{ page.language | default: 'kr' }}/tactic/tactic-upload.html" id="uploadButton" class="upload-btn" data-i18n="upload_button">택틱 업로드</a>
+                <a href="/{{ page.language | default: 'kr' }}/tactic/tactic-upload.html" class="upload-btn tactic-library-upload" data-i18n="upload_button">택틱 업로드</a>
             </div>
             <p class="page-description" id="page-description" data-i18n="page_description"></p>
         </div>
@@ -102,12 +102,15 @@
                     <button type="button" aria-pressed="false" class="tab-button" data-region="JP">JP</button>
                 </div>
 
-                <div class="inline-filters" id="typeButtons" role="group" aria-label="택틱 유형" data-i18n-aria="type_filter_label">
-                    <button type="button" aria-pressed="true" class="filter-item active" data-type="ALL" data-i18n="type_all">전체</button>
-                    <button type="button" aria-pressed="false" class="filter-item" data-type="흉몽" data-i18n="type_nightmare">흉몽</button>
-                    <button type="button" aria-pressed="false" class="filter-item" data-type="바다" data-i18n="type_sea">바다</button>
-                    <button type="button" aria-pressed="false" class="filter-item" data-type="이벤트" data-i18n="type_event">이벤트</button>
-                    <button type="button" aria-pressed="false" class="filter-item" data-type="기타" data-i18n="type_etc">기타</button>
+                <div class="tactic-library-category-row">
+                    <div class="inline-filters" id="typeButtons" role="group" aria-label="택틱 유형" data-i18n-aria="type_filter_label">
+                        <button type="button" aria-pressed="true" class="filter-item active" data-type="ALL" data-i18n="type_all">전체</button>
+                        <button type="button" aria-pressed="false" class="filter-item" data-type="흉몽" data-i18n="type_nightmare">흉몽</button>
+                        <button type="button" aria-pressed="false" class="filter-item" data-type="바다" data-i18n="type_sea">바다</button>
+                        <button type="button" aria-pressed="false" class="filter-item" data-type="이벤트" data-i18n="type_event">이벤트</button>
+                        <button type="button" aria-pressed="false" class="filter-item" data-type="기타" data-i18n="type_etc">기타</button>
+                    </div>
+                    <a href="/{{ page.language | default: 'kr' }}/tactic/tactic-upload.html" class="upload-btn tactic-library-upload" data-i18n="upload_button">택틱 업로드</a>
                 </div>
             </div>
 

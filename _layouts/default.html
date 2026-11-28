@@ -604,7 +604,7 @@
     {% assign ad_mode = page.ad_mode | default: 'page-end' %}
     {% if ad_mode == 'page-end' %}
     <div class="page-end-ad-region">
-      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true placeholder=true start_after="content-ready" %}
+      {% include nitro-ad.html id="page-end-incontent" format="incontent" class="nitro-ad-container--page-end" lazy=true placeholder=true start_after="content-ready" collapse_on_empty=true %}
     </div>
     {% endif %}
     <div class="footer-container">

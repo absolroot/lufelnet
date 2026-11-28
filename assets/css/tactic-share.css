@@ -791,7 +791,6 @@ small { color: #6c757d; display: block; margin-top: 0.5rem; }
     border-radius: 0;
 }
 
-#uploadButton.upload-btn { border-radius: 0; }
 
 .tactic-mobile-filter-button { display: none; }
 
@@ -897,17 +896,20 @@ small { color: #6c757d; display: block; margin-top: 0.5rem; }
     overflow-wrap: anywhere;
 }
 
-.tactic-library-title-row .upload-btn {
+.tactic-library-upload {
     display: inline-flex;
     align-items: center;
     box-sizing: border-box;
     min-height: 44px;
     padding: 6px 12px;
+    border-radius: 0;
     border-color: #a2565b;
     background: #80161d;
 }
 
-.tactic-library-title-row .upload-btn:hover { background: #99232a; }
+.tactic-library-upload:hover { background: #99232a; }
+
+.tactic-library-category-row > .tactic-library-upload { display: none; }
 
 .tactic-library-header .page-description {
     margin: 4px 0 0;
@@ -915,7 +917,17 @@ small { color: #6c757d; display: block; margin-top: 0.5rem; }
     color: var(--library-muted);
 }
 
-.tactic-library-banner { width: 100%; }
+.tactic-library-banner .nitro-ad-slot-frame {
+    overflow: hidden;
+}
+
+.tactic-library-banner .nitro-ad-slot-frame:has([data-nitro-creative-visible]) {
+    padding-top: 16px;
+}
+
+.tactic-library-banner .nitro-ad-slot {
+    max-width: 728px;
+}
 
 .tactic-library-layout {
     display: grid;
@@ -1115,7 +1127,33 @@ small { color: #6c757d; display: block; margin-top: 0.5rem; }
 }
 
 @media (max-width: 360px) {
-    .tactic-library-title-row .upload-btn { padding-inline: 9px; }
+    .tactic-library-upload { padding-inline: 9px; }
+}
+
+@media (width > 1100px) {
+    .tactic-library-page .tactic-library-header:has([data-nitro-creative-visible]) {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 728px;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .tactic-library-title-row > .tactic-library-upload { display: none; }
+
+    .tactic-library-banner .nitro-ad-slot-frame:has([data-nitro-creative-visible]) {
+        padding-top: 0;
+    }
+
+    .tactic-library-category-row {
+        display: grid;
+        grid-template-columns: minmax(0, 460px) auto;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        grid-column: 1 / -1;
+    }
+
+    .tactic-library-category-row > .tactic-library-upload { display: inline-flex; }
 }
 
 @media (width < 960px) {
@@ -1153,5 +1191,4 @@ small { color: #6c757d; display: block; margin-top: 0.5rem; }
 
 @media (min-width: 1280px) {
     .tactic-library-toolbar { grid-template-columns: minmax(0, 1fr) minmax(220px, .85fr); }
-    .tactic-library-toolbar #typeButtons { grid-column: 1 / -1; max-width: 460px; }
 }

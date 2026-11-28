@@ -1213,7 +1213,9 @@ class TacticsViewer {
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', async () => {
     const currentLang = getCurrentLanguage();
-    document.getElementById('uploadButton').href = `/${currentLang}/tactic/tactic-upload.html`;
+    document.querySelectorAll('.tactic-library-upload').forEach((link) => {
+        link.href = `/${currentLang}/tactic/tactic-upload.html`;
+    });
     if (typeof initPageI18n === 'function') {
         await initPageI18n('tactics');
         if (typeof setLang === 'function') {

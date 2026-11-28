@@ -7,7 +7,7 @@
 
     const placementStartedAt = new Map();
     const records = [];
-    const eventNames = ['loaded', 'createAd', 'prepare', 'bidReceived', 'rendered'];
+    const eventNames = ['loaded', 'createAd', 'prepare', 'bidReceived', 'adRequested', 'adDeferred', 'adResult', 'rendered'];
 
     window.LufelNitroAds = window.LufelNitroAds || {};
     window.LufelNitroAds.debugTimings = records;
@@ -28,11 +28,19 @@
         placementStartedAt.set(placementId, now);
       }
 
-      const placementStarted = placementId ? placementStartedAt.get(placementId) : null;
+      const requestId = detail.requestId || adInfo.requestId || null;
+      if (eventName === 'adRequested' && requestId) placementStartedAt.set(requestId, now);
+      const placementStarted = placementStartedAt.get(requestId) ?? placementStartedAt.get(placementId);
       const record = {
         event: eventName,
         pageElapsedMs: roundMilliseconds(now),
         placementId,
+        requestId,
+        status: detail.status || null,
+        demand: detail.demand || null,
+        reason: detail.reason || null,
+        refresh: detail.refresh === true,
+        late: detail.late === true,
         placementElapsedMs: placementStarted == null
           ? null
           : roundMilliseconds(now - placementStarted),
@@ -54,6 +62,12 @@
         `page=${record.pageElapsedMs}ms`
       ];
       if (record.placementId) parts.push(`placement=${record.placementId}`);
+      if (record.requestId) parts.push(`requestId=${record.requestId}`);
+      if (record.status) parts.push(`status=${record.status}`);
+      if (record.demand) parts.push(`demand=${record.demand}`);
+      if (record.reason) parts.push(`reason=${record.reason}`);
+      if (record.refresh) parts.push('refresh=true');
+      if (record.late) parts.push('late=true');
       if (record.placementElapsedMs != null) parts.push(`placementElapsed=${record.placementElapsedMs}ms`);
       if (record.auctionTimeoutMs != null) parts.push(`auctionTimeout=${record.auctionTimeoutMs}ms`);
       if (record.bidder) parts.push(`bidder=${record.bidder}`);

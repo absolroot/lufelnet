@@ -3340,7 +3340,7 @@ h2 {
     border-bottom: 0;
 }
 
-.nitro-ad-container--character-card {
+.nitro-ad-container--character-card:has([data-nitro-creative-visible]) {
     margin-top: 12px;
     padding-top: 12px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);

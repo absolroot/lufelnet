@@ -372,6 +372,10 @@ body {
     z-index: 1;
 }
 
+.page-end-ad-region:has([data-nitro-placement-empty]) {
+    margin-top: 0;
+}
+
 .footer-container {
     margin: auto auto 0px auto !important;
     padding-bottom: 20px;
@@ -478,7 +482,8 @@ body {
     transform: translateX(-50%);
 }
 
-.nitro-ad-container--has-content .nitro-ad-placeholder {
+.nitro-ad-container--has-content .nitro-ad-placeholder,
+.nitro-ad-slot-frame:has([data-nitro-creative-visible], [data-nitro-placement-empty]) .nitro-ad-placeholder {
     display: none;
 }
 
@@ -494,12 +499,12 @@ body {
     height: 90px;
 }
 
-/* This placement collapses on no-fill; Nitro expands it to the winning creative's size. */
 .nitro-ad-container--multi-size-banner .nitro-ad-slot {
     max-width: 976px;
 }
 
-.nitro-ad-slot[data-nitro-collapse-until-rendered="true"] {
+.nitro-ad-slot[data-nitro-collapse-until-rendered="true"],
+.nitro-ad-slot[data-nitro-collapse-on-empty="true"]:is([data-nitro-creative-visible], [data-nitro-placement-empty]) {
     min-height: 0 !important;
     height: var(--nitro-rendered-height, 0px) !important;
 }

@@ -142,21 +142,105 @@
     const MOBILE_BANNER_MEDIA_QUERY = '(max-width: 768px)';
     const isLocalDemo = LOCAL_HOSTNAMES.has(window.location.hostname);
     const initializedGlobalPlacements = new Set();
+    const managedSlotSelector = '[data-nitro-collapse-until-rendered="true"], [data-nitro-collapse-on-empty="true"]';
+    const placementStates = new WeakMap();
     let contentReady = Boolean(window.LufelPageLifecycle?.isReady?.());
 
-    document.addEventListener('nitroAds.rendered', (event) => {
-        const detail = event.detail || {};
-        const adInfo = detail.adInfo || detail;
-        const slot = adInfo?.adUnitCode ? document.getElementById(adInfo.adUnitCode) : null;
-        const height = Number(adInfo?.height);
+    function hasVisibleCreative(slot) {
+        const bidder = String(slot.dataset.bidder || '').trim().toLowerCase();
+        if (!bidder || bidder === 'blank') return false;
+        if (slot.matches('[data-ad-status="filled"]') || slot.querySelector('[data-ad-status="filled"]')) return true;
 
-        if (!slot || slot.dataset.nitroCollapseUntilRendered !== 'true' || !Number.isFinite(height) || height < 0) {
+        return Array.from(slot.querySelectorAll('iframe')).some((iframe) => {
+            const rect = iframe.getBoundingClientRect();
+            return rect.width > 0 && rect.height > 0;
+        });
+    }
+
+    function showPlacement(slot, state, height = 0) {
+        state?.retainedCreativeObserver?.disconnect();
+        slot.style.setProperty('--nitro-rendered-height', `${height}px`);
+        slot.toggleAttribute('data-nitro-creative-visible', height > 0);
+        slot.toggleAttribute('data-nitro-placement-empty', height === 0);
+    }
+
+    function finishEmptyPlacement(slot, state, refresh) {
+        if (!refresh || !slot.hasAttribute('data-nitro-creative-visible') || !hasVisibleCreative(slot)) {
+            showPlacement(slot, state);
             return;
         }
 
-        // Nitro reserves the tallest permitted size before the auction. These inline
-        // character-page placements instead take only the height of a rendered creative.
-        slot.style.setProperty('--nitro-rendered-height', `${height}px`);
+        // Keep the previous creative until Nitro removes or replaces it with a blank frame.
+        state.retainedCreativeObserver?.disconnect();
+        state.retainedCreativeObserver = new MutationObserver(() => {
+            if (!hasVisibleCreative(slot)) showPlacement(slot, state);
+        });
+        state.retainedCreativeObserver.observe(slot, {
+            attributes: true,
+            attributeFilter: ['data-bidder', 'data-ad-status', 'style', 'class', 'hidden', 'src', 'width', 'height'],
+            childList: true,
+            subtree: true
+        });
+    }
+
+    function isBlankCreative(adInfo) {
+        return adInfo?.type === 'blank' || adInfo?.bidder === 'blank';
+    }
+
+    function getCreativeHeight(adInfo) {
+        const height = Number(adInfo?.height);
+        return Number.isFinite(height) && height > 0 ? Math.round(height) : 0;
+    }
+
+    function trackPlacementRequest(event) {
+        const { id, requestId } = event.detail || {};
+        const slot = id && document.getElementById(id);
+        if (!requestId || !slot?.matches(managedSlotSelector)) return;
+
+        const previous = placementStates.get(slot);
+        if (previous?.requestId === requestId) return;
+        placementStates.set(slot, { requestId, retainedCreativeObserver: previous?.retainedCreativeObserver });
+    }
+
+    document.addEventListener('nitroAds.adRequested', trackPlacementRequest);
+    document.addEventListener('nitroAds.adDeferred', trackPlacementRequest);
+
+    document.addEventListener('nitroAds.adResult', (event) => {
+        const { id, requestId, status, adInfo, refresh } = event.detail || {};
+        const slot = id && document.getElementById(id);
+        if (!requestId || !status || !slot?.matches(managedSlotSelector)) return;
+
+        if (!placementStates.has(slot)) trackPlacementRequest(event);
+        const state = placementStates.get(slot);
+        if (state.requestId !== requestId) return;
+        state.status = status;
+
+        if (status !== 'filled' || isBlankCreative(adInfo)) {
+            finishEmptyPlacement(slot, state, refresh);
+            return;
+        }
+
+        const height = getCreativeHeight(adInfo) || state.renderedHeight;
+        if (height) showPlacement(slot, state, height);
+    });
+
+    document.addEventListener('nitroAds.rendered', (event) => {
+        const { id, requestId, adInfo, type, late } = event.detail || {};
+        const slot = document.getElementById(id || adInfo?.adUnitCode || '');
+        const state = slot && placementStates.get(slot);
+        if (!state || state.requestId !== (requestId || adInfo?.requestId) || type === 'blank' || isBlankCreative(adInfo)) return;
+
+        const height = getCreativeHeight(adInfo, type);
+        if (!height) return;
+        state.renderedHeight = height;
+        if (state.status === 'filled' || (state.status === 'timeout' && late === true)) {
+            showPlacement(slot, state, height);
+        }
+    });
+
+    document.addEventListener('lufel:nitro-loader-status', (event) => {
+        if (event.detail !== 'blocked') return;
+        document.querySelectorAll(managedSlotSelector).forEach((slot) => showPlacement(slot, placementStates.get(slot)));
     });
 
     function resolveGlobalPlacementOptions(placement) {
@@ -212,28 +296,35 @@
         return options;
     }
 
-    function createAd(id, options, resetInitializedState) {
+    async function createAd(id, options, resetInitializedState) {
         if (typeof window.LufelNitroAds?.recordDebugTiming === 'function') {
             window.LufelNitroAds.recordDebugTiming('request', { id });
         }
 
-        Promise.resolve(window.nitroAds.createAd(id, {
-            demo: isLocalDemo,
-            report: {
-                enabled: true,
-                icon: true,
-                wording: 'Report Ad',
-                position: 'top-right'
-            },
-            ...options
-        })).catch((error) => {
+        try {
+            await window.nitroAds.createAd(id, {
+                demo: isLocalDemo,
+                report: {
+                    enabled: true,
+                    icon: true,
+                    wording: 'Report Ad',
+                    position: 'top-right'
+                },
+                ...options
+            });
+        } catch (error) {
             resetInitializedState();
             console.error(`[NitroAds] Failed to create placement: ${id}`, error);
-        });
+        }
     }
 
     function createPlacement(slot) {
         if (!slot.id || slot.dataset.nitroInitialized === 'true') return;
+        const managed = slot.matches(managedSlotSelector);
+        if (managed && window.__lufelNitroLoaderStatus === 'blocked') {
+            showPlacement(slot);
+            return;
+        }
         if (slot.dataset.nitroStartAfter === 'content-ready' && !contentReady) return;
 
         const format = slot.dataset.nitroFormat || 'banner';
@@ -261,11 +352,14 @@
                 sizes: mobileSizes.filter(([width]) => width <= availableWidth)
             };
         }
-        if (fitToContainer) {
-            const container = slot.closest('.nitro-ad-container') || slot;
-            const availableWidth = Math.floor(container.getBoundingClientRect().width);
+        if (fitToContainer || managed) {
+            const widthReference = managed ? slot : slot.closest('.nitro-ad-container') || slot;
+            const availableWidth = Math.floor(widthReference.getBoundingClientRect().width);
             const fittingSizes = preset.sizes.filter(([width]) => width <= availableWidth);
-            if (!fittingSizes.length) return;
+            if (!fittingSizes.length) {
+                if (managed) showPlacement(slot);
+                return;
+            }
             preset = { ...preset, sizes: fittingSizes };
         }
 
@@ -286,32 +380,19 @@
             } : {}),
         }, () => {
             delete slot.dataset.nitroInitialized;
+            if (managed) showPlacement(slot, placementStates.get(slot));
         });
     }
 
     function watchPlaceholder(slot) {
         const container = slot.closest('.nitro-ad-container--with-placeholder');
-        if (!container || slot.dataset.nitroPlaceholderWatching === 'true') return;
-
-        const hasVisibleCreative = () => {
-            const bidder = String(slot.dataset.bidder || '').trim().toLowerCase();
-            if (!bidder || bidder === 'blank') return false;
-
-            if (slot.matches('[data-ad-status="filled"]') || slot.querySelector('[data-ad-status="filled"]')) {
-                return true;
-            }
-
-            return Array.from(slot.querySelectorAll('iframe')).some((iframe) => {
-                const rect = iframe.getBoundingClientRect();
-                return rect.width > 0 && rect.height > 0;
-            });
-        };
+        if (!container || slot.matches(managedSlotSelector) || slot.dataset.nitroPlaceholderWatching === 'true') return;
 
         const syncPlaceholder = () => {
             // Nitro can create a Google query ID and a zero-height iframe for a
             // no-fill auction. Keep the reserved space for a later refresh, but
             // do not hide the placeholder until a real creative is visible.
-            container.classList.toggle('nitro-ad-container--has-content', hasVisibleCreative());
+            container.classList.toggle('nitro-ad-container--has-content', hasVisibleCreative(slot));
         };
 
         slot.dataset.nitroPlaceholderWatching = 'true';

@@ -12,10 +12,14 @@ window.I18N_PAGE_TACTICS_JP = {
     character_filter_short: '絞り込み',
     character_filter_done: '完了',
     spoiler_toggle: 'ネタバレ表示',
+<<<<<<< HEAD
     search_placeholder: '題名・投稿者',
     region_filter_label: '地域',
     type_filter_label: 'タクティックの種類',
     ranking_period_label: 'ランキング期間',
+=======
+    search_placeholder: 'タイトルまたは投稿者を検索...',
+>>>>>>> d5eadc942ab47cdab90bd0db5916e3d8e270391a
     no_tactics_found: '表示できるタクティックがありません。',
     tactic_load_failed: 'タクティックを読み込めませんでした。',
     tactic_load_retry: '再試行',

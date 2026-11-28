@@ -12,10 +12,14 @@ window.I18N_PAGE_TACTICS_KR = {
     character_filter_short: '필터',
     character_filter_done: '완료',
     spoiler_toggle: '스포일러 표시',
+<<<<<<< HEAD
     search_placeholder: '제목·작성자 검색',
     region_filter_label: '지역',
     type_filter_label: '택틱 유형',
     ranking_period_label: '순위 기간',
+=======
+    search_placeholder: '제목 또는 작성자 검색...',
+>>>>>>> d5eadc942ab47cdab90bd0db5916e3d8e270391a
     no_tactics_found: '표시할 택틱이 없습니다.',
     tactic_load_failed: '택틱을 불러오지 못했습니다.',
     tactic_load_retry: '다시 시도',

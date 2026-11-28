@@ -13,9 +13,12 @@ window.I18N_PAGE_TACTICS_CN = {
     "character_filter_done": "完成",
     "spoiler_toggle": "显示剧透",
     "search_placeholder": "搜索标题或作者...",
+<<<<<<< HEAD
     "region_filter_label": "地区",
     "type_filter_label": "战术类型",
     "ranking_period_label": "排名周期",
+=======
+>>>>>>> d5eadc942ab47cdab90bd0db5916e3d8e270391a
     "no_tactics_found": "暂无可显示的战术。",
     "tactic_load_failed": "无法加载战术。",
     "tactic_load_retry": "重试",

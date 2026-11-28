@@ -9,7 +9,9 @@
     const name = new URLSearchParams(location.search).get('name') || window.__CHARACTER_DEFAULT;
     const hashes = window.__CHARACTER_INITIAL_RESOURCE_HASHES[name];
     if (!hashes) return;
-    for (const [file, hash] of Object.entries(hashes)) {
+    for (const file of ['setting', 'base_stats', 'review']) {
+      const hash = hashes[file];
+      if (!hash) continue;
       const link = document.createElement('link');
       link.rel = 'preload';
       link.as = 'script';
@@ -1160,7 +1162,7 @@
                 // party.js 는 없는 캐릭터가 많으므로, <script> 삽입 대신 fetch로 조용히 시도
                 if (fileBase === 'party' || fileBase === 'innate') {
                     try {
-                        const resp = await fetchWithRevalidate(baseJs);
+                        const resp = contentHash ? await fetch(baseJs) : await fetchWithRevalidate(baseJs);
                         if (!resp || !resp.ok) {
                             // 파일이 없으면 조용히 실패 처리 (404 등 콘솔 에러 최소화)
                             return false;

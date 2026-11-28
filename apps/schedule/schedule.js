@@ -1685,6 +1685,9 @@
             return releaseDate > today;
         });
         const nextRelease = upcomingReleases.length > 0 ? upcomingReleases[0] : null;
+        window.LufelNavigationPrefetch?.prepareCharacterPrefetch(() =>
+            [currentRelease, nextRelease].flatMap(release => release?.characters ?? [])
+        );
 
         let currentHtml = '';
         let nextHtml = '';

@@ -1156,6 +1156,16 @@ window.LufelPageLifecycle?.hold('character-list');
         // 번역 적용 (데이터 로딩 후)
         await applyI18nTranslations();
 
+        const schedulePrefetch = () => {
+            if (spoilerEnabled !== isSpoilerEnabled()) return;
+            const prefetch = window.LufelNavigationPrefetch;
+            prefetch?.prepareCharacterPrefetch(() => spoilerEnabled === isSpoilerEnabled()
+                ? sortedCharacters.slice(0, prefetch.latestCharacterCount)
+                : []);
+        };
+        if (window.LufelNavigationPrefetch) schedulePrefetch();
+        else window.addEventListener('load', schedulePrefetch, { once: true });
+
         // 초기화 완료
         isInitializing = false;
         isInitialized = true;

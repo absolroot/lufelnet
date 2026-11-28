@@ -1882,8 +1882,8 @@ const loadTierDataFromURL = (tierData) => {
         }
 
         if (positionCell && characters) {
-          if (isTierListMode && ['T0', 'T0.5', 'T1'].includes(tierInfo.label)) {
-            positionCell.setAttribute('data-tier-prefetch', '');
+          if (isTierListMode) {
+            positionCell.toggleAttribute('data-tier-prefetch', tierInfo.label === 'T0');
           }
           characters.forEach(charData => {
             // 캐릭터 데이터가 문자열인지 객체인지 확인 (하위 호환성)
@@ -2016,7 +2016,10 @@ const loadTierDataFromURL = (tierData) => {
   // 티어 데이터 로딩 완료
   isTierDataLoading = false;
   if (isTierListMode) {
-    window.LufelNavigationPrefetch?.observeTopTierCharacters(document.querySelector('.position-tiers-container'));
+    window.LufelNavigationPrefetch?.prepareCharacterPrefetch(() =>
+      [...document.querySelectorAll('.position-tiers-container [data-tier-prefetch] img.character-img[alt]')]
+        .map(image => image.alt)
+    );
   }
 };
 

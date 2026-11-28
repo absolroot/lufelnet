@@ -424,7 +424,7 @@
         }
 
         renderPopularCards(container, lang, orderedKeys, badgeMap, maxCount, krCharacterData);
-        window.LufelNavigationPrefetch?.prepareHomePrefetch(container, async () => {
+        window.LufelNavigationPrefetch?.prepareHomePrefetch(async () => {
             let spoilerEnabled = false;
             try {
                 spoilerEnabled = window.SpoilerState?.get() ?? (localStorage.getItem('spoilerToggle') === 'true');

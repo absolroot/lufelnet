@@ -10,16 +10,19 @@
     const characterLimit = 4;
     const portraitLimit = 2;
     const documentLimit = 2;
-    const automaticTierLimit = 2;
-    const homePreviewCount = 3;
-    const homeRosterCardCount = 4;
+    const automaticPortraitConcurrency = 2;
+    const latestCharacterCount = 4;
+    const initialCharacterFiles = ['setting', 'base_stats', 'review'];
 
     const characters = new Set();
+    const characterResources = new Set();
     const portraits = new Set();
+    const intentPortraits = new Set();
     const documents = new Set();
     let pendingIntent;
-    let tierObserver;
-    let automaticTierCount = 0;
+    let pendingSelection;
+    let portraitQueue = [];
+    let activePortraits = 0;
     let homePrefetchScheduled = false;
     let homePrefetch;
 
@@ -42,46 +45,96 @@
         return !url.search && /^\/(?:kr|en|jp|cn)\/(?:character|tier)\/$/.test(path) ? url : null;
     }
 
+    function warmCharacterResources(name, files) {
+        const hashes = window.__CHARACTER_INITIAL_RESOURCE_HASHES;
+        if (!hashes || !Object.hasOwn(hashes, name)) return;
+        for (const file of files || Object.keys(hashes[name])) {
+            const hash = hashes[name][file];
+            if (!hash) continue;
+            const url = basePath + '/data/characters/' + encodeURIComponent(name) + '/' + file + '.js?h=' + hash;
+            if (characterResources.has(url)) continue;
+            characterResources.add(url);
+            if (file === 'party' || file === 'innate') {
+                fetch(url, { priority: 'low' }).then(response => {
+                    if (!response.ok) characterResources.delete(url);
+                }).catch(() => characterResources.delete(url));
+                continue;
+            }
+            const hint = document.createElement('link');
+            hint.rel = 'prefetch';
+            hint.as = 'script';
+            hint.href = url;
+            hint.onerror = () => characterResources.delete(url);
+            document.head.appendChild(hint);
+        }
+    }
+
     function warmCharacter(name) {
         const index = window.__CHARACTER_INITIAL_RESOURCE_HASHES;
         if (!index || !Object.hasOwn(index, name) || characters.has(name) || characters.size >= characterLimit) return false;
 
         characters.add(name);
-        for (const [file, hash] of Object.entries(index[name])) {
-            const hint = document.createElement('link');
-            hint.rel = 'prefetch';
-            hint.as = 'script';
-            hint.href = basePath + '/data/characters/' + encodeURIComponent(name) + '/' + file + '.js?h=' + hash;
-            document.head.appendChild(hint);
-        }
+        warmCharacterResources(name, initialCharacterFiles);
         return true;
     }
 
-    function warmPortrait(name) {
-        if (portraits.has(name) || portraits.size >= portraitLimit) return;
+    function prefetchCharacters(names) {
+        if (!canPrefetch()) return;
+        const hashes = window.__CHARACTER_INITIAL_RESOURCE_HASHES;
+        const selection = [...new Set(names)].filter(name => hashes && Object.hasOwn(hashes, name));
+        selection.forEach(name => warmCharacterResources(name));
+        portraitQueue = selection.filter(name => !portraits.has(name));
+        drainPortraitQueue();
+    }
 
+    function prepareCharacterPrefetch(readNames) {
+        const run = () => {
+            if (pendingSelection !== run) return;
+            pendingSelection = undefined;
+            if (canPrefetch()) prefetchCharacters(readNames());
+        };
+        pendingSelection = run;
+        if (document.readyState === 'complete') setTimeout(run, 0);
+        else window.addEventListener('load', run, { once: true });
+    }
+
+    function drainPortraitQueue() {
+        while (canPrefetch() && activePortraits < automaticPortraitConcurrency && portraitQueue.length) {
+            const name = portraitQueue.shift();
+            if (portraits.has(name)) continue;
+            activePortraits++;
+            warmPortrait(name, () => {
+                activePortraits--;
+                drainPortraitQueue();
+            });
+        }
+    }
+
+    function warmPortrait(name, complete) {
         portraits.add(name);
         const image = new Image();
         image.fetchPriority = 'low';
-        image.onerror = () => portraits.delete(name);
+        image.onload = complete;
+        image.onerror = () => {
+            portraits.delete(name);
+            intentPortraits.delete(name);
+            complete?.();
+        };
         image.src = basePath + '/assets/img/character-detail/' + encodeURIComponent(name) + '.webp';
     }
 
-    function prepareHomePrefetch(container, readRoster) {
-        homePrefetch = { container, readRoster };
+    function prepareHomePrefetch(readRoster) {
+        homePrefetch = readRoster;
         if (homePrefetchScheduled) return;
         homePrefetchScheduled = true;
 
         async function warmHome() {
             if (!canPrefetch()) return;
-            const { container: cards, readRoster: read } = homePrefetch;
-            [...cards.querySelectorAll(characterSelector)].slice(0, homePreviewCount).forEach(link => {
-                if (destination(link)) warmCharacter(link.dataset.characterPrefetch);
-            });
             try {
-                const names = await read();
+                const names = await homePrefetch();
                 if (!canPrefetch()) return;
-                for (const name of names.slice(0, homeRosterCardCount)) {
+                prefetchCharacters(names.slice(0, latestCharacterCount));
+                for (const name of names.slice(0, latestCharacterCount)) {
                     const image = new Image();
                     image.fetchPriority = 'low';
                     image.src = basePath + '/assets/img/character-cards/' + name + '.webp';
@@ -131,57 +184,16 @@
             if (!link.isConnected || link.href !== url.href || !canPrefetch()) return;
             if (name) {
                 warmCharacter(name);
-                if (link.hasAttribute('data-character-prefetch-portrait')) warmPortrait(name);
+                if (link.hasAttribute('data-character-prefetch-portrait') && !portraits.has(name) &&
+                    intentPortraits.size < portraitLimit) {
+                    intentPortraits.add(name);
+                    warmPortrait(name);
+                }
             } else {
                 warmDocument(url.pathname);
             }
         }, name ? characterDelay : documentDelay);
         pendingIntent = { link, timer };
-    }
-
-    function observeTopTierCharacters(container) {
-        tierObserver?.disconnect();
-        tierObserver = undefined;
-        if (!container || !canPrefetch() || !('IntersectionObserver' in window) ||
-            automaticTierCount >= automaticTierLimit) return;
-
-        const cells = [...container.querySelectorAll('[data-tier-prefetch]')];
-        const visibleCells = new Set();
-        let idlePending = false;
-        const observer = new IntersectionObserver(entries => {
-            for (const entry of entries) {
-                if (entry.isIntersecting) visibleCells.add(entry.target);
-                else visibleCells.delete(entry.target);
-            }
-            if (!visibleCells.size || idlePending) return;
-            idlePending = true;
-
-            const warmVisible = () => {
-                idlePending = false;
-                if (tierObserver !== observer || !canPrefetch() || pendingIntent) return;
-                // Tier tiles are recreated when the board changes layout or drag mode.
-                const links = cells.filter(cell => visibleCells.has(cell) && cell.isConnected)
-                    .flatMap(cell => [...cell.querySelectorAll(characterSelector)]);
-                for (const link of links) {
-                    const bounds = link.getBoundingClientRect();
-                    if (!bounds.width || !bounds.height || bounds.bottom <= 0 || bounds.top >= innerHeight ||
-                        bounds.right <= 0 || bounds.left >= innerWidth || !destination(link)) continue;
-                    if (warmCharacter(link.dataset.characterPrefetch)) automaticTierCount++;
-                    if (automaticTierCount >= automaticTierLimit || characters.size >= characterLimit) {
-                        observer.disconnect();
-                        break;
-                    }
-                }
-            };
-
-            // Give the visible cards time to paint before warming their detail data.
-            setTimeout(() => {
-                if ('requestIdleCallback' in window) requestIdleCallback(warmVisible);
-                else warmVisible();
-            }, 700);
-        });
-        tierObserver = observer;
-        cells.forEach(cell => observer.observe(cell));
     }
 
     document.addEventListener('pointerover', event => {
@@ -208,7 +220,8 @@
 
     document.addEventListener('visibilitychange', () => {
         if (document.visibilityState !== 'visible') cancelIntent();
+        else drainPortraitQueue();
     });
 
-    window.LufelNavigationPrefetch = { observeTopTierCharacters, prepareHomePrefetch };
+    window.LufelNavigationPrefetch = { prepareHomePrefetch, prepareCharacterPrefetch, latestCharacterCount };
 })();
